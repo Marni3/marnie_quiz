@@ -1,0 +1,165 @@
+--- PAGE 1 ---
+Definition 
+Geometry is the branch of mathematics 
+that deals with the properties of shapes 
+and spaces. The term “GEOMETRY” was 
+derived from the Greek words “ge” 
+meaning earth and “metria” meaning 
+measurements. 
+ 
+Basic Geometric Elements 
+ 
+1. Point – a dimensionless geometric 
+figure having no properties other than 
+location or place. 
+ 
+2. Line – the shortest distance between 
+any two points. A line is implicitly a 
+straight line. A line segment is a piece of 
+a line with definite endpoints. 
+ 
+3. Angle – the opening between two lines 
+or two planes that meet. The point 
+where the two lines meet is known as 
+the vertex. Angles comes from Latin 
+word “angulus” which means sharp 
+bend. 
+ 
+Excel Review Center 
+Branches of Geometry 
+1. Plane Geometry – deals with the 
+properties of plane figures or 
+geometrical shapes of two 
+dimensions, such as angles, triangles, 
+square, polygons, conic sections, etc. 
+ 
+2. Solid Geometry – deals with the 
+properties of geometric shapes of 
+three dimensions, such as prisms, 
+cones, spheres, pyramids, cylinders, 
+etc. 
+ 
+3. Euclidean Geometry – a geometry that 
+is based on the assumptions of Euclid, 
+who about 300 B.C. collected the 
+mathematical knowledge of that time 
+in the 13-volume “Elements”. The 
+problems of this type of geometry can 
+be solved by logical reasoning from 
+an initial core of postulates (axioms), 
+a method commonly referred to as 
+the classical axiomatic method of 
+Euclid. 
+ 
+4. Non-Euclidean Geometry – a 
+geometry that is not based on the 
+assumption of Euclid. 
+ 
+5. Projective Geometry – deals with the 
+study of those properties of plane 
+figures that are unchanged when a 
+given set of points is projected into a 
+second plane. 
+ 
+6. Trigonometry – a geometry which 
+specializes on the study of triangles. 
+This subject is divided into two 
+branches namely, Plane and Spherical 
+Trigonometry. 
+ 
+7. Analytic Geometry – a geometry 
+which deals with geometric problems 
+by using the coordinates systems and 
+transforming them into algebraic 
+problems. This type of geometry was 
+invented by Rene Descartes.  Plane 
+analytic geometry deals primarily 
+with the analysis of equations in two 
+variables while Solid analytic 
+geometry deals with equations in 
+three variables. 
+ 
+8. Differential Geometry – a geometry 
+that applies differential and integral 
+calculus to curves, surfaces and other 
+geometric entities. 
+Basic Postulates of Euclid 
+Euclid’s Elements is based upon five basic 
+postulates or assumptions which are as 
+follows: 
+ 
+1. A unique straight line can be drawn 
+between any two points. 
+ 
+2. Such a line can be extended 
+indefinitely in either direction. 
+ 
+3. A circle can be drawn in a plane using 
+a given point (a center) and a given 
+distance (a radius). 
+ 
+4. All right angles are equal. 
+ 
+5. Given a line and a point not on the 
+line, there exists exactly one line 
+parallel to the original line passing 
+through the given point. 
+ 
+Postulate number 5 is commonly known 
+as the “parallel postulate” 
+ 
+ 
+Excel Review Center 
+Euclid (c. 330 – c.275 BC) in his best 
+known book in geometry “ELEMENTS” 
+gives more emphasis on Plane 
+Geometry while Archimedes (c. 287 – 
+c/212 BC) contributed so much to 
+Solid Geometry  
+Types of Angles  
+(According to their measure) 
+ 
+1. Null or Zero angle – equal to 0 
+ 
+ 
+ 
+2. Acute angle – greater than 0 but less 
+than 90 or /2 radians 
+ 
+ 
+ 
+3. Right angle – equal to 90 or /2 
+radians 
+ 
+ 
+ 
+4. Obtuse angle – greater than 90 or 
+/2 radians but less than 180 or  
+radians 
+ 
+ 
+ 
+5. Straight angle – equal to 180 or  
+radian 
+ 
+ 
+ 
+6. Reflex angle – greater than 180 or  
+radians but less than 360 or 2 
+radians 
+ 
+ 
+ 
+7. Full angles or Perigon – equal to 
+360 or 2 radians 
+ 
+ 
+Excel Review Center 
+ 
+Excel Review Center Excel Review Center 
+Excel Review Center 
+Plane Geometry 1 
+ENGINEERING MATHEMATICS EXCEL REVIEW CENTER 
+my.excelreviewcenter.com.ph 
+CP: 0919 822 5048 | 0917 328 4664 
+

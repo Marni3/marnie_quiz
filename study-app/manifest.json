@@ -1,0 +1,407 @@
+{
+  "generatedAt": "2026-08-18T09:08:48.770Z",
+  "totalQuizzes": 42,
+  "categories": [
+    {
+      "name": "Sample & Introductory",
+      "topics": [
+        {
+          "name": "General",
+          "quizzes": [
+            {
+              "id": "sample",
+              "filename": "sample.csv",
+              "title": "Sample",
+              "path": "test-sets/sample.csv",
+              "questionCount": 10,
+              "subjectTag": "Introductory"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Mathematics",
+      "topics": [
+        {
+          "name": "Advanced Math",
+          "quizzes": [
+            {
+              "id": "advanced_math_longtest",
+              "filename": "advanced_math_longtest.csv",
+              "title": "Advanced Math Longtest",
+              "path": "test-sets/Mathematics/Advanced Math/advanced_math_longtest.csv",
+              "questionCount": 50,
+              "subjectTag": "Advanced Math"
+            },
+            {
+              "id": "advanced_math_pretest",
+              "filename": "advanced_math_pretest.csv",
+              "title": "Advanced Math Pretest",
+              "path": "test-sets/Mathematics/Advanced Math/advanced_math_pretest.csv",
+              "questionCount": 30,
+              "subjectTag": "Advanced Math"
+            },
+            {
+              "id": "advanced_math_shorttest",
+              "filename": "advanced_math_shorttest.csv",
+              "title": "Advanced Math Shorttest",
+              "path": "test-sets/Mathematics/Advanced Math/advanced_math_shorttest.csv",
+              "questionCount": 10,
+              "subjectTag": "Advanced Math"
+            },
+            {
+              "id": "math_adv_advanced_math_test",
+              "filename": "math_adv_advanced_math_test.csv",
+              "title": "Math Adv Advanced Math Test",
+              "path": "test-sets/Mathematics/Advanced Math/math_adv_advanced_math_test.csv",
+              "questionCount": 10,
+              "subjectTag": "Advanced Math"
+            }
+          ]
+        },
+        {
+          "name": "Algebra",
+          "quizzes": [
+            {
+              "id": "algebra_longtest",
+              "filename": "algebra_longtest.csv",
+              "title": "Algebra Longtest",
+              "path": "test-sets/Mathematics/Algebra/algebra_longtest.csv",
+              "questionCount": 50,
+              "subjectTag": "Algebra"
+            },
+            {
+              "id": "algebra_pretest",
+              "filename": "algebra_pretest.csv",
+              "title": "Algebra Pretest",
+              "path": "test-sets/Mathematics/Algebra/algebra_pretest.csv",
+              "questionCount": 30,
+              "subjectTag": "Algebra"
+            },
+            {
+              "id": "algebra_shorttest",
+              "filename": "algebra_shorttest.csv",
+              "title": "Algebra Shorttest",
+              "path": "test-sets/Mathematics/Algebra/algebra_shorttest.csv",
+              "questionCount": 10,
+              "subjectTag": "Algebra"
+            },
+            {
+              "id": "math_01_algebra_test",
+              "filename": "math_01_algebra_test.csv",
+              "title": "Math 01 — Algebra Test",
+              "path": "test-sets/Mathematics/Algebra/math_01_algebra_test.csv",
+              "questionCount": 15,
+              "subjectTag": "Algebra"
+            }
+          ]
+        },
+        {
+          "name": "Analytic Geometry",
+          "quizzes": [
+            {
+              "id": "analytic_geometry_longtest",
+              "filename": "analytic_geometry_longtest.csv",
+              "title": "Analytic Geometry Longtest",
+              "path": "test-sets/Mathematics/Analytic Geometry/analytic_geometry_longtest.csv",
+              "questionCount": 50,
+              "subjectTag": "Analytic Geometry"
+            },
+            {
+              "id": "analytic_geometry_pretest",
+              "filename": "analytic_geometry_pretest.csv",
+              "title": "Analytic Geometry Pretest",
+              "path": "test-sets/Mathematics/Analytic Geometry/analytic_geometry_pretest.csv",
+              "questionCount": 30,
+              "subjectTag": "Analytic Geometry"
+            },
+            {
+              "id": "analytic_geometry_shorttest",
+              "filename": "analytic_geometry_shorttest.csv",
+              "title": "Analytic Geometry Shorttest",
+              "path": "test-sets/Mathematics/Analytic Geometry/analytic_geometry_shorttest.csv",
+              "questionCount": 10,
+              "subjectTag": "Analytic Geometry"
+            },
+            {
+              "id": "math_09_analytic_geometry_test",
+              "filename": "math_09_analytic_geometry_test.csv",
+              "title": "Math 09 — Analytic Geometry Test",
+              "path": "test-sets/Mathematics/Analytic Geometry/math_09_analytic_geometry_test.csv",
+              "questionCount": 25,
+              "subjectTag": "Analytic Geometry"
+            }
+          ]
+        },
+        {
+          "name": "Differential Calculus",
+          "quizzes": [
+            {
+              "id": "differential_calculus_longtest",
+              "filename": "differential_calculus_longtest.csv",
+              "title": "Differential Calculus Longtest",
+              "path": "test-sets/Mathematics/Differential Calculus/differential_calculus_longtest.csv",
+              "questionCount": 50,
+              "subjectTag": "Differential Calculus"
+            },
+            {
+              "id": "differential_calculus_pretest",
+              "filename": "differential_calculus_pretest.csv",
+              "title": "Differential Calculus Pretest",
+              "path": "test-sets/Mathematics/Differential Calculus/differential_calculus_pretest.csv",
+              "questionCount": 30,
+              "subjectTag": "Differential Calculus"
+            },
+            {
+              "id": "differential_calculus_shorttest",
+              "filename": "differential_calculus_shorttest.csv",
+              "title": "Differential Calculus Shorttest",
+              "path": "test-sets/Mathematics/Differential Calculus/differential_calculus_shorttest.csv",
+              "questionCount": 10,
+              "subjectTag": "Differential Calculus"
+            },
+            {
+              "id": "math_10_differential_calculus_test",
+              "filename": "math_10_differential_calculus_test.csv",
+              "title": "Math 10 — Differential Calculus Test",
+              "path": "test-sets/Mathematics/Differential Calculus/math_10_differential_calculus_test.csv",
+              "questionCount": 10,
+              "subjectTag": "Differential Calculus"
+            }
+          ]
+        },
+        {
+          "name": "Differential Equations",
+          "quizzes": [
+            {
+              "id": "differential_equations_longtest",
+              "filename": "differential_equations_longtest.csv",
+              "title": "Differential Equations Longtest",
+              "path": "test-sets/Mathematics/Differential Equations/differential_equations_longtest.csv",
+              "questionCount": 50,
+              "subjectTag": "Differential Equations"
+            },
+            {
+              "id": "differential_equations_pretest",
+              "filename": "differential_equations_pretest.csv",
+              "title": "Differential Equations Pretest",
+              "path": "test-sets/Mathematics/Differential Equations/differential_equations_pretest.csv",
+              "questionCount": 30,
+              "subjectTag": "Differential Equations"
+            },
+            {
+              "id": "differential_equations_shorttest",
+              "filename": "differential_equations_shorttest.csv",
+              "title": "Differential Equations Shorttest",
+              "path": "test-sets/Mathematics/Differential Equations/differential_equations_shorttest.csv",
+              "questionCount": 10,
+              "subjectTag": "Differential Equations"
+            },
+            {
+              "id": "math_de_differential_equations_test",
+              "filename": "math_de_differential_equations_test.csv",
+              "title": "Math De Differential Equations Test",
+              "path": "test-sets/Mathematics/Differential Equations/math_de_differential_equations_test.csv",
+              "questionCount": 10,
+              "subjectTag": "Differential Equations"
+            }
+          ]
+        },
+        {
+          "name": "Geometry",
+          "quizzes": [
+            {
+              "id": "geometry_longtest",
+              "filename": "geometry_longtest.csv",
+              "title": "Geometry Longtest",
+              "path": "test-sets/Mathematics/Geometry/geometry_longtest.csv",
+              "questionCount": 50,
+              "subjectTag": "Geometry"
+            },
+            {
+              "id": "geometry_pretest",
+              "filename": "geometry_pretest.csv",
+              "title": "Geometry Pretest",
+              "path": "test-sets/Mathematics/Geometry/geometry_pretest.csv",
+              "questionCount": 30,
+              "subjectTag": "Geometry"
+            },
+            {
+              "id": "geometry_shorttest",
+              "filename": "geometry_shorttest.csv",
+              "title": "Geometry Shorttest",
+              "path": "test-sets/Mathematics/Geometry/geometry_shorttest.csv",
+              "questionCount": 10,
+              "subjectTag": "Geometry"
+            },
+            {
+              "id": "math_07_08_geometry_test",
+              "filename": "math_07_08_geometry_test.csv",
+              "title": "Math 07 — 08 Geometry Test",
+              "path": "test-sets/Mathematics/Geometry/math_07_08_geometry_test.csv",
+              "questionCount": 10,
+              "subjectTag": "Geometry"
+            }
+          ]
+        },
+        {
+          "name": "Integral Calculus",
+          "quizzes": [
+            {
+              "id": "integral_calculus_longtest",
+              "filename": "integral_calculus_longtest.csv",
+              "title": "Integral Calculus Longtest",
+              "path": "test-sets/Mathematics/Integral Calculus/integral_calculus_longtest.csv",
+              "questionCount": 50,
+              "subjectTag": "Integral Calculus"
+            },
+            {
+              "id": "integral_calculus_pretest",
+              "filename": "integral_calculus_pretest.csv",
+              "title": "Integral Calculus Pretest",
+              "path": "test-sets/Mathematics/Integral Calculus/integral_calculus_pretest.csv",
+              "questionCount": 30,
+              "subjectTag": "Integral Calculus"
+            },
+            {
+              "id": "integral_calculus_shorttest",
+              "filename": "integral_calculus_shorttest.csv",
+              "title": "Integral Calculus Shorttest",
+              "path": "test-sets/Mathematics/Integral Calculus/integral_calculus_shorttest.csv",
+              "questionCount": 10,
+              "subjectTag": "Integral Calculus"
+            },
+            {
+              "id": "math_11_integral_calculus_test",
+              "filename": "math_11_integral_calculus_test.csv",
+              "title": "Math 11 — Integral Calculus Test",
+              "path": "test-sets/Mathematics/Integral Calculus/math_11_integral_calculus_test.csv",
+              "questionCount": 10,
+              "subjectTag": "Integral Calculus"
+            }
+          ]
+        },
+        {
+          "name": "Probability",
+          "quizzes": [
+            {
+              "id": "math_02_probability_test",
+              "filename": "math_02_probability_test.csv",
+              "title": "Math 02 — Probability Test",
+              "path": "test-sets/Mathematics/Probability/math_02_probability_test.csv",
+              "questionCount": 13,
+              "subjectTag": "Probability"
+            },
+            {
+              "id": "probability_longtest",
+              "filename": "probability_longtest.csv",
+              "title": "Probability Longtest",
+              "path": "test-sets/Mathematics/Probability/probability_longtest.csv",
+              "questionCount": 53,
+              "subjectTag": "Probability"
+            },
+            {
+              "id": "probability_pretest",
+              "filename": "probability_pretest.csv",
+              "title": "Probability Pretest",
+              "path": "test-sets/Mathematics/Probability/probability_pretest.csv",
+              "questionCount": 33,
+              "subjectTag": "Probability"
+            },
+            {
+              "id": "probability_shorttest",
+              "filename": "probability_shorttest.csv",
+              "title": "Probability Shorttest",
+              "path": "test-sets/Mathematics/Probability/probability_shorttest.csv",
+              "questionCount": 13,
+              "subjectTag": "Probability"
+            }
+          ]
+        },
+        {
+          "name": "Statistics and Discrete Math",
+          "quizzes": [
+            {
+              "id": "math_03_04_statistics_discrete_math_test",
+              "filename": "math_03_04_statistics_discrete_math_test.csv",
+              "title": "Math 03 — 04 Statistics Discrete Math Test",
+              "path": "test-sets/Mathematics/Statistics and Discrete Math/math_03_04_statistics_discrete_math_test.csv",
+              "questionCount": 10,
+              "subjectTag": "Statistics and Discrete Math"
+            },
+            {
+              "id": "statistics_discrete_math_longtest",
+              "filename": "statistics_discrete_math_longtest.csv",
+              "title": "Statistics Discrete Math Longtest",
+              "path": "test-sets/Mathematics/Statistics and Discrete Math/statistics_discrete_math_longtest.csv",
+              "questionCount": 50,
+              "subjectTag": "Statistics and Discrete Math"
+            },
+            {
+              "id": "statistics_discrete_math_pretest",
+              "filename": "statistics_discrete_math_pretest.csv",
+              "title": "Statistics Discrete Math Pretest",
+              "path": "test-sets/Mathematics/Statistics and Discrete Math/statistics_discrete_math_pretest.csv",
+              "questionCount": 30,
+              "subjectTag": "Statistics and Discrete Math"
+            },
+            {
+              "id": "statistics_discrete_math_shorttest",
+              "filename": "statistics_discrete_math_shorttest.csv",
+              "title": "Statistics Discrete Math Shorttest",
+              "path": "test-sets/Mathematics/Statistics and Discrete Math/statistics_discrete_math_shorttest.csv",
+              "questionCount": 10,
+              "subjectTag": "Statistics and Discrete Math"
+            }
+          ]
+        },
+        {
+          "name": "Trigonometry",
+          "quizzes": [
+            {
+              "id": "math_05_trigonometry_pretest",
+              "filename": "math_05_trigonometry_pretest.csv",
+              "title": "Math 05 — Trigonometry Pretest",
+              "path": "test-sets/Mathematics/Trigonometry/math_05_trigonometry_pretest.csv",
+              "questionCount": 25,
+              "subjectTag": "Trigonometry"
+            },
+            {
+              "id": "math_05_trigonometry_test",
+              "filename": "math_05_trigonometry_test.csv",
+              "title": "Math 05 — Trigonometry Test",
+              "path": "test-sets/Mathematics/Trigonometry/math_05_trigonometry_test.csv",
+              "questionCount": 25,
+              "subjectTag": "Trigonometry"
+            },
+            {
+              "id": "trigonometry_longtest",
+              "filename": "trigonometry_longtest.csv",
+              "title": "Trigonometry Longtest",
+              "path": "test-sets/Mathematics/Trigonometry/trigonometry_longtest.csv",
+              "questionCount": 50,
+              "subjectTag": "Trigonometry"
+            },
+            {
+              "id": "trigonometry_pretest",
+              "filename": "trigonometry_pretest.csv",
+              "title": "Trigonometry Pretest",
+              "path": "test-sets/Mathematics/Trigonometry/trigonometry_pretest.csv",
+              "questionCount": 30,
+              "subjectTag": "Trigonometry"
+            },
+            {
+              "id": "trigonometry_shorttest",
+              "filename": "trigonometry_shorttest.csv",
+              "title": "Trigonometry Shorttest",
+              "path": "test-sets/Mathematics/Trigonometry/trigonometry_shorttest.csv",
+              "questionCount": 10,
+              "subjectTag": "Trigonometry"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

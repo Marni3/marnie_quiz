@@ -1,0 +1,432 @@
+--- PAGE 1 ---
+ 
+ 
+ 
+Differential Calculus 4 
+ENGINEERING MATHEMATICS EXCEL REVIEW CENTER 
+my.excelreviewer.com 
+Producer of the more than half of the 
+Electronics Engineers in the country! 
+Excel Review Center 
+Excel Review Center 
+Excel Review Center 
+Excel Review Center 
+Excel Review Center 
+Variables in relation to Maxima/Minima Values – continuation… 
+ 
+ 
+ 
+ 
+ 
+Excel Review Center 
+Stiffest beam that can be cut 
+from a circular log of radius r. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+It is a SQUARE! 
+ 
+ 
+ 
+ 
+y x 3=
+ 
+ 
+Most efficient trapezoidal 
+section (Maximum capacity 
+with minimum perimeter) 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+o
+width at top = sum of sides
+width at top = 2x
+120=
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+a 
+θ 
+x 
+Stiffness is proportional to the 
+product of the breath, x and cube 
+of the width, y. 
+x 
+ 
+y 
+Minimum cost of materials 
+for cylinder with a given 
+volume. 
+ 
+             
+         
+3
+Vr 2=   
+                                                      
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Excel Review Center 
+x 
+y 
+Strongest beam that can be 
+cut from an elliptical section. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+     
+12x 2b           y = 2a33=  
+b 
+x 
+y 
+Strength is proportional to the 
+product of breadth, x and the 
+square of the depth, y. 
+Width at top 
+x x 
+θ 
+x 
+base, not side 
+It is half of a regular hexagon 
+Maximum length of rigid 
+beam that can pass 
+perpendicular hallways 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+         
+( )
+22/3 2/33L a b=+  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+b 
+a 
+L 
+Excel 
+Review 
+Center 
+Location of single stake at 
+ground level to minimize the 
+length of guy wire. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+1
+12
+dhx hh= +
+ 
+ 
+fence 
+b 
+a 
+L 
+Best possible view of picture 
+or clock. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+12x y y=
+ 
+ 
+ 
+ 
+ 
+ 
+      
+y2 
+y1 
+x 
+Best view means θ is maximum. 
+Parallelepiped with 
+maximum volume 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+x y z==
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+x 
+y 
+z 
+The parallelepiped is a cube. 
+Open square based container 
+with maximum volume. 
+ 
+ 
+                      
+x 2y
+SAx 3
+=
+=  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+x 
+x 
+y 
+SA = surface area 
+Location of single stake at 
+ground level to minimize the 
+length of guy wire. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+( )
+22/3 2/33L a b=+
+ 
+ 
+stake 
+d 
+h1 
+h2 
+Least amount of material for 
+square-based parallelepiped 
+ 
+ 
+ 
+    
+3
+x 2y
+x 2V
+=
+=  
+ 
+ 
+ 
+ 
+ 
+     
+x 
+ 
+V = volume 
+Least amount of material for 
+an open top cylindrical tank 
+ 
+ 
+                                           
+rh=  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+r 
+h 
+r 
+h 
+Ratio of the weight of 
+heaviest cylinder to weight  
+of circumscribing sphere 
+ 
+             
+         
+C
+S
+W 1
+W 3
+=  
+                                                      
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Maximum volume of right  
+cylinder inscribed in a sphere  
+of radius R 
+ 
+ 
+                                    
+3
+C
+4VR
+27
+23hR 3
+=
+=  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+h 
+Least amount of material for 
+cone 
+ 
+    
+hr
+2
+=  
+ 
+ 
+ 
+ 
+ 
+     
+h 
+r 
+Maximum volume of cone  
+with given slant height, s. 
+ 
+ 
+                            
+1
+sh
+3
+tan 2
+−
+=
+=  
+ 
+ 
+ 
+ 
+ 
+Volume of largest cone  
+inscribed in a hemisphere 
+ 
+ 
+                                             
+H
+C
+VV 2=  
+ 
+ 
+ 
+ 
+Largest cylinder inscribed in 
+a cone. 
+     
+           
+hy 3=  
+                                                      
+ 
+ 
+ 
+h 
+  y 
+

@@ -1,0 +1,962 @@
+--- PAGE 1 ---
+ 
+ Website: www.excelreviewcenter.com.ph Facebook: Excel Review Center          Cellphones: Smart: 0919 822 5048  Globe: 09173284664
+   
+ 
+ 
+EXCEL FIRST REVIEW AND TRAINING CENTER, INC. 
+Cebu: JRT Bldg. Imus Ave, Cebu City | Davao: 2nd Fl. MERCO Bldg. Rizal St. cor. Bolton St.  
+Manila: CMFFI Bldg. R. Papa St. Sampaloc | Baguio:  4th Fl. De Guzman Bldg., Legarda Road 
+Math 09-01 to Math 09-11 
+Analytic Geometry 
+ 
+ 
+ 
+1. D. 15x – 10y – 9 = 0 
+ 
+Using slope-intercept form:  
+y = mx + b 
+3x - 2 y 6 0
+3y x 3
+2
+
+
+ 
+ 
+By inspection, m1 = 3/2 
+Since parallel: m2 = m1 
+From the choices, 
+15x -10 y - 9 0
+39y x -
+2 10
+
+
+ 
+ 
+By inspection, m2 = 3/2 
+ 
+2. C. 4x + 5y = 2 
+ 
+Using two-point form: 
+21
+11
+21
+y - yy - y ( x - x )
+x - x
+62y 2 ( x - 3)
+-7 - 3
+8y 2 ( x - 3)
+-10
+-10 y - 20 8 x - 24
+8 x 10 y - 4 0
+4 x 5 y - 2 0
+
+
+
+
+
+
+ 
+ 
+3. B. 4  
+ 
+1
+2
+Given line 1: 4 x - 3y -12 0
+A 4; B - 3; C -12
+Given line 2 : 4 x - 3y 8 0
+A 4; B - 3; C 8
+   
+      
+         
+     
+
+  
+
+  
+ 
+ 
+21
+22
+22
+C - Cd
+AB
+8 - (-12 )d
+4 (-3)
+20d
+5
+d 4 units
+ 
+ 
+
+
+
+
+
+
+ 
+ 
+4. D.  (-5/3, 1) 
+ 
+2
+2
+3x 2y - 4y 7 0
+37y - 2y x 022
+  
+  
+ 
+ 
+By completing square: 
+2
+22
+2
+2
+37y - 2y - x -22
+37(y -1) - x - (1)22
+35(y -1) - x -22
+35(y -1) - x 23
+
+
+
+ 
+ 
+ 
+Standard equation: 
+2(y - k) -4a(x - h)
+ 
+ 
+By inspection, h = - 5/3 and k = 1,  
+thus the vertex is at (-5/3, 1) 
+ 
+5. A. 2, 8   
+ 
+2
+2
+y 8x - 6y 25 0
+y - 6y -8x - 25
+  
+
+ 
+ 
+By completing square: 
+22
+2
+2
+(y - 3) -8x - 25 (3)
+(y - 3) -8x -16
+(y - 3) -8(x 2)
+
+
+
+ 
+ 
+Standard equation: 
+2(y - k) -4a(x - h)  
+ 
+ 
+By inspection, 4a = 8 thus, a = 2 
+Focal length = a = 2 
+Length of latus rectum = 4a = 8 
+ 
+6. D. 6 
+ 
+ 
+ 
+ 
+ 
+ 
+2a 10
+a5
+2b 8
+b4
+
+
+
+
+ 
+ 
+ 
+Solving for c: 
+22
+22
+c a - b
+c 5 - 4
+c3
+Distance between foci 2c
+2c 2(3)
+2c 6
+
+
+
+
+
+
+    
+ 
+ 
+ 
+ 
+7. D. 0.56 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+2a 40,000 12,800 6,600
+a 29,700
+c a - (6,600 6,400)
+c 29,700 - (6,600 6,400)
+c 16,700
+ce a
+16,700e 29,700
+e 0.56
+  
+
+
+
+
+
+
+
+  
+ 
+ 
+8. A. 1.80   
+ 
+22
+22
+9x - 4y - 36x 8y 4
+9(x - 4x) - 4(y - 2y) 4
+
+
+ 
+ 
+By completing square: 
+ 
+2 2 2 2
+22
+22
+9(x - 2) - 4(y -1) 4 9(2) - 4(1)
+9(x - 2) - 4(y -1) 36
+(x - 2) (y -1)-149
+
+
+
+ 
+Standard equation: 
+22
+22
+(x h) (y k) 1ab
+ 
+ 
+ 
+By inspection,
+2a 4 thus, a = 2 .  
+Also,
+2b 9 thus, b = 3 . 
+Solutions: 
+ 
+ c 
+ b 
+  a 
+ Satellite 
+40,000 
+ c  
+ a 
+ c  
+12,800 
+6,600 
+ a 
+
+--- PAGE 2 ---
+ 
+ Website: www.excelreviewcenter.com.ph Facebook: Excel Review Center          Cellphones: Smart: 0919 822 5048  Globe: 09173284664
+   
+ 
+ 
+EXCEL FIRST REVIEW AND TRAINING CENTER, INC. 
+Cebu: JRT Bldg. Imus Ave, Cebu City | Davao: 2nd Fl. MERCO Bldg. Rizal St. cor. Bolton St.  
+Manila: CMFFI Bldg. R. Papa St. Sampaloc | Baguio:  4th Fl. De Guzman Bldg., Legarda Road 
+Math 09-01 to Math 09-11 
+Analytic Geometry 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Solving for c 
+22c a b 4 9 3.605    
+ 
+ 
+Solving for e: 
+c 3.605e 1.8a2  
+ 
+ 
+9. D.  (11, -20) 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+    
+1 2 2 1
+12
+2
+x r x rx
+rr
+-1 3d x d2
+d 3d
+-3 d2
+
+
+
+
+ d 2x
+4d
+   
+2
+1 2 2 1
+12
+2
+x 11
+y r y ry
+rr
+4 3d y d-2
+d 3d
+12 d-2
+
+
+
+
+
+ d 2y
+4d
+2y -20
+ 
+ 
+10. C. 45° 
+ 
+1
+2
+2 x y -8 0
+y -2 x 8
+m -2
+x 3y 4 0
+14y - x -
+33
+m -1/ 3
+
+
+
+  
+
+
+ 
+Let:   
+ = angle between the two lines 
+21-1
+12
+-1
+m - mtan
+1 m m
+-1/ 3- (-2 )tan 45
+1 (-2 )(-1/ 3)
+
+  
+
+   
+  
+11. C. (3, -3) 
+  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+       
+   
+12
+2 2 2 2
+22
+dd
+x -1 y 6 x - 5 y 6
+x -1 y 6
+
+    
+    
+22
+x - 5 y 6  
+2x 2- 2 x 1 x
+       
+       
+23
+2 2 2 2
+2 2 2 2
+-10 x 25
+8 x 24
+x3
+dd
+x - 5 y 6 x - 6 y 1
+x - 5 y 6 x - 6 y 1
+
+
+
+
+    
+    
+ 
+ 
+Substitute x = 3: 
+       
+       
+2 2 2 2
+2 2 2 2
+2
+x - 5 y 6 x - 6 y 1
+3- 5 y 6 3- 6 y 1
+4y
+    
+    
+ 212 y 36 9 y    2 y 1
+10 y -30
+y -3
+
+
+
+ 
+ 
+Thus the point is at (3, -3) 
+ 
+12. A. 2x – 3y = 0   
+ 
+22xy -194 
+ 
+Standard equation: 
+22
+22
+xy -1ab   
+By inspection: 
+2
+2
+a9
+a = 3
+b 4 
+b = 2
+
+
+ 
+ 
+ 
+ 
+ 
+Equation of the asymptotes of a 
+hyperbola with center at (0,0): 
+byx a
+2yx 3
+2x - 3y 0 or
+2x 3y 0
+
+
+
+
+ 
+    
+  
+ 
+13. B. 2.7 
+ 
+22
+22
+4x 9y 8x - 32 0
+4(x 2x) 9y 32
+  
+  
+ 
+ 
+By completing square: 
+2 2 2
+22
+22
+4(x 1) 9y 32 4(1)
+4(x 1) 9y 36
+(x 1) y 194
+   
+  
+ 
+ 
+Standard equation: 
+22
+22
+(x - h) (y - k) 1ab 
+ 
+              
+By inspection, 
+2a 9 thus, a = 3 .  
+Also, 
+2b 4 thus, b = 2 . 
+22b 2(4)LR 2.667a3  
+  
+ 
+14. B. x = 3    
+2(y - 2) -8(x -1)
+ 
+Standard equation: 
+2(y - k) -4a(x - h)  
+ 
+ c  
+ a 
+ b  
+  b  
+ a  
+ c  
+ P2(x2,y2) 
+ P1(-1,4) 
+ P(2,-2) 
+ r2 = 3d 
+  r1 = d 
+ (5,-6) 
+ (1,-6) 
+ (6,-1) 
+ (x,y) 
+ d1 
+ d2 
+ d3 
+ a 
+ b  
+m = +b/a  
+m = -b/a  
+
+--- PAGE 3 ---
+ 
+ Website: www.excelreviewcenter.com.ph Facebook: Excel Review Center          Cellphones: Smart: 0919 822 5048  Globe: 09173284664
+   
+ 
+ 
+EXCEL FIRST REVIEW AND TRAINING CENTER, INC. 
+Cebu: JRT Bldg. Imus Ave, Cebu City | Davao: 2nd Fl. MERCO Bldg. Rizal St. cor. Bolton St.  
+Manila: CMFFI Bldg. R. Papa St. Sampaloc | Baguio:  4th Fl. De Guzman Bldg., Legarda Road 
+Math 09-01 to Math 09-11 
+Analytic Geometry 
+ 
+By inspection, the vertex is at (1, 2). 
+Also 4a = 8, thus a = 2. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+From figure, the equation of  
+the directrix is, x = 3.        
+ 
+15. B. x2 – 14y + 12x + 61 = 0  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+By inspection, 2a = 6 and a = 3 
+The coordinates of the vertex is at 
+(7,-1). 
+ 
+Standard equation: 
+2(x - h) -4a(y - k)  
+ 
+ 
+Substituting: 
+2
+2
+2
+(x - 7) -4(3)(y 1)
+x -14x 49 -12y -12
+x -14x 12y 61 0
+
+
+  
+  
+ 
+ 
+16. A. 2.1  
+ 
+22x y 4 x - 6 y 12  
+ 
+By completing square: 
+2 2 2 2
+2 2 2
+( x 2 ) ( y - 3) 12 ( 2 ) ( 3)
+( x 2 ) ( y - 3) 25 or ( 5)
+    
+     
+ 
+By inspection, the center is at (-2, 3) 
+and the radius, r = 5.  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Solving for distance between (-2,3) 
+and (3,8): 
+    
+22
+2 1 2 1
+22
+d (x - x ) (y - y )
+d (3 2) (8- 3)
+d 7.071
+
+  
+
+ 
+ 
+Let: x = shortest distance  
+x d - r 7.071-5 2.071  
+ 
+ 
+17. C. r = 6 cos  
+ 
+Standard equation: 
+2 2 2(x - h) (y - k) r
+ 
+ 
+Substitute coordinates of the center 
+and radius as given: 
+2 2 2
+22
+22
+(x - 3) (y - 0) 3
+x - 6x 9 y 9
+x y 6x
+
+  
+
+ 
+ 
+Refer to the triangle:  
+2 2 2x y r
+x r cos  
+
+
+ 
+ 
+22
+2
+x y 6x
+r
+
+6( r cos )
+r 6 cos
+  
+  
+
+
+   
+ 
+18. A. 47.1  
+ 
+Note: This is an equation of an 
+ellipse 
+ 
+22
+22
+22
+22
+9x 25y 225
+xy 125 9
+xy 1(5) (3)
+
+
+
+ 
+Standard equation: 
+22
+22
+xy 1ab  
+ 
+By inspection, a = 5 and b = 3 
+ 
+A ab
+A (5)(3)
+A 47.12 square units
+
+
+
+ 
+ 
+ 
+ 
+19. B. y = -x  - 2 
+ 
+1 1 1
+2 2 2
+P (1,-3) x 1and y -3
+P (-4,2 ) x -4 and y 2
+  
+  
+  
+  
+ 
+ 
+Using two point form: 
+ 
+21
+11
+21
+y - yy - y x - x
+x - x
+23y 3 ( x -1)
+-4 -1
+y 3 -1( x -1)
+y 3 - x 1
+y - x - 2
+
+
+
+  
+
+ 
+ 
+20. A. (-1,1) 
+  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+    
+ 
+1 2 2 1
+12
+x r x rx
+rr
+2 2 / 5 -3 3 / 5x
+3 / 5 ( 2 / 5)
+x -1
+
+
+
+
+
+ 
+ 
+   
+   
+1 2 2 1
+12
+y r y ry
+rr
+-5 2 / 5 5 3 / 5y
+3 / 5 2 / 5
+y1
+
+
+
+
+
+ 
+ 
+21. A. 3 
+ 
+Given line 2 x - 3y 6 0   
+ 
+ 
+At x = 0: 
+ 
+ a=2 
+ V(1,2) 
+ F 
+Directrix 
+ a 
+ F(7,-4) 
+ a 
+ y = 2 
+ (3,8) 
+ C(-2,3) 
+  d 
+ -4     -2 
+ x 
+ y 
+  r 
+  
+ P2(-3,5) 
+ P1(2,-5) 
+ P(x,y) 
+ r2 = 2/5 
+  r1 = 3/5 
+
+--- PAGE 4 ---
+ 
+ Website: www.excelreviewcenter.com.ph Facebook: Excel Review Center          Cellphones: Smart: 0919 822 5048  Globe: 09173284664
+   
+ 
+ 
+EXCEL FIRST REVIEW AND TRAINING CENTER, INC. 
+Cebu: JRT Bldg. Imus Ave, Cebu City | Davao: 2nd Fl. MERCO Bldg. Rizal St. cor. Bolton St.  
+Manila: CMFFI Bldg. R. Papa St. Sampaloc | Baguio:  4th Fl. De Guzman Bldg., Legarda Road 
+Math 09-01 to Math 09-11 
+Analytic Geometry 
+ 
+2 x - 3y 6 0
+2( 0) - 3y 6 0
+y2
+
+
+
+ 
+ 
+At y = 0: 
+ 
+2 x - 3y 6 0
+2 x - 3( 0 ) 6 0
+x -3
+
+
+
+ 
+ 
+Thus the x-intercept (a) is 3 units 
+and the y-intercept (b) is 2 units. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+1A ab
+2
+1A ( 3)( 2 )
+2
+A 3 sq. units  
+
+
+
+ 
+ 
+22. D. hyperbola  
+ 
+23. C. Parabola  
+ 
+24. B. 3x – y + 1 = 0  
+ 
+As  given :  m   3; b   1
+ 
+ 
+Using point slope form:  
+ 
+y mx b
+y 3x 1
+3x - y 1 0
+ 
+
+
+ 
+ 
+25. A. 2.5 units  
+ 
+22
+22
+2 x 2 y 10 x - 6 y - 55 0
+x y 5x - 3y - 27.5 0
+  
+  
+ 
+ 
+By completing square: 
+ 
+ 
+ 
+ 
+ 
+22
+22
+22
+( x 2.5) 27.5 ( 2.5)
+( y -1.5) (1.5)
+( x 2.5) ( y -1.5) 36
+   
+    
+      
+  
+ 
+ 
+Standard equation: (x – h)2 + (y – k)2 = r2 
+By inspection, h = - 2.5 and k = 1.5  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Note: The distance of the center of the 
+circle from the y-axis is equal to h. 
+Thus, the answer is 2.5 unit  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ b 
+ a 
+ y-axis 
+ (-2.5,1.5) 
+ h 
+

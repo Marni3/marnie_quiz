@@ -1,0 +1,423 @@
+--- PAGE 1 ---
+ 
+ Website: www.excelreviewcenter.com.ph Facebook: Excel Review Center          Cellphones: Smart: 0919 822 5048  Globe: 09173284664
+   
+ 
+ 
+EXCEL FIRST REVIEW AND TRAINING CENTER, INC. 
+Cebu: JRT Bldg. Imus Ave, Cebu City | Davao: 2nd Fl. MERCO Bldg. Rizal St. cor. Bolton St.  
+Manila: CMFFI Bldg. R. Papa St. Sampaloc | Baguio:  4th Fl. De Guzman Bldg., Legarda Road 
+Differential Equations 
+ 
+ 
+ 
+1. Find the general solution of the 
+equation 
+sin xy' cos xy lnx+=   
+ 
+A. 
+y csc x(x ln x x C)= − +       
+B. 
+y cos x(x ln x x C)= − +  
+C. 
+y csc x(x ln x x C)= + +  
+D. 
+y cos x(x ln x x C)= + +  
+ 
+2. Find the integrating factor of
+( )
+2y x dx 2ydy 0.− + =
+ 
+ 
+A. 
+2x    
+B. 
+xe−  
+C. 
+2xe    
+D. 
+xe     
+ 
+3. A population of bacteria grows at a 
+rate proportional to the number 
+present. After two hours, the 
+population has tripled. After two 
+more hours elapsed, the population 
+will have increased by a factor of k. 
+What is the value of k?  
+ 
+A. 9     
+B. 6 
+C. 8 
+D. 7 
+ 
+4. Solve the DE 
+2y' xy x−= .  
+ 
+A. 
+2xy tan c 2
+=+        
+B. 
+2xy sin c 2
+=+   
+C. 
+2xy cot c 2
+=+     
+D. 
+2xy cos c 2
+=+   
+ 
+5. Find the orthogonal trajectories of the 
+family of curves 
+2 2 2x y C .−=  
+ 
+A. 
+2 2 2x y C .+=   
+B. 
+xy C=      
+C. 
+3xy C=    
+D. 
+x y C−=  
+ 
+6. The solution to the DE 
+dy 2y 1dt +=  , 
+y(0) = 1, is  
+ 
+A. 
+2t11ye 22
+−=+       
+B. 
+2t1ye 2
+−=  
+C. 
+2t11ye 22
+−=−   
+D. 
+2t1y e 12
+−=−  
+ 
+7. Find the particular solution 
+y" y ' 2y sin 2x .− − =
+ 
+ 
+A. 
+( ) ( )p
+31y sin 2x cos 2x20 20=− +     
+B. 
+( ) ( )p
+31y sin x cos 2x22=− +  
+C. 
+( ) ( )p
+13y sin 2x cos 2x20 20=− +  
+D. 
+( ) ( )p
+13y sin 2x cos 3x20 20=− +  
+ 
+8. The following equation  
+22
+22
+xx xy yy x y
+yxy u 2xyu x u u u xy− + − +
+ 
+is _______. 
+ 
+A. cyclic 
+B. hyperbolic 
+C. elliptic 
+D. parabolic     
+ 
+9. The partial DE 
+2 2 2
+22
+22
+u u ux 2xy y 0 xyyx
+  + + =
+ is an 
+example of ______ equation.  
+ 
+A. heat 
+B. parabolic     
+C. hyperbolic 
+D. elliptic 
+ 
+10. Which of the following is a one 
+dimensional heat equation? 
+ 
+A. 
+22
+2
+22
+uu c
+tx
+ =
+   
+B. 
+22
+22
+uu 0
+yx
+ +=
+  
+ 
+C. 
+2
+2
+2
+u u uctx x
+  =+   
+D. 
+2
+2
+2
+uu ct x
+ =       
+ 
+11. Given 
+22x z 2yz xy 0− + = . Find 
+x
+z
+
+  
+at (1,1,1).  
+ 
+A. 0   
+B. – 1   
+C. 1       
+D. 4/3 
+ 
+12. A tank contains 40L of solution 
+containing 2 g of substance per liter. 
+Salt water containing 3 g of this 
+substance per liter runs in at the rate 
+of 4 L/min and the well-stirred 
+mixture runs out at the same rate. 
+Find the time for the amount of 
+substance in the tank becomes 111.1 
+g.  
+ 
+A. 15 min       
+B. 37 min 
+C. 32 min   
+D. 25 min 
+ 
+13. Determine the order and degree of the 
+differential equation 
+34
+2
+4
+d y dy2x 5x xy 0 dxdy
++ − =
+. 
+ 
+A. Fourth order, first degree      
+B. Third order, first degree 
+C. First order, fourth degree    
+D. First order, third degree 
+ 
+14. Solve the linear equation:  
+2dy y xdx x+=
+. 
+ 
+A. 
+3
+2 xxy C 4=+  
+B. 
+4
+xxy C 4=+      
+C. 
+4
+2 xx y C 4=+  
+D. 
+3
+xyC 4=+  
+ 
+ 
+Multiple Choice: 
+ 
+
+--- PAGE 2 ---
+ 
+ Website: www.excelreviewcenter.com.ph Facebook: Excel Review Center          Cellphones: Smart: 0919 822 5048  Globe: 09173284664
+   
+ 
+ 
+EXCEL FIRST REVIEW AND TRAINING CENTER, INC. 
+Cebu: JRT Bldg. Imus Ave, Cebu City | Davao: 2nd Fl. MERCO Bldg. Rizal St. cor. Bolton St.  
+Manila: CMFFI Bldg. R. Papa St. Sampaloc | Baguio:  4th Fl. De Guzman Bldg., Legarda Road 
+Differential Equations 
+ 
+15. Which of the following equations is a 
+variable separable DE? 
+ 
+A. (x + x2y) dy = (2x + xy2 ) dx 
+B. (x + y) dx – 2y dy = 0 
+C. 2y dx = (x2 + 1) dy    
+D. y2 dx + (2x – 3y) dy = 0 
+ 
+16. The population of a country doubles 
+in 50 years. How many years will it 
+be five times as much? Assume that 
+the rate of increase is proportional to 
+the number of inhabitants. 
+ 
+A. 100 years 
+B. 116 years    
+C. 120 years 
+D. 98 years 
+ 
+17. What is the order of a differential 
+equation? 
+ 
+A. The order of the highest 
+derivative that appears in the 
+equation.     
+B. The order of the lowest 
+derivative that appears in the 
+equation. 
+C. The order of the middle 
+derivative that appears in the 
+equation. 
+D. The order of the average 
+derivative that appears in the 
+equation. 
+ 
+18. What is the integrating factor for the 
+ordinary differential equation 
+( )
+22y dx x y cos y 1 dy 0x
+− + + =
+? 
+ 
+A. – 2x  
+B. 
+2
+x
+−  
+C. 
+2
+1
+x     
+D. 1 
+ 
+19. Solve 
+2
+x
+2
+d y dy5 6y edxdx
++ + = . 
+ 
+A. 
+x
+2x 3x
+12
+eC e C e 12
+−− ++      
+B. 
+x
+2x 3x
+12
+eC e C e 12
+−− −+   
+ 
+ 
+C. 
+x
+2x 3x
+12
+eC e C e 12
+−− +−  
+D. 
+12x
+2x 3x
+12
+eC e C e 12
+−− +−  
+ 
+20. Solve the IVP 
+dv 9.8 0.196vdt =− , v(0) 
+= 48. 
+ 
+A. 
+0.196tv 50 2e −=+  
+B. 
+0.196tv 50 2e=−  
+C. 
+0.196tv 50 2e=+  
+D. 
+0.196tv 50 2e −=−      
+ 
+21. The solution of the differential 
+equation 
+2
+4x
+2
+d y dy5 6y edxdx
+− + =  is __. 
+  
+A. 
+3x
+2x 3x
+12
+eC e C e 3−+  
+B. 
+4x
+2x 3x
+12
+eC e C e 2++      
+C. 
+4x
+2x 4x
+12
+eC e C e 4++  
+D. 
+4x
+2x 3x
+12
+eC e C e 2−+  
+ 
+22. The solution of the differential 
+equation  
+y" y 0+=  satisfying the 
+condition y(0) = 1, 
+( )y / 2 2=  is ___. 
+  
+A. y = cos x + sin x 
+B. y = 2(cos x + sin x) 
+C. y = cos x + 2 sin x     
+D. y = 2 cos x + sin x 
+ 
+23. The partial differential equation 
+22
+22 0xyxy
+     + + + =
+ has ____. 
+ 
+A. degree 1 order 2     
+B. degree 2 order 1 
+C. degree 1 order 1 
+D. degree 2 order 2 
+ 
+24. The differential equation in the form 
+of 
+2y ' P(x)y Q(x)y R(x)= + +  is 
+called a/an _____. 
+ 
+ 
+ 
+A. Wave equation   
+B. Elliptic equation 
+C. Bernoulli equation   
+D. Ricatti equation     
+ 
+25. The equation 
+y ' P(x)y R(x)y +=  is 
+______. 
+ 
+A. Wave equation   
+B. Elliptic equation 
+C. Bernoulli equation      
+D. Laplacian equation 
+ 
+END 
+

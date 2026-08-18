@@ -1,0 +1,189 @@
+--- PAGE 1 ---
+Hyperbola 
+A hyperbola is a locus of a point which 
+moves so that the difference of the 
+distances to the fixed points (foci) is 
+constant and is equal to the length of the 
+transverse axis (2a). 
+Polar Coordinates 
+Polar coordinates (r,) refers to the 
+coordinates of a point in a system of 
+coordinates where the position of a 
+point is determined by the length of 
+ray segment (the radius vector) from a 
+fixed origin (the pole) and the angle 
+(the polar angle) the ray (the vector) 
+makes with a fixed line (the polar axis). 
+Polar  Rectangular 
+Coordinates 
+Relationship between polar coordinates and 
+rectangular coordinates: 
+ 
+Translation of Axes 
+is a mapping from an xy-Cartesian 
+coordinate system to an x'y'-Cartesian 
+coordinate system in which the x' axis 
+is parallel to the x axis and k units 
+away, and the y' axis is parallel to the y 
+axis and h units away. 
+Rotation of Axes 
+is a mapping from an xy-Cartesian 
+coordinate system to an x'y'-Cartesian 
+coordinate system in which the origin 
+is kept fixed and the x' and y' axes are 
+obtained by rotating the x and y axes 
+counterclockwise through an angle . 
+ 
+Analytic Geom 4 
+ENGINEERING MATHEMATICS 
+EXCEL REVIEW CENTER 
+my.excelreviewcenter.com.ph 
+MANILA: CMFFI Building, R. Papa St. 
+Sampaloc, Manila 09176239235 
+ 
+    
+D 
+a 
+c 
+F V V F b 
+directrices asymptote y 
+x 
+Transverse axis 
+Conjugate 
+axis 
+asymptote 
+ 
+General Equation 
+22
+Ax Cy Dx Ey F 0    
+ 
+A. Transverse axis horizontal 
+Transverse axis is the axis that passes 
+through the foci, vertices and the center of 
+the hyperbola while the conjugate axis is the 
+one that is perpendicular to the transverse 
+axis. 
+ 
+Length of the transverse axis = 2a 
+2C         
+Length of the conjugate axis  = 
+2b 2 A         
+ 
+where:  A and C are the numerical 
+coefficients (absolute value) of x2 
+and y2, respectively. 
+ 
+Also, the relationship between a, b and c is  
+ 
+2 2 2
+a b c
+ 
+B. Transverse axis vertical 
+22
+Cx Ay Dx Ey F 0    
+ 
+Standard Equation: C(0,0) 
+Transverse axis 
+horizontal 
+22
+22
+xy 1
+ab
+
+ 
+Transverse axis 
+vertical 
+22
+22
+yx 1
+ab
+
+ 
+Standard Equation: C(h,k) 
+Transverse 
+axis horizontal 
+22
+22
+(x h) (y k) 1
+ab
+ 
+ 
+Transverse 
+axis vertical 
+22
+22
+(y k) (x h) 1
+ab
+ 
+ LATUS RECTUM         ECCENTRICITY 
+2
+2bLR a
+ 
+ace 1.0Da    
+where: a = semi major axis & b = semi minor axis 
+When the equation given is a general 
+equation rather than standard equation, the 
+center (h,k) of a hyperbola can be calculated 
+by converting the general equation to 
+standard using the process known as 
+completing the square. The following 
+formulas can be obtained: 
+Dh 2A
+
+ 
+Ek 2C
+  
+Polar angle is sometimes called the vectoral 
+angle, the argument, the amplitude, or the 
+azimuth of a point. 
+ polar angle 
+polar axis 
+ pole 
+radius vector 
+ 
+(r,) 
+(x,y) 
+y 
+x 
+r 
+ 
+x rcos
+ 
+y rsin
+ 
+22
+r x y
+ 
+yarctan x
+ 
+y’ 
+X’ 
+ X 
+ 
+h 
+y 
+k 
+P(x’,y’) 
+x' x h
+ 
+y' y k  
+X’ 
+y’ 
+ 
+P(x’,y’)  
+x' xcos ysin  
+ 
+y' xsin ycos  
+ 
+x x'cos y'sin  
+ 
+y x'sin y'cos  
+ 
+Excel Review Center 
+Excel Review Center 
+Excel Review Center 
+ 
+Excel Review Center 
+ www.excelreviewcenter.com.ph 
+ 
+

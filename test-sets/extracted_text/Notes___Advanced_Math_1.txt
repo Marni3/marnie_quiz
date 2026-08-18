@@ -1,0 +1,369 @@
+--- PAGE 1 ---
+MATHEMATICAL 
+OPERATIONS OF 
+COMPLEX NUMBERS 
+ 
+1. Addition and Subtraction of Complex 
+Numbers 
+ 
+ 
+ 
+ 
+ 
+ 
+2. Multiplication of Complex Numbers 
+ 
+ Use the polar form 
+ 
+ 
+ 
+ 
+3. Division of Complex Numbers 
+ 
+ Use the polar form 
+ 
+ 
+ 
+ 
+ 
+4. Complex Numbers raised to 
+exponent “n” 
+ 
+ Use the polar form 
+ 
+ 
+ 
+ 
+5. nth root of a Complex Number 
+ 
+ Use the polar form 
+ 
+ 
+ 
+ 
+where: 
+k = 0, first root or principal root 
+k = 1, second root 
+k = 2, third root 
+k = n – 1, nth root 
+ 
+6. Logarithm of a Complex Number 
+ 
+ Use the trigonometric form 
+ 
+dsV dt=
+ 
+ 
+ 
+ 
+ 
+ 
+F kx=
+ 
+ 
+ 
+ 
+ 
+ 
+t g
+dy dx
+dx dy
+ =−  
+ 
+ 
+ 
+ 
+ 
+ 
+Different Forms of 
+Complex Numbers 
+ 
+1. Rectangular Form / Standard Form 
+ 
+ 
+ 
+where: 
+a = real part 
+b = imaginary part 
+ 
+If the real part a = 0, the z = jb. It is 
+called a pure imaginary number. 
+ 
+2. Trigonometric Form 
+ 
+ 
+ 
+ 
+ 
+3. Polar Form 
+ 
+ 
+ 
+where: 
+r = modulus or absolute value 
+θ = argument or amplitude (in °) 
+ 
+ 
+Real axis a 
+Imaginary axis 
+b r 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+4. Exponential Form 
+ 
+ 
+ 
+ 
+where: 
+θ = argument in radians 
+ 
+ 
+7. Exponential and Trigonometric 
+Functions of a Complex Number 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+8. Hyperbolic Functions of Complex 
+Number 
+ 
+  
+ 
+ 
+ 
+ 
+ 
+ Note: 
+        
+= 
+= 
+sinhtanh cosh
+coshcoth sinh      
+ 
+= 
+= 
+1sech cosh
+1csch sinh  
+ 
+9. Inverse Trigonometric Functions 
+of Complex Numbers 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+10. Inverse Hyperbolic Functions of 
+Complex Numbers 
+ 
+  
+ 
+  Complex Numbers 
+A complex number is any number that 
+can be expressed in the standard form a + 
+bi or a + jb. The value “i” or “j” is the 
+imaginary unit or number. It is equal to 
+ −1
+. 
+ 
+ 
+Advanced Math 1 
+ENGINEERING MATHEMATICS EXCEL REVIEW CENTER 
+my.excelreviewer.com 
+09173239235 | 09176239235   
+Excel Review Center 
+Excel Review Center 
+=+z a jb
+ 
+ 
+ 
+ 
+ 
+ 
+= + 
+=
+z rcos jrsin
+z rcis
+ 
+ 
+ 
+ 
+ 
+ 
+= zr
+ 
+ 
+ 
+ 
+ 
+ 
+=+ 22r a b
+ 
+ 
+ 
+ 
+ 
+ 
+−= 1 btan a
+ 
+ 
+ 
+ 
+ 
+ 
+= jz re
+ 
+ 
+ 
+ 
+ 
+ 
+( ) ( )
+( ) ( )
++ + + = + + +
++ − + = − + −
+1 1 2 2 1 2 1 2
+1 1 2 2 1 2 1 2
+a jb a jb (a a ) j (b b )
+a jb a jb (a a ) j (b b )
+ 
+ 
+ 
+ 
+ 
+ 
+( )( ) ( )  =   +1 1 2 2 1 2 1 2r r r r
+ 
+ 
+ 
+ 
+ 
+ 
+( ) =   +
+1 1 1
+12
+2 2 2
+rr
+rr
+ 
+ 
+ 
+ 
+ 
+ 
+( ) =  
+n nr r (n )
+ 
+ 
+ 
+ 
+ 
+ 
+( ) + = 
+o1/n 1/n k(360 )rr n
+ 
+ 
+ 
+ 
+ 
+ 
+= = +
+= + 
+jjlnz re lnr lne
+lnz lnr j
+ 
+ 
+ 
+ 
+Excel Review Center 
+Excel Review Center 
+Excel Review Center 
+
+−
+= + 
+= − 
+j
+j
+e cos jsin
+e cos jsin
+ 
+ 
+ 
+ 
+ 
+ 
+ − 
+ − 
+−=
++=
+jj
+jj
+eesin 2
+eecos 2 
+ 
+ 
+ 
+ 
+ 
+ −
+ −
+−=
++=
+eesinh 2
+eecosh 2
+ 
+ 
+ 
+ 
+ 
+ 
+( )
+( )
+=−  −
+=−  −
+−+=  −
+2
+2
+arcsinz jln jz 1 z
+arccosz jln z z 1
+j 1 jzarctanz ln 2 1 jz
+ 
+ 
+ 
+ 
+ 
+ 
+( )
+( )
+=  +
+=  −
++=  −
+2
+2
+arcsinhz ln z z 1
+arccoshz ln z z 1
+1 1 zarctanhz ln2 1 z
+ 
+ 
+ 
+ 
+ 
+ 
+Excel Review Center 
+

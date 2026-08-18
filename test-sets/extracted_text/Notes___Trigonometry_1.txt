@@ -1,0 +1,242 @@
+--- PAGE 1 ---
+General Types of Triangles 
+ 
+Right triangle – a triangle that has a right 
+angle. 
+ 
+Oblique triangle – a triangle that does not 
+have a right angle. Acute triangle and 
+obtuse triangle are oblique triangles.  
+ 
+Isosceles triangle (triangle with two 
+sides equal and two angles equal) can 
+be a right triangle or an oblique 
+triangle. 
+ 
+ 
+ 
+ 
+side oppositesin hypotenuse
+side adjacentcos hypotenuse
+side oppositetan side adjacent
+
+
+
+2 2 2a b c
+ 
+Definition 
+Trigonometry is the study of triangles by 
+applying the relations between the sides 
+and the angles. The term “trigonometry” 
+comes from the Greek words “trigonon” 
+which means “triangle” and “metria” 
+meaning “measurements. 
+Branches of Trigonometry 
+Trigonometry is divided into two 
+branches: 
+ 
+Plane Trigonometry – deals with triangles 
+in the two dimensions of the plane. 
+ 
+Spherical Trigonometry – concerns with 
+triangles extracted from the surface of 
+a sphere. 
+ 
+ 
+ 
+ Excel Review Center 
+Pythagorean theorem is the most 
+renowned of all mathematical 
+theorems. It is considered as the 
+most proved theorem in 
+mathematics. This was formulated 
+by Pythagoras (c.580 – c 500 B.C.) 
+about 500 B.C. 
+This solution to an oblique triangle is 
+used when the given are: 
+A. two angles and one opposite side or 
+B. two sides and an opposite angle 
+ 
+This was demonstrated by Ptolemy of 
+Alexandria in 150 A.D. 
+ 
+2. Laws of Cosines 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+This solution to an oblique triangle is 
+used when the given are: 
+A. two sides and the included angle or 
+B. three sides 
+ 
+This was demonstrated by the French 
+mathematician Francois Viete (1540 – 
+1603). 
+ 
+3. Laws of Tangents 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+This solution to an oblique triangle is 
+used when the given are two sides and 
+the included angle. 
+ 
+This was demonstrated by the French 
+mathematician Francois Viete (1540 – 
+1603). This was first described by a 
+Danish mathematician and Physician 
+Thomas Fincke (1561-1656) in 1583. 
+Excel Review Center 
+ 
+Excel Review Center 
+Solutions to Right Triangles 
+ 
+1. Fundamental trigonometric functions 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+   
+  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+2. Pythagorean theorem 
+“In a right triangle, the sum of the 
+squares of the sides is equal to the 
+square of the hypotenuse. 
+ 
+c 
+a 
+b 
+ 
+2 2 2a b c
+ 
+asin c
+bcos c
+atan b
+
+
+
+ 
+bcot a
+csec b
+ccsc a
+
+
+  
+4. Special triangles 
+C. Egyptian triangle. 
+ 
+ 
+4 
+5 
+3 
+B. Isosceles right triangle 
+ 
+ 
+1 
+1 
+45 
+45 
+2
+ 
+A. 30-60 right triangle 
+ 
+ 
+3
+ 
+1 
+2 
+30 
+60 
+c 
+a 
+b 
+ 
+Solutions to Oblique 
+Triangles 
+ 
+1. Laws of Sines 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+   
+  
+ 
+ 
+ 
+ 
+ 
+A 
+B 
+C 
+c  a 
+ b 
+a b c
+sin A sin B sin C
+ 
+2 2 2
+2 2 2
+2 2 2
+a b c 2bc cos A
+b a c 2ac cos B
+c a b 2ab cos C
+  
+  
+  
+ 
+A 
+B 
+C 
+c  a 
+ b 
+A 
+B 
+C 
+c  a 
+ b 
+1tan (A B)ab 2
+1ab tan (A B)2
+  
+ 
+Excel Review Center 
+Excel Review Center 
+Trigonometry 1 
+ENGINEERING MATHEMATICS EXCEL REVIEW CENTER 
+my.excelreviewcenter.com.ph 
+CP: 0919 822 5048 | 0917 328 4664 
+

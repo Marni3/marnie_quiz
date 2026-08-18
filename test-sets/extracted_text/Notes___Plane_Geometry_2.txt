@@ -1,0 +1,134 @@
+--- PAGE 1 ---
+ 
+Unit One revolution 
+Degree 360 
+Radian 2 
+Gon 400 
+Mil 6400 
+  
+Angle Bisector 
+ 
+A bisector is a straight line which divides a 
+geometric figure into two equal figures. An 
+angle bisector is a line which divides an 
+angle into two equal angles 
+ 
+Excel Review Center 
+Different units of angles 
+1. Degree – The degree is a non-SI unit 
+approved in 1969 by the General 
+Conference on Weights and 
+Measures. This unit was established 
+by the Babylonians more than 4000 
+years ago. A degree is divided into 
+60 minutes; a minute is divided into 
+60 seconds. 
+ 
+2. Radian – The radian is the standard 
+angular measure in the International 
+System of Units (SI). A radian is the 
+angle between two radii of a circle 
+which cut off on the circumference 
+an arc equal in length to the radius. 
+ 
+3. Gon – The gon or centesimal degree 
+is 1/400th of the full circle. A right 
+angle is 100 gons. A gon is divided 
+into 100 centesimal minutes; one 
+centesimal minutes is divided into 
+100 centesimal seconds. This unit is 
+also known as grad or grade and is 
+used in surveying works and aircraft 
+navigation. 
+ 
+4. Mil – The mil is a measure of an 
+angle which is 1/6400 of the full 
+circle. A right angle is 1600 mils. 
+Other Types of Angles 
+ 
+1. Adjacent angles – two angles with a 
+common leg 
+ 
+ 
+2. Complementary angles – two angles 
+whose sum is a right angle or 90 or 
+/2 radians 
+ 
+ 
+Angle A and angle B are complementary 
+angles. Angle A is the complement of angle 
+B and vice versa. 
+ 
+3. Supplementary angles – two angles 
+whose sum is a straight angle or 180 
+or  radians 
+ 
+Angle A and angle B are supplementary 
+angles. Angle A is the supplement of angle 
+B and vice versa. 
+ 
+4. Explementary angles – two angles 
+whose sum is a perigon or 360 or 2 
+radians 
+ 
+ 
+Angle A and angle B are Explementary 
+angles. Angle A is the explement of angle B 
+and vice versa. 
+ 
+5. Vertical angles – angles formed by two 
+intersecting lines. Vertical angles are 
+equal. 
+ 
+Angle A and angle B are vertical angles. 
+These angles are called vertical angles 
+because each side of one is an extension 
+through the vertex of a side of the other. 
+ 
+ 
+For easy conversion from one unit to 
+another, just remember the measure 
+of an angle with corresponding value 
+in one revolution. Then apply ratio and 
+proportion!  
+Regular polygons 
+A regular polygon is a polygon having 
+all sides equal and all angles equal. 
+Table below shows the regular 
+polygons: 
+ 
+Excel Review Center 
+Polygon 
+A plane figure with three or      
+more angles. It has as many     
+sides as angles. The sides of the 
+polygon are straight lines. The 
+term “polygon” comes from Greek 
+words “poly” which means      
+“many” and “gonia” which      
+means “angles”. 
+Names of polygons 
+Polygons are named according to the 
+number of sides or vertices. Below are 
+the polygons with their corresponding 
+names. 
+ 
+Excel Review Center 
+Did you know? 
+Since 2013 (under new 
+examiners) to date, Excel 
+produced more ECE 
+topnotchers than the total 
+topnotchers of all other 
+review centers combined! 
+Convex polygon is one having each 
+interior angle less than 180 while 
+concave polygon is one having an       
+              interior angle greater than 180. 
+ 
+Plane Geometry 2 
+ENGINEERING MATHEMATICS 
+EXCEL REVIEW CENTER 
+my.excelreviewcenter.com.ph 
+Cebu | Baguio | Davao | Manila 
+

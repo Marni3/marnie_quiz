@@ -1,0 +1,346 @@
+--- PAGE 1 ---
+Theorems of Limits 
+The following are important theorems 
+and properties of limits considering the 
+following: 
+xa
+limf (x) L
+→
+= and 
+xa
+limg(x) K
+→
+=  
+ 
+1. If 
+xa
+lim f (x)
+→ exists then it is unique. 
+ 
+2. 
+ 
+x a x a x a
+lim f (x) g(x) limf (x) limg(x)
+→ → →
++ = +  
+ 
+ 
+xa
+lim f (x) g(x) L K
+→
++ = +  
+ 
+3.  
+ 
+x a x a x a
+lim f (x) g(x) limf (x) limg(x)
+→ → →
+− = −  
+ 
+ 
+xa
+lim f (x) g(x) L K
+→
+− = −  
+ 
+4. 
+ 
+x a x a x a
+lim f (x) g(x) limf (x) limg(x)
+→ → →
+ =   
+ 
+ 
+xa
+lim f (x) g(x) L K
+→
+ =   
+ 
+5. 
+xa
+xa
+xa
+limf (x)f (x) Llim g(x) limg(x) k
+→
+→
+→
+==     
+(K 0)  
+ 
+6. 
+xa
+11lim g(x) K→
+=        
+(K 0)  
+ 
+7. 
+   
+nn
+x a x a
+lim f (x) lim f (x)   for n > 0
+→→
+=  
+ 
+8. 
+ 
+x a x a
+lim cf (x) c lim f (x)
+→→
+=   
+ 
+9. 
+n n n
+x a x a
+limcx clim x ca
+→→
+==  
+ 
+10. If f is a polynomial function, then  
+ 
+xa
+limf (x) f (a)
+→
+=  
+ 
+11. 
+n n
+x a x a
+lim f (x) lim f (x)    
+→→
+=
+ 
+when n is a positive integer  
+ 
+12.  If 
+f (x) h(x) g(x) for all x in an 
+open interval containing a, except 
+possibly at a, and if 
+x a x a
+limf (x) L limg(x)
+→→
+==
+ then 
+xa
+lim h(x) L
+→
+=
+. 
+ 
+ 
+ 
+  Limits 
+Let f be a function that is defined on an 
+open interval containing a, but possibly not 
+defined at itself. Let L be a real number. 
+The statement 
+xa
+limf (x) L
+→
+= defines the 
+limit of the function f(x) at a point a. L is 
+the value that the function has as the point 
+a is approached. 
+ 
+ 
+ 
+ 
+Excel Review Center 
+Excel Review Center 
+ 
+Differential Calculus 1 
+ENGINEERING MATHEMATICS EXCEL REVIEW CENTER 
+my.excelreviewer.com 
+09176239235 | 09173239235 
+Excel Review Center 
+Excel Review Center 
+One-Sided Limits 
+Suppose f is a function such that it is not 
+defined for all values of x. Rather, it is 
+defined in such a way that it “jumps” 
+from one y value to the next instead of 
+smoothly going from one y value to the 
+next. 
+ 
+x 
+y 
+ 
+The figure above shows that y = f(x) is 
+not defined for all values of x. 
+ 
+x 
+y 
+ 
+ 
+The figure above shows that y = f(x) 
+“jumps” from a positive value to a 
+negative value. 
+ 
+The statement 
+xa
+lim f (x) R
++→
+= means that as 
+x approaches “a” from the right or from 
+positive infinity, the function f has the 
+limit R.  
+ 
+Likewise, the statement 
+xa
+lim f (x) L
+−→
+=  
+means that as x approaches “a” from the 
+left hand side or from negative infinity, 
+the function f has the limit L. 
+ 
+If f is defined in an open interval 
+containing a, except possible at a, then 
+xa
+limf (x) L
+→
+=
+ if and only if 
+x a x a
+lim f (x) lim f (x)
++−→→
+=
+ 
+ 
+ 
+ 
+ 
+The term “Calculus” was derived 
+from a Latin word “calx” which 
+means “stone” and from a Greek 
+word “chalis” which means 
+“limestone”. 
+ 
+In 1684, a German mathematician and 
+philosopher Gottfried Wilhelm von Leibniz 
+published his early work on calculus, while an 
+English astronomer, physicist and 
+mathematician Isaac Newton made an early 
+study on the subject in 1665 but did not 
+published his work until 1704. These two 
+mathematicians are now considered as the 
+founders of today’s calculus. 
+ 
+The subject Calculus is divided into four 
+areas namely, differential calculus, integral 
+calculus, differential equations and calculus 
+of variation. Differential Calculus is a branch 
+of mathematics which deals with derivatives 
+and limits. 
+ 
+ 
+CONTINUITY 
+A function f is continuous at a point a if 
+the following are the three conditions 
+being satisfied: 
+1.  f(a) exists, that is, f is defined at a, 
+2. 
+xa
+limf (x)
+→  exists, 
+3.  the two numbers are equal. 
+ Continuity test at a point x = a: 
+ 
+x a x a
+lim F(x) lim F(x) F(a)
++−→→
+==  
+ 
+ 
+ 
+Types of Continuities 
+1. Jump Continuity – occurs when the 
+curve “breaks” at a particular place 
+and starts somewhere else. 
+2. Point discontinuity – occurs when 
+the curve has a “hole” in it from a 
+missing point because the function 
+has a value at that point that is “off 
+the curve”. 
+3. Essential discontinuity – occurs 
+when the curve has a vertical 
+asymptote. 
+4. Removable discontinuity – occurs 
+when there is a rational expression 
+with common factors in the 
+numerator and denominator. 
+ 
+ 
+ 
+Special Limits 
+1. 
+x0
+sin xlim 1 x→
+=  
+2. 
+x0
+1 cos xlim 0 x→
+− =  
+3. 
+n
+n
+1lim 1 e n→
++=  
+4. 
+( )
+1
+n
+n0
+lim 1 n e
+→
++=  
+5. For a > 1, then: 
+ 
+x
+x
+lim a
+→+
+=+             
+x
+x
+lim a 0
+→−
+=  
+ 
+ax
+lim log x
+→+
+=+        
+ax0
+limlog x
+→
+=−  
+6.  For 0 < a < 2, then: 
+ 
+x
+x
+lim a 0
+→+
+=               
+x
+x
+lim a
+→−
+=+  
+ 
+ax
+lim log x
+→+
+=−       
+ax0
+limlog x
+→
+=+  
+ 
+ 
+ 
+Excel Review Center 
+Excel Review Center 
+Excel Review Center 
+Excel Review Center 
+Excel Review Center 
+

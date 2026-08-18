@@ -1,0 +1,10 @@
+{
+  "name": "marnie-quiz-study-tool",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Board Exam Review Quiz Platform and Study Tool",
+  "scripts": {
+    "manifest": "node scripts/generate-manifest.js",
+    "build": "node scripts/generate-manifest.js"
+  }
+}

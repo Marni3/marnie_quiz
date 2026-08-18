@@ -1,0 +1,773 @@
+--- PAGE 1 ---
+ 
+ Website: www.excelreviewcenter.com.ph Facebook: Excel Review Center          Cellphones: Smart: 0919 822 5048  Globe: 09173284664
+   
+ 
+ 
+EXCEL FIRST REVIEW AND TRAINING CENTER, INC. 
+Cebu: JRT Bldg. Imus Ave, Cebu City | Davao: 2nd Fl. MERCO Bldg. Rizal St. cor. Bolton St.  
+Manila: CMFFI Bldg. R. Papa St. Sampaloc | Baguio:  4th Fl. De Guzman Bldg., Legarda Road 
+Advanced Math 
+ 
+ 
+ 
+1. B. 
+4 1 11
+8 1 2
+− − −
+ −  
+ 
+1 2 3 5 1 8 x2 1 3 6 0 5
+1 2 3 5 1 8x 2 1 3 6 0 5
+Calculating :
+4 1 11 x 8 1 2
+−    −=    −   
+−   =−    −   
+− − −= −
+ 
+ 
+ 
+2. C. 
+−−
+
+35
+41  
+ 
+( )
+( )
+( )
+( )
+11
+12
+21
+22
+C 3 3     
+C 5 5
+C 4 4       
+C 1 1
+35 Ans41
+=+ − =−
+=− =−
+=− − =
+=+ =
+−− →
+ 
+ 
+ 
+3. A. 
+
+−
+2
+1  * 
+ 
+A I 0
+2 2 1 0 01 3 0 1
+2 2 0 01 3 0
+22 013
+− =
+   − =      
+   −=       
+− =−
+ 
+ 
+( )( )
+2
+2
+1
+2
+2 3 2 0
+5 6 2 0
+5 4 0
+1
+4
+− − − =
+ − + − =
+ − + =
+=
+=
+ 
+ 
+Then at
+1=  
+ 
+ 
+ 
+2 2 x 0
+1 3 y 0
+1 2 x 0
+1 2 y 0
+x 2y 0
+x 2y 0
+x 2y 0
+−     =    −    
+    =        
++    =   +   
++=
+ 
+ 
+All (x, y) that can satisfy the 
+equation x + 2y = 0 is/are the correct 
+answer. 
+ 
+4. D. 
++=3x x 0  
+ 
+( )( )
+( )
+( )
+2
+2
+3
+roots i,  i and 0
+x x i x i 0
+x x ix ix 1 0
+x x 1 0
+x x 0
+=−
++ − =
+− + + =
++=
++=
+ 
+ 
+5. C. 2    
+ 
+1 2 3
+A 1 4 2
+2 6 5
+
+=
+
+ 
+ 
+R2 – R1 x 1 and R3 – R1 x 2: 
+ 
+1 2 3
+0 2 1
+0 2 1
+
+ −
+ −
+ 
+ 
+R3 – R2 x 1: 
+ 
+1 2 3
+0 2 1
+0 0 0
+
+ −
+
+ 
+ 
+Rank of matrix is number of 
+independent rows or columns.  
+Since, one row has elements all 
+zero, only 2 rows are independent. 
+Therefore, rank of matrix is 2. 
+ 
+ 
+6. C. 
+
++22s  
+ 
+ 
+ 
+  22L sin t
+s
+=
++
+ 
+ 
+Reverse Engineering: 
+11
+2
+t
+1 1 1LL s s 1ss
+1e
+−−
+−
+   =−    ++   
+=−
+ 
+ 
+Reverse Engineering: 
+Given: Let s = 5 and 
+1=  
+ 
+( ) ( )
+8st 5t
+00
+f x e dt sin t e dt
+1
+26
+ −− =
+=
+
+ 
+ 
+From choices: 
+2 2 2
+1
+s 5 1
+1
+26
+ =
++ +
+=
+ 
+ 
+7. C. 
+−+2 21 i55   
+ 
+Convert to polar form: 
+22
+1o
+8 5i :
+r 8 5 89
+5tan 328
+−
++
+= + =
+= =
+ 
+22
+1o
+1 2i :
+r 1 2 5
+2tan 63.441
+−
+−
+= + =
+−= =−
+ 
+So, 
+( )
+o
+oo
+o
+o
+89 32 89 32 63.435
+5 63.435 5
+445 95.445
+ =  +
+−
+=
+ 
+Convert back to rectangular form: 
+o
+o
+x r cos
+445 2x cos 95.4455
+y r sin
+445 21y sin 95.4455
+2 21x yi i 55
+=
+= =−
+=
+==
++ =− +
+ 
+Solutions: 
+ 
+
+--- PAGE 2 ---
+ 
+ Website: www.excelreviewcenter.com.ph Facebook: Excel Review Center          Cellphones: Smart: 0919 822 5048  Globe: 09173284664
+   
+ 
+ 
+EXCEL FIRST REVIEW AND TRAINING CENTER, INC. 
+Cebu: JRT Bldg. Imus Ave, Cebu City | Davao: 2nd Fl. MERCO Bldg. Rizal St. cor. Bolton St.  
+Manila: CMFFI Bldg. R. Papa St. Sampaloc | Baguio:  4th Fl. De Guzman Bldg., Legarda Road 
+Advanced Math 
+ 
+Calculator Shortcut: (Using Casio 
+FX570ES+) 
+ 
+Use calculator in COMPLEX 
+MODE 
+8 5i 2 21 i1 2i 5 5
++ =− +−
+. 
+ 
+8. A. 0  
+ 
+n 1 for any value of n0
+ =
+ 
+ 
+So, the expression will only be equal 
+if ‘x’ is zero. 
+ 
+64 11xx
+   = → =      
+ 
+ 
+9. D. 
+−5z  
+ 
+     
+z n5
+n
+5
+n 5 n 5 z 5 5 z
+z
+
+−−
+=−
+−
+ − →  − = −
+=
+
+ 
+Region of convergence: all z, except z = 
+0. 
+ 
+ 
+10. A. 
+−
+−
+12 30
+11 0  
+ 
+6 0 2 5BA 3 5 1 3
+6( 2) 0(1) 6(5) 0(3)BA 3( 2) ( 5)(1) 3(5) ( 5)(3)
+12 30BA 11 0
+−  =  −  
+− + += − + − + −
+−=−
+ 
+ 
+Calculator Shortcut: Using Casio 
+FX570ES+, Input the given matrices 
+in your calculator as Matrix A and B 
+respectively. 
+ 
+Mode 6 : MATRIX 1: MatA
+255 : 2 2 AC 13
+Shift 4 Matrix 2 : Data 2 : MatB
+605 : 2 2 AC 35
+→→
+−→  → → 
+→ → →
+→  → →  −
+ 
+ 
+12 30MatB MatA 11 0
+−= −
+ 
+ 
+11. D. 
+.. −2 88 j0 492 * 
+ 
+( )
+( )
+1ln 2 jln 1 j 3 322 1ln 1 j ln 2 j 4
+2.88 j0.492
+++
+=+ +
+=−
+ 
+ 
+12. A. – i    
+ 
+( )
+j10
+j0
+i 1 i 1 i 1 i 1 i 1 i 1
+           i
+=
+− = − − + + − − + + − −
+=−
+
+ 
+ 
+13. C. 1   
+ 
+For a projectile that is a full-parabola: 
+ 
+( ) ( ) ( )
+kn
+o k
+o
+k0
+xxp x f x k!=
+−=
+ 
+ 
+From x, xo = 0, k =1 and f(x) = esinx  
+ 
+Get the first derivative of f(x). 
+ 
+( ) ( ) ( )
+( ) ( )
+sin x sin x
+sin0
+f x e     f ' x cos x e
+at x 0          f ' 0 cos0 e 1
+=  =
+=  = =
+ 
+So, at k = 1
+( ) ( )
+1
+x0 1x1!
+−==  
+Coefficient is 1 
+ 
+14. A. 
+   − − + −      
+24
+111 x x2 2 24 2  
+  
+( ) ( ) ( )
+kn
+o k
+o
+k0
+xxp x f x k!=
+−=
+ 
+ 
+From,
+ox 2
+=  , k =2 and 
+f (x) sin x=  
+ 
+( ) ( )
+( ) ( )
+( ) ( )
+( ) ( )
+( ) ( )
+11
+22
+33
+44
+f x sin x, f / 2 1
+f x cos x, f / 2 0
+f x sin x, f / 2 1
+f x cos x, f / 2 0
+f x sin x, f / 2 1
+=  =
+=  =
+=−  =−
+=−  =
+=  =
+ 
+ 
+( ) ( ) ( ) ( )
+( )
+0 2 4
+24
+x x x2 2 2p x 1 1 1 0! 2! 4!
+11p x 1 x x 2 2 24 2
+       − − −          = + − +
+   = − − + −      
+ 
+ 
+15. A. 
+   5 
+  
+−
+ −
+9
+21      
+ 
+Solving the determinant of the given 
+matrix: 
+15D   29
+D 9 10
+D1
+=
+=−
+=−
+ 
+ 
+Note: For a 2 x 2 Matrix, say, matrix
+a b A cd=
+, its inverse is given by:   
+1 db1A caD
+− −= −
+ 
+ 
+Thus,  
+1
+1
+  9 51A    2   1( 1)
+- 9    5A =     2  - 1
+−
+−
+−= −−
+      
+ 
+16. A. 3i 
+ 
+Since 20 is exactly divisible by 4, 
+    i20 = 1,  
+    i21 = i  
+Since 28 is exactly divisible by 4, 
+   i28 = 1,  
+    i29 = i 
+Substituting: 
+i29 + i21 + i = i + i + i = 3i 
+ 
+17. C. 2i – 1      
+ 
+Since 3216 is exactly divisible by 4, 
+          i3216 = 1,  
+   i3217 = i  
+Since 424 is exactly divisible by 4
+  
+  i424 = 1,  
+    i425 = i 
+
+--- PAGE 3 ---
+ 
+ Website: www.excelreviewcenter.com.ph Facebook: Excel Review Center          Cellphones: Smart: 0919 822 5048  Globe: 09173284664
+   
+ 
+ 
+EXCEL FIRST REVIEW AND TRAINING CENTER, INC. 
+Cebu: JRT Bldg. Imus Ave, Cebu City | Davao: 2nd Fl. MERCO Bldg. Rizal St. cor. Bolton St.  
+Manila: CMFFI Bldg. R. Papa St. Sampaloc | Baguio:  4th Fl. De Guzman Bldg., Legarda Road 
+Advanced Math 
+     
+    i426 = - 1 
+    i427 = - i 
+ 
+Since 16 is exactly divisible by 4 
+    i16 = 1  
+    i17= i 
+    i18 = - 1 
+Substituting: 
+i3217 - i427 + i18 = i – (- i) + (- 1) = 2i – 1 
+ 
+18. A. 
+...+ − − +23 12 3x x x 2   
+ 
+The Taylor series of cos x is
+24xx1 ...2! 4!− + −
+ 
+The Taylor series of sin x is
+35xxx ... 3! 5!− + −
+ 
+So, 
+35
+24
+3
+2
+xx3sin x 2 cos x 3 x ... 3! 5!
+xx2 1 ... 2! 4!
+x2 3x x ... Ans 2
++ = − + −
+
++ − + −
+
+= + − − + →
+ 
+ 
+19. A. sec2 x  
+ 
+( )
+T
+2
+2
+1
+T1
+2
+2 2
+2T 1 2 2
+2
+2
+1 tan xA tan x 1
+1 tan xA tan x 1
+A 1 tan x
+sec x
+1 tan x1A tan x 1A
+1 tan x 1 tan x1AA tan x 1 tan x 1A
+1 tan x 2 tan x1
+sec x 2 tanx 1 tan x
+1A A 1 tan x 4 tan x
+sec x
+11
+sec x
+−
+−
+−
+=−
+−=
+=+
+=
+−= 
+−−  =     
+−−= 
+−
+= − + 
+=
+42
+2
+tan x 2 tan x
+4 tan x
++−
+
++
+  
+ 
+( )
+( )
+42
+2
+22
+2
+22
+2
+2
+1 1 tan x 2 tan x
+sec x
+1 1 tan x
+sec x
+sec x
+sec x
+sec x Ans
+= − + 
+=−
+=
+=→  
+ 
+20. A. 1 
+ 
+One of the eigenvalues is zero. That 
+implies that the determinant of the 
+matrix is also zero. From the matrix 
+A, we can see that for determinant 
+to be zero, Row 1 and Row 3 can be 
+made same. 
+9x 42
+x 1 Ans
+−+ =−
+=→
+ 
+ 
+21. B. second  
+ 
+1 2i 1 2i 1 i x1 i 1 i 1 i
+1 3i
+2
+13 i22
++ + +=− − +
+−+=
+=− +
+ 
+This is represented by the point 
+13,22
+−
+ in the second quadrant. 
+ 
+ 
+22. D. 
+−3 7i
+16 16   
+ 
+Reciprocal of 
+2
+zz
+z
+=  
+Therefore the reciprocal of 
+3 7i+
+3 7i 3 7i
+16 16 16
+−= = −
+ 
+ 
+23. D. 
++ 30i 2  
+5 12i 5 12i 5 12i 5 12izx
+5 12i 5 12i 5 12i 5 12i
+5 12i 5 12i 2 25 144z 5 12i 5 12i
+3 3i 3z 0 i2i 2 2
++ + − + + −=
++ − − + + −
++ + − + += + − +
+= = = −−
+ 
+ 
+ Conjugate of z = 
+30i 2+  
+ 
+24. B. 
+cos sin22
+− i   
+ 
+( )
+( ) ( )
+325
+75
+4x18 3
+18 34
+3
+zi
+i
+i
+ii
+i
+1
+z 0 1
++
+=
+=
+=
+=
+=
+=−
+=−
+ 
+Polar form: 
+ 
+( )z r cos isin
+z 1 cos isin 22
+z cos isin22
+= + 
+    = − + −       
+=−  
+ 
+25. B. 
+−− t1e  
+ 
+( )
+( )
+( )
+1
+2
+2
+11
+2
+11
+t
+1f (s) L
+ss
+1 1 1 1
+s(s 1) s s 1ss
+1 1 1LL s s 1ss
+11LL s s 1
+1e
+−
+−−
+−−
+−
+
+=  +
+= = −+++
+  =−  ++
+   =−     +   
+=−
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+

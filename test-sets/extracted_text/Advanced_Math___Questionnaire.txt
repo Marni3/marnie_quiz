@@ -1,0 +1,444 @@
+--- PAGE 1 ---
+ 
+ Website: www.excelreviewcenter.com.ph Facebook: Excel Review Center          Cellphones: Smart: 0919 822 5048  Globe: 09173284664
+   
+ 
+ 
+EXCEL FIRST REVIEW AND TRAINING CENTER, INC. 
+Cebu: JRT Bldg. Imus Ave, Cebu City | Davao: 2nd Fl. MERCO Bldg. Rizal St. cor. Bolton St.  
+Manila: CMFFI Bldg. R. Papa St. Sampaloc | Baguio:  4th Fl. De Guzman Bldg., Legarda Road 
+Advanced Math 
+ 
+ 
+ 
+1. Find x: 
+1 2 3 5 1 8 x4 1 3 6 0 5
+−    −=    −   
+. 
+ 
+A. 
+4 1 11
+8 1 2
+−
+−−        
+B. 
+4 1 11
+8 1 2
+− − −
+ −   
+C. 
+5 2 24
+12 0 15
+−−
+ −     
+D. 
+6 3 5
+4 1 8
+
+−  
+ 
+2. Find the adjoint matrix of 
+14
+53
+−
+ − . 
+ 
+A. 
+10
+42
+
+   
+B. 
+23
+51
+−
+    
+C. 
+35
+41
+−−
+    
+D. 
+24
+01
+
+  
+ 
+3. One of the eigen vectors of the matrix 
+22A 13
+=
+ is _____. 
+ 
+A. 
+2
+1
+
+−      
+B. 
+1
+1
+
+−  
+C. 
+2
+1
+
+        
+D. 
+4
+1
+
+  
+ 
+4. Which of the following equations has 
+−i, i, and 0 as its only roots? 
+ 
+A. 
+3x 1 0−=     
+B. 
+3x x 0−=  
+C. 
+3x 1 0+=    
+ 
+D. 
+3x x 0+=   
+ 
+5. Determine the rank of the matrix 
+1 2 3
+A 1 4 2
+2 6 5
+
+=
+
+ .  
+ 
+A. 1   
+B. 3 
+C. 2     
+D. 4 
+ 
+6. Laplace transform of the function 
+sin t
+ is _______. 
+ 
+A. 
+22
+s
+s +    
+B. 
+22
+s
+s −  
+C. 
+22s
+
++    
+D. 
+22s
+
+−  
+ 
+7. Calculate 
+8 5i
+1 2i
++
+− . 
+ 
+A. 
+2 21 i55+    
+B. 
+2 21 i55−−  
+C. 
+2 21 i55−+     
+D. 
+21 2 i55−+  
+ 
+8. If 
+64
+0x
+   =       , then x = ______. 
+ 
+A. 0     
+B. 5 
+C. 1   
+D. 4 
+ 
+9. Find the z-transform of 
+   x n n 5= −
+. 
+ 
+A. 
+1/5z−    
+B. 
+5z  
+C. 
+1/5z   
+  
+D. 
+5z−   
+ 
+10. If 
+25A 13
+−=  and 
+60B 35
+= − . 
+Evaluate BA. 
+ 
+A. 
+12 30
+11 0
+−
+−    
+B. 
+12 20
+11 0
+−
+−  
+C. 
+12 30
+11 29
+−
+−−   
+D. 
+12 30
+11 0
+−
+  
+ 
+11. Evaluate 
+( )( )1j2log 1 j 3+ +  
+ 
+A. 
+1.442 j0.246−    
+B. 
+1.198 j0.215−  
+C. 
+0.151 j0.341+   
+D. 
+2.88 j0.492−   
+ 
+12. If 
+i1=− , then 
+10
+J
+j0
+( i)
+=
+−=  _____. 
+ 
+A. – i     
+B. – 1  
+C. i   
+D. 1 
+ 
+13. What is the coefficient of x in the 
+Maclaurin series for 
+sin xe ?  
+ 
+A. 0   
+B. – 1   
+C. 1     
+D. 1/2! 
+ 
+14. Compute the 4th Taylor polynomial of 
+the function 
+f (x) sin x=  centered at 
+a 2
+=
+.  
+ 
+A. 
+24
+111 x x2 2 24 2
+   − − + −          
+B. 
+24
+111 x x2 2 24 2
+   − − + +        
+ 
+Multiple Choice: 
+ 
+
+--- PAGE 2 ---
+ 
+ Website: www.excelreviewcenter.com.ph Facebook: Excel Review Center          Cellphones: Smart: 0919 822 5048  Globe: 09173284664
+   
+ 
+ 
+EXCEL FIRST REVIEW AND TRAINING CENTER, INC. 
+Cebu: JRT Bldg. Imus Ave, Cebu City | Davao: 2nd Fl. MERCO Bldg. Rizal St. cor. Bolton St.  
+Manila: CMFFI Bldg. R. Papa St. Sampaloc | Baguio:  4th Fl. De Guzman Bldg., Legarda Road 
+Advanced Math 
+ 
+C. 
+24
+111 x x2 2 24 2
+   − − − −        
+D. 
+24
+111 x x2 2 24 2
+   − + + −        
+ 
+15. Determine the inverse matrix of
+12
+59
+
+
+. 
+ 
+A. 
+9    5 
+  2 1
+−
+ −       
+B. 
+9    5  2  1
+
+  
+C. 
+2    5 
+ 9  1
+
+  
+D. 
+9 - 5    2 1
+−
+  
+ 
+16. Simplify: 
+29 21i i i++  
+ 
+A. 3i   
+B. 1- i 
+C. 1 + i 
+D. 2i 
+ 
+17. Write in the form a + bi the 
+expression i3217 – i427 + i18 
+ 
+A. 2i + 1 
+B. – i + 1 
+C. 2i – 1       
+D. 1 + i 
+ 
+18. The Taylor Series of the expansion of 
+3sin x + 2cos x is: 
+ 
+A. 
+23 12 3x x x ... 2+ − − +    
+B. 
+23 12 3x x x ... 2+ + + +  
+C. 
+23 12 3x x x ... 2− + − +   
+D. 
+23 12 3x x x ... 2− − + +  
+ 
+19. For
+1 tan xA tan x 1
+=− , the 
+determinant of
+T1AA − is: 
+ 
+A. sec2 x      
+B. 1 
+ 
+C. cos 4x    
+D. 0 
+ 
+20. The value of x for which the matrix A 
+=
+3 2 4
+9 7 13
+6 4 9 x
+
+
+
+− − − + has zero as an 
+eigenvalue is: 
+ 
+A. 1   
+B. – 1  
+C. 2 
+D. – 2 
+ 
+21. 
+1 2i
+1i
++
+− lies in ______ quadrant. 
+  
+A. first 
+B. second   
+C. third 
+D. fourth 
+ 
+22. What is the reciprocal of 
+3 7i+ ? 
+  
+A. 
+5 7i
+16 16+  
+B. 
+5 7i
+16 16−   
+C. 
+3 7i
+16 16+  
+D. 
+3 7i
+16 16−    
+ 
+23. What is the conjugate of 
+5 12i 5 12i
+5 12i 5 12i
++ + −
++ − −
+? 
+  
+A. 
+31i 2−  
+B. 
+31i 2+  
+C. 
+30i 2−  
+D. 
+30i 2+   
+ 
+24. What is the polar form of the 
+complex number 
+( )
+325i ? 
+  
+A. 
+cos i sin22
++  
+ 
+B. 
+cos i sin22
+−    
+C. 
+cos i sin44
+−  
+D. 
+cos i sin44
++  
+ 
+25. What is the inverse Laplace transform 
+of 
+( )
+2
+1
+ss + ? 
+ 
+A. 
+t1e+  
+B. 
+t1e −−   
+C. 
+t1e−  
+D. 
+t1e −+  
+ 
+ 
+END 
+

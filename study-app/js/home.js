@@ -1,115 +1,297 @@
-/* home.js — Home screen logic for study-app */
+/* home.js — Wide Dashboard & Manifest Browser for study-app */
 
 var REQUIRED_COLS = ['question', 'choice_a', 'choice_b', 'choice_c', 'choice_d', 'correct_answer'];
 var VALID_ANS = { a: 1, b: 1, c: 1, d: 1 };
 
-var selectedFileContent = null;
-var selectedFileName = '';
-var parsedQuestions = null;
+var manifestData = null;
+var selectedCategory = 'all';
+var searchKeyword = '';
 
 var timerMode = 'untimed';
 var secondsPerQ = 60;
 var totalMinutes = 60;
 var feedbackMode = 'deferred'; // 'deferred' | 'immediate'
 
+var customParsedQuestions = null;
+var customFileName = '';
+
 document.addEventListener('DOMContentLoaded', function () {
   MQ_THEME._updateToggles();
-  initFolderPicker();
-  initDropzone();
   initOptions();
   initPromptCard();
+  initCustomDropzone();
+  initSearchAndFilter();
+  loadManifest();
 });
 
-// ── 1. Folder picker (File System Access API) ────────────────────
-var directoryHandle = null;
+// ── 1. Manifest Loading & Rendering ─────────────────────────────
+async function loadManifest() {
+  var container = document.getElementById('manifest-container');
+  var counter = document.getElementById('total-quizzes-counter');
 
-function initFolderPicker() {
-  var browseBtn = document.getElementById('browse-folder-btn');
-  var noApiNote = document.getElementById('no-api-note');
+  try {
+    var res = await fetch('manifest.json?v=' + Date.now());
+    if (!res.ok) throw new Error('Manifest not found');
+    manifestData = await res.json();
 
-  if (!('showDirectoryPicker' in window)) {
-    if (noApiNote) noApiNote.style.display = 'block';
-    if (browseBtn) browseBtn.style.opacity = '0.5';
+    if (counter) {
+      counter.textContent = manifestData.totalQuizzes + ' Test Sets Available';
+    }
+
+    renderCategoryPills();
+    renderManifestQuizzes();
+  } catch (err) {
+    console.warn('Could not fetch manifest.json, loading fallback message:', err);
+    if (counter) counter.textContent = 'Manual upload mode';
+    if (container) {
+      container.innerHTML =
+        '<div style="padding:32px 20px;text-align:center;background:var(--surface);border:1.5px dashed var(--border);border-radius:var(--radius);">' +
+        '<div style="font-size:1.8rem;margin-bottom:8px;">📁</div>' +
+        '<div style="font-family:\'Playfair Display\',serif;font-size:1.1rem;font-weight:700;color:var(--text);">Repository Test Sets</div>' +
+        '<div style="font-size:.84rem;color:var(--text3);margin-top:4px;max-width:400px;margin-left:auto;margin-right:auto;">Use the sidebar upload on the right to load any CSV test set, or run <code>npm run manifest</code> to index your folder structure.</div>' +
+        '</div>';
+    }
   }
+}
 
-  if (browseBtn) {
-    browseBtn.addEventListener('click', async function () {
-      if (!('showDirectoryPicker' in window)) {
-        alert('Directory picker is not supported in this browser. Please use drag & drop or file upload instead.');
-        return;
+function renderCategoryPills() {
+  if (!manifestData || !manifestData.categories) return;
+  var pillsContainer = document.getElementById('category-pills');
+  pillsContainer.innerHTML = '';
+
+  var allBtn = document.createElement('button');
+  allBtn.type = 'button';
+  allBtn.className = 'category-pill' + (selectedCategory === 'all' ? ' active' : '');
+  allBtn.dataset.cat = 'all';
+  allBtn.textContent = 'All Topics (' + manifestData.totalQuizzes + ')';
+  allBtn.addEventListener('click', function () {
+    selectCategory('all');
+  });
+  pillsContainer.appendChild(allBtn);
+
+  manifestData.categories.forEach(function (cat) {
+    var count = cat.topics.reduce(function (sum, t) { return sum + t.quizzes.length; }, 0);
+    var btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'category-pill' + (selectedCategory === cat.name ? ' active' : '');
+    btn.dataset.cat = cat.name;
+    btn.textContent = cat.name + ' (' + count + ')';
+    btn.addEventListener('click', function () {
+      selectCategory(cat.name);
+    });
+    pillsContainer.appendChild(btn);
+  });
+}
+
+function selectCategory(catName) {
+  selectedCategory = catName;
+  document.querySelectorAll('.category-pill').forEach(function (p) {
+    p.classList.toggle('active', p.dataset.cat === catName);
+  });
+  renderManifestQuizzes();
+}
+
+function renderManifestQuizzes() {
+  if (!manifestData || !manifestData.categories) return;
+
+  var container = document.getElementById('manifest-container');
+  var emptyMsg = document.getElementById('empty-search-msg');
+  container.innerHTML = '';
+
+  var qLower = searchKeyword.toLowerCase().trim();
+  var matchFound = false;
+
+  manifestData.categories.forEach(function (category) {
+    if (selectedCategory !== 'all' && selectedCategory !== category.name) {
+      return;
+    }
+
+    var matchingTopics = [];
+
+    category.topics.forEach(function (topic) {
+      var matchingQuizzes = topic.quizzes.filter(function (quiz) {
+        if (!qLower) return true;
+        return (
+          quiz.title.toLowerCase().includes(qLower) ||
+          quiz.filename.toLowerCase().includes(qLower) ||
+          topic.name.toLowerCase().includes(qLower) ||
+          category.name.toLowerCase().includes(qLower)
+        );
+      });
+
+      if (matchingQuizzes.length > 0) {
+        matchingTopics.push({
+          name: topic.name,
+          quizzes: matchingQuizzes
+        });
       }
-      try {
-        directoryHandle = await window.showDirectoryPicker();
-        await loadCsvListFromDirectory(directoryHandle);
-      } catch (err) {
-        if (err.name !== 'AbortError') {
-          console.error('Error accessing directory:', err);
-          alert('Could not access folder: ' + err.message);
+    });
+
+    if (matchingTopics.length === 0) return;
+    matchFound = true;
+
+    var totalCatQuizzes = matchingTopics.reduce(function (sum, t) { return sum + t.quizzes.length; }, 0);
+
+    var catSection = document.createElement('section');
+    catSection.className = 'category-section';
+
+    var catHeader = document.createElement('div');
+    catHeader.className = 'category-header';
+    catHeader.innerHTML =
+      '<h2 class="category-title">' + escHtml(category.name) + '</h2>' +
+      '<span class="category-badge">' + totalCatQuizzes + ' Sets</span>';
+    catSection.appendChild(catHeader);
+
+    matchingTopics.forEach(function (topic) {
+      var topicGroup = document.createElement('div');
+      topicGroup.className = 'topic-group';
+
+      if (topic.name !== 'General' || category.topics.length > 1) {
+        var topicTitle = document.createElement('div');
+        topicTitle.className = 'topic-title';
+        topicTitle.innerHTML = '📁 ' + escHtml(topic.name);
+        topicGroup.appendChild(topicTitle);
+      }
+
+      var grid = document.createElement('div');
+      grid.className = 'quiz-grid';
+
+      topic.quizzes.forEach(function (quiz) {
+        var card = document.createElement('div');
+        card.className = 'quiz-card-item';
+
+        card.innerHTML =
+          '<div class="quiz-card-top">' +
+          '  <div class="quiz-card-title">' + escHtml(quiz.title) + '</div>' +
+          '  <div class="quiz-card-badge">' + quiz.questionCount + ' Qs</div>' +
+          '</div>' +
+          '<div class="quiz-card-bottom">' +
+          '  <span>' + escHtml(quiz.subjectTag || topic.name) + '</span>' +
+          '  <span class="quiz-card-btn">▶ Start Study Set</span>' +
+          '</div>';
+
+        card.addEventListener('click', function () {
+          loadAndStartManifestQuiz(quiz, card);
+        });
+
+        grid.appendChild(card);
+      });
+
+      topicGroup.appendChild(grid);
+      catSection.appendChild(topicGroup);
+    });
+
+    container.appendChild(catSection);
+  });
+
+  if (emptyMsg) {
+    emptyMsg.style.display = matchFound ? 'none' : 'block';
+  }
+}
+
+// ── 2. Direct Quiz Loader from Manifest ─────────────────────────
+async function loadAndStartManifestQuiz(quiz, cardEl) {
+  var originalBtn = cardEl ? cardEl.querySelector('.quiz-card-btn') : null;
+  if (originalBtn) originalBtn.textContent = '⏳ Loading...';
+
+  try {
+    // Relative path correction if needed
+    var filePath = quiz.path;
+    if (filePath.startsWith('test-sets/')) {
+      filePath = '../' + filePath; // from study-app/ perspective
+    }
+
+    var res = await fetch(filePath);
+    if (!res.ok) {
+      // Try direct path
+      res = await fetch(quiz.path);
+    }
+    if (!res.ok) throw new Error('Could not load ' + quiz.filename);
+
+    var csvText = await res.text();
+
+    Papa.parse(csvText, {
+      header: true,
+      skipEmptyLines: true,
+      complete: function (result) {
+        var valid = [];
+        result.data.forEach(function (row, i) {
+          var ans = (row['correct_answer'] || '').trim().toLowerCase();
+          if (VALID_ANS[ans] && row['question']) {
+            valid.push({
+              id: i + 1,
+              question: (row['question'] || '').trim(),
+              choice_a: (row['choice_a'] || '').trim(),
+              choice_b: (row['choice_b'] || '').trim(),
+              choice_c: (row['choice_c'] || '').trim(),
+              choice_d: (row['choice_d'] || '').trim(),
+              correct_answer: ans,
+              explanation: (row['explanation'] || '').trim() || null,
+              image_url: (row['image_url'] || '').trim() || null,
+              subject_tag: (row['subject_tag'] || quiz.subjectTag || '').trim() || null,
+            });
+          }
+        });
+
+        if (valid.length === 0) {
+          alert('No valid questions found in ' + quiz.filename);
+          if (originalBtn) originalBtn.textContent = '▶ Start Study Set';
+          return;
         }
+
+        launchSession(quiz.title, valid);
+      },
+      error: function (err) {
+        alert('Failed to parse CSV: ' + err.message);
+        if (originalBtn) originalBtn.textContent = '▶ Start Study Set';
       }
+    });
+  } catch (err) {
+    alert('Error loading quiz file: ' + err.message);
+    if (originalBtn) originalBtn.textContent = '▶ Start Study Set';
+  }
+}
+
+function launchSession(setName, questions) {
+  var sessionConfig = {
+    setName: setName || 'Study Session',
+    questions: questions,
+    timerMode: timerMode,
+    secondsPerQ: secondsPerQ,
+    totalMinutes: totalMinutes,
+    feedbackMode: feedbackMode,
+    answers: Array(questions.length).fill(null),
+    flagged: Array(questions.length).fill(false),
+    startTime: Date.now(),
+    currentIdx: 0
+  };
+
+  MQ.clear();
+  MQ.set('session', sessionConfig);
+  window.location.href = 'quiz.html';
+}
+
+// ── 3. Search and Category Filter Wiring ─────────────────────────
+function initSearchAndFilter() {
+  var searchInput = document.getElementById('search-input');
+  if (searchInput) {
+    searchInput.addEventListener('input', function (e) {
+      searchKeyword = e.target.value;
+      renderManifestQuizzes();
     });
   }
 }
 
-async function loadCsvListFromDirectory(dirHandle) {
-  var container = document.getElementById('csv-grid');
-  var hint = document.getElementById('no-folder-hint');
-  container.innerHTML = '';
-
-  var entries = [];
-  for await (var entry of dirHandle.values()) {
-    if (entry.kind === 'file' && entry.name.toLowerCase().endsWith('.csv')) {
-      entries.push(entry);
-    }
-  }
-
-  if (entries.length === 0) {
-    if (hint) {
-      hint.style.display = 'block';
-      hint.innerHTML = 'No <strong>.csv</strong> files found in <em>' + escHtml(dirHandle.name) + '</em>.';
-    }
-    return;
-  }
-
-  if (hint) hint.style.display = 'none';
-
-  for (var i = 0; i < entries.length; i++) {
-    var fileEntry = entries[i];
-    var file = await fileEntry.getFile();
-
-    var card = document.createElement('div');
-    card.className = 'csv-card';
-    card.dataset.name = fileEntry.name;
-
-    card.innerHTML =
-      '<div class="csv-card-icon">📄</div>' +
-      '<div style="flex:1;min-width:0">' +
-      '<div class="csv-card-name">' + escHtml(fileEntry.name) + '</div>' +
-      '<div class="csv-card-meta">' + formatBytes(file.size) + '</div>' +
-      '</div>';
-
-    (function (entry) {
-      card.addEventListener('click', async function () {
-        document.querySelectorAll('.csv-card').forEach(function (c) { c.classList.remove('selected'); });
-        card.classList.add('selected');
-        var f = await entry.getFile();
-        loadFile(f);
-      });
-    })(fileEntry);
-
-    container.appendChild(card);
-  }
-}
-
-// ── 2. Drag & Drop and File Input ──────────────────────────────
-function initDropzone() {
+// ── 4. Sidebar Custom Dropzone ──────────────────────────────────
+function initCustomDropzone() {
   var dz = document.getElementById('dropzone');
   var fileInput = document.getElementById('csv-input');
+  var startBtn = document.getElementById('start-btn');
 
   if (fileInput) {
     fileInput.addEventListener('change', function (e) {
       if (e.target.files && e.target.files[0]) {
-        loadFile(e.target.files[0]);
+        loadCustomFile(e.target.files[0]);
       }
     });
   }
@@ -126,21 +308,26 @@ function initDropzone() {
       e.preventDefault();
       dz.classList.remove('drag-over');
       if (e.dataTransfer.files && e.dataTransfer.files[0]) {
-        loadFile(e.dataTransfer.files[0]);
+        loadCustomFile(e.dataTransfer.files[0]);
+      }
+    });
+  }
+
+  if (startBtn) {
+    startBtn.addEventListener('click', function () {
+      if (customParsedQuestions && customParsedQuestions.length > 0) {
+        launchSession(customFileName.replace(/\.[^/.]+$/, ''), customParsedQuestions);
       }
     });
   }
 }
 
-function loadFile(file) {
+function loadCustomFile(file) {
   if (!file) return;
-  selectedFileName = file.name;
+  customFileName = file.name;
 
   var label = document.getElementById('file-label');
-  if (label) {
-    label.textContent = '📄 ' + file.name;
-    label.style.display = 'block';
-  }
+  if (label) label.textContent = '📄 ' + file.name;
 
   var errBox = document.getElementById('parse-errors');
   if (errBox) errBox.style.display = 'none';
@@ -148,7 +335,7 @@ function loadFile(file) {
   var startBtn = document.getElementById('start-btn');
   if (startBtn) startBtn.disabled = true;
 
-  parsedQuestions = null;
+  customParsedQuestions = null;
 
   Papa.parse(file, {
     header: true,
@@ -159,7 +346,7 @@ function loadFile(file) {
 
       for (var i = 0; i < REQUIRED_COLS.length; i++) {
         if (cols.indexOf(REQUIRED_COLS[i]) === -1) {
-          errs.push('Missing required column: "' + REQUIRED_COLS[i] + '"');
+          errs.push('Missing column: "' + REQUIRED_COLS[i] + '"');
         }
       }
 
@@ -171,22 +358,19 @@ function loadFile(file) {
       var valid = [];
       result.data.forEach(function (row, i) {
         var rn = i + 2;
-        for (var j = 0; j < REQUIRED_COLS.length; j++) {
-          if (!row[REQUIRED_COLS[j]] || !row[REQUIRED_COLS[j]].toString().trim()) {
-            errs.push('Row ' + rn + ': "' + REQUIRED_COLS[j] + '" is empty');
-          }
-        }
         var ans = (row['correct_answer'] || '').trim().toLowerCase();
         if (!VALID_ANS[ans]) {
-          errs.push('Row ' + rn + ': correct_answer must be a/b/c/d, got "' + (row['correct_answer'] || '') + '"');
+          errs.push('Row ' + rn + ': correct_answer must be a/b/c/d');
+        } else if (!row['question']) {
+          errs.push('Row ' + rn + ': question is empty');
         } else {
           valid.push({
             id: i + 1,
             question: row['question'].trim(),
-            choice_a: row['choice_a'].trim(),
-            choice_b: row['choice_b'].trim(),
-            choice_c: row['choice_c'].trim(),
-            choice_d: row['choice_d'].trim(),
+            choice_a: (row['choice_a'] || '').trim(),
+            choice_b: (row['choice_b'] || '').trim(),
+            choice_c: (row['choice_c'] || '').trim(),
+            choice_d: (row['choice_d'] || '').trim(),
             correct_answer: ans,
             explanation: (row['explanation'] || '').trim() || null,
             image_url: (row['image_url'] || '').trim() || null,
@@ -200,10 +384,10 @@ function loadFile(file) {
         return;
       }
 
-      parsedQuestions = valid;
+      customParsedQuestions = valid;
       if (startBtn) {
         startBtn.disabled = false;
-        startBtn.textContent = 'Begin Session (' + valid.length + ' Questions) →';
+        startBtn.textContent = 'Start Custom Set (' + valid.length + ' Qs) →';
       }
     },
     error: function (err) {
@@ -221,7 +405,7 @@ function showErrors(errs) {
     : '<ul>' + errs.map(function (e) { return '<li>' + escHtml(e) + '</li>'; }).join('') + '</ul>';
 }
 
-// ── 3. Options Wiring ──────────────────────────────────────────
+// ── 5. Sidebar Options Wiring ────────────────────────────────────
 function initOptions() {
   // Timer options
   document.querySelectorAll('.timer-opt').forEach(function (opt) {
@@ -268,35 +452,9 @@ function initOptions() {
       totalMinutes = parseInt(e.target.value, 10) || 60;
     });
   }
-
-  var startBtn = document.getElementById('start-btn');
-  if (startBtn) {
-    startBtn.addEventListener('click', startSession);
-  }
 }
 
-function startSession() {
-  if (!parsedQuestions || parsedQuestions.length === 0) return;
-
-  var sessionConfig = {
-    setName: selectedFileName.replace(/\.[^/.]+$/, '') || 'Study Session',
-    questions: parsedQuestions,
-    timerMode: timerMode,
-    secondsPerQ: secondsPerQ,
-    totalMinutes: totalMinutes,
-    feedbackMode: feedbackMode,
-    answers: Array(parsedQuestions.length).fill(null),
-    flagged: Array(parsedQuestions.length).fill(false),
-    startTime: Date.now(),
-    currentIdx: 0
-  };
-
-  MQ.clear();
-  MQ.set('session', sessionConfig);
-  window.location.href = 'quiz.html';
-}
-
-// ── 4. AI Prompt Card & Copy ───────────────────────────────────
+// ── 6. AI Prompt Card Wiring ─────────────────────────────────────
 function initPromptCard() {
   var header = document.getElementById('ai-card-header');
   var card = document.getElementById('ai-card');
@@ -324,7 +482,7 @@ function copyPrompt() {
     btn.textContent = '✓ Copied';
     setTimeout(function () {
       btn.classList.remove('copied');
-      btn.innerHTML = '<svg width="12" height="12" viewBox="0 0 20 20" fill="currentColor"><path d="M8 3a1 1 0 0 1 1-1h2a1 1 0 1 1 0 2H9a1 1 0 0 1-1-1z"/><path d="M6 3a2 2 0 0 0-2 2v11a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2 3 3 0 0 1-3 3H9a3 3 0 0 1-3-3z"/></svg>Copy';
+      btn.innerHTML = '<svg width="10" height="10" viewBox="0 0 20 20" fill="currentColor"><path d="M8 3a1 1 0 0 1 1-1h2a1 1 0 1 1 0 2H9a1 1 0 0 1-1-1z"/><path d="M6 3a2 2 0 0 0-2 2v11a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2 3 3 0 0 1-3 3H9a3 3 0 0 1-3-3z"/></svg>Copy';
     }, 2200);
   }).catch(function () {
     var ta = document.createElement('textarea');
@@ -338,21 +496,12 @@ function copyPrompt() {
     if (btn) {
       btn.textContent = '✓ Copied';
       setTimeout(function () {
-        btn.innerHTML = '<svg width="12" height="12" viewBox="0 0 20 20" fill="currentColor"><path d="M8 3a1 1 0 0 1 1-1h2a1 1 0 1 1 0 2H9a1 1 0 0 1-1-1z"/><path d="M6 3a2 2 0 0 0-2 2v11a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2 3 3 0 0 1-3 3H9a3 3 0 0 1-3-3z"/></svg>Copy';
+        btn.innerHTML = '<svg width="10" height="10" viewBox="0 0 20 20" fill="currentColor"><path d="M8 3a1 1 0 0 1 1-1h2a1 1 0 1 1 0 2H9a1 1 0 0 1-1-1z"/><path d="M6 3a2 2 0 0 0-2 2v11a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2 3 3 0 0 1-3 3H9a3 3 0 0 1-3-3z"/></svg>Copy';
       }, 2200);
     }
   });
 }
 
-// ── Helpers ────────────────────────────────────────────────────
 function escHtml(s) {
   return (s || '').toString().replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
-}
-
-function formatBytes(bytes) {
-  if (bytes === 0) return '0 B';
-  var k = 1024;
-  var sizes = ['B', 'KB', 'MB', 'GB'];
-  var i = Math.floor(Math.log(bytes) / Math.log(k));
-  return parseFloat((bytes / Math.pow(k, i)).toFixed(1)) + ' ' + sizes[i];
 }

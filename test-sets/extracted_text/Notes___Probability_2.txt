@@ -1,0 +1,206 @@
+--- PAGE 1 ---
+Experiment – is a controlled study whose outcome 
+is uncertain but not entirely unknown. 
+ 
+Trial – a recorded result of an experiment. 
+ 
+Outcome – is one of the possible results from an 
+experiment trial. It also refers to the basic unit 
+of possible occurrences. For example, in 
+tossing a coin, the outcomes are heads and 
+tails. 
+ 
+Event – is some combination of possible 
+outcomes in one experiment trial. In picking a 
+card from an ordinary deck of cards, the 
+outcomes are the 52 cards themselves. 
+Examples of events are: 
+ 
+ “Pick a 5” (one of the four cards numbered 5) 
+ 
+ “Pick a heart” (one of the 13 cards in the suit 
+of heart) 
+ 
+ “Pick a face card (one of the 12 cards showing 
+a face i.e. king, queen or jack) 
+ 
+Frequency of the outcome – refers to the number 
+of times a certain outcome will occur. For 
+example, if you roll a die 50 times, you are 
+conducting 50 trials of the same experiment. 
+The number of times a “6” comes up is known 
+as the frequency of the outcome. 
+ 
+ The relative frequency of the outcome is the 
+ratio of the frequency of the outcome to the 
+number of trials. Mathematically, 
+ 
+no. of occurrencesRF = no. of trials
+ 
+ 
+Excel Review Center 
+Problem:  
+What are the odds for throwing a total of 
+5 and 10 in rolling two dice? 
+BINOMIAL 
+DISTRIBUTIO
+N 
+Solution: 
+First, solve the probability of throwing 
+a total of 5: For a total of 5, it must 
+be (1 and 4), (4 and 1), (2 and 3) and (3 
+and 2). 
+5
+41P 36 9==
+ 
+ 
+Then, solve the probability of throwing 
+a total of 10: For a total of 10, it must 
+be (4 and 6), (6 and 4), and (5 and 5). 
+ 
+10
+31P 36 12==
+ 
+5 or 10
+1 1 7P 9 12 36= + =
+ 
+ 
+The odds for throwing a total of 5 or 
+10 is: 
+  
+==
+−
+7
+736odd 7 291 36  
+ 
+This is expressed as 7-to-29 odds. 
+ 
+Odd for and  
+      Odd against 
+An event is independent if the outcome of one 
+trial has no effect on the outcome of any other 
+trial.  
+ 
+A good example is when a coin is tossed, the 
+outcome has nothing to do with what happened 
+on the previous toss and will not affect the next 
+one. 
+ 
+If two events are independent, the probability 
+that the two events occur is the product of their 
+individual probabilities. 
+ 
+The probability of independent events (E and F) 
+is: 
+ 
+=E & F E FP P P
+ 
+ 
+Independent Events 
+What is an Odd? 
+If there are two possible outcomes of an event 
+and the possibilities of the outcome are 
+independent and constant, the distribution of 
+probabilities is called binomial distribution. 
+ 
+Binomial or repeated trial probability: 
+ 
+−= r n r
+n r P C p  q
+ 
+where:   
+p = probability of success 
+q = probability of failure = 1 – p 
+n = number of trials 
+r = number of successful trials 
+ 
+Mutually Exclusive 
+Terms in Probability 
+Two or more events are said to be mutually 
+exclusive if no two of them can possibly happen in 
+the same trial. 
+ 
+For example, in throw a 
+die, it is not possible to 
+have one and six face up at 
+the same time or in a draw 
+of a single card from a 
+deck of cards, you can’t 
+pick a heart and a diamond 
+at the same time 
+ 
+ 
+If two or more events are mutually exclusive, the 
+probability that either one or the other will occur is 
+the sum of their probabilities. 
+ 
+The probability for a mutually exclusive event (E or 
+F) is: 
+ 
+=+E or F E FP P P
+ 
+ 
+ 
+DISTRIBUTION 
+The term “odd” is an ambiguous word that may 
+refer to the probability that an event occurs, or 
+it can be used to indicate the payoff on a 
+winning bet. It sometimes may mean or is 
+synonymous to the word “chance”. 
+ 
+If a coin is tossed, the probability of coming up 
+head is 50% and the probability of coming up 
+tail is also 50%. This is an example of 1-to-1 
+odds or even odds. For a game with even odds, 
+a one peso bet is paid exactly one peso upon 
+winning. This is known as the “true odds”. 
+However, there are instances that 90 centavos 
+is paid instead to a one peso bet, which would 
+give it an advantage on each game. This refers 
+to the “payoff odds”. The payoff odds are not 
+always the same as the true odds. 
+ 
+The odds of an event, E occurs is the ratio of 
+the probability that it will occur to the 
+probability that it will not occur. 
+ 
+prob. that E occursodds for E =prob. that E does not occur
+ 
+E
+E
+Podds for event E =1P−
+ 
+ 
+If the “odds for” an event are given as “a” and 
+“b”, then the probability of that event would be: 
+ 
+aodds for an event = ab+
+ 
+ 
+The “odds against” an event are the reciprocal 
+of the “odds for” the event. The odds of 5 to 7 
+for an event is translated into odds of 7 to 5 
+against it. 
+Problem:  
+A player in a certain card game lays odd of 
+3 to 5 for him to win. What would be the 
+payoff for a bet of 3 pesos? 
+Solution: 
+ 
+ 
+33Odds for = 3 5 8=+  
+ 
+Therefore, it is a 3-to-8 odd. A bet of 3 
+pesos will have a payoff of 8 pesos. 
+ 
+  
+Probability Part 2 
+ENGINEERING MATHEMATICS 
+EXCEL REVIEW CENTER 
+my.excelreviewcenter.com.ph 
+CMFFI Building, R. Papa St. Sampaloc 
+Manila 09173239235 | 0919 822 5048 
+The Future of Education! 
+Like us on Facebook 
+alterguru.com 
+

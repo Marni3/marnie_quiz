@@ -1,0 +1,271 @@
+--- PAGE 1 ---
+ 
+ Website: www.excelreviewcenter.com.ph Facebook: Excel Review Center          Cellphones: Smart: 0919 822 5048  Globe: 09173284664
+   
+ 
+ 
+EXCEL FIRST REVIEW AND TRAINING CENTER, INC. 
+Cebu: JRT Bldg. Imus Ave, Cebu City | Davao: 2nd Fl. MERCO Bldg. Rizal St. cor. Bolton St.  
+Manila: CMFFI Bldg. R. Papa St. Sampaloc | Baguio:  4th Fl. De Guzman Bldg., Legarda Road 
+Math 09-01 to Math 09-11 
+Analytic Geometry 
+ 
+ 
+ 
+1. Which of the following lines is 
+parallel to the line 3x – 2y + 6 = 0? 
+ 
+A. 3x + 2y – 12 = 0 
+B. 4x – 9y = 6 
+C. 12x + 18y = 15 
+D. 15x – 10y – 9 = 0 
+ 
+2. What is the equation of the line 
+joining the points (3,-2) and (-7, 6)? 
+ 
+A. 2x + 3y = 0 
+B. 4x – 5y = 22 
+C. 4x + 5y = 2 
+D. 5x + 4y = 7 
+ 
+3. Find the distance between the given 
+lines 4x – 3y = 12 and 4x – 3y = -8. 
+ 
+A. 3 
+B. 4   
+C. 5 
+D. 6 
+ 
+4. Given the equation of a parabola 3x + 
+2y2 – 4y + 7 = 0. Locate its vertex. 
+ 
+A. (5/3, 1) 
+B. (5/3, -1) 
+C. (-5/3, -1) 
+D. (-5/3, 1) 
+ 
+5. Compute the focal length and the 
+length of the latus rectum of the 
+parabola y2 + 8x – 6y + 25 = 0. 
+ 
+A. 2, 8   
+B. 4, 16 
+C. 16, 64 
+D. 1, 4 
+ 
+6. The lengths of the major and minor 
+axes of an ellipse are 10 m and 8 m, 
+respectively. Find the distance 
+between the foci. 
+ 
+A. 3 
+B. 4 
+C. 5 
+D. 6 
+ 
+ 
+ 
+ 
+ 
+ 
+7. An earth satellite has an apogee of 
+40,000 km and a perigee of 6,600 km. 
+Assuming that the radius of the earth 
+as 6,400 km, what will be the 
+eccentricity of the elliptical path 
+described by the satellite with the 
+center of the earth at one of the foci? 
+ 
+A. 0.46 
+B. 0.49 
+C. 0.52 
+D. 0.56 
+ 
+8. Find the eccentricity of the curve 9x2 
+– 4y2 – 36x + 8y = 4. 
+ 
+A. 1.80   
+B. 1.92 
+C. 1.86 
+D. 1.76 
+ 
+9. The segment from (-1,4) to (2,-2) is 
+extended three times its own length. 
+The terminal point is _____. 
+ 
+A. (11,-24) 
+B. (-11,-20) 
+C. (11,-18) 
+D. (11,-20) 
+ 
+10. Find the angle formed by the lines 2x 
++ y –8 = 0 and x + 3y + 4 = 0. 
+ 
+A. 30° 
+B. 35° 
+C. 45° 
+D. 60°  
+ 
+11. Find the coordinates of a point 
+equidistant from (1, -6), (5, -6) and 
+(6, -1). 
+ 
+A. (2, -2) 
+B. (3, -2) 
+C. (3, -3) 
+D. (2, -3) 
+ 
+12. What is the equation of the asymptote 
+of the hyperbola 
+22
+xy 194 ? 
+ 
+A. 2x – 3y = 0   
+B. 3x – 2y = 0 
+C. 2x – y = 0 
+D. 2x + y = 0 
+ 
+ 
+ 
+13. What is the length of the latus rectum 
+of 4x2 + 9y2 + 8x – 32 = 0? 
+ 
+A. 2.5  
+B. 2.7 
+ 
+C. 2.3 
+D. 2.9 
+ 
+14. Given a parabola ( y – 2 )2 = - 8(x –
+1). What is the equation of its 
+directrix? 
+ 
+A. x = -3 
+B. x = 3    
+C. y = -3 
+D. y = 3 
+ 
+15. A parabola has its focus at (7,-4) and 
+directrix y = 2. Find its equation. 
+ 
+A. x2 + 12y – 14x + 61 = 0 
+B. x2 – 14y + 12x + 61 = 0   
+C. x2 – 12x + 14y + 61 = 0 
+D. None of the above 
+ 
+16. What is the shortest distance from A 
+(3,8) to the circle x2 + y2 + 4x – 6y = 
+12? 
+ 
+A. 2.1  
+B. 2.3 
+C. 2.5 
+D. 2.7 
+ 
+17. Find the polar equation of the circle 
+of radius 3 units and center at (3, 0). 
+ 
+A. r = 3 cos  
+B. r = 3 sin  
+C. r = 6 cos  
+D. r = 9 sin  
+ 
+18. What is the area enclosed by the 
+curve 9x2 + 25y2 – 225 = 0? 
+ 
+A. 47.1   
+B. 50.2 
+C. 63.8 
+D. 72.3 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Multiple Choice: 
+ 
+
+--- PAGE 2 ---
+ 
+ Website: www.excelreviewcenter.com.ph Facebook: Excel Review Center          Cellphones: Smart: 0919 822 5048  Globe: 09173284664
+   
+ 
+ 
+EXCEL FIRST REVIEW AND TRAINING CENTER, INC. 
+Cebu: JRT Bldg. Imus Ave, Cebu City | Davao: 2nd Fl. MERCO Bldg. Rizal St. cor. Bolton St.  
+Manila: CMFFI Bldg. R. Papa St. Sampaloc | Baguio:  4th Fl. De Guzman Bldg., Legarda Road 
+Math 09-01 to Math 09-11 
+Analytic Geometry 
+ 
+19. A line passes thru (1,-3) and (-4, 
+2).What is the equation of the line in 
+slope-intercept form? 
+ 
+A. y – 4 = x 
+B. y = -x  - 2 
+C. y = x – 4 
+D. y – 2 = x 
+ 
+20. Determine the coordinates of the 
+point which is three-fifths of the way 
+from the point (2,-5) to the point (-
+3,5). 
+ 
+A. (-1,1) 
+B. (-2,-1) 
+C. (-1,-2) 
+D. (1,-1) 
+ 
+21. Find the area of the triangle which the 
+line 2x – 3y + 6 = 0 forms with the 
+coordinate axis. 
+ 
+A. 3 
+B. 4 
+C. 5 
+D. 2 
+ 
+22. If the discriminant of a quadratic 
+equation is greater than zero, the 
+graph is a/an ______. 
+ 
+A. circle 
+B. parabola 
+C. ellipse 
+D. hyperbola   
+ 
+23. What refers to a locus of a point 
+which move so that it is always 
+equidistant from a fixed point (focus) 
+and from a fixed straight line 
+(directrix)? 
+ 
+A. Circle 
+B. Ellipse 
+C. Parabola   
+D. Hyperbola 
+ 
+24. Find the equation of a straight line 
+with a slope of 3 and a y-intercept of 
+1. 
+ 
+A. 3x + y – 1 = 0 
+B. 3x – y + 1 = 0  
+C. x + 3y + 1 = 0 
+D. x – 3y – 1 = 0 
+ 
+ 
+25. How far from the y-axis is the center 
+of the curve 2x2 + 2y2 + 10x – 6y – 
+55 = 0? 
+ 
+A. 2.5 units   
+B. 3.0 units  
+C. 2.75 units 
+D. 3.25 units 
+ 
+ 
+END 
+

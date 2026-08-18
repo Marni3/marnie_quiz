@@ -1,0 +1,202 @@
+--- PAGE 1 ---
+What is an Exponent? 
+Exponent is a number that gives the power to which a 
+base is raised. For example, in 32, the base is 3 and 
+the exponent is 2. 
+ 
+Exponent should not be misunderstood as “power” 
+Power is a word that is almost never used in its 
+correct, original sense any more. Strictly speaking, if 
+we write     32 = 9, then 3 is the base, 2 is the 
+exponent and 9 is the power. But almost everyone, 
+including most mathematicians, would say that 3 is the 
+power and that “power” and “exponent” mean the 
+same thing. The misuse has probably come from a 
+misunderstanding of statements such “nine is the 
+second power of three”. 
+ Properties of Exponent 
+What is Logarithm? 
+The logarithm of a number or variable x to base b, 
+blog x
+, is the exponent of b needed to give x. 
+Properties of Exponent 
+The term “logarithm” comes from Greek words, “logus” 
+meaning “ratio” and “arithmus” meaning “number”. 
+John Napier (1550 – 1617) invented logarithm in 
+1614 using e = 2.718… for its base. Logarithm with 
+base e (loge or ln) is called the natural logarithm or the 
+Napierean logarithm. In 1616, through the suggestion 
+of John Napier, Henry Briggs (1561 0 1630), a 
+professor of Geometry at Gresham College in London, 
+improved the logarithm using 10 as the base. The 
+logarithm with base 10 is known as common logarithm 
+or the Briggsian logarithm. 
+Relation between Natural & 
+Common Logarithms 
+The natural logarithm can be converted 
+into a common logarithm and vice versa. 
+To obtain this, a factor known as the 
+modulus of logarithm is necessary, such 
+as: 
+ 
+logx 0.4343lnx=
+     
+lnx 2.3026logx=  
+           
+The coefficients 0.4343 and 2.3026 are 
+the referred to as the modulus of 
+logarithm. 
+ 
+ 
+Expressions where 
+the values can be 
+obtained without 
+execution of long 
+multiplication. 
+ With x, y and z as real numbers or variables or 
+algebraic expression, the following are the 
+special products. 
+ 
+1. Sum and difference of same terms or 
+Difference of two squares 
+ 
+( )( ) 22x y x y x y+ − = −
+ 
+2. Square of a binomial 
+( )
+2 22x y x 2xy y+ = + +
+ 
+( )
+2 22x y x 2xy y− = − +
+ 
+3. Cube of a binomial 
+( )
+3 3 2 2 3x y x 3x y 3xy y+ = + + +
+ 
+( )
+3 3 2 2 3x y x 3x y 3xy y− = − + −
+ 
+4. Difference of two cubes 
+( )( )
+3 3 2 2x y x y x xy y− = − + +
+ 
+5. Sum of two cubes 
+( )( )
+3 3 2 2x y x y x xy y+ = − − +
+ 
+6. Square of a trinomial 
+( )
+2 2 2 2x y z x y z 2xy 2xz 2yz+ + = + + + + +
+ 
+Remainder Theorem states that if a polynomial in 
+an unknown quantity x is divided by a first degree 
+expression in the same variable, (x – k), where k 
+may be any real number or complex number, the 
+remainder to be expected will be equal to the sum 
+obtained when the numerical value of k is 
+substituted for x in the polynomial. Thus, 
+ 
+xk
+remainder f(x)
+→
+=
+ 
+ 
+Factor theorem states that if a polynomial is 
+divided by (x – k) will result to a remainder of zero, 
+then the value (x – k) is a factor of the polynomial. 
+ 
+Both remainder theorem and factor theorem were 
+suggested by a French mathematician, Etienne 
+Bezout (1730 – 1783). 
+Least common denominator (LCD) 
+refers to the product of several 
+prime numbers occurring in the 
+denominators, each taken with 
+its greatest multiplicity. 
+ 
+Problem: 
+What is the least common denominator of 
+8, 9, 12 and 15? 
+ 
+Solution: 
+ 
+=
+=
+3
+2
+82
+93     
+=
+=
+212 3 2
+15 3 5    
+( )( )32LCD 2 3 5
+LCD 360
+=
+=   
+ 
+A common multiple is a number 
+that two other numbers will 
+divide into evenly. The least 
+common multiple (LCM) is the 
+lowest multiple of two numbers.  
+ 
+Problem: 
+What is the least common multiple of 15 
+and 18? 
+ 
+Solution: 
+ 
+=
+= 2
+15 3 5
+18 3 2           
+( )( )2LCM 3 5 2
+LCM 90
+=
+=  
+ 
+A factor is a number that divides 
+into a larger number evenly. The 
+greatest common factor (GCF) is 
+the largest number that divides 
+into two or more numbers evenly.  
+ 
+Problem: 
+What is the greatest common factor of 70 
+and 112? 
+ 
+Solution: 
+  
+ 
+70 2 5 7=    
+ 
+4112 2 7=  
+ 
+ Common factors are 2 and 7. 
+ 
+ 
+( )GCF 2 7
+GCF 14
+=
+=  
+ 
+ 
+Algebra 2 
+ENGINEERING MATHEMATICS 
+EXCEL REVIEW CENTER 
+my.excelreviewcenter.com.ph 
+CEBU: JRT Building, Imus Avenue 
+Day-As, Cebu City 09173239235 
+Excel Review Center 
+Excel Review Center 
+ 
+www.excelreviewcenter.com.ph 
+ 
+The Future of Education! 
+ 
+Like us on Facebook 
+alterguru.com 
+Excel Review Center 
+

@@ -1,0 +1,240 @@
+--- PAGE 1 ---
+Algebraic Functions 
+1. 
+dc 0dx =  
+2. 
+d du dv(u v)dx dx dx+ = +  
+3. 
+d dv du(uv) u vdx dx dx=+  
+4. 
+2
+du dvvudu dx dx
+dx v v
+− =   
+5. 
+n n 1d duu nudx dx
+−
+=  
+6. 
+du
+d dxudx 2u
+=
+   
+7. 
+d u 1 du
+dx c c dx
+ =  
+8. 
+2
+ducdc dx
+dx u u
+−
+=  
+ 
+ 
+ 
+ 
+ 
+Exponential Functions 
+9. 
+uud du(a ) a ln adx dx =  
+10. 
+uud du(e ) edx dx =  
+ 
+ 
+ 
+ 
+ 
+Logarithmic Functions 
+11. 
+a
+a
+dulog ed dx(log u)dx u =  
+12. 
+10
+10
+dulog ed dx(log u)dx u =  
+13. 
+( )
+du
+d dxln udx u =  
+ 
+ 
+ 
+ 
+Trigonometric Functions 
+14. 
+d du(sin u) cos udx dx =  
+15. 
+d du(cos u) sin udx dx =−  
+16. 
+2d du(tan u) sec udx dx =  
+17. 
+2d du(cot u) csc udx dx =−  
+18. 
+d du(sec u) sec u tan udx dx =  
+19. 
+d du(csc u) csc u cot udx dx =−  
+ 
+ 
+ 
+ 
+ 
+Inverse Trigonometric Functions 
+20. 
+1
+2
+d 1 du(sin u)dx dx 1u
+−
+=
+−  
+21. 
+1
+2
+d 1 du(cos u)dx dx 1u
+− −=
+−  
+22. 
+1
+2
+d 1 du(tan u)dx 1 u dx
+−
+= +   
+23. 
+1
+2
+d 1 du(cot u)dx 1 u dx
+− −= +   
+24. 
+1
+2
+d 1 du(sec u)dx dx u u 1
+−
+=
+−  
+25. 
+1
+2
+d 1 du(csc u)dx dx u u 1
+− −=
+−  
+ 
+ 
+ 
+ 
+ 
+ 
+Hyperbolic Functions 
+26. 
+d du(sinh u) cosh udx dx =  
+27. 
+d du(cosh u) sinh udx dx =  
+28. 
+2d du(tanh u) sec h udx dx =   
+29. 
+2d du(coth u) csc h udx dx =−   
+30. 
+d du(sec hu) sec hu tanh udx dx =−  
+31. 
+d du(csc hu) csc hu coth udx dx =−  
+ 
+ 
+ 
+Inverse Hyperbolic Functions 
+32. 
+2
+d1(arcsinh u)dx u1
+=
++  
+33. 
+2
+d1(arccosh u) ;   dx u1
+=
+−
+x1  
+34. 
+2
+d1(arctanh u) ; dx 1 u = −     
+x1    
+35. 
+2
+d1(arccoth u) ;      x 1dx 1 u =−  
+36. 
+2
+d1(arc sech u) ; 0<u<1   dx x 1 x
+=
+−
+ 
+37. 
+2
+d1(arccsch u) ;   x 0dx x 1 x
+=
++  
+ 
+ 
+ 
+ 
+ 
+  Derivatives 
+The derivative of a function expresses its 
+rate of change with respect to an 
+independent variable. The first derivative 
+of a function is the slope of the tangent 
+line to that curve defined by the function. 
+The following are the derivatives of 
+different functions: 
+ 
+ 
+ 
+ 
+Excel Review Center 
+Differential Calculus 2 
+ENGINEERING MATHEMATICS EXCEL REVIEW CENTER 
+my.excelreviewer.com 
+The Gold Standard in Review Industry 
+Founded in 1991 
+Excel Review Center 
+Excel Review Center 
+Excel Review Center 
+Excel Review Center 
+Excel Review Center 
+Excel Review Center 
+Excel Review Center 
+Maxima/Minima 
+Values 
+If a function f is defined on an interval I, 
+then: 
+1. f is increasing on I if f(x1) < f(x2) 
+whenever x1, x2 are in I and x1 < x2. 
+ 
+x 
+y 
+f(x1) 
+f(x2) 
+x1 x2 
+ 
+2. f is decreasing on I if f(x1) > f(x2) 
+whenever x1, x2 in I. 
+ 
+x 
+y 
+f(x2) 
+f(x1) 
+x2 x1 
+ 
+3. f is constant if f(x1) = f(x2) for 
+every x1, x2 in I. 
+ 
+Suppose f is defined on an open 
+interval I and c is a number in I, then: 
+ 
+1. f(c) is a local maximum value if f(x) 
+
+f(c) for all x in I. 
+2. f(c) is a local minimum value if f(x) 
+
+f(c) for all x in I. 
+ 
+Excel Review Center 
+Excel Review Center 
+

@@ -1,0 +1,419 @@
+--- PAGE 1 ---
+Types of Matrices 
+ 
+7. Symmetric Matrix 
+ 
+ This type of matrix is a square matrix 
+whose transpose is equal to the 
+original matrix. 
+ 
+A=
+3 2 6
+2 5 4
+6 4 5
+
+
+
+
+
+
+
+
+
+
+ 
+ 
+8.  Skew-Symmetric Matrix 
+ 
+ This type of matrix is a square matrix 
+whose transpose is equal to the 
+negative of the original matrix. 
+ 
+A=
+3 2 −6
+−2 5 4
+6 −4 5
+
+
+
+
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Operation of Matrices 
+ 
+1. Scalar Multiplication 
+ 
+A matrix with dimension m x n can be 
+multiplied to any scalar number c by 
+multiplying all elements by the scalar 
+number c. 
+ 
+ 
+ 
+A=
+6 5 4
+2 1 4
+3 −2 −2
+
+
+
+
+
+
+
+
+
+  
+  
+ Determine –A: 
+ 
+−A=
+−6 −5 −4
+−2 −1 −4
+−3 2 2
+
+
+
+
+
+
+
+
+
+
+ 
+ Determine 3A: 
+ 
+3A=
+18 15 12
+6 3 12
+9 −6 −6
+
+
+
+
+
+
+
+
+
+
+ 
+ 
+2. Addition of Matrices 
+ 
+If A and B are two matrices of the 
+same order/size/dimensions, the sum 
+of A and B, denoted by A + B, is the 
+matrix for which each of its elements 
+is the sum of the corresponding 
+elements of A and B. 
+ 
+     Example: Find A + B 
+ 
+ 
+A= 5
+−1
+−2
+8
+6
+−3
+
+
+
+
+
+
+
+
+ 
+ 
+B= 4
+7
+7
+0
+1
+4
+
+
+
+
+
+
+
+
+  
+Solution: 
+5 4 2 7 6 1AB 1 3 8 0 3 4
+957AB 2 8 1
++ − + ++= − + + − +
++= 
+ 
+The same addition rule applies for 
+adding row or column matrices or 
+vectors. Listed below are some rules in 
+the addition of matrices: 
+ 
+A + B = B + A 
+(A + B) + C = A + (B + C) 
+A + 0 = A 
+A + (-A) = 0 
+ 
+c(A + B) = cA + cB 
+(c + k)A = cA + kA 
+c(kA) = (ck)A 
+1A = A 
+ 
+3.  Subtraction of Matrices 
+ 
+If A and B are matrices having the 
+same order, then the difference of A 
+and B, denoted by A – B, is defined as 
+A – B = A + (-B). 
+ 
+Example: Find A – B. 
+ 
+A=
+4
+−5
+3
+−3
+−1
+8
+
+
+
+
+
+
+
+
+
+
+ 
+ 
+B=
+4
+7
+8
+3
+−5
+2
+
+
+
+
+
+
+
+
+
+
+ 
+Solution: 
+ 
+A− B=
+4
+−5
+3
+−3
+−1
+8
+
+
+
+
+
+
+
+
+
+
++
+−4
+−7
+−8
+−3
+5
+−2
+
+
+
+
+
+
+
+
+
+
+A− B=
+0
+−12
+−5
+−6
+4
+6
+
+
+
+
+
+
+
+
+
+
+ 
+ 
+The same subtraction rule applies 
+for getting the difference of two 
+row or column matrices or vectors. 
+ 
+4.  Multiplication of Matrices 
+ 
+If you have two matrices, A and B, 
+the product AB is defined when the 
+number of columns of A is equal to 
+the number of rows of B. Supposed 
+that A is a matrix of order m x p 
+and B is a matrix of order p x n, 
+then the product of A and B, 
+denoted by AB, is the n x n matrix 
+for which the element in the ith 
+row and the jth column is the sum 
+of the products formed by 
+multiplying each elements in the 
+ith row of A by the corresponding 
+element in the jth column of B. 
+  
+Listed below are some rules in the 
+multiplication of matrices: 
+• Matrix multiplication is not 
+commutative 
+• Matrix multiplication is associative 
+and distributive with respect to 
+addition of matrices 
+• AB = 0 does not necessarily mean 
+that BA = 0 or that A = 0 or B = 0 
+ 
+Example: Find DC. 
+ 
+D=
+2
+4
+1
+−3
+−1
+5
+
+
+
+
+
+
+
+
+
+
+ 
+ 
+C= −4
+−1
+1
+2
+3
+5
+
+
+
+
+
+
+
+
+ 
+ 
+D is a 3 x 2 matrix and C is a 2 x 3 
+matrix. The product DC can be 
+obtained because the number of 
+columns of D (2 columns) is equal to 
+the number of rows of C (2 rows). The 
+product DC will be a 3 x 3 matrix. 
+ 
+ 
+DC=
+2(−4)+ (−3)(−1) 2(1)+ (−3)(2) 2(3)+ (−3)(5)
+4(−4)+ (−1)(−1) 4(1)+ (−1)(2) 4(3)+ (−1)(5)
+1(−4)+ 5(−1) 1(1)+ 5(2) 1(3)+ 5(5)
+
+
+
+
+
+
+
+
+
+
+
+
+DC=
+−5 −4 −9
+−15 2 7
+−9 11 28
+
+
+
+
+
+
+
+
+
+
+ 
+ 
+  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+  
+Advanced Math 3 
+ENGINEERING MATHEMATICS EXCEL REVIEW CENTER 
+my.excelreviewer.com 
+Established in 1991. Over 30 years of 
+Excellence, Service and Leadership.    
+Excel Review Center 
+Excel Review Center 
+Continuation… 
+Excel Review Center Continuation on the next page … 
+Excel Review Center 
+Excel Review Center 
+

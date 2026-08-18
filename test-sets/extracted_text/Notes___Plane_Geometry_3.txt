@@ -1,0 +1,177 @@
+--- PAGE 1 ---
+ 
+Quadrilaterals 
+A quadrilateral is a polygon with four 
+sides. A quadrilateral is also known as 
+quadrangle or tetragon. 
+ 
+ 
+Types of quadrilaterals 
+ 
+1. Square – a regular quadrilateral. All its 
+sides are equal and all angles are equal 
+to right angle. A square is a rectangle 
+with all sides equal. 
+ 
+2. Rectangle- a right-angled parallelogram 
+ 
+ 
+ 
+Excel Review Center 
+Diagonals of Polygons 
+The diagonal of a polygon is a line 
+connecting two opposite vertices.  
+ 
+REENTRANT ANGLE – is the 
+inward-pointing angle of the concave 
+polygon while the other angles are 
+called salient angles.  
+Excel Review Center 
+Excel Review Center 
+Use 
+Brahmagupta’s 
+formula 
+ 
+NOTE: 
+The angle between two diagonals of a 
+rhombus is equal to 90 or right angle 
+The number of diagonals of polygon of n 
+sides is: 
+ 
+ndiagonals (n 3)2  
+Where: 
+n = number of sides of polygon 
+Sum of interior angles 
+The interior angles of a polygon are the 
+angles inside the polygon.  
+ 
+oint  angles (n 2)(180 )
+ 
+The sum of interior angles of polygon of n 
+sides is: 
+ 
+Where: 
+n = number of sides of polygon 
+3. Rhombus – all sides are equal but no 
+angle equal to right angle 
+ 
+4. Parallelogram – both pairs of opposite 
+sides are parallel. Another term for 
+parallelogram is rhomboid. 
+ 
+5. Trapezoid – only two sides are parallel 
+ 
+6. Trapezium – if no two sides are parallel 
+ 
+7. Kite – convex quadrilateral who 
+adjacent sides are equal in pair. 
+ 
+8. Deltoid – concave quadrilateral whose 
+adjacent sides are equal in pair 
+ 
+9. Cyclic quadrilateral – a quadrilateral 
+whose vertices lie on a circle. 
+ 
+10.  Formulas: 
+ 1. Square 
+ 
+a 
+a 
+2Area a
+ 
+Perimeter 4a
+ 
+2. Rectangle 
+ 
+b 
+a 
+Area ab
+ 
+Perimeter 2(a b)
+ 
+3.  Rhombus  
+ A. Given base and height 
+b 
+h 
+Area bh
+ 
+Perimeter 4b
+ 
+12
+1Area d d2
+ 
+d1 
+d2 
+b 
+ 
+ B. Given two diagonals 
+2Area a sin
+ 
+a 
+ 
+ 
+ C. Given two sides and included angle 
+a 
+4.  Parallelogram 
+ A. Given base and height 
+b 
+h 
+Area bh  
+12
+1Area d d sin2
+ 
+d1 
+d2 
+ 
+ B. Given two diagonals and their 
+included angle 
+Area absin
+ 
+b 
+ 
+ 
+ C. Given two sides and included angle 
+a 
+ 
+5.  Trapezoid 
+b 
+B 
+h 
+1Area (b B)h2  
+6.  Trapezium (General quadrilateral)     
+ A. Given two diagonals and included 
+angle 
+12
+1Area d d sin2
+  
+d2 d1 
+  
+ A. Given four sides and opposite angles 
+B 
+C 
+D A a 
+b 
+c 
+d 
+2A (s a)(s b)(s c)(s d) abcdcos      
+ 
+Where: 
+A C B D
+22
+ 
+ 
+a b c ds 2
+    
+Did You Know? 
+Excel Review Center, founded in 
+1991, is the longest running ECE 
+review center in the country! 
+Plane Geometry 3 
+ENGINEERING MATHEMATICS 
+EXCEL REVIEW CENTER 
+my.excelreviewcenter.com.ph 
+Cebu: JRT Building, Imus Avenue,  
+Day-as, Cebu City  CP: 09173239235 
+Excel Review Center 
+Excel Review Center 
+

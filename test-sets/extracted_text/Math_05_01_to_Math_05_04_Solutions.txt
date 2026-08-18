@@ -1,0 +1,1165 @@
+--- PAGE 1 ---
+ 
+ Website: www.excelreviewcenter.com.ph Facebook: Excel Review Center          Cellphones: Smart: 0919 822 5048  Globe: 09173284664
+   
+ 
+ 
+EXCEL FIRST REVIEW AND TRAINING CENTER, INC. 
+Cebu: JRT Bldg. Imus Ave, Cebu City | Davao: 2nd Fl. MERCO Bldg. Rizal St. cor. Bolton St.  
+Manila: CMFFI Bldg. R. Papa St. Sampaloc | Baguio:  4th Fl. De Guzman Bldg., Legarda Road 
+Math 05-01 to Math 05-04 
+Trigonometry 
+ 
+ 
+ 
+1. A. 39.49 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+50tan 80
+x
+x 8.816 m
+50 - htan 50
+x
+50 - htan  50
+8.816
+tan 50 (8.816 ) 50 - h
+10.506 50 - h
+h 39.49 m
+ 
+ 
+ 
+ 
+ 
+
+
+
+
+
+
+
+ 
+ 
+2. A. – cos A 
+sin 270 cos A
+sin ( 270 - A )
+- sin A cos 270
+sin ( 270 - A ) (-1) cos A - sin A ( 0)
+sin ( 270 - A ) - cos A
+
+
+
+
+
+  
+  
+    
+       
+     
+ 
+ 
+3. A. 259.28   
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+htan 21
+100 x
+h (100 x ) tan 21 Eq.1
+htan 32
+x
+h x tan 32 Eq.2
+ 
+  
+ 
+  
+
+
+  
+
+
+ 
+ 
+Equating Eq.1 to Eq.2: 
+(100 x ) tan 21 x tan 32
+tan 32100 x x
+tan 21
+100 x 1.6278x
+x 159.286 m
+Thus :
+x 100 259.286  m
+    
+ 
+ 
+ 
+
+ 
+
+
+
+ 
+ 
+4. B. 92.54 feet  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+htan 40
+x
+hx Eq.1
+tan 40
+htan 30
+50 x
+hx - 50 Eq.2
+tan 30
+ 
+ 
+ 
+ 
+
+
+
+
+
+ 
+ 
+Equate Eq.1 to Eq.2: 
+hh -50
+tan 40 tan 30
+1.19175h 1.73205h -50
+h 92.54 ft.  
+
+
+
+
+ 
+ 
+5. C. 125 m    
+ 
+  
+ 
+ 
+ 
+ 
+ 
+ 
+By cosine law: 
+ 
+2 2 2
+2 2 2
+b a c 2 ac  cos  B
+180 130 190 - 2 (130 )(190 ) cos B
+B 65.35
+  
+ 
+  
+
+
+ 
+ 
+By cosine law: 
+   
+2 2 2
+2 2 2
+x a ( c / 2 ) - 2a ( c / 2 )cos B
+x 130 95 - 2(130)( 95) cos 65.35
+x 125 m
+ 
+  
+  
+
+
+
+ 
+ 
+6. A. 240 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+7. D. 4 and 10 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+1
+2
+h b 3
+h b - 3
+
+
+ 
+Solutions: 
+ 
+ x 
+ 80° 
+ 50 
+ x 
+ 50° 
+ 50-h 
+ 50 
+ 80° 
+ h 
+ 50 
+  50-h 
+ x 
+ h 
+ 32 
+ 21 
+ 100 + x 
+ h 
+ h 
+100 
+  x 
+ 21° 
+  32° 
+30° 
+ h 
+50 x 
+40° 
+ x 
+ h 
+ 40 
+ 30 
+  50 + x 
+ h 
+b=180 
+c=190 
+a=130 
+C 
+B 
+ A 
+ x=? 
+c/2 
+c/2=95 
+ a=16 
+ c = 34 
+ b=30 
+a b cS
+2
+16 30 34S
+2
+S 40
+A s ( s - a )( s - b )( s - c )
+A 40( 40 -16 )( 40 - 30 )( 40 - 34 )
+A 240  square  units
+
+
+
+
+
+
+h1 
+ h2 
+ b 
+ b 
+
+--- PAGE 2 ---
+ 
+ Website: www.excelreviewcenter.com.ph Facebook: Excel Review Center          Cellphones: Smart: 0919 822 5048  Globe: 09173284664
+   
+ 
+ 
+EXCEL FIRST REVIEW AND TRAINING CENTER, INC. 
+Cebu: JRT Bldg. Imus Ave, Cebu City | Davao: 2nd Fl. MERCO Bldg. Rizal St. cor. Bolton St.  
+Manila: CMFFI Bldg. R. Papa St. Sampaloc | Baguio:  4th Fl. De Guzman Bldg., Legarda Road 
+Math 05-01 to Math 05-04 
+Trigonometry 
+ 
+12
+12
+2
+A A 21
+11bh bh 21
+22
+b ( b 3) b ( b - 3) 42
+b
+
+
+  
+23b b
+1
+2
+- 3b 42
+6 b 42
+b7
+h 7 3 10 units
+h 7 - 3 4 units
+
+
+
+  
+
+ 
+ 
+ 
+ 
+8. C. 19.95 m  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+By sine law: 
+sin 30 sin ( 60 )
+10 18
+4.158
+60 30 180
+4.158 90 180
+85.842
+
+
+  
+  
+
+   
+ 
+                     
+By sine law: 
+sin 85.842 sin 30
+x 10
+x 19.95 m
+
+
+  
+ 
+ 
+ 
+9. C. 2.45 cm  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+a b cS
+2
+8 10 14S
+2
+
+
+ 
+   
+   
+2
+S 16  cm
+A s s - a s - b s - c
+A 16 16 -8 16 -10 16 -14
+A 39.19 cm
+A rs
+39.19 r (16)
+r 2.45  cm
+
+
+
+
+
+
+
+ 
+  
+ 
+ 
+10. D. incenter  
+ 
+11. B. hypotenuse/2 
+ 
+12. A. 5.47   
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+           
+BE 13
+sin sin AEB
+9 13
+sin BAD sin AEB
+BE sin
+9 sin BAD
+6 14
+sin sin ACD
+
+
+
+  
+            
+15 BE 14
+sin CAE sin ACD
+15 BE sin
+14 sin CAE
+BE 15 BE
+9 14
+BE 5.87
+ 
+ 
+
+  
+ 
+13. C. 4.57    
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+   
+oo
+75 75d
+tan 20 tan 30
+d 76.16
+dv t
+76.16 m 1 km 60 minv 1 min 1000m 1 hr
+v 4.57 kph
+
+
+
+  
+  
+ 
+14. C. 8.53 units    
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+2 2 2
+2
+2 2 2
+2
+2
+2
+2
+In BCP, using cosine law:
+4 x 2(4)x cos 6
+8x cos x 20 Eq.1
+In ΔACP, using cosine law:
+4 x 2(4)x cos(60 ) 5
+8x cos(60 ) x 9
+8x cos60cos sin 60sin x 9
+4x cos 6.9282x sin x 9 Eq.2
+From Eq. 1:
+x2x cos
+
+  
+  
+   
+  
+   
+   
+ 0
+8
+ 
+Then we have: 
+ 
+ 
+2
+2
+2
+42
+2
+2
+14 x 20 x98
+6.9282x sin
+6.9282x sin 0.5x 1
+0.25x x 1sin 48x
+  
+
+ 
+  
+From Eq. 1: 
+2
+42
+2
+2
+22
+x 20cos 8x
+x 40x 400cos 64x
+sin cos 1
+
+
+ 
+ 
+   
+ x 
+ x 
+30° 
+60° 
+  60° 
+10 
+ 10 
+ 
+18 
+ c = 14 
+ b = 10 
+  a = 8 
+ r 
+B 
+A 
+ C 
+P 
+x 
+ x 
+x 
+5 
+6 
+4 
+ 
+ 
+9 
+6 
+14 
+ 13 
+ 
+  
+D 
+C 
+ E 
+ B 
+A 
+o30
+B
+75
+o20
+
+--- PAGE 3 ---
+ 
+ Website: www.excelreviewcenter.com.ph Facebook: Excel Review Center          Cellphones: Smart: 0919 822 5048  Globe: 09173284664
+   
+ 
+ 
+EXCEL FIRST REVIEW AND TRAINING CENTER, INC. 
+Cebu: JRT Bldg. Imus Ave, Cebu City | Davao: 2nd Fl. MERCO Bldg. Rizal St. cor. Bolton St.  
+Manila: CMFFI Bldg. R. Papa St. Sampaloc | Baguio:  4th Fl. De Guzman Bldg., Legarda Road 
+Math 05-01 to Math 05-04 
+Trigonometry 
+ 
+4 2 4 2
+22
+0.25x x 1 x 40x 400 148x 64x
+x 8.53
+   
+
+ 
+ 
+15. B. 6.96  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+    
+    
+  
+o
+22 2 o
+22 2 o
+2 2 2 o
+2 2 o
+A B C 60
+a 12 a 9 2 9 12 a cos 60
+a 4.2
+b 12 a 3 2 3 12 a cos 60
+b 6.43
+x a b 2ab cos 60
+x 4.2 6.43 2 4.2 6.43 cos 60
+x 6.96
+   
+    
+
+    
+
+  
+  
+
+ 
+ 
+16. B. 181.5 m  
+  
+   
+ 
+ 
+ 
+ 
+ 
+ 
+A = 37°25’  = 37.416° 
+B = 56°17’  = 56.283° 
+ 
+A B C 180
+37.416 56.283 C 180
+C 86.301
+  
+  
+
+ 
+            
+By sine law: 
+ 
+sin 86.301 sin 37.416
+ca
+  
+ 
+triangle
+2
+sin 86.301ac
+sin 37.416
+a 0.609 c
+1A ac sin B
+2
+18346 ( 0.609 c )( c )sin 56.283)
+2
+16,692 0.5065 c
+c 181.5
+
+
+
+
+
+
+
+  
+ 
+ 
+ 
+ 
+17. A. 36.3 m  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+By sine law: 
+o
+sin C sin A
+ca
+sin 70 sin 45
+40 a
+a 30  m
+a 15  m
+2
+A B C 180
+45 B 70 180
+B 65
+
+
+
+
+  
+  
+
+ 
+ 
+               
+By cosine law: 
+    
+      
+22
+22
+x c a / 2 - 2 c a / 2 cos B
+x 40 15 - 2 40 15 cos 65
+x 36.3 m
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+18. A. 0  
+cos A cos B sin A sin Bx
+sin A - sin B cos A - cos B
+(cos A cos B)(cos A - cos B)
+(sin A sin B)(sin A - sin B)x
+(sin A - sin B)(cos A - cos B)
+
+
+
+    
+    
+    
+     
+    
+ 
+2 2 2 2
+2 2 2 2
+(cos A - cos B) (sin A - sin B)x
+(sin A - sin B)(cos A - cos B)
+(cos A sin A ) - (sin B cos B)x
+(sin A - sin B)(cos A - cos B)
+1-1x
+(sin A - sin B)(cos A - cos B)
+x0
+
+
+
+
+    
+    
+    
+ 
+ 
+19. C. 21.7°, 321.8 mph  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+By sine law: 
+ 
+50 300
+sin sin 60
+8.3
+  
+
+
+
+ 
+ 
+60 180
+8.3 60 180
+111.7
+  
+  
+
+ 
+ 
+By sine law: 
+ 
+V 50
+sin 111.7 sin 8.3
+sin 111.7V  ( 50 )
+sin .3
+V 321.8  mph
+  
+ 
+ 
+
+
+
+ 
+ 
+20. C. 14,586 sq. units  
+ 
+ 
+ 
+  
+ 
+  
+ 
+a b cS
+2
+
+ 
+ 
+12 - b 
+12 - a 
+ b 
+a 
+x 
+9 
+A 
+C 
+ B 
+A 
+ A 
+ c =? 
+a  
+ 56.283° 
+ C 
+ B 
+ b 
+ 37.416° 
+ c =40 
+b  
+ 70° 
+ B  
+ x =?  
+  a/2  
+a/2  
+ C  
+ A  
+ 45° 
+ 
+ 50 
+Vg 
+60° 
+ 
+ Vp 
+ Vw 
+ 300 
+Vg 
+60° 
+ 
+  
+ a=195 
+ c=210 
+ b=157 
+
+--- PAGE 4 ---
+ 
+ Website: www.excelreviewcenter.com.ph Facebook: Excel Review Center          Cellphones: Smart: 0919 822 5048  Globe: 09173284664
+   
+ 
+ 
+EXCEL FIRST REVIEW AND TRAINING CENTER, INC. 
+Cebu: JRT Bldg. Imus Ave, Cebu City | Davao: 2nd Fl. MERCO Bldg. Rizal St. cor. Bolton St.  
+Manila: CMFFI Bldg. R. Papa St. Sampaloc | Baguio:  4th Fl. De Guzman Bldg., Legarda Road 
+Math 05-01 to Math 05-04 
+Trigonometry 
+195 157 210S
+2
+S 281
+A s (s - a )(s - b )(s - c )
+A 281( 281-195)( 281-157 )( 281- 210)
+A 14,586.2 square units
+
+
+
+
+   
+ 
+ 
+21. A. 54.23 m 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+61 90 15 180
+14
+    
+
+ 
+ 
+By sine law: 
+ 
+sin 14 sin 61
+15 x
+x 54.23 m
+  
+ 
+
+
+ 
+ 
+22. A. 34.64 cm  
+ 
+  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Since equilateral triangle, A = B = C = 
+60° 
+  
+rtan 30
+0.5x
+10tan 30
+0.5x
+x 34.64 cm
+ 
+ 
+ 
+
+
+
+ 
+ 
+ 
+ 
+ 
+23. B. 374 m   
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+26 58 180
+96
+  
+
+ 
+ 
+By sine law: 
+ 
+sin 96 sin 58
+1000 BC
+BC 852.719 m
+dsin  26
+BC
+dsin 26
+852.719
+d 852.719 (sin 26 )
+d 374 m
+
+
+
+
+
+
+  
+ 
+ 
+  
+ 
+ 
+ 
+24. B. 79.3 m  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+120 - htan 28
+x
+120 - hx Eq.1
+tan 28
+htan 46
+x
+hx Eq.2
+tan 46
+ 
+ 
+ 
+ 
+
+
+
+
+
+
+ 
+           
+Equating Eq.1 to Eq.2: 
+ 
+120 - h h
+tan 28 tan 46
+tan 28120 - h h
+tan 46
+120 - h 0.513h
+h 79.31 m
+  
+ 
+ 
+ 
+
+
+
+
+ 
+ 
+25. C. 0.169 m/sec  
+   
+= 
+2
+5
+9
+.
+2
+8
+6 
+m
+. 
+ 
+ 
+ 
+ 
+ 
+           
+44tan 60
+x
+x 25.4 m
+44tan 30
+S 25.4
+S 25.4 76.21
+S 50.81 m
+SV
+t
+50.81V
+5( 60 )
+V 0.169 m / s
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+
+
+
+
+
+
+
+  
+ 
+ 
+ 
+ 
+ 61° 
+ x 
+   
+15° 
+15 
+ x 
+  x 
+ 0.5x 
+ r 
+ 30° 
+ A 
+B 
+ C 
+ 0.5x 
+ r 
+ 30 
+B 
+ A 
+C 
+d 
+1000  
+ 26° 
+  58° 
+  
+  32° 
+h 
+120 
+28° 
+ x 
+46° 
+120-h 
+ x 
+  x 
+28° 
+ 120-h 
+ 46° 
+ h 
+60° 
+h=44 
+x 
+30° 
+ 6 
+S 
+ x 
+ 44 
+ 60 
+ 30 
+  S + x 
+ 44 
+

@@ -1,0 +1,319 @@
+--- PAGE 1 ---
+ 
+ Website: www.excelreviewcenter.com.ph Facebook: Excel Review Center          Cellphones: Smart: 0919 822 5048  Globe: 09173284664
+   
+ 
+ 
+EXCEL FIRST REVIEW AND TRAINING CENTER, INC. 
+Cebu: JRT Bldg. Imus Ave, Cebu City | Davao: 2nd Fl. MERCO Bldg. Rizal St. cor. Bolton St.  
+Manila: CMFFI Bldg. R. Papa St. Sampaloc | Baguio:  4th Fl. De Guzman Bldg., Legarda Road 
+Math 10-01 to Math 10-11 
+Differential Calculus 
+ 
+ 
+ 
+1. Evaluate
+2
+2x
+3x 2x 1lim x x 1
+
+ . 
+ 
+A. 2 
+B. 3   
+C. 4 
+D. 1 
+ 
+2. Find the equation of the tangent line 
+to 
+32y x 2x 2    at x = 1. 
+ 
+A. 
+y x 2       
+B. 
+y x 2  
+C. 
+y x 2    
+D. 
+y x 2    
+ 
+3. Water is flowing into a conical vessel 
+15 cm. deep and having a radius of 
+3.75 cm. across the top. If the rate at 
+which water is rising is 2 cm/sec. 
+How fast is the water flowing into the 
+conical vessel when the depth of 
+water is 4 cm?  
+ 
+A. 
+32.8 m / min      
+B. 
+36.28 m / min   
+C. 
+38.26 m / min      
+D. 
+36.38 m / min   
+ 
+4. Find the minimum amount of tin 
+sheet that can be made into a closed 
+cylinder having a volume of 108 cu. 
+inches in square inches. 
+ 
+A. 125.50  
+B. 127.50 
+C. 129.50 
+D. 123.50 
+ 
+5. Given a cone of diameter x and 
+altitude of h. What percent is the 
+volume of the largest cylinder which 
+can be inscribed in the cone to the 
+volume of the cone? 
+ 
+A. 44 %     
+B. 46 % 
+C. 56 % 
+D. 65 % 
+ 
+ 
+ 
+ 
+6. A balloon is released from the ground 
+100 meters from an observer. The 
+balloon rises directly upward at the 
+rate of 4 meters per second. How fast 
+is the balloon receding from the 
+observer 10 seconds later? 
+ 
+A. 1.68 m/sec 
+B. 1.36 m/sec 
+C. 1.55 m/sec 
+D. 1.49 m/sec       
+ 
+7. A box is to be constructed from a 
+piece of zinc 20 sq.in by cutting equal 
+squares from each corner and turning 
+up the zinc to form the side. What is 
+the volume of the largest box that can 
+be so constructed? 
+ 
+A. 599.95 cu in. 
+B. 592.59 cu in.      
+C. 579.50 cu in. 
+D. 622.49 cu in. 
+ 
+8. A statue 3 m high is standing on a 
+base of 4 m high. If an observer’s eye 
+is 1.5 m above the ground, how far 
+should he stand from the base in 
+order that the angle subtended by the 
+statue is a maximum. 
+ 
+A. 3.41 m 
+B. 3.51 m 
+C. 3.71 m 
+D. 4.41 m 
+ 
+9. Water is running into a hemispherical 
+bowl having a radius of 10 cm at a 
+constant rate of 3 cm3/min. When the 
+water is x cm. deep, the water level is 
+rising at the rate of 0.0149 cm/min. 
+What is the value of x? 
+ 
+A. 3 
+B. 2 
+C. 4    
+D. 5 
+ 
+10. Evaluate: 
+2
+2x1
+x1lim
+x 3x 4
+
+         
+          
+  
+A. 1/5 
+B. 2/5       
+C. 3/5 
+D. 4/5 
+ 
+ 
+11. Evaluate: 
+2x0
+1 cos xlim x
+  
+ 
+A. 0 
+B. 1/2   
+C. 2 
+D. –1/2    
+ 
+12. What is the derivative with respect to 
+x of (x + 1)3 – x3? 
+ 
+A. 3x + 6 
+B. 3x – 3 
+C. 6x – 3 
+D. 6x + 3  
+ 
+13. Find y’ if y = arcsin cos x 
+ 
+A. – 1     
+B. – 2 
+C. 1 
+D. 2 
+ 
+14. Differentiate the equation: 
+2
+xy x1   
+A. 
+ 
+2
+2
+x 2x
+x1
+
+  
+B. 
+x
+x1  
+C. 2x 
+D. 
+2
+2x
+x1  
+ 
+15. Give the slope of the curve at the 
+point (1,1): 
+3
+xy 2x 14    
+ 
+A. 1/4 
+B. –1/4 
+C. 1 1/4 
+D. –1 ¼        
+ 
+16. Find the equation of the normal to x2 
++ y2 = 5 at the point (2,1). 
+ 
+A. y = 2x 
+B. x = 2y 
+C. 2x + 3y = 3 
+D. x + y = 1 
+ 
+17. At point of inflection, 
+ 
+A. y’ = 0 
+B. y” = 0   
+C. y” is negative 
+Multiple Choice: 
+ 
+ R 
+
+--- PAGE 2 ---
+ 
+ Website: www.excelreviewcenter.com.ph Facebook: Excel Review Center          Cellphones: Smart: 0919 822 5048  Globe: 09173284664
+   
+ 
+ 
+EXCEL FIRST REVIEW AND TRAINING CENTER, INC. 
+Cebu: JRT Bldg. Imus Ave, Cebu City | Davao: 2nd Fl. MERCO Bldg. Rizal St. cor. Bolton St.  
+Manila: CMFFI Bldg. R. Papa St. Sampaloc | Baguio:  4th Fl. De Guzman Bldg., Legarda Road 
+Math 10-01 to Math 10-11 
+Differential Calculus 
+ 
+D. y” is positive 
+ 
+18. The _______ derivative of the 
+function is the rate of change of the 
+slope of the graph. 
+ 
+A. first  
+B. second   
+C. third 
+D. fourth 
+ 
+19. Two posts, one 8 m and the other 12 
+m high are 15 cm apart. If the posts 
+are supported by a cable running from 
+the top of the first posts to a stake on 
+the ground and then to the top of the 
+second post, find the distance from 
+the lower post to the stake to use 
+minimum amount of cable. 
+ 
+A. 6 m from the lower post 
+B. 5 m from the lower post 
+C. 4 m from the lower post   
+D. 3 m from the lower post 
+ 
+20. The distance a body travels is a 
+function of time t and is defined by:
+2x(t) 18t 9t
+. What is its velocity 
+at t = 3? 
+ 
+A. 70 
+B. 72   
+C. 74 
+D. 76 
+ 
+21. When the area in square units of an 
+expanding circle is increasing twice 
+as fast as its radius in linear unit, the 
+radius is ____. 
+ 
+A.  
+B. 1/   
+C. 2 
+D. 1/2 
+ 
+22. The depth of water in a cylindrical 
+tank 4 m in diameter is increasing at 
+the rate of 0.7 m/min. Find the rate at 
+which the water flowing into the tank. 
+ 
+A. 7.3291 cu. m/min 
+B. 8.8302 cu. m/min 
+C. 8.3201 cu. m/min 
+D. 8.7964 cu. m/min   
+ 
+ 
+ 
+ 
+23. Evaluate 
+ 
+2xd ln edx . 
+ 
+A. 1 
+B. – 2 
+C. – 1 
+D. 2   
+ 
+24. An open rectangular box with square 
+base is to be made from 48 sq. m of 
+material. What is the largest possible 
+volume of the box in cubic meters? 
+ 
+A. 28 
+B. 30  
+C. 32   
+D. 34 
+ 
+25. The volume of a cylindrical tin can 
+with a top and a bottom is to be 16 
+cubic inches. If a minimum amount 
+of tin is to be used to construct the 
+can, what must be the height, in 
+inches, of the can? 
+ 
+A. 4   
+B. 5 
+C. 6 
+D. 8 
+ 
+END 
+

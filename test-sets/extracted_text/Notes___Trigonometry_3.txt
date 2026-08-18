@@ -1,0 +1,233 @@
+--- PAGE 1 ---
+ 
+Parts of General Triangle 
+ 1. Height of a general triangle 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+         where: 
+ 
+ 
+         Note: hc is perpendicular to side c. 
+ 
+2. Median of a general triangle 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+3. Angle bisector of a general triangle 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Excel Review Center 
+   
+C
+2 s s a s b s ch c
+  
+ 
+2 2 2
+c
+1m 2a 2b c2  
+ 
+2
+c
+ct ab 1 ab
+    
+ 
+4. The altitudes of a triangle meet in a 
+point. 
+ 
+5. The medians of a triangle are 
+concurrent at a point which is 2/3 of 
+the distance from any vertex to the 
+midpoint of the opposite sides. 
+ 
+ hc 
+b 
+c 
+a 
+a b cs 2
+
+ 
+ 
+b 
+a 
+c/2 
+mc 
+c/2 
+ 
+b 
+a 
+ 
+tc 
+c 
+ 
+Important Properties of 
+a Triangle 
+ 
+1. The sum of two sides of a triangle is 
+greater than the third side and their 
+difference is less than the third side. 
+ 
+2. The perpendicular bisectors of the 
+sides and the bisectors of the angles 
+of a triangle, meet in points which 
+are the center of the circumscribing 
+circle the inscribed circle, 
+respectively. 
+ 
+3. The altitudes of a triangle meet in a 
+point. 
+Radius of Inscribed Circle 
+and Radius of 
+Circumscribing Circle 
+ 
+triangleAr a b c 
+ 
+triangle
+abcR 4A
+ 
+Let:  
+a, b and c = sides of triangle 
+r = radius of inscribed circle 
+R = radius of circumscribing circle 
+ 
+3. General triangle 
+2. Equilateral triangle 
+b a 
+c 
+a a 
+a 
+a3r 6
+ 
+a3R 3
+ 
+1. Right triangle 
+c 
+a 
+b 
+cR 2
+ 
+abr a b c 
+ 
+Area of Triangle 
+1. Given base and altitude 
+ 
+ 
+ 
+ 
+ 
+h h 
+b b 
+1A bh2
+  
+ 
+2. Given 2 sides and included angle 
+ 
+ 
+ 
+ 
+ 
+a 
+b 
+ 
+1A absin2
+ 
+ 
+3. Given 3 sides 
+ Use Heron’s formula, named after 
+Heron of Alexandria (1st Century 
+AD) 
+ 
+ 
+ 
+ 
+ 
+a 
+b 
+A s(s a)(s b)(s c)   
+ 
+c 
+ 
+ 
+  
+ where: 
+ 
+ 
+ 
+ 
+a b cs 2
+
+ 
+ 
+4. Triangle inscribed in a circle 
+ 
+ 
+ 
+ 
+abcA 4r
+ 
+b a 
+c 
+r 
+ 
+5. Triangle circumscribing a circle 
+ 
+ 
+ 
+ 
+c b 
+a 
+r 
+A rs
+ 
+ 
+ 
+  
+ where: 
+ 
+ 
+ 
+a b cs 2
+
+ 
+Did You Know? 
+Excel Review Center is the only review 
+center to conduct review classes in 
+the Middle East for SPLE examinees!  
+Excel Review Center 
+Excel Review Center 
+Excel Review Center 
+Trigonometry 3 
+ENGINEERING MATHEMATICS EXCEL REVIEW CENTER 
+my.excelreviewcenter.com.ph 
+Manila: CMFFI Building, R. Papa Street, 
+Sampaloc, Manila 09176239235 
+

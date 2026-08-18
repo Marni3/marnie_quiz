@@ -1,0 +1,175 @@
+--- PAGE 1 ---
+A mathematical expectation is the average 
+amount a player can expect to win or lose on 
+one play in any game of chance. 
+ 
+It can be found by multiplying the probability of 
+each possible outcomes by its payoff, and then 
+adding these results.  
+ 
+If the expectation is positive, the player will win 
+in the long run and lose if the expectation is 
+negative. 
+ 
+ 
+Excel Review Center 
+Problem:  
+In tossing a single coin, P 100 bet is placed 
+on heads i.e. if heads comes up, the player 
+wins P 100 and if tails comes up, the player 
+loses P 100. What is the expectation? 
+MATHEMATICAL
+DISTRIBUTION 
+Probability  
+with Dice 
+Card games are games  
+which are played using a  
+standard deck of cards.  
+A standard deck of cards  
+contains 52 cards divided  
+into 4 suits; spades,  
+hearts, diamonds and clubs. Each suit contains 13 
+cards labeled Ace, 2, 3, 4, 5, 6, 7, 8, 9, 10, jack, 
+queen and king. Each of the four kings in a deck 
+represents a great leader from history; 
+Charlemagne (hearts), Alexander the Great 
+(clubs), Julius Ceasar (diamonds), and King David 
+(spades). 
+ 
+The playing cards were used also to describe a 
+calendar year. The 52 cards represent the 52 
+weeks in a year. The 4 suits represent the four 
+seasons of the year and the 12 face cards (4 
+kings, 4 queens and 4 jacks) represent the 12 
+months of the year. 
+ 
+Poker Hand with corresponding number of ways: 
+ 
+Hand No. of ways 
+Royal flush 4 
+Straight flush 36 
+Four of a kind 624 
+Full house 3744 
+Flush 5108 
+Straight 10200 
+Three of a kind 54912 
+Two pair 123552 
+Pair 1098240 
+None of the above 1302540 
+Total 2598960 
+ 
+Poker Hand with corresponding probability: 
+ 
+Hand Probability 
+Royal flush 0.00000154 
+Straight flush 0.00001385 
+Four of a kind 0.0002401 
+Full house 0.0014406 
+Flush 0.0019654 
+Straight 0.0039246 
+Three of a kind 0.0211285 
+Two pair 0.0475390 
+Pair 0.4225690 
+None of the above 0.5011774 
+Total 1.00000000 
+ 
+ 
+Card  
+Games EXPECTATION 
+Dice were invented for sole purpose of 
+gambling. As a matter of fact, dice games have 
+so little intrinsic interest that in the absence of 
+wagering they would hardly be worth playing. 
+Dice were first used by the Chinese. The sum of 
+the opposite faces of a die is always equal to 7. 
+And the sum of all the vertical faces of a die, no 
+matter how it rolls is always equal to 14. When 
+two dice are rolled and both will face up 1, this 
+is known as snake’s eyes. 
+ 
+ 
+ 
+The following are the two-dice probabilities: 
+Two-dice sum Probability 
+2 1/36 
+3 2/36 
+4 3/36 
+5 4/36 
+6 5/36 
+7 6/36 
+8 5/36 
+9 4/36 
+10 3/36 
+11 2/36 
+12 1/36 
+ 
+ 
+Solution: 
+ 
+ Heads Tails 
+Probability ½  ½ 
+Payoff 100 -100 
+ 
+ 
+( ) ( )11Expectation 100 10022
+Expectation 0
+   = + −      
+=  
+Problem:  
+In Casino Filipino, a roulette offers winning a 
+bet on a single number pays 35 to 1. The 
+actual probability is 1 in 38. What is the 
+expectation? 
+Solution: 
+ 
+The 35 to 1 is a house (payoff) odds of 
+Casino Filipino. 
+ 
+Expectation can be obtained by taking 
+the difference between the product of 
+the first number in the house odds and 
+probability of success, and the product of 
+the second number of the house odds 
+and the probability of failure.  
+ 
+ 
+1 37Expectation 35 1 38 38
+2Expectation 38
+Expectation 0.0526
+   =−       
+=−
+=−  
+ 
+Thus, a player expects to lose to Casino 
+Filipino an average of 5.26 centavos for 
+every peso bet. 
+ 
+Poker Hand corresponding expected frequency: 
+ 
+Hand Expected frequency 
+Royal flush 1 in 649740 hands 
+Straight flush 1 in 72192 hands 
+Four of a kind 1 in 4165 hands 
+Full house 1 in 694 hands 
+Flush 1 in 509 hands 
+Straight 1 in 255 hands 
+Three of a kind 1 in 47.33 hands 
+Two pair 1 in 21 hands 
+Pair 1 in 2.37 hands 
+None of the above 1 in 2 hands 
+ 
+ 
+Excel Review Center 
+Excel Review Center 
+ 
+Probability Part 3 
+ 
+ENGINEERING MATHEMATICS 
+EXCEL REVIEW CENTER 
+my.excelreviewcenter.com.ph 
+CMFFI Building, R. Papa St. Sampaloc 
+Manila 09173239235 | 0919 822 5048 
+The Future of Education! 
+Like us on Facebook 
+alterguru.com 
+

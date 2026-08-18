@@ -1,0 +1,303 @@
+--- PAGE 1 ---
+Example:  
+Find the co-factor of 6 in the following 
+matrix. 
+A =
+ 
+ 
+1 2 0
+2 1 4
+4 2 6
+ 
+
+
+
+
+
+
+
+
+
+  
+ 
+The equivalent matrix is: 
+A = +
+ 
+1 2
+2 1
+
+
+
+
+
+  
+The determinant of A is: 
+det A = 
+ 
+1 2
+2 1 = (1)(1) - (2)(2) = - 3 
+Thus, the cofactor of 6 is – 3. 
+ 
+ 
+ 
+ 
+ 
+5.  Division of Matrices 
+ 
+Division of matrices is done by 
+multiplying the numerator by the 
+inverse matrix of the denominator. 
+  
+ Let: A and B are matrices 
+ 
+A
+B = AB
+−1
+ 
+where:   
+B-1 is called the inverse matrix of matrix B 
+ 
+ 
+Matrix Equality 
+Two matrices are only considered equal 
+if they have the same size or dimension 
+or order and they have equal 
+corresponding elements. 
+ 
+Cofactor of an Entry of a Matrix 
+A cofactor of an entry of a matrix is the 
+same as the cofactor of the same entry in 
+the determinant of the matrix and thus, 
+is defined only for square matrices. 
+ 
+Sign convention: 
++ −
+− +
+
+
+
+
+
+
+  
++ − +
+− + −
++ − +
+
+
+
+
+
+
+
+
+
+  
+Cofactor Matrices 
+A cofactor matrix is formed by replacing 
+each element in the given matrix by its 
+cofactor. 
+ 
+Example:  
+Find cofactor matrix of A  
+A =
+ 
+3 2
+4 1
+
+
+
+
+
+  
+Cofactor matrix of A = 
+ 
+1 4
+2 3
+
+
+
+
+
+  
+ 
+ 
+ 
+  
+Advanced Math 4 
+ENGINEERING MATHEMATICS EXCEL REVIEW CENTER 
+my.excelreviewer.com 
+Producer of nearly 800 Engineering 
+Board Topnotchers   
+Excel Review Center 
+Excel Review Center 
+Excel Review Center 
+Excel Review Center 
+Excel Review Center 
+Transpose Matrices 
+If matrix A is reflected in its main 
+diagonal, so that all rows become 
+columns and all columns become rows 
+without changing their relative order of 
+entries in the rows and columns, the 
+result is a transpose matrix, AT. 
+ 
+Hence, the transpose of matrix A with a 
+size of m x n is denoted by AT with a size 
+of n x m. The transposed matrix would 
+contain elements where the first row is 
+the first column of the original matrix, the 
+second row is the second column of the 
+original matrix and so on. 
+ 
+Example: 
+        A = 
+ 
+−4
+−1
+1
+2
+3
+5
+
+
+
+
+
+
+
+  
+            AT =
+ 
+ 
+−4
+1
+3
+   
+−1
+2
+5
+ 
+
+
+
+
+
+
+
+
+
+  
+ 
+Inverse Matrices 
+Steps required to find for the Inverse 
+Matrix (say A): 
+ 
+a. Form the cofactor matrix of matrix A 
+b. Form the transpose matrix of the 
+cofactor matrix A 
+c. Evaluate the determinant of matrix A 
+d. Divide each element in the (matrix 
+cofactor)T 
+by the determinant 
+ 
+Example:  
+Find the inverse matrix of A. 
+A = 
+ 
+  
+1 2 0
+2 1 4
+4 2 6
+   
+Cofactor matrix A =
+ 
+−2     4    0
+−12     6    6
+    8 −4 −3
+   
+ 
+Excel Review Center 
+(Cofactor matrix A)T      
+                 =
+ 
+  
+−2     -12    0
+  4     6    6
+  0     6 −3
+   
+       det A = 
+ 
+  
+1 2 0
+2 1 4
+4 2 6
+   = 6 
+Thus, A-1 = 
+ 
+1
+6   
+−2     -12    0
+  4     6    6
+  0     6 −3
+   
+ 
+Determinants 
+Determinant is associated with square 
+matrices (i.e. the number of rows = the 
+number of column) only. Every 
+determinant can be associated with a 
+real number. 
+ 
+Properties of Determinants: 
+ 
+1. If the rows of one determinant are 
+the same as the columns of another, 
+and in the same order, the two 
+determinants are equal. 
+ det A = 
+ 
+  
+1 2 0
+2 1 4
+4 2 6
+   
+ det A = 
+ 
+  
+1 2 4
+2 1 2
+0 4 6
+   = 6 
+ 
+2. If two columns (or rows) of a 
+determinant are interchanged, the 
+value of the resulting determinant is 
+equal to the negative of the value of 
+the given determinant. 
+ det A = 
+ 
+  
+1 2 0
+2 1 4
+4 2 6
+    
+ det A = 
+ 
+−   
+2 1 4
+1 2 0
+4 2 6
+   = 6 
+ 
+3. If two columns (or rows) of a 
+determinant are identical, the value 
+of the determinant is zero. 
+ 
+4. If the elements of a column (or row) of 
+a determinant are multiplied by k, the 
+value of the determinant is multiplied 
+by k. 
+ 
+Continuation on next page…. 
+

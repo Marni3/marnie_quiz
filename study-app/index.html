@@ -24,7 +24,7 @@
 
   <!-- Google Fonts: Playfair Display, Inter, JetBrains Mono -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://fonts.gstatic.com" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet" />
 
   <!-- Shared CSS & State -->
@@ -34,10 +34,14 @@
 <body>
 <div id="app" class="page-enter">
 
-  <!-- TOPBAR -->
+  <!-- FULL-WIDTH TOPBAR -->
   <header class="topbar">
     <div class="topbar-left">
       <a href="index.html" class="topbar-logo">Marnie Quiz</a>
+      <div class="topbar-crumb">
+        <span class="topbar-crumb-sep">/</span>
+        <span class="topbar-crumb-title">Study Sets</span>
+      </div>
     </div>
     <div class="topbar-center"></div>
     <div class="topbar-right">
@@ -53,174 +57,186 @@
     </div>
   </header>
 
-  <!-- HOME BODY -->
-  <main class="home-body">
+  <!-- WIDE TWO-COLUMN DASHBOARD -->
+  <main class="home-layout">
 
-    <!-- Hero -->
-    <div class="hero">
-      <h1>Study <em>Sets</em></h1>
-      <p class="hero-sub">Select a CSV from your study folder or drop in a file to start practicing with instant or exam feedback.</p>
-    </div>
+    <!-- MAIN AREA: Study Sets Directory (Wide ~70%) -->
+    <section class="browser-main">
+      <!-- Hero Bar -->
+      <div class="hero-bar">
+        <div>
+          <h1>Study <em>Sets</em></h1>
+          <p style="font-size:.9rem;color:var(--text2);margin-top:2px;">Select any test set from your repository to start practicing.</p>
+        </div>
+        <div class="hero-bar-meta" id="total-quizzes-counter">Loading test sets...</div>
+      </div>
 
-    <!-- 1. Folder & CSV Selector Card -->
-    <section class="card card-pad sets-browser">
-      <div class="sets-browser-header">
-        <div class="section-label" style="margin-bottom:0">Study folder</div>
-        <button type="button" class="btn-folder" id="browse-folder-btn">
+      <!-- Search & Category Filters -->
+      <div class="search-filter-strip">
+        <div class="search-box-wrap">
           <svg viewBox="0 0 20 20" fill="currentColor">
-            <path d="M2 6a2 2 0 0 1 2-2h5l2 2h5a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6z"/>
+            <path fill-rule="evenodd" d="M9 3.5a5.5 5.5 0 1 0 0 11 5.5 5.5 0 0 0 0-11zM2 9a7 7 0 1 1 12.452 4.391l3.328 3.329a.75.75 0 1 1-1.06 1.06l-3.329-3.328A7 7 0 0 1 2 9z" clip-rule="evenodd" />
           </svg>
-          Open study folder
+          <input
+            type="text"
+            id="search-input"
+            class="search-input"
+            placeholder="Search test sets by topic, title, or filename (e.g. Analytic Geometry, Trigonometry)..."
+          />
+        </div>
+
+        <div class="category-pills" id="category-pills">
+          <button type="button" class="category-pill active" data-cat="all">All Topics</button>
+        </div>
+      </div>
+
+      <!-- Manifest Grid Container -->
+      <div id="manifest-container" style="display:flex;flex-direction:column;gap:28px;"></div>
+
+      <!-- Empty Search Fallback -->
+      <div id="empty-search-msg" style="display:none;text-align:center;padding:48px 20px;background:var(--surface);border:1px dashed var(--border2);border-radius:var(--radius);">
+        <div style="font-size:2rem;margin-bottom:8px;">🔍</div>
+        <div style="font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;color:var(--text);">No matching test sets found</div>
+        <div style="font-size:.85rem;color:var(--text3);margin-top:4px;">Try searching for a different keyword or select another category filter.</div>
+      </div>
+    </section>
+
+    <!-- SIDEBAR: Settings, Upload Custom CSV & AI Prompt (~30%) -->
+    <aside class="browser-sidebar">
+
+      <!-- 1. Session Settings Card -->
+      <div class="sidebar-card">
+        <div class="sidebar-title">
+          <svg width="14" height="14" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd"/></svg>
+          Study Mode
+        </div>
+
+        <div>
+          <div style="font-size:.72rem;color:var(--text3);font-weight:700;text-transform:uppercase;margin-bottom:6px;">Answer feedback</div>
+          <div class="option-row">
+            <div class="option-btn feedback-opt selected" data-feedback="deferred">
+              <strong>📝 At end of quiz</strong>
+              Full review after submit
+            </div>
+            <div class="option-btn feedback-opt" data-feedback="immediate">
+              <strong>⚡ Instant solution</strong>
+              Immediate check per question
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div style="font-size:.72rem;color:var(--text3);font-weight:700;text-transform:uppercase;margin-bottom:6px;">Timer configuration</div>
+          <div class="option-row">
+            <div class="option-btn timer-opt selected" data-mode="untimed">
+              <strong>⏸ Untimed</strong>
+              No time pressure
+            </div>
+            <div class="option-btn timer-opt" data-mode="timed_per_question">
+              <strong>⏱ Per question</strong>
+              Countdown per Q
+            </div>
+            <div class="option-btn timer-opt" data-mode="timed_whole_exam">
+              <strong>🕐 Whole exam</strong>
+              Total exam cap
+            </div>
+          </div>
+
+          <div class="timer-sub" id="timer-sub-per-q">
+            <label for="seconds-per-q">Seconds per Q:</label>
+            <input id="seconds-per-q" type="number" min="10" max="600" value="60" />
+          </div>
+          <div class="timer-sub" id="timer-sub-exam">
+            <label for="total-minutes">Total minutes:</label>
+            <input id="total-minutes" type="number" min="1" max="600" value="60" />
+          </div>
+        </div>
+      </div>
+
+      <!-- 2. Upload Custom CSV Card -->
+      <div class="sidebar-card">
+        <div class="sidebar-title">
+          <svg width="14" height="14" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM6.293 6.707a1 1 0 010-1.414l3-3a1 1 0 011.414 0l3 3a1 1 0 01-1.414 1.414L11 5.414V13a1 1 0 11-2 0V5.414L7.707 6.707a1 1 0 01-1.414 0z" clip-rule="evenodd"/></svg>
+          Upload Custom CSV
+        </div>
+
+        <div class="dropzone-compact" id="dropzone">
+          <input type="file" id="csv-input" accept=".csv,.txt" />
+          <div class="dropzone-compact-icon">📄</div>
+          <div class="dropzone-compact-text"><strong>Click or drop</strong> a CSV</div>
+          <div class="dropzone-compact-sub" id="file-label">Import custom question file</div>
+        </div>
+
+        <div class="schema-strip">
+          <div class="schema-pill"><div class="dot dot-req"></div>question</div>
+          <div class="schema-pill"><div class="dot dot-req"></div>choice_a–d</div>
+          <div class="schema-pill"><div class="dot dot-req"></div>correct_answer</div>
+          <div class="schema-pill"><div class="dot dot-opt"></div>explanation</div>
+          <div class="schema-pill"><div class="dot dot-opt"></div>subject_tag</div>
+        </div>
+
+        <div id="parse-errors" class="error-box"></div>
+
+        <button type="button" class="btn btn-primary" id="start-btn" style="margin-top:0;" disabled>
+          Start Custom CSV →
         </button>
       </div>
 
-      <div id="no-folder-hint" class="no-folder-hint">
-        Click <strong>Open study folder</strong> and select your <code>test-sets/</code> directory to browse your question files here, or drop a CSV below.
-      </div>
-      <div id="no-api-note" class="no-api-note" style="display:none">
-        <em>(In-app folder browsing requires Chromium-based browsers like Edge or Chrome. Drag & drop works everywhere.)</em>
-      </div>
-
-      <div id="csv-grid" class="csv-grid" style="margin-top:14px"></div>
-
-      <div class="divider"></div>
-
-      <!-- Dropzone Fallback / Direct Upload -->
-      <div class="section-label">Or upload individual CSV</div>
-      <div class="dropzone" id="dropzone">
-        <input type="file" id="csv-input" accept=".csv,.txt" />
-        <div class="dropzone-icon">📄</div>
-        <div class="dropzone-text"><strong>Click or drag &amp; drop</strong> a CSV file here</div>
-        <div class="dropzone-sub">Accepts question sets matching standard format</div>
-        <div class="dropzone-filename" id="file-label"></div>
-      </div>
-
-      <!-- Schema pills -->
-      <div class="schema-strip">
-        <div class="schema-pill"><div class="dot dot-req"></div>question</div>
-        <div class="schema-pill"><div class="dot dot-req"></div>choice_a</div>
-        <div class="schema-pill"><div class="dot dot-req"></div>choice_b</div>
-        <div class="schema-pill"><div class="dot dot-req"></div>choice_c</div>
-        <div class="schema-pill"><div class="dot dot-req"></div>choice_d</div>
-        <div class="schema-pill"><div class="dot dot-req"></div>correct_answer</div>
-        <div class="schema-pill"><div class="dot dot-opt"></div>explanation</div>
-        <div class="schema-pill"><div class="dot dot-opt"></div>image_url</div>
-        <div class="schema-pill"><div class="dot dot-opt"></div>subject_tag</div>
-      </div>
-
-      <div id="parse-errors" class="error-box"></div>
-    </section>
-
-    <!-- 2. Session Configuration Card -->
-    <section class="card card-pad" style="width:100%">
-      <!-- Feedback Mode -->
-      <div class="section-label">Answer feedback</div>
-      <div class="option-row">
-        <div class="option-btn feedback-opt selected" data-feedback="deferred">
-          <strong>📝 At end of quiz</strong>
-          Full review &amp; explanations after submit
-        </div>
-        <div class="option-btn feedback-opt" data-feedback="immediate">
-          <strong>⚡ After each answer</strong>
-          Instant correction &amp; solution per question
-        </div>
-      </div>
-
-      <div class="divider"></div>
-
-      <!-- Timer Mode -->
-      <div class="section-label">Timer mode</div>
-      <div class="option-row">
-        <div class="option-btn timer-opt selected" data-mode="untimed">
-          <strong>⏸ Untimed</strong>
-          No time limit
-        </div>
-        <div class="option-btn timer-opt" data-mode="timed_per_question">
-          <strong>⏱ Per question</strong>
-          Countdown per Q
-        </div>
-        <div class="option-btn timer-opt" data-mode="timed_whole_exam">
-          <strong>🕐 Whole exam</strong>
-          Total exam time
-        </div>
-      </div>
-
-      <div class="timer-sub" id="timer-sub-per-q">
-        <label for="seconds-per-q">Seconds per question:</label>
-        <input id="seconds-per-q" type="number" min="10" max="600" value="60" />
-      </div>
-      <div class="timer-sub" id="timer-sub-exam">
-        <label for="total-minutes">Total minutes:</label>
-        <input id="total-minutes" type="number" min="1" max="600" value="60" />
-      </div>
-
-      <button type="button" class="btn btn-primary" id="start-btn" disabled>
-        Select a CSV to Begin →
-      </button>
-    </section>
-
-    <!-- 3. AI Prompt Card -->
-    <section class="card ai-card" id="ai-card">
-      <div class="ai-card-header" id="ai-card-header">
-        <div class="ai-card-header-left">
-          <div class="ai-card-icon">✦</div>
-          <div>
-            <div class="ai-card-title">Generate study sets with AI</div>
-            <div class="ai-card-sub">Copy this prompt, attach your notes, and paste into Claude, ChatGPT, or Gemini</div>
+      <!-- 3. AI Prompt Generator Card -->
+      <div class="sidebar-card ai-card" id="ai-card">
+        <div class="ai-card-header" id="ai-card-header">
+          <div class="ai-card-header-left">
+            <span style="color:var(--accent);font-size:1.1rem;">✦</span>
+            <span class="ai-card-title">AI Prompt Generator</span>
           </div>
+          <svg class="ai-card-chevron" width="14" height="14" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 0 1 1.06.02L10 11.17l3.71-3.94a.75.75 0 1 1 1.08 1.04l-4.25 4.5a.75.75 0 0 1-1.08 0l-4.25-4.5a.75.75 0 0 1 .02-1.06z" clip-rule="evenodd"/>
+          </svg>
         </div>
-        <svg class="ai-card-chevron" width="18" height="18" viewBox="0 0 20 20" fill="currentColor">
-          <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 0 1 1.06.02L10 11.17l3.71-3.94a.75.75 0 1 1 1.08 1.04l-4.25 4.5a.75.75 0 0 1-1.08 0l-4.25-4.5a.75.75 0 0 1 .02-1.06z" clip-rule="evenodd"/>
-        </svg>
-      </div>
 
-      <div class="ai-card-body">
-        <div class="ai-card-inner">
-          <div class="ai-note">
-            Paste this prompt into your preferred AI chat, attach lecture slides, textbook notes, or describe your study topic. Save the output as a <code>.csv</code> file in your <code>test-sets/</code> folder.
-          </div>
-          <div class="prompt-wrap">
-            <div class="prompt-box" id="ai-prompt-text">You are an expert question writer. Generate a set of high-quality multiple-choice study questions based on the topic or material I provide. Output ONLY a valid CSV — no explanation, no markdown fences, no preamble, no commentary before or after. The file must be ready to save and import as-is.
+        <div class="ai-card-body">
+          <div class="ai-card-inner">
+            <div style="font-size:.74rem;color:var(--text3);margin-bottom:8px;line-height:1.5;">
+              Copy this prompt into Claude or ChatGPT to generate new study sets for your folders.
+            </div>
+            <div class="prompt-wrap">
+              <div class="prompt-box" id="ai-prompt-text">You are an expert question writer. Generate a set of high-quality multiple-choice study questions based on the topic or material I provide. Output ONLY a valid CSV — no explanation, no markdown fences, no preamble, no commentary before or after. The file must be ready to save and import as-is.
 
 REQUIRED CSV COLUMNS (exact header row, comma-separated):
 question,choice_a,choice_b,choice_c,choice_d,correct_answer,explanation,image_url,subject_tag
 
 COLUMN RULES:
-- question: A clear, unambiguous question or scenario stem. Do not number it or add a label.
-- choice_a through choice_d: Four answer options. Make distractors plausible and of similar length and style. Do not include A., B., C., D. labels inside the cell — just the option text.
-- correct_answer: Lowercase single letter — exactly one of: a, b, c, or d.
-- explanation: A thorough explanation (3–6 sentences) of WHY the correct answer is right, and briefly why each key distractor is wrong. This is the most educational column — prioritize depth and clarity. To add a line break inside the explanation, write the two characters \n (backslash followed by n) as a literal separator — do NOT use an actual newline, which would break the CSV. Example: "The answer is A.\nOption B is incorrect because...\nOption C is wrong because..."
-- image_url: Leave completely blank (empty cell, still quoted) unless you have a real, publicly reachable image URL.
-- subject_tag: A short topic label using consistent title casing (e.g., Organic Chemistry, Constitutional Law, Microeconomics, Cardiology).
+- question: A clear, unambiguous question or scenario stem.
+- choice_a through choice_d: Four answer options.
+- correct_answer: Lowercase single letter: a, b, c, or d.
+- explanation: A thorough explanation of WHY the correct answer is right and key distractors are wrong. To add line breaks inside the explanation, write \n as a literal separator.
+- image_url: Leave completely blank unless you have a real public URL.
+- subject_tag: A short topic label in Title Case.
 
 LATEX AND MATH FORMATTING RULES:
-- Use LaTeX for ALL mathematical expressions, formulas, chemical notation, units, and Greek letters — never Unicode substitutes.
-- Inline math: wrap in single dollar signs → $E = mc^2$, $\alpha$-blocker, $K^+$, $\Delta G$
-- Display (block) math for standalone equations: wrap in double dollar signs → $$PV = nRT$$
-- Do NOT use Unicode math symbols (α, β, →, ×, °, μ, Δ, etc.) — use LaTeX instead ($\alpha$, $\beta$, $\rightarrow$, $\times$, $^\circ$, $\mu$, $\Delta$).
-- Numeric values with units: $9.8\ \text{m/s}^2$, $37^\circ\text{C}$, $6.02 \times 10^{23}$
-- Never use markdown bold (**text**), italics (*text*), or headers (##) inside any CSV cell.
+- Use LaTeX for ALL mathematical expressions, formulas, chemical notation, units, and Greek letters.
+- Inline math: $E = mc^2$, $\alpha$-blocker, $K^+$
+- Display math: $$PV = nRT$$
+- Do NOT use Unicode math symbols (α, β, →, ×) — use LaTeX instead ($\alpha$, $\beta$, $\rightarrow$, $\times$).
 
 CSV FORMATTING RULES:
-- Wrap EVERY cell in double quotes, including cells that are empty or contain only simple text.
-- If a cell's content contains a double-quote character, escape it by doubling it: ""like this""
-- Do NOT use actual newlines inside any cell — use the \n literal token described above for the explanation column instead.
-- Use a comma (,) as the field delimiter. Do not use semicolons or tabs.
-- The header row must be exactly line 1, verbatim as shown above.
-- Every data row must have exactly 9 comma-separated fields.
-
-OUTPUT: Header on line 1, then one row per question. Nothing else — no intro, no summary, no code fences.</div>
-            <button class="copy-btn" id="copy-prompt-btn">
-              <svg width="12" height="12" viewBox="0 0 20 20" fill="currentColor">
-                <path d="M8 3a1 1 0 0 1 1-1h2a1 1 0 1 1 0 2H9a1 1 0 0 1-1-1z"/>
-                <path d="M6 3a2 2 0 0 0-2 2v11a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2 3 3 0 0 1-3 3H9a3 3 0 0 1-3-3z"/>
-              </svg>
-              Copy
-            </button>
+- Wrap EVERY cell in double quotes.
+- If a cell contains quotes, escape with double-quotes: ""like this""
+- Do NOT use actual newlines inside cells — use \n literal token instead.
+- Use comma (,) as delimiter.</div>
+              <button class="copy-btn" id="copy-prompt-btn">
+                <svg width="10" height="10" viewBox="0 0 20 20" fill="currentColor">
+                  <path d="M8 3a1 1 0 0 1 1-1h2a1 1 0 1 1 0 2H9a1 1 0 0 1-1-1z"/>
+                  <path d="M6 3a2 2 0 0 0-2 2v11a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2 3 3 0 0 1-3 3H9a3 3 0 0 1-3-3z"/>
+                </svg>
+                Copy
+              </button>
+            </div>
           </div>
         </div>
       </div>
-    </section>
+
+    </aside>
 
   </main>
 </div>

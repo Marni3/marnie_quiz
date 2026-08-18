@@ -1,0 +1,647 @@
+--- PAGE 1 ---
+ 
+ Website: www.excelreviewcenter.com.ph Facebook: Excel Review Center          Cellphones: Smart: 0919 822 5048  Globe: 09173284664
+   
+ 
+ 
+EXCEL FIRST REVIEW AND TRAINING CENTER, INC. 
+Cebu: JRT Bldg. Imus Ave, Cebu City | Davao: 2nd Fl. MERCO Bldg. Rizal St. cor. Bolton St.  
+Manila: CMFFI Bldg. R. Papa St. Sampaloc | Baguio:  4th Fl. De Guzman Bldg., Legarda Road 
+Differential Equations 
+ 
+ 
+ 
+1. A. 
+csc ( ln )= − +y x x x x C   
+ 
+Using Calculator: Casio FX570ES+ 
+Assign : x 0.5, y 1, y ' A
+Radian mod e
+= = →
+ 
+( ) ( ) ( )
+sin xy ' cos xy lnx
+sin 0.5 A cos 0.5 ln 0.5
+A y ' 3.276
++=
++=
+= =−
+ 
+Solve for C in the choices: 
+( )
+( ) ( )( )
+For  y csc x(x ln x x C):
+y csc x x ln x x C
+11 0.5ln 0.5 0.5 Csin 0.5
+C 1.326
+= − +
+= − +
+= − +
+=
+ 
+Then solve for y’ if it match with the 
+given: 
+( ) ( )( )
+x 0.5
+dy d 1 x ln x x 1.326dx dx sin x
+dy 3.276 (it matches)dx
+=
+= − +
+=−
+ 
+ 
+2. D. ez 
+ 
+( )
+2y x dx 2ydy 0− + =
+ 
+Divide both sides by 2ydx: 
+( )
+( )
+( )
+( )
+1
+1 n Pdx
+11 1 dx 2
+x
+y x dy dy 1 x 0 y y2 2y dx dx 2 2
+1Px 2
+xQ x  2
+n1
+I.F. e
+I.F. e
+I.F. e
+−
+−
++
+− + =  + =
+=
+=
+=−
+=
+=
+=
+ 
+ 
+3. A. 9  
+ 
+Let x = population at time t  
+dx xdt
+dx dtx
+=
+=
+ 
+ 
+ 
+Integrate both sides 
+t
+dx dt Cx
+ln x t C
+x Ce 
+=  +
+= +
+=
+
+ 
+ 
+At t = 0, x = 1 (initial population) 
+( )0
+1 Ce
+C1
+
+=
+=
+ 
+ 
+At t = 2, x = 3 
+( ) ( )2
+3 1 e
+1 ln 32
+
+=
+=
+ 
+ 
+At t = 4, x = k 
+( )1 ln3 42ke
+k9
+=
+=
+ 
+ 
+Calculator Shortcut: 
+( )
+( )
+( ) ( )
+xMode STAT e 5
+xy
+0 1 AC
+23
+4 Shift STAT 1
+ˆReg 5 y 5  9
+→→
+→→
+→ → →
+→ → =
+ 
+ 
+4. A. 
+tan=+ 
+2xyc 2   
+ 
+( )
+2
+2
+2
+2
+2
+2
+y ' xy x
+dy x 1 ydx
+dy xdx1y
+Integrating both sides:
+dy xdx C1y
+1arctan y x C2
+1y tan x C2
+−=
+=+
+=+
+=++
+=+
+=+ 
+
+ 
+  
+5. B. xy = C 
+ 
+ 
+ 
+ 
+2 2 2x y c
+dy2x 2y 0 dx
+dy x
+dx y
+For orthogonal trajectories:
+dy y
+dx x
+dy dx
+yx
+ln y ln x C
+ln y ln x C
+ln yx C
+xy C
+−=
+−=
+=
+−=
+=−
+=− +
++=
+=
+=
+
+ 
+ 
+6. A. 
+−=+ 2t11ye 22  *  
+ 
+( )
+Pdt Pdt
+2dt 2dt
+2t 2t
+2t 2t
+2t
+dy 2y 1dt
+ye Qe dt c
+ye 1 e dt c
+1ye e c 2
+at t 0, y 1
+1c 2
+11ye e        22
+11ye 22
+−
++=
+ =+
+ =+
+=+
+==
+=
+=+
+=+
+
+
+ 
+ 
+7. A.
+( ) ( )sin cos=− +p
+31y 2x 2x20 20  
+ 
+p
+p
+p
+y A cos 2x Bsin 2x
+y ' 2A sin 2x 2Bcos 2x
+y " 4A cos 2x 4Bsin 2x
+=+
+=− +
+=− −
+ 
+y" y ' 2y sin 2x
+4A cos 2x 4Bsin 2x 2A sin 2x
+2Bcos 2x
+− − =
+− − +
+−
+ 
+( )2 A cos 2x Bsin 2x sin 2x
+4A 2B 2A 0
+6A 2B 0
+− + =
+− − − =
+− − =
+ 
+Solutions: 
+ 
+
+--- PAGE 2 ---
+ 
+ Website: www.excelreviewcenter.com.ph Facebook: Excel Review Center          Cellphones: Smart: 0919 822 5048  Globe: 09173284664
+   
+ 
+ 
+EXCEL FIRST REVIEW AND TRAINING CENTER, INC. 
+Cebu: JRT Bldg. Imus Ave, Cebu City | Davao: 2nd Fl. MERCO Bldg. Rizal St. cor. Bolton St.  
+Manila: CMFFI Bldg. R. Papa St. Sampaloc | Baguio:  4th Fl. De Guzman Bldg., Legarda Road 
+Differential Equations 
+p
+4B 2A 2B 0
+2A 6B 1
+1A 20
+3B 20
+13y cos 2x sin 2x20 20
+− + − =
+−=
+=
+=−
+=−
+ 
+ 
+8. D. Parabolic  
+ 
+9. B. parabolic 
+  
+10. D. 
+ = 
+2
+2
+2
+uu ct x   
+ 
+11. C. 1    
+ 
+22
+2
+x z 2yz xy 0
+xx2xz x 4yz y 0zz
+− + =
+ + − + =
+ 
+ 
+( )At 1,1,1
+x 1z
+ =
+ 
+ 
+12. A. 15 min    
+ 
+dy rate in rate outdt
+dy g L L y g3 4 4dt L min min 40 L
+dy y 12dt 10
+dy10 120 ydt
+10dy dt120 y
+=−
+     =−          
+=−
+=−
+=−
+ 
+Integrate both sides: 
+( )
+( )
+( )
+10ln 120 y t C
+gat t 0,  y 2 40 LL
+C 36.89
+10ln 120 y t 36.89
+at y 111.1
+t 15 min
+− − = +
+==
+=−
+− − = −
+=
+=
+ 
+ 
+13. A. Fourth order, first degree   
+ 
+ 
+ 
+Fourth order, since the highest 
+derivative in the equation is 4th 
+derivative.  First degree, since the 
+exponent or power of the 4th derivative 
+is 1.  
+ 
+14. B. 
+=+
+4xxy C 4   
+ 
+2dy 1 yxdx x
++=
+ 
+ 
+Note: This equation is a linear DE: 
+y (i.f.) =
+Q(x)(i.f.) dx C+   → Gen. 
+Eq. 
+where:  P(x) = ; Q (x) = x2 
+P(x)dx
+dx
+x
+ln x
+i.f. e
+i.f. e
+i.f. e
+i.f. x
+
+
+=
+=
+=
+=
+ 
+ 
+Substitute: 
+2
+4
+y(x) x (x)dx C
+xxy C 4
+=+
+=+
+
+ 
+ 
+15. C. 2y dx = (x2 + 1) dy    
+ 
+A DE is a variable separable if the 
+coefficient of dx shall be  
+functions of x only and the coefficient 
+of dy shall be functions  
+of y only.  
+ 
+From the choices, 2y dx = (x2 + 1) dy 
+is a variable separable DE 
+ 
+( )
+2
+2
+22
+2
+2ydx x 1 dx
+2ydx (x 1)dy
+y(x 1) y(x 1)
+21 dx dyx 1 y
+=+
++=++
+ = + 
+ 
+ 
+16. B. 116 years    
+ 
+Let: P = number of population 
+    
+dP kPdt =  
+ 
+ 
+ 
+dP kdtP =  
+  ln P = kt + C     → Gen. Eq. 
+ 
+when t = 0; P = P0 
+  ln P0 = k(0) + C 
+       C = ln P0 
+  
+when t = 50 years; P = 2P0 
+  ln 2P0 = k(50) + ln P0 
+          k = 0.0138629 
+  
+when t = ? Q = 5P0 
+                   ln 5P0 = 0.0138629(t) + ln P0 
+      t = 116 years 
+ 
+17. A. The order of the highest 
+derivative that appears in the 
+equation.  
+ 
+18. C. 
+2
+1
+x * 
+ 
+An integrating factor for an ordinary 
+differential equation of the form 
+Mdx + ndy = 0 is a function of the 
+form J(x,y) such hat JMdx + JNdy = 
+0 is exact that is, 
+(JM) (JN)
+yx
+ =
+ 
+The given equation is not exact 
+since 
+( )
+2
+M N 2 2xy cos yy x x
+2 1 x y cos yx
+0
+  −− = −
+−=+
+
+ 
+Buy since 
+1 M N 2r(x) N y x x
+  −= = =
+is a 
+function of x, an integrating factor is 
+given by  
+r(x)dx
+2 dxx
+2 ln x
+2
+J(x) e
+e
+e
+1
+x
+−
+−
+−
+=
+=
+=
+=
+ 
+ 
+19. A. 
+−− ++
+x
+2x 3x
+12
+eC e C e 12   
+ 
+1
+x
+
+--- PAGE 3 ---
+ 
+ Website: www.excelreviewcenter.com.ph Facebook: Excel Review Center          Cellphones: Smart: 0919 822 5048  Globe: 09173284664
+   
+ 
+ 
+EXCEL FIRST REVIEW AND TRAINING CENTER, INC. 
+Cebu: JRT Bldg. Imus Ave, Cebu City | Davao: 2nd Fl. MERCO Bldg. Rizal St. cor. Bolton St.  
+Manila: CMFFI Bldg. R. Papa St. Sampaloc | Baguio:  4th Fl. De Guzman Bldg., Legarda Road 
+Differential Equations 
+ 
+( )
+2x
+2
+2x 3x
+12
+x
+2
+x
+2x 3x x
+12
+D 5D 6 y e
+m 5m 6 0
+m 2,  3
+C.F. C e C e
+1P.I. e
+D 5D 6
+1 e12
+y C.F. P.I.
+1y C e C e e 12
+−−
+−−
++ + =
++ + =
+=− −
+=+
+=
+++
+=
+=+
+= + +
+ 
+ 
+20. D. 
+.−=− 0 196tv 50 2e  * 
+ 
+To find the solution to an IVP, first 
+find the general solution of the DE 
+and then use the initial condition to 
+identify the exact solution. We get 
+0.196tv 50 ce −=+
+ 
+ 
+For v(0) =48 
+48 v(0) 50 c
+c2
+= = +
+=−
+ 
+ 
+Therefore, the actual solution to the 
+IVP is 
+0.196tv 50 2e −=−  
+ 
+21. B. 
+++
+4x
+2x 3x
+12
+eC e C e 2  * 
+ 
+( )
+2 4x
+2
+2x 3x
+12
+4x
+5
+4x
+4x
+2x 3x 4x
+12
+D 5D 6 y e
+m 5m 6 0
+(m 3)(m 2) 0
+m 2,  3
+C.F. C e C e
+1P.I. e
+D 5D 6
+1 e16 20 6
+1 e2
+y C.F. P.I.
+1y C e C e e 2
+− + =
+− + =
+− − =
+=
+=+
+=
+−+
+= −+
+=
+=+
+= + +
+ 
+ 
+ 
+22. C. y = cos x + 2 sin x  
+ 
+( )
+( )
+2
+12
+y" y 0
+D 1 y 0
+mi
+c.f c cos x c sin x
++=
++=
+=
+=+
+ 
+Putting x = 0, y(0) = 1 → 
+1c0=  
+Putting 
+x ,  y 222
+ ==   → 
+2c2=  
+Therefore: y = cos x + 2 sin x 
+ 
+23. A. degree 1 order 2  
+ 
+24. D. Ricatti equation  
+ 
+25. C. Bernoulli equation   
+ 
+ 
+ 
+ 
+ 
+ 
+

@@ -1,0 +1,603 @@
+--- PAGE 1 ---
+ 
+ Website: www.excelreviewcenter.com.ph Facebook: Excel Review Center          Cellphones: Smart: 0919 822 5048  Globe: 09173284664
+   
+ 
+ 
+EXCEL FIRST REVIEW AND TRAINING CENTER, INC. 
+Cebu: JRT Bldg. Imus Ave, Cebu City | Davao: 2nd Fl. MERCO Bldg. Rizal St. cor. Bolton St.  
+Manila: CMFFI Bldg. R. Papa St. Sampaloc | Baguio:  4th Fl. De Guzman Bldg., Legarda Road 
+Math 01-01 to Math 01-07 
+Algebra 
+ 
+ 
+ 
+1. D. 24 
+Note: 
+b
+a
+bb
+log b 1og b log a log a
+ 
+Thus, 
+a a a
+a
+log 2 log 3 log 4 1
+log 24 1
+a 24
+  
+
+
+ 
+ 
+2. C. 0.25 * 
+   
+ 
+   
+ 
+ 
+2
+2
+22
+22
+2
+22
+2
+22
+2
+1log k x y log x log y2
+2log k x y log x log y
+log k x y log xy
+k x y xy
+k x y xy
+xyx 2xy y k
+xyx y 2xy k
+1x y 2 xy k
+  
+  
+
+
+
+  
+  
+  
+ 
+22
+2
+2
+2
+So,  from x y 14xy :
+114xy 2 xyk
+114 2 k
+1 16k
+1k 4
+
+
+
+
+
+ 
+3. C. 2  
+ 
+ If the roots are 3 and 2, then: 
+ 
+  
+2
+2
+Ax Bx C 0
+x 3 x 2 0
+x 5x 6 0
+A B C 1 5 6
+A B C 2
+  
+  
+  
+    
+    
+ 
+4. D. 2/3   
+ 
+  
+a a a
+2
+a
+2log x - log (x -1) - log (x - 2) 0
+xlog 0 x -1 x - 2
+
+
+ 
+2
+0
+2
+x a                
+x - 3x 2
+2x 3
+
+
+
+ 
+ 
+5. B. 90    
+15 
+53  
+18 
+63  
+LCM 
+5 6 3 90     
+ 
+6. B. 25 + k    
+p – q = 5 
+ 
+By squaring both sides: 
+ 
+2 2
+22
+22
+22
+22
+p q 5
+p 2pq q 25
+p q 25 2pq
+kp q 25 2 2
+p q 25 k
+
+  
+  
+   
+  
+ 
+ 
+7. D. 4  
+ 
+2x 2(k 2)x 9k 0   
+ 
+For equal roots B2 – 4AC = 0 
+ 
+    
+2
+2
+2
+2
+12
+x 2 k 2 x 9k 0
+B 4AC 0
+2k 4 4 1 9k 0
+4k 20k 16 0
+k 4;k 1
+   
+
+  
+  
+
+ 
+ 
+8. A. 3  
+   
+23x kx x 7k 0   
+ 
+At x = 3, 
+   
+2
+3 3 k 3 3 7k 0
+k3
+   
+
+ 
+ 
+9. B. 1:2   
+ 
+1 1 1 1 y:x y x y x
+2x 4y 7x 6y
+y(4 6) x(7 2)
+y1
+x2
+11: 1: 2xy
+  
+
+  
+
+
+ 
+ 
+10. B. xy      
+   
+ 
+     
+     
+ 
+ 
+   
+ 
+ 
+n 2n 1 1
+n12
+n 2n 1
+n 1 2n 2
+2n
+2
+2n 2
+2
+2
+xy (a b) a b
+xy a b
+1xy a b a bab
+xy xy a b
+ab
+ab
+1 a b a bxy
+xy a b xy
+ab
+
+
+
+
+
+
+ 
+  
+
+
+
+ 
+ 
+
+ 
+ 
+11. B. 12 days   
+ 
+Wife’s day off: 4th day 
+Husband’s day off: 6th day 
+Getting the least common multiple 
+of 4 and 6 
+LCM = 12 
+ 
+12. A. 43,750x^8   
+Binomial Expansion: 
+Total number of terms = n + 1 
+ 
+82x5
+; n = 8 
+Number of terms = 9 
+Middle term = 5th term 
+Nth Term = 
+n r 1 r 1
+n r 1C a b   
+   
+5th Term = 
+   
+8 5 1 512
+8 5 1C x 5
+ 
+   
+5th Term =
+843,750x  
+ 
+13. A. 2    
+Applying Factor Theorem 
+If 
+xk
+f (x) ;Re mainder f (x) 0xk 
+  
+Then,  
+2kx 6x 2kx 12
+x3
+Re mainder f (x) 0
+  
+
+
+ 
+At x = 3 
+     
+2
+2
+kx 6x 2kx 12 0
+k 3 6 3 2k 3 12 0
+k2
+   
+   
+
+ 
+Solution: 
+ 
+
+--- PAGE 2 ---
+ 
+ Website: www.excelreviewcenter.com.ph Facebook: Excel Review Center          Cellphones: Smart: 0919 822 5048  Globe: 09173284664
+   
+ 
+ 
+EXCEL FIRST REVIEW AND TRAINING CENTER, INC. 
+Cebu: JRT Bldg. Imus Ave, Cebu City | Davao: 2nd Fl. MERCO Bldg. Rizal St. cor. Bolton St.  
+Manila: CMFFI Bldg. R. Papa St. Sampaloc | Baguio:  4th Fl. De Guzman Bldg., Legarda Road 
+Math 01-01 to Math 01-07 
+Algebra 
+ 
+14. C. – 5  
+ 
+Applying Remainder Theorem 
+ If 
+xk
+f (x) ;Re mainder f (x)xk 
+  
+ Then, 
+ 
+4 3 2x ax 5x bx 6
+x2
+   
+  
+ Remainder = f(x) = 16 at x = 2 
+ 
+       
+4 3 2
+4 3 2
+x ax 5x bx 6 16
+2 a 2 5 2 b 2 6 16
+8a 2b 26 eqn 1
+    
+    
+    
+ When, 
+ 
+4 3 2x ax 5x bx 6
+x1
+   
+  
+Remainder = f(x) = 10 at x = -1 
+ 
+     
+ 
+4 3 2
+4 3 2
+x ax 5x bx 6 10
+1 a 1 5 1 10
+b 1 6
+a b 2 eqn 2
+    
+       
+     
+ Solving for a and b: 
+ a = -5 and b = 7 
+ 
+15. C. – 280(a^4)(x^3)  
+ 
+ 
+7
+a 2x
+ 
+rth Term = 
+n r 1 r 1
+n r 1C a b   
+   
+4th Term =
+ 
+417 4 1
+7 4 1C a 2x
+
+   
+4th Term =
+43280a x  
+ 
+16. B. 25,344x^9  
+rth Term = 
+n r 1 r 1
+n r 1C a b   
+   
+rth Term = 
+ 
+r112 r 12
+12 r 1
+2Cx x
+
+
+
+   
+Considering the terms w/ x for x9: 
+   
+    
+12 r 1 r 12 1 9x x x
+2 12 r 1 1 r 1 9
+24 2r 2 r 1 9
+r6
+    
+     
+    
+
+ 
+6th Term = 
+ 
+6112 6 12
+12 6 1
+2Cx x
+
+
+
+  
+6th Term = 25, 344x9 
+ 
+17. A. 1  
+   c a bx log a log b log c
+log a log b log cx1 log c log a log b
+
+         
+ 
+ 
+18. B. 256    
+  
+ 
+8
+x 2y z
+ 
+Sum of Coefficients = (let all 
+variables to 1)n 
+Sum of Coefficients = (1+2-1)8 
+Sum of Coefficients = 256 
+ 
+19. B. e and e^5  
+ 
+ 
+ 
+2 3
+2
+ln x 2ln x 5
+ln x 6ln x 5
+ 
+ 
+ 
+Let A = ln x 
+2
+12
+A 6A 5 0
+A 5  ;  A 1
+  
+
+ 
+At A = 5,  At A = 1 
+5
+ln x 5
+xe
+
+
+  
+ln x 5
+xe
+
+  
+ 
+20. A. 21   
+x : y : z 2 : 5 : 7
+x2
+y5
+5x 2y 0 eqn 1
+y5
+z7
+7y 5z 0 eqn 2
+4x y 2z 51 eqn 3
+x = 6, y = 15 and z = 21 
+
+
+  
+
+  
+   
+ 
+  
+21. C. – 66339/128a^11   
+ 
+Binomial Expansion 
+16
+1 32
+   
+rth Term = 
+n r 1 r 1
+n r 1C a b   
+  
+where, n = 16 
+6th Term = 
+16 6 1
+61
+16 6 1
+1C ( 3)2a
+
+
+
+   
+6th Term = 
+11
+66339
+128a
+  
+ 
+22. D. y = xb2x    
+ 
+bb
+bb
+10 10
+10 10
+10 10 10
+2x
+10 10
+2x
+log y 2x log x
+log y log x 2x
+log y log x 2xlog b log b
+log y log x 2x log b
+ylog log bx
+y xb
+
+
+
+
+
+  
+ 
+23. A. 20 
+ 
+5
+x y z
+ 
+Trinomial Expansion 
+rth Term = 
+     
+p q sn! a b cp!q!s!  
+where, n = p + q + s 
+Identifying the term with xy3z: 
+     
+p q s
+p
+q3
+s
+5! x y zp!q!s!
+x x;p 1
+y y ;q 3
+z z;s 1
+
+
+
+ 
+Thus for coefficient, 
+5! 201!3!1!  
+ 
+24. A. 78    
+Binomial Expansion 
+ 
+nabxy  
+Sum of exponents: 
+  abn n 1 2
+   
+Then, 
+12
+2 2x x
+   
+  2112 12 1 78 2
+ 
+ 
+ 
+25. A. n(n + 1)^2   
+ 
+ 
+ 
+ 
+ 
+ 
+    
+ 
+ 
+2 2
+2 2
+2
+2
+n 1 ! (n 1 1)!(n 1)
+n! n 1 ! n! n 1 !
+n! (n 1)
+n!(n 1)!
+n 1 n n 1 !
+n 1 !
+n n 1
+    
+ 
+ 
+
+ 
+"Successful people do what unsuccessful 
+people are not willing to do.” 
+

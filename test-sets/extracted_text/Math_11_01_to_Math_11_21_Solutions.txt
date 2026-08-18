@@ -1,0 +1,1190 @@
+--- PAGE 1 ---
+ 
+ Website: www.excelreviewcenter.com.ph Facebook: Excel Review Center          Cellphones: Smart: 0919 822 5048  Globe: 09173284664
+   
+ 
+ 
+EXCEL FIRST REVIEW AND TRAINING CENTER, INC. 
+Cebu: JRT Bldg. Imus Ave, Cebu City | Davao: 2nd Fl. MERCO Bldg. Rizal St. cor. Bolton St.  
+Manila: CMFFI Bldg. R. Papa St. Sampaloc | Baguio:  4th Fl. De Guzman Bldg., Legarda Road 
+Math 11-01 to Math 11-21 
+Integral Calculus 
+ 
+ 
+ 
+1. A. 
+2a2
+    
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+( )
+( )
+24
+0
+24
+0
+222 4
+0
+1A 8 r d 2
+A 4 a cos 2 d
+A 4a cos 2 d a 2
+
+
+
+=
+=  
+=  =
+
+
+
+ 
+ 
+2. C. 7.92    
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+( ) ( )
+( )( )
+y
+2
+2
+y
+1
+M 5 x dA 5 x ydx
+M 5 x x dx
+= − = −
+=−
+
+
+ 
+ 
+Calculating: 
+yM 7.92=
+  
+3. C. 4.5    
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+( )
+( )
+2
+2
+x y 2
+x y 2
+vertex : 0, 2
+=− +
+=− −
+ 
+Point of intersection: 
+2
+2
+2
+x y 2   and  x y
+x x 2
+x x 2 0
+x 1, y 1 ; x 2,  y 2
+=− + =
+=− +
++ − =
+= = =− =−
+ 
+So the points of intersection are (1,1) and 
+(-2, -2) 
+( )
+( )
+1
+21
+2
+1
+2
+2
+A y y dx
+A 2 x x dx
+9A 2
+−
+−
+=−
+= − −
+=
+
+
+ 
+ 
+4. D. 
+23.56a  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+2
+a
+0
+23
+22
+2
+2
+3
+2
+223a
+220
+232a
+220
+2
+dySA 1 dx 2 y dx
+a y x
+a dy 3x dx
+dy 3x
+dx a
+xy a
+3x xA 1 dx 2 aa
+x 3xA 2 1 dx aa
+Calculating :
+A 3.56a Ans.
+= +  
+=
+=
+=
+=
+   = +        
+   =  +      
+=→
+
+
+
+ 
+ 
+5. A. –xcosx + sinx  
+ 
+Integration by parts 
+ 
+udv uv vdu=−
+ 
+ux
+du dx
+dv sin x
+v cos x
+=
+=
+=
+=−
+ 
+ 
+x sin xdx x cos x cos xdx
+x cos x sin x C
+=− +
+=− + +
+
+ 
+ 
+Reverse Engineering: 
+ 
+4
+4
+x 0.1
+CALC given:
+x sin x CALC 0.1  1.7453 10
+Differentiate choices:
+Take choice x cos x sin x
+d x cos x sin x 1.7453 10dx
+−
+−
+=
+→ → → = 
+−+
+− + = 
+ 
+ 
+6. A. 
+31cos x cos x C3− + +   
+ 
+( )( )
+( )( )
+32
+2
+sin xdx sin x sin x dx
+sin x 1 cos x dx
+=
+=−
+
+
+ 
+ 
+Let u cos x
+du sin xdx
+du sin xdx
+=
+=−
+−=
+ 
+( )
+32
+3
+3
+33
+sin xdx 1 u du
+usin xdx u c 3
+1sin xdx cos x cos x c3
+=− −
+=− − +
+=− + +
+
+
+
+ 
+ 
+Reverse Engineering: 
+( )
+3 4
+3
+34
+x 0.1
+CALC given:
+sin x CALC 0.1  9.9501 10
+Differentiate choices:
+1cos x cos x c3
+d1 cos x cos x 9.9501 10dx 3
+−
+−
+=
+→ → → = 
+− + +
+− + = 
+  
+ 
+Solutions: 
+ 
+ 
+0 
+ 
+2yx=
+dx
+1
+2
+y
+x
+y
+5x−
+x5=
+xy=
+dx
+2
+1
+1
+2−
+2y
+1y
+x = a 
+a2y = x3 
+y 
+
+--- PAGE 2 ---
+ 
+ Website: www.excelreviewcenter.com.ph Facebook: Excel Review Center          Cellphones: Smart: 0919 822 5048  Globe: 09173284664
+   
+ 
+ 
+EXCEL FIRST REVIEW AND TRAINING CENTER, INC. 
+Cebu: JRT Bldg. Imus Ave, Cebu City | Davao: 2nd Fl. MERCO Bldg. Rizal St. cor. Bolton St.  
+Manila: CMFFI Bldg. R. Papa St. Sampaloc | Baguio:  4th Fl. De Guzman Bldg., Legarda Road 
+Math 11-01 to Math 11-21 
+Integral Calculus 
+ 
+7. C. 37.7  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+3
+0
+4V 2 x x 4 dx 3
+Calculating :
+V 37.7
+=  − +
+=
+
+ 
+ 
+Solution 2: 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+( )( )( )
+3
+1V Bh3
+1V 3 43
+V 37.7
+=
+=
+=
+ 
+ 
+8. A. sec θ + C  
+ 
+2
+sin d tan sec dcos
+                 sec C
+ =   
+= +
+
+ 
+ 
+Reverse Engineering: 
+ 
+ 
+2
+x 0.1
+CALC given:
+sin x CALC 0.1  0.10084cos x
+Differentiate choices:
+Take choice sec C
+d sec x 0.10084dx =
+→ → → =
++
+=
+ 
+ 
+9. B. 0.022  
+ 
+1
+8
+8
+0
+xdx  (x 1) xdx(x 1)
+−=++
+ 
+ 
+Let: 
+-8
+7
+u x 
+du = dx 
+dv = (x+1) dx
+(x 1)v 7
+−
+=
++= −
+ 
+1
+8
+0
+(x 1) xdx uv vdu−+ = −
+ 
+( ) ( )
+( )
+( )
+( ) ( )
+( )
+( )
+( )
+77
+7
+7
+6
+7
+1
+6
+7
+0
+6
+77 6
+x 1 x 1
+x dx 77
+x1 (x 1) dx77(x 1)
+x1x1
+767 x 1
+x1 x1427 x 1
+111 0 1
+427(0 1)7 1 1 01
+0.022
+−−
+−
+−
+−
+−
+−
+ ++=−  −−
+−= + +
++
+ +− =+  −+ 
+− = − + +
+ +− = − − ++ −+
+=
+
+
+ 
+ 
+10. B. 2.13  
+ 
+2y 4x=
+ 
+At x = 1, x =  2  
+Thus, the parabola and the line intersect  
+at points (1,2) and (1,-2). 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+22
+22
+x
+00
+2
+2
+x L P
+0
+2 2
+2
+x
+0
+I 2 y dA 2 y (xdy)
+I 2 y (x x ) dy
+yI 2 y 1 dy 4
+==
+=−
+=− 
+
+
+
+
+ 
+2 4
+2
+x
+0
+235
+x
+0
+35
+x
+x
+yI 2 y dy 4
+yyI2 4 4(5)
+(2) (2)I2 4 20
+I 2.13
+=− 
+
+=− 
+
+=− 
+
+=
+
+ 
+ 
+11. A. 0.456   
+ 
+( )
+6
+12
+5
+x x 5 dx−
+ 
+Note:
+udv uv vdu=−  
+Let:  
+12
+13
+ux
+du = dx 
+dv = (x-5) dx
+(x 5)v 13
+=
+−=
+ 
+( )
+( )
+( )
+( )
+( )
+( ) ( )
+( ) ( )
+( )
+13
+6
+12
+135
+6
+13
+14
+5
+13 13
+14 14
+6
+12
+5
+x x 5
+13x x 5 dx
+1 x 5 dx13
+x x513
+    x51
+13 14
+65 6 5 5-513 13     1 6-5 5 5182
+x x 5 dx = 0.456
+ −
+−= 
+−−
+ −
+=  − −  
+ −−=
+ − − −
+−
+
+
+
+ 
+ 
+12. D. ln 2 
+ 
+10
+6
+dx
+x2
+−
+− +
+ 
+Note: 
+du In uu =  
+ 
+ 
+ 
+ 
+y 
+dx 
+y = 4 
+x = 3 
+y = 4 
+4y x 4 3=− +
+ 
+x = 3 
+ (1,2) 
+ x 
+ dy 
+ (1,-2) 
+ (0,0) 
+y2 = 4x 
+ y 
+x = 1 
+
+--- PAGE 3 ---
+ 
+ Website: www.excelreviewcenter.com.ph Facebook: Excel Review Center          Cellphones: Smart: 0919 822 5048  Globe: 09173284664
+   
+ 
+ 
+EXCEL FIRST REVIEW AND TRAINING CENTER, INC. 
+Cebu: JRT Bldg. Imus Ave, Cebu City | Davao: 2nd Fl. MERCO Bldg. Rizal St. cor. Bolton St.  
+Manila: CMFFI Bldg. R. Papa St. Sampaloc | Baguio:  4th Fl. De Guzman Bldg., Legarda Road 
+Math 11-01 to Math 11-21 
+Integral Calculus 
+ 
+10
+10
+6
+6
+dx ln(x 2)x2
+ln( 10 2) ln( 6 2)
+ln( 8) ln( 4)
+8ln ln  24
+−
+−
+−
+−
+=++
+= − + − − +
+= − − −
+−== −
+
+ 
+ 
+13. C. 0.0417  
+ 
+( )
+/2
+53
+0
+sin x cos x  dx
+
+
+ 
+Using Wallis formula: m = 5; n = 3; and  
+ = 1, since both m & n are odd numbers 
+ 
+( )
+/2
+53
+0
+sin x cos x dx
+(5 1)(5 3)(3 1)                    1 8(6)(4)(2)
+                    0.0417
+
+− − −=•
+=
+
+ 
+ 
+14. B. 1  
+ 
+e
+1
+ln x dx
+ 
+Let: 
+dxu ln x; du = ; dv = dx; v = xx=   
+( )  
+e
+1
+e
+1
+ln x dx uv vdu
+dx(ln x)(x) x x
+x ln x x
+e ln e e 1(ln1) 1
+1
+=−
+=− 
+=−
+= − − −
+=
+
+
+ 
+ 
+15. D. 1/3 
+ 
+( )
+cos ucos u 2
+00 0 0
+22
+0
+2
+0
+3
+0
+rr sin udrdu sin u du2
+1 cos u 0 sin u du2
+1 cos u( sin u)du2
+1 cos u
+23
+
+
+
+
+=
+=−
+=− −
+=−
+  
+
+
+ 
+ 
+( )
+331 cos cos 06
+1 ( 1 1)6
+1
+3
+=− −
+=− − −
+=
+ 
+ 
+16. D. 5.595    
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+2y 4x
+y 2 x
+=
+=
+ 
+ 
+33
+11
+33/2
+3/2
+1
+3/2 3/2
+A ydx 2 xdx
+2x 4 x3 / 2 3
+4 (3) (1)3
+A 5.595 square units
+==
+==
+=− 
+=
+
+ 
+ 
+17. B. (3/5, 3/4) 
+ 
+2y 4x=
+ 
+at x = 1, y =  2  
+ 
+Thus, the parabola and the line intersect 
+at points (1, 2) and (1,-2). 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Solving for the area: 
+1 2 1 4A bh (4)(1)2 3 3 3
+= = =
+  
+1
+0
+1
+0
+1
+3/2
+0
+15/2
+0
+_
+5/2
+_
+A x ydx x
+(2 x )dx x
+2 x dx
+x2 5 / 2
+44 x (1)35
+3x 5
+• = •
+=•
+=
+= 
+
+ =
+=
+
+
+
+ 
+ 
+11
+2
+00
+y1A y ydx y dx 22• = • =
+ 
+1
+0
+12
+0
+_
+2
+_
+1A y (4x)dx2
+1 4x
+22
+4 y (1)3
+3y 4
+•=
+= 
+
+ =
+=
+
+ 
+ 
+Thus, the center is at point (3/5, 3/4). 
+ 
+18. C. 96 J  
+ 
+ 
+ 
+ 
+ 
+ Work = Force x distance 
+ 
+Since the force varies with distance, use 
+integration: 
+ 
+8
+0
+8
+0
+W Fdx
+W 3xdx
+=
+=
+
+  
+ 
+ -y 
+ dx 
+ x = 4 
+ (0,0) 
+ y2 = 4x 
+ x = 1 
+  
+ (1,2) 
+ y 
+ dx 
+ (1,-2) 
+ (0,0) 
+x = 1 
+y2 = 4x 
+  
+O 
+ A 
+F = 3x 
+8 m 
+• 
+
+--- PAGE 4 ---
+ 
+ Website: www.excelreviewcenter.com.ph Facebook: Excel Review Center          Cellphones: Smart: 0919 822 5048  Globe: 09173284664
+   
+ 
+ 
+EXCEL FIRST REVIEW AND TRAINING CENTER, INC. 
+Cebu: JRT Bldg. Imus Ave, Cebu City | Davao: 2nd Fl. MERCO Bldg. Rizal St. cor. Bolton St.  
+Manila: CMFFI Bldg. R. Papa St. Sampaloc | Baguio:  4th Fl. De Guzman Bldg., Legarda Road 
+Math 11-01 to Math 11-21 
+Integral Calculus 
+ 
+Integrating: 
+ 
+( )
+8 2 22
+0
+38 3(0)3xW 2 2 2
+W 96 N - m
+W 96 J
+= = −
+=
+=  
+ 
+19. A. 3375 N-cm  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+6
+3
+W Fdx=   → Eq. 1 
+Using Hooke’s law: 
+ 
+( )
+F kx
+750 k 3
+k 250
+=
+=
+=  
+ 
+ 
+F 250x=  
+ 
+ 
+( )
+66 2
+33
+22
+xW 250xdx 250 2
+W 125 6 3
+W 3375 N-cm
+==
+=−
+=
+  
+ 
+20. D. 13.61  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+2
+dyA 1 2 xdx dx
+= +    
+Solving for 
+2
+dy
+dx
+
+ : 
+ 
+2
+2
+2
+yx
+dy 2xdx
+dy 2xdx
+dy 4xdx
+=
+=
+=
+=  
+ 
+Substituting in the formula: 
+ 
+( )
+1
+2
+3
+2
+2
+2
+0
+2
+2
+0
+2
+0
+A 2 1 4x xdx
+1A 2 1 4x 8xdx8
+(1 4x)A 34
+2
+=  +
+=  =
++=
+
+  
+ 
+Substituting limits: 
+( )
+3
+32
+22 22A 1 4 2 1 4(0)12
+A 13.61 sq. units
+ = + − + 
+=
+ 
+ 
+21. D. 8.17  
+ 
+2
+2
+0
+x 4x 9dx+  
+Let: 
+ 
+2
+u 4x 9
+du 8xdx
+=+
+=  
+22
+22
+00
+1x 4x 9dx 4x 9(8xdx)8+ = +
+ 
+ But 
+3
+21
+2
+uu du C 3
+2
+=+  
+ 
+( )
+3
+2
+2
+2 2
+2
+0
+0
+4x 91x 4x 9dx 38
+2
++
++=  
+3
+2
+3
+2
+22
+2
+20
+4(2) 91x 4x 9dx 12 - 4(0) 9
+8.17
+ ++= 
+ +
+=
+
+ 
+ 
+ 
+22. B. 21.055 kJ  
+After lifting the load x meters, the total 
+mass of the cable left in the shaft as well 
+as the load is: 
+1x(50 x) 150 17522 − + = −
+ 
+ 
+Note: Weight in kg is: 
+Weight mass(g)=
+ g = 9.8 m/s2 
+ 
+The force required to hold the cable and 
+load a distance of x meters above the 
+bottom is: 
+( )
+12.5
+0
+12.52
+0
+xF(x) 9.8 175 2
+F(x) 1715 4.9x
+W 1715 4.9x dx
+W 1715x 2.45x
+W 21054.69 J 21.055 kJ
+=− 
+=−
+=−
+=−
+==
+
+ 
+ 
+23. D. 15  
+ 
+2 3 1
+B 1 2 0
+12 3 2 3
+1 2 1 2 0
+322
+2
+11 2
+8xyzdV 8xyzdzdxdy
+4xy dxdy 4xydxdy
+2x y dy 10ydy 15
+=
+==
+= = =
+ 
+ 
+
+ 
+ 
+24. B. 4  
+The cross sections are disks with radius r 
+= y where 
+21y 9 x3=−  
+( )
+33
+22
+30
+3
+3
+0
+1V y dx 2 9 x dx 9
+21V 9x x 493
+−
+=  =  −
+= − = 
+
+ 
+ 
+25. D. ½ ln 3   
+2
+1
+3
+1
+11ave value dx2x
+1 1 1ln x (ln 3 ln1) ln 32 2 2
+=
+= = − =
+
+ 
+END 
+x 
+F 
+x =  
+y 
+x 
+
