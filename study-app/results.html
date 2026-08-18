@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Marnie Quiz — Session Results</title>
+
+  <!-- MathJax -->
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        packages: { '[+]': ['ams'] },
+      },
+      options: { skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre'] },
+      startup: { ready() { MathJax.startup.defaultReady(); } },
+    };
+  </script>
+  <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet" />
+
+  <!-- Shared CSS & State -->
+  <link rel="stylesheet" href="css/style.css" />
+  <script src="js/state.js"></script>
+</head>
+<body>
+<div id="app" class="page-enter">
+
+  <!-- TOPBAR -->
+  <header class="topbar">
+    <div class="topbar-left">
+      <a href="index.html" class="topbar-logo">Marnie Quiz</a>
+      <div class="topbar-crumb">
+        <span class="topbar-crumb-sep">/</span>
+        <span id="crumb-title" class="topbar-crumb-title">Results</span>
+      </div>
+    </div>
+
+    <div class="topbar-center"></div>
+
+    <div class="topbar-right">
+      <a href="index.html" class="btn-home" id="btn-home">
+        <svg width="14" height="14" viewBox="0 0 20 20" fill="currentColor">
+          <path fill-rule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clip-rule="evenodd"/>
+        </svg>
+        Home
+      </a>
+      <button class="theme-toggle" onclick="MQ_THEME.toggle()">
+        <svg class="icon-sun" viewBox="0 0 20 20" fill="currentColor" style="display:none">
+          <path fill-rule="evenodd" d="M10 2a1 1 0 0 1 1 1v1a1 1 0 1 1-2 0V3a1 1 0 0 1 1-1zm4.22 2.22a1 1 0 0 1 0 1.415l-.707.707a1 1 0 1 1-1.414-1.414l.707-.707a1 1 0 0 1 1.414 0zM17 9h-1a1 1 0 1 1 0-2h1a1 1 0 1 1 0 2zm-1.22 5.78a1 1 0 0 1-1.414 0l-.707-.707a1 1 0 0 1 1.414-1.414l.707.707a1 1 0 0 1 0 1.414zM11 16v1a1 1 0 1 1-2 0v-1a1 1 0 1 1 2 0zm-5.78-1.22a1 1 0 0 1 0-1.415l.707-.707a1 1 0 0 1 1.414 1.414l-.707.707a1 1 0 0 1-1.414 0zM4 10H3a1 1 0 1 1 0-2h1a1 1 0 1 1 0 2zm1.22-5.78a1 1 0 0 1 1.414 0l.707.707A1 1 0 0 1 5.93 6.34l-.707-.707a1 1 0 0 1 0-1.413zM10 7a3 3 0 1 0 0 6 3 3 0 0 0 0-6z" clip-rule="evenodd"/>
+        </svg>
+        <svg class="icon-moon" viewBox="0 0 20 20" fill="currentColor">
+          <path d="M17.293 13.293A8 8 0 0 1 6.707 2.707a8.001 8.001 0 1 0 10.586 10.586z"/>
+        </svg>
+        <span class="theme-label">Light mode</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- RESULTS BODY -->
+  <main class="results-body">
+
+    <!-- Score Card -->
+    <section class="card card-pad-lg score-card">
+      <div class="score-label">Session Complete</div>
+      <div class="score-big" id="score-pct">0%</div>
+      <div class="score-frac" id="score-frac">0 out of 0 correct</div>
+
+      <div class="score-stats">
+        <div class="stat">
+          <div class="stat-val correct" id="stat-correct">0</div>
+          <div class="stat-lbl">Correct</div>
+        </div>
+        <div class="stat">
+          <div class="stat-val incorrect" id="stat-wrong">0</div>
+          <div class="stat-lbl">Incorrect</div>
+        </div>
+        <div class="stat">
+          <div class="stat-val neutral" id="stat-skipped">0</div>
+          <div class="stat-lbl">Skipped</div>
+        </div>
+        <div class="stat">
+          <div class="stat-val time-val" id="stat-time">0s</div>
+          <div class="stat-lbl">Time</div>
+        </div>
+      </div>
+
+      <div class="results-actions">
+        <button type="button" class="btn btn-retake" id="retake-btn">&#8635; Retake Set</button>
+        <button type="button" class="btn btn-new" id="new-quiz-btn">&#8853; Choose New Set</button>
+      </div>
+    </section>
+
+    <!-- Review Section -->
+    <section>
+      <div class="review-tabs">
+        <button type="button" class="review-tab active" data-filter="all">All</button>
+        <button type="button" class="review-tab" data-filter="wrong">Incorrect</button>
+        <button type="button" class="review-tab" data-filter="correct">Correct</button>
+        <button type="button" class="review-tab" data-filter="skipped">Skipped</button>
+        <button type="button" class="review-tab" data-filter="flagged">Flagged</button>
+      </div>
+
+      <div class="review-section-label" id="review-count-label">Showing 0 questions</div>
+      <div id="review-list"></div>
+    </section>
+
+  </main>
+</div>
+
+<script src="js/results.js"></script>
+</body>
+</html>

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Marnie Quiz — Question Session</title>
+
+  <!-- MathJax -->
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        packages: { '[+]': ['ams'] },
+      },
+      options: { skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre'] },
+      startup: { ready() { MathJax.startup.defaultReady(); } },
+    };
+  </script>
+  <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet" />
+
+  <!-- Shared CSS & State -->
+  <link rel="stylesheet" href="css/style.css" />
+  <script src="js/state.js"></script>
+</head>
+<body>
+<div id="app" class="page-enter">
+
+  <!-- TOPBAR -->
+  <header class="topbar">
+    <div class="topbar-left">
+      <a href="index.html" class="topbar-logo">Marnie Quiz</a>
+      <div class="topbar-crumb">
+        <span class="topbar-crumb-sep">/</span>
+        <span id="crumb-title" class="topbar-crumb-title">Session</span>
+      </div>
+    </div>
+
+    <div class="topbar-center">
+      <div class="topbar-q-badge" id="topbar-q-badge">Q 1 / 1</div>
+    </div>
+
+    <div class="topbar-right">
+      <a href="index.html" class="btn-home" id="btn-home">
+        <svg width="14" height="14" viewBox="0 0 20 20" fill="currentColor">
+          <path fill-rule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clip-rule="evenodd"/>
+        </svg>
+        Home
+      </a>
+      <button class="theme-toggle" onclick="MQ_THEME.toggle()">
+        <svg class="icon-sun" viewBox="0 0 20 20" fill="currentColor" style="display:none">
+          <path fill-rule="evenodd" d="M10 2a1 1 0 0 1 1 1v1a1 1 0 1 1-2 0V3a1 1 0 0 1 1-1zm4.22 2.22a1 1 0 0 1 0 1.415l-.707.707a1 1 0 1 1-1.414-1.414l.707-.707a1 1 0 0 1 1.414 0zM17 9h-1a1 1 0 1 1 0-2h1a1 1 0 1 1 0 2zm-1.22 5.78a1 1 0 0 1-1.414 0l-.707-.707a1 1 0 0 1 1.414-1.414l.707.707a1 1 0 0 1 0 1.414zM11 16v1a1 1 0 1 1-2 0v-1a1 1 0 1 1 2 0zm-5.78-1.22a1 1 0 0 1 0-1.415l.707-.707a1 1 0 0 1 1.414 1.414l-.707.707a1 1 0 0 1-1.414 0zM4 10H3a1 1 0 1 1 0-2h1a1 1 0 1 1 0 2zm1.22-5.78a1 1 0 0 1 1.414 0l.707.707A1 1 0 0 1 5.93 6.34l-.707-.707a1 1 0 0 1 0-1.413zM10 7a3 3 0 1 0 0 6 3 3 0 0 0 0-6z" clip-rule="evenodd"/>
+        </svg>
+        <svg class="icon-moon" viewBox="0 0 20 20" fill="currentColor">
+          <path d="M17.293 13.293A8 8 0 0 1 6.707 2.707a8.001 8.001 0 1 0 10.586 10.586z"/>
+        </svg>
+        <span class="theme-label">Light mode</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- PROGRESS BAR -->
+  <div class="progress-bar">
+    <div class="progress-fill" id="progress-fill" style="width:0%"></div>
+  </div>
+
+  <!-- QUIZ CONTENT -->
+  <div class="quiz-body">
+
+    <!-- Primary Question Column -->
+    <div class="q-col">
+      <div class="q-meta">
+        <span class="q-tag" id="q-tag-label"></span>
+        <span class="q-flag" id="flag-btn">
+          <svg viewBox="0 0 20 20" fill="currentColor">
+            <path d="M3 3a1 1 0 0 1 1-1h.5l.9 2H16a1 1 0 0 1 .894 1.447l-2 4A1 1 0 0 1 14 10H6.236l-.382.764A1 1 0 0 0 6.764 12H15a1 1 0 1 1 0 2H6a1 1 0 0 1-.894-1.553L6.618 10H4.618l-1.5-3H3a1 1 0 0 1-1-1V3z"/>
+          </svg>
+          Flag for review
+        </span>
+      </div>
+
+      <div class="card q-card">
+        <div class="q-image" id="q-image" style="display:none">
+          <img id="q-image-el" src="" alt="Question diagram" />
+        </div>
+        <div class="q-prompt" id="q-prompt"></div>
+        <div class="choices" id="choices-container"></div>
+
+        <!-- Inline explanation for immediate feedback mode -->
+        <div class="inline-explanation" id="inline-explanation">
+          <div class="inline-explanation-inner">
+            <div class="inline-explanation-label">📖 Solution &amp; Explanation</div>
+            <div id="inline-explanation-body"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="q-nav-btns">
+        <button type="button" class="btn btn-ghost" id="prev-btn" style="flex:0;min-width:100px">&#8592; Previous</button>
+        <button type="button" class="btn btn-nav" id="next-btn">Next &#8594;</button>
+        <button type="button" class="btn btn-submit-now" id="submit-btn">Submit Quiz</button>
+      </div>
+    </div>
+
+    <!-- Sidebar Navigator -->
+    <aside class="nav-sidebar">
+      <div class="card nav-sidebar-inner">
+        <!-- Timer -->
+        <div class="timer-display" id="timer-display">
+          <div class="timer-label-text" id="timer-label-text">Time remaining</div>
+          <div class="timer-value" id="timer-value">--:--</div>
+        </div>
+
+        <div class="nav-sidebar-label">Questions</div>
+        <div class="nav-grid" id="nav-grid"></div>
+
+        <div class="nav-legend">
+          <div class="nav-legend-item">
+            <div class="legend-dot" style="background:rgba(216,119,87,.12);border:1.5px solid rgba(216,119,87,.5)"></div>
+            Answered
+          </div>
+          <div class="nav-legend-item">
+            <div class="legend-dot" style="background:var(--surface2);border:1.5px solid var(--border)"></div>
+            Unanswered
+          </div>
+          <div class="nav-legend-item">
+            <div class="legend-dot" style="background:rgba(212,160,58,.1);border:1.5px solid var(--yellow)"></div>
+            Flagged
+          </div>
+        </div>
+      </div>
+    </aside>
+
+  </div>
+</div>
+
+<script src="js/quiz.js"></script>
+</body>
+</html>
