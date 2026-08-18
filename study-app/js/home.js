@@ -195,18 +195,31 @@ async function loadAndStartManifestQuiz(quiz, cardEl) {
   if (originalBtn) originalBtn.textContent = '⏳ Loading...';
 
   try {
-    // Relative path correction if needed
-    var filePath = quiz.path;
-    if (filePath.startsWith('test-sets/')) {
-      filePath = '../' + filePath; // from study-app/ perspective
+    var rawPath = quiz.path || ('test-sets/' + quiz.filename);
+    var candidates = [
+      rawPath,
+      '/' + rawPath,
+      '../' + rawPath,
+      quiz.filename
+    ];
+
+    var res = null;
+    for (var c = 0; c < candidates.length; c++) {
+      try {
+        var tryUrl = encodeURI(candidates[c]);
+        var testRes = await fetch(tryUrl);
+        if (testRes.ok) {
+          res = testRes;
+          break;
+        }
+      } catch (e) {
+        // continue to next candidate
+      }
     }
 
-    var res = await fetch(filePath);
-    if (!res.ok) {
-      // Try direct path
-      res = await fetch(quiz.path);
+    if (!res || !res.ok) {
+      throw new Error('Could not load ' + quiz.filename + ' (tried: ' + candidates[0] + ')');
     }
-    if (!res.ok) throw new Error('Could not load ' + quiz.filename);
 
     var csvText = await res.text();
 

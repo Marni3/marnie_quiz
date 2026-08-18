@@ -3,7 +3,9 @@ const path = require('path');
 
 const ROOT_DIR = path.resolve(__dirname, '..');
 const TEST_SETS_DIR = path.join(ROOT_DIR, 'test-sets');
-const OUTPUT_FILE = path.join(ROOT_DIR, 'study-app', 'manifest.json');
+const STUDY_APP_DIR = path.join(ROOT_DIR, 'study-app');
+const STUDY_APP_TEST_SETS = path.join(STUDY_APP_DIR, 'test-sets');
+const OUTPUT_FILE = path.join(STUDY_APP_DIR, 'manifest.json');
 const ALT_OUTPUT_FILE = path.join(TEST_SETS_DIR, 'manifest.json');
 
 const IGNORED_DIRS = new Set([
@@ -15,6 +17,28 @@ const IGNORED_DIRS = new Set([
   'node_modules',
   '.git'
 ]);
+
+function copyDirRecursive(src, dest) {
+  if (!fs.existsSync(src)) return;
+  if (!fs.existsSync(dest)) {
+    fs.mkdirSync(dest, { recursive: true });
+  }
+
+  const entries = fs.readdirSync(src, { withFileTypes: true });
+
+  for (const entry of entries) {
+    if (IGNORED_DIRS.has(entry.name)) continue;
+
+    const srcPath = path.join(src, entry.name);
+    const destPath = path.join(dest, entry.name);
+
+    if (entry.isDirectory()) {
+      copyDirRecursive(srcPath, destPath);
+    } else if (entry.isFile() && entry.name.toLowerCase().endsWith('.csv')) {
+      fs.copyFileSync(srcPath, destPath);
+    }
+  }
+}
 
 function formatTitle(filename) {
   return filename
@@ -41,8 +65,11 @@ function buildManifest() {
     return;
   }
 
-  const categories = [];
+  // 1. Sync test-sets into study-app/test-sets for static hosting on Vercel
+  console.log('Syncing test-sets to study-app/test-sets...');
+  copyDirRecursive(TEST_SETS_DIR, STUDY_APP_TEST_SETS);
 
+  const categories = [];
   const topEntries = fs.readdirSync(TEST_SETS_DIR, { withFileTypes: true });
 
   for (const topEntry of topEntries) {
@@ -54,7 +81,6 @@ function buildManifest() {
     const categoryPath = path.join(TEST_SETS_DIR, categoryName);
     const topics = [];
 
-    // Check direct files in category
     const subEntries = fs.readdirSync(categoryPath, { withFileTypes: true });
     const directCsvs = [];
 
@@ -68,7 +94,7 @@ function buildManifest() {
         for (const file of files) {
           if (file.isFile() && file.name.toLowerCase().endsWith('.csv')) {
             const fullFilePath = path.join(topicPath, file.name);
-            const relPath = path.relative(ROOT_DIR, fullFilePath).replace(/\\/g, '/');
+            const relPath = `test-sets/${categoryName}/${topicName}/${file.name}`;
             const qCount = countQuestions(fullFilePath);
 
             quizzes.push({
@@ -91,7 +117,7 @@ function buildManifest() {
         }
       } else if (subEntry.isFile() && subEntry.name.toLowerCase().endsWith('.csv')) {
         const fullFilePath = path.join(categoryPath, subEntry.name);
-        const relPath = path.relative(ROOT_DIR, fullFilePath).replace(/\\/g, '/');
+        const relPath = `test-sets/${categoryName}/${subEntry.name}`;
         const qCount = countQuestions(fullFilePath);
 
         directCsvs.push({
@@ -127,7 +153,7 @@ function buildManifest() {
   for (const entry of topEntries) {
     if (entry.isFile() && entry.name.toLowerCase().endsWith('.csv')) {
       const fullFilePath = path.join(TEST_SETS_DIR, entry.name);
-      const relPath = path.relative(ROOT_DIR, fullFilePath).replace(/\\/g, '/');
+      const relPath = `test-sets/${entry.name}`;
       const qCount = countQuestions(fullFilePath);
 
       rootCsvs.push({
