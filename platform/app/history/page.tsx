@@ -1,0 +1,188 @@
+import { auth } from "@/lib/auth";
+import { getUserAttemptsHistory } from "@/lib/attempts";
+import { Navbar } from "@/components/navbar";
+import Link from "next/link";
+import {
+  History,
+  RotateCcw,
+  CheckCircle,
+  ExternalLink,
+  BookOpen,
+} from "lucide-react";
+
+export default async function HistoryPage() {
+  const session = await auth();
+  const userId = session?.user?.id || "00000000-0000-0000-0000-000000000001";
+
+  const history = await getUserAttemptsHistory(userId);
+
+  const formatDuration = (sec: number | null) => {
+    if (!sec) return "0s";
+    const m = Math.floor(sec / 60);
+    const s = sec % 60;
+    if (m === 0) return `${s}s`;
+    return `${m}m ${s.toString().padStart(2, "0")}s`;
+  };
+
+  return (
+    <div className="min-h-screen flex flex-col relative z-10">
+      <Navbar breadcrumb="Past History" />
+
+      <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
+          <div>
+            <h1 className="text-3xl sm:text-4xl font-bold font-serif text-[var(--text)] tracking-tight">
+              Attempt <em>History</em>
+            </h1>
+            <p className="text-sm text-[var(--text2)] mt-1">
+              Review all your previous study attempts and performance across question sets.
+            </p>
+          </div>
+
+          <Link
+            href="/quizzes"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-[var(--surface2)] border border-[var(--border)] text-[var(--text2)] text-xs font-semibold hover:border-[var(--accent)] hover:text-[var(--accent)] transition-colors self-start sm:self-auto"
+          >
+            <BookOpen className="w-4 h-4" />
+            <span>Browse Library</span>
+          </Link>
+        </div>
+
+        {history.length === 0 ? (
+          <div className="bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-12 text-center shadow-[var(--shadow)]">
+            <div className="w-12 h-12 rounded-2xl bg-[var(--surface2)] border border-[var(--border)] text-[var(--text3)] flex items-center justify-center mx-auto mb-4">
+              <History className="w-6 h-6" />
+            </div>
+            <h3 className="text-lg font-bold font-serif text-[var(--text)]">
+              No quiz attempts yet
+            </h3>
+            <p className="text-sm text-[var(--text2)] mt-1.5 max-w-sm mx-auto">
+              You haven&apos;t taken any study quizzes yet. Head to the library and start your first practice set!
+            </p>
+            <Link
+              href="/quizzes"
+              className="mt-5 inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-[var(--accent)] text-white text-xs font-semibold hover:brightness-110 transition-all"
+            >
+              Browse Available Quizzes →
+            </Link>
+          </div>
+        ) : (
+          <div className="bg-[var(--surface)] border border-[var(--border)] rounded-2xl shadow-[var(--shadow)] overflow-hidden">
+            <div className="overflow-x-auto">
+              <table className="w-full text-left text-xs sm:text-sm">
+                <thead>
+                  <tr className="border-b border-[var(--border)] bg-[var(--surface2)] text-[var(--text3)] font-mono text-xs uppercase tracking-wider">
+                    <th className="px-6 py-3.5">Quiz Set</th>
+                    <th className="px-6 py-3.5">Subject</th>
+                    <th className="px-6 py-3.5">Mode</th>
+                    <th className="px-6 py-3.5">Score</th>
+                    <th className="px-6 py-3.5">Time</th>
+                    <th className="px-6 py-3.5">Date</th>
+                    <th className="px-6 py-3.5 text-right">Actions</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-[var(--border)]">
+                  {history.map((item) => {
+                    const score = item.score ?? 0;
+                    const total = item.totalQuestions || 1;
+                    const pct = Math.round((score / total) * 100);
+                    const isCompleted = !!item.completedAt;
+
+                    return (
+                      <tr
+                        key={item.id}
+                        className="hover:bg-[var(--surface2)] transition-colors"
+                      >
+                        <td className="px-6 py-4 font-semibold text-[var(--text)]">
+                          <Link
+                            href={`/quizzes/${item.questionSetId}`}
+                            className="hover:text-[var(--accent)] transition-colors"
+                          >
+                            {item.setTitle}
+                          </Link>
+                        </td>
+
+                        <td className="px-6 py-4">
+                          {item.subjectTag ? (
+                            <span className="px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-[rgba(217,119,87,0.12)] text-[var(--accent)] border border-[rgba(217,119,87,0.25)]">
+                              {item.subjectTag}
+                            </span>
+                          ) : (
+                            <span className="text-[var(--text3)]">—</span>
+                          )}
+                        </td>
+
+                        <td className="px-6 py-4 capitalize text-[var(--text2)]">
+                          {item.mode.replace(/_/g, " ")}
+                        </td>
+
+                        <td className="px-6 py-4">
+                          {isCompleted ? (
+                            <div className="flex items-center gap-2">
+                              <span
+                                className={`font-bold font-mono ${
+                                  pct >= 75
+                                    ? "text-[var(--green)]"
+                                    : pct >= 50
+                                    ? "text-[var(--yellow)]"
+                                    : "text-[var(--red)]"
+                                }`}
+                              >
+                                {score}/{total} ({pct}%)
+                              </span>
+                            </div>
+                          ) : (
+                            <span className="text-[var(--yellow)] text-xs font-mono font-medium">
+                              In Progress
+                            </span>
+                          )}
+                        </td>
+
+                        <td className="px-6 py-4 font-mono text-[var(--text2)]">
+                          {formatDuration(item.durationSeconds)}
+                        </td>
+
+                        <td className="px-6 py-4 text-[var(--text3)] text-xs">
+                          {new Date(item.startedAt).toLocaleDateString()}
+                        </td>
+
+                        <td className="px-6 py-4 text-right">
+                          <div className="flex items-center justify-end gap-2">
+                            {isCompleted ? (
+                              <Link
+                                href={`/attempts/${item.id}/results`}
+                                className="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-[var(--surface)] border border-[var(--border)] hover:border-[var(--accent)] text-[var(--accent)] text-xs font-semibold transition-colors"
+                              >
+                                <span>Results</span>
+                                <ExternalLink className="w-3 h-3" />
+                              </Link>
+                            ) : (
+                              <Link
+                                href={`/attempts/${item.id}`}
+                                className="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-[var(--accent)] text-white text-xs font-semibold hover:brightness-110 transition-colors"
+                              >
+                                Resume
+                              </Link>
+                            )}
+
+                            <Link
+                              href={`/quizzes/${item.questionSetId}`}
+                              className="p-1.5 rounded-lg text-[var(--text3)] hover:text-[var(--accent)] hover:bg-[var(--surface)] transition-colors"
+                              title="Retake Quiz"
+                            >
+                              <RotateCcw className="w-4 h-4" />
+                            </Link>
+                          </div>
+                        </td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        )}
+      </main>
+    </div>
+  );
+}
