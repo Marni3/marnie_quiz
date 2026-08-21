@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Marnie Quiz — Board Exam Study Hub</title>
+  <title>Marnie Quiz — PRC ECE Board Exam Hub</title>
 
   <!-- PapaParse for fast on-demand quiz parsing -->
   <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
@@ -22,28 +22,30 @@
 
   <!-- FULL-WIDTH TOPBAR -->
   <header class="topbar">
-    <div class="topbar-left">
-      <a href="index.html" class="topbar-logo">Marnie Quiz</a>
-      <div class="topbar-crumb">
-        <span class="topbar-crumb-sep">/</span>
-        <span class="topbar-crumb-title">ECE Board Exam Hub</span>
+    <div class="topbar-inner">
+      <div class="topbar-left">
+        <a href="index.html" class="topbar-logo">Marnie Quiz</a>
+        <div class="topbar-crumb">
+          <span class="topbar-crumb-sep">/</span>
+          <span class="topbar-crumb-title">ECE Board Exam Hub</span>
+        </div>
       </div>
-    </div>
-    <div class="topbar-center"></div>
-    <div class="topbar-right">
-      <button class="theme-toggle" onclick="MQ_THEME.toggle()">
-        <svg class="icon-sun" viewBox="0 0 20 20" fill="currentColor" style="display:none">
-          <path fill-rule="evenodd" d="M10 2a1 1 0 0 1 1 1v1a1 1 0 1 1-2 0V3a1 1 0 0 1 1-1zm4.22 1.97a1 1 0 0 1 1.42 1.42l-.71.7a1 1 0 0 1-1.42-1.41l.71-.71zm3.81 5.03a1 1 0 0 1 0 2h-1a1 1 0 1 1 0-2h1zm-1.6 5.86a1 1 0 0 1-1.41 1.41l-.71-.7a1 1 0 1 1 1.42-1.42l.7.71zM10 16a1 1 0 0 1 1 1v1a1 1 0 1 1-2 0v-1a1 1 0 0 1 1-1zm-5.63-1.03a1 1 0 0 1-1.42-1.42l.71-.7a1 1 0 1 1 1.41 1.41l-.7.71zm-2.4-4.97a1 1 0 0 1 0-2h1a1 1 0 1 1 0 2h-1zm1.7-5.86a1 1 0 0 1 1.41-1.41l.71.7a1 1 0 1 1-1.42 1.42l-.7-.71zM10 5a5 5 0 1 0 0 10A5 5 0 0 0 10 5z" clip-rule="evenodd"/>
-        </svg>
-        <svg class="icon-moon" viewBox="0 0 20 20" fill="currentColor">
-          <path d="M17.293 13.293A8 8 0 0 1 6.707 2.707a8.001 8.001 0 1 0 10.586 10.586z"/>
-        </svg>
-        <span id="theme-text">Dark</span>
-      </button>
+      <div class="topbar-center"></div>
+      <div class="topbar-right">
+        <button class="theme-toggle" onclick="MQ_THEME.toggle()">
+          <svg class="icon-sun" viewBox="0 0 20 20" fill="currentColor" style="display:none">
+            <path fill-rule="evenodd" d="M10 2a1 1 0 0 1 1 1v1a1 1 0 1 1-2 0V3a1 1 0 0 1 1-1zm4.22 1.97a1 1 0 0 1 1.42 1.42l-.71.7a1 1 0 0 1-1.42-1.41l.71-.71zm3.81 5.03a1 1 0 0 1 0 2h-1a1 1 0 1 1 0-2h1zm-1.6 5.86a1 1 0 0 1-1.41 1.41l-.71-.7a1 1 0 1 1 1.42-1.42l.7.71zM10 16a1 1 0 0 1 1 1v1a1 1 0 1 1-2 0v-1a1 1 0 0 1 1-1zm-5.63-1.03a1 1 0 0 1-1.42-1.42l.71-.7a1 1 0 1 1 1.41 1.41l-.7.71zm-2.4-4.97a1 1 0 0 1 0-2h1a1 1 0 1 1 0 2h-1zm1.7-5.86a1 1 0 0 1 1.41-1.41l.71.7a1 1 0 1 1-1.42 1.42l-.7-.71zM10 5a5 5 0 1 0 0 10A5 5 0 0 0 10 5z" clip-rule="evenodd"/>
+          </svg>
+          <svg class="icon-moon" viewBox="0 0 20 20" fill="currentColor">
+            <path d="M17.293 13.293A8 8 0 0 1 6.707 2.707a8.001 8.001 0 1 0 10.586 10.586z"/>
+          </svg>
+          <span id="theme-text">Dark</span>
+        </button>
+      </div>
     </div>
   </header>
 
-  <!-- MAIN TWO-COLUMN DASHBOARD -->
+  <!-- MAIN CONTAINER WITH BREATHING ROOM -->
   <main class="browser-layout">
 
     <!-- LEFT COLUMN: Manifest Browser (~70%) -->
@@ -77,6 +79,37 @@
         </div>
       </div>
 
+      <!-- PEDAGOGICAL STUDY TIERS GUIDE ACCORDION -->
+      <div class="tier-guide-container">
+        <div class="tier-guide-header" id="tier-guide-toggle">
+          <div class="tier-guide-title">
+            <span class="tier-guide-icon">💡</span>
+            <strong>How the 4 Pedagogical Test Levels Work</strong>
+          </div>
+          <span class="tier-guide-chevron">▾</span>
+        </div>
+        <div class="tier-guide-body" id="tier-guide-body">
+          <div class="tier-guide-grid">
+            <div class="tier-guide-card tier-guide-diag">
+              <div class="tier-guide-card-head">🩺 Diagnostic (30 Qs)</div>
+              <div class="tier-guide-card-desc">Untimed diagnostic assessment. Identifies your baseline weaknesses and knowledge gaps before starting a topic.</div>
+            </div>
+            <div class="tier-guide-card tier-guide-rev">
+              <div class="tier-guide-card-head">📖 Review (1:1 Ref)</div>
+              <div class="tier-guide-card-desc">1:1 absolute syllabus reference review. Transcribed directly from course notes with complete step-by-step solutions.</div>
+            </div>
+            <div class="tier-guide-card tier-guide-drill">
+              <div class="tier-guide-card-head">⚡ Concept Drill (10 Qs)</div>
+              <div class="tier-guide-card-desc">Rapid concept & formula retrieval. Focuses on speed heuristics, observation, and Casio calculator techniques.</div>
+            </div>
+            <div class="tier-guide-card tier-guide-sim">
+              <div class="tier-guide-card-head">🎯 Simulation (50 Qs)</div>
+              <div class="tier-guide-card-desc">Full-scale mock board exam under real PRC conditions. Integrates multi-step problems and time pressure.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <!-- Search, Subject Category Tabs & Tier Filters -->
       <div class="search-filter-strip">
         <div class="search-box-wrap">
@@ -90,7 +123,7 @@
           />
         </div>
 
-        <!-- Subject Tabs -->
+        <!-- Prominent Subject Tabs -->
         <div class="category-pills" id="category-pills"></div>
 
         <!-- Tier Filter Pills & Toolbar Controls -->
@@ -102,11 +135,11 @@
             <button type="button" class="tier-pill" data-tier="drill">⚡ Drill (10 Qs)</button>
             <button type="button" class="tier-pill" data-tier="simulation">🎯 Simulation (50 Qs)</button>
           </div>
-          <button type="button" class="btn-toggle-all" id="btn-toggle-all">Collapse All</button>
+          <button type="button" class="btn-toggle-all" id="btn-toggle-all">Expand All</button>
         </div>
       </div>
 
-      <!-- Test Sets Directory Container -->
+      <!-- Test Sets Directory Container (Default Collapsed) -->
       <div id="manifest-container" class="manifest-container">
         <div style="padding:40px;text-align:center;color:var(--text3);font-size:.9rem;">
           Loading ECE Board Exam Question Banks...
@@ -200,60 +233,6 @@
         <button type="button" class="btn btn-primary" id="start-btn" style="margin-top:0;" disabled>
           Start Custom CSV →
         </button>
-      </div>
-
-      <!-- 3. AI Prompt Generator Card -->
-      <div class="sidebar-card ai-card" id="ai-card">
-        <div class="ai-card-header" id="ai-card-header">
-          <div class="ai-card-header-left">
-            <span style="color:var(--accent);font-size:1.1rem;">✦</span>
-            <span class="ai-card-title">AI Prompt Generator</span>
-          </div>
-          <svg class="ai-card-chevron" width="14" height="14" viewBox="0 0 20 20" fill="currentColor">
-            <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 0 1 1.06.02L10 11.17l3.71-3.94a.75.75 0 1 1 1.08 1.04l-4.25 4.5a.75.75 0 0 1-1.08 0l-4.25-4.5a.75.75 0 0 1 .02-1.06z" clip-rule="evenodd"/>
-          </svg>
-        </div>
-
-        <div class="ai-card-body">
-          <div class="ai-card-inner">
-            <div style="font-size:.74rem;color:var(--text3);margin-bottom:8px;line-height:1.5;">
-              Copy this prompt into Claude or ChatGPT to generate new study sets for your folders.
-            </div>
-            <div class="prompt-wrap">
-              <div class="prompt-box" id="ai-prompt-text">You are an expert question writer. Generate a set of high-quality multiple-choice study questions based on the topic or material I provide. Output ONLY a valid CSV — no explanation, no markdown fences, no preamble, no commentary before or after. The file must be ready to save and import as-is.
-
-REQUIRED CSV COLUMNS (exact header row, comma-separated):
-question,choice_a,choice_b,choice_c,choice_d,correct_answer,explanation,image_url,subject_tag
-
-COLUMN RULES:
-- question: A clear, unambiguous question or scenario stem.
-- choice_a through choice_d: Four answer options.
-- correct_answer: Lowercase single letter: a, b, c, or d.
-- explanation: A thorough explanation of WHY the correct answer is right and key distractors are wrong. To add line breaks inside the explanation, write \n as a literal separator.
-- image_url: Leave completely blank unless you have a real public URL.
-- subject_tag: A short topic label in Title Case.
-
-LATEX AND MATH FORMATTING RULES:
-- Use LaTeX for ALL mathematical expressions, formulas, chemical notation, units, and Greek letters.
-- Inline math: $E = mc^2$, $\alpha$-blocker, $K^+$
-- Display math: $$PV = nRT$$
-- Do NOT use Unicode math symbols (α, β, →, ×) — use LaTeX instead ($\alpha$, $\beta$, $\rightarrow$, $\times$).
-
-CSV FORMATTING RULES:
-- Wrap EVERY cell in double quotes.
-- If a cell contains quotes, escape with double-quotes: ""like this""
-- Do NOT use actual newlines inside cells — use \n literal token instead.
-- Use comma (,) as delimiter.</div>
-              <button class="copy-btn" id="copy-prompt-btn">
-                <svg width="10" height="10" viewBox="0 0 20 20" fill="currentColor">
-                  <path d="M8 3a1 1 0 0 1 1-1h2a1 1 0 1 1 0 2H9a1 1 0 0 1-1-1z"/>
-                  <path d="M6 3a2 2 0 0 0-2 2v11a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2 3 3 0 0 1-3 3H9a3 3 0 0 1-3-3z"/>
-                </svg>
-                Copy
-              </button>
-            </div>
-          </div>
-        </div>
       </div>
 
     </aside>

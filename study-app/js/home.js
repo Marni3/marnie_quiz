@@ -9,7 +9,7 @@ var selectedCategory = 'all';
 var selectedTier = 'all';
 var searchKeyword = '';
 var searchDebounceTimer = null;
-var areAllCollapsed = false;
+var areAllCollapsed = true;
 
 var timerMode = 'untimed';
 var secondsPerQ = 60;
@@ -23,6 +23,7 @@ document.addEventListener('DOMContentLoaded', function () {
   MQ_THEME._updateToggles();
   initOptions();
   initPromptCard();
+  initTierGuide();
   initCustomDropzone();
   initSearchAndFilter();
   initTierFilters();
@@ -30,6 +31,17 @@ document.addEventListener('DOMContentLoaded', function () {
   initEventDelegation();
   loadManifest();
 });
+
+function initTierGuide() {
+  var toggle = document.getElementById('tier-guide-toggle');
+  var body = document.getElementById('tier-guide-body');
+  if (toggle && body) {
+    toggle.addEventListener('click', function () {
+      toggle.classList.toggle('open');
+      body.classList.toggle('open');
+    });
+  }
+}
 
 // ── 1. Fast Manifest Loading & Indexing ───────────────────────────
 function applyManifestData(data) {
