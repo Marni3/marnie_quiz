@@ -4,7 +4,9 @@
   "private": true,
   "description": "Board Exam Review Quiz Platform and Study Tool",
   "scripts": {
-    "manifest": "node scripts/generate-manifest.js",
-    "build": "node scripts/generate-manifest.js"
+    "dev": "npm --prefix platform run dev",
+    "build": "npm --prefix platform run build",
+    "start": "npm --prefix platform run start",
+    "manifest": "node scripts/generate-manifest.js"
   }
 }
