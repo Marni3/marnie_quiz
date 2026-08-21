@@ -1,12 +1,14 @@
-/* home.js — Upgraded Dashboard & Multi-Tier Manifest Browser */
+/* home.js — High-Performance Instant Dashboard & Multi-Tier Browser */
 
 var REQUIRED_COLS = ['question', 'choice_a', 'choice_b', 'choice_c', 'choice_d', 'correct_answer'];
 var VALID_ANS = { a: 1, b: 1, c: 1, d: 1 };
 
 var manifestData = null;
+var quizLookup = {}; // Map of id/path -> quiz object for instant O(1) lookup
 var selectedCategory = 'all';
 var selectedTier = 'all';
 var searchKeyword = '';
+var searchDebounceTimer = null;
 var areAllCollapsed = false;
 
 var timerMode = 'untimed';
@@ -25,10 +27,11 @@ document.addEventListener('DOMContentLoaded', function () {
   initSearchAndFilter();
   initTierFilters();
   initCollapseToggle();
+  initEventDelegation();
   loadManifest();
 });
 
-// ── 1. Manifest Loading & Rendering ─────────────────────────────
+// ── 1. Fast Manifest Loading & Indexing ───────────────────────────
 async function loadManifest() {
   var container = document.getElementById('manifest-container');
   var counter = document.getElementById('total-quizzes-counter');
@@ -40,6 +43,16 @@ async function loadManifest() {
     if (!res.ok) throw new Error('Manifest not found');
     manifestData = await res.json();
 
+    // Build fast flat lookup table for O(1) quiz launching
+    quizLookup = {};
+    manifestData.categories.forEach(function (cat) {
+      cat.topics.forEach(function (topic) {
+        topic.quizzes.forEach(function (q) {
+          quizLookup[q.path] = q;
+        });
+      });
+    });
+
     if (counter) {
       counter.textContent = manifestData.totalQuizzes + ' Test Sets Available • ' + (manifestData.totalQuestions || 5435).toLocaleString() + ' Questions';
     }
@@ -50,13 +63,12 @@ async function loadManifest() {
     renderManifestQuizzes();
   } catch (err) {
     console.warn('Could not fetch manifest.json:', err);
-    if (counter) counter.textContent = 'Manual upload mode';
     if (container) {
       container.innerHTML =
         '<div style="padding:32px 20px;text-align:center;background:var(--surface);border:1.5px dashed var(--border);border-radius:var(--radius);">' +
         '<div style="font-size:1.8rem;margin-bottom:8px;">📁</div>' +
         '<div style="font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:var(--text);">Repository Test Sets</div>' +
-        '<div style="font-size:.84rem;color:var(--text3);margin-top:4px;max-width:400px;margin-left:auto;margin-right:auto;">Use the sidebar upload on the right to load any CSV test set, or run <code>npm run manifest</code> to index your folder structure.</div>' +
+        '<div style="font-size:.84rem;color:var(--text3);margin-top:4px;">Use the sidebar upload on the right to load any CSV test set directly.</div>' +
         '</div>';
     }
   }
@@ -65,29 +77,29 @@ async function loadManifest() {
 function renderCategoryPills() {
   if (!manifestData || !manifestData.categories) return;
   var pillsContainer = document.getElementById('category-pills');
-  pillsContainer.innerHTML = '';
+  var html = [];
 
-  var allBtn = document.createElement('button');
-  allBtn.type = 'button';
-  allBtn.className = 'category-pill' + (selectedCategory === 'all' ? ' active' : '');
-  allBtn.dataset.cat = 'all';
-  allBtn.textContent = 'All Subjects (' + manifestData.totalQuizzes + ')';
-  allBtn.addEventListener('click', function () {
-    selectCategory('all');
-  });
-  pillsContainer.appendChild(allBtn);
+  html.push(
+    '<button type="button" class="category-pill ' + (selectedCategory === 'all' ? 'active' : '') + '" data-cat="all">' +
+    'All Subjects (' + manifestData.totalQuizzes + ')' +
+    '</button>'
+  );
 
   manifestData.categories.forEach(function (cat) {
     var count = cat.topics.reduce(function (sum, t) { return sum + t.quizzes.length; }, 0);
-    var btn = document.createElement('button');
-    btn.type = 'button';
-    btn.className = 'category-pill' + (selectedCategory === cat.name ? ' active' : '');
-    btn.dataset.cat = cat.name;
-    btn.textContent = cat.name + ' (' + count + ')';
+    html.push(
+      '<button type="button" class="category-pill ' + (selectedCategory === cat.name ? 'active' : '') + '" data-cat="' + escHtml(cat.name) + '">' +
+      escHtml(cat.name) + ' (' + count + ')' +
+      '</button>'
+    );
+  });
+
+  pillsContainer.innerHTML = html.join('');
+
+  pillsContainer.querySelectorAll('.category-pill').forEach(function (btn) {
     btn.addEventListener('click', function () {
-      selectCategory(cat.name);
+      selectCategory(btn.dataset.cat);
     });
-    pillsContainer.appendChild(btn);
   });
 }
 
@@ -126,15 +138,16 @@ function initCollapseToggle() {
   }
 }
 
+// ── 2. High-Performance Template Injection & Event Delegation ────
 function renderManifestQuizzes() {
   if (!manifestData || !manifestData.categories) return;
 
   var container = document.getElementById('manifest-container');
   var emptyMsg = document.getElementById('empty-search-msg');
-  container.innerHTML = '';
 
   var qLower = searchKeyword.toLowerCase().trim();
   var totalRendered = 0;
+  var outHtml = [];
 
   manifestData.categories.forEach(function (category) {
     if (selectedCategory !== 'all' && selectedCategory !== category.name) {
@@ -175,43 +188,32 @@ function renderManifestQuizzes() {
 
     if (matchingTopics.length === 0) return;
 
-    var catSection = document.createElement('div');
-    catSection.className = 'category-section';
-
-    var catHeader = document.createElement('div');
-    catHeader.className = 'category-header';
-
     var totalCatQuizzes = matchingTopics.reduce(function (sum, t) { return sum + t.quizzes.length; }, 0);
-    catHeader.innerHTML =
+
+    outHtml.push('<div class="category-section">');
+    outHtml.push(
+      '<div class="category-header">' +
       '<h2 class="category-title">' + escHtml(category.name) + '</h2>' +
-      '<span class="category-badge">' + totalCatQuizzes + ' quizzes</span>';
-    catSection.appendChild(catHeader);
+      '<span class="category-badge">' + totalCatQuizzes + ' quizzes</span>' +
+      '</div>'
+    );
 
     matchingTopics.forEach(function (topic) {
       var topicTotalQs = topic.quizzes.reduce(function (s, q) { return s + q.questionCount; }, 0);
 
-      // Accordion Header
-      var accHeader = document.createElement('div');
-      accHeader.className = 'topic-accordion-header' + (areAllCollapsed ? ' collapsed' : '');
-      accHeader.innerHTML =
-        '<div class="topic-accordion-left">' +
-        '  <span class="topic-accordion-icon">▾</span>' +
-        '  <span class="topic-accordion-title">' + escHtml(topic.name) + '</span>' +
-        '</div>' +
-        '<span class="topic-accordion-meta">' + topic.quizzes.length + ' sets • ' + topicTotalQs + ' Qs</span>';
+      outHtml.push(
+        '<div class="topic-accordion-header ' + (areAllCollapsed ? 'collapsed' : '') + '" data-accordion-topic="' + escHtml(topic.name) + '">' +
+        '  <div class="topic-accordion-left">' +
+        '    <span class="topic-accordion-icon">▾</span>' +
+        '    <span class="topic-accordion-title">' + escHtml(topic.name) + '</span>' +
+        '  </div>' +
+        '  <span class="topic-accordion-meta">' + topic.quizzes.length + ' sets • ' + topicTotalQs + ' Qs</span>' +
+        '</div>'
+      );
 
-      var accBody = document.createElement('div');
-      accBody.className = 'topic-accordion-body' + (areAllCollapsed ? ' collapsed' : '');
-
-      accHeader.addEventListener('click', function () {
-        accHeader.classList.toggle('collapsed');
-        accBody.classList.toggle('collapsed');
-      });
+      outHtml.push('<div class="topic-accordion-body ' + (areAllCollapsed ? 'collapsed' : '') + '">');
 
       topic.quizzes.forEach(function (quiz) {
-        var card = document.createElement('div');
-        card.className = 'quiz-card-item';
-
         var tier = (quiz.tier || 'review').toLowerCase();
         var tierLabel = {
           diagnostic: '🩺 Diagnostic',
@@ -222,41 +224,68 @@ function renderManifestQuizzes() {
 
         var tierClass = 'badge-tier badge-tier-' + tier;
 
-        card.innerHTML =
-          '<div class="quiz-card-top">' +
-          '  <span class="' + tierClass + '">' + escHtml(tierLabel) + '</span>' +
-          '  <span class="quiz-card-badge">' + quiz.questionCount + ' Qs</span>' +
-          '</div>' +
-          '<div class="quiz-card-title">' + escHtml(quiz.title) + '</div>' +
-          '<div class="quiz-card-bottom">' +
-          '  <span>' + escHtml(quiz.filename) + '</span>' +
-          '  <span class="quiz-card-btn">Start →</span>' +
-          '</div>';
-
-        card.addEventListener('click', function () {
-          startManifestQuiz(quiz);
-        });
-
-        accBody.appendChild(card);
+        outHtml.push(
+          '<div class="quiz-card-item" data-quiz-path="' + escHtml(quiz.path) + '">' +
+          '  <div class="quiz-card-top">' +
+          '    <span class="' + tierClass + '">' + escHtml(tierLabel) + '</span>' +
+          '    <span class="quiz-card-badge">' + quiz.questionCount + ' Qs</span>' +
+          '  </div>' +
+          '  <div class="quiz-card-title">' + escHtml(quiz.title) + '</div>' +
+          '  <div class="quiz-card-bottom">' +
+          '    <span>' + escHtml(quiz.filename) + '</span>' +
+          '    <span class="quiz-card-btn">Start →</span>' +
+          '  </div>' +
+          '</div>'
+        );
       });
 
-      catSection.appendChild(accHeader);
-      catSection.appendChild(accBody);
+      outHtml.push('</div>'); // end accordion-body
     });
 
-    container.appendChild(catSection);
+    outHtml.push('</div>'); // end category-section
   });
+
+  // Single batch DOM update in one operation
+  container.innerHTML = outHtml.join('');
 
   if (emptyMsg) {
     emptyMsg.style.display = totalRendered === 0 ? 'block' : 'none';
   }
 }
 
-// ── 2. Starting a Quiz from Manifest ─────────────────────────────
-async function startManifestQuiz(quiz) {
-  var origText = event.currentTarget ? event.currentTarget.querySelector('.quiz-card-btn') : null;
-  if (origText) origText.textContent = 'Loading...';
+// ── 3. Event Delegation for Instant Clicks & Accordion Toggles ────
+function initEventDelegation() {
+  var container = document.getElementById('manifest-container');
+  if (!container) return;
 
+  container.addEventListener('click', function (e) {
+    // 1. Accordion Header Toggle
+    var header = e.target.closest('.topic-accordion-header');
+    if (header) {
+      var body = header.nextElementSibling;
+      if (body && body.classList.contains('topic-accordion-body')) {
+        header.classList.toggle('collapsed');
+        body.classList.toggle('collapsed');
+      }
+      return;
+    }
+
+    // 2. Quiz Card Click
+    var card = e.target.closest('.quiz-card-item');
+    if (card) {
+      var path = card.getAttribute('data-quiz-path');
+      var quiz = quizLookup[path];
+      if (quiz) {
+        var btn = card.querySelector('.quiz-card-btn');
+        if (btn) btn.textContent = 'Loading...';
+        startManifestQuiz(quiz);
+      }
+    }
+  });
+}
+
+// ── 4. On-Demand Fast Quiz Loading ───────────────────────────────
+async function startManifestQuiz(quiz) {
   try {
     var csvUrl = quiz.path + '?v=' + Date.now();
     var res = await fetch(csvUrl);
@@ -288,7 +317,6 @@ async function startManifestQuiz(quiz) {
 
         if (valid.length === 0) {
           alert('Could not parse questions from this quiz file.');
-          if (origText) origText.textContent = 'Start →';
           return;
         }
 
@@ -296,12 +324,10 @@ async function startManifestQuiz(quiz) {
       },
       error: function (err) {
         alert('Error parsing CSV: ' + err.message);
-        if (origText) origText.textContent = 'Start →';
       }
     });
   } catch (err) {
     alert('Failed to load quiz: ' + err.message);
-    if (origText) origText.textContent = 'Start →';
   }
 }
 
@@ -317,18 +343,21 @@ function launchSession(title, questions) {
   window.location.href = 'quiz.html';
 }
 
-// ── 3. Search and Category Filter Wiring ─────────────────────────
+// ── 5. Debounced Search & Input ──────────────────────────────────
 function initSearchAndFilter() {
   var searchInput = document.getElementById('search-input');
   if (searchInput) {
     searchInput.addEventListener('input', function (e) {
+      clearTimeout(searchDebounceTimer);
       searchKeyword = e.target.value;
-      renderManifestQuizzes();
+      searchDebounceTimer = setTimeout(function () {
+        renderManifestQuizzes();
+      }, 120); // 120ms debounce for 60fps instant UI feel
     });
   }
 }
 
-// ── 4. Sidebar Custom Dropzone ──────────────────────────────────
+// ── 6. Sidebar Custom Dropzone & Options ─────────────────────────
 function initCustomDropzone() {
   var dz = document.getElementById('dropzone');
   var fileInput = document.getElementById('csv-input');
@@ -451,7 +480,6 @@ function showErrors(errs) {
     : '<ul>' + errs.map(function (e) { return '<li>' + escHtml(e) + '</li>'; }).join('') + '</ul>';
 }
 
-// ── 5. Sidebar Options Wiring ────────────────────────────────────
 function initOptions() {
   document.querySelectorAll('.timer-opt').forEach(function (opt) {
     opt.addEventListener('click', function () {
@@ -498,7 +526,6 @@ function initOptions() {
   }
 }
 
-// ── 6. AI Prompt Card Wiring ─────────────────────────────────────
 function initPromptCard() {
   var header = document.getElementById('ai-card-header');
   var card = document.getElementById('ai-card');

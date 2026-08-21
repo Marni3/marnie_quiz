@@ -5,22 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Marnie Quiz — Board Exam Study Hub</title>
 
-  <!-- PapaParse -->
+  <!-- PapaParse for fast on-demand quiz parsing -->
   <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
-
-  <!-- MathJax -->
-  <script>
-    window.MathJax = {
-      tex: {
-        inlineMath: [['$', '$'], ['\\(', '\\)']],
-        displayMath: [['$$', '$$'], ['\\[', '\\]']],
-        packages: { '[+]': ['ams'] },
-      },
-      options: { skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre'] },
-      startup: { ready() { MathJax.startup.defaultReady(); } },
-    };
-  </script>
-  <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
 
   <!-- Google Fonts: Playfair Display, Inter, JetBrains Mono -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -99,7 +85,7 @@
             type="text"
             id="search-input"
             class="search-input"
-            placeholder="Search by topic, code (e.g. Elec 03, Math 09, GEAS 06), or keyword..."
+            placeholder="Quick search by topic, code (e.g. Elec 03, Math 09, GEAS 06), or keyword..."
             autocomplete="off"
           />
         </div>
