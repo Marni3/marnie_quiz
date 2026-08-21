@@ -1,0 +1,1552 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ECE Board Exam Review: Comprehensive Interactive Algebra Learning Module</title>
+  
+  <!-- Fonts & Math Rendering (MathJax 3 + KaTeX Fallback) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- KaTeX CSS & JS with explicit single-dollar inline delimiter configuration -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"></script>
+
+  <!-- MathJax 3 as secondary high-fidelity engine -->
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        processEscapes: true,
+        processEnvironments: true
+      },
+      options: {
+        skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      },
+      startup: {
+        pageReady: () => {
+          return MathJax.startup.defaultPageReady();
+        }
+      }
+    };
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+  <style>
+    :root {
+      --bg-dark: #090d16;
+      --bg-surface: #111827;
+      --bg-card: #1e293b;
+      --bg-card-hover: #2d3748;
+      --border-card: #334155;
+      --border-focus: #6366f1;
+      
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --text-dim: #64748b;
+      
+      --primary: #6366f1;
+      --primary-light: #818cf8;
+      --primary-gradient: linear-gradient(135deg, #4f46e5 0%, #7c3aed 50%, #db2777 100%);
+      
+      --accent: #06b6d4;
+      --success: #10b981;
+      --success-bg: rgba(16, 185, 129, 0.15);
+      --danger: #f43f5e;
+      --danger-bg: rgba(244, 63, 94, 0.15);
+      --warning: #f59e0b;
+      --warning-bg: rgba(245, 158, 11, 0.15);
+      --info: #3b82f6;
+      --info-bg: rgba(59, 130, 246, 0.15);
+
+      --radius-sm: 6px;
+      --radius-md: 10px;
+      --radius-lg: 16px;
+      --shadow-lg: 0 10px 25px -5px rgba(0, 0, 0, 0.5), 0 8px 10px -6px rgba(0, 0, 0, 0.5);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      line-height: 1.65;
+      padding-bottom: 90px;
+    }
+
+    /* Sticky Navigation Header */
+    .header-nav {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(17, 24, 39, 0.92);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border-card);
+      padding: 12px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .brand-badge {
+      background: var(--primary-gradient);
+      color: #fff;
+      font-size: 0.72rem;
+      font-weight: 800;
+      padding: 4px 8px;
+      border-radius: var(--radius-sm);
+      letter-spacing: 0.6px;
+      text-transform: uppercase;
+    }
+
+    .brand-name {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: #fff;
+      letter-spacing: -0.3px;
+    }
+
+    .header-stats {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .stat-chip {
+      background: var(--bg-card);
+      border: 1px solid var(--border-card);
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .stat-chip span.num {
+      color: var(--primary-light);
+      font-family: 'Fira Code', monospace;
+    }
+
+    /* Top Progress Bar */
+    .progress-bar-container {
+      width: 100%;
+      height: 4px;
+      background: #1e293b;
+      position: sticky;
+      top: 57px;
+      z-index: 999;
+    }
+
+    .progress-bar-fill {
+      height: 100%;
+      width: 0%;
+      background: var(--primary-gradient);
+      transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* Layout */
+    .container {
+      max-width: 1360px;
+      margin: 24px auto;
+      padding: 0 20px;
+      display: grid;
+      grid-template-columns: 290px 1fr;
+      gap: 28px;
+    }
+
+    @media (max-width: 950px) {
+      .container {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Sidebar */
+    .sidebar {
+      position: sticky;
+      top: 80px;
+      height: calc(100vh - 105px);
+      overflow-y: auto;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-card);
+      border-radius: var(--radius-lg);
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .sidebar-section-title {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      font-weight: 800;
+      padding: 8px 10px 4px;
+      letter-spacing: 0.5px;
+    }
+
+    .nav-tab-btn {
+      background: transparent;
+      border: 1px solid transparent;
+      color: var(--text-muted);
+      padding: 11px 14px;
+      border-radius: var(--radius-md);
+      font-size: 0.875rem;
+      font-weight: 600;
+      text-align: left;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: all 0.2s ease;
+    }
+
+    .nav-tab-btn:hover {
+      background: var(--bg-card);
+      color: var(--text-main);
+    }
+
+    .nav-tab-btn.active {
+      background: rgba(99, 102, 241, 0.18);
+      border-color: var(--primary);
+      color: #fff;
+    }
+
+    .nav-tab-btn .badge-pill {
+      font-size: 0.7rem;
+      padding: 2px 6px;
+      border-radius: 10px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-card);
+      color: var(--text-dim);
+    }
+
+    .nav-tab-btn.active .badge-pill {
+      background: var(--primary);
+      color: #fff;
+      border-color: var(--primary);
+    }
+
+    /* Main Content */
+    .content-area {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-card);
+      border-radius: var(--radius-lg);
+      padding: 36px;
+      box-shadow: var(--shadow-lg);
+      min-height: 80vh;
+    }
+
+    .unit-hero {
+      margin-bottom: 32px;
+      padding-bottom: 18px;
+      border-bottom: 1px solid var(--border-card);
+    }
+
+    .unit-tag {
+      font-size: 0.8rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      color: var(--primary-light);
+      letter-spacing: 0.5px;
+    }
+
+    .unit-heading {
+      font-size: 2rem;
+      font-weight: 800;
+      color: #fff;
+      margin-top: 4px;
+      letter-spacing: -0.5px;
+    }
+
+    .unit-desc {
+      color: var(--text-muted);
+      font-size: 1rem;
+      margin-top: 8px;
+    }
+
+    /* Card Blocks */
+    .topic-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-card);
+      border-radius: var(--radius-md);
+      padding: 26px;
+      margin-bottom: 28px;
+      transition: border-color 0.2s ease, transform 0.2s ease;
+    }
+
+    .topic-card:hover {
+      border-color: rgba(99, 102, 241, 0.6);
+    }
+
+    .topic-title {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .topic-subtitle {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--accent);
+      margin: 18px 0 8px;
+    }
+
+    p {
+      color: var(--text-muted);
+      margin-bottom: 14px;
+      font-size: 0.96rem;
+    }
+
+    /* Formulas & Callouts */
+    .formula-callout {
+      background: rgba(15, 23, 42, 0.85);
+      border-left: 4px solid var(--primary);
+      border-radius: var(--radius-sm);
+      padding: 18px 20px;
+      margin: 18px 0;
+      color: #e2e8f0;
+      overflow-x: auto;
+    }
+
+    .formula-badge {
+      font-size: 0.72rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      color: var(--primary-light);
+      margin-bottom: 8px;
+      letter-spacing: 0.5px;
+    }
+
+    /* Tables */
+    .styled-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 18px 0;
+      font-size: 0.92rem;
+    }
+
+    .styled-table th, .styled-table td {
+      border: 1px solid var(--border-card);
+      padding: 12px 16px;
+      text-align: left;
+    }
+
+    .styled-table th {
+      background: rgba(15, 23, 42, 0.95);
+      color: var(--primary-light);
+      font-weight: 700;
+    }
+
+    .styled-table tr:nth-child(even) {
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    /* Concept Checks */
+    .check-card {
+      background: rgba(99, 102, 241, 0.07);
+      border: 1px solid rgba(99, 102, 241, 0.35);
+      border-radius: var(--radius-md);
+      padding: 22px;
+      margin: 24px 0;
+    }
+
+    .check-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+
+    .check-label {
+      background: var(--primary);
+      color: #fff;
+      font-size: 0.7rem;
+      font-weight: 800;
+      padding: 3px 8px;
+      border-radius: var(--radius-sm);
+      text-transform: uppercase;
+    }
+
+    .check-stem {
+      font-size: 1rem;
+      font-weight: 600;
+      color: #fff;
+      margin-bottom: 16px;
+    }
+
+    .choices-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+
+    @media (max-width: 650px) {
+      .choices-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .choice-btn {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-card);
+      color: var(--text-main);
+      padding: 12px 16px;
+      border-radius: var(--radius-sm);
+      font-size: 0.92rem;
+      text-align: left;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .choice-btn:hover:not(:disabled) {
+      background: var(--bg-card-hover);
+      border-color: var(--primary-light);
+    }
+
+    .choice-btn.correct-choice {
+      background: var(--success-bg) !important;
+      border-color: var(--success) !important;
+      color: var(--success) !important;
+      font-weight: 700;
+    }
+
+    .choice-btn.wrong-choice {
+      background: var(--danger-bg) !important;
+      border-color: var(--danger) !important;
+      color: var(--danger) !important;
+    }
+
+    .solution-drawer {
+      display: none;
+      background: #090d16;
+      border-left: 4px solid var(--info);
+      border-radius: var(--radius-sm);
+      padding: 16px;
+      margin-top: 14px;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      animation: fadeIn 0.25s ease;
+    }
+
+    /* Worked Example Accordion */
+    .accordion-card {
+      background: rgba(30, 41, 59, 0.6);
+      border: 1px solid var(--border-card);
+      border-radius: var(--radius-md);
+      margin: 20px 0;
+      overflow: hidden;
+    }
+
+    .accordion-header {
+      background: rgba(17, 24, 39, 0.9);
+      padding: 14px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+    }
+
+    .accordion-title {
+      font-size: 0.96rem;
+      font-weight: 700;
+      color: var(--warning);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .accordion-body {
+      padding: 20px;
+      display: none;
+      background: var(--bg-card);
+    }
+
+    /* Interactive Tools */
+    .tool-box {
+      background: rgba(15, 23, 42, 0.85);
+      border: 1px solid rgba(99, 102, 241, 0.4);
+      border-radius: var(--radius-md);
+      padding: 22px;
+      margin: 24px 0;
+    }
+
+    .tool-heading {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .tool-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: flex-end;
+      margin-bottom: 14px;
+    }
+
+    .input-field {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .input-field label {
+      font-size: 0.75rem;
+      color: var(--text-dim);
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    .input-field input, .input-field select {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-card);
+      color: #fff;
+      padding: 9px 14px;
+      border-radius: var(--radius-sm);
+      font-family: 'Fira Code', monospace;
+      font-size: 0.92rem;
+    }
+
+    .btn-action {
+      background: var(--primary);
+      color: #fff;
+      border: none;
+      padding: 10px 18px;
+      border-radius: var(--radius-sm);
+      font-weight: 700;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: background 0.2s ease;
+    }
+
+    .btn-action:hover {
+      background: var(--primary-light);
+    }
+
+    .tool-result {
+      background: #090d16;
+      border: 1px solid var(--border-card);
+      border-radius: var(--radius-sm);
+      padding: 14px;
+      font-family: 'Fira Code', monospace;
+      font-size: 0.92rem;
+      color: #34d399;
+      min-height: 44px;
+    }
+
+    /* Final Exam Styles */
+    .exam-banner {
+      background: var(--primary-gradient);
+      border-radius: var(--radius-md);
+      padding: 28px;
+      text-align: center;
+      color: #fff;
+      margin-bottom: 28px;
+    }
+
+    .exam-banner h2 {
+      font-size: 2.2rem;
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+
+    .exam-question-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-card);
+      border-radius: var(--radius-md);
+      padding: 22px;
+      margin-bottom: 20px;
+    }
+
+    .hidden {
+      display: none !important;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-4px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Header Navigation -->
+  <header class="header-nav">
+    <div class="brand">
+      <span class="brand-badge">PRC ECE Mastery</span>
+      <h1 class="brand-name">Interactive Algebra Complete Lecture & Practice Module</h1>
+    </div>
+    <div class="header-stats">
+      <div class="stat-chip">
+        <span>Module Progress:</span>
+        <span class="num" id="statProgress">0%</span>
+      </div>
+      <div class="stat-chip">
+        <span>Checks Answered:</span>
+        <span class="num" id="statScore">0 / 24</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Progress Bar -->
+  <div class="progress-bar-container">
+    <div class="progress-bar-fill" id="progressBar"></div>
+  </div>
+
+  <!-- App Layout -->
+  <div class="container">
+
+    <!-- Sidebar Menu -->
+    <aside class="sidebar">
+      <div class="sidebar-section-title">Study Units</div>
+      
+      <button class="nav-tab-btn active" onclick="showUnit(1)">
+        <span>1. Numbers & Systems</span>
+        <span class="badge-pill">Notes 1</span>
+      </button>
+
+      <button class="nav-tab-btn" onclick="showUnit(2)">
+        <span>2. Polynomials & Logarithms</span>
+        <span class="badge-pill">Notes 2</span>
+      </button>
+
+      <button class="nav-tab-btn" onclick="showUnit(3)">
+        <span>3. Quadratics & Binomial</span>
+        <span class="badge-pill">Notes 3</span>
+      </button>
+
+      <button class="nav-tab-btn" onclick="showUnit(4)">
+        <span>4. Sequences & Progressions</span>
+        <span class="badge-pill">Notes 4</span>
+      </button>
+
+      <button class="nav-tab-btn" onclick="showUnit(5)">
+        <span>5. Board Exam Simulation</span>
+        <span class="badge-pill">25 Items</span>
+      </button>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="content-area">
+
+      <!-- ========================================================================= -->
+      <!-- UNIT 1: NUMBERS & SYSTEMS -->
+      <!-- ========================================================================= -->
+      <section id="unitSection1" class="unit-pane">
+        <div class="unit-hero">
+          <span class="unit-tag">Unit 1 &bull; Comprehensive Lecture 1</span>
+          <h2 class="unit-heading">Numbers, Numerals, Complex Field & Integer Properties</h2>
+          <p class="unit-desc">Master fundamental mathematical entities, Roman multipliers, classification of real/irrational decimals, powers of $i$, and axiomatic integer properties.</p>
+        </div>
+
+        <!-- 1.1 Numbers and Numerals -->
+        <div class="topic-card">
+          <h3 class="topic-title">1.1 Numbers vs. Numerals & Classification</h3>
+          <p>
+            A <strong>number</strong> is an abstract mathematical concept that describes a magnitude, quantity, or position. A <strong>numeral</strong> is a written symbol or group of symbols used to represent a number.
+          </p>
+          <ul style="margin-left:22px; margin-bottom:14px; color:var(--text-muted);">
+            <li><strong>Cardinal Numbers:</strong> Answer <em>"How many?"</em> and count items or objects in a collection ($1, 2, 3, \dots, 1000, 100000$).</li>
+            <li><strong>Ordinal Numbers:</strong> Indicate the <em>relative rank, position, or order</em> in a sequence (First, Second, Third, $100^{\text{th}}$).</li>
+            <li><strong>Digits:</strong> The single symbols used singly or in combination to formulate numerals ($0, 1, 2, 3, 4, 5, 6, 7, 8, 9$).</li>
+          </ul>
+
+          <h4 class="topic-subtitle">Roman Numerals & Multiplier Notations</h4>
+          <p>The standard Roman numerals and their Arabic equivalents:</p>
+          <table class="styled-table">
+            <thead>
+              <tr><th>Roman Symbol</th><th>Arabic Value</th><th>Classical Multiplier Rule</th><th>Example</th><th>Evaluated Value</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>$\text{I}$</td><td>$1$</td><td><strong>Bracket:</strong> Multiplies enclosed numeral by $100$</td><td>$|\text{V}|$</td><td>$5 \times 100 = 500$</td></tr>
+              <tr><td>$\text{V}$</td><td>$5$</td><td><strong>Vinculum (Horizontal Bar):</strong> Multiplies by $1,000$</td><td>$\overline{\text{V}}$</td><td>$5 \times 1,000 = 5,000$</td></tr>
+              <tr><td>$\text{X}$</td><td>$10$</td><td><strong>Doorframe (Box on 3 sides):</strong> Multiplies by $1,000,000$</td><td>$\lfloor\overline{\text{V}}\rfloor$</td><td>$5 \times 1,000,000 = 5,000,000$</td></tr>
+              <tr><td>$\text{L}$</td><td>$50$</td><td>$\text{C} = 100$</td><td>$\text{D} = 500$</td><td>$\text{M} = 1,000$</td></tr>
+            </tbody>
+          </table>
+
+          <!-- Interactive Roman Tool -->
+          <div class="tool-box">
+            <div class="tool-heading">⚡ Roman Numeral & Multiplier Evaluator</div>
+            <div class="tool-row">
+              <div class="input-field">
+                <label>Integer Value (1 - 3999):</label>
+                <input type="number" id="romanNumInput" value="1994" min="1" max="3999">
+              </div>
+              <button class="btn-action" onclick="runRomanConverter()">Convert to Roman</button>
+            </div>
+            <div class="tool-result" id="romanNumOutput">Output: MCMXCIV (M=1000, CM=900, XC=90, IV=4)</div>
+          </div>
+        </div>
+
+        <!-- Concept Check 1.1 -->
+        <div class="check-card" id="card_cc1">
+          <div class="check-meta">
+            <span class="check-label">Concept Check 1.1</span>
+            <span style="font-size:0.8rem; color:var(--text-dim);">Roman Notation</span>
+          </div>
+          <div class="check-stem">
+            In classical Roman mathematical notation, what is the exact numeric value represented by the numeral $\overline{\text{X}}\text{V}$?
+          </div>
+          <div class="choices-grid">
+            <button class="choice-btn" onclick="submitCC(1, 0, 1)">A. $1,005$</button>
+            <button class="choice-btn" onclick="submitCC(1, 1, 1)">B. $10,005$</button>
+            <button class="choice-btn" onclick="submitCC(1, 2, 1)">C. $100,005$</button>
+            <button class="choice-btn" onclick="submitCC(1, 3, 1)">D. $15,000$</button>
+          </div>
+          <div class="solution-drawer" id="sol_cc1">
+            <strong>Solution & Distractor Breakdown:</strong><br>
+            $\overline{\text{X}}$ has a vinculum (horizontal bar), multiplying $10$ by $1,000 = 10,000$. The trailing $\text{V}$ adds $5$. Total $= 10,000 + 5 = 10,005$.<br>
+            &bull; Option A ($1,005$) incorrectly treats $\text{X}$ as $1 \times 1000$.<br>
+            &bull; Option D ($15,000$) incorrectly multiplies $(\text{X} + \text{V}) \times 1000$.
+          </div>
+        </div>
+
+        <!-- 1.2 Hierarchy of Numbers -->
+        <div class="topic-card">
+          <h3 class="topic-title">1.2 System of Numbers Hierarchy & Decimal Types</h3>
+          <p>
+            All mathematical numbers exist in a nested hierarchy within the <strong>Complex Number Field ($\mathbb{C}$)</strong>:
+          </p>
+
+          <div class="formula-callout">
+            <div class="formula-badge">System of Numbers Structure</div>
+            $$\mathbb{C} \implies \begin{cases} \textbf{Real Numbers } (\mathbb{R}) \implies \begin{cases} \textbf{Rational } (\mathbb{Q}) \implies \text{Integers } (\mathbb{Z}) \implies \begin{cases} \text{Natural / Counting } (\mathbb{N}) \\ \text{Zero } (0) \\ \text{Negative Integers} \end{cases} \\ \textbf{Irrational Numbers } (\mathbb{R} \setminus \mathbb{Q}) \end{cases} \\ \textbf{Imaginary Numbers } (bi, \; b \ne 0) \end{cases}$$
+          </div>
+
+          <h4 class="topic-subtitle">Rational vs. Irrational Decimals</h4>
+          <ul style="margin-left:22px; color:var(--text-muted);">
+            <li><strong>Rational Numbers:</strong> Any number expressible as the quotient of two integers $\frac{p}{q}$ ($q \ne 0$). In decimal form, they are either <em>terminating</em> (e.g., $0.625 = 5/8$) or <em>repeating non-terminating</em> (e.g., $0.3333\dots = 1/3$, $0.142857142857\dots = 1/7$).</li>
+            <li><strong>Irrational Numbers:</strong> Numbers that <em>cannot</em> be expressed as $\frac{p}{q}$. In decimal form, they are strictly <em>non-terminating and non-repeating</em> (e.g., $\pi \approx 3.14159265\dots$, $e \approx 2.7182818\dots$, $\sqrt{2} \approx 1.41421356\dots$).</li>
+          </ul>
+
+          <h4 class="topic-subtitle">Complex Numbers & Powers of $i$</h4>
+          <p>A complex number has the standard rectangular form $z = a + bi$, where $a, b \in \mathbb{R}$ and $i = \sqrt{-1}$.</p>
+          <div class="formula-callout">
+            <div class="formula-badge">Cyclic Property of $i$ (Period 4)</div>
+            $$i^1 = i, \qquad i^2 = -1, \qquad i^3 = -i, \qquad i^4 = 1$$
+            $$\text{General Rule: } i^n = i^{n \pmod 4} \qquad \text{Example: } i^{3217} = i^{4(804)+1} = i^1 = i$$
+          </div>
+        </div>
+
+        <!-- Concept Check 1.2 -->
+        <div class="check-card" id="card_cc2">
+          <div class="check-meta">
+            <span class="check-label">Concept Check 1.2</span>
+            <span style="font-size:0.8rem; color:var(--text-dim);">Complex Powers</span>
+          </div>
+          <div class="check-stem">
+            Evaluate the complex power expression: $i^{29} + i^{21} + i$.
+          </div>
+          <div class="choices-grid">
+            <button class="choice-btn" onclick="submitCC(2, 0, 0)">A. $3i$</button>
+            <button class="choice-btn" onclick="submitCC(2, 1, 0)">B. $1 + i$</button>
+            <button class="choice-btn" onclick="submitCC(2, 2, 0)">C. $-i$</button>
+            <button class="choice-btn" onclick="submitCC(2, 3, 0)">D. $2i$</button>
+          </div>
+          <div class="solution-drawer" id="sol_cc2">
+            <strong>Solution & Derivation:</strong><br>
+            &bull; $29 \equiv 1 \pmod 4 \implies i^{29} = i^1 = i$<br>
+            &bull; $21 \equiv 1 \pmod 4 \implies i^{21} = i^1 = i$<br>
+            &bull; Sum $= i + i + i = 3i$.
+          </div>
+        </div>
+
+        <!-- 1.3 Properties of Integers and Equality -->
+        <div class="topic-card">
+          <h3 class="topic-title">1.3 Axiomatic Properties of Integers & Equality</h3>
+          <table class="styled-table">
+            <thead>
+              <tr><th>Property Name</th><th>Addition Statement</th><th>Multiplication Statement</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>Closure</strong></td><td>$a + b \in \mathbb{Z}$</td><td>$a \cdot b \in \mathbb{Z}$</td></tr>
+              <tr><td><strong>Commutative</strong></td><td>$a + b = b + a$</td><td>$ab = ba$</td></tr>
+              <tr><td><strong>Associative</strong></td><td>$(a + b) + c = a + (b + c)$</td><td>$(ab)c = a(bc)$</td></tr>
+              <tr><td><strong>Identity</strong></td><td>$a + 0 = a$ ($0$ is additive identity)</td><td>$a \cdot 1 = a$ ($1$ is multiplicative identity)</td></tr>
+              <tr><td><strong>Inverse</strong></td><td>$a + (-a) = 0$ ($-a$ is additive inverse)</td><td>$a \cdot \frac{1}{a} = 1$ ($\frac{1}{a}$ is mult. inverse, $a \ne 0$)</td></tr>
+              <tr><td><strong>Distributive</strong></td><td colspan="2" style="text-align:center;">$a(b + c) = ab + ac$</td></tr>
+              <tr><td><strong>Multiplication by Zero</strong></td><td>—</td><td>$a \cdot 0 = 0$</td></tr>
+            </tbody>
+          </table>
+
+          <h4 class="topic-subtitle">Axioms of Equality</h4>
+          <ul style="margin-left:22px; color:var(--text-muted);">
+            <li><strong>Reflexive:</strong> $a = a$.</li>
+            <li><strong>Symmetric:</strong> If $a = b$, then $b = a$.</li>
+            <li><strong>Transitive:</strong> If $a = b$ and $b = c$, then $a = c$.</li>
+            <li><strong>Substitution:</strong> If $a = b$, then $a$ can replace $b$ in any true statement.</li>
+            <li><strong>Cancellation:</strong> If $a + c = b + c \implies a = b$; if $ac = bc$ with $c \ne 0 \implies a = b$.</li>
+          </ul>
+        </div>
+
+        <!-- Concept Check 1.3 -->
+        <div class="check-card" id="card_cc3">
+          <div class="check-meta">
+            <span class="check-label">Concept Check 1.3</span>
+            <span style="font-size:0.8rem; color:var(--text-dim);">Algebraic Axioms</span>
+          </div>
+          <div class="check-stem">
+            Which property justifies the mathematical equivalence $(3x + 4y) + 5z = 3x + (4y + 5z)$?
+          </div>
+          <div class="choices-grid">
+            <button class="choice-btn" onclick="submitCC(3, 0, 1)">A. Commutative Property of Addition</button>
+            <button class="choice-btn" onclick="submitCC(3, 1, 1)">B. Associative Property of Addition</button>
+            <button class="choice-btn" onclick="submitCC(3, 2, 1)">C. Distributive Property</button>
+            <button class="choice-btn" onclick="submitCC(3, 3, 1)">D. Transitive Property</button>
+          </div>
+          <div class="solution-drawer" id="sol_cc3">
+            <strong>Solution:</strong> The Associative Property of Addition states that grouping parentheses can be shifted without altering the sum: $(a + b) + c = a + (b + c)$.
+          </div>
+        </div>
+      </section>
+
+      <!-- ========================================================================= -->
+      <!-- UNIT 2: POLYNOMIALS, EXPONENTS & LOGARITHMS -->
+      <!-- ========================================================================= -->
+      <section id="unitSection2" class="unit-pane hidden">
+        <div class="unit-hero">
+          <span class="unit-tag">Unit 2 &bull; Comprehensive Lecture 2</span>
+          <h2 class="unit-heading">Special Products, Exponents, Logarithms & Polynomial Theorems</h2>
+          <p class="unit-desc">Master polynomial product expansions, algebraic laws of exponents, natural vs. common logarithmic conversions, Bézout's theorems, and GCF/LCM prime factor structures.</p>
+        </div>
+
+        <!-- 2.1 Special Products -->
+        <div class="topic-card">
+          <h3 class="topic-title">2.1 Core Special Products</h3>
+          <p>Algebraic products obtained without performing long-hand polynomial multiplication:</p>
+          <div class="formula-callout">
+            <div class="formula-badge">Fundamental Special Product Identities</div>
+            $$\textbf{Difference of Two Squares: } (x + y)(x - y) = x^2 - y^2$$
+            $$\textbf{Square of Binomial: } (x \pm y)^2 = x^2 \pm 2xy + y^2$$
+            $$\textbf{Cube of Binomial: } (x \pm y)^3 = x^3 \pm 3x^2y + 3xy^2 \pm y^3$$
+            $$\textbf{Sum of Two Cubes: } x^3 + y^3 = (x + y)(x^2 - xy + y^2)$$
+            $$\textbf{Difference of Two Cubes: } x^3 - y^3 = (x - y)(x^2 + xy + y^2)$$
+            $$\textbf{Square of Trinomial: } (x + y + z)^2 = x^2 + y^2 + z^2 + 2xy + 2xz + 2yz$$
+          </div>
+        </div>
+
+        <!-- 2.2 Laws of Exponents & Logarithms -->
+        <div class="topic-card">
+          <h3 class="topic-title">2.2 Laws of Exponents & Logarithms</h3>
+          <table class="styled-table">
+            <thead>
+              <tr><th>Exponent Law</th><th>Logarithmic Counterpart</th><th>Formula</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>$a^m \cdot a^n = a^{m+n}$</td><td>Product Rule</td><td>$\log_b(xy) = \log_b x + \log_b y$</td></tr>
+              <tr><td>$\frac{a^m}{a^n} = a^{m-n}$</td><td>Quotient Rule</td><td>$\log_b\left(\frac{x}{y}\right) = \log_b x - \log_b y$</td></tr>
+              <tr><td>$(a^m)^n = a^{mn}$</td><td>Power Rule</td><td>$\log_b(x^k) = k\log_b x$</td></tr>
+              <tr><td>$a^{m/n} = \sqrt[n]{a^m}$</td><td>Change of Base</td><td>$\log_a x = \frac{\log_b x}{\log_b a} = \frac{\ln x}{\ln a}$</td></tr>
+              <tr><td>$a^{-m} = \frac{1}{a^m}$</td><td>Reciprocal Identity</td><td>$\log_b a = \frac{1}{\log_a b}$</td></tr>
+            </tbody>
+          </table>
+
+          <h4 class="topic-subtitle">History & Modulus of Logarithms</h4>
+          <p>
+            Logarithms ("logus" = ratio, "arithmus" = number) were discovered by <strong>John Napier (1614)</strong> using natural base $e \approx 2.71828\dots$ ($\ln x$, Naperian log). <strong>Henry Briggs (1616)</strong> modified the base to $10$ ($\log x$, Briggsian / Common log).
+          </p>
+          <div class="formula-callout">
+            <div class="formula-badge">Logarithm Modulus Interconversions</div>
+            $$\log_{10} x = \frac{1}{\ln 10} \ln x \approx 0.4343 \ln x$$
+            $$\ln x = (\ln 10) \log_{10} x \approx 2.3026 \log_{10} x$$
+          </div>
+        </div>
+
+        <!-- Concept Check 2.1 -->
+        <div class="check-card" id="card_cc4">
+          <div class="check-meta">
+            <span class="check-label">Concept Check 2.1</span>
+            <span style="font-size:0.8rem; color:var(--text-dim);">Logarithmic Equations</span>
+          </div>
+          <div class="check-stem">
+            Given $\log_b y = 2x + \log_b x$. Which of the following correctly expresses $y$ in terms of $x$ and $b$?
+          </div>
+          <div class="choices-grid">
+            <button class="choice-btn" onclick="submitCC(4, 0, 1)">A. $y = b^{2x}$</button>
+            <button class="choice-btn" onclick="submitCC(4, 1, 1)">B. $y = x b^{2x}$</button>
+            <button class="choice-btn" onclick="submitCC(4, 2, 1)">C. $y = 2xb$</button>
+            <button class="choice-btn" onclick="submitCC(4, 3, 1)">D. $y = \frac{2x}{b}$</button>
+          </div>
+          <div class="solution-drawer" id="sol_cc4">
+            <strong>Solution:</strong><br>
+            $\log_b y - \log_b x = 2x \implies \log_b\left(\frac{y}{x}\right) = 2x \implies \frac{y}{x} = b^{2x} \implies y = x b^{2x}$.
+          </div>
+        </div>
+
+        <!-- 2.3 Remainder & Factor Theorems -->
+        <div class="topic-card">
+          <h3 class="topic-title">2.3 Remainder & Factor Theorems (Bézout's Theorems)</h3>
+          <div class="formula-callout">
+            <div class="formula-badge">Bézout's Polynomial Theorems</div>
+            $$\textbf{Remainder Theorem: } \text{Dividing } P(x) \text{ by } (x - k) \implies \text{Remainder } R = P(k)$$
+            $$\textbf{Factor Theorem: } (x - k) \text{ is a factor of } P(x) \iff P(k) = 0 \quad (R = 0)$$
+          </div>
+
+          <!-- Worked Example -->
+          <div class="accordion-card">
+            <div class="accordion-header" onclick="toggleAccordion('acc1')">
+              <span class="accordion-title">💡 Worked Step-by-Step Problem: System of Polynomial Remainders</span>
+              <span style="font-size:0.8rem; color:var(--primary-light);">Click to View Derivation</span>
+            </div>
+            <div class="accordion-body" id="acc1">
+              <p><strong>Problem:</strong> The expression $P(x) = x^4 + ax^3 + 5x^2 + bx + 6$ leaves remainder $16$ when divided by $(x - 2)$, and remainder $10$ when divided by $(x + 1)$. Find $a$.</p>
+              <ol style="margin-left:22px; color:var(--text-muted); font-size:0.92rem;">
+                <li>By Remainder Theorem, $P(2) = 16$:<br>
+                    $2^4 + a(2^3) + 5(2^2) + b(2) + 6 = 16 \implies 16 + 8a + 20 + 2b + 6 = 16 \implies 8a + 2b = -26 \implies 4a + b = -13$.
+                </li>
+                <li>By Remainder Theorem, $P(-1) = 10$:<br>
+                    $(-1)^4 + a(-1)^3 + 5(-1)^2 + b(-1) + 6 = 10 \implies 1 - a + 5 - b + 6 = 10 \implies -a - b = -2 \implies a + b = 2$.
+                </li>
+                <li>Subtract equation (2) from (1):<br>
+                    $(4a + b) - (a + b) = -13 - 2 \implies 3a = -15 \implies a = -5$.
+                </li>
+              </ol>
+            </div>
+          </div>
+
+          <h4 class="topic-subtitle">LCD, LCM & GCF (Greatest Common Factor)</h4>
+          <ul style="margin-left:22px; color:var(--text-muted);">
+            <li><strong>LCM / LCD:</strong> Product of all prime factors occurring in numbers, each taken with its <em>highest exponent</em>.</li>
+            <li><strong>GCF / GCD:</strong> Product of common prime factors, each taken with its <em>lowest exponent</em>.</li>
+            <li><strong>Product Theorem:</strong> For any two numbers $A$ and $B$: $\text{LCM}(A, B) \times \text{GCF}(A, B) = A \times B$.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- ========================================================================= -->
+      <!-- UNIT 3: QUADRATICS & BINOMIAL THEOREM -->
+      <!-- ========================================================================= -->
+      <section id="unitSection3" class="unit-pane hidden">
+        <div class="unit-hero">
+          <span class="unit-tag">Unit 3 &bull; Comprehensive Lecture 3</span>
+          <h2 class="unit-heading">Quadratic Equations, Vieta's Relations & Binomial Expansions</h2>
+          <p class="unit-desc">Master quadratic discriminant analysis, root relationships, binomial general term derivations, coefficient/exponent summation shortcuts, and Pascal's triangle.</p>
+        </div>
+
+        <!-- 3.1 Quadratic Equations & Discriminant -->
+        <div class="topic-card">
+          <h3 class="topic-title">3.1 Quadratic Equations & Discriminant Analysis</h3>
+          <p>General quadratic form: $Ax^2 + Bx + C = 0 \quad (A \ne 0)$. When $B = 0$, it is termed a <strong>pure quadratic equation</strong>.</p>
+          
+          <div class="formula-callout">
+            <div class="formula-badge">Quadratic Formula & Discriminant</div>
+            $$x = \frac{-B \pm \sqrt{B^2 - 4AC}}{2A} \qquad \text{Discriminant: } \Delta = B^2 - 4AC$$
+          </div>
+
+          <table class="styled-table">
+            <thead>
+              <tr><th>Discriminant ($\Delta$)</th><th>Nature of Roots</th><th>Parabolic Curve Intercepts</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>$\Delta > 0$ (Perfect Square)</td><td>Real, Rational, and Unequal</td><td>2 distinct rational x-intercepts</td></tr>
+              <tr><td>$\Delta > 0$ (Non-Square)</td><td>Real, Irrational, and Unequal</td><td>2 distinct irrational x-intercepts</td></tr>
+              <tr><td>$\Delta = 0$</td><td>Real, Rational, and Equal ($r_1 = r_2 = -B/2A$)</td><td>1 x-intercept (tangent at vertex)</td></tr>
+              <tr><td>$\Delta < 0$</td><td>Complex Conjugate Pairs ($p \pm qi$)</td><td>No real x-intercepts (curve entirely above/below axis)</td></tr>
+            </tbody>
+          </table>
+
+          <h4 class="topic-subtitle">Vieta's Formulas (Sum, Product & Difference of Roots)</h4>
+          <div class="formula-callout">
+            <div class="formula-badge">Root Relationships</div>
+            $$\text{Sum of Roots: } r_1 + r_2 = -\frac{B}{A}, \qquad \text{Product of Roots: } r_1 r_2 = \frac{C}{A}$$
+            $$\text{Difference of Roots: } |r_1 - r_2| = \frac{\sqrt{B^2 - 4AC}}{|A|}$$
+          </div>
+
+          <!-- Interactive Quadratic Tool -->
+          <div class="tool-box">
+            <div class="tool-heading">⚡ Interactive Quadratic Equation Solver & Vieta Inspector</div>
+            <div class="tool-row">
+              <div class="input-field">
+                <label>Coeff A:</label>
+                <input type="number" id="inputA" value="1">
+              </div>
+              <div class="input-field">
+                <label>Coeff B:</label>
+                <input type="number" id="inputB" value="-5">
+              </div>
+              <div class="input-field">
+                <label>Coeff C:</label>
+                <input type="number" id="inputC" value="6">
+              </div>
+              <button class="btn-action" onclick="solveQuadraticInteractive()">Analyze Roots</button>
+            </div>
+            <div class="tool-result" id="outputQuad">Roots: r1 = 3.00, r2 = 2.00 | Δ = 1 (Real & Unequal) | Sum = 5.00, Product = 6.00</div>
+          </div>
+        </div>
+
+        <!-- 3.2 Binomial Theorem -->
+        <div class="topic-card">
+          <h3 class="topic-title">3.2 The Binomial Theorem & Expansions</h3>
+          <div class="formula-callout">
+            <div class="formula-badge">Binomial Theorem Formula</div>
+            $$(x + y)^n = \sum_{k=0}^n \binom{n}{k} x^{n-k} y^k = x^n + n x^{n-1}y + \frac{n(n-1)}{2!} x^{n-2}y^2 + \dots + y^n$$
+          </div>
+
+          <h4 class="topic-subtitle">Essential Binomial Properties & Shortcuts</h4>
+          <ul style="margin-left:22px; color:var(--text-muted);">
+            <li><strong>Total Number of Terms:</strong> Exactly $n + 1$ terms.</li>
+            <li><strong>$r^{\text{th}}$ Term Formula:</strong> $T_r = \binom{n}{r - 1} x^{n - (r - 1)} y^{r - 1}$.</li>
+            <li><strong>Sum of Coefficients in $(Ax + By)^n$:</strong> Set all variables equal to $1 \implies \text{Sum} = (A + B)^n$.</li>
+            <li><strong>Sum of Exponents in $(x^a + y^b)^n$:</strong> $\text{Sum} = \frac{n(n + 1)}{2}(a + b)$.</li>
+            <li><strong>Pascal's Triangle:</strong> Known in Italy as <em>Tartaglia's Triangle</em> and in China as <em>Yang Hui's Triangle</em>.</li>
+          </ul>
+        </div>
+
+        <!-- Concept Check 3.1 -->
+        <div class="check-card" id="card_cc5">
+          <div class="check-meta">
+            <span class="check-label">Concept Check 3.1</span>
+            <span style="font-size:0.8rem; color:var(--text-dim);">Binomial Term Extraction</span>
+          </div>
+          <div class="check-stem">
+            What is the $4^{\text{th}}$ term in the expansion of $(a - 2x)^7$?
+          </div>
+          <div class="choices-grid">
+            <button class="choice-btn" onclick="submitCC(5, 0, 2)">A. $280 a^4 x^3$</button>
+            <button class="choice-btn" onclick="submitCC(5, 1, 2)">B. $120 a^4 x^3$</button>
+            <button class="choice-btn" onclick="submitCC(5, 2, 2)">C. $-280 a^4 x^3$</button>
+            <button class="choice-btn" onclick="submitCC(5, 3, 2)">D. $-120 a^4 x^3$</button>
+          </div>
+          <div class="solution-drawer" id="sol_cc5">
+            <strong>Solution & Step-by-Step Derivation:</strong><br>
+            For $r = 4$ in $(a - 2x)^7$ ($n = 7$):<br>
+            $T_4 = \binom{7}{3} a^{7-3} (-2x)^3 = 35 \times a^4 \times (-8x^3) = -280 a^4 x^3$.
+          </div>
+        </div>
+      </section>
+
+      <!-- ========================================================================= -->
+      <!-- UNIT 4: SEQUENCES, PROGRESSIONS & FIGURATE NUMBERS -->
+      <!-- ========================================================================= -->
+      <section id="unitSection4" class="unit-pane hidden">
+        <div class="unit-hero">
+          <span class="unit-tag">Unit 4 &bull; Comprehensive Lecture 4</span>
+          <h2 class="unit-heading">Sequences, Classical Progressions & Figurate Numbers</h2>
+          <p class="unit-desc">Master Arithmetic (AP), Geometric (GP), and Harmonic (HP) progressions, mean inequalities, Fibonacci/Lucas recurrence, and multi-dimensional figurate patterns.</p>
+        </div>
+
+        <!-- 4.1 Progressions -->
+        <div class="topic-card">
+          <h3 class="topic-title">4.1 Classical Progressions (AP, GP, HP)</h3>
+          <table class="styled-table">
+            <thead>
+              <tr><th>Progression Type</th><th>$n^{\text{th}}$ Term ($a_n$)</th><th>Sum of $n$ Terms ($S_n$)</th><th>Mean of $(a, b)$</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Arithmetic (AP)</strong><br><small>Constant difference $d$</small></td>
+                <td>$a_n = a_1 + (n - 1)d$</td>
+                <td>$S_n = \frac{n}{2}(a_1 + a_n) = \frac{n}{2}[2a_1 + (n-1)d]$</td>
+                <td>$AM = \frac{a + b}{2}$</td>
+              </tr>
+              <tr>
+                <td><strong>Geometric (GP)</strong><br><small>Constant ratio $r$</small></td>
+                <td>$a_n = a_1 r^{n-1}$</td>
+                <td>$S_n = \frac{a_1(1 - r^n)}{1 - r} \quad (r \ne 1)$<br>$S_\infty = \frac{a_1}{1 - r} \quad (|r| < 1)$</td>
+                <td>$GM = \sqrt{ab}$</td>
+              </tr>
+              <tr>
+                <td><strong>Harmonic (HP)</strong><br><small>Reciprocals form an AP</small></td>
+                <td>$a_n = \frac{1}{\frac{1}{a_1} + (n-1)d'}$</td>
+                <td>Take reciprocals $\to$ AP formulas $\to$ invert</td>
+                <td>$HM = \frac{2ab}{a + b}$</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div class="formula-callout">
+            <div class="formula-badge">Mean Inequality & Relationship</div>
+            $$AM \ge GM \ge HM \qquad \text{and} \qquad (GM)^2 = AM \times HM$$
+          </div>
+        </div>
+
+        <!-- 4.2 Fibonacci & Figurate Numbers -->
+        <div class="topic-card">
+          <h3 class="topic-title">4.2 Fibonacci, Lucas & Complete Figurate Number Guide</h3>
+          <ul style="margin-left:22px; color:var(--text-muted);">
+            <li><strong>Fibonacci Numbers:</strong> $1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, \dots$ ($F_n = F_{n-1} + F_{n-2}$). Ratio $\lim_{n \to \infty} \frac{F_{n+1}}{F_n} = \phi = \frac{1+\sqrt{5}}{2} \approx 1.6180339887\dots$ (Golden Ratio).</li>
+            <li><strong>Lucas Sequence:</strong> $1, 3, 4, 7, 11, 18, 29, 47, 76, 123, \dots$ ($L_n = L_{n-1} + L_{n-2}$, where $L_1 = 1, L_2 = 3$). Named after Édouard Lucas.</li>
+          </ul>
+
+          <h4 class="topic-subtitle">Figurate (Polygonal & Polyhedral) Numbers</h4>
+          <table class="styled-table">
+            <thead>
+              <tr><th>Figurate Number</th><th>Formula</th><th>First 5 Terms</th><th>Geometric Construction</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>Triangular ($T_n$)</strong></td><td>$T_n = \frac{n(n + 1)}{2}$</td><td>$1, 3, 6, 10, 15$</td><td>Dots arranged in equilateral triangle</td></tr>
+              <tr><td><strong>Square ($S_n$)</strong></td><td>$S_n = n^2$</td><td>$1, 4, 9, 16, 25$</td><td>Dots arranged in square array</td></tr>
+              <tr><td><strong>Gnomons</strong></td><td>$2n - 1$</td><td>$1, 3, 5, 7, 9$</td><td>L-shaped right-angle legs added to square</td></tr>
+              <tr><td><strong>Oblong / Pronic ($O_n$)</strong></td><td>$O_n = n(n + 1) = 2T_n$</td><td>$2, 6, 12, 20, 30$</td><td>Dots in rectangle of dimensions $n \times (n+1)$</td></tr>
+              <tr><td><strong>Pentagonal ($P_n$)</strong></td><td>$P_n = \frac{n(3n - 1)}{2}$</td><td>$1, 5, 12, 22, 35$</td><td>Dots arranged in regular pentagon</td></tr>
+              <tr><td><strong>Cubic ($C_n$)</strong></td><td>$C_n = n^3$</td><td>$1, 8, 27, 64, 125$</td><td>3D cubic lattice of side $n$</td></tr>
+              <tr><td><strong>Tetrahedral ($Te_n$)</strong></td><td>$Te_n = \frac{n(n+1)(n+2)}{6}$</td><td>$1, 4, 10, 20, 35$</td><td>3D pyramid with triangular base (piled $T_n$)</td></tr>
+              <tr><td><strong>Square Pyramidal ($SP_n$)</strong></td><td>$SP_n = \frac{n(n+1)(2n+1)}{6}$</td><td>$1, 5, 14, 30, 55$</td><td>3D pyramid with square base (piled $S_n$)</td></tr>
+              <tr><td><strong>4D Pentatope ($\Pi_n$)</strong></td><td>$\Pi_n = \frac{n(n+1)(n+2)(n+3)}{24}$</td><td>$1, 5, 15, 35, 70$</td><td>4-dimensional simplex (piled $Te_n$)</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Concept Check 4.1 -->
+        <div class="check-card" id="card_cc6">
+          <div class="check-meta">
+            <span class="check-label">Concept Check 4.1</span>
+            <span style="font-size:0.8rem; color:var(--text-dim);">Infinite Geometric Series</span>
+          </div>
+          <div class="check-stem">
+            Evaluate the infinite geometric sum: $S_\infty = 4 + \frac{4}{3} + \frac{4}{9} + \frac{4}{27} + \dots$
+          </div>
+          <div class="choices-grid">
+            <button class="choice-btn" onclick="submitCC(6, 0, 1)">A. $5.5$</button>
+            <button class="choice-btn" onclick="submitCC(6, 1, 1)">B. $6.0$</button>
+            <button class="choice-btn" onclick="submitCC(6, 2, 1)">C. $6.5$</button>
+            <button class="choice-btn" onclick="submitCC(6, 3, 1)">D. $8.0$</button>
+          </div>
+          <div class="solution-drawer" id="sol_cc6">
+            <strong>Solution:</strong><br>
+            First term $a_1 = 4$, common ratio $r = 1/3$.<br>
+            $S_\infty = \frac{a_1}{1 - r} = \frac{4}{1 - 1/3} = \frac{4}{2/3} = 4 \times \frac{3}{2} = 6.0$.
+          </div>
+        </div>
+      </section>
+
+      <!-- ========================================================================= -->
+      <!-- UNIT 5: COMPREHENSIVE BOARD EXAM SIMULATION (25 ITEMS) -->
+      <!-- ========================================================================= -->
+      <section id="unitSection5" class="unit-pane hidden">
+        <div class="unit-hero">
+          <span class="unit-tag">Unit 5 &bull; Full Board Exam Simulation</span>
+          <h2 class="unit-heading">25-Item Algebra Mastery Board Exam</h2>
+          <p class="unit-desc">Test your comprehensive knowledge across all four notes. Each question provides full step-by-step solutions and scoring analytics upon submission.</p>
+        </div>
+
+        <div class="exam-banner" id="examBanner">
+          <h2 id="examScoreHeader">Simulated Examination Mode</h2>
+          <p id="examScoreSub">Complete all 25 high-yield problems below and click submit to receive your scaled grade.</p>
+        </div>
+
+        <div id="fullExamContainer">
+          <!-- Dynamically Injected 25 Questions -->
+        </div>
+
+        <div style="text-align:center; margin-top:28px;">
+          <button class="btn-action" style="padding:16px 36px; font-size:1.05rem;" onclick="gradeMasteryExam()">Submit Exam & Calculate Board Rating</button>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <script>
+    // State Tracker
+    const appState = {
+      currentUnit: 1,
+      visitedUnits: new Set([1]),
+      answeredChecks: {},
+      totalChecks: 6,
+      examAnswers: {}
+    };
+
+    // 25 Full Comprehensive Board Exam Questions
+    const examQuestions = [
+      {
+        q: "1. Given: $\\frac{1}{\\log_2 a} + \\frac{1}{\\log_3 a} + \\frac{1}{\\log_4 a} = 1$. Find $a$.",
+        choices: ["24", "10", "14", "18"],
+        ans: 0,
+        sol: "Using $\\frac{1}{\\log_b a} = \\log_a b$: $\\log_a 2 + \\log_a 3 + \\log_a 4 = \\log_a(24) = 1 \\implies a = 24$."
+      },
+      {
+        q: "2. If $x^2 + y^2 = 14xy$, then $\\log[k(x + y)] = \\frac{1}{2}(\\log x + \\log y)$. Find $k$.",
+        choices: ["0.25", "0.50", "0.30", "0.75"],
+        ans: 0,
+        sol: "$(x+y)^2 = x^2+y^2+2xy = 16xy \\implies x+y = 4\\sqrt{xy} \\implies \\frac{1}{4}(x+y) = \\sqrt{xy}$. Thus $k = 0.25$."
+      },
+      {
+        q: "3. If roots of $Ax^2 + Bx + C = 0$ ($A=1$) are $3$ and $2$, find $A + B + C$.",
+        choices: ["2", "1", "-1", "-2"],
+        ans: 0,
+        sol: "$(x - 3)(x - 2) = x^2 - 5x + 6 = 0 \\implies A=1, B=-5, C=6$. $A+B+C = 1 - 5 + 6 = 2$."
+      },
+      {
+        q: "4. Solve for $x$: $2\\log_a x - \\log_a(x - 1) - \\log_a(x - 2) = 0$.",
+        choices: ["2/3", "3/4", "1/3", "1/2"],
+        ans: 0,
+        sol: "$\\log_a\\left(\\frac{x^2}{(x-1)(x-2)}\\right) = 0 \\implies x^2 = x^2 - 3x + 2 \\implies 3x = 2 \\implies x = 2/3$."
+      },
+      {
+        q: "5. What is the Least Common Multiple (LCM) of $15$ and $18$?",
+        choices: ["90", "3", "5", "270"],
+        ans: 0,
+        sol: "$15 = 3 \\times 5, 18 = 2 \\times 3^2 \\implies \\text{LCM} = 2 \\times 9 \\times 5 = 90$."
+      },
+      {
+        q: "6. If $p - q = 5$ and $pq = k/2$, then $p^2 + q^2$ equals:",
+        choices: ["25 + k", "k", "25k", "k/25"],
+        ans: 0,
+        sol: "$p^2 + q^2 = (p - q)^2 + 2pq = 25 + 2(k/2) = 25 + k$."
+      },
+      {
+        q: "7. Find $k$ if $x^2 + 2(k + 2)x + 9k = 0$ has equal roots.",
+        choices: ["4", "2", "0.5", "3"],
+        ans: 0,
+        sol: "$\\Delta = [2(k+2)]^2 - 36k = 0 \\implies 4(k^2 - 5k + 4) = 0 \\implies k = 4$ or $1$."
+      },
+      {
+        q: "8. Find $k$ in $3x^2 - kx + x - 7k = 0$ if $x = 3$ is a root.",
+        choices: ["3", "6", "18", "12"],
+        ans: 0,
+        sol: "$3(9) - 3k + 3 - 7k = 0 \\implies 30 = 10k \\implies k = 3$."
+      },
+      {
+        q: "9. If $2x + 4y = 7x - 6y$, then $(1/x):(1/y)$ is:",
+        choices: ["1:2", "2:1", "3:1", "1:3"],
+        ans: 0,
+        sol: "$10y = 5x \\implies x/y = 2 \\implies \\frac{1/x}{1/y} = y/x = 1/2 = 1:2$."
+      },
+      {
+        q: "10. Simplify: $\\frac{(xy)^n [(a-b)^{-1}] [(a-b)^{2n-1}]}{[xy(a-b)^2]^{n-1}}$.",
+        choices: ["xy", "a - b", "ab/xy", "ab(x + y)"],
+        ans: 0,
+        sol: "Numerator: $(xy)^n (a-b)^{2n-2}$. Denominator: $(xy)^{n-1}(a-b)^{2n-2}$. Division yields $xy$."
+      },
+      {
+        q: "11. A wife has a day off every 4 days, husband every 6 days. Next common day off is in:",
+        choices: ["12 days", "15 days", "14 days", "11 days"],
+        ans: 0,
+        sol: "$\\text{LCM}(4, 6) = 12\\text{ days}$."
+      },
+      {
+        q: "12. Find the middle term of $(x^2 - 5)^8$.",
+        choices: ["43,750x^8", "45,852x^8", "44,736x^8", "46,940x^8"],
+        ans: 0,
+        sol: "5th term ($r=4$): $\\binom{8}{4}(x^2)^4(-5)^4 = 70 x^8 (625) = 43,750x^8$."
+      },
+      {
+        q: "13. If $(x - 3)$ is a factor of $kx^2 - 6x + 2kx - 12$, find $k$.",
+        choices: ["2", "1", "3", "-2"],
+        ans: 0,
+        sol: "$P(3) = 9k - 18 + 6k - 12 = 0 \\implies 15k = 30 \\implies k = 2$."
+      },
+      {
+        q: "14. $x^4 + ax^3 + 5x^2 + bx + 6$ has remainder $16$ when divided by $(x-2)$, and $10$ when divided by $(x+1)$. Find $a$.",
+        choices: ["-5", "7", "-7", "5"],
+        ans: 0,
+        sol: "$4a + b = -13$ and $a + b = 2 \\implies 3a = -15 \\implies a = -5$."
+      },
+      {
+        q: "15. Find the 4th term of $(a - 2x)^7$.",
+        choices: ["-280 a^4 x^3", "120 a^4 x^3", "-120 a^4 x^3", "280 a^4 x^3"],
+        ans: 0,
+        sol: "$T_4 = \\binom{7}{3} a^4 (-2x)^3 = 35 a^4 (-8x^3) = -280 a^4 x^3$."
+      },
+      {
+        q: "16. Find the term containing $x^9$ in $(x^2 + 2/x)^{12}$.",
+        choices: ["25,344x^9", "24,339x^9", "23,337x^9", "22,889x^8"],
+        ans: 0,
+        sol: "$24 - 3r = 9 \\implies r = 5 \\implies \\binom{12}{5} 2^5 x^9 = 792(32) x^9 = 25,344x^9$."
+      },
+      {
+        q: "17. Compute $x = [\\log_c a][\\log_a b][\\log_b c]$.",
+        choices: ["1", "b^(c/a)", "a^(b/c)", "c^(a/b)"],
+        ans: 0,
+        sol: "$\\frac{\\ln a}{\\ln c} \\cdot \\frac{\\ln b}{\\ln a} \\cdot \\frac{\\ln c}{\\ln b} = 1$."
+      },
+      {
+        q: "18. Sum of coefficients in $(x + 2y - z)^8$:",
+        choices: ["256", "128", "428", "384"],
+        ans: 0,
+        sol: "$(1 + 2(1) - 1)^8 = 2^8 = 256$."
+      },
+      {
+        q: "19. Solve for $x$: $(\\ln x)^2 - 2\\ln(x^3) = -5$.",
+        choices: ["e and e^5", "e and e^3", "e and e^4", "e and e^6"],
+        ans: 0,
+        sol: "$(\\ln x)^2 - 6\\ln x + 5 = 0 \\implies \\ln x = 1, 5 \\implies x = e, e^5$."
+      },
+      {
+        q: "20. If $x:y:z = 2:5:7$ and $4x - y + 2z = 51$, find $z$.",
+        choices: ["21", "6", "15", "8"],
+        ans: 0,
+        sol: "$4(2k) - 5k + 2(7k) = 17k = 51 \\implies k = 3 \\implies z = 7(3) = 21$."
+      },
+      {
+        q: "21. Find the 6th term of $[1/(2a) - 3]^{16}$.",
+        choices: ["-66339 / (128 a^11)", "-66939 / (256 a^11)", "-33939 / (256 a^11)", "-66339 / (256 a^11)"],
+        ans: 0,
+        sol: "$\\binom{16}{5}(1/2a)^{11}(-3)^5 = -\\frac{4368 \\times 243}{2048 a^{11}} = -\\frac{66339}{128 a^{11}}$."
+      },
+      {
+        q: "22. Given $\\log_b y = 2x + \\log_b x$. Which is true?",
+        choices: ["y = x b^(2x)", "y = b^(2x)", "y = 2x/b", "y = 2xb"],
+        ans: 0,
+        sol: "$\\log_b(y/x) = 2x \\implies y/x = b^{2x} \\implies y = x b^{2x}$."
+      },
+      {
+        q: "23. Coefficient of $x y^3 z$ in $(x + y + z)^5$:",
+        choices: ["20", "36", "25", "30"],
+        ans: 0,
+        sol: "$\\frac{5!}{1! 3! 1!} = \\frac{120}{6} = 20$."
+      },
+      {
+        q: "24. Sum of exponents in $(x^2 + 2/x)^{12}$:",
+        choices: ["78", "87", "23", "22"],
+        ans: 0,
+        sol: "Arithmetic progression $24, 21, \\dots, -12$ ($13$ terms): $\\frac{13}{2}(24 - 12) = 78$."
+      },
+      {
+        q: "25. Evaluate $\\frac{[(n+1)!]^2}{n! (n-1)!}$.",
+        choices: ["n(n + 1)^2", "n(n + 1)", "n!", "n + 1"],
+        ans: 0,
+        sol: "$\\frac{(n+1)!}{n!} \\times \\frac{(n+1)!}{(n-1)!} = (n+1) \\times n(n+1) = n(n+1)^2$."
+      }
+    ];
+
+    // Navigation & Tab Switching
+    function showUnit(unitNum) {
+      for (let i = 1; i <= 5; i++) {
+        const sec = document.getElementById(`unitSection${i}`);
+        if (sec) sec.classList.add('hidden');
+      }
+      document.querySelectorAll('.nav-tab-btn').forEach((btn, idx) => {
+        btn.classList.toggle('active', idx === (unitNum - 1));
+      });
+
+      const activeSec = document.getElementById(`unitSection${unitNum}`);
+      if (activeSec) activeSec.classList.remove('hidden');
+
+      appState.currentUnit = unitNum;
+      appState.visitedUnits.add(unitNum);
+      updateProgress();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+
+      if (unitNum === 5 && !document.getElementById('fullExamContainer').hasChildNodes()) {
+        renderExam();
+      }
+
+      triggerMathRender();
+    }
+
+    // Concept Check Submission
+    function submitCC(checkId, selectedIdx, correctIdx) {
+      const card = document.getElementById(`card_cc${checkId}`);
+      const buttons = card.querySelectorAll('.choice-btn');
+      const sol = document.getElementById(`sol_cc${checkId}`);
+
+      buttons.forEach(b => b.disabled = true);
+
+      if (selectedIdx === correctIdx) {
+        buttons[selectedIdx].classList.add('correct-choice');
+        appState.answeredChecks[checkId] = true;
+      } else {
+        buttons[selectedIdx].classList.add('wrong-choice');
+        buttons[correctIdx].classList.add('correct-choice');
+        appState.answeredChecks[checkId] = false;
+      }
+
+      sol.style.display = 'block';
+      updateProgress();
+      triggerMathRender();
+    }
+
+    // Toggle Accordion
+    function toggleAccordion(id) {
+      const el = document.getElementById(id);
+      el.style.display = (el.style.display === 'block') ? 'none' : 'block';
+      triggerMathRender();
+    }
+
+    // Roman Converter Tool
+    function runRomanConverter() {
+      const num = parseInt(document.getElementById('romanNumInput').value);
+      if (!num || num < 1 || num > 3999) {
+        document.getElementById('romanNumOutput').innerText = "Please enter an integer between 1 and 3999.";
+        return;
+      }
+      const vals = [
+        [1000, 'M'], [900, 'CM'], [500, 'D'], [400, 'CD'],
+        [100, 'C'], [90, 'XC'], [50, 'L'], [40, 'XL'],
+        [10, 'X'], [9, 'IX'], [5, 'V'], [4, 'IV'], [1, 'I']
+      ];
+      let res = '';
+      let n = num;
+      for (const [v, s] of vals) {
+        while (n >= v) {
+          res += s;
+          n -= v;
+        }
+      }
+      document.getElementById('romanNumOutput').innerText = `Evaluated: ${res} (Decimal ${num})`;
+    }
+
+    // Quadratic Equation Interactive Solver
+    function solveQuadraticInteractive() {
+      const a = parseFloat(document.getElementById('inputA').value);
+      const b = parseFloat(document.getElementById('inputB').value);
+      const c = parseFloat(document.getElementById('inputC').value);
+      const out = document.getElementById('outputQuad');
+
+      if (a === 0) {
+        out.innerText = "Error: Coefficient A must not be 0.";
+        return;
+      }
+
+      const disc = b * b - 4 * a * c;
+      const sum = -b / a;
+      const prod = c / a;
+
+      let rStr = '';
+      if (disc > 0) {
+        const r1 = (-b + Math.sqrt(disc)) / (2 * a);
+        const r2 = (-b - Math.sqrt(disc)) / (2 * a);
+        rStr = `r1 = ${r1.toFixed(4)}, r2 = ${r2.toFixed(4)} | Real & Unequal`;
+      } else if (disc === 0) {
+        const r = -b / (2 * a);
+        rStr = `r1 = r2 = ${r.toFixed(4)} | Real & Equal`;
+      } else {
+        const re = (-b / (2 * a)).toFixed(4);
+        const im = (Math.sqrt(-disc) / (2 * a)).toFixed(4);
+        rStr = `${re} ± ${im}i | Complex Conjugate Roots`;
+      }
+
+      out.innerText = `Roots: ${rStr} | Δ = ${disc} | Sum = ${sum.toFixed(4)}, Product = ${prod.toFixed(4)}`;
+    }
+
+    // Render Full 25 Exam Questions
+    function renderExam() {
+      const container = document.getElementById('fullExamContainer');
+      container.innerHTML = '';
+
+      examQuestions.forEach((item, qIdx) => {
+        const card = document.createElement('div');
+        card.className = 'exam-question-card';
+        card.innerHTML = `
+          <div style="font-weight:700; font-size:1.05rem; color:#fff; margin-bottom:14px;">${item.q}</div>
+          <div class="choices-grid">
+            ${item.choices.map((c, cIdx) => `
+              <button class="choice-btn" id="examBtn_${qIdx}_${cIdx}" onclick="recordExamChoice(${qIdx}, ${cIdx})">
+                ${String.fromCharCode(65 + cIdx)}. ${c}
+              </button>
+            `).join('')}
+          </div>
+          <div class="solution-drawer" id="examSol_${qIdx}">${item.sol}</div>
+        `;
+        container.appendChild(card);
+      });
+
+      triggerMathRender();
+    }
+
+    function recordExamChoice(qIdx, cIdx) {
+      appState.examAnswers[qIdx] = cIdx;
+      for (let i = 0; i < 4; i++) {
+        const b = document.getElementById(`examBtn_${qIdx}_${i}`);
+        if (b) b.style.borderColor = 'var(--border-card)';
+      }
+      const selected = document.getElementById(`examBtn_${qIdx}_${cIdx}`);
+      if (selected) selected.style.borderColor = 'var(--primary-light)';
+    }
+
+    function gradeMasteryExam() {
+      let correct = 0;
+      examQuestions.forEach((item, qIdx) => {
+        const userChoice = appState.examAnswers[qIdx];
+        const solDrawer = document.getElementById(`examSol_${qIdx}`);
+        solDrawer.style.display = 'block';
+
+        for (let i = 0; i < 4; i++) {
+          const btn = document.getElementById(`examBtn_${qIdx}_${i}`);
+          btn.disabled = true;
+          if (i === item.ans) btn.classList.add('correct-choice');
+          if (i === userChoice && userChoice !== item.ans) btn.classList.add('wrong-choice');
+        }
+
+        if (userChoice === item.ans) correct++;
+      });
+
+      const header = document.getElementById('examScoreHeader');
+      const sub = document.getElementById('examScoreSub');
+      const banner = document.getElementById('examBanner');
+
+      const pct = Math.round((correct / 25) * 100);
+      header.innerText = `Final Exam Score: ${correct} / 25 (${pct}%)`;
+
+      if (pct >= 80) {
+        sub.innerText = "PRC Board Exam Status: PASSED (Honors). You have demonstrated mastery across all 4 Algebra review modules.";
+        banner.style.background = 'linear-gradient(135deg, #059669 0%, #10b981 100%)';
+      } else if (pct >= 70) {
+        sub.innerText = "PRC Board Exam Status: PASSED. Solid understanding; review missed questions to achieve top percentile.";
+        banner.style.background = 'linear-gradient(135deg, #2563eb 0%, #3b82f6 100%)';
+      } else {
+        sub.innerText = "PRC Board Exam Status: CONDITIONAL. Thoroughly study the step-by-step solutions below to consolidate weak areas.";
+        banner.style.background = 'linear-gradient(135deg, #d97706 0%, #f59e0b 100%)';
+      }
+
+      triggerMathRender();
+      window.scrollTo({ top: banner.offsetTop - 80, behavior: 'smooth' });
+    }
+
+    // Progress Calculation
+    function updateProgress() {
+      const correctChecks = Object.values(appState.answeredChecks).filter(Boolean).length;
+      document.getElementById('statScore').innerText = `${correctChecks} / ${appState.totalChecks}`;
+
+      const unitPortion = (appState.visitedUnits.size / 5) * 50;
+      const checkPortion = (correctChecks / appState.totalChecks) * 50;
+      const totalPct = Math.min(100, Math.round(unitPortion + checkPortion));
+
+      document.getElementById('statProgress').innerText = `${totalPct}%`;
+      document.getElementById('progressBar').style.width = `${totalPct}%`;
+    }
+
+    // Robust Dual Math Renderer (KaTeX + MathJax)
+    function triggerMathRender() {
+      if (window.renderMathInElement) {
+        renderMathInElement(document.body, {
+          delimiters: [
+            {left: '$$', right: '$$', display: true},
+            {left: '\\[', right: '\\]', display: true},
+            {left: '$', right: '$', display: false},
+            {left: '\\(', right: '\\)', display: false}
+          ],
+          throwOnError: false
+        });
+      }
+      if (window.MathJax && MathJax.typesetPromise) {
+        MathJax.typesetPromise();
+      }
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      triggerMathRender();
+      updateProgress();
+    });
+  </script>
+</body>
+</html>

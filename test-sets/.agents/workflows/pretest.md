@@ -1,17 +1,18 @@
 ---
-description: Create a 30-item pre-test focused on assessing current ability and achieving retrieval-first studying
+description: Create a 30-item diagnostic study set focused on assessing baseline knowledge and retrieval-first studying
 ---
 
-# Pre-Test Workflow (30 Items)
+# Diagnostic Assessment Workflow (30 Items)
 
-This workflow defines the procedure for generating a 30-item diagnostic study set designed for retrieval-first studying and baseline assessment for the Philippine ECE Board Exam.
+This workflow defines the procedure for generating a 30-item diagnostic study set designed for retrieval-first studying, baseline evaluation, and knowledge calibration for the Philippine ECE Board Exam.
 
 ---
 
 ## 1. Objectives & Scope
 - **Item Count**: Exactly 30 multiple-choice questions.
-- **Pedagogical Goal**: Diagnostic assessment and retrieval practice. Questions must span broad fundamental concepts, foundational definitions, standard problem types, common exam traps, and core formulas for the chosen topic.
+- **Pedagogical Tier**: `diagnostic` (Pre-assessment & baseline calibration). Questions must span broad fundamental concepts, foundational definitions, standard problem types, common exam traps, and core formulas for the chosen topic.
 - **Source of Truth**: Reference files in `Reference Documents/<Subject>/` and schema standards in [schema-output.md](file:///c:/Users/reyna/OneDrive/Documents/marnie_quiz/test-sets/schema-output.md).
+- **Naming Standard**: Follow [naming_convention_specification.md](file:///c:/Users/reyna/OneDrive/Documents/marnie_quiz/test-sets/naming_convention_specification.md).
 
 ---
 
@@ -22,10 +23,10 @@ This workflow defines the procedure for generating a 30-item diagnostic study se
    - Identify relevant lecture notes, formula sheets, questionnaires, and solution manuals matching the requested topic (e.g., `Notes - Trigonometry 1.pdf` to `4.pdf`, `Math XX-XX Questionnaire.pdf`, and `Math XX-XX Solutions.pdf`).
 2. **Priority**: Reference documents are the primary source material. Use established Board Exam question styles and conventions found in these documents.
 3. **Handling Code-Based Requests & "Absolute Reference"**:
-   - If invoked with a specific code (e.g., `MATH-05`) or the instruction `"absolute reference"`, locate the exact questionnaire and paired solution PDF.
+   - If invoked with a specific code (e.g., `MATH-05`), locate the exact questionnaire and paired solution PDF.
    - Transcribe questions and solutions 1:1 directly into the standardized CSV format.
 4. **Large or Complex PDFs**:
-   - If the reference document contains scanned pages, difficult-to-parse formulas, diagrams, or is too long for a single prompt, formulate an implementation plan to process the document in discrete, verifiable chunks.
+   - If the reference document contains scanned pages, difficult-to-parse formulas, diagrams, or is too long for a single prompt, formulate an implementation plan to process the document in discrete, verifiable chunks using multimodal visual rendering.
 
 ---
 
@@ -56,24 +57,23 @@ All output must strictly conform to [schema-output.md](file:///c:/Users/reyna/On
 
 ---
 
-## 4. File Organization & Storage
+## 4. File Naming & Organization
 
-1. **Directory Placement**:
-   - Place output in the corresponding subject and topic folder:
-     `Mathematics/<Topic>/<topic>_pretest.csv`
-     (e.g., `Mathematics/Trigonometry/trigonometry_pretest.csv`).
-2. **Subject Root Folders**:
-   - `Mathematics/`
-   - `Electronics Engineering/`
-   - `General Engineering and Applied Sciences/`
-   - `Electronics Systems and Technologies/`
+Output files must strictly follow [naming_convention_specification.md](file:///c:/Users/reyna/OneDrive/Documents/marnie_quiz/test-sets/naming_convention_specification.md):
+
+```
+[subject]_[topic-code]_[topic-name]_diagnostic_[subtopic-scope]_[set-number].csv
+```
+
+- **Full Topic Scope Example**: `Mathematics/Trigonometry/math_05_trigonometry_diagnostic_all_set01.csv`
+- **Subtopic Targeted Scope Example**: `Mathematics/Analytic Geometry/math_09_analytic_geometry_diagnostic_01-03_set01.csv`
 
 ---
 
 ## 5. Verification & Logging
 
 1. **Validation**:
-   - Verify that the CSV contains exactly 31 lines (1 header + 30 questions) and 9 columns per row using a validation script.
+   - Verify that the CSV contains exactly 31 lines (1 header + 30 questions) and 9 columns per row.
    - Check that all LaTeX formulas render correctly and all quotes are properly escaped.
 2. **Changelog Entry**:
    - Append development progress and item summary to `changelog/YYYY-MM-DD.md`.

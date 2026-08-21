@@ -1,73 +1,46 @@
 ---
-description: Create a rapid 10-item quiz for quick conceptual checks and focused recall
+description: Create a rapid 10-item targeted concept drill for quick checks and focused formula recall
 ---
 
-# Rapid Short Test Workflow (10 Items)
+# Concept Drill Workflow (10 Items)
 
-This workflow defines the procedure for generating a 10-item short quiz for rapid concept checks, flash assessment, or quick topic drills for the Philippine ECE Board Exam.
+This workflow defines the procedure for generating a 10-item high-velocity concept drill for rapid recall, formula checks, and focused competency reinforcement for the Philippine ECE Board Exam.
 
 ---
 
 ## 1. Objectives & Scope
 - **Item Count**: Exactly 10 multiple-choice questions.
-- **Pedagogical Goal**: Rapid diagnostic check, flashcard-style reinforcement, or targeted sub-topic practice.
+- **Pedagogical Tier**: `drill` (High-velocity conceptual checks & formula recall).
 - **Source of Truth**: Reference files in `Reference Documents/<Subject>/` and schema standards in [schema-output.md](file:///c:/Users/reyna/OneDrive/Documents/marnie_quiz/test-sets/schema-output.md).
+- **Naming Standard**: Follow [naming_convention_specification.md](file:///c:/Users/reyna/OneDrive/Documents/marnie_quiz/test-sets/naming_convention_specification.md).
 
 ---
 
-## 2. Ingestion & Reference Document Selection
-
-1. **Locate Reference Files**:
-   - Check `Reference Documents/<Subject>/` for specific notes, questionnaires, and solution manuals.
-2. **Priority**: Reference documents are the primary authority.
-3. **Handling Code-Based Requests & "Absolute Reference"**:
-   - If a code (e.g., `MATH-01`) or `"absolute reference"` is specified, extract and transcribe questions directly 1:1 into the schema format.
-4. **Large or Complex PDFs**:
-   - For short tests, focus directly on high-yield sections of the reference document.
+## 2. Ingestion & Topic Selection
+- Focus on high-yield formulas, critical definitions, identities, sign conventions, and fundamental theorems.
+- Can be generated for the whole module or scoped to a targeted subset of subtopics.
 
 ---
 
 ## 3. Schema & Formatting Compliance
-
-Follow all rules in [schema-output.md](file:///c:/Users/reyna/OneDrive/Documents/marnie_quiz/test-sets/schema-output.md):
-
-1. **Header Row (Line 1)**:
-   ```csv
-   question,choice_a,choice_b,choice_c,choice_d,correct_answer,explanation,image_url,subject_tag
-   ```
-2. **Cell Wrapping & Delimiters**:
-   - Wrap EVERY cell in double quotes (`"..."`).
-   - Escape internal double quotes by doubling (`""`).
-   - Use comma (`,`) as delimiter.
-   - Use literal `\n` tokens for line breaks inside the `explanation` column (never actual newlines).
-3. **LaTeX Formatting**:
-   - Wrap inline math in `$formula$` and display math in `$$formula$$`.
-   - Use LaTeX for all mathematical symbols, units, and expressions.
-4. **Columns Breakdown**:
-   - `question`: Clean question stem.
-   - `choice_a` to `choice_d`: Four plausible options without option letter prefixes.
-   - `correct_answer`: Lowercase letter (`a`, `b`, `c`, or `d`).
-   - `explanation`: 3–6 sentences explaining the derivation and distractor analysis using literal `\n`.
-   - `image_url`: Empty string (`""`) unless a valid public URL is provided.
-   - `subject_tag`: Topic label in Title Case (e.g., `"Probability"`).
+- Strict 9-column format per [schema-output.md](file:///c:/Users/reyna/OneDrive/Documents/marnie_quiz/test-sets/schema-output.md).
+- Single-line double-quoted cells with literal `\n` linebreaks in explanations.
 
 ---
 
-## 4. File Organization & Storage
+## 4. File Naming & Organization
 
-1. **Directory Placement**:
-   - Save to `<Subject>/<Topic>/<topic>_shorttest.csv` (e.g., `Mathematics/Probability/probability_shorttest.csv`).
-2. **Subject Categories**:
-   - `Mathematics/`
-   - `Electronics Engineering/`
-   - `General Engineering and Applied Sciences/`
-   - `Electronics Systems and Technologies/`
+Output files must strictly follow [naming_convention_specification.md](file:///c:/Users/reyna/OneDrive/Documents/marnie_quiz/test-sets/naming_convention_specification.md):
+
+```
+[subject]_[topic-code]_[topic-name]_drill_[subtopic-scope]_[set-number].csv
+```
+
+- **Full Topic Scope Example**: `Mathematics/Trigonometry/math_05_trigonometry_drill_all_set01.csv`
+- **Multiple Sets Example**: `Mathematics/Trigonometry/math_05_trigonometry_drill_all_set02.csv`
+- **Subtopic Targeted Scope Example**: `Mathematics/Analytic Geometry/math_09_analytic_geometry_drill_01-03_set01.csv`
 
 ---
 
 ## 5. Verification & Logging
-
-1. **Validation**:
-   - Verify 11 total lines (1 header + 10 question rows) and 9 columns per row using a validation script.
-2. **Changelog**:
-   - Log changes in `changelog/YYYY-MM-DD.md`.
+- Validate row count (1 header + 10 questions) and log to daily changelog.
