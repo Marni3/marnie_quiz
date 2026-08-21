@@ -2,45 +2,85 @@
 
 @layer base {
   :root {
-    --bg: #f5f0e8;
-    --bg2: #ece6d8;
-    --surface: #faf7f2;
-    --surface2: #f0ebe0;
-    --surface3: #e8e1d4;
-    --border: #d4c9b4;
-    --border2: #b8a98a;
-    --accent: #c2622a;
-    --accent2: #a0522d;
+    --bg: #f6f3ee;
+    --bg2: #eae4d7;
+    --surface: #ffffff;
+    --surface2: #f4eee3;
+    --surface3: #e8e0d0;
+    --border: #d8cebc;
+    --border2: #c4b69e;
+    --accent: #d96b27;
+    --accent2: #b85216;
     --green: #286b4a;
     --red: #b83228;
     --yellow: #966010;
-    --text: #2a1f14;
-    --text2: #5c4a36;
-    --text3: #8a7560;
+    --text: #221a12;
+    --text2: #584634;
+    --text3: #8c765e;
     --radius: 12px;
     --radius-sm: 8px;
-    --shadow: 0 2px 18px rgba(90, 60, 30, 0.12);
-    --shadow-lg: 0 10px 48px rgba(90, 60, 30, 0.16);
+    --shadow: 0 2px 18px rgba(90, 60, 30, 0.08);
+    --shadow-lg: 0 10px 40px rgba(90, 60, 30, 0.12);
+
+    /* Tailwind v4 theme bridge */
+    --background: var(--bg);
+    --foreground: var(--text);
+    --card: var(--surface);
+    --card-foreground: var(--text);
+    --popover: var(--surface);
+    --popover-foreground: var(--text);
+    --primary: var(--accent);
+    --primary-foreground: #ffffff;
+    --secondary: var(--surface2);
+    --secondary-foreground: var(--text);
+    --muted: var(--surface2);
+    --muted-foreground: var(--text3);
+    --accent-color: var(--accent);
+    --destructive: var(--red);
+    --destructive-foreground: #ffffff;
+    --border-color: var(--border);
+    --input: var(--border);
+    --ring: var(--accent);
   }
 
   [data-theme="dark"] {
-    --bg: #222020;
-    --bg2: #1a1918;
-    --surface: #2c2926;
-    --surface2: #363230;
-    --surface3: #413d3a;
-    --border: #4a4542;
-    --border2: #5e5a56;
-    --accent: #e8895a;
-    --accent2: #d97757;
+    --bg: #181716;
+    --bg2: #1f1d1c;
+    --surface: #242220;
+    --surface2: #2d2a27;
+    --surface3: #383430;
+    --border: #3d3935;
+    --border2: #524d47;
+    --accent: #e87a38;
+    --accent2: #d46320;
     --green: #5aab80;
     --red: #d96660;
     --yellow: #d4a03a;
-    --text: #ede8e0;
-    --text2: #b0a898;
-    --text3: #706a62;
-    --shadow: 0 2px 20px rgba(0, 0, 0, 0.45);
-    --shadow-lg: 0 10px 50px rgba(0, 0, 0, 0.58);
+    --text: #f0ebe4;
+    --text2: #b8b0a2;
+    --text3: #7c7468;
+    --shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
+    --shadow-lg: 0 10px 50px rgba(0, 0, 0, 0.65);
+
+    /* Tailwind v4 theme bridge */
+    --background: var(--bg);
+    --foreground: var(--text);
+    --card: var(--surface);
+    --card-foreground: var(--text);
+    --popover: var(--surface);
+    --popover-foreground: var(--text);
+    --primary: var(--accent);
+    --primary-foreground: #ffffff;
+    --secondary: var(--surface2);
+    --secondary-foreground: var(--text);
+    --muted: var(--surface2);
+    --muted-foreground: var(--text3);
+    --accent-color: var(--accent);
+    --destructive: var(--red);
+    --destructive-foreground: #ffffff;
+    --border-color: var(--border);
+    --input: var(--border);
+    --ring: var(--accent);
   }
 }
 
@@ -58,7 +98,7 @@ body::after {
   content: "";
   position: fixed;
   inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.02'/%3E%3C/svg%3E");
   pointer-events: none;
   z-index: 0;
 }
@@ -70,27 +110,13 @@ body::after {
   inset: 0;
   background-image: radial-gradient(
     circle,
-    rgba(232, 137, 90, 0.16) 1px,
+    rgba(232, 122, 56, 0.12) 1px,
     transparent 1px
   );
   background-size: 28px 28px;
   pointer-events: none;
   z-index: 0;
-  opacity: 0.55;
-}
-
-/* Light mode horizontal rules */
-[data-theme="light"] body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  background-image: repeating-linear-gradient(
-    transparent,
-    transparent 27px,
-    rgba(180, 160, 120, 0.07) 28px
-  );
-  pointer-events: none;
-  z-index: 0;
+  opacity: 0.45;
 }
 
 /* Custom scrollbar */
@@ -112,4 +138,15 @@ body::after {
   overflow-x: auto;
   overflow-y: hidden;
   padding: 4px 0;
+}
+
+/* Solid Surface & Card Utilities */
+.card-surface {
+  background-color: var(--surface) !important;
+  border: 1px solid var(--border) !important;
+}
+
+.card-surface-2 {
+  background-color: var(--surface2) !important;
+  border: 1px solid var(--border) !important;
 }

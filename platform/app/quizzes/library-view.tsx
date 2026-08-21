@@ -146,18 +146,18 @@ export function LibraryView({
   };
 
   return (
-    <div className="min-h-screen bg-[var(--background)] text-[var(--foreground)] flex flex-col font-sans">
+    <div className="min-h-screen bg-[var(--bg)] text-[var(--text)] flex flex-col font-sans">
       <Navbar />
 
       <main className="flex-1 max-w-6xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-10 flex flex-col gap-8">
         
         {/* Top Hero & High-Level Stats */}
-        <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 pb-6 border-b border-border/40">
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 pb-6 border-b border-[var(--border)]">
           <div>
-            <h1 className="text-3xl sm:text-4xl font-serif font-bold tracking-tight text-foreground flex items-center gap-3">
-              PRC ECE Board Exam <span className="text-primary italic">Review Platform</span>
+            <h1 className="text-3xl sm:text-4xl font-serif font-bold tracking-tight text-[var(--text)] flex items-center gap-3">
+              PRC ECE Board Exam <span className="text-[var(--accent)] italic">Review Platform</span>
             </h1>
-            <p className="text-muted-foreground mt-1.5 text-sm">
+            <p className="text-[var(--text2)] mt-1.5 text-sm">
               Comprehensive question banks, instant calculator techniques, and 4-tier pedagogical drills.
             </p>
           </div>
@@ -165,7 +165,7 @@ export function LibraryView({
           <div className="flex items-center gap-3">
             <Link
               href="/quizzes/upload"
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-primary/10 hover:bg-primary/20 text-primary text-sm font-semibold border border-primary/20 transition-all shadow-sm"
+              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg bg-[var(--surface)] hover:bg-[var(--surface2)] text-[var(--accent)] text-sm font-semibold border border-[var(--border)] transition-all shadow-sm"
             >
               <Upload className="w-4 h-4" />
               Upload Custom CSV
@@ -175,55 +175,55 @@ export function LibraryView({
 
         {/* Dynamic Metric Stat Chips */}
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-          <div className="p-4 rounded-xl bg-card border border-border/60 shadow-sm flex flex-col gap-1">
-            <span className="text-[11px] font-bold tracking-wider uppercase text-muted-foreground">Test Sets</span>
-            <span className="text-2xl font-mono font-bold text-foreground">{quizzes.length} <span className="text-sm font-normal text-primary">sets</span></span>
+          <div className="p-4 rounded-xl bg-[var(--surface)] border border-[var(--border)] shadow-sm flex flex-col gap-1">
+            <span className="text-[11px] font-bold tracking-wider uppercase text-[var(--text3)]">Test Sets</span>
+            <span className="text-2xl font-mono font-bold text-[var(--text)]">{quizzes.length} <span className="text-sm font-normal text-[var(--accent)]">sets</span></span>
           </div>
-          <div className="p-4 rounded-xl bg-card border border-border/60 shadow-sm flex flex-col gap-1">
-            <span className="text-[11px] font-bold tracking-wider uppercase text-muted-foreground">Question Bank</span>
-            <span className="text-2xl font-mono font-bold text-foreground">{totalQuestions.toLocaleString()} <span className="text-sm font-normal text-primary">items</span></span>
+          <div className="p-4 rounded-xl bg-[var(--surface)] border border-[var(--border)] shadow-sm flex flex-col gap-1">
+            <span className="text-[11px] font-bold tracking-wider uppercase text-[var(--text3)]">Question Bank</span>
+            <span className="text-2xl font-mono font-bold text-[var(--text)]">{totalQuestions.toLocaleString()} <span className="text-sm font-normal text-[var(--accent)]">items</span></span>
           </div>
-          <div className="p-4 rounded-xl bg-card border border-border/60 shadow-sm flex flex-col gap-1">
-            <span className="text-[11px] font-bold tracking-wider uppercase text-muted-foreground">Core Subjects</span>
-            <span className="text-2xl font-mono font-bold text-foreground">4 <span className="text-sm font-normal text-primary">domains</span></span>
+          <div className="p-4 rounded-xl bg-[var(--surface)] border border-[var(--border)] shadow-sm flex flex-col gap-1">
+            <span className="text-[11px] font-bold tracking-wider uppercase text-[var(--text3)]">Core Subjects</span>
+            <span className="text-2xl font-mono font-bold text-[var(--text)]">4 <span className="text-sm font-normal text-[var(--accent)]">domains</span></span>
           </div>
-          <div className="p-4 rounded-xl bg-card border border-border/60 shadow-sm flex flex-col gap-1">
-            <span className="text-[11px] font-bold tracking-wider uppercase text-muted-foreground">Tiers Covered</span>
-            <span className="text-2xl font-mono font-bold text-foreground">4 <span className="text-sm font-normal text-primary">levels</span></span>
+          <div className="p-4 rounded-xl bg-[var(--surface)] border border-[var(--border)] shadow-sm flex flex-col gap-1">
+            <span className="text-[11px] font-bold tracking-wider uppercase text-[var(--text3)]">Tiers Covered</span>
+            <span className="text-2xl font-mono font-bold text-[var(--text)]">4 <span className="text-sm font-normal text-[var(--accent)]">levels</span></span>
           </div>
         </div>
 
         {/* Pedagogical Study Tiers Guide Accordion */}
-        <div className="rounded-xl border border-border/70 bg-card overflow-hidden transition-all shadow-sm">
+        <div className="rounded-xl border border-[var(--border)] bg-[var(--surface)] overflow-hidden transition-all shadow-sm">
           <button
             onClick={() => setShowGuide(!showGuide)}
-            className="w-full flex items-center justify-between px-5 py-3.5 bg-muted/20 hover:bg-muted/40 text-left transition-colors"
+            className="w-full flex items-center justify-between px-5 py-3.5 bg-[var(--surface)] hover:bg-[var(--surface2)] text-left transition-colors"
           >
-            <div className="flex items-center gap-2.5 text-sm font-semibold text-foreground">
+            <div className="flex items-center gap-2.5 text-sm font-semibold text-[var(--text)]">
               <Lightbulb className="w-4 h-4 text-amber-500" />
               <span>How the 4 Pedagogical Test Levels Work</span>
             </div>
-            <ChevronDown className={`w-4 h-4 text-muted-foreground transition-transform duration-200 ${showGuide ? "rotate-180" : ""}`} />
+            <ChevronDown className={`w-4 h-4 text-[var(--text3)] transition-transform duration-200 ${showGuide ? "rotate-180" : ""}`} />
           </button>
 
           {showGuide && (
-            <div className="p-5 border-t border-border/50 bg-card">
+            <div className="p-5 border-t border-[var(--border)] bg-[var(--surface)]">
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5">
-                <div className="p-3.5 rounded-lg border border-sky-500/20 bg-sky-500/5 flex flex-col gap-1">
-                  <span className="text-xs font-bold text-sky-500">🩺 Diagnostic (30 Qs)</span>
-                  <p className="text-xs text-muted-foreground leading-relaxed">Untimed assessment to diagnose baseline knowledge gaps before reviewing a topic.</p>
+                <div className="p-3.5 rounded-lg border border-sky-500/20 bg-sky-500/10 flex flex-col gap-1">
+                  <span className="text-xs font-bold text-sky-400">🩺 Diagnostic (30 Qs)</span>
+                  <p className="text-xs text-[var(--text2)] leading-relaxed">Untimed assessment to diagnose baseline knowledge gaps before reviewing a topic.</p>
                 </div>
-                <div className="p-3.5 rounded-lg border border-emerald-500/20 bg-emerald-500/5 flex flex-col gap-1">
-                  <span className="text-xs font-bold text-emerald-500">📖 Review (1:1 Ref)</span>
-                  <p className="text-xs text-muted-foreground leading-relaxed">1:1 absolute syllabus reference review with complete step-by-step solutions.</p>
+                <div className="p-3.5 rounded-lg border border-emerald-500/20 bg-emerald-500/10 flex flex-col gap-1">
+                  <span className="text-xs font-bold text-emerald-400">📖 Review (1:1 Ref)</span>
+                  <p className="text-xs text-[var(--text2)] leading-relaxed">1:1 absolute syllabus reference review with complete step-by-step solutions.</p>
                 </div>
-                <div className="p-3.5 rounded-lg border border-amber-500/20 bg-amber-500/5 flex flex-col gap-1">
-                  <span className="text-xs font-bold text-amber-500">⚡ Concept Drill (10 Qs)</span>
-                  <p className="text-xs text-muted-foreground leading-relaxed">Rapid retrieval testing calculator techniques, speed heuristics, and elimination.</p>
+                <div className="p-3.5 rounded-lg border border-amber-500/20 bg-amber-500/10 flex flex-col gap-1">
+                  <span className="text-xs font-bold text-amber-400">⚡ Concept Drill (10 Qs)</span>
+                  <p className="text-xs text-[var(--text2)] leading-relaxed">Rapid retrieval testing calculator techniques, speed heuristics, and elimination.</p>
                 </div>
-                <div className="p-3.5 rounded-lg border border-purple-500/20 bg-purple-500/5 flex flex-col gap-1">
-                  <span className="text-xs font-bold text-purple-500">🎯 Simulation (50 Qs)</span>
-                  <p className="text-xs text-muted-foreground leading-relaxed">Full-scale mock PRC exam under authentic time constraints and complex problems.</p>
+                <div className="p-3.5 rounded-lg border border-purple-500/20 bg-purple-500/10 flex flex-col gap-1">
+                  <span className="text-xs font-bold text-purple-400">🎯 Simulation (50 Qs)</span>
+                  <p className="text-xs text-[var(--text2)] leading-relaxed">Full-scale mock PRC exam under authentic time constraints and complex problems.</p>
                 </div>
               </div>
             </div>
@@ -233,13 +233,13 @@ export function LibraryView({
         {/* Search, Prominent Subject Tabs & Tier Filter Bar */}
         <div className="flex flex-col gap-4">
           <div className="relative w-full">
-            <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
+            <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-[var(--text3)]" />
             <input
               type="text"
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               placeholder="Quick search by topic, course code (e.g. Elec 03, Math 09, GEAS 06), or title..."
-              className="w-full pl-11 pr-4 py-3 rounded-xl bg-card border border-border/70 text-sm focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all placeholder:text-muted-foreground shadow-sm"
+              className="w-full pl-11 pr-4 py-3 rounded-xl bg-[var(--surface)] border border-[var(--border)] text-sm text-[var(--text)] focus:outline-none focus:ring-2 focus:ring-[var(--accent)]/20 focus:border-[var(--accent)] transition-all placeholder:text-[var(--text3)] shadow-sm"
             />
           </div>
 
@@ -257,8 +257,8 @@ export function LibraryView({
                 onClick={() => setSelectedDomain(tab.id)}
                 className={`px-5 py-2.5 rounded-full text-xs font-bold whitespace-nowrap transition-all border ${
                   selectedDomain === tab.id
-                    ? "bg-primary text-primary-foreground border-primary shadow-sm scale-[1.02]"
-                    : "bg-card hover:bg-accent text-muted-foreground hover:text-foreground border-border/70"
+                    ? "bg-[var(--accent)] text-white border-[var(--accent)] shadow-md scale-[1.02]"
+                    : "bg-[var(--surface)] hover:bg-[var(--surface2)] text-[var(--text2)] hover:text-[var(--text)] border-[var(--border)]"
                 }`}
               >
                 {tab.label} ({tab.count})
@@ -279,10 +279,10 @@ export function LibraryView({
                 <button
                   key={tier.id}
                   onClick={() => setSelectedTier(tier.id)}
-                  className={`px-3 py-1.5 rounded-md text-xs font-medium whitespace-nowrap transition-all border ${
+                  className={`px-3.5 py-1.5 rounded-md text-xs font-medium whitespace-nowrap transition-all border ${
                     selectedTier === tier.id
-                      ? "bg-foreground text-background border-foreground font-semibold"
-                      : "bg-card text-muted-foreground hover:text-foreground border-border/50"
+                      ? "bg-[var(--text)] text-[var(--bg)] border-[var(--text)] font-semibold shadow-sm"
+                      : "bg-[var(--surface)] text-[var(--text2)] hover:text-[var(--text)] border-[var(--border)] hover:bg-[var(--surface2)]"
                   }`}
                 >
                   {tier.label}
@@ -293,7 +293,7 @@ export function LibraryView({
             <button
               type="button"
               onClick={toggleAll}
-              className="text-xs font-semibold px-3 py-1.5 rounded-md border border-border/60 bg-card hover:bg-accent text-muted-foreground hover:text-foreground transition-all"
+              className="text-xs font-semibold px-3.5 py-1.5 rounded-md border border-[var(--border)] bg-[var(--surface)] hover:bg-[var(--surface2)] text-[var(--text2)] hover:text-[var(--text)] transition-all"
             >
               {allCollapsed ? "Expand All" : "Collapse All"}
             </button>
@@ -302,10 +302,10 @@ export function LibraryView({
 
         {/* Collapsed Topic Accordions & Quiz Grid */}
         {groupedByTopic.length === 0 ? (
-          <div className="text-center py-16 px-4 rounded-xl border border-dashed border-border bg-card/50">
-            <Search className="w-8 h-8 text-muted-foreground mx-auto mb-3 opacity-50" />
-            <h3 className="font-serif font-bold text-lg text-foreground">No test sets match your filter</h3>
-            <p className="text-xs text-muted-foreground mt-1 max-w-sm mx-auto">
+          <div className="text-center py-16 px-4 rounded-xl border border-dashed border-[var(--border)] bg-[var(--surface)]">
+            <Search className="w-8 h-8 text-[var(--text3)] mx-auto mb-3 opacity-50" />
+            <h3 className="font-serif font-bold text-lg text-[var(--text)]">No test sets match your filter</h3>
+            <p className="text-xs text-[var(--text3)] mt-1 max-w-sm mx-auto">
               Try adjusting your search query, or reset the subject domain and tier filters.
             </p>
           </div>
@@ -319,13 +319,13 @@ export function LibraryView({
                 <div key={group.name} className="flex flex-col gap-3">
                   <button
                     onClick={() => toggleTopic(group.name)}
-                    className="w-full flex items-center justify-between p-4 rounded-xl bg-card border border-border/70 hover:border-primary/40 hover:bg-accent/40 text-left transition-all shadow-sm"
+                    className="w-full flex items-center justify-between p-4 rounded-xl bg-[var(--surface)] border border-[var(--border)] hover:border-[var(--accent)]/50 hover:bg-[var(--surface2)] text-left transition-all shadow-sm"
                   >
                     <div className="flex items-center gap-3">
-                      <ChevronDown className={`w-4 h-4 text-muted-foreground transition-transform duration-200 ${isCollapsed ? "-rotate-90" : ""}`} />
-                      <span className="font-serif font-bold text-base text-foreground">{group.name}</span>
+                      <ChevronDown className={`w-4 h-4 text-[var(--text3)] transition-transform duration-200 ${isCollapsed ? "-rotate-90" : ""}`} />
+                      <span className="font-serif font-bold text-base text-[var(--text)]">{group.name}</span>
                     </div>
-                    <span className="text-xs font-mono font-medium text-muted-foreground">
+                    <span className="text-xs font-mono font-medium text-[var(--text3)]">
                       {group.items.length} sets • {topicTotalQs} Qs
                     </span>
                   </button>
@@ -335,11 +335,11 @@ export function LibraryView({
                       {group.items.map((quiz) => {
                         const tier = getQuizTier(quiz);
                         const tierStyles = {
-                          diagnostic: "bg-sky-500/10 text-sky-600 dark:text-sky-400 border-sky-500/20",
-                          review: "bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border-emerald-500/20",
-                          drill: "bg-amber-500/10 text-amber-600 dark:text-amber-400 border-amber-500/20",
-                          simulation: "bg-purple-500/10 text-purple-600 dark:text-purple-400 border-purple-500/20",
-                        }[tier] || "bg-muted text-muted-foreground border-border";
+                          diagnostic: "bg-sky-500/10 text-sky-400 border-sky-500/20",
+                          review: "bg-emerald-500/10 text-emerald-400 border-emerald-500/20",
+                          drill: "bg-amber-500/10 text-amber-400 border-amber-500/20",
+                          simulation: "bg-purple-500/10 text-purple-400 border-purple-500/20",
+                        }[tier] || "bg-[var(--surface2)] text-[var(--text3)] border-[var(--border)]";
 
                         const tierLabel = {
                           diagnostic: "🩺 Diagnostic",
@@ -352,26 +352,26 @@ export function LibraryView({
                           <Link
                             key={quiz.id}
                             href={`/quizzes/${quiz.id}`}
-                            className="group relative flex flex-col justify-between p-5 rounded-xl bg-card border border-border/70 hover:border-primary/60 transition-all hover:shadow-md hover:-translate-y-0.5"
+                            className="group relative flex flex-col justify-between p-5 rounded-xl bg-[var(--surface)] border border-[var(--border)] hover:border-[var(--accent)] hover:bg-[var(--surface2)] transition-all hover:shadow-md hover:-translate-y-0.5"
                           >
                             <div className="flex flex-col gap-3">
                               <div className="flex items-center justify-between gap-2">
                                 <span className={`text-[11px] font-mono font-bold px-2 py-0.5 rounded border ${tierStyles}`}>
                                   {tierLabel}
                                 </span>
-                                <span className="text-xs font-mono font-semibold px-2 py-0.5 rounded bg-muted text-muted-foreground">
+                                <span className="text-xs font-mono font-semibold px-2 py-0.5 rounded bg-[var(--surface2)] text-[var(--text2)]">
                                   {quiz.questionCount} Qs
                                 </span>
                               </div>
 
-                              <h3 className="font-serif font-bold text-sm text-foreground leading-snug group-hover:text-primary transition-colors">
+                              <h3 className="font-serif font-bold text-sm text-[var(--text)] leading-snug group-hover:text-[var(--accent)] transition-colors">
                                 {quiz.title}
                               </h3>
                             </div>
 
-                            <div className="mt-4 pt-3 border-t border-border/40 flex items-center justify-between text-xs text-muted-foreground">
+                            <div className="mt-4 pt-3 border-t border-[var(--border)] flex items-center justify-between text-xs text-[var(--text3)]">
                               <span className="truncate max-w-[170px]">{quiz.subjectTag || "General"}</span>
-                              <span className="inline-flex items-center gap-1 font-semibold text-primary group-hover:translate-x-0.5 transition-transform">
+                              <span className="inline-flex items-center gap-1 font-semibold text-[var(--accent)] group-hover:translate-x-0.5 transition-transform">
                                 Start <ChevronRight className="w-3.5 h-3.5" />
                               </span>
                             </div>
