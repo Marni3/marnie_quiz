@@ -1,11 +1,13 @@
-/* home.js — Wide Dashboard & Manifest Browser for study-app */
+/* home.js — Upgraded Dashboard & Multi-Tier Manifest Browser */
 
 var REQUIRED_COLS = ['question', 'choice_a', 'choice_b', 'choice_c', 'choice_d', 'correct_answer'];
 var VALID_ANS = { a: 1, b: 1, c: 1, d: 1 };
 
 var manifestData = null;
 var selectedCategory = 'all';
+var selectedTier = 'all';
 var searchKeyword = '';
+var areAllCollapsed = false;
 
 var timerMode = 'untimed';
 var secondsPerQ = 60;
@@ -21,6 +23,8 @@ document.addEventListener('DOMContentLoaded', function () {
   initPromptCard();
   initCustomDropzone();
   initSearchAndFilter();
+  initTierFilters();
+  initCollapseToggle();
   loadManifest();
 });
 
@@ -28,6 +32,8 @@ document.addEventListener('DOMContentLoaded', function () {
 async function loadManifest() {
   var container = document.getElementById('manifest-container');
   var counter = document.getElementById('total-quizzes-counter');
+  var statSets = document.getElementById('stat-sets');
+  var statQs = document.getElementById('stat-questions');
 
   try {
     var res = await fetch('manifest.json?v=' + Date.now());
@@ -35,19 +41,21 @@ async function loadManifest() {
     manifestData = await res.json();
 
     if (counter) {
-      counter.textContent = manifestData.totalQuizzes + ' Test Sets Available';
+      counter.textContent = manifestData.totalQuizzes + ' Test Sets Available • ' + (manifestData.totalQuestions || 5435).toLocaleString() + ' Questions';
     }
+    if (statSets) statSets.innerHTML = manifestData.totalQuizzes + '<em>sets</em>';
+    if (statQs) statQs.innerHTML = (manifestData.totalQuestions || 5435).toLocaleString() + '<em>items</em>';
 
     renderCategoryPills();
     renderManifestQuizzes();
   } catch (err) {
-    console.warn('Could not fetch manifest.json, loading fallback message:', err);
+    console.warn('Could not fetch manifest.json:', err);
     if (counter) counter.textContent = 'Manual upload mode';
     if (container) {
       container.innerHTML =
         '<div style="padding:32px 20px;text-align:center;background:var(--surface);border:1.5px dashed var(--border);border-radius:var(--radius);">' +
         '<div style="font-size:1.8rem;margin-bottom:8px;">📁</div>' +
-        '<div style="font-family:\'Playfair Display\',serif;font-size:1.1rem;font-weight:700;color:var(--text);">Repository Test Sets</div>' +
+        '<div style="font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:var(--text);">Repository Test Sets</div>' +
         '<div style="font-size:.84rem;color:var(--text3);margin-top:4px;max-width:400px;margin-left:auto;margin-right:auto;">Use the sidebar upload on the right to load any CSV test set, or run <code>npm run manifest</code> to index your folder structure.</div>' +
         '</div>';
     }
@@ -63,7 +71,7 @@ function renderCategoryPills() {
   allBtn.type = 'button';
   allBtn.className = 'category-pill' + (selectedCategory === 'all' ? ' active' : '');
   allBtn.dataset.cat = 'all';
-  allBtn.textContent = 'All Topics (' + manifestData.totalQuizzes + ')';
+  allBtn.textContent = 'All Subjects (' + manifestData.totalQuizzes + ')';
   allBtn.addEventListener('click', function () {
     selectCategory('all');
   });
@@ -91,6 +99,33 @@ function selectCategory(catName) {
   renderManifestQuizzes();
 }
 
+function initTierFilters() {
+  document.querySelectorAll('.tier-pill').forEach(function (pill) {
+    pill.addEventListener('click', function () {
+      document.querySelectorAll('.tier-pill').forEach(function (p) { p.classList.remove('active'); });
+      pill.classList.add('active');
+      selectedTier = pill.dataset.tier;
+      renderManifestQuizzes();
+    });
+  });
+}
+
+function initCollapseToggle() {
+  var btn = document.getElementById('btn-toggle-all');
+  if (btn) {
+    btn.addEventListener('click', function () {
+      areAllCollapsed = !areAllCollapsed;
+      btn.textContent = areAllCollapsed ? 'Expand All' : 'Collapse All';
+      document.querySelectorAll('.topic-accordion-header').forEach(function (h) {
+        h.classList.toggle('collapsed', areAllCollapsed);
+      });
+      document.querySelectorAll('.topic-accordion-body').forEach(function (b) {
+        b.classList.toggle('collapsed', areAllCollapsed);
+      });
+    });
+  }
+}
+
 function renderManifestQuizzes() {
   if (!manifestData || !manifestData.categories) return;
 
@@ -99,7 +134,7 @@ function renderManifestQuizzes() {
   container.innerHTML = '';
 
   var qLower = searchKeyword.toLowerCase().trim();
-  var matchFound = false;
+  var totalRendered = 0;
 
   manifestData.categories.forEach(function (category) {
     if (selectedCategory !== 'all' && selectedCategory !== category.name) {
@@ -110,12 +145,22 @@ function renderManifestQuizzes() {
 
     category.topics.forEach(function (topic) {
       var matchingQuizzes = topic.quizzes.filter(function (quiz) {
+        // Tier filter
+        if (selectedTier !== 'all') {
+          var qTier = (quiz.tier || '').toLowerCase();
+          if (qTier !== selectedTier) return false;
+        }
+
+        // Search filter
         if (!qLower) return true;
         return (
           quiz.title.toLowerCase().includes(qLower) ||
           quiz.filename.toLowerCase().includes(qLower) ||
           topic.name.toLowerCase().includes(qLower) ||
-          category.name.toLowerCase().includes(qLower)
+          category.name.toLowerCase().includes(qLower) ||
+          (quiz.tier && quiz.tier.toLowerCase().includes(qLower)) ||
+          (quiz.subjectCode && quiz.subjectCode.toLowerCase().includes(qLower)) ||
+          (quiz.topicCode && quiz.topicCode.toLowerCase().includes(qLower))
         );
       });
 
@@ -124,103 +169,98 @@ function renderManifestQuizzes() {
           name: topic.name,
           quizzes: matchingQuizzes
         });
+        totalRendered += matchingQuizzes.length;
       }
     });
 
     if (matchingTopics.length === 0) return;
-    matchFound = true;
 
-    var totalCatQuizzes = matchingTopics.reduce(function (sum, t) { return sum + t.quizzes.length; }, 0);
-
-    var catSection = document.createElement('section');
+    var catSection = document.createElement('div');
     catSection.className = 'category-section';
 
     var catHeader = document.createElement('div');
     catHeader.className = 'category-header';
+
+    var totalCatQuizzes = matchingTopics.reduce(function (sum, t) { return sum + t.quizzes.length; }, 0);
     catHeader.innerHTML =
       '<h2 class="category-title">' + escHtml(category.name) + '</h2>' +
-      '<span class="category-badge">' + totalCatQuizzes + ' Sets</span>';
+      '<span class="category-badge">' + totalCatQuizzes + ' quizzes</span>';
     catSection.appendChild(catHeader);
 
     matchingTopics.forEach(function (topic) {
-      var topicGroup = document.createElement('div');
-      topicGroup.className = 'topic-group';
+      var topicTotalQs = topic.quizzes.reduce(function (s, q) { return s + q.questionCount; }, 0);
 
-      if (topic.name !== 'General' || category.topics.length > 1) {
-        var topicTitle = document.createElement('div');
-        topicTitle.className = 'topic-title';
-        topicTitle.innerHTML = '📁 ' + escHtml(topic.name);
-        topicGroup.appendChild(topicTitle);
-      }
+      // Accordion Header
+      var accHeader = document.createElement('div');
+      accHeader.className = 'topic-accordion-header' + (areAllCollapsed ? ' collapsed' : '');
+      accHeader.innerHTML =
+        '<div class="topic-accordion-left">' +
+        '  <span class="topic-accordion-icon">▾</span>' +
+        '  <span class="topic-accordion-title">' + escHtml(topic.name) + '</span>' +
+        '</div>' +
+        '<span class="topic-accordion-meta">' + topic.quizzes.length + ' sets • ' + topicTotalQs + ' Qs</span>';
 
-      var grid = document.createElement('div');
-      grid.className = 'quiz-grid';
+      var accBody = document.createElement('div');
+      accBody.className = 'topic-accordion-body' + (areAllCollapsed ? ' collapsed' : '');
+
+      accHeader.addEventListener('click', function () {
+        accHeader.classList.toggle('collapsed');
+        accBody.classList.toggle('collapsed');
+      });
 
       topic.quizzes.forEach(function (quiz) {
         var card = document.createElement('div');
         card.className = 'quiz-card-item';
 
+        var tier = (quiz.tier || 'review').toLowerCase();
+        var tierLabel = {
+          diagnostic: '🩺 Diagnostic',
+          review: '📖 Review (1:1)',
+          drill: '⚡ Drill',
+          simulation: '🎯 Simulation'
+        }[tier] || tier.toUpperCase();
+
+        var tierClass = 'badge-tier badge-tier-' + tier;
+
         card.innerHTML =
           '<div class="quiz-card-top">' +
-          '  <div class="quiz-card-title">' + escHtml(quiz.title) + '</div>' +
-          '  <div class="quiz-card-badge">' + quiz.questionCount + ' Qs</div>' +
+          '  <span class="' + tierClass + '">' + escHtml(tierLabel) + '</span>' +
+          '  <span class="quiz-card-badge">' + quiz.questionCount + ' Qs</span>' +
           '</div>' +
+          '<div class="quiz-card-title">' + escHtml(quiz.title) + '</div>' +
           '<div class="quiz-card-bottom">' +
-          '  <span>' + escHtml(quiz.subjectTag || topic.name) + '</span>' +
-          '  <span class="quiz-card-btn">▶ Start Study Set</span>' +
+          '  <span>' + escHtml(quiz.filename) + '</span>' +
+          '  <span class="quiz-card-btn">Start →</span>' +
           '</div>';
 
         card.addEventListener('click', function () {
-          loadAndStartManifestQuiz(quiz, card);
+          startManifestQuiz(quiz);
         });
 
-        grid.appendChild(card);
+        accBody.appendChild(card);
       });
 
-      topicGroup.appendChild(grid);
-      catSection.appendChild(topicGroup);
+      catSection.appendChild(accHeader);
+      catSection.appendChild(accBody);
     });
 
     container.appendChild(catSection);
   });
 
   if (emptyMsg) {
-    emptyMsg.style.display = matchFound ? 'none' : 'block';
+    emptyMsg.style.display = totalRendered === 0 ? 'block' : 'none';
   }
 }
 
-// ── 2. Direct Quiz Loader from Manifest ─────────────────────────
-async function loadAndStartManifestQuiz(quiz, cardEl) {
-  var originalBtn = cardEl ? cardEl.querySelector('.quiz-card-btn') : null;
-  if (originalBtn) originalBtn.textContent = '⏳ Loading...';
+// ── 2. Starting a Quiz from Manifest ─────────────────────────────
+async function startManifestQuiz(quiz) {
+  var origText = event.currentTarget ? event.currentTarget.querySelector('.quiz-card-btn') : null;
+  if (origText) origText.textContent = 'Loading...';
 
   try {
-    var rawPath = quiz.path || ('test-sets/' + quiz.filename);
-    var candidates = [
-      rawPath,
-      '/' + rawPath,
-      '../' + rawPath,
-      quiz.filename
-    ];
-
-    var res = null;
-    for (var c = 0; c < candidates.length; c++) {
-      try {
-        var tryUrl = encodeURI(candidates[c]);
-        var testRes = await fetch(tryUrl);
-        if (testRes.ok) {
-          res = testRes;
-          break;
-        }
-      } catch (e) {
-        // continue to next candidate
-      }
-    }
-
-    if (!res || !res.ok) {
-      throw new Error('Could not load ' + quiz.filename + ' (tried: ' + candidates[0] + ')');
-    }
-
+    var csvUrl = quiz.path + '?v=' + Date.now();
+    var res = await fetch(csvUrl);
+    if (!res.ok) throw new Error('Could not fetch quiz CSV at ' + quiz.path);
     var csvText = await res.text();
 
     Papa.parse(csvText, {
@@ -233,7 +273,7 @@ async function loadAndStartManifestQuiz(quiz, cardEl) {
           if (VALID_ANS[ans] && row['question']) {
             valid.push({
               id: i + 1,
-              question: (row['question'] || '').trim(),
+              question: row['question'].trim(),
               choice_a: (row['choice_a'] || '').trim(),
               choice_b: (row['choice_b'] || '').trim(),
               choice_c: (row['choice_c'] || '').trim(),
@@ -247,40 +287,33 @@ async function loadAndStartManifestQuiz(quiz, cardEl) {
         });
 
         if (valid.length === 0) {
-          alert('No valid questions found in ' + quiz.filename);
-          if (originalBtn) originalBtn.textContent = '▶ Start Study Set';
+          alert('Could not parse questions from this quiz file.');
+          if (origText) origText.textContent = 'Start →';
           return;
         }
 
         launchSession(quiz.title, valid);
       },
       error: function (err) {
-        alert('Failed to parse CSV: ' + err.message);
-        if (originalBtn) originalBtn.textContent = '▶ Start Study Set';
+        alert('Error parsing CSV: ' + err.message);
+        if (origText) origText.textContent = 'Start →';
       }
     });
   } catch (err) {
-    alert('Error loading quiz file: ' + err.message);
-    if (originalBtn) originalBtn.textContent = '▶ Start Study Set';
+    alert('Failed to load quiz: ' + err.message);
+    if (origText) origText.textContent = 'Start →';
   }
 }
 
-function launchSession(setName, questions) {
-  var sessionConfig = {
-    setName: setName || 'Study Session',
+function launchSession(title, questions) {
+  MQ_STATE.saveSession({
+    quizTitle: title,
     questions: questions,
     timerMode: timerMode,
     secondsPerQ: secondsPerQ,
     totalMinutes: totalMinutes,
     feedbackMode: feedbackMode,
-    answers: Array(questions.length).fill(null),
-    flagged: Array(questions.length).fill(false),
-    startTime: Date.now(),
-    currentIdx: 0
-  };
-
-  MQ.clear();
-  MQ.set('session', sessionConfig);
+  });
   window.location.href = 'quiz.html';
 }
 
@@ -420,7 +453,6 @@ function showErrors(errs) {
 
 // ── 5. Sidebar Options Wiring ────────────────────────────────────
 function initOptions() {
-  // Timer options
   document.querySelectorAll('.timer-opt').forEach(function (opt) {
     opt.addEventListener('click', function () {
       document.querySelectorAll('.timer-opt').forEach(function (o) { o.classList.remove('selected'); });
@@ -443,7 +475,6 @@ function initOptions() {
     });
   });
 
-  // Feedback options
   document.querySelectorAll('.feedback-opt').forEach(function (opt) {
     opt.addEventListener('click', function () {
       document.querySelectorAll('.feedback-opt').forEach(function (o) { o.classList.remove('selected'); });
