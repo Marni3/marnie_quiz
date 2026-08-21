@@ -1,10 +1,11 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import Link from "next/link";
 import { Navbar } from "@/components/navbar";
 import {
   Search,
+  BookOpen,
   Folder as FolderIcon,
   Plus,
   Lock,
@@ -14,7 +15,14 @@ import {
   Layers,
   ChevronRight,
   FolderPlus,
-  Trash2,
+  Play,
+  Clock,
+  HelpCircle,
+  BarChart2,
+  CheckCircle2,
+  Zap,
+  Target,
+  FileText
 } from "lucide-react";
 import { QuizListItem } from "@/lib/quizzes";
 import { FolderWithCount } from "@/lib/folders";
@@ -25,6 +33,13 @@ interface LibraryViewProps {
   currentUserId: string;
 }
 
+const DOMAIN_MAP: Record<string, string> = {
+  "MATH": "Mathematics",
+  "ELEC": "Electronics Engineering",
+  "GEAS": "General Engineering and Applied Sciences",
+  "EST": "Electronics Systems and Technologies",
+};
+
 export function LibraryView({
   initialQuizzes,
   initialFolders,
@@ -33,389 +48,245 @@ export function LibraryView({
   const [quizzes] = useState<QuizListItem[]>(initialQuizzes);
   const [folders, setFolders] = useState<FolderWithCount[]>(initialFolders);
   const [search, setSearch] = useState("");
-  const [selectedTag, setSelectedTag] = useState<string | null>(null);
+  const [selectedDomain, setSelectedDomain] = useState<string>("all");
+  const [selectedTier, setSelectedTier] = useState<string>("all");
   const [selectedFolderId, setSelectedFolderId] = useState<string | null>(null);
-  const [newFolderName, setNewFolderName] = useState("");
-  const [showNewFolder, setShowNewFolder] = useState(false);
-  const [creatingFolder, setCreatingFolder] = useState(false);
 
-  // Extract all unique subject tags
-  const allTags = Array.from(
-    new Set(
-      quizzes
-        .map((q) => q.subjectTag)
-        .filter((t): t is string => Boolean(t && t.trim()))
-    )
-  ).sort();
+  // Extract domain from title or subject tag
+  const getQuizDomain = (q: QuizListItem) => {
+    const t = q.title.toUpperCase();
+    if (t.startsWith("MATH") || q.subjectTag?.includes("Math") || q.subjectTag?.includes("Algebra") || q.subjectTag?.includes("Calculus") || q.subjectTag?.includes("Geometry") || q.subjectTag?.includes("Probability")) return "Mathematics";
+    if (t.startsWith("ELEC") || q.subjectTag?.includes("Circuit") || q.subjectTag?.includes("BJT") || q.subjectTag?.includes("FET") || q.subjectTag?.includes("Diode") || q.subjectTag?.includes("Electronics")) return "Electronics Engineering";
+    if (t.startsWith("GEAS") || q.subjectTag?.includes("Chemistry") || q.subjectTag?.includes("Physics") || q.subjectTag?.includes("Economics") || q.subjectTag?.includes("Mechanics") || q.subjectTag?.includes("Material")) return "General Engineering and Applied Sciences";
+    if (t.startsWith("EST") || q.subjectTag?.includes("Communication") || q.subjectTag?.includes("Antenna") || q.subjectTag?.includes("Modulation") || q.subjectTag?.includes("Telephony") || q.subjectTag?.includes("Fiber")) return "Electronics Systems and Technologies";
+    return "General";
+  };
+
+  const getQuizTier = (q: QuizListItem) => {
+    const t = q.title.toLowerCase();
+    if (t.includes("diagnostic")) return "diagnostic";
+    if (t.includes("review")) return "review";
+    if (t.includes("drill")) return "drill";
+    if (t.includes("simulation")) return "simulation";
+    return "review";
+  };
+
+  const totalQuestions = useMemo(() => {
+    return quizzes.reduce((sum, q) => sum + (q.questionCount || 0), 0);
+  }, [quizzes]);
 
   // Filter quizzes
-  const filteredQuizzes = quizzes.filter((q) => {
-    if (selectedFolderId === "unfiled") {
-      if (q.folderId) return false;
-    } else if (selectedFolderId) {
-      if (q.folderId !== selectedFolderId) return false;
-    }
-
-    if (selectedTag && q.subjectTag !== selectedTag) return false;
-
-    if (search.trim()) {
-      const query = search.toLowerCase();
-      const matchTitle = q.title.toLowerCase().includes(query);
-      const matchSubject = q.subjectTag?.toLowerCase().includes(query);
-      const matchUploader = q.uploader.name?.toLowerCase().includes(query);
-      if (!matchTitle && !matchSubject && !matchUploader) return false;
-    }
-
-    return true;
-  });
-
-  const handleCreateFolder = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!newFolderName.trim()) return;
-    setCreatingFolder(true);
-    try {
-      const res = await fetch("/api/folders", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name: newFolderName.trim() }),
-      });
-      const data = await res.json();
-      if (data.success && data.folder) {
-        setFolders([{ ...data.folder, quizCount: 0 }, ...folders]);
-        setNewFolderName("");
-        setShowNewFolder(false);
+  const filteredQuizzes = useMemo(() => {
+    return quizzes.filter((q) => {
+      // Domain filter
+      if (selectedDomain !== "all") {
+        const domain = getQuizDomain(q);
+        if (domain !== selectedDomain) return false;
       }
-    } catch (err) {
-      console.error(err);
-    } finally {
-      setCreatingFolder(false);
-    }
-  };
 
-  const handleDeleteFolder = async (folderId: string) => {
-    if (!confirm("Are you sure you want to delete this folder? The quizzes inside will remain unfiled.")) {
-      return;
-    }
-    try {
-      const res = await fetch(`/api/folders/${folderId}`, { method: "DELETE" });
-      if (res.ok) {
-        setFolders(folders.filter((f) => f.id !== folderId));
-        if (selectedFolderId === folderId) setSelectedFolderId(null);
+      // Tier filter
+      if (selectedTier !== "all") {
+        const tier = getQuizTier(q);
+        if (tier !== selectedTier) return false;
       }
-    } catch (err) {
-      console.error(err);
-    }
-  };
+
+      // Folder filter
+      if (selectedFolderId === "unfiled") {
+        if (q.folderId) return false;
+      } else if (selectedFolderId) {
+        if (q.folderId !== selectedFolderId) return false;
+      }
+
+      // Search filter
+      if (search.trim()) {
+        const query = search.toLowerCase();
+        const matchTitle = q.title.toLowerCase().includes(query);
+        const matchSubject = q.subjectTag?.toLowerCase().includes(query);
+        if (!matchTitle && !matchSubject) return false;
+      }
+
+      return true;
+    });
+  }, [quizzes, selectedDomain, selectedTier, selectedFolderId, search]);
+
+  // Tier counts
+  const tierCounts = useMemo(() => {
+    const counts = { all: quizzes.length, diagnostic: 0, review: 0, drill: 0, simulation: 0 };
+    quizzes.forEach((q) => {
+      const tier = getQuizTier(q);
+      if (counts[tier] !== undefined) counts[tier]++;
+    });
+    return counts;
+  }, [quizzes]);
 
   return (
-    <div className="min-h-screen flex flex-col relative z-10">
-      <Navbar breadcrumb="Library" />
+    <div className="min-h-screen bg-[var(--background)] text-[var(--foreground)] flex flex-col font-sans">
+      <Navbar />
 
-      <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        {/* Header Title Row */}
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
+      <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 flex flex-col gap-8">
+        
+        {/* Top Hero & Real-time Stats */}
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 pb-6 border-b border-border/40">
           <div>
-            <h1 className="text-3xl sm:text-4xl font-bold font-serif text-[var(--text)] tracking-tight">
-              Study <em>Library</em>
+            <h1 className="text-3xl sm:text-4xl font-serif font-bold tracking-tight text-foreground flex items-center gap-3">
+              PRC ECE Board Exam <span className="text-primary italic">Platform</span>
             </h1>
-            <p className="text-sm text-[var(--text2)] mt-1">
-              Browse shared board exam questions, filter by subject, or organize into folders.
+            <p className="text-muted-foreground mt-1 text-sm">
+              Comprehensive question banks, instant calculator techniques, and diagnostic simulations.
             </p>
           </div>
 
-          <Link
-            href="/quizzes/upload"
-            className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-[var(--accent)] text-white font-semibold text-sm hover:brightness-110 shadow-sm transition-all cursor-pointer self-start sm:self-auto shrink-0"
-          >
-            <Upload className="w-4 h-4" />
-            <span>Upload New CSV</span>
-          </Link>
-        </div>
-
-        {/* Layout: Folder Sidebar + Main Quiz Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
-          {/* Sidebar: Folders & Filters */}
-          <aside className="lg:col-span-1 space-y-6">
-            {/* Search Input */}
-            <div className="relative">
-              <Search className="w-4 h-4 text-[var(--text3)] absolute left-3.5 top-1/2 -translate-y-1/2" />
-              <input
-                type="text"
-                placeholder="Search quizzes & topics..."
-                value={search}
-                onChange={(e) => setSearch(e.target.value)}
-                className="w-full pl-9 pr-3.5 py-2 rounded-xl bg-[var(--surface)] border border-[var(--border)] text-sm text-[var(--text)] placeholder-[var(--text3)] focus:outline-none focus:border-[var(--accent)] transition-colors"
-              />
-            </div>
-
-            {/* Folders Section (Phase 2) */}
-            <div className="bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-4 shadow-[var(--shadow)]">
-              <div className="flex items-center justify-between mb-3">
-                <span className="text-xs font-bold text-[var(--text3)] uppercase tracking-wider font-mono">
-                  Folders
-                </span>
-                <button
-                  type="button"
-                  onClick={() => setShowNewFolder(!showNewFolder)}
-                  className="p-1 rounded-md text-[var(--text3)] hover:text-[var(--accent)] hover:bg-[var(--surface2)] transition-colors"
-                  title="Create folder"
-                >
-                  <FolderPlus className="w-4 h-4" />
-                </button>
-              </div>
-
-              {showNewFolder && (
-                <form onSubmit={handleCreateFolder} className="mb-3 space-y-2">
-                  <input
-                    type="text"
-                    required
-                    placeholder="New folder name..."
-                    value={newFolderName}
-                    onChange={(e) => setNewFolderName(e.target.value)}
-                    className="w-full px-2.5 py-1.5 rounded-lg bg-[var(--surface2)] border border-[var(--border)] text-xs text-[var(--text)] focus:outline-none focus:border-[var(--accent)]"
-                  />
-                  <div className="flex gap-2">
-                    <button
-                      type="submit"
-                      disabled={creatingFolder || !newFolderName.trim()}
-                      className="flex-1 px-2 py-1 bg-[var(--accent)] text-white text-xs font-semibold rounded-md hover:brightness-110"
-                    >
-                      Save
-                    </button>
-                    <button
-                      type="button"
-                      onClick={() => setShowNewFolder(false)}
-                      className="px-2 py-1 bg-[var(--surface2)] text-[var(--text2)] text-xs rounded-md"
-                    >
-                      Cancel
-                    </button>
-                  </div>
-                </form>
-              )}
-
-              <div className="space-y-1">
-                <button
-                  type="button"
-                  onClick={() => setSelectedFolderId(null)}
-                  className={`w-full flex items-center justify-between px-3 py-2 rounded-lg text-xs font-medium transition-colors cursor-pointer ${
-                    selectedFolderId === null
-                      ? "bg-[var(--surface2)] text-[var(--accent)] font-semibold"
-                      : "text-[var(--text2)] hover:bg-[var(--surface2)] hover:text-[var(--text)]"
-                  }`}
-                >
-                  <span className="flex items-center gap-2">
-                    <Layers className="w-3.5 h-3.5" />
-                    All Quizzes
-                  </span>
-                  <span className="text-[10px] font-mono text-[var(--text3)]">
-                    {quizzes.length}
-                  </span>
-                </button>
-
-                <button
-                  type="button"
-                  onClick={() => setSelectedFolderId("unfiled")}
-                  className={`w-full flex items-center justify-between px-3 py-2 rounded-lg text-xs font-medium transition-colors cursor-pointer ${
-                    selectedFolderId === "unfiled"
-                      ? "bg-[var(--surface2)] text-[var(--accent)] font-semibold"
-                      : "text-[var(--text2)] hover:bg-[var(--surface2)] hover:text-[var(--text)]"
-                  }`}
-                >
-                  <span className="flex items-center gap-2">
-                    <FolderIcon className="w-3.5 h-3.5 opacity-60" />
-                    Unfiled
-                  </span>
-                  <span className="text-[10px] font-mono text-[var(--text3)]">
-                    {quizzes.filter((q) => !q.folderId).length}
-                  </span>
-                </button>
-
-                {folders.map((folder) => (
-                  <div
-                    key={folder.id}
-                    className={`group flex items-center justify-between px-3 py-2 rounded-lg text-xs font-medium transition-colors cursor-pointer ${
-                      selectedFolderId === folder.id
-                        ? "bg-[var(--surface2)] text-[var(--accent)] font-semibold"
-                        : "text-[var(--text2)] hover:bg-[var(--surface2)] hover:text-[var(--text)]"
-                    }`}
-                  >
-                    <button
-                      type="button"
-                      onClick={() => setSelectedFolderId(folder.id)}
-                      className="flex items-center gap-2 min-w-0 flex-1 text-left"
-                    >
-                      <FolderIcon className="w-3.5 h-3.5 shrink-0 text-[var(--accent)]" />
-                      <span className="truncate">{folder.name}</span>
-                    </button>
-                    <div className="flex items-center gap-1.5 shrink-0">
-                      <span className="text-[10px] font-mono text-[var(--text3)]">
-                        {quizzes.filter((q) => q.folderId === folder.id).length}
-                      </span>
-                      {folder.userId === currentUserId && (
-                        <button
-                          type="button"
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            handleDeleteFolder(folder.id);
-                          }}
-                          className="opacity-0 group-hover:opacity-100 p-0.5 text-[var(--text3)] hover:text-[var(--red)] transition-opacity"
-                          title="Delete folder"
-                        >
-                          <Trash2 className="w-3 h-3" />
-                        </button>
-                      )}
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Subject Tags Filter */}
-            {allTags.length > 0 && (
-              <div className="bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-4 shadow-[var(--shadow)]">
-                <span className="block text-xs font-bold text-[var(--text3)] uppercase tracking-wider font-mono mb-3">
-                  Subjects
-                </span>
-                <div className="flex flex-wrap gap-1.5">
-                  <button
-                    type="button"
-                    onClick={() => setSelectedTag(null)}
-                    className={`px-2.5 py-1 rounded-full text-xs font-medium transition-colors cursor-pointer ${
-                      selectedTag === null
-                        ? "bg-[var(--accent)] text-white"
-                        : "bg-[var(--surface2)] text-[var(--text2)] border border-[var(--border)] hover:border-[var(--accent)]"
-                    }`}
-                  >
-                    All
-                  </button>
-                  {allTags.map((tag) => (
-                    <button
-                      key={tag}
-                      type="button"
-                      onClick={() => setSelectedTag(tag === selectedTag ? null : tag)}
-                      className={`px-2.5 py-1 rounded-full text-xs font-medium transition-colors cursor-pointer ${
-                        selectedTag === tag
-                          ? "bg-[var(--accent)] text-white"
-                          : "bg-[var(--surface2)] text-[var(--text2)] border border-[var(--border)] hover:border-[var(--accent)]"
-                      }`}
-                    >
-                      {tag}
-                    </button>
-                  ))}
-                </div>
-              </div>
-            )}
-          </aside>
-
-          {/* Main: Quizzes Grid */}
-          <div className="lg:col-span-3">
-            {filteredQuizzes.length === 0 ? (
-              <div className="bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-12 text-center shadow-[var(--shadow)]">
-                <div className="w-12 h-12 rounded-2xl bg-[var(--surface2)] border border-[var(--border)] text-[var(--text3)] flex items-center justify-center mx-auto mb-4">
-                  <Sparkles className="w-6 h-6" />
-                </div>
-                <h3 className="text-lg font-bold font-serif text-[var(--text)]">
-                  No question sets found
-                </h3>
-                <p className="text-sm text-[var(--text2)] mt-1.5 max-w-sm mx-auto">
-                  {search || selectedTag || selectedFolderId
-                    ? "Try clearing your search filters or selecting a different folder."
-                    : "Get started by uploading your first CSV question set."}
-                </p>
-                <Link
-                  href="/quizzes/upload"
-                  className="mt-5 inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-[var(--accent)] text-white text-xs font-semibold hover:brightness-110 transition-all cursor-pointer"
-                >
-                  <Plus className="w-4 h-4" />
-                  Upload First Quiz
-                </Link>
-              </div>
-            ) : (
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-                {filteredQuizzes.map((quiz) => (
-                  <Link
-                    key={quiz.id}
-                    href={`/quizzes/${quiz.id}`}
-                    className="group bg-[var(--surface)] border border-[var(--border)] hover:border-[var(--accent)] rounded-2xl p-5 shadow-[var(--shadow)] hover:shadow-[var(--shadow-lg)] transition-all flex flex-col justify-between"
-                  >
-                    <div>
-                      {/* Top Badges */}
-                      <div className="flex items-center justify-between gap-2 mb-3">
-                        <div className="flex items-center gap-1.5 flex-wrap">
-                          {quiz.subjectTag ? (
-                            <span className="px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-[rgba(217,119,87,0.12)] text-[var(--accent)] border border-[rgba(217,119,87,0.25)]">
-                              {quiz.subjectTag}
-                            </span>
-                          ) : (
-                            <span className="px-2.5 py-0.5 rounded-full text-[11px] font-medium bg-[var(--surface2)] text-[var(--text3)] border border-[var(--border)]">
-                              General
-                            </span>
-                          )}
-
-                          {quiz.folderName && (
-                            <span className="px-2 py-0.5 rounded-md text-[10px] font-medium bg-[var(--surface2)] text-[var(--text2)] flex items-center gap-1">
-                              <FolderIcon className="w-2.5 h-2.5" />
-                              {quiz.folderName}
-                            </span>
-                          )}
-                        </div>
-
-                        {quiz.visibility === "private" ? (
-                          <span
-                            className="text-[var(--yellow)] p-1"
-                            title="Private to you"
-                          >
-                            <Lock className="w-3.5 h-3.5" />
-                          </span>
-                        ) : (
-                          <span
-                            className="text-[var(--text3)] p-1 opacity-40 group-hover:opacity-100 transition-opacity"
-                            title="Shared with study group"
-                          >
-                            <Globe className="w-3.5 h-3.5" />
-                          </span>
-                        )}
-                      </div>
-
-                      {/* Quiz Title */}
-                      <h3 className="text-lg font-bold font-serif text-[var(--text)] group-hover:text-[var(--accent)] transition-colors line-clamp-2">
-                        {quiz.title}
-                      </h3>
-                    </div>
-
-                    {/* Footer Info */}
-                    <div className="mt-6 pt-4 border-t border-[var(--border)] flex items-center justify-between text-xs text-[var(--text3)]">
-                      <div className="flex items-center gap-2">
-                        {quiz.uploader.image ? (
-                          // eslint-disable-next-line @next/next/no-img-element
-                          <img
-                            src={quiz.uploader.image}
-                            alt=""
-                            className="w-5 h-5 rounded-full border border-[var(--border)] object-cover"
-                          />
-                        ) : (
-                          <div className="w-5 h-5 rounded-full bg-[var(--surface3)] flex items-center justify-center text-[10px] font-bold text-[var(--accent)]">
-                            {quiz.uploader.name?.[0]?.toUpperCase() || "U"}
-                          </div>
-                        )}
-                        <span className="truncate max-w-[100px]">
-                          {quiz.uploader.name || "Anonymous"}
-                        </span>
-                      </div>
-
-                      <div className="flex items-center gap-3">
-                        <span className="font-mono font-semibold text-[var(--text2)]">
-                          {quiz.questionCount} {quiz.questionCount === 1 ? "Q" : "Qs"}
-                        </span>
-                        <ChevronRight className="w-4 h-4 text-[var(--text3)] group-hover:text-[var(--accent)] group-hover:translate-x-0.5 transition-all" />
-                      </div>
-                    </div>
-                  </Link>
-                ))}
-              </div>
-            )}
+          <div className="flex items-center gap-3">
+            <Link
+              href="/quizzes/upload"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-primary/10 hover:bg-primary/20 text-primary text-sm font-semibold border border-primary/20 transition-all shadow-sm"
+            >
+              <Upload className="w-4 h-4" />
+              Upload Custom CSV
+            </Link>
           </div>
         </div>
+
+        {/* Dynamic Metric Stat Chips */}
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+          <div className="p-4 rounded-xl bg-card border border-border/60 shadow-sm flex flex-col gap-1">
+            <span className="text-[11px] font-bold tracking-wider uppercase text-muted-foreground">Total Test Sets</span>
+            <span className="text-2xl font-mono font-bold text-foreground">{quizzes.length} <span className="text-sm font-normal text-primary">sets</span></span>
+          </div>
+          <div className="p-4 rounded-xl bg-card border border-border/60 shadow-sm flex flex-col gap-1">
+            <span className="text-[11px] font-bold tracking-wider uppercase text-muted-foreground">Question Bank</span>
+            <span className="text-2xl font-mono font-bold text-foreground">{totalQuestions.toLocaleString()} <span className="text-sm font-normal text-primary">items</span></span>
+          </div>
+          <div className="p-4 rounded-xl bg-card border border-border/60 shadow-sm flex flex-col gap-1">
+            <span className="text-[11px] font-bold tracking-wider uppercase text-muted-foreground">Subject Domains</span>
+            <span className="text-2xl font-mono font-bold text-foreground">4 <span className="text-sm font-normal text-primary">core areas</span></span>
+          </div>
+          <div className="p-4 rounded-xl bg-card border border-border/60 shadow-sm flex flex-col gap-1">
+            <span className="text-[11px] font-bold tracking-wider uppercase text-muted-foreground">Pedagogical Tiers</span>
+            <span className="text-2xl font-mono font-bold text-foreground">4 <span className="text-sm font-normal text-primary">levels</span></span>
+          </div>
+        </div>
+
+        {/* Search, Domain Tabs & Tier Filter Bar */}
+        <div className="flex flex-col gap-4">
+          <div className="relative w-full">
+            <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
+            <input
+              type="text"
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+              placeholder="Search by topic, course code (e.g. Elec 03, Math 09, GEAS 06), or title..."
+              className="w-full pl-10 pr-4 py-2.5 rounded-lg bg-card border border-border/70 text-sm focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all placeholder:text-muted-foreground"
+            />
+          </div>
+
+          {/* Subject Domain Tabs */}
+          <div className="flex items-center gap-2 overflow-x-auto pb-1 scrollbar-none">
+            {[
+              { id: "all", label: "All Subjects", count: quizzes.length },
+              { id: "Mathematics", label: "Mathematics", count: quizzes.filter(q => getQuizDomain(q) === "Mathematics").length },
+              { id: "Electronics Engineering", label: "Electronics Engineering", count: quizzes.filter(q => getQuizDomain(q) === "Electronics Engineering").length },
+              { id: "General Engineering and Applied Sciences", label: "GEAS", count: quizzes.filter(q => getQuizDomain(q) === "General Engineering and Applied Sciences").length },
+              { id: "Electronics Systems and Technologies", label: "EST", count: quizzes.filter(q => getQuizDomain(q) === "Electronics Systems and Technologies").length },
+            ].map((tab) => (
+              <button
+                key={tab.id}
+                onClick={() => setSelectedDomain(tab.id)}
+                className={`px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-all border ${
+                  selectedDomain === tab.id
+                    ? "bg-primary text-primary-foreground border-primary shadow-sm"
+                    : "bg-card hover:bg-accent text-muted-foreground hover:text-foreground border-border/60"
+                }`}
+              >
+                {tab.label} ({tab.count})
+              </button>
+            ))}
+          </div>
+
+          {/* Pedagogical Tier Filter Pills */}
+          <div className="flex items-center gap-2 overflow-x-auto pb-1 flex-wrap">
+            {[
+              { id: "all", label: "All Tiers", count: tierCounts.all },
+              { id: "diagnostic", label: "🩺 Diagnostic (30 Qs)", count: tierCounts.diagnostic },
+              { id: "review", label: "📖 Review (1:1)", count: tierCounts.review },
+              { id: "drill", label: "⚡ Drill (10 Qs)", count: tierCounts.drill },
+              { id: "simulation", label: "🎯 Simulation (50 Qs)", count: tierCounts.simulation },
+            ].map((tier) => (
+              <button
+                key={tier.id}
+                onClick={() => setSelectedTier(tier.id)}
+                className={`px-3 py-1 rounded-md text-xs font-medium whitespace-nowrap transition-all border ${
+                  selectedTier === tier.id
+                    ? "bg-foreground text-background border-foreground font-semibold"
+                    : "bg-card text-muted-foreground hover:text-foreground border-border/50"
+                }`}
+              >
+                {tier.label}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        {/* Quiz Cards Grid */}
+        {filteredQuizzes.length === 0 ? (
+          <div className="text-center py-16 px-4 rounded-xl border border-dashed border-border bg-card/50">
+            <Search className="w-8 h-8 text-muted-foreground mx-auto mb-3 opacity-50" />
+            <h3 className="font-serif font-bold text-lg text-foreground">No test sets match your filter</h3>
+            <p className="text-xs text-muted-foreground mt-1 max-w-sm mx-auto">
+              Try adjusting your search query, or reset the subject domain and tier filters.
+            </p>
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            {filteredQuizzes.map((quiz) => {
+              const tier = getQuizTier(quiz);
+              const tierStyles = {
+                diagnostic: "bg-sky-500/10 text-sky-600 dark:text-sky-400 border-sky-500/20",
+                review: "bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border-emerald-500/20",
+                drill: "bg-amber-500/10 text-amber-600 dark:text-amber-400 border-amber-500/20",
+                simulation: "bg-purple-500/10 text-purple-600 dark:text-purple-400 border-purple-500/20",
+              }[tier] || "bg-muted text-muted-foreground border-border";
+
+              const tierLabel = {
+                diagnostic: "🩺 Diagnostic",
+                review: "📖 Review (1:1)",
+                drill: "⚡ Drill",
+                simulation: "🎯 Simulation",
+              }[tier] || "Quiz";
+
+              return (
+                <Link
+                  key={quiz.id}
+                  href={`/quizzes/${quiz.id}`}
+                  className="group relative flex flex-col justify-between p-5 rounded-xl bg-card border border-border/70 hover:border-primary/60 transition-all hover:shadow-md hover:-translate-y-0.5"
+                >
+                  <div className="flex flex-col gap-3">
+                    <div className="flex items-center justify-between gap-2">
+                      <span className={`text-[11px] font-mono font-bold px-2 py-0.5 rounded border ${tierStyles}`}>
+                        {tierLabel}
+                      </span>
+                      <span className="text-xs font-mono font-semibold px-2 py-0.5 rounded bg-muted text-muted-foreground">
+                        {quiz.questionCount} Qs
+                      </span>
+                    </div>
+
+                    <h3 className="font-serif font-bold text-base text-foreground leading-snug group-hover:text-primary transition-colors">
+                      {quiz.title}
+                    </h3>
+                  </div>
+
+                  <div className="mt-5 pt-3 border-t border-border/40 flex items-center justify-between text-xs text-muted-foreground">
+                    <span className="truncate max-w-[180px]">{quiz.subjectTag || "General"}</span>
+                    <span className="inline-flex items-center gap-1 font-semibold text-primary group-hover:translate-x-0.5 transition-transform">
+                      Take Quiz <ChevronRight className="w-3.5 h-3.5" />
+                    </span>
+                  </div>
+                </Link>
+              );
+            })}
+          </div>
+        )}
+
       </main>
     </div>
   );

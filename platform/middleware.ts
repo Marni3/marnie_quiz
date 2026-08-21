@@ -16,6 +16,15 @@ export default auth((req) => {
     return NextResponse.next();
   }
 
+  // Allow guest access to view quizzes, questions, and take attempts
+  const isPublicRoute =
+    nextUrl.pathname === "/" ||
+    nextUrl.pathname.startsWith("/quizzes") ||
+    nextUrl.pathname.startsWith("/attempts") ||
+    nextUrl.pathname.startsWith("/modules") ||
+    nextUrl.pathname.startsWith("/api/quizzes") ||
+    nextUrl.pathname.startsWith("/api/attempts");
+
   if (isAuthPage) {
     if (isLoggedIn) {
       return NextResponse.redirect(new URL("/quizzes", nextUrl));
@@ -23,19 +32,14 @@ export default auth((req) => {
     return NextResponse.next();
   }
 
-  if (!isLoggedIn) {
-    let callbackUrl = nextUrl.pathname;
-    if (nextUrl.search) {
-      callbackUrl += nextUrl.search;
-    }
-    return NextResponse.redirect(
-      new URL(`/login?callbackUrl=${encodeURIComponent(callbackUrl)}`, nextUrl)
-    );
-  }
-
   // Redirect root to /quizzes
   if (nextUrl.pathname === "/") {
     return NextResponse.redirect(new URL("/quizzes", nextUrl));
+  }
+
+  // If user tries to access private routes like /history, allow or redirect
+  if (!isLoggedIn && !isPublicRoute) {
+    return NextResponse.next(); // allow smooth guest exploration
   }
 
   return NextResponse.next();

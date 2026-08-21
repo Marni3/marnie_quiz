@@ -1,6 +1,6 @@
 /**
  * In-memory fallback datastore for local dev & demo runs when DATABASE_URL is not yet connected.
- * Seamlessly integrates with the same TypeScript shapes.
+ * Seamlessly integrates with the exact Drizzle schema entities and pre-seeds all 190 ECE Board Exam test sets.
  */
 
 import {
@@ -12,6 +12,7 @@ import {
   Attempt,
   AnswerRecord,
 } from "./db/schema";
+import seedData from "../data/seed-data.json";
 
 export interface MockStore {
   users: Map<string, User>;
@@ -40,13 +41,66 @@ export function getMockStore(): MockStore {
     // Seed default sample user
     const defaultUser: User = {
       id: "00000000-0000-0000-0000-000000000001",
-      email: "demo@marnie.quiz",
-      name: "Demo Student",
-      image: "https://api.dicebear.com/7.x/bottts/svg?seed=demo",
+      email: "guest@marnie.quiz",
+      name: "Guest Student",
+      image: "https://api.dicebear.com/7.x/bottts/svg?seed=guest",
       createdAt: new Date(),
     };
     globalStore.__mockStore.users.set(defaultUser.id, defaultUser);
     globalStore.__mockStore.users.set(defaultUser.email, defaultUser);
+
+    // Pre-populate with all 190 seed test sets & questions
+    try {
+      if (Array.isArray(seedData)) {
+        for (const s of seedData) {
+          const qSet: QuestionSet = {
+            id: s.id,
+            uploadedByUserId: defaultUser.id,
+            folderId: null,
+            title: s.title,
+            subjectTag: s.subjectTag || s.subjectCategory || "General",
+            visibility: "shared",
+            rawCsv: null,
+            createdAt: new Date(),
+            updatedAt: new Date(),
+          };
+          globalStore.__mockStore.questionSets.set(qSet.id, qSet);
+
+          if (Array.isArray(s.questions)) {
+            s.questions.forEach((q: any, idx: number) => {
+              const questionRecord: Question = {
+                id: q.id,
+                sourceQuestionSetId: qSet.id,
+                promptText: q.promptText,
+                choiceA: q.choiceA,
+                choiceB: q.choiceB,
+                choiceC: q.choiceC,
+                choiceD: q.choiceD,
+                correctChoice: q.correctChoice as any,
+                explanation: q.explanation || null,
+                imageUrl: q.imageUrl || null,
+                interactiveHtml: null,
+                interactiveUrl: null,
+              };
+              globalStore.__mockStore!.questions.set(questionRecord.id, questionRecord);
+
+              const itemRecord: QuestionSetItem = {
+                id: `qsi_${qSet.id}_${q.id}`,
+                questionSetId: qSet.id,
+                questionId: questionRecord.id,
+                orderIndex: idx,
+              };
+              globalStore.__mockStore!.questionSetItems.set(
+                itemRecord.id,
+                itemRecord
+              );
+            });
+          }
+        }
+      }
+    } catch (err) {
+      console.warn("Could not load initial seed-data.json:", err);
+    }
   }
   return globalStore.__mockStore;
 }
