@@ -32,42 +32,53 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 // ── 1. Fast Manifest Loading & Indexing ───────────────────────────
-async function loadManifest() {
-  var container = document.getElementById('manifest-container');
+function applyManifestData(data) {
+  manifestData = data;
+  quizLookup = {};
+  manifestData.categories.forEach(function (cat) {
+    cat.topics.forEach(function (topic) {
+      topic.quizzes.forEach(function (q) {
+        quizLookup[q.path] = q;
+      });
+    });
+  });
+
   var counter = document.getElementById('total-quizzes-counter');
   var statSets = document.getElementById('stat-sets');
   var statQs = document.getElementById('stat-questions');
 
+  if (counter) {
+    counter.textContent = manifestData.totalQuizzes + ' Test Sets Available • ' + (manifestData.totalQuestions || 5435).toLocaleString() + ' Questions';
+  }
+  if (statSets) statSets.innerHTML = manifestData.totalQuizzes + '<em>sets</em>';
+  if (statQs) statQs.innerHTML = (manifestData.totalQuestions || 5435).toLocaleString() + '<em>items</em>';
+
+  renderCategoryPills();
+  renderManifestQuizzes();
+}
+
+async function loadManifest() {
+  var container = document.getElementById('manifest-container');
+
+  // 1. Instant sync load if statically embedded (works offline and on file:// protocol)
+  if (window.STATIC_MANIFEST_DATA && window.STATIC_MANIFEST_DATA.categories) {
+    applyManifestData(window.STATIC_MANIFEST_DATA);
+    return;
+  }
+
+  // 2. Fallback to network fetch
   try {
     var res = await fetch('manifest.json?v=' + Date.now());
     if (!res.ok) throw new Error('Manifest not found');
-    manifestData = await res.json();
-
-    // Build fast flat lookup table for O(1) quiz launching
-    quizLookup = {};
-    manifestData.categories.forEach(function (cat) {
-      cat.topics.forEach(function (topic) {
-        topic.quizzes.forEach(function (q) {
-          quizLookup[q.path] = q;
-        });
-      });
-    });
-
-    if (counter) {
-      counter.textContent = manifestData.totalQuizzes + ' Test Sets Available • ' + (manifestData.totalQuestions || 5435).toLocaleString() + ' Questions';
-    }
-    if (statSets) statSets.innerHTML = manifestData.totalQuizzes + '<em>sets</em>';
-    if (statQs) statQs.innerHTML = (manifestData.totalQuestions || 5435).toLocaleString() + '<em>items</em>';
-
-    renderCategoryPills();
-    renderManifestQuizzes();
+    var data = await res.json();
+    applyManifestData(data);
   } catch (err) {
     console.warn('Could not fetch manifest.json:', err);
     if (container) {
       container.innerHTML =
         '<div style="padding:32px 20px;text-align:center;background:var(--surface);border:1.5px dashed var(--border);border-radius:var(--radius);">' +
         '<div style="font-size:1.8rem;margin-bottom:8px;">📁</div>' +
-        '<div style="font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:var(--text);">Repository Test Sets</div>' +
+        '<div style="font-family:\'Playfair Display\',serif;font-size:1.1rem;font-weight:700;color:var(--text);">Repository Test Sets</div>' +
         '<div style="font-size:.84rem;color:var(--text3);margin-top:4px;">Use the sidebar upload on the right to load any CSV test set directly.</div>' +
         '</div>';
     }
