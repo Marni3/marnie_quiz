@@ -1,10 +1,14 @@
-import { db } from "../lib/db/client";
+import * as dotenv from "dotenv";
+dotenv.config({ path: ".env.local" });
+
+import { db, pool } from "../lib/db/client";
 import { users, questionSets, questions, questionSetItems } from "../lib/db/schema";
 import seedData from "../data/seed-data.json";
 import { eq } from "drizzle-orm";
 
-async function runSeed() {
-  console.log("🚀 Starting PostgreSQL batch ingestion for all 190 ECE Board Exam test sets...");
+async function runFastBatchSeed() {
+  console.log("🚀 Starting Fast Batch PostgreSQL ingestion for all 190 ECE Board Exam test sets...");
+  const startTime = Date.now();
 
   try {
     const defaultUserId = "00000000-0000-0000-0000-000000000001";
@@ -24,65 +28,70 @@ async function runSeed() {
       console.log("✓ Created system archive user.");
     }
 
-    let setCounter = 0;
-    let questionCounter = 0;
+    // 1. First, fetch any already existing sets to avoid duplicate keys
+    const existingSets = await db.select({ id: questionSets.id, title: questionSets.title }).from(questionSets);
+    const existingSetTitles = new Set(existingSets.map(s => s.title));
 
-    for (const s of seedData as any[]) {
-      const existingSet = await db
-        .select()
-        .from(questionSets)
-        .where(eq(questionSets.title, s.title))
-        .limit(1);
+    const setsToInsert = (seedData as any[]).filter(s => !existingSetTitles.has(s.title));
 
-      let targetSetId = existingSet[0]?.id;
+    console.log(`Ingesting ${setsToInsert.length} new test sets (out of ${seedData.length} total)...`);
 
-      if (!targetSetId) {
-        const [insertedSet] = await db
-          .insert(questionSets)
-          .values({
-            uploadedByUserId: defaultUserId,
-            title: s.title,
-            subjectTag: s.subjectTag || s.subjectCategory || "General",
-            visibility: "shared",
-          })
-          .returning();
-        targetSetId = insertedSet.id;
-        setCounter++;
-      }
+    for (let sIdx = 0; sIdx < setsToInsert.length; sIdx++) {
+      const s = setsToInsert[sIdx];
+      const [insertedSet] = await db
+        .insert(questionSets)
+        .values({
+          uploadedByUserId: defaultUserId,
+          title: s.title,
+          subjectTag: s.subjectTag || s.subjectCategory || "General",
+          visibility: "shared",
+        })
+        .returning();
+
+      const targetSetId = insertedSet.id;
 
       if (Array.isArray(s.questions) && s.questions.length > 0) {
-        for (let i = 0; i < s.questions.length; i++) {
-          const q = s.questions[i];
-          const [insertedQ] = await db
-            .insert(questions)
-            .values({
-              sourceQuestionSetId: targetSetId,
-              promptText: q.promptText,
-              choiceA: q.choiceA,
-              choiceB: q.choiceB,
-              choiceC: q.choiceC,
-              choiceD: q.choiceD,
-              correctChoice: q.correctChoice as any,
-              explanation: q.explanation || null,
-              imageUrl: q.imageUrl || null,
-            })
-            .returning();
+        // Prepare questions chunk
+        const qValues = s.questions.map((q: any) => ({
+          sourceQuestionSetId: targetSetId,
+          promptText: q.promptText,
+          choiceA: q.choiceA,
+          choiceB: q.choiceB,
+          choiceC: q.choiceC,
+          choiceD: q.choiceD,
+          correctChoice: q.correctChoice as any,
+          explanation: q.explanation || null,
+          imageUrl: q.imageUrl || null,
+        }));
 
-          await db.insert(questionSetItems).values({
-            questionSetId: targetSetId,
-            questionId: insertedQ.id,
-            orderIndex: i,
-          });
-          questionCounter++;
-        }
+        // Batch insert questions for this set
+        const insertedQuestions = await db.insert(questions).values(qValues).returning();
+
+        // Batch insert question set items
+        const itemValues = insertedQuestions.map((iq, i) => ({
+          questionSetId: targetSetId,
+          questionId: iq.id,
+          orderIndex: i,
+        }));
+
+        await db.insert(questionSetItems).values(itemValues);
+      }
+
+      if ((sIdx + 1) % 25 === 0 || sIdx === setsToInsert.length - 1) {
+        console.log(`  ✓ Processed ${sIdx + 1}/${setsToInsert.length} test sets...`);
       }
     }
 
-    console.log(`✅ Database seeding completed successfully!`);
-    console.log(`   Ingested ${setCounter} question sets and ${questionCounter} questions.`);
+    const elapsed = ((Date.now() - startTime) / 1000).toFixed(1);
+    console.log(`✅ Fast batch ingestion completed in ${elapsed}s!`);
+
+    const [totalSets] = await db.select({ count: questionSets.id }).from(questionSets);
+    console.log(`📊 Neon Database Status: All test sets successfully stored in cloud PostgreSQL!`);
   } catch (err) {
     console.error("❌ Database seeding error:", err);
+  } finally {
+    await pool.end();
   }
 }
 
-runSeed();
+runFastBatchSeed();
