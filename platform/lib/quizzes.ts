@@ -59,6 +59,9 @@ export async function createQuestionSetFromCsv(input: CreateQuizInput): Promise<
         explanation: row.explanation,
         imageUrl: row.image_url,
         interactiveUrl: row.interactive_url,
+        archetype: row.archetype || "standard",
+        microCluster: row.micro_cluster || null,
+        isAnchor: row.is_anchor || false,
       });
 
       await db.insert(questionSetItems).values({

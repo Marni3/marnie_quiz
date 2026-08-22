@@ -39,6 +39,30 @@ export const csvRowSchema = z.object({
     .optional()
     .nullable()
     .transform((val) => (val && val.length > 0 ? val : null)),
+  archetype: z
+    .string()
+    .trim()
+    .optional()
+    .nullable()
+    .transform((val) => (val && val.length > 0 ? val.toLowerCase() : "standard")),
+  micro_cluster: z
+    .string()
+    .trim()
+    .optional()
+    .nullable()
+    .transform((val) => (val && val.length > 0 ? val : null)),
+  is_anchor: z
+    .union([z.boolean(), z.string()])
+    .optional()
+    .nullable()
+    .transform((val) => {
+      if (typeof val === "boolean") return val;
+      if (typeof val === "string") {
+        const lower = val.trim().toLowerCase();
+        return lower === "true" || lower === "1" || lower === "yes";
+      }
+      return false;
+    }),
 });
 
 export type ValidatedCsvRow = z.infer<typeof csvRowSchema>;
