@@ -196,7 +196,7 @@ export async function setManualConfidence(
 /**
  * Snoozes a topic from SRS daily queues for N days.
  */
-export async function snoozeTopic(userId: string, topicCode: string, days: number = 7) {
+export async function snoozeTopic(userId: string, topicCode: string, days: number = 1) {
   const snoozeExpiry = new Date(Date.now() + days * 24 * 60 * 60 * 1000);
 
   const [existing] = await db

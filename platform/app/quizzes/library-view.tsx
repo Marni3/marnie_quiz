@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { Navbar } from "@/components/navbar";
 import { MotivationBanner } from "@/components/motivation-banner";
+import { SkillTreeMap } from "@/components/skill-tree-map";
 import {
   Search,
   BookOpen,
@@ -21,7 +22,8 @@ import {
   EyeOff,
   ShieldCheck,
   AlertTriangle,
-  Info
+  GitBranch,
+  List
 } from "lucide-react";
 import { QuizListItem } from "@/lib/quizzes";
 import { FolderWithCount } from "@/lib/folders";
@@ -60,6 +62,9 @@ export function LibraryView({
       topicMap: {},
     }
   );
+
+  // View Mode: 'list' vs 'tree'
+  const [viewMode, setViewMode] = useState<"list" | "tree">("list");
 
   const [search, setSearch] = useState("");
   const [selectedSubject, setSelectedSubject] = useState<string>("all");
@@ -192,7 +197,7 @@ export function LibraryView({
     try {
       const payload: any = { topicCode, action };
       if (action === "confidence") payload.confidence = value;
-      if (action === "snooze") payload.days = value || 7;
+      if (action === "snooze") payload.days = typeof value === "number" ? value : 1;
 
       const res = await fetch("/api/srs/override", {
         method: "POST",
@@ -288,7 +293,7 @@ export function LibraryView({
           </div>
         </section>
 
-        {/* Header Bar */}
+        {/* Header Bar with Dual View Switcher (Library List vs Skill Tree Map) */}
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pt-2">
           <div>
             <h1 className="text-2xl sm:text-3xl font-bold font-serif text-[var(--text)] tracking-tight">
@@ -299,16 +304,46 @@ export function LibraryView({
             </p>
           </div>
 
-          <div className="flex items-center gap-3">
-            <button
-              type="button"
-              onClick={toggleAll}
-              className="px-3.5 py-2 rounded-xl bg-[var(--surface)] border border-[var(--border)] text-xs font-semibold text-[var(--text2)] hover:text-[var(--text)] hover:bg-[var(--surface2)] transition-colors cursor-pointer"
-            >
-              {allCollapsed ? "Expand All Topics" : "Collapse All Topics"}
-            </button>
+          <div className="flex flex-wrap items-center gap-3">
+            {/* Dual View Mode Switcher */}
+            <div className="flex items-center p-1 rounded-xl bg-[var(--surface)] border border-[var(--border)]">
+              <button
+                type="button"
+                onClick={() => setViewMode("list")}
+                className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold transition-all cursor-pointer ${
+                  viewMode === "list"
+                    ? "bg-[var(--surface2)] text-[var(--accent)] shadow-xs border border-[var(--border)]"
+                    : "text-[var(--text3)] hover:text-[var(--text)]"
+                }`}
+              >
+                <List className="w-3.5 h-3.5" />
+                <span>List View</span>
+              </button>
+              <button
+                type="button"
+                onClick={() => setViewMode("tree")}
+                className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold transition-all cursor-pointer ${
+                  viewMode === "tree"
+                    ? "bg-[var(--surface2)] text-[var(--accent)] shadow-xs border border-[var(--border)]"
+                    : "text-[var(--text3)] hover:text-[var(--text)]"
+                }`}
+              >
+                <GitBranch className="w-3.5 h-3.5" />
+                <span>Skill Tree</span>
+              </button>
+            </div>
 
-            {/* Secondary Outline Upload Button to prevent competing with Primary CTA */}
+            {viewMode === "list" && (
+              <button
+                type="button"
+                onClick={toggleAll}
+                className="px-3.5 py-2 rounded-xl bg-[var(--surface)] border border-[var(--border)] text-xs font-semibold text-[var(--text2)] hover:text-[var(--text)] hover:bg-[var(--surface2)] transition-colors cursor-pointer"
+              >
+                {allCollapsed ? "Expand All Topics" : "Collapse All Topics"}
+              </button>
+            )}
+
+            {/* Secondary Outline Upload Button */}
             <Link
               href="/quizzes/upload"
               className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-[var(--surface)] border border-[var(--border)] text-xs font-semibold text-[var(--text2)] hover:text-[var(--accent)] hover:border-[var(--accent)] hover:bg-[var(--surface2)] transition-colors shadow-sm"
@@ -319,297 +354,327 @@ export function LibraryView({
           </div>
         </div>
 
-        {/* Filter Toolbar with Standardized PRC Subject Taxonomy */}
-        <div className="bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-4 sm:p-5 shadow-[var(--shadow)] space-y-4">
-          <div className="relative">
-            <Search className="w-4 h-4 absolute left-3.5 top-1/2 -translate-y-1/2 text-[var(--text3)]" />
-            <input
-              type="text"
-              placeholder="Search by topic, formula, or keyword (e.g. Diode, Fourier, RLC, Shannon)..."
-              value={search}
-              onChange={(e) => setSearch(e.target.value)}
-              className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-[var(--surface2)] border border-[var(--border)] text-sm text-[var(--text)] placeholder-[var(--text3)] focus:outline-none focus:border-[var(--accent)] transition-colors"
-            />
-          </div>
+        {/* Dynamic Content: Skill Tree Map or Classic Accordion List */}
+        {viewMode === "tree" ? (
+          <SkillTreeMap quizzes={quizzes} topicMap={srsOverview.topicMap} />
+        ) : (
+          <>
+            {/* Filter Toolbar with Standardized PRC Subject Taxonomy */}
+            <div className="bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-4 sm:p-5 shadow-[var(--shadow)] space-y-4">
+              <div className="relative">
+                <Search className="w-4 h-4 absolute left-3.5 top-1/2 -translate-y-1/2 text-[var(--text3)]" />
+                <input
+                  type="text"
+                  placeholder="Search by topic, formula, or keyword (e.g. Diode, Fourier, RLC, Shannon)..."
+                  value={search}
+                  onChange={(e) => setSearch(e.target.value)}
+                  className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-[var(--surface2)] border border-[var(--border)] text-sm text-[var(--text)] placeholder-[var(--text3)] focus:outline-none focus:border-[var(--accent)] transition-colors"
+                />
+              </div>
 
-          <div className="flex flex-wrap items-center gap-2 pt-1 border-t border-[var(--border)]">
-            <span className="text-xs font-mono text-[var(--text3)] uppercase mr-1">Subject:</span>
-            {[
-              { id: "all", label: "All Subjects" },
-              { id: "MATH", label: "MATH" },
-              { id: "ELECS", label: "ELECS" },
-              { id: "GEAS", label: "GEAS" },
-              { id: "EST", label: "EST" },
-            ].map((d) => (
-              <button
-                key={d.id}
-                type="button"
-                onClick={() => setSelectedSubject(d.id)}
-                className={`px-3 py-1 rounded-lg text-xs font-medium transition-all cursor-pointer ${
-                  selectedSubject === d.id
-                    ? "bg-[var(--accent)] text-white shadow-sm"
-                    : "bg-[var(--surface2)] text-[var(--text2)] hover:text-[var(--text)] border border-[var(--border)]"
-                }`}
-              >
-                {d.label}
-              </button>
-            ))}
+              <div className="flex flex-wrap items-center gap-2 pt-1 border-t border-[var(--border)]">
+                <span className="text-xs font-mono text-[var(--text3)] uppercase mr-1">Subject:</span>
+                {[
+                  { id: "all", label: "All Subjects" },
+                  { id: "MATH", label: "MATH" },
+                  { id: "ELECS", label: "ELECS" },
+                  { id: "GEAS", label: "GEAS" },
+                  { id: "EST", label: "EST" },
+                ].map((d) => (
+                  <button
+                    key={d.id}
+                    type="button"
+                    onClick={() => setSelectedSubject(d.id)}
+                    className={`px-3 py-1 rounded-lg text-xs font-medium transition-all cursor-pointer ${
+                      selectedSubject === d.id
+                        ? "bg-[var(--accent)] text-white shadow-sm"
+                        : "bg-[var(--surface2)] text-[var(--text2)] hover:text-[var(--text)] border border-[var(--border)]"
+                    }`}
+                  >
+                    {d.label}
+                  </button>
+                ))}
 
-            <div className="h-4 w-px bg-[var(--border)] mx-1 hidden sm:block"></div>
+                <div className="h-4 w-px bg-[var(--border)] mx-1 hidden sm:block"></div>
 
-            <span className="text-xs font-mono text-[var(--text3)] uppercase mr-1">Tier:</span>
-            {[
-              { id: "all", label: "All Tiers" },
-              { id: "diagnostic", label: "Diagnostic (30Q)" },
-              { id: "review", label: "Review (25Q)" },
-              { id: "drill", label: "Drill (10Q)" },
-              { id: "simulation", label: "Simulation (50Q)" },
-            ].map((t) => (
-              <button
-                key={t.id}
-                type="button"
-                onClick={() => setSelectedTier(t.id)}
-                className={`px-3 py-1 rounded-lg text-xs font-medium transition-all cursor-pointer ${
-                  selectedTier === t.id
-                    ? "bg-[var(--accent)] text-white shadow-sm"
-                    : "bg-[var(--surface2)] text-[var(--text2)] hover:text-[var(--text)] border border-[var(--border)]"
-                }`}
-              >
-                {t.label}
-              </button>
-            ))}
-          </div>
-        </div>
-
-        {/* Grouped Topics List with Color-Coded Subject Accents */}
-        <div className="space-y-4">
-          {groupedByTopic.length === 0 ? (
-            <div className="text-center py-16 bg-[var(--surface)] border border-[var(--border)] rounded-2xl">
-              <BookOpen className="w-8 h-8 text-[var(--text3)] mx-auto mb-2" />
-              <h3 className="text-base font-semibold text-[var(--text)]">No question sets found</h3>
-              <p className="text-xs text-[var(--text3)] mt-1">Try clearing your search query or filters.</p>
+                <span className="text-xs font-mono text-[var(--text3)] uppercase mr-1">Tier:</span>
+                {[
+                  { id: "all", label: "All Tiers" },
+                  { id: "diagnostic", label: "Diagnostic (30Q)" },
+                  { id: "review", label: "Review (25Q)" },
+                  { id: "drill", label: "Drill (10Q)" },
+                  { id: "simulation", label: "Simulation (50Q)" },
+                ].map((t) => (
+                  <button
+                    key={t.id}
+                    type="button"
+                    onClick={() => setSelectedTier(t.id)}
+                    className={`px-3 py-1 rounded-lg text-xs font-medium transition-all cursor-pointer ${
+                      selectedTier === t.id
+                        ? "bg-[var(--accent)] text-white shadow-sm"
+                        : "bg-[var(--surface2)] text-[var(--text2)] hover:text-[var(--text)] border border-[var(--border)]"
+                    }`}
+                  >
+                    {t.label}
+                  </button>
+                ))}
+              </div>
             </div>
-          ) : (
-            groupedByTopic.map((group) => {
-              const isCollapsed = isTopicCollapsed(group.name);
-              const srsInfo = srsOverview.topicMap[group.topicCode];
-              const isMenuOpen = activeMenuTopic === group.topicCode;
-              const subjectConfig = group.subject;
 
-              return (
-                <div
-                  key={group.name}
-                  className={`bg-[var(--surface)] border border-[var(--border)] border-l-4 ${subjectConfig.borderClass} rounded-2xl overflow-visible shadow-[var(--shadow)] transition-all`}
-                >
-                  {/* Topic Header Accordion */}
-                  <div className="p-4 sm:p-5 flex items-center justify-between gap-4">
-                    <button
-                      type="button"
-                      onClick={() => toggleTopic(group.name)}
-                      className="flex-1 flex items-center gap-3 text-left cursor-pointer select-none group min-w-0"
+            {/* Grouped Topics List with Color-Coded Subject Accents */}
+            <div className="space-y-4">
+              {groupedByTopic.length === 0 ? (
+                <div className="text-center py-16 bg-[var(--surface)] border border-[var(--border)] rounded-2xl">
+                  <BookOpen className="w-8 h-8 text-[var(--text3)] mx-auto mb-2" />
+                  <h3 className="text-base font-semibold text-[var(--text)]">No question sets found</h3>
+                  <p className="text-xs text-[var(--text3)] mt-1">Try clearing your search query or filters.</p>
+                </div>
+              ) : (
+                groupedByTopic.map((group) => {
+                  const isCollapsed = isTopicCollapsed(group.name);
+                  const srsInfo = srsOverview.topicMap[group.topicCode];
+                  const isMenuOpen = activeMenuTopic === group.topicCode;
+                  const subjectConfig = group.subject;
+
+                  return (
+                    <div
+                      key={group.name}
+                      className={`bg-[var(--surface)] border border-[var(--border)] border-l-4 ${subjectConfig.borderClass} rounded-2xl overflow-visible shadow-[var(--shadow)] transition-all`}
                     >
-                      <div className="w-7 h-7 rounded-lg bg-[var(--surface2)] border border-[var(--border)] flex items-center justify-center text-[var(--text2)] group-hover:text-[var(--accent)] group-hover:border-[var(--accent)] transition-colors shrink-0">
-                        {isCollapsed ? (
-                          <ChevronRight className="w-4 h-4" />
-                        ) : (
-                          <ChevronDown className="w-4 h-4" />
-                        )}
-                      </div>
-
-                      <div className="min-w-0">
-                        <div className="flex items-center gap-2">
-                          <span className={`px-2 py-0.2 rounded text-[10px] font-mono font-bold uppercase ${subjectConfig.badgeClass}`}>
-                            {subjectConfig.label}
-                          </span>
-                          <h2 className="text-base sm:text-lg font-bold font-serif text-[var(--text)] group-hover:text-[var(--accent)] transition-colors truncate">
-                            {group.name}
-                          </h2>
-                        </div>
-                        <div className="flex items-center gap-2 text-xs text-[var(--text3)] font-mono mt-0.5">
-                          <span>{group.topicCode}</span>
-                          <span>•</span>
-                          <span>{pluralize(group.items.length, "set")}</span>
-                          <span>•</span>
-                          <span>{pluralize(group.items.reduce((s, i) => s + (i.questionCount || 0), 0), "question")}</span>
-                        </div>
-                      </div>
-                    </button>
-
-                    {/* SRS Status Badge with Tooltips */}
-                    <div className="flex items-center gap-2 shrink-0 relative">
-                      {srsInfo ? (
-                        srsInfo.status === "suspended" ? (
-                          <span
-                            title="Topic excluded from automated daily review queues"
-                            className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg text-xs font-mono font-semibold bg-zinc-500/10 text-zinc-500 border border-zinc-500/20 cursor-help"
-                          >
-                            <EyeOff className="w-3.5 h-3.5" />
-                            Ignored
-                          </span>
-                        ) : srsInfo.status === "snoozed" ? (
-                          <span
-                            title="Topic snoozed from daily review"
-                            className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg text-xs font-mono font-semibold bg-amber-500/10 text-amber-600 dark:text-amber-400 border border-amber-500/20 cursor-help"
-                          >
-                            <Moon className="w-3.5 h-3.5" />
-                            Snoozed
-                          </span>
-                        ) : srsInfo.isDue ? (
-                          <span
-                            title={METRIC_DEFINITIONS.reviewDue}
-                            className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg text-xs font-mono font-semibold bg-amber-500/10 text-amber-600 dark:text-amber-400 border border-amber-500/20 animate-pulse cursor-help"
-                          >
-                            <Clock className="w-3.5 h-3.5" />
-                            Review Due
-                          </span>
-                        ) : srsInfo.currentR < 0.6 ? (
-                          <span
-                            title={METRIC_DEFINITIONS.struggling}
-                            className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg text-xs font-mono font-semibold bg-rose-500/10 text-rose-600 dark:text-rose-400 border border-rose-500/20 cursor-help"
-                          >
-                            <AlertTriangle className="w-3.5 h-3.5" />
-                            Struggling
-                          </span>
-                        ) : (
-                          <span
-                            title={`${METRIC_DEFINITIONS.fresh} (Estimated Stability: ${pluralize(Math.round(srsInfo.stabilityDays), "day")})`}
-                            className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg text-xs font-mono font-semibold bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20 cursor-help"
-                          >
-                            <ShieldCheck className="w-3.5 h-3.5" />
-                            Fresh ({pluralize(Math.round(srsInfo.stabilityDays), "day")})
-                          </span>
-                        )
-                      ) : (
-                        <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg text-xs font-mono font-semibold bg-[var(--surface2)] text-[var(--text3)] border border-[var(--border)]">
-                          Unstudied
-                        </span>
-                      )}
-
-                      {/* Options Button */}
-                      <button
-                        type="button"
-                        onClick={() => setActiveMenuTopic(isMenuOpen ? null : group.topicCode)}
-                        className="p-1.5 rounded-lg bg-[var(--surface2)] border border-[var(--border)] text-[var(--text3)] hover:text-[var(--text)] hover:border-[var(--accent)] transition-colors cursor-pointer"
-                        title="Topic SRS Controls"
-                      >
-                        <MoreVertical className="w-4 h-4" />
-                      </button>
-
-                      {/* Dropdown Menu */}
-                      {isMenuOpen && (
-                        <div className="absolute right-0 top-full mt-2 w-64 rounded-xl bg-[var(--surface)] border border-[var(--border)] shadow-[var(--shadow-lg)] p-3 z-50 space-y-2">
-                          <div className="text-xs font-bold text-[var(--text)] font-serif pb-1 border-b border-[var(--border)]">
-                            {group.name} Controls
+                      {/* Topic Header Accordion */}
+                      <div className="p-4 sm:p-5 flex items-center justify-between gap-4">
+                        <button
+                          type="button"
+                          onClick={() => toggleTopic(group.name)}
+                          className="flex-1 flex items-center gap-3 text-left cursor-pointer select-none group min-w-0"
+                        >
+                          <div className="w-7 h-7 rounded-lg bg-[var(--surface2)] border border-[var(--border)] flex items-center justify-center text-[var(--text2)] group-hover:text-[var(--accent)] group-hover:border-[var(--accent)] transition-colors shrink-0">
+                            {isCollapsed ? (
+                              <ChevronRight className="w-4 h-4" />
+                            ) : (
+                              <ChevronDown className="w-4 h-4" />
+                            )}
                           </div>
 
-                          <div className="space-y-1">
-                            <div className="text-[10px] font-mono text-[var(--text3)] uppercase">
-                              Manual Confidence
+                          <div className="min-w-0">
+                            <div className="flex items-center gap-2">
+                              <span className={`px-2 py-0.2 rounded text-[10px] font-mono font-bold uppercase ${subjectConfig.badgeClass}`}>
+                                {subjectConfig.label}
+                              </span>
+                              <h2 className="text-base sm:text-lg font-bold font-serif text-[var(--text)] group-hover:text-[var(--accent)] transition-colors truncate">
+                                {group.name}
+                              </h2>
                             </div>
-                            <div className="grid grid-cols-2 gap-1">
-                              <button
-                                type="button"
-                                onClick={() => handleSrsAction(group.topicCode, "confidence", "struggling")}
-                                className="px-2 py-1 rounded text-xs text-left hover:bg-[var(--surface2)] text-rose-500 font-medium cursor-pointer"
-                              >
-                                🔴 Struggling (1d)
-                              </button>
-                              <button
-                                type="button"
-                                onClick={() => handleSrsAction(group.topicCode, "confidence", "moderate")}
-                                className="px-2 py-1 rounded text-xs text-left hover:bg-[var(--surface2)] text-amber-500 font-medium cursor-pointer"
-                              >
-                                🟡 Moderate (4d)
-                              </button>
-                              <button
-                                type="button"
-                                onClick={() => handleSrsAction(group.topicCode, "confidence", "confident")}
-                                className="px-2 py-1 rounded text-xs text-left hover:bg-[var(--surface2)] text-emerald-500 font-medium cursor-pointer"
-                              >
-                                🟢 Confident (10d)
-                              </button>
-                              <button
-                                type="button"
-                                onClick={() => handleSrsAction(group.topicCode, "confidence", "mastered")}
-                                className="px-2 py-1 rounded text-xs text-left hover:bg-[var(--surface2)] text-purple-500 font-medium cursor-pointer"
-                              >
-                                🏆 Mastered (30d)
-                              </button>
+                            <div className="flex items-center gap-2 text-xs text-[var(--text3)] font-mono mt-0.5">
+                              <span>{group.topicCode}</span>
+                              <span>•</span>
+                              <span>{pluralize(group.items.length, "set")}</span>
+                              <span>•</span>
+                              <span>{pluralize(group.items.reduce((s, i) => s + (i.questionCount || 0), 0), "question")}</span>
                             </div>
                           </div>
+                        </button>
 
-                          <div className="pt-2 border-t border-[var(--border)] space-y-1">
-                            <button
-                              type="button"
-                              onClick={() => handleSrsAction(group.topicCode, "snooze", 7)}
-                              className="w-full px-2.5 py-1.5 rounded-lg text-xs font-medium text-left text-[var(--text2)] hover:bg-[var(--surface2)] hover:text-[var(--text)] flex items-center gap-2 cursor-pointer"
-                            >
-                              <Moon className="w-3.5 h-3.5 text-amber-500" />
-                              <span>Snooze for 7 Days</span>
-                            </button>
+                        {/* SRS Status Badge with Tooltips */}
+                        <div className="flex items-center gap-2 shrink-0 relative">
+                          {srsInfo ? (
+                            srsInfo.status === "suspended" ? (
+                              <span
+                                title="Topic excluded from automated daily review queues"
+                                className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg text-xs font-mono font-semibold bg-zinc-500/10 text-zinc-500 border border-zinc-500/20 cursor-help"
+                              >
+                                <EyeOff className="w-3.5 h-3.5" />
+                                Ignored
+                              </span>
+                            ) : srsInfo.status === "snoozed" ? (
+                              <span
+                                title="Topic snoozed from daily review"
+                                className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg text-xs font-mono font-semibold bg-amber-500/10 text-amber-600 dark:text-amber-400 border border-amber-500/20 cursor-help"
+                              >
+                                <Moon className="w-3.5 h-3.5" />
+                                Snoozed
+                              </span>
+                            ) : srsInfo.isDue ? (
+                              <span
+                                title={METRIC_DEFINITIONS.reviewDue}
+                                className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg text-xs font-mono font-semibold bg-amber-500/10 text-amber-600 dark:text-amber-400 border border-amber-500/20 animate-pulse cursor-help"
+                              >
+                                <Clock className="w-3.5 h-3.5" />
+                                Review Due
+                              </span>
+                            ) : srsInfo.currentR < 0.6 ? (
+                              <span
+                                title={METRIC_DEFINITIONS.struggling}
+                                className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg text-xs font-mono font-semibold bg-rose-500/10 text-rose-600 dark:text-rose-400 border border-rose-500/20 cursor-help"
+                              >
+                                <AlertTriangle className="w-3.5 h-3.5" />
+                                Struggling
+                              </span>
+                            ) : (
+                              <span
+                                title={`${METRIC_DEFINITIONS.fresh} (Estimated Stability: ${pluralize(Math.round(srsInfo.stabilityDays), "day")})`}
+                                className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg text-xs font-mono font-semibold bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20 cursor-help"
+                              >
+                                <ShieldCheck className="w-3.5 h-3.5" />
+                                Fresh ({pluralize(Math.round(srsInfo.stabilityDays), "day")})
+                              </span>
+                            )
+                          ) : (
+                            <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg text-xs font-mono font-semibold bg-[var(--surface2)] text-[var(--text3)] border border-[var(--border)]">
+                              Unstudied
+                            </span>
+                          )}
 
-                            <button
-                              type="button"
-                              onClick={() => handleSrsAction(group.topicCode, "suspend")}
-                              className="w-full px-2.5 py-1.5 rounded-lg text-xs font-medium text-left text-[var(--text2)] hover:bg-[var(--surface2)] hover:text-[var(--text)] flex items-center gap-2 cursor-pointer"
-                            >
-                              <EyeOff className="w-3.5 h-3.5 text-zinc-400" />
-                              <span>{srsInfo?.status === "suspended" ? "Resume Tracking" : "Ignore / Suspend Topic"}</span>
-                            </button>
-                          </div>
-                        </div>
-                      )}
-                    </div>
-                  </div>
-
-                  {/* Expanded Quiz Cards */}
-                  {!isCollapsed && (
-                    <div className="p-4 sm:p-5 pt-0 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 border-t border-[var(--border)]">
-                      {group.items.map((quiz) => {
-                        const tier = getQuizTier(quiz);
-                        return (
-                          <Link
-                            key={quiz.id}
-                            href={`/quizzes/${quiz.id}`}
-                            className="bg-[var(--surface2)] border border-[var(--border)] rounded-xl p-4 hover:border-[var(--accent)] hover:shadow-sm transition-all flex flex-col justify-between group/card"
+                          {/* Options Button */}
+                          <button
+                            type="button"
+                            onClick={() => setActiveMenuTopic(isMenuOpen ? null : group.topicCode)}
+                            className="p-1.5 rounded-lg bg-[var(--surface2)] border border-[var(--border)] text-[var(--text3)] hover:text-[var(--text)] hover:border-[var(--accent)] transition-colors cursor-pointer"
+                            title="Topic SRS Controls"
                           >
-                            <div>
-                              <div className="flex items-center justify-between gap-2 mb-2">
-                                <span className={`px-2 py-0.5 rounded text-[11px] font-mono font-bold uppercase tracking-wider ${
-                                  tier === "diagnostic"
-                                    ? "bg-purple-500/10 text-purple-600 dark:text-purple-400 border border-purple-500/20"
-                                    : tier === "drill"
-                                    ? "bg-amber-500/10 text-amber-600 dark:text-amber-400 border border-amber-500/20"
-                                    : tier === "simulation"
-                                    ? "bg-rose-500/10 text-rose-600 dark:text-rose-400 border border-rose-500/20"
-                                    : "bg-blue-500/10 text-blue-600 dark:text-blue-400 border border-blue-500/20"
-                                }`}>
-                                  {tier}
-                                </span>
-                                <span className="text-xs font-mono text-[var(--text3)]">
-                                  {pluralize(quiz.questionCount || 0, "Q")}
-                                </span>
+                            <MoreVertical className="w-4 h-4" />
+                          </button>
+
+                          {/* Dropdown Menu with 1d/3d/7d Snooze and Confidence */}
+                          {isMenuOpen && (
+                            <div className="absolute right-0 top-full mt-2 w-64 rounded-xl bg-[var(--surface)] border border-[var(--border)] shadow-[var(--shadow-lg)] p-3 z-50 space-y-2">
+                              <div className="text-xs font-bold text-[var(--text)] font-serif pb-1 border-b border-[var(--border)]">
+                                {group.name} Controls
                               </div>
 
-                              <h3 className="text-sm font-semibold text-[var(--text)] group-hover/card:text-[var(--accent)] transition-colors line-clamp-2">
-                                {quiz.title}
-                              </h3>
-                            </div>
+                              <div className="space-y-1">
+                                <div className="text-[10px] font-mono text-[var(--text3)] uppercase">
+                                  Manual Confidence
+                                </div>
+                                <div className="grid grid-cols-2 gap-1">
+                                  <button
+                                    type="button"
+                                    onClick={() => handleSrsAction(group.topicCode, "confidence", "struggling")}
+                                    className="px-2 py-1 rounded text-xs text-left hover:bg-[var(--surface2)] text-rose-500 font-medium cursor-pointer"
+                                  >
+                                    🔴 Struggling (1d)
+                                  </button>
+                                  <button
+                                    type="button"
+                                    onClick={() => handleSrsAction(group.topicCode, "confidence", "moderate")}
+                                    className="px-2 py-1 rounded text-xs text-left hover:bg-[var(--surface2)] text-amber-500 font-medium cursor-pointer"
+                                  >
+                                    🟡 Moderate (4d)
+                                  </button>
+                                  <button
+                                    type="button"
+                                    onClick={() => handleSrsAction(group.topicCode, "confidence", "confident")}
+                                    className="px-2 py-1 rounded text-xs text-left hover:bg-[var(--surface2)] text-emerald-500 font-medium cursor-pointer"
+                                  >
+                                    🟢 Confident (10d)
+                                  </button>
+                                  <button
+                                    type="button"
+                                    onClick={() => handleSrsAction(group.topicCode, "confidence", "mastered")}
+                                    className="px-2 py-1 rounded text-xs text-left hover:bg-[var(--surface2)] text-purple-500 font-medium cursor-pointer"
+                                  >
+                                    🏆 Mastered (30d)
+                                  </button>
+                                </div>
+                              </div>
 
-                            <div className="mt-4 pt-2 border-t border-[var(--border)] flex items-center justify-between text-xs text-[var(--text3)]">
-                              <span>Take Quiz →</span>
-                              <Play className="w-3.5 h-3.5 fill-current text-[var(--accent)]" />
+                              {/* Flexible 1d, 3d, 7d Snooze */}
+                              <div className="pt-2 border-t border-[var(--border)] space-y-1">
+                                <div className="text-[10px] font-mono text-[var(--text3)] uppercase flex items-center gap-1">
+                                  <Moon className="w-3 h-3 text-amber-500" />
+                                  <span>Snooze Review</span>
+                                </div>
+                                <div className="grid grid-cols-3 gap-1">
+                                  <button
+                                    type="button"
+                                    onClick={() => handleSrsAction(group.topicCode, "snooze", 1)}
+                                    className="px-2 py-1 rounded text-xs text-center bg-[var(--surface2)] hover:bg-[var(--surface3)] text-amber-600 dark:text-amber-400 font-medium cursor-pointer border border-[var(--border)]"
+                                    title="Snooze until tomorrow (default)"
+                                  >
+                                    1 Day
+                                  </button>
+                                  <button
+                                    type="button"
+                                    onClick={() => handleSrsAction(group.topicCode, "snooze", 3)}
+                                    className="px-2 py-1 rounded text-xs text-center bg-[var(--surface2)] hover:bg-[var(--surface3)] text-amber-600 dark:text-amber-400 font-medium cursor-pointer border border-[var(--border)]"
+                                    title="Snooze for 3 days"
+                                  >
+                                    3 Days
+                                  </button>
+                                  <button
+                                    type="button"
+                                    onClick={() => handleSrsAction(group.topicCode, "snooze", 7)}
+                                    className="px-2 py-1 rounded text-xs text-center bg-[var(--surface2)] hover:bg-[var(--surface3)] text-amber-600 dark:text-amber-400 font-medium cursor-pointer border border-[var(--border)]"
+                                    title="Snooze for 7 days"
+                                  >
+                                    7 Days
+                                  </button>
+                                </div>
+
+                                <button
+                                  type="button"
+                                  onClick={() => handleSrsAction(group.topicCode, "suspend")}
+                                  className="w-full px-2.5 py-1.5 mt-1 rounded-lg text-xs font-medium text-left text-[var(--text2)] hover:bg-[var(--surface2)] hover:text-[var(--text)] flex items-center gap-2 cursor-pointer"
+                                >
+                                  <EyeOff className="w-3.5 h-3.5 text-zinc-400" />
+                                  <span>{srsInfo?.status === "suspended" ? "Resume Tracking" : "Ignore / Suspend Topic"}</span>
+                                </button>
+                              </div>
                             </div>
-                          </Link>
-                        );
-                      })}
+                          )}
+                        </div>
+                      </div>
+
+                      {/* Expanded Quiz Cards */}
+                      {!isCollapsed && (
+                        <div className="p-4 sm:p-5 pt-0 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 border-t border-[var(--border)]">
+                          {group.items.map((quiz) => {
+                            const tier = getQuizTier(quiz);
+                            return (
+                              <Link
+                                key={quiz.id}
+                                href={`/quizzes/${quiz.id}`}
+                                className="bg-[var(--surface2)] border border-[var(--border)] rounded-xl p-4 hover:border-[var(--accent)] hover:shadow-sm transition-all flex flex-col justify-between group/card"
+                              >
+                                <div>
+                                  <div className="flex items-center justify-between gap-2 mb-2">
+                                    <span className={`px-2 py-0.5 rounded text-[11px] font-mono font-bold uppercase tracking-wider ${
+                                      tier === "diagnostic"
+                                        ? "bg-purple-500/10 text-purple-600 dark:text-purple-400 border border-purple-500/20"
+                                        : tier === "drill"
+                                        ? "bg-amber-500/10 text-amber-600 dark:text-amber-400 border border-amber-500/20"
+                                        : tier === "simulation"
+                                        ? "bg-rose-500/10 text-rose-600 dark:text-rose-400 border border-rose-500/20"
+                                        : "bg-blue-500/10 text-blue-600 dark:text-blue-400 border border-blue-500/20"
+                                    }`}>
+                                      {tier}
+                                    </span>
+                                    <span className="text-xs font-mono text-[var(--text3)]">
+                                      {pluralize(quiz.questionCount || 0, "Q")}
+                                    </span>
+                                  </div>
+
+                                  <h3 className="text-sm font-semibold text-[var(--text)] group-hover/card:text-[var(--accent)] transition-colors line-clamp-2">
+                                    {quiz.title}
+                                  </h3>
+                                </div>
+
+                                <div className="mt-4 pt-2 border-t border-[var(--border)] flex items-center justify-between text-xs text-[var(--text3)]">
+                                  <span>Take Quiz →</span>
+                                  <Play className="w-3.5 h-3.5 fill-current text-[var(--accent)]" />
+                                </div>
+                              </Link>
+                            );
+                          })}
+                        </div>
+                      )}
                     </div>
-                  )}
-                </div>
-              );
-            })
-          )}
-        </div>
+                  );
+                })
+              )}
+            </div>
+          </>
+        )}
       </main>
     </div>
   );

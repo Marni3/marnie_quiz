@@ -20,9 +20,9 @@ export async function POST(req: Request) {
     }
 
     if (action === "snooze") {
-      const snoozeDays = Number(days) || 7;
+      const snoozeDays = typeof days === "number" && days > 0 ? days : 1;
       await snoozeTopic(userId, topicCode, snoozeDays);
-      return NextResponse.json({ success: true, message: `Snoozed for ${snoozeDays} days` });
+      return NextResponse.json({ success: true, message: `Snoozed for ${snoozeDays} day(s)` });
     }
 
     if (action === "suspend") {
