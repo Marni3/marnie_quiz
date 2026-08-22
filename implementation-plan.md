@@ -127,23 +127,29 @@ $$BRI = 	ext{Accuracy} 	imes 	ext{Average Retention} 	imes \sqrt{rac{	ext{Compl
 
 ---
 
-## 6. Native Interactive Learning Modules Pipeline (Paul's Online Notes / "Calculus Made Easy" Style)
+## 6. Native Interactive Learning Modules & Pedagogical Architecture
 
-### 6.1. Pedagogical Tone & Style
-- **"Calculus Made Easy" (Silvanus Thompson) Spirit:** Down-to-earth, intuitive, demystifying math and engineering jargon without verbose fluff.
-- **Dual-Anchor Explanations:**
-  1. **Intuitive Analogies & Metaphors:** Relatable physical mental models (e.g., water in tanks for voltage/current, stretching elastic bands for limits, mixing dye in coffee for dilution ODEs).
-  2. **Real-World Engineering Context:** Practical board exam applications (e.g., real antenna towers, SMPS ripple limits, transistor thermal runaway).
+### 6.1. Pedagogical Tone & Accessible Standard English
+- **Accessible, Clear & Direct:** Professional textbook clarity without archaic jargon, calibrated for high readability by Filipino examinees and ESL learners.
+- **Intuitive Dual-Anchor Framing:**
+  1. **Direct Intuition & Mental Models:** Plain-English conceptual explanations (e.g., water pipes for electrical potential, rate of turning for derivatives).
+  2. **Engineering Context:** Practical board exam applications (e.g., transmission line impedance matching on cell towers).
 
-### 6.2. Frequent & Varied Interactive Micro-Checkpoints
-- **Rhythm:** Embedded after every single formula or concept block (8–15+ micro-checkpoints per module, not just at the end).
-- **Checkpoint Typologies:**
-  - 🧠 **Proportionality & Intuition Checks:** (e.g., *"If diameter doubles and length triples, resistance changes by what factor?"*)
-  - ⚡ **1-Step Calculator Speed Solves:** Immediate formula execution using Casio keystrokes.
-  - ⚠️ **Board Exam Trap Detection:** Spotting the classic distractor trap before doing calculations.
-  - 🔍 **Interactive Graph/Diagram Probes:** Tapping values on curves to observe responses.
+### 6.2. "Long Academic Method vs. Board Exam Shortcut" Technique Catalog
+- Every module contrasts classical textbook derivations with high-speed PRC board exam shortcuts:
+  - *"Here is the 5-minute formal algebraic derivation (for theory), but on exam day, here is the 15-second shortcut when you encounter this pattern."*
+  - **Examples:**
+    - *Parallel Lines:* Skip slope-intercept algebra; inspect matching ratio of $x$ and $y$ coefficients.
+    - *Roots & Factorization:* Skip manual factoring; use Casio `CALC` mode or `EQN` mode.
+    - *Limits with Indeterminate Forms:* Skip trigonometric factoring; apply L'Hôpital's Rule or test values near the limit with `CALC 0.9999`.
+- **End-of-Module Strategy Catalog:** A comprehensive summary table indexing all common question archetypes for that topic and their matching speed shortcuts.
 
----
+### 6.3. Puzzle-Game Progression & Paired 1-to-1 Mastery Sets
+Following puzzle-game design principles (*Introduce in Isolation $	o$ Practice Isolated Mechanic $	o$ Apply with Creative Complexity*):
+1. **In-Module Micro-Checkpoints (8–15+):** Introduce techniques one-by-one with immediate, low-friction checks.
+2. **Paired 1-to-1 Mastery Challenge Test Set:**
+   - Each module links directly to a partnered 20–30 question **Mastery Challenge Set**.
+   - Tests every single shortcut and concept taught in the module with realistic, challenging board exam numbers, tricky distractor options, and multi-concept combinations.
 
 ## 7. AI Tutor Integration & Post-Exam Diagnostic Debrief (BYOK)
 
