@@ -285,6 +285,14 @@ $$	ext{Formula in KaTeX}$$
 
 [ ] PHASE 5: Mobile PWA & Offline Access (FUTURE)
     • Service Worker caching for offline practice and PWA install manifest
+
+[ ] PHASE 6: Product Case Study & Public Portfolio Release (EARLY OCTOBER 2026)
+    • Collate real-world study data, examinee retention metrics, and peer feedback.
+    • Publish technical product case study and LinkedIn portfolio write-up highlighting:
+      - AI-native systems architecture and $0 infrastructure design (Neon + Vercel).
+      - Empirical FSRS memory stability modeling for licensure board exams.
+      - Product trade-offs, calibration gating, and domain-specific pedagogy.
+    • Service Worker caching for offline practice and PWA install manifest
 ```
 
 
