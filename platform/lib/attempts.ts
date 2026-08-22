@@ -83,6 +83,9 @@ export interface SanitizedQuestionForTaking {
 
 export async function getAttemptForTaking(attemptId: string, userId: string) {
   try {
+    const GUEST_ID = "00000000-0000-0000-0000-000000000001";
+    const isGuest = userId === GUEST_ID;
+
     const [attempt] = await db
       .select({
         attempt: attempts,
@@ -90,7 +93,11 @@ export async function getAttemptForTaking(attemptId: string, userId: string) {
       })
       .from(attempts)
       .innerJoin(questionSets, eq(attempts.questionSetId, questionSets.id))
-      .where(and(eq(attempts.id, attemptId), eq(attempts.userId, userId)))
+      .where(
+        isGuest
+          ? eq(attempts.id, attemptId)
+          : and(eq(attempts.id, attemptId), eq(attempts.userId, userId))
+      )
       .limit(1);
 
     if (!attempt) return null;

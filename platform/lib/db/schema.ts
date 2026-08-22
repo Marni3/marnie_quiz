@@ -4,6 +4,7 @@ import {
   text,
   integer,
   boolean,
+  real,
   timestamp,
   pgEnum,
 } from "drizzle-orm/pg-core";
@@ -43,6 +44,8 @@ export const questionSets = pgTable("question_sets", {
     onDelete: "set null",
   }),
   title: text("title").notNull(),
+  tier: text("tier").default("review"), // 'diagnostic' | 'review' | 'drill' | 'simulation' | 'conceptual_drill'
+  topicCode: text("topic_code"), // e.g. 'MATH-01', 'ELEC-03', 'EST-10'
   subjectTag: text("subject_tag"),
   visibility: visibilityEnum("visibility").notNull().default("shared"),
   rawCsv: text("raw_csv"),
@@ -66,6 +69,9 @@ export const questions = pgTable("questions", {
   imageUrl: text("image_url"),
   interactiveHtml: text("interactive_html"),
   interactiveUrl: text("interactive_url"),
+  archetype: text("archetype").default("standard"), // 'standard' | 'scaling' | 'boundary' | 'phase' | 'fault' | 'material' | 'info' | 'theorem' | 'trap'
+  microCluster: text("micro_cluster"), // e.g. 'MATH-09-C Conic Sections'
+  isAnchor: boolean("is_anchor").default(false), // Core syllabus spine question
 });
 
 export const questionSetItems = pgTable("question_set_items", {
@@ -109,6 +115,23 @@ export const answerRecords = pgTable("answer_records", {
   timeSpentSeconds: integer("time_spent_seconds"),
 });
 
+export const userTopicSrs = pgTable("user_topic_srs", {
+  id: uuid("id").defaultRandom().primaryKey(),
+  userId: uuid("user_id")
+    .notNull()
+    .references(() => users.id, { onDelete: "cascade" }),
+  topicCode: text("topic_code").notNull(), // 'MATH-09', 'ELEC-03', 'EST-01'
+  topicName: text("topic_name").notNull(), // 'Analytic Geometry'
+  subjectDomain: text("subject_domain").notNull(), // 'Mathematics'
+  stabilityDays: real("stability_days").notNull().default(3.0),
+  retrievability: real("retrievability").notNull().default(1.0),
+  lastStudiedAt: timestamp("last_studied_at").defaultNow(),
+  nextReviewDue: timestamp("next_review_due"),
+  totalAttempts: integer("total_attempts").notNull().default(0),
+  averageAccuracy: real("average_accuracy").notNull().default(0.0),
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+});
+
 export type User = typeof users.$inferSelect;
 export type Folder = typeof folders.$inferSelect;
 export type QuestionSet = typeof questionSets.$inferSelect;
@@ -116,3 +139,4 @@ export type Question = typeof questions.$inferSelect;
 export type QuestionSetItem = typeof questionSetItems.$inferSelect;
 export type Attempt = typeof attempts.$inferSelect;
 export type AnswerRecord = typeof answerRecords.$inferSelect;
+export type UserTopicSrs = typeof userTopicSrs.$inferSelect;

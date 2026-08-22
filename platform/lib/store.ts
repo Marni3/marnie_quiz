@@ -58,6 +58,8 @@ export function getMockStore(): MockStore {
             uploadedByUserId: defaultUser.id,
             folderId: null,
             title: s.title,
+            tier: "review",
+            topicCode: null,
             subjectTag: s.subjectTag || s.subjectCategory || "General",
             visibility: "shared",
             rawCsv: null,
@@ -81,6 +83,9 @@ export function getMockStore(): MockStore {
                 imageUrl: q.imageUrl || null,
                 interactiveHtml: null,
                 interactiveUrl: null,
+                archetype: "standard",
+                microCluster: null,
+                isAnchor: false,
               };
               globalStore.__mockStore!.questions.set(questionRecord.id, questionRecord);
 

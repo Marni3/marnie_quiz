@@ -78,6 +78,8 @@ export async function createQuestionSetFromCsv(input: CreateQuizInput): Promise<
       uploadedByUserId: input.userId,
       folderId: input.folderId || null,
       title: input.title,
+      tier: "review",
+      topicCode: null,
       subjectTag: input.subjectTag || null,
       visibility,
       rawCsv: input.rawCsv || null,
@@ -101,6 +103,9 @@ export async function createQuestionSetFromCsv(input: CreateQuizInput): Promise<
         imageUrl: row.image_url || null,
         interactiveHtml: null,
         interactiveUrl: row.interactive_url || null,
+        archetype: "standard",
+        microCluster: null,
+        isAnchor: false,
       };
       store.questions.set(qId, mockQ);
       store.questionSetItems.set(randomUUID(), {

@@ -124,9 +124,24 @@ Follow [naming_convention_specification.md](file:///c:/Users/reyna/OneDrive/Docu
 ```
 
 - **Subject Codes**: `math`, `elec`, `geas`, `est`
-- **Test Types**: `diagnostic` (30 items), `review` (25 items), `drill` (10 items), `simulation` (50 items)
+- **Test Types**: `diagnostic` (30 items), `review` (25 items), `drill` (10 items), `simulation` (50 items), `conceptual_drill` (15–20 items)
 - **Subtopic Scope**: `all` for full spectrum, or range `01-03`, `04-07`, `08-14`, etc.
 - **Set Number**: `set01`, `set02`, `set03`, etc.
+
+---
+
+## 6. Conceptual & Qualitative Reasoning Archetypes (PRC Board Style)
+
+When authoring qualitative/conceptual exams (via `/conceptdrill`), utilize the **8 Cognitive Archetypes** to evaluate deep physical mechanics without numerical rote memorization:
+
+1. **Scaling Laws & Proportionality (Laws of Variation)**: Dimensional scaling, inverse-square laws, constant-volume deformation ($R \propto L/r^2 \propto 1/r^4$).
+2. **Boundary & Asymptotic Limiting Conditions**: Extreme limits ($f \to 0$ vs $f \to \infty$, $R \to 0$ vs $R \to \infty$, $t \to \infty$ steady state).
+3. **Qualitative Phase, Directionality & Sign Relationships**: Leading/lagging relationships, Lenz's law, transistor phase shifts ($180^\circ$ CE vs $0^\circ$ CB/CC), curvature signs ($f''$).
+4. **Circuit & System Fault / Topology Modification**: Cascading current/voltage shifts under open/short conditions or feedback loop alterations.
+5. **Thermodynamic, Material & Quantum Transitions**: Temperature vs carrier mobility, Fermi levels, stress-strain yield criteria, magnetic hysteresis.
+6. **Information Theory, Modulation & Protocol Trade-offs**: Shannon capacity (SNR vs Bandwidth), BER vs constellation order, dispersion limits.
+7. **Theorem Invariants & Conservation Duality**: Thevenin/Norton duality, Maximum Power Transfer efficiency (50%), Vector Calculus identities ($\nabla \times \nabla \phi = 0$).
+8. **Counter-Intuitive Traps & Fallacy Dissection**: Questions exposing common naive misconceptions (e.g. capacitor charging 50% thermal dissipation invariant).
 
 ### CSV Formatting Rules
 Per [schema-output.md](file:///c:/Users/reyna/OneDrive/Documents/marnie_quiz/test-sets/schema-output.md):

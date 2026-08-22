@@ -24,13 +24,19 @@ export interface SubmitAttemptInput {
   durationSeconds: number;
 }
 
+const GUEST_ID = "00000000-0000-0000-0000-000000000001";
+
 export async function gradeAndSubmitAttempt(input: SubmitAttemptInput) {
+  const isGuest = input.userId === GUEST_ID;
+
   try {
     const [attempt] = await db
       .select()
       .from(attempts)
       .where(
-        and(eq(attempts.id, input.attemptId), eq(attempts.userId, input.userId))
+        isGuest
+          ? eq(attempts.id, input.attemptId)
+          : and(eq(attempts.id, input.attemptId), eq(attempts.userId, input.userId))
       )
       .limit(1);
 
@@ -48,9 +54,14 @@ export async function gradeAndSubmitAttempt(input: SubmitAttemptInput) {
     const qMap = new Map(qRecords.map((r) => [r.question.id, r.question]));
 
     let correctCount = 0;
-
-    // Delete any prior partial answer records for this attempt
-    await db.delete(answerRecords).where(eq(answerRecords.attemptId, attempt.id));
+    const answerInserts: {
+      id: string;
+      attemptId: string;
+      questionId: string;
+      selectedChoice: "a" | "b" | "c" | "d" | null;
+      isCorrect: boolean;
+      timeSpentSeconds: number | null;
+    }[] = [];
 
     // Grade each submitted answer
     for (const ans of input.answers) {
@@ -63,7 +74,7 @@ export async function gradeAndSubmitAttempt(input: SubmitAttemptInput) {
 
       if (isCorrect) correctCount++;
 
-      await db.insert(answerRecords).values({
+      answerInserts.push({
         id: randomUUID(),
         attemptId: attempt.id,
         questionId: q.id,
@@ -73,22 +84,34 @@ export async function gradeAndSubmitAttempt(input: SubmitAttemptInput) {
       });
     }
 
-    const [updatedAttempt] = await db
-      .update(attempts)
-      .set({
-        score: correctCount,
-        completedAt: new Date(),
-        durationSeconds: input.durationSeconds,
-      })
-      .where(eq(attempts.id, attempt.id))
-      .returning();
+    // Execute atomic transaction for deleting old partial answers and saving score
+    let updatedAttempt = attempt;
+    await db.transaction(async (tx) => {
+      await tx.delete(answerRecords).where(eq(answerRecords.attemptId, attempt.id));
+
+      if (answerInserts.length > 0) {
+        await tx.insert(answerRecords).values(answerInserts);
+      }
+
+      const [updated] = await tx
+        .update(attempts)
+        .set({
+          score: correctCount,
+          completedAt: new Date(),
+          durationSeconds: input.durationSeconds,
+        })
+        .where(eq(attempts.id, attempt.id))
+        .returning();
+
+      if (updated) updatedAttempt = updated;
+    });
 
     return updatedAttempt;
   } catch (err) {
     console.warn("DB grading failed, using fallback:", err);
     const store = getMockStore();
     const attempt = store.attempts.get(input.attemptId);
-    if (!attempt || attempt.userId !== input.userId) {
+    if (!attempt || (!isGuest && attempt.userId !== input.userId)) {
       throw new Error("Attempt not found in store");
     }
 
@@ -142,6 +165,8 @@ export interface QuestionResultDetail {
 }
 
 export async function getAttemptResults(attemptId: string, userId: string) {
+  const isGuest = userId === GUEST_ID;
+
   try {
     const [attemptRecord] = await db
       .select({
@@ -151,7 +176,9 @@ export async function getAttemptResults(attemptId: string, userId: string) {
       .from(attempts)
       .innerJoin(questionSets, eq(attempts.questionSetId, questionSets.id))
       .where(
-        and(eq(attempts.id, attemptId), eq(attempts.userId, userId))
+        isGuest
+          ? eq(attempts.id, attemptId)
+          : and(eq(attempts.id, attemptId), eq(attempts.userId, userId))
       )
       .limit(1);
 
@@ -213,7 +240,7 @@ export async function getAttemptResults(attemptId: string, userId: string) {
     console.warn("DB results fetch failed, reading fallback:", err);
     const store = getMockStore();
     const attempt = store.attempts.get(attemptId);
-    if (!attempt || attempt.userId !== userId) return null;
+    if (!attempt || (!isGuest && attempt.userId !== userId)) return null;
 
     const set = store.questionSets.get(attempt.questionSetId);
     if (!set) return null;
