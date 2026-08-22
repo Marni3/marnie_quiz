@@ -282,6 +282,9 @@ $$	ext{Formula in KaTeX}$$
     • Task 4.4: Fractional SVG Progress Arcs & Performance Color Rings on Skill Tree
     • Task 4.5: Standardized Learning Module Generator & Dedicated /learn Tab
     • Task 4.6: Comprehensive UI Clutter & Visual Hierarchy Audit
+    • Task 4.10: Lightweight In-App Feedback Widget
+      - Discreet, low-friction "💬 Got feedback / Report error?" button in footer and Quiz Results screens.
+      - 1-click issue reporting for formula typos or errata, stored directly in Neon DB.
 
 [ ] PHASE 5: Mobile PWA & Offline Access (FUTURE)
     • Service Worker caching for offline practice and PWA install manifest
