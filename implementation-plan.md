@@ -151,16 +151,111 @@ Following puzzle-game design principles (*Introduce in Isolation $	o$ Practice I
    - Each module links directly to a partnered 20–30 question **Mastery Challenge Set**.
    - Tests every single shortcut and concept taught in the module with realistic, challenging board exam numbers, tricky distractor options, and multi-concept combinations.
 
-## 7. AI Tutor Integration & Post-Exam Diagnostic Debrief (BYOK)
+## 7. AI Tutor Architecture, BYOK Integration & Standardized Prompts
 
-### 7.1. Post-Exam AI Debriefing Flow (`/attempts/[id]/results`)
-- **Exam Integrity:** During active test-taking, AI assistance is suppressed to ensure honest diagnostic calibration.
-- **Post-Exam Debrief:** On the Results screen, a prominent **"🤖 Start Personal AI Debrief"** analyzes only the student's missed questions and chosen distractors.
-- **Root Cause Diagnosis:** The AI identifies the misconception pattern (e.g., *"You consistently picked the line-to-neutral voltage instead of line-to-line voltage in 3 questions"*).
+### 7.1. BYOK Provider Candidates & Failover Routing
+Users can connect their own free API keys in Settings (`/settings` or stored in browser `localStorage`), ensuring **$0 host infrastructure cost**:
 
-### 7.2. The "Notes" Knowledge Base (`/notes`)
-- **1-Click Clip:** Any highlighted module excerpt, formula explanation, or AI tutor debrief can be saved with `💾 Save to Notes`.
-- **Organized by Course Code:** Notes are categorized under `MATH 01`, `ELEC 03`, `GEAS 04`, etc., serving as the student's personalized high-yield cheat sheet before taking the board exam.
+| Provider | Recommended Model | Free Tier Allocation | Key Strengths |
+|---|---|---|---|
+| **Google AI Studio** *(Primary)* | `gemini-1.5-flash` / `gemini-2.0-flash` | **15 RPM • 1M TPM • 1,500 RPD** | Massive context window, superior math/diagram reasoning, generous permanent free quota. |
+| **Groq Cloud** *(Secondary)* | `llama-3.3-70b-versatile` | **30 RPM • 14,400 RPD** | Ultra-low latency (>300 tokens/sec), instant streaming feedback. |
+| **OpenRouter** *(Fallback)* | `meta-llama/llama-3.3-70b:free` | **Variable free models** | Universal OpenAI-compatible gateway; single key accesses multiple open-source models. |
+
+#### Client-Side Automatic Failover Routing
+Is multi-provider failover difficult? **No.** A lightweight, 25-line TypeScript client router attempts the primary provider (e.g., Google AI Studio); on HTTP 429 (rate limit) or network error, it automatically falls back to Groq or OpenRouter with zero user disruption:
+```typescript
+async function fetchAITutor(prompt: string, keys: UserApiKeys): Promise<ReadableStream> {
+  const providers = [
+    { name: "gemini", fn: () => callGemini(prompt, keys.google) },
+    { name: "groq", fn: () => callGroq(prompt, keys.groq) },
+    { name: "openrouter", fn: () => callOpenRouter(prompt, keys.openrouter) },
+  ].filter(p => !!keys[p.name]);
+
+  for (const provider of providers) {
+    try {
+      return await provider.fn();
+    } catch (err) {
+      console.warn(`Provider ${provider.name} failed, falling back...`, err);
+    }
+  }
+  throw new Error("All configured AI providers exceeded quota or failed.");
+}
+```
+
+---
+
+### 7.2. Standardized AI System Prompts & Structured Response Schema
+
+#### System Prompt Persona: Pragmatic Board Exam Topnotcher Mentor
+```
+You are an expert PRC Electronics Engineering (ECE) Board Examination Topnotcher Mentor. 
+Your goal is to provide crisp, intuitive, high-speed explanations for engineering examinees.
+
+CRITICAL GUIDELINES:
+1. Avoid verbose academic fluff or robotic textbook preamble.
+2. Ground every mathematical concept in intuitive, accessible standard English.
+3. Always contrast the typical long academic solution with the fastest board exam technique or Casio fx-991ES calculator trick.
+4. Structure your response EXACTLY according to the standardized Note-Card format so the student can save it directly to their personal Notes.
+```
+
+#### Standardized Output Format (1-Click "Save to Notes" Schema)
+Every AI Tutor response outputs structured markdown conforming to a standardized card format:
+```markdown
+### 💡 Concept Breakdown: [Topic / Question Title]
+
+**1. Misconception / Trap Identified:**
+> [1-2 sentences explaining why the wrong choice was enticing or where the sign/formula error occurred]
+
+**2. Core Principle & Formula:**
+$$	ext{Formula in KaTeX}$$
+*Plain-English intuition of what the variables actually represent.*
+
+**3. Board Exam Speed Shortcut / Calculator Technique:**
+- *Typical Long Method:* [Brief 1-sentence description of the tedious derivation]
+- *Board Exam Shortcut:* [Step-by-step 15-second shortcut, ratio trick, or Casio fx-991ES mode setup]
+
+**4. 📝 High-Yield Takeaway Note:**
+> [A self-contained 2-sentence mnemonic or rule-of-thumb ready for revision]
+```
+
+---
+
+### 7.3. Compute & Storage Impact Evaluation ($0 Cost Assessment)
+
+- **Compute Impact:** **$0.** All LLM API calls are executed client-to-provider directly or streamed via stateless Next.js edge API routes. The host platform incurs zero GPU/LLM inference costs.
+- **Storage Impact on Neon PostgreSQL:**
+  - The `notes` table stores lightweight Markdown text:
+    ```sql
+    CREATE TABLE notes (
+      id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+      user_id UUID REFERENCES users(id) ON DELETE CASCADE,
+      topic_code TEXT NOT NULL,
+      title TEXT NOT NULL,
+      content TEXT NOT NULL,
+      tags TEXT[],
+      created_at TIMESTAMP DEFAULT now() NOT NULL
+    );
+    ```
+  - An average note card is $pprox 350	ext{ bytes}$.
+  - **10,000 saved notes** consume only **$pprox 3.5	ext{ MB}$**, which is less than $1\%$ of Neon's permanent $500	ext{ MB}$ free tier!
+
+---
+
+### 7.4. Phased AI Roadmap
+
+```
+[➔] Phase 4.7: BYOK API Key Infrastructure & Client-Side Failover Router
+    • Secure localStorage key vault with support for Google AI Studio, Groq, OpenRouter
+    • Automatic 3-tier failover handling (Gemini -> Groq -> OpenRouter)
+
+[➔] Phase 4.8: Post-Exam Debrief & In-Module Context AI Tutor
+    • Post-Exam Results Screen ("🤖 Start Personal AI Debrief") analyzing missed questions
+    • Inline text highlight prompt ("Ask AI Tutor about this formula")
+
+[➔] Phase 4.9: Personal Study Notebook Knowledge Base (/notes)
+    • 1-Click "Save AI Note" persistence to Neon DB with topic tags and search/filter
+```
 
 ## 8. Implementation Phasing & Status
 
