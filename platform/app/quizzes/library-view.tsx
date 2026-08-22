@@ -29,7 +29,7 @@ import { QuizListItem } from "@/lib/quizzes";
 import { FolderWithCount } from "@/lib/folders";
 import { UserTopicSrs } from "@/lib/db/schema";
 import { GamificationData } from "@/lib/gamification";
-import { SUBJECTS, getSubjectFromKey, pluralize, METRIC_DEFINITIONS } from "@/lib/constants";
+import { SUBJECTS, getSubjectFromKey, pluralize, METRIC_DEFINITIONS, formatTopicCode } from "@/lib/constants";
 
 interface LibraryViewProps {
   initialQuizzes: QuizListItem[];
@@ -466,7 +466,7 @@ export function LibraryView({
                               </h2>
                             </div>
                             <div className="flex items-center gap-2 text-xs text-[var(--text3)] font-mono mt-0.5">
-                              <span>{group.topicCode}</span>
+                              <span>{formatTopicCode(group.topicCode)}</span>
                               <span>•</span>
                               <span>{pluralize(group.items.length, "set")}</span>
                               <span>•</span>

@@ -4,7 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { UserTopicSrs } from "@/lib/db/schema";
 import { QuizListItem } from "@/lib/quizzes";
-import { SUBJECTS, pluralize, METRIC_DEFINITIONS } from "@/lib/constants";
+import { SUBJECTS, pluralize, METRIC_DEFINITIONS, formatTopicCode } from "@/lib/constants";
 import {
   ShieldCheck,
   Clock,
@@ -21,6 +21,7 @@ import {
 
 interface SkillNode {
   code: string;
+  displayCode: string;
   name: string;
   icon: string;
   description: string;
@@ -37,14 +38,16 @@ const DUO_TRACKS: Record<
     color: "from-blue-500 to-cyan-500",
     bgGlow: "rgba(59, 130, 246, 0.15)",
     nodes: [
-      { code: "MATH-01", name: "Algebra", icon: "🔢", description: "Polynomials, roots, logarithms, systems of linear equations" },
-      { code: "MATH-02", name: "Probability", icon: "🎲", description: "Permutations, combinations, discrete & continuous distributions" },
-      { code: "MATH-03", name: "Statistics & Discrete", icon: "📊", description: "Hypothesis testing, variance, graph theory, sets", milestone: true },
-      { code: "MATH-05", name: "Trigonometry", icon: "📐", description: "Identities, oblique triangles, spherical trigonometry" },
-      { code: "MATH-07", name: "Geometry & Mensuration", icon: "🔷", description: "Polygons, circles, polyhedrons, solids of revolution" },
-      { code: "MATH-09", name: "Analytic Geometry", icon: "📈", description: "Conic sections, eccentricities, asymptotes, loci", milestone: true },
-      { code: "MATH-10", name: "Differential Calculus", icon: "📉", description: "Limits, derivatives, maxima/minima, related rates" },
-      { code: "MATH-11", name: "Integral Calculus", icon: "🏛️", description: "Integration techniques, areas, centroids, solids of revolution", milestone: true },
+      { code: "MATH-01", displayCode: "MATH 01", name: "Algebra", icon: "🔢", description: "Polynomials, roots, logarithms, systems of linear equations" },
+      { code: "MATH-02", displayCode: "MATH 02", name: "Probability", icon: "🎲", description: "Permutations, combinations, discrete & continuous distributions" },
+      { code: "MATH-03-04", displayCode: "MATH 03 & 04", name: "Statistics & Discrete Math", icon: "📊", description: "Central tendency, hypothesis testing, sets, graph theory", milestone: true },
+      { code: "MATH-05", displayCode: "MATH 05", name: "Trigonometry", icon: "📐", description: "Identities, oblique triangles, spherical trigonometry" },
+      { code: "MATH-07-08", displayCode: "MATH 07 & 08", name: "Solid Geometry & Mensuration", icon: "🔷", description: "Prisms, pyramids, polyhedrons, solids of revolution" },
+      { code: "MATH-09", displayCode: "MATH 09", name: "Analytic Geometry", icon: "📈", description: "Conic sections, eccentricities, asymptotes, polar coordinates", milestone: true },
+      { code: "MATH-10", displayCode: "MATH 10", name: "Differential Calculus", icon: "📉", description: "Limits, derivatives, maxima/minima, related rates" },
+      { code: "MATH-11", displayCode: "MATH 11", name: "Integral Calculus", icon: "🏛️", description: "Integration techniques, areas, centroids, solids of revolution", milestone: true },
+      { code: "MATH-DE", displayCode: "MATH DE", name: "Differential Equations", icon: "⚙️", description: "First order, Bernoulli, applications, Laplace transforms" },
+      { code: "MATH-ADV", displayCode: "MATH ADV", name: "Advanced Engineering Math", icon: "🌌", description: "Complex numbers, vectors, matrices, Fourier series", milestone: true },
     ],
   },
   ELECS: {
@@ -53,21 +56,21 @@ const DUO_TRACKS: Record<
     color: "from-amber-500 to-orange-500",
     bgGlow: "rgba(245, 158, 11, 0.15)",
     nodes: [
-      { code: "ELEC-01", name: "Electricity & Magnetism", icon: "🧲", description: "Coulomb's Law, Gauss, magnetic flux, force on charges" },
-      { code: "ELEC-02", name: "Electrical Elements", icon: "🔋", description: "Resistors, inductors, capacitors, color codes, parasitics" },
-      { code: "ELEC-03", name: "DC Circuits", icon: "⚡", description: "Ohm's Law, Kirchhoff's Laws, Thevenin, Norton, Superposition", milestone: true },
-      { code: "ELEC-04", name: "AC Circuits", icon: "〰️", description: "Phasors, impedance, power factor, series/parallel RLC" },
-      { code: "ELEC-05", name: "Transients & Resonance", icon: "⏱️", description: "Time constants, damping, Q-factor, bandwidth" },
-      { code: "ELEC-06", name: "Semiconductors & Diodes", icon: "💡", description: "PN junctions, Zener, rectifiers, clippers, clampers", milestone: true },
-      { code: "ELEC-07", name: "BJT Transistors", icon: "🔀", description: "CE/CB/CC biasing, h-parameters, frequency response" },
-      { code: "ELEC-08", name: "FET & MOSFET", icon: "🎛️", description: "JFET, enhancement/depletion MOSFET, transconductance" },
-      { code: "ELEC-09", name: "Op-Amps", icon: "🔺", description: "Ideal op-amps, feedback, summing, filters, comparators", milestone: true },
-      { code: "ELEC-10", name: "Industrial Electronics", icon: "🏭", description: "SCR, TRIAC, DIAC, motor drives, optocouplers" },
-      { code: "ELEC-11", name: "Power Supplies", icon: "🔌", description: "Linear regulators, SMPS, ripple factor, heat sinks" },
-      { code: "ELEC-12", name: "Microelectronics", icon: "🔬", description: "IC fabrication, lithography, CMOS layout" },
-      { code: "ELEC-13", name: "Test & Measurement", icon: "🎚️", description: "Oscilloscopes, multimeters, bridge circuits, sensors" },
-      { code: "ELEC-14", name: "Feedback & Oscillators", icon: "🔄", description: "Barkhausen criterion, Wien bridge, crystal oscillators" },
-      { code: "ELEC-15", name: "Digital Electronics", icon: "💻", description: "Logic gates, Karnaugh maps, flip-flops, counters, registers", milestone: true },
+      { code: "ELEC-01", displayCode: "ELEC 01", name: "Electricity & Magnetism", icon: "🧲", description: "Coulomb's Law, Gauss, magnetic flux, force on charges" },
+      { code: "ELEC-02", displayCode: "ELEC 02", name: "Electrical Elements", icon: "🔋", description: "Resistors, inductors, capacitors, color codes, parasitics" },
+      { code: "ELEC-03", displayCode: "ELEC 03", name: "DC Circuits", icon: "⚡", description: "Ohm's Law, Kirchhoff's Laws, Thevenin, Norton, Superposition", milestone: true },
+      { code: "ELEC-04", displayCode: "ELEC 04", name: "AC Circuits", icon: "〰️", description: "Phasors, impedance, power factor, series/parallel RLC" },
+      { code: "ELEC-05", displayCode: "ELEC 05", name: "Transients & Resonance", icon: "⏱️", description: "Time constants, damping, Q-factor, bandwidth" },
+      { code: "ELEC-06", displayCode: "ELEC 06", name: "Semiconductors & Diodes", icon: "💡", description: "PN junctions, Zener, rectifiers, clippers, clampers", milestone: true },
+      { code: "ELEC-07", displayCode: "ELEC 07", name: "BJT Transistors", icon: "🔀", description: "CE/CB/CC biasing, h-parameters, frequency response" },
+      { code: "ELEC-08", displayCode: "ELEC 08", name: "FET & MOSFET", icon: "🎛️", description: "JFET, enhancement/depletion MOSFET, transconductance" },
+      { code: "ELEC-09", displayCode: "ELEC 09", name: "Op-Amps", icon: "🔺", description: "Ideal op-amps, feedback, summing, filters, comparators", milestone: true },
+      { code: "ELEC-10", displayCode: "ELEC 10", name: "Industrial Electronics", icon: "🏭", description: "SCR, TRIAC, DIAC, motor drives, optocouplers" },
+      { code: "ELEC-11", displayCode: "ELEC 11", name: "Power Supplies", icon: "🔌", description: "Linear regulators, SMPS, ripple factor, heat sinks" },
+      { code: "ELEC-12", displayCode: "ELEC 12", name: "Microelectronics", icon: "🔬", description: "IC fabrication, lithography, CMOS layout" },
+      { code: "ELEC-13", displayCode: "ELEC 13", name: "Test & Measurement", icon: "🎚️", description: "Oscilloscopes, multimeters, bridge circuits, sensors" },
+      { code: "ELEC-14", displayCode: "ELEC 14", name: "Feedback & Oscillators", icon: "🔄", description: "Barkhausen criterion, Wien bridge, crystal oscillators" },
+      { code: "ELEC-15", displayCode: "ELEC 15", name: "Digital Electronics", icon: "💻", description: "Logic gates, Karnaugh maps, flip-flops, counters, registers", milestone: true },
     ],
   },
   GEAS: {
@@ -76,18 +79,18 @@ const DUO_TRACKS: Record<
     color: "from-emerald-500 to-teal-500",
     bgGlow: "rgba(16, 185, 129, 0.15)",
     nodes: [
-      { code: "GEAS-01", name: "Chemistry", icon: "🧪", description: "Stoichiometry, atomic bonding, electrochemistry, redox" },
-      { code: "GEAS-02", name: "Physics 1", icon: "🍎", description: "Kinematics, Newton's laws, energy, momentum, rotation" },
-      { code: "GEAS-03", name: "Physics 2", icon: "⚡", description: "Electric fields, optics, waves, sound, relativity", milestone: true },
-      { code: "GEAS-04", name: "Mechanics & Strength", icon: "🏗️", description: "Statics, trusses, stress/strain, torsion, flexure" },
-      { code: "GEAS-05", name: "Thermodynamics", icon: "🔥", description: "1st & 2nd laws, heat engines, Carnot cycle, entropy", milestone: true },
-      { code: "GEAS-06", name: "Engineering Economics", icon: "💰", description: "Time value of money, annuities, depreciation, ROR" },
-      { code: "GEAS-09", name: "Electromagnetics", icon: "🌐", description: "Maxwell's equations, Poynting vector, boundary conditions" },
-      { code: "GEAS-10", name: "ECE Laws & Ethics", icon: "⚖️", description: "RA 9292, PEC, NTC regulations, engineering code of ethics", milestone: true },
-      { code: "GEAS-11", name: "Material Science", icon: "💎", description: "Crystal structures, phase diagrams, polymers, ceramics" },
-      { code: "GEAS-12", name: "Computer Programming", icon: "🖥️", description: "Algorithms, flowcharts, data structures, C/C++" },
-      { code: "GEAS-13", name: "Environmental Science", icon: "🌱", description: "Ecology, waste management, environmental laws" },
-      { code: "GEAS-14", name: "Technopreneurship", icon: "🚀", description: "Innovation, startups, business models, IP protection", milestone: true },
+      { code: "GEAS-01", displayCode: "GEAS 01", name: "Chemistry", icon: "🧪", description: "Stoichiometry, atomic bonding, electrochemistry, redox" },
+      { code: "GEAS-02", displayCode: "GEAS 02", name: "Physics 1", icon: "🍎", description: "Kinematics, Newton's laws, energy, momentum, rotation" },
+      { code: "GEAS-03", displayCode: "GEAS 03", name: "Physics 2", icon: "⚡", description: "Electric fields, optics, waves, sound, relativity", milestone: true },
+      { code: "GEAS-04", displayCode: "GEAS 04", name: "Mechanics & Strength", icon: "🏗️", description: "Statics, trusses, stress/strain, torsion, flexure" },
+      { code: "GEAS-05", displayCode: "GEAS 05", name: "Thermodynamics", icon: "🔥", description: "1st & 2nd laws, heat engines, Carnot cycle, entropy", milestone: true },
+      { code: "GEAS-06", displayCode: "GEAS 06", name: "Engineering Economics", icon: "💰", description: "Time value of money, annuities, depreciation, ROR" },
+      { code: "GEAS-09", displayCode: "GEAS 09", name: "Electromagnetics", icon: "🌐", description: "Maxwell's equations, Poynting vector, boundary conditions" },
+      { code: "GEAS-10", displayCode: "GEAS 10", name: "ECE Laws & Ethics", icon: "⚖️", description: "RA 9292, PEC, NTC regulations, engineering code of ethics", milestone: true },
+      { code: "GEAS-11", displayCode: "GEAS 11", name: "Material Science", icon: "💎", description: "Crystal structures, phase diagrams, polymers, ceramics" },
+      { code: "GEAS-12", displayCode: "GEAS 12", name: "Computer Programming", icon: "🖥️", description: "Algorithms, flowcharts, data structures, C/C++" },
+      { code: "GEAS-13", displayCode: "GEAS 13", name: "Environmental Science", icon: "🌱", description: "Ecology, waste management, environmental laws" },
+      { code: "GEAS-14", displayCode: "GEAS 14", name: "Technopreneurship", icon: "🚀", description: "Innovation, startups, business models, IP protection", milestone: true },
     ],
   },
   EST: {
@@ -96,16 +99,16 @@ const DUO_TRACKS: Record<
     color: "from-purple-500 to-pink-500",
     bgGlow: "rgba(168, 85, 247, 0.15)",
     nodes: [
-      { code: "EST-01", name: "Fundamentals of Comms", icon: "📻", description: "Signal spectra, bandwidth, decibels, noise figure, SNR" },
-      { code: "EST-02", name: "Radiowave Propagation", icon: "🌊", description: "Ground waves, sky waves, ionosphere, fading, ducting" },
-      { code: "EST-03", name: "Analog Modulation", icon: "🎙️", description: "AM, FM, PM, Carson's rule, superheterodyne receivers", milestone: true },
-      { code: "EST-04", name: "Transmission Lines", icon: "➰", description: "Characteristic impedance, SWR, Smith chart, stubs" },
-      { code: "EST-05", name: "Antennas", icon: "📡", description: "Dipoles, gain, radiation patterns, arrays, aperture", milestone: true },
-      { code: "EST-06", name: "Microwave Comms", icon: "🛰️", description: "Waveguides, cavity resonators, satellite link budgets" },
-      { code: "EST-07", name: "Optical Fiber Comms", icon: "💡", description: "Total internal reflection, attenuation, dispersion, lasers", milestone: true },
-      { code: "EST-08", name: "Telephony", icon: "☎️", description: "PSTN, switching, signaling, traffic engineering, Erlangs" },
-      { code: "EST-09", name: "Digital Communications", icon: "📶", description: "PCM, ASK, FSK, PSK, QAM, constellation diagrams" },
-      { code: "EST-10", name: "Data Communications", icon: "🌐", description: "OSI model, TCP/IP, Ethernet, routing, protocols", milestone: true },
+      { code: "EST-01", displayCode: "EST 01", name: "Fundamentals of Comms", icon: "📻", description: "Signal spectra, bandwidth, decibels, noise figure, SNR" },
+      { code: "EST-02", displayCode: "EST 02", name: "Radiowave Propagation", icon: "🌊", description: "Ground waves, sky waves, ionosphere, fading, ducting" },
+      { code: "EST-03", displayCode: "EST 03", name: "Analog Modulation", icon: "🎙️", description: "AM, FM, PM, Carson's rule, superheterodyne receivers", milestone: true },
+      { code: "EST-04", displayCode: "EST 04", name: "Transmission Lines", icon: "➰", description: "Characteristic impedance, SWR, Smith chart, stubs" },
+      { code: "EST-05", displayCode: "EST 05", name: "Antennas", icon: "📡", description: "Dipoles, gain, radiation patterns, arrays, aperture", milestone: true },
+      { code: "EST-06", displayCode: "EST 06", name: "Microwave Comms", icon: "🛰️", description: "Waveguides, cavity resonators, satellite link budgets" },
+      { code: "EST-07", displayCode: "EST 07", name: "Optical Fiber Comms", icon: "💡", description: "Total internal reflection, attenuation, dispersion, lasers", milestone: true },
+      { code: "EST-08", displayCode: "EST 08", name: "Telephony", icon: "☎️", description: "PSTN, switching, signaling, traffic engineering, Erlangs" },
+      { code: "EST-09", displayCode: "EST 09", name: "Digital Communications", icon: "📶", description: "PCM, ASK, FSK, PSK, QAM, constellation diagrams" },
+      { code: "EST-10", displayCode: "EST 10", name: "Data Communications", icon: "🌐", description: "OSI model, TCP/IP, Ethernet, routing, protocols", milestone: true },
     ],
   },
 };
@@ -123,7 +126,7 @@ export function SkillTreeMap({ quizzes, topicMap }: SkillTreeMapProps) {
 
   // Robust Quiz matching across codes and normalized titles
   const getMatchedQuizzes = (nodeCode: string, nodeName: string) => {
-    const normCode = nodeCode.toUpperCase().replace(/[-_]/g, " "); // "MATH 01"
+    const normCode = nodeCode.toUpperCase().replace(/[-_]/g, " "); // "MATH 03 04" or "MATH 01"
     const normName = nodeName.toUpperCase();
 
     return quizzes.filter((q) => {
@@ -134,6 +137,10 @@ export function SkillTreeMap({ quizzes, topicMap }: SkillTreeMapProps) {
       return (
         qCode === nodeCode ||
         qTitle.includes(normCode) ||
+        (nodeCode.includes("03") && qTitle.includes("03")) ||
+        (nodeCode.includes("07") && qTitle.includes("07")) ||
+        (nodeCode.includes("DE") && qTitle.includes("DE")) ||
+        (nodeCode.includes("ADV") && qTitle.includes("ADV")) ||
         qTag.includes(normName) ||
         qTitle.includes(normName)
       );
@@ -143,22 +150,21 @@ export function SkillTreeMap({ quizzes, topicMap }: SkillTreeMapProps) {
   const activeNode = track.nodes.find((n) => n.code === activeNodeCode);
   const activeQuizzes = activeNode ? getMatchedQuizzes(activeNode.code, activeNode.name) : [];
 
-  // Stepping winding pattern offsets: [center, left, right, center, right, left, ...]
   const getOffsetClass = (index: number) => {
     const pattern = [
-      "justify-center",       // 0: Center
-      "justify-start pl-8 sm:pl-16 md:pl-28",   // 1: Left
-      "justify-end pr-8 sm:pr-16 md:pr-28",     // 2: Right
-      "justify-center",       // 3: Milestone Center
-      "justify-end pr-8 sm:pr-16 md:pr-28",     // 4: Right
-      "justify-start pl-8 sm:pl-16 md:pl-28",   // 5: Left
+      "justify-center",
+      "justify-start pl-8 sm:pl-16 md:pl-28",
+      "justify-end pr-8 sm:pr-16 md:pr-28",
+      "justify-center",
+      "justify-end pr-8 sm:pr-16 md:pr-28",
+      "justify-start pl-8 sm:pl-16 md:pl-28",
     ];
     return pattern[index % pattern.length];
   };
 
   return (
     <div className="space-y-8 max-w-4xl mx-auto">
-      {/* Subject Track Switcher Tabs (Duolingo Header Style) */}
+      {/* Subject Track Switcher Tabs */}
       <div className="flex items-center justify-between p-2 rounded-2xl bg-[var(--surface)] border border-[var(--border)] shadow-sm gap-2">
         {Object.entries(DUO_TRACKS).map(([key, t]) => (
           <button
@@ -260,13 +266,13 @@ export function SkillTreeMap({ quizzes, topicMap }: SkillTreeMapProps) {
                     </div>
                   </button>
 
-                  {/* Stepping Stone Subtitle Label */}
-                  <div className="text-center mt-2.5 max-w-[130px]">
+                  {/* Stepping Stone Subtitle Label with Explicit Continuous Display Code */}
+                  <div className="text-center mt-2.5 max-w-[140px]">
                     <div className="text-xs font-bold text-[var(--text)] group-hover:text-[var(--accent)] transition-colors line-clamp-1">
                       {node.name}
                     </div>
-                    <div className="text-[10px] font-mono text-[var(--text3)] mt-0.5 flex items-center justify-center gap-1">
-                      <span>{node.code}</span>
+                    <div className="text-[10px] font-mono text-[var(--text3)] mt-0.5 flex items-center justify-center gap-1 font-semibold">
+                      <span className="text-[var(--accent)]">{node.displayCode}</span>
                       <span>•</span>
                       <span>{pluralize(matchedCount, "set")}</span>
                     </div>
@@ -303,7 +309,7 @@ export function SkillTreeMap({ quizzes, topicMap }: SkillTreeMapProps) {
                 </div>
                 <div>
                   <span className="text-xs font-mono font-bold text-[var(--accent)]">
-                    {activeNode.code}
+                    {activeNode.displayCode}
                   </span>
                   <h3 className="text-lg font-bold font-serif text-[var(--text)]">
                     {activeNode.name}

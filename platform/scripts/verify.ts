@@ -5,7 +5,7 @@ import { db, pool } from "../lib/db/client";
 import { questionSets, questions, users, attempts } from "../lib/db/schema";
 import { eq, sql } from "drizzle-orm";
 
-function parseSet(title: string): { tier: string; topicCode: string } {
+export function parseSet(title: string): { tier: string; topicCode: string } {
   const t = title.toLowerCase();
   let tier = "review";
   if (t.includes("diagnostic")) {
@@ -18,13 +18,34 @@ function parseSet(title: string): { tier: string; topicCode: string } {
     tier = "conceptual_drill";
   }
 
-  const m = title.match(/^([A-Za-z]+)\s*(\d+)/);
-  const topicCode = m ? `${m[1].toUpperCase()}-${String(Number(m[2])).padStart(2, "0")}` : "GEN-01";
-  return { tier, topicCode };
+  // 1. Check for combined numbers like MATH 03-04 or MATH 07-08
+  const mMulti = title.match(/^([A-Za-z]+)\s*(\d+)[\s\-_–]+(\d+)/);
+  if (mMulti) {
+    const subj = mMulti[1].toUpperCase();
+    const n1 = String(Number(mMulti[2])).padStart(2, "0");
+    const n2 = String(Number(mMulti[3])).padStart(2, "0");
+    return { tier, topicCode: `${subj}-${n1}-${n2}` };
+  }
+
+  // 2. Check for DE or ADV
+  const mDe = title.match(/^([A-Za-z]+)\s*(DE|ADV)/i);
+  if (mDe) {
+    return { tier, topicCode: `${mDe[1].toUpperCase()}-${mDe[2].toUpperCase()}` };
+  }
+
+  // 3. Check for single numbers like ELEC 01, GEAS 04, MATH 05
+  const mSingle = title.match(/^([A-Za-z]+)\s*(\d+)/);
+  if (mSingle) {
+    const subj = mSingle[1].toUpperCase();
+    const n = String(Number(mSingle[2])).padStart(2, "0");
+    return { tier, topicCode: `${subj}-${n}` };
+  }
+
+  return { tier, topicCode: "GEN-01" };
 }
 
 async function verifyAndBackfill() {
-  console.log("=== NEON POSTGRESQL LIVE VERIFICATION & TIER BACKFILL ===");
+  console.log("=== NEON POSTGRESQL LIVE VERIFICATION & TIER/TOPIC BACKFILL ===");
 
   const allUsers = await db.select().from(users);
   console.log("Users in DB:", allUsers.length);
@@ -44,28 +65,19 @@ async function verifyAndBackfill() {
       .where(eq(questionSets.id, set.id));
     updatedCount++;
   }
-  console.log(`[OK] Backfilled tier and topicCode for ${updatedCount} question sets.`);
+  console.log(`[OK] Backfilled normalized tier and topicCode for ${updatedCount} question sets.`);
 
-  // Set default archetype on all questions
-  await db
-    .update(questions)
-    .set({
-      archetype: "standard",
-      isAnchor: false,
-    })
-    .where(sql`archetype IS NULL`);
-
-  const allQs = await db.select().from(questions);
-  console.log("Total Questions in DB:", allQs.length);
-
-  const allAttempts = await db.select().from(attempts);
-  console.log("Total Attempts in DB:", allAttempts.length);
+  const distinctTopics = await db
+    .select({ topic: questionSets.topicCode })
+    .from(questionSets)
+    .groupBy(questionSets.topicCode);
+  console.log(`[OK] Distinct topic codes in live DB (${distinctTopics.length}):`, distinctTopics.map(t => t.topic).sort());
 
   console.log("[OK] Neon PostgreSQL verification & schema backfill completed successfully.");
   await pool.end();
 }
 
 verifyAndBackfill().catch((err) => {
-  console.error("Verification failed:", err);
+  console.error("Backfill failed:", err);
   process.exit(1);
 });

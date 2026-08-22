@@ -115,3 +115,18 @@ export const METRIC_DEFINITIONS = {
   anchor: "Core foundational spine concept prioritized for board exam syllabus mastery.",
   readinessIndex: "Realistic preparedness index factoring overall accuracy, retention stability, and global syllabus completion against all 5,435 board exam questions.",
 };
+
+
+export function formatTopicCode(code: string): string {
+  if (!code) return "GEN 01";
+  const upper = code.toUpperCase().trim();
+  const mMulti = upper.match(/^([A-Z]+)[-_](\d+)[-_](\d+)/);
+  if (mMulti) {
+    return `${mMulti[1]} ${mMulti[2]} & ${mMulti[3]}`;
+  }
+  const mSingle = upper.match(/^([A-Z]+)[-_](\d+)/);
+  if (mSingle) {
+    return `${mSingle[1]} ${mSingle[2]}`;
+  }
+  return upper.replace(/[-_]/g, " ");
+}
