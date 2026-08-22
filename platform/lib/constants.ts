@@ -7,6 +7,9 @@ export interface SubjectConfig {
   code: string;
   label: string;
   full: string;
+  totalSets: number;
+  totalQuestions: number;
+  totalTopics: number;
   colorName: "blue" | "amber" | "emerald" | "purple";
   badgeClass: string;
   borderClass: string;
@@ -14,11 +17,18 @@ export interface SubjectConfig {
   bgClass: string;
 }
 
+export const TOTAL_SYLLABUS_QUESTIONS = 5435;
+export const TOTAL_SYLLABUS_TOPICS = 46;
+export const TOTAL_SYLLABUS_SETS = 190;
+
 export const SUBJECTS: Record<string, SubjectConfig> = {
   MATH: {
     code: "MATH",
     label: "MATH",
     full: "Mathematics",
+    totalSets: 41,
+    totalQuestions: 1170,
+    totalTopics: 10,
     colorName: "blue",
     badgeClass: "bg-blue-500/10 text-blue-600 dark:text-blue-400 border-blue-500/20",
     borderClass: "border-l-blue-500",
@@ -29,6 +39,9 @@ export const SUBJECTS: Record<string, SubjectConfig> = {
     code: "ELECS",
     label: "ELECS",
     full: "Electronics Engineering",
+    totalSets: 60,
+    totalQuestions: 1725,
+    totalTopics: 15,
     colorName: "amber",
     badgeClass: "bg-amber-500/10 text-amber-600 dark:text-amber-400 border-amber-500/20",
     borderClass: "border-l-amber-500",
@@ -39,6 +52,9 @@ export const SUBJECTS: Record<string, SubjectConfig> = {
     code: "GEAS",
     label: "GEAS",
     full: "General Engineering and Applied Sciences",
+    totalSets: 48,
+    totalQuestions: 1380,
+    totalTopics: 11,
     colorName: "emerald",
     badgeClass: "bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border-emerald-500/20",
     borderClass: "border-l-emerald-500",
@@ -49,6 +65,9 @@ export const SUBJECTS: Record<string, SubjectConfig> = {
     code: "EST",
     label: "EST",
     full: "Electronics Systems and Technologies",
+    totalSets: 41,
+    totalQuestions: 1160,
+    totalTopics: 10,
     colorName: "purple",
     badgeClass: "bg-purple-500/10 text-purple-600 dark:text-purple-400 border-purple-500/20",
     borderClass: "border-l-purple-500",
@@ -94,5 +113,5 @@ export const METRIC_DEFINITIONS = {
   reviewDue: "Topic retention is decaying (65%–85%). Recommended for recovery.",
   struggling: "Recent score was below 60% or retrievability has critically lapsed (<65%).",
   anchor: "Core foundational spine concept prioritized for board exam syllabus mastery.",
-  readinessIndex: "Weighted composite score (0–100%) factoring overall accuracy (40%), retention stability (35%), and syllabus coverage (25%).",
+  readinessIndex: "Realistic preparedness index factoring overall accuracy, retention stability, and global syllabus completion against all 5,435 board exam questions.",
 };

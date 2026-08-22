@@ -21,9 +21,11 @@ import {
   HelpCircle,
   Timer,
   Layers,
-  ArrowRight
+  ArrowRight,
+  Sparkles,
+  Compass
 } from "lucide-react";
-import { SUBJECTS, pluralize, METRIC_DEFINITIONS } from "@/lib/constants";
+import { SUBJECTS, pluralize, METRIC_DEFINITIONS, TOTAL_SYLLABUS_QUESTIONS, TOTAL_SYLLABUS_TOPICS } from "@/lib/constants";
 
 export default async function AnalyticsPage() {
   const session = await auth();
@@ -65,108 +67,163 @@ export default async function AnalyticsPage() {
           </Link>
         </div>
 
-        {/* Hero Metrics Grid */}
+        {/* Hero Metrics Grid with Honest Calibration States */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {/* PRC Board Readiness Index */}
-          <div className="bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-5 shadow-[var(--shadow)] relative overflow-hidden">
-            <div className="flex items-center justify-between mb-2">
-              <span
-                title={METRIC_DEFINITIONS.readinessIndex}
-                className="text-xs font-mono uppercase text-[var(--text3)] flex items-center gap-1 cursor-help"
-              >
-                <span>Board Readiness Index</span>
-                <HelpCircle className="w-3.5 h-3.5" />
-              </span>
-              <Award className="w-4 h-4 text-[var(--accent)]" />
+          <div className="bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-5 shadow-[var(--shadow)] relative overflow-hidden flex flex-col justify-between">
+            <div>
+              <div className="flex items-center justify-between mb-2">
+                <span
+                  title={METRIC_DEFINITIONS.readinessIndex}
+                  className="text-xs font-mono uppercase text-[var(--text3)] flex items-center gap-1 cursor-help"
+                >
+                  <span>Board Readiness</span>
+                  <HelpCircle className="w-3.5 h-3.5" />
+                </span>
+                <Award className="w-4 h-4 text-[var(--accent)]" />
+              </div>
+
+              {analytics.isCalibrated ? (
+                <div>
+                  <div className="text-3xl font-bold font-serif text-[var(--text)]">
+                    {analytics.readinessIndex}%
+                  </div>
+                  <div className="w-full bg-[var(--surface2)] h-1.5 rounded-full mt-3 overflow-hidden">
+                    <div
+                      className="bg-[var(--accent)] h-full transition-all duration-500"
+                      style={{ width: `${analytics.readinessIndex}%` }}
+                    ></div>
+                  </div>
+                </div>
+              ) : (
+                <div>
+                  <div className="text-lg font-bold font-serif text-[var(--accent)]">
+                    Calibrating Baseline
+                  </div>
+                  <div className="w-full bg-[var(--surface2)] h-1.5 rounded-full mt-3 overflow-hidden">
+                    <div
+                      className="bg-[var(--accent)] h-full transition-all duration-500"
+                      style={{ width: `${(analytics.calibrationProgress / 3) * 100}%` }}
+                    ></div>
+                  </div>
+                </div>
+              )}
             </div>
-            <div className="text-3xl font-bold font-serif text-[var(--text)]">
-              {analytics.readinessIndex}%
-            </div>
-            <div className="w-full bg-[var(--surface2)] h-1.5 rounded-full mt-3 overflow-hidden">
-              <div
-                className="bg-[var(--accent)] h-full transition-all duration-500"
-                style={{ width: `${analytics.readinessIndex}%` }}
-              ></div>
-            </div>
-            <p className="text-[11px] text-[var(--text3)] mt-2">
-              Composite score: 40% accuracy • 35% retention • 25% syllabus coverage
+
+            <p className="text-[11px] text-[var(--text3)] mt-3">
+              {analytics.isCalibrated
+                ? `Factors accuracy, retention, and syllabus coverage across ${TOTAL_SYLLABUS_TOPICS} topics`
+                : `Complete ${3 - analytics.calibrationProgress} more test sets across subjects to establish baseline`}
             </p>
           </div>
 
           {/* Average Memory Retrievability */}
-          <div className="bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-5 shadow-[var(--shadow)]">
-            <div className="flex items-center justify-between mb-2">
-              <span
-                title={METRIC_DEFINITIONS.retrievability}
-                className="text-xs font-mono uppercase text-[var(--text3)] flex items-center gap-1 cursor-help"
-              >
-                <span>Average Retention</span>
-                <HelpCircle className="w-3.5 h-3.5" />
-              </span>
-              <ShieldCheck className="w-4 h-4 text-emerald-500" />
+          <div className="bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-5 shadow-[var(--shadow)] flex flex-col justify-between">
+            <div>
+              <div className="flex items-center justify-between mb-2">
+                <span
+                  title={METRIC_DEFINITIONS.retrievability}
+                  className="text-xs font-mono uppercase text-[var(--text3)] flex items-center gap-1 cursor-help"
+                >
+                  <span>Average Retention</span>
+                  <HelpCircle className="w-3.5 h-3.5" />
+                </span>
+                <ShieldCheck className="w-4 h-4 text-emerald-500" />
+              </div>
+
+              {srsOverview.totalTrackedTopics >= 3 ? (
+                <div>
+                  <div className="text-3xl font-bold font-serif text-[var(--text)]">
+                    {srsOverview.averageRetention}%
+                  </div>
+                  <div className="w-full bg-[var(--surface2)] h-1.5 rounded-full mt-3 overflow-hidden">
+                    <div
+                      className="bg-emerald-500 h-full transition-all duration-500"
+                      style={{ width: `${srsOverview.averageRetention}%` }}
+                    ></div>
+                  </div>
+                </div>
+              ) : (
+                <div>
+                  <div className="text-lg font-bold font-serif text-emerald-600 dark:text-emerald-400">
+                    {srsOverview.totalTrackedTopics > 0 ? "Initial Sample" : "No Memory Data"}
+                  </div>
+                  <div className="w-full bg-[var(--surface2)] h-1.5 rounded-full mt-3 overflow-hidden">
+                    <div
+                      className="bg-emerald-500/50 h-full transition-all duration-500"
+                      style={{ width: `${(srsOverview.totalTrackedTopics / 3) * 100}%` }}
+                    ></div>
+                  </div>
+                </div>
+              )}
             </div>
-            <div className="text-3xl font-bold font-serif text-[var(--text)]">
-              {srsOverview.totalTrackedTopics > 0 ? `${srsOverview.averageRetention}%` : "—"}
-            </div>
-            <div className="w-full bg-[var(--surface2)] h-1.5 rounded-full mt-3 overflow-hidden">
-              <div
-                className="bg-emerald-500 h-full transition-all duration-500"
-                style={{ width: `${srsOverview.totalTrackedTopics > 0 ? srsOverview.averageRetention : 0}%` }}
-              ></div>
-            </div>
-            <p className="text-[11px] text-[var(--text3)] mt-2">
-              {srsOverview.totalTrackedTopics > 0
+
+            <p className="text-[11px] text-[var(--text3)] mt-3">
+              {srsOverview.totalTrackedTopics >= 3
                 ? `${srsOverview.activeDueCount} topics currently due for review`
-                : "Complete quizzes to establish stability"}
+                : `${srsOverview.totalTrackedTopics} / 3 topics studied to compute global retention`}
             </p>
           </div>
 
           {/* Overall Solving Speed */}
-          <div className="bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-5 shadow-[var(--shadow)]">
-            <div className="flex items-center justify-between mb-2">
-              <span className="text-xs font-mono uppercase text-[var(--text3)] flex items-center gap-1">
-                <span>Solving Pace</span>
-                <Timer className="w-3.5 h-3.5 text-blue-500" />
-              </span>
+          <div className="bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-5 shadow-[var(--shadow)] flex flex-col justify-between">
+            <div>
+              <div className="flex items-center justify-between mb-2">
+                <span className="text-xs font-mono uppercase text-[var(--text3)] flex items-center gap-1">
+                  <span>Solving Pace</span>
+                  <Timer className="w-3.5 h-3.5 text-blue-500" />
+                </span>
+              </div>
+              <div className="text-3xl font-bold font-serif text-[var(--text)]">
+                {analytics.totalQuestionsAnswered > 0 ? `${analytics.overallAvgPaceSeconds}s` : "—"}
+              </div>
             </div>
-            <div className="text-3xl font-bold font-serif text-[var(--text)]">
-              {analytics.totalQuestionsAnswered > 0 ? `${analytics.overallAvgPaceSeconds}s` : "—"}
+
+            <div>
+              <p className="text-xs text-[var(--text2)] mt-2">
+                Target pace: &lt;60s per item
+              </p>
+              <p className="text-[11px] text-[var(--text3)] mt-0.5 font-mono">
+                {pluralize(analytics.totalQuestionsAnswered, "question")} answered total
+              </p>
             </div>
-            <p className="text-xs text-[var(--text2)] mt-2">
-              Average per question • Target: &lt;60s
-            </p>
-            <p className="text-[11px] text-[var(--text3)] mt-1 font-mono">
-              {pluralize(analytics.totalQuestionsAnswered, "question")} answered total
-            </p>
           </div>
 
-          {/* Active Topics & Syllabus Coverage */}
-          <div className="bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-5 shadow-[var(--shadow)]">
-            <div className="flex items-center justify-between mb-2">
-              <span className="text-xs font-mono uppercase text-[var(--text3)]">Syllabus Coverage</span>
-              <Layers className="w-4 h-4 text-purple-500" />
+          {/* Global Syllabus Coverage */}
+          <div className="bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-5 shadow-[var(--shadow)] flex flex-col justify-between">
+            <div>
+              <div className="flex items-center justify-between mb-2">
+                <span className="text-xs font-mono uppercase text-[var(--text3)]">Syllabus Coverage</span>
+                <Layers className="w-4 h-4 text-purple-500" />
+              </div>
+              <div className="text-3xl font-bold font-serif text-[var(--text)]">
+                {analytics.totalUniqueQuestionsAnswered} / {TOTAL_SYLLABUS_QUESTIONS.toLocaleString()}
+              </div>
+              <div className="w-full bg-[var(--surface2)] h-1.5 rounded-full mt-3 overflow-hidden">
+                <div
+                  className="bg-purple-500 h-full transition-all duration-500"
+                  style={{ width: `${Math.max(1, Math.round((analytics.totalUniqueQuestionsAnswered / TOTAL_SYLLABUS_QUESTIONS) * 100))}%` }}
+                ></div>
+              </div>
             </div>
-            <div className="text-3xl font-bold font-serif text-[var(--text)]">
-              {srsOverview.totalTrackedTopics} / 46
-            </div>
-            <div className="w-full bg-[var(--surface2)] h-1.5 rounded-full mt-3 overflow-hidden">
-              <div
-                className="bg-purple-500 h-full transition-all duration-500"
-                style={{ width: `${Math.round((srsOverview.totalTrackedTopics / 46) * 100)}%` }}
-              ></div>
-            </div>
-            <p className="text-[11px] text-[var(--text3)] mt-2">
-              {Math.round((srsOverview.totalTrackedTopics / 46) * 100)}% of board exam topics tested
+
+            <p className="text-[11px] text-[var(--text3)] mt-3">
+              {srsOverview.totalTrackedTopics} / {TOTAL_SYLLABUS_TOPICS} subtopics tested across all 4 subjects
             </p>
           </div>
         </div>
 
-        {/* 4 PRC Board Exam Subject Pillars (Fixed Non-Misleading Empty States) */}
+        {/* 4 PRC Board Exam Subject Pillars with Real Syllabus Totals */}
         <div className="space-y-4">
           <div className="flex items-center justify-between">
-            <h2 className="text-lg font-bold font-serif text-[var(--text)]">
-              PRC Board Exam Subject Breakdown
-            </h2>
+            <div>
+              <h2 className="text-lg font-bold font-serif text-[var(--text)]">
+                PRC Board Exam Subject Breakdown
+              </h2>
+              <p className="text-xs text-[var(--text2)] mt-0.5">
+                Progress and accuracy benchmarked against the full {TOTAL_SYLLABUS_QUESTIONS.toLocaleString()}-question board curriculum.
+              </p>
+            </div>
             <span className="text-xs text-[var(--text3)] font-mono">
               Official 4-Subject Taxonomy
             </span>
@@ -174,7 +231,7 @@ export default async function AnalyticsPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {subjects.map((s) => {
-              const hasData = s.totalQuestions > 0 || s.trackedTopics > 0;
+              const hasData = s.uniqueQuestionsAttempted > 0;
 
               return (
                 <div
@@ -203,21 +260,25 @@ export default async function AnalyticsPage() {
                       )}
                     </div>
 
-                    {/* Progress Bar (Fix #2: 0% when no data) */}
+                    {/* Progress Bar comparing unique attempted vs total syllabus questions */}
                     <div className="w-full bg-[var(--surface2)] h-2 rounded-full overflow-hidden mt-3">
                       <div
                         className="bg-[var(--accent)] h-full transition-all duration-500"
-                        style={{ width: `${hasData ? s.accuracy : 0}%` }}
+                        style={{ width: `${Math.max(hasData ? 1 : 0, s.syllabusPercent)}%` }}
                       ></div>
+                    </div>
+                    <div className="flex items-center justify-between text-[11px] font-mono text-[var(--text3)] mt-1.5">
+                      <span>{s.uniqueQuestionsAttempted} / {s.totalSyllabusQuestions.toLocaleString()} questions ({s.syllabusPercent}%)</span>
+                      <span>{s.trackedTopics} / {s.totalTopics} topics</span>
                     </div>
                   </div>
 
                   {hasData ? (
-                    <div className="grid grid-cols-3 gap-2 pt-2 border-t border-[var(--border)] text-xs">
+                    <div className="grid grid-cols-3 gap-2 pt-3 border-t border-[var(--border)] text-xs">
                       <div>
-                        <div className="text-[10px] font-mono uppercase text-[var(--text3)]">Questions</div>
+                        <div className="text-[10px] font-mono uppercase text-[var(--text3)]">Attempts</div>
                         <div className="font-bold text-[var(--text)] mt-0.5">
-                          {s.correctQuestions} / {s.totalQuestions}
+                          {s.totalAttempts} tests ({s.correctQuestions} correct)
                         </div>
                       </div>
                       <div>
@@ -227,9 +288,9 @@ export default async function AnalyticsPage() {
                         </div>
                       </div>
                       <div>
-                        <div className="text-[10px] font-mono uppercase text-[var(--text3)]">Tracked</div>
+                        <div className="text-[10px] font-mono uppercase text-[var(--text3)]">Retention</div>
                         <div className="font-bold text-[var(--text)] mt-0.5">
-                          {s.trackedTopics} / {s.totalTopics} topics
+                          {s.retrievability > 0 ? `${s.retrievability}% Fresh` : "Establishing"}
                         </div>
                       </div>
                     </div>

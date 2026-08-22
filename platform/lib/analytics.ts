@@ -4,11 +4,10 @@ import {
   answerRecords,
   questions,
   questionSets,
-  userTopicSrs,
 } from "./db/schema";
-import { eq, and, sql, desc, gte } from "drizzle-orm";
+import { eq, and, sql, desc } from "drizzle-orm";
 import { getUserTopicSrsOverview } from "./srs";
-import { SUBJECTS, getSubjectFromKey } from "./constants";
+import { SUBJECTS, getSubjectFromKey, TOTAL_SYLLABUS_QUESTIONS, TOTAL_SYLLABUS_TOPICS } from "./constants";
 
 export interface SubjectAnalytics {
   code: string;
@@ -17,7 +16,9 @@ export interface SubjectAnalytics {
   badgeClass: string;
   borderClass: string;
   totalAttempts: number;
-  totalQuestions: number;
+  uniqueQuestionsAttempted: number;
+  totalSyllabusQuestions: number;
+  syllabusPercent: number;
   correctQuestions: number;
   accuracy: number;
   avgSecondsPerQ: number;
@@ -36,9 +37,12 @@ export interface ArchetypeMastery {
 
 export interface UserAnalyticsOverview {
   readinessIndex: number;
+  isCalibrated: boolean;
+  calibrationProgress: number; // 0 to 3
   overallAccuracy: number;
   overallAvgPaceSeconds: number;
   totalQuestionsAnswered: number;
+  totalUniqueQuestionsAnswered: number;
   totalQuizzesTaken: number;
   subjectAnalytics: Record<string, SubjectAnalytics>;
   archetypeMastery: ArchetypeMastery[];
@@ -75,11 +79,18 @@ export async function getUserAnalyticsOverview(userId: string): Promise<UserAnal
     const srsOverview = await getUserTopicSrsOverview(userId);
 
     // Subject breakdown aggregators
-    const subjectStats: Record<string, { totalQ: number; correctQ: number; totalTime: number; timeCount: number; attempts: number }> = {
-      MATH: { totalQ: 0, correctQ: 0, totalTime: 0, timeCount: 0, attempts: 0 },
-      ELECS: { totalQ: 0, correctQ: 0, totalTime: 0, timeCount: 0, attempts: 0 },
-      GEAS: { totalQ: 0, correctQ: 0, totalTime: 0, timeCount: 0, attempts: 0 },
-      EST: { totalQ: 0, correctQ: 0, totalTime: 0, timeCount: 0, attempts: 0 },
+    const subjectStats: Record<string, {
+      uniqueQuestionIds: Set<string>;
+      totalQ: number;
+      correctQ: number;
+      totalTime: number;
+      timeCount: number;
+      attempts: number;
+    }> = {
+      MATH: { uniqueQuestionIds: new Set(), totalQ: 0, correctQ: 0, totalTime: 0, timeCount: 0, attempts: 0 },
+      ELECS: { uniqueQuestionIds: new Set(), totalQ: 0, correctQ: 0, totalTime: 0, timeCount: 0, attempts: 0 },
+      GEAS: { uniqueQuestionIds: new Set(), totalQ: 0, correctQ: 0, totalTime: 0, timeCount: 0, attempts: 0 },
+      EST: { uniqueQuestionIds: new Set(), totalQ: 0, correctQ: 0, totalTime: 0, timeCount: 0, attempts: 0 },
     };
 
     // Archetype breakdown aggregators
@@ -98,12 +109,14 @@ export async function getUserAnalyticsOverview(userId: string): Promise<UserAnal
     let totalCorrect = 0;
     let totalSeconds = 0;
     let timeMeasurements = 0;
+    const globalUniqueQuestions = new Set<string>();
 
     userAnswers.forEach(({ ans, q, set }) => {
       const subj = getSubjectFromKey(set.topicCode || set.subjectTag || set.title);
       const code = subj.code;
 
       if (subjectStats[code]) {
+        subjectStats[code].uniqueQuestionIds.add(q.id);
         subjectStats[code].totalQ++;
         if (ans.isCorrect) subjectStats[code].correctQ++;
         if (ans.timeSpentSeconds) {
@@ -111,6 +124,8 @@ export async function getUserAnalyticsOverview(userId: string): Promise<UserAnal
           subjectStats[code].timeCount++;
         }
       }
+
+      globalUniqueQuestions.add(q.id);
 
       const arc = (q.archetype || "standard").toLowerCase();
       if (!archetypeStats[arc]) archetypeStats[arc] = { total: 0, correct: 0 };
@@ -133,20 +148,15 @@ export async function getUserAnalyticsOverview(userId: string): Promise<UserAnal
     const overallAccuracy = totalAnswered > 0 ? Math.round((totalCorrect / totalAnswered) * 100) : 0;
     const overallAvgPaceSeconds = timeMeasurements > 0 ? Math.round(totalSeconds / timeMeasurements) : 45;
 
-    // Syllabus totals per subject in ECE Board Exam
-    const subjectTopicTotals: Record<string, number> = {
-      MATH: 10,
-      ELECS: 15,
-      GEAS: 11,
-      EST: 10,
-    };
-
+    // Build subject analytics comparing against full board exam syllabus totals
     const finalSubjects: Record<string, SubjectAnalytics> = {};
     Object.keys(SUBJECTS).forEach((k) => {
       const config = SUBJECTS[k];
       const stats = subjectStats[k];
       const acc = stats.totalQ > 0 ? Math.round((stats.correctQ / stats.totalQ) * 100) : 0;
       const pace = stats.timeCount > 0 ? Math.round(stats.totalTime / stats.timeCount) : 0;
+      const uniqueCount = stats.uniqueQuestionIds.size;
+      const syllabusPercent = Math.round((uniqueCount / config.totalQuestions) * 1000) / 10; // e.g. 2.1%
 
       // Count tracked topics in this domain
       const domainTopics = Object.values(srsOverview.topicMap).filter((t) => {
@@ -166,22 +176,31 @@ export async function getUserAnalyticsOverview(userId: string): Promise<UserAnal
         badgeClass: config.badgeClass,
         borderClass: config.borderClass,
         totalAttempts: stats.attempts,
-        totalQuestions: stats.totalQ,
+        uniqueQuestionsAttempted: uniqueCount,
+        totalSyllabusQuestions: config.totalQuestions,
+        syllabusPercent,
         correctQuestions: stats.correctQ,
         accuracy: acc,
         avgSecondsPerQ: pace,
         retrievability,
         trackedTopics: activeTopics.length,
-        totalTopics: subjectTopicTotals[k] || 10,
+        totalTopics: config.totalTopics,
       };
     });
 
-    // Compute PRC Board Exam Readiness Index
-    const syllabusCoverage = Math.min(100, Math.round((srsOverview.totalTrackedTopics / 46) * 100));
-    const effectiveRetention = srsOverview.totalTrackedTopics > 0 ? srsOverview.averageRetention : 0;
-    const readinessIndex = Math.round(
-      0.40 * overallAccuracy + 0.35 * effectiveRetention + 0.25 * syllabusCoverage
-    );
+    // Calibration Gate: Require at least 3 completed attempts & 50 questions before displaying numerical Readiness Index
+    const calibrationProgress = Math.min(3, userAttempts.length);
+    const isCalibrated = userAttempts.length >= 3 && totalAnswered >= 50;
+
+    // Realistic Multiplicative Board Readiness Index (BRI)
+    // Formula: Accuracy * Retention * (TrackedTopics / 46)^0.5
+    let readinessIndex = 0;
+    if (isCalibrated) {
+      const accFactor = overallAccuracy / 100;
+      const retFactor = srsOverview.totalTrackedTopics > 0 ? srsOverview.averageRetention / 100 : 0.8;
+      const coverageFactor = Math.pow(srsOverview.totalTrackedTopics / TOTAL_SYLLABUS_TOPICS, 0.5);
+      readinessIndex = Math.round(accFactor * retFactor * coverageFactor * 100);
+    }
 
     // Archetype Mastery List
     const archetypeLabels: Record<string, string> = {
@@ -203,10 +222,9 @@ export async function getUserAnalyticsOverview(userId: string): Promise<UserAnal
       accuracy: data.total > 0 ? Math.round((data.correct / data.total) * 100) : 0,
     }));
 
-    // Recent 14-day velocity
+    // Recent Activity
     const activityMap = new Map<string, { count: number; correct: number }>();
     userAnswers.forEach(({ ans }) => {
-      // Group by date
       const dateStr = new Date().toLocaleDateString("en-US", { month: "short", day: "numeric" });
       if (!activityMap.has(dateStr)) activityMap.set(dateStr, { count: 0, correct: 0 });
       activityMap.get(dateStr)!.count++;
@@ -221,9 +239,12 @@ export async function getUserAnalyticsOverview(userId: string): Promise<UserAnal
 
     return {
       readinessIndex,
+      isCalibrated,
+      calibrationProgress,
       overallAccuracy,
       overallAvgPaceSeconds,
       totalQuestionsAnswered: totalAnswered,
+      totalUniqueQuestionsAnswered: globalUniqueQuestions.size,
       totalQuizzesTaken: userAttempts.length,
       subjectAnalytics: finalSubjects,
       archetypeMastery,
@@ -233,9 +254,12 @@ export async function getUserAnalyticsOverview(userId: string): Promise<UserAnal
     console.error("Error computing user analytics:", err);
     return {
       readinessIndex: 0,
+      isCalibrated: false,
+      calibrationProgress: 0,
       overallAccuracy: 0,
       overallAvgPaceSeconds: 45,
       totalQuestionsAnswered: 0,
+      totalUniqueQuestionsAnswered: 0,
       totalQuizzesTaken: 0,
       subjectAnalytics: {},
       archetypeMastery: [],
