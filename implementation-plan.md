@@ -286,3 +286,31 @@ $$	ext{Formula in KaTeX}$$
 [ ] PHASE 5: Mobile PWA & Offline Access (FUTURE)
     • Service Worker caching for offline practice and PWA install manifest
 ```
+
+
+---
+
+## 9. Definition of "Complete" (Feature Freeze & Active Study Mode)
+
+To prevent perpetual scope creep and ensure the tool fulfills its primary purpose—**helping you and your friends pass and top the ECE Board Exam**—we establish an explicit, non-negotiable **Definition of Done (v1.0 Complete)**:
+
+```
+┌──────────────────────────────────────────────────────────────────────────────────┐
+│  🏁 THE V1.0 "PLATFORM COMPLETE" DEFINITION OF DONE (DoD)                         │
+│                                                                                  │
+│  The platform is 100% COMPLETE when the following 4 pillars are delivered:       │
+│                                                                                  │
+│  1. CURRICULUM: 46 1-to-1 Decoupled Topics (MATH 01-13, ELEC 01-15,            │
+│     GEAS 01-14, EST 01-10) with all 190 sets (5,435 questions) verified.       │
+│  2. RETENTION: Working SRS Radar, Per-Subject Recovery Drills, and Calibrated    │
+│     Board Readiness Index (BRI).                                                 │
+│  3. LEARNING: Native interactive /learn/[topic] modules with speed shortcuts     │
+│     and paired mastery sets.                                                     │
+│  4. AI TUTOR: BYOK (Google AI Studio/Groq) post-exam debrief and /notes repo.   │
+└──────────────────────────────────────────────────────────────────────────────────┘
+```
+
+### The Post-Completion Operating Rule:
+1. **Immediate Feature Freeze:** Upon completing Phase 4, active development halts completely.
+2. **Shift to Pure Examinee Mode:** The platform shifts into daily review, exam simulations, and spaced repetition practice.
+3. **Passive Feedback Collection Only:** Any new feature idea, layout tweak, or enhancement request must be logged to a static `FEEDBACK_LOG.md` without writing new code, deferred until after the board exam.
