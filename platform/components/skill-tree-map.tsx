@@ -208,7 +208,7 @@ export function SkillTreeMap({ quizzes, topicMap }: SkillTreeMapProps) {
             
             // Calculate actual completion ratio (based on SRS review count / attempts)
             // If user answered at least 1 set, calculate proportion against total available sets (e.g. 1/4 = 25%, 4/4 = 100%)
-            const completedSets = srs ? Math.min(totalSets, Math.max(1, Math.round((srs.repetitionCount || 1)))) : 0;
+            const completedSets = srs ? Math.min(totalSets, Math.max(1, Math.round((srs.totalAttempts || 1)))) : 0;
             const completionRatio = srs ? Math.min(1, completedSets / totalSets) : 0;
             const percentFilled = Math.round(completionRatio * 100);
 

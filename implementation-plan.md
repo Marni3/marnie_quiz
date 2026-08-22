@@ -86,9 +86,11 @@ TOTAL SYLLABUS BENCHMARK: 46 TOPICS • 190 QUESTION SETS • 5,435 QUESTIONS
 
 ### 4.1. Memory Engine & Retrievability Formula
 The SRS engine tracks topic-level memory stability using an exponential forgetting curve:
-$$R(t) = \exp\left( - rac{\Delta t}{S} ight)$$
+$$R(t) = \exp\left( - rac{\Delta t}{S} 
+ight)$$
 - **Stability Update on Attempt ($S'$):**
-  $$S' = S \cdot \left( 1 + c \cdot 	ext{Score} \cdot e^{-R} ight)$$
+  $$S' = S \cdot \left( 1 + c \cdot 	ext{Score} \cdot e^{-R} 
+ight)$$
 - **Retrievability Categories:**
   - 🟢 **Fresh ($R \ge 85\%$):** Memory intact; review not yet urgent.
   - 🟡 **Review Due ($R < 85\%$ or $\Delta t \ge S$):** Optimal retrieval window.
@@ -125,21 +127,22 @@ $$BRI = 	ext{Accuracy} 	imes 	ext{Average Retention} 	imes \sqrt{rac{	ext{Compl
 
 ---
 
-## 6. Self-Contained Learning Module Automation Pipeline
+## 6. Native Interactive Learning Modules Pipeline (Paul's Online Notes / Brilliant-Style)
 
-### 6.1. Module Architecture
-- **Zero External Dependencies:** Standalone single-file HTML packages (`/public/modules/[topicCode].html`) with embedded KaTeX CSS/JS for mathematical typesetting.
-- **Curriculum Alignment:** Compiled with absolute fidelity to the official lecture notes in `Reference Documents/`.
+### 6.1. Module Architecture (First-Class React / Next.js Pages)
+- **Native Dynamic Routes (`/learn/[topicCode]` & `/learn/[topicCode]/[subtopicId]`):**
+  - Rather than clunky iframe embeds, modules are authored as rich, first-class React components with KaTeX mathematical typesetting, dark mode synchronization, and fluid responsive layouts.
+  - Multi-part architecture for extensive subjects (e.g. `MATH 01: Part 1 - Foundations`, `Part 2 - Word Problems`, `Part 3 - Matrices`).
 - **Core Sections per Module:**
-  1. **Key Definitions & Theoretical Foundations**
-  2. **Essential Formulas & Parameter Limits**
-  3. **Casio fx-991ES PLUS / fx-570ES Speed Calculator Keystrokes**
-  4. **Interactive Micro-Checkpoints:** 3–5 low-friction check-for-understanding questions with instant interactive step-by-step solutions.
+  1. **Concise Theoretical Principles & Concept Diagrams:** Crisp, visual summaries derived directly from `Reference Documents/` notes.
+  2. **Formula Sheets & Boundary Limits:** High-contrast summary cards with parameter definitions.
+  3. **Casio fx-991ES PLUS / fx-570ES Calculator Speed Techniques:** Step-by-step mode setups (COMP, CMPLX, STAT, MATRIX, VECTOR, TABLE) and keystroke shortcuts for the Philippine board exam.
+  4. **Embedded Micro-Checkpoints:** 3–5 instant check-for-understanding questions with inline step-by-step reveals upon answering.
 
-### 6.2. UI Integration & Sandboxed Delivery
-- **Dedicated "Learn" Tab (`/learn`):** Visual catalog of all 46 interactive topic primers.
+### 6.2. UI Integration & Navigation
+- **Top Navigation "Learn" Tab (`/learn`):** Visual curriculum index browsing modules by subject and topic.
 - **In-Context Launchers:** `📖 Learn Module` button on Library topic rows, Skill Tree stepping stones, and Quiz Results screens.
-- **Strict Sandboxing:** Delivered via `<iframe src="/modules/[code].html" sandbox="allow-scripts" />` (strictly no `allow-same-origin`).
+- **SRS Remediation Hook:** Optional 5-minute visual primer recommendations when a student's retrievability falls below $65\%$ on due topics.
 
 ---
 
