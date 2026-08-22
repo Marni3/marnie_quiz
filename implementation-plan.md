@@ -127,26 +127,36 @@ $$BRI = 	ext{Accuracy} 	imes 	ext{Average Retention} 	imes \sqrt{rac{	ext{Compl
 
 ---
 
-## 6. Native Interactive Learning Modules Pipeline (Paul's Online Notes / Brilliant-Style)
+## 6. Native Interactive Learning Modules Pipeline (Paul's Online Notes / "Calculus Made Easy" Style)
 
-### 6.1. Module Architecture (First-Class React / Next.js Pages)
-- **Native Dynamic Routes (`/learn/[topicCode]` & `/learn/[topicCode]/[subtopicId]`):**
-  - Rather than clunky iframe embeds, modules are authored as rich, first-class React components with KaTeX mathematical typesetting, dark mode synchronization, and fluid responsive layouts.
-  - Multi-part architecture for extensive subjects (e.g. `MATH 01: Part 1 - Foundations`, `Part 2 - Word Problems`, `Part 3 - Matrices`).
-- **Core Sections per Module:**
-  1. **Concise Theoretical Principles & Concept Diagrams:** Crisp, visual summaries derived directly from `Reference Documents/` notes.
-  2. **Formula Sheets & Boundary Limits:** High-contrast summary cards with parameter definitions.
-  3. **Casio fx-991ES PLUS / fx-570ES Calculator Speed Techniques:** Step-by-step mode setups (COMP, CMPLX, STAT, MATRIX, VECTOR, TABLE) and keystroke shortcuts for the Philippine board exam.
-  4. **Embedded Micro-Checkpoints:** 3–5 instant check-for-understanding questions with inline step-by-step reveals upon answering.
+### 6.1. Pedagogical Tone & Style
+- **"Calculus Made Easy" (Silvanus Thompson) Spirit:** Down-to-earth, intuitive, demystifying math and engineering jargon without verbose fluff.
+- **Dual-Anchor Explanations:**
+  1. **Intuitive Analogies & Metaphors:** Relatable physical mental models (e.g., water in tanks for voltage/current, stretching elastic bands for limits, mixing dye in coffee for dilution ODEs).
+  2. **Real-World Engineering Context:** Practical board exam applications (e.g., real antenna towers, SMPS ripple limits, transistor thermal runaway).
 
-### 6.2. UI Integration & Navigation
-- **Top Navigation "Learn" Tab (`/learn`):** Visual curriculum index browsing modules by subject and topic.
-- **In-Context Launchers:** `📖 Learn Module` button on Library topic rows, Skill Tree stepping stones, and Quiz Results screens.
-- **SRS Remediation Hook:** Optional 5-minute visual primer recommendations when a student's retrievability falls below $65\%$ on due topics.
+### 6.2. Frequent & Varied Interactive Micro-Checkpoints
+- **Rhythm:** Embedded after every single formula or concept block (8–15+ micro-checkpoints per module, not just at the end).
+- **Checkpoint Typologies:**
+  - 🧠 **Proportionality & Intuition Checks:** (e.g., *"If diameter doubles and length triples, resistance changes by what factor?"*)
+  - ⚡ **1-Step Calculator Speed Solves:** Immediate formula execution using Casio keystrokes.
+  - ⚠️ **Board Exam Trap Detection:** Spotting the classic distractor trap before doing calculations.
+  - 🔍 **Interactive Graph/Diagram Probes:** Tapping values on curves to observe responses.
 
 ---
 
-## 7. Implementation Phasing & Status
+## 7. AI Tutor Integration & Post-Exam Diagnostic Debrief (BYOK)
+
+### 7.1. Post-Exam AI Debriefing Flow (`/attempts/[id]/results`)
+- **Exam Integrity:** During active test-taking, AI assistance is suppressed to ensure honest diagnostic calibration.
+- **Post-Exam Debrief:** On the Results screen, a prominent **"🤖 Start Personal AI Debrief"** analyzes only the student's missed questions and chosen distractors.
+- **Root Cause Diagnosis:** The AI identifies the misconception pattern (e.g., *"You consistently picked the line-to-neutral voltage instead of line-to-line voltage in 3 questions"*).
+
+### 7.2. The "Notes" Knowledge Base (`/notes`)
+- **1-Click Clip:** Any highlighted module excerpt, formula explanation, or AI tutor debrief can be saved with `💾 Save to Notes`.
+- **Organized by Course Code:** Notes are categorized under `MATH 01`, `ELEC 03`, `GEAS 04`, etc., serving as the student's personalized high-yield cheat sheet before taking the board exam.
+
+## 8. Implementation Phasing & Status
 
 ```
 [✓] PHASE 1: Full-Stack Core Platform & Live Database Migration
