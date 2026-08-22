@@ -123,12 +123,16 @@ export const userTopicSrs = pgTable("user_topic_srs", {
   topicCode: text("topic_code").notNull(), // 'MATH-09', 'ELEC-03', 'EST-01'
   topicName: text("topic_name").notNull(), // 'Analytic Geometry'
   subjectDomain: text("subject_domain").notNull(), // 'Mathematics'
+  status: text("status").notNull().default("active"), // 'active' | 'snoozed' | 'suspended'
+  snoozedUntil: timestamp("snoozed_until"),
+  manualConfidence: text("manual_confidence"), // 'struggling' | 'moderate' | 'confident' | 'mastered' | null
   stabilityDays: real("stability_days").notNull().default(3.0),
   retrievability: real("retrievability").notNull().default(1.0),
   lastStudiedAt: timestamp("last_studied_at").defaultNow(),
   nextReviewDue: timestamp("next_review_due"),
   totalAttempts: integer("total_attempts").notNull().default(0),
   averageAccuracy: real("average_accuracy").notNull().default(0.0),
+  lastScorePercent: integer("last_score_percent"),
   createdAt: timestamp("created_at").defaultNow().notNull(),
 });
 

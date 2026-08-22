@@ -126,6 +126,8 @@ export async function createQuestionSetFromCsv(input: CreateQuizInput): Promise<
 export interface QuizListItem {
   id: string;
   title: string;
+  tier?: string | null;
+  topicCode?: string | null;
   subjectTag: string | null;
   visibility: "shared" | "private";
   folderId: string | null;

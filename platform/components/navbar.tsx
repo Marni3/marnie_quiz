@@ -4,7 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useSession, signOut } from "next-auth/react";
 import { ThemeToggle } from "./theme-toggle";
-import { BookOpen, History, Upload, LogOut, Sparkles } from "lucide-react";
+import { BookOpen, History, Upload, LogOut, Sparkles, Brain, LineChart } from "lucide-react";
 
 export function Navbar({ breadcrumb }: { breadcrumb?: string }) {
   const pathname = usePathname();
@@ -38,13 +38,25 @@ export function Navbar({ breadcrumb }: { breadcrumb?: string }) {
           <Link
             href="/quizzes"
             className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs sm:text-sm font-medium transition-colors ${
-              pathname === "/quizzes" || pathname.startsWith("/quizzes/") && pathname !== "/quizzes/upload"
+              pathname === "/quizzes" || (pathname.startsWith("/quizzes/") && pathname !== "/quizzes/upload")
                 ? "bg-[var(--surface2)] text-[var(--accent)] border border-[var(--border)]"
                 : "text-[var(--text2)] hover:text-[var(--text)] hover:bg-[var(--surface2)]"
             }`}
           >
             <BookOpen className="w-4 h-4" />
             <span className="hidden xs:inline">Library</span>
+          </Link>
+
+          <Link
+            href="/analytics"
+            className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs sm:text-sm font-medium transition-colors ${
+              pathname === "/analytics"
+                ? "bg-[var(--surface2)] text-[var(--accent)] border border-[var(--border)]"
+                : "text-[var(--text2)] hover:text-[var(--text)] hover:bg-[var(--surface2)]"
+            }`}
+          >
+            <Brain className="w-4 h-4" />
+            <span className="hidden xs:inline">Retention</span>
           </Link>
 
           <Link

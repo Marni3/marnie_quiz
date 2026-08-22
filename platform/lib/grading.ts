@@ -1,3 +1,4 @@
+import { updateTopicSrsAfterAttempt } from "./srs";
 import { db } from "./db/client";
 import {
   attempts,
@@ -104,6 +105,15 @@ export async function gradeAndSubmitAttempt(input: SubmitAttemptInput) {
         .returning();
 
       if (updated) updatedAttempt = updated;
+    });
+
+    // Update user's Spaced Repetition (SRS) stability and retention metrics
+    const totalQ = attempt.totalQuestions || qRecords.length || 1;
+    const scorePct = Math.round((correctCount / totalQ) * 100);
+    await updateTopicSrsAfterAttempt({
+      userId: attempt.userId,
+      questionSetId: attempt.questionSetId,
+      scorePercent: scorePct,
     });
 
     return updatedAttempt;
