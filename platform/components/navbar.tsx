@@ -4,7 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useSession, signOut } from "next-auth/react";
 import { ThemeToggle } from "./theme-toggle";
-import { BookOpen, History, Upload, LogOut, Sparkles, Brain, LineChart } from "lucide-react";
+import { BookOpen, History, Upload, LogOut, Sparkles, Brain } from "lucide-react";
 
 export function Navbar({ breadcrumb }: { breadcrumb?: string }) {
   const pathname = usePathname();
@@ -17,6 +17,8 @@ export function Navbar({ breadcrumb }: { breadcrumb?: string }) {
         <div className="flex items-center gap-3 min-w-0">
           <Link
             href="/quizzes"
+            aria-label="Marnie Quiz Home"
+            title="Marnie Quiz Home"
             className="text-xl font-bold tracking-tight text-[var(--accent)] font-serif hover:opacity-90 flex items-center gap-1.5 shrink-0"
           >
             <Sparkles className="w-5 h-5 text-[var(--accent)]" />
@@ -33,10 +35,12 @@ export function Navbar({ breadcrumb }: { breadcrumb?: string }) {
           )}
         </div>
 
-        {/* Center: Navigation Links */}
+        {/* Center: Navigation Links with Title tooltips */}
         <nav className="flex items-center gap-1 sm:gap-2">
           <Link
             href="/quizzes"
+            aria-label="Library"
+            title="Question Library"
             className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs sm:text-sm font-medium transition-colors ${
               pathname === "/quizzes" || (pathname.startsWith("/quizzes/") && pathname !== "/quizzes/upload")
                 ? "bg-[var(--surface2)] text-[var(--accent)] border border-[var(--border)]"
@@ -49,6 +53,8 @@ export function Navbar({ breadcrumb }: { breadcrumb?: string }) {
 
           <Link
             href="/analytics"
+            aria-label="Retention Matrix"
+            title="Retention & Spaced Repetition Matrix"
             className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs sm:text-sm font-medium transition-colors ${
               pathname === "/analytics"
                 ? "bg-[var(--surface2)] text-[var(--accent)] border border-[var(--border)]"
@@ -61,6 +67,8 @@ export function Navbar({ breadcrumb }: { breadcrumb?: string }) {
 
           <Link
             href="/history"
+            aria-label="Attempt History"
+            title="Attempt History"
             className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs sm:text-sm font-medium transition-colors ${
               pathname === "/history"
                 ? "bg-[var(--surface2)] text-[var(--accent)] border border-[var(--border)]"
@@ -71,16 +79,19 @@ export function Navbar({ breadcrumb }: { breadcrumb?: string }) {
             <span className="hidden xs:inline">History</span>
           </Link>
 
+          {/* Secondary Outline Button in Navbar to avoid competing with hero primary CTA */}
           <Link
             href="/quizzes/upload"
+            aria-label="Upload CSV"
+            title="Upload CSV Test Set"
             className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs sm:text-sm font-medium transition-colors ${
               pathname === "/quizzes/upload"
-                ? "bg-[var(--accent)] text-white"
+                ? "bg-[var(--surface2)] text-[var(--accent)] border border-[var(--accent)]"
                 : "bg-[var(--surface2)] border border-[var(--border)] text-[var(--text2)] hover:border-[var(--accent)] hover:text-[var(--accent)]"
             }`}
           >
             <Upload className="w-4 h-4" />
-            <span>Upload CSV</span>
+            <span className="hidden sm:inline">Upload CSV</span>
           </Link>
         </nav>
 
@@ -105,8 +116,9 @@ export function Navbar({ breadcrumb }: { breadcrumb?: string }) {
               <button
                 type="button"
                 onClick={() => signOut({ callbackUrl: "/login" })}
-                className="text-[var(--text3)] hover:text-[var(--red)] p-1 rounded-md transition-colors"
+                aria-label="Sign out"
                 title="Sign out"
+                className="text-[var(--text3)] hover:text-[var(--red)] p-1 rounded-md transition-colors"
               >
                 <LogOut className="w-4 h-4" />
               </button>

@@ -2,7 +2,9 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import Papa from "papaparse";
 import { FolderWithCount } from "@/lib/folders";
+import { inferQuestionMetadata } from "@/lib/heuristic-classifier";
 import {
   Upload,
   Sparkles,
@@ -13,7 +15,26 @@ import {
   Check,
   Folder as FolderIcon,
   ChevronDown,
+  Download,
+  CheckCircle2,
+  Sliders,
+  Tag
 } from "lucide-react";
+
+interface ParsedQuestionPreview {
+  question: string;
+  choice_a: string;
+  choice_b: string;
+  choice_c: string;
+  choice_d: string;
+  correct_answer: string;
+  explanation: string;
+  image_url: string;
+  subject_tag: string;
+  archetype: string;
+  micro_cluster: string;
+  is_anchor: boolean;
+}
 
 export function UploadForm({ folders }: { folders: FolderWithCount[] }) {
   const router = useRouter();
@@ -30,19 +51,84 @@ export function UploadForm({ folders }: { folders: FolderWithCount[] }) {
   const [promptOpen, setPromptOpen] = useState(false);
   const [copiedPrompt, setCopiedPrompt] = useState(false);
 
+  // 3-Layer Ingestion Pre-Upload Preview State
+  const [previewRows, setPreviewRows] = useState<ParsedQuestionPreview[]>([]);
+
+  const parseAndAutoTag = (text: string, currentTitle: string, currentSubject: string) => {
+    try {
+      const parsed = Papa.parse<Record<string, string>>(text, {
+        header: true,
+        skipEmptyLines: "greedy",
+      });
+
+      if (parsed.data && parsed.data.length > 0) {
+        const enriched: ParsedQuestionPreview[] = parsed.data.map((row) => {
+          const prompt = row.question || "";
+          const expl = row.explanation || "";
+          const subj = row.subject_tag || currentSubject || "";
+
+          // If archetype was not explicitly in the CSV, run heuristic classifier
+          let arc = row.archetype ? row.archetype.toLowerCase().trim() : "";
+          let anchor = row.is_anchor === "true" || row.is_anchor === "1";
+          let micro = row.micro_cluster || subj;
+
+          if (!arc || arc === "standard") {
+            const inferred = inferQuestionMetadata({
+              promptText: prompt,
+              explanation: expl,
+              subjectTag: subj,
+              title: currentTitle,
+            });
+            arc = inferred.archetype;
+            if (!row.is_anchor) anchor = inferred.isAnchor;
+            if (!row.micro_cluster) micro = inferred.microCluster || subj;
+          }
+
+          return {
+            question: prompt,
+            choice_a: row.choice_a || "",
+            choice_b: row.choice_b || "",
+            choice_c: row.choice_c || "",
+            choice_d: row.choice_d || "",
+            correct_answer: (row.correct_answer || "a").toLowerCase().trim(),
+            explanation: expl,
+            image_url: row.image_url || "",
+            subject_tag: subj,
+            archetype: arc || "standard",
+            micro_cluster: micro,
+            is_anchor: anchor,
+          };
+        });
+
+        setPreviewRows(enriched);
+      }
+    } catch {
+      // fallback
+    }
+  };
+
   const handleFile = (file: File) => {
     if (!file) return;
     setFileName(file.name);
-    if (!title) {
-      setTitle(file.name.replace(/\.[^/.]+$/, ""));
-    }
+    const inferredTitle = title || file.name.replace(/\.[^/.]+$/, "");
+    if (!title) setTitle(inferredTitle);
+
     const reader = new FileReader();
     reader.onload = (e) => {
-      const text = e.target?.result as string;
-      setCsvContent(text || "");
+      const text = (e.target?.result as string) || "";
+      setCsvContent(text);
       setErrors([]);
+      parseAndAutoTag(text, inferredTitle, subjectTag);
     };
     reader.readAsText(file);
+  };
+
+  const updatePreviewRow = (idx: number, field: keyof ParsedQuestionPreview, val: any) => {
+    setPreviewRows((prev) => {
+      const copy = [...prev];
+      copy[idx] = { ...copy[idx], [field]: val };
+      return copy;
+    });
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -51,13 +137,19 @@ export function UploadForm({ folders }: { folders: FolderWithCount[] }) {
       setErrors(["Quiz title is required."]);
       return;
     }
-    if (!csvContent.trim()) {
+    if (!csvContent.trim() && previewRows.length === 0) {
       setErrors(["Please choose or drop a CSV file."]);
       return;
     }
 
     setLoading(true);
     setErrors([]);
+
+    // Reconstruct CSV from verified preview rows if edited
+    let finalCsv = csvContent;
+    if (previewRows.length > 0) {
+      finalCsv = Papa.unparse(previewRows, { quotes: true });
+    }
 
     try {
       const res = await fetch("/api/quizzes/upload", {
@@ -68,299 +160,304 @@ export function UploadForm({ folders }: { folders: FolderWithCount[] }) {
           subjectTag: subjectTag.trim() || null,
           folderId: folderId || null,
           visibility,
-          csvContent,
+          csvText: finalCsv,
         }),
       });
 
       const data = await res.json();
-
-      if (!res.ok || data.errors) {
-        setErrors(data.errors || [data.error || "Failed to upload quiz."]);
-      } else if (data.set) {
-        router.push(`/quizzes/${data.set.id}`);
+      if (!res.ok || !data.success) {
+        if (data.errors && Array.isArray(data.errors)) {
+          setErrors(data.errors);
+        } else {
+          setErrors([data.error || "Failed to upload quiz set."]);
+        }
+        setLoading(false);
+      } else {
+        router.push(`/quizzes/${data.questionSet.id}`);
       }
-    } catch (err: unknown) {
-      setErrors([(err as Error).message || "An unexpected error occurred."]);
-    } finally {
+    } catch {
+      setErrors(["A network error occurred while uploading. Please try again."]);
       setLoading(false);
     }
   };
 
-  const copyPromptText = () => {
-    const text = `You are an expert question writer. Generate a set of high-quality multiple-choice study questions based on the topic or material I provide. Output ONLY a valid CSV — no explanation, no markdown fences, no preamble, no commentary before or after. The file must be ready to save and import as-is.
-
-REQUIRED CSV COLUMNS (exact header row, comma-separated):
-question,choice_a,choice_b,choice_c,choice_d,correct_answer,explanation,image_url,subject_tag
-
-COLUMN RULES:
-- question: A clear, unambiguous question or scenario stem. Do not number it or add a label.
-- choice_a through choice_d: Four answer options. Make distractors plausible and of similar length and style. Do not include A., B., C., D. labels inside the cell — just the option text.
-- correct_answer: Lowercase single letter — exactly one of: a, b, c, or d.
-- explanation: A thorough explanation (3–6 sentences) of WHY the correct answer is right, and briefly why each key distractor is wrong. To add a line break inside the explanation, write the two characters \\n as a literal separator — do NOT use an actual newline.
-- image_url: Leave completely blank (empty cell) unless you have a real, publicly reachable image URL.
-- subject_tag: A short topic label using consistent title casing (e.g., Cardiology, Constitutional Law, Organic Chemistry).
-
-LATEX AND MATH FORMATTING RULES:
-- Use LaTeX for ALL mathematical expressions, formulas, chemical notation, units, and Greek letters.
-- Inline math: wrap in single dollar signs → $E = mc^2$, $\\alpha$-blocker, $K^+$
-- Display (block) math: wrap in double dollar signs → $$PV = nRT$$
-- Do NOT use Unicode math symbols (α, β, →, ×) — use LaTeX instead ($\alpha$, $\beta$, $\rightarrow$, $\times$).
-
-CSV FORMATTING RULES:
-- Wrap EVERY cell in double quotes.
-- If a cell's content contains a double-quote character, escape it by doubling it: ""like this""
-- Do NOT use actual newlines inside any cell — use \\n literal token instead.
-- Use comma (,) as delimiter.`;
-
-    navigator.clipboard.writeText(text);
-    setCopiedPrompt(true);
-    setTimeout(() => setCopiedPrompt(false), 2200);
-  };
+  const samplePrompt = `Generate a 25-question multiple choice test on the following topic: [INSERT TOPIC].
+Format requirements:
+- Output ONLY a valid CSV with headers: "question","choice_a","choice_b","choice_c","choice_d","correct_answer","explanation","image_url","subject_tag","archetype","micro_cluster","is_anchor"
+- Wrap all cells in double quotes.
+- correct_answer must be lowercase single letter (a, b, c, or d).
+- Include detailed explanations with calculator speed tips.`;
 
   return (
-    <div className="max-w-2xl mx-auto space-y-8">
-      {/* Form Card */}
-      <form
-        onSubmit={handleSubmit}
-        className="bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-6 sm:p-8 shadow-[var(--shadow-lg)] space-y-6"
-      >
-        <div className="border-b border-[var(--border)] pb-4">
-          <h2 className="text-xl font-bold font-serif text-[var(--text)]">
-            Upload Question Set
-          </h2>
-          <p className="text-xs text-[var(--text2)] mt-1">
-            Import a multiple-choice question set from a standard CSV file.
-          </p>
-        </div>
-
-        {/* Dropzone */}
-        <div>
-          <label className="block text-xs font-bold text-[var(--text3)] uppercase tracking-wider font-mono mb-2">
-            CSV File
-          </label>
-          <div
-            onDragOver={(e) => {
-              e.preventDefault();
-              setDragOver(true);
-            }}
-            onDragLeave={() => setDragOver(false)}
-            onDrop={(e) => {
-              e.preventDefault();
-              setDragOver(false);
-              if (e.dataTransfer.files?.[0]) handleFile(e.dataTransfer.files[0]);
-            }}
-            className={`border-2 border-dashed rounded-xl p-8 text-center cursor-pointer transition-all relative ${
-              dragOver
-                ? "border-[var(--accent)] bg-[rgba(217,119,87,0.06)]"
-                : "border-[var(--border2)] hover:border-[var(--accent)] bg-[var(--surface2)]"
-            }`}
-          >
-            <input
-              type="file"
-              accept=".csv,.txt"
-              onChange={(e) => {
-                if (e.target.files?.[0]) handleFile(e.target.files[0]);
-              }}
-              className="absolute inset-0 opacity-0 cursor-pointer w-full h-full"
-            />
-            <div className="text-3xl mb-2">📄</div>
-            <div className="text-sm font-semibold text-[var(--text)]">
-              {fileName ? (
-                <span className="text-[var(--accent)]">{fileName}</span>
-              ) : (
-                <>
-                  Click or drag &amp; drop a <strong>.csv</strong> file here
-                </>
-              )}
-            </div>
-            <div className="text-xs text-[var(--text3)] mt-1">
-              Supports standard 9-column question format
-            </div>
+    <form onSubmit={handleSubmit} className="space-y-6">
+      {/* Download Template Bar */}
+      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 p-4 rounded-xl bg-[var(--surface2)] border border-[var(--border)]">
+        <div className="flex items-center gap-3">
+          <div className="w-8 h-8 rounded-lg bg-[var(--accent)]/10 text-[var(--accent)] flex items-center justify-center">
+            <Download className="w-4 h-4" />
+          </div>
+          <div>
+            <div className="text-xs font-bold text-[var(--text)]">Official CSV Template</div>
+            <div className="text-[11px] text-[var(--text3)]">Pre-formatted with LaTeX math and 12-column archetypes.</div>
           </div>
         </div>
 
-        {/* Error Box */}
-        {errors.length > 0 && (
-          <div className="p-4 rounded-xl bg-[rgba(184,50,40,0.08)] border border-[rgba(184,50,40,0.3)] text-xs text-[var(--red)] space-y-1 max-h-48 overflow-y-auto">
-            <div className="font-bold flex items-center gap-1.5 mb-1.5">
-              <AlertCircle className="w-4 h-4 shrink-0" />
-              <span>Import Validation Errors ({errors.length})</span>
-            </div>
-            <ul className="list-disc pl-4 space-y-1">
-              {errors.map((err, i) => (
-                <li key={i}>{err}</li>
-              ))}
-            </ul>
-          </div>
-        )}
-
-        {/* Title & Subject Tag */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <div>
-            <label className="block text-xs font-bold text-[var(--text3)] uppercase tracking-wider font-mono mb-1.5">
-              Set Title <span className="text-[var(--accent)]">*</span>
-            </label>
-            <input
-              type="text"
-              required
-              placeholder="e.g. Cardiology Board Review"
-              value={title}
-              onChange={(e) => setTitle(e.target.value)}
-              className="w-full px-3.5 py-2.5 rounded-lg bg-[var(--surface2)] border border-[var(--border)] text-sm text-[var(--text)] focus:outline-none focus:border-[var(--accent)] transition-colors"
-            />
-          </div>
-
-          <div>
-            <label className="block text-xs font-bold text-[var(--text3)] uppercase tracking-wider font-mono mb-1.5">
-              Subject Tag (Optional)
-            </label>
-            <input
-              type="text"
-              placeholder="e.g. Pharmacology"
-              value={subjectTag}
-              onChange={(e) => setSubjectTag(e.target.value)}
-              className="w-full px-3.5 py-2.5 rounded-lg bg-[var(--surface2)] border border-[var(--border)] text-sm text-[var(--text)] focus:outline-none focus:border-[var(--accent)] transition-colors"
-            />
-          </div>
-        </div>
-
-        {/* Folder & Privacy (Phase 2) */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2 border-t border-[var(--border)]">
-          {/* Folder */}
-          <div>
-            <label className="block text-xs font-bold text-[var(--text3)] uppercase tracking-wider font-mono mb-1.5">
-              Assign to Folder
-            </label>
-            <div className="relative">
-              <select
-                value={folderId}
-                onChange={(e) => setFolderId(e.target.value)}
-                className="w-full px-3.5 py-2.5 rounded-lg bg-[var(--surface2)] border border-[var(--border)] text-sm text-[var(--text)] focus:outline-none focus:border-[var(--accent)] appearance-none transition-colors"
-              >
-                <option value="">(No folder — Unfiled)</option>
-                {folders.map((f) => (
-                  <option key={f.id} value={f.id}>
-                    📁 {f.name}
-                  </option>
-                ))}
-              </select>
-              <FolderIcon className="w-4 h-4 text-[var(--text3)] absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none" />
-            </div>
-          </div>
-
-          {/* Visibility */}
-          <div>
-            <label className="block text-xs font-bold text-[var(--text3)] uppercase tracking-wider font-mono mb-1.5">
-              Visibility
-            </label>
-            <div className="grid grid-cols-2 gap-2">
-              <button
-                type="button"
-                onClick={() => setVisibility("shared")}
-                className={`flex items-center justify-center gap-1.5 py-2 rounded-lg text-xs font-semibold border transition-all cursor-pointer ${
-                  visibility === "shared"
-                    ? "bg-[var(--surface2)] border-[var(--accent)] text-[var(--accent)] shadow-sm"
-                    : "border-[var(--border)] text-[var(--text3)] hover:text-[var(--text)]"
-                }`}
-              >
-                <Globe className="w-3.5 h-3.5" />
-                <span>Shared</span>
-              </button>
-              <button
-                type="button"
-                onClick={() => setVisibility("private")}
-                className={`flex items-center justify-center gap-1.5 py-2 rounded-lg text-xs font-semibold border transition-all cursor-pointer ${
-                  visibility === "private"
-                    ? "bg-[var(--surface2)] border-[var(--accent)] text-[var(--accent)] shadow-sm"
-                    : "border-[var(--border)] text-[var(--text3)] hover:text-[var(--text)]"
-                }`}
-              >
-                <Lock className="w-3.5 h-3.5" />
-                <span>Private</span>
-              </button>
-            </div>
-          </div>
-        </div>
-
-        {/* Submit */}
-        <button
-          type="submit"
-          disabled={loading || !csvContent}
-          className="w-full py-3 rounded-xl bg-[var(--accent)] text-white font-semibold text-sm hover:brightness-110 shadow-sm transition-all cursor-pointer disabled:opacity-40 flex items-center justify-center gap-2"
+        <a
+          href="/api/quizzes/template"
+          download="marnie_quiz_template.csv"
+          className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-[var(--surface)] border border-[var(--border)] text-xs font-semibold text-[var(--accent)] hover:border-[var(--accent)] transition-all shadow-sm"
         >
-          <Upload className="w-4 h-4" />
-          <span>{loading ? "Parsing and Validating..." : "Create & Launch Quiz →"}</span>
-        </button>
-      </form>
+          <Download className="w-3.5 h-3.5" />
+          <span>Download CSV Template</span>
+        </a>
+      </div>
 
-      {/* AI Prompt Helper Card */}
-      <div className="bg-[var(--surface)] border border-[var(--border)] rounded-2xl overflow-hidden shadow-[var(--shadow)]">
+      {errors.length > 0 && (
+        <div className="p-4 rounded-xl bg-[var(--red-light)] border border-[var(--red)]/20 space-y-1">
+          <div className="flex items-center gap-2 text-sm font-semibold text-[var(--red)]">
+            <AlertCircle className="w-4 h-4 shrink-0" />
+            <span>Upload validation errors:</span>
+          </div>
+          <ul className="list-disc list-inside text-xs text-[var(--red)]/90 space-y-0.5 pl-5 font-mono">
+            {errors.map((err, i) => (
+              <li key={i}>{err}</li>
+            ))}
+          </ul>
+        </div>
+      )}
+
+      {/* Metadata Fields */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div>
+          <label className="block text-xs font-semibold text-[var(--text3)] uppercase tracking-wider mb-1.5 font-mono">
+            Quiz Title *
+          </label>
+          <input
+            type="text"
+            required
+            placeholder="e.g. ELEC 03 - DC Circuits • Diagnostic (Set 01)"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+            className="w-full px-3.5 py-2.5 rounded-xl bg-[var(--surface2)] border border-[var(--border)] text-sm text-[var(--text)] placeholder-[var(--text3)] focus:outline-none focus:border-[var(--accent)] transition-colors font-medium"
+          />
+        </div>
+
+        <div>
+          <label className="block text-xs font-semibold text-[var(--text3)] uppercase tracking-wider mb-1.5 font-mono">
+            Subject / Topic Tag
+          </label>
+          <input
+            type="text"
+            placeholder="e.g. DC Circuits, Analytic Geometry, Antennas"
+            value={subjectTag}
+            onChange={(e) => setSubjectTag(e.target.value)}
+            className="w-full px-3.5 py-2.5 rounded-xl bg-[var(--surface2)] border border-[var(--border)] text-sm text-[var(--text)] placeholder-[var(--text3)] focus:outline-none focus:border-[var(--accent)] transition-colors"
+          />
+        </div>
+      </div>
+
+      {/* Visibility & Folder Settings */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div>
+          <label className="block text-xs font-semibold text-[var(--text3)] uppercase tracking-wider mb-1.5 font-mono">
+            Visibility
+          </label>
+          <div className="grid grid-cols-2 gap-2">
+            <button
+              type="button"
+              onClick={() => setVisibility("shared")}
+              className={`flex items-center justify-center gap-2 p-2.5 rounded-xl border text-xs font-semibold transition-all cursor-pointer ${
+                visibility === "shared"
+                  ? "bg-[var(--surface2)] border-[var(--accent)] text-[var(--accent)] shadow-sm"
+                  : "bg-[var(--surface2)] border-[var(--border)] text-[var(--text3)] hover:text-[var(--text)]"
+              }`}
+            >
+              <Globe className="w-3.5 h-3.5" />
+              <span>Shared with Friends</span>
+            </button>
+
+            <button
+              type="button"
+              onClick={() => setVisibility("private")}
+              className={`flex items-center justify-center gap-2 p-2.5 rounded-xl border text-xs font-semibold transition-all cursor-pointer ${
+                visibility === "private"
+                  ? "bg-[var(--surface2)] border-[var(--accent)] text-[var(--accent)] shadow-sm"
+                  : "bg-[var(--surface2)] border-[var(--border)] text-[var(--text3)] hover:text-[var(--text)]"
+              }`}
+            >
+              <Lock className="w-3.5 h-3.5" />
+              <span>Private to Me</span>
+            </button>
+          </div>
+        </div>
+
+        <div>
+          <label className="block text-xs font-semibold text-[var(--text3)] uppercase tracking-wider mb-1.5 font-mono">
+            Organize in Folder (Optional)
+          </label>
+          <select
+            value={folderId}
+            onChange={(e) => setFolderId(e.target.value)}
+            className="w-full px-3.5 py-2.5 rounded-xl bg-[var(--surface2)] border border-[var(--border)] text-sm text-[var(--text)] focus:outline-none focus:border-[var(--accent)] transition-colors cursor-pointer"
+          >
+            <option value="">No folder (Root library)</option>
+            {folders.map((f) => (
+              <option key={f.id} value={f.id}>
+                📁 {f.name} ({f.quizCount} sets)
+              </option>
+            ))}
+          </select>
+        </div>
+      </div>
+
+      {/* CSV File Upload Drop Zone */}
+      <div>
+        <label className="block text-xs font-semibold text-[var(--text3)] uppercase tracking-wider mb-1.5 font-mono">
+          CSV File Upload
+        </label>
+
+        <div
+          onDragOver={(e) => {
+            e.preventDefault();
+            setDragOver(true);
+          }}
+          onDragLeave={() => setDragOver(false)}
+          onDrop={(e) => {
+            e.preventDefault();
+            setDragOver(false);
+            if (e.dataTransfer.files?.[0]) {
+              handleFile(e.dataTransfer.files[0]);
+            }
+          }}
+          className={`border-2 border-dashed rounded-2xl p-8 text-center transition-all ${
+            dragOver
+              ? "border-[var(--accent)] bg-[var(--accent)]/5"
+              : "border-[var(--border2)] hover:border-[var(--accent)]/50 bg-[var(--surface2)]/50"
+          }`}
+        >
+          <input
+            type="file"
+            id="csv-file"
+            accept=".csv"
+            onChange={(e) => {
+              if (e.target.files?.[0]) handleFile(e.target.files[0]);
+            }}
+            className="hidden"
+          />
+
+          <label htmlFor="csv-file" className="cursor-pointer block">
+            <div className="w-12 h-12 rounded-2xl bg-[var(--surface3)] border border-[var(--border)] text-[var(--accent)] flex items-center justify-center mx-auto mb-3">
+              <Upload className="w-6 h-6" />
+            </div>
+
+            {fileName ? (
+              <div>
+                <p className="text-sm font-bold text-[var(--text)] flex items-center justify-center gap-1.5">
+                  <Check className="w-4 h-4 text-emerald-500" />
+                  <span>{fileName}</span>
+                </p>
+                <p className="text-xs text-[var(--text3)] mt-1 font-mono">
+                  {previewRows.length} questions parsed and auto-tagged
+                </p>
+              </div>
+            ) : (
+              <div>
+                <p className="text-sm font-semibold text-[var(--text)]">
+                  Click to select CSV or drag and drop file here
+                </p>
+                <p className="text-xs text-[var(--text3)] mt-1">
+                  Accepts standard 9-column or extended 12-column CSV formats
+                </p>
+              </div>
+            )}
+          </label>
+        </div>
+      </div>
+
+      {/* 3-Layer Pre-Upload Interactive Review Table */}
+      {previewRows.length > 0 && (
+        <div className="bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-5 shadow-[var(--shadow)] space-y-4">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-2">
+              <CheckCircle2 className="w-5 h-5 text-emerald-500" />
+              <h3 className="text-sm font-bold font-serif text-[var(--text)]">
+                Pre-Upload Auto-Tagging Preview ({previewRows.length} Questions)
+              </h3>
+            </div>
+            <span className="text-xs text-[var(--text3)]">
+              Verify or adjust archetype &amp; anchor badges before publishing
+            </span>
+          </div>
+
+          <div className="max-h-72 overflow-y-auto divide-y divide-[var(--border)] text-xs">
+            {previewRows.slice(0, 15).map((q, idx) => (
+              <div key={idx} className="py-2.5 flex items-start justify-between gap-4">
+                <div className="min-w-0 flex-1">
+                  <span className="font-mono text-[var(--text3)] mr-2">#{idx + 1}</span>
+                  <span className="text-[var(--text)] font-medium line-clamp-1">{q.question}</span>
+                </div>
+
+                <div className="flex items-center gap-2 shrink-0">
+                  {/* Archetype Dropdown */}
+                  <select
+                    value={q.archetype}
+                    onChange={(e) => updatePreviewRow(idx, "archetype", e.target.value)}
+                    className="px-2 py-1 rounded bg-[var(--surface2)] border border-[var(--border)] text-[11px] font-mono text-[var(--text)] focus:border-[var(--accent)]"
+                  >
+                    <option value="standard">Standard Solves</option>
+                    <option value="scaling">Scaling / Proportions</option>
+                    <option value="boundary">Boundary / Limits</option>
+                    <option value="phase">Phase / Polarities</option>
+                    <option value="fault">Fault / Diagnostics</option>
+                    <option value="material">Solid-State / Material</option>
+                    <option value="theorem">Theorem / Invariants</option>
+                    <option value="trap">Common Pitfall</option>
+                  </select>
+
+                  {/* Anchor Toggle */}
+                  <button
+                    type="button"
+                    onClick={() => updatePreviewRow(idx, "is_anchor", !q.is_anchor)}
+                    className={`px-2 py-1 rounded text-[11px] font-mono font-bold transition-all cursor-pointer ${
+                      q.is_anchor
+                        ? "bg-amber-500/10 text-amber-600 dark:text-amber-400 border border-amber-500/20"
+                        : "bg-[var(--surface2)] text-[var(--text3)] border border-[var(--border)]"
+                    }`}
+                  >
+                    {q.is_anchor ? "★ Anchor" : "Regular"}
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {previewRows.length > 15 && (
+            <div className="text-center text-xs text-[var(--text3)] font-mono pt-2 border-t border-[var(--border)]">
+              + {previewRows.length - 15} more questions ready for ingestion
+            </div>
+          )}
+        </div>
+      )}
+
+      {/* Action Buttons */}
+      <div className="flex items-center justify-end gap-3 pt-4 border-t border-[var(--border)]">
         <button
           type="button"
-          onClick={() => setPromptOpen(!promptOpen)}
-          className="w-full p-5 flex items-center justify-between hover:bg-[var(--surface2)] transition-colors text-left"
+          onClick={() => router.push("/quizzes")}
+          className="px-4 py-2.5 rounded-xl bg-[var(--surface2)] border border-[var(--border)] text-xs font-semibold text-[var(--text2)] hover:text-[var(--text)] transition-colors cursor-pointer"
         >
-          <div className="flex items-center gap-3">
-            <div className="w-8 h-8 rounded-lg bg-[var(--accent)] text-white flex items-center justify-center">
-              <Sparkles className="w-4 h-4" />
-            </div>
-            <div>
-              <div className="text-sm font-bold text-[var(--text)]">
-                Generate question sets with AI
-              </div>
-              <div className="text-xs text-[var(--text2)]">
-                Copy this prompt and paste into ChatGPT, Claude, or Gemini
-              </div>
-            </div>
-          </div>
-          <ChevronDown
-            className={`w-5 h-5 text-[var(--text3)] transition-transform ${
-              promptOpen ? "rotate-180" : ""
-            }`}
-          />
+          Cancel
         </button>
 
-        {promptOpen && (
-          <div className="p-5 border-t border-[var(--border)] bg-[var(--surface2)] space-y-3">
-            <div className="flex justify-between items-center">
-              <span className="text-xs font-mono text-[var(--text3)] uppercase">
-                Ready-to-use Prompt Template
-              </span>
-              <button
-                type="button"
-                onClick={copyPromptText}
-                className="inline-flex items-center gap-1.5 px-3 py-1 rounded-md text-xs font-semibold bg-[var(--surface)] border border-[var(--border)] text-[var(--text2)] hover:border-[var(--accent)] hover:text-[var(--accent)] transition-colors"
-              >
-                {copiedPrompt ? (
-                  <>
-                    <Check className="w-3.5 h-3.5 text-[var(--green)]" />
-                    <span className="text-[var(--green)]">Copied!</span>
-                  </>
-                ) : (
-                  <>
-                    <Copy className="w-3.5 h-3.5" />
-                    <span>Copy Prompt</span>
-                  </>
-                )}
-              </button>
-            </div>
-            <pre className="p-3.5 rounded-lg bg-[var(--bg2)] border border-[var(--border)] text-xs text-[var(--text2)] font-mono whitespace-pre-wrap leading-relaxed max-h-64 overflow-y-auto">
-              {`You are an expert question writer. Generate a set of high-quality multiple-choice study questions based on the topic or material I provide. Output ONLY a valid CSV — no explanation, no markdown fences, no preamble, no commentary before or after. The file must be ready to save and import as-is.
-
-REQUIRED CSV COLUMNS (exact header row, comma-separated):
-question,choice_a,choice_b,choice_c,choice_d,correct_answer,explanation,image_url,subject_tag
-
-COLUMN RULES:
-- question: A clear, unambiguous question or scenario stem.
-- choice_a through choice_d: Four answer options.
-- correct_answer: Lowercase single letter: a, b, c, or d.
-- explanation: A thorough explanation (3–6 sentences) of WHY the correct answer is right and key distractors are wrong. To add line breaks, write \\n as a literal sequence.
-- image_url: Leave blank unless you have a real public URL.
-- subject_tag: A short topic label (e.g., Cardiology, Law, Biochemistry).`}
-            </pre>
-          </div>
-        )}
+        <button
+          type="submit"
+          disabled={loading || (!csvContent && previewRows.length === 0)}
+          className="px-6 py-2.5 rounded-xl bg-[var(--accent)] text-white text-xs sm:text-sm font-bold shadow-md hover:brightness-110 active:scale-95 transition-all cursor-pointer disabled:opacity-50 flex items-center gap-2"
+        >
+          <Upload className="w-4 h-4" />
+          <span>{loading ? "Validating & Publishing..." : "Publish to Library"}</span>
+        </button>
       </div>
-    </div>
+    </form>
   );
 }

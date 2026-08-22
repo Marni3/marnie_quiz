@@ -4,40 +4,30 @@ import { useState, useMemo } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { Navbar } from "@/components/navbar";
+import { MotivationBanner } from "@/components/motivation-banner";
 import {
   Search,
   BookOpen,
-  Folder as FolderIcon,
-  Plus,
-  Lock,
-  Globe,
   Upload,
-  Sparkles,
-  Layers,
   ChevronRight,
   ChevronDown,
-  FolderPlus,
   Play,
   Clock,
-  HelpCircle,
   BarChart2,
-  CheckCircle2,
   Zap,
-  Target,
-  FileText,
-  Lightbulb,
   Brain,
   MoreVertical,
-  Sliders,
   Moon,
   EyeOff,
-  Flame,
   ShieldCheck,
-  AlertTriangle
+  AlertTriangle,
+  Info
 } from "lucide-react";
 import { QuizListItem } from "@/lib/quizzes";
 import { FolderWithCount } from "@/lib/folders";
 import { UserTopicSrs } from "@/lib/db/schema";
+import { GamificationData } from "@/lib/gamification";
+import { SUBJECTS, getSubjectFromKey, pluralize, METRIC_DEFINITIONS } from "@/lib/constants";
 
 interface LibraryViewProps {
   initialQuizzes: QuizListItem[];
@@ -48,6 +38,7 @@ interface LibraryViewProps {
     totalTrackedTopics: number;
     topicMap: Record<string, UserTopicSrs & { currentR: number; isDue: boolean }>;
   };
+  gamificationData?: GamificationData;
   currentUserId: string;
 }
 
@@ -55,6 +46,7 @@ export function LibraryView({
   initialQuizzes,
   initialFolders,
   initialSrsOverview,
+  gamificationData,
   currentUserId,
 }: LibraryViewProps) {
   const router = useRouter();
@@ -70,26 +62,15 @@ export function LibraryView({
   );
 
   const [search, setSearch] = useState("");
-  const [selectedDomain, setSelectedDomain] = useState<string>("all");
+  const [selectedSubject, setSelectedSubject] = useState<string>("all");
   const [selectedTier, setSelectedTier] = useState<string>("all");
   const [selectedFolderId, setSelectedFolderId] = useState<string | null>(null);
-  const [showGuide, setShowGuide] = useState(false);
   const [collapsedTopics, setCollapsedTopics] = useState<Record<string, boolean>>({});
   const [allCollapsed, setAllCollapsed] = useState(true);
 
   // SRS Overrides State
   const [activeMenuTopic, setActiveMenuTopic] = useState<string | null>(null);
   const [launchingDrill, setLaunchingDrill] = useState(false);
-
-  // Extract domain from title or subject tag
-  const getQuizDomain = (q: QuizListItem) => {
-    const t = q.title.toUpperCase();
-    if (t.startsWith("MATH") || q.subjectTag?.includes("Math") || q.subjectTag?.includes("Algebra") || q.subjectTag?.includes("Calculus") || q.subjectTag?.includes("Geometry") || q.subjectTag?.includes("Probability")) return "Mathematics";
-    if (t.startsWith("ELEC") || q.subjectTag?.includes("Circuit") || q.subjectTag?.includes("BJT") || q.subjectTag?.includes("FET") || q.subjectTag?.includes("Diode") || q.subjectTag?.includes("Electronics")) return "Electronics Engineering";
-    if (t.startsWith("GEAS") || q.subjectTag?.includes("Chemistry") || q.subjectTag?.includes("Physics") || q.subjectTag?.includes("Economics") || q.subjectTag?.includes("Mechanics") || q.subjectTag?.includes("Material")) return "General Engineering and Applied Sciences";
-    if (t.startsWith("EST") || q.subjectTag?.includes("Communication") || q.subjectTag?.includes("Antenna") || q.subjectTag?.includes("Modulation") || q.subjectTag?.includes("Telephony") || q.subjectTag?.includes("Fiber")) return "Electronics Systems and Technologies";
-    return "General";
-  };
 
   const getQuizTier = (q: QuizListItem) => {
     if (q.tier) return q.tier.toLowerCase();
@@ -113,10 +94,10 @@ export function LibraryView({
   // Filter quizzes
   const filteredQuizzes = useMemo(() => {
     return quizzes.filter((q) => {
-      // Domain filter
-      if (selectedDomain !== "all") {
-        const domain = getQuizDomain(q);
-        if (domain !== selectedDomain) return false;
+      // Subject filter
+      if (selectedSubject !== "all") {
+        const subj = getSubjectFromKey(q.topicCode || q.subjectTag || q.title);
+        if (subj.code !== selectedSubject) return false;
       }
 
       // Tier filter
@@ -142,22 +123,24 @@ export function LibraryView({
 
       return true;
     });
-  }, [quizzes, selectedDomain, selectedTier, selectedFolderId, search]);
+  }, [quizzes, selectedSubject, selectedTier, selectedFolderId, search]);
 
-  // Group by topic
+  // Group by topic with subject metadata
   const groupedByTopic = useMemo(() => {
-    const map = new Map<string, { topicCode: string; items: QuizListItem[] }>();
+    const map = new Map<string, { topicCode: string; subject: any; items: QuizListItem[] }>();
     filteredQuizzes.forEach((q) => {
       const topic = q.subjectTag || "General Review";
       const topicCode = q.topicCode || getTopicCodeFromTitle(q.title);
+      const subject = getSubjectFromKey(topicCode);
       if (!map.has(topic)) {
-        map.set(topic, { topicCode, items: [] });
+        map.set(topic, { topicCode, subject, items: [] });
       }
       map.get(topic)!.items.push(q);
     });
     return Array.from(map.entries()).map(([name, val]) => ({
       name,
       topicCode: val.topicCode,
+      subject: val.subject,
       items: val.items,
     }));
   }, [filteredQuizzes]);
@@ -218,7 +201,6 @@ export function LibraryView({
       });
       const data = await res.json();
       if (data.success) {
-        // Update local map optimistically
         setSrsOverview((prev) => {
           const current = prev.topicMap[topicCode];
           if (!current) return prev;
@@ -248,9 +230,12 @@ export function LibraryView({
     <div className="min-h-screen bg-[var(--background)]">
       <Navbar />
 
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
-        {/* SRS Daily Retention Radar Banner */}
-        <section className="bg-gradient-to-r from-[var(--surface)] to-[var(--surface2)] border border-[var(--border)] rounded-2xl p-6 sm:p-7 shadow-[var(--shadow-md)] flex flex-col md:flex-row items-start md:items-center justify-between gap-6 relative overflow-hidden">
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-6">
+        {/* Gamification Motivation Banner */}
+        {gamificationData && <MotivationBanner data={gamificationData} />}
+
+        {/* SRS Daily Retention Radar Hero Banner (Single Primary CTA on Page) */}
+        <section className="bg-gradient-to-r from-[var(--surface)] via-[var(--surface2)] to-[var(--surface)] border border-[var(--border)] rounded-2xl p-6 sm:p-7 shadow-[var(--shadow-md)] flex flex-col md:flex-row items-start md:items-center justify-between gap-6 relative overflow-hidden">
           <div className="flex items-start gap-4 relative z-10">
             <div className="w-12 h-12 rounded-xl bg-[var(--accent)]/10 text-[var(--accent)] border border-[var(--accent)]/20 flex items-center justify-center shrink-0">
               <Brain className="w-6 h-6" />
@@ -260,7 +245,10 @@ export function LibraryView({
                 <h2 className="text-lg font-bold font-serif text-[var(--text)] tracking-tight">
                   Daily Retention Radar
                 </h2>
-                <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-bold font-mono bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20">
+                <span
+                  title={METRIC_DEFINITIONS.retrievability}
+                  className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-bold font-mono bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20 cursor-help"
+                >
                   <ShieldCheck className="w-3.5 h-3.5" />
                   {srsOverview.averageRetention}% Retrievability
                 </span>
@@ -268,7 +256,7 @@ export function LibraryView({
               <p className="text-xs sm:text-sm text-[var(--text2)] mt-1">
                 {srsOverview.activeDueCount > 0 ? (
                   <>
-                    <strong className="text-[var(--accent)]">{srsOverview.activeDueCount} topics</strong> are due for spaced recovery before memory decay sets in.
+                    <strong className="text-[var(--accent)]">{pluralize(srsOverview.activeDueCount, "topic")}</strong> due for spaced recovery before forgetting sets in.
                   </>
                 ) : (
                   "All tracked topics are currently in their retention stability window. Great job!"
@@ -278,6 +266,7 @@ export function LibraryView({
           </div>
 
           <div className="flex items-center gap-3 w-full md:w-auto relative z-10">
+            {/* Primary Action Button */}
             <button
               type="button"
               onClick={handleLaunchDailyDrill}
@@ -288,9 +277,10 @@ export function LibraryView({
               <span>{launchingDrill ? "Assembling..." : "Start 20-Q Refresher Drill"}</span>
             </button>
 
+            {/* Secondary Action Button */}
             <Link
               href="/analytics"
-              className="inline-flex items-center justify-center gap-1.5 px-4 py-3 rounded-xl bg-[var(--surface3)] border border-[var(--border)] text-[var(--text2)] text-xs sm:text-sm font-semibold hover:text-[var(--text)] hover:border-[var(--accent)] transition-all"
+              className="inline-flex items-center justify-center gap-1.5 px-4 py-3 rounded-xl bg-[var(--surface)] border border-[var(--border)] text-[var(--text2)] text-xs sm:text-sm font-semibold hover:text-[var(--text)] hover:bg-[var(--surface2)] transition-all"
             >
               <BarChart2 className="w-4 h-4" />
               <span>Retention Matrix</span>
@@ -298,14 +288,14 @@ export function LibraryView({
           </div>
         </section>
 
-        {/* Top Header & Search Filters */}
-        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+        {/* Header Bar */}
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pt-2">
           <div>
             <h1 className="text-2xl sm:text-3xl font-bold font-serif text-[var(--text)] tracking-tight">
               ECE Board Exam Library
             </h1>
             <p className="text-xs sm:text-sm text-[var(--text2)] mt-1">
-              190 Comprehensive Review Sets • {totalQuestions} Verified Questions
+              190 Comprehensive Review Sets • {pluralize(totalQuestions, "Verified Question")}
             </p>
           </div>
 
@@ -317,9 +307,11 @@ export function LibraryView({
             >
               {allCollapsed ? "Expand All Topics" : "Collapse All Topics"}
             </button>
+
+            {/* Secondary Outline Upload Button to prevent competing with Primary CTA */}
             <Link
               href="/quizzes/upload"
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-[var(--surface)] border border-[var(--border)] text-xs font-semibold text-[var(--accent)] hover:bg-[var(--surface2)] transition-colors shadow-sm"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-[var(--surface)] border border-[var(--border)] text-xs font-semibold text-[var(--text2)] hover:text-[var(--accent)] hover:border-[var(--accent)] hover:bg-[var(--surface2)] transition-colors shadow-sm"
             >
               <Upload className="w-4 h-4" />
               <span>Upload CSV</span>
@@ -327,7 +319,7 @@ export function LibraryView({
           </div>
         </div>
 
-        {/* Filter Toolbar */}
+        {/* Filter Toolbar with Standardized PRC Subject Taxonomy */}
         <div className="bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-4 sm:p-5 shadow-[var(--shadow)] space-y-4">
           <div className="relative">
             <Search className="w-4 h-4 absolute left-3.5 top-1/2 -translate-y-1/2 text-[var(--text3)]" />
@@ -341,20 +333,20 @@ export function LibraryView({
           </div>
 
           <div className="flex flex-wrap items-center gap-2 pt-1 border-t border-[var(--border)]">
-            <span className="text-xs font-mono text-[var(--text3)] uppercase mr-1">Domain:</span>
+            <span className="text-xs font-mono text-[var(--text3)] uppercase mr-1">Subject:</span>
             {[
               { id: "all", label: "All Subjects" },
-              { id: "Mathematics", label: "Math" },
-              { id: "Electronics Engineering", label: "Elecs" },
-              { id: "General Engineering and Applied Sciences", label: "GEAS" },
-              { id: "Electronics Systems and Technologies", label: "EST" },
+              { id: "MATH", label: "MATH" },
+              { id: "ELECS", label: "ELECS" },
+              { id: "GEAS", label: "GEAS" },
+              { id: "EST", label: "EST" },
             ].map((d) => (
               <button
                 key={d.id}
                 type="button"
-                onClick={() => setSelectedDomain(d.id)}
+                onClick={() => setSelectedSubject(d.id)}
                 className={`px-3 py-1 rounded-lg text-xs font-medium transition-all cursor-pointer ${
-                  selectedDomain === d.id
+                  selectedSubject === d.id
                     ? "bg-[var(--accent)] text-white shadow-sm"
                     : "bg-[var(--surface2)] text-[var(--text2)] hover:text-[var(--text)] border border-[var(--border)]"
                 }`}
@@ -389,7 +381,7 @@ export function LibraryView({
           </div>
         </div>
 
-        {/* Grouped Topics List */}
+        {/* Grouped Topics List with Color-Coded Subject Accents */}
         <div className="space-y-4">
           {groupedByTopic.length === 0 ? (
             <div className="text-center py-16 bg-[var(--surface)] border border-[var(--border)] rounded-2xl">
@@ -402,11 +394,12 @@ export function LibraryView({
               const isCollapsed = isTopicCollapsed(group.name);
               const srsInfo = srsOverview.topicMap[group.topicCode];
               const isMenuOpen = activeMenuTopic === group.topicCode;
+              const subjectConfig = group.subject;
 
               return (
                 <div
                   key={group.name}
-                  className="bg-[var(--surface)] border border-[var(--border)] rounded-2xl overflow-visible shadow-[var(--shadow)] transition-all"
+                  className={`bg-[var(--surface)] border border-[var(--border)] border-l-4 ${subjectConfig.borderClass} rounded-2xl overflow-visible shadow-[var(--shadow)] transition-all`}
                 >
                   {/* Topic Header Accordion */}
                   <div className="p-4 sm:p-5 flex items-center justify-between gap-4">
@@ -424,46 +417,66 @@ export function LibraryView({
                       </div>
 
                       <div className="min-w-0">
-                        <h2 className="text-base sm:text-lg font-bold font-serif text-[var(--text)] group-hover:text-[var(--accent)] transition-colors truncate">
-                          {group.name}
-                        </h2>
+                        <div className="flex items-center gap-2">
+                          <span className={`px-2 py-0.2 rounded text-[10px] font-mono font-bold uppercase ${subjectConfig.badgeClass}`}>
+                            {subjectConfig.label}
+                          </span>
+                          <h2 className="text-base sm:text-lg font-bold font-serif text-[var(--text)] group-hover:text-[var(--accent)] transition-colors truncate">
+                            {group.name}
+                          </h2>
+                        </div>
                         <div className="flex items-center gap-2 text-xs text-[var(--text3)] font-mono mt-0.5">
                           <span>{group.topicCode}</span>
                           <span>•</span>
-                          <span>{group.items.length} sets</span>
+                          <span>{pluralize(group.items.length, "set")}</span>
                           <span>•</span>
-                          <span>{group.items.reduce((s, i) => s + (i.questionCount || 0), 0)} questions</span>
+                          <span>{pluralize(group.items.reduce((s, i) => s + (i.questionCount || 0), 0), "question")}</span>
                         </div>
                       </div>
                     </button>
 
-                    {/* SRS Status Badge & Controls Menu */}
+                    {/* SRS Status Badge with Tooltips */}
                     <div className="flex items-center gap-2 shrink-0 relative">
                       {srsInfo ? (
                         srsInfo.status === "suspended" ? (
-                          <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg text-xs font-mono font-semibold bg-zinc-500/10 text-zinc-500 border border-zinc-500/20">
+                          <span
+                            title="Topic excluded from automated daily review queues"
+                            className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg text-xs font-mono font-semibold bg-zinc-500/10 text-zinc-500 border border-zinc-500/20 cursor-help"
+                          >
                             <EyeOff className="w-3.5 h-3.5" />
                             Ignored
                           </span>
                         ) : srsInfo.status === "snoozed" ? (
-                          <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg text-xs font-mono font-semibold bg-amber-500/10 text-amber-600 dark:text-amber-400 border border-amber-500/20">
+                          <span
+                            title="Topic snoozed from daily review"
+                            className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg text-xs font-mono font-semibold bg-amber-500/10 text-amber-600 dark:text-amber-400 border border-amber-500/20 cursor-help"
+                          >
                             <Moon className="w-3.5 h-3.5" />
                             Snoozed
                           </span>
                         ) : srsInfo.isDue ? (
-                          <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg text-xs font-mono font-semibold bg-amber-500/10 text-amber-600 dark:text-amber-400 border border-amber-500/20 animate-pulse">
+                          <span
+                            title={METRIC_DEFINITIONS.reviewDue}
+                            className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg text-xs font-mono font-semibold bg-amber-500/10 text-amber-600 dark:text-amber-400 border border-amber-500/20 animate-pulse cursor-help"
+                          >
                             <Clock className="w-3.5 h-3.5" />
                             Review Due
                           </span>
                         ) : srsInfo.currentR < 0.6 ? (
-                          <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg text-xs font-mono font-semibold bg-rose-500/10 text-rose-600 dark:text-rose-400 border border-rose-500/20">
+                          <span
+                            title={METRIC_DEFINITIONS.struggling}
+                            className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg text-xs font-mono font-semibold bg-rose-500/10 text-rose-600 dark:text-rose-400 border border-rose-500/20 cursor-help"
+                          >
                             <AlertTriangle className="w-3.5 h-3.5" />
                             Struggling
                           </span>
                         ) : (
-                          <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg text-xs font-mono font-semibold bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20">
+                          <span
+                            title={`${METRIC_DEFINITIONS.fresh} (Estimated Stability: ${pluralize(Math.round(srsInfo.stabilityDays), "day")})`}
+                            className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg text-xs font-mono font-semibold bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20 cursor-help"
+                          >
                             <ShieldCheck className="w-3.5 h-3.5" />
-                            Fresh ({Math.round(srsInfo.stabilityDays)}d)
+                            Fresh ({pluralize(Math.round(srsInfo.stabilityDays), "day")})
                           </span>
                         )
                       ) : (
@@ -497,28 +510,28 @@ export function LibraryView({
                               <button
                                 type="button"
                                 onClick={() => handleSrsAction(group.topicCode, "confidence", "struggling")}
-                                className="px-2 py-1 rounded text-xs text-left hover:bg-[var(--surface2)] text-rose-500 font-medium"
+                                className="px-2 py-1 rounded text-xs text-left hover:bg-[var(--surface2)] text-rose-500 font-medium cursor-pointer"
                               >
                                 🔴 Struggling (1d)
                               </button>
                               <button
                                 type="button"
                                 onClick={() => handleSrsAction(group.topicCode, "confidence", "moderate")}
-                                className="px-2 py-1 rounded text-xs text-left hover:bg-[var(--surface2)] text-amber-500 font-medium"
+                                className="px-2 py-1 rounded text-xs text-left hover:bg-[var(--surface2)] text-amber-500 font-medium cursor-pointer"
                               >
                                 🟡 Moderate (4d)
                               </button>
                               <button
                                 type="button"
                                 onClick={() => handleSrsAction(group.topicCode, "confidence", "confident")}
-                                className="px-2 py-1 rounded text-xs text-left hover:bg-[var(--surface2)] text-emerald-500 font-medium"
+                                className="px-2 py-1 rounded text-xs text-left hover:bg-[var(--surface2)] text-emerald-500 font-medium cursor-pointer"
                               >
                                 🟢 Confident (10d)
                               </button>
                               <button
                                 type="button"
                                 onClick={() => handleSrsAction(group.topicCode, "confidence", "mastered")}
-                                className="px-2 py-1 rounded text-xs text-left hover:bg-[var(--surface2)] text-purple-500 font-medium"
+                                className="px-2 py-1 rounded text-xs text-left hover:bg-[var(--surface2)] text-purple-500 font-medium cursor-pointer"
                               >
                                 🏆 Mastered (30d)
                               </button>
@@ -529,7 +542,7 @@ export function LibraryView({
                             <button
                               type="button"
                               onClick={() => handleSrsAction(group.topicCode, "snooze", 7)}
-                              className="w-full px-2.5 py-1.5 rounded-lg text-xs font-medium text-left text-[var(--text2)] hover:bg-[var(--surface2)] hover:text-[var(--text)] flex items-center gap-2"
+                              className="w-full px-2.5 py-1.5 rounded-lg text-xs font-medium text-left text-[var(--text2)] hover:bg-[var(--surface2)] hover:text-[var(--text)] flex items-center gap-2 cursor-pointer"
                             >
                               <Moon className="w-3.5 h-3.5 text-amber-500" />
                               <span>Snooze for 7 Days</span>
@@ -538,7 +551,7 @@ export function LibraryView({
                             <button
                               type="button"
                               onClick={() => handleSrsAction(group.topicCode, "suspend")}
-                              className="w-full px-2.5 py-1.5 rounded-lg text-xs font-medium text-left text-[var(--text2)] hover:bg-[var(--surface2)] hover:text-[var(--text)] flex items-center gap-2"
+                              className="w-full px-2.5 py-1.5 rounded-lg text-xs font-medium text-left text-[var(--text2)] hover:bg-[var(--surface2)] hover:text-[var(--text)] flex items-center gap-2 cursor-pointer"
                             >
                               <EyeOff className="w-3.5 h-3.5 text-zinc-400" />
                               <span>{srsInfo?.status === "suspended" ? "Resume Tracking" : "Ignore / Suspend Topic"}</span>
@@ -574,7 +587,7 @@ export function LibraryView({
                                   {tier}
                                 </span>
                                 <span className="text-xs font-mono text-[var(--text3)]">
-                                  {quiz.questionCount} Qs
+                                  {pluralize(quiz.questionCount || 0, "Q")}
                                 </span>
                               </div>
 
