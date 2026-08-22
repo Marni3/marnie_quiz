@@ -137,7 +137,7 @@ $$BRI = 	ext{Accuracy} 	imes 	ext{Average Retention} 	imes \sqrt{rac{	ext{Compl
 
 ### 6.2. "Long Academic Method vs. Board Exam Shortcut" Technique Catalog
 - Every module contrasts classical textbook derivations with high-speed PRC board exam shortcuts:
-  - *"Here is the 5-minute formal algebraic derivation (for theory), but on exam day, here is the 15-second shortcut when you encounter this pattern."*
+  - *"This is the typical solution or long method. When in the boards, the following technique or solution would be faster."*
   - **Examples:**
     - *Parallel Lines:* Skip slope-intercept algebra; inspect matching ratio of $x$ and $y$ coefficients.
     - *Roots & Factorization:* Skip manual factoring; use Casio `CALC` mode or `EQN` mode.
