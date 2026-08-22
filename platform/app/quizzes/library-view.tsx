@@ -433,7 +433,7 @@ export function LibraryView({
                 groupedByTopic.map((group) => {
                   const isCollapsed = isTopicCollapsed(group.name);
                   const srsInfo = srsOverview.topicMap[group.topicCode];
-                  const isMenuOpen = activeMenuTopic === group.topicCode;
+                  const isMenuOpen = activeMenuTopic === group.name;
                   const subjectConfig = group.subject;
 
                   return (
@@ -528,75 +528,80 @@ export function LibraryView({
                           {/* Options Button */}
                           <button
                             type="button"
-                            onClick={() => setActiveMenuTopic(isMenuOpen ? null : group.topicCode)}
+                            onClick={() => setActiveMenuTopic(isMenuOpen ? null : group.name)}
                             className="p-1.5 rounded-lg bg-[var(--surface2)] border border-[var(--border)] text-[var(--text3)] hover:text-[var(--text)] hover:border-[var(--accent)] transition-colors cursor-pointer"
                             title="Topic SRS Controls"
                           >
                             <MoreVertical className="w-4 h-4" />
                           </button>
 
-                          {/* Dropdown Menu with 1d/3d/7d Snooze and Confidence */}
+                          {/* Sleek, Clean, Modern Context Popover */}
                           {isMenuOpen && (
-                            <div className="absolute right-0 top-full mt-2 w-64 rounded-xl bg-[var(--surface)] border border-[var(--border)] shadow-[var(--shadow-lg)] p-3 z-50 space-y-2">
-                              <div className="text-xs font-bold text-[var(--text)] font-serif pb-1 border-b border-[var(--border)]">
-                                {group.name} Controls
+                            <div className="absolute right-0 top-full mt-2 w-56 rounded-xl bg-[var(--surface)] border border-[var(--border)] shadow-[var(--shadow-lg)] p-2.5 z-50 space-y-2.5 animate-in fade-in">
+                              <div className="text-[11px] font-semibold text-[var(--text)] truncate px-1">
+                                {group.name}
                               </div>
 
+                              {/* Confidence Presets */}
                               <div className="space-y-1">
-                                <div className="text-[10px] font-mono text-[var(--text3)] uppercase">
-                                  Manual Confidence
+                                <div className="text-[10px] font-mono uppercase text-[var(--text3)] px-1">
+                                  Set Confidence
                                 </div>
-                                <div className="grid grid-cols-2 gap-1">
+                                <div className="grid grid-cols-4 gap-1 p-0.5 rounded-lg bg-[var(--surface2)] border border-[var(--border)]">
                                   <button
                                     type="button"
                                     onClick={() => handleSrsAction(group.topicCode, "confidence", "struggling")}
-                                    className="px-2 py-1 rounded text-xs text-left hover:bg-[var(--surface2)] text-rose-500 font-medium cursor-pointer"
+                                    className="py-1 text-[11px] font-mono text-center rounded hover:bg-[var(--surface3)] text-rose-500 font-bold transition-colors cursor-pointer"
+                                    title="Struggling (Review in 1 day)"
                                   >
-                                    🔴 Struggling (1d)
+                                    1d
                                   </button>
                                   <button
                                     type="button"
                                     onClick={() => handleSrsAction(group.topicCode, "confidence", "moderate")}
-                                    className="px-2 py-1 rounded text-xs text-left hover:bg-[var(--surface2)] text-amber-500 font-medium cursor-pointer"
+                                    className="py-1 text-[11px] font-mono text-center rounded hover:bg-[var(--surface3)] text-amber-500 font-bold transition-colors cursor-pointer"
+                                    title="Moderate (Review in 4 days)"
                                   >
-                                    🟡 Moderate (4d)
+                                    4d
                                   </button>
                                   <button
                                     type="button"
                                     onClick={() => handleSrsAction(group.topicCode, "confidence", "confident")}
-                                    className="px-2 py-1 rounded text-xs text-left hover:bg-[var(--surface2)] text-emerald-500 font-medium cursor-pointer"
+                                    className="py-1 text-[11px] font-mono text-center rounded hover:bg-[var(--surface3)] text-emerald-500 font-bold transition-colors cursor-pointer"
+                                    title="Confident (Review in 10 days)"
                                   >
-                                    🟢 Confident (10d)
+                                    10d
                                   </button>
                                   <button
                                     type="button"
                                     onClick={() => handleSrsAction(group.topicCode, "confidence", "mastered")}
-                                    className="px-2 py-1 rounded text-xs text-left hover:bg-[var(--surface2)] text-purple-500 font-medium cursor-pointer"
+                                    className="py-1 text-[11px] font-mono text-center rounded hover:bg-[var(--surface3)] text-purple-500 font-bold transition-colors cursor-pointer"
+                                    title="Mastered (Review in 30 days)"
                                   >
-                                    🏆 Mastered (30d)
+                                    30d
                                   </button>
                                 </div>
                               </div>
 
-                              {/* Flexible 1d, 3d, 7d Snooze */}
-                              <div className="pt-2 border-t border-[var(--border)] space-y-1">
-                                <div className="text-[10px] font-mono text-[var(--text3)] uppercase flex items-center gap-1">
-                                  <Moon className="w-3 h-3 text-amber-500" />
-                                  <span>Snooze Review</span>
+                              {/* Snooze Presets */}
+                              <div className="space-y-1">
+                                <div className="text-[10px] font-mono uppercase text-[var(--text3)] px-1 flex items-center justify-between">
+                                  <span>Snooze</span>
+                                  <span className="text-[9px] text-[var(--text3)]">Defer review</span>
                                 </div>
-                                <div className="grid grid-cols-3 gap-1">
+                                <div className="grid grid-cols-3 gap-1 p-0.5 rounded-lg bg-[var(--surface2)] border border-[var(--border)]">
                                   <button
                                     type="button"
                                     onClick={() => handleSrsAction(group.topicCode, "snooze", 1)}
-                                    className="px-2 py-1 rounded text-xs text-center bg-[var(--surface2)] hover:bg-[var(--surface3)] text-amber-600 dark:text-amber-400 font-medium cursor-pointer border border-[var(--border)]"
-                                    title="Snooze until tomorrow (default)"
+                                    className="py-1 text-[11px] font-mono text-center rounded hover:bg-[var(--surface3)] text-[var(--text2)] hover:text-[var(--text)] font-semibold transition-colors cursor-pointer"
+                                    title="Snooze until tomorrow"
                                   >
                                     1 Day
                                   </button>
                                   <button
                                     type="button"
                                     onClick={() => handleSrsAction(group.topicCode, "snooze", 3)}
-                                    className="px-2 py-1 rounded text-xs text-center bg-[var(--surface2)] hover:bg-[var(--surface3)] text-amber-600 dark:text-amber-400 font-medium cursor-pointer border border-[var(--border)]"
+                                    className="py-1 text-[11px] font-mono text-center rounded hover:bg-[var(--surface3)] text-[var(--text2)] hover:text-[var(--text)] font-semibold transition-colors cursor-pointer"
                                     title="Snooze for 3 days"
                                   >
                                     3 Days
@@ -604,20 +609,23 @@ export function LibraryView({
                                   <button
                                     type="button"
                                     onClick={() => handleSrsAction(group.topicCode, "snooze", 7)}
-                                    className="px-2 py-1 rounded text-xs text-center bg-[var(--surface2)] hover:bg-[var(--surface3)] text-amber-600 dark:text-amber-400 font-medium cursor-pointer border border-[var(--border)]"
+                                    className="py-1 text-[11px] font-mono text-center rounded hover:bg-[var(--surface3)] text-[var(--text2)] hover:text-[var(--text)] font-semibold transition-colors cursor-pointer"
                                     title="Snooze for 7 days"
                                   >
                                     7 Days
                                   </button>
                                 </div>
+                              </div>
 
+                              {/* Suspend Toggle */}
+                              <div className="pt-1.5 border-t border-[var(--border)]">
                                 <button
                                   type="button"
                                   onClick={() => handleSrsAction(group.topicCode, "suspend")}
-                                  className="w-full px-2.5 py-1.5 mt-1 rounded-lg text-xs font-medium text-left text-[var(--text2)] hover:bg-[var(--surface2)] hover:text-[var(--text)] flex items-center gap-2 cursor-pointer"
+                                  className="w-full px-2 py-1.5 rounded-lg text-xs font-medium text-left text-[var(--text2)] hover:bg-[var(--surface2)] hover:text-[var(--text)] flex items-center gap-1.5 transition-colors cursor-pointer"
                                 >
-                                  <EyeOff className="w-3.5 h-3.5 text-zinc-400" />
-                                  <span>{srsInfo?.status === "suspended" ? "Resume Tracking" : "Ignore / Suspend Topic"}</span>
+                                  <EyeOff className="w-3.5 h-3.5 text-[var(--text3)]" />
+                                  <span>{srsInfo?.status === "suspended" ? "Resume Topic" : "Ignore Topic"}</span>
                                 </button>
                               </div>
                             </div>
