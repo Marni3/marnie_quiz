@@ -244,6 +244,24 @@ export function LibraryView({
       <Navbar />
 
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-6">
+        {/* Guest Mode Notice */}
+        {currentUserId === "00000000-0000-0000-0000-000000000001" && (
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 p-3.5 px-4 rounded-2xl bg-[var(--surface2)] border border-[var(--border)] text-xs text-[var(--text2)]">
+            <div className="flex items-center gap-2">
+              <span className="text-base">💡</span>
+              <span>
+                <strong>Browsing in Guest Mode.</strong> Sign in with Google to save your personalized retention radar, spaced repetition forgetting curves, and quiz history across all devices.
+              </span>
+            </div>
+            <Link
+              href="/login"
+              className="inline-flex items-center justify-center shrink-0 px-3.5 py-1.5 rounded-xl bg-[var(--accent)] text-white font-bold text-xs hover:brightness-110 transition-all shadow-xs"
+            >
+              Sign In with Google
+            </Link>
+          </div>
+        )}
+
         {/* Gamification Motivation Banner */}
         {gamificationData && <MotivationBanner data={gamificationData} />}
 

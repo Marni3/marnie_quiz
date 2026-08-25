@@ -4,7 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useSession, signOut } from "next-auth/react";
 import { ThemeToggle } from "./theme-toggle";
-import { BookOpen, History, Upload, LogOut, Sparkles, Brain } from "lucide-react";
+import { BookOpen, History, Upload, LogOut, Sparkles, Brain, LogIn } from "lucide-react";
 
 export function Navbar({ breadcrumb }: { breadcrumb?: string }) {
   const pathname = usePathname();
@@ -99,7 +99,7 @@ export function Navbar({ breadcrumb }: { breadcrumb?: string }) {
         <div className="flex items-center gap-3 shrink-0">
           <ThemeToggle />
 
-          {session?.user && (
+          {session?.user ? (
             <div className="flex items-center gap-2 pl-2 border-l border-[var(--border)]">
               {session.user.image ? (
                 // eslint-disable-next-line @next/next/no-img-element
@@ -113,16 +113,27 @@ export function Navbar({ breadcrumb }: { breadcrumb?: string }) {
                   {session.user.name?.[0]?.toUpperCase() || "U"}
                 </div>
               )}
+              <span className="hidden md:inline text-xs font-medium text-[var(--text2)] max-w-[100px] truncate">
+                {session.user.name?.split(" ")[0]}
+              </span>
               <button
                 type="button"
                 onClick={() => signOut({ callbackUrl: "/login" })}
                 aria-label="Sign out"
                 title="Sign out"
-                className="text-[var(--text3)] hover:text-[var(--red)] p-1 rounded-md transition-colors"
+                className="text-[var(--text3)] hover:text-rose-500 p-1 rounded-md transition-colors cursor-pointer"
               >
                 <LogOut className="w-4 h-4" />
               </button>
             </div>
+          ) : (
+            <Link
+              href="/login"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-[var(--accent)] text-white text-xs font-bold shadow-xs hover:brightness-110 active:scale-95 transition-all"
+            >
+              <LogIn className="w-3.5 h-3.5" />
+              <span>Sign In</span>
+            </Link>
           )}
         </div>
       </div>
