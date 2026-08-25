@@ -44517,7 +44517,7 @@
   },
   {
     "id": "set-0125",
-    "title": "GEAS 09 - Electromagnetics \u2022 Diagnostic (Set 01)",
+    "title": "GEAS 07 - Electromagnetics \u2022 Diagnostic (Set 01)",
     "subjectTag": "Electromagnetics",
     "subjectCategory": "General Engineering and Applied Sciences",
     "tier": "diagnostic",
@@ -44891,7 +44891,7 @@
   },
   {
     "id": "set-0126",
-    "title": "GEAS 09 - Electromagnetics \u2022 Drill (Set 01)",
+    "title": "GEAS 07 - Electromagnetics \u2022 Drill (Set 01)",
     "subjectTag": "Electromagnetics",
     "subjectCategory": "General Engineering and Applied Sciences",
     "tier": "drill",
@@ -45025,7 +45025,7 @@
   },
   {
     "id": "set-0127",
-    "title": "GEAS 09 - Electromagnetics \u2022 Review (Set 01)",
+    "title": "GEAS 07 - Electromagnetics \u2022 Review (Set 01)",
     "subjectTag": "Electromagnetics",
     "subjectCategory": "General Engineering and Applied Sciences",
     "tier": "review",
@@ -45339,7 +45339,7 @@
   },
   {
     "id": "set-0128",
-    "title": "GEAS 09 - Electromagnetics \u2022 Simulation (Set 01)",
+    "title": "GEAS 07 - Electromagnetics \u2022 Simulation (Set 01)",
     "subjectTag": "Electromagnetics",
     "subjectCategory": "General Engineering and Applied Sciences",
     "tier": "simulation",
@@ -45953,7 +45953,7 @@
   },
   {
     "id": "set-0129",
-    "title": "GEAS 10 - Ece Laws \u2022 Diagnostic (Set 01)",
+    "title": "GEAS 08 - Ece Laws \u2022 Diagnostic (Set 01)",
     "subjectTag": "Ece Laws",
     "subjectCategory": "General Engineering and Applied Sciences",
     "tier": "diagnostic",
@@ -46327,7 +46327,7 @@
   },
   {
     "id": "set-0130",
-    "title": "GEAS 10 - Ece Laws \u2022 Drill (Set 01)",
+    "title": "GEAS 08 - Ece Laws \u2022 Drill (Set 01)",
     "subjectTag": "Ece Laws",
     "subjectCategory": "General Engineering and Applied Sciences",
     "tier": "drill",
@@ -46461,7 +46461,7 @@
   },
   {
     "id": "set-0131",
-    "title": "GEAS 10 - Ece Laws \u2022 Review (Set 01)",
+    "title": "GEAS 08 - Ece Laws \u2022 Review (Set 01)",
     "subjectTag": "Ece Laws",
     "subjectCategory": "General Engineering and Applied Sciences",
     "tier": "review",
@@ -46775,7 +46775,7 @@
   },
   {
     "id": "set-0132",
-    "title": "GEAS 10 - Ece Laws \u2022 Simulation (Set 01)",
+    "title": "GEAS 08 - Ece Laws \u2022 Simulation (Set 01)",
     "subjectTag": "Ece Laws",
     "subjectCategory": "General Engineering and Applied Sciences",
     "tier": "simulation",
@@ -47389,7 +47389,7 @@
   },
   {
     "id": "set-0133",
-    "title": "GEAS 11 - Material Science \u2022 Diagnostic (Set 01)",
+    "title": "GEAS 07 - Material Science \u2022 Diagnostic (Set 01)",
     "subjectTag": "Material Science",
     "subjectCategory": "General Engineering and Applied Sciences",
     "tier": "diagnostic",
@@ -47763,7 +47763,7 @@
   },
   {
     "id": "set-0134",
-    "title": "GEAS 11 - Material Science \u2022 Drill (Set 01)",
+    "title": "GEAS 07 - Material Science \u2022 Drill (Set 01)",
     "subjectTag": "Material Science",
     "subjectCategory": "General Engineering and Applied Sciences",
     "tier": "drill",
@@ -47897,7 +47897,7 @@
   },
   {
     "id": "set-0135",
-    "title": "GEAS 11 - Material Science \u2022 Review (Set 01)",
+    "title": "GEAS 07 - Material Science \u2022 Review (Set 01)",
     "subjectTag": "Material Science",
     "subjectCategory": "General Engineering and Applied Sciences",
     "tier": "review",
@@ -48211,7 +48211,7 @@
   },
   {
     "id": "set-0136",
-    "title": "GEAS 11 - Material Science \u2022 Simulation (Set 01)",
+    "title": "GEAS 07 - Material Science \u2022 Simulation (Set 01)",
     "subjectTag": "Material Science",
     "subjectCategory": "General Engineering and Applied Sciences",
     "tier": "simulation",
@@ -48825,7 +48825,7 @@
   },
   {
     "id": "set-0137",
-    "title": "GEAS 12 - Computer Programming \u2022 Diagnostic (Set 01)",
+    "title": "GEAS 08 - Computer Programming \u2022 Diagnostic (Set 01)",
     "subjectTag": "Computer Programming",
     "subjectCategory": "General Engineering and Applied Sciences",
     "tier": "diagnostic",
@@ -49199,7 +49199,7 @@
   },
   {
     "id": "set-0138",
-    "title": "GEAS 12 - Computer Programming \u2022 Drill (Set 01)",
+    "title": "GEAS 08 - Computer Programming \u2022 Drill (Set 01)",
     "subjectTag": "Computer Programming",
     "subjectCategory": "General Engineering and Applied Sciences",
     "tier": "drill",
@@ -49333,7 +49333,7 @@
   },
   {
     "id": "set-0139",
-    "title": "GEAS 12 - Computer Programming \u2022 Review (Set 01)",
+    "title": "GEAS 08 - Computer Programming \u2022 Review (Set 01)",
     "subjectTag": "Computer Programming",
     "subjectCategory": "General Engineering and Applied Sciences",
     "tier": "review",
@@ -49647,7 +49647,7 @@
   },
   {
     "id": "set-0140",
-    "title": "GEAS 12 - Computer Programming \u2022 Simulation (Set 01)",
+    "title": "GEAS 08 - Computer Programming \u2022 Simulation (Set 01)",
     "subjectTag": "Computer Programming",
     "subjectCategory": "General Engineering and Applied Sciences",
     "tier": "simulation",
@@ -50261,7 +50261,7 @@
   },
   {
     "id": "set-0141",
-    "title": "GEAS 13 - Environmental Science \u2022 Diagnostic (Set 01)",
+    "title": "GEAS 07 - Environmental Science \u2022 Diagnostic (Set 01)",
     "subjectTag": "Environmental Science",
     "subjectCategory": "General Engineering and Applied Sciences",
     "tier": "diagnostic",
@@ -50635,7 +50635,7 @@
   },
   {
     "id": "set-0142",
-    "title": "GEAS 13 - Environmental Science \u2022 Drill (Set 01)",
+    "title": "GEAS 07 - Environmental Science \u2022 Drill (Set 01)",
     "subjectTag": "Environmental Science",
     "subjectCategory": "General Engineering and Applied Sciences",
     "tier": "drill",
@@ -50769,7 +50769,7 @@
   },
   {
     "id": "set-0143",
-    "title": "GEAS 13 - Environmental Science \u2022 Review (Set 01)",
+    "title": "GEAS 07 - Environmental Science \u2022 Review (Set 01)",
     "subjectTag": "Environmental Science",
     "subjectCategory": "General Engineering and Applied Sciences",
     "tier": "review",
@@ -51083,7 +51083,7 @@
   },
   {
     "id": "set-0144",
-    "title": "GEAS 13 - Environmental Science \u2022 Simulation (Set 01)",
+    "title": "GEAS 07 - Environmental Science \u2022 Simulation (Set 01)",
     "subjectTag": "Environmental Science",
     "subjectCategory": "General Engineering and Applied Sciences",
     "tier": "simulation",
@@ -51697,7 +51697,7 @@
   },
   {
     "id": "set-0145",
-    "title": "GEAS 14 - Technopreneurship \u2022 Diagnostic (Set 01)",
+    "title": "GEAS 08 - Technopreneurship \u2022 Diagnostic (Set 01)",
     "subjectTag": "Technopreneurship",
     "subjectCategory": "General Engineering and Applied Sciences",
     "tier": "diagnostic",
@@ -52071,7 +52071,7 @@
   },
   {
     "id": "set-0146",
-    "title": "GEAS 14 - Technopreneurship \u2022 Drill (Set 01)",
+    "title": "GEAS 08 - Technopreneurship \u2022 Drill (Set 01)",
     "subjectTag": "Technopreneurship",
     "subjectCategory": "General Engineering and Applied Sciences",
     "tier": "drill",
@@ -52205,7 +52205,7 @@
   },
   {
     "id": "set-0147",
-    "title": "GEAS 14 - Technopreneurship \u2022 Review (Set 01)",
+    "title": "GEAS 08 - Technopreneurship \u2022 Review (Set 01)",
     "subjectTag": "Technopreneurship",
     "subjectCategory": "General Engineering and Applied Sciences",
     "tier": "review",
@@ -52519,7 +52519,7 @@
   },
   {
     "id": "set-0148",
-    "title": "GEAS 14 - Technopreneurship \u2022 Simulation (Set 01)",
+    "title": "GEAS 08 - Technopreneurship \u2022 Simulation (Set 01)",
     "subjectTag": "Technopreneurship",
     "subjectCategory": "General Engineering and Applied Sciences",
     "tier": "simulation",

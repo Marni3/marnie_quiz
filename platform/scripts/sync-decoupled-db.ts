@@ -3,12 +3,12 @@ dotenv.config({ path: ".env.local" });
 
 import { db, pool } from "../lib/db/client";
 import { questionSets, questions, users, questionSetItems, userTopicSrs } from "../lib/db/schema";
-import { eq, sql } from "drizzle-orm";
+import { sql } from "drizzle-orm";
 import * as fs from "fs";
 import * as path from "path";
 
-async function syncDecoupledDatabase() {
-  console.log("=== NEON POSTGRESQL BULK DECOUPLED SYLLABUS SYNC & SEED ===");
+async function instantBulkSync() {
+  console.log("=== INSTANT MULTI-ROW BATCH SYNC TO NEON POSTGRESQL ===");
 
   const seedPath = path.join(__dirname, "../data/seed-data.json");
   const raw = fs.readFileSync(seedPath, "utf-8");
@@ -35,52 +35,75 @@ async function syncDecoupledDatabase() {
   await db.delete(questions);
   await db.delete(questionSets);
 
-  console.log("Bulk inserting sets and questions in transactions...");
+  console.log("Preparing bulk arrays...");
+  
+  // Prepare all sets
+  const setRows = seedSets.map((s: any) => ({
+    uploadedByUserId: guestUser.id,
+    title: s.title,
+    tier: s.tier || "review",
+    topicCode: s.topicCode,
+    subjectTag: s.subjectTag,
+    visibility: "shared" as const,
+  }));
 
-  for (const s of seedSets) {
-    const [insertedSet] = await db
-      .insert(questionSets)
-      .values({
-        uploadedByUserId: guestUser.id,
-        title: s.title,
-        tier: s.tier || "review",
-        topicCode: s.topicCode,
-        subjectTag: s.subjectTag,
-        visibility: "shared",
-      })
-      .returning();
+  // Insert all 202 sets in 1 query!
+  console.log(`Inserting ${setRows.length} question sets in 1 batch query...`);
+  const insertedSets = await db.insert(questionSets).values(setRows).returning();
 
+  // Prepare questions and items
+  const allQuestionRows: any[] = [];
+  const questionMap: { setIdx: number; qInSetIdx: number }[] = [];
+
+  seedSets.forEach((s: any, setIdx: number) => {
     const qs = s.questions || [];
-    if (qs.length === 0) continue;
+    qs.forEach((q: any, qIdx: number) => {
+      allQuestionRows.push({
+        sourceQuestionSetId: insertedSets[setIdx].id,
+        promptText: q.promptText,
+        choiceA: q.choiceA,
+        choiceB: q.choiceB,
+        choiceC: q.choiceC,
+        choiceD: q.choiceD,
+        correctChoice: (q.correctChoice || "a").toLowerCase() as any,
+        explanation: q.explanation || null,
+        archetype: q.archetype || "standard",
+        microCluster: q.microCluster || null,
+        isAnchor: q.isAnchor || false,
+      });
+      questionMap.push({ setIdx, qInSetIdx: qIdx });
+    });
+  });
 
-    // Batch insert all questions for this set
-    const qValues = qs.map((q: any) => ({
-      sourceQuestionSetId: insertedSet.id,
-      promptText: q.promptText,
-      choiceA: q.choiceA,
-      choiceB: q.choiceB,
-      choiceC: q.choiceC,
-      choiceD: q.choiceD,
-      correctChoice: (q.correctChoice || "a").toLowerCase() as any,
-      explanation: q.explanation || null,
-      archetype: q.archetype || "standard",
-      microCluster: q.microCluster || null,
-      isAnchor: q.isAnchor || false,
-    }));
+  console.log(`Inserting ${allQuestionRows.length} questions in chunks of 500...`);
+  const chunkSize = 500;
+  const allInsertedQuestions: any[] = [];
 
-    const insertedQs = await db.insert(questions).values(qValues).returning();
-
-    // Batch insert questionSetItems
-    const itemValues = insertedQs.map((q, idx) => ({
-      questionSetId: insertedSet.id,
-      questionId: q.id,
-      orderIndex: idx,
-    }));
-
-    await db.insert(questionSetItems).values(itemValues);
+  for (let i = 0; i < allQuestionRows.length; i += chunkSize) {
+    const chunk = allQuestionRows.slice(i, i + chunkSize);
+    const res = await db.insert(questions).values(chunk).returning();
+    allInsertedQuestions.push(...res);
+    process.stdout.write(`.` );
   }
+  console.log(`\nInserted ${allInsertedQuestions.length} questions.`);
 
-  console.log(`[OK] All ${seedSets.length} question sets and questions bulk inserted successfully.`);
+  console.log("Preparing questionSetItems...");
+  const allItemRows = allInsertedQuestions.map((q, idx) => {
+    const map = questionMap[idx];
+    return {
+      questionSetId: insertedSets[map.setIdx].id,
+      questionId: q.id,
+      orderIndex: map.qInSetIdx,
+    };
+  });
+
+  console.log(`Inserting ${allItemRows.length} question set items in chunks of 1000...`);
+  for (let i = 0; i < allItemRows.length; i += 1000) {
+    const chunk = allItemRows.slice(i, i + 1000);
+    await db.insert(questionSetItems).values(chunk);
+    process.stdout.write(`.` );
+  }
+  console.log(`\nInserted ${allItemRows.length} questionSetItems.`);
 
   // 3. Re-seed default userTopicSrs for all distinct topics
   const distinctTopics = await db
@@ -121,11 +144,11 @@ async function syncDecoupledDatabase() {
     }
   }
 
-  console.log("[OK] Neon PostgreSQL live sync and continuous syllabus re-indexing complete!");
+  console.log("[OK] Instant bulk sync to Neon PostgreSQL complete!");
   await pool.end();
 }
 
-syncDecoupledDatabase().catch((err) => {
-  console.error("Sync failed:", err);
+instantBulkSync().catch((err) => {
+  console.error("Instant bulk sync failed:", err);
   process.exit(1);
 });

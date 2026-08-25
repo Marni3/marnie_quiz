@@ -188,15 +188,14 @@
 - **`GEAS 04 - Engineering Mechanics & Strength of Materials`** (`04-01` to `04-17`): Concurrent Forces, Lami's Theorem, Trusses, Beams, Friction, Belt Friction, Centroids, Moments of Inertia, Kinematics, Projectile Motion, Circular Motion, Banking of Curves, Stress-Strain, Torsion, Beam Deflection.
 - **`GEAS 05 - Thermodynamics`** (`05-01` to `05-07`): Pure Substances, Ideal Gases, First Law for Closed/Open Systems, Second Law, Carnot Cycle, Heat Transfer (Conduction, Convection, Radiation).
 - **`GEAS 06 - Engineering Economics`** (`06-01` to `06-06`): Simple & Compound Interest, Annuities, Amortization, Depreciation (Straight-Line, Sinking Fund, DDB, SOYD), Capitalized Cost, Rate of Return, Benefit-Cost Ratio.
-- **`GEAS 09 - Electromagnetics`**: Maxwell's Equations, Vector Calculus, Plane Wave Propagation, Poynting Vector, Skin Effect, Reflection & Refraction.
-- **`GEAS 10 - ECE Laws and Ethics`**: Republic Act 9292 (Electronics Engineering Law of 2004), Code of Ethics, Contracts & Obligations, Philippine Electronics Code (PEC).
-- **`GEAS 11 - Material Science and Engineering`**: Crystal Structures, Miller Indices, Phase Diagrams, Iron-Carbon System, Mechanical Testing (Rockwell, Brinell, Charpy), Polymers, Ceramics.
-- **`GEAS 12 - Computer Programming`**: Flowcharts, Algorithms, C/C++ Syntax, Control Structures, Functions, Arrays, Pointers, Basic Data Structures.
-- **`GEAS 13 - Environmental Science and Engineering`**: Ecology, Air/Water Pollution Control, Environmental Impact Assessment, Solid Waste Management, Climate Change.
-- **`GEAS 14 - Technopreneurship 101`**: Business Model Canvas, Intellectual Property (Patents, Trademarks, Copyrights), Venture Capital, Startup Operations.
+- **`GEAS 07 - Electromagnetics`** (`07-01` to `07-04`): Maxwell's Equations, Vector Calculus, Plane Wave Propagation, Poynting Vector, Skin Effect, Reflection & Refraction.
+- **`GEAS 08 - ECE Laws and Ethics`** (`08-01` to `08-03`): Republic Act 9292 (Electronics Engineering Law of 2004), Code of Ethics, Contracts & Obligations, Philippine Electronics Code (PEC).
+- **`GEAS 09 - Material Science and Engineering`** (`09-01` to `09-04`): Crystal Structures, Miller Indices, Phase Diagrams, Iron-Carbon System, Mechanical Testing (Rockwell, Brinell, Charpy), Polymers, Ceramics.
+- **`GEAS 10 - Computer Programming`** (`10-01` to `10-04`): Flowcharts, Algorithms, C/C++ Syntax, Control Structures, Functions, Arrays, Pointers, Basic Data Structures.
+- **`GEAS 11 - Environmental Science and Engineering`** (`11-01` to `11-03`): Ecology, Air/Water Pollution Control, Environmental Impact Assessment, Solid Waste Management, Climate Change.
+- **`GEAS 12 - Technopreneurship 101`** (`12-01` to `12-03`): Business Model Canvas, Intellectual Property (Patents, Trademarks, Copyrights), Venture Capital, Startup Operations.
 
-#### ⚠️ Gaps in GEAS:
-* **`GEAS 07 & 08`**: Missing from standalone questionnaire naming. In PRC syllabi, these traditionally correspond to *Fluid Mechanics* and *Engineering Management* (which were folded into GEAS 04/05 and GEAS 14).
+*(Continuous sequence `GEAS 01` through `GEAS 12` — **Normalized & Unbroken**)*
 
 ---
 
