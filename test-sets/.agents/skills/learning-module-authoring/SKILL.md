@@ -1,9 +1,9 @@
 ---
 name: learning-module-authoring
-description: Authoring interactive, high-speed PRC ECE board exam learning modules (Paul's Online Notes / Brilliant style), Karce KC-S991 & Canon F-789SGA keystroke shortcuts, and dual-method pedagogical breakdowns.
+description: Authoring interactive, high-speed PRC ECE board exam learning modules (Paul's Online Notes / Brilliant style), Karce KC-S991 & Canon F-789SGA keystroke shortcuts, interactive visualizers, and multiple-choice concept checks.
 ---
 
-# Learning Module Authoring & Subtopic Standards Skill
+# Learning Module Authoring & Visualization Standards Skill
 
 This skill defines the architectural, pedagogical, and typographical standards for authoring **Interactive Learning Modules** on the Marnie Quiz platform.
 
@@ -12,56 +12,88 @@ This skill defines the architectural, pedagogical, and typographical standards f
 ## 1. Core Architecture & Granularity
 
 1. **Per-Subtopic Scope**:
-   - Modules are authored **per subtopic** (e.g., `MATH 01-08: Word Problems`, `MATH 09-05: Parabolas`, `ELEC 03-04: Thevenin & Norton Theorems`).
-   - Content and pedagogical flow are grounded **strictly in the lecture notes and solution PDFs** in `Reference Documents/` (e.g., `Notes - Algebra 1–4.pdf`, `Notes - Plane Geometry.pdf`).
-   - For broader subtopics with multiple sub-archetypes, modules include a sticky **Table of Contents / Header Index** for rapid section jumping.
+   - Modules are authored **per subtopic** (e.g., `MATH 01-08: Word Problems`, `MATH 09-05 to 09-08: Conic Sections & Eccentricity`, `ELEC 03-04: Thevenin & Norton Theorems`).
+   - Content and flow are grounded **strictly in the lecture notes and solution PDFs** in `Reference Documents/`.
+   - Modules include a sticky **Table of Contents / Header Index** for rapid section navigation.
 
-2. **Interactive Long Method vs. Speed Shortcut Toggle**:
-   - Modules support an interactive UI toggle (`[ Formal / Academic Lecture ]` vs. `[ ⚡ Board Exam Shortcut ]` vs. `[ Both / Expanded ]`).
-   - **Formal Lecture**: Complete mathematical foundation, definitions, and step-by-step rigorous derivation.
-   - **Board Exam Shortcut**: High-speed dimensional elimination, proportionality tricks, calculator bypass, and visual intuition with clear rationales.
+2. **Interactive Dual-Method Toggle**:
+   - Modules support a clean segmented UI toggle:
+     - `[ Formal / Academic Lecture ]`: Step-by-step rigorous textbook derivations and fundamental principles.
+     - `[ ⚡ Board Exam Shortcut ]`: High-speed dimensional elimination, proportionality shortcuts, calculator bypass, and visual intuition with clear rationales.
+     - `[ Combined / Expanded ]`: Full dual breakdown.
 
-3. **In-Line Active Retrieval (Micro-Checks Throughout)**:
-   - Rather than only placing 1–2 checks at the very end, each conceptual sub-section contains **in-line practical problems** with immediate reveal toggles and Karce/Canon keystroke steps.
-   - Every module concludes with a 1-to-1 launch button to its paired mastery challenge test set (`/quizzes/[id]`).
-
----
-
-## 2. Standard Subtopic Module Structure
-
-Every learning module follows this blueprint:
-
-### 1. Header & Blueprint
-- Continuous Course Code & Subtopic Name (e.g. `MATH 01-08: Age, Motion & Mixture Problems`).
-- PRC Exam Yield: Estimated question frequency and high-yield rating.
-- Sticky Section Index (Table of Contents).
-
-### 2. Core Governing Principles
-- Foundational theory and formulas rendered in clean KaTeX display blocks.
-- Variable definitions, units, and geometric/circuit diagrams.
-
-### 3. Dual-Method Breakdown (Toggleable)
-- **Standard Phrasing**:
-  - *"This is the typical solution or long method."*
-  - *"When in the boards, the following technique or solution would be faster."*
-- Includes concise physical intuition explaining *why* the shortcut works.
-
-### 4. Calculator Keystroke Guides (Karce KC-S991 & Canon F-789SGA)
-- Step-by-step button sequences with `<kbd>` badges:
-  - **Karce KC-S991**: `[MODE] [5] [3]`, `[MODE] [2]`, `[SHIFT] [2] [3]`, `[MODE] [7]`, `[SHIFT] [d/dx]`, `[∫dx]`, `[MODE] [3]`.
-  - **Canon F-789SGA**: `[APPS]`, `[MODE] [EQN]`, `[MODE] [6]` (Matrix), `[MODE] [8]` (Vector), `[APPS] [CONV]`.
-
-### 5. In-Line Practical Problems & Traps
-- 3–5 embedded board exam problems distributed across sections.
-- Keystroke gotchas: Degree vs. Radian mode, complex angle modes ($rngle	heta$ vs. $a+bi$), table step-size selection.
-
-### 6. Paired Mastery Challenge Link
-- Direct 1-click CTA button launching the paired full quiz set on `/quizzes/[id]`.
+3. **Standardized Multiple-Choice Concept Checks (In-Line)**:
+   - All interactive concept checks are standardized as **4-Choice Multiple Choice Questions (A, B, C, D)**.
+   - Distributed throughout each subtopic section (3–5 questions per module) with **instant tactile feedback**:
+     - Clicking an option immediately reveals green (correct) or red (incorrect).
+     - Instantly expands the concise dual explanation + Karce/Canon calculator keystrokes.
+   - Modules conclude with a 1-click CTA button launching the paired full mastery challenge test set (`/quizzes/[id]`).
 
 ---
 
-## 3. Typographical & KaTeX Standards
+## 2. Interactive Visualizations & Geometric Sliders
 
-- Inline math: `$x = rac{-b \pm \sqrt{b^2 - 4ac}}{2a}$`
-- Polar complex numbers: `$120	ext{ V}ngle 30^\circ$` (use `ngle` and `^\circ`)
-- Units: Always formatted with `	ext{}` (e.g. `$25	ext{ m/s}$`, `$50	ext{ \Omega}$`, `$10	ext{ \mu F}$`).
+Where physical or geometric intuition is paramount, modules must embed lightweight, interactive SVG/HTML5 visualizers with real-time parameter sliders:
+
+### Priority Visualizers by Subject Domain:
+
+#### 1. Mathematics (MATH):
+- **Conic Sections & Eccentricity Visualizer (`MATH-09`)**:
+  - Interactive slider for Eccentricity ($e$):
+    - $e = 0$: Perfect Circle ($A = C$).
+    - $0 < e < 1$: Ellipse (shows stretching ratio $b/a = \sqrt{1 - e^2}$ and foci moving outward).
+    - $e = 1$: Parabola (shows distance to focus = distance to directrix, $d_1 = d_2$).
+    - $e > 1$: Hyperbola (shows asymptotic opening angle $	heta = rcsin(1/e)$).
+  - Demonstrates the core intuition: *“Eccentricity is literally the measure of uncircleness.”*
+- **Trigonometric Unit Circle & Phasor Explorer (`MATH-05`)**:
+  - Interactive angle slider ($	heta \in [0^\circ, 360^\circ]$) displaying real-time $\sin	heta$, $\cos	heta$, $	an	heta$, reference triangles, and radian equivalents.
+- **Solids of Revolution & Centroid Visualizer (`MATH-11`)**:
+  - Interactive slice rotation showing disk, washer, and cylindrical shell generation.
+
+#### 2. Electronics Engineering (ELECS):
+- **RLC Transient & Damping Waveform Simulator (`ELEC-05`)**:
+  - Real-time sliders for $R, L, C$ demonstrating Overdamped ($\zeta > 1$), Critically Damped ($\zeta = 1$), and Underdamped ($\zeta < 1$) response curves and Q-factor.
+- **BJT DC Load Line & Q-Point Interactive Graph (`ELEC-07`)**:
+  - Sliders for $V_{CC}, R_C, I_B$ showing the Q-point moving along the load line between Saturation and Cutoff.
+
+#### 3. General Engineering & Applied Sciences (GEAS):
+- **Shear & Bending Moment Diagram Visualizer (`GEAS-04`)**:
+  - Movable point load slider on a simply supported beam with dynamic $V(x)$ and $M(x)$ graphs.
+- **Carnot Cycle P-V / T-S Diagram Explorer (`GEAS-05`)**:
+  - Interactive 4-stage thermodynamic loop showing isothermal/adiabatic expansion and compression.
+
+#### 4. Electronics Systems & Technologies (EST):
+- **AM / FM Modulation & Spectrum Visualizer (`EST-03`)**:
+  - Sliders for modulating frequency $f_m$, carrier frequency $f_c$, and modulation index $m$ showing time-domain envelope and frequency-domain sidebands.
+- **Smith Chart Transmission Line Matching Explorer (`EST-04`)**:
+  - Slider for load impedance $Z_L$ showing reflection coefficient circle ($\Gamma$), SWR circle, and distance to first voltage maximum/minimum.
+
+---
+
+## 3. Calculator Keystroke Guides (Karce KC-S991 & Canon F-789SGA)
+
+Every quantitative module must feature step-by-step calculator button sequences using visual `<kbd>` badges:
+
+- **Karce KC-S991** (Natural Display / V.P.A.M. standard conventions):
+  - Quadratic/Cubic Solver: `<kbd>MODE</kbd> <kbd>5</kbd> <kbd>3</kbd>` / `<kbd>MODE</kbd> <kbd>5</kbd> <kbd>4</kbd>`
+  - Complex Numbers: `<kbd>MODE</kbd> <kbd>2</kbd>` $	o$ `<kbd>SHIFT</kbd> <kbd>2</kbd> <kbd>3</kbd>` for $rngle	heta$
+  - Table Function: `<kbd>MODE</kbd> <kbd>7</kbd>`
+  - Numerical Derivatives / Integrals: `<kbd>SHIFT</kbd> <kbd>d/dx</kbd>` / `<kbd>∫dx</kbd>`
+  - Statistics / Linear Regression: `<kbd>MODE</kbd> <kbd>3</kbd>`
+- **Canon F-789SGA** (Apps-driven 605-function layout):
+  - Equation Mode: `<kbd>MODE</kbd> <kbd>EQN</kbd>` or `<kbd>APPS</kbd>`
+  - Complex Conversions: `<kbd>APPS</kbd> <kbd>1</kbd>` or `<kbd>SHIFT</kbd> <kbd>COMPLEX</kbd>`
+  - Vector & Matrix Dot/Cross: `<kbd>MODE</kbd> <kbd>6</kbd>` (MATRIX) / `<kbd>MODE</kbd> <kbd>8</kbd>` (VECTOR)
+  - Unit Conversions & Constants: `<kbd>APPS</kbd> <kbd>CONV</kbd>` / `<kbd>APPS</kbd> <kbd>CONST</kbd>`
+
+---
+
+## 4. Standard Module Blueprint
+
+1. **Header & Section Index**: Continuous code, subtopic name, and sticky Table of Contents.
+2. **Interactive Visualizer (if applicable)**: Canvas/SVG slider demonstrating physical/geometric intuition.
+3. **Governing Theory**: Rendered in clean KaTeX equations with variable definitions.
+4. **The Dual Breakdown**: Side-by-side or stacked long method vs. board shortcut comparison with toggle.
+5. **Calculator Keystrokes**: Visual `<kbd>` sequences for Karce & Canon.
+6. **In-Line Multiple Choice Checks**: 3–5 embedded MCQs with instant feedback.
+7. **Paired Mastery Challenge Link**: Direct launch button to `/quizzes/[id]`.
