@@ -15,7 +15,7 @@ Modules are designed as a **compounding, cohesive learning journey** through the
 
 1. **Per-Subtopic Scope Grounded in Reference Documents**:
    - Modules are authored **per subtopic** (e.g., `MATH 01-08: Word Problems`, `MATH 09-05 to 09-08: Conic Sections & Eccentricity`, `ELEC 03-04: Thevenin & Norton Theorems`).
-   - Content and pedagogical flow are strictly derived from lecture notes and solutions in `Reference Documents/`.
+   - Content and pedagogical flow are strictly derived from lecture notes and solutions in `Reference Documents/` At the absolute minimum, ALL the contents of each document there must be covered in a respective or appropriate module. Use a lightweight pdf library in python to convert the PDFs to images if you must and use multimodal capabilities to read the contents and check how it may be integrated into the related learning module.
    - Includes a sticky **Table of Contents / Header Index** for rapid section navigation.
 
 2. **Prerequisite Bridges ("Previously In...")**:
@@ -33,7 +33,17 @@ Modules are designed as a **compounding, cohesive learning journey** through the
    - Provide plain-English, intuitive explanations that avoid dense academic jargon for students who struggle with abstract theory.
    - Always summarize with a crisp **"Mental Anchor / Rule of Thumb"** (e.g., *"Inductors oppose sudden changes in current; capacitors oppose sudden changes in voltage."*).
 
-5. **Interactive Dual-Method Toggle**:
+5. **Definitive Terminology & Quantity Signatures ("X is the process/measure of...")**:
+   - Every new quantity, unit, parameter, law, material, component, or technical term introduced in a module **must** feature a distinct, standardized **Identification Definition & Association Hook**.
+   - **Board Exam Stem Alignment**: Phrased specifically to match the classic PRC identification stem format (*"What is the property/process/ratio..."* or *"X is defined as the measure of..."*):
+     - Example (Math): *"**Eccentricity ($e$)**: The constant ratio of the distance from a point on the curve to the focus, to its perpendicular distance to the directrix — the fundamental **'measure of uncircleness'**."*
+     - Example (Elecs): *"**Slew Rate ($SR$)**: The **maximum rate of change of output voltage per unit time** ($\text{V}/\mu\text{s}$) an operational amplifier can deliver without distortion."*
+     - Example (EST): *"**Capture Effect**: The phenomenon in FM receivers where the **stronger of two co-channel signals completely suppresses the weaker signal** at the limiter/discriminator."*
+     - Example (GEAS): *"**Frenkel Defect**: A point defect in an ionic crystal where a **cation leaves its normal lattice site and lodges into a nearby interstitial position**."*
+   - **1-Second Trigger Association**: Explicitly highlight the unique identifier keyword so students instantly recognize the exact term being tested upon reading the exam question stem.
+   - **Units, Symbols & Dimensions**: Always state the exact SI unit, symbol, and dimension for every physical quantity introduced.
+
+6. **Interactive Dual-Method Toggle**:
    - Segmented UI switcher:
      - `[ Formal / Academic Lecture ]`: Step-by-step textbook derivations.
      - `[ ⚡ Board Exam Shortcut ]`: High-speed elimination, proportionality tricks, calculator bypass, and visual intuition.
@@ -88,9 +98,10 @@ Every quantitative module features exact button sequences with visual `<kbd>` ba
 
 1. **Header & Section Index**: Continuous code, subtopic name, and sticky Table of Contents.
 2. **Prerequisite & Cross-Subject Bridges**: Collapsible recall bridge + cross-subject board connections.
-3. **Interactive Visualizer (if applicable)**: Canvas/SVG slider demonstrating physical intuition.
-4. **Governing Theory & Mental Anchor**: KaTeX formulas with plain-English rules of thumb.
-5. **The Dual Breakdown**: Side-by-side or stacked long method vs. board shortcut comparison with toggle.
-6. **Calculator Keystrokes**: Visual `<kbd>` sequences for Karce & Canon.
-7. **In-Line Multiple Choice Checks & Distractor Deconstruction**: 3–5 embedded MCQs with instant feedback.
-8. **Paired Mastery Challenge Link**: Direct launch button to paired question set.
+3. **Definitive Terminology & Quantity Signatures**: Standardized *"X is the process/measure of..."* definitions with 1-second keyword trigger associations, units, and symbols.
+4. **Interactive Visualizer (if applicable)**: Canvas/SVG slider demonstrating physical intuition.
+5. **Governing Theory & Mental Anchor**: KaTeX formulas with plain-English rules of thumb.
+6. **The Dual Breakdown**: Side-by-side or stacked long method vs. board shortcut comparison with toggle.
+7. **Calculator Keystrokes**: Visual `<kbd>` sequences for Karce & Canon.
+8. **In-Line Multiple Choice Checks & Distractor Deconstruction**: 3–5 embedded MCQs with instant feedback.
+9. **Paired Mastery Challenge Link**: Direct launch button to paired question set.

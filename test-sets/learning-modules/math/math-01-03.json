@@ -1,0 +1,241 @@
+{
+  "id": "math-01-03",
+  "code": "MATH 01-03",
+  "domain": "MATH",
+  "topicCode": "MATH-01",
+  "topicTitle": "College Algebra",
+  "subtopicTitle": "Logarithms, Logarithmic Identities & Exponential Equations",
+  "order": 3,
+  "pairedQuizSetId": "math_01_algebra_drill_all_set01",
+  "toc": [
+    { "id": "sec-prereq-bridges", "title": "1. Prerequisite & Cross-Subject Bridges", "level": 2 },
+    { "id": "sec-terminology", "title": "2. Logarithmic Signatures & Board Terminology", "level": 2 },
+    { "id": "sec-visualizer", "title": "3. Interactive Visualizer: Linear vs. Logarithmic Decibel Compression Engine", "level": 2 },
+    { "id": "sec-theory", "title": "4. Governing Theory & Core Mental Anchors", "level": 2 },
+    { "id": "sec-dual-method", "title": "5. The Dual-Method Breakdown (Academic vs. ⚡ Board Shortcut)", "level": 2 },
+    { "id": "sec-calculator", "title": "6. Calculator Keystroke Sequences (Karce & Canon)", "level": 2 },
+    { "id": "sec-concept-checks", "title": "7. In-Line Concept Checks & Distractor Deconstruction", "level": 2 },
+    { "id": "sec-mastery-challenge", "title": "8. Paired Mastery Challenge", "level": 2 }
+  ],
+  "prerequisiteBridge": {
+    "priorModuleId": "math-01-02",
+    "text": "In MATH 01-02, we established the laws of exponents and powers. Logarithms are the exact inverse operations of exponentiation (log_b(x) = y ⟺ b^y = x), transforming complex multiplicative dynamics into simple linear additive relationships."
+  },
+  "crossSubjectBridges": [
+    {
+      "targetDomain": "EST",
+      "targetTopicCode": "EST-01",
+      "badgeText": "Principles of Comms",
+      "description": "Logarithmic decibel scaling is the universal language of telecommunications: signal power ratios (dB = 10 log(P2/P1)), absolute power (dBm = 10 log(P/1mW), dBW = 10 log(P/1W)), and Friis transmission links."
+    },
+    {
+      "targetDomain": "EST",
+      "targetTopicCode": "EST-02",
+      "badgeText": "Radio Propagation",
+      "description": "Free Space Path Loss (FSPL) in dB: FSPL = 32.44 + 20 log(d_km) + 20 log(f_MHz) models electromagnetic spherical wavefront geometric spreading loss."
+    },
+    {
+      "targetDomain": "ELECS",
+      "targetTopicCode": "ELEC-14",
+      "badgeText": "Control Systems",
+      "description": "Bode magnitude plots display transfer function gain in decibels (20 log|G(jω)|) plotted against frequency spanning decades on semi-logarithmic coordinates."
+    },
+    {
+      "targetDomain": "GEAS",
+      "targetTopicCode": "GEAS-01",
+      "badgeText": "Chemistry",
+      "description": "Acidity is defined logarithmically: pH = -log10[H+], where every single unit drop represents a 10-fold increase in hydrogen ion concentration."
+    }
+  ],
+  "terms": [
+    {
+      "term": "Logarithm",
+      "symbol": "\\log_b(x)",
+      "unit": "Dimensionless",
+      "definition": "The exponent or power to which a fixed base $b$ ($b > 0, b \\neq 1$) must be raised to yield a given positive number $x$.",
+      "keywordTrigger": "power to which a base must be raised / inverse of exponentiation"
+    },
+    {
+      "term": "Common Logarithm (Briggsian Logarithm)",
+      "symbol": "\\log(x) \\equiv \\log_{10}(x)",
+      "unit": "Dimensionless",
+      "definition": "A logarithm with base 10, invented by Henry Briggs, commonly used in engineering decibel calculations and scientific scale representations.",
+      "keywordTrigger": "base 10 logarithm / Briggsian"
+    },
+    {
+      "term": "Natural Logarithm (Napierian Logarithm)",
+      "symbol": "\\ln(x) \\equiv \\log_e(x)",
+      "unit": "Dimensionless",
+      "definition": "A logarithm with the transcendental base $e \\approx 2.718281828$, invented by John Napier, governing continuous growth, decay, and calculus integration laws.",
+      "keywordTrigger": "base e logarithm / Napierian / Naperian"
+    },
+    {
+      "term": "Characteristic",
+      "symbol": "c = \\lfloor \\log_{10}(x) \\rfloor",
+      "unit": "Integer",
+      "definition": "The integral part of a common logarithm that determines the position of the decimal point and order of magnitude of the number.",
+      "keywordTrigger": "integral part of common logarithm"
+    },
+    {
+      "term": "Mantissa",
+      "symbol": "m = \\log_{10}(x) - \\lfloor \\log_{10}(x) \\rfloor",
+      "unit": "Non-negative Real ∈ [0, 1)",
+      "definition": "The non-negative fractional or decimal part of a common logarithm, dependent solely on the sequence of significant digits.",
+      "keywordTrigger": "fractional decimal part of common logarithm"
+    },
+    {
+      "term": "Decibel",
+      "symbol": "\\text{dB}",
+      "unit": "Logarithmic Unit (dB)",
+      "definition": "A dimensionless logarithmic unit expressing the ratio of two physical power quantities ($10 \\log_{10}(P_2 / P_1)$) or field/voltage quantities ($20 \\log_{10}(V_2 / V_1)$).",
+      "keywordTrigger": "one-tenth of a Bel / 10 log power ratio"
+    }
+  ],
+  "visualizer": {
+    "archetype": "parameter_sweep",
+    "title": "Interactive Linear vs. Logarithmic Decibel Compression Engine",
+    "description": "Adjust the linear power ratio slider from 1 to 1,000,000 to observe how logarithmic decibel scaling compresses massive linear spans into compact, manageable engineering values.",
+    "config": {
+      "canvasWidth": 640,
+      "canvasHeight": 320,
+      "controls": [
+        {
+          "id": "powerRatio",
+          "label": "Linear Power Ratio (P2 / P1)",
+          "min": 1,
+          "max": 100000,
+          "step": 500,
+          "defaultValue": 2000,
+          "unit": ""
+        }
+      ],
+      "renderFunction": "function render(ctx, width, height, state) {\n  const p = state.powerRatio;\n  const db = 10 * Math.log10(p);\n  const dbm = db + 30;\n  const voltDb = 20 * Math.log10(Math.sqrt(p));\n  \n  ctx.clearRect(0, 0, width, height);\n  ctx.fillStyle = '#0f172a';\n  ctx.fillRect(0, 0, width, height);\n  \n  ctx.font = 'bold 15px sans-serif';\n  ctx.fillStyle = '#38bdf8';\n  ctx.fillText('Linear Ratio: ' + Number(p).toLocaleString() + ' : 1', 30, 40);\n  \n  ctx.font = 'bold 20px monospace';\n  ctx.fillStyle = '#34d399';\n  ctx.fillText(db.toFixed(2) + ' dB (Power Gain)', 30, 75);\n  \n  ctx.font = '13px sans-serif';\n  ctx.fillStyle = '#94a3b8';\n  ctx.fillText('Equivalent absolute power for 1 mW input: ' + dbm.toFixed(2) + ' dBm', 30, 100);\n  \n  const barY1 = 150;\n  const barY2 = 230;\n  const maxW = width - 80;\n  \n  ctx.font = '12px sans-serif';\n  ctx.fillStyle = '#cbd5e1';\n  ctx.fillText('Linear Scale (1 to 100,000) — Severe saturation:', 30, barY1 - 10);\n  \n  ctx.fillStyle = '#1e293b';\n  ctx.fillRect(30, barY1, maxW, 24);\n  ctx.fillStyle = '#f43f5e';\n  const linW = Math.max(4, (p / 100000) * maxW);\n  ctx.fillRect(30, barY1, linW, 24);\n  \n  ctx.fillStyle = '#cbd5e1';\n  ctx.fillText('Logarithmic Scale (0 dB to 50 dB) — Perfectly uniform resolution:', 30, barY2 - 10);\n  \n  ctx.fillStyle = '#1e293b';\n  ctx.fillRect(30, barY2, maxW, 24);\n  ctx.fillStyle = '#10b981';\n  const logW = Math.max(4, (db / 50) * maxW);\n  ctx.fillRect(30, barY2, logW, 24);\n  \n  ctx.fillStyle = '#64748b';\n  ctx.font = '11px monospace';\n  ctx.fillText('0 dB (1x)', 30, barY2 + 40);\n  ctx.fillText('10 dB (10x)', 30 + maxW * 0.2 - 25, barY2 + 40);\n  ctx.fillText('20 dB (100x)', 30 + maxW * 0.4 - 30, barY2 + 40);\n  ctx.fillText('30 dB (1kx)', 30 + maxW * 0.6 - 25, barY2 + 40);\n  ctx.fillText('40 dB (10kx)', 30 + maxW * 0.8 - 30, barY2 + 40);\n  ctx.fillText('50 dB (100kx)', 30 + maxW - 35, barY2 + 40);\n}"
+    }
+  },
+  "theory": {
+    "mentalAnchor": "A logarithm is literally just an exponent in disguise: log_b(x) = y ⟺ b^y = x. Logarithms convert multiplication into addition, division into subtraction, and exponents into multipliers. In board exam log equations, test the 4 choices immediately using calculator log_■(□) instead of lengthy algebraic expansion.",
+    "contentMarkdown": "### 1. Fundamental Definition & Domain Restrictions\n\nFor a real base $b$ and argument $x$:\n\n$$\\log_b(x) = y \\iff b^y = x$$\n\n#### Rigorous Domain & Base Axioms:\n1. **Positive Argument Constraint**: $x > 0$ (The logarithm of zero or a negative number is undefined over the real numbers).\n2. **Valid Base Constraints**: $b > 0$ and $b \\neq 1$.\n\n---\n\n### 2. The 8 Master Logarithmic Identities\n\n| # | Identity Law | Mathematical Formulation | Board Application |\n| :--- | :--- | :--- | :--- |\n| 1 | **Product Rule** | $\\log_b(xy) = \\log_b x + \\log_b y$ | Cascaded stage gain summation in dB |\n| 2 | **Quotient Rule** | $\\log_b\\left(\\frac{x}{y}\\right) = \\log_b x - \\log_b y$ | Signal-to-Noise Ratio (SNR) in dB |\n| 3 | **Power Rule** | $\\log_b(x^k) = k \\log_b x$ | Voltage-to-Power squaring in dB ($20\\log$) |\n| 4 | **Base-Power Generalization** | $\\log_{b^m}(x^n) = \\frac{n}{m}\\log_b x$ | Converting between binary $\\log_2$ and hex $\\log_{16}$ |\n| 5 | **Identity & Zero Rules** | $\\log_b b = 1, \\quad \\log_b 1 = 0$ | Unity gain $0\\text{ dB} \\implies P_2 = P_1$ |\n| 6 | **Change-of-Base Formula** | $\\log_b a = \\frac{\\ln a}{\\ln b} = \\frac{\\log_{10} a}{\\log_{10} b}$ | Evaluating arbitrary bases on calculators |\n| 7 | **Reciprocal Base Inversion** | $\\log_b a = \\frac{1}{\\log_a b}$ | Rapid base swapping in algebraic proofs |\n| 8 | **Exponential Power Cancellation** | $b^{\\log_b x} = x \\quad \\text{and} \\quad a^{\\log_b c} = c^{\\log_b a}$ | Solving exponential equations |\n\n---\n\n### 3. Decibel (dB) Engineering Rules of Thumb\n\nIn ECE Board Exams (EST & Elecs), memorize these instant mental conversion anchors:\n\n- **$+3\\text{ dB}$**: Power doubles ($\times 2$).\n- **$-3\\text{ dB}$**: Power halves ($\times 0.5$, the classic half-power cutoff point).\n- **$+6\\text{ dB}$**: Voltage doubles ($\times 2$) or Power quadruples ($\times 4$).\n- **$+10\\text{ dB}$**: Power increases by a factor of $10$.\n- **$+20\\text{ dB}$**: Power increases by a factor of $100$ (Voltage increases by $10$).\n- **$+30\\text{ dB}$**: Power increases by a factor of $1,000$ ($1\\text{ W} = 30\\text{ dBm}$).\n\n$$\\text{Power Gain in dB} = 10\\log_{10}\\left(\\frac{P_{\\text{out}}}{P_{\\text{in}}}\\right)$$\n$$\\text{Voltage Gain in dB} = 20\\log_{10}\\left(\\frac{V_{\\text{out}}}{V_{\\text{in}}}\\right)$$\n$$P_{(\\text{dBm})} = 10\\log_{10}\\left(\\frac{P_{(\\text{mW})}}{1\\text{ mW}}\\right) = P_{(\\text{dBW})} + 30\\text{ dB}$$"
+  },
+  "examples": [
+    {
+      "problemStatement": "Solve for x in the multi-base logarithmic equation: \\log_2(x) + \\log_4(x) + \\log_{16}(x) = \\frac{21}{4}.",
+      "formalSolutionMarkdown": "#### Step 1: Apply the Base-Power Generalization Law to express all terms in base 2\nRecall that $\\log_{b^m}(x) = \\frac{1}{m}\\log_b(x)$:\n- $\\log_4(x) = \\log_{2^2}(x) = \\frac{1}{2}\\log_2(x)$\n- $\\log_{16}(x) = \\log_{2^4}(x) = \\frac{1}{4}\\log_2(x)$\n\n#### Step 2: Substitute back into the equation\n$$\\log_2(x) + \\frac{1}{2}\\log_2(x) + \\frac{1}{4}\\log_2(x) = \\frac{21}{4}$$\n\n#### Step 3: Factor out \\log_2(x) and sum coefficients\n$$\\left(1 + \\frac{1}{2} + \\frac{1}{4}\\right)\\log_2(x) = \\frac{21}{4}$$\n$$\\left(\\frac{4 + 2 + 1}{4}\\right)\\log_2(x) = \\frac{21}{4}$$\n$$\\frac{7}{4}\\log_2(x) = \\frac{21}{4}$$\n\n#### Step 4: Solve for \\log_2(x) and extract x\n$$\\log_2(x) = \\frac{21}{4} \\times \\frac{4}{7} = 3$$\n$$x = 2^3 = 8$$",
+      "shortcutSolutionMarkdown": "#### ⚡ 8-Second Arbitrary Base Calculator Evaluation\n1. Use the dedicated `<kbd>log■(□)</kbd>` key on the Karce / Canon calculator:\n   Enter: `log_2(X) + log_4(X) + log_16(X)`\n2. Press `<kbd>CALC</kbd>` and test $X = 8$:\n   $$\\log_2(8) + \\log_4(8) + \\log_{16}(8) = 3 + 1.5 + 0.75 = 5.25 = \\frac{21}{4} \\quad \\text{✅ (Instant Match!)}$$\n3. Option $x = 8$ is verified in under 8 seconds.",
+      "formalTimeSeconds": 115,
+      "shortcutTimeSeconds": 8
+    },
+    {
+      "problemStatement": "Solve for x to 4 decimal places: 3^{2x - 1} = 5^{x + 2}.",
+      "formalSolutionMarkdown": "#### Step 1: Take the natural logarithm of both sides\n$$\\ln(3^{2x - 1}) = \\ln(5^{x + 2})$$\n\n#### Step 2: Apply the power rule to bring exponents down\n$$(2x - 1)\\ln 3 = (x + 2)\\ln 5$$\n$$2x\\ln 3 - \\ln 3 = x\\ln 5 + 2\\ln 5$$\n\n#### Step 3: Group terms containing x on the left-hand side\n$$2x\\ln 3 - x\\ln 5 = \\ln 3 + 2\\ln 5$$\n$$x(2\\ln 3 - \\ln 5) = \\ln 3 + \\ln(5^2)$$\n$$x(\\ln(3^2) - \\ln 5) = \\ln 3 + \\ln 25$$\n$$x\\ln\\left(\\frac{9}{5}\\right) = \\ln(75)$$\n\n#### Step 4: Compute the numerical quotient\n$$x = \\frac{\\ln(75)}{\\ln(1.8)} = \\frac{4.317488}{0.587787} \\approx 7.3453$$",
+      "shortcutSolutionMarkdown": "#### ⚡ 6-Second SHIFT SOLVE Keystroke\n1. Type the raw equation into the calculator screen using `<kbd>ALPHA</kbd>` `<kbd>=</kbd>`:\n   `3^(2X - 1) = 5^(X + 2)`\n2. Press `<kbd>SHIFT</kbd>` `<kbd>SOLVE</kbd>` $\\to$ enter initial guess `5` $\\to$ press `<kbd>=</kbd>`.\n3. Display immediately reads `X = 7.345324` in 6 seconds.",
+      "formalTimeSeconds": 130,
+      "shortcutTimeSeconds": 6
+    },
+    {
+      "problemStatement": "An RF communication transmitter delivers 50 Watts of RF power into a transmission line. Express this power level in (a) dBW, and (b) dBm.",
+      "formalSolutionMarkdown": "#### Part (a): Express Power in dBW (referenced to 1 Watt)\n$$\\text{Power in dBW} = 10\\log_{10}\\left(\\frac{P}{1\\text{ W}}\\right) = 10\\log_{10}\\left(\\frac{50}{1}\\right) = 10\\log_{10}(50)$$\n$$\\text{Since } 50 = \\frac{100}{2} \\implies \\log_{10}(50) = \\log_{10}(100) - \\log_{10}(2) = 2 - 0.30103 = 1.69897$$\n$$\\text{Power in dBW} = 10 \\times 1.69897 = 16.99\\text{ dBW}$$\n\n#### Part (b): Express Power in dBm (referenced to 1 milliwatt)\n$$\\text{Since } 1\\text{ W} = 1000\\text{ mW}, \\quad 50\\text{ W} = 50,000\\text{ mW}$$\n$$\\text{Power in dBm} = 10\\log_{10}\\left(\\frac{50,000\\text{ mW}}{1\\text{ mW}}\\right) = 10\\log_{10}(50,000)$$\n$$\\text{Power in dBm} = 10[\\log_{10}(50) + \\log_{10}(1000)] = 10[1.69897 + 3] = 46.99\\text{ dBm}$$\n\nNotice that: $\\text{Power in dBm} = \\text{Power in dBW} + 30\\text{ dB} = 16.99 + 30 = 46.99\\text{ dBm}$.",
+      "shortcutSolutionMarkdown": "#### ⚡ 3-Second Mental Decibel Decomposition\n1. Recognize $50\\text{ W} = 5 \\times 10^1\\text{ W}$.\n   - $10\\log(10^1) = 10\\text{ dBW}$\n   - $+ 10\\log(5) \\approx + 7.0\\text{ dBW} \\implies 16.99\\text{ dBW}$\n2. Add $30\\text{ dB}$ to convert to $\\text{dBm}$:\n   $$16.99 + 30 = 46.99\\text{ dBm}$$",
+      "formalTimeSeconds": 100,
+      "shortcutTimeSeconds": 3
+    }
+  ],
+  "calculatorGuides": {
+    "karce": {
+      "mode": "COMP Mode (<kbd>MODE</kbd> <kbd>1</kbd>)",
+      "keystrokes": [
+        "<kbd>log■(□)</kbd>",
+        "<kbd>2</kbd>",
+        "<kbd>▶</kbd>",
+        "<kbd>8</kbd>",
+        "<kbd>=</kbd>"
+      ],
+      "notes": "Use the dedicated log template key to evaluate arbitrary base logarithms directly without manually executing the change-of-base formula. For exponential equations, use <kbd>SHIFT</kbd> <kbd>SOLVE</kbd>."
+    },
+    "canon": {
+      "mode": "COMP Mode (<kbd>MODE</kbd> <kbd>1</kbd>)",
+      "keystrokes": [
+        "<kbd>log</kbd>",
+        "<kbd>2</kbd>",
+        "<kbd>,</kbd>",
+        "<kbd>8</kbd>",
+        "<kbd>)</kbd>",
+        "<kbd>=</kbd>"
+      ],
+      "notes": "On the Canon F-789SGA, press the arbitrary base log button or use the APPS solver menu for transcendental equations."
+    }
+  },
+  "conceptChecks": [
+    {
+      "id": "chk-01-03-01",
+      "question": "If \\log_b(2) = 0.3010 and \\log_b(3) = 0.4771, what is the value of \\log_b(72)?",
+      "options": {
+        "A": "1.8572",
+        "B": "1.4332",
+        "C": "0.1436",
+        "D": "2.2541"
+      },
+      "correctAnswer": "A",
+      "distractorDeconstruction": {
+        "A": "Correct. Factor 72 into primes: 72 = 2^3 × 3^2. Then log_b(72) = 3 log_b(2) + 2 log_b(3) = 3(0.3010) + 2(0.4771) = 0.9030 + 0.9542 = 1.8572.",
+        "B": "Multiplies 2 log_b(2) + 3 log_b(3) (inverting the prime exponents of 2 and 3).",
+        "C": "Multiplies log_b(2) × log_b(3) erroneously treating the log of a product as a product of logs.",
+        "D": "Adds log_b(2) + log_b(3) + log_b(12) with arithmetic error."
+      },
+      "shortcutExplanation": "72 = 8 × 9 = 2^3 × 3^2 => 3(0.3010) + 2(0.4771) = 0.9030 + 0.9542 = 1.8572."
+    },
+    {
+      "id": "chk-01-03-02",
+      "question": "Solve for x: \\log_3(x + 6) - \\log_3(x) = 2.",
+      "options": {
+        "A": "0.75",
+        "B": "1.5",
+        "C": "3",
+        "D": "6"
+      },
+      "correctAnswer": "A",
+      "distractorDeconstruction": {
+        "A": "Correct. log_3((x + 6) / x) = 2 => (x + 6) / x = 3^2 = 9 => x + 6 = 9x => 8x = 6 => x = 6/8 = 0.75.",
+        "B": "Distractor from erroneously setting base 3^2 = 6 (multiplying 3×2) instead of raising to the power 3^2 = 9.",
+        "C": "Distractor from subtracting 9 - 6 = 3.",
+        "D": "Distractor from equating x + 6 = 2x."
+      },
+      "shortcutExplanation": "(x + 6)/x = 9 => 9x = x + 6 => 8x = 6 => x = 0.75 (or test 0.75 via CALC: log_3(6.75/0.75) = log_3(9) = 2)."
+    },
+    {
+      "id": "chk-01-03-03",
+      "question": "In an optical fiber link, the input optical power is 10 mW and the output received power is 0.01 mW. What is the total optical attenuation of the link in decibels (dB)?",
+      "options": {
+        "A": "-30 dB",
+        "B": "-20 dB",
+        "C": "-10 dB",
+        "D": "-40 dB"
+      },
+      "correctAnswer": "A",
+      "distractorDeconstruction": {
+        "A": "Correct. Attenuation/Gain = 10 log10(P_out / P_in) = 10 log10(0.01 / 10) = 10 log10(10^-3) = 10(-3) = -30 dB (a loss of 30 dB).",
+        "B": "Distractor from using 20 log (voltage formula) on 0.01/10 or miscounting powers of 10.",
+        "C": "Distractor considering only a single decade drop (10x).",
+        "D": "Distractor adding an extra factor of 10."
+      },
+      "shortcutExplanation": "Power drops from 10 mW to 0.01 mW, which is a factor of 1,000 (10^3). In power dB, 10^3 corresponds strictly to -30 dB."
+    },
+    {
+      "id": "chk-01-03-04",
+      "question": "What is the official ECE Board Table of Specifications term for the integral part of a common logarithm?",
+      "options": {
+        "A": "Characteristic",
+        "B": "Mantissa",
+        "C": "Modulus",
+        "D": "Radix"
+      },
+      "correctAnswer": "A",
+      "distractorDeconstruction": {
+        "A": "Correct. In common logarithms (base 10), the integer part is the characteristic, which determines the order of magnitude.",
+        "B": "The mantissa is the non-negative decimal/fractional part of the logarithm.",
+        "C": "Modulus is the absolute magnitude of a complex number or divisor in modular arithmetic.",
+        "D": "Radix is the base of a positional numeral system (e.g., radix 2 for binary, radix 10 for decimal)."
+      },
+      "shortcutExplanation": "TOS Signature: Integral part = Characteristic; Fractional decimal part = Mantissa."
+    }
+  ]
+}
