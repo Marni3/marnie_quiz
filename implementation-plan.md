@@ -347,3 +347,71 @@ To ensure seamless board-exam study on mobile devices (smartphones and tablets) 
 - **Web App Manifest (`manifest.json`):** Configure standalone app metadata, icons, theme color, and fullscreen display so examinees can "Add to Home Screen" on iOS and Android.
 - **Service Worker Caching (Workbox):** Cache static assets, KaTeX fonts, and seed question sets locally for offline review when studying in low-connectivity exam rooms or transit.
 - **Viewport Safe Area Insets:** Apply `env(safe-area-inset-bottom)` and `env(safe-area-inset-top)` padding for iPhone dynamic islands and Android navigation notches.
+
+
+### 4.9 In-App Feedback & Contextual Bug Reporting Pipeline
+- **Top Bar "Give Feedback" Modal:**
+  - Accessible via a sleek **"Feedback"** link in the top navbar and footer.
+  - Allows examinees to submit feature suggestions, general usability feedback, or praise.
+- **Contextual "Report Issue with Question" CTA:**
+  - In the Quiz Runner (`quiz-runner.tsx`) and Post-Exam Review (`/attempts/[id]/results`), each question includes a small **"🚩 Report Error"** flag.
+  - Automatically captures `questionId`, `promptText`, `selectedChoice`, `correctChoice`, and examinee's error description (e.g., typo in equation, ambiguous distractor, wrong key answer).
+- **Global Error Boundary Fallback:**
+  - Standard Next.js error boundary (`error.tsx`) displaying a friendly *"Something went wrong"* card with a 1-click **"Report Bug"** button capturing error name, route, and user agent.
+- **Database Schema (`feedback_reports`):**
+  ```ts
+  export const feedbackReports = pgTable("feedback_reports", {
+    id: uuid("id").defaultRandom().primaryKey(),
+    userId: uuid("user_id"),
+    type: varchar("type", { length: 30 }).notNull(), // "general_feedback" | "question_error" | "app_bug"
+    questionId: uuid("question_id"),
+    route: varchar("route", { length: 255 }),
+    message: text("message").notNull(),
+    metadata: jsonb("metadata"),
+    status: varchar("status", { length: 20 }).default("open"),
+    createdAt: timestamp("created_at").defaultNow(),
+  });
+  ```
+
+---
+
+## 5. Sequential Execution Steps to v1.0 Feature Freeze
+
+To execute the remainder of Phase 4 and lock in the permanent v1.0 feature freeze:
+
+```mermaid
+graph TD
+    A[Phase 4.5: Native Learning Modules /learn] --> B[Phase 4.6: Global Omni-Search Bar]
+    B --> C[Phase 4.7: BYOK AI Tutor & Test Generator]
+    C --> D[Phase 4.8: Personal Notebook /notes & Highlights]
+    D --> E[Phase 4.9: Feedback & Bug Reporting System]
+    E --> F[Phase 4.10: Mobile Bottom Nav & PWA Polish]
+    F --> G[🔒 v1.0 Feature Freeze & Study Phase]
+```
+
+### Step 1: Phase 4.5 — Interactive Learning Modules (`/learn` / `/modules`)
+- Build the dynamic `/learn` and `/learn/[topicCode]` pages with the interactive **[ Formal Lecture | ⚡ Speed Shortcut | Combined ]** segmented toggle.
+- Author initial foundational modules for high-yield topics (e.g. `MATH 01-08: Word Problems`, `MATH 09-02: Conic Eccentricity Visualizer`, `ELEC 04: AC Power Triangle`, `EST 03: Modulation`).
+- Embed standardized 4-choice in-line MCQ checks and Karce/Canon `<kbd>` keystrokes.
+
+### Step 2: Phase 4.6 — Global Omni-Search Bar (`/` Shortcut)
+- Build the client-side fuzzy search dialog accessible from the navbar or pressing `/`.
+- Search instantly across all 202 test sets, 50 topics, and learning modules.
+
+### Step 3: Phase 4.7 — BYOK AI Tutor & Post-Exam Debriefing
+- Create the client-side BYOK key management modal (`localStorage` encryption).
+- Implement multi-provider failover routing (Google AI Studio $	o$ Groq $	o$ OpenRouter).
+- Add post-exam AI debriefing on `/attempts/[id]/results` and 1-click **"Target My Weaknesses"** test generator with RFC4180 fail-safe auto-repair.
+
+### Step 4: Phase 4.8 — Unified Personal Notebook (`/notes`)
+- Implement text selection floating popover (`[ 🖍️ Highlight | 🔖 Bookmark | 🤖 Ask AI | 📝 Save Note ]`).
+- Build `/notes` page with subject tabs, keyword search, and 1-click AI formula cheat sheet condensation.
+
+### Step 5: Phase 4.9 — Feedback & Contextual Bug Reporting
+- Add `feedbackReports` Drizzle schema in Neon PostgreSQL.
+- Add "Give Feedback" navbar dialog and "🚩 Report Error" question flag in quiz runner and results.
+
+### Step 6: Phase 4.10 — Mobile Ergonomics & PWA Final Polish
+- Add mobile bottom navigation bar (`< 640px`), `manifest.json`, and safe-area padding.
+- Verify `npm run build` with 0 errors across all routes.
+- **Declare v1.0 Feature Complete & Enter Pure Study Mode.**
