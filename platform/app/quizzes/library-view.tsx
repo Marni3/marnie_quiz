@@ -29,7 +29,7 @@ import { QuizListItem } from "@/lib/quizzes";
 import { FolderWithCount } from "@/lib/folders";
 import { UserTopicSrs } from "@/lib/db/schema";
 import { GamificationData } from "@/lib/gamification";
-import { SUBJECTS, getSubjectFromKey, pluralize, METRIC_DEFINITIONS, formatTopicCode } from "@/lib/constants";
+import { SUBJECTS, getSubjectFromKey, pluralize, METRIC_DEFINITIONS, formatTopicCode, inferSubjectAndTopicCode } from "@/lib/constants";
 
 interface LibraryViewProps {
   initialQuizzes: QuizListItem[];
@@ -43,6 +43,20 @@ interface LibraryViewProps {
   gamificationData?: GamificationData;
   currentUserId: string;
 }
+
+const DOMAIN_ORDER: Record<string, number> = {
+  MATH: 1,
+  ELECS: 2,
+  GEAS: 3,
+  EST: 4,
+};
+
+const TIER_ORDER: Record<string, number> = {
+  diagnostic: 1,
+  review: 2,
+  drill: 3,
+  simulation: 4,
+};
 
 export function LibraryView({
   initialQuizzes,
@@ -88,11 +102,6 @@ export function LibraryView({
     return "review";
   };
 
-  const getTopicCodeFromTitle = (title: string): string => {
-    const m = title.match(/^([A-Za-z]+)\s*(\d+)/);
-    return m ? `${m[1].toUpperCase()}-${String(Number(m[2])).padStart(2, "0")}` : "GEN-01";
-  };
-
   const totalQuestions = useMemo(() => {
     return quizzes.reduce((sum, q) => sum + (q.questionCount || 0), 0);
   }, [quizzes]);
@@ -100,10 +109,17 @@ export function LibraryView({
   // Filter quizzes
   const filteredQuizzes = useMemo(() => {
     return quizzes.filter((q) => {
+      const meta = inferSubjectAndTopicCode({
+        topicCode: q.topicCode,
+        title: q.title,
+        subjectTag: q.subjectTag,
+      });
+
       // Subject filter
       if (selectedSubject !== "all") {
-        const subj = getSubjectFromKey(q.topicCode || q.subjectTag || q.title);
-        if (subj.code !== selectedSubject) return false;
+        if (meta.subject.key !== selectedSubject && meta.subject.code !== selectedSubject) {
+          return false;
+        }
       }
 
       // Tier filter
@@ -124,31 +140,60 @@ export function LibraryView({
         const query = search.toLowerCase();
         const matchTitle = q.title.toLowerCase().includes(query);
         const matchSubject = q.subjectTag?.toLowerCase().includes(query);
-        if (!matchTitle && !matchSubject) return false;
+        const matchTopicCode = meta.topicCode.toLowerCase().includes(query);
+        if (!matchTitle && !matchSubject && !matchTopicCode) return false;
       }
 
       return true;
     });
   }, [quizzes, selectedSubject, selectedTier, selectedFolderId, search]);
 
-  // Group by topic with subject metadata
+  // Group by topic with subject metadata and sequential syllabus sorting
   const groupedByTopic = useMemo(() => {
-    const map = new Map<string, { topicCode: string; subject: any; items: QuizListItem[] }>();
+    const map = new Map<string, { topicCode: string; subject: any; topicNumber: number; items: QuizListItem[] }>();
+
     filteredQuizzes.forEach((q) => {
+      const meta = inferSubjectAndTopicCode({
+        topicCode: q.topicCode,
+        title: q.title,
+        subjectTag: q.subjectTag,
+      });
+
       const topic = q.subjectTag || "General Review";
-      const topicCode = q.topicCode || getTopicCodeFromTitle(q.title);
-      const subject = getSubjectFromKey(topicCode);
       if (!map.has(topic)) {
-        map.set(topic, { topicCode, subject, items: [] });
+        map.set(topic, {
+          topicCode: meta.topicCode,
+          subject: meta.subject,
+          topicNumber: meta.topicNumber,
+          items: [],
+        });
       }
       map.get(topic)!.items.push(q);
     });
-    return Array.from(map.entries()).map(([name, val]) => ({
-      name,
-      topicCode: val.topicCode,
-      subject: val.subject,
-      items: val.items,
-    }));
+
+    const list = Array.from(map.entries()).map(([name, val]) => {
+      val.items.sort((a, b) => {
+        const tierA = TIER_ORDER[getQuizTier(a)] || 99;
+        const tierB = TIER_ORDER[getQuizTier(b)] || 99;
+        if (tierA !== tierB) return tierA - tierB;
+        return a.title.localeCompare(b.title);
+      });
+
+      return {
+        name,
+        topicCode: val.topicCode,
+        subject: val.subject,
+        topicNumber: val.topicNumber,
+        items: val.items,
+      };
+    });
+
+    return list.sort((a, b) => {
+      const domA = DOMAIN_ORDER[a.subject.key] || 99;
+      const domB = DOMAIN_ORDER[b.subject.key] || 99;
+      if (domA !== domB) return domA - domB;
+      return a.topicNumber - b.topicNumber;
+    });
   }, [filteredQuizzes]);
 
   // Toggle Collapse

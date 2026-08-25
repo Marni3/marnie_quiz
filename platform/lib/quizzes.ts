@@ -198,6 +198,8 @@ export async function getLibraryQuizzes(params: {
       result.push({
         id: item.set.id,
         title: item.set.title,
+        tier: item.set.tier || "review",
+        topicCode: item.set.topicCode || null,
         subjectTag: item.set.subjectTag,
         visibility: item.set.visibility,
         folderId: item.set.folderId,
