@@ -325,3 +325,25 @@ To prevent perpetual scope creep and ensure the tool fulfills its primary purpos
 1. **Immediate Feature Freeze:** Upon completing Phase 4, active development halts completely.
 2. **Shift to Pure Examinee Mode:** The platform shifts into daily review, exam simulations, and spaced repetition practice.
 3. **Passive Feedback Collection Only:** Any new feature idea, layout tweak, or enhancement request must be logged to a static `FEEDBACK_LOG.md` without writing new code, deferred until after the board exam.
+
+
+---
+
+## 15. Mobile Friendliness & PWA Optimization Strategy
+
+To ensure seamless board-exam study on mobile devices (smartphones and tablets) during commutes, library sessions, and quick reviews, the following architectural and UX enhancements are planned:
+
+### 15.1 Touch-First Ergonomics & Layout
+- **Thumb-Zone Navigation:** Place core navigation (Library, Retention Radar, History, Daily Drill CTA) in a fixed bottom tab bar for mobile viewports (`< 640px`), eliminating top-screen reaching.
+- **Large Touch Targets:** Enforce minimum $48 \times 48\text{px}$ touch targets for all multiple-choice answer buttons (`choiceA` through `choiceD`), popovers, and pagination controls.
+- **Swipe Gestures:** Support horizontal swipe gestures in the Quiz Runner (`quiz-runner.tsx`) to seamlessly advance to the next question or return to the previous question without needing to tap pagination arrows.
+
+### 15.2 Compact Layout & Bottom Sheets
+- **Drawer Modals as Bottom Sheets:** Convert full-screen and centered modals (e.g. topic set launcher, filter sheets, FSRS manual override dialogs) into native-feeling swipeable bottom sheets on mobile screens (`max-h-[80vh]` with top grab handles).
+- **Responsive KaTeX & Math Equations:** Wrap complex math equations and long formulas in auto-overflow horizontal scroll containers (`overflow-x-auto overflow-y-hidden text-sm sm:text-base py-1`) to prevent viewport breakage and text cutoff.
+- **Responsive Tables & Matrix Grids:** Convert wide multi-column analytics tables into collapsible card views on viewports $< 768px$.
+
+### 15.3 Offline Support & Progressive Web App (PWA)
+- **Web App Manifest (`manifest.json`):** Configure standalone app metadata, icons, theme color, and fullscreen display so examinees can "Add to Home Screen" on iOS and Android.
+- **Service Worker Caching (Workbox):** Cache static assets, KaTeX fonts, and seed question sets locally for offline review when studying in low-connectivity exam rooms or transit.
+- **Viewport Safe Area Insets:** Apply `env(safe-area-inset-bottom)` and `env(safe-area-inset-top)` padding for iPhone dynamic islands and Android navigation notches.
