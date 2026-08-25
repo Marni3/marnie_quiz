@@ -64,46 +64,48 @@ Every module file must strictly implement the following 9 sections in order:
 ### 1. Section Index & Navigation
 - Sticky Table of Contents linking to each sub-heading in the module.
 
-### 2. Prerequisite & Cross-Subject Bridges
-- **Previously In...**: 1–2 sentence collapsible refresher connecting from prior modules.
-- **Cross-Subject Board Connection**: Callout badge showing where this exact mathematical/physical model reappears in other board subjects (e.g., Ellipse geometry $\to$ Satellite orbital mechanics in `EST 02`).
+### 2. Introduction & Links to Related Topics
+- **Introduction**: 2–3 friendly sentences connecting previous Skill Tree concepts to today's topic.
+- **Links to Related Topics**: Callout cards showing where this model reappears across Math, Elecs, GEAS, or EST (e.g. *"In **MATH 12 (Differential Equations)**, factoring polynomials is used to find whether an RLC circuit oscillates or settles smoothly."*).
 
-### 3. Definitive Terminology & Quantity Signatures ("X is the process/measure of...")
-- Table of all newly introduced terms, quantities, units, and symbols.
+### 3. Terms and Definitions (Atomic Standard)
+- Concise table and cards of newly introduced terms and quantities.
 - Each term must include:
-  1. *Formal Board Definition*: Phrased to match PRC identification questions.
-  2. *1-Second Keyword Trigger*: The exact phrase that identifies this term in exam stems.
-  3. *SI Unit, Symbol & Dimension*.
+  1. *Atomic Definition*: 1–2 punchy sentences maximum, optimized for broad syllabus recall.
+  2. *1-Second Keyword Trigger*: The exact exam stem phrase that identifies this term.
+  3. *SI Unit, Symbol (KaTeX `$...$`) & Dimension*.
 
 ### 4. Interactive Visualizer Specification
 - Self-contained SVG/HTML5 Canvas interactive widget config:
-  - *Archetype 1*: Morphological / Geometric Simulator (e.g., Eccentricity slider $e \in [0, 3]$ morphing Circle $\to$ Ellipse $\to$ Parabola $\to$ Hyperbola).
-  - *Archetype 2*: Dynamic Parameter Sweeper (e.g., $R, L, C$ slider adjusting transient damping waveforms in real time).
-  - *Archetype 3*: Interactive Step-by-Step Reducer (e.g., Thevenin circuit source zeroing animation).
+  - *Archetype 1*: Morphological / Geometric Simulator.
+  - *Archetype 2*: Dynamic Parameter Sweeper.
+  - *Archetype 3*: Interactive Step-by-Step Reducer.
 
-### 5. Governing Theory & Core Mental Anchors
-- KaTeX mathematical equations and physical laws.
-- Explicit **"Mental Anchor / Rule of Thumb"** callout box in plain English (e.g., *"Inductors oppose sudden changes in current; capacitors oppose sudden changes in voltage."*).
+### 5. Governing Theory & Core Mental Anchors (Fluid Textbook Narrative)
+- Plain-English concept breakdown with KaTeX mathematical formulas.
+- Explicit **"Mental Anchor / Rule of Thumb"** callout box in accessible English.
+- Naturally weaved in-line concept checks checking understanding of key ideas.
 
 ### 6. The Dual-Method Breakdown (Toggleable)
 Provide 2 to 3 complete, fully worked numerical sample problems:
 - **Problem Statement**: Authentic PRC board-exam style question.
-- **[Formal / Academic Solution]**: Complete step-by-step textbook derivation with all formulas, substitutions, and intermediate algebra written out in full KaTeX.
-- **[⚡ Board Exam Speed Shortcut]**: High-speed technique (Reverse option testing via `[CALC]`, prime factorization `[FACT]`, ratio elimination, or formula bypass) solving the problem in $\le 20$ seconds.
+- **[Formal / Academic Solution]**: Step-by-step textbook derivation with all formulas and algebra written out in full KaTeX.
+- **[⚡ Board Exam Speed Shortcut]**: High-speed technique solving the problem in $\le 20$ seconds.
 
 ### 7. Calculator Keystroke Sequences (Karce KC-S991 & Canon F-789SGA)
 - Visual `<kbd>` sequences for both PRC-allowed calculator models.
-- Step-by-step key sequences for matrix, complex, statistics, integration, equation, or table mode.
+- Step-by-step key sequences for matrix, complex, statistics, equation, or table mode.
 
 ### 8. In-Line Concept Checks & Distractor Deconstruction
-- At minimum 3, up to 10 multiple-choice questions (A, B, C, D) distributed through the module depending on module scope and depth.
+- Multiple-choice questions (A, B, C, D) weaved naturally through the module.
 - For EVERY question:
   - Immediate correct answer highlight (Green).
-  - **Distractor Deconstructor**: A detailed breakdown for choices A, B, C, and D explaining the exact miscalculation, formula inversion, or conceptual trap that generates that distractor.
+  - **Distractor Deconstructor**: Breakdown for choices A, B, C, and D explaining the exact miscalculation or trap.
   - **Time Benchmark**: Formal method (~120s) vs. Board shortcut (~15s).
 
-### 9. Paired Mastery Challenge CTA
-- Direct link/button launching the paired 25Q Review Set, 30Q Diagnostic, 10Q Drill, or 50Q Simulation on `/quizzes/[quizSetId]`.
+### 9. Paired Mastery Challenge CTA & Next Module Bridge
+- Direct launch button to paired question set on `/quizzes/[quizSetId]`.
+- 1-sentence teaser bridge linking to the next subtopic in the syllabus.
 ```
 
 ---

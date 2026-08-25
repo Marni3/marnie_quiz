@@ -4,7 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useSession, signOut } from "next-auth/react";
 import { ThemeToggle } from "./theme-toggle";
-import { BookOpen, History, Upload, LogOut, Sparkles, Brain, LogIn } from "lucide-react";
+import { BookOpen, History, Upload, LogOut, Sparkles, Brain, LogIn, GraduationCap } from "lucide-react";
 
 export function Navbar({ breadcrumb }: { breadcrumb?: string }) {
   const pathname = usePathname();
@@ -49,6 +49,20 @@ export function Navbar({ breadcrumb }: { breadcrumb?: string }) {
           >
             <BookOpen className="w-4 h-4" />
             <span className="hidden xs:inline">Library</span>
+          </Link>
+
+          <Link
+            href="/learn"
+            aria-label="Learning Modules"
+            title="Interactive Learning Modules"
+            className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs sm:text-sm font-medium transition-colors ${
+              pathname === "/learn" || pathname.startsWith("/learn/")
+                ? "bg-[var(--surface2)] text-[var(--accent)] border border-[var(--border)]"
+                : "text-[var(--text2)] hover:text-[var(--text)] hover:bg-[var(--surface2)]"
+            }`}
+          >
+            <GraduationCap className="w-4 h-4" />
+            <span className="hidden xs:inline">Modules</span>
           </Link>
 
           <Link

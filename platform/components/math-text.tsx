@@ -18,74 +18,214 @@ export function MathText({
   if (!text) return null;
 
   if (splitParagraphs) {
-    const paragraphs = text.split(/\\n/);
-    return (
-      <div className={`space-y-2 ${className}`}>
-        {paragraphs.map((para, idx) => {
-          const trimmed = para.trim();
-          if (!trimmed) return null;
-          return (
-            <p key={idx} className="leading-relaxed">
-              <RenderMathSegment content={trimmed} />
-            </p>
-          );
-        })}
-      </div>
-    );
+    return <div className={`space-y-4 ${className}`}>{renderMarkdownBlocks(text)}</div>;
   }
 
   return (
     <span className={className}>
-      <RenderMathSegment content={text} />
+      <InlineFormattedText content={text} />
     </span>
   );
 }
 
-function RenderMathSegment({ content }: { content: string }) {
+// Parses multiline markdown blocks: headers, lists, horizontal rules, tables, and paragraphs
+function renderMarkdownBlocks(markdown: string): React.ReactNode {
+  // Normalize line endings
+  const clean = markdown.replace(/\r\n/g, "\n");
+  const rawLines = clean.split("\n");
+  const elements: React.ReactNode[] = [];
+
+  let i = 0;
+  while (i < rawLines.length) {
+    const line = rawLines[i];
+    const trimmed = line.trim();
+
+    if (!trimmed) {
+      i++;
+      continue;
+    }
+
+    // Horizontal Rule
+    if (/^---+$|^\*\*\*+$/.test(trimmed)) {
+      elements.push(
+        <hr key={`hr-${i}`} className="my-4 border-[var(--border)] border-t" />
+      );
+      i++;
+      continue;
+    }
+
+    // Headings
+    if (trimmed.startsWith("#### ")) {
+      elements.push(
+        <h4 key={`h4-${i}`} className="text-sm font-bold text-[var(--text)] mt-3 mb-1">
+          <InlineFormattedText content={trimmed.slice(5)} />
+        </h4>
+      );
+      i++;
+      continue;
+    }
+    if (trimmed.startsWith("### ")) {
+      elements.push(
+        <h3 key={`h3-${i}`} className="text-base font-bold font-serif text-[var(--text)] mt-4 mb-1">
+          <InlineFormattedText content={trimmed.slice(4)} />
+        </h3>
+      );
+      i++;
+      continue;
+    }
+    if (trimmed.startsWith("## ")) {
+      elements.push(
+        <h2 key={`h2-${i}`} className="text-lg font-bold font-serif text-[var(--text)] mt-5 mb-2">
+          <InlineFormattedText content={trimmed.slice(3)} />
+        </h2>
+      );
+      i++;
+      continue;
+    }
+    if (trimmed.startsWith("# ")) {
+      elements.push(
+        <h1 key={`h1-${i}`} className="text-xl font-extrabold font-serif text-[var(--text)] mt-6 mb-2">
+          <InlineFormattedText content={trimmed.slice(2)} />
+        </h1>
+      );
+      i++;
+      continue;
+    }
+
+    // Table detection (starts with |)
+    if (trimmed.startsWith("|") && trimmed.endsWith("|")) {
+      const tableLines: string[] = [];
+      while (i < rawLines.length && rawLines[i].trim().startsWith("|") && rawLines[i].trim().endsWith("|")) {
+        tableLines.push(rawLines[i].trim());
+        i++;
+      }
+      elements.push(renderMarkdownTable(`tbl-${i}`, tableLines));
+      continue;
+    }
+
+    // Unordered List
+    if (/^[-*]\s+/.test(trimmed)) {
+      const listItems: string[] = [];
+      while (i < rawLines.length && /^[-*]\s+/.test(rawLines[i].trim())) {
+        listItems.push(rawLines[i].trim().replace(/^[-*]\s+/, ""));
+        i++;
+      }
+      elements.push(
+        <ul key={`ul-${i}`} className="list-disc list-inside space-y-1.5 pl-2 text-sm text-[var(--text2)]">
+          {listItems.map((item, lIdx) => (
+            <li key={lIdx} className="leading-relaxed">
+              <InlineFormattedText content={item} />
+            </li>
+          ))}
+        </ul>
+      );
+      continue;
+    }
+
+    // Ordered List
+    if (/^\d+\.\s+/.test(trimmed)) {
+      const listItems: string[] = [];
+      while (i < rawLines.length && /^\d+\.\s+/.test(rawLines[i].trim())) {
+        listItems.push(rawLines[i].trim().replace(/^\d+\.\s+/, ""));
+        i++;
+      }
+      elements.push(
+        <ol key={`ol-${i}`} className="list-decimal list-inside space-y-1.5 pl-2 text-sm text-[var(--text2)]">
+          {listItems.map((item, lIdx) => (
+            <li key={lIdx} className="leading-relaxed">
+              <InlineFormattedText content={item} />
+            </li>
+          ))}
+        </ol>
+      );
+      continue;
+    }
+
+    // Display Math block ($$...$$)
+    if (trimmed.startsWith("$$") && trimmed.endsWith("$$") && trimmed.length >= 4) {
+      elements.push(
+        <div key={`math-${i}`} className="my-3 text-center overflow-x-auto">
+          <RenderMathBlock math={trimmed.slice(2, -2).trim()} display={true} />
+        </div>
+      );
+      i++;
+      continue;
+    }
+
+    // Regular paragraph
+    elements.push(
+      <p key={`p-${i}`} className="leading-relaxed text-sm text-[var(--text2)]">
+        <InlineFormattedText content={trimmed} />
+      </p>
+    );
+    i++;
+  }
+
+  return elements;
+}
+
+function renderMarkdownTable(key: string, lines: string[]): React.ReactNode {
+  if (lines.length < 2) return null;
+  const headerCells = lines[0].slice(1, -1).split("|").map((c) => c.trim());
+  const rowLines = lines.slice(2); // skip header and separator row
+
+  return (
+    <div key={key} className="overflow-x-auto my-3 rounded-xl border border-[var(--border)]">
+      <table className="w-full text-xs text-left border-collapse">
+        <thead className="bg-[var(--surface2)] text-[var(--text)] font-semibold border-b border-[var(--border)]">
+          <tr>
+            {headerCells.map((cell, idx) => (
+              <th key={idx} className="px-3 py-2 border-r border-[var(--border)] last:border-r-0">
+                <InlineFormattedText content={cell} />
+              </th>
+            ))}
+          </tr>
+        </thead>
+        <tbody className="divide-y divide-[var(--border)] bg-[var(--surface)]">
+          {rowLines.map((r, rIdx) => {
+            const cells = r.slice(1, -1).split("|").map((c) => c.trim());
+            return (
+              <tr key={rIdx} className="hover:bg-[var(--surface2)]/50 transition-colors">
+                {cells.map((cell, cIdx) => (
+                  <td key={cIdx} className="px-3 py-2 border-r border-[var(--border)] last:border-r-0 text-[var(--text2)]">
+                    <InlineFormattedText content={cell} />
+                  </td>
+                ))}
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
+    </div>
+  );
+}
+
+// In-line formatter for Math ($...$, $$...$$), Bold (**...**), and Italics (*...*)
+function InlineFormattedText({ content }: { content: string }) {
   const parts = useMemo(() => {
-    // Match $$...$$ for display math, or $...$ for inline math
-    const regex = /(\$\$[\s\S]*?\$\$|\$[\s\S]*?\$)/g;
+    // Tokenize on $$...$$, $...$, and **...**
+    const regex = /(\$\$[\s\S]*?\$\$|\$[\s\S]*?\$|\*\*[\s\S]*?\*\*)/g;
     const tokens = content.split(regex);
 
     return tokens.map((token, i) => {
       if (token.startsWith("$$") && token.endsWith("$$") && token.length >= 4) {
-        const math = token.slice(2, -2).trim();
-        try {
-          const html = katex.renderToString(math, {
-            displayMode: true,
-            throwOnError: false,
-          });
-          return (
-            <span
-              key={i}
-              className="block my-2"
-              dangerouslySetInnerHTML={{ __html: html }}
-            />
-          );
-        } catch {
-          return <code key={i}>{token}</code>;
-        }
-      } else if (
-        token.startsWith("$") &&
-        token.endsWith("$") &&
-        token.length >= 2
-      ) {
-        const math = token.slice(1, -1).trim();
-        try {
-          const html = katex.renderToString(math, {
-            displayMode: false,
-            throwOnError: false,
-          });
-          return (
-            <span
-              key={i}
-              className="inline-math px-0.5"
-              dangerouslySetInnerHTML={{ __html: html }}
-            />
-          );
-        } catch {
-          return <code key={i}>{token}</code>;
-        }
+        return (
+          <span key={i} className="block my-2 text-center">
+            <RenderMathBlock math={token.slice(2, -2).trim()} display={true} />
+          </span>
+        );
+      } else if (token.startsWith("$") && token.endsWith("$") && token.length >= 2) {
+        return (
+          <span key={i} className="inline-math px-0.5">
+            <RenderMathBlock math={token.slice(1, -1).trim()} display={false} />
+          </span>
+        );
+      } else if (token.startsWith("**") && token.endsWith("**") && token.length >= 4) {
+        return (
+          <strong key={i} className="font-bold text-[var(--text)]">
+            <InlineFormattedText content={token.slice(2, -2)} />
+          </strong>
+        );
       } else {
         return <React.Fragment key={i}>{token}</React.Fragment>;
       }
@@ -93,4 +233,23 @@ function RenderMathSegment({ content }: { content: string }) {
   }, [content]);
 
   return <>{parts}</>;
+}
+
+function RenderMathBlock({ math, display }: { math: string; display: boolean }) {
+  const html = useMemo(() => {
+    try {
+      return katex.renderToString(math, {
+        displayMode: display,
+        throwOnError: false,
+      });
+    } catch {
+      return null;
+    }
+  }, [math, display]);
+
+  if (!html) {
+    return <code>{math}</code>;
+  }
+
+  return <span dangerouslySetInnerHTML={{ __html: html }} />;
 }

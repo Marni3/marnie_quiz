@@ -4,17 +4,19 @@ import { getUserFolders } from "@/lib/folders";
 import { getUserTopicSrsOverview } from "@/lib/srs";
 import { getUserAnalyticsOverview } from "@/lib/analytics";
 import { getUserGamificationData } from "@/lib/gamification";
+import { getAllLearningModules } from "@/lib/modules";
 import { LibraryView } from "./library-view";
 
 export default async function QuizzesPage() {
   const session = await auth();
   const userId = session?.user?.id || "00000000-0000-0000-0000-000000000001";
 
-  const [quizzes, folders, srsOverview, analytics] = await Promise.all([
+  const [quizzes, folders, srsOverview, analytics, learningModules] = await Promise.all([
     getLibraryQuizzes({ userId }),
     getUserFolders(userId),
     getUserTopicSrsOverview(userId),
     getUserAnalyticsOverview(userId),
+    getAllLearningModules(),
   ]);
 
   const gamification = await getUserGamificationData(userId, analytics);
@@ -25,6 +27,7 @@ export default async function QuizzesPage() {
       initialFolders={folders}
       initialSrsOverview={srsOverview}
       gamificationData={gamification}
+      initialLearningModules={learningModules}
       currentUserId={userId}
     />
   );

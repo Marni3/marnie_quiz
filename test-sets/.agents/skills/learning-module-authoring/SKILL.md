@@ -18,6 +18,7 @@ Modules are designed as a **compounding, cohesive learning journey** through the
    - Content and pedagogical flow are strictly derived from lecture notes and solutions in `Reference Documents/` At the absolute minimum, ALL the contents of each document there must be covered in a respective or appropriate module. Use a lightweight pdf library in python to convert the PDFs to images if you must and use multimodal capabilities to read the contents and check how it may be integrated into the related learning module. If a reference document covers more than 1 topic, it's contents may be used for several related modules.
    - Includes a sticky **Table of Contents / Header Index** for rapid section navigation.
    - Pace yourself and plan in advance to manage properly the context window to ensure that each module is written completely with no loss of context between reading the reference notes and syllabi, and writing the actual modules.
+   - Reflect all terms in order of appearance and relevance (e.g. don't introduce or write a term if another term within the module should've been written first to explain it. Write the other one first)
 
 2. **Prerequisite Bridges ("Previously In...")**:
    - Every module begins with an optional, collapsible 1–2 sentence bridge referencing earlier Skill Tree concepts (e.g., *"In MATH 05, we defined $e^{j\theta} = \cos\theta + j\sin\theta$. Here in ELEC 04, we apply this rotating phasor to represent AC complex impedance $Z = R + jX_L$."*).
@@ -77,13 +78,19 @@ Where physical or geometric intuition is paramount, modules embed lightweight, s
 
 ---
 
-## 4. Calculator Keystroke Guides (Karce KC-S991 & Canon F-789SGA)
+## 4. Calculator Techniques (Karce KC-S991 & Canon F-789SGA)
 
-Every quantitative module features exact button sequences with visual `<kbd>` badges:
+Every quantitative module features dedicated **Calculator Techniques** tailored to PRC-allowed calculator models:
+1. **Technique Title & Problem Type**: Name the specific technique (e.g., *"Prime Factor Decomposition & GCD Bypass"*, *"Option Testing via Numerical Substitution"*, *"Complex Matrix Impedance Inversion"*).
+2. **Sample Problem First**: Show an authentic PRC board exam sample problem that this technique specifically solves.
+3. **Step-by-Step Keystroke Guide with Context**:
+   - Exact button sequences with visual `<kbd>` badges.
+   - Specific mode setup (e.g., `COMP Mode [MODE] [1]`, `CMPLX Mode [MODE] [2]`, `EQN Mode [MODE] [5]`).
+   - Contextual pro-tips explaining calculator memory management, syntax shortcuts, and common execution traps.
 
 - **Karce KC-S991** (Natural Display / V.P.A.M. standard conventions):
   - Quadratic/Cubic: `<kbd>MODE</kbd> <kbd>5</kbd> <kbd>3</kbd>` / `<kbd>MODE</kbd> <kbd>5</kbd> <kbd>4</kbd>`
-  - Complex Numbers: `<kbd>MODE</kbd> <kbd>2</kbd>` $	o$ `<kbd>SHIFT</kbd> <kbd>2</kbd> <kbd>3</kbd>` for $rngle	heta$
+  - Complex Numbers: `<kbd>MODE</kbd> <kbd>2</kbd>` $\to$ `<kbd>SHIFT</kbd> <kbd>2</kbd> <kbd>3</kbd>` for $r\angle\theta$
   - Table Function: `<kbd>MODE</kbd> <kbd>7</kbd>` (Reverse option testing)
   - Numerical Derivatives / Integrals: `<kbd>SHIFT</kbd> <kbd>d/dx</kbd>` / `<kbd>∫dx</kbd>`
   - Statistics / Linear Regression: `<kbd>MODE</kbd> <kbd>3</kbd>`
@@ -98,11 +105,11 @@ Every quantitative module features exact button sequences with visual `<kbd>` ba
 ## 5. Standard Module Blueprint
 
 1. **Header & Section Index**: Continuous code, subtopic name, and sticky Table of Contents.
-2. **Prerequisite & Cross-Subject Bridges**: Collapsible recall bridge + cross-subject board connections.
-3. **Definitive Terminology & Quantity Signatures**: Standardized *"X is the process/measure of..."* definitions with 1-second keyword trigger associations, units, and symbols.
-4. **Interactive Visualizer (if applicable)**: Canvas/SVG slider demonstrating physical intuition.
-5. **Governing Theory & Mental Anchor**: KaTeX formulas with plain-English rules of thumb.
-6. **The Dual Breakdown**: Side-by-side or stacked long method vs. board shortcut comparison with toggle.
-7. **Calculator Keystrokes**: Visual `<kbd>` sequences for Karce & Canon.
-8. **In-Line Multiple Choice Checks & Distractor Deconstruction**: 3–5 embedded MCQs with instant feedback.
-9. **Paired Mastery Challenge Link**: Direct launch button to paired question set.
+2. **Introduction & Links to Related Topics**: Friendly introductory hook + cross-subject board connections.
+3. **Terms and Definitions**: Atomic definitions in logical dependency order with 1-second keyword trigger associations, units, and KaTeX symbols.
+4. **Lesson Proper & Interactive Visualizer (if applicable)**: Clear plain-English conceptual breakdown, core mental anchor callout box, and interactive Canvas simulation.
+5. **Sample Problems and Solutions**: Dual-method solutions comparing rigorous step-by-step textbook derivations against $\le 20\text{s}$ board shortcuts.
+6. **Calculator Techniques**: Technique title, problem type, sample problem, mode, and step-by-step keystroke guide with context.
+7. **In-Line Concept Checks & Distractor Deconstruction**: Multiple choice questions with instant grading, distractor analysis, and 10-second shortcut tricks.
+8. **Paired Mastery Challenge & Next Module Bridge**: Direct launch button to paired question set on `/quizzes/[id]` and teaser link to next module.
+

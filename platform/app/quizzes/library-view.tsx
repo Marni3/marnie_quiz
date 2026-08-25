@@ -23,12 +23,14 @@ import {
   ShieldCheck,
   AlertTriangle,
   GitBranch,
-  List
+  List,
+  GraduationCap,
 } from "lucide-react";
 import { QuizListItem } from "@/lib/quizzes";
 import { FolderWithCount } from "@/lib/folders";
 import { UserTopicSrs } from "@/lib/db/schema";
 import { GamificationData } from "@/lib/gamification";
+import { LearningModuleSummary } from "@/lib/modules";
 import { SUBJECTS, getSubjectFromKey, pluralize, METRIC_DEFINITIONS, formatTopicCode, inferSubjectAndTopicCode } from "@/lib/constants";
 
 interface LibraryViewProps {
@@ -41,6 +43,7 @@ interface LibraryViewProps {
     topicMap: Record<string, UserTopicSrs & { currentR: number; isDue: boolean }>;
   };
   gamificationData?: GamificationData;
+  initialLearningModules?: LearningModuleSummary[];
   currentUserId: string;
 }
 
@@ -63,11 +66,13 @@ export function LibraryView({
   initialFolders,
   initialSrsOverview,
   gamificationData,
+  initialLearningModules = [],
   currentUserId,
 }: LibraryViewProps) {
   const router = useRouter();
   const [quizzes] = useState<QuizListItem[]>(initialQuizzes);
   const [folders, setFolders] = useState<FolderWithCount[]>(initialFolders);
+  const [learningModules] = useState<LearningModuleSummary[]>(initialLearningModules);
   const [srsOverview, setSrsOverview] = useState(
     initialSrsOverview || {
       averageRetention: 100,
@@ -76,6 +81,16 @@ export function LibraryView({
       topicMap: {},
     }
   );
+
+  const modulesByTopic = useMemo(() => {
+    const map: Record<string, LearningModuleSummary[]> = {};
+    learningModules.forEach((m) => {
+      const code = m.topicCode.toUpperCase();
+      if (!map[code]) map[code] = [];
+      map[code].push(m);
+    });
+    return map;
+  }, [learningModules]);
 
   // View Mode: 'list' vs 'tree'
   const [viewMode, setViewMode] = useState<"list" | "tree">("list");
@@ -746,9 +761,60 @@ export function LibraryView({
                         </div>
                       </div>
 
-                      {/* Expanded Quiz Cards & Subtopic Range Filters */}
+                      {/* Expanded Quiz Cards, Learning Modules & Subtopic Range Filters */}
                       {!isCollapsed && (
-                        <div className="p-4 sm:p-5 pt-0 border-t border-[var(--border)] space-y-3">
+                        <div className="p-4 sm:p-5 pt-3 border-t border-[var(--border)] space-y-4">
+                          {/* Companion Interactive Learning Modules */}
+                          {modulesByTopic[group.topicCode] && modulesByTopic[group.topicCode].length > 0 && (
+                            <div className="space-y-2 pb-2 border-b border-[var(--border)]">
+                              <div className="flex items-center justify-between">
+                                <span className="text-xs font-bold font-mono uppercase tracking-wider text-[var(--accent)] flex items-center gap-1.5">
+                                  <GraduationCap className="w-4 h-4" />
+                                  <span>Interactive Learning Modules ({modulesByTopic[group.topicCode].length})</span>
+                                </span>
+                                <Link
+                                  href="/learn"
+                                  className="text-[11px] text-[var(--text3)] hover:text-[var(--accent)] font-medium transition-colors"
+                                >
+                                  View All Modules →
+                                </Link>
+                              </div>
+
+                              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+                                {modulesByTopic[group.topicCode].map((mod) => (
+                                  <Link
+                                    key={mod.id}
+                                    href={`/learn/${mod.id}`}
+                                    className="bg-[var(--surface2)] border border-[var(--border)] hover:border-[var(--accent)] rounded-xl p-3.5 shadow-xs transition-all flex flex-col justify-between group/mod hover:shadow-sm"
+                                  >
+                                    <div className="space-y-1.5">
+                                      <div className="flex items-center justify-between gap-2">
+                                        <span className="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-[var(--accent)]/10 text-[var(--accent)] border border-[var(--accent)]/20">
+                                          {mod.code}
+                                        </span>
+                                        {mod.hasVisualizer && (
+                                          <span className="text-[10px] font-mono text-cyan-500 font-semibold flex items-center gap-0.5">
+                                            ★ Visualizer
+                                          </span>
+                                        )}
+                                      </div>
+                                      <h4 className="text-xs sm:text-sm font-bold text-[var(--text)] group-hover/mod:text-[var(--accent)] transition-colors line-clamp-2">
+                                        {mod.subtopicTitle}
+                                      </h4>
+                                    </div>
+
+                                    <div className="mt-3 pt-2 border-t border-[var(--border)] flex items-center justify-between text-[11px] text-[var(--text3)]">
+                                      <span className="font-mono">{mod.termsCount} Terms • {mod.examplesCount} Ex. • {mod.conceptChecksCount} MCQs</span>
+                                      <span className="font-semibold text-[var(--accent)] group-hover/mod:translate-x-0.5 transition-transform flex items-center gap-0.5">
+                                        Read <ChevronRight className="w-3 h-3" />
+                                      </span>
+                                    </div>
+                                  </Link>
+                                ))}
+                              </div>
+                            </div>
+                          )}
+
                           {/* Subtopic Range Filter Chips */}
                           {(() => {
                             const subtopicTags = Array.from(

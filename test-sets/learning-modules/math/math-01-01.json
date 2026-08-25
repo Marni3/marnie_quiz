@@ -8,87 +8,122 @@
   "order": 1,
   "pairedQuizSetId": "math_01_algebra_drill_all_set01",
   "toc": [
-    { "id": "sec-prereq-bridges", "title": "1. Prerequisite & Cross-Subject Bridges", "level": 2 },
-    { "id": "sec-terminology", "title": "2. Real Number Signatures & Board Terminology", "level": 2 },
-    { "id": "sec-visualizer", "title": "3. Interactive Visualizer: Prime Factor Decomposition & GCD/LCM Venn Engine", "level": 2 },
-    { "id": "sec-theory", "title": "4. Governing Theory & Core Mental Anchors", "level": 2 },
-    { "id": "sec-dual-method", "title": "5. The Dual-Method Breakdown (Academic vs. ⚡ Board Shortcut)", "level": 2 },
-    { "id": "sec-calculator", "title": "6. Calculator Keystroke Sequences (Karce & Canon)", "level": 2 },
-    { "id": "sec-concept-checks", "title": "7. In-Line Concept Checks & Distractor Deconstruction", "level": 2 },
+    { "id": "sec-prereq-bridges", "title": "1. Introduction & Links to Related Topics", "level": 2 },
+    { "id": "sec-terminology", "title": "2. Terms and Definitions", "level": 2 },
+    { "id": "sec-visualizer", "title": "3. Interactive Visualizer: Prime Factor Decomposition", "level": 2 },
+    { "id": "sec-theory", "title": "4. Lesson Proper", "level": 2 },
+    { "id": "sec-dual-method", "title": "5. Sample Problems and Solutions", "level": 2 },
+    { "id": "sec-calculator", "title": "6. Calculator Techniques (Karce & Canon)", "level": 2 },
+    { "id": "sec-concept-checks", "title": "7. In-Line Concept Checks", "level": 2 },
     { "id": "sec-mastery-challenge", "title": "8. Paired Mastery Challenge", "level": 2 }
   ],
   "prerequisiteBridge": {
     "priorModuleId": "none",
-    "text": "Welcome to the Mathematics curriculum for the PRC ECE Licensure Examination. This module lays the axiomatic foundation of real numbers, prime factor decomposition, and polynomial factoring identities upon which all subsequent algebraic manipulations, calculus derivations, and circuit network equations depend."
+    "text": "Welcome to Mathematics for the ECE Board Exam! We kick off our review with the real number line, prime factor shortcuts, and polynomial identities that make calculus, differential equations, and circuit algebra fast and error-free."
   },
   "crossSubjectBridges": [
     {
       "targetDomain": "MATH",
       "targetTopicCode": "MATH-12",
       "badgeText": "Differential Equations",
-      "description": "Factoring high-degree characteristic auxiliary equations into distinct, repeated, or irreducible quadratic roots directly determines the complementary solutions (overdamped, critically damped, or underdamped waveforms)."
+      "description": "Factoring polynomials is used in MATH 12 to find auxiliary equation roots and determine if an RLC circuit oscillates or settles smoothly."
     },
     {
       "targetDomain": "MATH",
       "targetTopicCode": "MATH-04",
       "badgeText": "Discrete Math",
-      "description": "The Euclidean Algorithm for Greatest Common Divisors and prime factor structures form the foundation of modular arithmetic, public-key cryptography (RSA), and error-correcting codes."
+      "description": "Prime numbers, GCF, and the Euclidean Algorithm form the mathematical backbone of digital data cryptography (RSA) and error-checking codes."
     },
     {
       "targetDomain": "ELECS",
       "targetTopicCode": "ELEC-01",
       "badgeText": "DC Circuits",
-      "description": "Standard resistor, capacitor, and inductor value sequences (E12, E24, E96 series) follow logarithmic prime-factorized geometric progressions to minimize component stocking overhead."
+      "description": "Standard resistor and capacitor values (E12, E24 series) use prime-factored exponential steps to cover all component needs with minimal inventory."
     }
   ],
   "terms": [
     {
+      "term": "Natural Numbers",
+      "symbol": "$\\mathbb{N}$",
+      "unit": "Set",
+      "definition": "The set of positive counting numbers starting from 1: $\\{1, 2, 3, 4, \\dots\\}$.",
+      "keywordTrigger": "positive counting numbers starting from 1"
+    },
+    {
+      "term": "Whole Numbers",
+      "symbol": "$\\mathbb{W}$",
+      "unit": "Set",
+      "definition": "The set of natural numbers including zero: $\\{0, 1, 2, 3, \\dots\\}$.",
+      "keywordTrigger": "natural numbers including zero"
+    },
+    {
+      "term": "Integers",
+      "symbol": "$\\mathbb{Z}$",
+      "unit": "Set",
+      "definition": "All positive and negative whole numbers and zero: $\\{\\dots, -2, -1, 0, 1, 2, \\dots\\}$.",
+      "keywordTrigger": "whole numbers and their negative opposites"
+    },
+    {
       "term": "Rational Number",
-      "symbol": "\\mathbb{Q}",
-      "unit": "Dimensionless",
-      "definition": "A real number that can be expressed strictly as the quotient or ratio of two integers $\\frac{p}{q}$, where $q \\neq 0$, characterized by a terminating or non-terminating repeating decimal expansion.",
-      "keywordTrigger": "ratio of two integers / repeating decimal"
+      "symbol": "$\\mathbb{Q}$",
+      "unit": "Set",
+      "definition": "Any number that can be written as a fraction $\\frac{p}{q}$ of two integers ($q \\neq 0$), yielding terminating or repeating decimals.",
+      "keywordTrigger": "fraction p/q / terminating or repeating decimal"
     },
     {
       "term": "Irrational Number",
-      "symbol": "\\mathbb{Q}'",
-      "unit": "Dimensionless",
-      "definition": "A real number that cannot be expressed as a ratio of two integers, characterized by a non-terminating, non-repeating decimal expansion (e.g., $\\pi, e, \\sqrt{2}$).",
-      "keywordTrigger": "non-terminating non-repeating / cannot be expressed as p/q"
+      "symbol": "$\\mathbb{Q}'$",
+      "unit": "Set",
+      "definition": "Any number that cannot be written as a fraction, having endless non-repeating decimals (e.g., $\\pi, e, \\sqrt{2}$).",
+      "keywordTrigger": "non-terminating non-repeating decimal / cannot be p/q"
+    },
+    {
+      "term": "Real Numbers",
+      "symbol": "$\\mathbb{R}$",
+      "unit": "Set",
+      "definition": "The union of all rational and irrational numbers representing every point on the continuous number line.",
+      "keywordTrigger": "union of rational and irrational numbers"
+    },
+    {
+      "term": "Prime Number",
+      "symbol": "$p$",
+      "unit": "Integer",
+      "definition": "A positive integer strictly greater than 1 that has exactly two positive divisors: 1 and itself (2 is the only even prime).",
+      "keywordTrigger": "integer > 1 with exactly two positive divisors"
+    },
+    {
+      "term": "Composite Number",
+      "symbol": "$n$",
+      "unit": "Integer",
+      "definition": "A positive integer strictly greater than 1 that has more than two positive divisors.",
+      "keywordTrigger": "integer > 1 with more than two positive factors"
     },
     {
       "term": "Greatest Common Factor (GCF / GCD)",
-      "symbol": "\\text{GCF}(a, b)",
+      "symbol": "$\\text{GCF}(a, b)$",
       "unit": "Integer",
-      "definition": "The largest positive integer that divides each of the integers without leaving a remainder; computed as the product of all common prime factors raised to their lowest powers.",
+      "definition": "The largest integer that evenly divides both numbers; computed from common prime factors with lowest exponents.",
       "keywordTrigger": "largest integer dividing both numbers / lowest common prime powers"
     },
     {
       "term": "Least Common Multiple (LCM)",
-      "symbol": "\\text{LCM}(a, b)",
+      "symbol": "$\\text{LCM}(a, b)$",
       "unit": "Integer",
-      "definition": "The smallest positive integer that is divisible by each of the given integers; computed as the product of all distinct prime factors raised to their highest powers.",
+      "definition": "The smallest positive integer divisible by each given number; computed from all unique prime factors with highest exponents.",
       "keywordTrigger": "smallest positive integer divisible by all / highest prime powers"
     },
     {
-      "term": "Fundamental Theorem of Arithmetic",
-      "symbol": "n = \\prod p_i^{a_i}",
-      "unit": "Theorem",
-      "definition": "The principle stating that every integer greater than 1 either is a prime itself or can be uniquely represented as a product of prime numbers, up to the order of the factors.",
-      "keywordTrigger": "unique prime factorization theorem"
-    },
-    {
       "term": "Sophie Germain Identity",
-      "symbol": "a^4 + 4b^4",
-      "unit": "Algebraic Identity",
-      "definition": "The special polynomial identity that factors the sum of two fourth-power terms into the product of two quadratic trinomials: $a^4 + 4b^4 = (a^2 + 2ab + 2b^2)(a^2 - 2ab + 2b^2)$.",
-      "keywordTrigger": "sum of two fourth powers factorable over reals"
+      "symbol": "$a^4 + 4b^4$",
+      "unit": "Identity",
+      "definition": "A factoring identity that splits fourth powers into quadratics: $a^4 + 4b^4 = (a^2 + 2ab + 2b^2)(a^2 - 2ab + 2b^2)$.",
+      "keywordTrigger": "sum of two fourth powers factorable into quadratics"
     }
   ],
   "visualizer": {
     "archetype": "geometric",
-    "title": "Interactive Prime Factor Decomposition & Venn GCD/LCM Engine",
-    "description": "Adjust numbers A and B to dynamically compute their prime factor trees, inspect the overlapping intersection in the Venn diagram (GCF), and observe the total bounding union (LCM).",
+    "title": "Interactive Prime Factor Decomposition & Venn Engine",
+    "description": "Adjust numbers A and B to inspect their prime factor trees, the overlapping intersection (GCF), and the total union (LCM).",
     "config": {
       "canvasWidth": 640,
       "canvasHeight": 320,
@@ -98,148 +133,139 @@
           "label": "Number A",
           "min": 12,
           "max": 360,
-          "step": 6,
-          "defaultValue": 72,
-          "unit": ""
+          "step": 12,
+          "defaultValue": 72
         },
         {
           "id": "numB",
           "label": "Number B",
           "min": 12,
           "max": 360,
-          "step": 6,
-          "defaultValue": 120,
-          "unit": ""
+          "step": 12,
+          "defaultValue": 120
         }
       ],
-      "renderFunction": "function render(ctx, width, height, state) {\n  const A = Math.round(state.numA);\n  const B = Math.round(state.numB);\n  \n  function getPrimeFactors(n) {\n    const factors = [];\n    let d = 2;\n    let temp = n;\n    while (temp >= 2) {\n      if (temp % d === 0) {\n        factors.push(d);\n        temp /= d;\n      } else {\n        d++;\n        if (d * d > temp) {\n          if (temp > 1) factors.push(temp);\n          break;\n        }\n      }\n    }\n    return factors;\n  }\n  \n  function getCounts(arr) {\n    const counts = {};\n    arr.forEach(x => { counts[x] = (counts[x] || 0) + 1; });\n    return counts;\n  }\n  \n  const factorsA = getPrimeFactors(A);\n  const factorsB = getPrimeFactors(B);\n  const countA = getCounts(factorsA);\n  const countB = getCounts(factorsB);\n  \n  const allPrimes = Array.from(new Set([...Object.keys(countA), ...Object.keys(countB)])).map(Number).sort((a,b)=>a-b);\n  \n  const shared = [];\n  const onlyA = [];\n  const onlyB = [];\n  let gcf = 1;\n  let lcm = 1;\n  \n  allPrimes.forEach(p => {\n    const cA = countA[p] || 0;\n    const cB = countB[p] || 0;\n    const minP = Math.min(cA, cB);\n    const maxP = Math.max(cA, cB);\n    \n    for(let i=0; i<minP; i++) { shared.push(p); gcf *= p; }\n    for(let i=0; i<cA - minP; i++) onlyA.push(p);\n    for(let i=0; i<cB - minP; i++) onlyB.push(p);\n    lcm *= Math.pow(p, maxP);\n  });\n  \n  ctx.clearRect(0, 0, width, height);\n  ctx.fillStyle = '#0f172a';\n  ctx.fillRect(0, 0, width, height);\n  \n  const r = 85;\n  const cy = height / 2 - 10;\n  const cxA = width / 2 - 55;\n  const cxB = width / 2 + 55;\n  \n  ctx.beginPath();\n  ctx.arc(cxA, cy, r, 0, Math.PI * 2);\n  ctx.fillStyle = 'rgba(59, 130, 246, 0.25)';\n  ctx.fill();\n  ctx.lineWidth = 2.5;\n  ctx.strokeStyle = '#3b82f6';\n  ctx.stroke();\n  \n  ctx.beginPath();\n  ctx.arc(cxB, cy, r, 0, Math.PI * 2);\n  ctx.fillStyle = 'rgba(168, 85, 247, 0.25)';\n  ctx.fill();\n  ctx.lineWidth = 2.5;\n  ctx.strokeStyle = '#a855f7';\n  ctx.stroke();\n  \n  ctx.font = 'bold 15px sans-serif';\n  ctx.fillStyle = '#60a5fa';\n  ctx.textAlign = 'center';\n  ctx.fillText('Set A: ' + A, cxA - 35, cy - r - 12);\n  \n  ctx.fillStyle = '#c084fc';\n  ctx.fillText('Set B: ' + B, cxB + 35, cy - r - 12);\n  \n  ctx.font = '13px monospace';\n  ctx.fillStyle = '#93c5fd';\n  onlyA.forEach((val, idx) => {\n    ctx.fillText('• ' + val, cxA - 42, cy - 25 + idx * 20);\n  });\n  \n  ctx.fillStyle = '#d8b4fe';\n  onlyB.forEach((val, idx) => {\n    ctx.fillText('• ' + val, cxB + 42, cy - 25 + idx * 20);\n  });\n  \n  ctx.fillStyle = '#34d399';\n  ctx.font = 'bold 14px monospace';\n  shared.forEach((val, idx) => {\n    ctx.fillText('★ ' + val, width / 2, cy - 25 + idx * 20);\n  });\n  \n  ctx.font = '13px sans-serif';\n  ctx.fillStyle = '#e2e8f0';\n  ctx.textAlign = 'center';\n  ctx.fillText('GCF (Intersection) = ' + gcf + '   |   LCM (Union) = ' + lcm + '   |   A × B = ' + (A * B) + ' = GCF × LCM', width / 2, height - 20);\n}"
+      "renderFunction": "function(ctx, width, height, state) { const numA = state.numA || 72; const numB = state.numB || 120; function getPrimeFactors(n) { const factors = []; let d = 2; while (d * d <= n) { while (n % d === 0) { factors.push(d); n /= d; } d++; } if (n > 1) factors.push(n); return factors; } function gcd(a, b) { return b === 0 ? a : gcd(b, a % b); } const gcfVal = gcd(numA, numB); const lcmVal = (numA * numB) / gcfVal; const fA = getPrimeFactors(numA); const fB = getPrimeFactors(numB); const fCommon = getPrimeFactors(gcfVal); const fAOnly = [...fA]; const fBOnly = [...fB]; fCommon.forEach(f => { const idxA = fAOnly.indexOf(f); if (idxA !== -1) fAOnly.splice(idxA, 1); const idxB = fBOnly.indexOf(f); if (idxB !== -1) fBOnly.splice(idxB, 1); }); ctx.fillStyle = '#0f172a'; ctx.fillRect(0, 0, width, height); const cY = height / 2; const cXA = width / 2 - 75; const cXB = width / 2 + 75; const r = 85; ctx.beginPath(); ctx.arc(cXA, cY, r, 0, Math.PI * 2); ctx.fillStyle = 'rgba(59, 130, 246, 0.25)'; ctx.fill(); ctx.lineWidth = 2.5; ctx.strokeStyle = '#3b82f6'; ctx.stroke(); ctx.beginPath(); ctx.arc(cXB, cY, r, 0, Math.PI * 2); ctx.fillStyle = 'rgba(234, 179, 8, 0.25)'; ctx.fill(); ctx.strokeStyle = '#eab308'; ctx.stroke(); ctx.fillStyle = '#93c5fd'; ctx.font = 'bold 13px sans-serif'; ctx.textAlign = 'center'; ctx.fillText('A = ' + numA, cXA - 40, cY - 95); ctx.fillText('Factors: [' + fAOnly.join(', ') + ']', cXA - 40, cY); ctx.fillStyle = '#fde047'; ctx.fillText('B = ' + numB, cXB + 40, cY - 95); ctx.fillText('Factors: [' + fBOnly.join(', ') + ']', cXB + 40, cY); ctx.fillStyle = '#4ade80'; ctx.font = 'bold 14px sans-serif'; ctx.fillText('Intersection (GCF)', width / 2, cY - 40); ctx.font = 'bold 12px sans-serif'; ctx.fillText('[' + fCommon.join(', ') + ']', width / 2, cY - 15); ctx.fillStyle = '#38bdf8'; ctx.font = 'bold 14px sans-serif'; ctx.fillText('GCF: ' + gcfVal, width / 2, height - 35); ctx.fillStyle = '#f472b6'; ctx.fillText('LCM: ' + lcmVal, width / 2, height - 15); }"
     }
   },
   "theory": {
-    "mentalAnchor": "Factoring transforms an addition problem into a multiplication problem; GCF takes the lowest powers of shared prime factors, while LCM takes the highest powers of all prime factors. When testing algebraic factors under exam time limits, substitute an easy prime value like x = 2 or x = 3 into both the question stem and the 4 choices.",
-    "contentMarkdown": "### 1. The Real Number System Architecture\n\nThe real numbers $\\mathbb{R}$ represent the complete set of continuous points along the one-dimensional number line. They are structured hierarchically into the following rigorous subsets:\n\n$$\\mathbb{N} \\subset \\mathbb{W} \\subset \\mathbb{Z} \\subset \\mathbb{Q} \\subset \\mathbb{R}$$\n\n1. **Natural Numbers ($\\mathbb{N}$)**: $\\{1, 2, 3, 4, \\dots\\}$ (counting numbers).\n2. **Whole Numbers ($\\mathbb{W}$)**: $\\{0, 1, 2, 3, \\dots\\} = \\mathbb{N} \\cup \\{0\\}$.\n3. **Integers ($\\mathbb{Z}$)**: $\\{\\dots, -3, -2, -1, 0, 1, 2, 3, \\dots\\}$.\n4. **Rational Numbers ($\\mathbb{Q}$)**: $\\left\\{\\frac{p}{q} \\;\\middle|\\; p, q \\in \\mathbb{Z},\\; q \\neq 0\\right\\}$. Every rational number has a decimal expansion that either terminates (e.g., $\\frac{3}{8} = 0.375$) or repeats periodically (e.g., $\\frac{4}{7} = 0.\\overline{571428}$).\n5. **Irrational Numbers ($\\mathbb{Q}'$)**: Numbers that cannot be represented as an exact ratio of integers. Their decimal representations never terminate and never repeat in a cyclic loop (e.g., $\\sqrt{2} \\approx 1.41421356\\dots$, $\\pi \\approx 3.14159265\\dots$, $e \\approx 2.71828182\\dots$).\n\n---\n\n### 2. GCF, LCM & The Multiplicative Invariance Law\n\nBy the **Fundamental Theorem of Arithmetic**, every positive integer $N > 1$ can be expressed uniquely as:\n\n$$N = p_1^{a_1} p_2^{a_2} \\dots p_k^{a_k} = \\prod_{i=1}^k p_i^{a_i}$$\n\nGiven two integers $A = \\prod p_i^{a_i}$ and $B = \\prod p_i^{b_i}$:\n- **Greatest Common Factor (GCF)**: $\\text{GCF}(A, B) = \\prod p_i^{\\min(a_i, b_i)}$\n- **Least Common Multiple (LCM)**: $\\text{LCM}(A, B) = \\prod p_i^{\\max(a_i, b_i)}$\n\n#### The Invariance Theorem:\n$$\\text{GCF}(A, B) \\times \\text{LCM}(A, B) = A \\times B$$\n\n---\n\n### 3. Master Table of Special Algebraic Factoring Identities\n\nIn the ECE Board Exam, speed in polynomial factoring directly dictates problem throughput:\n\n| Polynomial Form | Factored Identity | Classification Name |\n| :--- | :--- | :--- |\n| $a^2 - b^2$ | $(a - b)(a + b)$ | Difference of Two Squares |\n| $a^3 - b^3$ | $(a - b)(a^2 + ab + b^2)$ | Difference of Two Cubes |\n| $a^3 + b^3$ | $(a + b)(a^2 - ab + b^2)$ | Sum of Two Cubes |\n| $a^4 - b^4$ | $(a^2 + b^2)(a + b)(a - b)$ | Difference of Fourth Powers |\n| $a^4 + 4b^4$ | $(a^2 + 2ab + 2b^2)(a^2 - 2ab + 2b^2)$ | **Sophie Germain Identity** |\n| $a^n - b^n$ | $(a - b)(a^{n-1} + a^{n-2}b + \\dots + b^{n-1})$ | Difference of $n$-th Powers (All $n$) |\n| $a^n + b^n$ | $(a + b)(a^{n-1} - a^{n-2}b + \\dots + b^{n-1})$ | Sum of $n$-th Powers (Odd $n$ only) |\n| $a^3 + b^3 + c^3 - 3abc$ | $(a+b+c)(a^2+b^2+c^2 - ab - bc - ca)$ | Euler's Cubic Identity |\n\n> [!TIP]\n> **Euler's Special Condition**: If $a + b + c = 0$, then $a^3 + b^3 + c^3 = 3abc$. This algebraic trap appears frequently in simplification problems on the board exam."
+    "mentalAnchor": "Real numbers form a continuous line. For GCF, take the intersection of prime factors (lowest powers); for LCM, take the union (highest powers). Always remember: GCF(a, b) × LCM(a, b) = a × b.",
+    "contentMarkdown": "### 1. The Real Number Hierarchy\n\nAll real numbers belong to one continuous family hierarchy:\n\n$$\\mathbb{N} \\subset \\mathbb{W} \\subset \\mathbb{Z} \\subset \\mathbb{Q} \\subset \\mathbb{R}$$\n\n- **Natural Numbers ($\\mathbb{N}$)**: Counting numbers $1, 2, 3, \\dots$\n- **Whole Numbers ($\\mathbb{W}$)**: Natural numbers plus zero: $0, 1, 2, 3, \\dots$\n- **Integers ($\\mathbb{Z}$)**: Positive, negative whole numbers and zero.\n- **Rational Numbers ($\\mathbb{Q}$)**: Any fraction $\\frac{p}{q}$ ($q \\neq 0$). Decimals always terminate ($0.75$) or repeat ($0.333\\dots$).\n- **Irrational Numbers ($\\mathbb{Q}'$)**: Non-repeating, non-terminating decimals ($\\pi \\approx 3.14159\\dots$, $e \\approx 2.71828\\dots$, $\\sqrt{2} \\approx 1.41421\\dots$).\n\n---\n\n### 2. Prime Factorization, GCF & LCM\n\nEvery integer $n > 1$ has a single unique prime factorization:\n\n$$n = p_1^{a_1} p_2^{a_2} \\cdots p_k^{a_k}$$\n\n- **Greatest Common Factor (GCF)**: The product of all common prime factors raised to their **smallest** powers.\n- **Least Common Multiple (LCM)**: The product of all unique prime factors raised to their **highest** powers.\n\n**Fundamental Product Invariance Law**:\n$$\\text{GCF}(a, b) \\times \\text{LCM}(a, b) = a \\times b$$\n\n---\n\n### 3. Essential Board Exam Factoring Identities\n\nMaster these algebraic expansions to solve exam problems in seconds:\n\n1. **Difference of Two Squares**:\n   $$a^2 - b^2 = (a - b)(a + b)$$\n\n2. **Sum and Difference of Two Cubes**:\n   $$a^3 + b^3 = (a + b)(a^2 - ab + b^2)$$\n   $$a^3 - b^3 = (a - b)(a^2 + ab + b^2)$$\n\n3. **Sophie Germain Identity (Sum of Fourth Powers)**:\n   $$a^4 + 4b^4 = (a^2 + 2ab + 2b^2)(a^2 - 2ab + 2b^2)$$\n   *Classic Example*: $x^4 + 4 = (x^2 + 2x + 2)(x^2 - 2x + 2)$."
   },
   "examples": [
     {
-      "problemStatement": "Factor completely over the field of real numbers: P(x, y) = x^4 + 64y^4.",
-      "formalSolutionMarkdown": "#### Step 1: Recognize the missing middle term for a perfect square trinomial\nWe want to express $x^4 + 64y^4$ as a difference of squares by completing the square.\nNote that:\n$$(x^2)^2 + (8y^2)^2$$\n\nTo make this a perfect square trinomial of the form $(x^2 + 8y^2)^2$, we require a middle term of:\n$$2 \\cdot (x^2) \\cdot (8y^2) = 16x^2y^2$$\n\n#### Step 2: Add and subtract the required middle term\n$$P(x, y) = (x^4 + 16x^2y^2 + 64y^4) - 16x^2y^2$$\n\n#### Step 3: Factor the perfect square trinomial\n$$P(x, y) = (x^2 + 8y^2)^2 - (4xy)^2$$\n\n#### Step 4: Apply the Difference of Two Squares identity\n$$P(x, y) = [(x^2 + 8y^2) - 4xy][(x^2 + 8y^2) + 4xy]$$\n\nArranging in standard descending order:\n$$P(x, y) = (x^2 - 4xy + 8y^2)(x^2 + 4xy + 8y^2)$$",
-      "shortcutSolutionMarkdown": "#### ⚡ 15-Second Numerical Value Substitution Method\nInstead of manual algebraic factoring, substitute small non-zero test values (e.g., $x = 2$, $y = 1$) into the given expression:\n\n$$P(2, 1) = 2^4 + 64(1)^4 = 16 + 64 = 80$$\n\nNow evaluate the factored options at $x = 2, y = 1$:\n- **Option A**: $(2^2 - 4(2)(1) + 8(1)^2)(2^2 + 4(2)(1) + 8(1)^2) = (4 - 8 + 8)(4 + 8 + 8) = (4)(20) = 80$ ✅ **(Match!)**\n- **Option B**: $(x^2 + 8y^2)(x^2 - 8y^2) \\implies (4 + 8)(4 - 8) = (12)(-4) = -48$ ❌\n- **Option C**: $(x^2 + 4y^2)^2 \\implies (4 + 4)^2 = 64$ ❌\n- **Option D**: Prime / Non-factorable over reals ❌",
-      "formalTimeSeconds": 120,
-      "shortcutTimeSeconds": 15
+      "problemStatement": "Find the Greatest Common Factor (GCF) and Least Common Multiple (LCM) of 72 and 120, and verify their product property.",
+      "formalSolutionMarkdown": "1. **Find Prime Factorizations**:\n   - $72 = 8 \\times 9 = 2^3 \\times 3^2$\n   - $120 = 8 \\times 15 = 2^3 \\times 3^1 \\times 5^1$\n\n2. **Compute GCF (lowest powers of common bases)**:\n   $$\\text{GCF} = 2^{\\min(3,3)} \\times 3^{\\min(2,1)} = 2^3 \\times 3^1 = 8 \\times 3 = 24$$\n\n3. **Compute LCM (highest powers of all bases)**:\n   $$\\text{LCM} = 2^{\\max(3,3)} \\times 3^{\\max(2,1)} \\times 5^{\\max(0,1)} = 2^3 \\times 3^2 \\times 5^1 = 8 \\times 9 \\times 5 = 360$$\n\n4. **Verify Product Rule**:\n   $$\\text{GCF} \\times \\text{LCM} = 24 \\times 360 = 8640$$\n   $$a \\times b = 72 \\times 120 = 8640 \\quad \\text{(Matches)}$$",
+      "shortcutSolutionMarkdown": "Use the **Karce / Canon GCD and LCM functions**:\n\n1. Press `[ALPHA] [GCD] 72 , 120 [=]` $\\to$ **$24$** (1 second).\n2. Compute LCM directly via $\\text{LCM} = \\frac{72 \\times 120}{24} = \\mathbf{360}$ (3 seconds).",
+      "shortcutTimeSeconds": 5,
+      "formalTimeSeconds": 60
     },
     {
-      "problemStatement": "Find the Least Common Multiple (LCM) and Greatest Common Factor (GCF) of the three integers: A = 504, B = 756, and C = 1080.",
-      "formalSolutionMarkdown": "#### Step 1: Perform complete prime factor decomposition\n- $504 = 2^3 \\times 3^2 \\times 7^1$\n- $756 = 2^2 \\times 3^3 \\times 7^1$\n- $1080 = 2^3 \\times 3^3 \\times 5^1$\n\n#### Step 2: Compute GCF using minimum exponent across all three integers\n- For base 2: $\\min(3, 2, 3) = 2 \\implies 2^2$\n- For base 3: $\\min(2, 3, 3) = 2 \\implies 3^2$\n- For base 5: $\\min(0, 0, 1) = 0 \\implies 5^0 = 1$\n- For base 7: $\\min(1, 1, 0) = 0 \\implies 7^0 = 1$\n\n$$\\text{GCF}(504, 756, 1080) = 2^2 \\times 3^2 = 4 \\times 9 = 36$$\n\n#### Step 3: Compute LCM using maximum exponent across all distinct primes\n- For base 2: $\\max(3, 2, 3) = 3 \\implies 2^3 = 8$\n- For base 3: $\\max(2, 3, 3) = 3 \\implies 3^3 = 27$\n- For base 5: $\\max(0, 0, 1) = 1 \\implies 5^1 = 5$\n- For base 7: $\\max(1, 1, 0) = 1 \\implies 7^1 = 7$\n\n$$\\text{LCM}(504, 756, 1080) = 2^3 \\times 3^3 \\times 5^1 \\times 7^1 = 8 \\times 27 \\times 5 \\times 7 = 7560$$",
-      "shortcutSolutionMarkdown": "#### ⚡ 10-Second Karce / Canon Prime Decomposition Shortcut\nUse the built-in prime factor key to bypass manual factor trees:\n1. Input `504` $\\to$ press `<kbd>=</kbd>` $\\to$ press `<kbd>SHIFT</kbd>` `<kbd>FACT</kbd>` $\\implies 2^3 \\times 3^2 \\times 7$\n2. Input `756` $\\to$ press `<kbd>=</kbd>` $\\to$ press `<kbd>SHIFT</kbd>` `<kbd>FACT</kbd>` $\\implies 2^2 \\times 3^3 \\times 7$\n3. Input `1080` $\\to$ press `<kbd>=</kbd>` $\\to$ press `<kbd>SHIFT</kbd>` `<kbd>FACT</kbd>` $\\implies 2^3 \\times 3^3 \\times 5$\n\nMultiply lowest common powers for GCF ($4 \\times 9 = 36$) and highest overall powers for LCM ($8 \\times 27 \\times 35 = 7560$) immediately.",
-      "formalTimeSeconds": 150,
-      "shortcutTimeSeconds": 12
-    },
-    {
-      "problemStatement": "Simplify the algebraic fraction completely: \\frac{x^3 - 7x + 6}{x^3 - 3x^2 - 4x + 12}.",
-      "formalSolutionMarkdown": "#### Step 1: Factor the numerator P(x) = x^3 - 7x + 6\nBy inspection or Rational Root Theorem, test $x = 1$:\n$$P(1) = 1^3 - 7(1) + 6 = 0 \\implies (x - 1) \\text{ is a factor.}$$\n\nUsing synthetic division for $x = 1$ on $[1, 0, -7, 6]$:\n- Quotient: $x^2 + x - 6 = (x + 3)(x - 2)$\n- Therefore: $x^3 - 7x + 6 = (x - 1)(x - 2)(x + 3)$\n\n#### Step 2: Factor the denominator Q(x) = x^3 - 3x^2 - 4x + 12 by grouping\n$$Q(x) = x^2(x - 3) - 4(x - 3) = (x^2 - 4)(x - 3) = (x - 2)(x + 2)(x - 3)$$\n\n#### Step 3: Cancel identical common factors\n$$\\frac{P(x)}{Q(x)} = \\frac{(x - 1)(x - 2)(x + 3)}{(x - 2)(x + 2)(x - 3)} = \\frac{(x - 1)(x + 3)}{(x + 2)(x - 3)} = \\frac{x^2 + 2x - 3}{x^2 - x - 6}$$",
-      "shortcutSolutionMarkdown": "#### ⚡ 8-Second CALC Substitution Bypass\n1. Type the original fraction into the calculator display: `(X^3 - 7X + 6) / (X^3 - 3X^2 - 4X + 12)`\n2. Press `<kbd>CALC</kbd>`, enter `X = 5`, and press `<kbd>=</kbd>`:\n   $$\\text{Display Value} = \\frac{5^3 - 7(5) + 6}{5^3 - 3(5^2) - 4(5) + 12} = \\frac{125 - 35 + 6}{125 - 75 - 20 + 12} = \\frac{96}{42} = \\frac{16}{7} \\approx 2.2857$$\n3. Evaluate the choices at $X = 5$:\n   - **Option A**: $\\frac{5^2 + 2(5) - 3}{5^2 - 5 - 6} = \\frac{25 + 10 - 3}{25 - 5 - 6} = \\frac{32}{14} = \\frac{16}{7}$ ✅ **(Instant Match!)**\n   - Other choices produce distinct values.",
-      "formalTimeSeconds": 130,
-      "shortcutTimeSeconds": 10
+      "problemStatement": "Factor the polynomial expression $P(x) = x^4 + 64$ into two irreducible quadratic polynomials over the real numbers.",
+      "formalSolutionMarkdown": "Apply the **Sophie Germain Identity** $a^4 + 4b^4 = (a^2 + 2ab + 2b^2)(a^2 - 2ab + 2b^2)$:\n\n1. Express $x^4 + 64$ in $a^4 + 4b^4$ form:\n   - $a = x$\n   - $4b^4 = 64 \\implies b^4 = 16 \\implies b = 2$\n\n2. Substitute $a = x$ and $b = 2$ into the identity:\n   $$x^4 + 64 = [x^2 + 2(x)(2) + 2(2^2)][x^2 - 2(x)(2) + 2(2^2)]$$\n   $$x^4 + 64 = (x^2 + 4x + 8)(x^2 - 4x + 8)$$",
+      "shortcutSolutionMarkdown": "Use **Numerical Substitution via `[CALC]`**:\n\n1. Pick a small test number, say $x = 2$.\n2. Evaluate expression: $2^4 + 64 = 16 + 64 = \\mathbf{80}$.\n3. Test the choices with $x = 2$:\n   - Choice: $(2^2 + 4(2) + 8)(2^2 - 4(2) + 8) = (4 + 8 + 8)(4 - 8 + 8) = (20)(4) = \\mathbf{80}$.\n4. Matches immediately in under 15 seconds without factoring algebra!",
+      "shortcutTimeSeconds": 15,
+      "formalTimeSeconds": 90
     }
   ],
   "calculatorGuides": {
     "karce": {
-      "mode": "COMP Mode (<kbd>MODE</kbd> <kbd>1</kbd>)",
+      "techniqueTitle": "Prime Factor Decomposition & GCD Bypass",
+      "problemType": "Integer Factoring & Divisors",
+      "sampleProblem": "Find the prime factor decomposition of 72 and compute $\\text{GCF}(72, 120)$.",
+      "mode": "COMP Mode ([MODE] [1])",
       "keystrokes": [
-        "<kbd>5</kbd>",
-        "<kbd>0</kbd>",
-        "<kbd>4</kbd>",
-        "<kbd>=</kbd>",
-        "<kbd>SHIFT</kbd>",
-        "<kbd>FACT</kbd>"
+        "[7] [2] [=]",
+        "[SHIFT] [FACT] → 2³ × 3²",
+        "[ALPHA] [GCD] 72 [SHIFT] [,] 120 [=] → 24"
       ],
-      "notes": "The Karce KC-S991 features a dedicated FACT (Prime Factorization) sub-function mapped to the B / degree key. When evaluating algebraic equivalence, always use the <kbd>CALC</kbd> button with an odd prime like X = 5 or X = 7 to avoid false coincidences with 0, 1, or 2."
+      "notes": "Karce KC-S991 can instantly factor any positive integer up to 10 digits into prime powers using [SHIFT] [FACT]."
     },
     "canon": {
-      "mode": "COMP Mode (<kbd>MODE</kbd> <kbd>1</kbd>)",
+      "techniqueTitle": "Direct GCD & LCM Evaluation",
+      "problemType": "Common Multiples & Divisors",
+      "sampleProblem": "Compute $\\text{GCD}(72, 120)$ and $\\text{LCM}(72, 120)$ without manual factor trees.",
+      "mode": "COMP Mode ([MODE] [1])",
       "keystrokes": [
-        "<kbd>APPS</kbd>",
-        "<kbd>3</kbd>",
-        "<kbd>5</kbd>",
-        "<kbd>0</kbd>",
-        "<kbd>4</kbd>",
-        "<kbd>=</kbd>"
+        "[GCD] 72 [,] 120 [=] → 24",
+        "[LCM] 72 [,] 120 [=] → 360",
+        "[CALC] with x = 2 for polynomial option checking"
       ],
-      "notes": "On the Canon F-789SGA, prime factorization is located in the APPS menu under Arithmetic/Number properties. For polynomial fractions, enter the expression using <kbd>ALPHA</kbd> <kbd>X</kbd> and evaluate with the <kbd>CALC</kbd> key."
+      "notes": "Canon F-789SGA has dedicated direct GCD and LCM buttons under secondary function keys for instant evaluation."
     }
   },
   "conceptChecks": [
     {
-      "id": "chk-01-01-01",
-      "question": "Which of the following numbers is an IRRATIONAL number?",
+      "id": "chk-01",
+      "question": "Which of the following numbers is classified as an **irrational number**?",
       "options": {
-        "A": "0.3181818...",
-        "B": "√0.0049",
-        "C": "3.1415926535",
-        "D": "√8"
+        "A": "$\\frac{22}{7}$",
+        "B": "$0.3181818\\dots$ (repeating)",
+        "C": "$\\sqrt{3}$",
+        "D": "$\\sqrt{0.04}$"
       },
-      "correctAnswer": "D",
+      "correctAnswer": "C",
       "distractorDeconstruction": {
-        "A": "0.3181818... is a repeating non-terminating decimal, which represents the rational fraction 7/22.",
-        "B": "√0.0049 = 0.07 = 7/100, which is an exact rational fraction.",
-        "C": "3.1415926535 is a terminating decimal with 10 decimal places (31415926535/10^10), hence strictly rational. Note that π is irrational, but a truncated finite decimal approximation is rational.",
-        "D": "√8 = 2√2. Since 8 is not a perfect square, its square root is non-terminating and non-repeating, making it strictly irrational."
+        "A": "$\\frac{22}{7}$ is a ratio of two integers $\\frac{p}{q}$, making it strictly rational (an approximation of $\\pi$, not $\\pi$ itself).",
+        "B": "Any repeating decimal is rational and can be converted into an exact fraction ($\\frac{7}{22}$).",
+        "C": "$\\sqrt{3} \\approx 1.73205\\dots$ is non-repeating and non-terminating, making it genuinely irrational.",
+        "D": "$\\sqrt{0.04} = 0.2 = \\frac{1}{5}$, which terminates and is a rational number."
       },
-      "shortcutExplanation": "Examine the square roots: √0.0049 = 0.07 (rational), whereas √8 = 2.828427... cannot be simplified to an integer ratio."
+      "shortcutExplanation": "Any square root of a non-perfect square is always irrational. $\\sqrt{3}$ is not a perfect square."
     },
     {
-      "id": "chk-01-01-02",
-      "question": "Factor completely over the field of real numbers: 8x^3 - 27.",
+      "id": "chk-02",
+      "question": "Two numbers have a Greatest Common Factor of 12 and a Least Common Multiple of 180. If one of the numbers is 36, what is the other number?",
       "options": {
-        "A": "(2x - 3)(4x^2 + 6x + 9)",
-        "B": "(2x - 3)(4x^2 - 6x + 9)",
-        "C": "(2x - 3)^3",
-        "D": "(2x + 3)(4x^2 - 6x + 9)"
-      },
-      "correctAnswer": "A",
-      "distractorDeconstruction": {
-        "A": "Correct. Uses the difference of cubes identity a^3 - b^3 = (a - b)(a^2 + ab + b^2) with a = 2x and b = 3.",
-        "B": "Classic sign trap. Uses -6x in the quadratic factor instead of the required +ab (+6x).",
-        "C": "Confuses the difference of cubes a^3 - b^3 with the cube of a binomial (a - b)^3 = a^3 - 3a^2b + 3ab^2 - b^3.",
-        "D": "Inverts the linear factor sign to (2x + 3), which corresponds to the sum of cubes 8x^3 + 27."
-      },
-      "shortcutExplanation": "Substitute x = 2: 8(2)^3 - 27 = 64 - 27 = 37. Option A gives (4 - 3)(16 + 12 + 9) = (1)(37) = 37 (Match in 5s)."
-    },
-    {
-      "id": "chk-01-01-03",
-      "question": "Two positive integers have a Greatest Common Factor of 18 and a Least Common Multiple of 1080. If one of the numbers is 216, find the other integer.",
-      "options": {
-        "A": "72",
-        "B": "90",
-        "C": "120",
-        "D": "180"
+        "A": "48",
+        "B": "60",
+        "C": "72",
+        "D": "90"
       },
       "correctAnswer": "B",
       "distractorDeconstruction": {
-        "A": "72 is obtained if one erroneously calculates LCM / 15 or inverts the factor ratio.",
-        "B": "Correct. By the Multiplicative Invariance Theorem: A × B = GCF × LCM. Thus B = (18 × 1080) / 216 = 19440 / 216 = 90.",
-        "C": "120 is a distractor derived from 1080 / 9.",
-        "D": "180 is double the correct answer, resulting from forgetting to divide by 2 during intermediate fraction reduction."
+        "A": "$\\text{GCF}(36, 48) = 12$, but $\\text{LCM}(36, 48) = 144 \\neq 180$.",
+        "B": "Using $\\text{GCF} \\times \\text{LCM} = A \\times B \\implies B = \\frac{12 \\times 180}{36} = \\frac{2160}{36} = 60$.",
+        "C": "72 is a multiple of 36, resulting in $\\text{GCF}(36, 72) = 36 \\neq 12$.",
+        "D": "$\\text{GCF}(36, 90) = 18 \\neq 12$."
       },
-      "shortcutExplanation": "Use A × B = GCF × LCM: B = (18 × 1080) / 216 = 1080 / 12 = 90."
+      "shortcutExplanation": "Use $\\text{Other Number} = \\frac{\\text{GCF} \\times \\text{LCM}}{\\text{Given Number}} = \\frac{12 \\times 180}{36} = 60$ in 5 seconds."
     },
     {
-      "id": "chk-01-01-04",
-      "question": "If a + b + c = 0, what is the value of the algebraic expression (a^3 + b^3 + c^3) / (3abc) assuming abc ≠ 0?",
+      "id": "chk-03",
+      "question": "What is one of the irreducible quadratic factors of $x^4 + 4y^4$ over the field of real numbers?",
       "options": {
-        "A": "0",
-        "B": "1",
-        "C": "3",
-        "D": "-1"
+        "A": "$x^2 + 2y^2$",
+        "B": "$x^2 + 2xy + 2y^2$",
+        "C": "$x^2 - 2xy - 2y^2$",
+        "D": "$x^2 + 4xy + 4y^2$"
       },
       "correctAnswer": "B",
       "distractorDeconstruction": {
-        "A": "Trap of assuming that since the sum a + b + c is 0, the sum of cubes must also be 0.",
-        "B": "Correct. From Euler's Cubic Identity, a^3 + b^3 + c^3 - 3abc = (a + b + c)(a^2 + b^2 + c^2 - ab - bc - ca). When a + b + c = 0, the right-hand side is 0, so a^3 + b^3 + c^3 = 3abc. Dividing by 3abc yields exactly 1.",
-        "C": "Trap of confusing the coefficient 3 with the quotient.",
-        "D": "Sign error trap occurring from moving 3abc to the opposite side of an equality with an incorrect sign."
+        "A": "Common false intuition that $x^4 + 4y^4 = (x^2 + 2y^2)^2$. Squaring this produces a middle term $+4x^2y^2$.",
+        "B": "Correct by the Sophie Germain Identity: $x^4 + 4y^4 = (x^2 + 2xy + 2y^2)(x^2 - 2xy + 2y^2)$.",
+        "C": "Incorrect signs: the quadratic terms $x^2$ and $2y^2$ must both be positive.",
+        "D": "Expands to $(x + 2y)^2$, which is $x^2 + 4xy + 4y^2$, not a factor of $x^4 + 4y^4$."
       },
-      "shortcutExplanation": "Pick sample numbers summing to 0: a = 1, b = 2, c = -3. Then a^3 + b^3 + c^3 = 1 + 8 - 27 = -18. 3abc = 3(1)(2)(-3) = -18. Quotient = -18 / -18 = 1 (2s solve)."
+      "shortcutExplanation": "Set $x = 1, y = 1 \\implies 1 + 4 = 5$. Choice B gives $1 + 2 + 2 = 5$ (which divides 5)."
+    },
+    {
+      "id": "chk-04",
+      "question": "Which statement regarding the integer 1 is mathematically correct according to the Fundamental Theorem of Arithmetic?",
+      "options": {
+        "A": "1 is the smallest prime number",
+        "B": "1 is a composite number",
+        "C": "1 is neither prime nor composite",
+        "D": "1 is an irrational number"
+      },
+      "correctAnswer": "C",
+      "distractorDeconstruction": {
+        "A": "By definition, a prime number must be strictly greater than 1 with exactly two distinct divisors. 2 is the smallest prime.",
+        "B": "A composite number must have strictly more than two positive divisors.",
+        "C": "1 is the multiplicative identity (a unit) and is classified as neither prime nor composite.",
+        "D": "$1 = \\frac{1}{1}$, which is an integer and therefore rational."
+      },
+      "shortcutExplanation": "1 has only 1 divisor (itself), so it fails the 2-divisor test for primes and the 3+-divisor test for composites."
     }
   ]
 }
