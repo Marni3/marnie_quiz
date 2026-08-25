@@ -15,11 +15,12 @@ Modules are designed as a **compounding, cohesive learning journey** through the
 
 1. **Per-Subtopic Scope Grounded in Reference Documents**:
    - Modules are authored **per subtopic** (e.g., `MATH 01-08: Word Problems`, `MATH 09-05 to 09-08: Conic Sections & Eccentricity`, `ELEC 03-04: Thevenin & Norton Theorems`).
-   - Content and pedagogical flow are strictly derived from lecture notes and solutions in `Reference Documents/` At the absolute minimum, ALL the contents of each document there must be covered in a respective or appropriate module. Use a lightweight pdf library in python to convert the PDFs to images if you must and use multimodal capabilities to read the contents and check how it may be integrated into the related learning module.
+   - Content and pedagogical flow are strictly derived from lecture notes and solutions in `Reference Documents/` At the absolute minimum, ALL the contents of each document there must be covered in a respective or appropriate module. Use a lightweight pdf library in python to convert the PDFs to images if you must and use multimodal capabilities to read the contents and check how it may be integrated into the related learning module. If a reference document covers more than 1 topic, it's contents may be used for several related modules.
    - Includes a sticky **Table of Contents / Header Index** for rapid section navigation.
+   - Pace yourself and plan in advance to manage properly the context window to ensure that each module is written completely with no loss of context between reading the reference notes and syllabi, and writing the actual modules.
 
 2. **Prerequisite Bridges ("Previously In...")**:
-   - Every module begins with an optional, collapsible 1–2 sentence bridge referencing earlier Skill Tree concepts (e.g., *"In MATH 05, we defined $e^{j	heta} = \cos	heta + j\sin	heta$. Here in ELEC 04, we apply this rotating phasor to represent AC complex impedance $Z = R + jX_L$."*).
+   - Every module begins with an optional, collapsible 1–2 sentence bridge referencing earlier Skill Tree concepts (e.g., *"In MATH 05, we defined $e^{j\theta} = \cos\theta + j\sin\theta$. Here in ELEC 04, we apply this rotating phasor to represent AC complex impedance $Z = R + jX_L$."*).
    - Ensures accessibility for examinees following the tree sequentially while remaining fully self-contained.
 
 3. **Cross-Subject Board Connections (Callout Badges)**:
