@@ -97,7 +97,7 @@ Every problem-solving question must have an educational, high-speed solution for
    - Show the primary substitution step and final evaluated value.
    - Avoid lengthy algebraic prose; let clean math expressions do the work.
 2. **Mandatory Calculator Techniques & Speed Shortcuts**:
-   - Provide concrete Casio / standard scientific calculator keystrokes:
+   - Provide concrete Karce KC-S991 / Canon F-789SGA calculator keystrokes:
      - `Pol(x2 - x1, y2 - y1)` for 2-second distance and inclination angle computation.
      - `COMPLEX` Mode (MODE 2) for vector addition, coordinate interpolation, and parallelogram vertices ($D = A + C - B$).
      - `STAT` Mode (MODE 3 2) for linear regression, collinearity prediction, and arithmetic progression terms.
