@@ -1,121 +1,108 @@
 /**
- * Core constants, subject taxonomies, and helper utilities.
- * Single source of truth for the entire platform.
+ * Platform-wide constants, taxonomy definitions, and shared formatters.
  */
 
-export interface SubjectConfig {
+export interface SubjectMeta {
+  key: string;
+  name: string;
   code: string;
   label: string;
   full: string;
-  totalSets: number;
-  totalQuestions: number;
-  totalTopics: number;
-  colorName: "blue" | "amber" | "emerald" | "purple";
   badgeClass: string;
+  color: string;
   borderClass: string;
-  textClass: string;
-  bgClass: string;
+  bgGlow: string;
+  totalTopics: number;
+  totalQuestions: number;
 }
 
-export const TOTAL_SYLLABUS_QUESTIONS = 5435;
-export const TOTAL_SYLLABUS_TOPICS = 46;
-export const TOTAL_SYLLABUS_SETS = 190;
-
-export const SUBJECTS: Record<string, SubjectConfig> = {
+export const SUBJECTS: Record<string, SubjectMeta> = {
   MATH: {
+    key: "MATH",
+    name: "Mathematics",
     code: "MATH",
     label: "MATH",
     full: "Mathematics",
-    totalSets: 41,
-    totalQuestions: 1170,
-    totalTopics: 10,
-    colorName: "blue",
     badgeClass: "bg-blue-500/10 text-blue-600 dark:text-blue-400 border-blue-500/20",
+    color: "from-blue-500 to-cyan-500",
     borderClass: "border-l-blue-500",
-    textClass: "text-blue-500",
-    bgClass: "bg-blue-500",
+    bgGlow: "rgba(59, 130, 246, 0.15)",
+    totalTopics: 13,
+    totalQuestions: 1470,
   },
   ELECS: {
-    code: "ELECS",
+    key: "ELECS",
+    name: "Electronics Engineering",
+    code: "ELEC",
     label: "ELECS",
     full: "Electronics Engineering",
-    totalSets: 60,
-    totalQuestions: 1725,
-    totalTopics: 15,
-    colorName: "amber",
     badgeClass: "bg-amber-500/10 text-amber-600 dark:text-amber-400 border-amber-500/20",
+    color: "from-amber-500 to-orange-500",
     borderClass: "border-l-amber-500",
-    textClass: "text-amber-500",
-    bgClass: "bg-amber-500",
+    bgGlow: "rgba(245, 158, 11, 0.15)",
+    totalTopics: 15,
+    totalQuestions: 1725,
   },
   GEAS: {
+    key: "GEAS",
+    name: "General Engineering & Applied Sciences",
     code: "GEAS",
     label: "GEAS",
-    full: "General Engineering and Applied Sciences",
-    totalSets: 48,
-    totalQuestions: 1380,
-    totalTopics: 11,
-    colorName: "emerald",
+    full: "General Engineering & Applied Sciences",
     badgeClass: "bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border-emerald-500/20",
+    color: "from-emerald-500 to-teal-500",
     borderClass: "border-l-emerald-500",
-    textClass: "text-emerald-500",
-    bgClass: "bg-emerald-500",
+    bgGlow: "rgba(16, 185, 129, 0.15)",
+    totalTopics: 12,
+    totalQuestions: 1380,
   },
   EST: {
+    key: "EST",
+    name: "Electronics Systems & Technologies",
     code: "EST",
     label: "EST",
-    full: "Electronics Systems and Technologies",
-    totalSets: 41,
-    totalQuestions: 1160,
-    totalTopics: 10,
-    colorName: "purple",
+    full: "Electronics Systems & Technologies",
     badgeClass: "bg-purple-500/10 text-purple-600 dark:text-purple-400 border-purple-500/20",
+    color: "from-purple-500 to-pink-500",
     borderClass: "border-l-purple-500",
-    textClass: "text-purple-500",
-    bgClass: "bg-purple-500",
+    bgGlow: "rgba(168, 85, 247, 0.15)",
+    totalTopics: 10,
+    totalQuestions: 1160,
   },
 };
 
-/**
- * Returns the matching subject config from a topicCode, subjectTag, or quiz title.
- */
-export function getSubjectFromKey(key: string): SubjectConfig {
-  const upper = (key || "").toUpperCase().trim();
-  if (upper.startsWith("MATH") || upper.includes("ALGEBRA") || upper.includes("CALCULUS") || upper.includes("GEOMETRY") || upper.includes("PROBABILITY")) {
-    return SUBJECTS.MATH;
-  }
-  if (upper.startsWith("ELEC") || upper.includes("CIRCUIT") || upper.includes("DIODE") || upper.includes("TRANSISTOR") || upper.includes("BJT") || upper.includes("FET")) {
-    return SUBJECTS.ELECS;
-  }
-  if (upper.startsWith("GEAS") || upper.includes("CHEMISTRY") || upper.includes("PHYSICS") || upper.includes("ECONOMICS") || upper.includes("MECHANICS") || upper.includes("THERMO")) {
-    return SUBJECTS.GEAS;
-  }
-  if (upper.startsWith("EST") || upper.includes("COMMUNICATION") || upper.includes("ANTENNA") || upper.includes("MODULATION") || upper.includes("TELEPHONY") || upper.includes("FIBER")) {
-    return SUBJECTS.EST;
-  }
+export const TOTAL_SYLLABUS_TOPICS = 50;
+export const TOTAL_SYLLABUS_QUESTIONS = 5735;
+
+export const SYLLABUS_BENCHMARKS: Record<string, { totalQuestions: number; totalTopics: number }> = {
+  MATH: { totalQuestions: 1470, totalTopics: 13 },
+  ELECS: { totalQuestions: 1725, totalTopics: 15 },
+  GEAS: { totalQuestions: 1380, totalTopics: 12 },
+  EST: { totalQuestions: 1160, totalTopics: 10 },
+};
+
+export const METRIC_DEFINITIONS: Record<string, string> = {
+  retrievability: "Probability of successfully recalling this topic today based on your exponential forgetting curve.",
+  stability: "Estimated number of days before memory retrievability falls below 90% without review.",
+  fresh: "Topics with Retrievability ≥ 85%. Strong retention; review not yet urgent.",
+  reviewDue: "Topics where Retrievability has dropped below 85% or elapsed days exceed stability.",
+  struggling: "Topics with Retrievability < 60% or recent quiz accuracy < 70%. Need immediate active retrieval.",
+  readinessIndex: "Calibrated composite score: Accuracy × Average Retention × √(Completed Topics / Total Syllabus Topics).",
+};
+
+export function getSubjectFromKey(key: string): SubjectMeta {
+  const upper = (key || "").toUpperCase();
+  if (upper.includes("MATH")) return SUBJECTS.MATH;
+  if (upper.includes("ELEC")) return SUBJECTS.ELECS;
+  if (upper.includes("GEAS")) return SUBJECTS.GEAS;
+  if (upper.includes("EST")) return SUBJECTS.EST;
   return SUBJECTS.MATH;
 }
 
-/**
- * Pluralization helper for strings like "1 set" vs "2 sets", "1 question" vs "25 questions".
- */
-export function pluralize(count: number, singular: string, plural: string = singular + "s"): string {
-  return `${count} ${count === 1 ? singular : plural}`;
+export function pluralize(count: number, singular: string, plural?: string): string {
+  if (count === 1) return `1 ${singular}`;
+  return `${count.toLocaleString()} ${plural || singular + "s"}`;
 }
-
-/**
- * Metric definitions for zero-dependency tooltips and legends.
- */
-export const METRIC_DEFINITIONS = {
-  retrievability: "Estimated probability (0–100%) that you can recall this concept right now based on past attempts and time elapsed.",
-  stability: "Estimated memory half-life in days before your retention drops below the 85% review threshold.",
-  fresh: "Topic retention is above 85%. No urgent review needed.",
-  reviewDue: "Topic retention is decaying (65%–85%). Recommended for recovery.",
-  struggling: "Recent score was below 60% or retrievability has critically lapsed (<65%).",
-  anchor: "Core foundational spine concept prioritized for board exam syllabus mastery.",
-  readinessIndex: "Realistic preparedness index factoring overall accuracy, retention stability, and global syllabus completion against all 5,435 board exam questions.",
-};
-
 
 export function formatTopicCode(code: string): string {
   if (!code) return "GEN 01";

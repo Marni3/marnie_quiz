@@ -54,7 +54,7 @@ export function getMockStore(): MockStore {
       if (Array.isArray(seedData)) {
         for (const s of seedData) {
           const qSet: QuestionSet = {
-            id: s.id,
+            id: s.id || `set_${Math.random().toString(36).slice(2)}`,
             uploadedByUserId: defaultUser.id,
             folderId: null,
             title: s.title,
@@ -71,7 +71,7 @@ export function getMockStore(): MockStore {
           if (Array.isArray(s.questions)) {
             s.questions.forEach((q: any, idx: number) => {
               const questionRecord: Question = {
-                id: q.id,
+                id: q.id || `q_${Math.random().toString(36).slice(2)}`,
                 sourceQuestionSetId: qSet.id,
                 promptText: q.promptText,
                 choiceA: q.choiceA,

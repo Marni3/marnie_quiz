@@ -325,11 +325,16 @@ export async function getUserTopicSrsOverview(userId: string) {
  * - 8 Conceptual & Proportionality Archetypes (40%)
  * - 5 Numerical Problem Solves (25%)
  */
-export async function assembleDailyRefresherDrill(userId: string): Promise<string> {
+export async function assembleDailyRefresherDrill(userId: string, domain?: string): Promise<string> {
   const overview = await getUserTopicSrsOverview(userId);
-  const dueTopicCodes = Object.values(overview.topicMap)
+  let dueTopicCodes = Object.values(overview.topicMap)
     .filter((t) => t.isDue)
     .map((t) => t.topicCode);
+
+  if (domain) {
+    const domainPrefix = domain.toUpperCase().trim();
+    dueTopicCodes = dueTopicCodes.filter((code) => code.startsWith(domainPrefix));
+  }
 
   // If no specific topics are due, pull across all active topics
   const targetTopicCodes = dueTopicCodes.length > 0 ? dueTopicCodes : undefined;

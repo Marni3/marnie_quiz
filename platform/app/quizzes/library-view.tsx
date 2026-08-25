@@ -72,6 +72,7 @@ export function LibraryView({
   const [selectedFolderId, setSelectedFolderId] = useState<string | null>(null);
   const [collapsedTopics, setCollapsedTopics] = useState<Record<string, boolean>>({});
   const [allCollapsed, setAllCollapsed] = useState(true);
+  const [activeSubtopicFilters, setActiveSubtopicFilters] = useState<Record<string, string | null>>({});
 
   // SRS Overrides State
   const [activeMenuTopic, setActiveMenuTopic] = useState<string | null>(null);
@@ -173,11 +174,16 @@ export function LibraryView({
   };
 
   // Launch 20-Q Refresher Drill
-  const handleLaunchDailyDrill = async () => {
+  const [activeDrillDomain, setActiveDrillDomain] = useState<string | null>(null);
+
+  const handleLaunchDailyDrill = async (domain?: string) => {
     setLaunchingDrill(true);
+    setActiveDrillDomain(domain || "ALL");
     try {
       const res = await fetch("/api/srs/daily-drill", {
         method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ domain }),
       });
       const data = await res.json();
       if (data.success && data.attemptId) {
@@ -185,10 +191,12 @@ export function LibraryView({
       } else {
         alert(data.error || "Failed to assemble daily drill.");
         setLaunchingDrill(false);
+        setActiveDrillDomain(null);
       }
     } catch {
       alert("Network error launching daily drill.");
       setLaunchingDrill(false);
+      setActiveDrillDomain(null);
     }
   };
 
@@ -271,16 +279,58 @@ export function LibraryView({
           </div>
 
           <div className="flex items-center gap-3 w-full md:w-auto relative z-10">
-            {/* Primary Action Button */}
-            <button
-              type="button"
-              onClick={handleLaunchDailyDrill}
-              disabled={launchingDrill}
-              className="flex-1 md:flex-initial inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-[var(--accent)] text-white text-xs sm:text-sm font-bold shadow-md hover:brightness-110 active:scale-95 transition-all cursor-pointer disabled:opacity-50"
-            >
-              <Zap className="w-4 h-4 fill-current" />
-              <span>{launchingDrill ? "Assembling..." : "Start 20-Q Refresher Drill"}</span>
-            </button>
+            {/* Primary Action Button & Per-Subject Refresher Chips */}
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 w-full md:w-auto">
+              <button
+                type="button"
+                onClick={() => handleLaunchDailyDrill()}
+                disabled={launchingDrill}
+                className="flex-1 md:flex-initial inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-[var(--accent)] text-white text-xs sm:text-sm font-bold shadow-md hover:brightness-110 active:scale-95 transition-all cursor-pointer disabled:opacity-50"
+              >
+                <Zap className="w-4 h-4 fill-current" />
+                <span>{launchingDrill && activeDrillDomain === "ALL" ? "Assembling..." : "Start 20-Q Refresher"}</span>
+              </button>
+
+              {/* Per-Subject Quick Refresher Chips */}
+              <div className="flex items-center gap-1 bg-[var(--surface2)] p-1 rounded-xl border border-[var(--border)] overflow-x-auto">
+                <button
+                  type="button"
+                  onClick={() => handleLaunchDailyDrill("MATH")}
+                  disabled={launchingDrill}
+                  className="px-2.5 py-1.5 rounded-lg text-xs font-mono font-bold text-blue-500 hover:bg-[var(--surface)] transition-all cursor-pointer disabled:opacity-50"
+                  title="Start Math Targeted Refresher"
+                >
+                  {launchingDrill && activeDrillDomain === "MATH" ? "..." : "📘 Math"}
+                </button>
+                <button
+                  type="button"
+                  onClick={() => handleLaunchDailyDrill("ELEC")}
+                  disabled={launchingDrill}
+                  className="px-2.5 py-1.5 rounded-lg text-xs font-mono font-bold text-amber-500 hover:bg-[var(--surface)] transition-all cursor-pointer disabled:opacity-50"
+                  title="Start Electronics Targeted Refresher"
+                >
+                  {launchingDrill && activeDrillDomain === "ELEC" ? "..." : "📙 Elecs"}
+                </button>
+                <button
+                  type="button"
+                  onClick={() => handleLaunchDailyDrill("GEAS")}
+                  disabled={launchingDrill}
+                  className="px-2.5 py-1.5 rounded-lg text-xs font-mono font-bold text-emerald-500 hover:bg-[var(--surface)] transition-all cursor-pointer disabled:opacity-50"
+                  title="Start GEAS Targeted Refresher"
+                >
+                  {launchingDrill && activeDrillDomain === "GEAS" ? "..." : "📗 GEAS"}
+                </button>
+                <button
+                  type="button"
+                  onClick={() => handleLaunchDailyDrill("EST")}
+                  disabled={launchingDrill}
+                  className="px-2.5 py-1.5 rounded-lg text-xs font-mono font-bold text-purple-500 hover:bg-[var(--surface)] transition-all cursor-pointer disabled:opacity-50"
+                  title="Start EST Targeted Refresher"
+                >
+                  {launchingDrill && activeDrillDomain === "EST" ? "..." : "📕 EST"}
+                </button>
+              </div>
+            </div>
 
             {/* Secondary Action Button */}
             <Link
@@ -633,10 +683,79 @@ export function LibraryView({
                         </div>
                       </div>
 
-                      {/* Expanded Quiz Cards */}
+                      {/* Expanded Quiz Cards & Subtopic Range Filters */}
                       {!isCollapsed && (
-                        <div className="p-4 sm:p-5 pt-0 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 border-t border-[var(--border)]">
-                          {group.items.map((quiz) => {
+                        <div className="p-4 sm:p-5 pt-0 border-t border-[var(--border)] space-y-3">
+                          {/* Subtopic Range Filter Chips */}
+                          {(() => {
+                            const subtopicTags = Array.from(
+                              new Set(
+                                group.items
+                                  .map((q) => {
+                                    const m = q.title.match(/\((\d{2}-\d{2}[^)]*|Set \d+[^)]*)\)/i);
+                                    if (m) return m[1];
+                                    const mAlt = q.title.match(/\b(\d{2}-\d{2}\s*(?:to|-)\s*\d{2}-\d{2})\b/i);
+                                    if (mAlt) return mAlt[1];
+                                    return null;
+                                  })
+                                  .filter(Boolean) as string[]
+                              )
+                            );
+
+                            const currentFilter = activeSubtopicFilters[group.name] || null;
+
+                            return (
+                              <div className="flex items-center gap-1.5 flex-wrap pt-3 pb-1">
+                                <span className="text-[10px] font-mono uppercase text-[var(--text3)] mr-1">
+                                  Filter Subtopic / Range:
+                                </span>
+                                <button
+                                  type="button"
+                                  onClick={() =>
+                                    setActiveSubtopicFilters((prev) => ({
+                                      ...prev,
+                                      [group.name]: null,
+                                    }))
+                                  }
+                                  className={`px-2.5 py-0.5 rounded-md text-[11px] font-mono transition-colors cursor-pointer ${
+                                    currentFilter === null
+                                      ? "bg-[var(--accent)] text-white font-bold"
+                                      : "bg-[var(--surface2)] text-[var(--text3)] hover:text-[var(--text)] border border-[var(--border)]"
+                                  }`}
+                                >
+                                  All Sets ({group.items.length})
+                                </button>
+                                {subtopicTags.map((tag) => (
+                                  <button
+                                    key={tag}
+                                    type="button"
+                                    onClick={() =>
+                                      setActiveSubtopicFilters((prev) => ({
+                                        ...prev,
+                                        [group.name]: currentFilter === tag ? null : tag,
+                                      }))
+                                    }
+                                    className={`px-2.5 py-0.5 rounded-md text-[11px] font-mono transition-colors cursor-pointer ${
+                                      currentFilter === tag
+                                        ? "bg-[var(--accent)] text-white font-bold"
+                                        : "bg-[var(--surface2)] text-[var(--text3)] hover:text-[var(--text)] border border-[var(--border)]"
+                                    }`}
+                                  >
+                                    {tag}
+                                  </button>
+                                ))}
+                              </div>
+                            );
+                          })()}
+
+                          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+                            {group.items
+                              .filter((quiz) => {
+                                const currentFilter = activeSubtopicFilters[group.name];
+                                if (!currentFilter) return true;
+                                return quiz.title.toLowerCase().includes(currentFilter.toLowerCase());
+                              })
+                              .map((quiz) => {
                             const tier = getQuizTier(quiz);
                             return (
                               <Link
@@ -674,6 +793,7 @@ export function LibraryView({
                               </Link>
                             );
                           })}
+                          </div>
                         </div>
                       )}
                     </div>
