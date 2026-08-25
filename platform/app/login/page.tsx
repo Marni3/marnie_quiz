@@ -1,5 +1,7 @@
 "use client";
 
+import Link from "next/link";
+
 import { signIn } from "next-auth/react";
 import { useState } from "react";
 import { ThemeToggle } from "@/components/theme-toggle";
@@ -131,8 +133,17 @@ export default function LoginPage() {
       </div>
 
       {/* Footer */}
-      <footer className="text-center text-xs text-[var(--text3)] max-w-5xl mx-auto w-full py-4">
-        Permanent $0 non-commercial study tool • Built with Next.js &amp; Drizzle
+      <footer className="text-center text-xs text-[var(--text3)] max-w-5xl mx-auto w-full py-4 space-y-2">
+        <div>Permanent $0 non-commercial study tool &bull; Built with Next.js &amp; Drizzle</div>
+        <div className="flex items-center justify-center gap-4 text-[11px] font-mono">
+          <Link href="/privacy" className="hover:text-[var(--accent)] underline transition-colors">
+            Privacy Policy
+          </Link>
+          <span>&bull;</span>
+          <Link href="/terms" className="hover:text-[var(--accent)] underline transition-colors">
+            Terms of Service
+          </Link>
+        </div>
       </footer>
     </div>
   );
