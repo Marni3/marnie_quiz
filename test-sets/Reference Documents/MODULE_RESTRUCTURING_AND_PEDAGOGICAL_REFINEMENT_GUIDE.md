@@ -7,30 +7,49 @@
 
 ## 1. Executive Summary of Core Adjustments
 
-Based on review of the initial prototype modules, five fundamental shifts are required across all 50 topics (MATH, ELECS, GEAS, EST):
+Based on review of actual review center materials (e.g., Excel Review Center) and initial prototypes, seven fundamental shifts are established:
 
-1. **UI & Heading Streamlining**:
+1. **1-to-1 Grounding in Actual Review Center Notes (`Reference Documents/`)**:
+   - The primary learning modules are **directly grounded 1-to-1** with the actual review center lecture notes (e.g., Excel Review Center) located in `Reference Documents/`.
+   - **Comprehensive Content Transcription**: Every specific concept, definition, classification, property, formula, and nuance in the review notes must be faithfully captured and expanded (e.g., in Algebra 1: Cardinal vs. Ordinal numbers, Arabic vs. Roman numerals, Roman large number multipliers like Bracket $\times 100$, Vinculum $\times 1,000$, Doorframe $\times 1,000,000$, properties of integers/addition/multiplication/equality, powers of $i$, etc.).
+   - While test-set topics serve as categorization anchors, the reviewer documents themselves dictate the true scope, order, and pedagogical substance of the modules.
+
+2. **Mandatory Multimodal PDF-to-Image Protocol**:
+   - **NEVER USE PDF TEXT EXTRACTION LIBRARIES**. Raw PDF text extraction corrupts column layouts, tables, math symbols, and handwritten annotations.
+   - **Image Conversion Rule**: When reading any PDF in `Reference Documents/`, use a lightweight Python script (e.g., `pymupdf` / `fitz` or `pdf2image`) to render PDF pages as PNG images into a scratch directory (`scratch/`).
+   - Inspect the rendered page images directly using **multimodal vision capabilities** to ensure 100% fidelity to the original review center diagrams, layouts, and tables.
+   - Pace context window usage by converting and inspecting notes in planned batches before authoring each module.
+   - Reflect all terms in order of appearance and logical dependency (write prerequisite terms first).
+
+3. **UI & Heading Streamlining**:
    - Replace *"Cross-Subject PRC Board Connections"* with **"Links to Related Topics"**.
    - Replace *"PRC Table of Specifications (TOS) Signatures & Terminology"* with **"Terms and Definitions"**.
+   - Replace *"Governing Theory & Mental Anchors"* with **"Lesson Proper"**.
+   - Replace *"The Dual-Method Breakdown (Academic vs. ⚡ Shortcut)"* with **"Sample Problems and Solutions"**.
+   - Replace *"Calculator Keystroke Guides"* with **"Calculator Techniques"**.
 
-2. **Plain-English Accessibility & Jargon Elimination**:
+4. **Plain-English Accessibility & Jargon Elimination**:
    - Strip out dense, overly academic phrasing.
    - Explain abstract ideas using clear physical intuition and simple analogies that any student can understand in under 10 seconds.
 
-3. **Atomic Terms & Definitions (Breadth Over Depth)**:
+5. **Atomic Terms & Definitions (Breadth Over Depth)**:
    - The Philippine ECE Licensure Examination rewards broad recall over academic proofs.
    - Keep definitions short, punchy, and "atomic" (1–2 concise sentences maximum).
    - High-yield keyword triggers must be immediately recognizable.
 
-4. **Fluid Narrative Flow with Weaved Concept Checks**:
+6. **Fluid Narrative Flow with Weaved Concept Checks**:
    - Eliminate rigid, isolated section silos.
    - Flow naturally like an interactive textbook:
-   - Example (not to be strictly followed section per section but more to provide as a reference to the flow of the module):
-     $$\text{Introduction} \longrightarrow \text{Concept 1 + Atomic Terms} \longrightarrow \text{In-line Check 1} \longrightarrow \text{Concept 2 + Visualizer} \longrightarrow \text{In-line Check 2} \longrightarrow \text{Dual-Method Examples} \longrightarrow \text{Calculator Keystrokes} \longrightarrow \text{Paired Quiz CTA} \longrightarrow \text{Next Module Bridge}$$
+     $$\text{Introduction} \longrightarrow \text{Concept 1 + Atomic Terms} \longrightarrow \text{In-line Check 1} \longrightarrow \text{Concept 2 + Visualizer} \longrightarrow \text{In-line Check 2} \longrightarrow \text{Sample Problems and Solutions} \longrightarrow \text{Calculator Techniques} \longrightarrow \text{Paired Quiz CTA} \longrightarrow \text{Next Module Bridge}$$
 
-5. **Markdown & KaTeX Rendering Standards**:
+7. **Markdown & KaTeX Rendering Standards**:
    - Fix broken table and math formatting. All mathematical symbols in term cards and text must be enclosed in `$...$` (e.g., `$\mathbb{Q}$`, `$\text{GCF}(a, b)$`).
    - Use proper Markdown rendering on the frontend so headers (`###`), tables (`| ... |`), and lists render with full typography.
+
+8. **Expanded Concept Checks & Spaced Repetition (SRS) Integration**:
+   - Scale concept checks up to 5, 6, or 10+ questions per module/block as required to ensure complete active-recall coverage.
+   - **SRS Module Review Tracking**: In future backend implementations, module review timestamps (`last_reviewed_at`) will be tracked in the database to allow the Spaced Repetition engine to recommend both custom sets and specific modules/quizzes due for recall based on memory decay curves (even for topics with high prior scores).
+
 
 ---
 
@@ -64,41 +83,35 @@ Every term card must be designed for rapid flashcard-style memorization:
 
 ---
 
-## 4. Redesigned Fluid Module Blueprint (For Reference Only - Tweak lengths and section order or quantity depending on topic.)
+## 4. Redesigned Fluid Module Blueprint (Interleaved Reinforcement Structure)
 
 ```markdown
 # [Module Code]: [Subtopic Title]
 
-### 1. Introduction & Intuitive Hook
-- 2–3 friendly sentences connecting previous subtopics to today's lesson.
-
-### 2. Links to Related Topics
+### 1. Introduction & Links to Related Topics
+- 2–3 friendly sentences connecting prior reviewer concepts to today's lesson.
 - 2–3 clean callout cards showing where this topic reappears across Math, Elecs, GEAS, or EST.
 
-### 3. Core Concepts & Atomic Terms (Part 1)
-- Plain-English theory breakdown with formulas in KaTeX.
-- Short atomic term cards embedded right alongside the relevant concept.
+### 2. Terms and Definitions (Atomic Standard)
+- Short atomic definitions arranged in strict logical dependency order.
+- Exact KaTeX symbols (`$...$`) and 1-second keyword triggers.
 
-### 4. In-Line Concept Check #1
-- 1–2 embedded multiple-choice questions with instant feedback and distractor analysis.
+### 3. Lesson Proper (With Interleaved Reinforcement Micro-Cycles)
+For each major concept block in the reviewer notes:
+1. **Concept / Core Theory**: Clear plain-English conceptual breakdown with KaTeX formulas.
+2. **Immediate In-Line Concept Check**: 1–2 MCQs checking comprehension of this specific concept immediately.
+3. **Sample Problems and Solutions**: Authentic PRC board exam worked examples with Dual-Method toggle (`[Formal]` vs `[⚡ Shortcut]`).
+4. **Follow-Up Practice Check**: Self-solve problem for examinees to test their application.
+5. **Calculator Techniques** (if applicable): Technique title, problem type, sample problem first, mode setup, and step-by-step `<kbd>` button sequences with context.
+*(Repeat micro-cycle for each subsequent concept block in the reviewer notes)*
 
-### 5. Deep-Dive Theory & Interactive Simulation (Part 2)
-- Visualizer / Canvas simulation with interactive parameter sliders.
+### 4. Interactive Visualizer Sandbox (if applicable)
+- Interactive Canvas widget with live sliders demonstrating geometric or dynamic physical intuition.
 - Mental Anchor / Rule of Thumb callout box.
 
-### 6. In-Line Concept Check #2
-- 1–2 embedded multiple-choice questions checking the deep-dive concepts.
-
-### 7. Problems and solutions
-- 2–3 authentic PRC board exam sample problems.
-- Interactive toggle: `[⚡ Board Shortcut (<20s)]` vs `[Formal Academic Derivation]` vs `[Side-by-Side]`.
-
-### 8. Calculator Techniques (Karce KC-S991 & Canon F-789SGA)
-- Technique title, problem type, sample problem, and step-by-step keystroke guide with context.
-
-### 9. Paired Mastery Challenge & Next Steps
-- Direct launch button to paired question set on `/quizzes/[quizSetId]`.
-- 1-sentence teaser bridge linking to the next module in the syllabus.
+### 5. Paired Mastery Challenge & Next Module Bridge
+- Direct CTA launch button to paired question set on `/quizzes/[quizSetId]`.
+- 1-sentence teaser bridge linking to the next module in the reviewer series.
 ```
 
 ---

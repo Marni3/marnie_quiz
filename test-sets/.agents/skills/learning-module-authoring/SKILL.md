@@ -13,31 +13,38 @@ This skill defines the architectural, pedagogical, typographical, and cross-subj
 
 Modules are designed as a **compounding, cohesive learning journey** through the Skill Tree, avoiding isolated silos:
 
-1. **Per-Subtopic Scope Grounded in Reference Documents**:
-   - Modules are authored **per subtopic** (e.g., `MATH 01-08: Word Problems`, `MATH 09-05 to 09-08: Conic Sections & Eccentricity`, `ELEC 03-04: Thevenin & Norton Theorems`).
-   - Content and pedagogical flow are strictly derived from lecture notes and solutions in `Reference Documents/` At the absolute minimum, ALL the contents of each document there must be covered in a respective or appropriate module. Use a lightweight pdf library in python to convert the PDFs to images if you must and use multimodal capabilities to read the contents and check how it may be integrated into the related learning module. If a reference document covers more than 1 topic, it's contents may be used for several related modules.
-   - Includes a sticky **Table of Contents / Header Index** for rapid section navigation.
-   - Pace yourself and plan in advance to manage properly the context window to ensure that each module is written completely with no loss of context between reading the reference notes and syllabi, and writing the actual modules.
-   - Reflect all terms in order of appearance and relevance (e.g. don't introduce or write a term if another term within the module should've been written first to explain it. Write the other one first)
+1. **V1 Master Goal: 100% 1-to-1 Transcription of Reviewer Notes (`Reference Documents/`)**:
+   - The primary learning modules for V1 are **complete, faithful transcriptions** of all lecture notes in `Reference Documents/` (e.g., Excel Review Center for MATH, ELECS, GEAS, EST).
+   - **No Artificial Length Limits**: Modules should be as long, comprehensive, and detailed as the source reviewer notes require, ensuring 100% syllabus fidelity without skipping nuances, classifications, or tables.
 
-2. **Prerequisite Bridges ("Previously In...")**:
-   - Every module begins with an optional, collapsible 1–2 sentence bridge referencing earlier Skill Tree concepts (e.g., *"In MATH 05, we defined $e^{j\theta} = \cos\theta + j\sin\theta$. Here in ELEC 04, we apply this rotating phasor to represent AC complex impedance $Z = R + jX_L$."*).
-   - Ensures accessibility for examinees following the tree sequentially while remaining fully self-contained.
+2. **Interleaved Pedagogical Reinforcement Flow**:
+   - Do not isolate all concept checks or sample problems at the end of the module.
+   - Weave them continuously throughout the lesson proper following this micro-cycle:
+     $$\text{Concept / Idea} \longrightarrow \text{Immediate In-line Concept Check} \longrightarrow \text{Worked Sample Problem \& Solution} \longrightarrow \text{Follow-up Practice Check} \longrightarrow \text{Calculator Technique (if applicable)}$$
+   - This active-recall loop cements understanding immediately before moving on to the next concept.
 
-3. **Cross-Subject Board Connections (Callout Badges)**:
-   - Highlight where the same mathematical or physical model reappears in other exam subjects:
-     - *Math $	o$ Elecs*: Complex numbers (`MATH-13`) $	o$ AC Phasors (`ELEC-04`).
-     - *Math $	o$ EST*: Logarithms (`MATH-01`) $	o$ Decibels & Friis Formula (`EST-01`).
-     - *Math $	o$ GEAS*: Conic Parabolas (`MATH-09`) $	o$ Satellite Antenna Dishes (`EST-05`) & Optical Mirrors (`GEAS-03`).
-     - *DE $	o$ Elecs/EST*: 1st Order ODEs (`MATH-12`) $	o$ RC Transients (`ELEC-05`) & Radiowave Attenuation (`EST-02`).
+3. **Mandatory Multimodal PDF-to-Image Protocol**:
+   - **NEVER USE PDF TEXT EXTRACTION LIBRARIES**. Raw PDF text extraction corrupts column layouts, tables, math symbols, and handwritten annotations.
+   - Render PDF pages as PNG images into `scratch/` using Python (`pymupdf`/`fitz`) and inspect them visually using multimodal capabilities.
+   - Reflect all terms in order of appearance and logical dependency (prerequisite terms first).
 
-4. **Accessible "Soft Intuition" & Physical Anchors**:
-   - Provide plain-English, intuitive explanations that avoid dense academic jargon for students who struggle with abstract theory.
-   - Always summarize with a crisp **"Mental Anchor / Rule of Thumb"** (e.g., *"Inductors oppose sudden changes in current; capacitors oppose sudden changes in voltage."*).
+4. **Introduction & Prerequisite Bridges ("Previously In...")**:
+   - Every module begins with an accessible 1–2 sentence bridge connecting earlier lessons to today's topic.
+   - Ensures smooth continuity while remaining fully self-contained.
 
-5. **Definitive Terminology & Quantity Signatures ("X is the process/measure of...")**:
-   - Every new quantity, unit, parameter, law, material, component, or technical term introduced in a module **must** feature a distinct, standardized **Identification Definition & Association Hook**.
-   - **Board Exam Stem Alignment**: Phrased specifically to match the classic PRC identification stem format (*"What is the property/process/ratio..."* or *"X is defined as the measure of..."*):
+5. **Links to Related Topics (Callout Badges)**:
+   - Highlight where the same mathematical or physical model reappears in other exam subjects in plain, direct language:
+     - *Math $\to$ Elecs*: Complex numbers (`MATH-13`) $\to$ AC Phasors (`ELEC-04`).
+     - *Math $\to$ EST*: Logarithms (`MATH-01`) $\to$ Decibels & Friis Formula (`EST-01`).
+     - *Math $\to$ GEAS*: Conic Parabolas (`MATH-09`) $\to$ Satellite Antenna Dishes (`EST-05`) & Optical Mirrors (`GEAS-03`).
+     - *DE $\to$ Elecs/EST*: 1st Order ODEs (`MATH-12`) $\to$ RC Transients (`ELEC-05`) & Radiowave Attenuation (`EST-02`).
+
+6. **Plain-English Accessibility & Jargon Elimination**:
+   - Strip out dense academic phrasing. Explain concepts with clear physical intuition, analogies, and a crisp **"Mental Anchor / Rule of Thumb"**.
+
+7. **Terms and Definitions (Atomic Standard — Breadth Over Depth)**:
+   - Every term features a short, atomic definition (1–2 punchy sentences maximum) arranged in strict dependency order.
+   - All symbols formatted in KaTeX `$...$` with 1-second keyword trigger associations.
      - Example (Math): *"**Eccentricity ($e$)**: The constant ratio of the distance from a point on the curve to the focus, to its perpendicular distance to the directrix — the fundamental **'measure of uncircleness'**."*
      - Example (Elecs): *"**Slew Rate ($SR$)**: The **maximum rate of change of output voltage per unit time** ($\text{V}/\mu\text{s}$) an operational amplifier can deliver without distortion."*
      - Example (EST): *"**Capture Effect**: The phenomenon in FM receivers where the **stronger of two co-channel signals completely suppresses the weaker signal** at the limiter/discriminator."*
@@ -45,7 +52,7 @@ Modules are designed as a **compounding, cohesive learning journey** through the
    - **1-Second Trigger Association**: Explicitly highlight the unique identifier keyword so students instantly recognize the exact term being tested upon reading the exam question stem.
    - **Units, Symbols & Dimensions**: Always state the exact SI unit, symbol, and dimension for every physical quantity introduced.
 
-6. **Interactive Dual-Method Toggle**:
+8. **Sample Problems and Solutions (Dual-Method Toggle)**:
    - Segmented UI switcher:
      - `[ Formal / Academic Lecture ]`: Step-by-step textbook derivations.
      - `[ ⚡ Board Exam Shortcut ]`: High-speed elimination, proportionality tricks, calculator bypass, and visual intuition.
@@ -67,14 +74,15 @@ Where physical or geometric intuition is paramount, modules embed lightweight, s
 ## 3. In-Line Concept Checks & Distractor Analysis
 
 1. **Standardized 4-Choice Multiple Choice (A, B, C, D)**:
-   - 3–5 embedded MCQs distributed throughout the subtopic sections.
-   - **Instant Tactile Feedback**: Tapping an option highlights green (correct) or red (incorrect) immediately.
+   - **Expanded Capacity (5 to 10+ MCQs)**: Scale concept checks per block/module up to 5, 6, or 10+ questions as needed to ensure exhaustive active-recall coverage of all transcribed reviewer concepts.
+   - **Instant Tactile Feedback**: Tapping an option highlights green (correct) or red (incorrect) immediately with `<MathText />` formula rendering.
 2. **Distractor Deconstructor**:
    - Expands to explain *why* each distractor is wrong and the exact algebra trap that produces it (e.g., *"Choice B is the classic trap of forgetting the $1/2$ factor in triangle area"*).
-3. **Time Benchmark**:
+3. **Time Benchmark & Shortcut Callout**:
    - Contrasts estimated solving time: *Formal Solution (~180s)* vs. *Board Shortcut (~15s)*.
-4. **1-to-1 Paired Mastery Challenge**:
+4. **1-to-1 Paired Mastery Challenge & Spaced Repetition (SRS)**:
    - Every module concludes with a direct CTA launch button to its paired full quiz set on `/quizzes/[id]`.
+   - **SRS Retention Tracking Roadmap**: Modules will track review timestamps in the database (`last_reviewed_at`) so the Spaced Repetition algorithm can recommend modules or paired quizzes for refresher reviews based on forgetting curves (even for previously mastered topics).
 
 ---
 
