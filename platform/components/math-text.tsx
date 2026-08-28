@@ -62,10 +62,16 @@ function renderMarkdownBlocks(markdown: string): React.ReactNode {
         i++; // consume closing ```
       }
       try {
-        const config: InlineFigureConfig = JSON.parse(jsonLines.join("\n"));
+        const jsonStr = jsonLines.join("\n").trim();
+        const config: InlineFigureConfig = JSON.parse(jsonStr);
         elements.push(<InlineFigure key={`fig-${i}`} config={config} />);
-      } catch (err) {
+      } catch (err: any) {
         console.warn("Failed to parse inline figure JSON:", err);
+        elements.push(
+          <div key={`fig-err-${i}`} className="my-3 p-3 rounded-xl bg-red-500/10 border border-red-500/30 text-xs font-mono text-red-500">
+            Diagram Parse Error: {err?.message || "Invalid JSON"}
+          </div>
+        );
       }
       continue;
     }
@@ -80,7 +86,7 @@ function renderMarkdownBlocks(markdown: string): React.ReactNode {
       elements.push(
         <div
           key={`quote-${i}`}
-          className="bg-amber-500/10 border-l-4 border-l-amber-500 border border-amber-500/20 rounded-r-xl p-3.5 my-3 text-sm text-[var(--text)] leading-relaxed"
+          className="bg-amber-500/10 border-l-4 border-l-amber-500 border border-amber-500/20 rounded-r-xl p-3.5 my-3 text-sm sm:text-base text-[var(--text)] leading-relaxed"
         >
           <InlineFormattedText content={quoteLines.join(" ")} />
         </div>
@@ -100,7 +106,7 @@ function renderMarkdownBlocks(markdown: string): React.ReactNode {
     // Headings
     if (trimmed.startsWith("#### ")) {
       elements.push(
-        <h4 key={`h4-${i}`} className="text-sm font-bold text-[var(--text)] mt-3 mb-1">
+        <h4 key={`h4-${i}`} className="text-sm sm:text-base font-bold text-[var(--text)] mt-4 mb-1">
           <InlineFormattedText content={trimmed.slice(5)} />
         </h4>
       );
@@ -109,7 +115,7 @@ function renderMarkdownBlocks(markdown: string): React.ReactNode {
     }
     if (trimmed.startsWith("### ")) {
       elements.push(
-        <h3 key={`h3-${i}`} className="text-base font-bold font-serif text-[var(--text)] mt-4 mb-1">
+        <h3 key={`h3-${i}`} className="text-base sm:text-lg font-bold font-serif text-[var(--text)] mt-5 mb-2 pb-1 border-b border-[var(--border)]/40">
           <InlineFormattedText content={trimmed.slice(4)} />
         </h3>
       );
@@ -118,7 +124,7 @@ function renderMarkdownBlocks(markdown: string): React.ReactNode {
     }
     if (trimmed.startsWith("## ")) {
       elements.push(
-        <h2 key={`h2-${i}`} className="text-lg font-bold font-serif text-[var(--text)] mt-5 mb-2">
+        <h2 key={`h2-${i}`} className="text-lg sm:text-xl font-bold font-serif text-[var(--text)] mt-6 mb-2">
           <InlineFormattedText content={trimmed.slice(3)} />
         </h2>
       );
@@ -127,7 +133,7 @@ function renderMarkdownBlocks(markdown: string): React.ReactNode {
     }
     if (trimmed.startsWith("# ")) {
       elements.push(
-        <h1 key={`h1-${i}`} className="text-xl font-extrabold font-serif text-[var(--text)] mt-6 mb-2">
+        <h1 key={`h1-${i}`} className="text-xl sm:text-2xl font-extrabold font-serif text-[var(--text)] mt-7 mb-3">
           <InlineFormattedText content={trimmed.slice(2)} />
         </h1>
       );
@@ -154,7 +160,7 @@ function renderMarkdownBlocks(markdown: string): React.ReactNode {
         i++;
       }
       elements.push(
-        <ul key={`ul-${i}`} className="list-disc list-inside space-y-1.5 pl-2 text-sm text-[var(--text2)]">
+        <ul key={`ul-${i}`} className="list-disc list-inside space-y-2 pl-2 text-sm sm:text-base text-[var(--text)]">
           {listItems.map((item, lIdx) => (
             <li key={lIdx} className="leading-relaxed">
               <InlineFormattedText content={item} />
@@ -173,7 +179,7 @@ function renderMarkdownBlocks(markdown: string): React.ReactNode {
         i++;
       }
       elements.push(
-        <ol key={`ol-${i}`} className="list-decimal list-inside space-y-1.5 pl-2 text-sm text-[var(--text2)]">
+        <ol key={`ol-${i}`} className="list-decimal list-inside space-y-2 pl-2 text-sm sm:text-base text-[var(--text)]">
           {listItems.map((item, lIdx) => (
             <li key={lIdx} className="leading-relaxed">
               <InlineFormattedText content={item} />
@@ -197,7 +203,7 @@ function renderMarkdownBlocks(markdown: string): React.ReactNode {
 
     // Regular paragraph
     elements.push(
-      <p key={`p-${i}`} className="leading-relaxed text-sm text-[var(--text2)]">
+      <p key={`p-${i}`} className="leading-relaxed text-sm sm:text-base text-[var(--text)]">
         <InlineFormattedText content={trimmed} />
       </p>
     );
@@ -214,7 +220,7 @@ function renderMarkdownTable(key: string, lines: string[]): React.ReactNode {
 
   return (
     <div key={key} className="overflow-x-auto my-3 rounded-xl border border-[var(--border)]">
-      <table className="w-full text-xs text-left border-collapse">
+      <table className="w-full text-xs sm:text-sm text-left border-collapse">
         <thead className="bg-[var(--surface2)] text-[var(--text)] font-semibold border-b border-[var(--border)]">
           <tr>
             {headerCells.map((cell, idx) => (
@@ -230,7 +236,7 @@ function renderMarkdownTable(key: string, lines: string[]): React.ReactNode {
             return (
               <tr key={rIdx} className="hover:bg-[var(--surface2)]/50 transition-colors">
                 {cells.map((cell, cIdx) => (
-                  <td key={cIdx} className="px-3 py-2 border-r border-[var(--border)] last:border-r-0 text-[var(--text2)]">
+                  <td key={cIdx} className="px-3 py-2 border-r border-[var(--border)] last:border-r-0 text-[var(--text)]">
                     <InlineFormattedText content={cell} />
                   </td>
                 ))}

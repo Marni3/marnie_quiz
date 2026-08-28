@@ -55,15 +55,36 @@ This document serves as the permanent reference guide for common pitfalls, archi
 
 ---
 
-## 7. Pre-Flight Checklist for Every Created Module
+## 7. Natural Phrasing & Avoiding Overly Academic Jargon
+
+| Pitfall / Issue | Root Cause | Standard Prevention & Fix |
+| :--- | :--- | :--- |
+| **Overly Academic / Daunting Terminology** | Using terms like *"Key Behavioral Conditions"*, *"Euclidean hypotenuse"*, or *"normal vector normalization"*. | **Use Natural, Direct Phrasing**: Use phrasing common in Philippine board exam review:<br>• Use **"Specific Cases"** or **"Cases"** instead of *"Key Behavioral Conditions"*.<br>• Use **"Hypotenuse"** instead of *"Euclidean hypotenuse"*.<br>• For point-to-line distance denominator: *"Dividing by the magnitude of the line's normal vector converts the scalar value into regular distance units."* |
+
+---
+
+## 8. High-Contrast Typography & Visualizer Hardware Sliders
+
+| Pitfall / Issue | Root Cause | Standard Prevention & Fix |
+| :--- | :--- | :--- |
+| **Washed-out / Faded Body Text** | Using dim secondary text classes (`text-[var(--text2)]`, `text-muted-foreground`, `prose-neutral`) for paragraphs and lists. | **Always Use High-Contrast Body Text**: Render all lesson paragraphs, lists, and table cells in `text-[var(--text)]` (crisp cream/white in dark mode, deep charcoal in light mode). Bold keywords pop naturally without making surrounding sentences faded. |
+| **Invisible Slider Tracks (Floating Blue Dots)** | Unstyled `input[type="range"]` losing its default browser track background under custom CSS / dark mode. | **Explicit Hardware Slider Track Styling**: Range sliders must have a solid, visible track rail (`background: var(--surface3)`, `border: 1px solid var(--border)`, `border-radius: 9999px`) and a prominent circular thumb knob with grab feedback. |
+| **Inline Vector Diagrams in Lesson Proper** | Relying solely on text descriptions for geometric concepts like angles of inclination or perpendicular drop lines. | **Use Fenced ```diagram Blocks**: Embed lightweight declarative SVG figures directly inside lesson markdown using the `InlineFigure` JSON primitive schema (`axes`, `grid`, `line`, `arc`, `point`, `projection`, `right_angle`). |
+
+---
+
+## 9. Pre-Flight Checklist for Every Created Module
 
 Before committing any learning module and companion mastery set:
 - [ ] Module JSON is in `test-sets/learning-modules/[subject]/[code].json`.
 - [ ] Companion Mastery JSON is in `test-sets/learning-modules/[subject]/mastery/[code]-mastery.json`.
 - [ ] Section sequence is strictly: **Bridges $\to$ Lesson Proper (Theory) $\to$ Visualizer $\to$ Terms $\to$ Sample Problems $\to$ Calculator Guides $\to$ Concept Checks $\to$ Mastery CTA**.
+- [ ] Body text uses natural phrasing ("Specific Cases") without academic jargon.
+- [ ] Fenced ` ```diagram ` blocks have valid JSON with clean $(x, y)$ coordinate bounds.
 - [ ] Keystrokes array contains clean token strings without `<kbd>` tags.
-- [ ] Visualizer archetype matches the topic geometry/physics.
+- [ ] Visualizer archetype matches the topic geometry/physics with visible slider tracks.
 - [ ] Distractor explanations have no redundant label prefixes.
 - [ ] Mastery Challenge contains 20–25 questions with 30% conceptual items.
 - [ ] `npm run build` passes with zero TypeScript/Turbopack errors.
 - [ ] Git commit and push completed with descriptive message.
+

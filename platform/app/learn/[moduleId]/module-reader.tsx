@@ -384,7 +384,7 @@ export function ModuleReader({ module }: ModuleReaderProps) {
               )}
 
               {/* KaTeX Markdown Theory Body */}
-              <div className="prose dark:prose-invert max-w-none bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-5 sm:p-6 shadow-xs leading-relaxed text-sm sm:text-base">
+              <div className="bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-5 sm:p-6 shadow-xs leading-relaxed text-[var(--text)] text-sm sm:text-base">
                 <MathText text={module.theory.contentMarkdown} splitParagraphs={true} />
               </div>
             </section>
