@@ -303,7 +303,7 @@ export async function getUserTopicSrsOverview(userId: string) {
       };
     });
 
-    const averageRetention = activeCount > 0 ? Math.round((sumR / activeCount) * 100) : 100;
+    const averageRetention = activeCount > 0 ? Math.round((sumR / activeCount) * 100) : 0;
 
     return {
       averageRetention,
@@ -314,7 +314,7 @@ export async function getUserTopicSrsOverview(userId: string) {
   } catch (err) {
     console.warn("Error fetching SRS overview:", err);
     return {
-      averageRetention: 100,
+      averageRetention: 0,
       activeDueCount: 0,
       totalTrackedTopics: 0,
       topicMap: {},
@@ -322,16 +322,33 @@ export async function getUserTopicSrsOverview(userId: string) {
   }
 }
 
+export interface RefresherDrillOptions {
+  domain?: string;
+  targetMode?: "due_srs" | "weak_topics" | "random_mix";
+  count?: number;
+  mode?: "untimed" | "timed_per_question" | "timed_whole_exam";
+}
+
 /**
- * Assembles a dynamic 20-question High-Yield Refresher Drill using the 35-40-25 Matrix:
- * - 7 Anchor & Foundation Identities (35%)
- * - 8 Conceptual & Proportionality Archetypes (40%)
- * - 5 Numerical Problem Solves (25%)
+ * Assembles a dynamic High-Yield Refresher Drill with configurable count and domain targeting.
  */
-export async function assembleDailyRefresherDrill(userId: string, domain?: string): Promise<string> {
+export async function assembleDailyRefresherDrill(
+  userId: string,
+  optionsOrDomain?: string | RefresherDrillOptions
+): Promise<string> {
+  const options: RefresherDrillOptions =
+    typeof optionsOrDomain === "string"
+      ? { domain: optionsOrDomain }
+      : optionsOrDomain || {};
+
+  const domain = options.domain && options.domain !== "ALL" ? options.domain : undefined;
+  const count = options.count && [10, 20, 30].includes(options.count) ? options.count : 20;
+  const targetMode = options.targetMode || "due_srs";
+  const examMode = options.mode || "untimed";
+
   const overview = await getUserTopicSrsOverview(userId);
   let dueTopicCodes = Object.values(overview.topicMap)
-    .filter((t) => t.isDue)
+    .filter((t) => (targetMode === "weak_topics" ? t.averageAccuracy < 70 : t.isDue))
     .map((t) => t.topicCode);
 
   if (domain) {
@@ -339,65 +356,69 @@ export async function assembleDailyRefresherDrill(userId: string, domain?: strin
     dueTopicCodes = dueTopicCodes.filter((code) => code.startsWith(domainPrefix));
   }
 
-  // If no specific topics are due, pull across all active topics
-  const targetTopicCodes = dueTopicCodes.length > 0 ? dueTopicCodes : undefined;
+  // Question distribution ratios based on total count
+  const anchorCount = Math.max(1, Math.round(count * 0.35));
+  const conceptualCount = Math.max(1, Math.round(count * 0.40));
+  const numericalCount = Math.max(1, count - anchorCount - conceptualCount);
 
-  // 1. Fetch 7 Anchor questions
+  // 1. Fetch Anchor questions
   const anchorQuestions = await db
     .select()
     .from(questions)
     .where(eq(questions.isAnchor, true))
-    .limit(7);
+    .limit(anchorCount * 2);
 
-  // 2. Fetch 8 Conceptual Archetype questions (archetype != 'standard')
+  // 2. Fetch Conceptual Archetype questions
   const conceptualQuestions = await db
     .select()
     .from(questions)
     .where(sql`${questions.archetype} IS NOT NULL AND ${questions.archetype} != 'standard'`)
-    .limit(8);
+    .limit(conceptualCount * 2);
 
-  // 3. Fetch 5 Numerical Problem Solving questions (archetype = 'standard' or default)
+  // 3. Fetch Numerical Problem Solving questions
   const numericalQuestions = await db
     .select()
     .from(questions)
     .where(or(eq(questions.archetype, "standard"), sql`${questions.archetype} IS NULL`))
-    .limit(5);
+    .limit(numericalCount * 2);
 
   // Assemble question pool
   const pool = [...anchorQuestions, ...conceptualQuestions, ...numericalQuestions];
 
-  // If pool has fewer than 20, backfill with random questions
-  if (pool.length < 20) {
+  // If pool has fewer than requested count, backfill
+  if (pool.length < count) {
     const extra = await db
       .select()
       .from(questions)
-      .limit(20 - pool.length);
+      .limit(count - pool.length);
     pool.push(...extra);
   }
 
-  // Deduplicate by question ID
+  // Deduplicate by question ID and trim to requested count
   const seen = new Set<string>();
   const finalQuestions: Question[] = [];
   pool.forEach((q) => {
-    if (!seen.has(q.id) && finalQuestions.length < 20) {
+    if (!seen.has(q.id) && finalQuestions.length < count) {
       seen.add(q.id);
       finalQuestions.push(q);
     }
   });
 
-  // Create an ephemeral Question Set for the drill
+  const domainLabel = domain ? `${domain.toUpperCase()} ` : "";
+  const title = `⚡ ${domainLabel}Refresher Drill • ${finalQuestions.length} Questions (${new Date().toLocaleDateString()})`;
+
+  // Create ephemeral Question Set for the drill
   const setId = randomUUID();
-  const [createdSet] = await db
+  await db
     .insert(questionSets)
     .values({
       id: setId,
       uploadedByUserId: userId,
-      title: `⚡ Daily Spaced Refresher • 20 Questions (${new Date().toLocaleDateString()})`,
+      title,
       tier: "drill",
-      subjectTag: "Spaced Repetition",
+      subjectTag: domain ? domain.toUpperCase() : "Spaced Repetition",
       visibility: "shared",
-    })
-    .returning();
+    });
 
   // Link questions to set
   for (let i = 0; i < finalQuestions.length; i++) {
@@ -413,7 +434,7 @@ export async function assembleDailyRefresherDrill(userId: string, domain?: strin
   const attempt = await createAttempt({
     userId,
     questionSetId: setId,
-    mode: "untimed",
+    mode: examMode,
   });
 
   return attempt.id;

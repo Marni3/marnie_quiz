@@ -5,6 +5,7 @@ import Link from "next/link";
 import { LearningModule } from "@/lib/modules";
 import { MathText } from "@/components/math-text";
 import { DeclarativeVisualizer } from "@/components/declarative-visualizer";
+import { FeedbackModal } from "@/components/feedback-modal";
 import {
   BookOpen,
   Zap,
@@ -25,6 +26,7 @@ import {
   ExternalLink,
   ShieldCheck,
   Lightbulb,
+  MessageSquarePlus,
 } from "lucide-react";
 
 interface ModuleReaderProps {
@@ -50,6 +52,7 @@ export function ModuleReader({ module }: ModuleReaderProps) {
   // Module Completion and Bookmark State synced with API
   const [isBookmarked, setIsBookmarked] = useState<boolean>(false);
   const [isCompleted, setIsCompleted] = useState<boolean>(false);
+  const [isFeedbackOpen, setIsFeedbackOpen] = useState<boolean>(false);
 
   // Visualizer Slider Values
   const [vizControls, setVizControls] = useState<Record<string, number>>(() => {
@@ -911,9 +914,27 @@ export function ModuleReader({ module }: ModuleReaderProps) {
                 )}
               </div>
             </section>
+
+            {/* Bottom Feedback Trigger */}
+            <div className="flex items-center justify-center pt-2 pb-6">
+              <button
+                type="button"
+                onClick={() => setIsFeedbackOpen(true)}
+                className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs text-[var(--text3)] hover:text-amber-500 hover:bg-[var(--surface2)] border border-transparent hover:border-[var(--border)] transition-all cursor-pointer"
+              >
+                <MessageSquarePlus className="w-3.5 h-3.5" />
+                <span>Notice a typo, formula error, or visualizer issue in this module? Leave a note</span>
+              </button>
+            </div>
           </main>
         </div>
       </div>
+
+      <FeedbackModal
+        isOpen={isFeedbackOpen}
+        onClose={() => setIsFeedbackOpen(false)}
+        defaultModuleId={module.id}
+      />
     </div>
   );
 }

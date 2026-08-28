@@ -6,6 +6,7 @@ import Link from "next/link";
 import { Navbar } from "@/components/navbar";
 import { MotivationBanner } from "@/components/motivation-banner";
 import { SkillTreeMap } from "@/components/skill-tree-map";
+import { RefresherCustomizerModal } from "@/components/refresher-customizer-modal";
 import {
   Search,
   BookOpen,
@@ -25,6 +26,8 @@ import {
   GitBranch,
   List,
   GraduationCap,
+  Sliders,
+  HelpCircle,
 } from "lucide-react";
 import { QuizListItem } from "@/lib/quizzes";
 import { FolderWithCount } from "@/lib/folders";
@@ -107,6 +110,8 @@ export function LibraryView({
   // SRS Overrides State
   const [activeMenuTopic, setActiveMenuTopic] = useState<string | null>(null);
   const [launchingDrill, setLaunchingDrill] = useState(false);
+  const [isRefresherModalOpen, setIsRefresherModalOpen] = useState(false);
+  const [refresherModalDomain, setRefresherModalDomain] = useState("ALL");
 
   const getQuizTier = (q: QuizListItem) => {
     if (q.tier) return q.tier.toLowerCase();
@@ -337,16 +342,28 @@ export function LibraryView({
                 <h2 className="text-lg font-bold font-serif text-[var(--text)] tracking-tight">
                   Daily Retention Radar
                 </h2>
-                <span
-                  title={METRIC_DEFINITIONS.retrievability}
-                  className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-bold font-mono bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20 cursor-help"
-                >
-                  <ShieldCheck className="w-3.5 h-3.5" />
-                  {srsOverview.averageRetention}% Retrievability
-                </span>
+                {srsOverview.totalTrackedTopics === 0 ? (
+                  <span
+                    title="No memory history yet. Complete test sets to calibrate your FSRS retention model."
+                    className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-bold font-mono bg-amber-500/10 text-amber-600 dark:text-amber-400 border border-amber-500/20 cursor-help"
+                  >
+                    <HelpCircle className="w-3.5 h-3.5" />
+                    Calibrating Baseline
+                  </span>
+                ) : (
+                  <span
+                    title={METRIC_DEFINITIONS.retrievability}
+                    className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-bold font-mono bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20 cursor-help"
+                  >
+                    <ShieldCheck className="w-3.5 h-3.5" />
+                    {srsOverview.averageRetention}% Retrievability
+                  </span>
+                )}
               </div>
               <p className="text-xs sm:text-sm text-[var(--text2)] mt-1">
-                {srsOverview.activeDueCount > 0 ? (
+                {srsOverview.totalTrackedTopics === 0 ? (
+                  "Start with a 30-Question Diagnostic set in Mathematics or Electronics to establish your initial retention baseline."
+                ) : srsOverview.activeDueCount > 0 ? (
                   <>
                     <strong className="text-[var(--accent)]">{pluralize(srsOverview.activeDueCount, "topic")}</strong> due for spaced recovery before forgetting sets in.
                   </>
@@ -362,51 +379,61 @@ export function LibraryView({
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 w-full md:w-auto">
               <button
                 type="button"
-                onClick={() => handleLaunchDailyDrill()}
-                disabled={launchingDrill}
-                className="flex-1 md:flex-initial inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-[var(--accent)] text-white text-xs sm:text-sm font-bold shadow-md hover:brightness-110 active:scale-95 transition-all cursor-pointer disabled:opacity-50"
+                onClick={() => {
+                  setRefresherModalDomain("ALL");
+                  setIsRefresherModalOpen(true);
+                }}
+                className="flex-1 md:flex-initial inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-[var(--accent)] text-white text-xs sm:text-sm font-bold shadow-md hover:brightness-110 active:scale-95 transition-all cursor-pointer"
               >
                 <Zap className="w-4 h-4 fill-current" />
-                <span>{launchingDrill && activeDrillDomain === "ALL" ? "Assembling..." : "Start 20-Q Refresher"}</span>
+                <span>Start Refresher Drill</span>
               </button>
 
               {/* Per-Subject Quick Refresher Chips */}
               <div className="flex items-center gap-1 bg-[var(--surface2)] p-1 rounded-xl border border-[var(--border)] overflow-x-auto">
                 <button
                   type="button"
-                  onClick={() => handleLaunchDailyDrill("MATH")}
-                  disabled={launchingDrill}
-                  className="px-2.5 py-1.5 rounded-lg text-xs font-mono font-bold text-blue-500 hover:bg-[var(--surface)] transition-all cursor-pointer disabled:opacity-50"
-                  title="Start Math Targeted Refresher"
+                  onClick={() => {
+                    setRefresherModalDomain("MATH");
+                    setIsRefresherModalOpen(true);
+                  }}
+                  className="px-2.5 py-1.5 rounded-lg text-xs font-mono font-bold text-blue-500 hover:bg-[var(--surface)] transition-all cursor-pointer"
+                  title="Customize Math Refresher"
                 >
-                  {launchingDrill && activeDrillDomain === "MATH" ? "..." : "📘 Math"}
+                  📘 Math
                 </button>
                 <button
                   type="button"
-                  onClick={() => handleLaunchDailyDrill("ELEC")}
-                  disabled={launchingDrill}
-                  className="px-2.5 py-1.5 rounded-lg text-xs font-mono font-bold text-amber-500 hover:bg-[var(--surface)] transition-all cursor-pointer disabled:opacity-50"
-                  title="Start Electronics Targeted Refresher"
+                  onClick={() => {
+                    setRefresherModalDomain("ELEC");
+                    setIsRefresherModalOpen(true);
+                  }}
+                  className="px-2.5 py-1.5 rounded-lg text-xs font-mono font-bold text-amber-500 hover:bg-[var(--surface)] transition-all cursor-pointer"
+                  title="Customize Electronics Refresher"
                 >
-                  {launchingDrill && activeDrillDomain === "ELEC" ? "..." : "📙 Elecs"}
+                  📙 Elecs
                 </button>
                 <button
                   type="button"
-                  onClick={() => handleLaunchDailyDrill("GEAS")}
-                  disabled={launchingDrill}
-                  className="px-2.5 py-1.5 rounded-lg text-xs font-mono font-bold text-emerald-500 hover:bg-[var(--surface)] transition-all cursor-pointer disabled:opacity-50"
-                  title="Start GEAS Targeted Refresher"
+                  onClick={() => {
+                    setRefresherModalDomain("GEAS");
+                    setIsRefresherModalOpen(true);
+                  }}
+                  className="px-2.5 py-1.5 rounded-lg text-xs font-mono font-bold text-emerald-500 hover:bg-[var(--surface)] transition-all cursor-pointer"
+                  title="Customize GEAS Refresher"
                 >
-                  {launchingDrill && activeDrillDomain === "GEAS" ? "..." : "📗 GEAS"}
+                  📗 GEAS
                 </button>
                 <button
                   type="button"
-                  onClick={() => handleLaunchDailyDrill("EST")}
-                  disabled={launchingDrill}
-                  className="px-2.5 py-1.5 rounded-lg text-xs font-mono font-bold text-purple-500 hover:bg-[var(--surface)] transition-all cursor-pointer disabled:opacity-50"
-                  title="Start EST Targeted Refresher"
+                  onClick={() => {
+                    setRefresherModalDomain("EST");
+                    setIsRefresherModalOpen(true);
+                  }}
+                  className="px-2.5 py-1.5 rounded-lg text-xs font-mono font-bold text-purple-500 hover:bg-[var(--surface)] transition-all cursor-pointer"
+                  title="Customize EST Refresher"
                 >
-                  {launchingDrill && activeDrillDomain === "EST" ? "..." : "📕 EST"}
+                  📕 EST
                 </button>
               </div>
             </div>

@@ -1,14 +1,17 @@
 "use client";
 
+import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useSession, signOut } from "next-auth/react";
 import { ThemeToggle } from "./theme-toggle";
-import { BookOpen, History, Upload, LogOut, Sparkles, Brain, LogIn, GraduationCap } from "lucide-react";
+import { FeedbackModal } from "./feedback-modal";
+import { BookOpen, History, Upload, LogOut, Sparkles, Brain, LogIn, GraduationCap, MessageSquarePlus } from "lucide-react";
 
 export function Navbar({ breadcrumb }: { breadcrumb?: string }) {
   const pathname = usePathname();
   const { data: session } = useSession();
+  const [isFeedbackOpen, setIsFeedbackOpen] = useState(false);
 
   return (
     <header className="sticky top-0 z-50 w-full border-b backdrop-blur-md transition-colors bg-[var(--surface)] border-[var(--border)]">
@@ -123,8 +126,19 @@ export function Navbar({ breadcrumb }: { breadcrumb?: string }) {
           </Link>
         </nav>
 
-        {/* Right: Theme Toggle & User Profile */}
-        <div className="flex items-center gap-3 shrink-0">
+        {/* Right: Feedback Button, Theme Toggle & User Profile */}
+        <div className="flex items-center gap-2 sm:gap-3 shrink-0">
+          <button
+            type="button"
+            onClick={() => setIsFeedbackOpen(true)}
+            aria-label="Report feedback or issue"
+            title="Report Feedback or Bug"
+            className="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-medium text-[var(--text2)] hover:text-amber-500 hover:bg-[var(--surface2)] border border-[var(--border)] transition-colors cursor-pointer"
+          >
+            <MessageSquarePlus className="w-3.5 h-3.5 text-amber-500" />
+            <span className="hidden md:inline">Feedback</span>
+          </button>
+
           <ThemeToggle />
 
           {session?.user ? (
@@ -165,6 +179,11 @@ export function Navbar({ breadcrumb }: { breadcrumb?: string }) {
           )}
         </div>
       </div>
+
+      <FeedbackModal
+        isOpen={isFeedbackOpen}
+        onClose={() => setIsFeedbackOpen(false)}
+      />
     </header>
   );
 }

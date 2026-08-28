@@ -50,16 +50,100 @@ Your goal is to answer the student's questions conceptually, show worked step-by
       return `${BASE_SOCRATIC_PROMPT}
 
 MODE: Custom Learning Module & Tests Generator
-When requested by the student to create a learning module or test set on a specific topic:
-1. Generate an exhaustive, structured lesson following the 4-layer concept framework:
-   - Layer 1: Intuitive Motivation / The "Why"
-   - Layer 2: Governing Formulas & Variable Breakdown (KaTeX)
-   - Layer 3: Specific Cases & Boundary Conditions
-   - Layer 4: Board Exam Trap Alerts & Memory Anchors
-2. Include a Compilation of Formulas table.
-3. Include 2 Worked Sample Problems demonstrating Dual-Method Solving (Formal Academic Derivation vs. ⚡ 10-Second Board Exam Shortcut).
-4. Include Calculator Keystroke sequences for Karce/Canon calculators.
-5. Conclude with a paired 5-to-10 question Mastery Challenge with 4 multiple choice options (A, B, C, D) and detailed explanations.`;
+When requested by the student to create a learning module or test set on a specific topic, you MUST generate a complete, interactive, executable module complying EXACTLY with the platform's JSON schema so it can be previewed, launched, and taken interactively.
+
+Provide a friendly 2-3 sentence overview in markdown first, followed immediately by a single fenced JSON block:
+\`\`\`json
+{
+  "id": "custom-module-id-slug",
+  "code": "CUSTOM-01",
+  "topicCode": "CUSTOM-01",
+  "domain": "MATH", // "MATH" | "ELECS" | "GEAS" | "EST"
+  "subtopicTitle": "Topic Name",
+  "estimatedReadMinutes": 8,
+  "theory": {
+    "mentalAnchor": "1-sentence intuitive core concept summary",
+    "contentMarkdown": "### Layer 1: Intuitive Motivation\\n...\\n### Layer 2: Governing Equations\\n$$\\\\text{Formula}$$\\n### Layer 3: Special Cases & Boundary Conditions\\n...\\n### Layer 4: Board Exam Pitfalls & Traps\\n..."
+  },
+  "formulas": [
+    {
+      "name": "Main Formula Name",
+      "latex": "y = mx + b",
+      "where": "m = slope, b = y-intercept",
+      "keywordTrigger": "Slope-intercept trigger"
+    }
+  ],
+  "terms": [
+    {
+      "term": "Key Term",
+      "definition": "Clear concise definition",
+      "trapAlert": "Common trap or confusion"
+    }
+  ],
+  "visualizer": {
+    "type": "parameter_sweep", // "cartesian_line" | "parameter_sweep" | "stepper" | "rlc_resonance" | "conic_explorer" | "factor_tree"
+    "title": "Interactive Parameter Explorer",
+    "description": "Adjust sliders to observe the dynamic response.",
+    "config": {
+      "controls": [
+        { "id": "paramA", "label": "Parameter A", "min": 1, "max": 100, "step": 1, "defaultValue": 10, "unit": "Hz" }
+      ],
+      "plot": {
+        "expression": "paramA * x",
+        "xRange": [0, 10],
+        "yRange": [0, 100],
+        "xLabel": "Variable X",
+        "yLabel": "Response Y"
+      }
+    }
+  },
+  "examples": [
+    {
+      "problemStatement": "Sample PRC Board Exam problem statement with KaTeX math $...$",
+      "formalSolution": "Full step-by-step derivation...",
+      "formalTimeSeconds": 90,
+      "shortcutSolution": "⚡ Fast 10-second inspection or calculator shortcut...",
+      "shortcutTimeSeconds": 15,
+      "trapWarning": "Watch out for unit prefix mismatch!"
+    }
+  ],
+  "calculatorSpeedTricks": [
+    {
+      "calculatorModel": "Karce KC-S991 / Canon F-789SGA",
+      "shortcutName": "Linear Regression / Formula Solve",
+      "keystrokeSequence": "[MODE] [3] (STAT) -> [1] (A+BX)",
+      "note": "Saves 45 seconds on board exam."
+    }
+  ],
+  "conceptChecks": [
+    {
+      "id": "cc-1",
+      "question": "Conceptual check question testing the governing rule?",
+      "choices": ["Choice A", "Choice B", "Choice C", "Choice D"],
+      "correctChoice": "B",
+      "explanation": "Why B is correct based on first principles."
+    }
+  ],
+  "pairedMasteryChallenge": {
+    "id": "custom-module-id-slug-mastery",
+    "moduleCode": "CUSTOM-01",
+    "timeLimitMinutes": 15,
+    "questions": [
+      {
+        "id": "q1",
+        "promptText": "PRC Board Exam practice problem #1?",
+        "choiceA": "Option A text",
+        "choiceB": "Option B text",
+        "choiceC": "Option C text",
+        "choiceD": "Option D text",
+        "correctChoice": "A",
+        "explanation": "Detailed worked explanation and calculator technique."
+      }
+    ]
+  }
+}
+\`\`\`
+Ensure all JSON keys and brackets are syntactically valid.`;
 
     case "tricky_questions":
       return `${BASE_SOCRATIC_PROMPT}
@@ -76,7 +160,8 @@ When the student asks to practice tricky questions on a topic:
    - The Question Prompt & Choices A, B, C, D
    - The Correct Answer
    - Detailed Formal Solution & ⚡ Fast Calculator Method
-   - An explicit section: **"Distractor Trap Breakdown"** explaining why each incorrect choice is tempting.`;
+   - An explicit section: **"Distractor Trap Breakdown"** explaining why each incorrect choice is tempting.
+4. Also format the questions into an executable paired JSON block at the end so the student can launch it as an interactive quiz with 1-click!`;
 
     case "formula_sheet":
       return `${BASE_SOCRATIC_PROMPT}

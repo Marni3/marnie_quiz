@@ -7,6 +7,7 @@ import {
   real,
   timestamp,
   pgEnum,
+  jsonb,
 } from "drizzle-orm/pg-core";
 
 export const choiceEnum = pgEnum("choice", ["a", "b", "c", "d"]);
@@ -160,6 +161,18 @@ export const userModuleProgress = pgTable("user_module_progress", {
   updatedAt: timestamp("updated_at").defaultNow().notNull(),
 });
 
+export const userFeedbacks = pgTable("user_feedbacks", {
+  id: uuid("id").defaultRandom().primaryKey(),
+  userId: uuid("user_id").references(() => users.id, { onDelete: "set null" }),
+  url: text("url").notNull(),
+  moduleId: text("module_id"),
+  category: text("category").notNull().default("formatting"), // 'formatting' | 'visualizer' | 'typo' | 'bug' | 'other'
+  comment: text("comment").notNull(),
+  metadata: jsonb("metadata"),
+  resolved: boolean("resolved").notNull().default(false),
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+});
+
 export type User = typeof users.$inferSelect;
 export type Folder = typeof folders.$inferSelect;
 export type QuestionSet = typeof questionSets.$inferSelect;
@@ -169,3 +182,4 @@ export type Attempt = typeof attempts.$inferSelect;
 export type AnswerRecord = typeof answerRecords.$inferSelect;
 export type UserTopicSrs = typeof userTopicSrs.$inferSelect;
 export type UserModuleProgress = typeof userModuleProgress.$inferSelect;
+export type UserFeedback = typeof userFeedbacks.$inferSelect;
