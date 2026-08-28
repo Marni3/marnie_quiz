@@ -582,4 +582,11 @@ graph TD
 ### Step 6: Phase 4.10 — Mobile Ergonomics & PWA Final Polish
 - Add mobile bottom navigation bar (`< 640px`), `manifest.json`, and safe-area padding.
 - Verify `npm run build` with 0 errors across all routes.
+
+### Step 7: Phase 4.11 — Customizable Daily Refresher Quiz (Post-Module Enhancement)
+- Add a **"Customize Refresher"** option/modal on the Daily Drill trigger:
+  - **Subject Filter:** Choose between All Subjects (default 20-item mix) or target a single specific subject (e.g. Mathematics, Electronics, EST, GEAS).
+  - **Target Mode:** Toggle between "All Due SRS Items" or "Failed & Low-Accuracy Items Only".
+  - **Configurable Length:** Select test length (10, 20, or 30 questions) depending on available study time.
 - **Declare v1.0 Feature Complete & Enter Pure Study Mode.**
+
