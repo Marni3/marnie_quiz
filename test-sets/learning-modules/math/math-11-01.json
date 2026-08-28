@@ -1,0 +1,178 @@
+{
+  "id": "math-11-01",
+  "code": "MATH 11-01",
+  "domain": "MATH",
+  "topicCode": "MATH-11",
+  "topicTitle": "Solid Geometry",
+  "subtopicTitle": "Prisms, Cylinders, Pyramids, Cones & Frustums",
+  "order": 1,
+  "pairedQuizSetId": "math-11-01-mastery",
+  "toc": [
+    { "id": "sec-prereq-bridges", "title": "1. Introduction & Cross-Subject Connections", "level": 2 },
+    { "id": "sec-theory", "title": "2. Lesson Proper: Prisms, Cylinders, Pyramids & Frustums", "level": 2 },
+    { "id": "sec-formulas", "title": "3. Compilation of Formulas & Frustum Volumes", "level": 2 },
+    { "id": "sec-visualizer", "title": "4. Interactive Visualizer: Frustum & Truncated Prism Simulator", "level": 2 },
+    { "id": "sec-terminology", "title": "5. Key Terms and Definitions", "level": 2 },
+    { "id": "sec-dual-method", "title": "6. Worked Board Exam Problems", "level": 2 },
+    { "id": "sec-calculator", "title": "7. Calculator Speed Techniques (Karce & Canon)", "level": 2 },
+    { "id": "sec-concept-checks", "title": "8. In-Line Concept Checks", "level": 2 },
+    { "id": "sec-mastery-challenge", "title": "9. Paired Mastery Challenge Exam", "level": 2 }
+  ],
+  "prerequisiteBridge": {
+    "priorModuleId": "math-10-05",
+    "text": "Extending from 2D plane geometry in MATH 10, we now transition into 3D Solid Geometry—analyzing volumes, lateral areas, oblique right sections, truncated prisms, pyramids, cones, and conical frustums."
+  },
+  "crossSubjectBridges": [
+    {
+      "targetDomain": "GEAS",
+      "targetTopicCode": "GEAS-03",
+      "badgeText": "Earthwork Volumes",
+      "description": "Highway excavation trench cut-and-fill calculations use truncated prism formulas $V = B \\left(\\frac{\\sum h_i}{n}\\right)$ and the prismoidal formula."
+    },
+    {
+      "targetDomain": "ELECS",
+      "targetTopicCode": "ELEC-06",
+      "badgeText": "Capacitor Geometries",
+      "description": "Coaxial cylindrical capacitors and truncated conical conductors compute capacitance via electric field volume integration."
+    },
+    {
+      "targetDomain": "EST",
+      "targetTopicCode": "EST-05",
+      "badgeText": "Conical Horns",
+      "description": "Microwave conical horn antennas and waveguide tapers use conical frustum flare equations to match radiation impedance."
+    }
+  ],
+  "theory": {
+    "mentalAnchor": "Prism/Cylinder: $V = Bh = K \\cdot e$. Truncated prism: $V = B\\left(\\frac{h_1+\\dots+h_n}{n}\\right)$. Pyramid/Cone: $V = \\frac{1}{3}Bh$. Frustum volume: $V = \\frac{h}{3}(B_1+B_2+\\sqrt{B_1 B_2})$. Conical frustum: $V = \\frac{\\pi h}{3}(R^2+r^2+Rr)$, Lateral Area $A_L = \\pi(R+r)L$ where slant height $L = \\sqrt{h^2+(R-r)^2}$.",
+    "contentMarkdown": "### 1. Prisms & Cylinders (Right & Oblique)\n\n#### A. Prisms:\n- **Cube (Regular Hexahedron)**: $V = a^3, \\quad A_s = 6a^2, \\quad d_{\\text{space}} = a\\sqrt{3}$.\n- **Rectangular Parallelepiped (Box)**: $V = abc, \\quad A_s = 2(ab + bc + ca), \\quad d_{\\text{space}} = \\sqrt{a^2 + b^2 + c^2}$.\n- **Right Prism**: Lateral faces perpendicular to base:\n  $$V = B h, \\quad A_L = h \\cdot p_b$$\n- **Oblique Prism**: Lateral edges inclined at angle $\\theta$ to base:\n  $$V = B h = K \\cdot e, \\quad A_L = e \\cdot p_K$$\n  *(where $e$ is lateral edge length, $K$ is the area of the perpendicular **right section**, and $p_K$ is its perimeter)*.\n- **Truncated Prism**: Prism sliced by a non-parallel inclined plane:\n  $$V = B \\left(\\frac{h_1 + h_2 + h_3 + \\dots + h_n}{n}\\right)$$\n\n#### B. Cylinders:\n- **Right Circular Cylinder**: $V = \\pi r^2 h, \\quad A_L = 2\\pi r h, \\quad A_T = 2\\pi r(h + r)$.\n- **Oblique Cylinder**: $V = B h = K \\cdot e, \\quad A_L = e \\cdot p_K$.\n\n```diagram\n{\n  \"caption\": \"Figure 1: Solid Geometry - Pyramid Frustum (B1, B2) and Conical Frustum (R, r, L)\",\n  \"xRange\": [-5, 5],\n  \"yRange\": [-3, 3],\n  \"elements\": [\n    { \"type\": \"polygon\", \"points\": [[-4, -2], [-1.5, -2], [-2.2, 1.5], [-3.3, 1.5]], \"color\": \"#38bdf8\", \"fill\": \"rgba(56, 189, 248, 0.05)\" },\n    { \"type\": \"text\", \"at\": [-2.75, 1.8], \"text\": \"Base B2\", \"color\": \"#38bdf8\" },\n    { \"type\": \"text\", \"at\": [-2.75, -2.3], \"text\": \"Base B1\", \"color\": \"#38bdf8\" },\n    { \"type\": \"text\", \"at\": [-2.75, -0.2], \"text\": \"V = h(B1+B2+√(B1B2))/3\", \"color\": \"#fbbf24\" },\n    { \"type\": \"line\", \"from\": [1.5, -2], \"to\": [4.5, -2], \"color\": \"#34d399\", \"label\": \"2R\" },\n    { \"type\": \"line\", \"from\": [2.3, 1.5], \"to\": [3.7, 1.5], \"color\": \"#34d399\", \"label\": \"2r\" },\n    { \"type\": \"line\", \"from\": [1.5, -2], \"to\": [2.3, 1.5], \"color\": \"#f43f5e\", \"label\": \"Slant L\" },\n    { \"type\": \"line\", \"from\": [4.5, -2], \"to\": [3.7, 1.5], \"color\": \"#f43f5e\" }\n  ]\n}\n```\n\n---\n\n### 2. Pyramids & Cones\n\n- **Pyramid**: Polyhedron with polygonal base $B$ and lateral triangular faces meeting at apex:\n  $$V = \\frac{1}{3} B h$$\n- **Right Circular Cone**: Apex centered over circular base:\n  $$V = \\frac{1}{3} \\pi r^2 h, \\quad A_L = \\pi r L, \\quad L = \\sqrt{r^2 + h^2}$$\n\n---\n\n### 3. Frustums of Pyramids and Cones\n\nA **frustum** is the lower portion of a pyramid or cone contained between its base and a plane parallel to the base:\n\n1. **General Frustum Volume Formula (Pyramid or Cone)**:\n   $$\\mathbf{V = \\frac{h}{3} \\left(B_1 + B_2 + \\sqrt{B_1 B_2}\\right)}$$\n\n2. **Frustum of a Right Circular Cone**:\n   $$V = \\frac{\\pi h}{3} (R^2 + r^2 + Rr)$$\n   $$\\text{Slant Height } L = \\sqrt{h^2 + (R - r)^2}$$\n   $$\\text{Lateral Surface Area } A_L = \\pi (R + r) L$$\n   $$\\text{Total Surface Area } A_T = \\pi L (R + r) + \\pi r^2 + \\pi R^2$$"
+  },
+  "formulas": [
+    {
+      "id": "f-1101-01",
+      "title": "General Frustum Volume Equation",
+      "formula": "$$V = \\frac{h}{3}\\left(B_1 + B_2 + \\sqrt{B_1 B_2}\\right)$$",
+      "note": "Valid for frustums of both regular pyramids and circular cones."
+    },
+    {
+      "id": "f-1101-02",
+      "title": "Conical Frustum Volume & Lateral Area",
+      "formula": "$$V = \\frac{\\pi h}{3}(R^2 + r^2 + Rr), \\quad A_L = \\pi(R + r)L, \\quad L = \\sqrt{h^2 + (R - r)^2}$$",
+      "note": "R is bottom radius, r is top radius, h is altitude, L is slant height."
+    },
+    {
+      "id": "f-1101-03",
+      "title": "Oblique Prism & Truncated Prism Volume",
+      "formula": "$$V_{\\text{oblique}} = K \\cdot e, \\quad V_{\\text{truncated}} = B \\left(\\frac{\\sum_{i=1}^n h_i}{n}\\right)$$",
+      "note": "K is right section area, e is lateral edge, h_i are lateral heights."
+    }
+  ],
+  "visualizer": {
+    "archetype": "parameter_sweep",
+    "title": "Conical Frustum & Truncated Solid Simulator",
+    "description": "Adjust bottom radius R, top radius r, and height h to calculate live frustum volume, slant height L, and lateral surface area.",
+    "config": {
+      "canvasWidth": 640,
+      "canvasHeight": 320,
+      "controls": [
+        { "id": "bottomR", "label": "Bottom Radius R", "min": 3, "max": 20, "step": 1, "defaultValue": 10 },
+        { "id": "topR", "label": "Top Radius r", "min": 1, "max": 15, "step": 1, "defaultValue": 4 },
+        { "id": "heightH", "label": "Height h", "min": 4, "max": 25, "step": 1, "defaultValue": 8 }
+      ]
+    }
+  },
+  "terms": [
+    {
+      "term": "Frustum",
+      "symbol": "$V_{\\text{frustum}}$",
+      "unit": "Solid",
+      "definition": "The portion of a cone or pyramid lying between the base and a plane parallel to the base.",
+      "keywordTrigger": "portion between base and parallel plane / frustum"
+    },
+    {
+      "term": "Right Section",
+      "symbol": "$K$",
+      "unit": "Area",
+      "definition": "The cross-section of an oblique prism or cylinder made by a plane perpendicular to its lateral edges.",
+      "keywordTrigger": "perpendicular to lateral edge / V = K * e"
+    },
+    {
+      "term": "Truncated Prism",
+      "symbol": "$V = B(\\sum h/n)$",
+      "unit": "Solid",
+      "definition": "A prism cut by a non-parallel intersecting plane, with volume equal to base area multiplied by average edge height.",
+      "keywordTrigger": "cut by non-parallel plane / average of lateral heights"
+    }
+  ],
+  "examples": [
+    {
+      "problemStatement": "Find the volume and lateral surface area of a frustum of a right circular cone whose base radii are R = 8 cm, r = 2 cm, and altitude h = 8 cm.",
+      "formalSolutionMarkdown": "#### Step 1: Compute Slant Height L\n$$L = \\sqrt{h^2 + (R - r)^2} = \\sqrt{8^2 + (8 - 2)^2} = \\sqrt{64 + 36} = \\sqrt{100} = 10\\text{ cm}$$\n\n#### Step 2: Compute Volume\n$$V = \\frac{\\pi h}{3} (R^2 + r^2 + Rr) = \\frac{8\\pi}{3} (8^2 + 2^2 + 8 \\times 2) = \\frac{8\\pi}{3} (64 + 4 + 16) = \\frac{8\\pi}{3} (84) = 224\\pi \\approx 703.72\\text{ cm}^3$$\n\n#### Step 3: Compute Lateral Surface Area\n$$A_L = \\pi (R + r) L = \\pi (8 + 2)(10) = 100\\pi \\approx 314.16\\text{ cm}^2$$",
+      "shortcutSolutionMarkdown": "#### ⚡ 10-Second Conical Frustum Shortcut\n$$L = \\sqrt{8^2 + 6^2} = 10, \\quad V = \\frac{8\\pi}{3}(84) = 224\\pi \\approx 703.72, \\quad A_L = 100\\pi \\approx 314.16$$",
+      "formalTimeSeconds": 60,
+      "shortcutTimeSeconds": 10
+    },
+    {
+      "problemStatement": "A truncated right square prism has a base area of B = 36 cm² and four vertical corner heights of h1 = 5 cm, h2 = 7 cm, h3 = 8 cm, and h4 = 12 cm. Find its volume.",
+      "formalSolutionMarkdown": "#### Step 1: Compute average height\n$$h_{\\text{avg}} = \\frac{h_1 + h_2 + h_3 + h_4}{4} = \\frac{5 + 7 + 8 + 12}{4} = \\frac{32}{4} = 8\\text{ cm}$$\n\n#### Step 2: Compute volume\n$$V = B \\times h_{\\text{avg}} = 36 \\times 8 = 288\\text{ cm}^3$$",
+      "shortcutSolutionMarkdown": "#### ⚡ 3-Second Average Height Product\n$$V = 36 \\times \\left(\\frac{32}{4}\\right) = 36 \\times 8 = 288\\text{ cm}^3$$",
+      "formalTimeSeconds": 30,
+      "shortcutTimeSeconds": 3
+    }
+  ],
+  "calculatorGuides": {
+    "karce": {
+      "techniqueTitle": "Fast Conical Frustum Volume Formula",
+      "problemType": "Evaluating (π*h/3)*(R² + r² + R*r)",
+      "sampleProblem": "Find V for R=8, r=2, h=8.",
+      "mode": "COMP Mode (MODE 1)",
+      "keystrokes": ["SHIFT", "π", "×", "8", "÷", "3", "×", "(", "8", "x²", "+", "2", "x²", "+", "8", "×", "2", ")", "="],
+      "notes": "Directly evaluates 703.71675 in 2 seconds."
+    },
+    "canon": {
+      "techniqueTitle": "Truncated Prism Average Height Shortcut",
+      "problemType": "B * sum(h) / n on Canon F-789SGA",
+      "sampleProblem": "Evaluate 36 * (5 + 7 + 8 + 12) / 4.",
+      "mode": "COMP Mode (MODE 1)",
+      "keystrokes": ["3", "6", "×", "(", "5", "+", "7", "+", "8", "+", "1", "2", ")", "÷", "4", "="],
+      "notes": "Directly yields 288."
+    }
+  },
+  "conceptChecks": [
+    {
+      "id": "chk-1101-01",
+      "question": "What is the general formula for the volume of a frustum of any pyramid or cone with base areas $B_1$ and $B_2$ and height $h$?",
+      "options": [
+        "V = (h/3)(B₁ + B₂ + √(B₁ B₂))",
+        "V = (h/2)(B₁ + B₂)",
+        "V = h √(B₁ B₂)",
+        "V = (h/3)(B₁ + B₂)"
+      ],
+      "correctAnswer": 0,
+      "explanation": "The frustum formula is V = (h/3)(B₁ + B₂ + √(B₁B₂))."
+    },
+    {
+      "id": "chk-1101-02",
+      "question": "For an oblique prism with lateral edge length $e$ and right section area $K$, what is its volume?",
+      "options": [
+        "V = K · e",
+        "V = K · e / 3",
+        "V = K · e / 2",
+        "V = 2 K · e"
+      ],
+      "correctAnswer": 0,
+      "explanation": "The volume of any prism is equal to the area of its right section K multiplied by the lateral edge e (V = Ke)."
+    },
+    {
+      "id": "chk-1101-03",
+      "question": "What is the lateral surface area of a conical frustum with base radii $R, r$ and slant height $L$?",
+      "options": [
+        "A_L = π (R + r) L",
+        "A_L = 2π (R + r) L",
+        "A_L = π (R - r) L",
+        "A_L = π (R² - r²) L"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Lateral surface area of a conical frustum is A_L = π(R + r)L."
+    }
+  ]
+}

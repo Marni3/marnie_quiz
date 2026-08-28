@@ -1,0 +1,179 @@
+{
+  "id": "math-08-04",
+  "code": "MATH 08-04",
+  "domain": "MATH",
+  "topicCode": "MATH-08",
+  "topicTitle": "Plane & Spherical Trigonometry",
+  "subtopicTitle": "Excircles, Quadrilateral Areas, Brahmagupta & Ptolemy's Theorem",
+  "order": 4,
+  "pairedQuizSetId": "math-08-04-mastery",
+  "toc": [
+    { "id": "sec-prereq-bridges", "title": "1. Introduction & Cross-Subject Connections", "level": 2 },
+    { "id": "sec-theory", "title": "2. Lesson Proper: Excircles, Quadrilaterals & Cyclic Geometry", "level": 2 },
+    { "id": "sec-formulas", "title": "3. Compilation of Formulas & Ptolemy's Relations", "level": 2 },
+    { "id": "sec-visualizer", "title": "4. Interactive Visualizer: Cyclic Quadrilateral & Ptolemy", "level": 2 },
+    { "id": "sec-terminology", "title": "5. Key Terms and Definitions", "level": 2 },
+    { "id": "sec-dual-method", "title": "6. Worked Board Exam Problems", "level": 2 },
+    { "id": "sec-calculator", "title": "7. Calculator Speed Techniques (Karce & Canon)", "level": 2 },
+    { "id": "sec-concept-checks", "title": "8. In-Line Concept Checks", "level": 2 },
+    { "id": "sec-mastery-challenge", "title": "9. Paired Mastery Challenge Exam", "level": 2 }
+  ],
+  "prerequisiteBridge": {
+    "priorModuleId": "math-08-03",
+    "text": "Extending from triangle geometry in MATH 08-03, we now advance into escribed circles (excircles), general quadrilateral areas via Bretschneider's formula, cyclic quadrilaterals (Brahmagupta's formula), and Ptolemy's Theorem."
+  },
+  "crossSubjectBridges": [
+    {
+      "targetDomain": "GEAS",
+      "targetTopicCode": "GEAS-01",
+      "badgeText": "Surveying",
+      "description": "Boundary surveying of irregular 4-sided plots uses Bretschneider's and diagonal intersection formulas $A = \\frac{1}{2}d_1 d_2 \\sin \\theta$."
+    },
+    {
+      "targetDomain": "MATH",
+      "targetTopicCode": "MATH-10",
+      "badgeText": "Cyclic Polygons",
+      "description": "Ptolemy's Theorem $ac + bd = d_1 d_2$ proves addition identities for sine and cosine through chord geometry."
+    },
+    {
+      "targetDomain": "EST",
+      "targetTopicCode": "EST-05",
+      "badgeText": "Phased Arrays",
+      "description": "Quadrilateral phased-array antenna planar grids calculate aperture areas using cross-diagonal products."
+    }
+  ],
+  "theory": {
+    "mentalAnchor": "Escribed circle area: $A = r_b(s - b)$. General quadrilateral area: $A = \\frac{1}{2}d_1 d_2 \\sin\\theta = \\sqrt{(s-a)(s-b)(s-c)(s-d) - abcd\\cos^2\\theta}$. For a cyclic quadrilateral: $\\theta = 90^\\circ \\implies A = \\sqrt{(s-a)(s-b)(s-c)(s-d)}$ (Brahmagupta). Ptolemy's Theorem for cyclic quadrilaterals: $ac + bd = d_1 d_2$.",
+    "contentMarkdown": "### 1. Escribed Circles (Excircles) of a Triangle\n\nAn **escribed circle (excircle)** is a circle tangent to one side of a triangle and the extensions of the other two sides:\n\n$$A_{\\text{triangle}} = r_a(s - a) = r_b(s - b) = r_c(s - c)$$\n$$\\text{Harmonic Inradius Identity}: \\quad \\frac{1}{r} = \\frac{1}{r_a} + \\frac{1}{r_b} + \\frac{1}{r_c}$$\n\nwhere $s = \\frac{a + b + c}{2}$ is the semiperimeter and $r_b$ is the exradius tangent to side $b$.\n\n```diagram\n{\n  \"caption\": \"Figure 1: Cyclic Quadrilateral with Ptolemy's Theorem (ac + bd = d1 d2)\",\n  \"xRange\": [-4, 4],\n  \"yRange\": [-4, 4],\n  \"elements\": [\n    { \"type\": \"arc\", \"center\": [0, 0], \"radius\": 60, \"startAngle\": 0, \"endAngle\": 360, \"color\": \"#38bdf8\" },\n    { \"type\": \"polygon\", \"points\": [[-2.5, 1.5], [1.5, 2.5], [2.8, -1.0], [-1.0, -2.8]], \"color\": \"#fbbf24\", \"fill\": \"rgba(251, 191, 36, 0.05)\" },\n    { \"type\": \"line\", \"from\": [-2.5, 1.5], \"to\": [2.8, -1.0], \"color\": \"#f43f5e\", \"label\": \"d1\" },\n    { \"type\": \"line\", \"from\": [1.5, 2.5], \"to\": [-1.0, -2.8], \"color\": \"#34d399\", \"label\": \"d2\" },\n    { \"type\": \"text\", \"at\": [-0.8, 2.3], \"text\": \"b\", \"color\": \"#fbbf24\" },\n    { \"type\": \"text\", \"at\": [2.5, 1.0], \"text\": \"c\", \"color\": \"#fbbf24\" },\n    { \"type\": \"text\", \"at\": [1.0, -2.2], \"text\": \"d\", \"color\": \"#fbbf24\" },\n    { \"type\": \"text\", \"at\": [-2.0, -0.8], \"text\": \"a\", \"color\": \"#fbbf24\" },\n    { \"type\": \"text\", \"at\": [0, 3.2], \"text\": \"ac + bd = d1 · d2\", \"color\": \"#38bdf8\" }\n  ]\n}\n```\n\n---\n\n### 2. Area of General Quadrilaterals\n\n1. **Given Two Diagonals and Included Angle $\\theta$**:\n   $$A = \\frac{1}{2} d_1 d_2 \\sin \\theta$$\n   *(Valid for any convex quadrilateral)*.\n\n2. **Given 4 Sides and 2 Opposite Angles (Bretschneider's Formula)**:\n   $$A = \\sqrt{(s - a)(s - b)(s - c)(s - d) - abcd \\cos^2 \\theta}$$\n   where $s = \\frac{a + b + c + d}{2}$ and $\\theta = \\frac{A + C}{2} = \\frac{B + D}{2}$.\n\n---\n\n### 3. Cyclic Quadrilaterals & Brahmagupta's Formula\n\nA **cyclic quadrilateral** has all four vertices lying on the circumference of a single circle:\n- **Opposite Angles Property**: Opposite angles are strictly supplementary: $A + C = 180^\\circ$ and $B + D = 180^\\circ$.\n- Since $\\theta = \\frac{180^\\circ}{2} = 90^\\circ$, $\\cos^2(90^\\circ) = 0$.\n- **Brahmagupta's Area Formula** (Indian mathematician Brahmagupta, 7th Century A.D.):\n  $$A = \\sqrt{(s - a)(s - b)(s - c)(s - d)}$$\n\n---\n\n### 4. Ptolemy's Theorem\n\nDemonstrated by Egyptian-Greek astronomer **Claudius Ptolemaeus (c. 100–168 A.D.)** of Alexandria:\n\n$$\\mathbf{ac + bd = d_1 d_2}$$\n\n> *\"The sum of the products of the two pairs of opposite sides of a cyclic quadrilateral is strictly equal to the product of the lengths of the diagonals.\"*"
+  },
+  "formulas": [
+    {
+      "id": "f-0804-01",
+      "title": "Brahmagupta's Cyclic Quadrilateral Area",
+      "formula": "$$A = \\sqrt{(s - a)(s - b)(s - c)(s - d)}, \\quad s = \\frac{a + b + c + d}{2}$$",
+      "note": "Valid when all vertices lie on a single circle (A + C = 180°)."
+    },
+    {
+      "id": "f-0804-02",
+      "title": "Ptolemy's Diagonal Theorem",
+      "formula": "$$ac + bd = d_1 d_2$$",
+      "note": "Product of diagonals equals sum of products of opposite sides."
+    },
+    {
+      "id": "f-0804-03",
+      "title": "Escribed Circle Area & Inradius Reciprocal",
+      "formula": "$$A = r_b(s - b), \\quad \\frac{1}{r} = \\frac{1}{r_a} + \\frac{1}{r_b} + \\frac{1}{r_c}$$",
+      "note": "r_b is the exradius tangent to side b."
+    }
+  ],
+  "visualizer": {
+    "archetype": "parameter_sweep",
+    "title": "Cyclic Quadrilateral Area & Ptolemy Validator",
+    "description": "Adjust side lengths a, b, c, d to compute live cyclic area, semiperimeter s, and verify ac + bd = d1 · d2.",
+    "config": {
+      "canvasWidth": 640,
+      "canvasHeight": 320,
+      "controls": [
+        { "id": "sideA", "label": "Side a", "min": 2, "max": 10, "step": 1, "defaultValue": 3 },
+        { "id": "sideB", "label": "Side b", "min": 2, "max": 10, "step": 1, "defaultValue": 4 },
+        { "id": "sideC", "label": "Side c", "min": 2, "max": 10, "step": 1, "defaultValue": 5 },
+        { "id": "sideD", "label": "Side d", "min": 2, "max": 10, "step": 1, "defaultValue": 6 }
+      ]
+    }
+  },
+  "terms": [
+    {
+      "term": "Ptolemy's Theorem",
+      "symbol": "$ac + bd = d_1 d_2$",
+      "unit": "Theorem",
+      "definition": "Theorem stating that for any cyclic quadrilateral, the product of diagonals equals the sum of products of opposite side pairs.",
+      "keywordTrigger": "ac + bd = d1 d2 / Claudius Ptolemaeus"
+    },
+    {
+      "term": "Brahmagupta's Formula",
+      "symbol": "$A = \\sqrt{(s-a)(s-b)(s-c)(s-d)}$",
+      "unit": "Theorem",
+      "definition": "Formula for the area of a cyclic quadrilateral inscribed in a circle, generalized from Heron's formula.",
+      "keywordTrigger": "cyclic quadrilateral area / Brahmagupta"
+    },
+    {
+      "term": "Excircle",
+      "symbol": "$r_b$",
+      "unit": "Geometry",
+      "definition": "An escribed circle lying outside a triangle, tangent to one side and the extensions of the other two sides.",
+      "keywordTrigger": "escribed circle / A = r(s - b)"
+    }
+  ],
+  "examples": [
+    {
+      "problemStatement": "A cyclic quadrilateral has consecutive sides a = 2, b = 3, c = 5, and d = 6. Find its exact area.",
+      "formalSolutionMarkdown": "#### Step 1: Compute semiperimeter s\n$$s = \\frac{2 + 3 + 5 + 6}{2} = \\frac{16}{2} = 8$$\n\n#### Step 2: Apply Brahmagupta's formula\n$$A = \\sqrt{(8 - 2)(8 - 3)(8 - 5)(8 - 6)} = \\sqrt{(6)(5)(3)(2)} = \\sqrt{180} = 6\\sqrt{5} \\approx 13.416$$",
+      "shortcutSolutionMarkdown": "#### ⚡ 5-Second Brahmagupta Shortcut\n$$A = \\sqrt{6 \\times 5 \\times 3 \\times 2} = \\sqrt{180} = 6\\sqrt{5} \\approx 13.42$$",
+      "formalTimeSeconds": 45,
+      "shortcutTimeSeconds": 5
+    },
+    {
+      "problemStatement": "In a cyclic quadrilateral with sides a = 3, b = 4, c = 5, d = 6, one diagonal has length d1 = 6.4. Find the length of the other diagonal d2.",
+      "formalSolutionMarkdown": "#### Step 1: Apply Ptolemy's Theorem\n$$ac + bd = d_1 d_2$$\n$$(3)(5) + (4)(6) = (6.4) d_2$$\n\n#### Step 2: Solve for d2\n$$15 + 24 = 6.4 d_2$$\n$$39 = 6.4 d_2 \\implies d_2 = \\frac{39}{6.4} = \\frac{390}{64} = \\frac{195}{32} \\approx 6.09375$$",
+      "shortcutSolutionMarkdown": "#### ⚡ 5-Second Ptolemy Ratio\n$$d_2 = \\frac{15 + 24}{6.4} = \\frac{39}{6.4} = 6.094$$",
+      "formalTimeSeconds": 45,
+      "shortcutTimeSeconds": 5
+    }
+  ],
+  "calculatorGuides": {
+    "karce": {
+      "techniqueTitle": "Fast Brahmagupta Cyclic Area Calculation",
+      "problemType": "Evaluating √((s-a)(s-b)(s-c)(s-d))",
+      "sampleProblem": "Find area for a=2, b=3, c=5, d=6.",
+      "mode": "COMP Mode (MODE 1)",
+      "keystrokes": ["√", "(", "(", "8", "-", "2", ")", "×", "(", "8", "-", "3", ")", "×", "(", "8", "-", "5", ")", "×", "(", "8", "-", "6", ")", ")", "="],
+      "notes": "Directly displays 13.41640786."
+    },
+    "canon": {
+      "techniqueTitle": "Ptolemy Diagonal Evaluation Shortcut",
+      "problemType": "(ac + bd) / d1 on Canon F-789SGA",
+      "sampleProblem": "Solve d2 for a=3, b=4, c=5, d=6, d1=6.4.",
+      "mode": "COMP Mode (MODE 1)",
+      "keystrokes": ["(", "3", "×", "5", "+", "4", "×", "6", ")", "÷", "6", ".", "4", "="],
+      "notes": "Directly yields 6.09375."
+    }
+  },
+  "conceptChecks": [
+    {
+      "id": "chk-0804-01",
+      "question": "What is the mathematical equation expressing Ptolemy's Theorem for a cyclic quadrilateral with sides $a, b, c, d$ and diagonals $d_1, d_2$?",
+      "options": [
+        "ac + bd = d₁ · d₂",
+        "ab + cd = d₁ · d₂",
+        "a² + b² + c² + d² = d₁² + d₂²",
+        "ad + bc = (d₁ + d₂)/2"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Ptolemy's theorem states that the product of diagonals equals the sum of products of opposite sides: ac + bd = d₁d₂."
+    },
+    {
+      "id": "chk-0804-02",
+      "question": "If the semiperimeter of a triangle is $s = 15\\text{ cm}$, the side tangent to an excircle is $b = 5\\text{ cm}$, and the exradius is $r_b = 6\\text{ cm}$, what is the triangle area?",
+      "options": [
+        "60 cm²",
+        "90 cm²",
+        "45 cm²",
+        "30 cm²"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Using the excircle area formula: A = r_b(s - b) = 6(15 - 5) = 6(10) = 60 cm²."
+    },
+    {
+      "id": "chk-0804-03",
+      "question": "Under what condition does Bretschneider's general quadrilateral area formula reduce to Brahmagupta's formula?",
+      "options": [
+        "When the quadrilateral is cyclic (opposite angles sum to 180°)",
+        "When the quadrilateral is a parallelogram",
+        "When the diagonals are perpendicular",
+        "When all four sides are equal"
+      ],
+      "correctAnswer": 0,
+      "explanation": "In a cyclic quadrilateral, opposite angles are supplementary (θ = 90°), causing the abcd cos² θ term to vanish."
+    }
+  ]
+}

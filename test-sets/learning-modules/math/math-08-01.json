@@ -1,0 +1,185 @@
+{
+  "id": "math-08-01",
+  "code": "MATH 08-01",
+  "domain": "MATH",
+  "topicCode": "MATH-08",
+  "topicTitle": "Plane & Spherical Trigonometry",
+  "subtopicTitle": "Right Triangles, Special Angles, Law of Sines, Cosines & Tangents",
+  "order": 1,
+  "pairedQuizSetId": "math-08-01-mastery",
+  "toc": [
+    { "id": "sec-prereq-bridges", "title": "1. Introduction & Cross-Subject Connections", "level": 2 },
+    { "id": "sec-theory", "title": "2. Lesson Proper: Triangle Geometry & Oblique Laws", "level": 2 },
+    { "id": "sec-formulas", "title": "3. Compilation of Formulas & Trigonometric Laws", "level": 2 },
+    { "id": "sec-visualizer", "title": "4. Interactive Visualizer: Oblique Triangle Solver", "level": 2 },
+    { "id": "sec-terminology", "title": "5. Key Terms and Definitions", "level": 2 },
+    { "id": "sec-dual-method", "title": "6. Worked Board Exam Problems", "level": 2 },
+    { "id": "sec-calculator", "title": "7. Calculator Speed Techniques (Karce & Canon)", "level": 2 },
+    { "id": "sec-concept-checks", "title": "8. In-Line Concept Checks", "level": 2 },
+    { "id": "sec-mastery-challenge", "title": "9. Paired Mastery Challenge Exam", "level": 2 }
+  ],
+  "prerequisiteBridge": {
+    "priorModuleId": "math-06-03",
+    "text": "Moving from discrete probability, we now transition into continuous geometric trigonometry—fundamental right-triangle ratios, Pythagorean theorems, and the universal laws of Sines, Cosines, and Tangents for oblique triangles."
+  },
+  "crossSubjectBridges": [
+    {
+      "targetDomain": "ELECS",
+      "targetTopicCode": "ELEC-04",
+      "badgeText": "AC Circuits",
+      "description": "AC impedance power triangles ($S = P + jQ$) and power factor $\\cos \\theta$ directly utilize right triangle trigonometric ratios."
+    },
+    {
+      "targetDomain": "EST",
+      "targetTopicCode": "EST-04",
+      "badgeText": "Microwave Comms",
+      "description": "Line-of-sight path profiling, earth curvature clearance, and antenna azimuth calculations apply the Law of Cosines and spherical trigonometry."
+    },
+    {
+      "targetDomain": "GEAS",
+      "targetTopicCode": "GEAS-01",
+      "badgeText": "Statics",
+      "description": "Lami's Theorem for 3-force concurrent equilibrium is a direct physical manifestation of the trigonometric Law of Sines."
+    }
+  ],
+  "theory": {
+    "mentalAnchor": "Right triangles use SOH-CAH-TOA and Pythagorean $a^2 + b^2 = c^2$. For oblique triangles: use Law of Sines ($\\frac{a}{\\sin A} = \\frac{b}{\\sin B} = \\frac{c}{\\sin C}$) for AAS/ASA/SSA; use Law of Cosines ($c^2 = a^2 + b^2 - 2ab\\cos C$) for SAS/SSS; use Law of Tangents ($\\frac{a-b}{a+b} = \\frac{\\tan \\frac{A-B}{2}}{\\tan \\frac{A+B}{2}}$) for SAS.",
+    "contentMarkdown": "### 1. Etymology, Branches & Classification of Triangles\n\n- **Trigonometry**: Derived from the Greek *trigonon* (\"triangle\") and *metria* (\"measurement\").\n- **Branches**:\n  1. **Plane Trigonometry**: Deals with triangles lying on a flat 2D Euclidean plane.\n  2. **Spherical Trigonometry**: Concerns triangles formed by great-circle arcs on the 3D surface of a sphere.\n- **Triangle Classifications**:\n  - **Right Triangle**: Contains one right angle ($90^\\circ$).\n  - **Oblique Triangle**: Contains no right angle. Subdivided into **Acute** (all three angles $< 90^\\circ$) and **Obtuse** (one angle $> 90^\\circ$).\n  - **Isosceles Triangle**: Two equal sides and two equal base angles (can be right or oblique).\n\n---\n\n### 2. Right Triangles & Special Standard Ratios\n\nFor a right triangle with legs $a, b$ and hypotenuse $c$:\n$$\\sin \\theta = \\frac{a}{c}, \\quad \\cos \\theta = \\frac{b}{c}, \\quad \\tan \\theta = \\frac{a}{b}$$\n$$\\csc \\theta = \\frac{c}{a}, \\quad \\sec \\theta = \\frac{c}{b}, \\quad \\cot \\theta = \\frac{b}{a}$$\n\n#### The Pythagorean Theorem:\nFormulated by **Pythagoras of Samos (c. 580–500 B.C.)**, it is historically recognized as the **most proved theorem in all of mathematics**:\n$$a^2 + b^2 = c^2$$\n\n#### Standard Special Triangles:\n1. **Egyptian Triangle ($3 - 4 - 5$)**: The earliest recorded integer Pythagorean triple.\n2. **$45^\\circ - 45^\\circ - 90^\\circ$ Isosceles Right Triangle**: Side ratio is $1 : 1 : \\sqrt{2}$.\n3. **$30^\\circ - 60^\\circ - 90^\\circ$ Right Triangle**: Side ratio is $1 : \\sqrt{3} : 2$.\n\n```diagram\n{\n  \"caption\": \"Figure 1: Special Right Triangles - Egyptian (3-4-5), 45-45-90, and 30-60-90\",\n  \"xRange\": [-5, 5],\n  \"yRange\": [-3, 3],\n  \"elements\": [\n    { \"type\": \"polygon\", \"points\": [[-4.5, -2], [-1.5, -2], [-1.5, 2]], \"color\": \"#38bdf8\", \"fill\": \"rgba(56, 189, 248, 0.05)\" },\n    { \"type\": \"text\", \"at\": [-3, -2.4], \"text\": \"3\", \"color\": \"#38bdf8\" },\n    { \"type\": \"text\", \"at\": [-1.2, 0], \"text\": \"4\", \"color\": \"#38bdf8\" },\n    { \"type\": \"text\", \"at\": [-3.2, 0.3], \"text\": \"5\", \"color\": \"#38bdf8\" },\n    { \"type\": \"polygon\", \"points\": [[0, -2], [2.5, -2], [0, 0.5]], \"color\": \"#fbbf24\", \"fill\": \"rgba(251, 191, 36, 0.05)\" },\n    { \"type\": \"text\", \"at\": [1.2, -2.4], \"text\": \"1\", \"color\": \"#fbbf24\" },\n    { \"type\": \"text\", \"at\": [-0.3, -0.8], \"text\": \"1\", \"color\": \"#fbbf24\" },\n    { \"type\": \"text\", \"at\": [1.5, -0.6], \"text\": \"√2\", \"color\": \"#fbbf24\" }\n  ]\n}\n```\n\n---\n\n### 3. Universal Laws for Oblique Triangles\n\n#### A. Law of Sines:\nDemonstrated by **Ptolemy of Alexandria (c. 150 A.D.)** in the *Almagest*:\n$$\\frac{a}{\\sin A} = \\frac{b}{\\sin B} = \\frac{c}{\\sin C} = 2R$$\n- **When to Apply**: Given AAS (two angles and one opposite side), ASA (two angles and included side), or SSA (two sides and an opposite angle—the *ambiguous case*).\n- $R$ is the radius of the triangle's circumscribed circle (circumcircle).\n\n#### B. Law of Cosines:\nDemonstrated in generalized form by French mathematician **François Viète (1540–1603)** (and Persian mathematician Ghiyath al-Kashi):\n$$a^2 = b^2 + c^2 - 2bc \\cos A$$\n$$b^2 = a^2 + c^2 - 2ac \\cos B$$\n$$c^2 = a^2 + b^2 - 2ab \\cos C$$\n- **When to Apply**: Given SAS (two sides and included angle) or SSS (all three sides).\n\n#### C. Law of Tangents:\nDemonstrated by **François Viète** and first published by Danish mathematician/physician **Thomas Fincke (1561–1656)** in 1583:\n$$\\frac{a - b}{a + b} = \\frac{\\tan \\frac{1}{2}(A - B)}{\\tan \\frac{1}{2}(A + B)}$$\n- **When to Apply**: Given SAS (two sides and included angle)."
+  },
+  "formulas": [
+    {
+      "id": "f-0801-01",
+      "title": "Law of Sines & Circumradius",
+      "formula": "$$\\frac{a}{\\sin A} = \\frac{b}{\\sin B} = \\frac{c}{\\sin C} = 2R$$",
+      "note": "Demonstrated by Ptolemy of Alexandria (150 A.D.)."
+    },
+    {
+      "id": "f-0801-02",
+      "title": "Law of Cosines (Viète's Relation)",
+      "formula": "$$c^2 = a^2 + b^2 - 2ab \\cos C \\iff \\cos C = \\frac{a^2 + b^2 - c^2}{2ab}$$",
+      "note": "Reduces to Pythagorean theorem when C = 90°."
+    },
+    {
+      "id": "f-0801-03",
+      "title": "Law of Tangents (Fincke-Viète)",
+      "formula": "$$\\frac{a - b}{a + b} = \\frac{\\tan \\frac{1}{2}(A - B)}{\\tan \\frac{1}{2}(A + B)}$$",
+      "note": "Published by Thomas Fincke (1583) and François Viète."
+    }
+  ],
+  "visualizer": {
+    "archetype": "parameter_sweep",
+    "title": "Oblique Triangle Law of Cosines Solver",
+    "description": "Adjust side lengths a, b and included angle C to compute unknown side c and all interior angles live.",
+    "config": {
+      "canvasWidth": 640,
+      "canvasHeight": 320,
+      "controls": [
+        { "id": "sideA", "label": "Side a", "min": 3, "max": 20, "step": 1, "defaultValue": 8 },
+        { "id": "sideB", "label": "Side b", "min": 3, "max": 20, "step": 1, "defaultValue": 11 },
+        { "id": "angleC", "label": "Angle C (degrees)", "min": 15, "max": 150, "step": 5, "defaultValue": 60 }
+      ]
+    }
+  },
+  "terms": [
+    {
+      "term": "Law of Sines",
+      "symbol": "$\\frac{a}{\\sin A} = 2R$",
+      "unit": "Theorem",
+      "definition": "The ratio of any side length to the sine of its opposite angle is constant and equal to the circumcircle diameter.",
+      "keywordTrigger": "a/sin A = b/sin B = c/sin C / Ptolemy"
+    },
+    {
+      "term": "Law of Cosines",
+      "symbol": "$c^2 = a^2+b^2-2ab\\cos C$",
+      "unit": "Theorem",
+      "definition": "A generalization of the Pythagorean theorem relating the cosine of an angle to the lengths of all three sides.",
+      "keywordTrigger": "c² = a² + b² - 2ab cos C / François Viète"
+    },
+    {
+      "term": "Law of Tangents",
+      "symbol": "$\\frac{a-b}{a+b} = \\frac{\\tan \\frac{A-B}{2}}{\\tan \\frac{A+B}{2}}$",
+      "unit": "Theorem",
+      "definition": "Relation connecting the difference and sum of two sides to the half-angle tangents, described by Thomas Fincke in 1583.",
+      "keywordTrigger": "Law of Tangents / Thomas Fincke"
+    },
+    {
+      "term": "Pythagorean Theorem",
+      "symbol": "$a^2 + b^2 = c^2$",
+      "unit": "Theorem",
+      "definition": "The fundamental geometric theorem stating the square of the hypotenuse equals the sum of squares of the legs in a right triangle.",
+      "keywordTrigger": "most proved theorem in mathematics / Pythagoras"
+    }
+  ],
+  "examples": [
+    {
+      "problemStatement": "In an oblique triangle ABC, side a = 10 m, side b = 15 m, and included angle C = 60°. Find side c.",
+      "formalSolutionMarkdown": "#### Step 1: Apply the Law of Cosines\n$$c^2 = a^2 + b^2 - 2ab \\cos C$$\n$$c^2 = 10^2 + 15^2 - 2(10)(15) \\cos 60^\\circ$$\n\n#### Step 2: Evaluate trigonometric values\n- $\\cos 60^\\circ = 0.5$\n$$c^2 = 100 + 225 - 300(0.5) = 325 - 150 = 175$$\n$$c = \\sqrt{175} = 5\\sqrt{7} \\approx 13.23\\text{ m}$$",
+      "shortcutSolutionMarkdown": "#### ⚡ 5-Second Law of Cosines Keystroke\n$$c = \\sqrt{10^2 + 15^2 - 2(10)(15)(0.5)} = \\sqrt{175} \\approx 13.23\\text{ m}$$",
+      "formalTimeSeconds": 60,
+      "shortcutTimeSeconds": 5
+    },
+    {
+      "problemStatement": "In triangle ABC, side a = 20, angle A = 30°, and angle B = 45°. Find side b.",
+      "formalSolutionMarkdown": "#### Step 1: Apply the Law of Sines\n$$\\frac{a}{\\sin A} = \\frac{b}{\\sin B}$$\n$$\\frac{20}{\\sin 30^\\circ} = \\frac{b}{\\sin 45^\\circ}$$\n\n#### Step 2: Solve for side b\n$$b = \\frac{20 \\sin 45^\\circ}{\\sin 30^\\circ} = \\frac{20 (\\sqrt{2}/2)}{1/2} = 20\\sqrt{2} \\approx 28.28$$",
+      "shortcutSolutionMarkdown": "#### ⚡ 3-Second Cross Multiplication\n$$b = \\frac{20 \\times \\sin 45^\\circ}{0.5} = 20\\sqrt{2} \\approx 28.28$$",
+      "formalTimeSeconds": 45,
+      "shortcutTimeSeconds": 3
+    }
+  ],
+  "calculatorGuides": {
+    "karce": {
+      "techniqueTitle": "Law of Cosines Direct Square Root",
+      "problemType": "Solving c = √(a² + b² - 2ab cos C)",
+      "sampleProblem": "Solve c for a=10, b=15, C=60° in DEG mode.",
+      "mode": "COMP Mode (MODE 1, Ensure DEG)",
+      "keystrokes": ["√", "(", "1", "0", "x²", "+", "1", "5", "x²", "-", "2", "×", "1", "0", "×", "1", "5", "×", "cos", "6", "0", ")", "="],
+      "notes": "Directly yields 13.22875656 in 2 seconds."
+    },
+    "canon": {
+      "techniqueTitle": "Polar Coordinate Conversion Shortcut",
+      "problemType": "Vector side addition for oblique triangles",
+      "sampleProblem": "Find resultant of 10∠0° and 15∠120° on Canon F-789SGA.",
+      "mode": "COMP Mode (MODE 1)",
+      "keystrokes": ["SHIFT", "Pol(", "1", "0", "+", "1", "5", "cos", "1", "2", "0", ",", "1", "5", "sin", "1", "2", "0", ")", "="],
+      "notes": "Directly yields r = 13.2287 in 1 step."
+    }
+  },
+  "conceptChecks": [
+    {
+      "id": "chk-0801-01",
+      "question": "Which ancient Greek astronomer demonstrated the Law of Sines in his astronomical treatise Almagest around 150 A.D.?",
+      "options": [
+        "Ptolemy of Alexandria",
+        "Pythagoras of Samos",
+        "Euclid of Alexandria",
+        "Archimedes of Syracuse"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Claudius Ptolemaeus (Ptolemy of Alexandria) demonstrated the Law of Sines using chords of circles around 150 A.D."
+    },
+    {
+      "id": "chk-0801-02",
+      "question": "Which mathematician first described the Law of Tangents in 1583?",
+      "options": [
+        "Thomas Fincke",
+        "François Viète",
+        "John Napier",
+        "Niccolò Tartaglia"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Danish mathematician and physician Thomas Fincke (1561–1656) first published the Law of Tangents in his 1583 work Geometria Rotundi."
+    },
+    {
+      "id": "chk-0801-03",
+      "question": "What is the side ratio of an Isosceles Right Triangle ($45^\\circ - 45^\\circ - 90^\\circ$)?",
+      "options": [
+        "1 : 1 : √2",
+        "1 : √3 : 2",
+        "3 : 4 : 5",
+        "1 : 2 : √5"
+      ],
+      "correctAnswer": 0,
+      "explanation": "By the Pythagorean theorem: 1² + 1² = 2 ⇒ hypotenuse is √2, yielding 1 : 1 : √2."
+    }
+  ]
+}

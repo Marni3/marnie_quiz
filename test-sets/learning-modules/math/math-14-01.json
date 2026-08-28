@@ -1,0 +1,184 @@
+{
+  "id": "math-14-01",
+  "code": "MATH 14-01",
+  "domain": "MATH",
+  "topicCode": "MATH-14",
+  "topicTitle": "Differential Calculus",
+  "subtopicTitle": "Limits, Continuity, Discontinuity Types, Squeeze Theorem & Special Limits",
+  "order": 1,
+  "pairedQuizSetId": "math-14-01-mastery",
+  "toc": [
+    { "id": "sec-prereq-bridges", "title": "1. Introduction & Cross-Subject Connections", "level": 2 },
+    { "id": "sec-theory", "title": "2. Lesson Proper: Limits, Continuity & Discontinuity Types", "level": 2 },
+    { "id": "sec-formulas", "title": "3. Compilation of Formulas & Special Limits", "level": 2 },
+    { "id": "sec-visualizer", "title": "4. Interactive Visualizer: Limit & Continuity Interactive Analyzer", "level": 2 },
+    { "id": "sec-terminology", "title": "5. Key Terms and Definitions", "level": 2 },
+    { "id": "sec-dual-method", "title": "6. Worked Board Exam Problems", "level": 2 },
+    { "id": "sec-calculator", "title": "7. Calculator Speed Techniques (Karce & Canon)", "level": 2 },
+    { "id": "sec-concept-checks", "title": "8. In-Line Concept Checks", "level": 2 },
+    { "id": "sec-mastery-challenge", "title": "9. Paired Mastery Challenge Exam", "level": 2 }
+  ],
+  "prerequisiteBridge": {
+    "priorModuleId": "math-11-03",
+    "text": "Entering Calculus from Solid Geometry, we establish rigorous foundational analysis—formal limit laws, one-sided limits, 3-part continuity criteria, discontinuity classifications (jump, point, essential, removable), and fundamental trigonometric/exponential limits."
+  },
+  "crossSubjectBridges": [
+    {
+      "targetDomain": "ELECS",
+      "targetTopicCode": "ELEC-05",
+      "badgeText": "Step Response",
+      "description": "Heaviside unit step function switches $u(t)$ and diode piecewise conduction model jump discontinuities at $t = 0$."
+    },
+    {
+      "targetDomain": "EST",
+      "targetTopicCode": "EST-01",
+      "badgeText": "Sampling Sinc",
+      "description": "Nyquist-Shannon sampling theory and sinc interpolation utilize the foundational limit $\\lim_{x \\to 0} \\frac{\\sin x}{x} = 1$."
+    },
+    {
+      "targetDomain": "MATH",
+      "targetTopicCode": "MATH-14-02",
+      "badgeText": "Derivatives",
+      "description": "The formal definition of derivative $f'(x) = \\lim_{h \\to 0} \\frac{f(x+h) - f(x)}{h}$ is evaluated as a $0/0$ limit."
+    }
+  ],
+  "theory": {
+    "mentalAnchor": "Limit exists iff $\\lim_{x\\to a^-} f(x) = \\lim_{x\\to a^+} f(x) = L$. Continuous iff $f(a)$ exists, $\\lim f(x)$ exists, and $\\lim f(x) = f(a)$. Discontinuities: Removable (0/0 hole), Jump (left $\\ne$ right), Essential (asymptote $\\to \\infty$). Special limits: $\\lim_{x\\to 0} \\frac{\\sin x}{x} = 1$, $\\lim_{n\\to \\infty}(1 + 1/n)^n = e$.",
+    "contentMarkdown": "### 1. Etymology, History & Limit Axioms\n\n- **Calculus**: Derived from Latin *calx* (\"small pebble/stone\" used for arithmetic abacus counting) and Greek *chalis* (\"limestone\").\n- **Founders**:\n  - **Gottfried Wilhelm von Leibniz**: Published calculus in **1684** (developed differential $dx, dy$ notation and integral sign $\\int$).\n  - **Sir Isaac Newton**: Developed method of fluxions in **1665**, published in **1704**.\n\n#### The 12 Fundamental Limit Theorems:\nLet $\\lim_{x \\to a} f(x) = L$ and $\\lim_{x \\to a} g(x) = K$:\n1. **Uniqueness**: If a limit exists, it is unique.\n2. **Sum/Difference**: $\\lim [f(x) \\pm g(x)] = L \\pm K$.\n3. **Product**: $\\lim [f(x) \\cdot g(x)] = L \\cdot K$.\n4. **Quotient**: $\\lim \\frac{f(x)}{g(x)} = \\frac{L}{K}$ ($K \\ne 0$).\n5. **Power**: $\\lim [f(x)]^n = L^n$ ($n > 0$).\n6. **Constant Multiple**: $\\lim [c f(x)] = c L$.\n7. **Polynomial Direct Substitution**: $\\lim_{x \\to a} P(x) = P(a)$.\n8. **Radical**: $\\lim_{x \\to a} \\sqrt[n]{f(x)} = \\sqrt[n]{L}$ ($n > 0$).\n9. **Squeeze / Sandwich Theorem**: If $f(x) \\le h(x) \\le g(x)$ on an open interval and $\\lim f(x) = \\lim g(x) = L$, then $\\lim h(x) = L$.\n\n```diagram\n{\n  \"caption\": \"Figure 1: Continuity and Discontinuity Types - Continuous, Removable Hole, and Jump\",\n  \"xRange\": [-5, 5],\n  \"yRange\": [-3, 3],\n  \"elements\": [\n    { \"type\": \"line\", \"from\": [-4.5, -2], \"to\": [-2, 2], \"color\": \"#38bdf8\", \"label\": \"Continuous\" },\n    { \"type\": \"line\", \"from\": [-1, -2], \"to\": [1, 2], \"color\": \"#fbbf24\" },\n    { \"type\": \"point\", \"at\": [0, 0], \"color\": \"#fbbf24\", \"label\": \"Hole (Removable)\" },\n    { \"type\": \"line\", \"from\": [2, -2], \"to\": [3.2, -0.5], \"color\": \"#f43f5e\" },\n    { \"type\": \"line\", \"from\": [3.2, 0.8], \"to\": [4.5, 2], \"color\": \"#f43f5e\", \"label\": \"Jump\" }\n  ]\n}\n```\n\n---\n\n### 2. Continuity Criteria & Discontinuity Classifications\n\nA function $f(x)$ is **continuous at $x = a$** if and only if **all three** conditions hold:\n1. $f(a)$ is defined ($a$ is in the domain of $f$).\n2. $\\lim_{x \\to a} f(x)$ exists (meaning $\\lim_{x \\to a^-} f(x) = \\lim_{x \\to a^+} f(x)$).\n3. $\\mathbf{\\lim_{x \\to a} f(x) = f(a)}$.\n\n#### The Four Types of Discontinuity:\n1. **Removable Discontinuity**: The limit $\\lim_{x \\to a} f(x)$ exists, but $f(a)$ is undefined or $f(a) \\ne L$. Typically caused by common cancellable algebraic factors in rational functions (a \"hole\").\n2. **Jump Discontinuity**: Left and right one-sided limits both exist as finite numbers, but are **unequal** ($\\lim_{x \\to a^-} f(x) \\ne \\lim_{x \\to a^+} f(x)$).\n3. **Essential (Infinite) Discontinuity**: One or both one-sided limits tend to $\\pm \\infty$ (vertical asymptote).\n4. **Point Discontinuity**: A single isolated point is defined at a value different from the surrounding curve.\n\n---\n\n### 3. Special & Fundamental Limits\n\n$$\\mathbf{\\lim_{x \\to 0} \\frac{\\sin x}{x} = 1}, \\qquad \\mathbf{\\lim_{x \\to 0} \\frac{1 - \\cos x}{x} = 0}$$\n$$\\mathbf{\\lim_{n \\to \\infty} \\left(1 + \\frac{1}{n}\\right)^n = e \\approx 2.71828}, \\qquad \\mathbf{\\lim_{n \\to 0} (1 + n)^{1/n} = e}$$\n\n#### Exponential & Logarithmic Asymptotes:\n- For base $a > 1$:\n  $$\\lim_{x \\to +\\infty} a^x = +\\infty, \\quad \\lim_{x \\to -\\infty} a^x = 0, \\quad \\lim_{x \\to +\\infty} \\log_a x = +\\infty, \\quad \\lim_{x \\to 0^+} \\log_a x = -\\infty$$\n- For base $0 < a < 1$:\n  $$\\lim_{x \\to +\\infty} a^x = 0, \\quad \\lim_{x \\to -\\infty} a^x = +\\infty, \\quad \\lim_{x \\to +\\infty} \\log_a x = -\\infty, \\quad \\lim_{x \\to 0^+} \\log_a x = +\\infty$$"
+  },
+  "formulas": [
+    {
+      "id": "f-1401-01",
+      "title": "Fundamental Sinc & Trigonometric Limits",
+      "formula": "$$\\lim_{x \\to 0} \\frac{\\sin kx}{x} = k, \\quad \\lim_{x \\to 0} \\frac{1 - \\cos x}{x} = 0, \\quad \\lim_{x \\to 0} \\frac{\\tan kx}{x} = k$$",
+      "note": "Valid when x is expressed in radians."
+    },
+    {
+      "id": "f-1401-02",
+      "title": "Euler's Constant e Exponential Limits",
+      "formula": "$$\\lim_{n \\to \\infty} \\left(1 + \\frac{k}{n}\\right)^n = e^k, \\quad \\lim_{n \\to 0} (1 + kn)^{1/n} = e^k$$",
+      "note": "e ≈ 2.718281828459."
+    },
+    {
+      "id": "f-1401-03",
+      "title": "Three-Part Continuity Condition",
+      "formula": "$$\\lim_{x \\to a^-} f(x) = \\lim_{x \\to a^+} f(x) = f(a)$$",
+      "note": "All three terms must exist, be finite, and be mutually equal."
+    }
+  ],
+  "visualizer": {
+    "archetype": "parameter_sweep",
+    "title": "Limit & Continuity Interactive Analyzer",
+    "description": "Adjust x close to 0 to observe numerical convergence of sin(kx)/x, (1+x)^(1/x), and piecewise jump limits.",
+    "config": {
+      "canvasWidth": 640,
+      "canvasHeight": 320,
+      "controls": [
+        { "id": "deltaX", "label": "Approach Delta (x)", "min": 0.001, "max": 1.0, "step": 0.01, "defaultValue": 0.05 },
+        { "id": "freqK", "label": "Frequency Scale k", "min": 1, "max": 5, "step": 1, "defaultValue": 3 }
+      ]
+    }
+  },
+  "terms": [
+    {
+      "term": "Removable Discontinuity",
+      "symbol": "Hole",
+      "unit": "Calculus",
+      "definition": "A point where the two-sided limit exists, but the function value is undefined or different from the limit, removable by redefining a single point.",
+      "keywordTrigger": "cancellable factor / hole in graph / removable"
+    },
+    {
+      "term": "Jump Discontinuity",
+      "symbol": "$\\lim^- \\ne \\lim^+$",
+      "unit": "Calculus",
+      "definition": "A discontinuity where left-hand and right-hand limits both exist as finite numbers but have different values.",
+      "keywordTrigger": "left and right limits differ / jump discontinuity"
+    },
+    {
+      "term": "Squeeze Theorem",
+      "symbol": "Sandwich",
+      "unit": "Theorem",
+      "definition": "Theorem stating that if a function is trapped between two functions approaching the same limit L, it must also approach L.",
+      "keywordTrigger": "f(x) <= h(x) <= g(x) / squeeze theorem / sandwich"
+    },
+    {
+      "term": "Essential Discontinuity",
+      "symbol": "Asymptote",
+      "unit": "Calculus",
+      "definition": "A discontinuity where the function approaches positive or negative infinity as x approaches the critical value.",
+      "keywordTrigger": "vertical asymptote / infinite discontinuity"
+    }
+  ],
+  "examples": [
+    {
+      "problemStatement": "Evaluate the limit: lim(x -> 0) [sin(5x) / sin(3x)].",
+      "formalSolutionMarkdown": "#### Step 1: Rewrite using fundamental sinc limit\n$$\\lim_{x \\to 0} \\frac{\\sin(5x)}{\\sin(3x)} = \\lim_{x \\to 0} \\left[\\frac{\\sin(5x)}{5x} \\cdot \\frac{3x}{\\sin(3x)} \\cdot \\frac{5}{3}\\right]$$\n\n#### Step 2: Apply limit laws\n- Since $\\lim_{u \\to 0} \\frac{\\sin u}{u} = 1$:\n$$= (1) \\cdot (1) \\cdot \\frac{5}{3} = \\frac{5}{3} \\approx 1.6667$$",
+      "shortcutSolutionMarkdown": "#### ⚡ 2-Second Coefficient Ratio\n$$\\lim_{x \\to 0} \\frac{\\sin(5x)}{\\sin(3x)} = \\frac{5}{3}$$",
+      "formalTimeSeconds": 30,
+      "shortcutTimeSeconds": 2
+    },
+    {
+      "problemStatement": "Evaluate the limit: lim(n -> inf) [(1 + 3/n)^(2n)].",
+      "formalSolutionMarkdown": "#### Step 1: Rewrite into standard e definition\n$$\\lim_{n \\to \\infty} \\left(1 + \\frac{3}{n}\\right)^{2n} = \\lim_{n \\to \\infty} \\left[\\left(1 + \\frac{3}{n}\\right)^n\\right]^2$$\n\n#### Step 2: Apply exponential rule\n- Since $\\lim_{n \\to \\infty} (1 + k/n)^n = e^k$, with $k = 3$:\n$$= (e^3)^2 = e^6 \\approx 403.4288$$",
+      "shortcutSolutionMarkdown": "#### ⚡ 2-Second e^(k*m) Shortcut\n$$e^{3 \\times 2} = e^6 \\approx 403.43$$",
+      "formalTimeSeconds": 30,
+      "shortcutTimeSeconds": 2
+    }
+  ],
+  "calculatorGuides": {
+    "karce": {
+      "techniqueTitle": "Fast Limit Evaluation via Small Delta Substitution",
+      "problemType": "Evaluating indeterminate limits lim(x -> 0)",
+      "sampleProblem": "Evaluate sin(5x)/sin(3x) as x -> 0 in RAD mode.",
+      "mode": "COMP Mode (MODE 1, Set RAD)",
+      "keystrokes": ["sin", "(", "5", "×", "0", ".", "0", "0", "0", "1", ")", "÷", "sin", "(", "3", "×", "0", ".", "0", "0", "0", "1", ")", "="],
+      "notes": "Directly yields 1.666666667 (5/3) in 2 seconds."
+    },
+    "canon": {
+      "techniqueTitle": "Exponential Compound Limit Shortcut",
+      "problemType": "(1 + k/n)^(mn) as n -> 10^6 on Canon F-789SGA",
+      "sampleProblem": "Evaluate (1 + 3/1000000)^2000000.",
+      "mode": "COMP Mode (MODE 1)",
+      "keystrokes": ["(", "1", "+", "3", "÷", "1", "0", "0", "0", "0", "0", "0", ")", "^", "2", "0", "0", "0", "0", "0", "0", "="],
+      "notes": "Directly displays 403.4288 (e^6)."
+    }
+  },
+  "conceptChecks": [
+    {
+      "id": "chk-1401-01",
+      "question": "What are the three required conditions for a function $f(x)$ to be continuous at $x = a$?",
+      "options": [
+        "f(a) exists, lim(x->a) f(x) exists, and lim(x->a) f(x) = f(a)",
+        "f'(a) exists and is positive",
+        "f(a) > 0 and f(x) is monotonic",
+        "lim(x->a^-) f(x) = 0 and lim(x->a^+) f(x) = 0"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Continuity requires that the function is defined, the two-sided limit exists, and the limit matches the function value."
+    },
+    {
+      "id": "chk-1401-02",
+      "question": "Evaluate the special limit: $\\lim_{x \\to 0} \\frac{1 - \\cos x}{x}$.",
+      "options": [
+        "0",
+        "1",
+        "1/2",
+        "Undefined"
+      ],
+      "correctAnswer": 0,
+      "explanation": "By fundamental calculus theorems: lim(x->0) (1 - cos x)/x = 0 (while (1 - cos x)/x² = 1/2)."
+    },
+    {
+      "id": "chk-1401-03",
+      "question": "In what year did Gottfried Wilhelm von Leibniz publish his foundational paper on differential calculus?",
+      "options": [
+        "1684",
+        "1665",
+        "1704",
+        "1758"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Leibniz published Nova Methodus pro Maximis et Minimis in 1684."
+    }
+  ]
+}

@@ -1,0 +1,184 @@
+{
+  "id": "math-06-02",
+  "code": "MATH 06-02",
+  "domain": "MATH",
+  "topicCode": "MATH-06",
+  "topicTitle": "Probability & Counting Techniques",
+  "subtopicTitle": "Mutually Exclusive Events, Independence, Binomial Distribution & Odds",
+  "order": 2,
+  "pairedQuizSetId": "math-06-02-mastery",
+  "toc": [
+    { "id": "sec-prereq-bridges", "title": "1. Introduction & Cross-Subject Connections", "level": 2 },
+    { "id": "sec-theory", "title": "2. Lesson Proper: Event Classification & Binomial Trials", "level": 2 },
+    { "id": "sec-formulas", "title": "3. Compilation of Formulas & Odds Relations", "level": 2 },
+    { "id": "sec-visualizer", "title": "4. Interactive Visualizer: Binomial Distribution PMF", "level": 2 },
+    { "id": "sec-terminology", "title": "5. Key Terms and Definitions", "level": 2 },
+    { "id": "sec-dual-method", "title": "6. Worked Board Exam Problems", "level": 2 },
+    { "id": "sec-calculator", "title": "7. Calculator Speed Techniques (Karce & Canon)", "level": 2 },
+    { "id": "sec-concept-checks", "title": "8. In-Line Concept Checks", "level": 2 },
+    { "id": "sec-mastery-challenge", "title": "9. Paired Mastery Challenge Exam", "level": 2 }
+  ],
+  "prerequisiteBridge": {
+    "priorModuleId": "math-06-01",
+    "text": "In MATH 06-01, we established basic sample space probabilities. We now extend to compound events—mutually exclusive addition, independent multiplication, Bernoulli repeated trials (Binomial distribution), and the mathematical distinction between true odds and payoff odds."
+  },
+  "crossSubjectBridges": [
+    {
+      "targetDomain": "EST",
+      "targetTopicCode": "EST-09",
+      "badgeText": "Digital Comms",
+      "description": "Repeated packet transmission and Hamming error correction rely directly on the Binomial distribution $P(k \\text{ bit errors in } n \\text{ bits}) = {}_n C_k p^k (1-p)^{n-k}$."
+    },
+    {
+      "targetDomain": "ELECS",
+      "targetTopicCode": "ELEC-10",
+      "badgeText": "Reliability",
+      "description": "System reliability calculations for parallel vs series components apply the independent event multiplication rule $P(A \\cap B) = P(A) \\cdot P(B)$."
+    },
+    {
+      "targetDomain": "GEAS",
+      "targetTopicCode": "GEAS-07",
+      "badgeText": "Quality Control",
+      "description": "Acceptance sampling plans in Industrial Engineering use the Binomial probability model to determine batch rejection thresholds."
+    }
+  ],
+  "theory": {
+    "mentalAnchor": "Mutually exclusive means cannot occur together ($P(A \\cup B) = P(A) + P(B)$). Independent means one does not affect the other ($P(A \\cap B) = P(A) \\cdot P(B)$). Binomial probability for $r$ successes in $n$ trials is $_n C_r p^r q^{n-r}$. If odds in favor are $a : b$, probability is $P = \\frac{a}{a + b}$.",
+    "contentMarkdown": "### 1. Probability Terminology & Event Classifications\n\n- **Experiment**: A controlled physical or conceptual process resulting in uncertain outcomes.\n- **Trial**: A single performance or execution of an experiment.\n- **Outcome**: A single fundamental result of an individual trial.\n- **Event ($E$)**: A specific subset of outcomes in the sample space $S$ (e.g., drawing a face card: 12 cards in a 52-card deck, $P = 12/52 = 3/13$).\n- **Relative Frequency ($RF$)**: The experimental ratio of observed occurrences to total trials: $RF = \\frac{\\text{Occurrences}}{\\text{Total Trials}}$.\n\n---\n\n### 2. Mutually Exclusive vs. Independent Events\n\n#### A. Mutually Exclusive Events:\nTwo events $A$ and $B$ are **mutually exclusive** (disjoint) if they **cannot happen simultaneously in the same trial** ($A \\cap B = \\emptyset$):\n$$P(A \\text{ or } B) = P(A \\cup B) = P(A) + P(B)$$\n*General Addition Rule (for non-mutually exclusive events)*:\n$$P(A \\cup B) = P(A) + P(B) - P(A \\cap B)$$\n\n#### B. Independent Events:\nTwo events $A$ and $B$ are **independent** if the occurrence of $A$ has no influence on the probability of $B$ ($P(B \\mid A) = P(B)$):\n$$P(A \\text{ and } B) = P(A \\cap B) = P(A) \\times P(B)$$\n\n```diagram\n{\n  \"caption\": \"Figure 1: Mutually Exclusive (Disjoint) vs. Independent Overlapping Probability Events\",\n  \"xRange\": [-5, 5],\n  \"yRange\": [-3, 3],\n  \"elements\": [\n    { \"type\": \"arc\", \"center\": [-3.2, 0], \"radius\": 30, \"startAngle\": 0, \"endAngle\": 360, \"color\": \"#f43f5e\", \"label\": \"A\" },\n    { \"type\": \"arc\", \"center\": [-1.2, 0], \"radius\": 30, \"startAngle\": 0, \"endAngle\": 360, \"color\": \"#38bdf8\", \"label\": \"B\" },\n    { \"type\": \"text\", \"at\": [-2.2, -1.8], \"text\": \"Mutually Exclusive: P(A ∩ B) = 0\", \"color\": \"#94a3b8\" },\n    { \"type\": \"arc\", \"center\": [2.0, 0], \"radius\": 32, \"startAngle\": 0, \"endAngle\": 360, \"color\": \"#fbbf24\", \"label\": \"E\" },\n    { \"type\": \"arc\", \"center\": [3.6, 0], \"radius\": 32, \"startAngle\": 0, \"endAngle\": 360, \"color\": \"#34d399\", \"label\": \"F\" },\n    { \"type\": \"text\", \"at\": [2.8, -1.8], \"text\": \"Independent: P(E ∩ F) = P(E)P(F)\", \"color\": \"#94a3b8\" }\n  ]\n}\n```\n\n---\n\n### 3. Binomial Distribution (Bernoulli Trials)\n\nA sequence of $n$ identical repeated trials follows a **Binomial Distribution** if:\n1. Each trial has only **two mutually exclusive outcomes**: Success ($S$) with probability $p$, and Failure ($F$) with probability $q = 1 - p$.\n2. The probability of success $p$ is **constant** across all trials.\n3. All trials are mutually **independent**.\n\n#### Probability Mass Function:\n$$P(X = r) = {}_n C_r \\, p^r \\, q^{n - r} = \\frac{n!}{r!(n - r)!} p^r (1 - p)^{n - r}$$\n- **Expected Value (Mean)**: $\\mu = n p$\n- **Variance**: $\\sigma^2 = n p q$\n- **Standard Deviation**: $\\sigma = \\sqrt{n p q}$\n\n---\n\n### 4. Mathematical Odds: In Favor vs. Against\n\n- **Odds in Favor (Odds For $E$)**: The ratio of the probability of occurrence to non-occurrence:\n  $$\\text{Odds for } E = \\frac{P(E)}{1 - P(E)} = \\frac{P(E)}{P(E')}$$\n  If the odds in favor of $E$ are given as **$a : b$** (or \"$a$-to-$b$\"):\n  $$P(E) = \\frac{a}{a + b}$$\n\n- **Odds Against $E$**: The reciprocal of the odds in favor:\n  $$\\text{Odds against } E = \\frac{1 - P(E)}{P(E)} = \\frac{b}{a}$$\n\n#### True Odds vs. Payoff Odds:\n- **True Odds**: The exact mathematical probability ratio ($a : b$).\n- **Payoff Odds**: The payout return ratio set by a wagering system (e.g., offering a 9-to-10 payoff on an even-money 1-to-1 event creates a house edge)."
+  },
+  "formulas": [
+    {
+      "id": "f-0602-01",
+      "title": "Binomial PMF, Mean & Variance",
+      "formula": "$$P(X = r) = {}_n C_r p^r (1-p)^{n-r}, \\quad \\mu = np, \\quad \\sigma^2 = np(1-p)$$",
+      "note": "Where n is trials, r is successes, p is success probability."
+    },
+    {
+      "id": "f-0602-02",
+      "title": "Probability to Odds Conversion",
+      "formula": "$$\\text{Odds For} = \\frac{P(E)}{1 - P(E)} = \\frac{a}{b} \\iff P(E) = \\frac{a}{a + b}$$",
+      "note": "Odds against is the reciprocal: b/a."
+    },
+    {
+      "id": "f-0602-03",
+      "title": "Multiplication Rule for Independent Events",
+      "formula": "$$P(A \\cap B) = P(A) \\cdot P(B)$$",
+      "note": "Applies when occurrence of A does not alter probability of B."
+    }
+  ],
+  "visualizer": {
+    "archetype": "parameter_sweep",
+    "title": "Binomial Probability Distribution PMF Simulator",
+    "description": "Adjust number of trials n and success probability p to visualize live probability bars for all outcomes r = 0 to n.",
+    "config": {
+      "canvasWidth": 640,
+      "canvasHeight": 320,
+      "controls": [
+        { "id": "n", "label": "Number of Trials (n)", "min": 2, "max": 12, "step": 1, "defaultValue": 6 },
+        { "id": "p", "label": "Success Probability (p)", "min": 0.1, "max": 0.9, "step": 0.1, "defaultValue": 0.5 }
+      ]
+    }
+  },
+  "terms": [
+    {
+      "term": "Mutually Exclusive",
+      "symbol": "$A \\cap B = \\emptyset$",
+      "unit": "Property",
+      "definition": "Events that cannot happen at the same time in a single trial; P(A ∩ B) = 0.",
+      "keywordTrigger": "cannot happen at the same time / disjoint events"
+    },
+    {
+      "term": "Independent Events",
+      "symbol": "$P(A|B) = P(A)$",
+      "unit": "Property",
+      "definition": "Events where the outcome of one event does not influence the probability of the other; P(A ∩ B) = P(A)P(B).",
+      "keywordTrigger": "outcome has no effect on other trials"
+    },
+    {
+      "term": "Odds in Favor",
+      "symbol": "$a : b$",
+      "unit": "Ratio",
+      "definition": "The ratio of favorable probability to unfavorable probability: P(E) / [1 - P(E)].",
+      "keywordTrigger": "P(E) / (1 - P(E)) / a-to-b odds"
+    },
+    {
+      "term": "Binomial Distribution",
+      "symbol": "$B(n, p)$",
+      "unit": "Distribution",
+      "definition": "Discrete probability distribution of the number of successes in n independent Bernoulli trials with constant probability p.",
+      "keywordTrigger": "repeated independent trials / nCr p^r q^(n-r)"
+    }
+  ],
+  "examples": [
+    {
+      "problemStatement": "What are the odds in favor of throwing a total of 5 or 10 in rolling two standard dice?",
+      "formalSolutionMarkdown": "#### Step 1: Calculate probability of rolling a total of 5\n- Outcomes: $(1,4), (4,1), (2,3), (3,2) \\implies 4$ outcomes.\n- $P(5) = \\frac{4}{36} = \\frac{1}{9}$.\n\n#### Step 2: Calculate probability of rolling a total of 10\n- Outcomes: $(4,6), (6,4), (5,5) \\implies 3$ outcomes.\n- $P(10) = \\frac{3}{36} = \\frac{1}{12}$.\n\n#### Step 3: Combine mutually exclusive probabilities\n$$P(5 \\text{ or } 10) = P(5) + P(10) = \\frac{4}{36} + \\frac{3}{36} = \\frac{7}{36}$$\n\n#### Step 4: Compute odds in favor\n$$\\text{Odds For} = \\frac{P}{1 - P} = \\frac{7/36}{1 - 7/36} = \\frac{7/36}{29/36} = \\frac{7}{29} \\implies \\mathbf{7\\text{-to-}29 \\text{ odds}}$$",
+      "shortcutSolutionMarkdown": "#### ⚡ 10-Second Odds Inspection\nFavorable outcomes $= 4 + 3 = 7$. Unfavorable outcomes $= 36 - 7 = 29$.\n$$\\text{Odds} = 7 : 29$$",
+      "formalTimeSeconds": 75,
+      "shortcutTimeSeconds": 10
+    },
+    {
+      "problemStatement": "A fair coin is tossed 6 times. Find the probability of getting exactly 4 heads.",
+      "formalSolutionMarkdown": "#### Step 1: Identify Binomial parameters\n- $n = 6$, $r = 4$, $p = 0.5$, $q = 1 - 0.5 = 0.5$.\n\n#### Step 2: Apply Binomial formula\n$$P(X = 4) = {}_6 C_4 (0.5)^4 (0.5)^{6 - 4} = {}_6 C_4 (0.5)^6$$\n- ${}_6 C_4 = 15$\n- $(0.5)^6 = \\frac{1}{64}$\n$$P(X = 4) = \\frac{15}{64} \\approx 0.2344 \\quad (23.44\\%)$$",
+      "shortcutSolutionMarkdown": "#### ⚡ 5-Second Calculator Keystroke\n$$\\frac{{}_6 C_4}{2^6} = \\frac{15}{64} = 0.2344$$",
+      "formalTimeSeconds": 45,
+      "shortcutTimeSeconds": 5
+    }
+  ],
+  "calculatorGuides": {
+    "karce": {
+      "techniqueTitle": "Binomial Probability Evaluation",
+      "problemType": "Evaluating nCr * p^r * (1-p)^(n-r)",
+      "sampleProblem": "Evaluate 6C4 * (0.5)^6 in COMP mode.",
+      "mode": "COMP Mode (MODE 1)",
+      "keystrokes": ["6", "SHIFT", "nCr", "4", "×", "(", "0", ".", "5", ")", "^", "6", "="],
+      "notes": "Directly yields 15/64 (0.234375) in 1 second."
+    },
+    "canon": {
+      "techniqueTitle": "Direct Binomial Summation Shortcut",
+      "problemType": "Finding cumulative binomial probability P(X ≥ r)",
+      "sampleProblem": "Find P(X ≥ 4) for n=6, p=0.5 on Canon F-789SGA.",
+      "mode": "COMP Mode (MODE 1)",
+      "keystrokes": ["SHIFT", "Σ", "6", "nCr", "ALPHA", "X", "×", "0", ".", "5", "^", "6", ",", "4", ",", "6", ")", "="],
+      "notes": "Directly computes cumulative probability 11/32 in 2 seconds."
+    }
+  },
+  "conceptChecks": [
+    {
+      "id": "chk-0602-01",
+      "question": "If the odds in favor of an event are 3-to-5, what is the exact probability that the event occurs?",
+      "options": [
+        "3/8 (37.5%)",
+        "3/5 (60%)",
+        "5/8 (62.5%)",
+        "2/5 (40%)"
+      ],
+      "correctAnswer": 0,
+      "explanation": "If odds in favor are a : b, then P(E) = a / (a + b) = 3 / (3 + 5) = 3/8 = 37.5%."
+    },
+    {
+      "id": "chk-0602-02",
+      "question": "For a Binomial distribution with $n = 100$ independent trials and $p = 0.2$, what is the variance $\\sigma^2$?",
+      "options": [
+        "16",
+        "20",
+        "4",
+        "80"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Variance formula for Binomial distribution: σ² = np(1 - p) = 100(0.2)(0.8) = 16."
+    },
+    {
+      "id": "chk-0602-03",
+      "question": "If events $A$ and $B$ are independent with $P(A) = 0.4$ and $P(B) = 0.5$, what is $P(A \\cup B)$?",
+      "options": [
+        "0.70",
+        "0.90",
+        "0.20",
+        "0.60"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Since independent, P(A ∩ B) = 0.4 × 0.5 = 0.20. Then P(A ∪ B) = P(A) + P(B) - P(A ∩ B) = 0.4 + 0.5 - 0.20 = 0.70."
+    }
+  ]
+}

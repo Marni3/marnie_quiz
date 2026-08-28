@@ -1,0 +1,184 @@
+{
+  "id": "math-04-03",
+  "code": "MATH 04-03",
+  "domain": "MATH",
+  "topicCode": "MATH-04",
+  "topicTitle": "Discrete Mathematics",
+  "subtopicTitle": "Properties of Relations, Function Types & Propositional Logic",
+  "order": 3,
+  "pairedQuizSetId": "math-04-03-mastery",
+  "toc": [
+    { "id": "sec-prereq-bridges", "title": "1. Introduction & Cross-Subject Connections", "level": 2 },
+    { "id": "sec-theory", "title": "2. Lesson Proper: Relations, Injections & Formal Logic", "level": 2 },
+    { "id": "sec-formulas", "title": "3. Compilation of Formulas & Logic Tables", "level": 2 },
+    { "id": "sec-visualizer", "title": "4. Interactive Visualizer: Logic Gate & Truth Table", "level": 2 },
+    { "id": "sec-terminology", "title": "5. Key Terms and Definitions", "level": 2 },
+    { "id": "sec-dual-method", "title": "6. Worked Board Exam Problems", "level": 2 },
+    { "id": "sec-calculator", "title": "7. Calculator Speed Techniques (Karce & Canon)", "level": 2 },
+    { "id": "sec-concept-checks", "title": "8. In-Line Concept Checks", "level": 2 },
+    { "id": "sec-mastery-challenge", "title": "9. Paired Mastery Challenge Exam", "level": 2 }
+  ],
+  "prerequisiteBridge": {
+    "priorModuleId": "math-04-02",
+    "text": "Building on Cartesian relations from MATH 04-02, we now examine relation equivalence, injective/surjective mappings, and propositional logic—the direct theoretical underpinning of CPU microcode and digital circuit verification."
+  },
+  "crossSubjectBridges": [
+    {
+      "targetDomain": "ELECS",
+      "targetTopicCode": "ELEC-15",
+      "badgeText": "Digital Circuits",
+      "description": "Logic propositions ($p \\wedge q, p \\vee q, p \\oplus q$) directly define truth tables for AND, OR, and XOR digital gates."
+    },
+    {
+      "targetDomain": "EST",
+      "targetTopicCode": "EST-10",
+      "badgeText": "Network Routing",
+      "description": "Equivalence relations partition routing subnets, while partial order relations (POSETs) govern packet priority queuing."
+    },
+    {
+      "targetDomain": "MATH",
+      "targetTopicCode": "MATH-21",
+      "badgeText": "Matrix Algebra",
+      "description": "Binary relations on finite sets are represented as Boolean 0-1 matrices, with composition computed via Boolean matrix multiplication."
+    }
+  ],
+  "theory": {
+    "mentalAnchor": "An Equivalence relation is Reflexive, Symmetric, and Transitive. A function is Injective (one-to-one), Surjective (onto), or Bijective (both). The conditional $p \\to q$ is false ONLY when $T \\to F$. The Contrapositive $\\neg q \\to \\neg p$ is always logically equivalent to the direct conditional $p \\to q$.",
+    "contentMarkdown": "### 1. Fundamental Properties of Binary Relations\n\nLet $R$ be a binary relation on set $A$ ($R \\subseteq A \\times A$):\n\n1. **Reflexive**: Every element is related to itself: $\\forall a \\in A, (a, a) \\in R$.\n2. **Irreflexive**: No element is related to itself: $\\forall a \\in A, (a, a) \\notin R$.\n3. **Symmetric**: If $(a, b) \\in R$, then $(b, a) \\in R$.\n4. **Antisymmetric**: If $(a, b) \\in R$ and $(b, a) \\in R$, then $a = b$.\n5. **Asymmetric**: If $(a, b) \\in R$, then $(b, a) \\notin R$, and no diagonal elements exist ($R \\cap D(A) = \\emptyset$).\n6. **Transitive**: If $(a, b) \\in R$ and $(b, c) \\in R$, then $(a, c) \\in R$.\n\n#### Fundamental Classes of Relations:\n- **Equivalence Relation ($\\\\sim$)**: A relation that is simultaneously **Reflexive, Symmetric, and Transitive** (e.g., modular congruence $a \\equiv b \\pmod m$).\n- **Partial Order (POSET)**: A relation that is **Reflexive, Antisymmetric, and Transitive** (e.g., $\\le$ or subset inclusion $\\subseteq$).\n\n```diagram\n{\n  \"caption\": \"Figure 1: Mapping Taxonomy - Injective (One-to-One), Surjective (Onto), and Bijective\",\n  \"xRange\": [-5, 5],\n  \"yRange\": [-3, 3],\n  \"elements\": [\n    { \"type\": \"polygon\", \"points\": [[-4.5, 2], [-2.5, 2], [-2.5, -2], [-4.5, -2]], \"color\": \"#38bdf8\", \"fill\": \"rgba(56, 189, 248, 0.05)\" },\n    { \"type\": \"polygon\", \"points\": [[-1.5, 2], [0.5, 2], [0.5, -2], [-1.5, -2]], \"color\": \"#fbbf24\", \"fill\": \"rgba(251, 191, 36, 0.05)\" },\n    { \"type\": \"polygon\", \"points\": [[1.5, 2], [3.5, 2], [3.5, -2], [1.5, -2]], \"color\": \"#34d399\", \"fill\": \"rgba(52, 211, 153, 0.05)\" },\n    { \"type\": \"text\", \"at\": [-3.5, 2.3], \"text\": \"Injective (1-to-1)\", \"color\": \"#38bdf8\" },\n    { \"type\": \"text\", \"at\": [-0.5, 2.3], \"text\": \"Surjective (Onto)\", \"color\": \"#fbbf24\" },\n    { \"type\": \"text\", \"at\": [2.5, 2.3], \"text\": \"Bijective (Both)\", \"color\": \"#34d399\" },\n    { \"type\": \"arrow\", \"from\": [-4, 1], \"to\": [-3, 1], \"color\": \"#38bdf8\" },\n    { \"type\": \"arrow\", \"from\": [-1, 1], \"to\": [0, 0.5], \"color\": \"#fbbf24\" },\n    { \"type\": \"arrow\", \"from\": [2, 1], \"to\": [3, 1], \"color\": \"#34d399\" }\n  ]\n}\n```\n\n---\n\n### 2. Function Classifications & Composition\n\n1. **Injective (One-to-One)**: Distinct inputs produce distinct outputs ($f(a) = f(b) \\implies a = b$).\n2. **Surjective (Onto)**: Every element in codomain $B$ is the image of at least one element in domain $A$ ($\\text{Range} = \\text{Codomain}$). For any $b \\in B$, $\\exists a \\in A$ such that $f(a) = b$.\n3. **Bijective (One-to-One Correspondence)**: Both **injective and surjective**.\n4. **Inverse Function ($f^{-1}$)**: A function has a two-sided inverse $f^{-1}$ **if and only if it is bijective**, satisfying $f(f^{-1}(x)) = x$.\n5. **Composition of Functions**: $(f \\circ g)(x) = f(g(x))$.\n\n---\n\n### 3. Propositional Logic & Truth Tables\n\nA **proposition** is a declarative statement that is definitively **True ($T$)** or **False ($F$)**, but not both.\n\n| Connective Name | Symbol | Truth Condition |\n| :--- | :---: | :--- |\n| **Negation (NOT)** | $\\neg p$ | Opposite truth value |\n| **Conjunction (AND)** | $p \\wedge q$ | True **only** if both $p$ and $q$ are True |\n| **Disjunction (OR)** | $p \\vee q$ | True if at least one proposition is True |\n| **Exclusive-OR (XOR)** | $p \\oplus q$ | True if $p$ and $q$ have **different** truth values |\n| **Conditional (Implication)** | $p \\to q$ | False **only** when $p$ is True and $q$ is False ($T \\to F$ is $F$) |\n| **Biconditional (IFF)** | $p \\leftrightarrow q$ | True when $p$ and $q$ have **identical** truth values |\n\n#### Variations of the Conditional Statement $p \\to q$:\n- **Direct Statement**: $p \\to q$\n- **Converse**: $q \\to p$\n- **Inverse**: $\\neg p \\to \\neg q$\n- **Contrapositive**: $\\neg q \\to \\neg p$ (**Logically equivalent to the direct statement**: $p \\to q \\equiv \\neg q \\to \\neg p$)"
+  },
+  "formulas": [
+    {
+      "id": "f-0403-01",
+      "title": "Equivalence Relation Axioms",
+      "formula": "$$R \\text{ is Equivalence } \\iff R \\text{ is Reflexive, Symmetric, and Transitive}$$",
+      "note": "Partitions set A into disjoint equivalence classes."
+    },
+    {
+      "id": "f-0403-02",
+      "title": "Conditional Implication Equivalences",
+      "formula": "$$p \\to q \\equiv \\neg p \\vee q \\equiv \\neg q \\to \\neg p \\text{ (Contrapositive)}$$",
+      "note": "A conditional statement is logically equivalent to its contrapositive."
+    },
+    {
+      "id": "f-0403-03",
+      "title": "Function Composition",
+      "formula": "$$(f \\circ g)(x) = f(g(x)), \\quad f(f^{-1}(x)) = x$$",
+      "note": "Inverse exists if and only if f is bijective."
+    }
+  ],
+  "visualizer": {
+    "archetype": "parameter_sweep",
+    "title": "Truth Table & Logic Proposition Simulator",
+    "description": "Select truth values for propositions p and q to evaluate live outputs for conjunction, disjunction, implication, and contrapositive.",
+    "config": {
+      "canvasWidth": 640,
+      "canvasHeight": 320,
+      "controls": [
+        { "id": "valP", "label": "Truth of p (1=T, 0=F)", "min": 0, "max": 1, "step": 1, "defaultValue": 1 },
+        { "id": "valQ", "label": "Truth of q (1=T, 0=F)", "min": 0, "max": 1, "step": 1, "defaultValue": 0 }
+      ]
+    }
+  },
+  "terms": [
+    {
+      "term": "Equivalence Relation",
+      "symbol": "$\\sim$",
+      "unit": "Relation",
+      "definition": "A binary relation that is simultaneously reflexive, symmetric, and transitive.",
+      "keywordTrigger": "reflexive, symmetric, and transitive"
+    },
+    {
+      "term": "Bijective Function",
+      "symbol": "$f: A \\leftrightarrow B$",
+      "unit": "Function",
+      "definition": "A function that is both injective (one-to-one) and surjective (onto), enabling a well-defined inverse function.",
+      "keywordTrigger": "both one-to-one and onto / invertible"
+    },
+    {
+      "term": "Contrapositive",
+      "symbol": "$\\neg q \\to \\neg p$",
+      "unit": "Logic",
+      "definition": "The proposition formed by negating both hypothesis and conclusion of a conditional and swapping their order, logically equivalent to p → q.",
+      "keywordTrigger": "¬q → ¬p / logically equivalent to conditional"
+    },
+    {
+      "term": "Exclusive-OR",
+      "symbol": "$\\oplus$",
+      "unit": "Logic",
+      "definition": "A logical operation that evaluates to true if and only if exactly one of the inputs is true.",
+      "keywordTrigger": "true when inputs have opposite truth values"
+    }
+  ],
+  "examples": [
+    {
+      "problemStatement": "State the contrapositive of the conditional statement: \"If an integer is divisible by 6, then it is divisible by 2 and 3.\"",
+      "formalSolutionMarkdown": "#### Step 1: Identify components\n- $p$: \"an integer is divisible by 6\"\n- $q$: \"it is divisible by 2 and 3\"\n\n#### Step 2: Form contrapositive $\\neg q \\to \\neg p$\n- $\\neg q$: \"an integer is NOT divisible by 2 or NOT divisible by 3\"\n- $\\neg p$: \"it is NOT divisible by 6\"\n\n$$\\text{Contrapositive}: \\text{\"If an integer is not divisible by 2 or not divisible by 3, then it is not divisible by 6.\"}$$",
+      "shortcutSolutionMarkdown": "#### ⚡ Contrapositive Rule\nNegate both parts and reverse the order: $\\neg q \\to \\neg p$.",
+      "formalTimeSeconds": 45,
+      "shortcutTimeSeconds": 5
+    },
+    {
+      "problemStatement": "Let f(x) = 2x + 3 and g(x) = x² - 1. Find (f ∘ g)(3) and f⁻¹(11).",
+      "formalSolutionMarkdown": "#### Step 1: Evaluate (f ∘ g)(3)\n$$g(3) = 3^2 - 1 = 9 - 1 = 8$$\n$$f(g(3)) = f(8) = 2(8) + 3 = 16 + 3 = 19$$\n\n#### Step 2: Find f⁻¹(11)\nSet $f(x) = 11 \\implies 2x + 3 = 11 \\implies 2x = 8 \\implies x = 4$.\n$$f^{-1}(11) = 4$$",
+      "shortcutSolutionMarkdown": "#### ⚡ 5-Second Direct Calculation\n$g(3) = 8 \\implies f(8) = 19$. To invert: $(11 - 3)/2 = 4$.",
+      "formalTimeSeconds": 60,
+      "shortcutTimeSeconds": 5
+    }
+  ],
+  "calculatorGuides": {
+    "karce": {
+      "techniqueTitle": "Logic Truth Evaluation in BASE-N Mode",
+      "problemType": "Evaluating Boolean propositions",
+      "sampleProblem": "Evaluate (1 AND 0) XOR 1 in BASE-N mode.",
+      "mode": "BASE-N Mode (MODE 4)",
+      "keystrokes": ["1", "and", "0", "xor", "1", "="],
+      "notes": "Directly yields 1 (True)."
+    },
+    "canon": {
+      "techniqueTitle": "Composite Function CALC Shortcut",
+      "problemType": "Evaluating f(g(x)) in COMP mode",
+      "sampleProblem": "Evaluate 2(X² - 1) + 3 at X = 3 on Canon F-789SGA.",
+      "mode": "COMP Mode (MODE 1)",
+      "keystrokes": ["2", "(", "ALPHA", "X", "x²", "-", "1", ")", "+", "3", "CALC", "3", "="],
+      "notes": "Directly evaluates 19 in 1 second."
+    }
+  },
+  "conceptChecks": [
+    {
+      "id": "chk-0403-01",
+      "question": "Which statement variation is logically equivalent to the direct conditional statement $p \\to q$?",
+      "options": [
+        "Contrapositive (¬q → ¬p)",
+        "Converse (q → p)",
+        "Inverse (¬p → ¬q)",
+        "Biconditional (p ↔ q)"
+      ],
+      "correctAnswer": 0,
+      "explanation": "A conditional statement and its contrapositive always share identical truth tables (p → q ≡ ¬q → ¬p)."
+    },
+    {
+      "id": "chk-0403-02",
+      "question": "What three properties must a relation satisfy to be classified as an Equivalence Relation?",
+      "options": [
+        "Reflexive, Symmetric, and Transitive",
+        "Reflexive, Antisymmetric, and Transitive",
+        "Irreflexive, Symmetric, and Transitive",
+        "Reflexive, Symmetric, and Injective"
+      ],
+      "correctAnswer": 0,
+      "explanation": "By mathematical definition, an equivalence relation is reflexive, symmetric, and transitive."
+    },
+    {
+      "id": "chk-0403-03",
+      "question": "When is the conditional statement $p \\to q$ evaluated as FALSE?",
+      "options": [
+        "Only when p is True and q is False",
+        "Only when both p and q are False",
+        "When p is False and q is True",
+        "When both p and q are True"
+      ],
+      "correctAnswer": 0,
+      "explanation": "A conditional promise is broken only when the hypothesis p occurs (True) but the conclusion q fails to occur (False)."
+    }
+  ]
+}

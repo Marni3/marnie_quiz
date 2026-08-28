@@ -248,5 +248,6 @@
       "explanation": "The variable that is linear (to the 1st power) defines the axis of symmetry. If $y^2$ is squared, $x$ is linear, so it opens horizontally along the $x$-direction.",
       "archetype": "shortcut"
     }
-  ]
+  ],
+  "id": "math-13-01-mastery"
 }

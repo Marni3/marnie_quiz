@@ -111,6 +111,7 @@ Every folder in `test-sets/scratch/pdf-renders/math/` maps 1-to-1 to a dedicated
 - **Reference Blueprint**: Rendered law note pages and statutory review text.
 - **Special Directives**:
   - **Comprehensive Scope**: Must cover all **8 Articles and 43 Sections** of the law.
+  - **Break down into multiple modules and mastery exams if necessary** (recommended, due to length and detail)
   - **High Detail**: Explicit breakdowns for:
     - Scopes of practice: Professional Electronics Engineer (PECE), Electronics Engineer (ECE), Electronics Technician (ECT).
     - Qualifications and requirements (PECE 7-year experience requirement, 3 certifiers).

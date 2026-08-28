@@ -248,5 +248,6 @@
       "explanation": "In any right triangle, the two perpendicular legs serve as two of the altitudes, causing all three altitudes to intersect exactly at the right-angled vertex $(0, 0)$ in 0 seconds of calculation.",
       "archetype": "shortcut"
     }
-  ]
+  ],
+  "id": "math-12-02-mastery"
 }

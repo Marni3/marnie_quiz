@@ -4,237 +4,194 @@
   "domain": "MATH",
   "topicCode": "MATH-01",
   "topicTitle": "College Algebra",
-  "subtopicTitle": "Exponents, Radicals & Nested Surds",
+  "subtopicTitle": "Special Products, Factoring, Exponents, Logarithms & Remainder Theorem",
   "order": 2,
-  "pairedQuizSetId": "math_01_algebra_drill_all_set01",
+  "pairedQuizSetId": "math-01-02-mastery",
   "toc": [
-    { "id": "sec-prereq-bridges", "title": "1. Prerequisite & Cross-Subject Bridges", "level": 2 },
-    { "id": "sec-terminology", "title": "2. Exponent & Radical Signatures", "level": 2 },
-    { "id": "sec-visualizer", "title": "3. Interactive Visualizer: Power & Root Growth Dynamics Analyzer", "level": 2 },
-    { "id": "sec-theory", "title": "4. Governing Theory & Core Mental Anchors", "level": 2 },
-    { "id": "sec-dual-method", "title": "5. The Dual-Method Breakdown (Academic vs. ⚡ Board Shortcut)", "level": 2 },
-    { "id": "sec-calculator", "title": "6. Calculator Keystroke Sequences (Karce & Canon)", "level": 2 },
-    { "id": "sec-concept-checks", "title": "7. In-Line Concept Checks & Distractor Deconstruction", "level": 2 },
-    { "id": "sec-mastery-challenge", "title": "8. Paired Mastery Challenge", "level": 2 }
+    { "id": "sec-prereq-bridges", "title": "1. Introduction & Cross-Subject Connections", "level": 2 },
+    { "id": "sec-theory", "title": "2. Lesson Proper: Theory, Laws & Theorems", "level": 2 },
+    { "id": "sec-formulas", "title": "3. Compilation of Formulas & Identities", "level": 2 },
+    { "id": "sec-visualizer", "title": "4. Interactive Visualizer: Exponent & Logarithm Sweep", "level": 2 },
+    { "id": "sec-terminology", "title": "5. Key Terms and Definitions", "level": 2 },
+    { "id": "sec-dual-method", "title": "6. Worked Board Exam Problems", "level": 2 },
+    { "id": "sec-calculator", "title": "7. Calculator Speed Techniques (Karce & Canon)", "level": 2 },
+    { "id": "sec-concept-checks", "title": "8. In-Line Concept Checks", "level": 2 },
+    { "id": "sec-mastery-challenge", "title": "9. Paired Mastery Challenge Exam", "level": 2 }
   ],
   "prerequisiteBridge": {
     "priorModuleId": "math-01-01",
-    "text": "In MATH 01-01, we examined prime factorization and polynomial identities. Here, we generalize repeated multiplication into fractional and negative exponents, radical de-nesting algorithms, and infinite surd evaluations."
+    "text": "Building on the fundamental number properties in MATH 01-01, we now establish the algebraic workhorses of engineering: special binomial/trinomial expansions, fractional exponents, logarithmic scales, and Bézout's polynomial remainder theorem."
   },
   "crossSubjectBridges": [
     {
       "targetDomain": "EST",
       "targetTopicCode": "EST-01",
-      "badgeText": "Transmission Lines",
-      "description": "High-frequency electromagnetic skin depth $\\delta = \\frac{1}{\\sqrt{\\pi f \\mu \\sigma}}$ and characteristic impedance $Z_0 = \\sqrt{L/C}$ depend directly on radical square-root and inverse fractional-power scaling."
+      "badgeText": "Decibel Scales",
+      "description": "Logarithmic power and voltage decibel conversions ($dB = 10\\log(P_2/P_1)$ and $dB = 20\\log(V_2/V_1)$) rely on Briggsian common log rules."
     },
     {
       "targetDomain": "ELECS",
-      "targetTopicCode": "ELEC-01",
-      "badgeText": "AC Circuits",
-      "description": "The root-mean-square (RMS) effective voltage of sinusoidal waveforms $V_{\\text{rms}} = \\frac{V_m}{\\sqrt{2}}$ and resonant frequency $\\omega_0 = \\frac{1}{\\sqrt{LC}}$ require instant radical rationalization and radical simplification."
+      "targetTopicCode": "ELEC-05",
+      "badgeText": "RC/RL Transients",
+      "description": "Transient charging/discharging equations ($v(t) = V_0 e^{-t/RC}$) use Napierian natural logarithms ($\\ln$) to isolate time constants."
     },
     {
-      "targetDomain": "GEAS",
-      "targetTopicCode": "GEAS-04",
-      "badgeText": "Mechanics",
-      "description": "Structural radius of gyration $k = \\sqrt{I/A}$ and simple pendulum period $T = 2\\pi\\sqrt{L/g}$ utilize square root power laws."
+      "targetDomain": "MATH",
+      "targetTopicCode": "MATH-16",
+      "badgeText": "Partial Fractions",
+      "description": "Factoring polynomials into LCDs and evaluating remainders via Bézout's theorem enables rapid Heaviside cover-up integration."
     }
   ],
-  "terms": [
+  "theory": {
+    "mentalAnchor": "A logarithm is an exponent: $\\log_b x = y \\iff b^y = x$. Convert between Natural (Napierian, base $e$) and Common (Briggsian, base $10$) using the modulus factors $\\log x = 0.4343\\ln x$ and $\\ln x = 2.3026\\log x$. Remainder Theorem states dividing $P(x)$ by $(x - k)$ yields remainder $R = P(k)$.",
+    "contentMarkdown": "### 1. Special Products & Algebraic Factoring Identities\n\nSpecial products are algebraic expressions whose expanded values can be written directly by inspection without tedious long polynomial multiplication:\n\n1. **Difference of Two Squares**:\n   $$(x + y)(x - y) = x^2 - y^2$$\n2. **Square of a Binomial**:\n   $$(x + y)^2 = x^2 + 2xy + y^2$$\n   $$(x - y)^2 = x^2 - 2xy + y^2$$\n3. **Cube of a Binomial**:\n   $$(x + y)^3 = x^3 + 3x^2y + 3xy^2 + y^3$$\n   $$(x - y)^3 = x^3 - 3x^2y + 3xy^2 - y^3$$\n4. **Sum and Difference of Two Cubes**:\n   $$x^3 + y^3 = (x + y)(x^2 - xy + y^2)$$\n   $$x^3 - y^3 = (x - y)(x^2 + xy + y^2)$$\n5. **Square of a Trinomial**:\n   $$(x + y + z)^2 = x^2 + y^2 + z^2 + 2xy + 2xz + 2yz$$\n\n#### Board Exam Trap Alert:\nIn the sum/difference of cubes, students often write the quadratic factor as $(x^2 - 2xy + y^2)$. Note the middle term is strictly **$-xy$** (coefficient is $1$, not $2$).\n\n---\n\n### 2. Remainder Theorem & Factor Theorem (Étienne Bézout)\n\nSuggested by French mathematician **Étienne Bézout (1730–1783)**:\n- **Remainder Theorem**: If a polynomial $P(x)$ in an unknown quantity $x$ is divided by a first-degree linear expression $(x - k)$, where $k \\in \\mathbb{C}$, the remainder is identically equal to the numerical value of $P(x)$ evaluated at $x = k$:\n  $$\\text{Remainder } R = P(k)$$\n  For a divisor of the form $(ax - b)$, set $ax - b = 0 \\implies x = b/a$, yielding $R = P(b/a)$.\n- **Factor Theorem**: If $P(k) = 0$ (remainder is zero), then $(x - k)$ is an **exact algebraic factor** of the polynomial $P(x)$.\n\n---\n\n### 3. Exponents & Power Rules\n\nAn **exponent** is a number indicating the power to which a base is raised. In $b^n = P$, $b$ is the base, $n$ is the exponent, and $P$ is the resulting power:\n- **Zero Exponent**: $a^0 = 1$ ($a \\neq 0$)\n- **Negative Exponent**: $a^{-m} = \\frac{1}{a^m}$\n- **Product Rule**: $a^m \\cdot a^n = a^{m+n}$\n- **Quotient Rule**: $\\frac{a^m}{a^n} = a^{m-n}$\n- **Power of a Product**: $(ab)^m = a^m b^m$\n- **Power of a Quotient**: $\\left(\\frac{a}{b}\\right)^m = \\frac{a^m}{b^m}$\n- **Power of a Power**: $(a^m)^n = a^{mn}$\n- **Fractional / Radical Exponent**: $a^{m/n} = \\sqrt[n]{a^m} = (\\sqrt[n]{a})^m$\n\n---\n\n### 4. Logarithms, Historical Roots & Modulus Conversion\n\nA **logarithm** answers: *\"To what power must base $b$ be raised to obtain $x$?\"*\n$$\\log_b x = y \\iff b^y = x \\quad (b > 0, b \\neq 1, x > 0)$$\n\n#### Historical Development:\n- **Natural / Napierian Logarithms ($\\\\ln$)**: Invented in 1614 by Scottish mathematician **John Napier (1550–1617)** using base $e \\approx 2.71828\\dots$.\n- **Common / Briggsian Logarithms ($\\\\log_{10}$)**: Proposed in 1616 by English mathematician **Henry Briggs (1561–1630)** of Gresham College, London, standardizing on base $10$.\n\n#### Properties of Logarithms:\n1. **Product Rule**: $\\log_b(xy) = \\log_b x + \\log_b y$\n2. **Quotient Rule**: $\\log_b\\left(\\frac{x}{y}\\right) = \\log_b x - \\log_b y$\n3. **Power Rule**: $\\log_b(x^n) = n \\log_b x$\n4. **Base Identity**: $\\log_a a = 1$ and $\\log_a 1 = 0$\n5. **Change of Base Formula**: $\\log_a x = \\frac{\\log_b x}{\\log_b a} = \\frac{\\ln x}{\\ln a} = \\frac{\\log_{10} x}{\\log_{10} a}$\n\n#### Relation Between Natural & Common Logarithms (Modulus of Logarithms):\n$$\\log_{10} x = M \\cdot \\ln x \\approx 0.4343 \\ln x \\quad (\\text{where } M = \\log_{10} e \\approx 0.434294)$$\n$$\\ln x = \\frac{1}{M} \\cdot \\log_{10} x \\approx 2.3026 \\log_{10} x \\quad (\\text{where } 1/M = \\ln 10 \\approx 2.302585)$$\nThe multipliers **$0.4343$** and **$2.3026$** are formally designated as the **Modulus of Logarithms** in board examinations.\n\n---\n\n### 5. GCF, LCM & Least Common Denominator (LCD)\n\n- **Greatest Common Factor (GCF)**: The largest integer that divides two or more given numbers without a remainder. Found by multiplying all **common prime factors taken to their lowest powers**.\n- **Least Common Multiple (LCM)**: The smallest positive integer that is divisible by all given numbers. Found by multiplying all **prime factors taken to their highest powers**.\n- **Least Common Denominator (LCD)**: The LCM of the denominators of two or more algebraic fractions."
+  },
+  "formulas": [
     {
-      "term": "Radical Index",
-      "symbol": "n",
-      "unit": "Integer",
-      "definition": "The positive integer $n$ in $\\sqrt[n]{x}$ that indicates which root is being extracted (e.g., $n = 2$ for square root, $n = 3$ for cube root).",
-      "keywordTrigger": "degree/order of root extraction"
+      "id": "f-0102-01",
+      "title": "Bézout's Remainder Theorem",
+      "formula": "$$R = P(k) \\quad \\text{when } P(x) \\text{ is divided by } (x - k)$$",
+      "note": "If divisor is (ax - b), evaluate R = P(b/a). If R = 0, (x - k) is an exact factor."
     },
     {
-      "term": "Radicand",
-      "symbol": "x",
-      "unit": "Real / Complex Number",
-      "definition": "The quantity, expression, or number located beneath the radical sign whose root is to be extracted.",
-      "keywordTrigger": "quantity under the radical sign"
+      "id": "f-0102-02",
+      "title": "Sum and Difference of Cubes",
+      "formula": "$$x^3 \\pm y^3 = (x \\pm y)(x^2 \\mp xy + y^2)$$",
+      "note": "Linear factor shares the sign; quadratic factor has opposite middle term with coefficient 1."
     },
     {
-      "term": "Surd",
-      "symbol": "\\sqrt[n]{a}",
-      "unit": "Dimensionless",
-      "definition": "An irrational radical root of a rational number that cannot be expressed as an exact terminating or repeating decimal (e.g., $\\sqrt{3}, \\sqrt[3]{5}$).",
-      "keywordTrigger": "irrational root of a rational number"
+      "id": "f-0102-03",
+      "title": "Modulus of Logarithms Conversion",
+      "formula": "$$\\log_{10} x = 0.4343 \\ln x, \\quad \\ln x = 2.3026 \\log_{10} x$$",
+      "note": "Modulus factors: M = log10(e) ≈ 0.4343 and 1/M = ln(10) ≈ 2.3026."
     },
     {
-      "term": "Conjugate Radical Binomial",
-      "symbol": "a\\sqrt{b} \\mp c\\sqrt{d}",
-      "unit": "Algebraic Expression",
-      "definition": "The binomial formed by reversing the sign between two terms involving square roots (e.g., the conjugate of $a + \\sqrt{b}$ is $a - \\sqrt{b}$), whose product is always rational: $(a+\\sqrt{b})(a-\\sqrt{b}) = a^2 - b$.",
-      "keywordTrigger": "reversing the middle sign to eliminate radicals"
-    },
-    {
-      "term": "Rationalization",
-      "symbol": "\\frac{A}{\\sqrt{B}} \\cdot \\frac{\\sqrt{B}}{\\sqrt{B}}",
-      "unit": "Algebraic Operation",
-      "definition": "The process of eliminating irrational radicals or imaginary numbers from the denominator (or numerator) of an algebraic fraction by multiplying by a suitable conjugate form of unity.",
-      "keywordTrigger": "clearing radicals from denominator"
-    },
-    {
-      "term": "Extraneous Root",
-      "symbol": "x_{\\text{extraneous}}",
-      "unit": "Value",
-      "definition": "A solution generated during the algebraic solving process (typically by squaring both sides of a radical equation) that does not satisfy the original, un-squared equation.",
-      "keywordTrigger": "false solution introduced by squaring"
+      "id": "f-0102-04",
+      "title": "Change of Base Formula",
+      "formula": "$$\\log_a x = \\frac{\\log_b x}{\\log_b a} = \\frac{\\ln x}{\\ln a}$$",
+      "note": "Enables evaluation of any arbitrary log base on standard scientific calculators."
     }
   ],
   "visualizer": {
     "archetype": "parameter_sweep",
-    "title": "Interactive Power & Root Growth Dynamics Analyzer",
-    "description": "Adjust the exponent / radical index slider to compare growth profiles of $y = x^p$ for integer powers vs fractional roots, highlighting the critical crossover point at $(1, 1)$ and horizontal asymptotic flattening.",
+    "title": "Interactive Logarithmic & Exponential Scale Sweep",
+    "description": "Adjust base b and value x to observe the dual relationship b^y = x and y = log_b(x).",
     "config": {
       "canvasWidth": 640,
       "canvasHeight": 320,
       "controls": [
-        {
-          "id": "power",
-          "label": "Exponent Power (p)",
-          "min": 0.2,
-          "max": 3.0,
-          "step": 0.1,
-          "defaultValue": 0.5,
-          "unit": ""
-        }
-      ],
-      "renderFunction": "function render(ctx, width, height, state) {\n  const p = state.power;\n  \n  ctx.clearRect(0, 0, width, height);\n  ctx.fillStyle = '#0f172a';\n  ctx.fillRect(0, 0, width, height);\n  \n  const ox = 60;\n  const oy = height - 50;\n  const scaleX = (width - 100) / 4;\n  const scaleY = (height - 90) / 4;\n  \n  ctx.strokeStyle = '#334155';\n  ctx.lineWidth = 1;\n  ctx.beginPath();\n  for (let x = 0; x <= 4; x++) {\n    const px = ox + x * scaleX;\n    ctx.moveTo(px, 30);\n    ctx.lineTo(px, oy);\n  }\n  for (let y = 0; y <= 4; y++) {\n    const py = oy - y * scaleY;\n    ctx.moveTo(ox, py);\n    ctx.lineTo(width - 40, py);\n  }\n  ctx.stroke();\n  \n  ctx.strokeStyle = '#64748b';\n  ctx.lineWidth = 2;\n  ctx.beginPath();\n  ctx.moveTo(ox, 20);\n  ctx.lineTo(ox, oy + 10);\n  ctx.moveTo(ox - 10, oy);\n  ctx.lineTo(width - 20, oy);\n  ctx.stroke();\n  \n  ctx.fillStyle = '#94a3b8';\n  ctx.font = '12px sans-serif';\n  for (let x = 1; x <= 4; x++) {\n    ctx.fillText(x.toString(), ox + x * scaleX - 4, oy + 18);\n  }\n  for (let y = 1; y <= 4; y++) {\n    ctx.fillText(y.toString(), ox - 18, oy - y * scaleY + 4);\n  }\n  \n  ctx.beginPath();\n  ctx.strokeStyle = '#38bdf8';\n  ctx.lineWidth = 3;\n  \n  let first = true;\n  for (let px = 0; px <= width - 100; px += 2) {\n    const x = px / scaleX;\n    const y = Math.pow(x, p);\n    const py = oy - y * scaleY;\n    if (py < 20) break;\n    if (first) {\n      ctx.moveTo(ox + px, py);\n      first = false;\n    } else {\n      ctx.lineTo(ox + px, py);\n    }\n  }\n  ctx.stroke();\n  \n  const crossX = ox + 1 * scaleX;\n  const crossY = oy - 1 * scaleY;\n  ctx.fillStyle = '#f43f5e';\n  ctx.beginPath();\n  ctx.arc(crossX, crossY, 5, 0, Math.PI * 2);\n  ctx.fill();\n  \n  ctx.font = 'bold 14px monospace';\n  ctx.fillStyle = '#38bdf8';\n  const label = p === 0.5 ? 'y = √x (p = 0.5)' : (p === 0.33 ? 'y = ∛x' : 'y = x^(' + p.toFixed(2) + ')');\n  ctx.fillText(label, ox + 20, 45);\n  \n  ctx.font = '12px sans-serif';\n  ctx.fillStyle = '#e2e8f0';\n  ctx.fillText('Crossover Invariance Point (1, 1)', crossX + 10, crossY - 8);\n  \n  ctx.fillStyle = '#94a3b8';\n  ctx.fillText(p < 1 ? 'Sub-linear: Decreasing rate of growth (Concave Down)' : (p > 1 ? 'Super-linear: Accelerating growth (Concave Up)' : 'Linear: Constant slope m = 1'), ox + 20, 68);\n}"
+        { "id": "base", "label": "Log Base (b)", "min": 2, "max": 10, "step": 1, "defaultValue": 2 },
+        { "id": "val", "label": "Argument (x)", "min": 1, "max": 64, "step": 1, "defaultValue": 16 }
+      ]
     }
   },
-  "theory": {
-    "mentalAnchor": "Roots are simply fractional powers (x^(1/n) = n-th root of x). To de-nest a radical √(a ± 2√b), find two numbers u and v whose sum is a and product is b: (√u ± √v)^2 = (u + v) ± 2√(uv). For infinite nested radicals √(k + √(k + ...)), if k = n(n+1), the answer is always the larger integer (n+1).",
-    "contentMarkdown": "### 1. The Fundamental Laws of Exponents\n\nFor real bases $a, b > 0$ and rational exponents $m, n \\in \\mathbb{Q}$:\n\n1. **Product Rule**: $a^m \\cdot a^n = a^{m+n}$\n2. **Quotient Rule**: $\\frac{a^m}{a^n} = a^{m-n}$\n3. **Power of a Power**: $(a^m)^n = a^{m \\cdot n}$\n4. **Power of a Product**: $(ab)^n = a^n \\cdot b^n$\n5. **Power of a Quotient**: $\\left(\\frac{a}{b}\\right)^n = \\frac{a^n}{b^n}$\n6. **Zero Exponent**: $a^0 = 1 \\quad (a \\neq 0)$\n7. **Negative Exponent**: $a^{-n} = \\frac{1}{a^n} \\quad (a \\neq 0)$\n8. **Fractional Exponent Definition**: $a^{\\frac{m}{n}} = \\sqrt[n]{a^m} = \\left(\\sqrt[n]{a}\\right)^m$\n\n---\n\n### 2. Radical Properties & Conjugate Rationalization\n\n- $\\sqrt[n]{ab} = \\sqrt[n]{a} \\cdot \\sqrt[n]{b}$\n- $\\sqrt[n]{\\frac{a}{b}} = \\frac{\\sqrt[n]{a}}{\\sqrt[n]{b}}$\n- $\\sqrt[m]{\\sqrt[n]{a}} = \\sqrt[mn]{a}$\n\n#### Rationalization of Binomial Denominators:\nTo clear surds from $\\frac{N}{\\sqrt{a} \\pm \\sqrt{b}}$, multiply numerator and denominator by the conjugate $(\\sqrt{a} \\mp \\sqrt{b})$:\n\n$$\\frac{N}{\\sqrt{a} + \\sqrt{b}} \\cdot \\frac{\\sqrt{a} - \\sqrt{b}}{\\sqrt{a} - \\sqrt{b}} = \\frac{N(\\sqrt{a} - \\sqrt{b})}{a - b}$$\n\n---\n\n### 3. The Radical De-Nesting Algorithm\n\nA nested radical of the form $\\sqrt{a \\pm \\sqrt{b}}$ can be simplified into two distinct simple surds $\\sqrt{u} \\pm \\sqrt{v}$ if and only if $a^2 - b$ is a perfect square ($c^2$):\n\n$$\\sqrt{a \\pm \\sqrt{b}} = \\sqrt{\\frac{a + c}{2}} \\pm \\sqrt{\\frac{a - c}{2}}, \\quad \\text{where } c = \\sqrt{a^2 - b}$$\n\n#### ⚡ The \"Sum-Product\" Shortcut for $\\sqrt{a \\pm 2\\sqrt{b}}$:\nWhen the nested root has a leading factor of $2$, we directly seek two numbers $u$ and $v$ such that:\n$$u + v = a \\quad \\text{and} \\quad u \\cdot v = b$$\n$$\\implies \\sqrt{a \\pm 2\\sqrt{b}} = \\sqrt{u} \\pm \\sqrt{v} \\quad (u > v)$$\n\n---\n\n### 4. Infinite Nested Radicals & High-Speed Board Theorems\n\n| Infinite Radical Archetype | Analytical Closed-Form | Consecutive Factor Shortcut ($k = n(n+1)$) |\n| :--- | :--- | :--- |\n| $x = \\sqrt{k + \\sqrt{k + \\sqrt{k + \\dots}}}$ | $x = \\frac{1 + \\sqrt{1 + 4k}}{2}$ | $x = n + 1$ (Larger Factor) |\n| $x = \\sqrt{k - \\sqrt{k - \\sqrt{k - \\dots}}}$ | $x = \\frac{-1 + \\sqrt{1 + 4k}}{2}$ | $x = n$ (Smaller Factor) |\n| $x = \\sqrt{k \\sqrt{k \\sqrt{k \\dots}}}$ | $x = k$ | $x = k$ (Exact Base) |\n| $x = \\sqrt[m]{k \\sqrt[m]{k \\sqrt[m]{k \\dots}}}$ | $x = \\sqrt[m-1]{k}$ | $x = k^{\\frac{1}{m-1}}$ |"
-  },
+  "terms": [
+    {
+      "term": "Modulus of Logarithm",
+      "symbol": "$M$",
+      "unit": "Constant",
+      "definition": "The constant multiplier used to convert natural logarithms to common logarithms: M = log₁₀(e) ≈ 0.434294.",
+      "keywordTrigger": "0.4343 multiplier / log10(e)"
+    },
+    {
+      "term": "Remainder Theorem",
+      "symbol": "$R = P(k)$",
+      "unit": "Theorem",
+      "definition": "Theorem by Étienne Bézout stating that dividing a polynomial P(x) by (x - k) leaves a remainder equal to P(k).",
+      "keywordTrigger": "P(x) divided by (x - k) leaves remainder P(k)"
+    },
+    {
+      "term": "Common Logarithm",
+      "symbol": "$\\log_{10} x$",
+      "unit": "Dimensionless",
+      "definition": "Base-10 logarithm introduced by Henry Briggs in 1616, widely known as Briggsian logarithm.",
+      "keywordTrigger": "base 10 / Henry Briggs / Briggsian"
+    },
+    {
+      "term": "Natural Logarithm",
+      "symbol": "$\\ln x$",
+      "unit": "Dimensionless",
+      "definition": "Base-e logarithm (e ≈ 2.71828) invented by John Napier in 1614, widely known as Napierian logarithm.",
+      "keywordTrigger": "base e / John Napier / Napierian"
+    },
+    {
+      "term": "Least Common Denominator",
+      "symbol": "$\\text{LCD}$",
+      "unit": "Integer",
+      "definition": "The product of all prime factors occurring in denominators, each taken with its greatest multiplicity.",
+      "keywordTrigger": "product of primes taken with greatest multiplicity"
+    }
+  ],
   "examples": [
     {
-      "problemStatement": "Simplify completely into simple surds: S = \\sqrt{14 - 6\\sqrt{5}}.",
-      "formalSolutionMarkdown": "#### Step 1: Format into standard nested radical form \\sqrt{a - 2\\sqrt{b}}\nBring the factor 3 inside the inner radical:\n$$6\\sqrt{5} = 2 \\cdot 3\\sqrt{5} = 2\\sqrt{3^2 \\cdot 5} = 2\\sqrt{9 \\cdot 5} = 2\\sqrt{45}$$\n\nThus, the expression becomes:\n$$S = \\sqrt{14 - 2\\sqrt{45}}$$\n\n#### Step 2: Identify parameters for the Sum-Product method\nWe seek two positive numbers $u$ and $v$ such that:\n$$u + v = 14$$\n$$u \\cdot v = 45$$\n\nFactoring 45 into pairs: $(1, 45), (3, 15), (5, 9)$.\nThe pair whose sum is 14 is $u = 9$ and $v = 5$.\n\n#### Step 3: Extract the square root of the perfect binomial square\n$$14 - 2\\sqrt{45} = (9 + 5) - 2\\sqrt{9 \\cdot 5} = (\\sqrt{9} - \\sqrt{5})^2$$\n$$S = \\sqrt{(\\sqrt{9} - \\sqrt{5})^2} = \\sqrt{9} - \\sqrt{5} = 3 - \\sqrt{5}$$",
-      "shortcutSolutionMarkdown": "#### ⚡ 6-Second Calculator Decimal Match\n1. Type `√(14 - 6√5)` directly into the calculator display and press `<kbd>=</kbd>`:\n   $$\\text{Display Value} = 0.7639320225$$\n2. Evaluate the 4 multiple choice options on your calculator:\n   - **Option A**: $3 - \\sqrt{5} = 3 - 2.2360679 = 0.7639320225$ ✅ **(Exact Match!)**\n   - **Option B**: $3 + \\sqrt{5} = 5.236$ ❌\n   - **Option C**: $2 - \\sqrt{5} = -0.236$ ❌\n   - **Option D**: $\\sqrt{7} - \\sqrt{5} = 0.409$ ❌",
-      "formalTimeSeconds": 110,
-      "shortcutTimeSeconds": 6
-    },
-    {
-      "problemStatement": "Evaluate the infinite nested radical expression: x = \\sqrt{56 + \\sqrt{56 + \\sqrt{56 + \\dots}}}.",
-      "formalSolutionMarkdown": "#### Step 1: Set up the recursive self-similarity equation\nNotice that the sub-expression beneath the first radical is identical to $x$ itself:\n$$x = \\sqrt{56 + x}$$\n\n#### Step 2: Square both sides to eliminate the outer radical\n$$x^2 = 56 + x$$\n$$x^2 - x - 56 = 0$$\n\n#### Step 3: Factor the resulting quadratic equation\n$$(x - 8)(x + 7) = 0$$\n$$x = 8 \\quad \\text{or} \\quad x = -7$$\n\n#### Step 4: Discard extraneous negative root\nSince the principal square root of a real number is strictly non-negative ($x > 0$), we reject $x = -7$.\n$$x = 8$$",
-      "shortcutSolutionMarkdown": "#### ⚡ 2-Second Consecutive Factor Shortcut\n1. Take the base number $k = 56$.\n2. Factor 56 into two consecutive integers: $56 = 7 \\times 8 = n(n+1)$.\n3. For **addition** ($+$ signs), the answer is always the **larger integer**: $n + 1 = 8$.\n*(If the operation were subtraction $\\sqrt{56 - \\sqrt{56 - \\dots}}$, the answer would immediately be the smaller integer $7$).*",
-      "formalTimeSeconds": 90,
-      "shortcutTimeSeconds": 2
-    },
-    {
-      "problemStatement": "Solve for all real values of x: \\sqrt{2x + 9} - \\sqrt{x + 1} = 2.",
-      "formalSolutionMarkdown": "#### Step 1: Isolate one radical term\n$$\\sqrt{2x + 9} = 2 + \\sqrt{x + 1}$$\n\n#### Step 2: Square both sides\n$$(\\sqrt{2x + 9})^2 = (2 + \\sqrt{x + 1})^2$$\n$$2x + 9 = 4 + 4\\sqrt{x + 1} + (x + 1)$$\n$$2x + 9 = x + 5 + 4\\sqrt{x + 1}$$\n\n#### Step 3: Isolate the remaining radical term\n$$x + 4 = 4\\sqrt{x + 1}$$\n\n#### Step 4: Square both sides a second time\n$$(x + 4)^2 = (4\\sqrt{x + 1})^2$$\n$$x^2 + 8x + 16 = 16(x + 1)$$\n$$x^2 + 8x + 16 = 16x + 16$$\n$$x^2 - 8x = 0$$\n$$x(x - 8) = 0 \\implies x = 0 \\quad \\text{or} \\quad x = 8$$\n\n#### Step 5: Test for extraneous roots in original equation\n- Test $x = 0$: $\\sqrt{2(0) + 9} - \\sqrt{0 + 1} = \\sqrt{9} - \\sqrt{1} = 3 - 1 = 2$ ✅ (Valid)\n- Test $x = 8$: $\\sqrt{2(8) + 9} - \\sqrt{8 + 1} = \\sqrt{25} - \\sqrt{9} = 5 - 3 = 2$ ✅ (Valid)\n\nBoth $x = 0$ and $x = 8$ are valid solutions.",
-      "shortcutSolutionMarkdown": "#### ⚡ 10-Second Reverse Substitution via CALC Key\n1. Enter the left-hand side into the calculator: `√(2X + 9) - √(X + 1)`\n2. Test the answer options using `<kbd>CALC</kbd>`:\n   - Press `<kbd>CALC</kbd>` $\\to$ enter `X = 0` $\\to$ Display $= 2$ ✅\n   - Press `<kbd>CALC</kbd>` $\\to$ enter `X = 8` $\\to$ Display $= 2$ ✅\n   - Option containing both $\\{0, 8\\}$ is confirmed in under 10 seconds.",
-      "formalTimeSeconds": 140,
+      "problemStatement": "Find the remainder when P(x) = 2x³ - 5x² + 7x - 11 is divided by (2x - 3).",
+      "formalSolutionMarkdown": "#### Step 1: Find the zero of the linear divisor\nSet $2x - 3 = 0 \\implies x = 3/2$.\n\n#### Step 2: Evaluate P(3/2) by Bézout's Remainder Theorem\n$$R = P\\left(\\frac{3}{2}\\right) = 2\\left(\\frac{3}{2}\\right)^3 - 5\\left(\\frac{3}{2}\\right)^2 + 7\\left(\\frac{3}{2}\\right) - 11$$\n$$R = 2\\left(\\frac{27}{8}\\right) - 5\\left(\\frac{9}{4}\\right) + \\frac{21}{2} - 11 = \\frac{27}{4} - \\frac{45}{4} + \\frac{42}{4} - \\frac{44}{4} = -\\frac{20}{4} = -5$$",
+      "shortcutSolutionMarkdown": "#### ⚡ 10-Second Calculator CALC Shortcut\n1. Type into calculator: `2X³ - 5X² + 7X - 11`.\n2. Press `CALC`, enter `3/2` (or `1.5`), press `=`.\n3. Display instantly shows `-5`.",
+      "formalTimeSeconds": 75,
       "shortcutTimeSeconds": 10
+    },
+    {
+      "problemStatement": "Find the Least Common Denominator (LCD) of fractions with denominators 8, 9, 12, and 15.",
+      "formalSolutionMarkdown": "#### Step 1: Prime factorize each denominator\n- $8 = 2^3$\n- $9 = 3^2$\n- $12 = 2^2 \\cdot 3^1$\n- $15 = 3^1 \\cdot 5^1$\n\n#### Step 2: Multiply highest powers of all prime factors\n$$\\text{LCD} = 2^{\\max(3,2)} \\cdot 3^{\\max(2,1,1)} \\cdot 5^1 = 2^3 \\cdot 3^2 \\cdot 5^1 = 8 \\cdot 9 \\cdot 5 = 360$$",
+      "shortcutSolutionMarkdown": "#### ⚡ Inspection Rule\nHighest power of $2$ is $2^3 = 8$; highest power of $3$ is $3^2 = 9$; highest power of $5$ is $5$. $\\text{LCD} = 8 \\times 9 \\times 5 = 360$.",
+      "formalTimeSeconds": 60,
+      "shortcutTimeSeconds": 5
     }
   ],
   "calculatorGuides": {
     "karce": {
-      "mode": "COMP Mode (<kbd>MODE</kbd> <kbd>1</kbd>)",
-      "keystrokes": [
-        "<kbd>√</kbd>",
-        "<kbd>1</kbd>",
-        "<kbd>4</kbd>",
-        "<kbd>-</kbd>",
-        "<kbd>6</kbd>",
-        "<kbd>√</kbd>",
-        "<kbd>5</kbd>",
-        "<kbd>=</kbd>"
-      ],
-      "notes": "To enter arbitrary roots on the Karce KC-S991, press <kbd>SHIFT</kbd> <kbd>x■</kbd> (x-th root). For testing equations, enter the full expression and use <kbd>SHIFT</kbd> <kbd>SOLVE</kbd> or <kbd>CALC</kbd> with option values."
+      "techniqueTitle": "High-Speed Polynomial Remainder via CALC",
+      "problemType": "Evaluating Remainder P(k) in COMP Mode",
+      "sampleProblem": "Find remainder of 3X^4 - 2X^2 + 5 when divided by (X + 2).",
+      "mode": "COMP Mode (MODE 1)",
+      "keystrokes": ["3", "ALPHA", "X", "^", "4", "-", "2", "ALPHA", "X", "x²", "+", "5", "CALC", "-", "2", "="],
+      "notes": "By Remainder Theorem, substitute k = -2. The display directly evaluates R = 45 in under 3 seconds."
     },
     "canon": {
-      "mode": "COMP Mode (<kbd>MODE</kbd> <kbd>1</kbd>)",
-      "keystrokes": [
-        "<kbd>√</kbd>",
-        "<kbd>1</kbd>",
-        "<kbd>4</kbd>",
-        "<kbd>-</kbd>",
-        "<kbd>6</kbd>",
-        "<kbd>√</kbd>",
-        "<kbd>5</kbd>",
-        "<kbd>=</kbd>"
-      ],
-      "notes": "On the Canon F-789SGA, arbitrary roots use <kbd>SHIFT</kbd> followed by the radical template key. When solving radical equations, verify roots using the equation solver in <kbd>APPS</kbd>."
+      "techniqueTitle": "Arbitrary Base Logarithm Evaluation",
+      "problemType": "Evaluating log_b(x) directly",
+      "sampleProblem": "Evaluate log_2(128) on Canon F-789SGA.",
+      "mode": "COMP Mode (MODE 1)",
+      "keystrokes": ["log■■", "2", "►", "1", "2", "8", "="],
+      "notes": "Uses the dedicated log base button. Or use ln(128)/ln(2) to directly get 7."
     }
   },
   "conceptChecks": [
     {
-      "id": "chk-01-02-01",
-      "question": "Simplify the expression completely: \\frac{\\sqrt{3} + \\sqrt{2}}{\\sqrt{3} - \\sqrt{2}} - \\frac{\\sqrt{3} - \\sqrt{2}}{\\sqrt{3} + \\sqrt{2}}.",
-      "options": {
-        "A": "4√6",
-        "B": "2√6",
-        "C": "10",
-        "D": "0"
-      },
-      "correctAnswer": "A",
-      "distractorDeconstruction": {
-        "A": "Correct. Using common denominator (√3 - √2)(√3 + √2) = 3 - 2 = 1. Numerator is (√3 + √2)^2 - (√3 - √2)^2 = (5 + 2√6) - (5 - 2√6) = 4√6.",
-        "B": "Forgetting that subtracting -2√6 adds +2√6, resulting in half the actual value (2√6 instead of 4√6).",
-        "C": "Adding the squared terms (5 + 5 = 10) instead of subtracting them.",
-        "D": "Erroneously assuming that because the two fractions are reciprocals of each other with alternating signs, they cancel out to 0."
-      },
-      "shortcutExplanation": "Use algebraic identity (a + b)^2 - (a - b)^2 = 4ab over a^2 - b^2. Here 4(√3)(√2) / (3 - 2) = 4√6."
+      "id": "chk-0102-01",
+      "question": "What is the numerical value of the constant known as the Modulus of Logarithms used to convert $\\ln x$ to $\\log_{10} x$?",
+      "options": [
+        "0.4343",
+        "2.3026",
+        "0.6931",
+        "1.4142"
+      ],
+      "correctAnswer": 0,
+      "explanation": "The modulus of logarithms is M = log₁₀(e) ≈ 0.4343. Its reciprocal is 1/M = ln(10) ≈ 2.3026."
     },
     {
-      "id": "chk-01-02-02",
-      "question": "Evaluate the value of the infinite product: P = \\sqrt{7 \\sqrt{7 \\sqrt{7 \\dots}}}.",
-      "options": {
-        "A": "√7",
-        "B": "7",
-        "C": "49",
-        "D": "1"
-      },
-      "correctAnswer": "B",
-      "distractorDeconstruction": {
-        "A": "Assumes that the infinite nested square roots converge to √7 instead of the base itself.",
-        "B": "Correct. P = √(7P) => P^2 = 7P => P = 7.",
-        "C": "Squares 7 erroneously thinking the product compounds outward.",
-        "D": "Assumes infinite multiplication of roots decays to 1."
-      },
-      "shortcutExplanation": "For any infinite product P = √(k√(k...)), the value is strictly equal to the radicand k. Here k = 7."
+      "id": "chk-0102-02",
+      "question": "Who originally proposed the use of base 10 common logarithms in 1616?",
+      "options": [
+        "Henry Briggs",
+        "John Napier",
+        "Étienne Bézout",
+        "René Descartes"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Henry Briggs suggested base 10 logarithms in 1616 (hence Briggsian logarithms), whereas John Napier invented natural base-e logarithms in 1614."
     },
     {
-      "id": "chk-01-02-03",
-      "question": "Which of the following is the simplified form of \\sqrt{28 - 10\\sqrt{3}}?",
-      "options": {
-        "A": "5 - √3",
-        "B": "√25 - √3",
-        "C": "2√7 - √3",
-        "D": "3 - √5"
-      },
-      "correctAnswer": "A",
-      "distractorDeconstruction": {
-        "A": "Correct. 28 - 2√(25 × 3) = 28 - 2√75. Numbers adding to 28 and multiplying to 75 are 25 and 3. √25 - √3 = 5 - √3.",
-        "B": "Leaves √25 unsimplified rather than expressing it as 5 (improper mathematical form).",
-        "C": "Splits 28 as 4 × 7 = 2√7, ignoring the cross-term product.",
-        "D": "Swaps the integers 3 and 5 incorrectly."
-      },
-      "shortcutExplanation": "5 - √3 ≈ 5 - 1.732 = 3.268. √(28 - 10√3) = √(28 - 17.32) = √10.68 ≈ 3.268 (Match)."
-    },
-    {
-      "id": "chk-01-02-04",
-      "question": "What is the primary reason why squaring both sides of a radical equation can introduce extraneous solutions?",
-      "options": {
-        "A": "Squaring destroys the sign information because both (+k)^2 and (-k)^2 equal k^2",
-        "B": "Radicals are undefined for negative numbers in the real domain",
-        "C": "Squaring increases the degree of the equation arbitrarily",
-        "D": "Conjugate multiplication changes the denominator"
-      },
-      "correctAnswer": "A",
-      "distractorDeconstruction": {
-        "A": "Correct. The operation f(x) = x^2 is a many-to-one function that maps both +k and -k to +k^2, thus converting a false statement like -3 = 3 into a true squared statement 9 = 9.",
-        "B": "While true, domain restriction alone does not explain why positive extraneous roots also appear.",
-        "C": "While squaring doubles polynomial degree, it specifically creates extraneous solutions due to sign loss.",
-        "D": "Conjugate multiplication is a technique for rationalization, not the cause of extraneous roots in equations."
-      },
-      "shortcutExplanation": "Squaring is non-invertible for negative numbers: (+3)^2 = (-3)^2 = 9, so false relationships become true after squaring."
+      "id": "chk-0102-03",
+      "question": "If $(x - 3)$ divides $P(x) = x^3 - 2x^2 + kx - 18$ exactly with zero remainder, what is the value of $k$?",
+      "options": [
+        "3",
+        "-3",
+        "9",
+        "-9"
+      ],
+      "correctAnswer": 0,
+      "explanation": "By Factor Theorem, P(3) = 0: 3³ - 2(3²) + 3k - 18 = 0 ⇒ 27 - 18 + 3k - 18 = 0 ⇒ 3k - 9 = 0 ⇒ k = 3."
     }
   ]
 }

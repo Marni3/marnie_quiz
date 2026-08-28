@@ -1,0 +1,183 @@
+{
+  "id": "math-10-01",
+  "code": "MATH 10-01",
+  "domain": "MATH",
+  "topicCode": "MATH-10",
+  "topicTitle": "Plane Geometry",
+  "subtopicTitle": "Euclidean Axioms, Branches of Geometry, Geometric Elements & Angle Classifications",
+  "order": 1,
+  "pairedQuizSetId": "math-10-01-mastery",
+  "toc": [
+    { "id": "sec-prereq-bridges", "title": "1. Introduction & Cross-Subject Connections", "level": 2 },
+    { "id": "sec-theory", "title": "2. Lesson Proper: Axiomatic Foundations & Angle Taxonomy", "level": 2 },
+    { "id": "sec-formulas", "title": "3. Compilation of Formulas & Angle Relations", "level": 2 },
+    { "id": "sec-visualizer", "title": "4. Interactive Visualizer: Angle Sweep & Perigon Simulator", "level": 2 },
+    { "id": "sec-terminology", "title": "5. Key Terms and Definitions", "level": 2 },
+    { "id": "sec-dual-method", "title": "6. Worked Board Exam Problems", "level": 2 },
+    { "id": "sec-calculator", "title": "7. Calculator Speed Techniques (Karce & Canon)", "level": 2 },
+    { "id": "sec-concept-checks", "title": "8. In-Line Concept Checks", "level": 2 },
+    { "id": "sec-mastery-challenge", "title": "9. Paired Mastery Challenge Exam", "level": 2 }
+  ],
+  "prerequisiteBridge": {
+    "priorModuleId": "math-08-04",
+    "text": "Having mastered plane and spherical trigonometry in MATH 08, we now establish rigorous axiomatic foundations in Plane Geometry—Euclid's five postulates, branches of geometric analysis, and angle classifications from null to perigon."
+  },
+  "crossSubjectBridges": [
+    {
+      "targetDomain": "EST",
+      "targetTopicCode": "EST-05",
+      "badgeText": "Wave Propagation",
+      "description": "Ray tracing, Brewster angle reflection, and critical angle refraction apply Euclidean line and angle definitions."
+    },
+    {
+      "targetDomain": "ELECS",
+      "targetTopicCode": "ELEC-04",
+      "badgeText": "Phasor Angles",
+      "description": "AC phasor phase angles ($0^\\circ$ to $360^\\circ$) utilize reflex and perigon angle angular conventions."
+    },
+    {
+      "targetDomain": "MATH",
+      "targetTopicCode": "MATH-12",
+      "badgeText": "Analytic Geometry",
+      "description": "Descartes' coordinate geometry transforms Euclid's 5th parallel postulate into linear slope equalities $m_1 = m_2$."
+    }
+  ],
+  "theory": {
+    "mentalAnchor": "Euclid's 5th is the Parallel Postulate. Angles: Null ($0^\\circ$), Acute ($0^\\circ < \\theta < 90^\\circ$), Right ($90^\\circ$), Obtuse ($90^\\circ < \\theta < 180^\\circ$), Straight ($180^\\circ$), Reflex ($180^\\circ < \\theta < 360^\\circ$), Perigon ($360^\\circ$). Complementary angles sum to $90^\\circ$, Supplementary sum to $180^\\circ$, Explementary sum to $360^\\circ$.",
+    "contentMarkdown": "### 1. Etymology, History & Euclid's 5 Postulates\n\n- **Geometry**: Derived from Greek *ge* (\"earth\") and *metria* (\"measurement\").\n- **Foundational Figures**:\n  - **Euclid of Alexandria (c. 330–275 B.C.)**: Author of the 13-volume *Elements*, formalizing Euclidean plane geometry via the classical axiomatic deductive method.\n  - **Archimedes of Syracuse (c. 287–212 B.C.)**: Advanced solid geometry (spheres, cylinders, paraboloids) and circle exhaustion approximations.\n\n#### The Five Postulates of Euclidean Geometry:\n1. A unique straight line can be drawn between any two distinct points.\n2. Any straight line segment can be extended indefinitely in either direction.\n3. A circle can be described with any given point as center and any radius distance.\n4. All right angles are equal to one another ($90^\\circ$ or $\\pi/2\\text{ rad}$).\n5. **The Parallel Postulate**: Given a straight line and a point not on the line, there exists **exactly one line** passing through the given point parallel to the original line.\n\n---\n\n### 2. Major Branches of Geometry\n\n1. **Plane Geometry**: 2D figures on a flat plane (triangles, polygons, circles).\n2. **Solid Geometry**: 3D geometric bodies (prisms, pyramids, cylinders, cones, polyhedra, spheres).\n3. **Euclidean Geometry**: Standard axiomatic geometry based on Euclid's 5 postulates.\n4. **Non-Euclidean Geometry**: Geometries rejecting the 5th parallel postulate (Hyperbolic / Lobachevskian geometry with $\\infty$ parallels, and Elliptic / Riemannian geometry with $0$ parallels).\n5. **Projective Geometry**: Invariant properties under perspective transformation and central projection.\n6. **Trigonometry**: Measurement and angular relationships in triangles (Plane & Spherical).\n7. **Analytic Geometry**: Algebraic coordinate geometry using Cartesian axes, founded by **René Descartes (1596–1650)**.\n8. **Differential Geometry**: Application of differential and integral calculus to smooth curves, manifolds, and surfaces.\n\n```diagram\n{\n  \"caption\": \"Figure 1: Angle Taxonomy - Acute, Right, Obtuse, Straight, Reflex, and Full Perigon\",\n  \"xRange\": [-5, 5],\n  \"yRange\": [-3, 3],\n  \"elements\": [\n    { \"type\": \"line\", \"from\": [-4, -1], \"to\": [-1, -1], \"color\": \"#94a3b8\" },\n    { \"type\": \"line\", \"from\": [-4, -1], \"to\": [-2, 1.5], \"color\": \"#38bdf8\", \"label\": \"Acute <90°\" },\n    { \"type\": \"line\", \"from\": [0, -1], \"to\": [3, -1], \"color\": \"#94a3b8\" },\n    { \"type\": \"line\", \"from\": [0, -1], \"to\": [0, 2], \"color\": \"#fbbf24\", \"label\": \"Right 90°\" },\n    { \"type\": \"arc\", \"center\": [0, -1], \"radius\": 20, \"startAngle\": 0, \"endAngle\": 90, \"color\": \"#fbbf24\" }\n  ]\n}\n```\n\n---\n\n### 3. Basic Elements & Complete Angle Taxonomy\n\n- **Point**: A 0-dimensional geometric entity indicating precise position without length, area, or volume.\n- **Line**: A 1-dimensional continuous collection of points extending indefinitely; shortest path between two points.\n- **Angle**: Opening formed by two intersecting rays meeting at a common point called the **vertex** (Latin *angulus*, \"sharp bend\").\n\n| Angle Classification | Degree Measure ($\\theta$) | Radian Measure | Description |\n| :--- | :---: | :---: | :--- |\n| **Null / Zero Angle** | $\\theta = 0^\\circ$ | $0\\text{ rad}$ | Rays completely coincide without opening |\n| **Acute Angle** | $0^\\circ < \\theta < 90^\\circ$ | $0 < \\theta < \\pi/2$ | Less than a right angle |\n| **Right Angle** | $\\theta = 90^\\circ$ | $\\pi/2\\text{ rad}$ | Quarter of a full rotation |\n| **Obtuse Angle** | $90^\\circ < \\theta < 180^\\circ$ | $\\pi/2 < \\theta < \\pi$ | Greater than right, less than straight |\n| **Straight Angle** | $\\theta = 180^\\circ$ | $\\pi\\text{ rad}$ | Forms a continuous straight line |\n| **Reflex Angle** | $180^\\circ < \\theta < 360^\\circ$ | $\\pi < \\theta < 2\\pi$ | Greater than straight, less than full turn |\n| **Full Angle / Perigon** | $\\theta = 360^\\circ$ | $2\\pi\\text{ rad}$ | One complete full circular rotation |\n\n#### Angle Pairs Definitions:\n- **Complementary Angles**: Sum is $90^\\circ$ ($\\alpha + \\beta = 90^\\circ$).\n- **Supplementary Angles**: Sum is $180^\\circ$ ($\\alpha + \\beta = 180^\\circ$).\n- **Explementary / Conjugate Angles**: Sum is $360^\\circ$ ($\\alpha + \\beta = 360^\\circ$)."
+  },
+  "formulas": [
+    {
+      "id": "f-1001-01",
+      "title": "Angle Pair Sum Relations",
+      "formula": "$$\\text{Complementary}: \\alpha + \\beta = 90^\\circ, \\quad \\text{Supplementary}: \\alpha + \\beta = 180^\\circ, \\quad \\text{Explementary}: \\alpha + \\beta = 360^\\circ$$",
+      "note": "Explementary angles are also called conjugate angle pairs."
+    },
+    {
+      "id": "f-1001-02",
+      "title": "Degree to Radian Conversion",
+      "formula": "$$\\theta_{\\text{rad}} = \\theta_{\\text{deg}} \\times \\frac{\\pi}{180^\\circ}, \\quad 1\\text{ rad} \\approx 57.2958^\\circ$$",
+      "note": "Full perigon = 360° = 2π radians."
+    },
+    {
+      "id": "f-1001-03",
+      "title": "Euclid's 5th Postulate (Playfair's Formulation)",
+      "formula": "$$\\text{Given line } L \\text{ and point } P \\notin L \\implies \\exists! \\text{ parallel line } L' \\parallel L \\text{ through } P$$",
+      "note": "The defining axiom of Euclidean vs Non-Euclidean geometry."
+    }
+  ],
+  "visualizer": {
+    "archetype": "parameter_sweep",
+    "title": "Angle Sweep & Classification Simulator",
+    "description": "Sweep angle θ from 0° to 360° to observe real-time classification (Acute, Right, Obtuse, Straight, Reflex, Perigon).",
+    "config": {
+      "canvasWidth": 640,
+      "canvasHeight": 320,
+      "controls": [
+        { "id": "angleTheta", "label": "Angle θ (degrees)", "min": 0, "max": 360, "step": 5, "defaultValue": 135 }
+      ]
+    }
+  },
+  "terms": [
+    {
+      "term": "Perigon",
+      "symbol": "$360^\\circ$",
+      "unit": "Angle",
+      "definition": "A full angle representing one complete circular revolution of 360 degrees or 2π radians.",
+      "keywordTrigger": "full angle / 360 degrees / perigon"
+    },
+    {
+      "term": "Reflex Angle",
+      "symbol": "$\\theta$",
+      "unit": "Angle",
+      "definition": "An angle whose measure is strictly between 180 degrees and 360 degrees (π to 2π radians).",
+      "keywordTrigger": "between 180 and 360 degrees"
+    },
+    {
+      "term": "Parallel Postulate",
+      "symbol": "Postulate 5",
+      "unit": "Axiom",
+      "definition": "Euclid's fifth postulate stating that exactly one parallel line passes through a given external point.",
+      "keywordTrigger": "Euclid's 5th postulate / exactly one parallel line"
+    },
+    {
+      "term": "Analytic Geometry",
+      "symbol": "René Descartes",
+      "unit": "Branch",
+      "definition": "The branch of mathematics that solves geometric problems by transforming them into algebraic coordinate equations.",
+      "keywordTrigger": "geometry by coordinate systems / René Descartes"
+    }
+  ],
+  "examples": [
+    {
+      "problemStatement": "An angle is 24° greater than its complement. Find the measure of the angle and its supplement.",
+      "formalSolutionMarkdown": "#### Step 1: Set up complementary relation\nLet the angle be $\\theta$ and its complement be $90^\\circ - \\theta$.\n$$\\theta = (90^\\circ - \\theta) + 24^\\circ$$\n$$2\\theta = 114^\\circ \\implies \\theta = 57^\\circ$$\n\n#### Step 2: Compute its supplement\n$$\\text{Supplement} = 180^\\circ - 57^\\circ = 123^\\circ$$",
+      "shortcutSolutionMarkdown": "#### ⚡ 5-Second Angle Arithmetic\n$$\\theta = \\frac{90 + 24}{2} = 57^\\circ \\implies \\text{Supplement} = 180 - 57 = 123^\\circ$$",
+      "formalTimeSeconds": 45,
+      "shortcutTimeSeconds": 5
+    },
+    {
+      "problemStatement": "Classify an angle of 4.5 radians according to standard geometric angle types.",
+      "formalSolutionMarkdown": "#### Step 1: Convert radians to degrees\n$$\\theta = 4.5 \\times \\frac{180^\\circ}{\\pi} \\approx 4.5 \\times 57.29578^\\circ \\approx 257.83^\\circ$$\n\n#### Step 2: Compare against angle boundaries\n- Since $180^\\circ < 257.83^\\circ < 360^\\circ$ ($\\pi < 4.5 < 2\\pi$), the angle is classified as a **Reflex Angle**.",
+      "shortcutSolutionMarkdown": "#### ⚡ Radian Boundary Check\n$\\pi \\approx 3.1416$ and $2\\pi \\approx 6.2832$. Since $3.14 < 4.5 < 6.28$, it is a **Reflex Angle**.",
+      "formalTimeSeconds": 45,
+      "shortcutTimeSeconds": 3
+    }
+  ],
+  "calculatorGuides": {
+    "karce": {
+      "techniqueTitle": "Angle Unit Conversion (DMS to Rad)",
+      "problemType": "Converting degrees, minutes, seconds to radians",
+      "sampleProblem": "Convert 257° 50' to radians.",
+      "mode": "COMP Mode (MODE 1, Set RAD)",
+      "keystrokes": ["2", "5", "7", "°'\"", "5", "0", "°'\"", "=", "SHIFT", "DRG►", "1", "="],
+      "notes": "Directly yields 4.4999 radians in 2 seconds."
+    },
+    "canon": {
+      "techniqueTitle": "Direct Angle Classification Shortcut",
+      "problemType": "Evaluating radian bounds on Canon F-789SGA",
+      "sampleProblem": "Evaluate 4.5 * 180 / π.",
+      "mode": "COMP Mode (MODE 1)",
+      "keystrokes": ["4", ".", "5", "×", "1", "8", "0", "÷", "SHIFT", "π", "="],
+      "notes": "Directly displays 257.831°."
+    }
+  },
+  "conceptChecks": [
+    {
+      "id": "chk-1001-01",
+      "question": "What is an angle measuring strictly between $180^\\circ$ and $360^\\circ$ called?",
+      "options": [
+        "Reflex Angle",
+        "Obtuse Angle",
+        "Perigon",
+        "Straight Angle"
+      ],
+      "correctAnswer": 0,
+      "explanation": "By geometric definition, an angle between 180° and 360° is a reflex angle."
+    },
+    {
+      "id": "chk-1001-02",
+      "question": "Which of Euclid's five postulates is commonly referred to as the \"Parallel Postulate\"?",
+      "options": [
+        "Postulate 5",
+        "Postulate 4",
+        "Postulate 3",
+        "Postulate 1"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Postulate 5 governs parallel lines, forming the dividing boundary between Euclidean and Non-Euclidean geometry."
+    },
+    {
+      "id": "chk-1001-03",
+      "question": "Who was the French mathematician who invented Analytic Geometry by introducing coordinate systems to solve geometric problems?",
+      "options": [
+        "René Descartes",
+        "François Viète",
+        "Blaise Pascal",
+        "Pierre de Fermat"
+      ],
+      "correctAnswer": 0,
+      "explanation": "René Descartes (1596–1650) founded Analytic Geometry in La Géométrie (1637)."
+    }
+  ]
+}

@@ -1,0 +1,178 @@
+{
+  "id": "math-18-02",
+  "code": "MATH 18-02",
+  "domain": "MATH",
+  "topicCode": "MATH-18",
+  "topicTitle": "Differential Equations",
+  "subtopicTitle": "Exact ODEs, 1st-Order Linear ODEs, Bernoulli's Equations & Physical Dynamic Models",
+  "order": 2,
+  "pairedQuizSetId": "math-18-02-mastery",
+  "toc": [
+    { "id": "sec-prereq-bridges", "title": "1. Introduction & Cross-Subject Connections", "level": 2 },
+    { "id": "sec-theory", "title": "2. Lesson Proper: Exact Equations, Integrating Factors, Bernoulli & Physical Applications", "level": 2 },
+    { "id": "sec-formulas", "title": "3. Master Compilation of Formulas & Solution Protocols", "level": 2 },
+    { "id": "sec-visualizer", "title": "4. Interactive Visualizer: Newton's Cooling & Mixing Tank Simulator", "level": 2 },
+    { "id": "sec-terminology", "title": "5. Key Terms and Definitions", "level": 2 },
+    { "id": "sec-dual-method", "title": "6. Worked Board Exam Problems", "level": 2 },
+    { "id": "sec-calculator", "title": "7. Calculator Speed Techniques (Karce & Canon)", "level": 2 },
+    { "id": "sec-concept-checks", "title": "8. In-Line Concept Checks", "level": 2 },
+    { "id": "sec-mastery-challenge", "title": "9. Paired Mastery Challenge Exam", "level": 2 }
+  ],
+  "prerequisiteBridge": {
+    "priorModuleId": "math-18-01",
+    "text": "Building on basic classification and separable equations from MATH 18-01, we now master Exact Differential Equations (Clairaut/Euler test), 1st-Order Linear ODEs with Euler integrating factors, Bernoulli non-linear reductions, and core board applications (Newton's cooling, radioactive decay, and mixing tanks)."
+  },
+  "crossSubjectBridges": [
+    {
+      "targetDomain": "ELECS",
+      "targetTopicCode": "ELEC-05",
+      "badgeText": "RL/RC Step Response",
+      "description": "DC circuit transient current response $L\\frac{di}{dt} + R i = V_s$ is a classic 1st-order linear ODE solved via integrating factor $e^{(R/L)t}$."
+    },
+    {
+      "targetDomain": "GEAS",
+      "targetTopicCode": "GEAS-01",
+      "badgeText": "Newton's Cooling Law",
+      "description": "Thermal dissipation rates of transformers and power transistors follow Newton's law of cooling $T(t) = T_s + (T_0 - T_s)e^{-kt}$."
+    },
+    {
+      "targetDomain": "GEAS",
+      "targetTopicCode": "GEAS-03",
+      "badgeText": "Mixing Tanks",
+      "description": "Chemical reaction engineering salt concentration in fluid tanks is modeled via net rate differential balance $\\frac{dQ}{dt} = R_{\\text{in}} - R_{\\text{out}}$."
+    }
+  ],
+  "theory": {
+    "mentalAnchor": "Exact test: $\\frac{\\partial M}{\\partial y} = \\frac{\\partial N}{\\partial x}$. 1st-Order Linear: $\\frac{dy}{dx} + yP(x) = Q(x) \\implies y \\cdot e^{\\int P dx} = \\int Q e^{\\int P dx} dx + C$. Bernoulli: $y' + yP = y^n Q \\implies z = y^{1-n}$. Cooling: $T(t) = T_s + (T_0 - T_s)e^{-kt}$. Mixing tank: $\\frac{dQ}{dt} = (C_{\\text{in}}R_{\\text{in}}) - (\\frac{Q}{V}R_{\\text{out}})$. Half-life: $t_{1/2} = \\frac{\\ln 2}{k}$.",
+    "contentMarkdown": "### 1. Exact Differential Equations & Test for Exactness\n\nAn equation in differential form $M(x, y) \\, dx + N(x, y) \\, dy = 0$ is **exact** if there exists a scalar potential function $F(x, y)$ such that $dF = M \\, dx + N \\, dy$:\n\n$$\\mathbf{\\frac{\\partial M}{\\partial y} = \\frac{\\partial N}{\\partial x}}$$\n\n- **Solution Protocol**: Integrate $M(x, y)$ partially with respect to $x$, then determine the missing function of $y$ ($k(y)$) by differentiating and matching with $N(x, y)$.\n\n```diagram\n{\n  \"caption\": \"Figure 1: Physical Decay/Cooling Response - Exponential Approach to Equilibrium\",\n  \"xRange\": [-5, 5],\n  \"yRange\": [-3, 3],\n  \"elements\": [\n    { \"type\": \"line\", \"from\": [-4, -1], \"to\": [4, -1], \"color\": \"#94a3b8\", \"label\": \"Surrounding Ambient Ts\" },\n    { \"type\": \"line\", \"from\": [-3, 2.5], \"to\": [3, -0.8], \"color\": \"#38bdf8\", \"label\": \"T(t) = Ts + (T0 - Ts)e^(-kt)\" },\n    { \"type\": \"point\", \"at\": [-3, 2.5], \"color\": \"#fbbf24\", \"label\": \"Initial Temp T0\" }\n  ]\n}\n```\n\n---\n\n### 2. First-Order Linear Differential Equations (Leibniz Form)\n\n$$\\mathbf{\\frac{dy}{dx} + y P(x) = Q(x)}$$\n\n1. **Compute Euler's Integrating Factor ($\\text{i.f.}$)**:\n   $$\\mathbf{\\text{i.f.} = e^{\\int P(x) \\, dx}}$$\n2. **Multiply & Integrate to obtain the General Solution**:\n   $$\\mathbf{y \\cdot (\\text{i.f.}) = \\int Q(x) \\cdot (\\text{i.f.}) \\, dx + C}$$\n\n---\n\n### 3. Bernoulli's Differential Equation (Jakob & Johann Bernoulli)\n\n$$\\mathbf{\\frac{dy}{dx} + y P(x) = y^n Q(x)} \\quad (n \\ne 0, 1)$$\n\n- **Linearization Substitution**: Let $z = y^{1-n} \\implies \\frac{dz}{dx} = (1 - n) y^{-n} \\frac{dy}{dx}$.\n- Transforming into a standard linear equation in $z$:\n  $$\\frac{dz}{dx} + (1 - n) P(x) z = (1 - n) Q(x)$$\n\n---\n\n### 4. High-Yield Board Applications of 1st-Order ODEs\n\n1. **Newton's Law of Cooling & Heating**:\n   $$\\frac{dT}{dt} = -k(T - T_s) \\implies \\mathbf{T(t) = T_s + (T_0 - T_s) e^{-kt}}$$\n2. **Radioactive Decay & Half-Life**:\n   $$Q(t) = Q_0 e^{-kt}, \\quad \\mathbf{t_{1/2} = \\frac{\\ln 2}{k} \\approx \\frac{0.69315}{k}}$$\n3. **Continuous Compound Interest**: $P(t) = P_0 e^{rt}$.\n4. **Mixing Tank Salt Balance**:\n   $$\\mathbf{\\frac{dQ}{dt} = \\text{Rate In} - \\text{Rate Out} = (C_{\\text{in}} R_{\\text{in}}) - \\left(\\frac{Q(t)}{V(t)} R_{\\text{out}}\\right)}$$"
+  },
+  "formulas": [
+    {
+      "id": "f-1802-01",
+      "title": "Exact Differential Test & Potential Function",
+      "formula": "$$\\frac{\\partial M}{\\partial y} = \\frac{\\partial N}{\\partial x} \\implies F(x, y) = \\int M \\partial x + k(y) = C$$",
+      "note": "Partial derivatives of cross components must be identically equal."
+    },
+    {
+      "id": "f-1802-02",
+      "title": "First-Order Linear ODE General Solution",
+      "formula": "$$y \\cdot e^{\\int P dx} = \\int Q(x) e^{\\int P dx} dx + C$$",
+      "note": "Euler's multiplier integrating factor is i.f. = exp(∫ P dx)."
+    },
+    {
+      "id": "f-1802-03",
+      "title": "Newton's Cooling Law Formula",
+      "formula": "$$T(t) = T_s + (T_0 - T_s) e^{-kt}$$",
+      "note": "Ts is surrounding ambient temperature; T0 is initial body temperature."
+    }
+  ],
+  "visualizer": {
+    "archetype": "parameter_sweep",
+    "title": "Newton's Cooling & Mixing Tank Simulator",
+    "description": "Adjust initial temperature T0, ambient temperature Ts, and cooling constant k to observe thermal relaxation curves in real time.",
+    "config": {
+      "canvasWidth": 640,
+      "canvasHeight": 320,
+      "controls": [
+        { "id": "tempT0", "label": "Initial Temp T0 (°C)", "min": 50, "max": 100, "step": 5, "defaultValue": 90 },
+        { "id": "tempTs", "label": "Ambient Temp Ts (°C)", "min": 10, "max": 40, "step": 2, "defaultValue": 20 },
+        { "id": "coolRateK", "label": "Cooling Constant k", "min": 0.01, "max": 0.2, "step": 0.01, "defaultValue": 0.05 }
+      ]
+    }
+  },
+  "terms": [
+    {
+      "term": "Exact Differential Equation",
+      "symbol": "$\\frac{\\partial M}{\\partial y} = \\frac{\\partial N}{\\partial x}$",
+      "unit": "Type",
+      "definition": "A first-order differential equation that corresponds to the total differential dF of a multivariable function F(x, y).",
+      "keywordTrigger": "exact differential equation / dM/dy = dN/dx"
+    },
+    {
+      "term": "Integrating Factor",
+      "symbol": "$\\text{i.f.} = e^{\\int P dx}$",
+      "unit": "Multiplier",
+      "definition": "A function by which an ordinary differential equation is multiplied to convert it into an exact or directly integrable form.",
+      "keywordTrigger": "integrating factor / Euler's multiplier / e^(int P dx)"
+    },
+    {
+      "term": "Bernoulli's Equation",
+      "symbol": "$y' + yP = y^n Q$",
+      "unit": "ODE",
+      "definition": "A non-linear first-order differential equation reducible to linear form via the power substitution z = y^(1-n).",
+      "keywordTrigger": "Bernoulli's equation / y^n Q(x) / z = y^(1-n)"
+    }
+  ],
+  "examples": [
+    {
+      "problemStatement": "Solve the first-order linear differential equation: dy/dx + (2/x) y = x³.",
+      "formalSolutionMarkdown": "#### Step 1: Identify P(x) and Q(x)\n- $P(x) = \\frac{2}{x}, \\quad Q(x) = x^3$\n\n#### Step 2: Compute Integrating Factor\n$$\\text{i.f.} = e^{\\int (2/x) dx} = e^{2\\ln|x|} = e^{\\ln(x^2)} = x^2$$\n\n#### Step 3: Apply general linear solution\n$$y \\cdot (x^2) = \\int (x^3)(x^2) dx + C = \\int x^5 dx + C = \\frac{x^6}{6} + C$$\n$$y = \\frac{x^4}{6} + \\frac{C}{x^2}$$",
+      "shortcutSolutionMarkdown": "#### ⚡ 3-Second Linear ODE Shortcut\n$$\\text{i.f.} = x^2 \\implies y x^2 = \\frac{x^6}{6} + C \\implies y = \\frac{x^4}{6} + \\frac{C}{x^2}$$",
+      "formalTimeSeconds": 30,
+      "shortcutTimeSeconds": 3
+    },
+    {
+      "problemStatement": "A metal rod heated to 100°C is placed in a room at constant temperature 20°C. If its temperature drops to 60°C after 10 minutes, what will its temperature be after 20 minutes?",
+      "formalSolutionMarkdown": "#### Step 1: Apply Newton's Law of Cooling\n$$T(t) = T_s + (T_0 - T_s) e^{-kt} = 20 + (100 - 20) e^{-kt} = 20 + 80 e^{-kt}$$\n\n#### Step 2: Determine ratio e^(-10k)\n- At $t = 10\\text{ min}$: $60 = 20 + 80 e^{-10k} \\implies 40 = 80 e^{-10k} \\implies e^{-10k} = \\frac{1}{2}$\n\n#### Step 3: Evaluate at t = 20 min\n$$e^{-20k} = (e^{-10k})^2 = \\left(\\frac{1}{2}\\right)^2 = \\frac{1}{4}$$\n$$T(20) = 20 + 80\\left(\\frac{1}{4}\\right) = 20 + 20 = 40^\\circ\\text{C}$$",
+      "shortcutSolutionMarkdown": "#### ⚡ 2-Second Geometric Decay Shortcut\n$$(T - 20) \\text{ halves every 10 mins}: \\quad 80 \\to 40 \\to 20 \\implies T(20) = 20 + 20 = 40^\\circ\\text{C}$$",
+      "formalTimeSeconds": 45,
+      "shortcutTimeSeconds": 2
+    }
+  ],
+  "calculatorGuides": {
+    "karce": {
+      "techniqueTitle": "Fast Newton's Cooling Geometric Ratio",
+      "problemType": "Evaluating Ts + (T0 - Ts) * (ratio)^(t/t1)",
+      "sampleProblem": "Find T at t=20 for T0=100, Ts=20, T(10)=60.",
+      "mode": "COMP Mode (MODE 1)",
+      "keystrokes": ["2", "0", "+", "8", "0", "×", "(", "0", ".", "5", ")", "x²", "="],
+      "notes": "Directly displays 40 in 1 second."
+    },
+    "canon": {
+      "techniqueTitle": "Radioactive Half-Life Evaluation",
+      "problemType": "Q0 * (0.5)^(t / t_half) on Canon F-789SGA",
+      "sampleProblem": "Find remaining mass for Q0=500g after 3 half-lives.",
+      "mode": "COMP Mode (MODE 1)",
+      "keystrokes": ["5", "0", "0", "×", "(", "0", ".", "5", ")", "³", "="],
+      "notes": "Directly displays 62.5 grams."
+    }
+  },
+  "conceptChecks": [
+    {
+      "id": "chk-1802-01",
+      "question": "What is the condition for the differential equation $M(x, y) dx + N(x, y) dy = 0$ to be an exact differential equation?",
+      "options": [
+        "∂M/∂y = ∂N/∂x",
+        "∂M/∂x = ∂N/∂y",
+        "M(x, y) = N(x, y)",
+        "∂²M/∂x² = ∂²N/∂y²"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Exactness requires that the cross partial derivatives match: ∂M/∂y = ∂N/∂x."
+    },
+    {
+      "id": "chk-1802-02",
+      "question": "What is the integrating factor (Euler's multiplier) for the linear ODE $\\frac{dy}{dx} + 3y = e^{2x}$?",
+      "options": [
+        "e^(3x)",
+        "e^(-3x)",
+        "3x",
+        "e^(2x)"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Integrating factor = exp(∫ 3 dx) = e^(3x)."
+    },
+    {
+      "id": "chk-1802-03",
+      "question": "Which power substitution transforms Bernoulli's equation $\\frac{dy}{dx} + y P(x) = y^3 Q(x)$ into a linear differential equation?",
+      "options": [
+        "z = y^(1 - 3) = y^(-2)",
+        "z = y³",
+        "z = y²",
+        "z = y^(-3)"
+      ],
+      "correctAnswer": 0,
+      "explanation": "For Bernoulli's equation with power n = 3, substitute z = y^(1 - n) = y^(-2)."
+    }
+  ]
+}

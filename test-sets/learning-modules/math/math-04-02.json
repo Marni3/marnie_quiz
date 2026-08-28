@@ -1,0 +1,184 @@
+{
+  "id": "math-04-02",
+  "code": "MATH 04-02",
+  "domain": "MATH",
+  "topicCode": "MATH-04",
+  "topicTitle": "Discrete Mathematics",
+  "subtopicTitle": "Set Operations, Cartesian Products, Relations & Functions",
+  "order": 2,
+  "pairedQuizSetId": "math-04-02-mastery",
+  "toc": [
+    { "id": "sec-prereq-bridges", "title": "1. Introduction & Cross-Subject Connections", "level": 2 },
+    { "id": "sec-theory", "title": "2. Lesson Proper: Set Operations & Relational Mapping", "level": 2 },
+    { "id": "sec-formulas", "title": "3. Compilation of Formulas & Set Laws", "level": 2 },
+    { "id": "sec-visualizer", "title": "4. Interactive Visualizer: Cartesian Product Grid", "level": 2 },
+    { "id": "sec-terminology", "title": "5. Key Terms and Definitions", "level": 2 },
+    { "id": "sec-dual-method", "title": "6. Worked Board Exam Problems", "level": 2 },
+    { "id": "sec-calculator", "title": "7. Calculator Speed Techniques (Karce & Canon)", "level": 2 },
+    { "id": "sec-concept-checks", "title": "8. In-Line Concept Checks", "level": 2 },
+    { "id": "sec-mastery-challenge", "title": "9. Paired Mastery Challenge Exam", "level": 2 }
+  ],
+  "prerequisiteBridge": {
+    "priorModuleId": "math-04-01",
+    "text": "Building on basic set containment from MATH 04-01, we now establish algebraic set operations (union, intersection, relative complement), Cartesian coordinate products, and the foundational definition of mathematical relations and functions."
+  },
+  "crossSubjectBridges": [
+    {
+      "targetDomain": "EST",
+      "targetTopicCode": "EST-10",
+      "badgeText": "Relational DB",
+      "description": "SQL database tables, JOIN operations, and relational keys are direct Cartesian products and binary relation projections $R \\subseteq A \\times B$."
+    },
+    {
+      "targetDomain": "ELECS",
+      "targetTopicCode": "ELEC-15",
+      "badgeText": "Logic Networks",
+      "description": "De Morgan's set complement laws $(A \\cup B)' = A' \\cap B'$ directly define NOR and NAND universal logic synthesis."
+    },
+    {
+      "targetDomain": "MATH",
+      "targetTopicCode": "MATH-14",
+      "badgeText": "Calculus",
+      "description": "The formal definition of a function (each input $x \\in \\text{Domain}$ maps to exactly one output $y$) underlies limits and derivatives."
+    }
+  ],
+  "theory": {
+    "mentalAnchor": "Set intersection $A \\cap B$ is logical AND ($\\wedge$); set union $A \\cup B$ is logical OR ($\\vee$); set difference $A \\setminus B$ is $A$ excluding elements of $B$. The Cartesian product $A \\times B$ has cardinality $|A| \\cdot |B|$ and is non-commutative. A function is a relation where each domain input maps to exactly one output.",
+    "contentMarkdown": "### 1. Fundamental Set Operations & Logical Connectives\n\nSet theory operations mirror Boolean logic connectives in electrical engineering:\n\n1. **Intersection ($A \\cap B$)**: The set of elements belonging to **both** $A$ and $B$:\n   $$A \\cap B = \\{x \\mid x \\in A \\wedge x \\in B\\}$$\n   *(Corresponds to Boolean AND gate)*.\n\n2. **Union ($A \\cup B$)**: The set of elements belonging to $A$, or $B$, or both:\n   $$A \\cup B = \\{x \\mid x \\in A \\vee x \\in B\\}$$\n   *(Corresponds to Boolean OR gate)*.\n\n3. **Set Difference / Relative Complement ($A - B$ or $A \\setminus B$)**: The set of elements belonging to $A$ but **not** in $B$:\n   $$A \\setminus B = \\{x \\mid x \\in A \\wedge x \\notin B\\} = A \\cap B'$$\n\n4. **Absolute Complement ($A^c$, $A'$, or $\\overline{A}$)**: Elements of the universal set $U$ that are not in $A$:\n   $$A' = U \\setminus A = \\{x \\in U \\mid x \\notin A\\}$$\n\n```diagram\n{\n  \"caption\": \"Figure 1: Set Operations - Intersection, Difference, and Absolute Complement\",\n  \"xRange\": [-5, 5],\n  \"yRange\": [-3, 3],\n  \"elements\": [\n    { \"type\": \"polygon\", \"points\": [[-4.5, 2.5], [4.5, 2.5], [4.5, -2.5], [-4.5, -2.5]], \"color\": \"#64748b\", \"fill\": \"rgba(100, 116, 139, 0.05)\" },\n    { \"type\": \"arc\", \"center\": [-1.2, 0], \"radius\": 35, \"startAngle\": 0, \"endAngle\": 360, \"color\": \"#38bdf8\", \"label\": \"A - B\" },\n    { \"type\": \"arc\", \"center\": [1.2, 0], \"radius\": 35, \"startAngle\": 0, \"endAngle\": 360, \"color\": \"#fbbf24\", \"label\": \"B - A\" },\n    { \"type\": \"text\", \"at\": [0, 0], \"text\": \"A ∩ B\", \"color\": \"#34d399\" },\n    { \"type\": \"text\", \"at\": [-3.8, 2.0], \"text\": \"Universal (U)\", \"color\": \"#94a3b8\" }\n  ]\n}\n```\n\n---\n\n### 2. Cartesian Products & Ordered Pairs\n\nGiven two sets $A$ and $B$, the **Cartesian Product** (written $A \\times B$) is the set of all ordered pairs $(a, b)$ such that $a \\in A$ and $b \\in B$:\n\n$$A \\times B = \\{(a, b) \\mid a \\in A \\wedge b \\in B\\}$$\n\n#### Properties of Cartesian Products:\n- **Non-Commutative**: $A \\times B \\neq B \\times A$ (unless $A = B$ or one set is empty $\\emptyset$).\n- **Cardinality Multiplicative Rule**: $|A \\times B| = |A| \\times |B|$.\n- Example: If $A = \\{1, 2\\}$ and $B = \\{3, 4, 5\\}$, then:\n  $$A \\times B = \\{(1,3), (1,4), (1,5), (2,3), (2,4), (2,5)\\}$$\n  $$|A \\times B| = 2 \\times 3 = 6$$\n\n---\n\n### 3. Relations and Functions\n\n- **Relation ($R$)**: Any subset of a Cartesian product ($R \\subseteq A \\times B$). A relation establishes an association or link between elements of the **domain** (inputs) and the **range** (outputs).\n  - **Total Number of Relations**: For sets with $|A| = m$ and $|B| = n$, the number of possible binary relations is $2^{mn}$.\n- **Function ($f: A \\to B$)**: A special type of relation in which **each element $x$ in the domain $A$ is paired with exactly one unique element $y$ in the codomain $B$**.\n  - A relation fails to be a function if a single input produces multiple distinct outputs (e.g., $(2, 3)$ and $(2, 5)$ in the same relation)."
+  },
+  "formulas": [
+    {
+      "id": "f-0402-01",
+      "title": "Cartesian Product Cardinality",
+      "formula": "$$|A \\times B| = |A| \\cdot |B|$$",
+      "note": "Total ordered pairs is the product of individual set cardinalities."
+    },
+    {
+      "id": "f-0402-02",
+      "title": "Total Binary Relations Formula",
+      "formula": "$$\\text{Total Relations from } A \\text{ to } B = 2^{|A| \\cdot |B|}$$",
+      "note": "Since every relation is a subset of the Cartesian product A × B."
+    },
+    {
+      "id": "f-0402-03",
+      "title": "Set Difference Identity",
+      "formula": "$$A \\setminus B = A \\cap B' = A - (A \\cap B)$$",
+      "note": "Relative complement of B in A."
+    }
+  ],
+  "visualizer": {
+    "archetype": "parameter_sweep",
+    "title": "Cartesian Product & Relation Grid Explorer",
+    "description": "Adjust set sizes |A| and |B| to observe live Cartesian product pairs and total possible binary relations.",
+    "config": {
+      "canvasWidth": 640,
+      "canvasHeight": 320,
+      "controls": [
+        { "id": "sizeA", "label": "Cardinality |A|", "min": 1, "max": 5, "step": 1, "defaultValue": 3 },
+        { "id": "sizeB", "label": "Cardinality |B|", "min": 1, "max": 5, "step": 1, "defaultValue": 4 }
+      ]
+    }
+  },
+  "terms": [
+    {
+      "term": "Cartesian Product",
+      "symbol": "$A \\times B$",
+      "unit": "Set of Pairs",
+      "definition": "The set of all ordered pairs (a, b) where a ∈ A and b ∈ B, having cardinality |A| · |B|.",
+      "keywordTrigger": "set of all ordered pairs (a, b)"
+    },
+    {
+      "term": "Relation",
+      "symbol": "$R \\subseteq A \\times B$",
+      "unit": "Set",
+      "definition": "Any subset of the Cartesian product A × B that associates domain elements with range elements.",
+      "keywordTrigger": "subset of Cartesian product"
+    },
+    {
+      "term": "Function",
+      "symbol": "$f: A \\to B$",
+      "unit": "Mapping",
+      "definition": "A relation where each element in the domain maps to exactly one unique element in the range.",
+      "keywordTrigger": "each input has exactly one output"
+    },
+    {
+      "term": "Relative Complement",
+      "symbol": "$A \\setminus B$",
+      "unit": "Set",
+      "definition": "The set of elements belonging to A but not to B, denoted A - B or A ∩ B'.",
+      "keywordTrigger": "elements in A but not in B"
+    }
+  ],
+  "examples": [
+    {
+      "problemStatement": "Let A = {1, 2, 3} and B = {x, y}. Find the Cartesian product A × B and the total number of binary relations from A to B.",
+      "formalSolutionMarkdown": "#### Step 1: Compute Cartesian Product pairs\n$$A \\times B = \\{(1,x), (1,y), (2,x), (2,y), (3,x), (3,y)\\}$$\n\n#### Step 2: Compute cardinality\n$$|A \\times B| = |A| \\times |B| = 3 \\times 2 = 6$$\n\n#### Step 3: Compute total possible binary relations\n$$\\text{Total Relations} = 2^{|A \\times B|} = 2^6 = 64$$",
+      "shortcutSolutionMarkdown": "#### ⚡ 2-Second Power Rule\n$$|A \\times B| = 6 \\implies \\text{Total Relations} = 2^6 = 64$$",
+      "formalTimeSeconds": 45,
+      "shortcutTimeSeconds": 2
+    },
+    {
+      "problemStatement": "Given universal set U = {1, 2, 3, 4, 5, 6, 7, 8, 9}, A = {1, 3, 5, 7}, and B = {3, 4, 5, 6}. Find (A ∪ B)' and A \\ B.",
+      "formalSolutionMarkdown": "#### Step 1: Compute A ∪ B\n$$A \\cup B = \\{1, 3, 4, 5, 6, 7\\}$$\n\n#### Step 2: Compute complement (A ∪ B)'\n$$(A \\cup B)' = U \\setminus (A \\cup B) = \\{2, 8, 9\\}$$\n\n#### Step 3: Compute set difference A \\ B\n$$A \\setminus B = \\{1, 3, 5, 7\\} \\setminus \\{3, 4, 5, 6\\} = \\{1, 7\\}$$",
+      "shortcutSolutionMarkdown": "#### ⚡ Direct Set Inspection\n$A \\setminus B = \\{1, 7\\}$ and $(A \\cup B)' = \\{2, 8, 9\\}$.",
+      "formalTimeSeconds": 60,
+      "shortcutTimeSeconds": 5
+    }
+  ],
+  "calculatorGuides": {
+    "karce": {
+      "techniqueTitle": "Direct Cartesian Cardinality Product",
+      "problemType": "Finding size of Cartesian product and power relations",
+      "sampleProblem": "Find relations from A (|A|=4) to B (|B|=3).",
+      "mode": "COMP Mode (MODE 1)",
+      "keystrokes": ["4", "×", "3", "=", "2", "^", "1", "2", "="],
+      "notes": "Directly evaluates 2^12 = 4096 relations."
+    },
+    "canon": {
+      "techniqueTitle": "Binary Relations Power Shortcut",
+      "problemType": "2^(m*n) relation calculations",
+      "sampleProblem": "Evaluate 2^(3*3) on Canon F-789SGA.",
+      "mode": "COMP Mode (MODE 1)",
+      "keystrokes": ["2", "^", "(", "3", "×", "3", ")", "="],
+      "notes": "Directly yields 512 relations."
+    }
+  },
+  "conceptChecks": [
+    {
+      "id": "chk-0402-01",
+      "question": "If set $A$ has 3 elements and set $B$ has 4 elements, how many distinct binary relations can be defined from $A$ to $B$?",
+      "options": [
+        "4,096",
+        "12",
+        "64",
+        "2,048"
+      ],
+      "correctAnswer": 0,
+      "explanation": "|A × B| = 3 × 4 = 12. Total possible subsets (relations) = 2^12 = 4,096."
+    },
+    {
+      "id": "chk-0402-02",
+      "question": "Which of the following sets of ordered pairs represents a valid mathematical function?",
+      "options": [
+        "{(1, 2), (2, 3), (3, 4), (4, 5)}",
+        "{(1, 2), (1, 3), (2, 4), (3, 5)}",
+        "{(2, 5), (2, 7), (3, 8)}",
+        "{(4, 1), (4, 2), (4, 3)}"
+      ],
+      "correctAnswer": 0,
+      "explanation": "In a function, every input element must map to exactly one output. In the first set, each domain value (1, 2, 3, 4) appears exactly once."
+    },
+    {
+      "id": "chk-0402-03",
+      "question": "Is the Cartesian product commutative ($A \\times B = B \\times A$)?",
+      "options": [
+        "No, because ordered pairs (a, b) and (b, a) are fundamentally distinct",
+        "Yes, Cartesian multiplication is always commutative",
+        "Yes, only when both sets are finite",
+        "Yes, provided the sets are disjoint"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Ordered pairs depend on order ((a, b) ≠ (b, a)), so A × B ≠ B × A in general unless A = B or one set is empty."
+    }
+  ]
+}

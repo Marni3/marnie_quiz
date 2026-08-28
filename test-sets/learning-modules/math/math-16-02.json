@@ -1,0 +1,177 @@
+{
+  "id": "math-16-02",
+  "code": "MATH 16-02",
+  "domain": "MATH",
+  "topicCode": "MATH-16",
+  "topicTitle": "Integral Calculus",
+  "subtopicTitle": "Wallis' Formulas, Trig Substitution, Polar Areas, Arc Length & Pappus' Centroid Theorems",
+  "order": 2,
+  "pairedQuizSetId": "math-16-02-mastery",
+  "toc": [
+    { "id": "sec-prereq-bridges", "title": "1. Introduction & Cross-Subject Connections", "level": 2 },
+    { "id": "sec-theory", "title": "2. Lesson Proper: Wallis' Formula, Substitutions & Pappus' Propositions", "level": 2 },
+    { "id": "sec-formulas", "title": "3. Compilation of Advanced Integration & Geometric Formulas", "level": 2 },
+    { "id": "sec-visualizer", "title": "4. Interactive Visualizer: Wallis' Evaluator & Arc Length Simulator", "level": 2 },
+    { "id": "sec-terminology", "title": "5. Key Terms and Definitions", "level": 2 },
+    { "id": "sec-dual-method", "title": "6. Worked Board Exam Problems", "level": 2 },
+    { "id": "sec-calculator", "title": "7. Calculator Speed Techniques (Karce & Canon)", "level": 2 },
+    { "id": "sec-concept-checks", "title": "8. In-Line Concept Checks", "level": 2 },
+    { "id": "sec-mastery-challenge", "title": "9. Paired Mastery Challenge Exam", "level": 2 }
+  ],
+  "prerequisiteBridge": {
+    "priorModuleId": "math-16-01",
+    "text": "Building on standard antiderivatives from MATH 16-01, we now master advanced integration techniques—Trigonometric Substitutions, John Wallis' definite trigonometric formulas, polar area integration, differential arc lengths, and Pappus' two centroid surface/volume theorems."
+  },
+  "crossSubjectBridges": [
+    {
+      "targetDomain": "ELECS",
+      "targetTopicCode": "ELEC-05",
+      "badgeText": "RMS Power Calculations",
+      "description": "AC effective RMS power integrals $I_{\\text{rms}} = \\sqrt{\\frac{1}{T}\\int_0^T i^2(t)dt}$ of sinusoidal waveforms directly evaluate Wallis' definite integrals."
+    },
+    {
+      "targetDomain": "EST",
+      "targetTopicCode": "EST-05",
+      "badgeText": "Antenna Polar Patterns",
+      "description": "Computing radiation beam areas of cardioid and directional antennas utilizes polar coordinate area integration $A = \\frac{1}{2}\\int r^2(\\theta)d\\theta$."
+    },
+    {
+      "targetDomain": "GEAS",
+      "targetTopicCode": "GEAS-01",
+      "badgeText": "Centroids & Pappus",
+      "description": "Cross-sectional structural centroids ($\\bar{x}, \\bar{y}$) and solids of revolution are computed via Pappus' theorems $V = 2\\pi \\bar{d} A$."
+    }
+  ],
+  "theory": {
+    "mentalAnchor": "Wallis: $\\int_0^{\\pi/2}\\sin^m\\theta\\cos^n\\theta d\\theta = \\frac{[(m-1)...][(n-1)...]}{(m+n)(m+n-2)...}\\cdot\\alpha$ ($\\alpha=\\pi/2$ if both even, else 1). Trig sub: $\\sqrt{a^2-u^2} \\to u=a\\sin\\theta$, $\\sqrt{a^2+u^2} \\to u=a\\tan\\theta$, $\\sqrt{u^2-a^2} \\to u=a\\sec\\theta$. Arc length: $S = \\int \\sqrt{1+(y')^2}dx$. Pappus: Surface $A = 2\\pi \\bar{d} S$, Volume $V = 2\\pi \\bar{d} A$. Polar area: $A = \\frac{1}{2}\\int r^2 d\\theta$.",
+    "contentMarkdown": "### 1. John Wallis' Definite Integral Formula (1655)\n\nFor definite trigonometric integrals on the interval $[0, \\pi/2]$:\n\n$$\\mathbf{\\int_0^{\\pi/2} \\sin^m\\theta \\cos^n\\theta \\, d\\theta = \\frac{[(m-1)(m-3)\\cdots(1\\text{ or }2)][(n-1)(n-3)\\cdots(1\\text{ or }2)]}{(m+n)(m+n-2)(m+n-4)\\cdots(1\\text{ or }2)} \\cdot \\alpha}$$\n\n- **Multiplier $\\alpha$ Rule**:\n  - $\\alpha = \\mathbf{\\frac{\\pi}{2}}$ if **both** exponents $m$ and $n$ are **EVEN**.\n  - $\\alpha = \\mathbf{1}$ if either $m$ or $n$ (or both) is **ODD**.\n\n```diagram\n{\n  \"caption\": \"Figure 1: Integral Applications - Arc Length Element ds and Pappus Revolution Solid\",\n  \"xRange\": [-5, 5],\n  \"yRange\": [-3, 3],\n  \"elements\": [\n    { \"type\": \"line\", \"from\": [-4, -1], \"to\": [-1, 2], \"color\": \"#38bdf8\", \"label\": \"ds = √(dx² + dy²)\" },\n    { \"type\": \"line\", \"from\": [-4, -1], \"to\": [-1, -1], \"color\": \"#94a3b8\", \"label\": \"dx\" },\n    { \"type\": \"line\", \"from\": [-1, -1], \"to\": [-1, 2], \"color\": \"#94a3b8\", \"label\": \"dy\" },\n    { \"type\": \"arc\", \"center\": [2.5, 0], \"radius\": 40, \"startAngle\": 0, \"endAngle\": 360, \"color\": \"#fbbf24\" },\n    { \"type\": \"text\", \"at\": [2.5, -1.8], \"text\": \"Pappus: V = 2π d̄ A\", \"color\": \"#fbbf24\" }\n  ]\n}\n```\n\n---\n\n### 2. Trigonometric Substitutions\n\n| Radical Expression | Trigonometric Substitution | Differential | Resulting Simplification |\n| :--- | :--- | :--- | :--- |\n| $\\mathbf{\\sqrt{a^2 - u^2}}$ | $u = a \\sin\\theta$ | $du = a \\cos\\theta \\, d\\theta$ | $\\sqrt{a^2 - a^2\\sin^2\\theta} = a \\cos\\theta$ |\n| $\\mathbf{\\sqrt{a^2 + u^2}}$ | $u = a \\tan\\theta$ | $du = a \\sec^2\\theta \\, d\\theta$ | $\\sqrt{a^2 + a^2\\tan^2\\theta} = a \\sec\\theta$ |\n| $\\mathbf{\\sqrt{u^2 - a^2}}$ | $u = a \\sec\\theta$ | $du = a \\sec\\theta \\tan\\theta \\, d\\theta$ | $\\sqrt{a^2\\sec^2\\theta - a^2} = a \\tan\\theta$ |\n\n---\n\n### 3. Geometric Applications & Pappus' Propositions\n\n#### A. Plane & Polar Areas:\n- **Rectangular Strips**: $A = \\int_{x_1}^{x_2} y \\, dx = \\int_{y_1}^{y_2} x \\, dy$.\n- **Polar Coordinates**: $A = \\mathbf{\\frac{1}{2} \\int_{\\theta_1}^{\\theta_2} r^2 \\, d\\theta}$.\n\n#### B. Arc Length ($S$):\n- $S = \\mathbf{\\int_{x_1}^{x_2} \\sqrt{1 + \\left(\\frac{dy}{dx}\\right)^2} \\, dx} = \\int_{\\theta_1}^{\\theta_2} \\sqrt{r^2 + \\left(\\frac{dr}{d\\theta}\\right)^2} \\, d\\theta$.\n\n#### C. Location of Plane Centroids ($\\bar{x}, \\bar{y}$):\n$$\\bar{x} = \\frac{1}{A} \\int x y \\, dx, \\qquad \\bar{y} = \\frac{1}{A} \\int \\frac{1}{2} y^2 \\, dx$$\n\n#### D. Pappus' Centroid Propositions:\n1. **First Proposition (Surface Area of Revolution)**:\n   $$\\mathbf{A_{\\text{surf}} = S \\cdot 2\\pi \\bar{d}}$$\n2. **Second Proposition (Volume of Revolution)**:\n   $$\\mathbf{V_{\\text{rev}} = A_{\\text{plane}} \\cdot 2\\pi \\bar{d}}$$"
+  },
+  "formulas": [
+    {
+      "id": "f-1602-01",
+      "title": "Wallis' Trigonometric Formula",
+      "formula": "$$\\int_0^{\\pi/2} \\sin^m\\theta \\cos^n\\theta \\, d\\theta = \\frac{[(m-1)(m-3)\\dots][(n-1)(n-3)\\dots]}{(m+n)(m+n-2)\\dots} \\cdot \\alpha$$",
+      "note": "α = π/2 if both m, n are even; α = 1 otherwise."
+    },
+    {
+      "id": "f-1602-02",
+      "title": "Arc Length & Polar Area Equations",
+      "formula": "$$S = \\int \\sqrt{1 + (y')^2} \\, dx, \\quad A_{\\text{polar}} = \\frac{1}{2}\\int r^2 \\, d\\theta$$",
+      "note": "For parametric curves: S = ∫ √((dx/dt)² + (dy/dt)²) dt."
+    },
+    {
+      "id": "f-1602-03",
+      "title": "Pappus' Centroid Revolution Theorems",
+      "formula": "$$A_{\\text{rev}} = 2\\pi \\bar{d} S, \\quad V_{\\text{rev}} = 2\\pi \\bar{d} A$$",
+      "note": "d̄ is distance from rotating axis to the centroid of arc S or area A."
+    }
+  ],
+  "visualizer": {
+    "archetype": "parameter_sweep",
+    "title": "Wallis' Definite Evaluator & Polar Plotter",
+    "description": "Adjust powers m and n to compute Wallis' definite integral over [0, π/2] with automated even/odd alpha multiplier detection.",
+    "config": {
+      "canvasWidth": 640,
+      "canvasHeight": 320,
+      "controls": [
+        { "id": "sinPowerM", "label": "Sin Power m", "min": 0, "max": 8, "step": 1, "defaultValue": 4 },
+        { "id": "cosPowerN", "label": "Cos Power n", "min": 0, "max": 8, "step": 1, "defaultValue": 2 }
+      ]
+    }
+  },
+  "terms": [
+    {
+      "term": "Wallis' Formula",
+      "symbol": "$\\int_0^{\\pi/2}\\sin^m\\theta\\cos^n\\theta d\\theta$",
+      "unit": "Formula",
+      "definition": "A recurrence reduction formula developed by English mathematician John Wallis in 1655 to evaluate definite trigonometric powers.",
+      "keywordTrigger": "Wallis formula / sin^m cos^n / alpha pi/2"
+    },
+    {
+      "term": "Pappus' First Proposition",
+      "symbol": "$A = 2\\pi \\bar{d} S$",
+      "unit": "Theorem",
+      "definition": "Theorem stating that the surface area generated by rotating a plane curve about an external coplanar axis equals the arc length times the distance traveled by its centroid.",
+      "keywordTrigger": "Pappus first theorem / surface area of revolution"
+    },
+    {
+      "term": "Pappus' Second Proposition",
+      "symbol": "$V = 2\\pi \\bar{d} A$",
+      "unit": "Theorem",
+      "definition": "Theorem stating that the volume generated by rotating a plane region about an external coplanar axis equals the region area times the distance traveled by its centroid.",
+      "keywordTrigger": "Pappus second theorem / volume of revolution"
+    }
+  ],
+  "examples": [
+    {
+      "problemStatement": "Evaluate the definite integral using Wallis' formula: ∫ from 0 to π/2 of (sin⁴ θ · cos² θ) dθ.",
+      "formalSolutionMarkdown": "#### Step 1: Identify powers m, n and multiplier α\n- $m = 4$ (even), $n = 2$ (even)\n- Since both are even: $\\alpha = \\frac{\\pi}{2}$\n\n#### Step 2: Set up numerator and denominator product chains\n- Numerator: $(4 - 1)(4 - 3) \\cdot (2 - 1) = (3)(1) \\cdot (1) = 3$\n- Denominator: $(4 + 2)(6 - 2)(6 - 4) = (6)(4)(2) = 48$\n\n#### Step 3: Compute final value\n$$I = \\frac{3}{48} \\cdot \\frac{\\pi}{2} = \\frac{1}{16} \\cdot \\frac{\\pi}{2} = \\frac{\\pi}{32} \\approx 0.098175$$",
+      "shortcutSolutionMarkdown": "#### ⚡ 5-Second Wallis Shortcut\n$$I = \\frac{(3)(1)(1)}{(6)(4)(2)} \\times \\frac{\\pi}{2} = \\frac{3}{48} \\times \\frac{\\pi}{2} = \\frac{\\pi}{32} \\approx 0.09817$$",
+      "formalTimeSeconds": 30,
+      "shortcutTimeSeconds": 5
+    },
+    {
+      "problemStatement": "Find the total area enclosed by the cardioid r = 2(1 + cos θ) in polar coordinates.",
+      "formalSolutionMarkdown": "#### Step 1: Set up polar area integral from 0 to 2π\n$$A = \\frac{1}{2} \\int_0^{2\\pi} r^2 d\\theta = \\frac{1}{2} \\int_0^{2\\pi} 4(1 + \\cos\\theta)^2 d\\theta = 2 \\int_0^{2\\pi} (1 + 2\\cos\\theta + \\cos^2\\theta) d\\theta$$\n\n#### Step 2: Use symmetry (2 * integral from 0 to π) and evaluate\n$$A = 4 \\int_0^\\pi \\left(1 + 2\\cos\\theta + \\frac{1 + \\cos 2\\theta}{2}\\right) d\\theta = 4 \\left[\\frac{3}{2}\\theta + 2\\sin\\theta + \\frac{\\sin 2\\theta}{4}\\right]_0^\\pi = 4\\left(\\frac{3\\pi}{2}\\right) = 6\\pi \\approx 18.85$$",
+      "shortcutSolutionMarkdown": "#### ⚡ 2-Second Cardioid Area Shortcut\n$$A = \\frac{3}{2}\\pi a^2 = \\frac{3}{2}\\pi (2^2) = 6\\pi \\approx 18.85$$",
+      "formalTimeSeconds": 45,
+      "shortcutTimeSeconds": 2
+    }
+  ],
+  "calculatorGuides": {
+    "karce": {
+      "techniqueTitle": "Fast Wallis Numerical Verification",
+      "problemType": "Evaluating ∫[0, π/2] sin⁴(x)cos²(x) dx",
+      "sampleProblem": "Evaluate ∫(0 to π/2) (sin x)⁴ * (cos x)² dx in RAD mode.",
+      "mode": "COMP Mode (MODE 1, Set RAD)",
+      "keystrokes": ["∫dx", "(", "sin", "(", "ALPHA", "X", ")", ")", "^", "4", "×", "(", "cos", "(", "ALPHA", "X", ")", ")", "x²", ",", "0", ",", "SHIFT", "π", "÷", "2", ")", "="],
+      "notes": "Directly evaluates 0.09817477 (π/32) in 2 seconds."
+    },
+    "canon": {
+      "techniqueTitle": "Polar Cardioid Area Evaluation",
+      "problemType": "0.5 * ∫[0, 2π] (2*(1+cos(X)))² dx on Canon F-789SGA",
+      "sampleProblem": "Evaluate polar area of cardioid.",
+      "mode": "COMP Mode (MODE 1, Set RAD)",
+      "keystrokes": ["0", ".", "5", "×", "∫dx", "(", "2", "×", "(", "1", "+", "cos", "(", "ALPHA", "X", ")", ")", ")", "x²", ",", "0", ",", "2", "SHIFT", "π", ")", "="],
+      "notes": "Directly yields 18.84955592 (6π)."
+    }
+  },
+  "conceptChecks": [
+    {
+      "id": "chk-1602-01",
+      "question": "What is the value of $\\alpha$ in Wallis' formula for $\\int_0^{\\pi/2} \\sin^3\\theta \\cos^4\\theta \\, d\\theta$?",
+      "options": [
+        "α = 1 (Because the sine power 3 is odd)",
+        "α = π/2",
+        "α = 2/π",
+        "α = 2"
+      ],
+      "correctAnswer": 0,
+      "explanation": "In Wallis' formula, α is equal to π/2 ONLY when BOTH exponents are even. Since 3 is odd, α = 1."
+    },
+    {
+      "id": "chk-1602-02",
+      "question": "What trigonometric substitution should be used to integrate an expression containing $\\sqrt{25 - x^2}$?",
+      "options": [
+        "x = 5 sin θ",
+        "x = 5 tan θ",
+        "x = 5 sec θ",
+        "x = 25 sin θ"
+      ],
+      "correctAnswer": 0,
+      "explanation": "For √(a² - x²), substitute x = a sin θ, so here x = 5 sin θ."
+    },
+    {
+      "id": "chk-1602-03",
+      "question": "What does Pappus' Second Proposition state regarding solids of revolution?",
+      "options": [
+        "Volume equals generating plane area multiplied by the circular path distance of its centroid (V = 2π d̄ A)",
+        "Volume equals 4/3 π r³",
+        "Surface area equals circumference times height",
+        "Volume equals area divided by distance"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Pappus' second theorem states that V = (Area) * (2π d̄)."
+    }
+  ]
+}

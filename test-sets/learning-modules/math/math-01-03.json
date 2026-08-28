@@ -4,238 +4,194 @@
   "domain": "MATH",
   "topicCode": "MATH-01",
   "topicTitle": "College Algebra",
-  "subtopicTitle": "Logarithms, Logarithmic Identities & Exponential Equations",
+  "subtopicTitle": "Quadratic Equations, Vieta's Relations & Binomial Theorem",
   "order": 3,
-  "pairedQuizSetId": "math_01_algebra_drill_all_set01",
+  "pairedQuizSetId": "math-01-03-mastery",
   "toc": [
-    { "id": "sec-prereq-bridges", "title": "1. Prerequisite & Cross-Subject Bridges", "level": 2 },
-    { "id": "sec-terminology", "title": "2. Logarithmic Signatures & Board Terminology", "level": 2 },
-    { "id": "sec-visualizer", "title": "3. Interactive Visualizer: Linear vs. Logarithmic Decibel Compression Engine", "level": 2 },
-    { "id": "sec-theory", "title": "4. Governing Theory & Core Mental Anchors", "level": 2 },
-    { "id": "sec-dual-method", "title": "5. The Dual-Method Breakdown (Academic vs. ⚡ Board Shortcut)", "level": 2 },
-    { "id": "sec-calculator", "title": "6. Calculator Keystroke Sequences (Karce & Canon)", "level": 2 },
-    { "id": "sec-concept-checks", "title": "7. In-Line Concept Checks & Distractor Deconstruction", "level": 2 },
-    { "id": "sec-mastery-challenge", "title": "8. Paired Mastery Challenge", "level": 2 }
+    { "id": "sec-prereq-bridges", "title": "1. Introduction & Cross-Subject Connections", "level": 2 },
+    { "id": "sec-theory", "title": "2. Lesson Proper: Theory & Core Principles", "level": 2 },
+    { "id": "sec-formulas", "title": "3. Compilation of Formulas & Identities", "level": 2 },
+    { "id": "sec-visualizer", "title": "4. Interactive Visualizer: Parabola Roots & Discriminant", "level": 2 },
+    { "id": "sec-terminology", "title": "5. Key Terms and Definitions", "level": 2 },
+    { "id": "sec-dual-method", "title": "6. Worked Board Exam Problems", "level": 2 },
+    { "id": "sec-calculator", "title": "7. Calculator Speed Techniques (Karce & Canon)", "level": 2 },
+    { "id": "sec-concept-checks", "title": "8. In-Line Concept Checks", "level": 2 },
+    { "id": "sec-mastery-challenge", "title": "9. Paired Mastery Challenge Exam", "level": 2 }
   ],
   "prerequisiteBridge": {
     "priorModuleId": "math-01-02",
-    "text": "In MATH 01-02, we established the laws of exponents and powers. Logarithms are the exact inverse operations of exponentiation (log_b(x) = y ⟺ b^y = x), transforming complex multiplicative dynamics into simple linear additive relationships."
+    "text": "In MATH 01-02, we mastered special products and polynomial factoring. Now, we expand into second-degree polynomial equations, Vieta's root relations, and Isaac Newton & Blaise Pascal's Binomial Theorem expansions."
   },
   "crossSubjectBridges": [
     {
-      "targetDomain": "EST",
-      "targetTopicCode": "EST-01",
-      "badgeText": "Principles of Comms",
-      "description": "Logarithmic decibel scaling is the universal language of telecommunications: signal power ratios (dB = 10 log(P2/P1)), absolute power (dBm = 10 log(P/1mW), dBW = 10 log(P/1W)), and Friis transmission links."
-    },
-    {
-      "targetDomain": "EST",
-      "targetTopicCode": "EST-02",
-      "badgeText": "Radio Propagation",
-      "description": "Free Space Path Loss (FSPL) in dB: FSPL = 32.44 + 20 log(d_km) + 20 log(f_MHz) models electromagnetic spherical wavefront geometric spreading loss."
-    },
-    {
       "targetDomain": "ELECS",
-      "targetTopicCode": "ELEC-14",
-      "badgeText": "Control Systems",
-      "description": "Bode magnitude plots display transfer function gain in decibels (20 log|G(jω)|) plotted against frequency spanning decades on semi-logarithmic coordinates."
+      "targetTopicCode": "ELEC-05",
+      "badgeText": "RLC Damping",
+      "description": "The quadratic characteristic equation $s^2 + 2\\alpha s + \\omega_0^2 = 0$ uses the discriminant $D = \\alpha^2 - \\omega_0^2$ to classify circuits as overdamped ($D > 0$), critically damped ($D = 0$), or underdamped ($D < 0$)."
     },
     {
-      "targetDomain": "GEAS",
-      "targetTopicCode": "GEAS-01",
-      "badgeText": "Chemistry",
-      "description": "Acidity is defined logarithmically: pH = -log10[H+], where every single unit drop represents a 10-fold increase in hydrogen ion concentration."
+      "targetDomain": "MATH",
+      "targetTopicCode": "MATH-06",
+      "badgeText": "Probability",
+      "description": "Binomial expansion coefficients $_nC_r = \\frac{n!}{r!(n-r)!}$ directly form the binomial probability distribution function $P(X = k) = {}_n C_k p^k (1-p)^{n-k}$."
+    },
+    {
+      "targetDomain": "MATH",
+      "targetTopicCode": "MATH-13",
+      "badgeText": "Parabolas",
+      "description": "The discriminant $D = B^2 - 4AC$ of the general second-degree conic determines whether a curve is a parabola ($D = 0$), ellipse ($D < 0$), or hyperbola ($D > 0$)."
     }
   ],
-  "terms": [
+  "theory": {
+    "mentalAnchor": "The discriminant $D = B^2 - 4AC$ determines root nature: $D > 0$ (real & unequal), $D = 0$ (real & equal), $D < 0$ (imaginary conjugates). By Vieta's formulas, sum of roots is $-B/A$ and product is $C/A$. The $r$-th term of $(x + y)^n$ is $_n C_{r-1} x^{n-r+1} y^{r-1}$, with total sum of exponents $= n(n + 1)$.",
+    "contentMarkdown": "### 1. Quadratic Equations & Root Nature via the Discriminant\n\nA **quadratic equation** is a second-degree polynomial equation in a single variable $x$, written in standard general form as:\n\n$$Ax^2 + Bx + C = 0 \\quad (A \\neq 0)$$\n\nWhen the linear coefficient is absent ($B = 0$), the equation $Ax^2 + C = 0$ is known as a **pure quadratic equation**.\n\nThe roots are obtained via the **quadratic formula**:\n$$x = \\frac{-B \\pm \\sqrt{B^2 - 4AC}}{2A}$$\n\nThe radicand quantity $D = B^2 - 4AC$ is defined as the **discriminant**. Its numerical sign strictly dictates the nature of the roots:\n\n| Value of Discriminant ($D = B^2 - 4AC$) | Nature of Quadratic Roots |\n| :--- | :--- |\n| **$D = 0$** | **One real root** (Real and equal roots / repeated multiplicity 2) |\n| **$D > 0$** | **Real and unequal roots** (Rational if $D$ is a perfect square; Irrational if non-square) |\n| **$D < 0$** | **Imaginary and unequal roots** (Complex conjugate pair: $p \\pm qi$) |\n\n---\n\n### 2. Sum and Product of Roots (Vieta's Relations)\n\nNamed after French mathematician **François Viète (1540–1603)**, the roots $r_1$ and $r_2$ of $Ax^2 + Bx + C = 0$ satisfy exact relations without solving for the roots explicitly:\n\n1. **Sum of the Roots**:\n   $$r_1 + r_2 = -\\frac{B}{A}$$\n2. **Product of the Roots**:\n   $$r_1 \\cdot r_2 = \\frac{C}{A}$$\n3. **Reconstructing the Quadratic from Given Roots**:\n   $$x^2 - (r_1 + r_2)x + (r_1 r_2) = 0$$\n\n#### Board Exam Trap Alert:\nNever forget the negative sign in the sum of roots: $r_1 + r_2 = \\mathbf{-\\frac{B}{A}}$, while product of roots is positive $\\mathbf{\\frac{C}{A}}$.\n\n---\n\n### 3. Binomial Theorem & General Term Formula\n\nA **binomial** is an algebraic expression consisting of two terms connected by a plus or minus sign ($x + y$). The **Binomial Theorem** provides the expanded polynomial when raised to any positive integer power $n$:\n\n$$(x + y)^n = x^n + n x^{n-1}y + \\frac{n(n-1)}{2!}x^{n-2}y^2 + \\dots + n x y^{n-1} + y^n = \\sum_{k=0}^n {}_n C_k x^{n-k} y^k$$\n\n#### Fundamental Properties of $(x + y)^n$:\n1. **Total Number of Terms**: Exactly **$n + 1$** terms.\n2. **Exponents Progression**: Power of $x$ decreases from $n$ to $0$, while power of $y$ increases from $0$ to $n$. The sum of exponents in every individual term is always **$n$**.\n3. **General $r$-th Term Formula**:\n   $$r\\text{-th Term} = {}_n C_{r-1} x^{n - (r - 1)} y^{r - 1} = \\frac{n(n-1)(n-2)\\dots(n - r + 2)}{(r - 1)!} x^{n - r + 1} y^{r - 1}$$\n4. **Sum of the Coefficients of $(ax + by)^n$**:\n   $$\\text{Sum of Coefficients} = (a + b)^n$$\n   *(Evaluated simply by substituting $x = 1$ and $y = 1$)*.\n5. **Sum of All Exponents in the Full Expansion of $(x + y)^n$**:\n   $$\\text{Sum of Exponents} = n(n + 1)$$\n\n---\n\n### 4. Pascal's Triangle & Historical Names\n\nBinomial coefficients $_nC_k$ arranged in a triangular array are historically known under three regional names:\n- **Pascal's Triangle**: After French mathematician **Blaise Pascal (1623–1662)**.\n- **Tartaglia's Triangle**: In Italy, after **Niccolò Fontana Tartaglia (1499–1557)**.\n- **Yang Hui's Triangle**: In China and Asia, after mathematician **Yang Hui (c. 1238–1298)** and Jia Xian.\n\n```\n(x + y)⁰:                    1\n(x + y)¹:                 1     1\n(x + y)²:              1     2     1\n(x + y)³:           1     3     3     1\n(x + y)⁴:        1     4     6     4     1\n(x + y)⁵:     1     5    10    10     5     1\n(x + y)⁶:  1     6    15    20    15     6     1\n```\n\n#### Recursive Coefficient Rule for Any Term:\n$$\\text{Coefficient of Next Term} = \\frac{(\\text{Coeff of Previous Term}) \\times (\\text{Exp of } x \\text{ of Previous Term})}{(\\text{Exp of } y \\text{ of Previous Term}) + 1}$$"
+  },
+  "formulas": [
     {
-      "term": "Logarithm",
-      "symbol": "\\log_b(x)",
-      "unit": "Dimensionless",
-      "definition": "The exponent or power to which a fixed base $b$ ($b > 0, b \\neq 1$) must be raised to yield a given positive number $x$.",
-      "keywordTrigger": "power to which a base must be raised / inverse of exponentiation"
+      "id": "f-0103-01",
+      "title": "Quadratic Formula & Discriminant",
+      "formula": "$$x = \\frac{-B \\pm \\sqrt{B^2 - 4AC}}{2A}, \\quad D = B^2 - 4AC$$",
+      "note": "D > 0: Real & unequal; D = 0: Real & equal; D < 0: Imaginary conjugate pair."
     },
     {
-      "term": "Common Logarithm (Briggsian Logarithm)",
-      "symbol": "\\log(x) \\equiv \\log_{10}(x)",
-      "unit": "Dimensionless",
-      "definition": "A logarithm with base 10, invented by Henry Briggs, commonly used in engineering decibel calculations and scientific scale representations.",
-      "keywordTrigger": "base 10 logarithm / Briggsian"
+      "id": "f-0103-02",
+      "title": "Vieta's Formulas for Roots",
+      "formula": "$$r_1 + r_2 = -\\frac{B}{A}, \\quad r_1 \\cdot r_2 = \\frac{C}{A}$$",
+      "note": "Constructs equation: x² - (Sum)x + (Product) = 0."
     },
     {
-      "term": "Natural Logarithm (Napierian Logarithm)",
-      "symbol": "\\ln(x) \\equiv \\log_e(x)",
-      "unit": "Dimensionless",
-      "definition": "A logarithm with the transcendental base $e \\approx 2.718281828$, invented by John Napier, governing continuous growth, decay, and calculus integration laws.",
-      "keywordTrigger": "base e logarithm / Napierian / Naperian"
+      "id": "f-0103-03",
+      "title": "r-th Term of Binomial Expansion",
+      "formula": "$$T_r = {}_n C_{r-1} x^{n - r + 1} y^{r - 1} = \\frac{n!}{(r-1)!(n - r + 1)!} x^{n - r + 1} y^{r - 1}$$",
+      "note": "Note that the combination index is r - 1 for the r-th term."
     },
     {
-      "term": "Characteristic",
-      "symbol": "c = \\lfloor \\log_{10}(x) \\rfloor",
-      "unit": "Integer",
-      "definition": "The integral part of a common logarithm that determines the position of the decimal point and order of magnitude of the number.",
-      "keywordTrigger": "integral part of common logarithm"
-    },
-    {
-      "term": "Mantissa",
-      "symbol": "m = \\log_{10}(x) - \\lfloor \\log_{10}(x) \\rfloor",
-      "unit": "Non-negative Real ∈ [0, 1)",
-      "definition": "The non-negative fractional or decimal part of a common logarithm, dependent solely on the sequence of significant digits.",
-      "keywordTrigger": "fractional decimal part of common logarithm"
-    },
-    {
-      "term": "Decibel",
-      "symbol": "\\text{dB}",
-      "unit": "Logarithmic Unit (dB)",
-      "definition": "A dimensionless logarithmic unit expressing the ratio of two physical power quantities ($10 \\log_{10}(P_2 / P_1)$) or field/voltage quantities ($20 \\log_{10}(V_2 / V_1)$).",
-      "keywordTrigger": "one-tenth of a Bel / 10 log power ratio"
+      "id": "f-0103-04",
+      "title": "Sum of Coefficients & Sum of Exponents",
+      "formula": "$$\\text{Sum of Coeffs} = (a + b)^n, \\quad \\text{Sum of Exponents} = n(n + 1)$$",
+      "note": "For sum of coefficients, substitute all variables with 1."
     }
   ],
   "visualizer": {
-    "archetype": "parameter_sweep",
-    "title": "Interactive Linear vs. Logarithmic Decibel Compression Engine",
-    "description": "Adjust the linear power ratio slider from 1 to 1,000,000 to observe how logarithmic decibel scaling compresses massive linear spans into compact, manageable engineering values.",
+    "archetype": "conic_explorer",
+    "title": "Quadratic Parabola & Root Nature Explorer",
+    "description": "Adjust coefficients A, B, and C to observe the live parabola curve, discriminant value, and root intersections on the x-axis.",
     "config": {
       "canvasWidth": 640,
       "canvasHeight": 320,
       "controls": [
-        {
-          "id": "powerRatio",
-          "label": "Linear Power Ratio (P2 / P1)",
-          "min": 1,
-          "max": 100000,
-          "step": 500,
-          "defaultValue": 2000,
-          "unit": ""
-        }
-      ],
-      "renderFunction": "function render(ctx, width, height, state) {\n  const p = state.powerRatio;\n  const db = 10 * Math.log10(p);\n  const dbm = db + 30;\n  const voltDb = 20 * Math.log10(Math.sqrt(p));\n  \n  ctx.clearRect(0, 0, width, height);\n  ctx.fillStyle = '#0f172a';\n  ctx.fillRect(0, 0, width, height);\n  \n  ctx.font = 'bold 15px sans-serif';\n  ctx.fillStyle = '#38bdf8';\n  ctx.fillText('Linear Ratio: ' + Number(p).toLocaleString() + ' : 1', 30, 40);\n  \n  ctx.font = 'bold 20px monospace';\n  ctx.fillStyle = '#34d399';\n  ctx.fillText(db.toFixed(2) + ' dB (Power Gain)', 30, 75);\n  \n  ctx.font = '13px sans-serif';\n  ctx.fillStyle = '#94a3b8';\n  ctx.fillText('Equivalent absolute power for 1 mW input: ' + dbm.toFixed(2) + ' dBm', 30, 100);\n  \n  const barY1 = 150;\n  const barY2 = 230;\n  const maxW = width - 80;\n  \n  ctx.font = '12px sans-serif';\n  ctx.fillStyle = '#cbd5e1';\n  ctx.fillText('Linear Scale (1 to 100,000) — Severe saturation:', 30, barY1 - 10);\n  \n  ctx.fillStyle = '#1e293b';\n  ctx.fillRect(30, barY1, maxW, 24);\n  ctx.fillStyle = '#f43f5e';\n  const linW = Math.max(4, (p / 100000) * maxW);\n  ctx.fillRect(30, barY1, linW, 24);\n  \n  ctx.fillStyle = '#cbd5e1';\n  ctx.fillText('Logarithmic Scale (0 dB to 50 dB) — Perfectly uniform resolution:', 30, barY2 - 10);\n  \n  ctx.fillStyle = '#1e293b';\n  ctx.fillRect(30, barY2, maxW, 24);\n  ctx.fillStyle = '#10b981';\n  const logW = Math.max(4, (db / 50) * maxW);\n  ctx.fillRect(30, barY2, logW, 24);\n  \n  ctx.fillStyle = '#64748b';\n  ctx.font = '11px monospace';\n  ctx.fillText('0 dB (1x)', 30, barY2 + 40);\n  ctx.fillText('10 dB (10x)', 30 + maxW * 0.2 - 25, barY2 + 40);\n  ctx.fillText('20 dB (100x)', 30 + maxW * 0.4 - 30, barY2 + 40);\n  ctx.fillText('30 dB (1kx)', 30 + maxW * 0.6 - 25, barY2 + 40);\n  ctx.fillText('40 dB (10kx)', 30 + maxW * 0.8 - 30, barY2 + 40);\n  ctx.fillText('50 dB (100kx)', 30 + maxW - 35, barY2 + 40);\n}"
+        { "id": "semiMajor", "label": "Linear Term (B)", "min": -6, "max": 6, "step": 1, "defaultValue": -4 },
+        { "id": "semiMinor", "label": "Constant Term (C)", "min": -6, "max": 6, "step": 1, "defaultValue": 4 }
+      ]
     }
   },
-  "theory": {
-    "mentalAnchor": "A logarithm is literally just an exponent in disguise: log_b(x) = y ⟺ b^y = x. Logarithms convert multiplication into addition, division into subtraction, and exponents into multipliers. In board exam log equations, test the 4 choices immediately using calculator log_■(□) instead of lengthy algebraic expansion.",
-    "contentMarkdown": "### 1. Fundamental Definition & Domain Restrictions\n\nFor a real base $b$ and argument $x$:\n\n$$\\log_b(x) = y \\iff b^y = x$$\n\n#### Rigorous Domain & Base Axioms:\n1. **Positive Argument Constraint**: $x > 0$ (The logarithm of zero or a negative number is undefined over the real numbers).\n2. **Valid Base Constraints**: $b > 0$ and $b \\neq 1$.\n\n---\n\n### 2. The 8 Master Logarithmic Identities\n\n| # | Identity Law | Mathematical Formulation | Board Application |\n| :--- | :--- | :--- | :--- |\n| 1 | **Product Rule** | $\\log_b(xy) = \\log_b x + \\log_b y$ | Cascaded stage gain summation in dB |\n| 2 | **Quotient Rule** | $\\log_b\\left(\\frac{x}{y}\\right) = \\log_b x - \\log_b y$ | Signal-to-Noise Ratio (SNR) in dB |\n| 3 | **Power Rule** | $\\log_b(x^k) = k \\log_b x$ | Voltage-to-Power squaring in dB ($20\\log$) |\n| 4 | **Base-Power Generalization** | $\\log_{b^m}(x^n) = \\frac{n}{m}\\log_b x$ | Converting between binary $\\log_2$ and hex $\\log_{16}$ |\n| 5 | **Identity & Zero Rules** | $\\log_b b = 1, \\quad \\log_b 1 = 0$ | Unity gain $0\\text{ dB} \\implies P_2 = P_1$ |\n| 6 | **Change-of-Base Formula** | $\\log_b a = \\frac{\\ln a}{\\ln b} = \\frac{\\log_{10} a}{\\log_{10} b}$ | Evaluating arbitrary bases on calculators |\n| 7 | **Reciprocal Base Inversion** | $\\log_b a = \\frac{1}{\\log_a b}$ | Rapid base swapping in algebraic proofs |\n| 8 | **Exponential Power Cancellation** | $b^{\\log_b x} = x \\quad \\text{and} \\quad a^{\\log_b c} = c^{\\log_b a}$ | Solving exponential equations |\n\n---\n\n### 3. Decibel (dB) Engineering Rules of Thumb\n\nIn ECE Board Exams (EST & Elecs), memorize these instant mental conversion anchors:\n\n- **$+3\\text{ dB}$**: Power doubles ($\times 2$).\n- **$-3\\text{ dB}$**: Power halves ($\times 0.5$, the classic half-power cutoff point).\n- **$+6\\text{ dB}$**: Voltage doubles ($\times 2$) or Power quadruples ($\times 4$).\n- **$+10\\text{ dB}$**: Power increases by a factor of $10$.\n- **$+20\\text{ dB}$**: Power increases by a factor of $100$ (Voltage increases by $10$).\n- **$+30\\text{ dB}$**: Power increases by a factor of $1,000$ ($1\\text{ W} = 30\\text{ dBm}$).\n\n$$\\text{Power Gain in dB} = 10\\log_{10}\\left(\\frac{P_{\\text{out}}}{P_{\\text{in}}}\\right)$$\n$$\\text{Voltage Gain in dB} = 20\\log_{10}\\left(\\frac{V_{\\text{out}}}{V_{\\text{in}}}\\right)$$\n$$P_{(\\text{dBm})} = 10\\log_{10}\\left(\\frac{P_{(\\text{mW})}}{1\\text{ mW}}\\right) = P_{(\\text{dBW})} + 30\\text{ dB}$$"
-  },
+  "terms": [
+    {
+      "term": "Discriminant",
+      "symbol": "$D$",
+      "unit": "Dimensionless",
+      "definition": "The radicand expression D = B² - 4AC in the quadratic formula that dictates whether roots are real, equal, or imaginary.",
+      "keywordTrigger": "B² - 4AC / nature of roots"
+    },
+    {
+      "term": "Vieta's Formulas",
+      "symbol": "$r_1+r_2, r_1 r_2$",
+      "unit": "Theorem",
+      "definition": "Relations linking the roots of a polynomial to its algebraic coefficients: r₁ + r₂ = -B/A and r₁r₂ = C/A.",
+      "keywordTrigger": "sum of roots -B/A / product of roots C/A"
+    },
+    {
+      "term": "Binomial Coefficient",
+      "symbol": "${}_n C_r$",
+      "unit": "Combinatoric",
+      "definition": "The integer coefficient of x^(n-r) y^r in the expansion of (x + y)^n, calculated as n! / [r!(n-r)!].",
+      "keywordTrigger": "nCr / coefficient in binomial expansion"
+    },
+    {
+      "term": "Pascal's Triangle",
+      "symbol": "$\\Delta$",
+      "unit": "Array",
+      "definition": "Triangular array of binomial coefficients named after Blaise Pascal (also Tartaglia's triangle in Italy, Yang Hui's in Asia).",
+      "keywordTrigger": "triangular array / Tartaglia / Yang Hui"
+    },
+    {
+      "term": "Pure Quadratic Equation",
+      "symbol": "$Ax^2 + C = 0$",
+      "unit": "Equation",
+      "definition": "A quadratic equation in which the linear first-degree term is zero (B = 0).",
+      "keywordTrigger": "B = 0 / quadratic without linear term"
+    }
+  ],
   "examples": [
     {
-      "problemStatement": "Solve for x in the multi-base logarithmic equation: \\log_2(x) + \\log_4(x) + \\log_{16}(x) = \\frac{21}{4}.",
-      "formalSolutionMarkdown": "#### Step 1: Apply the Base-Power Generalization Law to express all terms in base 2\nRecall that $\\log_{b^m}(x) = \\frac{1}{m}\\log_b(x)$:\n- $\\log_4(x) = \\log_{2^2}(x) = \\frac{1}{2}\\log_2(x)$\n- $\\log_{16}(x) = \\log_{2^4}(x) = \\frac{1}{4}\\log_2(x)$\n\n#### Step 2: Substitute back into the equation\n$$\\log_2(x) + \\frac{1}{2}\\log_2(x) + \\frac{1}{4}\\log_2(x) = \\frac{21}{4}$$\n\n#### Step 3: Factor out \\log_2(x) and sum coefficients\n$$\\left(1 + \\frac{1}{2} + \\frac{1}{4}\\right)\\log_2(x) = \\frac{21}{4}$$\n$$\\left(\\frac{4 + 2 + 1}{4}\\right)\\log_2(x) = \\frac{21}{4}$$\n$$\\frac{7}{4}\\log_2(x) = \\frac{21}{4}$$\n\n#### Step 4: Solve for \\log_2(x) and extract x\n$$\\log_2(x) = \\frac{21}{4} \\times \\frac{4}{7} = 3$$\n$$x = 2^3 = 8$$",
-      "shortcutSolutionMarkdown": "#### ⚡ 8-Second Arbitrary Base Calculator Evaluation\n1. Use the dedicated `<kbd>log■(□)</kbd>` key on the Karce / Canon calculator:\n   Enter: `log_2(X) + log_4(X) + log_16(X)`\n2. Press `<kbd>CALC</kbd>` and test $X = 8$:\n   $$\\log_2(8) + \\log_4(8) + \\log_{16}(8) = 3 + 1.5 + 0.75 = 5.25 = \\frac{21}{4} \\quad \\text{✅ (Instant Match!)}$$\n3. Option $x = 8$ is verified in under 8 seconds.",
-      "formalTimeSeconds": 115,
+      "problemStatement": "Find the 5th term in the expansion of (2x - y)^7.",
+      "formalSolutionMarkdown": "#### Step 1: Identify parameters\n- $n = 7$, $r = 5$, $x$-term $= (2x)$, $y$-term $= (-y)$.\n\n#### Step 2: Apply the $r$-th term formula\n$$T_5 = {}_7 C_{5-1} (2x)^{7 - 5 + 1} (-y)^{5 - 1} = {}_7 C_4 (2x)^3 (-y)^4$$\n- ${}_7 C_4 = \\frac{7 \\times 6 \\times 5 \\times 4}{4 \\times 3 \\times 2 \\times 1} = 35$\n- $(2x)^3 = 8x^3$\n- $(-y)^4 = y^4$\n\n#### Step 3: Compute final product\n$$T_5 = 35 \\times 8x^3 \\times y^4 = 280 x^3 y^4$$",
+      "shortcutSolutionMarkdown": "#### ⚡ 10-Second Binomial Term Shortcut\n1. Coefficient $= {}_7 C_4 \\times 2^3 \\times (-1)^4 = 35 \\times 8 \\times 1 = 280$.\n2. Exponents $= x^{7-4} y^4 = x^3 y^4$.\n3. Result $= 280x^3 y^4$.",
+      "formalTimeSeconds": 75,
+      "shortcutTimeSeconds": 10
+    },
+    {
+      "problemStatement": "Find the sum of all the exponents in the expansion of (x² + y³)^8.",
+      "formalSolutionMarkdown": "#### Step 1: Analyze term exponents\n- General term $T_{k+1} = {}_8 C_k (x^2)^{8-k} (y^3)^k = {}_8 C_k x^{16 - 2k} y^{3k}$.\n- Exponent of each term $= (16 - 2k) + 3k = 16 + k$, for $k = 0, 1, 2, \\dots, 8$ ($9$ terms).\n\n#### Step 2: Sum the arithmetic sequence\n$$\\text{Sum} = \\sum_{k=0}^8 (16 + k) = 9(16) + \\frac{8 \\times 9}{2} = 144 + 36 = 180$$",
+      "shortcutSolutionMarkdown": "#### ⚡ Formula Shortcut for Sum of Exponents\n$$\\text{Sum} = \\frac{(p + q) \\cdot n(n + 1)}{2}$$\nHere $p = 2, q = 3, n = 8$:\n$$\\text{Sum} = \\frac{(2 + 3) \\cdot 8(9)}{2} = \\frac{5 \\cdot 72}{2} = 180$$",
+      "formalTimeSeconds": 90,
       "shortcutTimeSeconds": 8
-    },
-    {
-      "problemStatement": "Solve for x to 4 decimal places: 3^{2x - 1} = 5^{x + 2}.",
-      "formalSolutionMarkdown": "#### Step 1: Take the natural logarithm of both sides\n$$\\ln(3^{2x - 1}) = \\ln(5^{x + 2})$$\n\n#### Step 2: Apply the power rule to bring exponents down\n$$(2x - 1)\\ln 3 = (x + 2)\\ln 5$$\n$$2x\\ln 3 - \\ln 3 = x\\ln 5 + 2\\ln 5$$\n\n#### Step 3: Group terms containing x on the left-hand side\n$$2x\\ln 3 - x\\ln 5 = \\ln 3 + 2\\ln 5$$\n$$x(2\\ln 3 - \\ln 5) = \\ln 3 + \\ln(5^2)$$\n$$x(\\ln(3^2) - \\ln 5) = \\ln 3 + \\ln 25$$\n$$x\\ln\\left(\\frac{9}{5}\\right) = \\ln(75)$$\n\n#### Step 4: Compute the numerical quotient\n$$x = \\frac{\\ln(75)}{\\ln(1.8)} = \\frac{4.317488}{0.587787} \\approx 7.3453$$",
-      "shortcutSolutionMarkdown": "#### ⚡ 6-Second SHIFT SOLVE Keystroke\n1. Type the raw equation into the calculator screen using `<kbd>ALPHA</kbd>` `<kbd>=</kbd>`:\n   `3^(2X - 1) = 5^(X + 2)`\n2. Press `<kbd>SHIFT</kbd>` `<kbd>SOLVE</kbd>` $\\to$ enter initial guess `5` $\\to$ press `<kbd>=</kbd>`.\n3. Display immediately reads `X = 7.345324` in 6 seconds.",
-      "formalTimeSeconds": 130,
-      "shortcutTimeSeconds": 6
-    },
-    {
-      "problemStatement": "An RF communication transmitter delivers 50 Watts of RF power into a transmission line. Express this power level in (a) dBW, and (b) dBm.",
-      "formalSolutionMarkdown": "#### Part (a): Express Power in dBW (referenced to 1 Watt)\n$$\\text{Power in dBW} = 10\\log_{10}\\left(\\frac{P}{1\\text{ W}}\\right) = 10\\log_{10}\\left(\\frac{50}{1}\\right) = 10\\log_{10}(50)$$\n$$\\text{Since } 50 = \\frac{100}{2} \\implies \\log_{10}(50) = \\log_{10}(100) - \\log_{10}(2) = 2 - 0.30103 = 1.69897$$\n$$\\text{Power in dBW} = 10 \\times 1.69897 = 16.99\\text{ dBW}$$\n\n#### Part (b): Express Power in dBm (referenced to 1 milliwatt)\n$$\\text{Since } 1\\text{ W} = 1000\\text{ mW}, \\quad 50\\text{ W} = 50,000\\text{ mW}$$\n$$\\text{Power in dBm} = 10\\log_{10}\\left(\\frac{50,000\\text{ mW}}{1\\text{ mW}}\\right) = 10\\log_{10}(50,000)$$\n$$\\text{Power in dBm} = 10[\\log_{10}(50) + \\log_{10}(1000)] = 10[1.69897 + 3] = 46.99\\text{ dBm}$$\n\nNotice that: $\\text{Power in dBm} = \\text{Power in dBW} + 30\\text{ dB} = 16.99 + 30 = 46.99\\text{ dBm}$.",
-      "shortcutSolutionMarkdown": "#### ⚡ 3-Second Mental Decibel Decomposition\n1. Recognize $50\\text{ W} = 5 \\times 10^1\\text{ W}$.\n   - $10\\log(10^1) = 10\\text{ dBW}$\n   - $+ 10\\log(5) \\approx + 7.0\\text{ dBW} \\implies 16.99\\text{ dBW}$\n2. Add $30\\text{ dB}$ to convert to $\\text{dBm}$:\n   $$16.99 + 30 = 46.99\\text{ dBm}$$",
-      "formalTimeSeconds": 100,
-      "shortcutTimeSeconds": 3
     }
   ],
   "calculatorGuides": {
     "karce": {
-      "mode": "COMP Mode (<kbd>MODE</kbd> <kbd>1</kbd>)",
-      "keystrokes": [
-        "<kbd>log■(□)</kbd>",
-        "<kbd>2</kbd>",
-        "<kbd>▶</kbd>",
-        "<kbd>8</kbd>",
-        "<kbd>=</kbd>"
-      ],
-      "notes": "Use the dedicated log template key to evaluate arbitrary base logarithms directly without manually executing the change-of-base formula. For exponential equations, use <kbd>SHIFT</kbd> <kbd>SOLVE</kbd>."
+      "techniqueTitle": "High-Speed Quadratic Roots via EQN Mode",
+      "problemType": "Solving Ax² + Bx + C = 0",
+      "sampleProblem": "Solve 3x² - 5x - 2 = 0.",
+      "mode": "EQN Mode (MODE 3 > 3)",
+      "keystrokes": ["3", "=", "-", "5", "=", "-", "2", "=", "="],
+      "notes": "Directly displays x1 = 2, x2 = -1/3, and maximum/minimum vertex coordinates."
     },
     "canon": {
-      "mode": "COMP Mode (<kbd>MODE</kbd> <kbd>1</kbd>)",
-      "keystrokes": [
-        "<kbd>log</kbd>",
-        "<kbd>2</kbd>",
-        "<kbd>,</kbd>",
-        "<kbd>8</kbd>",
-        "<kbd>)</kbd>",
-        "<kbd>=</kbd>"
-      ],
-      "notes": "On the Canon F-789SGA, press the arbitrary base log button or use the APPS solver menu for transcendental equations."
+      "techniqueTitle": "Fast Binomial Coefficient nCr Evaluation",
+      "problemType": "Evaluating combinations for term coefficients",
+      "sampleProblem": "Evaluate 7C4 on Canon F-789SGA.",
+      "mode": "COMP Mode (MODE 1)",
+      "keystrokes": ["7", "nCr", "4", "="],
+      "notes": "Directly gives 35 in 1 second."
     }
   },
   "conceptChecks": [
     {
-      "id": "chk-01-03-01",
-      "question": "If \\log_b(2) = 0.3010 and \\log_b(3) = 0.4771, what is the value of \\log_b(72)?",
-      "options": {
-        "A": "1.8572",
-        "B": "1.4332",
-        "C": "0.1436",
-        "D": "2.2541"
-      },
-      "correctAnswer": "A",
-      "distractorDeconstruction": {
-        "A": "Correct. Factor 72 into primes: 72 = 2^3 × 3^2. Then log_b(72) = 3 log_b(2) + 2 log_b(3) = 3(0.3010) + 2(0.4771) = 0.9030 + 0.9542 = 1.8572.",
-        "B": "Multiplies 2 log_b(2) + 3 log_b(3) (inverting the prime exponents of 2 and 3).",
-        "C": "Multiplies log_b(2) × log_b(3) erroneously treating the log of a product as a product of logs.",
-        "D": "Adds log_b(2) + log_b(3) + log_b(12) with arithmetic error."
-      },
-      "shortcutExplanation": "72 = 8 × 9 = 2^3 × 3^2 => 3(0.3010) + 2(0.4771) = 0.9030 + 0.9542 = 1.8572."
+      "id": "chk-0103-01",
+      "question": "What is the sum of the roots of the quadratic equation $3x^2 - 12x + 7 = 0$?",
+      "options": [
+        "4",
+        "-4",
+        "7/3",
+        "-7/3"
+      ],
+      "correctAnswer": 0,
+      "explanation": "By Vieta's formula, sum of roots r1 + r2 = -B/A = -(-12)/3 = +4."
     },
     {
-      "id": "chk-01-03-02",
-      "question": "Solve for x: \\log_3(x + 6) - \\log_3(x) = 2.",
-      "options": {
-        "A": "0.75",
-        "B": "1.5",
-        "C": "3",
-        "D": "6"
-      },
-      "correctAnswer": "A",
-      "distractorDeconstruction": {
-        "A": "Correct. log_3((x + 6) / x) = 2 => (x + 6) / x = 3^2 = 9 => x + 6 = 9x => 8x = 6 => x = 6/8 = 0.75.",
-        "B": "Distractor from erroneously setting base 3^2 = 6 (multiplying 3×2) instead of raising to the power 3^2 = 9.",
-        "C": "Distractor from subtracting 9 - 6 = 3.",
-        "D": "Distractor from equating x + 6 = 2x."
-      },
-      "shortcutExplanation": "(x + 6)/x = 9 => 9x = x + 6 => 8x = 6 => x = 0.75 (or test 0.75 via CALC: log_3(6.75/0.75) = log_3(9) = 2)."
+      "id": "chk-0103-02",
+      "question": "How many terms are in the algebraic expansion of $(3x - 2y)^{11}$?",
+      "options": [
+        "12",
+        "11",
+        "10",
+        "22"
+      ],
+      "correctAnswer": 0,
+      "explanation": "The number of terms in any binomial expansion (x + y)^n is always n + 1: 11 + 1 = 12 terms."
     },
     {
-      "id": "chk-01-03-03",
-      "question": "In an optical fiber link, the input optical power is 10 mW and the output received power is 0.01 mW. What is the total optical attenuation of the link in decibels (dB)?",
-      "options": {
-        "A": "-30 dB",
-        "B": "-20 dB",
-        "C": "-10 dB",
-        "D": "-40 dB"
-      },
-      "correctAnswer": "A",
-      "distractorDeconstruction": {
-        "A": "Correct. Attenuation/Gain = 10 log10(P_out / P_in) = 10 log10(0.01 / 10) = 10 log10(10^-3) = 10(-3) = -30 dB (a loss of 30 dB).",
-        "B": "Distractor from using 20 log (voltage formula) on 0.01/10 or miscounting powers of 10.",
-        "C": "Distractor considering only a single decade drop (10x).",
-        "D": "Distractor adding an extra factor of 10."
-      },
-      "shortcutExplanation": "Power drops from 10 mW to 0.01 mW, which is a factor of 1,000 (10^3). In power dB, 10^3 corresponds strictly to -30 dB."
-    },
-    {
-      "id": "chk-01-03-04",
-      "question": "What is the official ECE Board Table of Specifications term for the integral part of a common logarithm?",
-      "options": {
-        "A": "Characteristic",
-        "B": "Mantissa",
-        "C": "Modulus",
-        "D": "Radix"
-      },
-      "correctAnswer": "A",
-      "distractorDeconstruction": {
-        "A": "Correct. In common logarithms (base 10), the integer part is the characteristic, which determines the order of magnitude.",
-        "B": "The mantissa is the non-negative decimal/fractional part of the logarithm.",
-        "C": "Modulus is the absolute magnitude of a complex number or divisor in modular arithmetic.",
-        "D": "Radix is the base of a positional numeral system (e.g., radix 2 for binary, radix 10 for decimal)."
-      },
-      "shortcutExplanation": "TOS Signature: Integral part = Characteristic; Fractional decimal part = Mantissa."
+      "id": "chk-0103-03",
+      "question": "If the discriminant of a quadratic equation is $D = -16$, what can be definitively concluded regarding its roots?",
+      "options": [
+        "Imaginary and unequal (complex conjugate pair)",
+        "Real and equal",
+        "Real and unequal rational",
+        "Real and unequal irrational"
+      ],
+      "correctAnswer": 0,
+      "explanation": "When D < 0, the square root √D is imaginary, producing two unequal complex conjugate roots."
     }
   ]
 }

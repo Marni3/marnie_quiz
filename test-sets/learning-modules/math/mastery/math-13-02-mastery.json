@@ -248,5 +248,6 @@
       "explanation": "$a = 13, b = 5$. This matches the standard 5-12-13 Pythagorean triple ($13^2 - 5^2 = 12^2$), giving $c = 12$ in 2 seconds.",
       "archetype": "shortcut"
     }
-  ]
+  ],
+  "id": "math-13-02-mastery"
 }

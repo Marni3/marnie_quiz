@@ -1,0 +1,184 @@
+{
+  "id": "math-10-04",
+  "code": "MATH 10-04",
+  "domain": "MATH",
+  "topicCode": "MATH-10",
+  "topicTitle": "Plane Geometry",
+  "subtopicTitle": "Parameshvara's Formula, Bicentric Quads, Regular Polygon Inscription & Circle Geometry",
+  "order": 4,
+  "pairedQuizSetId": "math-10-04-mastery",
+  "toc": [
+    { "id": "sec-prereq-bridges", "title": "1. Introduction & Cross-Subject Connections", "level": 2 },
+    { "id": "sec-theory", "title": "2. Lesson Proper: Parameshvara, Regular Polygons & Circles", "level": 2 },
+    { "id": "sec-formulas", "title": "3. Compilation of Formulas & Circle Segments", "level": 2 },
+    { "id": "sec-visualizer", "title": "4. Interactive Visualizer: Circle Sector & Segment Calculator", "level": 2 },
+    { "id": "sec-terminology", "title": "5. Key Terms and Definitions", "level": 2 },
+    { "id": "sec-dual-method", "title": "6. Worked Board Exam Problems", "level": 2 },
+    { "id": "sec-calculator", "title": "7. Calculator Speed Techniques (Karce & Canon)", "level": 2 },
+    { "id": "sec-concept-checks", "title": "8. In-Line Concept Checks", "level": 2 },
+    { "id": "sec-mastery-challenge", "title": "9. Paired Mastery Challenge Exam", "level": 2 }
+  ],
+  "prerequisiteBridge": {
+    "priorModuleId": "math-10-03",
+    "text": "Building on quadrilateral areas from MATH 10-03, we now master advanced cyclic and tangential quadrilaterals (Parameshvara's circumradius, Pitot's theorem, Brahmagupta's orthodiagonal bisector), regular polygon apothem geometry, and circular sectors/segments."
+  },
+  "crossSubjectBridges": [
+    {
+      "targetDomain": "EST",
+      "targetTopicCode": "EST-05",
+      "badgeText": "Circular Apertures",
+      "description": "Parabolic dish antenna circular apertures ($A = \\pi r^2$) and beamwidth sectors apply circular arc and segment trigonometry."
+    },
+    {
+      "targetDomain": "GEAS",
+      "targetTopicCode": "GEAS-01",
+      "badgeText": "Highway Curves",
+      "description": "Civil engineering circular road curve design computes arc length, chord length, external distance, and middle ordinate."
+    },
+    {
+      "targetDomain": "ELECS",
+      "targetTopicCode": "ELEC-06",
+      "badgeText": "Electromagnetics",
+      "description": "Biot-Savart magnetic fields produced by circular current loops and cylindrical coaxial conductors apply circle geometry invariants."
+    }
+  ],
+  "theory": {
+    "mentalAnchor": "Parameshvara's circumradius: $R = \\frac{\\sqrt{(ab+cd)(ac+bd)(ad+bc)}}{4A}$. Bicentric quadrilateral area: $A = \\sqrt{abcd}$. Regular $n$-gon inscribed in circle of radius $r$: $A = \\frac{1}{2}nr^2\\sin(360^\\circ/n)$; circumscribing circle of radius $r$: $A = nr^2\\tan(180^\\circ/n)$. Circle sector: $A = \\frac{1}{2}r^2\\theta$; circle segment: $A = \\frac{1}{2}r^2(\\theta - \\sin\\theta)$.",
+    "contentMarkdown": "### 1. Parameshvara's Formula & Tangential Quadrilaterals\n\n#### A. Parameshvara's Circumradius Formula (15th Century A.D.):\nDiscovered by medieval Indian astronomer **Vatasseri Parameshvara (c. 1380–1460)**, this formula computes the exact circumradius $R$ of any cyclic quadrilateral with sides $a, b, c, d$:\n\n$$R = \\frac{\\sqrt{(ab + cd)(ac + bd)(ad + bc)}}{4A} = \\frac{1}{4}\\sqrt{\\frac{(ab + cd)(ac + bd)(ad + bc)}{(s - a)(s - b)(s - c)(s - d)}}$$\n\n#### B. Tangential (Circumscribed) Quadrilaterals & Pitot's Theorem:\nA quadrilateral is tangential if an internal incircle of radius $r$ is tangent to all four sides:\n- **Pitot's Theorem**: $a + c = b + d = s$ (sum of opposite sides are equal).\n- **Area**: $A = r \\cdot s$.\n\n#### C. Bicentric Quadrilateral:\nA quadrilateral that is **both cyclic and tangential** (has both an incircle and a circumcircle):\n$$A = \\sqrt{abcd}$$\n\n#### D. Brahmagupta's Orthodiagonal Theorem:\nIn a cyclic quadrilateral whose diagonals are **perpendicular** ($d_1 \\perp d_2$), the line from the intersection of diagonals perpendicular to any side always **bisects the opposite side**.\n\n```diagram\n{\n  \"caption\": \"Figure 1: Circle Geometry - Sector (r²θ/2), Chord, and Segment (r²(θ - sin θ)/2)\",\n  \"xRange\": [-5, 5],\n  \"yRange\": [-4, 4],\n  \"elements\": [\n    { \"type\": \"arc\", \"center\": [0, 0], \"radius\": 60, \"startAngle\": 0, \"endAngle\": 360, \"color\": \"#38bdf8\" },\n    { \"type\": \"line\", \"from\": [0, 0], \"to\": [3.0, 2.0], \"color\": \"#fbbf24\", \"label\": \"Radius r\" },\n    { \"type\": \"line\", \"from\": [0, 0], \"to\": [3.0, -2.0], \"color\": \"#fbbf24\" },\n    { \"type\": \"line\", \"from\": [3.0, 2.0], \"to\": [3.0, -2.0], \"color\": \"#f43f5e\", \"label\": \"Chord\" },\n    { \"type\": \"text\", \"at\": [0.8, 0], \"text\": \"θ\", \"color\": \"#94a3b8\" },\n    { \"type\": \"text\", \"at\": [3.5, 0], \"text\": \"Segment\", \"color\": \"#f43f5e\" }\n  ]\n}\n```\n\n---\n\n### 2. Regular Polygons (Inscribed & Circumscribed)\n\nFor a regular polygon with $n$ sides:\n\n1. **Given Side Length $a$**:\n   $$A = \\frac{1}{4} n a^2 \\cot\\left(\\frac{180^\\circ}{n}\\right), \\quad P = na$$\n\n2. **Inscribed in Circle of Radius $r$** (Vertices touch circle):\n   $$A = \\frac{1}{2} n r^2 \\sin\\left(\\frac{360^\\circ}{n}\\right), \\quad P = 2nr \\sin\\left(\\frac{180^\\circ}{n}\\right)$$\n\n3. **Circumscribing a Circle of Radius $r$** (Sides tangent to circle):\n   $$A = n r^2 \\tan\\left(\\frac{180^\\circ}{n}\\right), \\quad P = 2nr \\tan\\left(\\frac{180^\\circ}{n}\\right)$$\n\n---\n\n### 3. Circles, Sectors & Segments\n\n- **Circle**: The 2D locus of points equidistant from a central point. Conic section with **eccentricity $e = 0$**.\n- **Latin Origin**: *circus* (large round Roman chariot arena).\n- **Arc Length ($s$)**: $s = r \\theta_{\\text{rad}} = \\frac{\\pi r \\theta^\\circ}{180^\\circ}$.\n- **Sector Area ($A_{\\text{sector}}$)**: Area bounded by two radii and the included arc:\n  $$A_{\\text{sector}} = \\frac{1}{2} r^2 \\theta_{\\text{rad}} = \\frac{\\pi r^2 \\theta^\\circ}{360^\\circ} = \\frac{1}{2} r s$$\n- **Segment Area ($A_{\\text{segment}}$)**: Area bounded by a chord and the subtended arc:\n  $$A_{\\text{segment}} = A_{\\text{sector}} - A_{\\text{triangle}} = \\frac{1}{2} r^2 (\\theta_{\\text{rad}} - \\sin \\theta_{\\text{rad}})$$"
+  },
+  "formulas": [
+    {
+      "id": "f-1004-01",
+      "title": "Parameshvara's Circumradius Formula",
+      "formula": "$$R = \\frac{\\sqrt{(ab+cd)(ac+bd)(ad+bc)}}{4A}$$",
+      "note": "Computes exact circumradius for any cyclic quadrilateral."
+    },
+    {
+      "id": "f-1004-02",
+      "title": "Regular Polygon Inscribed vs Circumscribed Area",
+      "formula": "$$A_{\\text{inscribed}} = \\frac{1}{2}nr^2\\sin\\left(\\frac{360^\\circ}{n}\\right), \\quad A_{\\text{circumscribed}} = nr^2\\tan\\left(\\frac{180^\\circ}{n}\\right)$$",
+      "note": "Where r is the circle radius and n is number of sides."
+    },
+    {
+      "id": "f-1004-03",
+      "title": "Circular Sector and Segment Area",
+      "formula": "$$A_{\\text{sector}} = \\frac{1}{2}r^2\\theta, \\quad A_{\\text{segment}} = \\frac{1}{2}r^2(\\theta - \\sin\\theta)$$",
+      "note": "Angle θ must be evaluated in radians."
+    }
+  ],
+  "visualizer": {
+    "archetype": "parameter_sweep",
+    "title": "Circular Sector & Segment Area Calculator",
+    "description": "Adjust circle radius r and central angle θ to compute live arc length, chord length, sector area, and segment area.",
+    "config": {
+      "canvasWidth": 640,
+      "canvasHeight": 320,
+      "controls": [
+        { "id": "radius", "label": "Radius r", "min": 2, "max": 20, "step": 1, "defaultValue": 10 },
+        { "id": "angleDeg", "label": "Central Angle θ (deg)", "min": 10, "max": 180, "step": 5, "defaultValue": 60 }
+      ]
+    }
+  },
+  "terms": [
+    {
+      "term": "Bicentric Quadrilateral",
+      "symbol": "$A = \\sqrt{abcd}$",
+      "unit": "Geometry",
+      "definition": "A quadrilateral that simultaneously possesses both an incircle and a circumcircle, with area equal to √(abcd).",
+      "keywordTrigger": "both cyclic and tangential / A = sqrt(abcd)"
+    },
+    {
+      "term": "Parameshvara's Formula",
+      "symbol": "$R_{\\text{cyclic}}$",
+      "unit": "Theorem",
+      "definition": "15th-century Indian formula expressing the circumradius R of a cyclic quadrilateral in terms of its four side lengths.",
+      "keywordTrigger": "Vatasseri Parameshvara / circumradius of cyclic quad"
+    },
+    {
+      "term": "Circular Segment",
+      "symbol": "$A_{\\text{seg}}$",
+      "unit": "Area",
+      "definition": "The region of a circle bounded by a chord and the circular arc subtended by that chord: r²(θ - sin θ)/2.",
+      "keywordTrigger": "area bounded by chord and arc / 0.5 r²(θ - sin θ)"
+    },
+    {
+      "term": "Pitot's Theorem",
+      "symbol": "$a+c = b+d$",
+      "unit": "Theorem",
+      "definition": "Geometric theorem stating that a quadrilateral possesses an inscribed circle if and only if the sums of opposite sides are equal.",
+      "keywordTrigger": "tangential quadrilateral / a + c = b + d"
+    }
+  ],
+  "examples": [
+    {
+      "problemStatement": "Find the area of a circular segment bounded by a chord in a circle of radius r = 12 cm with central angle θ = 60°.",
+      "formalSolutionMarkdown": "#### Step 1: Convert angle to radians\n$$\\theta = 60^\\circ \\times \\frac{\\pi}{180^\\circ} = \\frac{\\pi}{3}\\text{ rad} \\approx 1.0472\\text{ rad}$$\n\n#### Step 2: Evaluate trigonometric sine\n$$\\sin 60^\\circ = \\frac{\\sqrt{3}}{2} \\approx 0.8660$$\n\n#### Step 3: Apply the segment area formula\n$$A_{\\text{segment}} = \\frac{1}{2} r^2 (\\theta_{\\text{rad}} - \\sin \\theta) = \\frac{1}{2}(12^2)\\left(\\frac{\\pi}{3} - \\frac{\\sqrt{3}}{2}\\right)$$\n$$A_{\\text{segment}} = 72 (1.0472 - 0.8660) = 72(0.18117) \\approx 13.04\\text{ cm}^2$$",
+      "shortcutSolutionMarkdown": "#### ⚡ 5-Second Segment Calculation\n$$A = 72\\left(\\frac{\\pi}{3} - \\frac{\\sqrt{3}}{2}\\right) = 24\\pi - 36\\sqrt{3} \\approx 13.04\\text{ cm}^2$$",
+      "formalTimeSeconds": 60,
+      "shortcutTimeSeconds": 5
+    },
+    {
+      "problemStatement": "Find the area of a regular octagon (n = 8) inscribed in a circle of radius r = 10 cm.",
+      "formalSolutionMarkdown": "#### Step 1: Apply inscribed polygon formula\n$$A = \\frac{1}{2} n r^2 \\sin\\left(\\frac{360^\\circ}{n}\\right)$$\n\n#### Step 2: Substitute n = 8 and r = 10\n$$A = \\frac{1}{2}(8)(10^2)\\sin\\left(\\frac{360^\\circ}{8}\\right) = 4(100)\\sin(45^\\circ) = 400\\left(\\frac{\\sqrt{2}}{2}\\right) = 200\\sqrt{2} \\approx 282.84\\text{ cm}^2$$",
+      "shortcutSolutionMarkdown": "#### ⚡ 3-Second Shortcut\n$$A = 400 \\sin 45^\\circ = 200\\sqrt{2} \\approx 282.84\\text{ cm}^2$$",
+      "formalTimeSeconds": 45,
+      "shortcutTimeSeconds": 3
+    }
+  ],
+  "calculatorGuides": {
+    "karce": {
+      "techniqueTitle": "Fast Circular Segment Evaluation",
+      "problemType": "Evaluating 0.5 * r² * (θ - sin θ) in RAD mode",
+      "sampleProblem": "Find segment area for r=12, θ=π/3 in RAD mode.",
+      "mode": "COMP Mode (MODE 1, Set RAD)",
+      "keystrokes": ["0", ".", "5", "×", "1", "2", "x²", "×", "(", "SHIFT", "π", "÷", "3", "-", "sin", "(", "SHIFT", "π", "÷", "3", ")", ")", "="],
+      "notes": "Directly yields 13.04439975 in 2 seconds."
+    },
+    "canon": {
+      "techniqueTitle": "Inscribed Regular Polygon Shortcut",
+      "problemType": "0.5 * n * r² * sin(360/n) on Canon F-789SGA",
+      "sampleProblem": "Find area for n=8, r=10.",
+      "mode": "COMP Mode (MODE 1, DEG)",
+      "keystrokes": ["0", ".", "5", "×", "8", "×", "1", "0", "x²", "×", "sin", "4", "5", "="],
+      "notes": "Directly displays 282.8427 cm²."
+    }
+  },
+  "conceptChecks": [
+    {
+      "id": "chk-1004-01",
+      "question": "What is the area of a Bicentric Quadrilateral (which is simultaneously cyclic and tangential) with sides $a, b, c, d$?",
+      "options": [
+        "√(abcd)",
+        "√((s-a)(s-b)(s-c)(s-d))",
+        "(ab + cd)/2",
+        "rs/2"
+      ],
+      "correctAnswer": 0,
+      "explanation": "For a bicentric quadrilateral, Brahmagupta's formula simplifies exactly to A = √(abcd)."
+    },
+    {
+      "id": "chk-1004-02",
+      "question": "Who was the 15th-century Indian mathematician who derived the exact circumradius formula for a cyclic quadrilateral?",
+      "options": [
+        "Vatasseri Parameshvara",
+        "Brahmagupta",
+        "Aryabhata",
+        "Bhaskara I"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Vatasseri Parameshvara (c. 1380–1460) derived the circumradius formula R = √[(ab+cd)(ac+bd)(ad+bc)] / (4A)."
+    },
+    {
+      "id": "chk-1004-03",
+      "question": "What is the formula for the area of a circular segment of radius $r$ and central angle $\\theta$ (in radians)?",
+      "options": [
+        "½ r² (θ - sin θ)",
+        "½ r² θ",
+        "½ r² sin θ",
+        "r² (θ - cos θ)"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Segment area = Sector area - Triangle area = ½ r² θ - ½ r² sin θ = ½ r² (θ - sin θ)."
+    }
+  ]
+}

@@ -1,0 +1,177 @@
+{
+  "id": "math-22-02",
+  "code": "MATH 22-02",
+  "domain": "MATH",
+  "topicCode": "MATH-22",
+  "topicTitle": "Advanced Mathematics",
+  "subtopicTitle": "Trigonometric/Hyperbolic Laplace Pairs, Operational Theorems & Fourier Transform Spectrum",
+  "order": 2,
+  "pairedQuizSetId": "math-22-02-mastery",
+  "toc": [
+    { "id": "sec-prereq-bridges", "title": "1. Introduction & Cross-Subject Connections", "level": 2 },
+    { "id": "sec-theory", "title": "2. Lesson Proper: Trig/Hyperbolic Pairs, Transform Theorems & Fourier Integrals", "level": 2 },
+    { "id": "sec-formulas", "title": "3. Master Compilation of Laplace & Fourier Transform Pairs", "level": 2 },
+    { "id": "sec-visualizer", "title": "4. Interactive Visualizer: Frequency Response & Resonance Pole Spectrum", "level": 2 },
+    { "id": "sec-terminology", "title": "5. Key Terms and Definitions", "level": 2 },
+    { "id": "sec-dual-method", "title": "6. Worked Board Exam Problems", "level": 2 },
+    { "id": "sec-calculator", "title": "7. Calculator Speed Techniques (Karce & Canon)", "level": 2 },
+    { "id": "sec-concept-checks", "title": "8. In-Line Concept Checks", "level": 2 },
+    { "id": "sec-mastery-challenge", "title": "9. Paired Mastery Challenge Exam", "level": 2 }
+  ],
+  "prerequisiteBridge": {
+    "priorModuleId": "math-22-01",
+    "text": "Expanding from basic polynomials and exponentials in MATH 22-01, we master the full Laplace catalog—sin, cos, sinh, cosh, damped harmonics, time/frequency derivatives, convolution $f*h \\leftrightarrow F(s)H(s)$, and Jean-Baptiste Fourier's forward/inverse transform spectrum."
+  },
+  "crossSubjectBridges": [
+    {
+      "targetDomain": "ELECS",
+      "targetTopicCode": "ELEC-05",
+      "badgeText": "Resonant RLC Circuits",
+      "description": "Underdamped electrical resonant circuits produce sinusoidal transients whose $s$-domain transforms are damped sinusoids $\\frac{\\omega}{(s+\\alpha)^2 + \\omega^2}$."
+    },
+    {
+      "targetDomain": "EST",
+      "targetTopicCode": "EST-01",
+      "badgeText": "Fourier Signal Spectrum",
+      "description": "Continuous-time signal bandwidth, AM/FM modulation, and spectral density calculations are derived directly from Fourier transforms $F(\\omega)$."
+    },
+    {
+      "targetDomain": "EST",
+      "targetTopicCode": "EST-04",
+      "badgeText": "Convolutional Filtering",
+      "description": "Time-domain signal filtering $y(t) = x(t) * h(t)$ maps to simple multiplication in the frequency domain $Y(s) = X(s) H(s)$ via convolution."
+    }
+  ],
+  "theory": {
+    "mentalAnchor": "Trig: $\\mathcal{L}\\{\\sin kt\\} = \\frac{k}{s^2+k^2}, \\mathcal{L}\\{\\cos kt\\} = \\frac{s}{s^2+k^2}$. Hyperbolic: $\\mathcal{L}\\{\\sinh kt\\} = \\frac{k}{s^2-k^2}, \\mathcal{L}\\{\\cosh kt\\} = \\frac{s}{s^2-k^2}$. Damped: $\\mathcal{L}\\{e^{-at}\\sin kt\\} = \\frac{k}{(s+a)^2+k^2}$. Convolution: $\\mathcal{L}\\{f*h\\} = F(s)H(s)$. Derivative: $\\mathcal{L}\\{f'\\} = sF(s)-f(0)$. Fourier: $F(\\omega) = \\int_{-\\infty}^\\infty f(t)e^{-j\\omega t} dt$, $\\mathcal{F}\\{\\delta(t)\\} = 1, \\mathcal{F}\\{1\\} = 2\\pi\\delta(\\omega)$.",
+    "contentMarkdown": "### 1. Master Trigonometric & Hyperbolic Laplace Transform Pairs\n\n| Time Function $f(t)$ | Laplace Transform $F(s)$ | Key Algebraic Features |\n| :--- | :--- | :--- |\n| **Sine $\\sin(kt)$** | $\\mathbf{\\frac{k}{s^2 + k^2}}$ | Constant numerator $k$, sum of squares in denominator |\n| **Cosine $\\cos(kt)$** | $\\mathbf{\\frac{s}{s^2 + k^2}}$ | Frequency variable $s$ in numerator |\n| **Hyperbolic Sine $\\sinh(kt)$** | $\\mathbf{\\frac{k}{s^2 - k^2}}$ | Difference of squares in denominator |\n| **Hyperbolic Cosine $\\cosh(kt)$** | $\\mathbf{\\frac{s}{s^2 - k^2}}$ | Frequency variable $s$ numerator, minus sign in denominator |\n| **Damped Sine $e^{-at}\\sin(kt)$** | $\\mathbf{\\frac{k}{(s + a)^2 + k^2}}$ | Underdamped oscillator response |\n| **Damped Cosine $e^{-at}\\cos(kt)$** | $\\mathbf{\\frac{s + a}{(s + a)^2 + k^2}}$ | Underdamped envelope decay |\n| **Resonance $t \\sin(kt)$** | $\\mathbf{\\frac{2ks}{(s^2 + k^2)^2}}$ | Linear growth envelope / repeated poles |\n| **Modulation $t \\cos(kt)$** | $\\mathbf{\\frac{s^2 - k^2}{(s^2 + k^2)^2}}$ | Phase derivative pair |\n\n```diagram\n{\n  \"caption\": \"Figure 1: Convolution Theorem - Time Domain Convolution = Frequency Domain Multiplication\",\n  \"xRange\": [-5, 5],\n  \"yRange\": [-3, 3],\n  \"elements\": [\n    { \"type\": \"polygon\", \"points\": [[-4.5, -1.5], [-1.5, -1.5], [-1.5, 1.5], [-4.5, 1.5]], \"color\": \"#38bdf8\", \"fill\": \"rgba(56, 189, 248, 0.05)\" },\n    { \"type\": \"text\", \"at\": [-3, 0], \"text\": \"y(t) = f(t) * h(t)\", \"color\": \"#38bdf8\" },\n    { \"type\": \"line\", \"from\": [-1.2, 0], \"to\": [1.2, 0], \"color\": \"#fbbf24\", \"label\": \"Laplace Convolution\" },\n    { \"type\": \"polygon\", \"points\": [[1.5, -1.5], [4.5, -1.5], [4.5, 1.5], [1.5, 1.5]], \"color\": \"#34d399\", \"fill\": \"rgba(52, 211, 153, 0.05)\" },\n    { \"type\": \"text\", \"at\": [3, 0], \"text\": \"Y(s) = F(s) · H(s)\", \"color\": \"#34d399\" }\n  ]\n}\n```\n\n---\n\n### 2. Operational Theorems of Laplace Transforms\n\n1. **Time Differentiation**:\n   $$\\mathbf{\\mathcal{L}\\{f'(t)\\} = s F(s) - f(0^-), \\qquad \\mathcal{L}\\{f''(t)\\} = s^2 F(s) - s f(0^-) - f'(0^-)}$$\n2. **$s$-Domain Differentiation (Multiplication by $t$)**:\n   $$\\mathbf{\\mathcal{L}\\{t f(t)\\} = -\\frac{d}{ds} F(s)}$$\n3. **Time Integration**:\n   $$\\mathbf{\\mathcal{L}\\left\\{\\int_0^t f(\\tau) \\, d\\tau\\right\\} = \\frac{F(s)}{s}}$$\n4. **Convolution Theorem**:\n   $$\\mathbf{\\mathcal{L}\\{f(t) * h(t)\\} = F(s) \\cdot H(s)}$$\n\n---\n\n### 3. Continuous Fourier Transforms (Jean-Baptiste Fourier)\n\nDeveloped by French mathematician **Jean-Baptiste Joseph Fourier (1768–1830)** for analyzing both periodic and aperiodic continuous-time signals across infinite time ($-\\infty < t < \\infty$):\n\n$$\\mathbf{F(\\omega) = \\mathcal{F}\\{f(t)\\} = \\int_{-\\infty}^\\infty f(t) e^{-j\\omega t} \\, dt}$$\n$$\\mathbf{f(t) = \\mathcal{F}^{-1}\\{F(\\omega)\\} = \\frac{1}{2\\pi} \\int_{-\\infty}^\\infty F(\\omega) e^{j\\omega t} \\, d\\omega}$$\n\n#### Master Fourier Pairs:\n- **Dirac Delta**: $\\mathcal{F}\\{\\delta(t)\\} = \\mathbf{1}$\n- **DC Constant $1$**: $\\mathcal{F}\\{1\\} = \\mathbf{2\\pi \\delta(\\omega)}$\n- **Unit Step $u(t)$**: $\\mathcal{F}\\{u(t)\\} = \\mathbf{\\pi \\delta(\\omega) + \\frac{1}{j\\omega}}$\n- **Complex Exponential**: $\\mathcal{F}\\{e^{j\\omega_0 t}\\} = \\mathbf{2\\pi \\delta(\\omega - \\omega_0)}$\n- **Cosine Carrier**: $\\mathcal{F}\\{\\cos(\\omega_0 t)\\} = \\mathbf{\\pi [\\delta(\\omega + \\omega_0) + \\delta(\\omega - \\omega_0)]}$\n- **Sine Carrier**: $\\mathcal{F}\\{\\sin(\\omega_0 t)\\} = \\mathbf{j\\pi [\\delta(\\omega + \\omega_0) - \\delta(\\omega - \\omega_0)]}$\n- **Double-Sided Exponential**: $\\mathcal{F}\\{e^{-a|t|}\\} = \\mathbf{\\frac{2a}{a^2 + \\omega^2}}$ ($a > 0$)"
+  },
+  "formulas": [
+    {
+      "id": "f-2202-01",
+      "title": "Trigonometric and Hyperbolic Laplace Pairs",
+      "formula": "$$\\mathcal{L}\\{\\sin kt\\} = \\frac{k}{s^2+k^2}, \\; \\mathcal{L}\\{\\cos kt\\} = \\frac{s}{s^2+k^2}, \\; \\mathcal{L}\\{\\sinh kt\\} = \\frac{k}{s^2-k^2}, \\; \\mathcal{L}\\{\\cosh kt\\} = \\frac{s}{s^2-k^2}$$",
+      "note": "Plus sign in denominator for trig; minus sign for hyperbolic."
+    },
+    {
+      "id": "f-2202-02",
+      "title": "Time Differentiation and Convolution Theorems",
+      "formula": "$$\\mathcal{L}\\{f'(t)\\} = sF(s) - f(0), \\quad \\mathcal{L}\\{f(t)*h(t)\\} = F(s) \\cdot H(s)$$",
+      "note": "Initial condition f(0) accounts for system energy at t=0."
+    },
+    {
+      "id": "f-2202-03",
+      "title": "Fourier Transform Definition & Key Pairs",
+      "formula": "$$F(\\omega) = \\int_{-\\infty}^\\infty f(t) e^{-j\\omega t} dt, \\quad \\mathcal{F}\\{\\delta(t)\\} = 1, \\quad \\mathcal{F}\\{e^{-a|t|}\\} = \\frac{2a}{a^2+\\omega^2}$$",
+      "note": "Maps time signal into frequency spectrum F(ω)."
+    }
+  ],
+  "visualizer": {
+    "archetype": "parameter_sweep",
+    "title": "Frequency Response & Resonance Pole Spectrum",
+    "description": "Adjust natural resonant frequency k and damping ratio a to observe s-plane conjugate pole trajectories and time-domain oscillation decay.",
+    "config": {
+      "canvasWidth": 640,
+      "canvasHeight": 320,
+      "controls": [
+        { "id": "dampingA", "label": "Damping Constant a", "min": 0, "max": 5, "step": 0.5, "defaultValue": 1 },
+        { "id": "freqK", "label": "Resonant Frequency k", "min": 1, "max": 10, "step": 1, "defaultValue": 4 }
+      ]
+    }
+  },
+  "terms": [
+    {
+      "term": "Convolution",
+      "symbol": "$f(t) * h(t)$",
+      "unit": "Operation",
+      "definition": "An integral operation expressing the overlap of two functions, mapping to direct product multiplication in the Laplace s-domain.",
+      "keywordTrigger": "convolution theorem / f(t)*h(t) / F(s)H(s)"
+    },
+    {
+      "term": "Jean-Baptiste Fourier",
+      "symbol": "1768–1830",
+      "unit": "History",
+      "definition": "The French mathematician and physicist who initiated the study of Fourier series and Fourier transforms in heat propagation analysis.",
+      "keywordTrigger": "Jean-Baptiste Fourier / Fourier transform / 1768-1830"
+    },
+    {
+      "term": "Dirac Delta Function",
+      "symbol": "$\\delta(t)$",
+      "unit": "Distribution",
+      "definition": "An idealized unit impulse distribution of infinite amplitude and infinitesimal width having unity area, with Fourier transform F(ω) = 1.",
+      "keywordTrigger": "Dirac delta / unit impulse / delta(t) transform = 1"
+    }
+  ],
+  "examples": [
+    {
+      "problemStatement": "Find the Laplace transform of f(t) = e^(-2t) cos(5t).",
+      "formalSolutionMarkdown": "#### Step 1: Identify base cosine transform\n- $\\mathcal{L}\\{\\cos(5t)\\} = \\frac{s}{s^2 + 5^2} = \\frac{s}{s^2 + 25}$\n\n#### Step 2: Apply the First Shifting Theorem with a = -2\n- Replace $s$ with $(s + 2)$:\n$$\\mathcal{L}\\{e^{-2t}\\cos(5t)\\} = \\frac{s + 2}{(s + 2)^2 + 25} = \\frac{s + 2}{s^2 + 4s + 29}$$",
+      "shortcutSolutionMarkdown": "#### ⚡ 2-Second Damped Cosine Shortcut\n$$\\mathcal{L}\\{e^{-2t}\\cos(5t)\\} = \\frac{s + 2}{(s + 2)^2 + 25}$$",
+      "formalTimeSeconds": 20,
+      "shortcutTimeSeconds": 2
+    },
+    {
+      "problemStatement": "Find the Fourier transform of the unit impulse function δ(t) and the delayed impulse δ(t - 3).",
+      "formalSolutionMarkdown": "#### Step 1: Fourier transform of δ(t)\n- By sifting property: $\\mathcal{F}\\{\\delta(t)\\} = \\int_{-\\infty}^\\infty \\delta(t) e^{-j\\omega t} dt = e^{-j\\omega(0)} = 1$\n\n#### Step 2: Time-shifting property for δ(t - 3)\n- $\\mathcal{F}\\{f(t - t_0)\\} = e^{-j\\omega t_0} F(\\omega)$\n$$\\mathcal{F}\\{\\delta(t - 3)\\} = e^{-j 3\\omega} \\cdot 1 = e^{-j 3\\omega}$$",
+      "shortcutSolutionMarkdown": "#### ⚡ 1-Second Fourier Sifting Shortcut\n$$\\mathcal{F}\\{\\delta(t)\\} = 1, \\quad \\mathcal{F}\\{\\delta(t - 3)\\} = e^{-j3\\omega}$$",
+      "formalTimeSeconds": 20,
+      "shortcutTimeSeconds": 1
+    }
+  ],
+  "calculatorGuides": {
+    "karce": {
+      "techniqueTitle": "Fast Damped Frequency Evaluation",
+      "problemType": "Evaluating (s + a) / ((s + a)² + k²)",
+      "sampleProblem": "Find denominator for a=2, k=5.",
+      "mode": "COMP Mode (MODE 1)",
+      "keystrokes": ["2", "x²", "+", "5", "x²", "="],
+      "notes": "Directly yields 29 in constant term (s² + 4s + 29)."
+    },
+    "canon": {
+      "techniqueTitle": "Resonant Quadratic Roots on Canon F-789SGA",
+      "problemType": "Solving s² + 4s + 29 = 0 in EQN Mode",
+      "sampleProblem": "Find poles for damped oscillator.",
+      "mode": "EQN Mode (MODE 5 -> Quadratic 3)",
+      "keystrokes": ["1", "=", "4", "=", "2", "9", "="],
+      "notes": "Directly yields complex conjugate poles s = -2 ± 5i."
+    }
+  },
+  "conceptChecks": [
+    {
+      "id": "chk-2202-01",
+      "question": "What is the Laplace transform of $f(t) = \\cosh(4t)$?",
+      "options": [
+        "s / (s² - 16)",
+        "s / (s² + 16)",
+        "4 / (s² - 16)",
+        "4 / (s² + 16)"
+      ],
+      "correctAnswer": 0,
+      "explanation": "L{cosh(kt)} = s / (s² - k²). For k = 4, L{cosh(4t)} = s / (s² - 16)."
+    },
+    {
+      "id": "chk-2202-02",
+      "question": "According to the Laplace Convolution Theorem, what is $\\mathcal{L}\\{f(t) * h(t)\\}$?",
+      "options": [
+        "F(s) · H(s) (Direct product in s-domain)",
+        "F(s) + H(s)",
+        "F(s) / H(s)",
+        "F(s) * H(s)"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Convolution in the time domain corresponds to simple algebraic multiplication in the frequency s-domain: L{f*h} = F(s)H(s)."
+    },
+    {
+      "id": "chk-2202-03",
+      "question": "What is the Fourier transform of the Dirac delta function $\\delta(t)$?",
+      "options": [
+        "1 (Constant spectrum across all frequencies)",
+        "2π δ(ω)",
+        "1 / (jω)",
+        "0"
+      ],
+      "correctAnswer": 0,
+      "explanation": "The unit impulse contains equal energy at all frequencies, yielding F{δ(t)} = 1."
+    }
+  ]
+}

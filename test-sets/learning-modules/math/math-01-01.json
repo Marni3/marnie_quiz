@@ -4,259 +4,194 @@
   "domain": "MATH",
   "topicCode": "MATH-01",
   "topicTitle": "College Algebra",
-  "subtopicTitle": "Real Numbers, Operations & Factoring",
+  "subtopicTitle": "Number Systems, Roman Numerals, Multipliers & Field Axioms",
   "order": 1,
-  "pairedQuizSetId": "math_01_algebra_drill_all_set01",
+  "pairedQuizSetId": "math-01-01-mastery",
   "toc": [
-    { "id": "sec-prereq-bridges", "title": "1. Introduction & Links to Related Topics", "level": 2 },
-    { "id": "sec-terminology", "title": "2. Terms and Definitions", "level": 2 },
-    { "id": "sec-visualizer", "title": "3. Interactive Visualizer: Prime Factor Decomposition", "level": 2 },
-    { "id": "sec-theory", "title": "4. Lesson Proper", "level": 2 },
-    { "id": "sec-dual-method", "title": "5. Sample Problems and Solutions", "level": 2 },
-    { "id": "sec-calculator", "title": "6. Calculator Techniques (Karce & Canon)", "level": 2 },
-    { "id": "sec-concept-checks", "title": "7. In-Line Concept Checks", "level": 2 },
-    { "id": "sec-mastery-challenge", "title": "8. Paired Mastery Challenge", "level": 2 }
+    { "id": "sec-prereq-bridges", "title": "1. Introduction & Cross-Subject Connections", "level": 2 },
+    { "id": "sec-theory", "title": "2. Lesson Proper: Theory & Number Systems", "level": 2 },
+    { "id": "sec-formulas", "title": "3. Compilation of Formulas & Rules", "level": 2 },
+    { "id": "sec-visualizer", "title": "4. Interactive Visualizer: Real & Imaginary Tree", "level": 2 },
+    { "id": "sec-terminology", "title": "5. Key Terms and Definitions", "level": 2 },
+    { "id": "sec-dual-method", "title": "6. Worked Board Exam Problems", "level": 2 },
+    { "id": "sec-calculator", "title": "7. Calculator Speed Techniques (Karce & Canon)", "level": 2 },
+    { "id": "sec-concept-checks", "title": "8. In-Line Concept Checks", "level": 2 },
+    { "id": "sec-mastery-challenge", "title": "9. Paired Mastery Challenge Exam", "level": 2 }
   ],
   "prerequisiteBridge": {
     "priorModuleId": "none",
-    "text": "Welcome to Mathematics for the ECE Board Exam! We kick off our review with the real number line, prime factor shortcuts, and polynomial identities that make calculus, differential equations, and circuit algebra fast and error-free."
+    "text": "Every engineering discipline builds on real and complex numbers. Before calculating impedance or solving ODEs, mastering number classifications, Roman multipliers, and algebraic field properties ensures fast, error-free board exam problem solving."
   },
   "crossSubjectBridges": [
     {
-      "targetDomain": "MATH",
-      "targetTopicCode": "MATH-12",
-      "badgeText": "Differential Equations",
-      "description": "Factoring polynomials is used in MATH 12 to find auxiliary equation roots and determine if an RLC circuit oscillates or settles smoothly."
-    },
-    {
-      "targetDomain": "MATH",
-      "targetTopicCode": "MATH-04",
-      "badgeText": "Discrete Math",
-      "description": "Prime numbers, GCF, and the Euclidean Algorithm form the mathematical backbone of digital data cryptography (RSA) and error-checking codes."
-    },
-    {
       "targetDomain": "ELECS",
-      "targetTopicCode": "ELEC-01",
-      "badgeText": "DC Circuits",
-      "description": "Standard resistor and capacitor values (E12, E24 series) use prime-factored exponential steps to cover all component needs with minimal inventory."
+      "targetTopicCode": "ELEC-04",
+      "badgeText": "AC Phasors",
+      "description": "The imaginary unit $i = \\sqrt{-1}$ (denoted $j$ in EE) governs reactive impedance $Z = R + jX$ in AC circuit analysis."
+    },
+    {
+      "targetDomain": "MATH",
+      "targetTopicCode": "MATH-20",
+      "badgeText": "Complex Numbers",
+      "description": "Cyclic powers of $i$ ($i^1=i, i^2=-1, i^3=-i, i^4=1$) allow rapid simplification of high-degree complex polynomial roots."
+    },
+    {
+      "targetDomain": "GEAS",
+      "targetTopicCode": "GEAS-17",
+      "badgeText": "R.A. 9292 Law",
+      "description": "Legal statutes and code citations use classical Roman numerals (e.g., Article IV, Section 32) requiring instant conversion."
     }
   ],
+  "theory": {
+    "mentalAnchor": "Numbers describe magnitude (cardinal: 1, 2, 3...) or position (ordinal: 1st, 2nd, 3rd...). Roman multipliers scale letters by $100\\times$ (brackets $|V|=500$), $1,000\\times$ (vinculum $\\overline{V}=5,000$), or $1,000,000\\times$ (doorframe $|\\overline{V}|=5,000,000$). Powers of $i$ repeat every 4 cycles: $i^n = i^{n \\bmod 4}$.",
+    "contentMarkdown": "### 1. Numbers, Numerals & Number Classifications\n\nA **number** is an abstract mathematical concept that describes a magnitude or a position. Numbers are classified into two primary behavioral types:\n- **Cardinal Numbers**: Numbers that count objects or ideas in a given collection (e.g., $1, 2, 3, \\dots, 100, 1000$).\n- **Ordinal Numbers**: Numbers that state the relative position or rank of individual items in an ordered sequence (e.g., *First, Second, Third, 21st*).\n\nA **numeral** is a symbol or combination of symbols used to represent a number. A **digit** is a single symbol used alone or in combination (e.g., the number $21$ consists of the digits $2$ and $1$).\n\n```diagram\n{\n  \"caption\": \"Figure 1: Complete Hierarchy of the Complex Number System\",\n  \"xRange\": [-5, 5],\n  \"yRange\": [-3, 3],\n  \"elements\": [\n    { \"type\": \"polygon\", \"points\": [[-4.5, 2.5], [4.5, 2.5], [4.5, -2.5], [-4.5, -2.5]], \"color\": \"#3b82f6\", \"fill\": \"rgba(59, 130, 246, 0.05)\" },\n    { \"type\": \"text\", \"at\": [0, 2.1], \"text\": \"Complex Numbers (a + bi)\", \"color\": \"#38bdf8\" },\n    { \"type\": \"polygon\", \"points\": [[-4, 1.4], [1, 1.4], [1, -2], [-4, -2]], \"color\": \"#10b981\", \"fill\": \"rgba(16, 185, 129, 0.05)\" },\n    { \"type\": \"text\", \"at\": [-1.5, 1], \"text\": \"Real Numbers (b = 0)\", \"color\": \"#34d399\" },\n    { \"type\": \"polygon\", \"points\": [[1.5, 1.4], [4, 1.4], [4, -2], [1.5, -2]], \"color\": \"#f43f5e\", \"fill\": \"rgba(244, 63, 94, 0.05)\" },\n    { \"type\": \"text\", \"at\": [2.75, 1], \"text\": \"Imaginary (a=0, b≠0)\", \"color\": \"#fb7185\" },\n    { \"type\": \"text\", \"at\": [-1.5, 0.2], \"text\": \"Rational (p/q) & Irrational (π, e, √2)\", \"color\": \"#94a3b8\" },\n    { \"type\": \"text\", \"at\": [-1.5, -0.6], \"text\": \"Integers: Natural (1,2,3), Zero, Negative\", \"color\": \"#cbd5e1\" },\n    { \"type\": \"text\", \"at\": [2.75, 0], \"text\": \"i = √(-1), i² = -1\", \"color\": \"#fbbf24\" }\n  ]\n}\n```\n\n#### Specific Cases of Real Numbers:\n1. **Rational Numbers ($\\mathbb{Q}$)**: Any number expressible as the quotient of two integers $\\frac{p}{q}$ ($q \\neq 0$). Decimals are either terminating (e.g., $0.75 = 3/4$) or non-terminating repeating (e.g., $0.333\\dots = 1/3$).\n2. **Irrational Numbers ($\\mathbb{Q}'$)**: Numbers that cannot be expressed as a ratio of integers. Their decimal representations are non-terminating and non-repeating (e.g., $\\pi \\approx 3.14159\\dots$, $e \\approx 2.71828\\dots$, $\\sqrt{2} \\approx 1.41421\\dots$).\n3. **Integers ($\\mathbb{Z}$)**: The set comprising natural counting numbers ($\\{1, 2, 3, \\dots\\}$), zero ($0$), and negative natural numbers ($\\{-1, -2, -3, \\dots\\}$).\n\n---\n\n### 2. Roman Numerals & Classical Multiplier Notation\n\nRoman numerals use specific Latin letters with fixed additive/subtractive values:\n\n$$\\text{I} = 1, \\quad \\text{V} = 5, \\quad \\text{X} = 10, \\quad \\text{L} = 50, \\quad \\text{C} = 100, \\quad \\text{D} = 500, \\quad \\text{M} = 1000$$\n\nTo represent extremely large quantities without repeating letters endlessly, the Romans established three formal multiplier modifiers:\n\n1. **Bracket Notation ($|\\text{Numeral}|$)**: Multiplies the base numeral value by **$100$ times**.\n   $$|\\text{V}| = 5 \\times 100 = 500$$\n   $$|\\text{X}| = 10 \\times 100 = 1,000$$\n   $$|\\text{L}| = 50 \\times 100 = 5,000$$\n\n2. **Vinculum Notation ($\\overline{\\text{Numeral}}$ — horizontal bar above)**: Multiplies the base numeral value by **$1,000$ times**.\n   $$\\overline{\\text{V}} = 5 \\times 1,000 = 5,000$$\n   $$\\overline{\\text{X}} = 10 \\times 1,000 = 10,000$$\n   $$\\overline{\\text{M}} = 1,000 \\times 1,000 = 1,000,000$$\n\n3. **Doorframe Notation ($|\\overline{\\text{Numeral}}|$ — bracket with top bar)**: Multiplies the base numeral value by **$1,000,000$ times**.\n   $$|\\overline{\\text{V}}| = 5 \\times 1,000,000 = 5,000,000$$\n   $$|\\overline{\\text{X}}| = 10 \\times 1,000,000 = 10,000,000$$\n\n#### Board Exam Trap Alert:\nDo not confuse a bracket ($100\\times$) with a vinculum ($1,000\\times$). In board exams, $|\\text{V}|$ is $500$ (equivalent to $\\text{D}$), whereas $\\overline{\\text{V}}$ is $5,000$.\n\n---\n\n### 3. Complex Numbers & Cyclic Powers of $i$\n\nA complex number is defined as $z = a + bi$ ($a, b \\in \\mathbb{R}$), where $a$ is the real part and $b$ is the imaginary component.\n- If $a = 0$ and $b \\neq 0$, $z$ is a **pure imaginary number**.\n- If $b = 0$, $z$ simplifies to a **real number**.\n\nThe imaginary unit is defined by $i = \\sqrt{-1}$. Its integer powers cycle through 4 distinct values:\n\n$$i^1 = i = \\sqrt{-1}$$\n$$i^2 = -1$$\n$$i^3 = i^2 \\cdot i = -i = -\\sqrt{-1}$$\n$$i^4 = (i^2)^2 = (-1)^2 = 1$$\n\nFor any positive integer exponent $n$, evaluate $n \\pmod 4$:\n$$i^n = i^{4k + r} = (i^4)^k \\cdot i^r = 1^k \\cdot i^r = i^r, \\quad r \\in \\{0, 1, 2, 3\\}$$\n\n---\n\n### 4. Axiomatic Properties of Real Numbers & Equality\n\nReal number arithmetic operates under formal field and equivalence axioms:\n\n#### Properties of Addition & Multiplication:\n- **Closure Property**: For all $a, b \\in \\mathbb{R}$, $a + b \\in \\mathbb{R}$ and $ab \\in \\mathbb{R}$.\n- **Commutative Property**: $a + b = b + a$ and $ab = ba$.\n- **Associative Property**: $(a + b) + c = a + (b + c)$ and $(ab)c = a(bc)$.\n- **Identity Property**:\n  - Additive Identity: $a + 0 = a$ ($0$ is the additive identity).\n  - Multiplicative Identity: $a \\cdot 1 = a$ ($1$ is the multiplicative identity).\n- **Inverse Property**:\n  - Additive Inverse: $a + (-a) = 0$ ($-a$ is the additive inverse / opposite of $a$).\n  - Multiplicative Inverse: $a \\left(\\frac{1}{a}\\right) = 1$ for $a \\neq 0$ ($\\frac{1}{a}$ is the multiplicative inverse / reciprocal of $a$).\n- **Distributive Property**: $a(b + c) = ab + ac$.\n- **Multiplication Property of Zero**: $a \\cdot 0 = 0$.\n\n#### Properties of Equality:\n- **Reflexive Property**: $a = a$.\n- **Symmetric Property**: If $a = b$, then $b = a$.\n- **Transitive Property**: If $a = b$ and $b = c$, then $a = c$.\n- **Substitution Property**: If $a = b$, then $a$ may be replaced by $b$ in any algebraic expression.\n- **Cancellation Property**:\n  - For addition: If $a + c = b + c$, then $a = b$.\n  - For multiplication: If $ac = bc$ and $c \\neq 0$, then $a = b$."
+  },
+  "formulas": [
+    {
+      "id": "f-0101-01",
+      "title": "Roman Numeral Multiplier Rules",
+      "formula": "$$|X| = 100 \\times X, \\quad \\overline{X} = 1,000 \\times X, \\quad |\\overline{X}| = 1,000,000 \\times X$$",
+      "note": "Brackets = 100x; Vinculum (bar) = 1,000x; Doorframe = 1,000,000x."
+    },
+    {
+      "id": "f-0101-02",
+      "title": "Cyclic Powers of the Imaginary Unit",
+      "formula": "$$i^1 = i, \\quad i^2 = -1, \\quad i^3 = -i, \\quad i^4 = 1 \\implies i^n = i^{n \\bmod 4}$$",
+      "note": "Divide exponent by 4: remainder 0 gives 1, rem 1 gives i, rem 2 gives -1, rem 3 gives -i."
+    },
+    {
+      "id": "f-0101-03",
+      "title": "Additive and Multiplicative Inverses",
+      "formula": "$$a + (-a) = 0, \\quad a \\cdot \\left(\\frac{1}{a}\\right) = 1 \\quad (a \\neq 0)$$",
+      "note": "Additive identity is 0; Multiplicative identity is 1."
+    }
+  ],
+  "visualizer": {
+    "archetype": "parameter_sweep",
+    "title": "Cyclic Powers of i Explorer",
+    "description": "Adjust the integer exponent to trace the 4-phase cyclic rotation of imaginary powers on the complex unit circle.",
+    "config": {
+      "canvasWidth": 640,
+      "canvasHeight": 320,
+      "controls": [
+        { "id": "exponent", "label": "Exponent (n)", "min": 1, "max": 25, "step": 1, "defaultValue": 13 }
+      ]
+    }
+  },
   "terms": [
     {
-      "term": "Natural Numbers",
-      "symbol": "$\\mathbb{N}$",
-      "unit": "Set",
-      "definition": "The set of positive counting numbers starting from 1: $\\{1, 2, 3, 4, \\dots\\}$.",
-      "keywordTrigger": "positive counting numbers starting from 1"
+      "term": "Cardinal Number",
+      "symbol": "$N_{card}$",
+      "unit": "Count",
+      "definition": "A number used to count items or state quantity in a group (e.g., 5 resistors, 12 channels).",
+      "keywordTrigger": "count of objects or quantity in a group"
     },
     {
-      "term": "Whole Numbers",
-      "symbol": "$\\mathbb{W}$",
-      "unit": "Set",
-      "definition": "The set of natural numbers including zero: $\\{0, 1, 2, 3, \\dots\\}$.",
-      "keywordTrigger": "natural numbers including zero"
+      "term": "Ordinal Number",
+      "symbol": "$N_{ord}$",
+      "unit": "Rank",
+      "definition": "A number indicating the position, rank, or order of an item in a sequence (e.g., 1st, 2nd, 3rd harmonic).",
+      "keywordTrigger": "position or rank in an ordered sequence"
     },
     {
-      "term": "Integers",
-      "symbol": "$\\mathbb{Z}$",
-      "unit": "Set",
-      "definition": "All positive and negative whole numbers and zero: $\\{\\dots, -2, -1, 0, 1, 2, \\dots\\}$.",
-      "keywordTrigger": "whole numbers and their negative opposites"
+      "term": "Vinculum",
+      "symbol": "$\\overline{X}$",
+      "unit": "Modifier",
+      "definition": "A horizontal bar placed over a Roman numeral indicating multiplication of the base value by 1,000.",
+      "keywordTrigger": "horizontal bar above Roman numeral / multiply by 1,000"
+    },
+    {
+      "term": "Doorframe Multiplier",
+      "symbol": "$|\\overline{X}|$",
+      "unit": "Modifier",
+      "definition": "A three-sided rectangular frame over a Roman numeral multiplying its base value by 1,000,000.",
+      "keywordTrigger": "doorframe over Roman numeral / multiply by 1,000,000"
     },
     {
       "term": "Rational Number",
       "symbol": "$\\mathbb{Q}$",
       "unit": "Set",
-      "definition": "Any number that can be written as a fraction $\\frac{p}{q}$ of two integers ($q \\neq 0$), yielding terminating or repeating decimals.",
-      "keywordTrigger": "fraction p/q / terminating or repeating decimal"
+      "definition": "A real number expressible as the ratio of two integers p/q (q ≠ 0) with terminating or repeating decimal expansion.",
+      "keywordTrigger": "ratio of integers p/q / repeating or terminating decimal"
     },
     {
       "term": "Irrational Number",
       "symbol": "$\\mathbb{Q}'$",
       "unit": "Set",
-      "definition": "Any number that cannot be written as a fraction, having endless non-repeating decimals (e.g., $\\pi, e, \\sqrt{2}$).",
-      "keywordTrigger": "non-terminating non-repeating decimal / cannot be p/q"
-    },
-    {
-      "term": "Real Numbers",
-      "symbol": "$\\mathbb{R}$",
-      "unit": "Set",
-      "definition": "The union of all rational and irrational numbers representing every point on the continuous number line.",
-      "keywordTrigger": "union of rational and irrational numbers"
-    },
-    {
-      "term": "Prime Number",
-      "symbol": "$p$",
-      "unit": "Integer",
-      "definition": "A positive integer strictly greater than 1 that has exactly two positive divisors: 1 and itself (2 is the only even prime).",
-      "keywordTrigger": "integer > 1 with exactly two positive divisors"
-    },
-    {
-      "term": "Composite Number",
-      "symbol": "$n$",
-      "unit": "Integer",
-      "definition": "A positive integer strictly greater than 1 that has more than two positive divisors.",
-      "keywordTrigger": "integer > 1 with more than two positive factors"
-    },
-    {
-      "term": "Greatest Common Factor (GCF / GCD)",
-      "symbol": "$\\text{GCF}(a, b)$",
-      "unit": "Integer",
-      "definition": "The largest integer that evenly divides both numbers; computed from common prime factors with lowest exponents.",
-      "keywordTrigger": "largest integer dividing both numbers / lowest common prime powers"
-    },
-    {
-      "term": "Least Common Multiple (LCM)",
-      "symbol": "$\\text{LCM}(a, b)$",
-      "unit": "Integer",
-      "definition": "The smallest positive integer divisible by each given number; computed from all unique prime factors with highest exponents.",
-      "keywordTrigger": "smallest positive integer divisible by all / highest prime powers"
-    },
-    {
-      "term": "Sophie Germain Identity",
-      "symbol": "$a^4 + 4b^4$",
-      "unit": "Identity",
-      "definition": "A factoring identity that splits fourth powers into quadratics: $a^4 + 4b^4 = (a^2 + 2ab + 2b^2)(a^2 - 2ab + 2b^2)$.",
-      "keywordTrigger": "sum of two fourth powers factorable into quadratics"
+      "definition": "A real number that cannot be expressed as a quotient of two integers, having an infinite, non-repeating decimal expansion.",
+      "keywordTrigger": "non-terminating non-repeating decimal"
     }
   ],
-  "visualizer": {
-    "archetype": "factor_tree",
-    "title": "Interactive Prime Factor Tree & Canonical Decomposition",
-    "description": "Adjust the number slider to inspect its prime factor branches, individual prime powers, and canonical prime factorization.",
-    "config": {
-      "canvasWidth": 640,
-      "canvasHeight": 320,
-      "controls": [
-        {
-          "id": "number",
-          "label": "Integer to Factor",
-          "min": 12,
-          "max": 360,
-          "step": 6,
-          "defaultValue": 72
-        }
-      ]
-    }
-  },
-  "theory": {
-    "mentalAnchor": "Real numbers form a continuous line. For GCF, take the intersection of prime factors (lowest powers); for LCM, take the union (highest powers). Always remember: GCF(a, b) × LCM(a, b) = a × b.",
-    "contentMarkdown": "### 1. The Real Number Hierarchy\n\nAll real numbers belong to one continuous family hierarchy:\n\n$$\\mathbb{N} \\subset \\mathbb{W} \\subset \\mathbb{Z} \\subset \\mathbb{Q} \\subset \\mathbb{R}$$\n\n- **Natural Numbers ($\\mathbb{N}$)**: Counting numbers $1, 2, 3, \\dots$\n- **Whole Numbers ($\\mathbb{W}$)**: Natural numbers plus zero: $0, 1, 2, 3, \\dots$\n- **Integers ($\\mathbb{Z}$)**: Positive, negative whole numbers and zero.\n- **Rational Numbers ($\\mathbb{Q}$)**: Any fraction $\\frac{p}{q}$ ($q \\neq 0$). Decimals always terminate ($0.75$) or repeat ($0.333\\dots$).\n- **Irrational Numbers ($\\mathbb{Q}'$)**: Non-repeating, non-terminating decimals ($\\pi \\approx 3.14159\\dots$, $e \\approx 2.71828\\dots$, $\\sqrt{2} \\approx 1.41421\\dots$).\n\n---\n\n### 2. Prime Factorization, GCF & LCM\n\nEvery integer $n > 1$ has a single unique prime factorization:\n\n$$n = p_1^{a_1} p_2^{a_2} \\cdots p_k^{a_k}$$\n\n- **Greatest Common Factor (GCF)**: The product of all common prime factors raised to their **smallest** powers.\n- **Least Common Multiple (LCM)**: The product of all unique prime factors raised to their **highest** powers.\n\n**Fundamental Product Invariance Law**:\n$$\\text{GCF}(a, b) \\times \\text{LCM}(a, b) = a \\times b$$\n\n---\n\n### 3. Essential Board Exam Factoring Identities\n\nMaster these algebraic expansions to solve exam problems in seconds:\n\n1. **Difference of Two Squares**:\n   $$a^2 - b^2 = (a - b)(a + b)$$\n\n2. **Sum and Difference of Two Cubes**:\n   $$a^3 + b^3 = (a + b)(a^2 - ab + b^2)$$\n   $$a^3 - b^3 = (a - b)(a^2 + ab + b^2)$$\n\n3. **Sophie Germain Identity (Sum of Fourth Powers)**:\n   $$a^4 + 4b^4 = (a^2 + 2ab + 2b^2)(a^2 - 2ab + 2b^2)$$\n   *Classic Example*: $x^4 + 4 = (x^2 + 2x + 2)(x^2 - 2x + 2)$."
-  },
   "examples": [
     {
-      "problemStatement": "Find the Greatest Common Factor (GCF) and Least Common Multiple (LCM) of 72 and 120, and verify their product property.",
-      "formalSolutionMarkdown": "1. **Find Prime Factorizations**:\n   - $72 = 8 \\times 9 = 2^3 \\times 3^2$\n   - $120 = 8 \\times 15 = 2^3 \\times 3^1 \\times 5^1$\n\n2. **Compute GCF (lowest powers of common bases)**:\n   $$\\text{GCF} = 2^{\\min(3,3)} \\times 3^{\\min(2,1)} = 2^3 \\times 3^1 = 8 \\times 3 = 24$$\n\n3. **Compute LCM (highest powers of all bases)**:\n   $$\\text{LCM} = 2^{\\max(3,3)} \\times 3^{\\max(2,1)} \\times 5^{\\max(0,1)} = 2^3 \\times 3^2 \\times 5^1 = 8 \\times 9 \\times 5 = 360$$\n\n4. **Verify Product Rule**:\n   $$\\text{GCF} \\times \\text{LCM} = 24 \\times 360 = 8640$$\n   $$a \\times b = 72 \\times 120 = 8640 \\quad \\text{(Matches)}$$",
-      "shortcutSolutionMarkdown": "Use the **Karce / Canon GCD and LCM functions**:\n\n1. Press `[ALPHA] [GCD] 72 , 120 [=]` $\\to$ **$24$** (1 second).\n2. Compute LCM directly via $\\text{LCM} = \\frac{72 \\times 120}{24} = \\mathbf{360}$ (3 seconds).",
-      "shortcutTimeSeconds": 5,
-      "formalTimeSeconds": 60
+      "problemStatement": "Evaluate the value of the Roman numeral expression: |L| + V̄ + |X̄|.",
+      "formalSolutionMarkdown": "#### Step 1: Decode each multiplier modifier\n- **Bracket Notation**: $|\\text{L}| = 50 \\times 100 = 5,000$.\n- **Vinculum Notation**: $\\overline{\\text{V}} = 5 \\times 1,000 = 5,000$.\n- **Doorframe Notation**: $|\\overline{\\text{X}}| = 10 \\times 1,000,000 = 10,000,000$.\n\n#### Step 2: Sum the values\n$$\\text{Total} = 5,000 + 5,000 + 10,000,000 = 10,010,000$$",
+      "shortcutSolutionMarkdown": "#### ⚡ 5-Second Multiplier Inspection\n1. $|\\text{L}| = 50 \\times 100 = 5\\text{k}$.\n2. $\\overline{\\text{V}} = 5 \\times 1\\text{k} = 5\\text{k}$.\n3. $|\\overline{\\text{X}}| = 10\\text{M}$.\n$$\\text{Sum} = 10\\text{M} + 10\\text{k} = 10,010,000$$",
+      "formalTimeSeconds": 60,
+      "shortcutTimeSeconds": 5
     },
     {
-      "problemStatement": "Factor the polynomial expression $P(x) = x^4 + 64$ into two irreducible quadratic polynomials over the real numbers.",
-      "formalSolutionMarkdown": "Apply the **Sophie Germain Identity** $a^4 + 4b^4 = (a^2 + 2ab + 2b^2)(a^2 - 2ab + 2b^2)$:\n\n1. Express $x^4 + 64$ in $a^4 + 4b^4$ form:\n   - $a = x$\n   - $4b^4 = 64 \\implies b^4 = 16 \\implies b = 2$\n\n2. Substitute $a = x$ and $b = 2$ into the identity:\n   $$x^4 + 64 = [x^2 + 2(x)(2) + 2(2^2)][x^2 - 2(x)(2) + 2(2^2)]$$\n   $$x^4 + 64 = (x^2 + 4x + 8)(x^2 - 4x + 8)$$",
-      "shortcutSolutionMarkdown": "Use **Numerical Substitution via `[CALC]`**:\n\n1. Pick a small test number, say $x = 2$.\n2. Evaluate expression: $2^4 + 64 = 16 + 64 = \\mathbf{80}$.\n3. Test the choices with $x = 2$:\n   - Choice: $(2^2 + 4(2) + 8)(2^2 - 4(2) + 8) = (4 + 8 + 8)(4 - 8 + 8) = (20)(4) = \\mathbf{80}$.\n4. Matches immediately in under 15 seconds without factoring algebra!",
-      "shortcutTimeSeconds": 15,
-      "formalTimeSeconds": 90
+      "problemStatement": "Simplify the expression: E = i^{2026} + i^{2027} + i^{2028} + i^{2029}.",
+      "formalSolutionMarkdown": "#### Step 1: Evaluate each power modulo 4\n- $2026 \\div 4 = 506 \\text{ R } 2 \\implies i^{2026} = i^2 = -1$.\n- $2027 \\div 4 = 506 \\text{ R } 3 \\implies i^{2027} = i^3 = -i$.\n- $2028 \\div 4 = 507 \\text{ R } 0 \\implies i^{2028} = i^0 = 1$.\n- $2029 \\div 4 = 507 \\text{ R } 1 \\implies i^{2029} = i^1 = i$.\n\n#### Step 2: Sum the terms\n$$E = (-1) + (-i) + (1) + (i) = 0$$",
+      "shortcutSolutionMarkdown": "#### ⚡ 2-Second Invariant Rule\nThe sum of any 4 consecutive integer powers of $i$ is identically zero ($i + i^2 + i^3 + i^4 = i - 1 - i + 1 = 0$). Result $= 0$.",
+      "formalTimeSeconds": 45,
+      "shortcutTimeSeconds": 2
     }
   ],
   "calculatorGuides": {
     "karce": {
-      "techniqueTitle": "Prime Factor Decomposition & GCD Bypass",
-      "problemType": "Integer Factoring & Divisors",
-      "sampleProblem": "Find the prime factor decomposition of 72 and compute $\\text{GCF}(72, 120)$.",
-      "mode": "COMP Mode ([MODE] [1])",
-      "keystrokes": [
-        "[7] [2] [=]",
-        "[SHIFT] [FACT] → 2³ × 3²",
-        "[ALPHA] [GCD] 72 [SHIFT] [,] 120 [=] → 24"
-      ],
-      "notes": "Karce KC-S991 can instantly factor any positive integer up to 10 digits into prime powers using [SHIFT] [FACT]."
+      "techniqueTitle": "High-Power i Exponent Evaluation",
+      "problemType": "Simplifying i^N on Karce KC-S991",
+      "sampleProblem": "Evaluate i^79 in CMPLX mode.",
+      "mode": "CMPLX Mode (MODE 2)",
+      "keystrokes": ["7", "9", "÷", "4", "=", "SHIFT", "d/c"],
+      "notes": "Look at the remainder or fractional part: .75 corresponds to 3/4 (i³ = -i). Or directly evaluate (i²)³⁹ × i = (-1)³⁹ × i = -i."
     },
     "canon": {
-      "techniqueTitle": "Direct GCD & LCM Evaluation",
-      "problemType": "Common Multiples & Divisors",
-      "sampleProblem": "Compute $\\text{GCD}(72, 120)$ and $\\text{LCM}(72, 120)$ without manual factor trees.",
-      "mode": "COMP Mode ([MODE] [1])",
-      "keystrokes": [
-        "[GCD] 72 [,] 120 [=] → 24",
-        "[LCM] 72 [,] 120 [=] → 360",
-        "[CALC] with x = 2 for polynomial option checking"
-      ],
-      "notes": "Canon F-789SGA has dedicated direct GCD and LCM buttons under secondary function keys for instant evaluation."
+      "techniqueTitle": "Direct Complex Number Power Shortcut",
+      "problemType": "Complex calculations in CMPLX mode",
+      "sampleProblem": "Evaluate (1 + i)^4 on Canon F-789SGA.",
+      "mode": "CMPLX Mode (MODE 2)",
+      "keystrokes": ["(", "1", "+", "i", ")", "x²", "x²", "="],
+      "notes": "The calculator directly yields -4 without manual binomial expansion."
     }
   },
   "conceptChecks": [
     {
-      "id": "chk-01",
-      "question": "Which of the following numbers is classified as an **irrational number**?",
-      "options": {
-        "A": "$\\frac{22}{7}$",
-        "B": "$0.3181818\\dots$ (repeating)",
-        "C": "$\\sqrt{3}$",
-        "D": "$\\sqrt{0.04}$"
-      },
-      "correctAnswer": "C",
-      "distractorDeconstruction": {
-        "A": "$\\frac{22}{7}$ is a ratio of two integers $\\frac{p}{q}$, making it strictly rational (an approximation of $\\pi$, not $\\pi$ itself).",
-        "B": "Any repeating decimal is rational and can be converted into an exact fraction ($\\frac{7}{22}$).",
-        "C": "$\\sqrt{3} \\approx 1.73205\\dots$ is non-repeating and non-terminating, making it genuinely irrational.",
-        "D": "$\\sqrt{0.04} = 0.2 = \\frac{1}{5}$, which terminates and is a rational number."
-      },
-      "shortcutExplanation": "Any square root of a non-perfect square is always irrational. $\\sqrt{3}$ is not a perfect square."
+      "id": "chk-0101-01",
+      "question": "What is the equivalent Arabic value of the Roman numeral with a vinculum $\\overline{\\text{D}}$?",
+      "options": [
+        "500,000",
+        "50,000",
+        "5,000,000",
+        "5,000"
+      ],
+      "correctAnswer": 0,
+      "explanation": "The base letter D represents 500. A vinculum (horizontal bar above) multiplies the base value by 1,000: 500 × 1,000 = 500,000."
     },
     {
-      "id": "chk-02",
-      "question": "Two numbers have a Greatest Common Factor of 12 and a Least Common Multiple of 180. If one of the numbers is 36, what is the other number?",
-      "options": {
-        "A": "48",
-        "B": "60",
-        "C": "72",
-        "D": "90"
-      },
-      "correctAnswer": "B",
-      "distractorDeconstruction": {
-        "A": "$\\text{GCF}(36, 48) = 12$, but $\\text{LCM}(36, 48) = 144 \\neq 180$.",
-        "B": "Using $\\text{GCF} \\times \\text{LCM} = A \\times B \\implies B = \\frac{12 \\times 180}{36} = \\frac{2160}{36} = 60$.",
-        "C": "72 is a multiple of 36, resulting in $\\text{GCF}(36, 72) = 36 \\neq 12$.",
-        "D": "$\\text{GCF}(36, 90) = 18 \\neq 12$."
-      },
-      "shortcutExplanation": "Use $\\text{Other Number} = \\frac{\\text{GCF} \\times \\text{LCM}}{\\text{Given Number}} = \\frac{12 \\times 180}{36} = 60$ in 5 seconds."
+      "id": "chk-0101-02",
+      "question": "Which of the following numbers is an irrational number?",
+      "options": [
+        "$\\sqrt{3}$",
+        "$0.375$",
+        "$0.454545\\dots$",
+        "$\\frac{22}{7}$"
+      ],
+      "correctAnswer": 0,
+      "explanation": "√3 cannot be expressed as a ratio of two integers and has an endless non-repeating decimal expansion. 0.375 is terminating (3/8), 0.4545... is repeating (5/11), and 22/7 is a rational fraction."
     },
     {
-      "id": "chk-03",
-      "question": "What is one of the irreducible quadratic factors of $x^4 + 4y^4$ over the field of real numbers?",
-      "options": {
-        "A": "$x^2 + 2y^2$",
-        "B": "$x^2 + 2xy + 2y^2$",
-        "C": "$x^2 - 2xy - 2y^2$",
-        "D": "$x^2 + 4xy + 4y^2$"
-      },
-      "correctAnswer": "B",
-      "distractorDeconstruction": {
-        "A": "Common false intuition that $x^4 + 4y^4 = (x^2 + 2y^2)^2$. Squaring this produces a middle term $+4x^2y^2$.",
-        "B": "Correct by the Sophie Germain Identity: $x^4 + 4y^4 = (x^2 + 2xy + 2y^2)(x^2 - 2xy + 2y^2)$.",
-        "C": "Incorrect signs: the quadratic terms $x^2$ and $2y^2$ must both be positive.",
-        "D": "Expands to $(x + 2y)^2$, which is $x^2 + 4xy + 4y^2$, not a factor of $x^4 + 4y^4$."
-      },
-      "shortcutExplanation": "Set $x = 1, y = 1 \\implies 1 + 4 = 5$. Choice B gives $1 + 2 + 2 = 5$ (which divides 5)."
-    },
-    {
-      "id": "chk-04",
-      "question": "Which statement regarding the integer 1 is mathematically correct according to the Fundamental Theorem of Arithmetic?",
-      "options": {
-        "A": "1 is the smallest prime number",
-        "B": "1 is a composite number",
-        "C": "1 is neither prime nor composite",
-        "D": "1 is an irrational number"
-      },
-      "correctAnswer": "C",
-      "distractorDeconstruction": {
-        "A": "By definition, a prime number must be strictly greater than 1 with exactly two distinct divisors. 2 is the smallest prime.",
-        "B": "A composite number must have strictly more than two positive divisors.",
-        "C": "1 is the multiplicative identity (a unit) and is classified as neither prime nor composite.",
-        "D": "$1 = \\frac{1}{1}$, which is an integer and therefore rational."
-      },
-      "shortcutExplanation": "1 has only 1 divisor (itself), so it fails the 2-divisor test for primes and the 3+-divisor test for composites."
+      "id": "chk-0101-03",
+      "question": "Which algebraic property is illustrated by the equation $(x + 4) + 9 = x + (4 + 9)$?",
+      "options": [
+        "Associative Property of Addition",
+        "Commutative Property of Addition",
+        "Distributive Property",
+        "Transitive Property"
+      ],
+      "correctAnswer": 0,
+      "explanation": "The associative property states that grouping of addends does not affect the sum: (a + b) + c = a + (b + c)."
     }
   ]
 }

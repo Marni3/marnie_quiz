@@ -1,0 +1,183 @@
+{
+  "id": "math-06-03",
+  "code": "MATH 06-03",
+  "domain": "MATH",
+  "topicCode": "MATH-06",
+  "topicTitle": "Probability & Counting Techniques",
+  "subtopicTitle": "Mathematical Expectation, Card Games, Poker Distributions & Dice Symmetries",
+  "order": 3,
+  "pairedQuizSetId": "math-06-03-mastery",
+  "toc": [
+    { "id": "sec-prereq-bridges", "title": "1. Introduction & Cross-Subject Connections", "level": 2 },
+    { "id": "sec-theory", "title": "2. Lesson Proper: Expectation, Cards & Dice Symmetries", "level": 2 },
+    { "id": "sec-formulas", "title": "3. Compilation of Formulas & Poker Frequency Table", "level": 2 },
+    { "id": "sec-visualizer", "title": "4. Interactive Visualizer: Two-Dice Sum PMF", "level": 2 },
+    { "id": "sec-terminology", "title": "5. Key Terms and Definitions", "level": 2 },
+    { "id": "sec-dual-method", "title": "6. Worked Board Exam Problems", "level": 2 },
+    { "id": "sec-calculator", "title": "7. Calculator Speed Techniques (Karce & Canon)", "level": 2 },
+    { "id": "sec-concept-checks", "title": "8. In-Line Concept Checks", "level": 2 },
+    { "id": "sec-mastery-challenge", "title": "9. Paired Mastery Challenge Exam", "level": 2 }
+  ],
+  "prerequisiteBridge": {
+    "priorModuleId": "math-06-02",
+    "text": "Extending from binomial probability in MATH 06-02, we now examine mathematical expectation $E[X]$, complete 5-card poker combinatorics (out of 2,598,960 hands), and geometric symmetry invariants of standard 6-sided dice."
+  },
+  "crossSubjectBridges": [
+    {
+      "targetDomain": "EST",
+      "targetTopicCode": "EST-09",
+      "badgeText": "Information Theory",
+      "description": "Shannon entropy $H(X) = -\\sum p_i \\log_2 p_i$ is the mathematical expectation of the information content per transmitted symbol."
+    },
+    {
+      "targetDomain": "GEAS",
+      "targetTopicCode": "GEAS-06",
+      "badgeText": "Decision Theory",
+      "description": "Expected Monetary Value (EMV) analysis for engineering project risk uses the discrete expectation formula $E[X] = \\sum x_i P(x_i)$."
+    },
+    {
+      "targetDomain": "ELECS",
+      "targetTopicCode": "ELEC-11",
+      "badgeText": "Noise Analysis",
+      "description": "Thermal Johnson-Nyquist noise power is computed as the statistical expectation of random electron fluctuations in resistive conductors."
+    }
+  ],
+  "theory": {
+    "mentalAnchor": "Mathematical expectation $E[X] = \\sum x_i P(x_i)$. A fair game has $E[X] = 0$. In a standard 52-card deck, total 5-card poker hands is $_{52}C_5 = 2,598,960$. On any standard die, opposite faces always sum to 7, and the sum of all 4 vertical faces is always 14.",
+    "contentMarkdown": "### 1. Mathematical Expectation (Expected Value $E[X]$)\n\n**Mathematical Expectation** is the theoretical long-term average payoff per trial in a game of chance or decision process:\n\n$$E[X] = \\sum_{i=1}^k x_i P(X = x_i) = x_1 P(x_1) + x_2 P(x_2) + \\dots + x_k P(x_k)$$\n\n- **Fair Game**: $E[X] = 0$ (no expected gain or loss over time).\n- **Favorable Game**: $E[X] > 0$ (player wins in the long run).\n- **Unfavorable Game (House Edge)**: $E[X] < 0$ (casino/system profits in the long run).\n\n*Example (American Roulette Single Number)*: A bet of $\\text{P}1$ on a single number pays $35\\text{-to-}1$. The wheel has $38$ slots ($1$ to $36$, $0$, $00$):\n$$E[X] = (+35)\\left(\\frac{1}{38}\\right) + (-1)\\left(\\frac{37}{38}\\right) = \\frac{35 - 37}{38} = -\\frac{2}{38} \\approx -0.05263$$\n*(The player expects to lose $5.26\\text{ centavos}$ per peso bet, representing a $5.26\\%$ house edge)*.\n\n---\n\n### 2. Standard Card Deck Architecture & Historical Lore\n\nA standard deck comprises **52 cards** partitioned into **4 suits** of 13 cards each:\n- **Black Suits**: Spades (♠), Clubs (♣)\n- **Red Suits**: Hearts (♥), Diamonds (♦)\n- **12 Face Cards**: 4 Kings, 4 Queens, 4 Jacks.\n\n#### Historical Attribution of the 4 Kings:\n- **King of Hearts**: **Charlemagne** (Emperor of the Romans)\n- **King of Clubs**: **Alexander the Great** (King of Macedon)\n- **King of Diamonds**: **Julius Caesar** (Dictator of Rome)\n- **King of Spades**: **King David** (King of Israel)\n\n*Calendar Metaphor*: 52 cards = 52 weeks/year; 4 suits = 4 seasons; 12 face cards = 12 months/year.\n\n---\n\n### 3. Complete 5-Card Poker Hands Distribution\n\nTotal possible 5-card hands from a 52-card deck:\n$$N = {}_{52} C_5 = \\frac{52 \\times 51 \\times 50 \\times 49 \\times 48}{5 \\times 4 \\times 3 \\times 2 \\times 1} = 2,598,960$$\n\n| Poker Hand Name | Number of Combinations | Exact Probability | Expected Frequency |\n| :--- | :---: | :---: | :---: |\n| **Royal Flush** (A-K-Q-J-10 same suit) | $4$ | $0.00000154$ | $1$ in $649,740$ hands |\n| **Straight Flush** (5 consecutive, same suit) | $36$ | $0.00001385$ | $1$ in $72,192$ hands |\n| **Four of a Kind** | $624$ | $0.00024010$ | $1$ in $4,165$ hands |\n| **Full House** (3 of a kind + 1 pair) | $3,744$ | $0.00144060$ | $1$ in $694$ hands |\n| **Flush** (5 cards same suit, not straight) | $5,108$ | $0.00196540$ | $1$ in $509$ hands |\n| **Straight** (5 consecutive ranks) | $10,200$ | $0.00392460$ | $1$ in $255$ hands |\n| **Three of a Kind** | $54,912$ | $0.02112850$ | $1$ in $47.33$ hands |\n| **Two Pair** | $123,552$ | $0.04753900$ | $1$ in $21$ hands |\n| **One Pair** | $1,098,240$ | $0.42256900$ | $1$ in $2.37$ hands |\n| **High Card (No Pair)** | $1,302,540$ | $0.50117740$ | $1$ in $2$ hands |\n| **TOTAL** | **$2,598,960$** | **$1.00000000$** | — |\n\n---\n\n### 4. Dice Mechanics & Geometric Invariants\n\n- Standard 6-sided dice were originally invented for wagering and first used by the **Chinese**.\n- **Opposite Face Sum Invariant**: The sum of opposite faces on any standard die is strictly **$7$** ($1+6 = 2+5 = 3+4 = 7$).\n- **Vertical Face Sum Invariant**: The sum of all 4 vertical lateral faces of a resting die is always **$14$** ($21 - 7 = 14$).\n- **Snake Eyes**: Rolling two $1$s on a pair of dice: $P(1, 1) = \\frac{1}{36}$.\n- **Two-Dice Sum Distribution**: Peak/mode occurs at sum **$7$** ($P = 6/36 = 1/6$). Symmetrical probabilities: $P(\\text{Sum } k) = P(\\text{Sum } 14 - k)$."
+  },
+  "formulas": [
+    {
+      "id": "f-0603-01",
+      "title": "Mathematical Expectation Formula",
+      "formula": "$$E[X] = \\sum x_i P(x_i)$$",
+      "note": "Fair game condition: E[X] = 0."
+    },
+    {
+      "id": "f-0603-02",
+      "title": "Total 5-Card Poker Hands Combinations",
+      "formula": "$$\\text{Total Hands} = {}_{52} C_5 = 2,598,960$$",
+      "note": "Royal Flush = 4 ways; Full House = 3,744 ways."
+    },
+    {
+      "id": "f-0603-03",
+      "title": "Standard Die Geometric Sum Invariants",
+      "formula": "$$\\text{Opposite Faces Sum} = 7, \\quad \\text{Lateral Faces Sum} = 14$$",
+      "note": "Total pips on a 6-sided die = 1 + 2 + 3 + 4 + 5 + 6 = 21."
+    }
+  ],
+  "visualizer": {
+    "archetype": "parameter_sweep",
+    "title": "Two-Dice Sum Probability Distribution PMF",
+    "description": "Select target sum from 2 to 12 to observe the live outcome combinations and exact probability fractions.",
+    "config": {
+      "canvasWidth": 640,
+      "canvasHeight": 320,
+      "controls": [
+        { "id": "targetSum", "label": "Target Sum (2 to 12)", "min": 2, "max": 12, "step": 1, "defaultValue": 7 }
+      ]
+    }
+  },
+  "terms": [
+    {
+      "term": "Mathematical Expectation",
+      "symbol": "$E[X]$",
+      "unit": "Monetary / Unit",
+      "definition": "The probability-weighted average payout or value of a random variable over infinite repeated trials.",
+      "keywordTrigger": "average amount a player expects to win or lose"
+    },
+    {
+      "term": "Royal Flush",
+      "symbol": "Rank 1",
+      "unit": "Poker Hand",
+      "definition": "The highest poker hand consisting of A-K-Q-J-10 of the same suit, occurring in exactly 4 ways out of 2,598,960.",
+      "keywordTrigger": "A-K-Q-J-10 of same suit / 4 ways in 2,598,960"
+    },
+    {
+      "term": "Full House",
+      "symbol": "Rank 4",
+      "unit": "Poker Hand",
+      "definition": "A 5-card poker hand comprising 3 cards of one rank and 2 cards of another rank (3,744 ways).",
+      "keywordTrigger": "three of a kind and a pair / 3744 ways"
+    },
+    {
+      "term": "Snake Eyes",
+      "symbol": "$(1, 1)$",
+      "unit": "Dice Roll",
+      "definition": "The outcome of rolling two 1s on a pair of standard dice, having probability 1/36.",
+      "keywordTrigger": "both dice face up 1 / probability 1/36"
+    }
+  ],
+  "examples": [
+    {
+      "problemStatement": "In a charity lottery, 1000 tickets are sold at P50 each. There is one first prize of P20,000, two second prizes of P5,000 each, and five third prizes of P1,000 each. Find the mathematical expectation for a person who buys one ticket.",
+      "formalSolutionMarkdown": "#### Step 1: List all prize outcomes and probabilities\n- 1st Prize: Win $\\text{P}20,000$, $P = 1/1000$\n- 2nd Prize: Win $\\text{P}5,000$, $P = 2/1000$\n- 3rd Prize: Win $\\text{P}1,000$, $P = 5/1000$\n- Ticket Cost $= \\text{P}50$\n\n#### Step 2: Calculate expected gross winnings\n$$E[\\text{Gross}] = 20000\\left(\\frac{1}{1000}\\right) + 5000\\left(\\frac{2}{1000}\\right) + 1000\\left(\\frac{5}{1000}\\right) = 20 + 10 + 5 = \\text{P}35$$\n\n#### Step 3: Compute net mathematical expectation\n$$E[\\text{Net}] = E[\\text{Gross}] - \\text{Cost} = 35 - 50 = -\\text{P}15$$\n*(The buyer expects to lose $\\text{P}15$ per ticket)*.",
+      "shortcutSolutionMarkdown": "#### ⚡ 10-Second Expected Value Formula\n$$E = \\frac{20000(1) + 5000(2) + 1000(5)}{1000} - 50 = 35 - 50 = -15$$",
+      "formalTimeSeconds": 60,
+      "shortcutTimeSeconds": 10
+    },
+    {
+      "problemStatement": "What is the probability of being dealt a Full House in a 5-card poker game?",
+      "formalSolutionMarkdown": "#### Step 1: Count full house combinations\n- Choose rank for 3-of-a-kind: ${}_{13} C_1 = 13$.\n- Choose 3 suits: ${}_4 C_3 = 4$.\n- Choose rank for pair from remaining 12: ${}_{12} C_1 = 12$.\n- Choose 2 suits: ${}_4 C_2 = 6$.\n$$\\text{Full House Ways} = 13 \\times 4 \\times 12 \\times 6 = 3,744$$\n\n#### Step 2: Compute probability\n$$P = \\frac{3,744}{{}_{52} C_5} = \\frac{3,744}{2,598,960} \\approx 0.0014406 \\quad (0.144\\% \\text{ or } 1 \\text{ in } 694 \\text{ hands})$$",
+      "shortcutSolutionMarkdown": "#### ⚡ Memorized Hand Frequency\n$$P = \\frac{3744}{2598960} \\approx 0.00144$$",
+      "formalTimeSeconds": 75,
+      "shortcutTimeSeconds": 5
+    }
+  ],
+  "calculatorGuides": {
+    "karce": {
+      "techniqueTitle": "Fast Mathematical Expectation Sum",
+      "problemType": "Evaluating Σ x_i * P(x_i) in STAT Mode",
+      "sampleProblem": "Find E[X] for payouts 20000(0.001) + 10000(0.002) - 50.",
+      "mode": "COMP Mode (MODE 1)",
+      "keystrokes": ["2", "0", "0", "0", "0", "×", "0", ".", "0", "0", "1", "+", "1", "0", "0", "0", "0", "×", "0", ".", "0", "0", "2", "-", "5", "0", "="],
+      "notes": "Directly yields expectation -10 in 1 second."
+    },
+    "canon": {
+      "techniqueTitle": "52C5 Poker Permutations Shortcut",
+      "problemType": "52C5 combination calculation",
+      "sampleProblem": "Evaluate 52C5 on Canon F-789SGA.",
+      "mode": "COMP Mode (MODE 1)",
+      "keystrokes": ["5", "2", "nCr", "5", "="],
+      "notes": "Instantly displays 2,598,960."
+    }
+  },
+  "conceptChecks": [
+    {
+      "id": "chk-0603-01",
+      "question": "What is the sum of the numbers on the four vertical lateral faces of a standard 6-sided die resting on a table?",
+      "options": [
+        "14",
+        "21",
+        "7",
+        "12"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Total sum of all 6 faces is 21. Since the top and bottom opposite faces always sum to 7, the remaining 4 lateral faces sum to 21 - 7 = 14."
+    },
+    {
+      "id": "chk-0603-02",
+      "question": "In a standard deck of cards, which historical leader is depicted as the King of Hearts?",
+      "options": [
+        "Charlemagne",
+        "Alexander the Great",
+        "Julius Caesar",
+        "King David"
+      ],
+      "correctAnswer": 0,
+      "explanation": "King of Hearts represents Charlemagne; Clubs represents Alexander the Great; Diamonds represents Julius Caesar; Spades represents King David."
+    },
+    {
+      "id": "chk-0603-03",
+      "question": "If a game of chance has an expected value of $E[X] = 0$, what is the game termed?",
+      "options": [
+        "A Fair Game",
+        "A Favorable Game",
+        "An Unfavorable Game",
+        "A Zero-Sum Game"
+      ],
+      "correctAnswer": 0,
+      "explanation": "When mathematical expectation is exactly zero, neither the player nor the house has an advantage in the long run, defining a fair game."
+    }
+  ]
+}

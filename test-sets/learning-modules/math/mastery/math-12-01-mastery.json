@@ -248,6 +248,6 @@
       "explanation": "Horizontal change $\\Delta x = -2 - 5 = -7$; vertical change $\\Delta y = 4 - (-3) = 7$. On CASIO/Canon: evaluating `Pol(-7, 7)` directly outputs radius $r = 7\\sqrt{2} \\approx 9.899$ in 4 seconds without manual squaring or radicals.",
       "archetype": "shortcut"
     }
-  ]
+  ],
+  "id": "math-12-01-mastery"
 }
-

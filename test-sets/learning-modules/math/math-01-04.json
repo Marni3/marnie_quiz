@@ -1,0 +1,190 @@
+{
+  "id": "math-01-04",
+  "code": "MATH 01-04",
+  "domain": "MATH",
+  "topicCode": "MATH-01",
+  "topicTitle": "College Algebra",
+  "subtopicTitle": "Progressions, Means, Fibonacci, Lucas & Figurate Numbers",
+  "order": 4,
+  "pairedQuizSetId": "math-01-04-mastery",
+  "toc": [
+    { "id": "sec-prereq-bridges", "title": "1. Introduction & Cross-Subject Connections", "level": 2 },
+    { "id": "sec-theory", "title": "2. Lesson Proper: Progressions & Figurate Geometry", "level": 2 },
+    { "id": "sec-formulas", "title": "3. Compilation of Formulas & Identities", "level": 2 },
+    { "id": "sec-visualizer", "title": "4. Interactive Visualizer: Progression & Figurate Explorer", "level": 2 },
+    { "id": "sec-terminology", "title": "5. Key Terms and Definitions", "level": 2 },
+    { "id": "sec-dual-method", "title": "6. Worked Board Exam Problems", "level": 2 },
+    { "id": "sec-calculator", "title": "7. Calculator Speed Techniques (Karce & Canon)", "level": 2 },
+    { "id": "sec-concept-checks", "title": "8. In-Line Concept Checks", "level": 2 },
+    { "id": "sec-mastery-challenge", "title": "9. Paired Mastery Challenge Exam", "level": 2 }
+  ],
+  "prerequisiteBridge": {
+    "priorModuleId": "math-01-03",
+    "text": "In MATH 01-03, we explored polynomial root systems. Now, we dive into discrete sequences, arithmetic/geometric/harmonic series, infinite convergence, Fibonacci recursion, and classical 2D/3D/4D figurate numbers."
+  },
+  "crossSubjectBridges": [
+    {
+      "targetDomain": "GEAS",
+      "targetTopicCode": "GEAS-06",
+      "badgeText": "Engineering Econ",
+      "description": "Uniform gradient series and geometric gradient cash flows in Engineering Economics directly apply AP and finite GP summation formulas."
+    },
+    {
+      "targetDomain": "EST",
+      "targetTopicCode": "EST-05",
+      "badgeText": "Antenna Arrays",
+      "description": "Log-periodic antenna dipole lengths and geometric spacing follow a geometric progression scaling factor $\\tau = l_{n+1}/l_n$."
+    },
+    {
+      "targetDomain": "ELECS",
+      "targetTopicCode": "ELEC-15",
+      "badgeText": "Digital Circuits",
+      "description": "Binary memory addressing ($2^0, 2^1, 2^2, \\dots$) forms a geometric progression with common ratio $r = 2$."
+    }
+  ],
+  "theory": {
+    "mentalAnchor": "An AP has common difference $d$ ($a_n = a_1 + (n-1)d$); a GP has common ratio $r$ ($a_n = a_1 r^{n-1}$); an HP is the reciprocal of an AP. For infinite GP with $|r| < 1$, $S_\\infty = \\frac{a_1}{1 - r}$. For any two positive numbers, $AM \\ge GM \\ge HM$ and $(GM)^2 = AM \\cdot HM$.",
+    "contentMarkdown": "### 1. Sequences, Series & Progressions\n\nA **sequence** is an ordered list of numbers where preceding and succeeding elements are uniquely determined:\n- **Finite Sequence**: Domain is the first $n$ positive integers (e.g., $1, 3, 5, 7, 9$).\n- **Infinite Sequence**: Domain extends across all positive integers $\\mathbb{Z}^+$ (e.g., $1, 3, 5, 7, 9, \\dots$).\n\nA **series** is the indicated sum of the terms of a sequence ($S_n = \\sum_{k=1}^n a_k$). An **alternating series** alternates in sign. If an infinite series approaches a finite limit, it is **convergent**; otherwise, it is **divergent**.\n\n---\n\n### 2. Three Classical Progressions (AP, GP, HP)\n\n#### A. Arithmetic Progression (AP):\nA sequence where each term after the first differs from the preceding by a constant **common difference** $d = a_2 - a_1 = a_3 - a_2$:\n- **$n$-th Term**: $a_n = a_1 + (n - 1)d$\n- **Sum of $n$ Terms**:\n  $$S_n = \\frac{n}{2}(a_1 + a_n) = \\frac{n}{2}[2a_1 + (n - 1)d]$$\n- **Arithmetic Mean ($AM$)**: $AM = \\frac{a + b}{2}$\n\n#### B. Geometric Progression (GP):\nA sequence where each term after the first is obtained by multiplying the previous term by a constant **common ratio** $r = \\frac{a_2}{a_1} = \\frac{a_3}{a_2}$:\n- **$n$-th Term**: $a_n = a_1 r^{n-1}$\n- **Sum of $n$ Terms**:\n  $$S_n = \\frac{a_1(1 - r^n)}{1 - r} = \\frac{a_1(r^n - 1)}{r - 1} \\quad (r \\neq 1)$$\n- **Infinite Geometric Series ($S_\\infty$)**:\n  $$S_\\infty = \\frac{a_1}{1 - r} \\quad (\\text{converges strictly when } |r| < 1)$$\n  *(If $|r| \\ge 1$, the infinite series diverges to $\\pm \\infty$)*.\n- **Geometric Mean ($GM$)**: $GM = \\sqrt{ab}$\n\n#### C. Harmonic Progression (HP):\nA sequence whose terms are the **reciprocals of an arithmetic progression** ($1/a_1, 1/a_2, 1/a_3, \\dots$ forms an AP):\n- **Solving Strategy**: Convert all HP terms to their AP reciprocals $\\to$ Solve in AP using $a_n = a_1 + (n-1)d$ $\\to$ Invert the final answer to get the HP term.\n- **Harmonic Mean ($HM$)**: $HM = \\frac{2ab}{a + b}$\n\n#### Fundamental Invariant of Means:\n$$AM \\ge GM \\ge HM \\quad \\text{and} \\quad (GM)^2 = AM \\cdot HM$$\n\n---\n\n### 3. Fibonacci & Lucas Sequences\n\n1. **Fibonacci Sequence**: Discovered by Italian merchant **Leonardo of Pisa (Fibonacci)** (*Figlio dei Bonacci*, \"Son of Bonacci\") in 1202:\n   $$1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, \\dots$$\n   - **Recurrence**: $F_n = F_{n-1} + F_{n-2}$ with $F_1 = 1, F_2 = 1$.\n   - **Golden Ratio ($\\phi$)**: $\\lim_{n \\to \\infty} \\frac{F_{n+1}}{F_n} = \\phi = \\frac{1 + \\sqrt{5}}{2} \\approx 1.6180339887\\dots$\n\n2. **Lucas Sequence**: Named after French mathematician **Édouard Lucas (1841–1891)**:\n   $$1, 3, 4, 7, 11, 18, 29, 47, 76, 123, \\dots$$\n   - **Recurrence**: $L_n = L_{n-1} + L_{n-2}$ with initial values $L_1 = 1, L_2 = 3$.\n\n---\n\n### 4. Complete Taxonomy of Figurate Numbers\n\nFigurate numbers are numbers that can be represented as regular geometric patterns of discrete dots:\n\n```diagram\n{\n  \"caption\": \"Figure 1: Triangular, Square, and Oblong Figurate Numbers\",\n  \"xRange\": [-5, 5],\n  \"yRange\": [-3, 3],\n  \"elements\": [\n    { \"type\": \"point\", \"at\": [-3.5, 1.5], \"label\": \"T1=1\", \"color\": \"#38bdf8\" },\n    { \"type\": \"point\", \"at\": [-3.7, 0.5], \"color\": \"#38bdf8\" },\n    { \"type\": \"point\", \"at\": [-3.3, 0.5], \"color\": \"#38bdf8\" },\n    { \"type\": \"point\", \"at\": [-3.5, 0.8], \"label\": \"T2=3\", \"color\": \"#38bdf8\" },\n    { \"type\": \"point\", \"at\": [0, 1.5], \"color\": \"#fbbf24\" },\n    { \"type\": \"point\", \"at\": [0.5, 1.5], \"color\": \"#fbbf24\" },\n    { \"type\": \"point\", \"at\": [0, 1.0], \"color\": \"#fbbf24\" },\n    { \"type\": \"point\", \"at\": [0.5, 1.0], \"label\": \"S2=4\", \"color\": \"#fbbf24\" },\n    { \"type\": \"point\", \"at\": [3, 1.5], \"color\": \"#34d399\" },\n    { \"type\": \"point\", \"at\": [3.5, 1.5], \"color\": \"#34d399\" },\n    { \"type\": \"point\", \"at\": [4, 1.5], \"color\": \"#34d399\" },\n    { \"type\": \"point\", \"at\": [3, 1.0], \"color\": \"#34d399\" },\n    { \"type\": \"point\", \"at\": [3.5, 1.0], \"color\": \"#34d399\" },\n    { \"type\": \"point\", \"at\": [4, 1.0], \"label\": \"O2=6\", \"color\": \"#34d399\" },\n    { \"type\": \"text\", \"at\": [-3.5, -1], \"text\": \"Triangular: n(n+1)/2\", \"color\": \"#38bdf8\" },\n    { \"type\": \"text\", \"at\": [0.2, -1], \"text\": \"Square: n²\", \"color\": \"#fbbf24\" },\n    { \"type\": \"text\", \"at\": [3.5, -1], \"text\": \"Oblong: n(n+1)\", \"color\": \"#34d399\" }\n  ]\n}\n```\n\n| Figurate Number Type | Sequence Values | General Closed Formula |\n| :--- | :--- | :--- |\n| **Triangular Numbers** | $1, 3, 6, 10, 15, 21, \\dots$ | $T_n = \\frac{n(n + 1)}{2}$ |\n| **Square Numbers** | $1, 4, 9, 16, 25, 36, \\dots$ | $S_n = n^2$ |\n| **Gnomons** (Right-angle legs) | $1, 3, 5, 7, 9, 11, \\dots$ | $g_n = 2n - 1$ |\n| **Oblong / Pronic Numbers** ($n \\times (n+1)$) | $2, 6, 12, 20, 30, 42, \\dots$ | $O_n = n(n + 1)$ |\n| **Pentagonal Numbers** | $1, 5, 12, 22, 35, 51, \\dots$ | $P_n = \\frac{n(3n - 1)}{2}$ |\n| **Cubic Numbers** | $1, 8, 27, 64, 125, \\dots$ | $C_n = n^3$ |\n| **Tetrahedral Numbers** (Triangular Pyramids) | $1, 4, 10, 20, 35, 56, \\dots$ | $Te_n = \\frac{n(n + 1)(n + 2)}{6}$ |\n| **Square Pyramidal Numbers** | $1, 5, 14, 30, 55, 91, \\dots$ | $SP_n = \\frac{n(n + 1)(2n + 1)}{6}$ |\n| **4D Pentatope Numbers** (Piling Tetrahedrals) | $1, 5, 15, 35, 70, 126, \\dots$ | $4D_n = \\frac{n(n + 1)(n + 2)(n + 3)}{24} = {}_{n+3}C_4$ |"
+  },
+  "formulas": [
+    {
+      "id": "f-0104-01",
+      "title": "Sum of Infinite Geometric Progression",
+      "formula": "$$S_\\infty = \\frac{a_1}{1 - r} \\quad (|r| < 1)$$",
+      "note": "Converges only when |r| < 1. If |r| ≥ 1, series diverges."
+    },
+    {
+      "id": "f-0104-02",
+      "title": "Arithmetic, Geometric & Harmonic Means",
+      "formula": "$$AM = \\frac{a + b}{2}, \\quad GM = \\sqrt{ab}, \\quad HM = \\frac{2ab}{a + b} = \\frac{(GM)^2}{AM}$$",
+      "note": "Always satisfies the inequality: AM ≥ GM ≥ HM."
+    },
+    {
+      "id": "f-0104-03",
+      "title": "3D & 4D Figurate Number Formulas",
+      "formula": "$$Te_n = \\frac{n(n + 1)(n + 2)}{6}, \\quad SP_n = \\frac{n(n + 1)(2n + 1)}{6}, \\quad 4D_n = \\frac{n(n + 1)(n + 2)(n + 3)}{24}$$",
+      "note": "Te = Tetrahedral; SP = Square Pyramidal; 4D = Pentatope."
+    }
+  ],
+  "visualizer": {
+    "archetype": "parameter_sweep",
+    "title": "Progression & Figurate Number Explorer",
+    "description": "Select term index n to compute live terms for AP, GP, Fibonacci, Triangular, and Tetrahedral series.",
+    "config": {
+      "canvasWidth": 640,
+      "canvasHeight": 320,
+      "controls": [
+        { "id": "n", "label": "Term Index (n)", "min": 1, "max": 12, "step": 1, "defaultValue": 5 }
+      ]
+    }
+  },
+  "terms": [
+    {
+      "term": "Harmonic Progression",
+      "symbol": "$\\text{HP}$",
+      "unit": "Sequence",
+      "definition": "A sequence of numbers whose reciprocals form an arithmetic progression (e.g., 1/2, 1/4, 1/6, 1/8).",
+      "keywordTrigger": "reciprocals form an arithmetic progression"
+    },
+    {
+      "term": "Fibonacci Number",
+      "symbol": "$F_n$",
+      "unit": "Integer",
+      "definition": "A sequence where each term is the sum of the two preceding terms: 1, 1, 2, 3, 5, 8, 13, 21, 34...",
+      "keywordTrigger": "sum of two preceding terms / Leonardo of Pisa"
+    },
+    {
+      "term": "Oblong Number",
+      "symbol": "$O_n$",
+      "unit": "Figurate",
+      "definition": "A figurate pronic number of the form n(n + 1) that can be arranged as a rectangle of dots (2, 6, 12, 20, 30).",
+      "keywordTrigger": "n(n + 1) / dots in rectangle shape"
+    },
+    {
+      "term": "Tetrahedral Number",
+      "symbol": "$Te_n$",
+      "unit": "Figurate",
+      "definition": "A 3D figurate number representing a pyramid with a triangular base: Te_n = n(n + 1)(n + 2) / 6.",
+      "keywordTrigger": "triangular pyramid of dots / n(n+1)(n+2)/6"
+    },
+    {
+      "term": "Gnomon",
+      "symbol": "$g_n$",
+      "unit": "Figurate",
+      "definition": "Figurate numbers drawn as dots on equally long legs of a right angle, identical to the sequence of odd numbers (2n - 1).",
+      "keywordTrigger": "dots on legs of right angle / 2n - 1"
+    }
+  ],
+  "examples": [
+    {
+      "problemStatement": "Find the sum of the infinite geometric series: 18 - 6 + 2 - 2/3 + ...",
+      "formalSolutionMarkdown": "#### Step 1: Identify first term and common ratio\n- First term $a_1 = 18$.\n- Common ratio $r = \\frac{-6}{18} = -\\frac{1}{3}$.\n- Since $|r| = |-1/3| = 1/3 < 1$, the series converges.\n\n#### Step 2: Apply the infinite sum formula\n$$S_\\infty = \\frac{a_1}{1 - r} = \\frac{18}{1 - (-1/3)} = \\frac{18}{4/3} = \\frac{18 \\times 3}{4} = \\frac{54}{4} = 13.5 = \\frac{27}{2}$$",
+      "shortcutSolutionMarkdown": "#### ⚡ 5-Second Infinite GP Shortcut\n$$S_\\infty = \\frac{18}{1 + 1/3} = \\frac{18}{4/3} = 13.5$$",
+      "formalTimeSeconds": 45,
+      "shortcutTimeSeconds": 5
+    },
+    {
+      "problemStatement": "Find the Arithmetic Mean, Geometric Mean, and Harmonic Mean between 4 and 16.",
+      "formalSolutionMarkdown": "#### Step 1: Compute Arithmetic Mean\n$$AM = \\frac{4 + 16}{2} = \\frac{20}{2} = 10$$\n\n#### Step 2: Compute Geometric Mean\n$$GM = \\sqrt{4 \\times 16} = \\sqrt{64} = 8$$\n\n#### Step 3: Compute Harmonic Mean\n$$HM = \\frac{2(4)(16)}{4 + 16} = \\frac{128}{20} = 6.4$$\n\n#### Verification:\n$$(GM)^2 = 8^2 = 64 = 10 \\times 6.4 = AM \\times HM \\quad \\checkmark$$",
+      "shortcutSolutionMarkdown": "#### ⚡ Invariant Check\n$AM = 10, GM = 8 \\implies HM = \\frac{GM^2}{AM} = \\frac{64}{10} = 6.4$.",
+      "formalTimeSeconds": 60,
+      "shortcutTimeSeconds": 5
+    }
+  ],
+  "calculatorGuides": {
+    "karce": {
+      "techniqueTitle": "Direct Finite Series Summation (Σ)",
+      "problemType": "Evaluating sum of AP/GP terms",
+      "sampleProblem": "Find sum of 10 terms of AP: a1 = 3, d = 4.",
+      "mode": "COMP Mode (MODE 1)",
+      "keystrokes": ["SHIFT", "Σ", "3", "+", "4", "(", "ALPHA", "X", "-", "1", ")", ",", "1", ",", "1", "0", ")", "="],
+      "notes": "Directly computes sum = 210 in 2 seconds."
+    },
+    "canon": {
+      "techniqueTitle": "Infinite GP Summation Shortcut",
+      "problemType": "Summing convergent series",
+      "sampleProblem": "Find sum of 18 + 6 + 2 + ... on Canon F-789SGA.",
+      "mode": "COMP Mode (MODE 1)",
+      "keystrokes": ["1", "8", "÷", "(", "1", "-", "1", "/", "3", ")", "="],
+      "notes": "Directly yields 27 in 1 step."
+    }
+  },
+  "conceptChecks": [
+    {
+      "id": "chk-0104-01",
+      "question": "What is the 5th tetrahedral figurate number?",
+      "options": [
+        "35",
+        "20",
+        "55",
+        "15"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Using Te_n = n(n+1)(n+2)/6 for n = 5: Te_5 = 5(6)(7)/6 = 35."
+    },
+    {
+      "id": "chk-0104-02",
+      "question": "If the Arithmetic Mean between two positive numbers is 25 and their Harmonic Mean is 9, what is their Geometric Mean?",
+      "options": [
+        "15",
+        "17",
+        "225",
+        "12"
+      ],
+      "correctAnswer": 0,
+      "explanation": "By the fundamental relation (GM)² = AM × HM = 25 × 9 = 225 ⇒ GM = √225 = 15."
+    },
+    {
+      "id": "chk-0104-03",
+      "question": "What is the name of the sequence 1, 3, 4, 7, 11, 18, 29... where each term is the sum of the two preceding terms, starting with 1 and 3?",
+      "options": [
+        "Lucas Sequence",
+        "Fibonacci Sequence",
+        "Harmonic Sequence",
+        "Euler Sequence"
+      ],
+      "correctAnswer": 0,
+      "explanation": "The Lucas sequence begins with 1 and 3 and follows the additive recurrence Ln = Ln-1 + Ln-2, named after Édouard Lucas."
+    }
+  ]
+}
