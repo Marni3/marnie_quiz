@@ -190,15 +190,20 @@ function getModulesDirectory(): string {
   return path.join(process.cwd(), "..", "test-sets", "learning-modules");
 }
 
-function scanJsonFilesRecursively(dir: string): string[] {
+function scanJsonFilesRecursively(dir: string, includeMastery: boolean = false): string[] {
   if (!fs.existsSync(dir)) return [];
   const entries = fs.readdirSync(dir, { withFileTypes: true });
   let files: string[] = [];
 
   for (const entry of entries) {
+    if (entry.name.startsWith(".")) continue;
+    if (!includeMastery && (entry.name === "mastery" || entry.name.endsWith("-mastery.json"))) {
+      continue;
+    }
+
     const fullPath = path.join(dir, entry.name);
     if (entry.isDirectory()) {
-      files = files.concat(scanJsonFilesRecursively(fullPath));
+      files = files.concat(scanJsonFilesRecursively(fullPath, includeMastery));
     } else if (entry.isFile() && entry.name.endsWith(".json")) {
       files.push(fullPath);
     }
@@ -210,21 +215,25 @@ function scanJsonFilesRecursively(dir: string): string[] {
 export async function getAllLearningModules(): Promise<LearningModuleSummary[]> {
   try {
     const rootDir = getModulesDirectory();
-    const jsonPaths = scanJsonFilesRecursively(rootDir);
+    const jsonPaths = scanJsonFilesRecursively(rootDir, false);
     const summaries: LearningModuleSummary[] = [];
 
     for (const filePath of jsonPaths) {
       try {
         const raw = fs.readFileSync(filePath, "utf8");
         const data = JSON.parse(raw) as LearningModule;
+        if (!data || !data.id || !data.domain || !data.topicCode || !data.code) {
+          continue;
+        }
+
         summaries.push({
           id: data.id,
           code: data.code,
           domain: data.domain,
           topicCode: data.topicCode,
-          topicTitle: data.topicTitle,
-          subtopicTitle: data.subtopicTitle,
-          order: data.order,
+          topicTitle: data.topicTitle || "",
+          subtopicTitle: data.subtopicTitle || "",
+          order: typeof data.order === "number" ? data.order : 1,
           pairedQuizSetId: data.pairedQuizSetId || "",
           termsCount: data.terms?.length || 0,
           examplesCount: data.examples?.length || 0,
@@ -237,9 +246,9 @@ export async function getAllLearningModules(): Promise<LearningModuleSummary[]> 
     }
 
     return summaries.sort((a, b) => {
-      if (a.domain !== b.domain) return a.domain.localeCompare(b.domain);
-      if (a.topicCode !== b.topicCode) return a.topicCode.localeCompare(b.topicCode);
-      return a.order - b.order;
+      if (a.domain !== b.domain) return (a.domain || "").localeCompare(b.domain || "");
+      if (a.topicCode !== b.topicCode) return (a.topicCode || "").localeCompare(b.topicCode || "");
+      return (a.order || 0) - (b.order || 0);
     });
   } catch (err) {
     console.error("Error reading learning modules directory:", err);
