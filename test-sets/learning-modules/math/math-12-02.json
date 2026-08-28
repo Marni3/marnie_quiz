@@ -107,7 +107,7 @@
     }
   ],
   "visualizer": {
-    "archetype": "geometric",
+    "archetype": "polygon_shoelace",
     "title": "Interactive Polygon Area & Triangle Centroid Sandbox",
     "description": "Adjust vertex coordinate offsets to observe the live Shoelace cross-multiplication matrix, area calculation, and the balancing centroid position.",
     "config": {
@@ -115,20 +115,52 @@
       "canvasHeight": 320,
       "controls": [
         {
-          "id": "semiMajor",
-          "label": "Vertex Scale Factor",
-          "min": 50,
-          "max": 120,
+          "id": "x1",
+          "label": "Vertex A (x)",
+          "min": -80,
+          "max": 80,
           "step": 10,
-          "defaultValue": 80
+          "defaultValue": 20
         },
         {
-          "id": "eccentricity",
-          "label": "Skew Parameter",
-          "min": 0,
-          "max": 1.5,
-          "step": 0.25,
-          "defaultValue": 0.5
+          "id": "y1",
+          "label": "Vertex A (y)",
+          "min": -60,
+          "max": 60,
+          "step": 10,
+          "defaultValue": 50
+        },
+        {
+          "id": "x2",
+          "label": "Vertex B (x)",
+          "min": -80,
+          "max": 80,
+          "step": 10,
+          "defaultValue": 70
+        },
+        {
+          "id": "y2",
+          "label": "Vertex B (y)",
+          "min": -60,
+          "max": 60,
+          "step": 10,
+          "defaultValue": -30
+        },
+        {
+          "id": "x3",
+          "label": "Vertex C (x)",
+          "min": -80,
+          "max": 80,
+          "step": 10,
+          "defaultValue": -60
+        },
+        {
+          "id": "y3",
+          "label": "Vertex C (y)",
+          "min": -60,
+          "max": 60,
+          "step": 10,
+          "defaultValue": -40
         }
       ]
     }
@@ -165,65 +197,65 @@
       "techniqueTitle": "STAT Mode Coordinate Mean for Centroids",
       "problemType": "Centroid of multi-point vertices",
       "sampleProblem": "Find the centroid of (1, 4), (5, -2), (9, 7).",
-      "mode": "STAT Mode (<kbd>MODE</kbd> <kbd>2</kbd>)",
+      "mode": "STAT Mode (MODE 2)",
       "keystrokes": [
-        "<kbd>MODE</kbd>",
-        "<kbd>2</kbd>",
-        "<kbd>1</kbd>",
-        "<kbd>1</kbd>",
-        "<kbd>M+</kbd>",
-        "<kbd>5</kbd>",
-        "<kbd>M+</kbd>",
-        "<kbd>9</kbd>",
-        "<kbd>M+</kbd>",
-        "<kbd>SHIFT</kbd>",
-        "<kbd>S-VAR</kbd>",
-        "<kbd>x̄</kbd>",
-        "<kbd>=</kbd>"
+        "MODE",
+        "2",
+        "1",
+        "1",
+        "M+",
+        "5",
+        "M+",
+        "9",
+        "M+",
+        "SHIFT",
+        "S-VAR",
+        "x̄",
+        "="
       ],
-      "notes": "Directly evaluates the mean $\\bar{x} = 5$. Repeat for $y$ coordinates to obtain $\\bar{y} = 3$ without manual sum fractions."
+      "notes": "Directly evaluates the mean x̄ = 5. Repeat for y coordinates to obtain ȳ = 3 without manual sum fractions."
     },
     "canon": {
       "techniqueTitle": "Canon 3x3 Matrix Determinant for Triangle Area",
       "problemType": "Triangle area from 3 vertices (x1, y1), (x2, y2), (x3, y3)",
       "sampleProblem": "Find the area of triangle with vertices (1, 2), (3, 8), (5, 4).",
-      "mode": "MATRIX Mode (<kbd>MODE</kbd> <kbd>6</kbd>)",
+      "mode": "MATRIX Mode (MODE 6)",
       "keystrokes": [
-        "<kbd>MODE</kbd>",
-        "<kbd>6</kbd>",
-        "<kbd>1</kbd>",
-        "<kbd>1</kbd>",
-        "<kbd>1</kbd>",
-        "<kbd>=</kbd>",
-        "<kbd>2</kbd>",
-        "<kbd>=</kbd>",
-        "<kbd>1</kbd>",
-        "<kbd>=</kbd>",
-        "<kbd>3</kbd>",
-        "<kbd>=</kbd>",
-        "<kbd>8</kbd>",
-        "<kbd>=</kbd>",
-        "<kbd>1</kbd>",
-        "<kbd>=</kbd>",
-        "<kbd>5</kbd>",
-        "<kbd>=</kbd>",
-        "<kbd>4</kbd>",
-        "<kbd>=</kbd>",
-        "<kbd>1</kbd>",
-        "<kbd>=</kbd>",
-        "<kbd>AC</kbd>",
-        "<kbd>SHIFT</kbd>",
-        "<kbd>4</kbd>",
-        "<kbd>7</kbd>",
-        "<kbd>SHIFT</kbd>",
-        "<kbd>4</kbd>",
-        "<kbd>3</kbd>",
-        "<kbd>)</kbd>",
-        "<kbd>÷</kbd>",
-        "<kbd>2</kbd>",
-        "<kbd>=</kbd>"
+        "MODE",
+        "6",
+        "1",
+        "1",
+        "1",
+        "=",
+        "2",
+        "=",
+        "1",
+        "=",
+        "3",
+        "=",
+        "8",
+        "=",
+        "1",
+        "=",
+        "5",
+        "=",
+        "4",
+        "=",
+        "1",
+        "=",
+        "AC",
+        "SHIFT",
+        "4",
+        "7",
+        "SHIFT",
+        "4",
+        "3",
+        ")",
+        "÷",
+        "2",
+        "="
       ],
-      "notes": "Evaluates $\\frac{1}{2}\\det(A) = 10\\text{ sq units}$ with zero paper calculations."
+      "notes": "Evaluates 1/2 det(A) = 10 sq units with zero paper calculations."
     }
   },
   "conceptChecks": [
@@ -238,7 +270,7 @@
       },
       "correctAnswer": "A",
       "distractorDeconstruction": {
-        "A": "Correct: $x_m = (-4 + 6)/2 = 1$, $y_m = (7 - 3)/2 = 2$. Point is $(1, 2)$.",
+        "A": "$x_m = (-4 + 6)/2 = 1$, $y_m = (7 - 3)/2 = 2$. Point is $(1, 2)$.",
         "B": "Forgot to divide by 2.",
         "C": "Arithmetic sign error on $x$ coordinate.",
         "D": "Arithmetic error on $y$ coordinate."

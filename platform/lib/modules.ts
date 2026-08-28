@@ -14,6 +14,10 @@ export interface VisualizerControl {
 export interface DeclarativeVisualizerConfig {
   archetype:
     | "factor_tree"
+    | "cartesian_line"
+    | "line_explorer"
+    | "polygon_shoelace"
+    | "triangle_centroid"
     | "parameter_sweep"
     | "geometric"
     | "conic_explorer"

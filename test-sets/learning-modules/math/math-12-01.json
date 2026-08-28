@@ -114,7 +114,7 @@
     }
   ],
   "visualizer": {
-    "archetype": "geometric",
+    "archetype": "cartesian_line",
     "title": "Interactive Line Slope, Angle & Point-to-Line Distance Explorer",
     "description": "Adjust the slope parameter and point coordinates to observe the live line equation, angle of inclination, and perpendicular distance normal.",
     "config": {
@@ -122,20 +122,36 @@
       "canvasHeight": 320,
       "controls": [
         {
-          "id": "eccentricity",
+          "id": "slope",
           "label": "Slope Gradient (m)",
-          "min": 0,
-          "max": 2,
-          "step": 0.2,
-          "defaultValue": 0.8
+          "min": -2.5,
+          "max": 2.5,
+          "step": 0.25,
+          "defaultValue": 0.75
         },
         {
-          "id": "semiMajor",
-          "label": "Line Offset / Intercept",
-          "min": 40,
-          "max": 140,
+          "id": "yIntercept",
+          "label": "y-Intercept (b)",
+          "min": -40,
+          "max": 40,
+          "step": 5,
+          "defaultValue": 20
+        },
+        {
+          "id": "pointX",
+          "label": "Point P(x)",
+          "min": -80,
+          "max": 80,
           "step": 10,
-          "defaultValue": 90
+          "defaultValue": 60
+        },
+        {
+          "id": "pointY",
+          "label": "Point P(y)",
+          "min": -60,
+          "max": 60,
+          "step": 10,
+          "defaultValue": -50
         }
       ]
     }
@@ -172,48 +188,48 @@
       "techniqueTitle": "Direct Vector Distance & Angle Evaluation",
       "problemType": "Points, Distance and Angle between Slopes",
       "sampleProblem": "Find the distance between P1(3, -2) and P2(-1, 5).",
-      "mode": "COMP Mode (<kbd>MODE</kbd> <kbd>1</kbd>)",
+      "mode": "COMP Mode (MODE 1)",
       "keystrokes": [
-        "<kbd>√</kbd>",
-        "<kbd>(</kbd>",
-        "<kbd>(</kbd>",
-        "<kbd>-</kbd>",
-        "<kbd>1</kbd>",
-        "<kbd>-</kbd>",
-        "<kbd>3</kbd>",
-        "<kbd>)</kbd>",
-        "<kbd>x²</kbd>",
-        "<kbd>+</kbd>",
-        "<kbd>(</kbd>",
-        "<kbd>5</kbd>",
-        "<kbd>-</kbd>",
-        "<kbd>(</kbd>",
-        "<kbd>-</kbd>",
-        "<kbd>2</kbd>",
-        "<kbd>)</kbd>",
-        "<kbd>)</kbd>",
-        "<kbd>x²</kbd>",
-        "<kbd>)</kbd>",
-        "<kbd>=</kbd>"
+        "√",
+        "(",
+        "(",
+        "-",
+        "1",
+        "-",
+        "3",
+        ")",
+        "x²",
+        "+",
+        "(",
+        "5",
+        "-",
+        "(",
+        "-",
+        "2",
+        ")",
+        ")",
+        "x²",
+        ")",
+        "="
       ],
-      "notes": "Or use the built-in Polar conversion function: <kbd>Pol(</kbd> Δx, Δy <kbd>)</kbd> $\\to$ directly outputs distance $r$ and angle $\\theta$ in 1 step!"
+      "notes": "Or use the built-in Polar conversion function: Pol(Δx, Δy) which directly outputs distance r and angle θ in 1 step."
     },
     "canon": {
       "techniqueTitle": "High-Speed Pol(Δx, Δy) Distance Shortcut",
       "problemType": "Distance between (x1, y1) and (x2, y2)",
       "sampleProblem": "Find the distance between (3, -2) and (-1, 5).",
-      "mode": "COMP Mode (<kbd>MODE</kbd> <kbd>1</kbd>)",
+      "mode": "COMP Mode (MODE 1)",
       "keystrokes": [
-        "<kbd>SHIFT</kbd>",
-        "<kbd>Pol</kbd>",
-        "<kbd>-</kbd>",
-        "<kbd>4</kbd>",
-        "<kbd>,</kbd>",
-        "<kbd>7</kbd>",
-        "<kbd>)</kbd>",
-        "<kbd>=</kbd>"
+        "SHIFT",
+        "Pol",
+        "-",
+        "4",
+        ",",
+        "7",
+        ")",
+        "="
       ],
-      "notes": "The display directly yields $r = 8.06225... = \\sqrt{65}$, instantly solving Euclidean coordinate distance without typing parentheses and square roots."
+      "notes": "The display directly yields r = 8.06225... = √65, instantly solving Euclidean coordinate distance without typing parentheses and square roots."
     }
   },
   "conceptChecks": [
@@ -229,7 +245,7 @@
       "correctAnswer": "B",
       "distractorDeconstruction": {
         "A": "Forgot the negative sign in the slope formula $m = -A/B$.",
-        "B": "Correct: In $Ax + By + C = 0$, slope $m = -A/B = -4/6 = -2/3$.",
+        "B": "In $Ax + By + C = 0$, slope $m = -A/B = -4/6 = -2/3$.",
         "C": "Inverted the fraction to $B/A$ and dropped the negative sign.",
         "D": "Inverted the fraction to $-B/A$."
       },
@@ -247,7 +263,7 @@
       "correctAnswer": "B",
       "distractorDeconstruction": {
         "A": "This line is parallel ($m = 3/5$), not perpendicular.",
-        "B": "Correct: Given $m_1 = 3/5$, perpendicular slope is $m_2 = -5/3$, matching $5x + 3y + C = 0$.",
+        "B": "Given $m_1 = 3/5$, perpendicular slope is $m_2 = -5/3$, matching $5x + 3y + C = 0$.",
         "C": "Slope is $+5/3$, failing the negative sign requirement.",
         "D": "Slope is $-3/5$."
       },

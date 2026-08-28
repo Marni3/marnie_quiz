@@ -163,8 +163,212 @@ export function DeclarativeVisualizer({
         );
       }
 
-      case "conic_explorer":
-      case "geometric": {
+      case "cartesian_line":
+      case "line_explorer": {
+        const m = controls.slope ?? controls.m ?? 0.75;
+        const b = controls.yIntercept ?? controls.b ?? 20;
+        const px = controls.pointX ?? controls.px ?? 60;
+        const py = controls.pointY ?? controls.py ?? -50;
+
+        const cx = width / 2;
+        const cy = height / 2;
+        const scale = 1.6;
+
+        // Line equation: y = m*x + b => m*x - y + b = 0 => A=m, B=-1, C=b
+        // Point-to-line projection coordinates (foot of perpendicular)
+        // x_proj = (x0 + m*(y0 - b)) / (1 + m^2)
+        // y_proj = (m*x0 + m^2*y0 + b) / (1 + m^2)
+        const A = m;
+        const B = -1;
+        const C = b;
+        const dist = Math.abs(A * px + B * py + C) / Math.sqrt(A * A + B * B);
+        const thetaDeg = (Math.atan(m) * 180) / Math.PI;
+
+        const footX = (px + m * (py - b)) / (1 + m * m);
+        const footY = m * footX + b;
+
+        // SVG canvas screen coordinates: X_screen = cx + x*scale, Y_screen = cy - y*scale
+        const toSvgX = (x: number) => cx + x * scale;
+        const toSvgY = (y: number) => cy - y * scale;
+
+        // Line endpoints extending across viewport
+        const xMin = -160;
+        const xMax = 160;
+        const yAtMin = m * xMin + b;
+        const yAtMax = m * xMax + b;
+
+        return (
+          <svg viewBox={`0 0 ${width} ${height}`} className="w-full h-full">
+            <defs>
+              <pattern id="cartesianGrid" width="20" height="20" patternUnits="userSpaceOnUse">
+                <path d="M 20 0 L 0 0 0 20" fill="none" stroke="currentColor" strokeOpacity="0.06" strokeWidth="1" />
+              </pattern>
+            </defs>
+
+            {/* Grid Background */}
+            <rect width={width} height={height} fill="url(#cartesianGrid)" />
+
+            {/* Coordinate Axes */}
+            <line x1="20" y1={cy} x2={width - 20} y2={cy} stroke="currentColor" strokeOpacity="0.3" strokeWidth="1.5" />
+            <line x1={cx} y1="20" x2={cx} y2={height - 50} stroke="currentColor" strokeOpacity="0.3" strokeWidth="1.5" />
+            <text x={width - 15} y={cy - 6} fill="currentColor" opacity="0.6" fontSize="11" fontWeight="bold" fontFamily="monospace">
+              +X
+            </text>
+            <text x={cx + 8} y="25" fill="currentColor" opacity="0.6" fontSize="11" fontWeight="bold" fontFamily="monospace">
+              +Y
+            </text>
+
+            {/* Inclination Angle Arc */}
+            <g opacity="0.7">
+              <path
+                d={`M ${toSvgX(-b / m) + 25} ${cy} A 25 25 0 0 0 ${toSvgX(-b / m) + 25 * Math.cos(Math.atan(m))} ${
+                  cy - 25 * Math.sin(Math.atan(m))
+                }`}
+                fill="none"
+                stroke="#38bdf8"
+                strokeWidth="2"
+              />
+              <text
+                x={toSvgX(-b / m) + 32}
+                y={cy - 8}
+                fill="#38bdf8"
+                fontSize="10"
+                fontWeight="bold"
+                fontFamily="monospace"
+              >
+                θ={thetaDeg.toFixed(1)}°
+              </text>
+            </g>
+
+            {/* Main Linear Function Line */}
+            <line
+              x1={toSvgX(xMin)}
+              y1={toSvgY(yAtMin)}
+              x2={toSvgX(xMax)}
+              y2={toSvgY(yAtMax)}
+              stroke="#d97757"
+              strokeWidth="2.5"
+              strokeLinecap="round"
+            />
+
+            {/* Perpendicular Normal Segment from P to Line */}
+            <line
+              x1={toSvgX(px)}
+              y1={toSvgY(py)}
+              x2={toSvgX(footX)}
+              y2={toSvgY(footY)}
+              stroke="#f43f5e"
+              strokeWidth="1.5"
+              strokeDasharray="4,3"
+            />
+
+            {/* Right Angle Indicator at Foot */}
+            <circle cx={toSvgX(footX)} cy={toSvgY(footY)} r="3" fill="#f43f5e" />
+
+            {/* Target Point P(px, py) */}
+            <circle cx={toSvgX(px)} cy={toSvgY(py)} r="6" fill="#fbbf24" stroke="#ffffff" strokeWidth="2" className="drop-shadow-md" />
+            <text
+              x={toSvgX(px) + 8}
+              y={toSvgY(py) - 8}
+              fill="#fbbf24"
+              fontSize="11"
+              fontWeight="bold"
+              fontFamily="monospace"
+            >
+              P({Math.round(px)}, {Math.round(py)})
+            </text>
+
+            {/* Intercept Mark */}
+            <circle cx={cx} cy={toSvgY(b)} r="4" fill="#34d399" />
+            <text x={cx + 8} y={toSvgY(b) + 4} fill="#34d399" fontSize="10" fontWeight="bold" fontFamily="monospace">
+              (0, {Math.round(b)})
+            </text>
+
+            {/* Bottom Live Calculation HUD */}
+            <g transform={`translate(${width / 2}, ${height - 25})`}>
+              <rect
+                x="-260"
+                y="-18"
+                width="520"
+                height="36"
+                rx="10"
+                fill="currentColor"
+                className="fill-card stroke-border stroke"
+              />
+              <text x="0" y="5" textAnchor="middle" fill="currentColor" className="text-[11px] font-medium">
+                Line: <tspan className="font-mono font-bold fill-primary">y = {m.toFixed(2)}x {b >= 0 ? `+ ${b}` : `- ${Math.abs(b)}`}</tspan> • Slope: <tspan className="font-mono font-bold fill-cyan-400">m = {m.toFixed(2)}</tspan> • Distance to P: <tspan className="font-mono font-bold fill-rose-400">d = {dist.toFixed(2)} u</tspan>
+              </text>
+            </g>
+          </svg>
+        );
+      }
+
+      case "polygon_shoelace":
+      case "triangle_centroid": {
+        const x1 = controls.x1 ?? 20;
+        const y1 = controls.y1 ?? 70;
+        const x2 = controls.x2 ?? 100;
+        const y2 = controls.y2 ?? -30;
+        const x3 = controls.x3 ?? -80;
+        const y3 = controls.y3 ?? -50;
+
+        const cx = width / 2;
+        const cy = height / 2 - 10;
+        const scale = 1.3;
+
+        const toSvgX = (x: number) => cx + x * scale;
+        const toSvgY = (y: number) => cy - y * scale;
+
+        // Centroid G
+        const gx = (x1 + x2 + x3) / 3;
+        const gy = (y1 + y2 + y3) / 3;
+
+        // Shoelace Area
+        const area = 0.5 * Math.abs(x1 * (y2 - y3) + x2 * (y3 - y1) + x3 * (y1 - y2));
+
+        return (
+          <svg viewBox={`0 0 ${width} ${height}`} className="w-full h-full">
+            {/* Grid */}
+            <line x1="30" y1={cy} x2={width - 30} y2={cy} stroke="currentColor" strokeOpacity="0.2" strokeWidth="1.5" />
+            <line x1={cx} y1="20" x2={cx} y2={height - 50} stroke="currentColor" strokeOpacity="0.2" strokeWidth="1.5" />
+
+            {/* Filled Polygon Area */}
+            <polygon
+              points={`${toSvgX(x1)},${toSvgY(y1)} ${toSvgX(x2)},${toSvgY(y2)} ${toSvgX(x3)},${toSvgY(y3)}`}
+              fill="rgba(217, 119, 87, 0.15)"
+              stroke="#d97757"
+              strokeWidth="2.5"
+            />
+
+            {/* Medians */}
+            <line x1={toSvgX(x1)} y1={toSvgY(y1)} x2={toSvgX((x2 + x3) / 2)} y2={toSvgY((y2 + y3) / 2)} stroke="#60a5fa" strokeWidth="1.5" strokeDasharray="3,3" />
+            <line x1={toSvgX(x2)} y1={toSvgY(y2)} x2={toSvgX((x1 + x3) / 2)} y2={toSvgY((y1 + y3) / 2)} stroke="#60a5fa" strokeWidth="1.5" strokeDasharray="3,3" />
+            <line x1={toSvgX(x3)} y1={toSvgY(y3)} x2={toSvgX((x1 + x2) / 2)} y2={toSvgY((y1 + y2) / 2)} stroke="#60a5fa" strokeWidth="1.5" strokeDasharray="3,3" />
+
+            {/* Vertices */}
+            <circle cx={toSvgX(x1)} cy={toSvgY(y1)} r="5" fill="#10b981" />
+            <text x={toSvgX(x1) + 6} y={toSvgY(y1) - 6} fill="#10b981" fontSize="10" fontWeight="bold">A({Math.round(x1)},{Math.round(y1)})</text>
+            <circle cx={toSvgX(x2)} cy={toSvgY(y2)} r="5" fill="#10b981" />
+            <text x={toSvgX(x2) + 6} y={toSvgY(y2) + 12} fill="#10b981" fontSize="10" fontWeight="bold">B({Math.round(x2)},{Math.round(y2)})</text>
+            <circle cx={toSvgX(x3)} cy={toSvgY(y3)} r="5" fill="#10b981" />
+            <text x={toSvgX(x3) - 30} y={toSvgY(y3) + 12} fill="#10b981" fontSize="10" fontWeight="bold">C({Math.round(x3)},{Math.round(y3)})</text>
+
+            {/* Centroid G */}
+            <circle cx={toSvgX(gx)} cy={toSvgY(gy)} r="6" fill="#fbbf24" stroke="#ffffff" strokeWidth="1.5" />
+            <text x={toSvgX(gx) + 8} y={toSvgY(gy) + 4} fill="#fbbf24" fontSize="11" fontWeight="bold">G({gx.toFixed(1)}, {gy.toFixed(1)})</text>
+
+            {/* Bottom HUD */}
+            <g transform={`translate(${width / 2}, ${height - 25})`}>
+              <rect x="-220" y="-18" width="440" height="36" rx="10" fill="currentColor" className="fill-card stroke-border stroke" />
+              <text x="0" y="5" textAnchor="middle" fill="currentColor" className="text-[11px] font-medium">
+                Shoelace Area: <tspan className="font-mono font-bold fill-primary">{area.toFixed(1)} sq units</tspan> • Centroid G: <tspan className="font-mono font-bold fill-amber-400">({gx.toFixed(1)}, {gy.toFixed(1)})</tspan>
+              </text>
+            </g>
+          </svg>
+        );
+      }
+
+      case "conic_explorer": {
         const e = controls.eccentricity ?? controls.e ?? 0.8;
         const a = controls.semiMajor ?? controls.a ?? 100;
         const b = controls.semiMinor ?? controls.b ?? (e < 1 ? Math.sqrt(Math.max(1, a * a * (1 - e * e))) : 80);

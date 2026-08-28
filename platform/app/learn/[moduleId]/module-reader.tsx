@@ -63,6 +63,30 @@ export function ModuleReader({ module }: ModuleReaderProps) {
   // Active TOC Section on scroll
   const [activeSection, setActiveSection] = useState<string>("sec-prereq-bridges");
 
+  const dynamicToc = useMemo(() => {
+    const items: Array<{ id: string; title: string }> = [];
+    if (module.prerequisiteBridge || (module.crossSubjectBridges && module.crossSubjectBridges.length > 0)) {
+      items.push({ id: "sec-prereq-bridges", title: "1. Prerequisite Bridges" });
+    }
+    items.push({ id: "sec-theory", title: "2. Lesson Proper" });
+    if (module.visualizer) {
+      items.push({ id: "sec-visualizer", title: "3. Interactive Sandbox" });
+    }
+    if (module.terms && module.terms.length > 0) {
+      items.push({ id: "sec-terminology", title: "4. Key Terms & Definitions" });
+    }
+    if (module.examples && module.examples.length > 0) {
+      items.push({ id: "sec-dual-method", title: "5. Sample Problems" });
+    }
+    if (module.calculatorGuides) {
+      items.push({ id: "sec-calculator", title: "6. Calculator Techniques" });
+    }
+    if (module.conceptChecks && module.conceptChecks.length > 0) {
+      items.push({ id: "sec-concept-checks", title: "7. Concept Checks" });
+    }
+    return items;
+  }, [module]);
+
   // Fetch initial progress on mount
   useEffect(() => {
     async function loadProgress() {
@@ -244,7 +268,7 @@ export function ModuleReader({ module }: ModuleReaderProps) {
                 <span>Table of Contents</span>
               </div>
               <nav className="space-y-1">
-                {module.toc?.map((item) => (
+                {dynamicToc.map((item) => (
                   <a
                     key={item.id}
                     href={`#${item.id}`}
@@ -257,7 +281,7 @@ export function ModuleReader({ module }: ModuleReaderProps) {
                   href="#sec-mastery-challenge"
                   className="block px-2.5 py-1.5 rounded-lg text-xs font-bold text-[var(--accent)] hover:bg-[var(--surface2)] transition-colors truncate"
                 >
-                  ★ Paired Quiz Challenge
+                  ★ Mastery Challenge Exam
                 </a>
               </nav>
             </div>
@@ -337,86 +361,7 @@ export function ModuleReader({ module }: ModuleReaderProps) {
               )}
             </section>
 
-            {/* Section 2: Terms and Definitions */}
-            <section id="sec-terminology" className="space-y-4">
-              <div className="flex items-center gap-2 pb-2 border-b border-[var(--border)]">
-                <ShieldCheck className="w-5 h-5 text-[var(--accent)]" />
-                <h2 className="text-xl font-bold font-serif text-[var(--text)]">
-                  Terms and Definitions
-                </h2>
-              </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                {module.terms?.map((item, idx) => {
-                  const symbolText = item.symbol
-                    ? item.symbol.startsWith("$")
-                      ? item.symbol
-                      : `$${item.symbol}$`
-                    : null;
-
-                  return (
-                    <div
-                      key={idx}
-                      id={`term-${idx}`}
-                      className="bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-4 sm:p-5 shadow-xs space-y-3 flex flex-col justify-between hover:border-[var(--accent)]/50 transition-colors"
-                    >
-                      <div className="space-y-1.5">
-                        <div className="flex items-center justify-between gap-2">
-                          <h3 className="font-bold text-base text-[var(--text)]">
-                            {item.term}
-                          </h3>
-                          {symbolText && (
-                            <span className="px-2 py-0.5 rounded-md font-mono text-xs bg-[var(--surface2)] border border-[var(--border)] text-[var(--accent)]">
-                              <MathText text={symbolText} />
-                            </span>
-                          )}
-                        </div>
-                        <p className="text-xs sm:text-sm text-[var(--text2)] leading-relaxed">
-                          <MathText text={item.definition} />
-                        </p>
-                      </div>
-
-                    <div className="pt-2 border-t border-[var(--border)] flex flex-wrap items-center justify-between gap-2 text-xs">
-                      <div className="flex items-center gap-1.5 text-amber-600 dark:text-amber-400 font-medium">
-                        <Zap className="w-3.5 h-3.5 shrink-0" />
-                        <span>Trigger: <strong>&ldquo;{item.keywordTrigger}&rdquo;</strong></span>
-                      </div>
-                      {item.unit && (
-                        <span className="text-[11px] font-mono text-[var(--text3)]">
-                          [{item.unit}]
-                        </span>
-                      )}
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-          </section>
-
-            {/* Section 3: Interactive Declarative Visualizer */}
-            {module.visualizer && (
-              <section id="sec-visualizer" className="space-y-4">
-                <DeclarativeVisualizer
-                  visualizer={module.visualizer}
-                  controls={vizControls}
-                  onControlChange={(id, value) =>
-                    setVizControls((prev) => ({
-                      ...prev,
-                      [id]: value,
-                    }))
-                  }
-                  onReset={() => {
-                    const init: Record<string, number> = {};
-                    module.visualizer?.config.controls.forEach((c) => {
-                      init[c.id] = c.defaultValue;
-                    });
-                    setVizControls(init);
-                  }}
-                />
-              </section>
-            )}
-
-            {/* Section 4: Lesson Proper */}
+            {/* Section 2: Lesson Proper (Theory First) */}
             <section id="sec-theory" className="space-y-4">
               <div className="flex items-center gap-2 pb-2 border-b border-[var(--border)]">
                 <BookOpen className="w-5 h-5 text-[var(--accent)]" />
@@ -444,135 +389,173 @@ export function ModuleReader({ module }: ModuleReaderProps) {
               </div>
             </section>
 
-            {/* Section 5: Sample Problems and Solutions */}
+            {/* Section 3: Interactive Declarative Visualizer */}
+            {module.visualizer && (
+              <section id="sec-visualizer" className="space-y-4">
+                <DeclarativeVisualizer
+                  visualizer={module.visualizer}
+                  controls={vizControls}
+                  onControlChange={(id, value) =>
+                    setVizControls((prev) => ({
+                      ...prev,
+                      [id]: value,
+                    }))
+                  }
+                  onReset={() => {
+                    const init: Record<string, number> = {};
+                    module.visualizer?.config.controls.forEach((c) => {
+                      init[c.id] = c.defaultValue;
+                    });
+                    setVizControls(init);
+                  }}
+                />
+              </section>
+            )}
+
+            {/* Section 4: Terms and Definitions */}
+            {module.terms && module.terms.length > 0 && (
+              <section id="sec-terminology" className="space-y-4">
+                <div className="flex items-center gap-2 pb-2 border-b border-[var(--border)]">
+                  <ShieldCheck className="w-5 h-5 text-[var(--accent)]" />
+                  <h2 className="text-xl font-bold font-serif text-[var(--text)]">
+                    Terms and Definitions
+                  </h2>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  {module.terms?.map((item, idx) => {
+                    const symbolText = item.symbol
+                      ? item.symbol.startsWith("$")
+                        ? item.symbol
+                        : `$${item.symbol}$`
+                      : null;
+
+                    return (
+                      <div
+                        key={idx}
+                        id={`term-${idx}`}
+                        className="bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-4 sm:p-5 shadow-xs space-y-3 flex flex-col justify-between hover:border-[var(--accent)]/50 transition-colors"
+                      >
+                        <div className="space-y-1.5">
+                          <div className="flex items-center justify-between gap-2">
+                            <h3 className="font-bold text-base text-[var(--text)]">
+                              {item.term}
+                            </h3>
+                            {symbolText && (
+                              <span className="px-2 py-0.5 rounded-md font-mono text-xs bg-[var(--surface2)] border border-[var(--border)] text-[var(--accent)]">
+                                <MathText text={symbolText} />
+                              </span>
+                            )}
+                          </div>
+                          <p className="text-xs sm:text-sm text-[var(--text2)] leading-relaxed">
+                            <MathText text={item.definition} />
+                          </p>
+                        </div>
+
+                        <div className="pt-2 border-t border-[var(--border)] flex flex-wrap items-center justify-between gap-2 text-xs">
+                          <div className="flex items-center gap-1.5 text-amber-600 dark:text-amber-400 font-medium">
+                            <Zap className="w-3.5 h-3.5 shrink-0" />
+                            <span>Trigger: <strong>&ldquo;{item.keywordTrigger}&rdquo;</strong></span>
+                          </div>
+                          {item.unit && (
+                            <span className="text-[11px] font-mono text-[var(--text3)]">
+                              [{item.unit}]
+                            </span>
+                          )}
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              </section>
+            )}
+
+            {/* Section 5: Worked Sample Problems */}
             <section id="sec-dual-method" className="space-y-6">
               <div className="flex items-center justify-between pb-2 border-b border-[var(--border)]">
                 <div className="flex items-center gap-2">
-                  <Zap className="w-5 h-5 text-[var(--accent)]" />
+                  <Calculator className="w-5 h-5 text-[var(--accent)]" />
                   <h2 className="text-xl font-bold font-serif text-[var(--text)]">
-                    Sample Problems and Solutions
+                    Worked Sample Problems
                   </h2>
                 </div>
+                <span className="text-xs text-[var(--text3)]">
+                  Dual-Method: Formal vs ⚡ Shortcut
+                </span>
               </div>
 
               <div className="space-y-6">
                 {module.examples.map((ex, idx) => {
                   const mode = exampleModes[idx] || "shortcut";
+
                   return (
                     <div
                       key={idx}
-                      id={`example-${idx}`}
-                      className="bg-[var(--surface)] border border-[var(--border)] rounded-2xl overflow-hidden shadow-xs"
+                      className="bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-5 sm:p-6 shadow-xs space-y-4"
                     >
-                      {/* Problem Statement Header */}
-                      <div className="p-4 sm:p-5 border-b border-[var(--border)] bg-[var(--surface2)] space-y-2">
-                        <div className="flex items-center justify-between gap-2">
-                          <span className="text-xs font-bold font-mono uppercase tracking-wider text-[var(--accent)]">
+                      {/* Problem Header & Mode Switcher */}
+                      <div className="flex flex-wrap items-center justify-between gap-3 pb-3 border-b border-[var(--border)]">
+                        <div className="flex items-center gap-2">
+                          <span className="flex items-center justify-center w-6 h-6 rounded-md bg-[var(--surface2)] border border-[var(--border)] font-mono text-xs font-bold text-[var(--accent)]">
+                            {idx + 1}
+                          </span>
+                          <span className="text-xs font-mono font-bold uppercase tracking-wider text-[var(--text3)]">
                             Sample Problem #{idx + 1}
                           </span>
-                          <div className="flex items-center gap-2 text-xs text-[var(--text3)]">
-                            <span className="flex items-center gap-1 font-mono">
-                              <Clock className="w-3 h-3" /> Formal: {ex.formalTimeSeconds}s
-                            </span>
-                            <span>•</span>
-                            <span className="flex items-center gap-1 font-mono text-emerald-600 dark:text-emerald-400 font-bold">
-                              <Zap className="w-3 h-3" /> Shortcut: {ex.shortcutTimeSeconds}s
-                            </span>
-                          </div>
                         </div>
-                        <p className="font-semibold text-base text-[var(--text)]">
-                          <MathText text={ex.problemStatement} />
-                        </p>
-                      </div>
 
-                      {/* Method Segmented Switcher */}
-                      <div className="px-4 pt-3 flex items-center justify-between gap-2 border-b border-[var(--border)] bg-[var(--surface)]">
-                        <div className="flex items-center gap-1">
-                          <button
-                            type="button"
-                            onClick={() =>
-                              setExampleModes((prev) => ({ ...prev, [idx]: "shortcut" }))
-                            }
-                            className={`px-3 py-1.5 rounded-t-lg text-xs font-bold transition-all cursor-pointer flex items-center gap-1.5 ${
-                              mode === "shortcut"
-                                ? "bg-[var(--accent)] text-white shadow-sm"
-                                : "text-[var(--text3)] hover:text-[var(--text)] hover:bg-[var(--surface2)]"
-                            }`}
-                          >
-                            <Zap className="w-3.5 h-3.5" />
-                            <span>⚡ Board Exam Shortcut ({ex.shortcutTimeSeconds}s)</span>
-                          </button>
+                        {/* Switcher Pill */}
+                        <div className="flex items-center gap-1 bg-[var(--surface2)] p-1 rounded-xl border border-[var(--border)] text-xs">
                           <button
                             type="button"
                             onClick={() =>
                               setExampleModes((prev) => ({ ...prev, [idx]: "formal" }))
                             }
-                            className={`px-3 py-1.5 rounded-t-lg text-xs font-bold transition-all cursor-pointer flex items-center gap-1.5 ${
+                            className={`px-3 py-1 rounded-lg transition-all cursor-pointer ${
                               mode === "formal"
-                                ? "bg-[var(--surface2)] text-[var(--text)] border-t border-x border-[var(--border)]"
-                                : "text-[var(--text3)] hover:text-[var(--text)] hover:bg-[var(--surface2)]"
+                                ? "bg-[var(--accent)] text-white font-bold shadow-xs"
+                                : "text-[var(--text2)] hover:text-[var(--text)]"
                             }`}
                           >
-                            <BookOpen className="w-3.5 h-3.5" />
-                            <span>Academic Derivation ({ex.formalTimeSeconds}s)</span>
+                            Formal ({ex.formalTimeSeconds || 90}s)
                           </button>
                           <button
                             type="button"
                             onClick={() =>
-                              setExampleModes((prev) => ({ ...prev, [idx]: "combined" }))
+                              setExampleModes((prev) => ({ ...prev, [idx]: "shortcut" }))
                             }
-                            className={`px-3 py-1.5 rounded-t-lg text-xs font-bold transition-all cursor-pointer hidden sm:flex items-center gap-1.5 ${
-                              mode === "combined"
-                                ? "bg-[var(--surface2)] text-[var(--text)] border-t border-x border-[var(--border)]"
-                                : "text-[var(--text3)] hover:text-[var(--text)] hover:bg-[var(--surface2)]"
+                            className={`px-3 py-1 rounded-lg transition-all cursor-pointer ${
+                              mode === "shortcut"
+                                ? "bg-[var(--accent)] text-white font-bold shadow-xs"
+                                : "text-[var(--text2)] hover:text-[var(--text)]"
                             }`}
                           >
-                            <Layers className="w-3.5 h-3.5" />
-                            <span>Side-by-Side</span>
+                            ⚡ Shortcut ({ex.shortcutTimeSeconds || 10}s)
                           </button>
                         </div>
                       </div>
 
-                      {/* Solution Body */}
-                      <div className="p-4 sm:p-6 bg-[var(--surface)] text-sm sm:text-base leading-relaxed">
-                        {mode === "shortcut" && (
-                          <div className="bg-emerald-500/5 border border-emerald-500/20 rounded-xl p-4 sm:p-5 space-y-2">
-                            <div className="flex items-center gap-2 text-xs font-bold text-emerald-600 dark:text-emerald-400 uppercase tracking-wider">
-                              <Zap className="w-4 h-4" />
-                              <span>20-Second Board Speed Solution</span>
-                            </div>
-                            <MathText text={ex.shortcutSolutionMarkdown} splitParagraphs={true} />
-                          </div>
-                        )}
+                      {/* Problem Statement */}
+                      <div className="font-semibold text-base sm:text-lg text-[var(--text)] leading-relaxed">
+                        <MathText text={ex.problemStatement} />
+                      </div>
 
-                        {mode === "formal" && (
-                          <div className="bg-[var(--surface2)] border border-[var(--border)] rounded-xl p-4 sm:p-5 space-y-2">
-                            <div className="flex items-center gap-2 text-xs font-bold text-[var(--text2)] uppercase tracking-wider">
-                              <BookOpen className="w-4 h-4" />
-                              <span>Rigorous Step-by-Step Textbook Derivation</span>
-                            </div>
-                            <MathText text={ex.formalSolutionMarkdown} splitParagraphs={true} />
-                          </div>
-                        )}
-
-                        {mode === "combined" && (
-                          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                            <div className="bg-[var(--surface2)] border border-[var(--border)] rounded-xl p-4 space-y-2">
-                              <div className="flex items-center gap-1.5 text-xs font-bold text-[var(--text2)] uppercase">
-                                <BookOpen className="w-3.5 h-3.5" />
-                                <span>Academic Method</span>
-                              </div>
-                              <MathText text={ex.formalSolutionMarkdown} splitParagraphs={true} />
-                            </div>
-                            <div className="bg-emerald-500/5 border border-emerald-500/20 rounded-xl p-4 space-y-2">
-                              <div className="flex items-center gap-1.5 text-xs font-bold text-emerald-600 dark:text-emerald-400 uppercase">
-                                <Zap className="w-3.5 h-3.5" />
-                                <span>⚡ Speed Shortcut</span>
-                              </div>
-                              <MathText text={ex.shortcutSolutionMarkdown} splitParagraphs={true} />
-                            </div>
-                          </div>
-                        )}
+                      {/* Solution Block */}
+                      <div className="rounded-xl border border-[var(--border)] bg-[var(--surface2)]/40 p-4 sm:p-5 space-y-3">
+                        <div className="flex items-center justify-between text-xs font-mono text-[var(--accent)] font-bold uppercase tracking-wider">
+                          <span>
+                            {mode === "shortcut" ? "⚡ High-Speed Board Shortcut:" : "Step-by-Step Formal Derivation:"}
+                          </span>
+                          <span className="text-[var(--text3)] font-normal">
+                            Estimated Time: ~{mode === "shortcut" ? ex.shortcutTimeSeconds || 10 : ex.formalTimeSeconds || 90}s
+                          </span>
+                        </div>
+                        <div className="prose dark:prose-invert max-w-none text-xs sm:text-sm text-[var(--text)] leading-relaxed">
+                          <MathText
+                            text={mode === "shortcut" ? ex.shortcutSolutionMarkdown : ex.formalSolutionMarkdown}
+                            splitParagraphs={true}
+                          />
+                        </div>
                       </div>
                     </div>
                   );
@@ -580,7 +563,7 @@ export function ModuleReader({ module }: ModuleReaderProps) {
               </div>
             </section>
 
-            {/* Section 6: Calculator Techniques */}
+            {/* Section 6: Calculator Speed Techniques */}
             {module.calculatorGuides && (
               <section id="sec-calculator" className="space-y-4">
                 <div className="flex items-center justify-between pb-2 border-b border-[var(--border)]">
@@ -590,15 +573,16 @@ export function ModuleReader({ module }: ModuleReaderProps) {
                       Calculator Techniques
                     </h2>
                   </div>
-                  {/* Model Switcher */}
-                  <div className="flex items-center p-1 rounded-xl bg-[var(--surface2)] border border-[var(--border)]">
+
+                  {/* Calculator Brand Tabs */}
+                  <div className="flex items-center gap-1 bg-[var(--surface2)] p-1 rounded-xl border border-[var(--border)] text-xs font-mono">
                     <button
                       type="button"
                       onClick={() => setCalcTab("karce")}
-                      className={`px-3 py-1 rounded-lg text-xs font-bold transition-all cursor-pointer ${
+                      className={`px-3 py-1 rounded-lg transition-all cursor-pointer ${
                         calcTab === "karce"
-                          ? "bg-[var(--accent)] text-white shadow-xs"
-                          : "text-[var(--text3)] hover:text-[var(--text)]"
+                          ? "bg-[var(--accent)] text-white font-bold"
+                          : "text-[var(--text2)] hover:text-[var(--text)]"
                       }`}
                     >
                       Karce KC-S991
@@ -606,10 +590,10 @@ export function ModuleReader({ module }: ModuleReaderProps) {
                     <button
                       type="button"
                       onClick={() => setCalcTab("canon")}
-                      className={`px-3 py-1 rounded-lg text-xs font-bold transition-all cursor-pointer ${
+                      className={`px-3 py-1 rounded-lg transition-all cursor-pointer ${
                         calcTab === "canon"
-                          ? "bg-[var(--accent)] text-white shadow-xs"
-                          : "text-[var(--text3)] hover:text-[var(--text)]"
+                          ? "bg-[var(--accent)] text-white font-bold"
+                          : "text-[var(--text2)] hover:text-[var(--text)]"
                       }`}
                     >
                       Canon F-789SGA
@@ -617,34 +601,35 @@ export function ModuleReader({ module }: ModuleReaderProps) {
                   </div>
                 </div>
 
+                {/* Selected Calculator Guide Box */}
                 {(() => {
-                  const guide = calcTab === "karce" ? module.calculatorGuides.karce : module.calculatorGuides.canon;
-                  const problemText = guide.sampleProblem || guide.problemContext;
+                  const guide = module.calculatorGuides[calcTab];
+                  if (!guide) return null;
+
+                  const cleanMode = guide.mode ? guide.mode.replace(/<\/?kbd>/gi, "") : "";
+                  const cleanNotes = guide.notes ? guide.notes.replace(/<\/?kbd>/gi, "") : "";
+                  const title = guide.techniqueTitle || (calcTab === "karce" ? "Karce KC-S991 Technique" : "Canon F-789SGA Technique");
+                  const problemText = guide.sampleProblem;
 
                   return (
                     <div className="bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-5 sm:p-6 shadow-xs space-y-4">
-                      <div className="flex flex-wrap items-center justify-between gap-2">
-                        <div className="space-y-0.5">
-                          <span className="text-xs font-mono font-bold text-[var(--accent)]">
+                      <div className="flex flex-wrap items-center justify-between gap-2 pb-2 border-b border-[var(--border)]">
+                        <div>
+                          <span className="text-xs font-mono text-[var(--accent)] font-bold">
                             {calcTab === "karce" ? "Karce KC-S991 Technique" : "Canon F-789SGA Technique"}
                           </span>
-                          {guide.techniqueTitle && (
-                            <h3 className="text-sm font-bold text-[var(--text)]">
-                              {guide.techniqueTitle}
-                            </h3>
-                          )}
+                          <h3 className="font-bold text-base text-[var(--text)]">{title}</h3>
                         </div>
-
-                        <div className="flex items-center gap-2">
-                          {guide.problemType && (
-                            <span className="text-[11px] px-2 py-0.5 rounded-md bg-[var(--accent)]/10 text-[var(--accent)] border border-[var(--accent)]/20 font-mono">
-                              {guide.problemType}
-                            </span>
-                          )}
-                          <span className="text-xs px-2.5 py-0.5 rounded-full bg-[var(--surface2)] border border-[var(--border)] text-[var(--text2)] font-mono">
-                            {guide.mode}
+                        {guide.problemType && (
+                          <span className="px-2.5 py-1 rounded-lg text-xs font-mono bg-amber-500/10 text-amber-600 dark:text-amber-400 border border-amber-500/20">
+                            {guide.problemType}
                           </span>
-                        </div>
+                        )}
+                        {cleanMode && (
+                          <span className="text-xs font-mono text-[var(--text3)]">
+                            {cleanMode}
+                          </span>
+                        )}
                       </div>
 
                       {/* Sample Problem Callout */}
@@ -660,26 +645,31 @@ export function ModuleReader({ module }: ModuleReaderProps) {
                         </div>
                       )}
 
-                      {/* Step-by-Step Keystrokes Sequence */}
+                      {/* Step-by-Step Button Sequence */}
                       <div className="space-y-2 pt-1">
                         <div className="text-xs font-bold uppercase text-[var(--text3)]">
                           Step-by-Step Button Sequence:
                         </div>
                         <div className="flex flex-wrap items-center gap-2">
-                          {guide.keystrokes.map((key, idx) => (
-                            <span
-                              key={idx}
-                              className="inline-flex items-center justify-center px-2.5 py-1 rounded-md text-xs font-mono font-bold bg-[var(--surface2)] border border-[var(--border)] text-[var(--text)] shadow-xs"
-                            >
-                              <MathText text={key} />
-                            </span>
-                          ))}
+                          {guide.keystrokes.map((rawKey, idx) => {
+                            const cleanKey = rawKey.replace(/<\/?kbd>/gi, "").trim();
+                            return (
+                              <span
+                                key={idx}
+                                className="inline-flex items-center justify-center min-w-[28px] px-2.5 py-1 rounded-lg text-xs font-mono font-bold bg-[var(--surface2)] border-b-2 border border-[var(--border)] text-[var(--text)] shadow-xs uppercase active:translate-y-0.5"
+                              >
+                                <MathText text={cleanKey} />
+                              </span>
+                            );
+                          })}
                         </div>
                       </div>
 
-                      <p className="text-xs sm:text-sm text-[var(--text2)] pt-2 border-t border-[var(--border)] leading-relaxed">
-                        {guide.notes}
-                      </p>
+                      {cleanNotes && (
+                        <p className="text-xs sm:text-sm text-[var(--text2)] pt-2 border-t border-[var(--border)] leading-relaxed">
+                          <MathText text={cleanNotes} />
+                        </p>
+                      )}
                     </div>
                   );
                 })()}
@@ -777,7 +767,7 @@ export function ModuleReader({ module }: ModuleReaderProps) {
                         <div className="pt-4 border-t border-[var(--border)] space-y-3 bg-[var(--surface2)]/50 rounded-xl p-4">
                           <div className="flex items-center gap-1.5 text-xs font-bold text-[var(--accent)] uppercase tracking-wider">
                             <Lightbulb className="w-4 h-4" />
-                            <span>Distractor Deconstructor & Algebraic Traps:</span>
+                            <span>Distractor Deconstruction:</span>
                           </div>
 
                           <div className="grid grid-cols-1 gap-2 text-xs">
@@ -794,7 +784,7 @@ export function ModuleReader({ module }: ModuleReaderProps) {
                                   }`}
                                 >
                                   <span className="font-mono font-bold mr-1.5">
-                                    Option {letter} {isCorrect ? "✅ (Correct Answer)" : "❌ (Distractor Trap)"}:
+                                    Option {letter} {isCorrect ? "✅" : "❌"}:
                                   </span>
                                   <MathText text={explanation} />
                                 </div>

@@ -158,38 +158,38 @@
       "techniqueTitle": "Direct Conic Eccentricity and Focus Shortcut",
       "problemType": "Ellipse & Hyperbola c = √(a² ± b²)",
       "sampleProblem": "Find c and e for 16x² + 25y² = 400 (a=5, b=4).",
-      "mode": "COMP Mode (<kbd>MODE</kbd> <kbd>1</kbd>)",
+      "mode": "COMP Mode (MODE 1)",
       "keystrokes": [
-        "<kbd>√</kbd>",
-        "<kbd>(</kbd>",
-        "<kbd>5</kbd>",
-        "<kbd>x²</kbd>",
-        "<kbd>-</kbd>",
-        "<kbd>4</kbd>",
-        "<kbd>x²</kbd>",
-        "<kbd>)</kbd>",
-        "<kbd>=</kbd>",
-        "<kbd>÷</kbd>",
-        "<kbd>5</kbd>",
-        "<kbd>=</kbd>"
+        "√",
+        "(",
+        "5",
+        "x²",
+        "-",
+        "4",
+        "x²",
+        ")",
+        "=",
+        "÷",
+        "5",
+        "="
       ],
-      "notes": "Directly gives $c = 3$ and $e = 0.6$ without manual fraction setups."
+      "notes": "Directly gives c = 3 and e = 0.6 without manual fraction setups."
     },
     "canon": {
       "techniqueTitle": "Canon Pol(a, b) Function for Hyperbola Focal Distance",
       "problemType": "Hyperbola c = √(a² + b²)",
       "sampleProblem": "Find focal distance c for hyperbola with a = 6, b = 8.",
-      "mode": "COMP Mode (<kbd>MODE</kbd> <kbd>1</kbd>)",
+      "mode": "COMP Mode (MODE 1)",
       "keystrokes": [
-        "<kbd>SHIFT</kbd>",
-        "<kbd>Pol</kbd>",
-        "<kbd>6</kbd>",
-        "<kbd>,</kbd>",
-        "<kbd>8</kbd>",
-        "<kbd>)</kbd>",
-        "<kbd>=</kbd>"
+        "SHIFT",
+        "Pol",
+        "6",
+        ",",
+        "8",
+        ")",
+        "="
       ],
-      "notes": "Directly outputs $r = 10$, which is the exact focal distance $c = \\sqrt{6^2 + 8^2} = 10$."
+      "notes": "Directly outputs r = 10, which is the exact focal distance c = √(6² + 8²) = 10."
     }
   },
   "conceptChecks": [
@@ -206,7 +206,7 @@
       "distractorDeconstruction": {
         "A": "$e = 0$ defines a circle.",
         "B": "$0 < e < 1$ defines an ellipse.",
-        "C": "Correct: A parabola is strictly defined by $e = 1$.",
+        "C": "A parabola is strictly defined by $e = 1$.",
         "D": "$e > 1$ defines a hyperbola."
       },
       "shortcutExplanation": "Parabola strictly has $e = 1$."
@@ -224,7 +224,7 @@
       "distractorDeconstruction": {
         "A": "3 is the focal parameter $p = 12/4 = 3$.",
         "B": "6 is $2p$.",
-        "C": "Correct: $LR = 4p = 12$.",
+        "C": "$LR = 4p = 12$.",
         "D": "24 is $2 \\times 12$."
       },
       "shortcutExplanation": "For $y^2 = 4px$, the latus rectum is the coefficient of $x$: $LR = 12$."
@@ -240,7 +240,7 @@
       },
       "correctAnswer": "A",
       "distractorDeconstruction": {
-        "A": "Correct: Area $= \\pi a b = \\pi (6)(4) = 24\\pi$.",
+        "A": "Area $= \\pi a b = \\pi (6)(4) = 24\\pi$.",
         "B": "Divided by 2 as if a triangle.",
         "C": "Multiplied by 2.",
         "D": "Added semi-axes."
