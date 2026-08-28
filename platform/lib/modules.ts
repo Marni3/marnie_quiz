@@ -62,6 +62,13 @@ export interface MasteryChallengeSet {
   questions: MasteryChallengeQuestion[];
 }
 
+export interface FormulaCard {
+  id?: string;
+  title: string;
+  formula: string; // KaTeX format (e.g. "$$d = \\frac{|Ax_1 + By_1 + C|}{\\sqrt{A^2 + B^2}}$$")
+  note?: string; // Optional very minimal context / condition / sign rule
+}
+
 export interface LearningModule {
   id: string; // e.g. "math-01-01"
   code: string; // e.g. "MATH 01-01"
@@ -87,6 +94,9 @@ export interface LearningModule {
     description: string;
   }>;
   
+  // Compilation of Formulas (High-Visibility Formula Cards)
+  formulas?: FormulaCard[];
+
   // Terminology & Identification Signatures
   terms: Array<{
     term: string;

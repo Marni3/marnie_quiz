@@ -1,0 +1,251 @@
+{
+  "id": "math-03",
+  "code": "MATH 03",
+  "domain": "MATH",
+  "topicCode": "MATH-03",
+  "topicTitle": "College Algebra",
+  "subtopicTitle": "Quadratic Equations, Vieta's Roots Relations & The Binomial Theorem",
+  "order": 3,
+  "pairedQuizSetId": "math-03-mastery",
+  "toc": [
+    { "id": "sec-prereq-bridges", "title": "1. Introduction & Cross-Subject Bridges", "level": 2 },
+    { "id": "sec-theory", "title": "2. Lesson Proper", "level": 2 },
+    { "id": "sec-formulas", "title": "3. Compilation of Formulas", "level": 2 },
+    { "id": "sec-visualizer", "title": "4. Interactive Visualizer: Quadratic Discriminant & Root Morphing", "level": 2 },
+    { "id": "sec-terminology", "title": "5. Terms and Definitions", "level": 2 },
+    { "id": "sec-dual-method", "title": "6. Sample Problems and Solutions", "level": 2 },
+    { "id": "sec-calculator", "title": "7. Calculator Techniques (Karce & Canon)", "level": 2 },
+    { "id": "sec-concept-checks", "title": "8. In-Line Concept Checks", "level": 2 },
+    { "id": "sec-mastery-challenge", "title": "9. Paired Mastery Challenge", "level": 2 }
+  ],
+  "prerequisiteBridge": {
+    "priorModuleId": "math-02",
+    "text": "Building upon factoring identities in MATH 02, this module focuses on second-degree polynomial equation analysis, Vieta's algebraic root relations, and combinatorial series expansions via the Binomial Theorem."
+  },
+  "crossSubjectBridges": [
+    {
+      "targetDomain": "ELECS",
+      "targetTopicCode": "ELEC-06",
+      "badgeText": "RLC Characteristic Roots & Damping",
+      "description": "The natural transient response of series/parallel RLC circuits ($s^2 + 2\\alpha s + \\omega_0^2 = 0$) uses the quadratic discriminant to determine overdamped ($\\Delta > 0$), critically damped ($\\Delta = 0$), or underdamped ($\\Delta < 0$) oscillations."
+    },
+    {
+      "targetDomain": "GEAS",
+      "targetTopicCode": "GEAS-12",
+      "badgeText": "Projectile Trajectory Kinematics",
+      "description": "Vertical motion under gravity ($y = v_0 t - \\frac{1}{2}gt^2$) solves time of flight and impact points using standard quadratic formulas."
+    },
+    {
+      "targetDomain": "EST",
+      "targetTopicCode": "EST-01",
+      "badgeText": "Binomial Probability in Bit Error Rates",
+      "description": "Block code parity checks and bit error probabilities across $n$ transmitted bits use binomial coefficients $\\binom{n}{k} p^k (1-p)^{n-k}$."
+    }
+  ],
+  "formulas": [
+    {
+      "id": "f-0301-01",
+      "title": "Quadratic Formula & Roots",
+      "formula": "$$x = \\frac{-B \\pm \\sqrt{B^2 - 4AC}}{2A}$$",
+      "note": "Standard form: Ax² + Bx + C = 0 with A ≠ 0."
+    },
+    {
+      "id": "f-0301-02",
+      "title": "Quadratic Discriminant & Nature of Roots",
+      "formula": "$$\\Delta = B^2 - 4AC$$",
+      "note": "Δ > 0: Real & unequal; Δ = 0: Real & equal (single root); Δ < 0: Complex conjugate roots (p ± qi)."
+    },
+    {
+      "id": "f-0301-03",
+      "title": "Vieta's Relations (Sum & Product of Roots)",
+      "formula": "$$r_1 + r_2 = -\\frac{B}{A}, \\qquad r_1 \\cdot r_2 = \\frac{C}{A}$$",
+      "note": "Constructs the original equation directly: x² - (sum)x + (product) = 0."
+    },
+    {
+      "id": "f-0301-04",
+      "title": "Binomial Theorem Expansion",
+      "formula": "$$(x + y)^n = \\sum_{k=0}^n \\binom{n}{k} x^{n-k} y^k$$",
+      "note": "Total number of terms is always n + 1."
+    },
+    {
+      "id": "f-0301-05",
+      "title": "General r-th Term of Binomial Expansion",
+      "formula": "$$T_r = \\binom{n}{r - 1} x^{n - r + 1} y^{r - 1}$$",
+      "note": "For the r-th term, the combination index is r - 1."
+    },
+    {
+      "id": "f-0301-06",
+      "title": "Sum of Coefficients Shortcut",
+      "formula": "$$\\text{Sum of Coefficients} = (a + b)^n$$",
+      "note": "In (ax + by)ⁿ, substitute all variable letters with 1. If a constant term exists, subtract the constant."
+    },
+    {
+      "id": "f-0301-07",
+      "title": "Sum of Exponents Shortcut",
+      "formula": "$$\\text{Sum of Exponents} = \\frac{(p + q)n(n + 1)}{2}$$",
+      "note": "For expansion of (Ax^p + By^q)ⁿ."
+    }
+  ],
+  "terms": [
+    {
+      "term": "Quadratic Discriminant",
+      "symbol": "$\\Delta = B^2 - 4AC$",
+      "unit": "Dimensionless",
+      "definition": "The algebraic indicator under the radical sign in the quadratic formula that dictates whether roots are real, equal, or complex.",
+      "keywordTrigger": "B^2 - 4AC indicator for nature of quadratic roots"
+    },
+    {
+      "term": "Vieta's Formulas",
+      "symbol": "$r_1+r_2, r_1 r_2$",
+      "unit": "Relations",
+      "definition": "Formulas relating polynomial roots directly to their coefficients without explicitly solving the equation ($r_1 + r_2 = -B/A, r_1 r_2 = C/A$).",
+      "keywordTrigger": "sum and product of polynomial roots"
+    },
+    {
+      "term": "Pascal's Triangle",
+      "symbol": "Triangular Array",
+      "unit": "Combinatorics",
+      "definition": "The symmetric triangular array of binomial coefficients named after Blaise Pascal (known in Italy as Tartaglia's triangle and in China as Yang Hui's triangle).",
+      "keywordTrigger": "triangular array of binomial coefficients / Tartaglia / Yang Hui"
+    },
+    {
+      "term": "Pure Quadratic Equation",
+      "symbol": "$Ax^2 + C = 0$",
+      "unit": "Equation",
+      "definition": "A second-degree equation lacking a linear first-degree term ($B = 0$).",
+      "keywordTrigger": "quadratic equation with no linear x term"
+    }
+  ],
+  "visualizer": {
+    "archetype": "conic_explorer",
+    "title": "Interactive Quadratic Parabola Roots Explorer",
+    "description": "Adjust the linear and constant parameters to observe how the parabola shifts across the x-axis, visualizing the transition between two real roots (Δ > 0), one tangent root (Δ = 0), and floating complex roots (Δ < 0).",
+    "config": {
+      "canvasWidth": 640,
+      "canvasHeight": 320,
+      "controls": [
+        {
+          "id": "eccentricity",
+          "label": "Quadratic Offset (Δ Control)",
+          "min": -2,
+          "max": 2,
+          "step": 0.5,
+          "defaultValue": 0
+        },
+        {
+          "id": "semiMajor",
+          "label": "Parabolic Aperture (a)",
+          "min": 20,
+          "max": 100,
+          "step": 10,
+          "defaultValue": 50
+        }
+      ]
+    }
+  },
+  "theory": {
+    "mentalAnchor": "For quadratic equations $Ax^2 + Bx + C = 0$, the roots sum to $-B/A$ and multiply to $C/A$. In binomial expansions of $(x + y)^n$, there are $n + 1$ terms, and the $r^{\\text{th}}$ term has coefficient $\\binom{n}{r-1}$. To find the sum of coefficients, substitute all variables with $1$.",
+    "contentMarkdown": "### 1. Quadratic Equations & The Discriminant\n\nA second-degree polynomial equation in standard form is:\n\n$$Ax^2 + Bx + C = 0 \\quad (A \\ne 0)$$\n\n```diagram\n{\n  \"caption\": \"Figure 1: Geometric parabola intersections corresponding to discriminant values (Δ > 0, Δ = 0, Δ < 0)\",\n  \"xRange\": [-5, 5],\n  \"yRange\": [-4, 6],\n  \"elements\": [\n    { \"type\": \"grid\" },\n    { \"type\": \"axes\" },\n    { \"type\": \"point\", \"at\": [-2, 0], \"label\": \"Root 1 (Δ > 0)\", \"color\": \"#22c55e\" },\n    { \"type\": \"point\", \"at\": [2, 0], \"label\": \"Root 2 (Δ > 0)\", \"color\": \"#22c55e\" },\n    { \"type\": \"point\", \"at\": [0, 0], \"label\": \"Tangent (Δ = 0)\", \"color\": \"#fbbf24\" },\n    { \"type\": \"point\", \"at\": [0, 2], \"label\": \"Vertex above x-axis (Δ < 0)\", \"color\": \"#f43f5e\" }\n  ]\n}\n```\n\n#### Specific Cases for the Discriminant $\\Delta = B^2 - 4AC$:\n- **$\\Delta > 0$ (Real & Unequal Roots)**: The parabola crosses the $x$-axis at two distinct points. If $\\Delta$ is a perfect square, roots are rational; otherwise irrational.\n- **$\\Delta = 0$ (Real & Equal Roots)**: The parabola is tangent to the $x$-axis at a single point ($x = -B/(2A)$).\n- **$\\Delta < 0$ (Complex Conjugate Roots)**: The parabola does not intersect the $x$-axis ($x = p \\pm qi$).\n\n---\n\n### 2. Vieta's Root Relations\n\nIf $r_1$ and $r_2$ are roots of $Ax^2 + Bx + C = 0$:\n\n$$r_1 + r_2 = -\\frac{B}{A} \\qquad r_1 \\cdot r_2 = \\frac{C}{A}$$\n\n- **Reconstructing Equation from Roots**: $x^2 - (r_1 + r_2)x + (r_1 r_2) = 0$.\n\n---\n\n### 3. The Binomial Theorem\n\nFor any positive integer exponent $n$, the expansion of $(x + y)^n$ contains exactly $n + 1$ terms:\n\n$$(x + y)^n = \\binom{n}{0}x^n + \\binom{n}{1}x^{n-1}y + \\binom{n}{2}x^{n-2}y^2 + \\dots + \\binom{n}{n}y^n$$\n\n#### Key Expansion Properties:\n1. **$r^{\\text{th}}$ Term Formula**: $T_r = \\binom{n}{r-1} x^{n - r + 1} y^{r - 1}$.\n2. **Sum of Coefficients**: In $(ax + by)^n$, set $x = y = 1 \\implies \\text{Sum} = (a + b)^n$.\n3. **Sum of Exponents**: For $(Ax^p + By^q)^n$, the total sum of all powers across all terms is:\n   $$\\text{Sum of Exponents} = \\frac{(p + q)n(n + 1)}{2}$$\n4. **Pascal's Triangle**: Developed by Blaise Pascal (1623–1662), known as Tartaglia's triangle in Italy and Yang Hui's triangle in China."
+  },
+  "examples": [
+    {
+      "problemStatement": "Find the 6th term in the expansion of (2x - y²)⁸.",
+      "formalSolutionMarkdown": "#### Step 1: Identify parameters\n- $n = 8, r = 6$\n- First term $a = 2x$\n- Second term $b = -y^2$\n\n#### Step 2: Apply the r-th term formula\n$$T_6 = \\binom{8}{6 - 1} (2x)^{8 - 6 + 1} (-y^2)^{6 - 1}$$\n$$T_6 = \\binom{8}{5} (2x)^3 (-y^2)^5$$\n$$\\binom{8}{5} = \\frac{8 \\times 7 \\times 6}{3 \\times 2 \\times 1} = 56$$\n$$T_6 = 56 \\times (8x^3) \\times (-y^{10}) = -448 x^3 y^{10}$$",
+      "shortcutSolutionMarkdown": "#### ⚡ 4-Second Calculator Evaluation\n1. Combination: `8 nCr 5` = $56$.\n2. Power of 2: $2^3 = 8$.\n3. Sign: $(-1)^5 = -1$.\n4. Product: $56 \\times 8 \\times (-1) = \\mathbf{-448 x^3 y^{10}}$.",
+      "formalTimeSeconds": 60,
+      "shortcutTimeSeconds": 4
+    },
+    {
+      "problemStatement": "Find the value of k such that 4x² - kx + 9 = 0 has equal real roots.",
+      "formalSolutionMarkdown": "#### Step 1: Apply condition for equal roots (Δ = 0)\n$$\\Delta = B^2 - 4AC = (-k)^2 - 4(4)(9) = 0$$\n$$k^2 - 144 = 0$$\n$$k^2 = 144 \\implies k = \\pm 12$$",
+      "shortcutSolutionMarkdown": "#### ⚡ 2-Second Square Root Trick\n$$k = 2\\sqrt{AC} = 2\\sqrt{4 \\times 9} = 2(6) = \\mathbf{\\pm 12}$$.",
+      "formalTimeSeconds": 30,
+      "shortcutTimeSeconds": 2
+    }
+  ],
+  "calculatorGuides": {
+    "karce": {
+      "techniqueTitle": "EQN Mode Quadratic Solver",
+      "problemType": "Solving Ax² + Bx + C = 0",
+      "sampleProblem": "Solve 3x² - 5x - 2 = 0.",
+      "mode": "EQN Mode (MODE 3 3)",
+      "keystrokes": [
+        "MODE",
+        "3",
+        "3",
+        "3",
+        "=",
+        "-",
+        "5",
+        "=",
+        "-",
+        "2",
+        "="
+      ],
+      "notes": "Directly yields x₁ = 2 and x₂ = -1/3 in 1 second."
+    },
+    "canon": {
+      "techniqueTitle": "Direct nCr Combinatorial Coefficient",
+      "problemType": "Binomial expansion combinations nCr",
+      "sampleProblem": "Evaluate 8C5.",
+      "mode": "COMP Mode (MODE 1)",
+      "keystrokes": [
+        "8",
+        "nCr",
+        "5",
+        "="
+      ],
+      "notes": "Directly returns 56."
+    }
+  },
+  "conceptChecks": [
+    {
+      "id": "cc-math03-01",
+      "question": "If the discriminant Δ = B² - 4AC is strictly negative (Δ < 0), the roots of the quadratic equation are:",
+      "options": [
+        "Complex conjugates (imaginary)",
+        "Real and equal",
+        "Real and rational",
+        "Real and irrational"
+      ],
+      "correctAnswer": 0,
+      "explanation": "When Δ < 0, the square root produces an imaginary unit, yielding two complex conjugate roots (p ± qi)."
+    },
+    {
+      "id": "cc-math03-02",
+      "question": "What is the sum of the roots of 3x² - 12x + 7 = 0?",
+      "options": [
+        "4",
+        "-4",
+        "7/3",
+        "-7/3"
+      ],
+      "correctAnswer": 0,
+      "explanation": "By Vieta's relations, the sum of roots is r₁ + r₂ = -B/A = -(-12)/3 = 12/3 = 4."
+    },
+    {
+      "id": "cc-math03-03",
+      "question": "How many terms exist in the expansion of (2x - 3y)¹²?",
+      "options": [
+        "13",
+        "12",
+        "11",
+        "24"
+      ],
+      "correctAnswer": 0,
+      "explanation": "The number of terms in any binomial expansion (x + y)ⁿ is always n + 1. For n = 12, there are 12 + 1 = 13 terms."
+    },
+    {
+      "id": "cc-math03-04",
+      "question": "What is the sum of the coefficients in the expansion of (3x - 2y)⁵?",
+      "options": [
+        "1",
+        "32",
+        "243",
+        "0"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Substitute x = 1 and y = 1 into the expression: (3(1) - 2(1))⁵ = (3 - 2)⁵ = 1⁵ = 1."
+    }
+  ]
+}

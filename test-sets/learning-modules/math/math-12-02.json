@@ -10,12 +10,13 @@
   "toc": [
     { "id": "sec-prereq-bridges", "title": "1. Introduction & Cross-Subject Bridges", "level": 2 },
     { "id": "sec-theory", "title": "2. Lesson Proper", "level": 2 },
-    { "id": "sec-visualizer", "title": "3. Interactive Visualizer: Coordinate Polygon Area & Centroid", "level": 2 },
-    { "id": "sec-terminology", "title": "4. Terms and Definitions", "level": 2 },
-    { "id": "sec-dual-method", "title": "5. Sample Problems and Solutions", "level": 2 },
-    { "id": "sec-calculator", "title": "6. Calculator Techniques (Karce & Canon)", "level": 2 },
-    { "id": "sec-concept-checks", "title": "7. In-Line Concept Checks", "level": 2 },
-    { "id": "sec-mastery-challenge", "title": "8. Paired Mastery Challenge", "level": 2 }
+    { "id": "sec-formulas", "title": "3. Compilation of Formulas", "level": 2 },
+    { "id": "sec-visualizer", "title": "4. Interactive Visualizer: Coordinate Polygon Area & Centroid", "level": 2 },
+    { "id": "sec-terminology", "title": "5. Terms and Definitions", "level": 2 },
+    { "id": "sec-dual-method", "title": "6. Sample Problems and Solutions", "level": 2 },
+    { "id": "sec-calculator", "title": "7. Calculator Techniques (Karce & Canon)", "level": 2 },
+    { "id": "sec-concept-checks", "title": "8. In-Line Concept Checks", "level": 2 },
+    { "id": "sec-mastery-challenge", "title": "9. Paired Mastery Challenge", "level": 2 }
   ],
   "prerequisiteBridge": {
     "priorModuleId": "math-12-01",
@@ -39,6 +40,50 @@
       "targetTopicCode": "EST-01",
       "badgeText": "Voronoi Tessellation in Cellular Networks",
       "description": "Cellular base station service polygons and coverage areas are computed by applying coordinate area matrix formulas to cell tower boundary vertices."
+    }
+  ],
+  "formulas": [
+    {
+      "id": "f-1202-01",
+      "title": "Division of a Line Segment by Ratio",
+      "formula": "$$x = \\frac{x_1 r_2 + x_2 r_1}{r_1 + r_2}, \\quad y = \\frac{y_1 r_2 + y_2 r_1}{r_1 + r_2}$$",
+      "note": "Ratio r₁ : r₂ represents distance from P₁ to P over distance from P to P₂."
+    },
+    {
+      "id": "f-1202-02",
+      "title": "Midpoint Coordinates",
+      "formula": "$$x_m = \\frac{x_1 + x_2}{2}, \\quad y_m = \\frac{y_1 + y_2}{2}$$",
+      "note": "Special case where r₁ = r₂ = 1."
+    },
+    {
+      "id": "f-1202-03",
+      "title": "Centroid of a Triangle",
+      "formula": "$$G = \\left( \\frac{x_1 + x_2 + x_3}{3}, \\frac{y_1 + y_2 + y_3}{3} \\right)$$",
+      "note": "Intersection of 3 medians; divides each median in a 2 : 1 ratio from vertex to midpoint."
+    },
+    {
+      "id": "f-1202-04",
+      "title": "Incenter Coordinates",
+      "formula": "$$I = \\left( \\frac{a x_1 + b x_2 + c x_3}{a + b + c}, \\frac{a y_1 + b y_2 + c y_3}{a + b + c} \\right)$$",
+      "note": "a, b, c are opposite side lengths. Center of inscribed circle."
+    },
+    {
+      "id": "f-1202-05",
+      "title": "Right Triangle Inradius Shortcut",
+      "formula": "$$r = \\frac{a + b - c}{2}$$",
+      "note": "Valid for right triangles with legs a, b and hypotenuse c."
+    },
+    {
+      "id": "f-1202-06",
+      "title": "Euler Line Distance Ratio",
+      "formula": "$$HG = 2 \\cdot GO \\iff HG : GO = 2 : 1$$",
+      "note": "H = Orthocenter, G = Centroid, O = Circumcenter. Strictly collinear."
+    },
+    {
+      "id": "f-1202-07",
+      "title": "Shoelace Polygon Area Formula",
+      "formula": "$$A = \\frac{1}{2} |\\sum (x_i y_{i+1} - y_i x_{i+1})| = \\frac{1}{2} |\\Sigma R - \\Sigma L|$$",
+      "note": "List vertices counter-clockwise and repeat the first vertex at the bottom. A = 0 implies collinearity."
     }
   ],
   "terms": [

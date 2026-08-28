@@ -73,18 +73,27 @@ This document serves as the permanent reference guide for common pitfalls, archi
 
 ---
 
-## 9. Pre-Flight Checklist for Every Created Module
+## 9. Formula Sizing & Compilation of Formulas Section
+
+| Pitfall / Issue | Root Cause | Standard Prevention & Fix |
+| :--- | :--- | :--- |
+| **Formulas Buried or Rendered Too Small** | Relying solely on the Terms & Definitions dictionary or inline equation snippets where mathematical expressions get tiny and cramped. | **Dedicated Compilation of Formulas Section (`formulas`)**: Every module must include a dedicated `"formulas"` array rendered as high-visibility formula cards featuring bold titles, large centered KaTeX display math (`py-2.5 px-3 rounded-xl`), and very minimal optional notes (e.g. sign conventions or boundary limits). |
+
+---
+
+## 10. Pre-Flight Checklist for Every Created Module
 
 Before committing any learning module and companion mastery set:
 - [ ] Module JSON is in `test-sets/learning-modules/[subject]/[code].json`.
 - [ ] Companion Mastery JSON is in `test-sets/learning-modules/[subject]/mastery/[code]-mastery.json`.
-- [ ] Section sequence is strictly: **Bridges $\to$ Lesson Proper (Theory) $\to$ Visualizer $\to$ Terms $\to$ Sample Problems $\to$ Calculator Guides $\to$ Concept Checks $\to$ Mastery CTA**.
+- [ ] Section sequence is strictly: **Bridges $\to$ Lesson Proper (Theory) $\to$ Compilation of Formulas $\to$ Visualizer $\to$ Terms $\to$ Sample Problems $\to$ Calculator Guides $\to$ Concept Checks $\to$ Mastery CTA**.
 - [ ] Body text uses natural phrasing ("Specific Cases") without academic jargon.
 - [ ] Fenced ` ```diagram ` blocks have valid JSON with clean $(x, y)$ coordinate bounds.
+- [ ] `"formulas"` array includes all primary governing equations with clean KaTeX and minimal notes.
 - [ ] Keystrokes array contains clean token strings without `<kbd>` tags.
 - [ ] Visualizer archetype matches the topic geometry/physics with visible slider tracks.
 - [ ] Distractor explanations have no redundant label prefixes.
-- [ ] Mastery Challenge contains 20–25 questions with 30% conceptual items.
+- [ ] Mastery Challenge contains 20–25 questions with strict 4-quadrant balance (30% conceptual, 35% computational, 20% applied, 15% shortcuts/traps).
 - [ ] `npm run build` passes with zero TypeScript/Turbopack errors.
 - [ ] Git commit and push completed with descriptive message.
 

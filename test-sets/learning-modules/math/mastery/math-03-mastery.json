@@ -1,0 +1,252 @@
+{
+  "moduleId": "math-03",
+  "moduleCode": "MATH 03",
+  "title": "MATH 03 Mastery Challenge: Quadratic Equations & Binomial Theorem",
+  "description": "Comprehensive 22-question 4-quadrant companion mastery exam for MATH 03. Rigorously tests discriminant conditions, Vieta's root symmetric sums, binomial r-th term extraction, sum of coefficients, and fast calculator equation solvers under timed board conditions.",
+  "totalQuestions": 22,
+  "timeLimitMinutes": 35,
+  "questions": [
+    {
+      "id": "m03-01",
+      "promptText": "For a quadratic equation $Ax^2 + Bx + C = 0$, what does the condition **$\\Delta = B^2 - 4AC = 0$** signify regarding its roots?",
+      "choiceA": "The roots are real and equal (a single repeated rational root).",
+      "choiceB": "The roots are real and unequal.",
+      "choiceC": "The roots are complex conjugates.",
+      "choiceD": "The roots are undefined.",
+      "correctChoice": "A",
+      "explanation": "When the discriminant $\\Delta = 0$, the radical vanishes in the quadratic formula, yielding two identical real roots $x = -B/(2A)$.",
+      "archetype": "conceptual"
+    },
+    {
+      "id": "m03-02",
+      "promptText": "By Vieta's formulas, what is the **product of the roots** ($r_1 \\cdot r_2$) of the quadratic equation $Ax^2 + Bx + C = 0$?",
+      "choiceA": "C / A",
+      "choiceB": "-B / A",
+      "choiceC": "-C / A",
+      "choiceD": "B / A",
+      "correctChoice": "A",
+      "explanation": "Vieta's relations establish that the product of the roots is $r_1 \\cdot r_2 = C/A$, and the sum of the roots is $r_1 + r_2 = -B/A$.",
+      "archetype": "conceptual"
+    },
+    {
+      "id": "m03-03",
+      "promptText": "How many terms are produced in the full algebraic expansion of the binomial expression **$(2x - 3y)^{15}$**?",
+      "choiceA": "16",
+      "choiceB": "15",
+      "choiceC": "14",
+      "choiceD": "30",
+      "correctChoice": "A",
+      "explanation": "The number of terms in any binomial expansion $(x + y)^n$ is always $n + 1$. For $n = 15$, there are $15 + 1 = 16$ terms.",
+      "archetype": "conceptual"
+    },
+    {
+      "id": "m03-04",
+      "promptText": "In Italy, Pascal's Triangle is historically referred to as:",
+      "choiceA": "Tartaglia's Triangle",
+      "choiceB": "Yang Hui's Triangle",
+      "choiceC": "Cardano's Triangle",
+      "choiceD": "Euler's Triangle",
+      "correctChoice": "A",
+      "explanation": "In Italy, Pascal's triangle is known as Tartaglia's triangle (after Niccolò Tartaglia), while in China it is referred to as Yang Hui's triangle.",
+      "archetype": "conceptual"
+    },
+    {
+      "id": "m03-05",
+      "promptText": "What is the general formula for the **sum of all exponents** in the expansion of $(Ax^p + By^q)^n$?",
+      "choiceA": "\\frac{(p + q)n(n + 1)}{2}",
+      "choiceB": "n(n + 1)",
+      "choiceC": "(p + q)n",
+      "choiceD": "\\frac{n(n + 1)}{2}",
+      "correctChoice": "A",
+      "explanation": "The total sum of powers across all variables in $(Ax^p + By^q)^n$ is $\\text{Sum} = \\frac{(p + q)n(n + 1)}{2}$.",
+      "archetype": "conceptual"
+    },
+    {
+      "id": "m03-06",
+      "promptText": "A quadratic equation that contains no linear first-degree term ($B = 0 \\implies Ax^2 + C = 0$) is classified as a:",
+      "choiceA": "Pure Quadratic Equation",
+      "choiceB": "Degenerate Equation",
+      "choiceC": "Incomplete Trinomial",
+      "choiceD": "Linearized Quadratic",
+      "correctChoice": "A",
+      "explanation": "A quadratic equation without a first-degree linear term ($B = 0$) is termed a pure quadratic equation.",
+      "archetype": "conceptual"
+    },
+    {
+      "id": "m03-07",
+      "promptText": "Find the sum and product of the roots of the quadratic equation $3x^2 - 15x + 8 = 0$.",
+      "choiceA": "Sum = 5, Product = 8/3",
+      "choiceB": "Sum = -5, Product = 8/3",
+      "choiceC": "Sum = 5, Product = -8/3",
+      "choiceD": "Sum = 15, Product = 8",
+      "correctChoice": "A",
+      "explanation": "Sum $= -B/A = -(-15)/3 = 5$. Product $= C/A = 8/3$.",
+      "archetype": "numerical"
+    },
+    {
+      "id": "m03-08",
+      "promptText": "Find the value of $k$ such that the quadratic equation $9x^2 - kx + 16 = 0$ has equal real roots.",
+      "choiceA": "±24",
+      "choiceB": "±12",
+      "choiceC": "±48",
+      "choiceD": "±144",
+      "correctChoice": "A",
+      "explanation": "For equal roots, $\\Delta = B^2 - 4AC = 0 \\implies (-k)^2 - 4(9)(16) = 0 \\implies k^2 = 576 \\implies k = \\pm 24$.",
+      "archetype": "numerical"
+    },
+    {
+      "id": "m03-09",
+      "promptText": "Construct the quadratic equation in standard form whose roots are $r_1 = 3 + 2i$ and $r_2 = 3 - 2i$.",
+      "choiceA": "x² - 6x + 13 = 0",
+      "choiceB": "x² + 6x + 13 = 0",
+      "choiceC": "x² - 6x - 13 = 0",
+      "choiceD": "x² - 6x + 5 = 0",
+      "correctChoice": "A",
+      "explanation": "Sum $= (3 + 2i) + (3 - 2i) = 6$. Product $= (3 + 2i)(3 - 2i) = 9 - 4i^2 = 9 + 4 = 13$. Equation: $x^2 - (\\text{sum})x + (\\text{product}) = x^2 - 6x + 13 = 0$.",
+      "archetype": "numerical"
+    },
+    {
+      "id": "m03-10",
+      "promptText": "Find the 4th term in the expansion of $(x + 2y)^7$.",
+      "choiceA": "280 x⁴ y³",
+      "choiceB": "35 x⁴ y³",
+      "choiceC": "560 x³ y⁴",
+      "choiceD": "70 x⁴ y³",
+      "correctChoice": "A",
+      "explanation": "$T_4 = \\binom{7}{3} x^{7-3} (2y)^3 = 35 \\cdot x^4 \\cdot (8y^3) = 280 x^4 y^3$.",
+      "archetype": "standard"
+    },
+    {
+      "id": "m03-11",
+      "promptText": "Find the sum of the coefficients in the expansion of $(2x - 3y)^4$.",
+      "choiceA": "1",
+      "choiceB": "16",
+      "choiceC": "81",
+      "choiceD": "625",
+      "correctChoice": "A",
+      "explanation": "Substitute $x = 1$ and $y = 1$: $(2(1) - 3(1))^4 = (2 - 3)^4 = (-1)^4 = 1$.",
+      "archetype": "numerical"
+    },
+    {
+      "id": "m03-12",
+      "promptText": "Find the sum of all exponents in the expansion of $(2x^2 + 3y^3)^5$.",
+      "choiceA": "75",
+      "choiceB": "50",
+      "choiceC": "60",
+      "choiceD": "150",
+      "correctChoice": "A",
+      "explanation": "$\\text{Sum} = \\frac{(p + q)n(n + 1)}{2} = \\frac{(2 + 3)(5)(6)}{2} = \\frac{5 \\times 30}{2} = 75$.",
+      "archetype": "numerical"
+    },
+    {
+      "id": "m03-13",
+      "promptText": "Find the term independent of $x$ (constant term) in the expansion of $\\left(x^2 + \\frac{1}{x}\\right)^6$.",
+      "choiceA": "15",
+      "choiceB": "20",
+      "choiceC": "6",
+      "choiceD": "1",
+      "correctChoice": "A",
+      "explanation": "General term: $T_{k+1} = \\binom{6}{k} (x^2)^{6-k} (x^{-1})^k = \\binom{6}{k} x^{12 - 3k}$. For independent term, $12 - 3k = 0 \\implies k = 4$. Term $= \\binom{6}{4} = 15$.",
+      "archetype": "standard"
+    },
+    {
+      "id": "m03-14",
+      "promptText": "If the roots of $2x^2 - 8x + 3 = 0$ are $r_1$ and $r_2$, evaluate the value of $\\frac{1}{r_1} + \\frac{1}{r_2}$.",
+      "choiceA": "8/3",
+      "choiceB": "3/8",
+      "choiceC": "4/3",
+      "choiceD": "2/3",
+      "correctChoice": "A",
+      "explanation": "$\\frac{1}{r_1} + \\frac{1}{r_2} = \\frac{r_1 + r_2}{r_1 r_2} = \\frac{-B/A}{C/A} = -\\frac{B}{C} = -\\frac{-8}{3} = \\frac{8}{3}$.",
+      "archetype": "numerical"
+    },
+    {
+      "id": "m03-15",
+      "promptText": "If $r_1$ and $r_2$ are the roots of $x^2 - 5x + 3 = 0$, find the value of $r_1^2 + r_2^2$.",
+      "choiceA": "19",
+      "choiceB": "25",
+      "choiceC": "22",
+      "choiceD": "31",
+      "correctChoice": "A",
+      "explanation": "$r_1 + r_2 = 5, r_1 r_2 = 3$. $r_1^2 + r_2^2 = (r_1 + r_2)^2 - 2r_1 r_2 = 5^2 - 2(3) = 25 - 6 = 19$.",
+      "archetype": "applied"
+    },
+    {
+      "id": "m03-16",
+      "promptText": "A projectile launched upward follows $h(t) = 40t - 5t^2$ (in meters). At what time $t$ does the projectile return to the ground ($h = 0$)?",
+      "choiceA": "8 seconds",
+      "choiceB": "4 seconds",
+      "choiceC": "10 seconds",
+      "choiceD": "5 seconds",
+      "correctChoice": "A",
+      "explanation": "$5t^2 - 40t = 0 \\implies 5t(t - 8) = 0 \\implies t = 8\\text{ seconds}$.",
+      "archetype": "applied"
+    },
+    {
+      "id": "m03-17",
+      "promptText": "Find the middle term in the expansion of $\\left(2x - \\frac{y}{2}\\right)^8$.",
+      "choiceA": "70 x⁴ y⁴",
+      "choiceB": "-70 x⁴ y⁴",
+      "choiceC": "35 x⁴ y⁴",
+      "choiceD": "140 x⁴ y⁴",
+      "correctChoice": "A",
+      "explanation": "Since $n = 8$ has 9 terms, the middle term is $T_5$ ($k = 4$): $T_5 = \\binom{8}{4} (2x)^4 \\left(-\\frac{y}{2}\\right)^4 = 70 \\cdot (16x^4) \\cdot \\left(\\frac{y^4}{16}\\right) = 70 x^4 y^4$.",
+      "archetype": "applied"
+    },
+    {
+      "id": "m03-18",
+      "promptText": "In an RLC circuit, the characteristic equation is $s^2 + 6s + 25 = 0$. What type of transient oscillation does this circuit exhibit?",
+      "choiceA": "Underdamped (oscillatory with complex roots s = -3 ± 4i)",
+      "choiceB": "Overdamped",
+      "choiceC": "Critically damped",
+      "choiceD": "Undamped (sustained)",
+      "correctChoice": "A",
+      "explanation": "$\\Delta = 6^2 - 4(1)(25) = 36 - 100 = -64 < 0$. Negative discriminant yields complex roots $s = \\frac{-6 \\pm 8i}{2} = -3 \\pm 4i$, indicating an underdamped oscillatory response.",
+      "archetype": "applied"
+    },
+    {
+      "id": "m03-19",
+      "promptText": "What is the common algebraic trap when calculating the $r^{\\text{th}}$ term in $(x - y)^n$?",
+      "choiceA": "Forgetting to attach the alternating sign $(-1)^{r-1}$ from the negative second term.",
+      "choiceB": "Using $r$ instead of $r - 1$ as the combination subscript.",
+      "choiceC": "Both A and B are frequent traps.",
+      "choiceD": "None of the above.",
+      "correctChoice": "C",
+      "explanation": "Both forgetting the $(-1)^{r-1}$ sign multiplier and using $\\binom{n}{r}$ instead of $\\binom{n}{r-1}$ are the two most common algebraic pitfalls.",
+      "archetype": "trap"
+    },
+    {
+      "id": "m03-20",
+      "promptText": "When evaluating the sum of coefficients of $(2x - 3y + 4)^3$, what is the critical step?",
+      "choiceA": "Set variables x = 1 and y = 1, yielding (2 - 3 + 4)³ = 3³ = 27.",
+      "choiceB": "Set all variables to 0.",
+      "choiceC": "Multiply the coefficients by 3.",
+      "choiceD": "Subtract the constant 4.",
+      "correctChoice": "A",
+      "explanation": "Substituting $x = 1, y = 1$ yields $(2(1) - 3(1) + 4)^3 = (3)^3 = 27$.",
+      "archetype": "trap"
+    },
+    {
+      "id": "m03-21",
+      "promptText": "Using Vieta's relations, what is the sum of the roots of $7x^2 + 28x - 13 = 0$ in 2 seconds?",
+      "choiceA": "-4",
+      "choiceB": "4",
+      "choiceC": "-13/7",
+      "choiceD": "28",
+      "correctChoice": "A",
+      "explanation": "Sum $= -B/A = -28/7 = -4$ in 2 seconds.",
+      "archetype": "shortcut"
+    },
+    {
+      "id": "m03-22",
+      "promptText": "If $x^2 - 10x + 25 = 0$, what are the roots by instant inspection?",
+      "choiceA": "x = 5 (double root)",
+      "choiceB": "x = ±5",
+      "choiceC": "x = -5 (double root)",
+      "choiceD": "x = 0, 5",
+      "correctChoice": "A",
+      "explanation": "$(x - 5)^2 = 0 \\implies x = 5$ with multiplicity 2.",
+      "archetype": "shortcut"
+    }
+  ]
+}

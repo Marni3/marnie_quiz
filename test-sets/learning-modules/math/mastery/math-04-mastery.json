@@ -1,0 +1,252 @@
+{
+  "moduleId": "math-04",
+  "moduleCode": "MATH 04",
+  "title": "MATH 04 Mastery Challenge: Progressions, Means & Figurate Numbers",
+  "description": "Comprehensive 22-question 4-quadrant companion mastery exam for MATH 04. Rigorously tests arithmetic sums, geometric convergence limits, harmonic speeds, mean inequalities, bouncing ball kinematics, and STAT regression bypasses under timed board conditions.",
+  "totalQuestions": 22,
+  "timeLimitMinutes": 35,
+  "questions": [
+    {
+      "id": "m04-01",
+      "promptText": "Under what condition does an **Infinite Geometric Progression** converge to a finite sum?",
+      "choiceA": "$|r| < 1$",
+      "choiceB": "$r > 1$",
+      "choiceC": "$r = 1$",
+      "choiceD": "$d > 0$",
+      "correctChoice": "A",
+      "explanation": "An infinite geometric series converges if and only if the absolute value of the common ratio is strictly less than 1 ($|r| < 1$), yielding sum $S_\\infty = \\frac{a_1}{1 - r}$.",
+      "archetype": "conceptual"
+    },
+    {
+      "id": "m04-02",
+      "promptText": "Which inequality strictly governs the Arithmetic Mean (AM), Geometric Mean (GM), and Harmonic Mean (HM) of two distinct positive real numbers?",
+      "choiceA": "AM > GM > HM",
+      "choiceB": "HM > GM > AM",
+      "choiceC": "GM > AM > HM",
+      "choiceD": "AM = GM = HM always",
+      "correctChoice": "A",
+      "explanation": "For any two distinct positive real numbers, the classical means strictly obey the inequality $\\text{AM} > \\text{GM} > \\text{HM}$ (they are equal only if $a = b$).",
+      "archetype": "conceptual"
+    },
+    {
+      "id": "m04-03",
+      "promptText": "What is the invariant mathematical relation connecting the **Arithmetic Mean (AM)**, **Geometric Mean (GM)**, and **Harmonic Mean (HM)** of two numbers?",
+      "choiceA": "(GM)² = (AM)(HM)",
+      "choiceB": "(AM)² = (GM)(HM)",
+      "choiceC": "(HM)² = (AM)(GM)",
+      "choiceD": "AM + HM = 2GM",
+      "correctChoice": "A",
+      "explanation": "By definition: $\\text{AM} = \\frac{a + b}{2}$, $\\text{GM} = \\sqrt{ab}$, $\\text{HM} = \\frac{2ab}{a + b}$. Multiplying yields $(\\text{AM})(\\text{HM}) = \\frac{a + b}{2} \\cdot \\frac{2ab}{a + b} = ab = (\\text{GM})^2$.",
+      "archetype": "conceptual"
+    },
+    {
+      "id": "m04-04",
+      "promptText": "When calculating the average speed of a vehicle traveling over equal distances at different constant speeds $v_1$ and $v_2$, which mean must be applied?",
+      "choiceA": "Harmonic Mean (HM = 2v₁v₂ / (v₁ + v₂))",
+      "choiceB": "Arithmetic Mean (AM = (v₁ + v₂) / 2)",
+      "choiceC": "Geometric Mean (GM = √(v₁v₂))",
+      "choiceD": "Quadratic Mean",
+      "correctChoice": "A",
+      "explanation": "Since total time is distance divided by speed ($t = d/v_1 + d/v_2$), the overall average speed $V_{\\text{avg}} = \\frac{2d}{t}$ equals the Harmonic Mean of the speeds.",
+      "archetype": "conceptual"
+    },
+    {
+      "id": "m04-05",
+      "promptText": "What formula gives the $n^{\\text{th}}$ **Triangular Number** ($T_n$)?",
+      "choiceA": "n(n + 1) / 2",
+      "choiceB": "n²",
+      "choiceC": "n(3n - 1) / 2",
+      "choiceD": "n(2n - 1)",
+      "correctChoice": "A",
+      "explanation": "Triangular numbers represent the sum of the first $n$ natural integers: $T_n = 1 + 2 + \\dots + n = \\frac{n(n + 1)}{2}$.",
+      "archetype": "conceptual"
+    },
+    {
+      "id": "m04-06",
+      "promptText": "A sequence whose terms are reciprocals of an Arithmetic Progression is called a:",
+      "choiceA": "Harmonic Progression (HP)",
+      "choiceB": "Geometric Progression (GP)",
+      "choiceC": "Fibonacci Sequence",
+      "choiceD": "Polygonal Sequence",
+      "correctChoice": "A",
+      "explanation": "A Harmonic Progression is defined as a sequence of numbers whose reciprocals form an arithmetic progression.",
+      "archetype": "conceptual"
+    },
+    {
+      "id": "m04-07",
+      "promptText": "Find the 20th term of the Arithmetic Progression: $3, 7, 11, 15, \\dots$",
+      "choiceA": "79",
+      "choiceB": "83",
+      "choiceC": "75",
+      "choiceD": "80",
+      "correctChoice": "A",
+      "explanation": "$a_1 = 3, d = 4$. $a_{20} = a_1 + (n - 1)d = 3 + (19)(4) = 3 + 76 = 79$.",
+      "archetype": "numerical"
+    },
+    {
+      "id": "m04-08",
+      "promptText": "Find the sum of the first 50 positive even integers ($2 + 4 + 6 + \\dots + 100$).",
+      "choiceA": "2,550",
+      "choiceB": "2,500",
+      "choiceC": "5,050",
+      "choiceD": "2,450",
+      "correctChoice": "A",
+      "explanation": "$S_{50} = \\frac{n}{2}(a_1 + a_n) = \\frac{50}{2}(2 + 100) = 25(102) = 2,550$.",
+      "archetype": "numerical"
+    },
+    {
+      "id": "m04-09",
+      "promptText": "The 2nd term of a Geometric Progression is 6 and the 5th term is 162. Find the common ratio $r$.",
+      "choiceA": "3",
+      "choiceB": "2",
+      "choiceC": "4",
+      "choiceD": "9",
+      "correctChoice": "A",
+      "explanation": "$\\frac{a_5}{a_2} = \\frac{a_1 r^4}{a_1 r} = r^3 = \\frac{162}{6} = 27 \\implies r = \\sqrt[3]{27} = 3$.",
+      "archetype": "numerical"
+    },
+    {
+      "id": "m04-10",
+      "promptText": "Evaluate the sum of the infinite geometric series: $12 + 6 + 3 + 1.5 + \\dots$",
+      "choiceA": "24",
+      "choiceB": "18",
+      "choiceC": "36",
+      "choiceD": "48",
+      "correctChoice": "A",
+      "explanation": "$a_1 = 12, r = 1/2$. $S_\\infty = \\frac{a_1}{1 - r} = \\frac{12}{1 - 0.5} = \\frac{12}{0.5} = 24$.",
+      "archetype": "numerical"
+    },
+    {
+      "id": "m04-11",
+      "promptText": "Find the **Harmonic Mean** between $12$ and $18$.",
+      "choiceA": "14.4",
+      "choiceB": "15.0",
+      "choiceC": "14.7",
+      "choiceD": "13.8",
+      "correctChoice": "A",
+      "explanation": "$\\text{HM} = \\frac{2ab}{a + b} = \\frac{2(12)(18)}{12 + 18} = \\frac{432}{30} = 14.4$.",
+      "archetype": "numerical"
+    },
+    {
+      "id": "m04-12",
+      "promptText": "Find the 6th term of the Harmonic Progression: $\\frac{1}{2}, \\frac{1}{5}, \\frac{1}{8}, \\dots$",
+      "choiceA": "1/17",
+      "choiceB": "1/14",
+      "choiceC": "1/20",
+      "choiceD": "1/15",
+      "correctChoice": "A",
+      "explanation": "Corresponding AP: $2, 5, 8, \\dots$ ($a_1 = 2, d = 3$). $A_6 = 2 + (5)(3) = 17$. Thus, 6th term of HP is $1/17$.",
+      "archetype": "numerical"
+    },
+    {
+      "id": "m04-13",
+      "promptText": "What is the 12th **Triangular Number** ($T_{12}$)?",
+      "choiceA": "78",
+      "choiceB": "66",
+      "choiceC": "91",
+      "choiceD": "144",
+      "correctChoice": "A",
+      "explanation": "$T_{12} = \\frac{12(13)}{2} = 6 \\times 13 = 78$.",
+      "archetype": "numerical"
+    },
+    {
+      "id": "m04-14",
+      "promptText": "Insert 3 geometric means between 2 and 162. What is the sum of these three inserted means?",
+      "choiceA": "78",
+      "choiceB": "72",
+      "choiceC": "84",
+      "choiceD": "60",
+      "correctChoice": "A",
+      "explanation": "$a_1 = 2, a_5 = 162 \\implies r^4 = 162/2 = 81 \\implies r = 3$. The three means are $a_2 = 6, a_3 = 18, a_4 = 54$. Sum $= 6 + 18 + 54 = 78$.",
+      "archetype": "standard"
+    },
+    {
+      "id": "m04-15",
+      "promptText": "A rubber ball is dropped from a height of $20\\text{ meters}$. Each time it strikes the ground, it rebounds to $3/4$ of its previous height. Find the total vertical distance traveled before coming to rest.",
+      "choiceA": "140 meters",
+      "choiceB": "120 meters",
+      "choiceC": "160 meters",
+      "choiceD": "80 meters",
+      "correctChoice": "A",
+      "explanation": "Using shortcut $D = H\\left(\\frac{1 + r}{1 - r}\\right) = 20\\left(\\frac{1 + 0.75}{1 - 0.75}\\right) = 20\\left(\\frac{1.75}{0.25}\\right) = 20(7) = 140\\text{ meters}$.",
+      "archetype": "applied"
+    },
+    {
+      "id": "m04-16",
+      "promptText": "An engineer travels to a job site at $60\\text{ km/h}$ and returns along the exact same highway at $90\\text{ km/h}$. What is the engineer's average speed for the entire round trip?",
+      "choiceA": "72 km/h",
+      "choiceB": "75 km/h",
+      "choiceC": "73.5 km/h",
+      "choiceD": "70 km/h",
+      "correctChoice": "A",
+      "explanation": "Harmonic Mean: $\\text{HM} = \\frac{2(60)(90)}{60 + 90} = \\frac{10,800}{150} = 72\\text{ km/h}$.",
+      "archetype": "applied"
+    },
+    {
+      "id": "m04-17",
+      "promptText": "An employee starts with an annual salary of $\\text{₱300,000}$ with a guaranteed annual raise of $\\text{₱25,000}$ at the end of each year. How much total money will the employee have earned over $10\\text{ years}$?",
+      "choiceA": "₱4,125,000",
+      "choiceB": "₱3,875,000",
+      "choiceC": "₱4,500,000",
+      "choiceD": "₱3,500,000",
+      "correctChoice": "A",
+      "explanation": "$a_1 = 300,000, d = 25,000, n = 10$. $S_{10} = \\frac{10}{2}[2(300,000) + (9)(25,000)] = 5[600,000 + 225,000] = 5(825,000) = \\text{₱4,125,000}$.",
+      "archetype": "applied"
+    },
+    {
+      "id": "m04-18",
+      "promptText": "The arithmetic mean of two numbers is 34 and their geometric mean is 16. Find the two numbers.",
+      "choiceA": "64 and 4",
+      "choiceB": "32 and 8",
+      "choiceC": "60 and 8",
+      "choiceD": "50 and 18",
+      "correctChoice": "A",
+      "explanation": "$a + b = 2(34) = 68$, $ab = 16^2 = 256$. Quadratic equation: $x^2 - 68x + 256 = 0 \\implies (x - 64)(x - 4) = 0$. The numbers are $64$ and $4$.",
+      "archetype": "applied"
+    },
+    {
+      "id": "m04-19",
+      "promptText": "What is the common trap when computing round-trip average speed over equal distance legs?",
+      "choiceA": "Calculating the simple Arithmetic Mean (e.g. (60 + 90)/2 = 75 km/h) instead of the Harmonic Mean.",
+      "choiceB": "Multiplying the speeds together.",
+      "choiceC": "Subtracting the return time.",
+      "choiceD": "Taking the square root of the speeds.",
+      "correctChoice": "A",
+      "explanation": "Because more time is spent traveling at the slower speed, the simple arithmetic mean overestimates average speed. The Harmonic Mean must strictly be used.",
+      "archetype": "trap"
+    },
+    {
+      "id": "m04-20",
+      "promptText": "What is the common error when summing an infinite geometric series with $r > 1$ (such as $2 + 4 + 8 + \\dots$)?",
+      "choiceA": "Blindly applying $S_\\infty = \\frac{a_1}{1 - r}$ to obtain a meaningless negative number, ignoring that the series diverges.",
+      "choiceB": "Dividing by 2.",
+      "choiceC": "Setting $r = 0$.",
+      "choiceD": "Using logarithms.",
+      "correctChoice": "A",
+      "explanation": "The formula $S_\\infty = \\frac{a_1}{1 - r}$ is valid ONLY when $|r| < 1$. For $|r| \\ge 1$, the series diverges to infinity.",
+      "archetype": "trap"
+    },
+    {
+      "id": "m04-21",
+      "promptText": "Using the bouncing ball shortcut $D = H\\left(\\frac{1 + r}{1 - r}\\right)$, find the total distance for a ball dropped from $15\\text{ m}$ rebounding to $1/2$ height in 3 seconds.",
+      "choiceA": "45 meters",
+      "choiceB": "30 meters",
+      "choiceC": "60 meters",
+      "choiceD": "15 meters",
+      "correctChoice": "A",
+      "explanation": "$D = 15 \\left(\\frac{1 + 0.5}{1 - 0.5}\\right) = 15 \\left(\\frac{1.5}{0.5}\\right) = 15(3) = 45\\text{ meters}$.",
+      "archetype": "shortcut"
+    },
+    {
+      "id": "m04-22",
+      "promptText": "If the Arithmetic Mean is 50 and Harmonic Mean is 32, find the Geometric Mean in 2 seconds.",
+      "choiceA": "40",
+      "choiceB": "41",
+      "choiceC": "36",
+      "choiceD": "45",
+      "correctChoice": "A",
+      "explanation": "$\\text{GM} = \\sqrt{(\\text{AM})(\\text{HM})} = \\sqrt{50 \\times 32} = \\sqrt{1600} = 40$ in 2 seconds.",
+      "archetype": "shortcut"
+    }
+  ]
+}

@@ -1,0 +1,252 @@
+{
+  "moduleId": "math-02",
+  "moduleCode": "MATH 02",
+  "title": "MATH 02 Mastery Challenge: Special Products, Remainder Theorem & Logarithms",
+  "description": "Comprehensive 22-question 4-quadrant companion mastery exam for MATH 02. Rigorously tests algebraic expansions, Bézout's remainder theorem, factor conditions, logarithmic identities, decibel power gains, and CALC substitution tricks under timed board conditions.",
+  "totalQuestions": 22,
+  "timeLimitMinutes": 35,
+  "questions": [
+    {
+      "id": "m02-01",
+      "promptText": "According to the **Remainder Theorem** (formulated by Étienne Bézout), what is the remainder when a polynomial $P(x)$ is divided by the linear binomial $(x - k)$?",
+      "choiceA": "$P(k)$",
+      "choiceB": "$P(-k)$",
+      "choiceC": "$P'(k)$",
+      "choiceD": "$0$",
+      "correctChoice": "A",
+      "explanation": "The Remainder Theorem states that when $P(x)$ is divided by $(x - k)$, the remainder is directly equal to $R = P(k)$.",
+      "archetype": "conceptual"
+    },
+    {
+      "id": "m02-02",
+      "promptText": "Which conversion formula correctly relates the **Natural Logarithm** ($\\ln x$) to the **Common Logarithm** ($\\log_{10} x$)?",
+      "choiceA": "$\\ln x = 2.3026 \\log_{10} x$",
+      "choiceB": "$\\ln x = 0.4343 \\log_{10} x$",
+      "choiceC": "$\\log_{10} x = 2.3026 \\ln x$",
+      "choiceD": "$\\ln x = 3.1416 \\log_{10} x$",
+      "correctChoice": "A",
+      "explanation": "Since $\\ln 10 \\approx 2.302585$, the conversion is $\\ln x = 2.3026 \\log_{10} x$, and conversely $\\log_{10} x = 0.4343 \\ln x$.",
+      "archetype": "conceptual"
+    },
+    {
+      "id": "m02-03",
+      "promptText": "What is the complete factorization of the sum of two cubes: **$x^3 + y^3$**?",
+      "choiceA": "$(x + y)(x^2 - xy + y^2)$",
+      "choiceB": "$(x + y)(x^2 - 2xy + y^2)$",
+      "choiceC": "$(x - y)(x^2 + xy + y^2)$",
+      "choiceD": "$(x + y)^3$",
+      "correctChoice": "A",
+      "explanation": "$x^3 + y^3 = (x + y)(x^2 - xy + y^2)$. The quadratic factor has a single cross-product $-xy$ (no factor of 2).",
+      "archetype": "conceptual"
+    },
+    {
+      "id": "m02-04",
+      "promptText": "Who is credited with the invention of **Natural Logarithms** (base $e$) in 1614?",
+      "choiceA": "John Napier",
+      "choiceB": "Henry Briggs",
+      "choiceC": "René Descartes",
+      "choiceD": "Leonhard Euler",
+      "correctChoice": "A",
+      "explanation": "Scottish mathematician John Napier published the first table of natural logarithms in 1614. Henry Briggs developed common base-10 logarithms in 1616.",
+      "archetype": "conceptual"
+    },
+    {
+      "id": "m02-05",
+      "promptText": "Under what condition is the linear binomial $(x - k)$ an **exact factor** of the polynomial $P(x)$?",
+      "choiceA": "$P(k) = 0$",
+      "choiceB": "$P(k) = 1$",
+      "choiceC": "$P(-k) = 0$",
+      "choiceD": "$P(0) = k$",
+      "correctChoice": "A",
+      "explanation": "By the Factor Theorem, $(x - k)$ is an exact factor of $P(x)$ if and only if the remainder $R = P(k) = 0$.",
+      "archetype": "conceptual"
+    },
+    {
+      "id": "m02-06",
+      "promptText": "In common logarithms, the integer part representing orders of magnitude is called the **characteristic**, while the positive decimal fractional part is called the:",
+      "choiceA": "Mantissa",
+      "choiceB": "Modulus",
+      "choiceC": "Abscissa",
+      "choiceD": "Radicand",
+      "correctChoice": "A",
+      "explanation": "In $\\log_{10} x = c + m$, $c$ is the characteristic (integer exponent of 10) and $m$ is the mantissa (decimal part from the logarithm table).",
+      "archetype": "conceptual"
+    },
+    {
+      "id": "m02-07",
+      "promptText": "Find the remainder when $P(x) = 3x^3 - 5x^2 + 7x - 4$ is divided by $(x - 2)$.",
+      "choiceA": "14",
+      "choiceB": "10",
+      "choiceC": "-14",
+      "choiceD": "6",
+      "correctChoice": "A",
+      "explanation": "Apply the Remainder Theorem: $R = P(2) = 3(2)^3 - 5(2)^2 + 7(2) - 4 = 3(8) - 5(4) + 14 - 4 = 24 - 20 + 14 - 4 = 14$.",
+      "archetype": "numerical"
+    },
+    {
+      "id": "m02-08",
+      "promptText": "Determine the value of $k$ such that $(x + 3)$ is an exact factor of $P(x) = 2x^3 + kx^2 - 7x + 6$.",
+      "choiceA": "3",
+      "choiceB": "-3",
+      "choiceC": "5",
+      "choiceD": "-7",
+      "correctChoice": "A",
+      "explanation": "For $(x + 3)$ to be an exact factor, $P(-3) = 0$: $2(-3)^3 + k(-3)^2 - 7(-3) + 6 = 0 \\implies 2(-27) + 9k + 21 + 6 = 0 \\implies -54 + 9k + 27 = 0 \\implies 9k = 27 \\implies k = 3$.",
+      "archetype": "numerical"
+    },
+    {
+      "id": "m02-09",
+      "promptText": "Evaluate the exact value of $\\log_4(32)$.",
+      "choiceA": "2.5",
+      "choiceB": "2.0",
+      "choiceC": "8.0",
+      "choiceD": "1.25",
+      "correctChoice": "A",
+      "explanation": "Let $y = \\log_4(32) \\implies 4^y = 32 \\implies (2^2)^y = 2^5 \\implies 2^{2y} = 2^5 \\implies 2y = 5 \\implies y = 2.5$.",
+      "archetype": "numerical"
+    },
+    {
+      "id": "m02-10",
+      "promptText": "Expand the square of the trinomial: $(x - 2y + 3z)^2$.",
+      "choiceA": "x² + 4y² + 9z² - 4xy - 12yz + 6xz",
+      "choiceB": "x² + 4y² + 9z² + 4xy + 12yz + 6xz",
+      "choiceC": "x² - 4y² + 9z² - 4xy - 12yz + 6xz",
+      "choiceD": "x² + 4y² + 9z² - 2xy - 6yz + 3xz",
+      "correctChoice": "A",
+      "explanation": "$(x - 2y + 3z)^2 = x^2 + (-2y)^2 + (3z)^2 + 2(x)(-2y) + 2(-2y)(3z) + 2(x)(3z) = x^2 + 4y^2 + 9z^2 - 4xy - 12yz + 6xz$.",
+      "archetype": "standard"
+    },
+    {
+      "id": "m02-11",
+      "promptText": "Solve for $x$: $\\log(x) + \\log(x - 3) = 1$ (base 10).",
+      "choiceA": "5",
+      "choiceB": "-2",
+      "choiceC": "5 and -2",
+      "choiceD": "10",
+      "correctChoice": "A",
+      "explanation": "$\\log(x(x - 3)) = 1 \\implies x(x - 3) = 10^1 = 10 \\implies x^2 - 3x - 10 = 0 \\implies (x - 5)(x + 2) = 0$. Since $\\log(-2)$ is undefined, $x = 5$ is the only valid solution.",
+      "archetype": "standard"
+    },
+    {
+      "id": "m02-12",
+      "promptText": "Factor completely: $27a^3 - 64b^3$.",
+      "choiceA": "(3a - 4b)(9a² + 12ab + 16b²)",
+      "choiceB": "(3a - 4b)(9a² - 12ab + 16b²)",
+      "choiceC": "(3a + 4b)(9a² - 12ab + 16b²)",
+      "choiceD": "(3a - 4b)³",
+      "correctChoice": "A",
+      "explanation": "Difference of cubes: $(3a)^3 - (4b)^3 = (3a - 4b)((3a)^2 + (3a)(4b) + (4b)^2) = (3a - 4b)(9a^2 + 12ab + 16b^2)$.",
+      "archetype": "standard"
+    },
+    {
+      "id": "m02-13",
+      "promptText": "Simplify the algebraic expression: $\\frac{x^3 - 8}{x - 2}$.",
+      "choiceA": "x² + 2x + 4",
+      "choiceB": "x² - 2x + 4",
+      "choiceC": "x² + 4",
+      "choiceD": "x² - 4",
+      "correctChoice": "A",
+      "explanation": "Factor the numerator: $x^3 - 8 = (x - 2)(x^2 + 2x + 4)$. Cancelling $(x - 2)$ yields $x^2 + 2x + 4$.",
+      "archetype": "standard"
+    },
+    {
+      "id": "m02-14",
+      "promptText": "If $\\log_b(2) = 0.3010$ and $\\log_b(3) = 0.4771$, find the value of $\\log_b(18)$.",
+      "choiceA": "1.2552",
+      "choiceB": "1.0791",
+      "choiceC": "0.7781",
+      "choiceD": "1.5562",
+      "correctChoice": "A",
+      "explanation": "$18 = 2 \\times 3^2 \\implies \\log_b(18) = \\log_b(2) + 2\\log_b(3) = 0.3010 + 2(0.4771) = 0.3010 + 0.9542 = 1.2552$.",
+      "archetype": "numerical"
+    },
+    {
+      "id": "m02-15",
+      "promptText": "An amplifier has an input power of $5\\text{ mW}$ and an output power of $200\\text{ mW}$. What is the power gain in **decibels** ($G_{\\text{dB}}$)?",
+      "choiceA": "16.02 dB",
+      "choiceB": "40.00 dB",
+      "choiceC": "32.04 dB",
+      "choiceD": "12.50 dB",
+      "correctChoice": "A",
+      "explanation": "$G_{\\text{dB}} = 10\\log_{10}\\left(\\frac{P_{\\text{out}}}{P_{\\text{in}}}\\right) = 10\\log_{10}\\left(\\frac{200}{5}\\right) = 10\\log_{10}(40) = 10(1.60206) \\approx 16.02\\text{ dB}$.",
+      "archetype": "applied"
+    },
+    {
+      "id": "m02-16",
+      "promptText": "Given $a + b = 6$ and $ab = 8$, find the value of $a^3 + b^3$ without solving for $a$ and $b$ individually.",
+      "choiceA": "72",
+      "choiceB": "96",
+      "choiceC": "144",
+      "choiceD": "216",
+      "correctChoice": "A",
+      "explanation": "Identity: $a^3 + b^3 = (a + b)^3 - 3ab(a + b) = 6^3 - 3(8)(6) = 216 - 144 = 72$.",
+      "archetype": "applied"
+    },
+    {
+      "id": "m02-17",
+      "promptText": "Find the remainder when $x^{100} - 2x^{50} + 3$ is divided by $(x + 1)$.",
+      "choiceA": "2",
+      "choiceB": "0",
+      "choiceC": "4",
+      "choiceD": "-2",
+      "correctChoice": "A",
+      "explanation": "Substitute $x = -1$: $R = (-1)^{100} - 2(-1)^{50} + 3 = 1 - 2(1) + 3 = 2$.",
+      "archetype": "applied"
+    },
+    {
+      "id": "m02-18",
+      "promptText": "Solve the system of equations for positive real values of $x$ and $y$: $\\log_2(x) + \\log_2(y) = 5$ and $\\log_2(x) - \\log_2(y) = 1$.",
+      "choiceA": "x = 8, y = 4",
+      "choiceB": "x = 16, y = 2",
+      "choiceC": "x = 32, y = 1",
+      "choiceD": "x = 4, y = 8",
+      "correctChoice": "A",
+      "explanation": "Adding equations: $2\\log_2(x) = 6 \\implies \\log_2(x) = 3 \\implies x = 2^3 = 8$. Subtracting gives $2\\log_2(y) = 4 \\implies \\log_2(y) = 2 \\implies y = 2^2 = 4$.",
+      "archetype": "applied"
+    },
+    {
+      "id": "m02-19",
+      "promptText": "What is the common algebraic trap when solving logarithmic equations containing $(x - k)$ arguments?",
+      "choiceA": "Failing to discard extraneous negative solutions that violate the logarithmic domain argument $x > 0$.",
+      "choiceB": "Multiplying the bases together.",
+      "choiceC": "Using base 10 instead of base e.",
+      "choiceD": "Adding the arguments instead of multiplying.",
+      "correctChoice": "A",
+      "explanation": "Converting logarithmic equations to quadratic equations often yields extraneous negative roots that must be checked against domain constraints ($\text{argument} > 0$).",
+      "archetype": "trap"
+    },
+    {
+      "id": "m02-20",
+      "promptText": "What is the common factoring trap when expanding the difference of cubes $x^3 - y^3$?",
+      "choiceA": "Inserting a factor of 2 into the middle term: writing $(x^2 + 2xy + y^2)$ instead of $(x^2 + xy + y^2)$.",
+      "choiceB": "Making the first binomial $(x + y)$.",
+      "choiceC": "Making the last term negative.",
+      "choiceD": "Dividing by 3.",
+      "correctChoice": "A",
+      "explanation": "The trinomial factor in sum/difference of cubes is $(x^2 \\pm xy + y^2)$, which has NO factor of 2. Writing $2xy$ confuses it with a perfect square trinomial.",
+      "archetype": "trap"
+    },
+    {
+      "id": "m02-21",
+      "promptText": "Using the 3-second choice test bypass, find the solution to $3^{x+1} + 3^x = 36$.",
+      "choiceA": "x = 2",
+      "choiceB": "x = 3",
+      "choiceC": "x = 1",
+      "choiceD": "x = 0",
+      "correctChoice": "A",
+      "explanation": "Factor out $3^x$: $3^x(3 + 1) = 36 \\implies 3^x(4) = 36 \\implies 3^x = 9 \\implies x = 2$. Testing $x = 2$: $3^3 + 3^2 = 27 + 9 = 36$.",
+      "archetype": "shortcut"
+    },
+    {
+      "id": "m02-22",
+      "promptText": "What is the remainder when $P(x) = x^5 - 32$ is divided by $(x - 2)$?",
+      "choiceA": "0",
+      "choiceB": "32",
+      "choiceC": "-32",
+      "choiceD": "64",
+      "correctChoice": "A",
+      "explanation": "$R = P(2) = 2^5 - 32 = 32 - 32 = 0$ in 1 second, confirming $(x - 2)$ is an exact factor.",
+      "archetype": "shortcut"
+    }
+  ]
+}

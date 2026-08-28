@@ -10,12 +10,13 @@
   "toc": [
     { "id": "sec-prereq-bridges", "title": "1. Introduction & Cross-Subject Bridges", "level": 2 },
     { "id": "sec-theory", "title": "2. Lesson Proper", "level": 2 },
-    { "id": "sec-visualizer", "title": "3. Interactive Visualizer: Conic Discriminant & Circle Morphing", "level": 2 },
-    { "id": "sec-terminology", "title": "4. Terms and Definitions", "level": 2 },
-    { "id": "sec-dual-method", "title": "5. Sample Problems and Solutions", "level": 2 },
-    { "id": "sec-calculator", "title": "6. Calculator Techniques (Karce & Canon)", "level": 2 },
-    { "id": "sec-concept-checks", "title": "7. In-Line Concept Checks", "level": 2 },
-    { "id": "sec-mastery-challenge", "title": "8. Paired Mastery Challenge", "level": 2 }
+    { "id": "sec-formulas", "title": "3. Compilation of Formulas", "level": 2 },
+    { "id": "sec-visualizer", "title": "4. Interactive Visualizer: Conic Discriminant & Circle Morphing", "level": 2 },
+    { "id": "sec-terminology", "title": "5. Terms and Definitions", "level": 2 },
+    { "id": "sec-dual-method", "title": "6. Sample Problems and Solutions", "level": 2 },
+    { "id": "sec-calculator", "title": "7. Calculator Techniques (Karce & Canon)", "level": 2 },
+    { "id": "sec-concept-checks", "title": "8. In-Line Concept Checks", "level": 2 },
+    { "id": "sec-mastery-challenge", "title": "9. Paired Mastery Challenge", "level": 2 }
   ],
   "prerequisiteBridge": {
     "priorModuleId": "math-12-02",
@@ -39,6 +40,56 @@
       "targetTopicCode": "EST-03",
       "badgeText": "Circular Polarization & Radar",
       "description": "When two orthogonal plane waves have equal amplitude and a $90^\\circ$ phase difference, the resulting electric field vector locus traces a circle in space (Circular Polarization)."
+    }
+  ],
+  "formulas": [
+    {
+      "id": "f-1301-01",
+      "title": "General Second-Degree Equation",
+      "formula": "$$Ax^2 + Bxy + Cy^2 + Dx + Ey + F = 0$$",
+      "note": "Represents any conic section in the Cartesian plane."
+    },
+    {
+      "id": "f-1301-02",
+      "title": "Conic Discriminant",
+      "formula": "$$\\Delta = B^2 - 4AC$$",
+      "note": "Δ < 0: Ellipse/Circle; Δ = 0: Parabola; Δ > 0: Hyperbola."
+    },
+    {
+      "id": "f-1301-03",
+      "title": "Standard Equation of a Circle",
+      "formula": "$$(x - h)^2 + (y - k)^2 = r^2$$",
+      "note": "Center at (h, k), radius r. Eccentricity e = 0."
+    },
+    {
+      "id": "f-1301-04",
+      "title": "General Form Circle Center & Radius",
+      "formula": "$$h = -\\frac{D}{2}, \\quad k = -\\frac{E}{2}, \\quad r = \\sqrt{h^2 + k^2 - F}$$",
+      "note": "Equation must be normalized such that A = C = 1."
+    },
+    {
+      "id": "f-1301-05",
+      "title": "Length of Tangent from External Point",
+      "formula": "$$L = \\sqrt{x_1^2 + y_1^2 + Dx_1 + Ey_1 + F}$$",
+      "note": "Evaluate the general circle expression at the external point (x₁, y₁) and take square root."
+    },
+    {
+      "id": "f-1301-06",
+      "title": "Radical Axis of Two Circles",
+      "formula": "$$(D_1 - D_2)x + (E_1 - E_2)y + (F_1 - F_2) = 0$$",
+      "note": "Obtained by subtracting C₂ from C₁. Perpendicular to the line of centers."
+    },
+    {
+      "id": "f-1301-07",
+      "title": "Standard Parabola (Horizontal Axis)",
+      "formula": "$$(y - k)^2 = \\pm 4p(x - h)$$",
+      "note": "Focus at (h ± p, k); Directrix x = h ∓ p; LR = 4p. Opens right (+) or left (-)."
+    },
+    {
+      "id": "f-1301-08",
+      "title": "Standard Parabola (Vertical Axis)",
+      "formula": "$$(x - h)^2 = \\pm 4p(y - k)$$",
+      "note": "Focus at (h, k ± p); Directrix y = k ∓ p; LR = 4p. Opens up (+) or down (-)."
     }
   ],
   "terms": [

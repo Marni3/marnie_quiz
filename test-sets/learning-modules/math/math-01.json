@@ -1,0 +1,265 @@
+{
+  "id": "math-01",
+  "code": "MATH 01",
+  "domain": "MATH",
+  "topicCode": "MATH-01",
+  "topicTitle": "College Algebra",
+  "subtopicTitle": "Number Systems, Field Properties, Roman Numerals & Cyclic Powers of i",
+  "order": 1,
+  "pairedQuizSetId": "math-01-mastery",
+  "toc": [
+    { "id": "sec-prereq-bridges", "title": "1. Introduction & Cross-Subject Bridges", "level": 2 },
+    { "id": "sec-theory", "title": "2. Lesson Proper", "level": 2 },
+    { "id": "sec-formulas", "title": "3. Compilation of Formulas", "level": 2 },
+    { "id": "sec-visualizer", "title": "4. Interactive Visualizer: Number Classification & Prime Factor Tree", "level": 2 },
+    { "id": "sec-terminology", "title": "5. Terms and Definitions", "level": 2 },
+    { "id": "sec-dual-method", "title": "6. Sample Problems and Solutions", "level": 2 },
+    { "id": "sec-calculator", "title": "7. Calculator Techniques (Karce & Canon)", "level": 2 },
+    { "id": "sec-concept-checks", "title": "8. In-Line Concept Checks", "level": 2 },
+    { "id": "sec-mastery-challenge", "title": "9. Paired Mastery Challenge", "level": 2 }
+  ],
+  "prerequisiteBridge": {
+    "priorModuleId": null,
+    "text": "As the foundational starting point of the PRC ECE board examination mathematics syllabus, this module establishes number hierarchies, field axioms, Roman multipliers, and complex unit cycles required across all subsequent engineering subjects."
+  },
+  "crossSubjectBridges": [
+    {
+      "targetDomain": "ELECS",
+      "targetTopicCode": "ELEC-05",
+      "badgeText": "AC Phasor J-Operator Cycles",
+      "description": "In AC Circuit analysis, the electrical imaginary operator $j = \\sqrt{-1}$ governs $90^\\circ$ impedance phase shifts, where $j^2 = -1, j^3 = -j, j^4 = 1$."
+    },
+    {
+      "targetDomain": "EST",
+      "targetTopicCode": "EST-01",
+      "badgeText": "Base-N Encodings & Digital Quantization",
+      "description": "Digital communications encode information using binary ($2^n$), octal, and hexadecimal bases mapped from discrete integer sets."
+    },
+    {
+      "targetDomain": "GEAS",
+      "targetTopicCode": "GEAS-01",
+      "badgeText": "SI Metric Multipliers & Significant Digits",
+      "description": "Physical chemistry and mechanics rely on integer order-of-magnitude multipliers, precision digits, and real-number measurements."
+    }
+  ],
+  "formulas": [
+    {
+      "id": "f-0101-01",
+      "title": "Roman Numeral Multiplier Notations",
+      "formula": "$$|X| = 100 \\times X, \\quad \\overline{X} = 1,000 \\times X, \\quad |\\overline{X}| = 1,000,000 \\times X$$",
+      "note": "Brackets = ×100; Vinculum bar = ×1,000; Doorframe (bracket with bar) = ×1,000,000."
+    },
+    {
+      "id": "f-0101-02",
+      "title": "Cyclic Powers of the Imaginary Unit",
+      "formula": "$$i^1 = i, \\quad i^2 = -1, \\quad i^3 = -i, \\quad i^4 = 1 \\implies i^n = i^{n \\bmod 4}$$",
+      "note": "Look only at the last two digits of n divided by 4 to determine the remainder r."
+    },
+    {
+      "id": "f-0101-03",
+      "title": "Complex Number Algebraic Form",
+      "formula": "$$z = a + bi \\quad (a, b \\in \\mathbb{R})$$",
+      "note": "a is the real part Re(z); b is the imaginary part Im(z)."
+    },
+    {
+      "id": "f-0101-04",
+      "title": "Field Inverses",
+      "formula": "$$a + (-a) = 0 \\quad (\\text{Additive}) \\qquad a \\cdot \\left(\\frac{1}{a}\\right) = 1 \\quad (\\text{Multiplicative for } a \\ne 0)$$",
+      "note": "0 has no multiplicative inverse."
+    }
+  ],
+  "terms": [
+    {
+      "term": "Natural Numbers",
+      "symbol": "$\\mathbb{N}$",
+      "unit": "Set",
+      "definition": "The set of positive counting numbers: $\\mathbb{N} = \\{1, 2, 3, 4, \\dots\\}$.",
+      "keywordTrigger": "counting numbers starting from 1"
+    },
+    {
+      "term": "Whole Numbers",
+      "symbol": "$\\mathbb{W}$",
+      "unit": "Set",
+      "definition": "The set of natural numbers including zero: $\\mathbb{W} = \\{0, 1, 2, 3, \\dots\\}$.",
+      "keywordTrigger": "natural numbers including zero"
+    },
+    {
+      "term": "Integers",
+      "symbol": "$\\mathbb{Z}$",
+      "unit": "Set",
+      "definition": "The set of whole numbers and their negative opposites: $\\mathbb{Z} = \\{\\dots, -2, -1, 0, 1, 2, \\dots\\}$.",
+      "keywordTrigger": "positive and negative whole numbers and zero"
+    },
+    {
+      "term": "Rational Numbers",
+      "symbol": "$\\mathbb{Q}$",
+      "unit": "Set",
+      "definition": "Numbers expressible as a fraction $\\frac{p}{q}$ where $p, q \\in \\mathbb{Z}, q \\neq 0$. Represented by terminating or repeating decimals.",
+      "keywordTrigger": "ratio of two integers / terminating or repeating decimal"
+    },
+    {
+      "term": "Irrational Numbers",
+      "symbol": "$\\mathbb{Q}'$",
+      "unit": "Set",
+      "definition": "Numbers that cannot be written as a simple fraction, consisting of non-terminating, non-repeating decimals (e.g. $\\pi, e, \\sqrt{2}$).",
+      "keywordTrigger": "non-repeating non-terminating decimal"
+    },
+    {
+      "term": "Cardinal Number",
+      "symbol": "Quantity",
+      "unit": "Classification",
+      "definition": "A number expressing quantity or 'how many' (e.g. 5 resistors, 12 volts).",
+      "keywordTrigger": "answers how many / quantity"
+    },
+    {
+      "term": "Ordinal Number",
+      "symbol": "Order",
+      "unit": "Classification",
+      "definition": "A number denoting rank, position, or sequence (e.g. 1st harmonic, 3rd stage).",
+      "keywordTrigger": "answers which position / rank"
+    },
+    {
+      "term": "Nominal Number",
+      "symbol": "Label",
+      "unit": "Classification",
+      "definition": "A number used solely for identification without mathematical quantity or ranking (e.g. zip code 1008, IC part number 7404).",
+      "keywordTrigger": "used only as a name or label"
+    },
+    {
+      "term": "Vinculum",
+      "symbol": "$\\overline{X}$",
+      "unit": "Roman Multiplier",
+      "definition": "A horizontal bar placed over a Roman numeral that multiplies its face value by $1,000$ (e.g. $\\overline{V} = 5,000$).",
+      "keywordTrigger": "horizontal bar multiplying Roman numeral by 1,000"
+    },
+    {
+      "term": "Doorframe Notation",
+      "symbol": "$|\\overline{X}|$",
+      "unit": "Roman Multiplier",
+      "definition": "A Roman numeral enclosed in brackets with a vinculum bar, multiplying its face value by $1,000,000$ (e.g. $|\\overline{X}| = 10,000,000$).",
+      "keywordTrigger": "bracket with vinculum multiplying Roman numeral by 1,000,000"
+    }
+  ],
+  "visualizer": {
+    "archetype": "factor_tree",
+    "title": "Interactive Prime Factor Tree & Number Decomposition",
+    "description": "Adjust the target integer to observe its recursive prime factor decomposition, greatest common divisor (GCD), and least common multiple (LCM) branches.",
+    "config": {
+      "canvasWidth": 640,
+      "canvasHeight": 320,
+      "controls": [
+        {
+          "id": "targetNumber",
+          "label": "Target Integer",
+          "min": 12,
+          "max": 180,
+          "step": 6,
+          "defaultValue": 60
+        }
+      ]
+    }
+  },
+  "theory": {
+    "mentalAnchor": "Every real number is either rational ($p/q$, terminating or repeating) or irrational (non-repeating like $\\pi, e, \\sqrt{2}$). For Roman numerals, a vinculum bar ($\\overline{X}$) multiplies by 1,000, brackets ($|X|$) multiply by 100, and doorframes ($|\\overline{X}|$) multiply by 1,000,000. Powers of $i$ repeat every 4 steps ($i^n = i^{n \\bmod 4}$).",
+    "contentMarkdown": "### 1. Classification & Hierarchy of Numbers\n\nAll numbers utilized in engineering mathematics exist within the hierarchical structure of the complex number system:\n\n```diagram\n{\n  \"caption\": \"Figure 1: Hierarchy of Number Sets from Natural Numbers to Complex Numbers\",\n  \"xRange\": [-6, 6],\n  \"yRange\": [-4, 4],\n  \"elements\": [\n    { \"type\": \"grid\" },\n    { \"type\": \"axes\" },\n    { \"type\": \"polygon\", \"points\": [[-5, -3], [5, -3], [5, 3], [-5, 3]], \"color\": \"#38bdf8\", \"fill\": \"rgba(56, 189, 248, 0.05)\" },\n    { \"type\": \"polygon\", \"points\": [[-4, -2.2], [4, -2.2], [4, 2.2], [-4, 2.2]], \"color\": \"#fbbf24\", \"fill\": \"rgba(251, 191, 36, 0.08)\" },\n    { \"type\": \"polygon\", \"points\": [[-3, -1.5], [1.5, -1.5], [1.5, 1.5], [-3, 1.5]], \"color\": \"#d97757\", \"fill\": \"rgba(217, 119, 87, 0.12)\" },\n    { \"type\": \"polygon\", \"points\": [[-2, -0.8], [0.5, -0.8], [0.5, 0.8], [-2, 0.8]], \"color\": \"#22c55e\", \"fill\": \"rgba(34, 197, 94, 0.15)\" },\n    { \"type\": \"text\", \"at\": [0, 2.6], \"text\": \"Complex Numbers (ℂ = a + bi)\", \"color\": \"#38bdf8\" },\n    { \"type\": \"text\", \"at\": [0, 1.8], \"text\": \"Real Numbers (ℝ)\", \"color\": \"#fbbf24\" },\n    { \"type\": \"text\", \"at\": [-1, 1.1], \"text\": \"Rational (ℚ)\", \"color\": \"#d97757\" },\n    { \"type\": \"text\", \"at\": [2.8, 0], \"text\": \"Irrational (ℚ') [π, e, √2]\", \"color\": \"#f43f5e\" },\n    { \"type\": \"text\", \"at\": [-0.75, 0], \"text\": \"Integers (ℤ) ⊃ Whole (𝕎) ⊃ Natural (ℕ)\", \"color\": \"#22c55e\" }\n  ]\n}\n```\n\n#### Specific Cases & Decimal Representations:\n- **Rational Numbers ($\\mathbb{Q}$)**: Can always be converted into exact fractions $\\frac{p}{q}$. Their decimal representations are either **terminating** ($0.75 = 3/4$) or **non-terminating repeating** ($0.333\\dots = 1/3$, $0.142857142857\\dots = 1/7$).\n- **Irrational Numbers ($\\mathbb{Q}'$)**: Cannot be written as a fraction. Their decimals are **non-terminating and non-repeating** (e.g. $\\pi \\approx 3.14159\\dots$, $e \\approx 2.71828\\dots$, $\\sqrt{3} \\approx 1.73205\\dots$).\n- **Functional Number Uses**:\n  - **Cardinal**: Represents quantity ($4$ channels).\n  - **Ordinal**: Represents position/rank ($2^{\\text{nd}}$ harmonic).\n  - **Nominal**: Serves only as an identification label (pin $14$, area code $02$).\n\n---\n\n### 2. Field Axioms & Algebraic Properties of Real Numbers\n\nFor any real numbers $a, b, c \\in \\mathbb{R}$, arithmetic operations strictly obey six fundamental field axioms:\n\n| Axiom | Addition ($+$) | Multiplication ($\\times$) |\n| :--- | :--- | :--- |\n| **Closure** | $a + b \\in \\mathbb{R}$ | $a \\cdot b \\in \\mathbb{R}$ |\n| **Commutative** | $a + b = b + a$ | $a \\cdot b = b \\cdot a$ |\n| **Associative** | $(a + b) + c = a + (b + c)$ | $(a \\cdot b) \\cdot c = a \\cdot (b \\cdot c)$ |\n| **Identity** | $a + 0 = a$ ($0$ is additive identity) | $a \\cdot 1 = a$ ($1$ is multiplicative identity) |\n| **Inverse** | $a + (-a) = 0$ ($-a$ is additive inverse) | $a \\cdot \\left(\\frac{1}{a}\\right) = 1$ ($1/a$ is multiplicative inverse for $a \\ne 0$) |\n| **Distributive** | $a(b + c) = ab + ac$ | $(a + b)c = ac + bc$ |\n\n---\n\n### 3. Roman Numeral System & Large Multiplier Notations\n\nRoman numerals use seven basic letter symbols combined additively and subtractively:\n\n$$\\text{I} = 1, \\quad \\text{V} = 5, \\quad \\text{X} = 10, \\quad \\text{L} = 50, \\quad \\text{C} = 100, \\quad \\text{D} = 500, \\quad \\text{M} = 1000$$\n\n#### Large Multiplier Modifiers:\n- **Bracket Notation ($|X|$)**: Enclosing a numeral in side brackets multiplies its value by **$100$** (e.g. $|V| = 5 \\times 100 = 500$, $|X| = 10 \\times 100 = 1,000$).\n- **Vinculum Bar ($\\overline{X}$)**: A horizontal line over a numeral multiplies its value by **$1,000$** (e.g. $\\overline{V} = 5,000$, $\\overline{X} = 10,000$, $\\overline{L} = 50,000$, $\\overline{M} = 1,000,000$).\n- **Doorframe Notation ($|\\overline{X}|$ / Bracket with Bar)**: Multiplies the base value by **$1,000,000$** (e.g. $|\\overline{V}| = 5,000,000$, $|\\overline{X}| = 10,000,000$).\n\n---\n\n### 4. Cyclic Powers of the Imaginary Unit $i$\n\nThe imaginary unit is defined by $i = \\sqrt{-1}$, where $i^2 = -1$. Powers of $i$ repeat in a strict **4-step cyclic pattern**:\n\n$$i^1 = i, \\quad i^2 = -1, \\quad i^3 = -i, \\quad i^4 = 1$$\n\n- **General Rule**: For any integer exponent $n$, evaluate the remainder when $n$ is divided by $4$ ($r = n \\bmod 4$):\n  $$i^n = i^r$$\n  - If remainder $r = 0 \\implies i^n = 1$\n  - If remainder $r = 1 \\implies i^n = i$\n  - If remainder $r = 2 \\implies i^n = -1$\n  - If remainder $r = 3 \\implies i^n = -i$"
+  },
+  "examples": [
+    {
+      "problemStatement": "Decode the Roman numeral expression [L]V̄CDXXIX into its standard decimal equivalent.",
+      "formalSolutionMarkdown": "#### Step 1: Deconstruct each multiplier component\n- $[L] = 50 \\times 100 = 5,000$\n- $\\overline{V} = 5 \\times 1,000 = 5,000$\n- $CD = 500 - 100 = 400$\n- $XX = 10 + 10 = 20$\n- $IX = 10 - 1 = 9$\n\n#### Step 2: Sum all parts\n$$\\text{Total} = 5,000 + 5,000 + 400 + 20 + 9 = 10,429$$",
+      "shortcutSolutionMarkdown": "#### ⚡ 5-Second Chunking\n$[L] + \\overline{V} = 5000 + 5000 = 10000$. Append $CDXXIX = 429 \\implies \\mathbf{10,429}$.",
+      "formalTimeSeconds": 45,
+      "shortcutTimeSeconds": 5
+    },
+    {
+      "problemStatement": "Evaluate the exact numerical value of the expression i^2026 + i^1987.",
+      "formalSolutionMarkdown": "#### Step 1: Evaluate i^2026\nDivide exponent 2026 by 4:\n$$2026 = 4 \\times 506 + 2 \\implies r = 2$$\n$$i^{2026} = i^2 = -1$$\n\n#### Step 2: Evaluate i^1987\nDivide exponent 1987 by 4:\n$$1987 = 4 \\times 496 + 3 \\implies r = 3$$\n$$i^{1987} = i^3 = -i$$\n\n#### Step 3: Sum the terms\n$$i^{2026} + i^{1987} = -1 - i$$",
+      "shortcutSolutionMarkdown": "#### ⚡ 3-Second Last-Two-Digits Rule\n1. Look only at last 2 digits: $26 \\bmod 4 = 2 \\implies i^2 = -1$.\n2. For 1987: $87 \\bmod 4 = 3 \\implies i^3 = -i$.\n3. Result $= \\mathbf{-1 - i}$.",
+      "formalTimeSeconds": 40,
+      "shortcutTimeSeconds": 3
+    }
+  ],
+  "calculatorGuides": {
+    "karce": {
+      "techniqueTitle": "Fast Remainder Evaluation for Large Powers of i",
+      "problemType": "i^n evaluation via integer remainder",
+      "sampleProblem": "Find i^2026.",
+      "mode": "COMP Mode (MODE 1)",
+      "keystrokes": [
+        "2",
+        "0",
+        "2",
+        "6",
+        "÷",
+        "4",
+        "="
+      ],
+      "notes": "Yields 506.5. Multiply decimal fraction 0.5 by 4 to get remainder r = 2. Since r = 2, i^2026 = -1."
+    },
+    "canon": {
+      "techniqueTitle": "Direct Complex Power Evaluation",
+      "problemType": "Complex arithmetic and powers of i",
+      "sampleProblem": "Evaluate i^7 on Canon F-789SGA.",
+      "mode": "CPLX Mode (MODE 2)",
+      "keystrokes": [
+        "MODE",
+        "2",
+        "i",
+        "x^",
+        "7",
+        "="
+      ],
+      "notes": "Directly returns -i in 1 second."
+    }
+  },
+  "conceptChecks": [
+    {
+      "id": "cc-math01-01",
+      "question": "Which of the following numbers is an IRRATIONAL number?",
+      "options": [
+        "3.1415926535... (π)",
+        "0.333333...",
+        "22/7",
+        "-14"
+      ],
+      "correctAnswer": 0,
+      "explanation": "π is a non-terminating, non-repeating decimal that cannot be expressed as a ratio of two integers. 22/7 and -14 are rational, and 0.333... is a repeating rational decimal (1/3)."
+    },
+    {
+      "id": "cc-math01-02",
+      "question": "A Roman numeral with a vinculum bar over it (such as V̄) multiplies its base value by:",
+      "options": [
+        "1,000",
+        "100",
+        "10,000",
+        "1,000,000"
+      ],
+      "correctAnswer": 0,
+      "explanation": "A vinculum horizontal bar multiplies the Roman numeral value by 1,000 (e.g. V̄ = 5,000). Brackets |X| multiply by 100, and doorframes |X̄| multiply by 1,000,000."
+    },
+    {
+      "id": "cc-math01-03",
+      "question": "If a + b = b + a, which algebraic property is being demonstrated?",
+      "options": [
+        "Commutative Property of Addition",
+        "Associative Property of Addition",
+        "Distributive Property",
+        "Additive Identity"
+      ],
+      "correctAnswer": 0,
+      "explanation": "The Commutative Property of Addition states that changing the order of the addends does not alter the sum (a + b = b + a)."
+    },
+    {
+      "id": "cc-math01-04",
+      "question": "Evaluate i^102.",
+      "options": [
+        "-1",
+        "1",
+        "i",
+        "-i"
+      ],
+      "correctAnswer": 0,
+      "explanation": "102 divided by 4 gives a remainder of 2 (since 100 is divisible by 4). Thus i^102 = i^2 = -1."
+    }
+  ]
+}

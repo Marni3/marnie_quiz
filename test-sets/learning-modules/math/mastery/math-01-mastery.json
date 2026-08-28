@@ -1,0 +1,252 @@
+{
+  "moduleId": "math-01",
+  "moduleCode": "MATH 01",
+  "title": "MATH 01 Mastery Challenge: Number Systems, Field Properties & Roman Numerals",
+  "description": "Comprehensive 22-question 4-quadrant companion mastery exam for MATH 01. Rigorously tests number classifications, rational vs irrational decimals, field axioms, Roman multipliers (vinculum, brackets, doorframes), and cyclic powers of i under timed board conditions.",
+  "totalQuestions": 22,
+  "timeLimitMinutes": 35,
+  "questions": [
+    {
+      "id": "m01-01",
+      "promptText": "Which set of numbers contains all non-terminating, non-repeating decimal numbers such as $\\pi$, $e$, and $\\sqrt{2}$?",
+      "choiceA": "Rational Numbers ($\\mathbb{Q}$)",
+      "choiceB": "Irrational Numbers ($\\mathbb{Q}'$)",
+      "choiceC": "Integers ($\\mathbb{Z}$)",
+      "choiceD": "Natural Numbers ($\\mathbb{N}$)",
+      "correctChoice": "B",
+      "explanation": "Irrational numbers ($\\mathbb{Q}'$) are defined as real numbers that cannot be expressed as the ratio of two integers, manifesting as non-terminating, non-repeating infinite decimals.",
+      "archetype": "conceptual"
+    },
+    {
+      "id": "m01-02",
+      "promptText": "In a marathon race, bib number #104 (runner's identifier) finished in 3rd place with a time of 2 hours. Classify the numbers '104', '3rd', and '2 hours' respectively.",
+      "choiceA": "Nominal, Ordinal, Cardinal",
+      "choiceB": "Cardinal, Ordinal, Nominal",
+      "choiceC": "Ordinal, Nominal, Cardinal",
+      "choiceD": "Nominal, Cardinal, Ordinal",
+      "correctChoice": "A",
+      "explanation": "'104' is a nominal number (label only), '3rd' is an ordinal number (rank/position), and '2 hours' is a cardinal number (quantity).",
+      "archetype": "conceptual"
+    },
+    {
+      "id": "m01-03",
+      "promptText": "In the Roman numeral system, what multiplier is applied when a horizontal bar (vinculum) is placed above a numeral (such as $\\overline{X}$)?",
+      "choiceA": "100",
+      "choiceB": "1,000",
+      "choiceC": "10,000",
+      "choiceD": "1,000,000",
+      "correctChoice": "B",
+      "explanation": "A vinculum horizontal line over a Roman numeral multiplies its face value by $1,000$ (e.g. $\\overline{X} = 10 \\times 1,000 = 10,000$).",
+      "archetype": "conceptual"
+    },
+    {
+      "id": "m01-04",
+      "promptText": "Which algebraic field axiom is expressed by the statement: $(a + b) + c = a + (b + c)$?",
+      "choiceA": "Commutative Property of Addition",
+      "choiceB": "Associative Property of Addition",
+      "choiceC": "Distributive Property",
+      "choiceD": "Additive Identity",
+      "correctChoice": "B",
+      "explanation": "The Associative Property of Addition states that grouping does not change the sum.",
+      "archetype": "conceptual"
+    },
+    {
+      "id": "m01-05",
+      "promptText": "What is the multiplicative inverse of the real number $-\\frac{3}{7}$?",
+      "choiceA": "3/7",
+      "choiceB": "-7/3",
+      "choiceC": "7/3",
+      "choiceD": "1",
+      "correctChoice": "B",
+      "explanation": "The multiplicative inverse of $x$ is $1/x$, such that $x \\cdot (1/x) = 1$. For $-\\frac{3}{7}$, its inverse is $-\\frac{7}{3}$.",
+      "archetype": "conceptual"
+    },
+    {
+      "id": "m01-06",
+      "promptText": "If $a = b$ and $b = c$, then $a = c$. Which property of equality is demonstrated?",
+      "choiceA": "Reflexive Property",
+      "choiceB": "Symmetric Property",
+      "choiceC": "Transitive Property",
+      "choiceD": "Substitution Property",
+      "correctChoice": "C",
+      "explanation": "The Transitive Property states that if two quantities both equal a third quantity, they are equal to each other.",
+      "archetype": "conceptual"
+    },
+    {
+      "id": "m01-07",
+      "promptText": "Evaluate the value of $i^{2027}$, where $i = \\sqrt{-1}$.",
+      "choiceA": "1",
+      "choiceB": "-1",
+      "choiceC": "i",
+      "choiceD": "-i",
+      "correctChoice": "D",
+      "explanation": "$2027 = 4(506) + 3 \\implies r = 3$. Therefore, $i^{2027} = i^3 = -i$.",
+      "archetype": "numerical"
+    },
+    {
+      "id": "m01-08",
+      "promptText": "Convert the repeating decimal $0.272727\\dots$ into an irreducible rational fraction $\\frac{p}{q}$.",
+      "choiceA": "3/11",
+      "choiceB": "27/100",
+      "choiceC": "9/33",
+      "choiceD": "1/4",
+      "correctChoice": "A",
+      "explanation": "Let $x = 0.272727\\dots \\implies 100x = 27.272727\\dots$. Subtracting gives $99x = 27 \\implies x = \\frac{27}{99} = \\frac{3}{11}$.",
+      "archetype": "numerical"
+    },
+    {
+      "id": "m01-09",
+      "promptText": "Decode the Roman numeral expression $\\overline{V}CDLXXVIII$ into its decimal value.",
+      "choiceA": "5,478",
+      "choiceB": "5,678",
+      "choiceC": "4,478",
+      "choiceD": "50,478",
+      "correctChoice": "A",
+      "explanation": "$\\overline{V} = 5,000$, $CD = 400$, $L = 50$, $XX = 20$, $VIII = 8$. Sum: $5,000 + 400 + 50 + 20 + 8 = 5,478$.",
+      "archetype": "numerical"
+    },
+    {
+      "id": "m01-10",
+      "promptText": "What decimal value does the bracketed Roman numeral $[L]X$ represent?",
+      "choiceA": "5,010",
+      "choiceB": "510",
+      "choiceC": "50,010",
+      "choiceD": "1,050",
+      "correctChoice": "A",
+      "explanation": "Brackets multiply the numeral by $100$: $[L] = 50 \\times 100 = 5,000$. Adding $X = 10$ yields $5,010$.",
+      "archetype": "numerical"
+    },
+    {
+      "id": "m01-11",
+      "promptText": "Find the Least Common Multiple (LCM) of $18$, $24$, and $30$.",
+      "choiceA": "360",
+      "choiceB": "180",
+      "choiceC": "720",
+      "choiceD": "120",
+      "correctChoice": "A",
+      "explanation": "Prime factorizations: $18 = 2 \\cdot 3^2$, $24 = 2^3 \\cdot 3$, $30 = 2 \\cdot 3 \\cdot 5$. $\\text{LCM} = 2^3 \\cdot 3^2 \\cdot 5 = 8 \\cdot 9 \\cdot 5 = 360$.",
+      "archetype": "numerical"
+    },
+    {
+      "id": "m01-12",
+      "promptText": "Find the Greatest Common Divisor (GCD) of $70$ and $112$.",
+      "choiceA": "14",
+      "choiceB": "7",
+      "choiceC": "2",
+      "choiceD": "28",
+      "correctChoice": "A",
+      "explanation": "$70 = 2 \\cdot 5 \\cdot 7$, $112 = 2^4 \\cdot 7$. Common factors: $2^1 \\cdot 7^1 = 14$.",
+      "archetype": "numerical"
+    },
+    {
+      "id": "m01-13",
+      "promptText": "Evaluate the complex sum: $i + i^2 + i^3 + i^4 + \\dots + i^{100}$.",
+      "choiceA": "0",
+      "choiceB": "1",
+      "choiceC": "i",
+      "choiceD": "-1",
+      "correctChoice": "A",
+      "explanation": "Every block of 4 consecutive powers sums to zero: $i + (-1) + (-i) + 1 = 0$. Since $100$ is exactly divisible by $4$, the entire sum contains 25 complete cycles summing to $0$.",
+      "archetype": "standard"
+    },
+    {
+      "id": "m01-14",
+      "promptText": "Evaluate $(2 + 3i)(4 - 5i)$ and express the result in standard $a + bi$ form.",
+      "choiceA": "23 + 2i",
+      "choiceB": "8 - 15i",
+      "choiceC": "23 - 2i",
+      "choiceD": "-7 + 2i",
+      "correctChoice": "A",
+      "explanation": "$(2)(4) - 10i + 12i - 15i^2 = 8 + 2i - 15(-1) = 8 + 15 + 2i = 23 + 2i$.",
+      "archetype": "standard"
+    },
+    {
+      "id": "m01-15",
+      "promptText": "Evaluate the value of the doorframe Roman numeral $|\\overline{X}| - \\overline{L}$.",
+      "choiceA": "9,950,000",
+      "choiceB": "9,500,000",
+      "choiceC": "4,950,000",
+      "choiceD": "99,950,000",
+      "correctChoice": "A",
+      "explanation": "$|\\overline{X}| = 10 \\times 1,000,000 = 10,000,000$. $\\overline{L} = 50 \\times 1,000 = 50,000$. $10,000,000 - 50,000 = 9,950,000$.",
+      "archetype": "applied"
+    },
+    {
+      "id": "m01-16",
+      "promptText": "Find the smallest positive integer $n$ such that $(1 + i)^n$ is a purely real negative number.",
+      "choiceA": "4",
+      "choiceB": "2",
+      "choiceC": "8",
+      "choiceD": "6",
+      "correctChoice": "A",
+      "explanation": "In polar form, $1 + i = \\sqrt{2} e^{i \\pi/4}$. $(1 + i)^n = 2^{n/2} e^{i n \\pi/4}$. For the result to be real and negative, $n \\pi / 4 = \\pi \\implies n = 4$. Indeed, $(1 + i)^4 = (2i)^2 = 4i^2 = -4$.",
+      "archetype": "applied"
+    },
+    {
+      "id": "m01-17",
+      "promptText": "Solve for the real values of $x$ and $y$ satisfying $(2x - 3) + (3y + 4)i = 7 - 5i$.",
+      "choiceA": "x = 5, y = -3",
+      "choiceB": "x = 2, y = 3",
+      "choiceC": "x = 5, y = -1",
+      "choiceD": "x = 3, y = -3",
+      "correctChoice": "A",
+      "explanation": "Equating real parts: $2x - 3 = 7 \\implies 2x = 10 \\implies x = 5$. Equating imaginary parts: $3y + 4 = -5 \\implies 3y = -9 \\implies y = -3$.",
+      "archetype": "applied"
+    },
+    {
+      "id": "m01-18",
+      "promptText": "A radio transmitter station ID has frequency $102.7\\text{ MHz}$, license number #492, ranked 1st in the region, and operates $24\\text{ hours}$ daily. How many nominal numbers are described in this statement?",
+      "choiceA": "1 (license #492)",
+      "choiceB": "2 (license #492 and frequency 102.7)",
+      "choiceC": "3",
+      "choiceD": "0",
+      "correctChoice": "A",
+      "explanation": "License #492 is purely an identification label (nominal). Frequency ($102.7\\text{ MHz}$) and duration ($24\\text{ hours}$) are physical measurements/quantities (cardinal), and '1st' is ordinal.",
+      "archetype": "applied"
+    },
+    {
+      "id": "m01-19",
+      "promptText": "Which of the following is an INVALID Roman numeral representation for the number 49?",
+      "choiceA": "IL",
+      "choiceB": "XLIX",
+      "choiceC": "Both are valid",
+      "choiceD": "None of the above",
+      "correctChoice": "A",
+      "explanation": "Under standard Roman subtraction rules, I can only be subtracted from V and X, not L or C. Therefore, 49 must be written as $(50-10) + (10-1) = \\text{XLIX}$. Writing IL is strictly invalid.",
+      "archetype": "trap"
+    },
+    {
+      "id": "m01-20",
+      "promptText": "Why does the number 0 lack a multiplicative inverse in the field of real numbers $\\mathbb{R}$?",
+      "choiceA": "Because division by zero is undefined ($0 \\times x = 0 \\ne 1$ for any real $x$).",
+      "choiceB": "Because 0 is neither positive nor negative.",
+      "choiceC": "Because 0 is not an integer.",
+      "choiceD": "Because 0 is the additive identity.",
+      "correctChoice": "A",
+      "explanation": "By the multiplication property of zero, $0 \\cdot x = 0$ for all real numbers $x$, meaning no real number satisfies $0 \\cdot x = 1$.",
+      "archetype": "trap"
+    },
+    {
+      "id": "m01-21",
+      "promptText": "Using the 2-second last-two-digits rule, evaluate $i^{98374823}$.",
+      "choiceA": "-i",
+      "choiceB": "i",
+      "choiceC": "1",
+      "choiceD": "-1",
+      "correctChoice": "A",
+      "explanation": "Look only at the last two digits: $23 \\bmod 4 = 3$. Therefore $i^{98374823} = i^3 = -i$ in 2 seconds.",
+      "archetype": "shortcut"
+    },
+    {
+      "id": "m01-22",
+      "promptText": "Evaluate the value of $\\frac{1 + i}{1 - i}$ in 3 seconds.",
+      "choiceA": "i",
+      "choiceB": "-i",
+      "choiceC": "1",
+      "choiceD": "-1",
+      "correctChoice": "A",
+      "explanation": "Multiply numerator and denominator by $(1 + i)$: $\\frac{(1 + i)^2}{1 - i^2} = \\frac{2i}{2} = i$.",
+      "archetype": "shortcut"
+    }
+  ]
+}

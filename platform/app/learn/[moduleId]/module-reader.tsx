@@ -69,20 +69,23 @@ export function ModuleReader({ module }: ModuleReaderProps) {
       items.push({ id: "sec-prereq-bridges", title: "1. Prerequisite Bridges" });
     }
     items.push({ id: "sec-theory", title: "2. Lesson Proper" });
+    if (module.formulas && module.formulas.length > 0) {
+      items.push({ id: "sec-formulas", title: "3. Compilation of Formulas" });
+    }
     if (module.visualizer) {
-      items.push({ id: "sec-visualizer", title: "3. Interactive Sandbox" });
+      items.push({ id: "sec-visualizer", title: "4. Interactive Sandbox" });
     }
     if (module.terms && module.terms.length > 0) {
-      items.push({ id: "sec-terminology", title: "4. Key Terms & Definitions" });
+      items.push({ id: "sec-terminology", title: "5. Key Terms & Definitions" });
     }
     if (module.examples && module.examples.length > 0) {
-      items.push({ id: "sec-dual-method", title: "5. Sample Problems" });
+      items.push({ id: "sec-dual-method", title: "6. Sample Problems" });
     }
     if (module.calculatorGuides) {
-      items.push({ id: "sec-calculator", title: "6. Calculator Techniques" });
+      items.push({ id: "sec-calculator", title: "7. Calculator Techniques" });
     }
     if (module.conceptChecks && module.conceptChecks.length > 0) {
-      items.push({ id: "sec-concept-checks", title: "7. Concept Checks" });
+      items.push({ id: "sec-concept-checks", title: "8. Concept Checks" });
     }
     return items;
   }, [module]);
@@ -388,6 +391,42 @@ export function ModuleReader({ module }: ModuleReaderProps) {
                 <MathText text={module.theory.contentMarkdown} splitParagraphs={true} />
               </div>
             </section>
+
+            {/* Section: Compilation of Formulas */}
+            {module.formulas && module.formulas.length > 0 && (
+              <section id="sec-formulas" className="space-y-4">
+                <div className="flex items-center gap-2 pb-2 border-b border-[var(--border)]">
+                  <Calculator className="w-5 h-5 text-[var(--accent)]" />
+                  <h2 className="text-xl font-bold font-serif text-[var(--text)]">
+                    Compilation of Formulas
+                  </h2>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  {module.formulas.map((item, idx) => (
+                    <div
+                      key={idx}
+                      id={`formula-${idx}`}
+                      className="bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-4 sm:p-5 shadow-xs space-y-3 flex flex-col justify-between hover:border-[var(--accent)]/50 transition-colors"
+                    >
+                      <div className="space-y-2">
+                        <h3 className="font-bold text-sm sm:text-base font-serif text-[var(--text)]">
+                          {item.title}
+                        </h3>
+                        <div className="py-2.5 px-3 bg-[var(--surface2)] rounded-xl border border-[var(--border)] text-center overflow-x-auto text-base sm:text-lg font-medium text-[var(--text)]">
+                          <MathText text={item.formula.startsWith("$$") ? item.formula : `$$${item.formula}$$`} />
+                        </div>
+                      </div>
+                      {item.note && (
+                        <p className="text-xs text-[var(--text2)] italic leading-relaxed pt-1.5 border-t border-[var(--border)]/40">
+                          <MathText text={item.note} />
+                        </p>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              </section>
+            )}
 
             {/* Section 3: Interactive Declarative Visualizer */}
             {module.visualizer && (

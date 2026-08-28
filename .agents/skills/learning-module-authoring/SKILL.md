@@ -67,18 +67,25 @@ Modules are structured as an engaging, cohesive educational lesson rather than a
    - Use *"Hypotenuse"* instead of *"Euclidean hypotenuse"*.
    - In denominator descriptions: *"Dividing by the magnitude of the line's normal vector converts the scalar value into regular distance units."*
 
-4. **Terms Section as an Indexed Reference Glossary**:
-   - The **Terms and Definitions** section follows the lesson proper as a high-density summary and quick-reference lookup.
+4. **Compilation of Formulas Section (High-Visibility Formula Cards)**:
+   - To prevent formulas from being buried in small text or dense paragraphs, every module includes a dedicated `"formulas"` section.
+   - Each card features:
+     - `title`: Clean, bold name of the formula (e.g. `"Distance from Point to Line"`).
+     - `formula`: Prominent centered KaTeX expression in display math (e.g. `"$$d = \\frac{|Ax_1 + By_1 + C|}{\\sqrt{A^2 + B^2}}$$"`).
+     - `note` (Optional): Very minimal context, sign convention, or boundary condition (e.g. `"Sign of denominator matches B if directed normal distance is required."`).
+
+5. **Terms Section as an Indexed Reference Glossary**:
+   - The **Terms and Definitions** section serves as a high-density vocabulary summary and quick-reference lookup.
    - Keep definitions atomic (1–2 crisp sentences) with explicit symbols, SI units, and **1-Second Keyword Trigger Associations** to train instant pattern recognition for board questions.
 
-5. **Dual-Method Problem Solving**:
+6. **Dual-Method Problem Solving**:
    - Every worked example demonstrates both the **Academic Derivation** (full rigor, ~60–120s) and the **⚡ Board Exam Shortcut** (elimination, ratio inspection, calculator shortcut, ~5–15s).
 
-6. **Clean Calculator Keystrokes**:
+7. **Clean Calculator Keystrokes**:
    - Store calculator button sequences as clean, plain token arrays in JSON (e.g. `["SHIFT", "Pol", "4", ",", "7", ")", "="]`), NOT raw `<kbd>` strings.
    - The UI automatically renders each token into tactile, physical keycap badges.
 
-7. **Direct Distractor Deconstruction**:
+8. **Direct Distractor Deconstruction**:
    - Explain the specific algebra trap or misconception directly (e.g. `"Forgot the negative sign in the slope formula $m = -A/B$."`).
    - Avoid redundant label prefixes like `"Option A ❌ (Distractor Trap):"` or `"(Correct Answer):"` in the text strings.
 
@@ -112,6 +119,26 @@ Every learning module is stored in `test-sets/learning-modules/[subject]/[code].
     "mentalAnchor": "Slope is vertical rise over horizontal run ($m = \\tan\\theta$). Perpendicular lines always multiply to -1 ($m_1 m_2 = -1$). To find distance from a point to a line, evaluate the line equation at $(x_1, y_1)$ and divide by $\\sqrt{A^2 + B^2}$.",
     "contentMarkdown": "### 1. Cartesian Coordinates & Fundamental Distance\n\nIn a 2D Cartesian plane established by René Descartes...\n\n```diagram\n{\n  \"caption\": \"Figure 1: Distance between two points\",\n  \"xRange\": [-2, 6],\n  \"yRange\": [-2, 5],\n  \"elements\": [\n    { \"type\": \"grid\" },\n    { \"type\": \"axes\" }\n  ]\n}\n```\n\n#### Specific Cases:\n- **Horizontal Lines**: Rise is zero...\n\n### 2. Parallelism, Perpendicularity & Angle Between Lines\n\n..."
   },
+  "formulas": [
+    {
+      "id": "f-1201-01",
+      "title": "Distance Between Two Points",
+      "formula": "$$d = \\sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2}$$",
+      "note": "Derived directly from the Pythagorean theorem."
+    },
+    {
+      "id": "f-1201-02",
+      "title": "Slope of a Straight Line",
+      "formula": "$$m = \\frac{y_2 - y_1}{x_2 - x_1} = \\tan\\theta = -\\frac{A}{B}$$",
+      "note": "For vertical lines, slope is undefined (tan 90°)."
+    },
+    {
+      "id": "f-1201-03",
+      "title": "Distance from Point to Line",
+      "formula": "$$d = \\frac{|Ax_1 + By_1 + C|}{\\sqrt{A^2 + B^2}}$$",
+      "note": "Numerator is the absolute value of the line equation evaluated at (x₁, y₁)."
+    }
+  ],
   "visualizer": {
     "archetype": "cartesian_line",
     "title": "Interactive Line Slope & Distance Explorer",

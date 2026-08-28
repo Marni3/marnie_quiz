@@ -1,0 +1,286 @@
+{
+  "id": "math-04",
+  "code": "MATH 04",
+  "domain": "MATH",
+  "topicCode": "MATH-04",
+  "topicTitle": "College Algebra",
+  "subtopicTitle": "Arithmetic, Geometric & Harmonic Progressions, Means and Figurate Numbers",
+  "order": 4,
+  "pairedQuizSetId": "math-04-mastery",
+  "toc": [
+    { "id": "sec-prereq-bridges", "title": "1. Introduction & Cross-Subject Bridges", "level": 2 },
+    { "id": "sec-theory", "title": "2. Lesson Proper", "level": 2 },
+    { "id": "sec-formulas", "title": "3. Compilation of Formulas", "level": 2 },
+    { "id": "sec-visualizer", "title": "4. Interactive Visualizer: Progression Term & Convergence Explorer", "level": 2 },
+    { "id": "sec-terminology", "title": "5. Terms and Definitions", "level": 2 },
+    { "id": "sec-dual-method", "title": "6. Sample Problems and Solutions", "level": 2 },
+    { "id": "sec-calculator", "title": "7. Calculator Techniques (Karce & Canon)", "level": 2 },
+    { "id": "sec-concept-checks", "title": "8. In-Line Concept Checks", "level": 2 },
+    { "id": "sec-mastery-challenge", "title": "9. Paired Mastery Challenge", "level": 2 }
+  ],
+  "prerequisiteBridge": {
+    "priorModuleId": "math-03",
+    "text": "Extending series expansions from MATH 03, this module explores discrete sequences (Arithmetic, Geometric, and Harmonic progressions), their finite/infinite sums, classical means, and polygonal figurate numbers."
+  },
+  "crossSubjectBridges": [
+    {
+      "targetDomain": "GEAS",
+      "targetTopicCode": "GEAS-06",
+      "badgeText": "Engineering Economics Annuities",
+      "description": "Compound interest payment schedules, ordinary annuities, and sinking funds evaluate future cash flows using finite geometric progression series ($F = A \\frac{(1+i)^n - 1}{i}$)."
+    },
+    {
+      "targetDomain": "ELECS",
+      "targetTopicCode": "ELEC-04",
+      "badgeText": "R-2R Ladder DAC Networks",
+      "description": "Digital-to-analog converter ladder networks scale input bit voltages in a strict geometric ratio of $r = 1/2$ per successive bit stage."
+    },
+    {
+      "targetDomain": "EST",
+      "targetTopicCode": "EST-01",
+      "badgeText": "PCM Binary Quantization Levels",
+      "description": "Pulse code modulation quantization steps scale exponentially in geometric sequence ($L = 2^n$ levels for $n$-bit encoders)."
+    }
+  ],
+  "formulas": [
+    {
+      "id": "f-0401-01",
+      "title": "Arithmetic Progression (AP) n-th Term",
+      "formula": "$$a_n = a_1 + (n - 1)d$$",
+      "note": "d is the common difference: d = aₖ - aₖ₋₁."
+    },
+    {
+      "id": "f-0401-02",
+      "title": "Sum of an Arithmetic Progression",
+      "formula": "$$S_n = \\frac{n}{2}(a_1 + a_n) = \\frac{n}{2}[2a_1 + (n - 1)d]$$",
+      "note": "Average of first and last terms multiplied by number of terms n."
+    },
+    {
+      "id": "f-0401-03",
+      "title": "Geometric Progression (GP) n-th Term",
+      "formula": "$$a_n = a_1 r^{n - 1}$$",
+      "note": "r is the common ratio: r = aₖ / aₖ₋₁."
+    },
+    {
+      "id": "f-0401-04",
+      "title": "Sum of a Finite Geometric Progression",
+      "formula": "$$S_n = \\frac{a_1(1 - r^n)}{1 - r} = \\frac{a_1 - r a_n}{1 - r} \\quad (r \\ne 1)$$",
+      "note": "If r = 1, Sn = n · a₁."
+    },
+    {
+      "id": "f-0401-05",
+      "title": "Infinite Geometric Series Sum",
+      "formula": "$$S_\\infty = \\frac{a_1}{1 - r} \\quad (|r| < 1)$$",
+      "note": "Converges only when |r| < 1. If |r| ≥ 1, series diverges to infinity."
+    },
+    {
+      "id": "f-0401-06",
+      "title": "Harmonic Progression (HP) n-th Term",
+      "formula": "$$a_n = \\frac{1}{\\frac{1}{a_1} + (n - 1)d}$$",
+      "note": "Reciprocals of HP terms form an Arithmetic Progression."
+    },
+    {
+      "id": "f-0401-07",
+      "title": "Classical Means Invariant",
+      "formula": "$$\\text{AM} = \\frac{a + b}{2}, \\quad \\text{GM} = \\sqrt{ab}, \\quad \\text{HM} = \\frac{2ab}{a + b} \\implies (\\text{GM})^2 = (\\text{AM})(\\text{HM})$$",
+      "note": "AM ≥ GM ≥ HM for all positive real numbers a, b."
+    },
+    {
+      "id": "f-0401-08",
+      "title": "Figurate (Polygonal) Numbers",
+      "formula": "$$T_n = \\frac{n(n + 1)}{2} \\quad (\\text{Triangular}), \\qquad P_n = \\frac{n(3n - 1)}{2} \\quad (\\text{Pentagonal})$$",
+      "note": "Square numbers are Sn = n²; Hexagonal numbers are Hn = n(2n - 1)."
+    }
+  ],
+  "terms": [
+    {
+      "term": "Arithmetic Progression (AP)",
+      "symbol": "$a_n, d$",
+      "unit": "Sequence",
+      "definition": "A sequence of numbers where the difference between consecutive terms is constant ($d = a_{k+1} - a_k$).",
+      "keywordTrigger": "constant common difference between terms"
+    },
+    {
+      "term": "Geometric Progression (GP)",
+      "symbol": "$a_n, r$",
+      "unit": "Sequence",
+      "definition": "A sequence of numbers where each term after the first is found by multiplying the previous term by a fixed non-zero ratio ($r = a_{k+1}/a_k$).",
+      "keywordTrigger": "constant common ratio between terms"
+    },
+    {
+      "term": "Harmonic Progression (HP)",
+      "symbol": "$1/a_n$",
+      "unit": "Sequence",
+      "definition": "A sequence of numbers whose reciprocals form an arithmetic progression.",
+      "keywordTrigger": "reciprocals form an arithmetic progression"
+    },
+    {
+      "term": "Geometric Mean",
+      "symbol": "$\\text{GM} = \\sqrt{ab}$",
+      "unit": "Mean",
+      "definition": "The central value between two numbers in geometric progression, satisfying $(\\text{GM})^2 = a \\cdot b$.",
+      "keywordTrigger": "square root of product of two numbers"
+    },
+    {
+      "term": "Harmonic Mean",
+      "symbol": "$\\text{HM} = \\frac{2ab}{a + b}$",
+      "unit": "Mean",
+      "definition": "The reciprocal of the arithmetic mean of reciprocals, often applied to average speeds over equal distances.",
+      "keywordTrigger": "average speed over equal distance / 2ab over a plus b"
+    },
+    {
+      "term": "Figurate Numbers",
+      "symbol": "$T_n, S_n, P_n$",
+      "unit": "Discrete",
+      "definition": "Numbers that can be represented as a regular geometric pattern of equally spaced dots forming polygons (triangles, squares, pentagons).",
+      "keywordTrigger": "polygonal dot patterns / triangular and pentagonal numbers"
+    }
+  ],
+  "visualizer": {
+    "archetype": "parameter_sweep",
+    "title": "Interactive Progression Term & Sum Visualizer",
+    "description": "Adjust the initial term a₁, common ratio r, and step count n to inspect progression growth curves and infinite series convergence limits.",
+    "config": {
+      "canvasWidth": 640,
+      "canvasHeight": 320,
+      "controls": [
+        {
+          "id": "firstTerm",
+          "label": "First Term (a₁)",
+          "min": 1,
+          "max": 20,
+          "step": 1,
+          "defaultValue": 4
+        },
+        {
+          "id": "ratio",
+          "label": "Common Ratio (r × 10)",
+          "min": 1,
+          "max": 9,
+          "step": 1,
+          "defaultValue": 5
+        }
+      ]
+    }
+  },
+  "theory": {
+    "mentalAnchor": "In an AP, consecutive terms add a difference ($d$); in a GP, consecutive terms multiply a ratio ($r$). An infinite GP sum is simply $\\frac{a_1}{1 - r}$ for $|r| < 1$. The three classical means obey the fixed relation $(\\text{GM})^2 = (\\text{AM})(\\text{HM})$, and $\\text{AM} \\ge \\text{GM} \\ge \\text{HM}$.",
+    "contentMarkdown": "### 1. Arithmetic Progressions (AP)\n\nAn Arithmetic Progression is a sequence where each term after the first is obtained by adding a constant **common difference** $d$:\n\n$$a_1, \\quad a_1 + d, \\quad a_1 + 2d, \\quad \\dots, \\quad a_1 + (n - 1)d$$\n\n```diagram\n{\n  \"caption\": \"Figure 1: Discrete linear growth of an Arithmetic Progression (a₁ = 2, d = 3)\",\n  \"xRange\": [0, 6],\n  \"yRange\": [0, 16],\n  \"elements\": [\n    { \"type\": \"grid\" },\n    { \"type\": \"axes\" },\n    { \"type\": \"segment\", \"from\": [1, 2], \"to\": [5, 14], \"color\": \"#d97757\", \"dashed\": true },\n    { \"type\": \"point\", \"at\": [1, 2], \"label\": \"a₁ = 2\", \"color\": \"#38bdf8\" },\n    { \"type\": \"point\", \"at\": [2, 5], \"label\": \"a₂ = 5\", \"color\": \"#38bdf8\" },\n    { \"type\": \"point\", \"at\": [3, 8], \"label\": \"a₃ = 8\", \"color\": \"#38bdf8\" },\n    { \"type\": \"point\", \"at\": [4, 11], \"label\": \"a₄ = 11\", \"color\": \"#38bdf8\" },\n    { \"type\": \"point\", \"at\": [5, 14], \"label\": \"a₅ = 14\", \"color\": \"#38bdf8\" }\n  ]\n}\n```\n\n- **$n^{\\text{th}}$ Term**: $a_n = a_1 + (n - 1)d$\n- **Sum of $n$ Terms**: $S_n = \\frac{n}{2}(a_1 + a_n) = \\frac{n}{2}[2a_1 + (n - 1)d]$\n- **Arithmetic Mean (AM)**: $\\text{AM} = \\frac{a + b}{2}$\n\n---\n\n### 2. Geometric Progressions (GP)\n\nA Geometric Progression is a sequence where each term is found by multiplying by a constant **common ratio** $r$:\n\n$$a_1, \\quad a_1 r, \\quad a_1 r^2, \\quad \\dots, \\quad a_1 r^{n-1}$$\n\n- **$n^{\\text{th}}$ Term**: $a_n = a_1 r^{n-1}$\n- **Sum of Finite $n$ Terms**: $S_n = \\frac{a_1(1 - r^n)}{1 - r} = \\frac{a_1 - r a_n}{1 - r} \\quad (r \\ne 1)$\n- **Sum of Infinite Convergent GP ($|r| < 1$)**:\n  $$S_\\infty = \\frac{a_1}{1 - r}$$\n- **Geometric Mean (GM)**: $\\text{GM} = \\sqrt{ab}$\n\n---\n\n### 3. Harmonic Progressions (HP) & Means Relationship\n\nA Harmonic Progression is a sequence whose terms are reciprocals of an AP: $a_n = \\frac{1}{A_1 + (n - 1)d}$.\n- **Harmonic Mean (HM)**: $\\text{HM} = \\frac{2ab}{a + b}$\n- **Means Inequality & Geometric Invariant**:\n  $$\\text{AM} \\ge \\text{GM} \\ge \\text{HM} \\qquad (\\text{GM})^2 = (\\text{AM})(\\text{HM})$$\n\n---\n\n### 4. Figurate (Polygonal) Numbers\n\n- **Triangular Numbers**: $T_n = \\frac{n(n + 1)}{2} \\implies 1, 3, 6, 10, 15, 21, \\dots$\n- **Square Numbers**: $S_n = n^2 \\implies 1, 4, 9, 16, 25, \\dots$\n- **Pentagonal Numbers**: $P_n = \\frac{n(3n - 1)}{2} \\implies 1, 5, 12, 22, 35, \\dots$"
+  },
+  "examples": [
+    {
+      "problemStatement": "Find the sum of all odd integers between 100 and 300.",
+      "formalSolutionMarkdown": "#### Step 1: Identify AP parameters\n- First term $a_1 = 101$\n- Last term $a_n = 299$\n- Common difference $d = 2$\n\n#### Step 2: Find total number of terms n\n$$a_n = a_1 + (n - 1)d$$\n$$299 = 101 + (n - 1)(2)$$\n$$198 = 2(n - 1) \\implies n - 1 = 99 \\implies n = 100$$\n\n#### Step 3: Compute sum Sn\n$$S_n = \\frac{n}{2}(a_1 + a_n) = \\frac{100}{2}(101 + 299) = 50(400) = 20,000$$",
+      "shortcutSolutionMarkdown": "#### ⚡ 3-Second Average Multiplier\n- Average of first and last: $(101 + 299)/2 = 200$.\n- Total terms: $(299 - 101)/2 + 1 = 100$.\n- Sum $= 200 \\times 100 = \\mathbf{20,000}$.",
+      "formalTimeSeconds": 45,
+      "shortcutTimeSeconds": 3
+    },
+    {
+      "problemStatement": "A rubber ball is dropped from a height of 12 meters. On each rebound, it bounces back to 2/3 of its previous height. Find the total vertical distance traveled by the ball before coming to rest.",
+      "formalSolutionMarkdown": "#### Step 1: Analyze downward and upward bounces\n- Initial drop $= 12\\text{ m}$.\n- Bounces up and down: $2 \\times \\left[ 12\\left(\\frac{2}{3}\\right) + 12\\left(\\frac{2}{3}\\right)^2 + \\dots \\right]$\n\n#### Step 2: Sum the infinite geometric series\n$$a_1 = 12\\left(\\frac{2}{3}\\right) = 8\\text{ m}, \\quad r = \\frac{2}{3}$$\n$$S_\\infty = \\frac{a_1}{1 - r} = \\frac{8}{1 - 2/3} = \\frac{8}{1/3} = 24\\text{ m}$$\n\n#### Step 3: Compute total vertical distance\n$$\\text{Total} = 12 + 2(24) = 12 + 48 = 60\\text{ meters}$$",
+      "shortcutSolutionMarkdown": "#### ⚡ 4-Second Bouncing Ball Formula\n$$D = H \\left( \\frac{1 + r}{1 - r} \\right) = 12 \\left( \\frac{1 + 2/3}{1 - 2/3} \\right) = 12 \\left( \\frac{5/3}{1/3} \\right) = 12(5) = \\mathbf{60\\text{ m}}$$.",
+      "formalTimeSeconds": 60,
+      "shortcutTimeSeconds": 4
+    }
+  ],
+  "calculatorGuides": {
+    "karce": {
+      "techniqueTitle": "STAT Mode Linear Regression for AP n-th Term",
+      "problemType": "Finding any n-th term of an AP",
+      "sampleProblem": "Find the 50th term of AP: 7, 11, 15, ...",
+      "mode": "STAT Mode (MODE 2 1)",
+      "keystrokes": [
+        "MODE",
+        "2",
+        "1",
+        "1",
+        ",",
+        "7",
+        "M+",
+        "2",
+        ",",
+        "1",
+        "1",
+        "M+",
+        "5",
+        "0",
+        "SHIFT",
+        "S-VAR",
+        "►",
+        "►",
+        "ŷ",
+        "="
+      ],
+      "notes": "Directly returns ŷ = 203 in 2 seconds."
+    },
+    "canon": {
+      "techniqueTitle": "Direct Infinite Geometric Series Evaluation",
+      "problemType": "Infinite series sum a₁ / (1 - r)",
+      "sampleProblem": "Find sum of 8 + 16/3 + 32/9 + ...",
+      "mode": "COMP Mode (MODE 1)",
+      "keystrokes": [
+        "8",
+        "÷",
+        "(",
+        "1",
+        "-",
+        "2",
+        "÷",
+        "3",
+        ")",
+        "="
+      ],
+      "notes": "Directly returns 24."
+    }
+  },
+  "conceptChecks": [
+    {
+      "id": "cc-math04-01",
+      "question": "What condition is strictly required for the sum of an infinite geometric progression to converge to a finite value?",
+      "options": [
+        "|r| < 1",
+        "r > 1",
+        "r = 1",
+        "d > 0"
+      ],
+      "correctAnswer": 0,
+      "explanation": "An infinite geometric series converges if and only if the absolute value of the common ratio is strictly less than 1 (|r| < 1)."
+    },
+    {
+      "id": "cc-math04-02",
+      "question": "If the arithmetic mean of two positive numbers is 25 and their harmonic mean is 16, what is their geometric mean (GM)?",
+      "options": [
+        "20",
+        "18",
+        "20.5",
+        "22"
+      ],
+      "correctAnswer": 0,
+      "explanation": "By the invariant relationship (GM)² = (AM)(HM) = (25)(16) = 400 ⟹ GM = √400 = 20."
+    },
+    {
+      "id": "cc-math04-03",
+      "question": "What is the 10th triangular number T₁₀?",
+      "options": [
+        "55",
+        "45",
+        "100",
+        "50"
+      ],
+      "correctAnswer": 0,
+      "explanation": "T₁₀ = 10(11)/2 = 110/2 = 55."
+    },
+    {
+      "id": "cc-math04-04",
+      "question": "If a car travels from town A to town B at 40 km/h and returns along the same route at 60 km/h, what is the overall average speed?",
+      "options": [
+        "48 km/h (Harmonic Mean)",
+        "50 km/h (Arithmetic Mean)",
+        "48.99 km/h (Geometric Mean)",
+        "52 km/h"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Average speed over equal distances is given by the Harmonic Mean: HM = 2(40)(60)/(40 + 60) = 4800/100 = 48 km/h."
+    }
+  ]
+}

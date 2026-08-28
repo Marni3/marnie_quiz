@@ -6,16 +6,17 @@
   "topicTitle": "Analytic Geometry",
   "subtopicTitle": "Cartesian Coordinate System, Straight Lines, Slopes & Distances",
   "order": 1,
-  "pairedQuizSetId": "math_07_analytic_geometry_drill_all_set01",
+  "pairedQuizSetId": "math-12-01-mastery",
   "toc": [
     { "id": "sec-prereq-bridges", "title": "1. Introduction & Cross-Subject Bridges", "level": 2 },
-    { "id": "sec-terminology", "title": "2. Terms and Definitions", "level": 2 },
-    { "id": "sec-visualizer", "title": "3. Interactive Visualizer: Line Slope & Point-to-Line Distance", "level": 2 },
-    { "id": "sec-theory", "title": "4. Lesson Proper", "level": 2 },
-    { "id": "sec-dual-method", "title": "5. Sample Problems and Solutions", "level": 2 },
-    { "id": "sec-calculator", "title": "6. Calculator Techniques (Karce & Canon)", "level": 2 },
-    { "id": "sec-concept-checks", "title": "7. In-Line Concept Checks", "level": 2 },
-    { "id": "sec-mastery-challenge", "title": "8. Paired Mastery Challenge", "level": 2 }
+    { "id": "sec-theory", "title": "2. Lesson Proper", "level": 2 },
+    { "id": "sec-formulas", "title": "3. Compilation of Formulas", "level": 2 },
+    { "id": "sec-visualizer", "title": "4. Interactive Visualizer: Line Slope & Point-to-Line Distance", "level": 2 },
+    { "id": "sec-terminology", "title": "5. Terms and Definitions", "level": 2 },
+    { "id": "sec-dual-method", "title": "6. Sample Problems and Solutions", "level": 2 },
+    { "id": "sec-calculator", "title": "7. Calculator Techniques (Karce & Canon)", "level": 2 },
+    { "id": "sec-concept-checks", "title": "8. In-Line Concept Checks", "level": 2 },
+    { "id": "sec-mastery-challenge", "title": "9. Paired Mastery Challenge", "level": 2 }
   ],
   "prerequisiteBridge": {
     "priorModuleId": "math-10-01",
@@ -39,6 +40,56 @@
       "targetTopicCode": "GEAS-10",
       "badgeText": "Vector Statics & Moments",
       "description": "The line of action of a 2D force vector uses point-to-line perpendicular distance ($d = \\frac{|Ax_1 + By_1 + C|}{\\sqrt{A^2 + B^2}}$) to calculate the moment of a force about an arbitrary coordinate pivot."
+    }
+  ],
+  "formulas": [
+    {
+      "id": "f-1201-01",
+      "title": "Distance Between Two Points",
+      "formula": "$$d = \\sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2}$$",
+      "note": "Geometric distance is always positive; evaluates via Pythagorean theorem."
+    },
+    {
+      "id": "f-1201-02",
+      "title": "Slope of a Straight Line",
+      "formula": "$$m = \\frac{y_2 - y_1}{x_2 - x_1} = \\tan\\theta = -\\frac{A}{B}$$",
+      "note": "Undefined for vertical lines (θ = 90°). Sign of m determines if line rises (+) or falls (-)."
+    },
+    {
+      "id": "f-1201-03",
+      "title": "Angle of Inclination",
+      "formula": "$$\\theta = \\arctan(m) \\quad (0^\\circ \\le \\theta < 180^\\circ)$$",
+      "note": "Measured counterclockwise from the positive x-axis. If m < 0, add 180° to arctan(m)."
+    },
+    {
+      "id": "f-1201-04",
+      "title": "Point-Slope & Slope-Intercept Forms",
+      "formula": "$$y - y_1 = m(x - x_1) \\qquad y = mx + b$$",
+      "note": "b is the y-intercept (0, b)."
+    },
+    {
+      "id": "f-1201-05",
+      "title": "Two-Intercept Form",
+      "formula": "$$\\frac{x}{a} + \\frac{y}{b} = 1$$",
+      "note": "a is the x-intercept (a, 0); b is the y-intercept (0, b)."
+    },
+    {
+      "id": "f-1201-06",
+      "title": "Angle Between Two Intersecting Lines",
+      "formula": "$$\\tan\\phi = \\left| \\frac{m_2 - m_1}{1 + m_1 m_2} \\right|$$",
+      "note": "Gives the acute angle. For perpendicular lines, 1 + m₁m₂ = 0 ⟹ m₁m₂ = -1."
+    },
+    {
+      "id": "f-1201-07",
+      "title": "Perpendicular Distance from Point to Line",
+      "formula": "$$d = \\frac{|Ax_1 + By_1 + C|}{\\sqrt{A^2 + B^2}}$$",
+      "note": "Numerator is the line equation evaluated at (x₁, y₁). Denominator is the line's normal magnitude."
+    },
+    {
+      "id": "f-1201-08",
+      "title": "Distance Between Parallel Lines",
+      "formula": "$$d = \\frac{|C_1 - C_2|}{\\sqrt{A^2 + B^2}}$$",
+      "note": "Lines must be normalized to have identical A and B coefficients first."
     }
   ],
   "terms": [

@@ -10,12 +10,13 @@
   "toc": [
     { "id": "sec-prereq-bridges", "title": "1. Introduction & Cross-Subject Bridges", "level": 2 },
     { "id": "sec-theory", "title": "2. Lesson Proper", "level": 2 },
-    { "id": "sec-visualizer", "title": "3. Interactive Visualizer: Conic Eccentricity Locus Explorer", "level": 2 },
-    { "id": "sec-terminology", "title": "4. Terms and Definitions", "level": 2 },
-    { "id": "sec-dual-method", "title": "5. Sample Problems and Solutions", "level": 2 },
-    { "id": "sec-calculator", "title": "6. Calculator Techniques (Karce & Canon)", "level": 2 },
-    { "id": "sec-concept-checks", "title": "7. In-Line Concept Checks", "level": 2 },
-    { "id": "sec-mastery-challenge", "title": "8. Paired Mastery Challenge", "level": 2 }
+    { "id": "sec-formulas", "title": "3. Compilation of Formulas", "level": 2 },
+    { "id": "sec-visualizer", "title": "4. Interactive Visualizer: Conic Eccentricity Locus Explorer", "level": 2 },
+    { "id": "sec-terminology", "title": "5. Terms and Definitions", "level": 2 },
+    { "id": "sec-dual-method", "title": "6. Sample Problems and Solutions", "level": 2 },
+    { "id": "sec-calculator", "title": "7. Calculator Techniques (Karce & Canon)", "level": 2 },
+    { "id": "sec-concept-checks", "title": "8. In-Line Concept Checks", "level": 2 },
+    { "id": "sec-mastery-challenge", "title": "9. Paired Mastery Challenge", "level": 2 }
   ],
   "prerequisiteBridge": {
     "priorModuleId": "math-13-01",
@@ -39,6 +40,62 @@
       "targetTopicCode": "ELEC-06",
       "badgeText": "Boyle-Mariotte & Damped Phase Planes",
       "description": "In nonlinear dynamics and RLC phase-plane state-space analysis, saddle points and undamped harmonic orbits trace hyperbolic and elliptical state trajectories."
+    }
+  ],
+  "formulas": [
+    {
+      "id": "f-1302-01",
+      "title": "Standard Equation of an Ellipse",
+      "formula": "$$\\frac{(x - h)^2}{a^2} + \\frac{(y - k)^2}{b^2} = 1 \\quad (a > b)$$",
+      "note": "For vertical major axis, a² is under (y - k)². a is always the largest semi-axis."
+    },
+    {
+      "id": "f-1302-02",
+      "title": "Ellipse Focal Invariant & Eccentricity",
+      "formula": "$$a^2 = b^2 + c^2 \\iff c = \\sqrt{a^2 - b^2} \\qquad e = \\frac{c}{a} < 1$$",
+      "note": "c is the distance from the center to each focus. Directrices at d = a/e = a²/c."
+    },
+    {
+      "id": "f-1302-03",
+      "title": "Area and Perimeter of an Ellipse",
+      "formula": "$$\\text{Area} = \\pi a b \\qquad \\text{Perimeter} \\approx 2\\pi \\sqrt{\\frac{a^2 + b^2}{2}}$$",
+      "note": "When a = b = r, area reduces to πr² and perimeter to 2πr."
+    },
+    {
+      "id": "f-1302-04",
+      "title": "Standard Equation of a Hyperbola",
+      "formula": "$$\\frac{(x - h)^2}{a^2} - \\frac{(y - k)^2}{b^2} = 1 \\quad (\\text{horizontal}) \\qquad \\frac{(y - k)^2}{a^2} - \\frac{(x - h)^2}{b^2} = 1 \\quad (\\text{vertical})$$",
+      "note": "a² is strictly the denominator of the POSITIVE term (transverse axis)."
+    },
+    {
+      "id": "f-1302-05",
+      "title": "Hyperbola Focal Invariant & Eccentricity",
+      "formula": "$$c^2 = a^2 + b^2 \\iff c = \\sqrt{a^2 + b^2} \\qquad e = \\frac{c}{a} > 1$$",
+      "note": "c is the distance from center to each focus. c is always the largest parameter."
+    },
+    {
+      "id": "f-1302-06",
+      "title": "Asymptotes of a Hyperbola",
+      "formula": "$$y - k = \\pm \\frac{b}{a}(x - h) \\quad (\\text{horizontal}) \\qquad y - k = \\pm \\frac{a}{b}(x - h) \\quad (\\text{vertical})$$",
+      "note": "⚡ 2-second shortcut: replace the right-hand constant 1 with 0 and factor."
+    },
+    {
+      "id": "f-1302-07",
+      "title": "Equilateral Hyperbola Invariant",
+      "formula": "$$a = b \\implies e = \\sqrt{2} \\approx 1.4142 \\qquad xy = k$$",
+      "note": "Asymptotes are mutually perpendicular (slopes ±1). Rotated 45° form is xy = k."
+    },
+    {
+      "id": "f-1302-08",
+      "title": "Latus Rectum of Dual-Foci Conics",
+      "formula": "$$LR = \\frac{2b^2}{a}$$",
+      "note": "Applies identically to both the Ellipse and the Hyperbola."
+    },
+    {
+      "id": "f-1302-09",
+      "title": "Unified Polar Conic Equation",
+      "formula": "$$r = \\frac{ed}{1 \\pm e\\cos\\theta} \\quad (\\text{horizontal}) \\qquad r = \\frac{ed}{1 \\pm e\\sin\\theta} \\quad (\\text{vertical})$$",
+      "note": "Normalize the constant in denominator to 1; the coefficient of cos θ or sin θ is directly the eccentricity e."
     }
   ],
   "terms": [
