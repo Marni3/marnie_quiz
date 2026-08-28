@@ -48,7 +48,7 @@ export function TutorView() {
 
   // Active configuration
   const [provider, setProvider] = useState<AIProvider>("gemini");
-  const [model, setModel] = useState<string>("gemini-2.0-flash");
+  const [model, setModel] = useState<string>("gemini-3.6-flash");
   const [hasKey, setHasKey] = useState(false);
 
   // Chat sessions
@@ -340,9 +340,8 @@ export function TutorView() {
       <main className="flex-1 flex overflow-hidden relative max-w-7xl w-full mx-auto p-2 sm:p-4 gap-4">
         {/* SIDEBAR (Desktop Left Pane & Mobile Slide-Over) */}
         <aside
-          className={`fixed inset-y-0 left-0 z-40 w-72 sm:w-80 bg-[var(--surface)] border-r border-[var(--border)] p-4 flex flex-col justify-between transition-transform duration-200 lg:static lg:translate-x-0 lg:rounded-2xl lg:border lg:z-auto ${
-            isSidebarOpen ? "translate-x-0" : "-translate-x-full"
-          }`}
+          className={`fixed inset-y-0 left-0 z-40 w-72 sm:w-80 bg-[var(--surface)] border-r border-[var(--border)] p-4 flex flex-col justify-between transition-transform duration-200 lg:static lg:translate-x-0 lg:rounded-2xl lg:border lg:z-auto ${isSidebarOpen ? "translate-x-0" : "-translate-x-full"
+            }`}
         >
           {/* Top Session Actions */}
           <div className="space-y-3">
@@ -384,11 +383,10 @@ export function TutorView() {
                   <div
                     key={s.id}
                     onClick={() => handleSelectSession(s)}
-                    className={`group/session w-full flex items-center justify-between p-2.5 rounded-xl text-left text-xs transition-all cursor-pointer ${
-                      isActive
+                    className={`group/session w-full flex items-center justify-between p-2.5 rounded-xl text-left text-xs transition-all cursor-pointer ${isActive
                         ? "bg-primary/10 text-primary font-semibold border border-primary/20"
                         : "text-[var(--text2)] hover:bg-[var(--surface2)] hover:text-[var(--text)] border border-transparent"
-                    }`}
+                      }`}
                   >
                     <span className="truncate flex-1 mr-2">{s.title || "Untitled Session"}</span>
                     <button

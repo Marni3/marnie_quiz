@@ -39,47 +39,47 @@ const PROVIDERS: Array<{
   freeTier: boolean;
   placeholder: string;
 }> = [
-  {
-    id: "gemini",
-    name: "Google Gemini",
-    badge: "Recommended (Free Tier)",
-    portalUrl: "https://aistudio.google.com/app/apikey",
-    freeTier: true,
-    placeholder: "AIzaSy...",
-  },
-  {
-    id: "openai",
-    name: "OpenAI",
-    badge: "GPT-4o / GPT-4o-mini",
-    portalUrl: "https://platform.openai.com/api-keys",
-    freeTier: false,
-    placeholder: "sk-proj-...",
-  },
-  {
-    id: "anthropic",
-    name: "Anthropic Claude",
-    badge: "Claude 3.5 Sonnet",
-    portalUrl: "https://console.anthropic.com/settings/keys",
-    freeTier: false,
-    placeholder: "sk-ant-...",
-  },
-  {
-    id: "deepseek",
-    name: "DeepSeek",
-    badge: "V3 / R1 Low Cost",
-    portalUrl: "https://platform.deepseek.com/api_keys",
-    freeTier: false,
-    placeholder: "sk-...",
-  },
-  {
-    id: "openrouter",
-    name: "OpenRouter",
-    badge: "Multi-Model Gateway",
-    portalUrl: "https://openrouter.ai/keys",
-    freeTier: false,
-    placeholder: "sk-or-...",
-  },
-];
+    {
+      id: "gemini",
+      name: "Google Gemini",
+      badge: "Recommended (Free Tier)",
+      portalUrl: "https://aistudio.google.com/app/apikey",
+      freeTier: true,
+      placeholder: "AIzaSy...",
+    },
+    {
+      id: "openai",
+      name: "OpenAI",
+      badge: "GPT-4o / GPT-4o-mini",
+      portalUrl: "https://platform.openai.com/api-keys",
+      freeTier: false,
+      placeholder: "sk-proj-...",
+    },
+    {
+      id: "anthropic",
+      name: "Anthropic Claude",
+      badge: "Claude 3.5 Sonnet",
+      portalUrl: "https://console.anthropic.com/settings/keys",
+      freeTier: false,
+      placeholder: "sk-ant-...",
+    },
+    {
+      id: "deepseek",
+      name: "DeepSeek",
+      badge: "V3 / R1 Low Cost",
+      portalUrl: "https://platform.deepseek.com/api_keys",
+      freeTier: false,
+      placeholder: "sk-...",
+    },
+    {
+      id: "openrouter",
+      name: "OpenRouter",
+      badge: "Multi-Model Gateway",
+      portalUrl: "https://openrouter.ai/keys",
+      freeTier: false,
+      placeholder: "sk-or-...",
+    },
+  ];
 
 export function ByokModal({ isOpen, onClose, onKeysUpdated }: ByokModalProps) {
   const [activeProvider, setActiveProvider] = useState<AIProvider>("gemini");
@@ -129,7 +129,7 @@ export function ByokModal({ isOpen, onClose, onKeysUpdated }: ByokModalProps) {
         body: JSON.stringify({
           provider: activeProvider,
           apiKey: key.trim(),
-          model: activeProvider === "gemini" ? "gemini-2.0-flash" : undefined,
+          model: activeProvider === "gemini" ? "gemini-3.6-flash" : undefined,
           messages: [{ role: "user", content: "Reply with 'OK'." }],
           functionMode: "chat",
         }),
@@ -242,11 +242,10 @@ export function ByokModal({ isOpen, onClose, onKeysUpdated }: ByokModalProps) {
                   <button
                     key={p.id}
                     onClick={() => handleProviderSelect(p.id)}
-                    className={`p-2.5 rounded-xl border text-left flex flex-col justify-between transition-all ${
-                      isSelected
-                        ? "bg-primary/10 border-primary/40 shadow-sm"
-                        : "bg-[var(--surface2)] border-[var(--border)] hover:border-primary/20"
-                    }`}
+                    className={`p-2.5 rounded-xl border text-left flex flex-col justify-between transition-all ${isSelected
+                      ? "bg-primary/10 border-primary/40 shadow-sm"
+                      : "bg-[var(--surface2)] border-[var(--border)] hover:border-primary/20"
+                      }`}
                   >
                     <div className="flex items-center justify-between mb-1">
                       <span className="text-xs font-bold text-[var(--text)]">{p.name}</span>
@@ -314,9 +313,8 @@ export function ByokModal({ isOpen, onClose, onKeysUpdated }: ByokModalProps) {
 
                   {testResult && (
                     <div
-                      className={`text-xs flex items-center gap-1.5 font-medium ${
-                        testResult.success ? "text-emerald-500" : "text-rose-500"
-                      }`}
+                      className={`text-xs flex items-center gap-1.5 font-medium ${testResult.success ? "text-emerald-500" : "text-rose-500"
+                        }`}
                     >
                       {testResult.success ? <CheckCircle2 className="w-4 h-4" /> : <XCircle className="w-4 h-4" />}
                       <span className="truncate max-w-[240px]">{testResult.message}</span>

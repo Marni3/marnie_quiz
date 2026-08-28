@@ -23,9 +23,9 @@ export function setStoredActiveProvider(provider: AIProvider): void {
 }
 
 export function getStoredActiveModel(provider: AIProvider): string {
-  if (typeof window === "undefined") return DEFAULT_MODELS[provider] || "gemini-2.0-flash";
+  if (typeof window === "undefined") return DEFAULT_MODELS[provider] || "gemini-3.6-flash";
   const model = localStorage.getItem(`${STORAGE_KEYS.ACTIVE_MODEL}_${provider}`);
-  return model || DEFAULT_MODELS[provider] || "gemini-2.0-flash";
+  return model || DEFAULT_MODELS[provider] || "gemini-3.6-flash";
 }
 
 export function setStoredActiveModel(provider: AIProvider, model: string): void {

@@ -175,7 +175,7 @@ Examinees provide their own free API keys in Settings (`/settings`), which are m
 
 | Provider | Recommended Model | Free Tier Allocation | Key Strengths & Use Cases |
 |---|---|---|---|
-| **Google AI Studio** *(Primary)* | `gemini-1.5-flash` / `gemini-2.0-flash` | **15 RPM • 1M TPM • 1,500 RPD** | Massive 1M+ context window, superior multi-step math/circuit reasoning, generous permanent free tier. Ideal for deep module analysis and full-length exam debriefs. |
+| **Google AI Studio** *(Primary)* | `gemini-1.5-flash` / `gemini-3.6-flash` | **15 RPM • 1M TPM • 1,500 RPD** | Massive 1M+ context window, superior multi-step math/circuit reasoning, generous permanent free tier. Ideal for deep module analysis and full-length exam debriefs. |
 | **Groq Cloud** *(Secondary)* | `llama-3.3-70b-versatile` | **30 RPM • 14,400 RPD** | Ultra-low latency (>300 tokens/sec), instant streaming feedback. Ideal for real-time Socratic hint chats and quick 10-second math shortcut derivations. |
 | **OpenRouter** *(Fallback)* | `meta-llama/llama-3.3-70b:free` / `deepseek-chat` | **Variable Free Quotas** | Universal OpenAI-compatible gateway; single key provides access to multiple backup open models during provider outages. |
 

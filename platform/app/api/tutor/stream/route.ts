@@ -34,7 +34,7 @@ export async function POST(req: NextRequest) {
 
     // 1. GOOGLE GEMINI STREAMING
     if (provider === "gemini") {
-      const geminiModel = model || "gemini-2.0-flash";
+      const geminiModel = model || "gemini-3.6-flash";
       const endpoint = `https://generativelanguage.googleapis.com/v1beta/models/${geminiModel}:streamGenerateContent?key=${encodeURIComponent(
         apiKey.trim()
       )}`;
@@ -105,7 +105,7 @@ export async function POST(req: NextRequest) {
                     if (text) {
                       controller.enqueue(new TextEncoder().encode(text));
                     }
-                  } catch {}
+                  } catch { }
                 } else if (trimmed.startsWith("[") || trimmed.startsWith("{")) {
                   // Standard JSON array streaming chunk
                   try {
@@ -116,7 +116,7 @@ export async function POST(req: NextRequest) {
                     if (text) {
                       controller.enqueue(new TextEncoder().encode(text));
                     }
-                  } catch {}
+                  } catch { }
                 }
               }
             }
@@ -130,7 +130,7 @@ export async function POST(req: NextRequest) {
                 if (text) {
                   controller.enqueue(new TextEncoder().encode(text));
                 }
-              } catch {}
+              } catch { }
             }
           } catch (err: any) {
             controller.error(err);
@@ -166,9 +166,9 @@ export async function POST(req: NextRequest) {
           Authorization: `Bearer ${apiKey.trim()}`,
           ...(provider === "openrouter"
             ? {
-                "HTTP-Referer": "https://marniequiz.app",
-                "X-Title": "Marnie Quiz ECE Platform",
-              }
+              "HTTP-Referer": "https://marniequiz.app",
+              "X-Title": "Marnie Quiz ECE Platform",
+            }
             : {}),
         },
         body: JSON.stringify({
@@ -218,7 +218,7 @@ export async function POST(req: NextRequest) {
                   if (content) {
                     controller.enqueue(new TextEncoder().encode(content));
                   }
-                } catch {}
+                } catch { }
               }
             }
           } catch (err: any) {
@@ -303,7 +303,7 @@ export async function POST(req: NextRequest) {
                       new TextEncoder().encode(parsed.delta.text)
                     );
                   }
-                } catch {}
+                } catch { }
               }
             }
           } catch (err: any) {

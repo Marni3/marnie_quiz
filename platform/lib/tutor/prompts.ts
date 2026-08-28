@@ -1,15 +1,15 @@
 import { TutorFunctionMode } from "./types";
 
 export const DEFAULT_MODELS: Record<string, string> = {
-  gemini: "gemini-2.0-flash",
+  gemini: "gemini-3.6-flash",
   openai: "gpt-4o",
   anthropic: "claude-3-5-sonnet-20241022",
   deepseek: "deepseek-chat",
-  openrouter: "google/gemini-2.0-flash-001",
+  openrouter: "google/gemini-3.6-flash-001",
 };
 
 export const MODEL_CATALOG = [
-  { id: "gemini-2.0-flash", name: "Gemini 2.0 Flash (Fast & Free Tier)", provider: "gemini" as const, isRecommended: true },
+  { id: "gemini-3.6-flash", name: "Gemini 2.0 Flash (Fast & Free Tier)", provider: "gemini" as const, isRecommended: true },
   { id: "gemini-1.5-pro", name: "Gemini 1.5 Pro (Deep Reasoning)", provider: "gemini" as const },
   { id: "gpt-4o", name: "GPT-4o (Omni High Precision)", provider: "openai" as const, isRecommended: true },
   { id: "gpt-4o-mini", name: "GPT-4o Mini (Fast & Low Cost)", provider: "openai" as const },
@@ -17,7 +17,7 @@ export const MODEL_CATALOG = [
   { id: "claude-3-5-haiku-20241022", name: "Claude 3.5 Haiku (Ultra Fast)", provider: "anthropic" as const },
   { id: "deepseek-chat", name: "DeepSeek V3 (High Value / Low Cost)", provider: "deepseek" as const },
   { id: "deepseek-reasoner", name: "DeepSeek R1 (Math & Code Reasoning)", provider: "deepseek" as const },
-  { id: "google/gemini-2.0-flash-001", name: "Gemini 2.0 Flash (via OpenRouter)", provider: "openrouter" as const },
+  { id: "google/gemini-3.6-flash-001", name: "Gemini 2.0 Flash (via OpenRouter)", provider: "openrouter" as const },
   { id: "anthropic/claude-3.5-sonnet", name: "Claude 3.5 Sonnet (via OpenRouter)", provider: "openrouter" as const },
 ];
 
