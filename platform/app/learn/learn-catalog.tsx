@@ -24,9 +24,13 @@ export function LearnCatalog({ initialModules }: LearnCatalogProps) {
   const [modules] = useState<LearningModuleSummary[]>(initialModules);
   const [search, setSearch] = useState("");
   const [selectedDomain, setSelectedDomain] = useState<string>("all");
+  const [viewMode, setViewMode] = useState<"active" | "legacy">("active");
 
   const filteredModules = useMemo(() => {
     return modules.filter((m) => {
+      if (viewMode === "active" && m.isLegacy) return false;
+      if (viewMode === "legacy" && !m.isLegacy) return false;
+
       if (selectedDomain !== "all" && m.domain !== selectedDomain) {
         return false;
       }
@@ -39,7 +43,10 @@ export function LearnCatalog({ initialModules }: LearnCatalogProps) {
       }
       return true;
     });
-  }, [modules, selectedDomain, search]);
+  }, [modules, selectedDomain, search, viewMode]);
+
+  const activeCount = useMemo(() => modules.filter((m) => !m.isLegacy).length, [modules]);
+  const legacyCount = useMemo(() => modules.filter((m) => !!m.isLegacy).length, [modules]);
 
   // Group by Topic
   const groupedByTopic = useMemo(() => {
@@ -101,28 +108,56 @@ export function LearnCatalog({ initialModules }: LearnCatalogProps) {
             />
           </div>
 
-          <div className="flex flex-wrap items-center gap-2 pt-1 border-t border-[var(--border)]">
-            <span className="text-xs font-mono text-[var(--text3)] uppercase mr-1">Subject:</span>
-            {[
-              { id: "all", label: "All Subjects" },
-              { id: "MATH", label: "MATH" },
-              { id: "ELECS", label: "ELECS" },
-              { id: "GEAS", label: "GEAS" },
-              { id: "EST", label: "EST" },
-            ].map((d) => (
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pt-1 border-t border-[var(--border)]">
+            <div className="flex flex-wrap items-center gap-2">
+              <span className="text-xs font-mono text-[var(--text3)] uppercase mr-1">Subject:</span>
+              {[
+                { id: "all", label: "All Subjects" },
+                { id: "MATH", label: "MATH" },
+                { id: "ELECS", label: "ELECS" },
+                { id: "GEAS", label: "GEAS" },
+                { id: "EST", label: "EST" },
+              ].map((d) => (
+                <button
+                  key={d.id}
+                  type="button"
+                  onClick={() => setSelectedDomain(d.id)}
+                  className={`px-3 py-1 rounded-lg text-xs font-medium transition-all cursor-pointer ${
+                    selectedDomain === d.id
+                      ? "bg-[var(--accent)] text-white shadow-sm"
+                      : "bg-[var(--surface2)] text-[var(--text2)] hover:text-[var(--text)] border border-[var(--border)]"
+                  }`}
+                >
+                  {d.label}
+                </button>
+              ))}
+            </div>
+
+            <div className="flex items-center gap-1.5 p-1 bg-[var(--surface2)] rounded-xl border border-[var(--border)] self-start sm:self-auto">
               <button
-                key={d.id}
                 type="button"
-                onClick={() => setSelectedDomain(d.id)}
-                className={`px-3 py-1 rounded-lg text-xs font-medium transition-all cursor-pointer ${
-                  selectedDomain === d.id
-                    ? "bg-[var(--accent)] text-white shadow-sm"
-                    : "bg-[var(--surface2)] text-[var(--text2)] hover:text-[var(--text)] border border-[var(--border)]"
+                onClick={() => setViewMode("active")}
+                className={`px-3 py-1 rounded-lg text-xs font-semibold transition-all cursor-pointer flex items-center gap-1.5 ${
+                  viewMode === "active"
+                    ? "bg-[var(--surface)] text-[var(--accent)] shadow-xs border border-[var(--border)]"
+                    : "text-[var(--text3)] hover:text-[var(--text)]"
                 }`}
               >
-                {d.label}
+                <Layers className="w-3.5 h-3.5" />
+                <span>Primary Modules ({activeCount})</span>
               </button>
-            ))}
+              <button
+                type="button"
+                onClick={() => setViewMode("legacy")}
+                className={`px-3 py-1 rounded-lg text-xs font-semibold transition-all cursor-pointer flex items-center gap-1.5 ${
+                  viewMode === "legacy"
+                    ? "bg-[var(--surface)] text-amber-500 shadow-xs border border-amber-500/20"
+                    : "text-[var(--text3)] hover:text-[var(--text)]"
+                }`}
+              >
+                <span>Legacy Archive ({legacyCount})</span>
+              </button>
+            </div>
           </div>
         </div>
 
@@ -157,9 +192,16 @@ export function LearnCatalog({ initialModules }: LearnCatalogProps) {
                     >
                       <div className="space-y-2">
                         <div className="flex items-center justify-between gap-2">
-                          <span className="font-mono text-xs font-bold text-[var(--accent)]">
-                            {mod.code}
-                          </span>
+                          <div className="flex items-center gap-1.5">
+                            <span className="font-mono text-xs font-bold text-[var(--accent)]">
+                              {mod.code}
+                            </span>
+                            {mod.isLegacy && (
+                              <span className="inline-flex items-center text-[10px] font-mono px-1.5 py-0.2 rounded bg-amber-500/10 text-amber-500 border border-amber-500/20">
+                                Legacy
+                              </span>
+                            )}
+                          </div>
                           {mod.hasVisualizer && (
                             <span className="inline-flex items-center gap-1 text-[11px] font-mono px-2 py-0.5 rounded-full bg-cyan-500/10 text-cyan-500 border border-cyan-500/20">
                               <Sliders className="w-3 h-3" /> Visualizer

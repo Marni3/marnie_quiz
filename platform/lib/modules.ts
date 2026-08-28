@@ -184,6 +184,7 @@ export interface LearningModuleSummary {
   examplesCount: number;
   conceptChecksCount: number;
   hasVisualizer: boolean;
+  isLegacy?: boolean;
 }
 
 function getModulesDirectory(): string {
@@ -240,6 +241,11 @@ export async function getAllLearningModules(): Promise<LearningModuleSummary[]> 
           continue;
         }
 
+        const isLegacy =
+          filePath.includes(`${path.sep}legacy${path.sep}`) ||
+          filePath.includes("/legacy/") ||
+          filePath.includes("\\legacy\\");
+
         summaries.push({
           id: data.id,
           code: data.code,
@@ -253,6 +259,7 @@ export async function getAllLearningModules(): Promise<LearningModuleSummary[]> 
           examplesCount: data.examples?.length || 0,
           conceptChecksCount: data.conceptChecks?.length || 0,
           hasVisualizer: !!data.visualizer,
+          isLegacy,
         });
       } catch (err) {
         console.warn(`Failed to parse module JSON file at ${filePath}:`, err);
@@ -260,6 +267,8 @@ export async function getAllLearningModules(): Promise<LearningModuleSummary[]> 
     }
 
     return summaries.sort((a, b) => {
+      // Keep active modules first, legacy modules at the end
+      if (a.isLegacy !== b.isLegacy) return a.isLegacy ? 1 : -1;
       if (a.domain !== b.domain) return (a.domain || "").localeCompare(b.domain || "");
       if (a.topicCode !== b.topicCode) return (a.topicCode || "").localeCompare(b.topicCode || "");
       return (a.order || 0) - (b.order || 0);
@@ -276,6 +285,7 @@ export async function getLearningModuleById(id: string): Promise<LearningModule 
     const jsonPaths = scanJsonFilesRecursively(rootDir);
     const targetFile = id.toLowerCase().replace(/[^a-z0-9_-]/g, "");
 
+    // 1. Direct check across scanned paths
     for (const filePath of jsonPaths) {
       const filename = path.basename(filePath, ".json");
       if (filename.toLowerCase() === targetFile) {
@@ -284,12 +294,17 @@ export async function getLearningModuleById(id: string): Promise<LearningModule 
       }
     }
 
-    // Direct check inside domain folders
+    // 2. Direct check inside domain and legacy folders
     const domains = ["math", "elecs", "geas", "est"];
     for (const d of domains) {
       const directPath = path.join(rootDir, d, `${targetFile}.json`);
       if (fs.existsSync(directPath)) {
         const raw = fs.readFileSync(directPath, "utf8");
+        return JSON.parse(raw) as LearningModule;
+      }
+      const legacyPath = path.join(rootDir, "legacy", d, `${targetFile}.json`);
+      if (fs.existsSync(legacyPath)) {
+        const raw = fs.readFileSync(legacyPath, "utf8");
         return JSON.parse(raw) as LearningModule;
       }
     }
@@ -322,7 +337,7 @@ export async function getMasteryChallenge(
     const rootDir = getModulesDirectory();
     const targetFile = `${moduleId.toLowerCase().replace(/[^a-z0-9_-]/g, "")}-mastery.json`;
 
-    // Check domain mastery folders
+    // 1. Check active domain mastery folders
     const domains = ["math", "elecs", "geas", "est"];
     for (const d of domains) {
       const directPath = path.join(rootDir, d, "mastery", targetFile);
@@ -337,7 +352,21 @@ export async function getMasteryChallenge(
       }
     }
 
-    // Direct check in mastery root
+    // 2. Check legacy mastery folders
+    for (const d of domains) {
+      const legacyMastery = path.join(rootDir, "legacy", d, "mastery", targetFile);
+      if (fs.existsSync(legacyMastery)) {
+        const raw = fs.readFileSync(legacyMastery, "utf8");
+        return JSON.parse(raw) as MasteryChallengeSet;
+      }
+      const legacyMasteryAlt = path.join(rootDir, "legacy", d, targetFile);
+      if (fs.existsSync(legacyMasteryAlt)) {
+        const raw = fs.readFileSync(legacyMasteryAlt, "utf8");
+        return JSON.parse(raw) as MasteryChallengeSet;
+      }
+    }
+
+    // 3. Direct check in mastery root
     const rootMastery = path.join(rootDir, "mastery", targetFile);
     if (fs.existsSync(rootMastery)) {
       const raw = fs.readFileSync(rootMastery, "utf8");
@@ -350,4 +379,5 @@ export async function getMasteryChallenge(
     return null;
   }
 }
+
 
