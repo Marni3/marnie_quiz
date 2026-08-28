@@ -6,6 +6,7 @@ export const DEFAULT_MODELS: Record<string, string> = {
   anthropic: "claude-3-5-sonnet-20241022",
   deepseek: "deepseek-chat",
   openrouter: "google/gemini-3.6-flash-001",
+  groq: "llama-3.3-70b-versatile",
 };
 
 export const MODEL_CATALOG = [
@@ -19,6 +20,10 @@ export const MODEL_CATALOG = [
   { id: "deepseek-reasoner", name: "DeepSeek R1 (Math & Code Reasoning)", provider: "deepseek" as const },
   { id: "google/gemini-3.6-flash-001", name: "Gemini 2.0 Flash (via OpenRouter)", provider: "openrouter" as const },
   { id: "anthropic/claude-3.5-sonnet", name: "Claude 3.5 Sonnet (via OpenRouter)", provider: "openrouter" as const },
+  { id: "llama-3.3-70b-versatile", name: "Llama 3.3 70B (Fast & Free Tier)", provider: "groq" as const, isRecommended: true },
+  { id: "llama-3.1-8b-instant", name: "Llama 3.1 8B Instant (Ultra Fast)", provider: "groq" as const },
+  { id: "mixtral-8x7b-32768", name: "Mixtral 8x7B (Long Context)", provider: "groq" as const },
+  { id: "gemma2-9b-it", name: "Gemma 2 9B Instruct", provider: "groq" as const },
 ];
 
 export const BASE_SOCRATIC_PROMPT = `You are "Marnie AI", a world-class PRC Electronics Engineering (ECE) Board Examination Master Tutor and Senior Full-Stack Engineering Mentor.

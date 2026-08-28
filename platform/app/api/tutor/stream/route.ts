@@ -159,11 +159,12 @@ export async function POST(req: NextRequest) {
       });
     }
 
-    // 2. OPENAI / DEEPSEEK / OPENROUTER STREAMING (OpenAI-compatible)
-    if (provider === "openai" || provider === "deepseek" || provider === "openrouter") {
+    // 2. OPENAI / DEEPSEEK / OPENROUTER / GROQ STREAMING (OpenAI-compatible)
+    if (provider === "openai" || provider === "deepseek" || provider === "openrouter" || provider === "groq") {
       let endpoint = "https://api.openai.com/v1/chat/completions";
       if (provider === "deepseek") endpoint = "https://api.deepseek.com/chat/completions";
       if (provider === "openrouter") endpoint = "https://openrouter.ai/api/v1/chat/completions";
+      if (provider === "groq") endpoint = "https://api.groq.com/openai/v1/chat/completions";
 
       const openAiMessages = [
         { role: "system", content: systemPrompt },

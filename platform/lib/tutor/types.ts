@@ -1,4 +1,4 @@
-export type AIProvider = "gemini" | "openai" | "anthropic" | "openrouter" | "deepseek";
+export type AIProvider = "gemini" | "openai" | "anthropic" | "openrouter" | "deepseek" | "groq";
 
 export interface ProviderConfig {
   provider: AIProvider;
