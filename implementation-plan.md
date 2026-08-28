@@ -557,10 +557,10 @@ graph TD
     F --> G[🔒 v1.0 Feature Freeze & Study Phase]
 ```
 
-### Step 1: Phase 4.5 — Interactive Learning Modules (`/learn` / `/modules`)
-- Build the dynamic `/learn` and `/learn/[topicCode]` pages with the interactive **[ Formal Lecture | ⚡ Speed Shortcut | Combined ]** segmented toggle.
-- Author initial foundational modules for high-yield topics (e.g. `MATH 01-08: Word Problems`, `MATH 09-02: Conic Eccentricity Visualizer`, `ELEC 04: AC Power Triangle`, `EST 03: Modulation`).
-- Embed standardized 4-choice in-line MCQ checks and Karce/Canon `<kbd>` keystrokes.
+### Step 1: Phase 4.5 — Interactive Learning Modules & Mastery Challenges (`/learn`)
+- Build the dynamic `/learn` and `/learn/[moduleId]` pages with the lesson-first pedagogical hierarchy, 4-layer narrative theory, high-visibility compilation of formulas cards (`formulas`), declarative vector SVG figures (`InlineFigure`), and decoupled 20–25 question companion Mastery Challenges (`/learn/[moduleId]/mastery`).
+- **Strict 1-to-1 Note Page Authoring Standard**: Every module is engineered directly from rendered review note page PNGs in `test-sets/scratch/pdf-renders/[subject]/notes___[topic]_[n]/page_01.png` per [modules-authoring-plan.md](file:///c:/Users/reyna/OneDrive/Documents/marnie_quiz/test-sets/Reference%20Documents/modules-authoring-plan.md).
+- Follow phased roadmap: Phase 1 (44 Mathematics note pages), Phase 2 (R.A. No. 9292 Deep Law), Phase 2.5 (GEAS Concepts), Phase 3 (GEAS Physics/Mechanics/Econ), Phase 4 (EST), Phase 5 (ELECS).
 
 ### Step 2: Phase 4.6 — Global Omni-Search Bar (`/` Shortcut)
 - Build the client-side fuzzy search dialog accessible from the navbar or pressing `/`.

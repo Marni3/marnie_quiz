@@ -81,9 +81,18 @@ This document serves as the permanent reference guide for common pitfalls, archi
 
 ---
 
-## 10. Pre-Flight Checklist for Every Created Module
+## 10. 1-to-1 Review Note Page Inspection & Zero-Omission Standard
+
+| Pitfall / Issue | Root Cause | Standard Prevention & Fix |
+| :--- | :--- | :--- |
+| **Omission of Key Formulas & Over-Summarization** | Batch-generating generic modules from high-level curriculum bullet points rather than inspecting the actual review note pages. | **Strict 1-to-1 Page Inspection Protocol**:<br>• The authoring agent must open and view the specific note PNG (`test-sets/scratch/pdf-renders/[subject]/notes___[topic]_[n]/page_01.png`) before authoring.<br>• Every formula, theorem, condition, and table on that note page must be transcribed and explained in the module.<br>• Author one page at a time (Inspect Page PNG $\to$ Author Module $\to$ Author Paired Mastery $\to$ Verify). |
+
+---
+
+## 11. Pre-Flight Checklist for Every Created Module
 
 Before committing any learning module and companion mastery set:
+- [ ] Rendered note page image (`test-sets/scratch/pdf-renders/.../page_01.png`) was inspected with `view_file` and 100% of formulas are transcribed.
 - [ ] Module JSON is in `test-sets/learning-modules/[subject]/[code].json`.
 - [ ] Companion Mastery JSON is in `test-sets/learning-modules/[subject]/mastery/[code]-mastery.json`.
 - [ ] Section sequence is strictly: **Bridges $\to$ Lesson Proper (Theory) $\to$ Compilation of Formulas $\to$ Visualizer $\to$ Terms $\to$ Sample Problems $\to$ Calculator Guides $\to$ Concept Checks $\to$ Mastery CTA**.
@@ -94,6 +103,5 @@ Before committing any learning module and companion mastery set:
 - [ ] Visualizer archetype matches the topic geometry/physics with visible slider tracks.
 - [ ] Distractor explanations have no redundant label prefixes.
 - [ ] Mastery Challenge contains 20–25 questions with strict 4-quadrant balance (30% conceptual, 35% computational, 20% applied, 15% shortcuts/traps).
-- [ ] `npm run build` passes with zero TypeScript/Turbopack errors.
+- [ ] `npm run build` passes with zero TypeScript/Turbopack errors and zero JSON syntax warnings.
 - [ ] Git commit and push completed with descriptive message.
-

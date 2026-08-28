@@ -1,6 +1,6 @@
 ---
 name: learning-module-authoring
-description: Authoring interactive, high-speed PRC ECE board exam learning modules (Paul's Online Notes / Brilliant style), lesson-first pedagogy, Karce KC-S991 & Canon F-789SGA keystroke shortcuts, interactive declarative visualizers, declarative inline SVG diagrams, cross-subject conceptual bridges, and multiple-choice concept checks.
+description: Authoring interactive, high-speed PRC ECE board exam learning modules (Paul's Online Notes / Brilliant style), 1-to-1 review note page multimodal transcription, lesson-first pedagogy, Karce KC-S991 & Canon F-789SGA keystroke shortcuts, interactive declarative visualizers, declarative inline SVG diagrams, cross-subject conceptual bridges, and multiple-choice concept checks.
 ---
 
 # Learning Module Authoring & Visualization Standards Skill
@@ -9,7 +9,19 @@ This skill defines the architectural, pedagogical, typographical, and cross-subj
 
 ---
 
-## 1. Pedagogical Flow: Lesson-First Architecture
+## 1. Absolute Source of Truth: 1-to-1 Page-by-Page Note Inspection
+
+Every learning module MUST be generated directly from its respective rendered note page PNG in:
+`test-sets/scratch/pdf-renders/[subject]/notes___[topic]_[n]/page_01.png`
+
+### Non-Negotiable Extraction Invariants:
+1. **Direct Visual Inspection**: The agent must call `view_file` on `page_01.png` before authoring the module.
+2. **Complete Transcription**: Every single formula, definition, condition table, geometric relationship, and shortcut note on the page must be transcribed into the module. Never omit or summarize away detailed formulas.
+3. **Dedicated Subtopic Granularity**: If a subject has multiple note sheets (e.g. 5 sheets for Plane Geometry), each sheet is authored as its own dedicated subtopic module (e.g. `MATH-10-01` through `MATH-10-05`) with its own companion mastery challenge.
+
+---
+
+## 2. Pedagogical Flow: Lesson-First Architecture
 
 Modules are structured as an engaging, cohesive educational lesson rather than a dry list of isolated definitions. Always follow this strict section sequence:
 
@@ -18,29 +30,38 @@ Modules are structured as an engaging, cohesive educational lesson rather than a
      ↓
 [2. Lesson Proper (Deep Narrative Theory, Equations, Inline Diagrams & Derivations)]
      ↓
-[3. Interactive Declarative Visualizer (Topic-Accurate Simulation & Hardware Sliders)]
+[3. Compilation of Formulas (High-Visibility Reference Cards)]
      ↓
-[4. Key Terms, Definitions & Symbol Quick-Reference (Lookup Glossary)]
+[4. Interactive Declarative Visualizer (Topic-Accurate Simulation & Hardware Sliders)]
      ↓
-[5. Worked Sample Problems & Solutions (Dual-Method Toggle: Formal vs. ⚡ Shortcut)]
+[5. Key Terms, Definitions & Symbol Quick-Reference (Lookup Glossary)]
      ↓
-[6. Calculator Speed Techniques (Karce KC-S991 & Canon F-789SGA Keystrokes)]
+[6. Worked Sample Problems & Solutions (Dual-Method Toggle: Formal vs. ⚡ Shortcut)]
      ↓
-[7. In-Line Concept Checks & Direct Distractor Deconstruction]
+[7. Calculator Speed Techniques (Karce KC-S991 & Canon F-789SGA Keystrokes)]
      ↓
-[8. Paired Mastery Challenge Exam (20–25 Decoupled Questions)]
+[8. In-Line Concept Checks & Direct Distractor Deconstruction]
+     ↓
+[9. Paired Mastery Challenge Exam (20–25 Decoupled Questions)]
 ```
 
 ### Key Pedagogical Guidelines:
 
 1. **Deep Narrative Lesson Proper (4-Layer Concept Framework)**:
    Never present a dry list of bare equations or isolated bullet points. Every topic, theorem, or governing law in the **Lesson Proper** must be weaved into a 4-layer explanatory flow (Paul's Online Notes / Cisco Networking Academy style):
-   - **Layer 1: Intuitive Motivation / The "Why" (1–2 sentences)**: What physical intuition or geometric problem does this solve? Connect it to a tangible mental model (e.g. slope as elevation gained per step forward).
+   - **Layer 1: Intuitive Motivation / The "Why" (1–2 sentences)**: What physical intuition or geometric problem does this solve? Connect it to a tangible mental model.
    - **Layer 2: Governing Formula & Variable Breakdown**: State the clean KaTeX equation and immediately define what each symbol represents in context.
    - **Layer 3: Specific Cases & Boundaries**: Explain the physical/mathematical behavior across boundaries (e.g. what happens when slope is $0$ vs. undefined $\theta = 90^\circ$, why perpendicular slopes multiply to $-1$). Always use natural phrasing like **"Specific Cases"** or **"Cases"** (never academic jargon like *"Key Behavioral Conditions"*).
-   - **Layer 4: Board Exam Trap Alert & Practical Anchor**: Directly highlight the common algebraic trap or exam misconception (e.g. forgetting the negative sign in $m = -A/B$, or failing to scale parallel line coefficients $A, B$ to match).
+   - **Layer 4: Board Exam Trap Alert & Practical Anchor**: Directly highlight the common algebraic trap or exam misconception.
 
-2. **Inline Declarative Vector Diagrams (`InlineFigure`)**:
+2. **Compilation of Formulas Section (High-Visibility Formula Cards)**:
+   - Every module must include a dedicated `"formulas"` array.
+   - Each card features:
+     - `title`: Clean, bold name of the formula (e.g. `"Distance from Point to Line"`).
+     - `formula`: Prominent centered KaTeX expression in display math (e.g. `"$$d = \\frac{|Ax_1 + By_1 + C|}{\\sqrt{A^2 + B^2}}$$"`).
+     - `note` (Optional): Very minimal context, sign convention, or boundary condition.
+
+3. **Inline Declarative Vector Diagrams (`InlineFigure`)**:
    Whenever a geometric setup, vector triangle, or waveform would benefit from visual clarification, embed a declarative JSON block inside `contentMarkdown` using the ` ```diagram ` fence:
    ```diagram
    {
@@ -60,38 +81,27 @@ Modules are structured as an engaging, cohesive educational lesson rather than a
    }
    ```
    - **Supported Primitives**: `axes`, `grid`, `line`, `segment`, `arrow`, `point`, `arc`, `right_angle`, `projection`, `polygon`, `text`.
-   - **Zero External Dependencies**: Renders via pure React SVG with theme-aware palettes.
 
-3. **Natural Phrasing Standard (No Overly Academic Jargon)**:
+4. **Natural Phrasing Standard (No Overly Academic Jargon)**:
    - Use straightforward language standard in Philippine engineering review.
    - Use *"Hypotenuse"* instead of *"Euclidean hypotenuse"*.
    - In denominator descriptions: *"Dividing by the magnitude of the line's normal vector converts the scalar value into regular distance units."*
 
-4. **Compilation of Formulas Section (High-Visibility Formula Cards)**:
-   - To prevent formulas from being buried in small text or dense paragraphs, every module includes a dedicated `"formulas"` section.
-   - Each card features:
-     - `title`: Clean, bold name of the formula (e.g. `"Distance from Point to Line"`).
-     - `formula`: Prominent centered KaTeX expression in display math (e.g. `"$$d = \\frac{|Ax_1 + By_1 + C|}{\\sqrt{A^2 + B^2}}$$"`).
-     - `note` (Optional): Very minimal context, sign convention, or boundary condition (e.g. `"Sign of denominator matches B if directed normal distance is required."`).
-
 5. **Terms Section as an Indexed Reference Glossary**:
-   - The **Terms and Definitions** section serves as a high-density vocabulary summary and quick-reference lookup.
-   - Keep definitions atomic (1–2 crisp sentences) with explicit symbols, SI units, and **1-Second Keyword Trigger Associations** to train instant pattern recognition for board questions.
+   - High-density vocabulary summary with explicit symbols, SI units, and **1-Second Keyword Trigger Associations**.
 
 6. **Dual-Method Problem Solving**:
    - Every worked example demonstrates both the **Academic Derivation** (full rigor, ~60–120s) and the **⚡ Board Exam Shortcut** (elimination, ratio inspection, calculator shortcut, ~5–15s).
 
 7. **Clean Calculator Keystrokes**:
    - Store calculator button sequences as clean, plain token arrays in JSON (e.g. `["SHIFT", "Pol", "4", ",", "7", ")", "="]`), NOT raw `<kbd>` strings.
-   - The UI automatically renders each token into tactile, physical keycap badges.
 
 8. **Direct Distractor Deconstruction**:
-   - Explain the specific algebra trap or misconception directly (e.g. `"Forgot the negative sign in the slope formula $m = -A/B$."`).
-   - Avoid redundant label prefixes like `"Option A ❌ (Distractor Trap):"` or `"(Correct Answer):"` in the text strings.
+   - Explain the specific algebra trap or misconception directly. Avoid redundant label prefixes like `"Option A ❌ (Distractor Trap):"` in the text.
 
 ---
 
-## 2. Standard JSON Module Schema
+## 3. Standard JSON Module Schema
 
 Every learning module is stored in `test-sets/learning-modules/[subject]/[code].json`:
 
@@ -131,12 +141,6 @@ Every learning module is stored in `test-sets/learning-modules/[subject]/[code].
       "title": "Slope of a Straight Line",
       "formula": "$$m = \\frac{y_2 - y_1}{x_2 - x_1} = \\tan\\theta = -\\frac{A}{B}$$",
       "note": "For vertical lines, slope is undefined (tan 90°)."
-    },
-    {
-      "id": "f-1201-03",
-      "title": "Distance from Point to Line",
-      "formula": "$$d = \\frac{|Ax_1 + By_1 + C|}{\\sqrt{A^2 + B^2}}$$",
-      "note": "Numerator is the absolute value of the line equation evaluated at (x₁, y₁)."
     }
   ],
   "visualizer": {
@@ -177,7 +181,7 @@ Every learning module is stored in `test-sets/learning-modules/[subject]/[code].
       "sampleProblem": "Find the distance between P1(3, -2) and P2(-1, 5).",
       "mode": "COMP Mode (MODE 1)",
       "keystrokes": ["√", "(", "(", "-", "1", "-", "3", ")", "x²", "+", "(", "5", "-", "(", "-", "2", ")", ")", "x²", ")", "="],
-      "notes": "Or use the built-in Polar conversion function: Pol(Δx, Δy) which directly outputs distance r and angle θ in 1 step."
+      "notes": "Or use Pol(Δx, Δy) for direct distance r and angle θ in 1 step."
     },
     "canon": {
       "techniqueTitle": "High-Speed Pol(Δx, Δy) Distance Shortcut",
@@ -187,48 +191,20 @@ Every learning module is stored in `test-sets/learning-modules/[subject]/[code].
       "keystrokes": ["SHIFT", "Pol", "-", "4", ",", "7", ")", "="],
       "notes": "The display directly yields r = 8.06225... = √65, instantly solving Euclidean coordinate distance."
     }
-  },
+  ],
   "conceptChecks": [
     {
       "id": "chk-01",
       "question": "What is the slope of the straight line defined by the general equation $4x + 6y - 15 = 0$?",
-      "options": {
-        "A": "$\\frac{2}{3}$",
-        "B": "$-\\frac{2}{3}$",
-        "C": "$\\frac{3}{2}$",
-        "D": "$-\\frac{3}{2}$"
-      },
-      "correctAnswer": "B",
-      "distractorDeconstruction": {
-        "A": "Forgot the negative sign in the slope formula $m = -A/B$.",
-        "B": "In $Ax + By + C = 0$, slope $m = -A/B = -4/6 = -2/3$.",
-        "C": "Inverted the fraction to $B/A$ and dropped the negative sign.",
-        "D": "Inverted the fraction to $-B/A$."
-      },
-      "shortcutExplanation": "Use $m = -A/B = -4/6 = -2/3$ in 1 second."
+      "options": [
+        "$-2/3$",
+        "$2/3$",
+        "$-3/2$",
+        "$3/2$"
+      ],
+      "correctAnswer": 0,
+      "explanation": "In general form $Ax + By + C = 0$, slope $m = -A/B = -4/6 = -2/3$."
     }
   ]
 }
 ```
-
----
-
-## 3. Declarative Visualizer Archetypes
-
-All visualizers must use pure declarative archetypes with zero client-side `eval()` or unvetted scripts:
-
-| Archetype Name | Core Topic Domains | Key Interactive Parameters |
-| :--- | :--- | :--- |
-| **`cartesian_line`** | Analytic Geometry (Lines, Distance, Angles) | `slope` ($m$), `yIntercept` ($b$), `pointX` ($x_1$), `pointY` ($y_1$) |
-| **`polygon_shoelace`** | Triangle Centers, Polygon Area, Centroids | `x1, y1, x2, y2, x3, y3` (Vertex coordinates) |
-| **`conic_explorer`** | Circles, Parabolas, Ellipses, Hyperbolas | `eccentricity` ($e$), `semiMajor` ($a$), `semiMinor` ($b$) |
-| **`factor_tree`** | Number Theory, Prime Factorization, Radicals | `number` ($n$) |
-| **`rlc_resonance`** | AC Circuits, Transient Oscillations | `resistance` ($R$), `inductance` ($L$), `capacitance` ($C$) |
-| **`wave_interference`** | Radiowave Propagation, Fiber Optics | `frequency` ($f$), `phaseShift` ($\\phi$), `attenuation` ($\\alpha$) |
-
----
-
-## 4. Writing Pitfalls & Quality Checklist
-
-Always cross-check against `learning-modules-authoring-pitfalls.md` located at:
-`test-sets/Reference Documents/learning-modules-authoring-pitfalls.md`
