@@ -76,6 +76,36 @@ function renderMarkdownBlocks(markdown: string): React.ReactNode {
       continue;
     }
 
+    // Generic Fenced Code Block (``` ... ```)
+    if (trimmed.startsWith("```")) {
+      const lang = trimmed.slice(3).trim();
+      i++;
+      const codeLines: string[] = [];
+      while (i < rawLines.length && !rawLines[i].trim().startsWith("```")) {
+        codeLines.push(rawLines[i]);
+        i++;
+      }
+      if (i < rawLines.length && rawLines[i].trim().startsWith("```")) {
+        i++; // consume closing ```
+      }
+      elements.push(
+        <div
+          key={`code-${i}`}
+          className="my-3 rounded-xl bg-[var(--surface2)] border border-[var(--border)] overflow-hidden font-mono text-xs shadow-2xs"
+        >
+          {lang && (
+            <div className="px-3.5 py-1.5 bg-[var(--surface)] text-[10px] text-[var(--text3)] uppercase border-b border-[var(--border)] font-bold tracking-wider">
+              {lang}
+            </div>
+          )}
+          <pre className="p-3.5 overflow-x-auto text-[var(--text)] leading-relaxed whitespace-pre font-mono">
+            {codeLines.join("\n")}
+          </pre>
+        </div>
+      );
+      continue;
+    }
+
     // Blockquote (> ...)
     if (trimmed.startsWith("> ")) {
       const quoteLines: string[] = [];

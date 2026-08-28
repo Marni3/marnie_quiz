@@ -28,6 +28,7 @@ export function ChatMessageItem({ message, onTriggerAction }: ChatMessageProps) 
 
   const [moduleSaved, setModuleSaved] = useState(false);
   const [quizSaved, setQuizSaved] = useState(false);
+  const [showRawJson, setShowRawJson] = useState(false);
 
   const handleCopy = () => {
     navigator.clipboard.writeText(message.content);
@@ -69,11 +70,14 @@ export function ChatMessageItem({ message, onTriggerAction }: ChatMessageProps) 
   // Attempt to detect embedded JSON module or quiz in assistant responses
   let detectedModule: any = null;
   let detectedQuiz: any = null;
+  let rawJsonBlock = "";
+
   if (!isUser && message.content.includes("```json")) {
     try {
       const jsonMatch = message.content.match(/```json\s*([\s\S]*?)\s*```/);
       if (jsonMatch && jsonMatch[1]) {
-        const parsed = JSON.parse(jsonMatch[1]);
+        rawJsonBlock = jsonMatch[1].trim();
+        const parsed = JSON.parse(rawJsonBlock);
         if (parsed) {
           if (parsed.subtopicTitle && (parsed.theory || parsed.formulas)) {
             detectedModule = parsed;
@@ -83,6 +87,17 @@ export function ChatMessageItem({ message, onTriggerAction }: ChatMessageProps) 
         }
       }
     } catch {}
+  }
+
+  // Strip JSON code block from chat text so conversational prose is clean and readable
+  let displayContent = message.content;
+  if (!isUser && (detectedModule || detectedQuiz)) {
+    displayContent = message.content.replace(/```json[\s\S]*?```/g, "").trim();
+    if (!displayContent) {
+      displayContent = detectedModule
+        ? `Here is your customized, high-yield learning module for **${detectedModule.subtopicTitle || detectedModule.topicTitle || "this topic"}**. You can preview, study, and launch it directly in the interactive Module Reader below!`
+        : `Here is your targeted practice quiz set with **${detectedQuiz.questions?.length || 0} questions**. You can download or practice it below.`;
+    }
   }
 
   return (
@@ -124,91 +139,129 @@ export function ChatMessageItem({ message, onTriggerAction }: ChatMessageProps) 
           </div>
         )}
 
-        {/* Content with KaTeX & Markdown */}
-        <div className="prose dark:prose-invert max-w-none text-xs sm:text-sm leading-relaxed overflow-x-auto">
-          <MathText text={message.content} />
+        {/* Content with KaTeX & Markdown with splitParagraphs=true for proper spacing */}
+        <div className="max-w-none text-xs sm:text-sm leading-relaxed overflow-x-auto space-y-3">
+          <MathText text={displayContent} splitParagraphs={true} />
         </div>
 
         {/* Detected Module Interactive Launch Banner */}
         {detectedModule && (
-          <div className="mt-4 p-3.5 rounded-2xl bg-gradient-to-br from-primary/15 to-accent/15 border border-primary/30 flex flex-col sm:flex-row sm:items-center justify-between gap-3 shadow-xs">
-            <div className="flex items-center gap-2.5">
-              <div className="w-9 h-9 rounded-xl bg-primary text-white flex items-center justify-center shrink-0 shadow-xs">
-                <Rocket className="w-4 h-4" />
+          <div className="mt-4 p-4 rounded-2xl bg-gradient-to-br from-primary/10 via-primary/5 to-accent/10 border border-primary/25 space-y-3 shadow-xs">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+              <div className="flex items-center gap-2.5">
+                <div className="w-9 h-9 rounded-xl bg-primary text-white flex items-center justify-center shrink-0 shadow-xs">
+                  <Rocket className="w-4 h-4" />
+                </div>
+                <div>
+                  <div className="text-xs font-bold text-[var(--text)]">
+                    Interactive Learning Module Ready!
+                  </div>
+                  <div className="text-[11px] text-[var(--text2)] truncate max-w-xs sm:max-w-sm">
+                    {detectedModule.subtopicTitle} ({detectedModule.code || "CUSTOM"})
+                  </div>
+                </div>
               </div>
-              <div>
-                <div className="text-xs font-bold text-[var(--text)]">
-                  Interactive Learning Module Ready!
-                </div>
-                <div className="text-[11px] text-[var(--text2)] truncate max-w-xs sm:max-w-sm">
-                  {detectedModule.subtopicTitle} ({detectedModule.code || "CUSTOM"})
-                </div>
+
+              <div className="flex items-center gap-2">
+                <button
+                  onClick={() => setShowRawJson((prev) => !prev)}
+                  className="px-2.5 py-1.5 rounded-xl bg-[var(--surface)] border border-[var(--border)] text-[var(--text2)] hover:text-[var(--text)] text-xs font-mono font-medium transition-all shrink-0 cursor-pointer"
+                  title="Toggle raw JSON code view"
+                >
+                  {showRawJson ? "Hide Code" : "View Code"}
+                </button>
+
+                <button
+                  onClick={() =>
+                    handleDownloadJson(
+                      detectedModule,
+                      `${detectedModule.id || "custom-module"}.json`
+                    )
+                  }
+                  className="p-2 rounded-xl bg-[var(--surface)] border border-[var(--border)] text-[var(--text2)] hover:text-[var(--text)] text-xs font-semibold transition-all shrink-0 cursor-pointer"
+                  title="Download Module JSON"
+                >
+                  <Download className="w-3.5 h-3.5" />
+                </button>
+
+                <button
+                  onClick={() => handleSaveModule(detectedModule)}
+                  className="px-3 py-1.5 rounded-xl bg-[var(--surface)] border border-[var(--border)] hover:border-primary/40 text-[var(--text)] text-xs font-semibold transition-all shrink-0 cursor-pointer"
+                >
+                  {moduleSaved ? "Saved!" : "Save"}
+                </button>
+
+                <button
+                  onClick={() => setPreviewModule(detectedModule)}
+                  className="inline-flex items-center justify-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-primary text-white text-xs font-bold shadow-xs hover:opacity-95 transition-all cursor-pointer shrink-0"
+                >
+                  <BookOpen className="w-3.5 h-3.5" />
+                  <span>Launch Reader</span>
+                </button>
               </div>
             </div>
 
-            <div className="flex items-center gap-2">
-              <button
-                onClick={() =>
-                  handleDownloadJson(
-                    detectedModule,
-                    `${detectedModule.id || "custom-module"}.json`
-                  )
-                }
-                className="p-2 rounded-xl bg-[var(--surface)] border border-[var(--border)] text-[var(--text2)] hover:text-[var(--text)] text-xs font-semibold transition-all shrink-0 cursor-pointer"
-                title="Download Module JSON"
-              >
-                <Download className="w-3.5 h-3.5" />
-              </button>
-
-              <button
-                onClick={() => handleSaveModule(detectedModule)}
-                className="px-3 py-2 rounded-xl bg-[var(--surface)] border border-[var(--border)] hover:border-primary/40 text-[var(--text)] text-xs font-semibold transition-all shrink-0 cursor-pointer"
-              >
-                {moduleSaved ? "Saved!" : "Save"}
-              </button>
-
-              <button
-                onClick={() => setPreviewModule(detectedModule)}
-                className="inline-flex items-center justify-center gap-2 px-4 py-2 rounded-xl bg-primary text-white text-xs font-bold shadow-xs hover:opacity-95 transition-all cursor-pointer shrink-0"
-              >
-                <BookOpen className="w-3.5 h-3.5" />
-                <span>Launch Reader</span>
-              </button>
-            </div>
+            {/* Collapsible Raw JSON Code Block */}
+            {showRawJson && rawJsonBlock && (
+              <div className="pt-2 border-t border-primary/20">
+                <pre className="p-3 bg-[var(--surface)] rounded-xl border border-[var(--border)] text-[11px] font-mono text-[var(--text)] overflow-x-auto max-h-60 leading-relaxed">
+                  {rawJsonBlock}
+                </pre>
+              </div>
+            )}
           </div>
         )}
 
         {/* Detected Quiz Interactive Launch Banner */}
         {detectedQuiz && (
-          <div className="mt-4 p-3.5 rounded-2xl bg-gradient-to-br from-emerald-500/15 to-accent/15 border border-emerald-500/30 flex flex-col sm:flex-row sm:items-center justify-between gap-3 shadow-xs">
-            <div className="flex items-center gap-2.5">
-              <div className="w-9 h-9 rounded-xl bg-emerald-600 text-white flex items-center justify-center shrink-0 shadow-xs">
-                <Target className="w-4 h-4" />
+          <div className="mt-4 p-4 rounded-2xl bg-gradient-to-br from-emerald-500/10 via-emerald-500/5 to-accent/10 border border-emerald-500/25 space-y-3 shadow-xs">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+              <div className="flex items-center gap-2.5">
+                <div className="w-9 h-9 rounded-xl bg-emerald-600 text-white flex items-center justify-center shrink-0 shadow-xs">
+                  <Target className="w-4 h-4" />
+                </div>
+                <div>
+                  <div className="text-xs font-bold text-[var(--text)]">
+                    Custom Practice Drill Generated ({detectedQuiz.questions?.length || 0} Questions)
+                  </div>
+                  <div className="text-[11px] text-[var(--text2)] truncate max-w-xs sm:max-w-sm">
+                    {detectedQuiz.title || "Targeted Topic Practice"}
+                  </div>
+                </div>
               </div>
-              <div>
-                <div className="text-xs font-bold text-[var(--text)]">
-                  Custom Practice Drill Generated ({detectedQuiz.questions?.length || 0} Questions)
-                </div>
-                <div className="text-[11px] text-[var(--text2)] truncate max-w-xs sm:max-w-sm">
-                  {detectedQuiz.title || "Targeted Topic Practice"}
-                </div>
+
+              <div className="flex items-center gap-2">
+                <button
+                  onClick={() => setShowRawJson((prev) => !prev)}
+                  className="px-2.5 py-1.5 rounded-xl bg-[var(--surface)] border border-[var(--border)] text-[var(--text2)] hover:text-[var(--text)] text-xs font-mono font-medium transition-all shrink-0 cursor-pointer"
+                  title="Toggle raw JSON code view"
+                >
+                  {showRawJson ? "Hide Code" : "View Code"}
+                </button>
+
+                <button
+                  onClick={() =>
+                    handleDownloadJson(
+                      detectedQuiz,
+                      `custom-drill-${Date.now()}.json`
+                    )
+                  }
+                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-[var(--surface)] border border-[var(--border)] hover:border-emerald-500/40 text-[var(--text)] text-xs font-semibold transition-all shrink-0 cursor-pointer"
+                >
+                  <Download className="w-3.5 h-3.5" />
+                  <span>Download JSON</span>
+                </button>
               </div>
             </div>
 
-            <div className="flex items-center gap-2">
-              <button
-                onClick={() =>
-                  handleDownloadJson(
-                    detectedQuiz,
-                    `custom-drill-${Date.now()}.json`
-                  )
-                }
-                className="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl bg-[var(--surface)] border border-[var(--border)] hover:border-emerald-500/40 text-[var(--text)] text-xs font-semibold transition-all shrink-0 cursor-pointer"
-              >
-                <Download className="w-3.5 h-3.5" />
-                <span>Download JSON</span>
-              </button>
-            </div>
+            {/* Collapsible Raw JSON Code Block */}
+            {showRawJson && rawJsonBlock && (
+              <div className="pt-2 border-t border-emerald-500/20">
+                <pre className="p-3 bg-[var(--surface)] rounded-xl border border-[var(--border)] text-[11px] font-mono text-[var(--text)] overflow-x-auto max-h-60 leading-relaxed">
+                  {rawJsonBlock}
+                </pre>
+              </div>
+            )}
           </div>
         )}
 
