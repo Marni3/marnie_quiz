@@ -26,10 +26,38 @@ export function ChatMessageItem({ message, onTriggerAction }: ChatMessageProps) 
   const [previewModule, setPreviewModule] = useState<any | null>(null);
   const isUser = message.role === "user";
 
+  const [moduleSaved, setModuleSaved] = useState(false);
+  const [quizSaved, setQuizSaved] = useState(false);
+
   const handleCopy = () => {
     navigator.clipboard.writeText(message.content);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
+  };
+
+  const handleDownloadJson = (data: any, filename: string) => {
+    const blob = new Blob([JSON.stringify(data, null, 2)], { type: "application/json" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = filename;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  };
+
+  const handleSaveModule = (mod: any) => {
+    try {
+      const raw = localStorage.getItem("marnie_tutor_custom_modules");
+      const list = raw ? JSON.parse(raw) : [];
+      const idx = list.findIndex((m: any) => m.id === mod.id);
+      if (idx >= 0) list[idx] = mod;
+      else list.unshift(mod);
+      localStorage.setItem("marnie_tutor_custom_modules", JSON.stringify(list));
+      setModuleSaved(true);
+      setTimeout(() => setModuleSaved(false), 2500);
+    } catch {}
   };
 
   // Check if message ends with the Review Exam next-step prompt
@@ -38,15 +66,20 @@ export function ChatMessageItem({ message, onTriggerAction }: ChatMessageProps) 
     message.content.includes("Create Targeted Learning Module") ||
     message.content.includes("Practice Exam Remix");
 
-  // Attempt to detect embedded JSON module in assistant responses
+  // Attempt to detect embedded JSON module or quiz in assistant responses
   let detectedModule: any = null;
+  let detectedQuiz: any = null;
   if (!isUser && message.content.includes("```json")) {
     try {
       const jsonMatch = message.content.match(/```json\s*([\s\S]*?)\s*```/);
       if (jsonMatch && jsonMatch[1]) {
         const parsed = JSON.parse(jsonMatch[1]);
-        if (parsed && parsed.subtopicTitle && parsed.theory) {
-          detectedModule = parsed;
+        if (parsed) {
+          if (parsed.subtopicTitle && (parsed.theory || parsed.formulas)) {
+            detectedModule = parsed;
+          } else if (parsed.questions && Array.isArray(parsed.questions) && parsed.questions.length > 0) {
+            detectedQuiz = parsed;
+          }
         }
       }
     } catch {}
@@ -105,7 +138,7 @@ export function ChatMessageItem({ message, onTriggerAction }: ChatMessageProps) 
               </div>
               <div>
                 <div className="text-xs font-bold text-[var(--text)]">
-                  Interactive Module Ready!
+                  Interactive Learning Module Ready!
                 </div>
                 <div className="text-[11px] text-[var(--text2)] truncate max-w-xs sm:max-w-sm">
                   {detectedModule.subtopicTitle} ({detectedModule.code || "CUSTOM"})
@@ -113,13 +146,69 @@ export function ChatMessageItem({ message, onTriggerAction }: ChatMessageProps) 
               </div>
             </div>
 
-            <button
-              onClick={() => setPreviewModule(detectedModule)}
-              className="inline-flex items-center justify-center gap-2 px-4 py-2 rounded-xl bg-primary text-white text-xs font-bold shadow-xs hover:opacity-95 transition-all cursor-pointer shrink-0"
-            >
-              <BookOpen className="w-3.5 h-3.5" />
-              <span>Launch Module Reader</span>
-            </button>
+            <div className="flex items-center gap-2">
+              <button
+                onClick={() =>
+                  handleDownloadJson(
+                    detectedModule,
+                    `${detectedModule.id || "custom-module"}.json`
+                  )
+                }
+                className="p-2 rounded-xl bg-[var(--surface)] border border-[var(--border)] text-[var(--text2)] hover:text-[var(--text)] text-xs font-semibold transition-all shrink-0 cursor-pointer"
+                title="Download Module JSON"
+              >
+                <Download className="w-3.5 h-3.5" />
+              </button>
+
+              <button
+                onClick={() => handleSaveModule(detectedModule)}
+                className="px-3 py-2 rounded-xl bg-[var(--surface)] border border-[var(--border)] hover:border-primary/40 text-[var(--text)] text-xs font-semibold transition-all shrink-0 cursor-pointer"
+              >
+                {moduleSaved ? "Saved!" : "Save"}
+              </button>
+
+              <button
+                onClick={() => setPreviewModule(detectedModule)}
+                className="inline-flex items-center justify-center gap-2 px-4 py-2 rounded-xl bg-primary text-white text-xs font-bold shadow-xs hover:opacity-95 transition-all cursor-pointer shrink-0"
+              >
+                <BookOpen className="w-3.5 h-3.5" />
+                <span>Launch Reader</span>
+              </button>
+            </div>
+          </div>
+        )}
+
+        {/* Detected Quiz Interactive Launch Banner */}
+        {detectedQuiz && (
+          <div className="mt-4 p-3.5 rounded-2xl bg-gradient-to-br from-emerald-500/15 to-accent/15 border border-emerald-500/30 flex flex-col sm:flex-row sm:items-center justify-between gap-3 shadow-xs">
+            <div className="flex items-center gap-2.5">
+              <div className="w-9 h-9 rounded-xl bg-emerald-600 text-white flex items-center justify-center shrink-0 shadow-xs">
+                <Target className="w-4 h-4" />
+              </div>
+              <div>
+                <div className="text-xs font-bold text-[var(--text)]">
+                  Custom Practice Drill Generated ({detectedQuiz.questions?.length || 0} Questions)
+                </div>
+                <div className="text-[11px] text-[var(--text2)] truncate max-w-xs sm:max-w-sm">
+                  {detectedQuiz.title || "Targeted Topic Practice"}
+                </div>
+              </div>
+            </div>
+
+            <div className="flex items-center gap-2">
+              <button
+                onClick={() =>
+                  handleDownloadJson(
+                    detectedQuiz,
+                    `custom-drill-${Date.now()}.json`
+                  )
+                }
+                className="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl bg-[var(--surface)] border border-[var(--border)] hover:border-emerald-500/40 text-[var(--text)] text-xs font-semibold transition-all shrink-0 cursor-pointer"
+              >
+                <Download className="w-3.5 h-3.5" />
+                <span>Download JSON</span>
+              </button>
+            </div>
           </div>
         )}
 

@@ -114,12 +114,12 @@ export function TutorView() {
     const storedSessions = getStoredSessions();
     setSessions(storedSessions);
 
-    // Check if there is a pending review exam context from a quiz/mastery completion
-    const pendingReview = getAndClearPendingReviewContext();
-    const modeParam = searchParams.get("mode");
-
-    if (pendingReview || modeParam === "review_exam") {
-      const reviewPayload = pendingReview;
+    const setupReviewSession = (
+      reviewPayload: any,
+      prov: AIProvider,
+      mod: string,
+      apiKey?: string
+    ) => {
       setAttachedContext({
         type: "attempt",
         title: reviewPayload?.examTitle || "Recent Exam Attempt",
@@ -127,14 +127,13 @@ export function TutorView() {
       });
       setFunctionMode("review_exam");
 
-      // Auto-create a specialized review session
       const newSession: ChatSession = {
         id: `session_${Date.now()}`,
         title: `Exam Review: ${reviewPayload?.examTitle || "Latest Quiz"}`,
         createdAt: Date.now(),
         updatedAt: Date.now(),
-        provider: activeProv,
-        model: activeMod,
+        provider: prov,
+        model: mod,
         messages: [],
         attachedContext: {
           type: "attempt",
@@ -148,8 +147,7 @@ export function TutorView() {
       setActiveSessionId(newSession.id);
       saveStoredSession(newSession);
 
-      // Auto-trigger review if key exists
-      if (key && key.trim()) {
+      if (apiKey && apiKey.trim()) {
         setTimeout(() => {
           handleSendMessage(
             "Please review my exam attempt step-by-step, deconstruct my missed questions, and teach me how to solve them correctly.",
@@ -158,6 +156,44 @@ export function TutorView() {
             newSession
           );
         }, 300);
+      }
+    };
+
+    // Check if there is a pending review exam context from a quiz/mastery completion or URL param
+    const pendingReview = getAndClearPendingReviewContext();
+    const modeParam = searchParams.get("mode");
+    const attemptIdParam = searchParams.get("attemptId");
+
+    if (pendingReview || modeParam === "review_exam") {
+      if (pendingReview) {
+        setupReviewSession(pendingReview, activeProv, activeMod, key);
+      } else if (attemptIdParam) {
+        fetch(`/api/attempts/${attemptIdParam}`)
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.success) {
+              const reviewPayload = {
+                attemptId: data.attempt.id,
+                examTitle: data.questionSet?.title || "Quiz Attempt",
+                subjectTag: data.questionSet?.subjectTag,
+                score: data.score,
+                total: data.total,
+                percentage: data.percentage,
+                questions: data.questions?.map((q: any) => ({
+                  id: q.id,
+                  promptText: q.promptText,
+                  selectedChoice: q.selectedChoice,
+                  correctChoice: q.correctChoice,
+                  isCorrect: q.isCorrect,
+                  explanation: q.explanation || "",
+                })),
+              };
+              setupReviewSession(reviewPayload, activeProv, activeMod, key);
+            }
+          })
+          .catch((err) => console.warn("Failed to fetch attempt for AI debrief:", err));
+      } else {
+        setupReviewSession(null, activeProv, activeMod, key);
       }
     } else {
       const activeId = getActiveSessionId();
@@ -624,6 +660,51 @@ export function TutorView() {
 
           {/* Bottom Composer */}
           <div className="p-3 sm:p-4 border-t border-[var(--border)] bg-[var(--surface2)]/60 space-y-2">
+            {/* Context & Intent Quick Chips */}
+            <div className="flex items-center gap-1.5 overflow-x-auto pb-1 text-xs scrollbar-none">
+              <button
+                type="button"
+                onClick={() => {
+                  setInputPrompt("What are my weakest topics according to FSRS, and what should I practice today?");
+                }}
+                className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-[var(--surface)] border border-[var(--border)] hover:border-primary/50 text-[var(--text2)] hover:text-primary text-[11px] font-medium transition-all shrink-0 cursor-pointer shadow-2xs"
+              >
+                <span>🧠 Weak Topics (FSRS)</span>
+              </button>
+
+              <button
+                type="button"
+                onClick={() => {
+                  setInputPrompt("What are the most common exam traps and calculator shortcuts for my weakest subjects?");
+                }}
+                className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-[var(--surface)] border border-[var(--border)] hover:border-primary/50 text-[var(--text2)] hover:text-primary text-[11px] font-medium transition-all shrink-0 cursor-pointer shadow-2xs"
+              >
+                <span>⚡ Traps & Shortcuts</span>
+              </button>
+
+              <button
+                type="button"
+                onClick={() => {
+                  setFunctionMode("custom_module");
+                  setInputPrompt("Please generate an interactive learning module with formulas, worked examples, and concept checks on my lowest-retention topic.");
+                }}
+                className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-[var(--surface)] border border-[var(--border)] hover:border-primary/50 text-[var(--text2)] hover:text-primary text-[11px] font-medium transition-all shrink-0 cursor-pointer shadow-2xs"
+              >
+                <span>📘 Custom Module</span>
+              </button>
+
+              <button
+                type="button"
+                onClick={() => {
+                  setFunctionMode("tricky_questions");
+                  setInputPrompt("Generate a 5-question tricky practice drill targeting distractor traps on my weakest topic.");
+                }}
+                className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-[var(--surface)] border border-[var(--border)] hover:border-primary/50 text-[var(--text2)] hover:text-primary text-[11px] font-medium transition-all shrink-0 cursor-pointer shadow-2xs"
+              >
+                <span>🎯 Tricky Drill</span>
+              </button>
+            </div>
+
             <div className="flex items-end gap-2 bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-2 focus-within:border-primary transition-all">
               <textarea
                 ref={textareaRef}

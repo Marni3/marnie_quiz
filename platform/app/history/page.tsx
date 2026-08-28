@@ -8,6 +8,7 @@ import {
   CheckCircle,
   ExternalLink,
   BookOpen,
+  Sparkles,
 } from "lucide-react";
 
 export default async function HistoryPage() {
@@ -166,13 +167,28 @@ export default async function HistoryPage() {
                         <td className="px-6 py-4 text-right">
                           <div className="flex items-center justify-end gap-2">
                             {isCompleted ? (
-                              <Link
-                                href={resultLink}
-                                className="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-[var(--surface)] border border-[var(--border)] hover:border-[var(--accent)] text-[var(--accent)] text-xs font-semibold transition-colors"
-                              >
-                                <span>{item.isMastery ? "Review" : "Results"}</span>
-                                <ExternalLink className="w-3 h-3" />
-                              </Link>
+                              <>
+                                <Link
+                                  href={
+                                    item.isMastery
+                                      ? `/tutor?mode=review_exam&moduleId=${item.moduleId}`
+                                      : `/tutor?mode=review_exam&attemptId=${item.id}`
+                                  }
+                                  className="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-lg bg-primary/10 border border-primary/20 hover:bg-primary/20 text-primary text-xs font-semibold transition-all"
+                                  title="Deconstruct missed questions and review with AI Tutor"
+                                >
+                                  <Sparkles className="w-3.5 h-3.5" />
+                                  <span>AI Debrief</span>
+                                </Link>
+
+                                <Link
+                                  href={resultLink}
+                                  className="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-[var(--surface)] border border-[var(--border)] hover:border-[var(--accent)] text-[var(--accent)] text-xs font-semibold transition-colors"
+                                >
+                                  <span>{item.isMastery ? "Review" : "Results"}</span>
+                                  <ExternalLink className="w-3 h-3" />
+                                </Link>
+                              </>
                             ) : (
                               <Link
                                 href={item.isMastery ? targetLink : `/attempts/${item.id}`}

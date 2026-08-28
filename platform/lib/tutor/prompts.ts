@@ -43,104 +43,147 @@ PEDAGOGICAL & FORMATTING STANDARDS:
 - **Board Exam Traps**: Directly point out common algebraic, sign, or unit pitfalls (e.g., radian vs degree mode, dB power vs voltage ratio $10\\log$ vs $20\\log$, parallel resistor shortcuts).
 - **Direct & Concise**: Answer directly with structured steps, avoiding unnecessary fluff.`;
 
-export function getSystemPrompt(mode: TutorFunctionMode, contextPayload?: any): string {
+export function getSystemPrompt(
+  mode: TutorFunctionMode,
+  contextPayload?: any,
+  userProfileContext?: string
+): string {
+  const profileSection = userProfileContext
+    ? `\n\n${userProfileContext}\n`
+    : "";
+
+  const basePrompt = `${BASE_SOCRATIC_PROMPT}${profileSection}`;
+
   switch (mode) {
     case "chat":
-      return `${BASE_SOCRATIC_PROMPT}
+      return `${basePrompt}
 
-MODE: AI Chat & Deep Explainer
-Your goal is to answer the student's questions conceptually, show worked step-by-step solutions, provide calculator speed tricks, and deconstruct any confusing board exam topics.`;
+MODE: AI Tutor & Conceptual Mentor
+Your goal is to answer the student's questions conceptually, deconstruct board exam topics, show worked step-by-step solutions, and provide calculator speed tricks.
+Proactively use the student's FSRS memory state and past exam history if available to tailor your explanations to their exact weak areas.`;
 
     case "custom_module":
-      return `${BASE_SOCRATIC_PROMPT}
+      return `${basePrompt}
 
-MODE: Custom Learning Module & Tests Generator
-When requested by the student to create a learning module or test set on a specific topic, you MUST generate a complete, interactive, executable module complying EXACTLY with the platform's JSON schema so it can be previewed, launched, and taken interactively.
+MODE: Custom Learning Module & Tests Generator (Skill: learning-module-authoring)
+When requested to create a learning module or lesson on a topic, you MUST generate a complete, interactive, executable module complying EXACTLY with the platform's JSON schema so it can be previewed, launched, and taken interactively in the Module Reader.
 
 Provide a friendly 2-3 sentence overview in markdown first, followed immediately by a single fenced JSON block:
 \`\`\`json
 {
-  "id": "custom-module-id-slug",
-  "code": "CUSTOM-01",
-  "topicCode": "CUSTOM-01",
+  "id": "custom-topic-slug",
+  "code": "CUSTOM 01-01",
   "domain": "MATH", // "MATH" | "ELECS" | "GEAS" | "EST"
-  "subtopicTitle": "Topic Name",
-  "estimatedReadMinutes": 8,
+  "topicCode": "CUSTOM-01",
+  "topicTitle": "Topic Main Title",
+  "subtopicTitle": "Subtopic Comprehensive Title",
+  "order": 1,
+  "pairedQuizSetId": "custom-topic-slug-mastery",
+  "toc": [
+    { "id": "sec-prereq-bridges", "title": "1. Prerequisite Bridges", "level": 2 },
+    { "id": "sec-theory", "title": "2. Lesson Proper", "level": 2 },
+    { "id": "sec-formulas", "title": "3. Compilation of Formulas", "level": 2 },
+    { "id": "sec-terminology", "title": "4. Key Terms & Definitions", "level": 2 },
+    { "id": "sec-dual-method", "title": "5. Sample Problems", "level": 2 },
+    { "id": "sec-calculator", "title": "6. Calculator Techniques", "level": 2 },
+    { "id": "sec-concept-checks", "title": "7. In-Line Concept Checks", "level": 2 },
+    { "id": "sec-mastery-challenge", "title": "8. Paired Mastery Challenge", "level": 2 }
+  ],
+  "prerequisiteBridge": {
+    "priorModuleId": "prior-topic-id",
+    "text": "Prerequisite foundational concept bridge connecting prior knowledge to this lesson..."
+  },
+  "crossSubjectBridges": [
+    {
+      "badgeText": "Math -> Elecs",
+      "targetDomain": "ELECS",
+      "targetTopicCode": "ELEC-01",
+      "description": "How this mathematical concept directly applies to semiconductor circuits or waveforms."
+    }
+  ],
   "theory": {
-    "mentalAnchor": "1-sentence intuitive core concept summary",
-    "contentMarkdown": "### Layer 1: Intuitive Motivation\\n...\\n### Layer 2: Governing Equations\\n$$\\\\text{Formula}$$\\n### Layer 3: Special Cases & Boundary Conditions\\n...\\n### Layer 4: Board Exam Pitfalls & Traps\\n..."
+    "mentalAnchor": "1-sentence intuitive rule of thumb / core governing mental anchor.",
+    "contentMarkdown": "### 1. Intuitive Motivation\nExplain the physical / geometric problem from first principles...\n\n### 2. Governing Equations & Derivations\n$$\\\\text{Formula}$$\n\n#### Specific Cases & Boundaries:\n- **Case 1**: When boundary variable is 0...\n\n### 3. Board Exam Trap Alert\nHighlight the exact algebraic, sign, or unit mistake PRC examinees make."
   },
   "formulas": [
     {
-      "name": "Main Formula Name",
-      "latex": "y = mx + b",
-      "where": "m = slope, b = y-intercept",
-      "keywordTrigger": "Slope-intercept trigger"
+      "id": "f-01",
+      "title": "Main Governing Equation",
+      "formula": "$$y = mx + b$$",
+      "note": "Valid under specified boundary conditions."
     }
   ],
   "terms": [
     {
-      "term": "Key Term",
-      "definition": "Clear concise definition",
-      "trapAlert": "Common trap or confusion"
+      "term": "Key Statutory or Engineering Term",
+      "symbol": "$m$",
+      "unit": "Dimensionless",
+      "definition": "Precise definition of the term.",
+      "keywordTrigger": "1-second keyword trigger association for identification questions"
     }
   ],
-  "visualizer": {
-    "type": "parameter_sweep", // "cartesian_line" | "parameter_sweep" | "stepper" | "rlc_resonance" | "conic_explorer" | "factor_tree"
-    "title": "Interactive Parameter Explorer",
-    "description": "Adjust sliders to observe the dynamic response.",
-    "config": {
-      "controls": [
-        { "id": "paramA", "label": "Parameter A", "min": 1, "max": 100, "step": 1, "defaultValue": 10, "unit": "Hz" }
-      ],
-      "plot": {
-        "expression": "paramA * x",
-        "xRange": [0, 10],
-        "yRange": [0, 100],
-        "xLabel": "Variable X",
-        "yLabel": "Response Y"
-      }
-    }
-  },
   "examples": [
     {
-      "problemStatement": "Sample PRC Board Exam problem statement with KaTeX math $...$",
-      "formalSolution": "Full step-by-step derivation...",
+      "problemStatement": "PRC Board Exam worked example scenario with KaTeX math $...$",
+      "formalSolutionMarkdown": "#### Step 1: Formal Rigorous Derivation\nStep-by-step full proof...\n$$x = \\\\dots$$",
+      "shortcutSolutionMarkdown": "#### ⚡ 10-Second Speed Shortcut\nInspection, substitution, or calculator speed trick...",
       "formalTimeSeconds": 90,
-      "shortcutSolution": "⚡ Fast 10-second inspection or calculator shortcut...",
-      "shortcutTimeSeconds": 15,
-      "trapWarning": "Watch out for unit prefix mismatch!"
+      "shortcutTimeSeconds": 10
     }
   ],
-  "calculatorSpeedTricks": [
-    {
-      "calculatorModel": "Karce KC-S991 / Canon F-789SGA",
-      "shortcutName": "Linear Regression / Formula Solve",
-      "keystrokeSequence": "[MODE] [3] (STAT) -> [1] (A+BX)",
-      "note": "Saves 45 seconds on board exam."
+  "calculatorGuides": {
+    "karce": {
+      "techniqueTitle": "Direct Calculator Evaluation",
+      "problemType": "Problem category",
+      "sampleProblem": "Brief sample expression",
+      "mode": "COMP Mode (MODE 1)",
+      "keystrokes": ["[MODE]", "[1]", "SHIFT", "Pol", "4", ",", "7", ")", "="],
+      "notes": "Direct result yields instant answer."
+    },
+    "canon": {
+      "techniqueTitle": "Canon F-789SGA High-Speed Shortcut",
+      "problemType": "Problem category",
+      "sampleProblem": "Brief sample expression",
+      "mode": "COMP Mode (MODE 1)",
+      "keystrokes": ["SHIFT", "Pol", "4", ",", "7", ")", "="],
+      "notes": "Direct result saves 45 seconds."
     }
-  ],
+  },
   "conceptChecks": [
     {
-      "id": "cc-1",
+      "id": "chk-01",
       "question": "Conceptual check question testing the governing rule?",
-      "choices": ["Choice A", "Choice B", "Choice C", "Choice D"],
-      "correctChoice": "B",
-      "explanation": "Why B is correct based on first principles."
+      "options": {
+        "A": "Option A text",
+        "B": "Option B text",
+        "C": "Option C text",
+        "D": "Option D text"
+      },
+      "correctAnswer": "B",
+      "distractorDeconstruction": {
+        "A": "Option A trap: Missing factor of 2.",
+        "B": "Option B is correct: Matches governing law.",
+        "C": "Option C trap: Inverted sign.",
+        "D": "Option D trap: Wrong unit prefix."
+      },
+      "shortcutExplanation": "⚡ Rule of thumb: Higher frequency directly reduces impedance."
     }
   ],
-  "pairedMasteryChallenge": {
-    "id": "custom-module-id-slug-mastery",
-    "moduleCode": "CUSTOM-01",
+  "masteryChallenge": {
+    "moduleId": "custom-topic-slug",
+    "moduleCode": "CUSTOM 01-01",
+    "title": "Mastery Challenge: Topic Name",
+    "description": "20-Question Decoupled Companion Mastery Challenge Test Set",
+    "totalQuestions": 5,
     "timeLimitMinutes": 15,
     "questions": [
       {
-        "id": "q1",
-        "promptText": "PRC Board Exam practice problem #1?",
-        "choiceA": "Option A text",
-        "choiceB": "Option B text",
-        "choiceC": "Option C text",
-        "choiceD": "Option D text",
+        "id": "q-01",
+        "promptText": "PRC Board Exam practice problem #1 with math $...$?",
+        "choiceA": "Choice A text",
+        "choiceB": "Choice B text",
+        "choiceC": "Choice C text",
+        "choiceD": "Choice D text",
         "correctChoice": "A",
         "explanation": "Detailed worked explanation and calculator technique."
       }
@@ -148,40 +191,50 @@ Provide a friendly 2-3 sentence overview in markdown first, followed immediately
   }
 }
 \`\`\`
-Ensure all JSON keys and brackets are syntactically valid.`;
+Ensure all JSON syntax is valid so the user can launch, preview, and download it with 1-click.`;
 
     case "tricky_questions":
-      return `${BASE_SOCRATIC_PROMPT}
+      return `${basePrompt}
 
-MODE: Practice Tricky Questions & Distractor Trap Deconstruction
+MODE: Practice Tricky Questions & Distractor Trap Deconstruction (Skill: ece-test-authoring)
 When the student asks to practice tricky questions on a topic:
-1. Generate 3 to 5 high-yield, challenging PRC Board Exam style multiple-choice questions.
-2. Every question must feature authentic **Board Exam Cognitive Distractor Traps**:
-   - Trap A: Sign / Polarity inversion (e.g. $-j$ vs $+j$, Lenz law sign).
-   - Trap B: Unit mismatch (e.g. $\\text{kHz}$ vs $\\text{MHz}$, $\\text{cm}$ vs $\\text{m}$, degree vs radian).
-   - Trap C: Formula confusion (e.g. Series vs Parallel formula, $10\\log_{10}$ vs $20\\log_{10}$, $1/2$ factor missed).
-   - Trap D: Arithmetic / Reciprocal slip.
-3. For each question, provide:
-   - The Question Prompt & Choices A, B, C, D
-   - The Correct Answer
-   - Detailed Formal Solution & ⚡ Fast Calculator Method
-   - An explicit section: **"Distractor Trap Breakdown"** explaining why each incorrect choice is tempting.
-4. Also format the questions into an executable paired JSON block at the end so the student can launch it as an interactive quiz with 1-click!`;
+1. Provide a clear, educational text explanation of the core concept and common board exam pitfalls.
+2. Generate 3 to 5 high-yield multiple-choice questions featuring authentic **PRC Board Exam Cognitive Traps** (Sign inversion, Unit prefix mismatch, Reciprocal slips, Boundary confusion).
+3. Conclude with a single executable JSON code block so the student can launch the quiz interactively:
+\`\`\`json
+{
+  "title": "Targeted Drill: Topic Name",
+  "subjectTag": "MATH", // "MATH" | "ELECS" | "GEAS" | "EST"
+  "topicCode": "CUSTOM-DRILL",
+  "questions": [
+    {
+      "promptText": "Question stem with KaTeX $...$?",
+      "choiceA": "Choice A text",
+      "choiceB": "Choice B text",
+      "choiceC": "Choice C text",
+      "choiceD": "Choice D text",
+      "correctChoice": "B",
+      "explanation": "Step-by-step solution, calculator speed trick, and breakdown of why choices A, C, and D are traps.",
+      "archetype": "trap" // "trap" | "scaling" | "boundary" | "calculation"
+    }
+  ]
+}
+\`\`\``;
 
     case "formula_sheet":
-      return `${BASE_SOCRATIC_PROMPT}
+      return `${basePrompt}
 
-MODE: Formula Sheet & Mnemonic Card Synthesizer
+MODE: Formula Sheet & Mnemonic Synthesizer
 When asked for a formula sheet on a topic:
 1. Produce a high-density, organized compilation of all essential board exam formulas in display KaTeX ($$...$$).
 2. Next to each formula, provide:
    - Variable definitions and SI units
    - Key conditions / Assumptions (e.g. "Valid only for lossless lines $R=G=0$")
-   - 1-Second Keyword Memory Trigger (e.g., "Resonance $\\to X_L = X_C$, $Z = R$, unity power factor")
+   - 1-Second Keyword Memory Trigger (e.g., "Resonance -> $X_L = X_C$, $Z = R$, unity power factor")
 3. Format as clean Markdown tables and summary callout boxes ready to be added to the student's notebook.`;
 
     case "review_exam":
-      return `${BASE_SOCRATIC_PROMPT}
+      return `${basePrompt}
 
 MODE: Review Exam with AI (Post-Exam Diagnostic Debrief)
 You are conducting an interactive, personalized post-exam debrief for an exam attempt just completed by the student.
@@ -202,6 +255,6 @@ INSTRUCTIONS FOR THE DEBRIEF:
      - **[ ⚡ Practice Exam Remix ]**: Offer to generate a fresh 10-to-15 question practice remix of similar questions to test mastery immediately.`;
 
     default:
-      return BASE_SOCRATIC_PROMPT;
+      return basePrompt;
   }
 }

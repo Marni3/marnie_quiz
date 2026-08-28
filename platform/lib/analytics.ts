@@ -4,9 +4,11 @@ import {
   answerRecords,
   questions,
   questionSets,
+  userModuleProgress,
 } from "./db/schema";
 import { eq, and, sql, desc } from "drizzle-orm";
 import { getUserTopicSrsOverview } from "./srs";
+import { getAllLearningModules } from "./modules";
 import { SUBJECTS, getSubjectFromKey, TOTAL_SYLLABUS_QUESTIONS, TOTAL_SYLLABUS_TOPICS } from "./constants";
 
 export interface SubjectAnalytics {
@@ -25,6 +27,9 @@ export interface SubjectAnalytics {
   retrievability: number;
   trackedTopics: number;
   totalTopics: number;
+  totalModules: number;
+  completedModules: number;
+  moduleCompletionPercent: number;
 }
 
 export interface ArchetypeMastery {
@@ -44,6 +49,9 @@ export interface UserAnalyticsOverview {
   totalQuestionsAnswered: number;
   totalUniqueQuestionsAnswered: number;
   totalQuizzesTaken: number;
+  totalModulesAvailable: number;
+  totalModulesCompleted: number;
+  globalModulePercent: number;
   subjectAnalytics: Record<string, SubjectAnalytics>;
   archetypeMastery: ArchetypeMastery[];
   recentActivity: { date: string; count: number; accuracy: number }[];
@@ -148,6 +156,48 @@ export async function getUserAnalyticsOverview(userId: string): Promise<UserAnal
     const overallAccuracy = totalAnswered > 0 ? Math.round((totalCorrect / totalAnswered) * 100) : 0;
     const overallAvgPaceSeconds = timeMeasurements > 0 ? Math.round(totalSeconds / timeMeasurements) : 45;
 
+    // 4. Fetch module progress and all authored modules
+    const [allModules, userModules] = await Promise.all([
+      getAllLearningModules().catch(() => []),
+      db
+        .select()
+        .from(userModuleProgress)
+        .where(eq(userModuleProgress.userId, userId))
+        .catch(() => []),
+    ]);
+
+    const domainModuleCounts: Record<string, { total: number; completed: number }> = {
+      MATH: { total: 0, completed: 0 },
+      ELECS: { total: 0, completed: 0 },
+      GEAS: { total: 0, completed: 0 },
+      EST: { total: 0, completed: 0 },
+    };
+
+    allModules.forEach((m) => {
+      const dom = (m.domain || "MATH").toUpperCase();
+      if (domainModuleCounts[dom]) {
+        domainModuleCounts[dom].total++;
+      }
+    });
+
+    const completedModuleIds = new Set(
+      userModules.filter((um) => um.isCompleted).map((um) => um.moduleId)
+    );
+
+    allModules.forEach((m) => {
+      const dom = (m.domain || "MATH").toUpperCase();
+      if (completedModuleIds.has(m.id) && domainModuleCounts[dom]) {
+        domainModuleCounts[dom].completed++;
+      }
+    });
+
+    const totalModulesAvailable = allModules.length;
+    const totalModulesCompleted = completedModuleIds.size;
+    const globalModulePercent =
+      totalModulesAvailable > 0
+        ? Math.round((totalModulesCompleted / totalModulesAvailable) * 100)
+        : 0;
+
     // Build subject analytics comparing against full board exam syllabus totals
     const finalSubjects: Record<string, SubjectAnalytics> = {};
     Object.keys(SUBJECTS).forEach((k) => {
@@ -169,6 +219,9 @@ export async function getUserAnalyticsOverview(userId: string): Promise<UserAnal
           ? Math.round((activeTopics.reduce((s, t) => s + t.currentR, 0) / activeTopics.length) * 100)
           : 0;
 
+      const modStats = domainModuleCounts[k] || { total: 0, completed: 0 };
+      const modPct = modStats.total > 0 ? Math.round((modStats.completed / modStats.total) * 100) : 0;
+
       finalSubjects[k] = {
         code: config.code,
         label: config.label,
@@ -185,6 +238,9 @@ export async function getUserAnalyticsOverview(userId: string): Promise<UserAnal
         retrievability,
         trackedTopics: activeTopics.length,
         totalTopics: config.totalTopics,
+        totalModules: modStats.total,
+        completedModules: modStats.completed,
+        moduleCompletionPercent: modPct,
       };
     });
 
@@ -246,6 +302,9 @@ export async function getUserAnalyticsOverview(userId: string): Promise<UserAnal
       totalQuestionsAnswered: totalAnswered,
       totalUniqueQuestionsAnswered: globalUniqueQuestions.size,
       totalQuizzesTaken: userAttempts.length,
+      totalModulesAvailable,
+      totalModulesCompleted,
+      globalModulePercent,
       subjectAnalytics: finalSubjects,
       archetypeMastery,
       recentActivity,
@@ -261,6 +320,9 @@ export async function getUserAnalyticsOverview(userId: string): Promise<UserAnal
       totalQuestionsAnswered: 0,
       totalUniqueQuestionsAnswered: 0,
       totalQuizzesTaken: 0,
+      totalModulesAvailable: 0,
+      totalModulesCompleted: 0,
+      globalModulePercent: 0,
       subjectAnalytics: {},
       archetypeMastery: [],
       recentActivity: [],

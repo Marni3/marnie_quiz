@@ -23,8 +23,10 @@ import {
   Layers,
   ArrowRight,
   Sparkles,
-  Compass
+  Compass,
+  BookOpen,
 } from "lucide-react";
+import { LaunchDrillButton } from "@/components/launch-drill-button";
 import { SUBJECTS, pluralize, METRIC_DEFINITIONS, TOTAL_SYLLABUS_QUESTIONS, TOTAL_SYLLABUS_TOPICS } from "@/lib/constants";
 
 export default async function AnalyticsPage() {
@@ -58,13 +60,7 @@ export default async function AnalyticsPage() {
             </p>
           </div>
 
-          <Link
-            href="/quizzes"
-            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[var(--accent)] text-white text-xs sm:text-sm font-bold shadow-md hover:brightness-110 active:scale-95 transition-all self-start"
-          >
-            <Zap className="w-4 h-4 fill-current" />
-            <span>Launch 20-Q Refresher Drill</span>
-          </Link>
+          <LaunchDrillButton />
         </div>
 
         {/* Hero Metrics Grid with Honest Calibration States */}
@@ -189,7 +185,7 @@ export default async function AnalyticsPage() {
             </div>
           </div>
 
-          {/* Global Syllabus Coverage */}
+          {/* Global Syllabus & Learning Coverage */}
           <div className="bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-5 shadow-[var(--shadow)] flex flex-col justify-between">
             <div>
               <div className="flex items-center justify-between mb-2">
@@ -207,9 +203,21 @@ export default async function AnalyticsPage() {
               </div>
             </div>
 
-            <p className="text-[11px] text-[var(--text3)] mt-3">
-              {srsOverview.totalTrackedTopics} / {TOTAL_SYLLABUS_TOPICS} subtopics tested across all 4 subjects
-            </p>
+            <div className="pt-2.5 border-t border-[var(--border)]/60 space-y-1 text-[11px] text-[var(--text3)] mt-3">
+              <div className="flex items-center justify-between">
+                <span>Subtopics Tested:</span>
+                <span className="font-mono font-semibold text-[var(--text)]">{srsOverview.totalTrackedTopics} / {TOTAL_SYLLABUS_TOPICS}</span>
+              </div>
+              <div className="flex items-center justify-between">
+                <span className="flex items-center gap-1">
+                  <BookOpen className="w-3 h-3 text-purple-500" />
+                  <span>Module Lessons:</span>
+                </span>
+                <span className="font-mono font-semibold text-purple-600 dark:text-purple-400">
+                  {analytics.totalModulesCompleted} / {analytics.totalModulesAvailable} ({analytics.globalModulePercent}%)
+                </span>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -260,16 +268,40 @@ export default async function AnalyticsPage() {
                       )}
                     </div>
 
-                    {/* Progress Bar comparing unique attempted vs total syllabus questions */}
-                    <div className="w-full bg-[var(--surface2)] h-2 rounded-full overflow-hidden mt-3">
-                      <div
-                        className="bg-[var(--accent)] h-full transition-all duration-500"
-                        style={{ width: `${Math.max(hasData ? 1 : 0, s.syllabusPercent)}%` }}
-                      ></div>
-                    </div>
-                    <div className="flex items-center justify-between text-[11px] font-mono text-[var(--text3)] mt-1.5">
-                      <span>{s.uniqueQuestionsAttempted} / {s.totalSyllabusQuestions.toLocaleString()} questions ({s.syllabusPercent}%)</span>
-                      <span>{s.trackedTopics} / {s.totalTopics} topics</span>
+                    {/* Dual Progress Bars: 1. Questions Practice & 2. Theory Modules */}
+                    <div className="space-y-3 mt-3">
+                      {/* Questions Practice Bar */}
+                      <div className="space-y-1">
+                        <div className="flex items-center justify-between text-[11px] font-mono text-[var(--text3)]">
+                          <span className="font-semibold text-[var(--text)]">Practice Questions</span>
+                          <span>{s.uniqueQuestionsAttempted} / {s.totalSyllabusQuestions.toLocaleString()} ({s.syllabusPercent}%)</span>
+                        </div>
+                        <div className="w-full bg-[var(--surface2)] h-2 rounded-full overflow-hidden">
+                          <div
+                            className="bg-[var(--accent)] h-full transition-all duration-500 rounded-full"
+                            style={{ width: `${Math.max(hasData ? 1 : 0, s.syllabusPercent)}%` }}
+                          />
+                        </div>
+                      </div>
+
+                      {/* Theory Learning Modules Bar */}
+                      <div className="space-y-1">
+                        <div className="flex items-center justify-between text-[11px] font-mono text-[var(--text3)]">
+                          <span className="flex items-center gap-1 font-semibold text-[var(--text)]">
+                            <BookOpen className="w-3.5 h-3.5 text-purple-500" />
+                            <span>Theory Lessons</span>
+                          </span>
+                          <span className="text-purple-600 dark:text-purple-400 font-semibold">
+                            {s.completedModules} / {s.totalModules} modules ({s.moduleCompletionPercent}%)
+                          </span>
+                        </div>
+                        <div className="w-full bg-[var(--surface2)] h-2 rounded-full overflow-hidden">
+                          <div
+                            className="bg-purple-500 h-full transition-all duration-500 rounded-full"
+                            style={{ width: `${Math.max(s.completedModules > 0 ? 3 : 0, s.moduleCompletionPercent)}%` }}
+                          />
+                        </div>
+                      </div>
                     </div>
                   </div>
 

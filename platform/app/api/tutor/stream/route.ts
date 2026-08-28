@@ -1,11 +1,16 @@
 import { NextRequest, NextResponse } from "next/server";
+import { auth } from "@/lib/auth";
 import { getSystemPrompt } from "@/lib/tutor/prompts";
+import { getUserStudyProfileContext } from "@/lib/tutor/user-context";
 import { TutorFunctionMode, AIProvider } from "@/lib/tutor/types";
 
 export const runtime = "nodejs";
 
 export async function POST(req: NextRequest) {
   try {
+    const session = await auth();
+    const userId = session?.user?.id || null;
+
     const body = await req.json();
     const {
       provider,
@@ -30,7 +35,9 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    const systemPrompt = getSystemPrompt(functionMode, contextPayload);
+    // Fetch live FSRS profile, recent scores & active modules for this user
+    const userProfileContext = await getUserStudyProfileContext(userId);
+    const systemPrompt = getSystemPrompt(functionMode, contextPayload, userProfileContext);
 
     // 1. GOOGLE GEMINI STREAMING
     if (provider === "gemini") {
