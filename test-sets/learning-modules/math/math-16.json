@@ -1,0 +1,272 @@
+{
+  "id": "math-16",
+  "code": "MATH 16",
+  "domain": "MATH",
+  "topicCode": "MATH-16",
+  "topicTitle": "Integral Calculus",
+  "subtopicTitle": "Integration Techniques, Wallis' Formula & Transcendental Integrals",
+  "order": 16,
+  "pairedQuizSetId": "math-16-mastery",
+  "toc": [
+    { "id": "sec-prereq-bridges", "title": "1. Introduction & Cross-Subject Bridges", "level": 2 },
+    { "id": "sec-theory", "title": "2. Lesson Proper", "level": 2 },
+    { "id": "sec-formulas", "title": "3. Compilation of Formulas", "level": 2 },
+    { "id": "sec-visualizer", "title": "4. Interactive Visualizer: Wallis Integrals & Riemann Accumulator", "level": 2 },
+    { "id": "sec-terminology", "title": "5. Terms and Definitions", "level": 2 },
+    { "id": "sec-dual-method", "title": "6. Sample Problems and Solutions", "level": 2 },
+    { "id": "sec-calculator", "title": "7. Calculator Techniques (Karce & Canon)", "level": 2 },
+    { "id": "sec-concept-checks", "title": "8. In-Line Concept Checks", "level": 2 },
+    { "id": "sec-mastery-challenge", "title": "9. Paired Mastery Challenge", "level": 2 }
+  ],
+  "prerequisiteBridge": {
+    "priorModuleId": "math-14",
+    "text": "Acting as the exact inverse operation of differential calculus from MATH 14, this module establishes antiderivatives, definite Riemann accumulation, algebraic/trigonometric substitutions, Integration by Parts, and John Wallis' definite integral reduction formulas."
+  },
+  "crossSubjectBridges": [
+    {
+      "targetDomain": "ELECS",
+      "targetTopicCode": "ELEC-01",
+      "badgeText": "Capacitor & Inductor Energy Storage",
+      "description": "Electric field energy in capacitors ($W_C = \\int_0^Q v dq = \\frac{1}{2} C V^2$) and magnetic energy in inductors ($W_L = \\int_0^I L i di = \\frac{1}{2} L I^2$) are definite work integrals."
+    },
+    {
+      "targetDomain": "EST",
+      "targetTopicCode": "EST-01",
+      "badgeText": "RMS Signal Power & Energy Spectral Density",
+      "description": "Root-Mean-Square signal voltages ($V_{\\text{rms}} = \\sqrt{\\frac{1}{T} \\int_0^T v^2(t) dt}$) and Parseval's energy theorem evaluate continuous waveform integrals."
+    },
+    {
+      "targetDomain": "GEAS",
+      "targetTopicCode": "GEAS-06",
+      "badgeText": "Impulse & Linear Momentum",
+      "description": "Newtonian collision mechanics defines linear impulse as the definite time integral of applied dynamic force ($J = \\int_{t_1}^{t_2} F(t) dt = \\Delta p$)."
+    }
+  ],
+  "formulas": [
+    {
+      "id": "f-1601-01",
+      "title": "Fundamental Theorem of Calculus",
+      "formula": "$$\\int_a^b f(x) dx = F(b) - F(a) \\qquad (\\text{where } F'(x) = f(x))$$",
+      "note": "Connects differentiation and integration as inverse operations."
+    },
+    {
+      "id": "f-1601-02",
+      "title": "Power & Logarithmic Integrals",
+      "formula": "$$\\int u^n du = \\frac{u^{n + 1}}{n + 1} + C \\quad (n \\neq -1), \\qquad \\int \\frac{du}{u} = \\ln|u| + C$$",
+      "note": "When n = -1, power rule fails; use natural logarithm."
+    },
+    {
+      "id": "f-1601-03",
+      "title": "Exponential Integrals",
+      "formula": "$$\\int e^u du = e^u + C, \\qquad \\int a^u du = \\frac{a^u}{\\ln a} + C$$",
+      "note": "Remember the division by ln(a) for general exponential bases."
+    },
+    {
+      "id": "f-1601-04",
+      "title": "Standard Trigonometric Integrals",
+      "formula": "$$\\int \\sin u du = -\\cos u + C, \\quad \\int \\cos u du = \\sin u + C, \\quad \\int \\sec^2 u du = \\tan u + C, \\quad \\int \\sec u du = \\ln|\\sec u + \\tan u| + C$$",
+      "note": "Notice ∫ sin u du has a negative sign."
+    },
+    {
+      "id": "f-1601-05",
+      "title": "Integration by Parts",
+      "formula": "$$\\int u dv = uv - \\int v du$$",
+      "note": "Choose u according to LIATE priority: Logarithmic, Inverse trig, Algebraic, Trig, Exponential."
+    },
+    {
+      "id": "f-1601-06",
+      "title": "Trigonometric Substitution Templates",
+      "formula": "$$\\sqrt{a^2 - u^2} \\implies u = a\\sin\\theta, \\quad \\sqrt{a^2 + u^2} \\implies u = a\\tan\\theta, \\quad \\sqrt{u^2 - a^2} \\implies u = a\\sec\\theta$$",
+      "note": "Converts algebraic radicals into single trigonometric functions via Pythagorean identities."
+    },
+    {
+      "id": "f-1601-07",
+      "title": "Wallis' Formula (John Wallis 1616–1703)",
+      "formula": "$$\\int_0^{\\pi/2} \\sin^m\\theta \\cos^n\\theta \\, d\\theta = \\frac{[(m - 1)(m - 3)\\dots (1\\text{ or }2)][(n - 1)(n - 3)\\dots (1\\text{ or }2)]}{(m + n)(m + n - 2)\\dots (1\\text{ or }2)} \\cdot \\alpha$$",
+      "note": "α = π/2 if BOTH m and n are even; α = 1 if either m or n is odd."
+    },
+    {
+      "id": "f-1601-08",
+      "title": "Symmetrical Definite Integrals for Even and Odd Functions",
+      "formula": "$$\\int_{-a}^a f(x) dx = 2\\int_0^a f(x) dx \\quad (\\text{if } f(-x) = f(x)), \\qquad \\int_{-a}^a f(x) dx = 0 \\quad (\\text{if } f(-x) = -f(x))$$",
+      "note": "Any odd integrand integrated over a symmetric interval [-a, a] is strictly zero."
+    }
+  ],
+  "terms": [
+    {
+      "term": "Antiderivative",
+      "symbol": "$\\int f(x) dx = F(x) + C$",
+      "unit": "Calculus",
+      "definition": "A differentiable function F whose derivative is equal to the original function f ($F'(x) = f(x)$).",
+      "keywordTrigger": "function whose derivative equals the integrand / indefinite integral"
+    },
+    {
+      "term": "Wallis' Formula",
+      "symbol": "Wallis Reduction",
+      "unit": "Integration",
+      "definition": "A closed-form formula for evaluating definite integrals of products of integer powers of sine and cosine between 0 and π/2.",
+      "keywordTrigger": "integral from 0 to pi/2 of sin^m cos^n / product reduction"
+    },
+    {
+      "term": "Integration by Parts",
+      "symbol": "$\\int u dv = uv - \\int v du$",
+      "unit": "Technique",
+      "definition": "A technique derived from the product rule of differentiation used to integrate products of dissimilar algebraic and transcendental functions.",
+      "keywordTrigger": "integral of u dv equals uv minus integral of v du"
+    },
+    {
+      "term": "LIATE Rule",
+      "symbol": "LIATE",
+      "unit": "Heuristic",
+      "definition": "Priority order for choosing u in Integration by Parts: Logarithmic, Inverse trigonometric, Algebraic, Trigonometric, Exponential.",
+      "keywordTrigger": "priority rule for choosing u in parts / LIATE"
+    }
+  ],
+  "visualizer": {
+    "archetype": "parameter_sweep",
+    "title": "Interactive Wallis Integrals & Riemann Accumulator",
+    "description": "Adjust powers m and n to observe how the integrand sin^m(θ) cos^n(θ) attenuates and evaluates live definite integral values over [0, π/2].",
+    "config": {
+      "canvasWidth": 640,
+      "canvasHeight": 320,
+      "controls": [
+        {
+          "id": "sinPower",
+          "label": "Sine Power (m)",
+          "min": 0,
+          "max": 8,
+          "step": 1,
+          "defaultValue": 4
+        },
+        {
+          "id": "cosPower",
+          "label": "Cosine Power (n)",
+          "min": 0,
+          "max": 8,
+          "step": 1,
+          "defaultValue": 2
+        }
+      ]
+    }
+  },
+  "theory": {
+    "mentalAnchor": "Remember: For **definite integrals on [0, π/2]** with powers of sine and cosine, use **Wallis' Formula**: multiply top descending odd factors, bottom descending even/odd sum, and multiply by $\\frac{\\pi}{2}$ only if **both powers are even**. For symmetrical bounds $[-a, a]$, odd functions integrate to **0**. On the board exam, verify any definite integral in 3 seconds using your calculator's `[∫dx]` key.",
+    "contentMarkdown": "### 1. Fundamental Integration Rules & Parts\n\nIntegration evaluates antiderivatives and cumulative physical quantities:\n\n```diagram\n{\n  \"caption\": \"Figure 1: Definite Riemann integral area under curve y = f(x) from x = a to x = b\",\n  \"xRange\": [-1, 6],\n  \"yRange\": [-1, 5],\n  \"elements\": [\n    { \"type\": \"grid\" },\n    { \"type\": \"axes\" },\n    { \"type\": \"line\", \"from\": [1, 1], \"to\": [5, 4], \"color\": \"#38bdf8\", \"width\": 2.5 },\n    { \"type\": \"projection\", \"from\": [1, 1], \"to\": [1, 0], \"label\": \"x = a\", \"color\": \"#fbbf24\" },\n    { \"type\": \"projection\", \"from\": [5, 4], \"to\": [5, 0], \"label\": \"x = b\", \"color\": \"#fbbf24\" },\n    { \"type\": \"polygon\", \"points\": [[1, 0], [1, 1], [5, 4], [5, 0]], \"color\": \"#38bdf8\", \"fill\": \"rgba(56, 189, 248, 0.15)\" },\n    { \"type\": \"text\", \"at\": [3, 1.2], \"text\": \"Area = ∫ f(x) dx\", \"color\": \"#38bdf8\" }\n  ]\n}\n```\n\n#### Specific Integration Techniques:\n1. **Integration by Parts**: $\\int u dv = uv - \\int v du$ (Select $u$ via **LIATE**).\n2. **Trigonometric Substitution**:\n   - $\\sqrt{a^2 - u^2} \\implies u = a\\sin\\theta, \\quad \\sqrt{a^2 - u^2} = a\\cos\\theta$\n   - $\\sqrt{a^2 + u^2} \\implies u = a\\tan\\theta, \\quad \\sqrt{a^2 + u^2} = a\\sec\\theta$\n   - $\\sqrt{u^2 - a^2} \\implies u = a\\sec\\theta, \\quad \\sqrt{u^2 - a^2} = a\\tan\\theta$\n\n---\n\n### 2. Wallis' Formula & Symmetry Properties\n\nFor evaluating $\\int_0^{\\pi/2} \\sin^m\\theta \\cos^n\\theta \\, d\\theta$:\n\n$$\\text{Integral} = \\frac{[(m - 1)(m - 3)\\dots][(n - 1)(n - 3)\\dots]}{(m + n)(m + n - 2)\\dots} \\cdot \\alpha$$\n\n- $\\alpha = \\frac{\\pi}{2}$ if **both** $m$ and $n$ are even integers.\n- $\\alpha = 1$ if **at least one** of $m$ or $n$ is an odd integer.\n\n- **Symmetry Rule**: If $f(x)$ is an **odd function** ($f(-x) = -f(x)$), then $\\int_{-a}^a f(x) dx = 0$."
+  },
+  "examples": [
+    {
+      "problemStatement": "Evaluate the definite integral: ∫_0^(π/2) sin⁶ θ cos⁴ θ dθ.",
+      "formalSolutionMarkdown": "#### Step 1: Identify parameters for Wallis' Formula\n- $m = 6$ (even)\n- $n = 4$ (even)\n- Since both are even, $\\alpha = \\frac{\\pi}{2}$.\n\n#### Step 2: Set up numerator and denominator products\nNumerator: $(6 - 1)(6 - 3)(6 - 5) \\times (4 - 1)(4 - 3) = (5 \\times 3 \\times 1) \\times (3 \\times 1) = 15 \\times 3 = 45$.\n\nDenominator: $(6 + 4)(8)(6)(4)(2) = 10 \\times 8 \\times 6 \\times 4 \\times 2 = 3840$.\n\n#### Step 3: Compute the final value\n$$\\text{Integral} = \\frac{45}{3840} \\times \\frac{\\pi}{2} = \\frac{3}{256} \\times \\frac{\\pi}{2} = \\frac{3\\pi}{512} \\approx 0.018408$$",
+      "shortcutSolutionMarkdown": "#### ⚡ 3-Second Wallis Reduction\n$$\\frac{(5 \\times 3 \\times 1)(3 \\times 1)}{10 \\times 8 \\times 6 \\times 4 \\times 2} \\times \\frac{\\pi}{2} = \\frac{45}{3840} \\times \\frac{\\pi}{2} = \\mathbf{\\frac{3\\pi}{512}}$$.",
+      "formalTimeSeconds": 45,
+      "shortcutTimeSeconds": 3
+    },
+    {
+      "problemStatement": "Evaluate: ∫ x e^(2x) dx.",
+      "formalSolutionMarkdown": "#### Step 1: Apply Integration by Parts using LIATE\n- Let $u = x \\implies du = dx$\n- Let $dv = e^{2x} dx \\implies v = \\frac{1}{2}e^{2x}$\n\n#### Step 2: Apply formula ∫ u dv = uv - ∫ v du\n$$\\int x e^{2x} dx = x\\left(\\frac{1}{2}e^{2x}\\right) - \\int \\frac{1}{2}e^{2x} dx$$\n$$\\int x e^{2x} dx = \\frac{1}{2}x e^{2x} - \\frac{1}{4}e^{2x} + C = \\frac{1}{4}e^{2x}(2x - 1) + C$$",
+      "shortcutSolutionMarkdown": "#### ⚡ 3-Second Tabular Method\n$$\\begin{array}{c|c} D & I \\\\ \\hline +x & e^{2x} \\\\ -1 & \\frac{1}{2}e^{2x} \\\\ +0 & \\frac{1}{4}e^{2x} \\end{array} \\implies \\mathbf{\\frac{1}{2}x e^{2x} - \\frac{1}{4}e^{2x} + C}$$.",
+      "formalTimeSeconds": 30,
+      "shortcutTimeSeconds": 3
+    }
+  ],
+  "calculatorGuides": {
+    "karce": {
+      "techniqueTitle": "Definite Integration Key Evaluation",
+      "problemType": "Evaluating definite integral ∫_0^(π/2) sin⁶(x) cos⁴(x) dx",
+      "sampleProblem": "Find numerical value on [0, π/2].",
+      "mode": "RAD Mode",
+      "keystrokes": [
+        "∫dx",
+        "(",
+        "sin",
+        "(",
+        "ALPHA",
+        "X",
+        ")",
+        ")",
+        "^",
+        "6",
+        "×",
+        "(",
+        "cos",
+        "(",
+        "ALPHA",
+        "X",
+        ")",
+        ")",
+        "^",
+        "4",
+        ",",
+        "0",
+        ",",
+        "SHIFT",
+        "π",
+        "÷",
+        "2",
+        ")",
+        "="
+      ],
+      "notes": "Directly returns 0.0184078. Evaluating 3π/512 = 0.0184078 verifies the exact analytical fraction."
+    },
+    "canon": {
+      "techniqueTitle": "Symmetric Odd Function Fast Check",
+      "problemType": "∫_(-3)^3 x⁵ cos(x) dx",
+      "sampleProblem": "Evaluate over symmetric interval.",
+      "mode": "RAD Mode",
+      "keystrokes": [
+        "0"
+      ],
+      "notes": "Integrand is strictly odd: f(-x) = -f(x). The integral is identically 0 without computation."
+    }
+  },
+  "conceptChecks": [
+    {
+      "id": "cc-math16-01",
+      "question": "What is the value of the integral ∫_0^(π/2) sin⁵ θ dθ using Wallis' Formula?",
+      "options": [
+        "8/15",
+        "8π/15",
+        "15/8",
+        "4/15"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Here m = 5 (odd), n = 0 (even), so α = 1. Numerator: (5 - 1)(5 - 3) = 4 × 2 = 8. Denominator: 5 × 3 × 1 = 15. Value = (8 / 15) × 1 = 8/15."
+    },
+    {
+      "id": "cc-math16-02",
+      "question": "What is the value of the definite integral ∫_(-5)^5 (x³ + 4x) dx?",
+      "options": [
+        "0",
+        "250",
+        "125",
+        "500"
+      ],
+      "correctAnswer": 0,
+      "explanation": "The integrand f(x) = x³ + 4x is an odd function (f(-x) = -f(x)). Integrated over the symmetric interval [-5, 5], the integral is strictly 0."
+    },
+    {
+      "id": "cc-math16-03",
+      "question": "Which trigonometric substitution is appropriate for integrating an expression containing √(9 + x²)?",
+      "options": [
+        "x = 3 tan θ",
+        "x = 3 sin θ",
+        "x = 3 sec θ",
+        "x = 9 sin θ"
+      ],
+      "correctAnswer": 0,
+      "explanation": "For radicals of the form √(a² + u²), the substitution is u = a tan θ, giving x = 3 tan θ because 9 + 9 tan² θ = 9 sec² θ."
+    },
+    {
+      "id": "cc-math16-04",
+      "question": "What is the result of evaluating ∫ ln x dx?",
+      "options": [
+        "x ln x - x + C",
+        "1/x + C",
+        "(ln x)² / 2 + C",
+        "x ln x + x + C"
+      ],
+      "correctAnswer": 0,
+      "explanation": "By Integration by Parts: u = ln x, dv = dx ⟹ du = (1/x) dx, v = x. ∫ ln x dx = x ln x - ∫ x (1/x) dx = x ln x - x + C."
+    }
+  ]
+}

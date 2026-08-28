@@ -1,0 +1,249 @@
+{
+  "id": "math-18",
+  "code": "MATH 18",
+  "domain": "MATH",
+  "topicCode": "MATH-18",
+  "topicTitle": "Differential Equations",
+  "subtopicTitle": "1st-Order Equations, Exact Types, Integrating Factors & Bernoulli Equations",
+  "order": 18,
+  "pairedQuizSetId": "math-18-mastery",
+  "toc": [
+    { "id": "sec-prereq-bridges", "title": "1. Introduction & Cross-Subject Bridges", "level": 2 },
+    { "id": "sec-theory", "title": "2. Lesson Proper", "level": 2 },
+    { "id": "sec-formulas", "title": "3. Compilation of Formulas", "level": 2 },
+    { "id": "sec-visualizer", "title": "4. Interactive Visualizer: Direction Fields & Solution Trajectories", "level": 2 },
+    { "id": "sec-terminology", "title": "5. Terms and Definitions", "level": 2 },
+    { "id": "sec-dual-method", "title": "6. Sample Problems and Solutions", "level": 2 },
+    { "id": "sec-calculator", "title": "7. Calculator Techniques (Karce & Canon)", "level": 2 },
+    { "id": "sec-concept-checks", "title": "8. In-Line Concept Checks", "level": 2 },
+    { "id": "sec-mastery-challenge", "title": "9. Paired Mastery Challenge", "level": 2 }
+  ],
+  "prerequisiteBridge": {
+    "priorModuleId": "math-16",
+    "text": "Extending integration techniques from MATH 16, this module covers ordinary differential equations (ODEs), order/degree classification, separable variables, exact tests, Euler integrating factors, and Bernoulli non-linear reductions."
+  },
+  "crossSubjectBridges": [
+    {
+      "targetDomain": "ELECS",
+      "targetTopicCode": "ELEC-01",
+      "badgeText": "First-Order RC & RL Transients",
+      "description": "Transient charging/discharging voltages in RC circuits ($R C \\frac{dv}{dt} + v = V_s$) and RL circuits ($L \\frac{di}{dt} + R i = V_s$) are 1st-order linear ODEs solved with time constant $\\tau$."
+    },
+    {
+      "targetDomain": "GEAS",
+      "targetTopicCode": "GEAS-06",
+      "badgeText": "Fluid Drag & Terminal Velocity",
+      "description": "Atmospheric falling bodies subject to air resistance ($m \\frac{dv}{dt} = m g - k v$) follow separable 1st-order differential equations converging to terminal velocity $v_t = mg/k$."
+    },
+    {
+      "targetDomain": "EST",
+      "targetTopicCode": "EST-01",
+      "badgeText": "Analog Phase-Locked Loop (PLL) Tracking",
+      "description": "First-order phase-locked loop tracking error equations ($\\frac{d\\phi_e}{dt} + K_0 K_d \\sin\\phi_e = \\Delta\\omega$) model non-linear phase acquisition."
+    }
+  ],
+  "formulas": [
+    {
+      "id": "f-1801-01",
+      "title": "Order and Degree of a Differential Equation",
+      "formula": "$$\\text{Order} = \\text{Highest Derivative}, \\qquad \\text{Degree} = \\text{Power of Highest Derivative}$$",
+      "note": "Degree is evaluated after clearing all radicals and fractions from derivatives."
+    },
+    {
+      "id": "f-1801-02",
+      "title": "Variable Separable Form",
+      "formula": "$$P(x) dx + Q(y) dy = 0 \\implies \\int P(x) dx + \\int Q(y) dy = C$$",
+      "note": "Isolate all x terms with dx and all y terms with dy."
+    },
+    {
+      "id": "f-1801-03",
+      "title": "Exact Differential Equation Test & Solution",
+      "formula": "$$\\frac{\\partial M}{\\partial y} = \\frac{\\partial N}{\\partial x} \\iff F(x, y) = \\int M(x, y) \\partial x + k(y) = C$$",
+      "note": "When integrating M with respect to x, treat y as a constant."
+    },
+    {
+      "id": "f-1801-04",
+      "title": "Euler's Integrating Factor for Non-Exact Equations",
+      "formula": "$$\\text{I.F.} = e^{\\int f(x) dx} \\quad \\text{where } f(x) = \\frac{1}{N}\\left(\\frac{\\partial M}{\\partial y} - \\frac{\\partial N}{\\partial x}\\right)$$",
+      "note": "If f(y) = (1/M)(∂N/∂x - ∂M/∂y), then I.F. = e^(∫ f(y) dy)."
+    },
+    {
+      "id": "f-1801-05",
+      "title": "First-Order Linear Differential Equation (Standard Form)",
+      "formula": "$$\\frac{dy}{dx} + P(x) y = Q(x) \\implies y \\cdot e^{\\int P(x) dx} = \\int Q(x) e^{\\int P(x) dx} dx + C$$",
+      "note": "I.F. = e^(∫ P(x) dx). Coefficient of dy/dx must strictly be 1 before identifying P(x)."
+    },
+    {
+      "id": "f-1801-06",
+      "title": "Bernoulli's Differential Equation & Linear Reduction",
+      "formula": "$$\\frac{dy}{dx} + P(x) y = Q(x) y^n \\implies u = y^{1 - n} \\implies \\frac{du}{dx} + (1 - n) P(x) u = (1 - n) Q(x)$$",
+      "note": "Jakob & Johann Bernoulli (1695). Reduces non-linear ODE to 1st-order linear ODE in u."
+    },
+    {
+      "id": "f-1801-07",
+      "title": "Homogeneous 1st-Order DE Substitution",
+      "formula": "$$M(x, y) dx + N(x, y) dy = 0 \\implies y = v x, \\quad dy = v dx + x dv$$",
+      "note": "M and N must be homogeneous functions of identical degree in x and y."
+    }
+  ],
+  "terms": [
+    {
+      "term": "Ordinary Differential Equation (ODE)",
+      "symbol": "ODE",
+      "unit": "Classification",
+      "definition": "A differential equation containing derivatives with respect to only a single independent variable.",
+      "keywordTrigger": "derivatives with respect to single independent variable"
+    },
+    {
+      "term": "Integrating Factor (Euler's Multiplier)",
+      "symbol": "$\\text{I.F.} = e^{\\int P(x) dx}$",
+      "unit": "Multiplier",
+      "definition": "A function by which an ordinary differential equation is multiplied to convert it into an exact differential or readily integrable form.",
+      "keywordTrigger": "function that makes an equation exact / e to the integral of P dx"
+    },
+    {
+      "term": "General Solution vs Particular Solution",
+      "symbol": "$y(x, C) \\text{ vs } y(x)$",
+      "unit": "Solution",
+      "definition": "A general solution contains arbitrary constants C representing a family of curves; a particular solution is obtained by substituting specific initial boundary conditions ($y(x_0) = y_0$).",
+      "keywordTrigger": "contains arbitrary constant C vs satisfies initial condition"
+    },
+    {
+      "term": "Exact Differential Equation",
+      "symbol": "$\\frac{\\partial M}{\\partial y} = \\frac{\\partial N}{\\partial x}$",
+      "unit": "Type",
+      "definition": "A differential equation $M dx + N dy = 0$ that represents the total differential $dF = 0$ of some potential function $F(x, y)$.",
+      "keywordTrigger": "partial M with respect to y equals partial N with respect to x"
+    }
+  ],
+  "visualizer": {
+    "archetype": "parameter_sweep",
+    "title": "Interactive Direction Field & Solution Trajectory Tracer",
+    "description": "Adjust initial condition y(0) and decay constant k to observe slope vectors dy/dx = -k y and track smooth analytical integral trajectories.",
+    "config": {
+      "canvasWidth": 640,
+      "canvasHeight": 320,
+      "controls": [
+        {
+          "id": "initY",
+          "label": "Initial Value y(0)",
+          "min": -5,
+          "max": 5,
+          "step": 1,
+          "defaultValue": 3
+        },
+        {
+          "id": "decayRate",
+          "label": "Rate Constant (k × 10)",
+          "min": 1,
+          "max": 10,
+          "step": 1,
+          "defaultValue": 5
+        }
+      ]
+    }
+  },
+  "theory": {
+    "mentalAnchor": "For **1st-Order Linear ODEs** ($y' + P y = Q$), calculate the integrating factor $\\text{I.F.} = e^{\\int P dx}$, then write $y \\cdot (\\text{I.F.}) = \\int Q \\cdot (\\text{I.F.}) dx + C$. For **Exact equations** ($M dx + N dy = 0$), check $\\frac{\\partial M}{\\partial y} = \\frac{\\partial N}{\\partial x}$. For **Bernoulli equations** ($y' + P y = Q y^n$), divide by $y^n$ and substitute $u = y^{1-n}$.",
+    "contentMarkdown": "### 1. Classification & First-Order Types\n\nA differential equation expresses rates of change of dependent variables:\n\n```diagram\n{\n  \"caption\": \"Figure 1: Slope direction field dy/dx = -x/y forming concentric circular solution trajectories\",\n  \"xRange\": [-4, 4],\n  \"yRange\": [-4, 4],\n  \"elements\": [\n    { \"type\": \"grid\" },\n    { \"type\": \"axes\" },\n    { \"type\": \"arc\", \"center\": [0, 0], \"radius\": 40, \"startAngle\": 0, \"endAngle\": 360, \"color\": \"#38bdf8\", \"label\": \"x² + y² = C\" },\n    { \"type\": \"line\", \"from\": [1.5, 2.5], \"to\": [2.5, 1.5], \"color\": \"#f43f5e\", \"width\": 2 },\n    { \"type\": \"point\", \"at\": [2, 2], \"label\": \"Slope m = -1\", \"color\": \"#fbbf24\" }\n  ]\n}\n```\n\n#### Master Solution Blueprints:\n1. **Separable**: $P(x) dx + Q(y) dy = 0 \\implies \\int P(x) dx + \\int Q(y) dy = C$.\n2. **1st-Order Linear**: $\\frac{dy}{dx} + P(x) y = Q(x)$\n   $$\\text{I.F.} = e^{\\int P(x) dx} \\implies y \\cdot e^{\\int P(x) dx} = \\int Q(x) e^{\\int P(x) dx} dx + C$$\n3. **Exact Equations**: $M(x, y) dx + N(x, y) dy = 0$\n   - Condition: $\\frac{\\partial M}{\\partial y} = \\frac{\\partial N}{\\partial x}$.\n   - Solution: $F(x, y) = \\int M \\partial x + k(y) = C$.\n4. **Bernoulli Reduction**: $\\frac{dy}{dx} + P(x) y = Q(x) y^n$\n   - Substitute $u = y^{1 - n} \\implies \\frac{du}{dx} + (1 - n) P(x) u = (1 - n) Q(x)$."
+  },
+  "examples": [
+    {
+      "problemStatement": "Solve the first-order linear differential equation: dy/dx + (2/x) y = 4x.",
+      "formalSolutionMarkdown": "#### Step 1: Identify P(x) and Q(x)\n- $P(x) = \\frac{2}{x}$\n- $Q(x) = 4x$\n\n#### Step 2: Compute the Integrating Factor\n$$\\text{I.F.} = e^{\\int P(x) dx} = e^{\\int \\frac{2}{x} dx} = e^{2\\ln x} = e^{\\ln(x^2)} = x^2$$\n\n#### Step 3: Apply the general linear ODE formula\n$$y \\cdot (\\text{I.F.}) = \\int Q(x) \\cdot (\\text{I.F.}) dx + C$$\n$$y \\cdot x^2 = \\int (4x)(x^2) dx + C = \\int 4x^3 dx + C = x^4 + C$$\n\n#### Step 4: Solve explicitly for y\n$$y = x^2 + \\frac{C}{x^2}$$",
+      "shortcutSolutionMarkdown": "#### ⚡ 3-Second Linear ODE Pattern\n1. $\\text{I.F.} = x^2$.\n2. $y x^2 = \\int 4x^3 dx = x^4 + C$.\n3. $y = \\mathbf{x^2 + \\frac{C}{x^2}}$.",
+      "formalTimeSeconds": 45,
+      "shortcutTimeSeconds": 3
+    },
+    {
+      "problemStatement": "Determine whether (2x + 3y) dx + (3x + 4y) dy = 0 is exact, and find its general solution.",
+      "formalSolutionMarkdown": "#### Step 1: Test for exactness\n- $M(x, y) = 2x + 3y \\implies \\frac{\\partial M}{\\partial y} = 3$\n- $N(x, y) = 3x + 4y \\implies \\frac{\\partial N}{\\partial x} = 3$\n\nSince $\\frac{\\partial M}{\\partial y} = \\frac{\\partial N}{\\partial x} = 3$, the equation is **EXACT**.\n\n#### Step 2: Integrate M with respect to x (holding y constant)\n$$F(x, y) = \\int (2x + 3y) \\partial x = x^2 + 3xy + g(y)$$\n\n#### Step 3: Differentiate with respect to y and equate to N\n$$\\frac{\\partial F}{\\partial y} = 3x + g'(y) = 3x + 4y \\implies g'(y) = 4y \\implies g(y) = 2y^2$$\n\n#### Step 4: Form the final potential solution\n$$x^2 + 3xy + 2y^2 = C$$",
+      "shortcutSolutionMarkdown": "#### ⚡ 4-Second Direct Term Grouping\n$$\\int 2x dx + \\int 3(y dx + x dy) + \\int 4y dy = C \\implies \\mathbf{x^2 + 3xy + 2y^2 = C}$$.",
+      "formalTimeSeconds": 45,
+      "shortcutTimeSeconds": 4
+    }
+  ],
+  "calculatorGuides": {
+    "karce": {
+      "techniqueTitle": "Integrating Factor Power Simplification",
+      "problemType": "Simplifying e^(2 ln X) to X²",
+      "sampleProblem": "Verify I.F. for P(x) = 2/x.",
+      "mode": "COMP Mode (MODE 1)",
+      "keystrokes": [
+        "e^x",
+        "(",
+        "2",
+        "ln",
+        "(",
+        "5",
+        ")",
+        ")",
+        "="
+      ],
+      "notes": "Directly returns 25 (which equals 5²), confirming I.F. = x²."
+    },
+    "canon": {
+      "techniqueTitle": "Exact Differential Coefficient Verification",
+      "problemType": "Verifying ∂M/∂y = ∂N/∂x",
+      "sampleProblem": "Verify exactness of (2x + 3y)dx + (3x + 4y)dy = 0.",
+      "mode": "COMP Mode (MODE 1)",
+      "keystrokes": [
+        "3",
+        "-",
+        "3",
+        "="
+      ],
+      "notes": "Outputs 0, confirming exactness."
+    }
+  },
+  "conceptChecks": [
+    {
+      "id": "cc-math18-01",
+      "question": "What are the order and degree of the differential equation (d²y/dx²)³ + (dy/dx)⁴ + y = sin x?",
+      "options": [
+        "Order 2, Degree 3",
+        "Order 3, Degree 2",
+        "Order 2, Degree 4",
+        "Order 4, Degree 3"
+      ],
+      "correctAnswer": 0,
+      "explanation": "The highest derivative is d²y/dx² (Order 2), and this highest derivative is raised to the power of 3 (Degree 3)."
+    },
+    {
+      "id": "cc-math18-02",
+      "question": "What is the integrating factor for the linear ODE dy/dx + 3y = e^(2x)?",
+      "options": [
+        "e^(3x)",
+        "e^(-3x)",
+        "3x",
+        "e^(2x)"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Here P(x) = 3. I.F. = e^(∫ 3 dx) = e^(3x)."
+    },
+    {
+      "id": "cc-math18-03",
+      "question": "Under what condition is the differential equation M(x, y) dx + N(x, y) dy = 0 classified as EXACT?",
+      "options": [
+        "∂M/∂y = ∂N/∂x",
+        "∂M/∂x = ∂N/∂y",
+        "M + N = 0",
+        "dM/dx = dN/dy"
+      ],
+      "correctAnswer": 0,
+      "explanation": "By Clairaut's theorem on mixed partial derivatives, exactness requires ∂M/∂y = ∂N/∂x."
+    },
+    {
+      "id": "cc-math18-04",
+      "question": "In Bernoulli's equation dy/dx + P(x) y = Q(x) y³, what substitution transforms it into a linear ODE?",
+      "options": [
+        "u = y^(-2)",
+        "u = y²",
+        "u = y^(-3)",
+        "u = 1/y"
+      ],
+      "correctAnswer": 0,
+      "explanation": "For Bernoulli's equation with n = 3, the linearizing substitution is u = y^(1 - n) = y^(1 - 3) = y^(-2)."
+    }
+  ]
+}

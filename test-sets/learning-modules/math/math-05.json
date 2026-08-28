@@ -1,0 +1,254 @@
+{
+  "id": "math-05",
+  "code": "MATH 05",
+  "domain": "MATH",
+  "topicCode": "MATH-05",
+  "topicTitle": "Advanced Counting & Probability",
+  "subtopicTitle": "Permutations, Combinations, Circular Arrangements & Counting Principles",
+  "order": 5,
+  "pairedQuizSetId": "math-05-mastery",
+  "toc": [
+    { "id": "sec-prereq-bridges", "title": "1. Introduction & Cross-Subject Bridges", "level": 2 },
+    { "id": "sec-theory", "title": "2. Lesson Proper", "level": 2 },
+    { "id": "sec-formulas", "title": "3. Compilation of Formulas", "level": 2 },
+    { "id": "sec-visualizer", "title": "4. Interactive Visualizer: Combinatorial Tree & Permutation Explorer", "level": 2 },
+    { "id": "sec-terminology", "title": "5. Terms and Definitions", "level": 2 },
+    { "id": "sec-dual-method", "title": "6. Sample Problems and Solutions", "level": 2 },
+    { "id": "sec-calculator", "title": "7. Calculator Techniques (Karce & Canon)", "level": 2 },
+    { "id": "sec-concept-checks", "title": "8. In-Line Concept Checks", "level": 2 },
+    { "id": "sec-mastery-challenge", "title": "9. Paired Mastery Challenge", "level": 2 }
+  ],
+  "prerequisiteBridge": {
+    "priorModuleId": "math-04",
+    "text": "Building upon discrete sequences in MATH 04, this module explores the fundamental counting principle, linear and circular permutations, multi-set anagrams, and combinatorial group selections essential for information entropy and networking."
+  },
+  "crossSubjectBridges": [
+    {
+      "targetDomain": "EST",
+      "targetTopicCode": "EST-01",
+      "badgeText": "Error-Correcting Block Codes",
+      "description": "Hamming codes and parity generator matrices use combination formulas $\\binom{n}{k}$ to enumerate codeword weights and minimum distance separation."
+    },
+    {
+      "targetDomain": "ELECS",
+      "targetTopicCode": "ELEC-04",
+      "badgeText": "Digital Multiplexers & Address Decoding",
+      "description": "An $n$-to-$2^n$ binary decoder evaluates all $2^n$ unique input state permutations to select distinct peripheral address channels."
+    },
+    {
+      "targetDomain": "GEAS",
+      "targetTopicCode": "GEAS-15",
+      "badgeText": "System Reliability & Redundancy",
+      "description": "Parallel component redundancy models and fault tree analysis calculate total operational state permutations using combinatorial binomial selections."
+    }
+  ],
+  "formulas": [
+    {
+      "id": "f-0501-01",
+      "title": "Fundamental Counting Principle (Multiplication Rule)",
+      "formula": "$$N = n_1 \\times n_2 \\times n_3 \\times \\dots \\times n_k$$",
+      "note": "Applies when sequential operations have independent successive choices."
+    },
+    {
+      "id": "f-0501-02",
+      "title": "Linear Permutations of n Distinct Objects",
+      "formula": "$${}_n P_r = \\frac{n!}{(n - r)!}, \\qquad {}_n P_n = n!$$",
+      "note": "Order strictly matters: (A, B) ≠ (B, A)."
+    },
+    {
+      "id": "f-0501-03",
+      "title": "Circular Permutations",
+      "formula": "$$P_{\\text{circ}} = (n - 1)! \\qquad P_{\\text{keyring}} = \\frac{(n - 1)!}{2}$$",
+      "note": "Divided by 2 for keyrings/necklaces where flip/reversal is indistinguishable."
+    },
+    {
+      "id": "f-0501-04",
+      "title": "Permutations with Repetition (Identical Elements)",
+      "formula": "$$P = \\frac{n!}{p! \\, q! \\, r! \\dots}$$",
+      "note": "Used for word anagrams where letters repeat p, q, r times."
+    },
+    {
+      "id": "f-0501-05",
+      "title": "Combinations (Unordered Selections)",
+      "formula": "$${}_n C_r = \\binom{n}{r} = \\frac{n!}{(n - r)! \\, r!} \\qquad \\binom{n}{r} = \\binom{n}{n - r}$$",
+      "note": "Order does not matter: {A, B} = {B, A}."
+    },
+    {
+      "id": "f-0501-06",
+      "title": "Relation Between Permutations and Combinations",
+      "formula": "$${}_n P_r = r! \\cdot {}_n C_r \\iff {}_n C_r = \\frac{{}_n P_r}{r!}$$",
+      "note": "Every combination of r items can be ordered in r! ways."
+    },
+    {
+      "id": "f-0501-07",
+      "title": "Total Number of Subsets / Combinations of Any Size",
+      "formula": "$$\\sum_{k=0}^n \\binom{n}{k} = 2^n \\qquad \\text{Non-empty Subsets} = 2^n - 1$$",
+      "note": "Each element has 2 choices: include or exclude."
+    }
+  ],
+  "terms": [
+    {
+      "term": "Permutation",
+      "symbol": "${}_n P_r$",
+      "unit": "Count",
+      "definition": "An ordered arrangement of a set of objects where the sequence of selection strictly matters.",
+      "keywordTrigger": "ordered arrangement / sequence matters / nPr"
+    },
+    {
+      "term": "Combination",
+      "symbol": "${}_n C_r$",
+      "unit": "Count",
+      "definition": "A selection of objects from a set where the order of selection does not matter.",
+      "keywordTrigger": "selection without regard to order / nCr"
+    },
+    {
+      "term": "Inversion",
+      "symbol": "Permutation Inversion",
+      "unit": "Count",
+      "definition": "A pair of elements in a sequence that are out of their natural ascending order, classifying permutations as even or odd.",
+      "keywordTrigger": "pair of elements out of natural ascending order"
+    },
+    {
+      "term": "Gerolamo Cardano (1501–1576)",
+      "symbol": "Historical",
+      "unit": "Mathematician",
+      "definition": "Italian polymath who authored 'Liber de Ludo Aleae' (Book on Games of Chance) and is celebrated as the Father of Probability Theory.",
+      "keywordTrigger": "Father of Probability Theory / Liber de Ludo Aleae"
+    }
+  ],
+  "visualizer": {
+    "archetype": "factor_tree",
+    "title": "Interactive Combinatorial Tree Explorer",
+    "description": "Adjust total elements n and selection depth r to visualize how factorial decision trees branch exponentially across linear arrangements.",
+    "config": {
+      "canvasWidth": 640,
+      "canvasHeight": 320,
+      "controls": [
+        {
+          "id": "treeDepth",
+          "label": "Total Elements (n)",
+          "min": 2,
+          "max": 6,
+          "step": 1,
+          "defaultValue": 4
+        },
+        {
+          "id": "branchFactor",
+          "label": "Selection Size (r)",
+          "min": 1,
+          "max": 4,
+          "step": 1,
+          "defaultValue": 2
+        }
+      ]
+    }
+  },
+  "theory": {
+    "mentalAnchor": "Remember: **Permutations = Position matters** (Presidents, Passwords, Podiums $\\implies {}_n P_r$). **Combinations = Committee matters** (Committees, Cards, Handshakes $\\implies {}_n C_r$). For round tables, fix one person first $\\implies (n-1)!$. For keyrings, flip symmetry divides by 2 $\\implies \\frac{(n-1)!}{2}$.",
+    "contentMarkdown": "### 1. Fundamental Counting Principle & Linear Permutations\n\nWhen a task consists of $k$ independent sequential stages where Stage 1 can be done in $n_1$ ways, Stage 2 in $n_2$ ways, and Stage $k$ in $n_k$ ways:\n\n$$N = n_1 \\times n_2 \\times n_3 \\times \\dots \\times n_k$$\n\n```diagram\n{\n  \"caption\": \"Figure 1: Tree diagram for 3 choices followed by 2 sub-choices (3 × 2 = 6 total paths)\",\n  \"xRange\": [0, 8],\n  \"yRange\": [-4, 4],\n  \"elements\": [\n    { \"type\": \"grid\" },\n    { \"type\": \"axes\" },\n    { \"type\": \"point\", \"at\": [1, 0], \"label\": \"Start\", \"color\": \"#d97757\" },\n    { \"type\": \"segment\", \"from\": [1, 0], \"to\": [4, 2.5], \"color\": \"#38bdf8\" },\n    { \"type\": \"segment\", \"from\": [1, 0], \"to\": [4, 0], \"color\": \"#38bdf8\" },\n    { \"type\": \"segment\", \"from\": [1, 0], \"to\": [4, -2.5], \"color\": \"#38bdf8\" },\n    { \"type\": \"point\", \"at\": [4, 2.5], \"label\": \"Choice A\", \"color\": \"#38bdf8\" },\n    { \"type\": \"point\", \"at\": [4, 0], \"label\": \"Choice B\", \"color\": \"#38bdf8\" },\n    { \"type\": \"point\", \"at\": [4, -2.5], \"label\": \"Choice C\", \"color\": \"#38bdf8\" }\n  ]\n}\n```\n\n#### Specific Cases for Permutations:\n- **Linear Permutations (${}_n P_r$)**: Ordering $r$ distinct items out of $n$ total:\n  $${}_n P_r = \\frac{n!}{(n - r)!} = n(n - 1)(n - 2)\\dots(n - r + 1)$$\n- **Permutations with Repeated Elements**: Arranging $n$ objects where items repeat with frequencies $p, q, s$:\n  $$P = \\frac{n!}{p! \\, q! \\, s! \\dots}$$\n\n---\n\n### 2. Circular Permutations & Constrained Seating\n\nWhen $n$ people sit around a circular table, rotating everyone by one position does not create a new relative arrangement:\n\n$$P_{\\text{circ}} = \\frac{n!}{n} = (n - 1)!$$\n\n#### Specific Cases:\n- **Keyrings & Necklaces (Reflective Symmetry)**: Flipping the ring over produces an identical physical order:\n  $$P_{\\text{keyring}} = \\frac{(n - 1)!}{2}$$\n- **Couples / Bound Elements Sitting Together**: Treat the bound group as $1$ composite unit, arrange the composite entities, then multiply by internal group permutations:\n  $$P = (\\text{entities})! \\times (\\text{internal permutations})!$$\n\n---\n\n### 3. Combinations & Subsets\n\nA combination is an unordered selection of $r$ objects from $n$ distinct elements:\n\n$${}_n C_r = \\binom{n}{r} = \\frac{n!}{(n - r)! \\, r!} \\qquad \\binom{n}{r} = \\binom{n}{n - r}$$\n\n- **Total Subsets of an $n$-element Set**: $\\sum_{k=0}^n \\binom{n}{k} = 2^n$.\n- **Total Non-Empty Subsets**: $2^n - 1$."
+  },
+  "examples": [
+    {
+      "problemStatement": "In how many distinct ways can the letters of the word 'MATHEMATICS' be arranged?",
+      "formalSolutionMarkdown": "#### Step 1: Count total and repeating letters\n- Total letters $n = 11$\n- Repeating: M = 2, A = 2, T = 2, H = 1, E = 1, I = 1, C = 1, S = 1\n\n#### Step 2: Apply multi-set permutation formula\n$$P = \\frac{n!}{p! \\, q! \\, r!} = \\frac{11!}{2! \\, 2! \\, 2!}$$\n$$11! = 39,916,800$$\n$$2! \\times 2! \\times 2! = 2 \\times 2 \\times 2 = 8$$\n$$P = \\frac{39,916,800}{8} = 4,989,600$$",
+      "shortcutSolutionMarkdown": "#### ⚡ 3-Second Calculator Quotient\n`11! ÷ 8` = $\\mathbf{4,989,600}$.",
+      "formalTimeSeconds": 45,
+      "shortcutTimeSeconds": 3
+    },
+    {
+      "problemStatement": "In how many ways can 6 people sit around a circular table if 2 specific persons insist on sitting together?",
+      "formalSolutionMarkdown": "#### Step 1: Treat the 2 specific people as 1 composite block\n- Remaining individual units: $4$ people $+ 1$ couple block $= 5$ units.\n\n#### Step 2: Arrange 5 units in a circle\n$$P_{\\text{circ}} = (5 - 1)! = 4! = 24$$\n\n#### Step 3: Arrange the couple internally\n$$\\text{Internal} = 2! = 2$$\n$$\\text{Total} = 24 \\times 2 = 48\\text{ ways}$$",
+      "shortcutSolutionMarkdown": "#### ⚡ 2-Second Block Formula\n$$(n - 1)! \\times k! = (5 - 1)! \\times 2! = 24 \\times 2 = \\mathbf{48}$.",
+      "formalTimeSeconds": 30,
+      "shortcutTimeSeconds": 2
+    }
+  ],
+  "calculatorGuides": {
+    "karce": {
+      "techniqueTitle": "Fast nPr & nCr Evaluation",
+      "problemType": "Evaluating permutations and combinations",
+      "sampleProblem": "Evaluate 10P3 and 10C3.",
+      "mode": "COMP Mode (MODE 1)",
+      "keystrokes": [
+        "1",
+        "0",
+        "SHIFT",
+        "nPr",
+        "3",
+        "=",
+        "1",
+        "0",
+        "SHIFT",
+        "nCr",
+        "3",
+        "="
+      ],
+      "notes": "Directly returns 720 for nPr and 120 for nCr."
+    },
+    "canon": {
+      "techniqueTitle": "Direct Factorial Multi-Set Division",
+      "problemType": "Multi-set permutation 11! / (2! * 2! * 2!)",
+      "sampleProblem": "Evaluate 11! / 8.",
+      "mode": "COMP Mode (MODE 1)",
+      "keystrokes": [
+        "1",
+        "1",
+        "x!",
+        "÷",
+        "8",
+        "="
+      ],
+      "notes": "Directly outputs 4,989,600."
+    }
+  },
+  "conceptChecks": [
+    {
+      "id": "cc-math05-01",
+      "question": "In how many ways can 7 keys be arranged on a circular keyring?",
+      "options": [
+        "360",
+        "720",
+        "5,040",
+        "2,520"
+      ],
+      "correctAnswer": 0,
+      "explanation": "For a keyring with reflective flip symmetry: P = (n - 1)! / 2 = (7 - 1)! / 2 = 6! / 2 = 720 / 2 = 360."
+    },
+    {
+      "id": "cc-math05-02",
+      "question": "How many committees of 4 people can be formed from a group of 9 engineers?",
+      "options": [
+        "126",
+        "3,024",
+        "24",
+        "84"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Since committee membership is unordered, use combinations: 9C4 = 9! / (5! 4!) = (9 × 8 × 7 × 6) / (4 × 3 × 2 × 1) = 126."
+    },
+    {
+      "id": "cc-math05-03",
+      "question": "Who authored 'Liber de Ludo Aleae' and is known as the Father of Probability Theory?",
+      "options": [
+        "Gerolamo Cardano",
+        "Blaise Pascal",
+        "Pierre de Fermat",
+        "Christiaan Huygens"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Italian mathematician Gerolamo Cardano (1501–1576) wrote 'Liber de Ludo Aleae' in 1564, establishing foundational probability concepts."
+    },
+    {
+      "id": "cc-math05-04",
+      "question": "How many total non-empty subsets can be formed from a set containing 6 distinct elements?",
+      "options": [
+        "63",
+        "64",
+        "32",
+        "31"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Total subsets = 2ⁿ = 2⁶ = 64. Total non-empty subsets = 2⁶ - 1 = 64 - 1 = 63."
+    }
+  ]
+}

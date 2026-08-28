@@ -1,0 +1,252 @@
+{
+  "moduleId": "math-08",
+  "moduleCode": "MATH 08",
+  "title": "MATH 08 Mastery Challenge: Plane Trigonometry & Oblique Triangle Laws",
+  "description": "Comprehensive 22-question 4-quadrant companion mastery exam for MATH 08. Rigorously tests angular unit conversions (degrees, radians, grads, mils), trigonometric identities, double-angle expansions, Law of Sines, Law of Cosines, and ambiguous case criteria under timed board conditions.",
+  "totalQuestions": 22,
+  "timeLimitMinutes": 35,
+  "questions": [
+    {
+      "id": "m08-01",
+      "promptText": "Which conversion accurately defines the relationship between a complete circular revolution and **angular mils**?",
+      "choiceA": "1 revolution = 360° = 6,400 mils",
+      "choiceB": "1 revolution = 360° = 3,200 mils",
+      "choiceC": "1 revolution = 400 mils",
+      "choiceD": "1 revolution = 640 mils",
+      "correctChoice": "A",
+      "explanation": "In standard military artillery and NATO ballistics, a full circle of $360^\\circ$ is partitioned into exactly $6,400\\text{ mils}$ ($1\\text{ mil} = 0.05625^\\circ$).",
+      "archetype": "conceptual"
+    },
+    {
+      "id": "m08-02",
+      "promptText": "Which trigonometric function possesses **even symmetry** ($f(-\\theta) = f(\\theta)$)?",
+      "choiceA": "cos θ and sec θ",
+      "choiceB": "sin θ and csc θ",
+      "choiceC": "tan θ and cot θ",
+      "choiceD": "sin θ and cos θ",
+      "correctChoice": "A",
+      "explanation": "Cosine and its reciprocal secant are even functions: $\\cos(-\\theta) = \\cos\\theta$ and $\\sec(-\\theta) = \\sec\\theta$. The other four functions are odd: $f(-\\theta) = -f(\\theta)$.",
+      "archetype": "conceptual"
+    },
+    {
+      "id": "m08-03",
+      "promptText": "In the **Law of Sines** (demonstrated by Ptolemy of Alexandria c. 150 A.D.), what does the common ratio $\\frac{a}{\\sin A} = \\frac{b}{\\sin B} = \\frac{c}{\\sin C}$ equal geometrically?",
+      "choiceA": "2R (the diameter of the circumscribing circle)",
+      "choiceB": "R (the circumradius)",
+      "choiceC": "r (the inradius)",
+      "choiceD": "The perimeter of the triangle",
+      "correctChoice": "A",
+      "explanation": "The extended Law of Sines states that $\\frac{a}{\\sin A} = \\frac{b}{\\sin B} = \\frac{c}{\\sin C} = 2R$, where $R$ is the radius of the triangle's circumscribed circle.",
+      "archetype": "conceptual"
+    },
+    {
+      "id": "m08-04",
+      "promptText": "In solving an oblique triangle with two given sides $a, b$ and acute non-included angle $A$ (the SSA Ambiguous Case), under what condition will **exactly two distinct triangles** exist?",
+      "choiceA": "b sin A < a < b",
+      "choiceB": "a < b sin A",
+      "choiceC": "a = b sin A",
+      "choiceD": "a ≥ b",
+      "correctChoice": "A",
+      "explanation": "When the side opposite angle $A$ is strictly longer than the perpendicular altitude ($a > h = b\\sin A$) but shorter than the adjacent side ($a < b$), the side can swing inward or outward, creating two valid triangles.",
+      "archetype": "conceptual"
+    },
+    {
+      "id": "m08-05",
+      "promptText": "What is the **Euler Exponential Form** of $\\sin x$?",
+      "choiceA": "(e^(ix) - e^(-ix)) / (2i)",
+      "choiceB": "(e^(ix) + e^(-ix)) / 2",
+      "choiceC": "(e^(ix) - e^(-ix)) / 2",
+      "choiceD": "(e^(ix) + e^(-ix)) / (2i)",
+      "correctChoice": "A",
+      "explanation": "From Euler's formula $e^{ix} = \\cos x + i\\sin x$ and $e^{-ix} = \\cos x - i\\sin x$, subtracting yields $\\sin x = \\frac{e^{ix} - e^{-ix}}{2i}$.",
+      "archetype": "conceptual"
+    },
+    {
+      "id": "m08-06",
+      "promptText": "Who historically demonstrated the **Law of Cosines** ($a^2 = b^2 + c^2 - 2bc\\cos A$) in modern algebraic notation?",
+      "choiceA": "François Viète (1540–1603)",
+      "choiceB": "Ptolemy of Alexandria",
+      "choiceC": "Pythagoras of Samos",
+      "choiceD": "John Napier",
+      "correctChoice": "A",
+      "explanation": "French mathematician François Viète first presented the Law of Cosines in modern algebraic formulation.",
+      "archetype": "conceptual"
+    },
+    {
+      "id": "m08-07",
+      "promptText": "Convert **1,600 angular mils** into degrees.",
+      "choiceA": "90°",
+      "choiceB": "45°",
+      "choiceC": "180°",
+      "choiceD": "120°",
+      "correctChoice": "A",
+      "explanation": "$1,600\\text{ mils} \\times \\left(\\frac{360^\\circ}{6,400\\text{ mils}}\\right) = \\frac{1,600}{6,400} \\times 360^\\circ = \\frac{1}{4} \\times 360^\\circ = 90^\\circ$.",
+      "archetype": "numerical"
+    },
+    {
+      "id": "m08-08",
+      "promptText": "If $\\cos\\theta = \\frac{4}{5}$ and $\\theta$ is an acute angle in Quadrant I, find the value of **$\\cos 2\\theta$**.",
+      "choiceA": "7/25",
+      "choiceB": "24/25",
+      "choiceC": "1/25",
+      "choiceD": "16/25",
+      "correctChoice": "A",
+      "explanation": "Double angle formula: $\\cos 2\\theta = 2\\cos^2\\theta - 1 = 2\\left(\\frac{4}{5}\\right)^2 - 1 = 2\\left(\\frac{16}{25}\\right) - 1 = \\frac{32}{25} - 1 = \\frac{7}{25}$.",
+      "archetype": "numerical"
+    },
+    {
+      "id": "m08-09",
+      "promptText": "In triangle ABC, side $a = 5\\text{ cm}$, side $b = 8\\text{ cm}$, and the included angle $C = 60^\\circ$. Find the length of side $c$.",
+      "choiceA": "7.0 cm",
+      "choiceB": "6.5 cm",
+      "choiceC": "8.2 cm",
+      "choiceD": "9.0 cm",
+      "correctChoice": "A",
+      "explanation": "Law of Cosines: $c^2 = a^2 + b^2 - 2ab\\cos C = 5^2 + 8^2 - 2(5)(8)\\cos 60^\\circ = 25 + 64 - 80(0.5) = 89 - 40 = 49 \\implies c = \\sqrt{49} = 7\\text{ cm}$.",
+      "archetype": "numerical"
+    },
+    {
+      "id": "m08-10",
+      "promptText": "Evaluate the exact value of **$\\sin 75^\\circ$**.",
+      "choiceA": "(√6 + √2) / 4",
+      "choiceB": "(√6 - √2) / 4",
+      "choiceC": "√3 / 2",
+      "choiceD": "(√3 + 1) / 2",
+      "correctChoice": "A",
+      "explanation": "$\\sin(45^\\circ + 30^\\circ) = \\sin 45^\\circ\\cos 30^\\circ + \\cos 45^\\circ\\sin 30^\\circ = \\frac{\\sqrt{2}}{2}\\frac{\\sqrt{3}}{2} + \\frac{\\sqrt{2}}{2}\\frac{1}{2} = \\frac{\\sqrt{6} + \\sqrt{2}}{4}$.",
+      "archetype": "numerical"
+    },
+    {
+      "id": "m08-11",
+      "promptText": "Find the **circumradius ($R$)** of a triangle with side $a = 10\\text{ cm}$ and opposite angle $A = 45^\\circ$.",
+      "choiceA": "7.07 cm (5√2)",
+      "choiceB": "10.00 cm",
+      "choiceC": "14.14 cm",
+      "choiceD": "5.00 cm",
+      "correctChoice": "A",
+      "explanation": "$2R = \\frac{a}{\\sin A} = \\frac{10}{\\sin 45^\\circ} = \\frac{10}{1/\\sqrt{2}} = 10\\sqrt{2} \\implies R = 5\\sqrt{2} \\approx 7.071\\text{ cm}$.",
+      "archetype": "numerical"
+    },
+    {
+      "id": "m08-12",
+      "promptText": "Simplify the trigonometric expression: **$\\frac{1 - \\cos 2\\theta}{\\sin 2\\theta}$**.",
+      "choiceA": "tan θ",
+      "choiceB": "cot θ",
+      "choiceC": "sec θ",
+      "choiceD": "cos θ",
+      "correctChoice": "A",
+      "explanation": "$\\frac{1 - \\cos 2\\theta}{\\sin 2\\theta} = \\frac{2\\sin^2\\theta}{2\\sin\\theta\\cos\\theta} = \\frac{\\sin\\theta}{\\cos\\theta} = \\tan\\theta$.",
+      "archetype": "standard"
+    },
+    {
+      "id": "m08-13",
+      "promptText": "If $\\tan A = \\frac{1}{2}$ and $\\tan B = \\frac{1}{3}$, find the value of **$\\tan(A + B)$**.",
+      "choiceA": "1",
+      "choiceB": "5/6",
+      "choiceC": "1/5",
+      "choiceD": "2/3",
+      "correctChoice": "A",
+      "explanation": "$\\tan(A + B) = \\frac{\\tan A + \\tan B}{1 - \\tan A\\tan B} = \\frac{1/2 + 1/3}{1 - (1/2)(1/3)} = \\frac{5/6}{1 - 1/6} = \\frac{5/6}{5/6} = 1$ (meaning $A + B = 45^\\circ$).",
+      "archetype": "numerical"
+    },
+    {
+      "id": "m08-14",
+      "promptText": "A surveyor measures the angle of elevation to the top of a communication tower as $30^\\circ$. After walking $100\\text{ meters}$ closer on level ground, the angle of elevation is $60^\\circ$. What is the height of the tower?",
+      "choiceA": "86.60 meters (50√3)",
+      "choiceB": "100.00 meters",
+      "choiceC": "75.00 meters",
+      "choiceD": "57.74 meters",
+      "correctChoice": "A",
+      "explanation": "Let height be $h$. Distance from second point: $x = h/\\tan 60^\\circ = h/\\sqrt{3}$. From first point: $x + 100 = h/\\tan 30^\\circ = h\\sqrt{3}$. Subtracting: $h\\sqrt{3} - h/\\sqrt{3} = 100 \\implies h\\left(\\frac{2}{\\sqrt{3}}\\right) = 100 \\implies h = 50\\sqrt{3} \\approx 86.60\\text{ meters}$.",
+      "archetype": "applied"
+    },
+    {
+      "id": "m08-15",
+      "promptText": "In triangle ABC, side $a = 15\\text{ cm}$, side $b = 20\\text{ cm}$, and angle $A = 30^\\circ$. How many valid triangles can be constructed?",
+      "choiceA": "2 distinct triangles",
+      "choiceB": "1 right triangle",
+      "choiceC": "0 triangles",
+      "choiceD": "Infinitely many triangles",
+      "correctChoice": "A",
+      "explanation": "Altitude $h = b\\sin A = 20\\sin 30^\\circ = 10\\text{ cm}$. Since $h < a < b$ ($10 < 15 < 20$), exactly 2 distinct triangles exist.",
+      "archetype": "applied"
+    },
+    {
+      "id": "m08-16",
+      "promptText": "Two forces $F_1 = 30\\text{ N}$ and $F_2 = 40\\text{ N}$ act on a pin with an included angle of $90^\\circ$ between them. What is the magnitude of their resultant force vector?",
+      "choiceA": "50 N",
+      "choiceB": "70 N",
+      "choiceC": "10 N",
+      "choiceD": "60 N",
+      "correctChoice": "A",
+      "explanation": "$R = \\sqrt{F_1^2 + F_2^2} = \\sqrt{30^2 + 40^2} = \\sqrt{900 + 1600} = \\sqrt{2500} = 50\\text{ N}$ (standard 3-4-5 Egyptian triangle).",
+      "archetype": "applied"
+    },
+    {
+      "id": "m08-17",
+      "promptText": "In AC circuits, a load draws current with a voltage-current phase difference angle of $\\theta = 36.87^\\circ$. What is the **power factor** ($\text{pf} = \\cos\\theta$) of the load?",
+      "choiceA": "0.80",
+      "choiceB": "0.60",
+      "choiceC": "0.75",
+      "choiceD": "0.85",
+      "correctChoice": "A",
+      "explanation": "$\\text{pf} = \\cos(36.87^\\circ) = 0.80$.",
+      "archetype": "applied"
+    },
+    {
+      "id": "m08-18",
+      "promptText": "In triangle ABC with sides $a = 7, b = 8, c = 9$, find the cosine of the largest angle (angle $C$).",
+      "choiceA": "2/7 (0.2857)",
+      "choiceB": "1/2",
+      "choiceC": "3/8",
+      "choiceD": "5/14",
+      "correctChoice": "A",
+      "explanation": "Law of Cosines: $\\cos C = \\frac{a^2 + b^2 - c^2}{2ab} = \\frac{7^2 + 8^2 - 9^2}{2(7)(8)} = \\frac{49 + 64 - 81}{112} = \\frac{32}{112} = \\frac{2}{7} \\approx 0.2857$.",
+      "archetype": "applied"
+    },
+    {
+      "id": "m08-19",
+      "promptText": "What is the common algebraic sign trap when expanding the **difference of angles for cosine**: $\\cos(\\alpha - \\beta)$?",
+      "choiceA": "Writing a minus sign in the expansion: writing $\\cos\\alpha\\cos\\beta - \\sin\\alpha\\sin\\beta$ instead of $\\cos\\alpha\\cos\\beta + \\sin\\alpha\\sin\\beta$.",
+      "choiceB": "Using sines instead of cosines.",
+      "choiceC": "Dividing by 2.",
+      "choiceD": "Squaring the terms.",
+      "correctChoice": "A",
+      "explanation": "Cosine angle expansions flip signs: $\\cos(\\alpha - \\beta) = \\cos\\alpha\\cos\\beta + \\sin\\alpha\\sin\\beta$. Writing a minus sign is the most frequent trigonometric error.",
+      "archetype": "trap"
+    },
+    {
+      "id": "m08-20",
+      "promptText": "What is the common error when evaluating the ambiguous SSA case with $a < b\\sin A$?",
+      "choiceA": "Forcing the calculator to compute an angle via arcsin, triggering a Math Error (domain out of range $[-1, 1]$), failing to recognize that 0 triangles exist.",
+      "choiceB": "Assuming 2 triangles exist.",
+      "choiceC": "Dividing by 2.",
+      "choiceD": "Using radians.",
+      "correctChoice": "A",
+      "explanation": "When $a < b\\sin A$, $\\sin B = \\frac{b\\sin A}{a} > 1$. Attempting $\\arcsin(>1)$ produces a Math ERROR on calculators because no real triangle can close.",
+      "archetype": "trap"
+    },
+    {
+      "id": "m08-21",
+      "promptText": "Using the 2-second altitude rule, if $b = 10$ and $A = 30^\\circ$, what is the minimum length side $a$ must have to form at least one valid triangle?",
+      "choiceA": "5.0 cm (h = b sin A = 10 sin 30°)",
+      "choiceB": "10.0 cm",
+      "choiceC": "8.66 cm",
+      "choiceD": "7.07 cm",
+      "correctChoice": "A",
+      "explanation": "Minimum altitude $h = b\\sin A = 10(0.5) = 5.0\\text{ cm}$ in 2 seconds.",
+      "archetype": "shortcut"
+    },
+    {
+      "id": "m08-22",
+      "promptText": "Using Pol/Rec conversion on your calculator, what is the hypotenuse $r$ for legs $x = 7$ and $y = 24$ in 2 seconds?",
+      "choiceA": "25",
+      "choiceB": "26",
+      "choiceC": "31",
+      "choiceD": "23",
+      "correctChoice": "A",
+      "explanation": "Standard 7-24-25 Pythagorean triple: $\\sqrt{7^2 + 24^2} = \\sqrt{49 + 576} = \\sqrt{625} = 25$ in 2 seconds.",
+      "archetype": "shortcut"
+    }
+  ]
+}

@@ -1,0 +1,264 @@
+{
+  "id": "math-06",
+  "code": "MATH 06",
+  "domain": "MATH",
+  "topicCode": "MATH-06",
+  "topicTitle": "Advanced Counting & Probability",
+  "subtopicTitle": "Probability Laws, Conditional Probability, Bayes' Theorem & Binomial Distribution",
+  "order": 6,
+  "pairedQuizSetId": "math-06-mastery",
+  "toc": [
+    { "id": "sec-prereq-bridges", "title": "1. Introduction & Cross-Subject Bridges", "level": 2 },
+    { "id": "sec-theory", "title": "2. Lesson Proper", "level": 2 },
+    { "id": "sec-formulas", "title": "3. Compilation of Formulas", "level": 2 },
+    { "id": "sec-visualizer", "title": "4. Interactive Visualizer: Binomial Probability Mass Distribution", "level": 2 },
+    { "id": "sec-terminology", "title": "5. Terms and Definitions", "level": 2 },
+    { "id": "sec-dual-method", "title": "6. Sample Problems and Solutions", "level": 2 },
+    { "id": "sec-calculator", "title": "7. Calculator Techniques (Karce & Canon)", "level": 2 },
+    { "id": "sec-concept-checks", "title": "8. In-Line Concept Checks", "level": 2 },
+    { "id": "sec-mastery-challenge", "title": "9. Paired Mastery Challenge", "level": 2 }
+  ],
+  "prerequisiteBridge": {
+    "priorModuleId": "math-05",
+    "text": "Building upon combinatorial selections in MATH 05, this module establishes probability laws, conditional dependencies, Bayes' theorem, mathematical expectations, and binomial probability distributions essential for signal noise and reliability."
+  },
+  "crossSubjectBridges": [
+    {
+      "targetDomain": "EST",
+      "targetTopicCode": "EST-01",
+      "badgeText": "Bit Error Rate & Channel Noise",
+      "description": "Bit Error Rate ($BER = Q(\\sqrt{2E_b/N_0})$) models Gaussian white noise crossing binary decision thresholds using classical conditional error probabilities."
+    },
+    {
+      "targetDomain": "GEAS",
+      "targetTopicCode": "GEAS-15",
+      "badgeText": "Mean Time Between Failures (MTBF)",
+      "description": "Industrial reliability engineering uses Poisson and exponential probability densities to evaluate equipment failure rates and expected component lifespans."
+    },
+    {
+      "targetDomain": "ELECS",
+      "targetTopicCode": "ELEC-05",
+      "badgeText": "Thermal Johnson-Nyquist Noise",
+      "description": "Thermal electron velocity fluctuations follow Maxwell-Boltzmann probability distributions, generating random noise power $P_n = kTB$ across resistive circuits."
+    }
+  ],
+  "formulas": [
+    {
+      "id": "f-0601-01",
+      "title": "Classical Probability & Complement Rule",
+      "formula": "$$P(E) = \\frac{n(E)}{n(S)}, \\qquad P(E') = 1 - P(E)$$",
+      "note": "0 ≤ P(E) ≤ 1. n(S) is total sample space; n(E) is favorable outcomes."
+    },
+    {
+      "id": "f-0601-02",
+      "title": "Addition Rule (Union of Events)",
+      "formula": "$$P(A \\cup B) = P(A) + P(B) - P(A \\cap B)$$",
+      "note": "For mutually exclusive events, P(A ∩ B) = 0 ⟹ P(A ∪ B) = P(A) + P(B)."
+    },
+    {
+      "id": "f-0601-03",
+      "title": "Conditional Probability",
+      "formula": "$$P(A|B) = \\frac{P(A \\cap B)}{P(B)} \\quad (P(B) > 0)$$",
+      "note": "Probability of event A occurring given that event B has already occurred."
+    },
+    {
+      "id": "f-0601-04",
+      "title": "Multiplication Rule & Independent Events",
+      "formula": "$$P(A \\cap B) = P(A) \\cdot P(B|A) \\iff P(A \\cap B) = P(A) \\cdot P(B) \\quad (\\text{if independent})$$",
+      "note": "Events are independent if occurrence of one has zero effect on the other."
+    },
+    {
+      "id": "f-0601-05",
+      "title": "Bayes' Theorem",
+      "formula": "$$P(A_i|B) = \\frac{P(A_i) P(B|A_i)}{\\sum_{k=1}^n P(A_k) P(B|A_k)}$$",
+      "note": "Updates prior probability P(Aᵢ) into posterior probability P(Aᵢ|B) given new evidence B."
+    },
+    {
+      "id": "f-0601-06",
+      "title": "Binomial Probability Distribution (Bernoulli Trials)",
+      "formula": "$$P(X = k) = \\binom{n}{k} p^k (1 - p)^{n - k} \\qquad (k = 0, 1, 2, \\dots, n)$$",
+      "note": "n = number of independent trials, p = probability of success in a single trial, q = 1 - p."
+    },
+    {
+      "id": "f-0601-07",
+      "title": "Expected Value & Standard Deviation of Binomial Distribution",
+      "formula": "$$\\mu = E(X) = n p, \\qquad \\sigma = \\sqrt{n p q}$$",
+      "note": "μ is the long-term expected mean; σ is the dispersion."
+    },
+    {
+      "id": "f-0601-08",
+      "title": "Odds in Favor vs Odds Against",
+      "formula": "$$\\text{Odds in Favor} = \\frac{P(E)}{1 - P(E)} = \\frac{a}{b} \\iff P(E) = \\frac{a}{a + b}$$",
+      "note": "Odds against an event is the reciprocal b/a."
+    }
+  ],
+  "terms": [
+    {
+      "term": "Sample Space",
+      "symbol": "$S$",
+      "unit": "Set",
+      "definition": "The set of all possible elementary outcomes of a random experiment.",
+      "keywordTrigger": "set of all possible outcomes of an experiment"
+    },
+    {
+      "term": "Mutually Exclusive Events",
+      "symbol": "$A \\cap B = \\emptyset$",
+      "unit": "Condition",
+      "definition": "Events that cannot happen at the same time ($P(A \\cap B) = 0$).",
+      "keywordTrigger": "events that cannot occur simultaneously / disjoint"
+    },
+    {
+      "term": "Independent Events",
+      "symbol": "$P(A|B) = P(A)$",
+      "unit": "Condition",
+      "definition": "Events where the occurrence of one event has absolutely no impact on the probability of the other.",
+      "keywordTrigger": "occurrence of one does not affect probability of other"
+    },
+    {
+      "term": "Bernoulli Trial",
+      "symbol": "Trial",
+      "unit": "Distribution",
+      "definition": "A random experiment with exactly two mutually exclusive outcomes: 'Success' (probability $p$) and 'Failure' (probability $q = 1 - p$).",
+      "keywordTrigger": "experiment with exactly two outcomes success or failure"
+    }
+  ],
+  "visualizer": {
+    "archetype": "parameter_sweep",
+    "title": "Interactive Binomial Distribution Visualizer",
+    "description": "Adjust trial count n and success probability p to observe how binomial probability mass histograms skew and converge toward bell-shaped Gaussian distributions.",
+    "config": {
+      "canvasWidth": 640,
+      "canvasHeight": 320,
+      "controls": [
+        {
+          "id": "trialCount",
+          "label": "Number of Trials (n)",
+          "min": 2,
+          "max": 20,
+          "step": 1,
+          "defaultValue": 8
+        },
+        {
+          "id": "successProb",
+          "label": "Success Probability (p × 100)",
+          "min": 10,
+          "max": 90,
+          "step": 5,
+          "defaultValue": 50
+        }
+      ]
+    }
+  },
+  "theory": {
+    "mentalAnchor": "For **OR** statements, **add** probabilities (subtract the overlap for non-disjoint: $P(A) + P(B) - P(A \\cap B)$). For **AND** statements of independent events, **multiply** probabilities ($P(A) \\times P(B)$). In Binomial trials, multiply combinations by success and failure powers: $\\binom{n}{k} p^k q^{n-k}$.",
+    "contentMarkdown": "### 1. Probability Fundamentals & Addition Laws\n\nThe probability of an event $E$ in a finite sample space $S$ is:\n\n$$P(E) = \\frac{n(E)}{n(S)} \\quad (0 \\le P(E) \\le 1)$$\n\n```diagram\n{\n  \"caption\": \"Figure 1: Venn diagram of two overlapping events A and B illustrating P(A ∪ B) = P(A) + P(B) - P(A ∩ B)\",\n  \"xRange\": [-4, 8],\n  \"yRange\": [-4, 4],\n  \"elements\": [\n    { \"type\": \"grid\" },\n    { \"type\": \"axes\" },\n    { \"type\": \"polygon\", \"points\": [[-3, -3], [7, -3], [7, 3], [-3, 3]], \"color\": \"#94a3b8\" },\n    { \"type\": \"arc\", \"center\": [0.5, 0], \"radius\": 40, \"startAngle\": 0, \"endAngle\": 360, \"color\": \"#38bdf8\", \"label\": \"Event A\" },\n    { \"type\": \"arc\", \"center\": [3.5, 0], \"radius\": 40, \"startAngle\": 0, \"endAngle\": 360, \"color\": \"#f43f5e\", \"label\": \"Event B\" },\n    { \"type\": \"text\", \"at\": [2, 0], \"text\": \"A ∩ B\", \"color\": \"#fbbf24\" }\n  ]\n}\n```\n\n#### Specific Cases for the Addition Rule:\n- **Mutually Exclusive (Disjoint) Events**: $P(A \\cap B) = 0 \\implies P(A \\cup B) = P(A) + P(B)$.\n- **Non-Mutually Exclusive (Overlapping) Events**: $P(A \\cup B) = P(A) + P(B) - P(A \\cap B)$.\n- **Complementary Events**: $P(E') = 1 - P(E)$.\n\n---\n\n### 2. Conditional Probability & Bayes' Theorem\n\nThe probability that event $A$ occurs given that event $B$ has already occurred:\n\n$$P(A|B) = \\frac{P(A \\cap B)}{P(B)} \\quad (P(B) > 0)$$\n\n- **Independent Events**: If $P(A|B) = P(A)$, then $P(A \\cap B) = P(A) \\cdot P(B)$.\n- **Bayes' Theorem (Inverse Probability)**:\n  $$P(A_i|B) = \\frac{P(A_i) P(B|A_i)}{\\sum P(A_k) P(B|A_k)}$$\n\n---\n\n### 3. Binomial Probability Distribution (Bernoulli Trials)\n\nIn a series of $n$ independent identical trials where each trial has probability of success $p$ and probability of failure $q = 1 - p$, the probability of getting exactly $k$ successes is:\n\n$$P(X = k) = \\binom{n}{k} p^k q^{n - k} = \\frac{n!}{k!(n - k)!} p^k (1 - p)^{n - k}$$\n\n- **Expected Value (Mean)**: $\\mu = E(X) = n p$\n- **Variance & Standard Deviation**: $\\sigma^2 = n p q \\implies \\sigma = \\sqrt{n p q}$"
+  },
+  "examples": [
+    {
+      "problemStatement": "A fair pair of standard 6-sided dice is rolled. What is the probability of rolling a sum of 7 or a sum of 11?",
+      "formalSolutionMarkdown": "#### Step 1: Determine total sample space\nTotal outcomes $= 6 \\times 6 = 36$.\n\n#### Step 2: List favorable outcomes for sum = 7 and sum = 11\n- Sum = 7: (1,6), (2,5), (3,4), (4,3), (5,2), (6,1) $\\implies 6$ outcomes.\n- Sum = 11: (5,6), (6,5) $\\implies 2$ outcomes.\n\n#### Step 3: Apply addition rule for mutually exclusive events\n$$P(7 \\cup 11) = \\frac{6}{36} + \\frac{2}{36} = \\frac{8}{36} = \\frac{2}{9} \\approx 0.2222$$",
+      "shortcutSolutionMarkdown": "#### ⚡ 2-Second Dice Ratio\nTotal favorable outcomes $= 6 + 2 = 8$. $P = 8/36 = \\mathbf{2/9}$.",
+      "formalTimeSeconds": 30,
+      "shortcutTimeSeconds": 2
+    },
+    {
+      "problemStatement": "A biased coin with P(Heads) = 0.6 is tossed 5 times. Find the probability of getting exactly 3 heads.",
+      "formalSolutionMarkdown": "#### Step 1: Identify Bernoulli parameters\n- $n = 5, k = 3$\n- $p = 0.6, q = 1 - 0.6 = 0.4$\n\n#### Step 2: Apply Binomial formula\n$$P(X = 3) = \\binom{5}{3} (0.6)^3 (0.4)^{5 - 3}$$\n$$\\binom{5}{3} = 10$$\n$$(0.6)^3 = 0.216$$\n$$(0.4)^2 = 0.16$$\n$$P(X = 3) = 10 \\times 0.216 \\times 0.16 = 0.3456$$",
+      "shortcutSolutionMarkdown": "#### ⚡ 4-Second Calculator Entry\n`5 nCr 3 × 0.6³ × 0.4²` = $\\mathbf{0.3456}$ ($34.56\\%$).",
+      "formalTimeSeconds": 45,
+      "shortcutTimeSeconds": 4
+    }
+  ],
+  "calculatorGuides": {
+    "karce": {
+      "techniqueTitle": "Binomial Probability Term Calculation",
+      "problemType": "Evaluating nCr * p^k * q^(n-k)",
+      "sampleProblem": "Find probability of 3 heads in 5 flips with p = 0.6.",
+      "mode": "COMP Mode (MODE 1)",
+      "keystrokes": [
+        "5",
+        "SHIFT",
+        "nCr",
+        "3",
+        "×",
+        "0",
+        ".",
+        "6",
+        "^",
+        "3",
+        "×",
+        "0",
+        ".",
+        "4",
+        "^",
+        "2",
+        "="
+      ],
+      "notes": "Directly returns 0.3456 (34.56%)."
+    },
+    "canon": {
+      "techniqueTitle": "Dice Sum Multi-Set Probability",
+      "problemType": "Dice sums and combinations",
+      "sampleProblem": "Evaluate 8 / 36 as simplified fraction.",
+      "mode": "COMP Mode (MODE 1)",
+      "keystrokes": [
+        "8",
+        "a b/c",
+        "3",
+        "6",
+        "="
+      ],
+      "notes": "Directly outputs 2/9."
+    }
+  },
+  "conceptChecks": [
+    {
+      "id": "cc-math06-01",
+      "question": "If two events A and B are mutually exclusive, what is P(A ∩ B)?",
+      "options": [
+        "0",
+        "1",
+        "P(A) × P(B)",
+        "P(A) + P(B)"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Mutually exclusive events cannot occur at the same time; therefore, the probability of their intersection is strictly 0."
+    },
+    {
+      "id": "cc-math06-02",
+      "question": "A single card is drawn from a standard 52-card deck. What is the probability that it is a King or a Heart?",
+      "options": [
+        "4/13 (16/52)",
+        "17/52",
+        "1/52",
+        "13/52"
+      ],
+      "correctAnswer": 0,
+      "explanation": "P(King) = 4/52, P(Heart) = 13/52, P(King ∩ Heart) = 1/52. P(King ∪ Heart) = 4/52 + 13/52 - 1/52 = 16/52 = 4/13."
+    },
+    {
+      "id": "cc-math06-03",
+      "question": "What is the expected value (mean) of the number of heads obtained in 100 fair coin tosses?",
+      "options": [
+        "50",
+        "25",
+        "100",
+        "75"
+      ],
+      "correctAnswer": 0,
+      "explanation": "For a binomial distribution, μ = n × p = 100 × 0.5 = 50."
+    },
+    {
+      "id": "cc-math06-04",
+      "question": "If the odds in favor of an event occurring are 3 : 5, what is the probability of the event?",
+      "options": [
+        "3/8",
+        "3/5",
+        "5/8",
+        "5/3"
+      ],
+      "correctAnswer": 0,
+      "explanation": "If odds in favor are a : b, P(E) = a / (a + b) = 3 / (3 + 5) = 3/8."
+    }
+  ]
+}

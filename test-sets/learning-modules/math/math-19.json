@@ -1,0 +1,258 @@
+{
+  "id": "math-19",
+  "code": "MATH 19",
+  "domain": "MATH",
+  "topicCode": "MATH-19",
+  "topicTitle": "Differential Equations",
+  "subtopicTitle": "Exponential Growth, Radioactive Decay, Newton's Cooling & Orthogonal Trajectories",
+  "order": 19,
+  "pairedQuizSetId": "math-19-mastery",
+  "toc": [
+    { "id": "sec-prereq-bridges", "title": "1. Introduction & Cross-Subject Bridges", "level": 2 },
+    { "id": "sec-theory", "title": "2. Lesson Proper", "level": 2 },
+    { "id": "sec-formulas", "title": "3. Compilation of Formulas", "level": 2 },
+    { "id": "sec-visualizer", "title": "4. Interactive Visualizer: Thermal Cooling & Radioactive Decay Sandbox", "level": 2 },
+    { "id": "sec-terminology", "title": "5. Terms and Definitions", "level": 2 },
+    { "id": "sec-dual-method", "title": "6. Sample Problems and Solutions", "level": 2 },
+    { "id": "sec-calculator", "title": "7. Calculator Techniques (Karce & Canon)", "level": 2 },
+    { "id": "sec-concept-checks", "title": "8. In-Line Concept Checks", "level": 2 },
+    { "id": "sec-mastery-challenge", "title": "9. Paired Mastery Challenge", "level": 2 }
+  ],
+  "prerequisiteBridge": {
+    "priorModuleId": "math-18",
+    "text": "Building upon 1st-order analytical solution methods from MATH 18, this module models real-world rate systems: radioactive decay, population kinetics, Newton's Law of Cooling, brine mixture tanks, and orthogonal family trajectories."
+  },
+  "crossSubjectBridges": [
+    {
+      "targetDomain": "ELECS",
+      "targetTopicCode": "ELEC-06",
+      "badgeText": "Semiconductor Heatsink Thermal Cooling",
+      "description": "Power transistor junction temperatures follow Newton's Law of Cooling ($T_j(t) - T_a = P_D R_{\\theta ja} (1 - e^{-t/\\tau_{th}})$), modeling thermal resistance."
+    },
+    {
+      "targetDomain": "EST",
+      "targetTopicCode": "EST-01",
+      "badgeText": "Optical Fiber Signal Attenuation",
+      "description": "Light power dissipation along fiber optic cables follows the exponential Beer-Lambert decay law ($P(z) = P_0 e^{-\\alpha z}$), identical to radioactive decay models."
+    },
+    {
+      "targetDomain": "GEAS",
+      "targetTopicCode": "GEAS-04",
+      "badgeText": "Chemical Reaction Kinetics",
+      "description": "First-order chemical reaction rates and industrial batch reactors follow mass-balance differential equations ($\\frac{dC}{dt} = -k C$)."
+    }
+  ],
+  "formulas": [
+    {
+      "id": "f-1901-01",
+      "title": "Exponential Growth & Radioactive Decay Law",
+      "formula": "$$\\frac{dQ}{dt} = k Q \\implies Q(t) = Q_0 e^{kt}$$",
+      "note": "k > 0 represents exponential growth; k < 0 represents radioactive decay."
+    },
+    {
+      "id": "f-1901-02",
+      "title": "Half-Life and Doubling Time",
+      "formula": "$$t_{1/2} = \\frac{\\ln 2}{|k|} = \\frac{0.69315}{|k|}, \\qquad t_{\\text{double}} = \\frac{\\ln 2}{k}$$",
+      "note": "After n half-lives, the remaining fraction is strictly (1/2)^n."
+    },
+    {
+      "id": "f-1901-03",
+      "title": "Newton's Law of Cooling / Heating",
+      "formula": "$$\\frac{dT}{dt} = -k(T - T_m) \\implies T(t) = T_m + (T_0 - T_m) e^{-kt}$$",
+      "note": "T_m is ambient surrounding medium temperature; T₀ is initial body temperature."
+    },
+    {
+      "id": "f-1901-04",
+      "title": "Continuous Mixture Tank Mass Balance",
+      "formula": "$$\\frac{dQ}{dt} = \\text{Rate In} - \\text{Rate Out} = (C_{\\text{in}} R_{\\text{in}}) - \\left(\\frac{Q(t)}{V(t)} R_{\\text{out}}\\right)$$",
+      "note": "If R_in = R_out, tank volume V(t) remains constant V₀."
+    },
+    {
+      "id": "f-1901-05",
+      "title": "Orthogonal Trajectories Condition",
+      "formula": "$$\\left(\\frac{dy}{dx}\\right)_{\\text{orthogonal}} = -\\frac{1}{\\left(\\frac{dy}{dx}\\right)_{\\text{given}}}$$",
+      "note": "Eliminate the arbitrary parameter C from the original family before taking the negative reciprocal slope."
+    },
+    {
+      "id": "f-1901-06",
+      "title": "Continuous Compounding Growth",
+      "formula": "$$A(t) = P e^{rt}$$",
+      "note": "P is principal investment; r is nominal annual continuous interest rate."
+    }
+  ],
+  "terms": [
+    {
+      "term": "Half-Life",
+      "symbol": "$t_{1/2}$",
+      "unit": "Time (Seconds/Years)",
+      "definition": "The time required for a decaying quantity to decrease to exactly half of its initial value ($t_{1/2} = \\frac{\\ln 2}{|k|}$).",
+      "keywordTrigger": "time required for quantity to reduce by half"
+    },
+    {
+      "term": "Newton's Law of Cooling",
+      "symbol": "$\\frac{dT}{dt} = -k(T - T_m)$",
+      "unit": "Thermodynamics",
+      "definition": "A physical law stating that the rate of heat loss of a body is directly proportional to the difference in temperatures between the body and its surroundings.",
+      "keywordTrigger": "rate of cooling proportional to temperature difference"
+    },
+    {
+      "term": "Orthogonal Trajectories",
+      "symbol": "Orthogonal Family",
+      "unit": "Geometry",
+      "definition": "A family of curves that intersects every member of another family of curves at a strict 90° right angle.",
+      "keywordTrigger": "curves that intersect another family at 90 degrees / perpendicular"
+    },
+    {
+      "term": "Equipotential & Streamline Curves",
+      "symbol": "$\\Phi \\perp \\Psi$",
+      "unit": "Physics",
+      "definition": "Physical orthogonal trajectories where electric field lines intersect equipotential voltage surfaces at 90°.",
+      "keywordTrigger": "field lines perpendicular to equipotentials"
+    }
+  ],
+  "visualizer": {
+    "archetype": "parameter_sweep",
+    "title": "Interactive Cooling & Radioactive Decay Sandbox",
+    "description": "Adjust ambient temperature T_m and cooling constant k to observe exponential thermal decay curves and determine half-life timestamps.",
+    "config": {
+      "canvasWidth": 640,
+      "canvasHeight": 320,
+      "controls": [
+        {
+          "id": "ambientTemp",
+          "label": "Ambient Temp Tm (°C)",
+          "min": 10,
+          "max": 40,
+          "step": 5,
+          "defaultValue": 20
+        },
+        {
+          "id": "coolRate",
+          "label": "Cooling Constant (k × 100)",
+          "min": 1,
+          "max": 10,
+          "step": 1,
+          "defaultValue": 4
+        }
+      ]
+    }
+  },
+  "theory": {
+    "mentalAnchor": "For **Newton's Cooling**, the temperature difference $(T - T_m)$ decays exponentially: $\\frac{T(t) - T_m}{T_0 - T_m} = e^{-kt}$. Use the **constant ratio shortcut**: in equal time intervals, $(T - T_m)$ drops by the same multiplicative factor! For **Orthogonal Trajectories**, find $y'$, eliminate $C$, then replace $y'$ with $-1/y'$ and solve.",
+    "contentMarkdown": "### 1. Exponential Kinetics & Newton's Cooling\n\nRate models quantify decay, growth, and thermodynamic heat transfer:\n\n```diagram\n{\n  \"caption\": \"Figure 1: Exponential cooling curve T(t) asymptotically approaching ambient room temperature Tm = 20°C\",\n  \"xRange\": [-2, 35],\n  \"yRange\": [0, 110],\n  \"elements\": [\n    { \"type\": \"grid\" },\n    { \"type\": \"axes\" },\n    { \"type\": \"line\", \"from\": [0, 20], \"to\": [30, 20], \"color\": \"#94a3b8\", \"dashed\": true },\n    { \"type\": \"point\", \"at\": [0, 100], \"label\": \"T0 = 100°C\", \"color\": \"#f43f5e\" },\n    { \"type\": \"point\", \"at\": [10, 60], \"label\": \"t = 10 min (60°C)\", \"color\": \"#fbbf24\" },\n    { \"type\": \"point\", \"at\": [30, 30], \"label\": \"t = 30 min (30°C)\", \"color\": \"#38bdf8\" },\n    { \"type\": \"text\", \"at\": [15, 25], \"text\": \"Ambient Tm = 20°C\", \"color\": \"#94a3b8\" }\n  ]\n}\n```\n\n#### Master Proportional Ratios for Newton's Cooling:\n$$\\frac{T(t_2) - T_m}{T(t_1) - T_m} = \\left( \\frac{T(t_1) - T_m}{T_0 - T_m} \\right)^{t_2 / t_1}$$\n\n---\n\n### 2. Orthogonal Trajectories Blueprint\n\n1. Differentiate the given family equation $f(x, y, C) = 0$ with respect to $x$.\n2. Eliminate the arbitrary constant $C$ to obtain $\\frac{dy}{dx} = g(x, y)$.\n3. Replace $\\frac{dy}{dx}$ with $-\\frac{dx}{dy}$ (the negative reciprocal slope).\n4. Solve the resulting differential equation to find the orthogonal family."
+  },
+  "examples": [
+    {
+      "problemStatement": "A thermometer reading 100°C is placed in a room at 20°C. After 10 minutes, the thermometer reads 60°C. At what total time t will it read 30°C?",
+      "formalSolutionMarkdown": "#### Step 1: Apply Newton's Law of Cooling\n$$T(t) - T_m = (T_0 - T_m) e^{-kt}$$\n$$T_m = 20^\\circ\\text{C}, \\quad T_0 = 100^\\circ\\text{C} \\implies T_0 - T_m = 80^\\circ\\text{C}$$\n$$T(t) - 20 = 80 e^{-kt}$$\n\n#### Step 2: Use t = 10 min to find k\n$$60 - 20 = 80 e^{-10k} \\implies 40 = 80 e^{-10k} \\implies e^{-10k} = 0.5$$\n$$k = -\\frac{\\ln 0.5}{10} = \\frac{\\ln 2}{10} \\approx 0.069315\\text{ min}^{-1}$$\n\n#### Step 3: Find t when T = 30°C\n$$30 - 20 = 80 e^{-kt} \\implies 10 = 80 e^{-kt} \\implies e^{-kt} = \\frac{1}{8} = (0.5)^3$$\n$$-kt = 3(-10k) \\implies t = 30\\text{ minutes}$$",
+      "shortcutSolutionMarkdown": "#### ⚡ 2-Second Temperature Excess Ratio\n- Initial excess: $100 - 20 = 80^\\circ$.\n- After $10\\text{ min}$: $60 - 20 = 40^\\circ$ (halved in $10\\text{ min}$).\n- Target excess: $30 - 20 = 10^\\circ = 80 \\times (1/2)^3$.\n- Time $= 3 \\times 10 = \\mathbf{30\\text{ minutes}}$.",
+      "formalTimeSeconds": 45,
+      "shortcutTimeSeconds": 2
+    },
+    {
+      "problemStatement": "Find the orthogonal trajectories of the family of parabolas y = C x².",
+      "formalSolutionMarkdown": "#### Step 1: Differentiate the given family\n$$y = C x^2 \\implies y' = 2Cx$$\n\n#### Step 2: Eliminate C\nFrom $y = C x^2 \\implies C = \\frac{y}{x^2}$.\n$$y' = 2\\left(\\frac{y}{x^2}\\right)x = \\frac{2y}{x}$$\n\n#### Step 3: Substitute negative reciprocal slope\n$$\\frac{dy}{dx} = -\\frac{x}{2y}$$\n\n#### Step 4: Separate variables and integrate\n$$2y dy = -x dx \\implies 2\\int y dy = -\\int x dx$$\n$$y^2 = -\\frac{x^2}{2} + C_1 \\implies x^2 + 2y^2 = C$$",
+      "shortcutSolutionMarkdown": "#### ⚡ 3-Second Orthogonal Rule\nParabolas $y = C x^n$ have orthogonal ellipses $\\mathbf{x^2 + n y^2 = C}$ (here $n = 2 \\implies \\mathbf{x^2 + 2y^2 = C}$).",
+      "formalTimeSeconds": 40,
+      "shortcutTimeSeconds": 3
+    }
+  ],
+  "calculatorGuides": {
+    "karce": {
+      "techniqueTitle": "Natural Logarithm Half-Life Evaluation",
+      "problemType": "Evaluating t = ln(target/initial) / (-k)",
+      "sampleProblem": "Find t for Q(t)/Q0 = 0.125 with k = ln(2)/10.",
+      "mode": "COMP Mode (MODE 1)",
+      "keystrokes": [
+        "ln",
+        "(",
+        "0",
+        ".",
+        "1",
+        "2",
+        "5",
+        ")",
+        "÷",
+        "(",
+        "-",
+        "ln",
+        "(",
+        "2",
+        ")",
+        "÷",
+        "1",
+        "0",
+        ")",
+        "="
+      ],
+      "notes": "Directly returns 30 minutes."
+    },
+    "canon": {
+      "techniqueTitle": "Half-Life Remaining Fraction Calculation",
+      "problemType": "(1/2)^n decay calculation",
+      "sampleProblem": "Remaining fraction after 4 half-lives.",
+      "mode": "COMP Mode (MODE 1)",
+      "keystrokes": [
+        "(",
+        "1",
+        "÷",
+        "2",
+        ")",
+        "^",
+        "4",
+        "="
+      ],
+      "notes": "Directly outputs 1/16 (0.0625 = 6.25%)."
+    }
+  },
+  "conceptChecks": [
+    {
+      "id": "cc-math19-01",
+      "question": "A radioactive isotope has a half-life of 20 days. What fraction of the original sample remains after 60 days?",
+      "options": [
+        "1/8 (12.5%)",
+        "1/4 (25.0%)",
+        "1/16 (6.25%)",
+        "1/3 (33.3%)"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Number of half-lives n = 60 / 20 = 3. Remaining fraction = (1/2)³ = 1/8 = 12.5%."
+    },
+    {
+      "id": "cc-math19-02",
+      "question": "What is the family of orthogonal trajectories for concentric circles x² + y² = C?",
+      "options": [
+        "Radial straight lines passing through the origin (y = k x)",
+        "Parabolas (y = k x²)",
+        "Hyperbolas (x y = k)",
+        "Ellipses (x² + 2y² = k)"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Differentiating x² + y² = C gives 2x + 2y y' = 0 ⟹ y' = -x/y. Orthogonal slope is dy/dx = y/x ⟹ dy/y = dx/x ⟹ ln y = ln x + ln k ⟹ y = kx (radial lines)."
+    },
+    {
+      "id": "cc-math19-03",
+      "question": "A metal rod cools from 80°C to 50°C in 5 minutes in a 20°C room. What will its temperature be after another 5 minutes (at t = 10 min)?",
+      "options": [
+        "35°C",
+        "30°C",
+        "40°C",
+        "25°C"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Initial excess = 80 - 20 = 60°. After 5 min, excess = 50 - 20 = 30° (halved). After another 5 min, excess halves again to 15°. Temperature = 20° + 15° = 35°C."
+    },
+    {
+      "id": "cc-math19-04",
+      "question": "If money in a continuous compound interest account doubles every 10 years, what is the nominal continuous rate r?",
+      "options": [
+        "6.93% (ln(2) / 10)",
+        "10.00%",
+        "7.20%",
+        "5.00%"
+      ],
+      "correctAnswer": 0,
+      "explanation": "t_double = ln(2) / r ⟹ r = ln(2) / 10 = 0.69315 / 10 = 0.069315 = 6.93%."
+    }
+  ]
+}

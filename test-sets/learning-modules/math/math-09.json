@@ -1,0 +1,302 @@
+{
+  "id": "math-09",
+  "code": "MATH 09",
+  "domain": "MATH",
+  "topicCode": "MATH-09",
+  "topicTitle": "Plane Trigonometry",
+  "subtopicTitle": "Triangle Centers, Heron's Area, Circles & Cyclic Quadrilaterals",
+  "order": 9,
+  "pairedQuizSetId": "math-09-mastery",
+  "toc": [
+    { "id": "sec-prereq-bridges", "title": "1. Introduction & Cross-Subject Bridges", "level": 2 },
+    { "id": "sec-theory", "title": "2. Lesson Proper", "level": 2 },
+    { "id": "sec-formulas", "title": "3. Compilation of Formulas", "level": 2 },
+    { "id": "sec-visualizer", "title": "4. Interactive Visualizer: Triangle Centers & Inscribed Circle Sandbox", "level": 2 },
+    { "id": "sec-terminology", "title": "5. Terms and Definitions", "level": 2 },
+    { "id": "sec-dual-method", "title": "6. Sample Problems and Solutions", "level": 2 },
+    { "id": "sec-calculator", "title": "7. Calculator Techniques (Karce & Canon)", "level": 2 },
+    { "id": "sec-concept-checks", "title": "8. In-Line Concept Checks", "level": 2 },
+    { "id": "sec-mastery-challenge", "title": "9. Paired Mastery Challenge", "level": 2 }
+  ],
+  "prerequisiteBridge": {
+    "priorModuleId": "math-08",
+    "text": "Extending oblique triangle laws from MATH 08, this module explores the four classical triangle centers (Centroid, Incenter, Circumcenter, Orthocenter), inradius/circumradius formulas, Heron's area formula, and cyclic quadrilaterals."
+  },
+  "crossSubjectBridges": [
+    {
+      "targetDomain": "GEAS",
+      "targetTopicCode": "GEAS-10",
+      "badgeText": "Centroids & Structural Moments",
+      "description": "Cross-sectional properties of triangular structural trusses and composite beams locate the neutral center of mass at the exact geometric centroid $G$ ($2/3$ distance along medians)."
+    },
+    {
+      "targetDomain": "EST",
+      "targetTopicCode": "EST-05",
+      "badgeText": "Antenna Array Triangular Lattice",
+      "description": "Phased array antenna elements arranged in equilateral triangular grids minimize grating lobes by optimizing element spacing around the circumradius $R = a\\sqrt{3}/3$."
+    },
+    {
+      "targetDomain": "ELECS",
+      "targetTopicCode": "ELEC-05",
+      "badgeText": "Delta-Wye 3-Phase Voltage Centers",
+      "description": "Balanced three-phase electrical systems map line-to-line voltages along equilateral triangle perimeters and neutral star potentials to the central incenter/circumcenter point."
+    }
+  ],
+  "formulas": [
+    {
+      "id": "f-0901-01",
+      "title": "Triangle Area Formulas (Base-Height, SAS, Heron's)",
+      "formula": "$$A = \\frac{1}{2}bh = \\frac{1}{2}ab\\sin C = \\sqrt{s(s - a)(s - b)(s - c)}$$",
+      "note": "Semi-perimeter s = (a + b + c) / 2. Heron of Alexandria (c. 10–70 A.D.)."
+    },
+    {
+      "id": "f-0901-02",
+      "title": "Inscribed Circle Radius (Inradius)",
+      "formula": "$$r = \\frac{A}{s} \\iff A = r s$$",
+      "note": "Incenter is the intersection of the three internal angle bisectors."
+    },
+    {
+      "id": "f-0901-03",
+      "title": "Circumscribed Circle Radius (Circumradius)",
+      "formula": "$$R = \\frac{abc}{4A} \\iff A = \\frac{abc}{4R}$$",
+      "note": "Circumcenter is the intersection of the three perpendicular bisectors."
+    },
+    {
+      "id": "f-0901-04",
+      "title": "Escribed Circle Radius (Exradius)",
+      "formula": "$$r_a = \\frac{A}{s - a}, \\qquad r_b = \\frac{A}{s - b}, \\qquad r_c = \\frac{A}{s - c}$$",
+      "note": "Excenter is tangent to one side and extensions of the other two sides."
+    },
+    {
+      "id": "f-0901-05",
+      "title": "Equilateral Triangle Special Invariants",
+      "formula": "$$A = \\frac{a^2\\sqrt{3}}{4}, \\qquad r = \\frac{a\\sqrt{3}}{6}, \\qquad R = \\frac{a\\sqrt{3}}{3} = 2r$$",
+      "note": "In an equilateral triangle, Circumradius is exactly twice the Inradius (R = 2r)."
+    },
+    {
+      "id": "f-0901-06",
+      "title": "Brahmagupta's Formula (Cyclic Quadrilateral Area)",
+      "formula": "$$A = \\sqrt{(s - a)(s - b)(s - c)(s - d)} \\qquad \\left(s = \\frac{a + b + c + d}{2}\\right)$$",
+      "note": "Valid only when all four vertices lie on a single circle (A + C = B + D = 180°)."
+    },
+    {
+      "id": "f-0901-07",
+      "title": "Bretschneider's Formula (General Quadrilateral Area)",
+      "formula": "$$A = \\sqrt{(s - a)(s - b)(s - c)(s - d) - abcd\\cos^2\\theta} \\qquad \\left(\\theta = \\frac{A + C}{2}\\right)$$",
+      "note": "Reduces to Brahmagupta when θ = 90° (cyclic)."
+    },
+    {
+      "id": "f-0901-08",
+      "title": "Ptolemy's Theorem on Cyclic Quadrilaterals",
+      "formula": "$$d_1 \\cdot d_2 = ac + bd$$",
+      "note": "The product of diagonals equals the sum of the products of opposite sides."
+    }
+  ],
+  "terms": [
+    {
+      "term": "Centroid",
+      "symbol": "$G$",
+      "unit": "Point",
+      "definition": "The point of concurrency of the three medians of a triangle, dividing each median in a 2 : 1 ratio from vertex to midpoint.",
+      "keywordTrigger": "intersection of medians / center of mass / 2:1 ratio"
+    },
+    {
+      "term": "Incenter",
+      "symbol": "$I$",
+      "unit": "Point",
+      "definition": "The intersection of the three angle bisectors of a triangle, equidistant from all three sides ($r = A/s$).",
+      "keywordTrigger": "intersection of angle bisectors / center of incircle"
+    },
+    {
+      "term": "Circumcenter",
+      "symbol": "$O$",
+      "unit": "Point",
+      "definition": "The intersection of the three perpendicular bisectors of a triangle's sides, equidistant from all three vertices ($R = abc/4A$).",
+      "keywordTrigger": "intersection of perpendicular bisectors / center of circumcircle"
+    },
+    {
+      "term": "Orthocenter",
+      "symbol": "$H$",
+      "unit": "Point",
+      "definition": "The intersection of the three altitudes of a triangle.",
+      "keywordTrigger": "intersection of altitudes"
+    },
+    {
+      "term": "Cyclic Quadrilateral",
+      "symbol": "Cyclic 4-gon",
+      "unit": "Geometry",
+      "definition": "A four-sided polygon whose four vertices all lie on the circumference of a single circle, having opposite angles supplementary ($A + C = 180^\\circ$).",
+      "keywordTrigger": "vertices lie on circle / opposite angles supplementary"
+    }
+  ],
+  "visualizer": {
+    "archetype": "polygon_shoelace",
+    "title": "Interactive Triangle Centers & Circles Sandbox",
+    "description": "Adjust vertex coordinates to observe the four classical concurrent points (Centroid G, Incenter I, Circumcenter O, Orthocenter H) and live incircle/circumcircle radii.",
+    "config": {
+      "canvasWidth": 640,
+      "canvasHeight": 320,
+      "controls": [
+        {
+          "id": "vertexX",
+          "label": "Top Vertex X-Offset",
+          "min": -50,
+          "max": 50,
+          "step": 5,
+          "defaultValue": 0
+        },
+        {
+          "id": "heightY",
+          "label": "Triangle Height (h)",
+          "min": 40,
+          "max": 100,
+          "step": 10,
+          "defaultValue": 70
+        }
+      ]
+    }
+  },
+  "theory": {
+    "mentalAnchor": "Remember the four centers: **Altitudes $\\to$ Orthocenter**, **Medians $\\to$ Centroid ($2:1$ ratio)**, **Angle Bisectors $\\to$ Incenter ($A = rs$)**, **Perpendicular Bisectors $\\to$ Circumcenter ($A = abc/4R$)**. For cyclic quadrilaterals, opposite angles add to $180^\\circ$, area is $\\sqrt{(s-a)(s-b)(s-c)(s-d)}$ (Brahmagupta), and diagonals multiply to $d_1 d_2 = ac + bd$ (Ptolemy).",
+    "contentMarkdown": "### 1. The Four Classical Triangle Centers\n\nEvery plane triangle possesses four fundamental points of concurrency:\n\n```diagram\n{\n  \"caption\": \"Figure 1: Triangle with Incircle (radius r) and Circumcircle (radius R)\",\n  \"xRange\": [-5, 7],\n  \"yRange\": [-3, 7],\n  \"elements\": [\n    { \"type\": \"grid\" },\n    { \"type\": \"axes\" },\n    { \"type\": \"polygon\", \"points\": [[0, 0], [6, 0], [2, 5]], \"color\": \"#38bdf8\", \"fill\": \"rgba(56, 189, 248, 0.1)\" },\n    { \"type\": \"arc\", \"center\": [2.36, 1.77], \"radius\": 28, \"startAngle\": 0, \"endAngle\": 360, \"color\": \"#fbbf24\", \"label\": \"Incircle (r)\" },\n    { \"type\": \"point\", \"at\": [2.36, 1.77], \"label\": \"Incenter I\", \"color\": \"#fbbf24\" },\n    { \"type\": \"point\", \"at\": [2.67, 1.67], \"label\": \"Centroid G\", \"color\": \"#f43f5e\" }\n  ]\n}\n```\n\n#### Specific Center Properties:\n1. **Centroid ($G$)**: Intersection of **Medians**. Center of gravity; divides each median in a $2 : 1$ ratio from vertex to opposite midpoint.\n2. **Incenter ($I$)**: Intersection of **Angle Bisectors**. Center of inscribed circle tangent to all 3 sides ($r = A/s$).\n3. **Circumcenter ($O$)**: Intersection of **Perpendicular Bisectors**. Center of circumscribed circle passing through all 3 vertices ($R = abc/4A$).\n4. **Orthocenter ($H$)**: Intersection of **Altitudes**.\n\n---\n\n### 2. Triangle Area & Circle Radii\n\n- **Heron's Formula**: $A = \\sqrt{s(s - a)(s - b)(s - c)}$ with $s = \\frac{a + b + c}{2}$.\n- **Inscribed Radius**: $r = \\frac{A}{s}$.\n- **Circumscribed Radius**: $R = \\frac{abc}{4A}$.\n- **Equilateral Triangle Special Relation**: $R = 2r$.\n\n---\n\n### 3. Cyclic & General Quadrilaterals\n\nA **Cyclic Quadrilateral** has all four vertices on a circle ($A + C = B + D = 180^\\circ$):\n- **Brahmagupta's Formula**: $A = \\sqrt{(s - a)(s - b)(s - c)(s - d)}$ where $s = \\frac{a + b + c + d}{2}$.\n- **Ptolemy's Theorem**: $d_1 \\cdot d_2 = ac + bd$.\n- **Bretschneider's Formula (General 4-gon)**: $A = \\sqrt{(s - a)(s - b)(s - c)(s - d) - abcd\\cos^2\\theta}$ with $\\theta = \\frac{A + C}{2}$."
+  },
+  "examples": [
+    {
+      "problemStatement": "Find the inradius r and circumradius R of a triangle with sides a = 13 cm, b = 14 cm, and c = 15 cm.",
+      "formalSolutionMarkdown": "#### Step 1: Compute semi-perimeter s\n$$s = \\frac{a + b + c}{2} = \\frac{13 + 14 + 15}{2} = \\frac{42}{2} = 21\\text{ cm}$$\n\n#### Step 2: Calculate area A using Heron's Formula\n$$A = \\sqrt{21(21 - 13)(21 - 14)(21 - 15)} = \\sqrt{21 \\times 8 \\times 7 \\times 6} = \\sqrt{7056} = 84\\text{ cm}^2$$\n\n#### Step 3: Compute inradius r\n$$r = \\frac{A}{s} = \\frac{84}{21} = 4\\text{ cm}$$\n\n#### Step 4: Compute circumradius R\n$$R = \\frac{abc}{4A} = \\frac{13 \\times 14 \\times 15}{4(84)} = \\frac{2730}{336} = 8.125\\text{ cm} = \\frac{65}{8}\\text{ cm}$$",
+      "shortcutSolutionMarkdown": "#### ⚡ 4-Second Calculator Evaluation\n1. `√(21 × 8 × 7 × 6)` = $84$.\n2. $r = 84 / 21 = \\mathbf{4\\text{ cm}}$.\n3. $R = (13 \\times 14 \\times 15) / (4 \\times 84) = \\mathbf{8.125\\text{ cm}}$.",
+      "formalTimeSeconds": 45,
+      "shortcutTimeSeconds": 4
+    },
+    {
+      "problemStatement": "A cyclic quadrilateral has consecutive sides a = 3, b = 4, c = 5, and d = 6. Find its area.",
+      "formalSolutionMarkdown": "#### Step 1: Compute semi-perimeter s\n$$s = \\frac{3 + 4 + 5 + 6}{2} = \\frac{18}{2} = 9$$\n\n#### Step 2: Apply Brahmagupta's Formula\n$$A = \\sqrt{(9 - 3)(9 - 4)(9 - 5)(9 - 6)} = \\sqrt{6 \\times 5 \\times 4 \\times 3} = \\sqrt{360} = 6\\sqrt{10} \\approx 18.97$$",
+      "shortcutSolutionMarkdown": "#### ⚡ 2-Second Calculator Evaluation\n`√(6 × 5 × 4 × 3)` = $6\\sqrt{10} \\approx \\mathbf{18.97}$.",
+      "formalTimeSeconds": 30,
+      "shortcutTimeSeconds": 2
+    }
+  ],
+  "calculatorGuides": {
+    "karce": {
+      "techniqueTitle": "Heron's Formula Variable Storage Evaluation",
+      "problemType": "Multi-step area √(S(S-A)(S-B)(S-C))",
+      "sampleProblem": "Find area for a = 13, b = 14, c = 15.",
+      "mode": "COMP Mode (MODE 1)",
+      "keystrokes": [
+        "(",
+        "1",
+        "3",
+        "+",
+        "1",
+        "4",
+        "+",
+        "1",
+        "5",
+        ")",
+        "÷",
+        "2",
+        "SHIFT",
+        "STO",
+        "A",
+        "√",
+        "(",
+        "ALPHA",
+        "A",
+        "(",
+        "ALPHA",
+        "A",
+        "-",
+        "1",
+        "3",
+        ")",
+        "(",
+        "ALPHA",
+        "A",
+        "-",
+        "1",
+        "4",
+        ")",
+        "(",
+        "ALPHA",
+        "A",
+        "-",
+        "1",
+        "5",
+        ")",
+        ")",
+        "="
+      ],
+      "notes": "Directly returns 84 in 2 seconds."
+    },
+    "canon": {
+      "techniqueTitle": "Direct Brahmagupta Evaluation",
+      "problemType": "Cyclic quadrilateral area",
+      "sampleProblem": "Evaluate √(6 * 5 * 4 * 3).",
+      "mode": "COMP Mode (MODE 1)",
+      "keystrokes": [
+        "√",
+        "(",
+        "6",
+        "×",
+        "5",
+        "×",
+        "4",
+        "×",
+        "3",
+        ")",
+        "="
+      ],
+      "notes": "Directly outputs 6√10 ≈ 18.9736."
+    }
+  },
+  "conceptChecks": [
+    {
+      "id": "cc-math09-01",
+      "question": "In an equilateral triangle of side length 12 cm, what is the circumradius R?",
+      "options": [
+        "6.93 cm (4√3)",
+        "3.46 cm (2√3)",
+        "6.00 cm",
+        "8.00 cm"
+      ],
+      "correctAnswer": 0,
+      "explanation": "For an equilateral triangle, R = a√3 / 3 = 12√3 / 3 = 4√3 ≈ 6.928 cm."
+    },
+    {
+      "id": "cc-math09-02",
+      "question": "Which of the four triangle centers is the center of mass (balance point) of a uniform planar triangular lamina?",
+      "options": [
+        "Centroid G",
+        "Incenter I",
+        "Circumcenter O",
+        "Orthocenter H"
+      ],
+      "correctAnswer": 0,
+      "explanation": "The Centroid G (intersection of the three medians) represents the exact geometric center of mass of any planar triangle."
+    },
+    {
+      "id": "cc-math09-03",
+      "question": "A cyclic quadrilateral has opposite side lengths a = 2, c = 6, and b = 3, d = 4. What is the product of its diagonals d₁ · d₂ by Ptolemy's Theorem?",
+      "options": [
+        "24",
+        "36",
+        "18",
+        "48"
+      ],
+      "correctAnswer": 0,
+      "explanation": "By Ptolemy's Theorem: d₁ · d₂ = ac + bd = (2)(6) + (3)(4) = 12 + 12 = 24."
+    },
+    {
+      "id": "cc-math09-04",
+      "question": "In a right triangle with legs a = 6 and b = 8 (hypotenuse c = 10), what is the circumradius R?",
+      "options": [
+        "5.0 cm (c / 2)",
+        "2.0 cm",
+        "4.8 cm",
+        "2.4 cm"
+      ],
+      "correctAnswer": 0,
+      "explanation": "In any right triangle, the circumcenter lies exactly on the midpoint of the hypotenuse, so R = c / 2 = 10 / 2 = 5.0 cm."
+    }
+  ]
+}

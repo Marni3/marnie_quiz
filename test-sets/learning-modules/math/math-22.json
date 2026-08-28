@@ -1,0 +1,270 @@
+{
+  "id": "math-22",
+  "code": "MATH 22",
+  "domain": "MATH",
+  "topicCode": "MATH-22",
+  "topicTitle": "Advanced Engineering Mathematics",
+  "subtopicTitle": "Laplace Transforms, First/Second Shifting Theorems & Inverse Laplace",
+  "order": 22,
+  "pairedQuizSetId": "math-22-mastery",
+  "toc": [
+    { "id": "sec-prereq-bridges", "title": "1. Introduction & Cross-Subject Bridges", "level": 2 },
+    { "id": "sec-theory", "title": "2. Lesson Proper", "level": 2 },
+    { "id": "sec-formulas", "title": "3. Compilation of Formulas", "level": 2 },
+    { "id": "sec-visualizer", "title": "4. Interactive Visualizer: s-Plane Pole-Zero & Step Response Explorer", "level": 2 },
+    { "id": "sec-terminology", "title": "5. Terms and Definitions", "level": 2 },
+    { "id": "sec-dual-method", "title": "6. Sample Problems and Solutions", "level": 2 },
+    { "id": "sec-calculator", "title": "7. Calculator Techniques (Karce & Canon)", "level": 2 },
+    { "id": "sec-concept-checks", "title": "8. In-Line Concept Checks", "level": 2 },
+    { "id": "sec-mastery-challenge", "title": "9. Paired Mastery Challenge", "level": 2 }
+  ],
+  "prerequisiteBridge": {
+    "priorModuleId": "math-18",
+    "text": "Building upon ordinary differential equations from MATH 18, this module maps time-domain differential equations into algebraic s-domain expressions using the continuous Laplace Transform and its operational shifting theorems."
+  },
+  "crossSubjectBridges": [
+    {
+      "targetDomain": "ELECS",
+      "targetTopicCode": "ELEC-05",
+      "badgeText": "RLC Circuit Transfer Functions",
+      "description": "Transient RLC loop equations transform into algebraic transfer functions $H(s) = \\frac{V_{\\text{out}}(s)}{V_{\\text{in}}(s)} = \\frac{1}{L C s^2 + R C s + 1}$ with complex conjugate poles."
+    },
+    {
+      "targetDomain": "EST",
+      "targetTopicCode": "EST-01",
+      "badgeText": "Linear System Step & Impulse Responses",
+      "description": "Continuous filter impulse response $h(t) = \\mathcal{L}^{-1}\\{H(s)\\}$ and convolution $y(t) = x(t) * h(t) \\iff Y(s) = X(s) H(s)$ evaluate analog communications channel distortion."
+    },
+    {
+      "targetDomain": "GEAS",
+      "targetTopicCode": "GEAS-06",
+      "badgeText": "Damped Mechanical Vibrations",
+      "description": "Mass-spring-damper equations of motion ($m \\ddot{x} + c \\dot{x} + k x = F(t)$) solve underdamped and critically damped kinematic displacements directly via s-domain inversion."
+    }
+  ],
+  "formulas": [
+    {
+      "id": "f-2201-01",
+      "title": "Definition of Laplace Transform",
+      "formula": "$$\\mathcal{L}\\{f(t)\\} = F(s) = \\int_0^\\infty f(t) e^{-st} dt$$",
+      "note": "Maps a real-valued time-domain function f(t) for t ≥ 0 into the complex frequency domain s = σ + jω."
+    },
+    {
+      "id": "f-2201-02",
+      "title": "Elementary Transform Pairs Table",
+      "formula": "$$\\mathcal{L}\\{1\\} = \\frac{1}{s}, \\quad \\mathcal{L}\\{t^n\\} = \\frac{n!}{s^{n + 1}}, \\quad \\mathcal{L}\\{e^{at}\\} = \\frac{1}{s - a}, \\quad \\mathcal{L}\\{\\sin kt\\} = \\frac{k}{s^2 + k^2}, \\quad \\mathcal{L}\\{\\cos kt\\} = \\frac{s}{s^2 + k^2}$$",
+      "note": "Hyperbolic forms have a minus in the denominator: L{sinh kt} = k / (s² - k²), L{cosh kt} = s / (s² - k²)."
+    },
+    {
+      "id": "f-2201-03",
+      "title": "First Shifting Theorem (Frequency Shift)",
+      "formula": "$$\\mathcal{L}\\{e^{at} f(t)\\} = F(s - a)$$",
+      "note": "Multiplication by e^(at) in the time domain translates s to (s - a) in the s-domain."
+    },
+    {
+      "id": "f-2201-04",
+      "title": "Second Shifting Theorem (Time Shift)",
+      "formula": "$$\\mathcal{L}\\{f(t - a) u(t - a)\\} = e^{-as} F(s)$$",
+      "note": "Delayed signal shifted by a seconds introduces exponential multiplier e^(-as)."
+    },
+    {
+      "id": "f-2201-05",
+      "title": "Multiplication by tⁿ (Frequency Differentiation)",
+      "formula": "$$\\mathcal{L}\\{t^n f(t)\\} = (-1)^n \\frac{d^n}{ds^n} F(s)$$",
+      "note": "Multiplication by t corresponds to -d/ds of F(s)."
+    },
+    {
+      "id": "f-2201-06",
+      "title": "Transform of Derivatives & Integrals",
+      "formula": "$$\\mathcal{L}\\{f'(t)\\} = s F(s) - f(0), \\quad \\mathcal{L}\\{f''(t)\\} = s^2 F(s) - s f(0) - f'(0), \\quad \\mathcal{L}\\left\\{\\int_0^t f(\\tau)d\\tau\\right\\} = \\frac{F(s)}{s}$$",
+      "note": "Incorporates initial conditions directly into algebraic equations."
+    },
+    {
+      "id": "f-2201-07",
+      "title": "Initial and Final Value Theorems",
+      "formula": "$$\\lim_{t \\to 0} f(t) = \\lim_{s \\to \\infty} s F(s), \\qquad \\lim_{t \\to \\infty} f(t) = \\lim_{s \\to 0} s F(s)$$",
+      "note": "Final Value Theorem is valid only if all poles of sF(s) lie strictly in the open left-half s-plane."
+    }
+  ],
+  "terms": [
+    {
+      "term": "Laplace Transform",
+      "symbol": "$F(s) = \\mathcal{L}\\{f(t)\\}$",
+      "unit": "Transform",
+      "definition": "An integral transform named after Pierre-Simon Laplace (1749–1827) that converts continuous-time differential equations into algebraic polynomials in the complex frequency variable s.",
+      "keywordTrigger": "integral from 0 to infinity of f(t) e^(-st) dt"
+    },
+    {
+      "term": "First Shifting Property",
+      "symbol": "$F(s - a)$",
+      "unit": "Theorem",
+      "definition": "The operational theorem stating that multiplying a time-domain function by e^(at) shifts its s-domain transform by a units ($s \\to s - a$).",
+      "keywordTrigger": "multiplication by e^(at) shifts s to s minus a"
+    },
+    {
+      "term": "Initial Value Theorem",
+      "symbol": "$\\lim_{s \\to \\infty} s F(s)$",
+      "unit": "Theorem",
+      "definition": "A theorem allowing the initial value of a signal at t = 0+ to be determined directly from its Laplace transform without calculating the inverse transform.",
+      "keywordTrigger": "limit as s approaches infinity of s F(s)"
+    },
+    {
+      "term": "Unit Step Function (Heaviside Step)",
+      "symbol": "$u(t)$",
+      "unit": "Signal",
+      "definition": "A discontinuous function equal to 0 for t < 0 and 1 for t ≥ 0, having Laplace transform $\\mathcal{L}\\{u(t)\\} = 1/s$.",
+      "keywordTrigger": "heaviside step function / 1 for t greater than zero"
+    }
+  ],
+  "visualizer": {
+    "archetype": "parameter_sweep",
+    "title": "Interactive s-Plane Pole-Zero Explorer",
+    "description": "Adjust pole real damping σ and imaginary frequency ω to observe corresponding time-domain step responses (underdamped sinusoidal oscillation vs exponential decay).",
+    "config": {
+      "canvasWidth": 640,
+      "canvasHeight": 320,
+      "controls": [
+        {
+          "id": "dampingSigma",
+          "label": "Damping (σ)",
+          "min": -5,
+          "max": 0,
+          "step": 1,
+          "defaultValue": -2
+        },
+        {
+          "id": "freqOmega",
+          "label": "Frequency (ω)",
+          "min": 0,
+          "max": 10,
+          "step": 1,
+          "defaultValue": 4
+        }
+      ]
+    }
+  },
+  "theory": {
+    "mentalAnchor": "Remember the fundamental pairs: $\\mathcal{L}\\{1\\} = \\frac{1}{s}$, $\\mathcal{L}\\{e^{at}\\} = \\frac{1}{s - a}$, $\\mathcal{L}\\{\\cos kt\\} = \\frac{s}{s^2 + k^2}$, $\\mathcal{L}\\{\\sin kt\\} = \\frac{k}{s^2 + k^2}$. For **$e^{at} \\times f(t)$**, replace every $s$ with $(s - a)$. For **Initial Value**, take $\\lim_{s \\to \\infty} s F(s)$. For **Final Value**, take $\\lim_{s \\to 0} s F(s)$.",
+    "contentMarkdown": "### 1. Laplace Transform Foundations & Pairs\n\nThe unilateral Laplace transform maps $f(t)$ to $F(s)$:\n\n```diagram\n{\n  \"caption\": \"Figure 1: Complex s-plane showing stable pole pair at s = -2 ± j3 in the left half-plane\",\n  \"xRange\": [-5, 3],\n  \"yRange\": [-4, 4],\n  \"elements\": [\n    { \"type\": \"grid\" },\n    { \"type\": \"axes\" },\n    { \"type\": \"line\", \"from\": [0, -3.5], \"to\": [0, 3.5], \"color\": \"#94a3b8\", \"width\": 2 },\n    { \"type\": \"point\", \"at\": [-2, 3], \"label\": \"Pole (-2 + 3j)\", \"color\": \"#f43f5e\" },\n    { \"type\": \"point\", \"at\": [-2, -3], \"label\": \"Pole (-2 - 3j)\", \"color\": \"#f43f5e\" },\n    { \"type\": \"segment\", \"from\": [-2, 0], \"to\": [-2, 3], \"color\": \"#fbbf24\", \"dashed\": true },\n    { \"type\": \"segment\", \"from\": [0, 3], \"to\": [-2, 3], \"color\": \"#38bdf8\", \"dashed\": true }\n  ]\n}\n```\n\n#### Master Transform Table:\n- Constant: $\\mathcal{L}\\{1\\} = \\frac{1}{s}$\n- Power: $\\mathcal{L}\\{t^n\\} = \\frac{n!}{s^{n + 1}}$\n- Exponential: $\\mathcal{L}\\{e^{at}\\} = \\frac{1}{s - a}$\n- Sine / Cosine: $\\mathcal{L}\\{\\sin kt\\} = \\frac{k}{s^2 + k^2}, \\quad \\mathcal{L}\\{\\cos kt\\} = \\frac{s}{s^2 + k^2}$\n- Hyperbolic: $\\mathcal{L}\\{\\sinh kt\\} = \\frac{k}{s^2 - k^2}, \\quad \\mathcal{L}\\{\\cosh kt\\} = \\frac{s}{s^2 - k^2}$\n\n---\n\n### 2. Operational Shifting & Value Theorems\n\n- **1st Shifting Theorem**: $\\mathcal{L}\\{e^{at}\\cos kt\\} = \\frac{s - a}{(s - a)^2 + k^2}, \\quad \\mathcal{L}\\{e^{at}\\sin kt\\} = \\frac{k}{(s - a)^2 + k^2}$.\n- **Multiplication by $t$**: $\\mathcal{L}\\{t f(t)\\} = -\\frac{d}{ds} F(s)$.\n- **Initial Value Theorem**: $\\lim_{t \\to 0^+} f(t) = \\lim_{s \\to \\infty} s F(s)$.\n- **Final Value Theorem**: $\\lim_{t \\to \\infty} f(t) = \\lim_{s \\to 0} s F(s)$."
+  },
+  "examples": [
+    {
+      "problemStatement": "Find the Laplace transform of f(t) = e^(-2t) cos(3t).",
+      "formalSolutionMarkdown": "#### Step 1: Identify the unshifted transform\n$$\\mathcal{L}\\{\\cos 3t\\} = \\frac{s}{s^2 + 3^2} = \\frac{s}{s^2 + 9}$$\n\n#### Step 2: Apply the First Shifting Theorem with a = -2\n$$\\mathcal{L}\\{e^{-2t} \\cos 3t\\} = F(s - (-2)) = F(s + 2)$$\n$$\\mathcal{L}\\{e^{-2t} \\cos 3t\\} = \\frac{s + 2}{(s + 2)^2 + 9} = \\frac{s + 2}{s^2 + 4s + 4 + 9} = \\frac{s + 2}{s^2 + 4s + 13}$$",
+      "shortcutSolutionMarkdown": "#### ⚡ 2-Second Shifting Substitution\n$$\\frac{s}{s^2 + 9} \\xrightarrow{s \\to s + 2} \\mathbf{\\frac{s + 2}{s^2 + 4s + 13}}$$.",
+      "formalTimeSeconds": 30,
+      "shortcutTimeSeconds": 2
+    },
+    {
+      "problemStatement": "Given F(s) = (2s + 5) / (s(s + 3)), find the initial value f(0+) and the final steady-state value f(∞).",
+      "formalSolutionMarkdown": "#### Step 1: Compute Initial Value using IVT\n$$f(0^+) = \\lim_{s \\to \\infty} s F(s) = \\lim_{s \\to \\infty} s \\left[ \\frac{2s + 5}{s(s + 3)} \\right] = \\lim_{s \\to \\infty} \\frac{2s + 5}{s + 3} = 2$$\n\n#### Step 2: Compute Final Value using FVT\n$$f(\\infty) = \\lim_{s \\to 0} s F(s) = \\lim_{s \\to 0} s \\left[ \\frac{2s + 5}{s(s + 3)} \\right] = \\lim_{s \\to 0} \\frac{2s + 5}{s + 3} = \\frac{2(0) + 5}{0 + 3} = \\frac{5}{3} \\approx 1.67$$",
+      "shortcutSolutionMarkdown": "#### ⚡ 3-Second Ratio Inspection\n- Initial Value ($s \\to \\infty$): Highest power ratio $= 2/1 = \\mathbf{2}$.\n- Final Value ($s \\to 0$): Constant term ratio $= 5/3 = \\mathbf{1.67}$.",
+      "formalTimeSeconds": 35,
+      "shortcutTimeSeconds": 3
+    }
+  ],
+  "calculatorGuides": {
+    "karce": {
+      "techniqueTitle": "Partial Fraction Inversion Coefficient Evaluation",
+      "problemType": "Finding residues A and B for (2s + 5) / (s(s + 3))",
+      "sampleProblem": "Find A at s = 0 and B at s = -3.",
+      "mode": "COMP Mode (MODE 1)",
+      "keystrokes": [
+        "(",
+        "2",
+        "×",
+        "0",
+        "+",
+        "5",
+        ")",
+        "÷",
+        "(",
+        "0",
+        "+",
+        "3",
+        ")",
+        "="
+      ],
+      "notes": "Directly yields A = 5/3. For B: (2(-3) + 5) / (-3) = -1 / -3 = 1/3."
+    },
+    "canon": {
+      "techniqueTitle": "Initial and Final Value Ratio Checks",
+      "problemType": "Evaluating sF(s) at s = 0 and s = 1000",
+      "sampleProblem": "Evaluate s F(s) at s = 1000 for s ⟹ ∞.",
+      "mode": "COMP Mode (MODE 1)",
+      "keystrokes": [
+        "(",
+        "2",
+        "×",
+        "1",
+        "0",
+        "0",
+        "0",
+        "+",
+        "5",
+        ")",
+        "÷",
+        "(",
+        "1",
+        "0",
+        "0",
+        "0",
+        "+",
+        "3",
+        ")",
+        "="
+      ],
+      "notes": "Outputs 1.999 ≈ 2.0."
+    }
+  },
+  "conceptChecks": [
+    {
+      "id": "cc-math22-01",
+      "question": "What is the Laplace transform of f(t) = t³?",
+      "options": [
+        "6 / s⁴",
+        "3 / s⁴",
+        "6 / s³",
+        "1 / s⁴"
+      ],
+      "correctAnswer": 0,
+      "explanation": "L{t³} = 3! / s^(3 + 1) = 6 / s⁴."
+    },
+    {
+      "id": "cc-math22-02",
+      "question": "What is the Laplace transform of f(t) = e^(4t) sin(3t)?",
+      "options": [
+        "3 / ((s - 4)² + 9)",
+        "3 / ((s + 4)² + 9)",
+        "(s - 4) / ((s - 4)² + 9)",
+        "4 / ((s - 3)² + 16)"
+      ],
+      "correctAnswer": 0,
+      "explanation": "L{sin 3t} = 3 / (s² + 9). By the First Shifting Theorem, s ⟹ s - 4, yielding 3 / ((s - 4)² + 9)."
+    },
+    {
+      "id": "cc-math22-03",
+      "question": "Using the Initial Value Theorem, what is the initial value f(0+) for F(s) = (4s + 1) / (s² + 2s + 5)?",
+      "options": [
+        "4",
+        "1",
+        "0",
+        "1/5"
+      ],
+      "correctAnswer": 0,
+      "explanation": "f(0+) = lim_{s ⟹ ∞} s F(s) = lim_{s ⟹ ∞} (4s² + s) / (s² + 2s + 5) = 4 / 1 = 4."
+    },
+    {
+      "id": "cc-math22-04",
+      "question": "What is the inverse Laplace transform of F(s) = 1 / (s - 5)?",
+      "options": [
+        "e^(5t)",
+        "e^(-5t)",
+        "5t",
+        "t⁵"
+      ],
+      "correctAnswer": 0,
+      "explanation": "By elementary pair table: L⁻¹{1 / (s - a)} = e^(at), so L⁻¹{1 / (s - 5)} = e^(5t)."
+    }
+  ]
+}

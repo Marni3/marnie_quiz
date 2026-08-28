@@ -1,0 +1,252 @@
+{
+  "moduleId": "math-10",
+  "moduleCode": "MATH 10",
+  "title": "MATH 10 Mastery Challenge: Regular Polygons & Circle Geometry",
+  "description": "Comprehensive 22-question 4-quadrant companion mastery exam for MATH 10. Rigorously tests interior/exterior angle formulas, diagonal counts, regular n-gon apothem areas, circular segments, intersecting chord theorems, and tangent-secant relations under timed board conditions.",
+  "totalQuestions": 22,
+  "timeLimitMinutes": 35,
+  "questions": [
+    {
+      "id": "m10-01",
+      "promptText": "What is the **sum of the exterior angles** of any simple convex polygon with $n$ sides?",
+      "choiceA": "360° (constant for all polygons)",
+      "choiceB": "(n - 2) × 180°",
+      "choiceC": "n × 180°",
+      "choiceD": "180°",
+      "correctChoice": "A",
+      "explanation": "Traversing the perimeter of any convex polygon represents a complete single rotation of $360^\\circ$, regardless of the number of sides $n$.",
+      "archetype": "conceptual"
+    },
+    {
+      "id": "m10-02",
+      "promptText": "What is the **Apothem** of a regular polygon?",
+      "choiceA": "The perpendicular distance from the center to the midpoint of any side (the inradius).",
+      "choiceB": "The distance from the center to a vertex (the circumradius).",
+      "choiceC": "The length of one side.",
+      "choiceD": "The total perimeter divided by the number of sides.",
+      "correctChoice": "A",
+      "explanation": "The apothem is the line segment from the center perpendicular to any side, serving as the inradius of the inscribed circle.",
+      "archetype": "conceptual"
+    },
+    {
+      "id": "m10-03",
+      "promptText": "What is the formula for the **total number of diagonals** in an $n$-sided polygon?",
+      "choiceA": "n(n - 3) / 2",
+      "choiceB": "n(n - 1) / 2",
+      "choiceC": "(n - 2) × 180",
+      "choiceD": "n² - 3n",
+      "correctChoice": "A",
+      "explanation": "From each of the $n$ vertices, lines can be drawn to $n - 3$ non-adjacent vertices. Dividing by 2 for bidirectional segments yields $D = \\frac{n(n - 3)}{2}$.",
+      "archetype": "conceptual"
+    },
+    {
+      "id": "m10-04",
+      "promptText": "What does the **Tangent-Secant Theorem** state for a tangent segment $PT$ and secant line $PAB$ drawn from an external point $P$?",
+      "choiceA": "PT² = PA · PB",
+      "choiceB": "PT = PA · PB",
+      "choiceC": "PT² = PA + PB",
+      "choiceD": "PT = (PA + PB) / 2",
+      "correctChoice": "A",
+      "explanation": "By the Tangent-Secant Theorem, the square of the tangent segment equals the product of the external secant segment $PA$ and the entire secant segment $PB$: $PT^2 = PA \\cdot PB$.",
+      "archetype": "conceptual"
+    },
+    {
+      "id": "m10-05",
+      "promptText": "In the circular sector area formula $A = \\frac{1}{2}r^2\\theta$, what unit must the central angle $\\theta$ strictly be measured in?",
+      "choiceA": "Radians",
+      "choiceB": "Degrees",
+      "choiceC": "Grads",
+      "choiceD": "Mils",
+      "correctChoice": "A",
+      "explanation": "Arc length $L = r\\theta$ and sector area $A = \\frac{1}{2}r^2\\theta$ strictly require the central angle $\\theta$ to be expressed in dimensionless radians.",
+      "archetype": "conceptual"
+    },
+    {
+      "id": "m10-06",
+      "promptText": "Two chords $AB$ and $CD$ intersect inside a circle at point $P$. Which equation correctly describes their segment relationship?",
+      "choiceA": "PA · PB = PC · PD",
+      "choiceB": "PA + PB = PC + PD",
+      "choiceC": "PA · PC = PB · PD",
+      "choiceD": "PA / PB = PC / PD",
+      "correctChoice": "A",
+      "explanation": "By the Intersecting Chords Theorem (Power of a Point): $PA \\cdot PB = PC \\cdot PD$.",
+      "archetype": "conceptual"
+    },
+    {
+      "id": "m10-07",
+      "promptText": "What is each **interior angle** of a regular **Octagon** (8-sided polygon)?",
+      "choiceA": "135°",
+      "choiceB": "140°",
+      "choiceC": "120°",
+      "choiceD": "144°",
+      "correctChoice": "A",
+      "explanation": "$\\theta_{\\text{int}} = \\frac{(8 - 2) \\times 180^\\circ}{8} = \\frac{6 \\times 180^\\circ}{8} = \\frac{1080^\\circ}{8} = 135^\\circ$.",
+      "archetype": "numerical"
+    },
+    {
+      "id": "m10-08",
+      "promptText": "How many diagonals does a **Dodecagon** (12-sided polygon) have?",
+      "choiceA": "54",
+      "choiceB": "48",
+      "choiceC": "66",
+      "choiceD": "72",
+      "correctChoice": "A",
+      "explanation": "$D = \\frac{12(12 - 3)}{2} = \\frac{12(9)}{2} = 6 \\times 9 = 54\\text{ diagonals}$.",
+      "archetype": "numerical"
+    },
+    {
+      "id": "m10-09",
+      "promptText": "If each interior angle of a regular polygon is $140^\\circ$, how many sides does the polygon have?",
+      "choiceA": "9 sides (Nonagon)",
+      "choiceB": "8 sides (Octagon)",
+      "choiceC": "10 sides (Decagon)",
+      "choiceD": "12 sides (Dodecagon)",
+      "correctChoice": "A",
+      "explanation": "Exterior angle $= 180^\\circ - 140^\\circ = 40^\\circ$. Number of sides $n = \\frac{360^\\circ}{40^\\circ} = 9\\text{ sides}$.",
+      "archetype": "numerical"
+    },
+    {
+      "id": "m10-10",
+      "promptText": "Find the area of a **regular Hexagon** with a side length of $6\\text{ cm}$.",
+      "choiceA": "93.53 cm² (54√3)",
+      "choiceB": "108.00 cm²",
+      "choiceC": "72.00 cm²",
+      "choiceD": "84.85 cm²",
+      "correctChoice": "A",
+      "explanation": "A regular hexagon consists of 6 equilateral triangles: $A = 6 \\times \\left(\\frac{x^2\\sqrt{3}}{4}\\right) = 6 \\times \\left(\\frac{36\\sqrt{3}}{4}\\right) = 54\\sqrt{3} \\approx 93.53\\text{ cm}^2$.",
+      "archetype": "numerical"
+    },
+    {
+      "id": "m10-11",
+      "promptText": "Find the **arc length** of a circle with radius $r = 10\\text{ cm}$ subtended by a central angle of $45^\\circ$.",
+      "choiceA": "7.85 cm (2.5π)",
+      "choiceB": "15.71 cm",
+      "choiceC": "5.00 cm",
+      "choiceD": "10.00 cm",
+      "correctChoice": "A",
+      "explanation": "$\\theta = 45^\\circ \\times \\frac{\\pi}{180^\\circ} = \\frac{\\pi}{4}\\text{ rad}$. $L = r\\theta = 10 \\times \\frac{\\pi}{4} = 2.5\\pi \\approx 7.854\\text{ cm}$.",
+      "archetype": "numerical"
+    },
+    {
+      "id": "m10-12",
+      "promptText": "Two chords $AB$ and $CD$ intersect inside a circle at $P$. If $PA = 3\\text{ cm}, PB = 8\\text{ cm}$, and $PC = 4\\text{ cm}$, find the length of segment $PD$.",
+      "choiceA": "6 cm",
+      "choiceB": "8 cm",
+      "choiceC": "4 cm",
+      "choiceD": "7 cm",
+      "correctChoice": "A",
+      "explanation": "Intersecting Chords: $PA \\cdot PB = PC \\cdot PD \\implies 3 \\times 8 = 4 \\times PD \\implies 24 = 4 \\cdot PD \\implies PD = 6\\text{ cm}$.",
+      "archetype": "numerical"
+    },
+    {
+      "id": "m10-13",
+      "promptText": "From external point $P$, tangent $PT = 10\\text{ cm}$ touches a circle. A secant line through $P$ intersects the circle at $A$ and $B$. If the external segment $PA = 5\\text{ cm}$, find the length of the internal chord $AB$.",
+      "choiceA": "15 cm",
+      "choiceB": "20 cm",
+      "choiceC": "10 cm",
+      "choiceD": "25 cm",
+      "correctChoice": "A",
+      "explanation": "Tangent-Secant Theorem: $PT^2 = PA \\cdot PB \\implies 10^2 = 5 \\cdot PB \\implies PB = 20\\text{ cm}$. Internal chord $AB = PB - PA = 20 - 5 = 15\\text{ cm}$.",
+      "archetype": "numerical"
+    },
+    {
+      "id": "m10-14",
+      "promptText": "Find the area of a **circular sector** with radius $r = 8\\text{ cm}$ and central angle $\\theta = 90^\\circ$.",
+      "choiceA": "50.27 cm² (16π)",
+      "choiceB": "25.13 cm² (8π)",
+      "choiceC": "64.00 cm²",
+      "choiceD": "32.00 cm²",
+      "correctChoice": "A",
+      "explanation": "$A = \\frac{1}{2}r^2\\theta = \\frac{1}{2}(64)\\left(\\frac{\\pi}{2}\\right) = 16\\pi \\approx 50.265\\text{ cm}^2$.",
+      "archetype": "standard"
+    },
+    {
+      "id": "m10-15",
+      "promptText": "A regular octagon is formed by cutting off four identical isosceles right triangles from the corners of a square with side length $10\\text{ cm}$. What is the side length of the resulting regular octagon?",
+      "choiceA": "4.14 cm (10 / (1 + √2))",
+      "choiceB": "5.00 cm",
+      "choiceC": "3.54 cm",
+      "choiceD": "4.50 cm",
+      "correctChoice": "A",
+      "explanation": "Let octagon side be $x$ and corner leg be $y$. Then $x = y\\sqrt{2} \\implies y = x/\\sqrt{2}$. Square side $= x + 2y = x + x\\sqrt{2} = x(1 + \\sqrt{2}) = 10 \\implies x = \\frac{10}{1 + \\sqrt{2}} = 10(\\sqrt{2} - 1) \\approx 4.142\\text{ cm}$.",
+      "archetype": "applied"
+    },
+    {
+      "id": "m10-16",
+      "promptText": "A coastal radar antenna sweeps an angular arc of $120^\\circ$ with an effective range of $30\\text{ nautical miles}$. What total maritime area does the radar monitor?",
+      "choiceA": "942.48 sq. nmi (300π)",
+      "choiceB": "1,884.96 sq. nmi",
+      "choiceC": "471.24 sq. nmi",
+      "choiceD": "600.00 sq. nmi",
+      "correctChoice": "A",
+      "explanation": "$\\theta = 120^\\circ = \\frac{2\\pi}{3}\\text{ rad}$. $A = \\frac{1}{2}r^2\\theta = \\frac{1}{2}(30^2)\\left(\\frac{2\\pi}{3}\\right) = \\frac{1}{2}(900)\\left(\\frac{2\\pi}{3}\\right) = 300\\pi \\approx 942.478\\text{ sq. nmi}$.",
+      "archetype": "applied"
+    },
+    {
+      "id": "m10-17",
+      "promptText": "Find the area of a **circular segment** bounded by a chord in a circle of radius $r = 10\\text{ cm}$ subtending a central angle of $90^\\circ$ ($\\pi/2$ radians).",
+      "choiceA": "28.54 cm² (25π - 50)",
+      "choiceB": "78.54 cm²",
+      "choiceC": "50.00 cm²",
+      "choiceD": "35.24 cm²",
+      "correctChoice": "A",
+      "explanation": "$A_{\\text{segment}} = A_{\\text{sector}} - A_{\\text{triangle}} = \\frac{1}{2}(10^2)\\left(\\frac{\\pi}{2}\\right) - \\frac{1}{2}(10)(10) = 25\\pi - 50 \\approx 78.5398 - 50 = 28.5398\\text{ cm}^2$.",
+      "archetype": "applied"
+    },
+    {
+      "id": "m10-18",
+      "promptText": "A polygon has 35 diagonals. How many sides does this polygon have?",
+      "choiceA": "10 sides (Decagon)",
+      "choiceB": "12 sides",
+      "choiceC": "8 sides",
+      "choiceD": "9 sides",
+      "correctChoice": "A",
+      "explanation": "$\\frac{n(n - 3)}{2} = 35 \\implies n^2 - 3n - 70 = 0 \\implies (n - 10)(n + 7) = 0 \\implies n = 10\\text{ sides}$.",
+      "archetype": "applied"
+    },
+    {
+      "id": "m10-19",
+      "promptText": "What is the common trap when applying the Tangent-Secant Theorem $PT^2 = PA \\cdot PB$?",
+      "choiceA": "Multiplying the external segment $PA$ by the internal chord $AB$ ($PA \\cdot AB$) instead of the entire secant length $PB = PA + AB$.",
+      "choiceB": "Taking the square root of $PT$.",
+      "choiceC": "Using degrees instead of radians.",
+      "choiceD": "Adding the segments.",
+      "correctChoice": "A",
+      "explanation": "The theorem strictly requires the product of the **external segment** ($PA$) and the **entire secant segment** ($PB = PA + AB$). Multiplying $PA \\cdot AB$ is the most common error.",
+      "archetype": "trap"
+    },
+    {
+      "id": "m10-20",
+      "promptText": "What is the common error when calculating circular segment area $A = \\frac{1}{2}r^2(\\theta - \\sin\\theta)$ on a calculator?",
+      "choiceA": "Evaluating $\\theta$ in degrees inside the parenthesis while computing $\\sin\\theta$ in radian mode (or vice versa), without setting the calculator to consistent RADIAN mode.",
+      "choiceB": "Dividing by 4.",
+      "choiceC": "Using the diameter instead of the radius.",
+      "choiceD": "Forgetting the minus sign.",
+      "correctChoice": "A",
+      "explanation": "In $\\frac{1}{2}r^2(\\theta - \\sin\\theta)$, the linear term $\\theta$ must strictly be in radians, requiring the calculator to be set in RAD mode so that both $\\theta$ and $\\sin\\theta$ use identical radian units.",
+      "archetype": "trap"
+    },
+    {
+      "id": "m10-21",
+      "promptText": "Using the 2-second diagonal formula $D = \\frac{n(n - 3)}{2}$, how many diagonals does a **Heptagon** (7 sides) have?",
+      "choiceA": "14",
+      "choiceB": "21",
+      "choiceC": "10",
+      "choiceD": "7",
+      "correctChoice": "A",
+      "explanation": "$D = \\frac{7(4)}{2} = 14$ in 2 seconds.",
+      "archetype": "shortcut"
+    },
+    {
+      "id": "m10-22",
+      "promptText": "What is the exterior angle of a regular **Hexagon** in 1 second?",
+      "choiceA": "60° (360° / 6)",
+      "choiceB": "120°",
+      "choiceC": "30°",
+      "choiceD": "45°",
+      "correctChoice": "A",
+      "explanation": "$\\theta_{\\text{ext}} = \\frac{360^\\circ}{6} = 60^\\circ$ in 1 second.",
+      "archetype": "shortcut"
+    }
+  ]
+}

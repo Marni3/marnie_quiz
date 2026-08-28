@@ -1,0 +1,252 @@
+{
+  "moduleId": "math-19",
+  "moduleCode": "MATH 19",
+  "title": "MATH 19 Mastery Challenge: Physical Applications of 1st-Order DE",
+  "description": "Comprehensive 22-question 4-quadrant companion mastery exam for MATH 19. Rigorously tests exponential growth, radioactive half-life, Newton's law of cooling, brine mixing tank ODEs, and orthogonal trajectories under timed board conditions.",
+  "totalQuestions": 22,
+  "timeLimitMinutes": 35,
+  "questions": [
+    {
+      "id": "m19-01",
+      "promptText": "What does **Newton's Law of Cooling** state regarding the rate of change of temperature $\\frac{dT}{dt}$ of a body in an environment with ambient temperature $T_m$?",
+      "choiceA": "The rate of cooling is directly proportional to the instantaneous temperature difference: dT/dt = -k(T - T_m).",
+      "choiceB": "The rate of cooling is proportional to the square of the temperature: dT/dt = -k T².",
+      "choiceC": "The temperature decreases linearly at a constant rate.",
+      "choiceD": "The rate of cooling is inversely proportional to time.",
+      "correctChoice": "A",
+      "explanation": "Newton's empirical law of cooling states that $\\frac{dT}{dt} = -k(T - T_m)$, yielding the exponential solution $T(t) = T_m + (T_0 - T_m)e^{-kt}$.",
+      "archetype": "conceptual"
+    },
+    {
+      "id": "m19-02",
+      "promptText": "What formula calculates the **Half-Life ($t_{1/2}$)** of a radioactive substance decaying according to $\\frac{dQ}{dt} = -k Q$?",
+      "choiceA": "t_{1/2} = ln(2) / k ≈ 0.69315 / k",
+      "choiceB": "t_{1/2} = 1 / (2k)",
+      "choiceC": "t_{1/2} = k / ln(2)",
+      "choiceD": "t_{1/2} = 2 / k",
+      "correctChoice": "A",
+      "explanation": "Setting $Q(t) / Q_0 = 1/2 \\implies e^{-kt} = 1/2 \\implies -kt = -\\ln 2 \\implies t_{1/2} = \\frac{\\ln 2}{k} \\approx \\frac{0.69315}{k}$.",
+      "archetype": "conceptual"
+    },
+    {
+      "id": "m19-03",
+      "promptText": "When determining the **Orthogonal Trajectories** of a family of curves $f(x, y, C) = 0$, what substitution must be made after finding $\\frac{dy}{dx} = g(x, y)$?",
+      "choiceA": "Replace dy/dx with -dx/dy (the negative reciprocal slope).",
+      "choiceB": "Replace dy/dx with 0.",
+      "choiceC": "Replace dy/dx with 1 / (dy/dx).",
+      "choiceD": "Replace y with -x.",
+      "correctChoice": "A",
+      "explanation": "Because orthogonal curves intersect at $90^\\circ$, their tangent slopes are negative reciprocals ($m_1 m_2 = -1$), requiring $\\frac{dy}{dx}$ to be replaced by $-\\frac{dx}{dy}$.",
+      "archetype": "conceptual"
+    },
+    {
+      "id": "m19-04",
+      "promptText": "In electrical field theory, what geometric relationship exists between **electric field lines** and **equipotential surfaces**?",
+      "choiceA": "They form exact physical orthogonal trajectories intersecting at 90°.",
+      "choiceB": "They run strictly parallel to each other.",
+      "choiceC": "They intersect at 45°.",
+      "choiceD": "They have zero intersection.",
+      "correctChoice": "A",
+      "explanation": "Because the electric field vector is the negative gradient of electric potential ($\\vec{E} = -\\nabla V$), field flux lines are perpendicular everywhere to equipotential surfaces.",
+      "archetype": "conceptual"
+    },
+    {
+      "id": "m19-05",
+      "promptText": "In a continuous mixing tank holding volume $V(t)$, what is the mass balance differential equation for the total amount of solute $Q(t)$?",
+      "choiceA": "dQ/dt = (C_in · R_in) - (Q(t) / V(t) · R_out)",
+      "choiceB": "dQ/dt = C_in - Q(t)",
+      "choiceC": "dQ/dt = R_in - R_out",
+      "choiceD": "dQ/dt = Q(t) / V(t)",
+      "correctChoice": "A",
+      "explanation": "Solute mass balance states that the net rate of accumulation $\\frac{dQ}{dt}$ equals the mass inflow rate minus the mass outflow rate.",
+      "archetype": "conceptual"
+    },
+    {
+      "id": "m19-06",
+      "promptText": "If a population grows at an exponential rate of $r = 5\\%$ per year continuously, what is the **doubling time** of the population?",
+      "choiceA": "13.86 years (ln(2) / 0.05)",
+      "choiceB": "20.00 years",
+      "choiceC": "14.40 years",
+      "choiceD": "10.00 years",
+      "correctChoice": "A",
+      "explanation": "$t_{\\text{double}} = \\frac{\\ln 2}{r} = \\frac{0.69315}{0.05} = 13.863\\text{ years}$.",
+      "archetype": "conceptual"
+    },
+    {
+      "id": "m19-07",
+      "promptText": "A cup of coffee at $90^\\circ\\text{C}$ is placed in a $20^\\circ\\text{C}$ room. In 5 minutes, it cools to $60^\\circ\\text{C}$. What will its temperature be after another 5 minutes (at $t = 10\\text{ min}$)?",
+      "choiceA": "42.86°C",
+      "choiceB": "30.00°C",
+      "choiceC": "40.00°C",
+      "choiceD": "35.00°C",
+      "correctChoice": "A",
+      "explanation": "Initial excess $= 90 - 20 = 70^\\circ$. After 5 min, excess $= 60 - 20 = 40^\\circ$ (decay ratio $= 40/70 = 4/7$). After 10 min, excess $= 70 \\times (4/7)^2 = 70 \\times \\frac{16}{49} = \\frac{160}{7} \\approx 22.86^\\circ$. Temperature $= 20 + 22.86 = 42.86^\\circ\\text{C}$.",
+      "archetype": "numerical"
+    },
+    {
+      "id": "m19-08",
+      "promptText": "A radioactive material has a decay constant of $k = 0.05\\text{ year}^{-1}$. Find its half-life.",
+      "choiceA": "13.86 years",
+      "choiceB": "20.00 years",
+      "choiceC": "10.50 years",
+      "choiceD": "15.00 years",
+      "correctChoice": "A",
+      "explanation": "$t_{1/2} = \\frac{\\ln 2}{0.05} = \\frac{0.69315}{0.05} = 13.863\\text{ years}$.",
+      "archetype": "numerical"
+    },
+    {
+      "id": "m19-09",
+      "promptText": "Find the orthogonal trajectories of the family of straight lines passing through the origin: $y = C x$.",
+      "choiceA": "Concentric circles: x² + y² = K",
+      "choiceB": "Parabolas: y = K x²",
+      "choiceC": "Hyperbolas: x y = K",
+      "choiceD": "Ellipses: x² + 2y² = K",
+      "correctChoice": "A",
+      "explanation": "$y = Cx \\implies y' = C = y/x$. Negative reciprocal slope: $\\frac{dy}{dx} = -\\frac{x}{y} \\implies y dy = -x dx \\implies x^2 + y^2 = K$ (concentric circles).",
+      "archetype": "numerical"
+    },
+    {
+      "id": "m19-10",
+      "promptText": "Find the orthogonal trajectories of the family of rectangular hyperbolas $x y = C$.",
+      "choiceA": "x² - y² = K",
+      "choiceB": "x² + y² = K",
+      "choiceC": "y = K x",
+      "choiceD": "x² y = K",
+      "correctChoice": "A",
+      "explanation": "$y = C/x \\implies y' = -C/x^2 = -y/x$. Orthogonal slope: $\\frac{dy}{dx} = \\frac{x}{y} \\implies y dy = x dx \\implies x^2 - y^2 = K$.",
+      "archetype": "numerical"
+    },
+    {
+      "id": "m19-11",
+      "promptText": "Carbon-14 has a half-life of 5,730 years. An ancient archaeological wooden tool contains only $25\\%$ of its original Carbon-14. How old is the artifact?",
+      "choiceA": "11,460 years (2 half-lives)",
+      "choiceB": "5,730 years",
+      "choiceC": "17,190 years",
+      "choiceD": "22,920 years",
+      "correctChoice": "A",
+      "explanation": "Since $25\\% = (1/2)^2$, exactly 2 half-lives have elapsed: $\\text{Age} = 2 \\times 5,730 = 11,460\\text{ years}$.",
+      "archetype": "numerical"
+    },
+    {
+      "id": "m19-12",
+      "promptText": "A tank contains 100 liters of water with 20 grams of dissolved salt. Pure water (0 g/L salt) enters the tank at 2 L/min, and the well-stirred mixture drains at the same rate. What is the amount of salt $Q(t)$ remaining after $50\\text{ minutes}$?",
+      "choiceA": "7.36 grams (20 / e)",
+      "choiceB": "10.00 grams",
+      "choiceC": "5.00 grams",
+      "choiceD": "2.72 grams",
+      "correctChoice": "A",
+      "explanation": "$\\frac{dQ}{dt} = -\\frac{2}{100}Q = -0.02Q \\implies Q(t) = 20 e^{-0.02t}$. At $t = 50\\text{ min}$: $Q(50) = 20 e^{-1} = \\frac{20}{e} \\approx 7.3576\\text{ grams}$.",
+      "archetype": "numerical"
+    },
+    {
+      "id": "m19-13",
+      "promptText": "If $\\text{₱10,000}$ is invested at an annual interest rate of $6\\%$ compounded continuously ($A = P e^{rt}$), what is the total balance after $5\\text{ years}$?",
+      "choiceA": "₱13,498.59",
+      "choiceB": "₱13,000.00",
+      "choiceC": "₱13,382.26",
+      "choiceD": "₱14,120.50",
+      "correctChoice": "A",
+      "explanation": "$A = 10000 e^{0.06 \\times 5} = 10000 e^{0.30} \\approx 10000(1.3498588) = \\text{₱13,498.59}$.",
+      "archetype": "numerical"
+    },
+    {
+      "id": "m19-14",
+      "promptText": "A coroner arrives at a crime scene at 2:00 PM and measures the body temperature as $30^\\circ\\text{C}$ in a room kept at a constant $20^\\circ\\text{C}$. At 3:00 PM, the body temperature has dropped to $28^\\circ\\text{C}$. Assuming normal body temperature at death was $37^\\circ\\text{C}$, approximately what time did death occur?",
+      "choiceA": "11:36 AM",
+      "choiceB": "12:00 PM",
+      "choiceC": "1:00 PM",
+      "choiceD": "10:45 AM",
+      "correctChoice": "A",
+      "explanation": "In 1 hour (2 PM to 3 PM), temperature excess dropped from $30-20=10^\\circ$ to $28-20=8^\\circ$ ($k = -\\ln(8/10) = 0.22314\\text{ hr}^{-1}$). Initial excess at death $= 37 - 20 = 17^\\circ$. Time elapsed from death to 2 PM: $10 = 17 e^{-0.22314 t} \\implies t = \\frac{\\ln(17/10)}{0.22314} = \\frac{0.5306}{0.22314} \\approx 2.378\\text{ hours} \\approx 2\\text{ hr } 23\\text{ min}$. 2:00 PM minus 2 hr 24 min is approximately **11:36 AM**.",
+      "archetype": "applied"
+    },
+    {
+      "id": "m19-15",
+      "promptText": "A power semiconductor transistor dissipates heat into a heatsink. When energized, its temperature rise above ambient follows $\\Delta T(t) = 50(1 - e^{-t / 20})\\text{ }^\\circ\\text{C}$. What is the temperature rise after $20\\text{ seconds}$ (1 thermal time constant)?",
+      "choiceA": "31.61°C (63.2% of steady-state)",
+      "choiceB": "25.00°C",
+      "choiceC": "50.00°C",
+      "choiceD": "37.50°C",
+      "correctChoice": "A",
+      "explanation": "After 1 time constant ($t = \\tau = 20$), $\\Delta T = 50(1 - e^{-1}) = 50(1 - 0.36788) = 50(0.63212) = 31.606^\\circ\\text{C}$ (the standard $63.2\\%$ transient response benchmark).",
+      "archetype": "applied"
+    },
+    {
+      "id": "m19-16",
+      "promptText": "Light intensity $I(x)$ in an optical fiber decays according to $\\frac{dI}{dx} = -\\alpha I$. If the light power is reduced by $50\\%$ after traveling $10\\text{ km}$, what is the attenuation coefficient $\\alpha$ in $\\text{km}^{-1}$?",
+      "choiceA": "0.0693 km⁻¹",
+      "choiceB": "0.0500 km⁻¹",
+      "choiceC": "0.1000 km⁻¹",
+      "choiceD": "0.0347 km⁻¹",
+      "correctChoice": "A",
+      "explanation": "$\\alpha = \\frac{\\ln 2}{10} = \\frac{0.69315}{10} = 0.069315\\text{ km}^{-1}$.",
+      "archetype": "applied"
+    },
+    {
+      "id": "m19-17",
+      "promptText": "Find the orthogonal trajectories of the family of curves $y^2 = C x^3$.",
+      "choiceA": "2x² + 3y² = K",
+      "choiceB": "3x² + 2y² = K",
+      "choiceC": "x³ + y³ = K",
+      "choiceD": "x² - y² = K",
+      "correctChoice": "A",
+      "explanation": "$2y y' = 3C x^2$. Since $C = y^2/x^3$, $2y y' = 3(y^2/x^3)x^2 = \\frac{3y^2}{x} \\implies y' = \\frac{3y}{2x}$. Orthogonal slope: $\\frac{dy}{dx} = -\\frac{2x}{3y} \\implies 3y dy = -2x dx \\implies \\frac{3y^2}{2} = -x^2 + C_1 \\implies 2x^2 + 3y^2 = K$.",
+      "archetype": "applied"
+    },
+    {
+      "id": "m19-18",
+      "promptText": "A radioactive waste cylinder is safe for disposal when its radiation level drops to $1\\%$ of its original intensity. If the half-life is 100 years, how many years must it remain in shielded storage?",
+      "choiceA": "664.39 years",
+      "choiceB": "500.00 years",
+      "choiceC": "700.00 years",
+      "choiceD": "1,000.00 years",
+      "correctChoice": "A",
+      "explanation": "$k = \\frac{\\ln 2}{100} \\approx 0.0069315$. Target: $e^{-kt} = 0.01 \\implies -kt = \\ln(0.01) = -4.60517 \\implies t = \\frac{4.60517}{0.0069315} \\approx 664.386\\text{ years}$.",
+      "archetype": "applied"
+    },
+    {
+      "id": "m19-19",
+      "promptText": "What is the common trap when applying Newton's Law of Cooling to body temperature problems?",
+      "choiceA": "Failing to subtract the ambient room temperature $T_m$ from the body temperature, erroneously applying exponential decay directly to $T(t)$ instead of $(T(t) - T_m)$.",
+      "choiceB": "Using Celsius instead of Kelvin.",
+      "choiceC": "Forgetting the negative sign in decay.",
+      "choiceD": "Dividing by time.",
+      "correctChoice": "A",
+      "explanation": "Heat transfer is driven strictly by temperature difference $(T - T_m)$. Applying exponential decay directly to $T$ (e.g. $T(t) = T_0 e^{-kt}$) wrongly assumes the ambient temperature is absolute zero.",
+      "archetype": "trap"
+    },
+    {
+      "id": "m19-20",
+      "promptText": "When solving for orthogonal trajectories, what is the critical step that must be completed BEFORE replacing $\\frac{dy}{dx}$ with $-\\frac{dx}{dy}$?",
+      "choiceA": "The arbitrary parameter C of the original family must be completely eliminated from the derivative expression.",
+      "choiceB": "Integrate both sides.",
+      "choiceC": "Set the slope equal to zero.",
+      "choiceD": "Multiply by x.",
+      "correctChoice": "A",
+      "explanation": "Failing to eliminate $C$ leaves the orthogonal slope dependent on the specific member constant of the original family rather than general coordinates $(x, y)$, producing invalid trajectories.",
+      "archetype": "trap"
+    },
+    {
+      "id": "m19-21",
+      "promptText": "Using the 2-second constant excess halving shortcut, if a body cools from $100^\\circ\\text{C}$ to $60^\\circ\\text{C}$ in $10\\text{ min}$ in a $20^\\circ\\text{C}$ room, at what time will it reach $40^\\circ\\text{C}$?",
+      "choiceA": "20 minutes (2 halving periods)",
+      "choiceB": "15 minutes",
+      "choiceC": "25 minutes",
+      "choiceD": "30 minutes",
+      "correctChoice": "A",
+      "explanation": "Excess drops from $80^\\circ$ to $40^\\circ$ in $10\\text{ min}$ (halved). For $T = 40^\\circ$, excess is $40 - 20 = 20^\\circ$ (halved again), taking another $10\\text{ min} \\implies 10 + 10 = \\mathbf{20\\text{ minutes}}$ in 2 seconds.",
+      "archetype": "shortcut"
+    },
+    {
+      "id": "m19-22",
+      "promptText": "What fraction of a radioactive material remains after 5 half-lives in 1 second?",
+      "choiceA": "1/32 (3.125%)",
+      "choiceB": "1/16 (6.25%)",
+      "choiceC": "1/64 (1.56%)",
+      "choiceD": "1/10 (10.0%)",
+      "correctChoice": "A",
+      "explanation": "$(1/2)^5 = \\frac{1}{32} = 3.125\\%$ in 1 second.",
+      "archetype": "shortcut"
+    }
+  ]
+}

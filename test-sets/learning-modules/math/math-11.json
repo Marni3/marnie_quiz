@@ -1,0 +1,279 @@
+{
+  "id": "math-11",
+  "code": "MATH 11",
+  "domain": "MATH",
+  "topicCode": "MATH-11",
+  "topicTitle": "Solid Geometry",
+  "subtopicTitle": "Prisms, Pyramids, Cones, Spherical Segments & Platonic Solids",
+  "order": 11,
+  "pairedQuizSetId": "math-11-mastery",
+  "toc": [
+    { "id": "sec-prereq-bridges", "title": "1. Introduction & Cross-Subject Bridges", "level": 2 },
+    { "id": "sec-theory", "title": "2. Lesson Proper", "level": 2 },
+    { "id": "sec-formulas", "title": "3. Compilation of Formulas", "level": 2 },
+    { "id": "sec-visualizer", "title": "4. Interactive Visualizer: 3D Solid Geometry & Frustum Explorer", "level": 2 },
+    { "id": "sec-terminology", "title": "5. Terms and Definitions", "level": 2 },
+    { "id": "sec-dual-method", "title": "6. Sample Problems and Solutions", "level": 2 },
+    { "id": "sec-calculator", "title": "7. Calculator Techniques (Karce & Canon)", "level": 2 },
+    { "id": "sec-concept-checks", "title": "8. In-Line Concept Checks", "level": 2 },
+    { "id": "sec-mastery-challenge", "title": "9. Paired Mastery Challenge", "level": 2 }
+  ],
+  "prerequisiteBridge": {
+    "priorModuleId": "math-10",
+    "text": "Extending 2D plane polygons to 3D spatial volumes, this module analyzes prisms, cylinders, pyramids, cones, frustums, spherical zones/segments, the Prismoidal formula, and Euler's 5 Platonic Solids."
+  },
+  "crossSubjectBridges": [
+    {
+      "targetDomain": "GEAS",
+      "targetTopicCode": "GEAS-14",
+      "badgeText": "Hydrostatic Pressure & Buoyancy",
+      "description": "Archimedes' buoyancy principle ($F_b = \\gamma V_{\\text{displaced}}$) and submerged surface fluid centers of pressure integrate partial spherical caps and truncated geometric prisms."
+    },
+    {
+      "targetDomain": "EST",
+      "targetTopicCode": "EST-05",
+      "badgeText": "Spherical Wave Propagation & Isotropic Antennas",
+      "description": "Free-space path loss and power density ($P_D = P_t / (4\\pi R^2)$) radiate evenly across the expanding spherical surface area $A = 4\\pi R^2$."
+    },
+    {
+      "targetDomain": "ELECS",
+      "targetTopicCode": "ELEC-01",
+      "badgeText": "Cylindrical Wire Volume & Conductor Resistance",
+      "description": "Standard wire gauge resistance ($R = \\rho L / A$) and volumetric mass densities scale directly with circular cylinder volume ($V = \\pi r^2 L$)."
+    }
+  ],
+  "formulas": [
+    {
+      "id": "f-1101-01",
+      "title": "Prisms & Right Cylinders",
+      "formula": "$$V = A_{\\text{base}} \\cdot h, \\qquad A_{\\text{lat}} = P_{\\text{base}} \\cdot h$$",
+      "note": "For a circular cylinder: V = πr²h, A_lat = 2πrh."
+    },
+    {
+      "id": "f-1101-02",
+      "title": "Pyramids & Circular Cones",
+      "formula": "$$V = \\frac{1}{3} A_{\\text{base}} \\cdot h, \\qquad A_{\\text{lat, cone}} = \\pi r L = \\pi r \\sqrt{r^2 + h^2}$$",
+      "note": "L is the slant height: L = √(r² + h²)."
+    },
+    {
+      "id": "f-1101-03",
+      "title": "Frustum of a Pyramid or Cone",
+      "formula": "$$V = \\frac{h}{3}\\left(A_1 + A_2 + \\sqrt{A_1 A_2}\\right) = \\frac{\\pi h}{3}\\left(R^2 + r^2 + Rr\\right)$$",
+      "note": "A₁ and A₂ are top and bottom parallel base areas; R and r are radii."
+    },
+    {
+      "id": "f-1101-04",
+      "title": "Sphere Volume & Surface Area",
+      "formula": "$$V = \\frac{4}{3}\\pi r^3 = \\frac{\\pi d^3}{6}, \\qquad A = 4\\pi r^2 = \\pi d^2$$",
+      "note": "Surface area of sphere is equal to the lateral area of circumscribing cylinder."
+    },
+    {
+      "id": "f-1101-05",
+      "title": "Spherical Zone & Segment (Cap)",
+      "formula": "$$A_{\\text{zone}} = 2\\pi r h, \\qquad V_{\\text{segment}} = \\frac{\\pi h^2}{3}(3r - h) = \\frac{\\pi h}{6}(3a^2 + h^2)$$",
+      "note": "h is the altitude of the zone/segment; a is the base radius of the cap."
+    },
+    {
+      "id": "f-1101-06",
+      "title": "Prismoidal Formula",
+      "formula": "$$V = \\frac{L}{6}\\left(A_1 + 4A_m + A_2\\right)$$",
+      "note": "A_m is the cross-sectional area at the exact midpoint (NOT the average of A₁ and A₂)."
+    },
+    {
+      "id": "f-1101-07",
+      "title": "Euler's Polyhedral Formula & The 5 Platonic Solids",
+      "formula": "$$V - E + F = 2$$",
+      "note": "Tetrahedron (4,6,4), Cube (8,12,6), Octahedron (6,12,8), Dodecahedron (20,30,12), Icosahedron (12,30,20)."
+    }
+  ],
+  "terms": [
+    {
+      "term": "Frustum",
+      "symbol": "Frustum of Solid",
+      "unit": "Solid",
+      "definition": "The portion of a pyramid or cone lying between the base and a plane parallel to the base.",
+      "keywordTrigger": "portion of cone or pyramid between parallel planes"
+    },
+    {
+      "term": "Spherical Zone",
+      "symbol": "$A = 2\\pi rh$",
+      "unit": "Surface",
+      "definition": "The portion of a spherical surface bounded by two parallel cutting planes.",
+      "keywordTrigger": "surface area of sphere bounded by two parallel planes / 2 pi r h"
+    },
+    {
+      "term": "Spherical Segment",
+      "symbol": "$V = \\frac{\\pi h^2}{3}(3r - h)$",
+      "unit": "Volume",
+      "definition": "The 3D volume enclosed by a spherical zone and its parallel circular base planes.",
+      "keywordTrigger": "volume of sphere bounded by parallel cutting planes"
+    },
+    {
+      "term": "Euler's Polyhedral Characteristic",
+      "symbol": "$V - E + F = 2$",
+      "unit": "Topology",
+      "definition": "Invariant topological formula relating vertices (V), edges (E), and faces (F) of any convex polyhedron.",
+      "keywordTrigger": "V minus E plus F equals 2 / vertices edges faces relation"
+    },
+    {
+      "term": "Platonic Solids",
+      "symbol": "Regular Polyhedra",
+      "unit": "Geometry",
+      "definition": "The five convex regular polyhedra whose faces are identical regular polygons: Tetrahedron (4), Hexahedron (6), Octahedron (8), Dodecahedron (12), and Icosahedron (20).",
+      "keywordTrigger": "five regular convex polyhedra / tetrahedron cube octahedron dodecahedron icosahedron"
+    }
+  ],
+  "visualizer": {
+    "archetype": "parameter_sweep",
+    "title": "Interactive 3D Solid Geometry & Frustum Explorer",
+    "description": "Adjust top radius r, base radius R, and height h to inspect frustum volumes and spherical segment surface areas.",
+    "config": {
+      "canvasWidth": 640,
+      "canvasHeight": 320,
+      "controls": [
+        {
+          "id": "baseRadius",
+          "label": "Base Radius (R)",
+          "min": 2,
+          "max": 10,
+          "step": 1,
+          "defaultValue": 6
+        },
+        {
+          "id": "topRadius",
+          "label": "Top Radius (r)",
+          "min": 0,
+          "max": 8,
+          "step": 1,
+          "defaultValue": 3
+        }
+      ]
+    }
+  },
+  "theory": {
+    "mentalAnchor": "Remember: **Pyramids/Cones** have volume $\\frac{1}{3} A_{\\text{base}} h$. **Frustums** replace $A$ with $\\frac{1}{3}(A_1 + A_2 + \\sqrt{A_1 A_2})h$. **Spherical Zone Area** is simply $2\\pi r h$ (directly proportional to height $h$). **Euler's Formula** is **$V - E + F = 2$**. The five Platonic solids have $4, 6, 8, 12, 20$ faces.",
+    "contentMarkdown": "### 1. Prisms, Pyramids & Frustums\n\nSolid geometry evaluates 3D polyhedra and curved solids of revolution:\n\n```diagram\n{\n  \"caption\": \"Figure 1: Frustum of a Right Circular Cone with Top Radius r, Base Radius R, and Height h\",\n  \"xRange\": [-6, 6],\n  \"yRange\": [-1, 7],\n  \"elements\": [\n    { \"type\": \"grid\" },\n    { \"type\": \"axes\" },\n    { \"type\": \"segment\", \"from\": [-4, 0], \"to\": [4, 0], \"color\": \"#38bdf8\", \"width\": 3 },\n    { \"type\": \"segment\", \"from\": [-2, 5], \"to\": [2, 5], \"color\": \"#fbbf24\", \"width\": 3 },\n    { \"type\": \"segment\", \"from\": [-4, 0], \"to\": [-2, 5], \"color\": \"#f43f5e\", \"width\": 2 },\n    { \"type\": \"segment\", \"from\": [4, 0], \"to\": [2, 5], \"color\": \"#f43f5e\", \"width\": 2 },\n    { \"type\": \"segment\", \"from\": [0, 0], \"to\": [0, 5], \"color\": \"#94a3b8\", \"dashed\": true },\n    { \"type\": \"point\", \"at\": [0, 2.5], \"label\": \"Height (h)\", \"color\": \"#94a3b8\" },\n    { \"type\": \"point\", \"at\": [2, 0], \"label\": \"Base (R)\", \"color\": \"#38bdf8\" },\n    { \"type\": \"point\", \"at\": [1, 5], \"label\": \"Top (r)\", \"color\": \"#fbbf24\" }\n  ]\n}\n```\n\n#### Governing Volume Formulas:\n- **Prism / Cylinder**: $V = A_{\\text{base}} \\cdot h$\n- **Pyramid / Cone**: $V = \\frac{1}{3} A_{\\text{base}} \\cdot h$\n- **Frustum of a Cone**: $V = \\frac{\\pi h}{3}(R^2 + r^2 + Rr)$\n- **Frustum Lateral Area**: $A_{\\text{lat}} = \\pi(R + r)L$ where $L = \\sqrt{(R - r)^2 + h^2}$\n\n---\n\n### 2. Spherical Geometry: Zones, Segments & Sectors\n\n- **Full Sphere**: $V = \\frac{4}{3}\\pi r^3 = \\frac{\\pi d^3}{6}, \\quad A = 4\\pi r^2 = \\pi d^2$.\n- **Spherical Zone (Surface Area)**: $A_{\\text{zone}} = 2\\pi r h$.\n- **Spherical Segment (Volume of Cap)**: $V = \\frac{\\pi h^2}{3}(3r - h)$.\n- **Spherical Sector**: $V = \\frac{1}{3} A_{\\text{zone}} \\cdot r = \\frac{2}{3}\\pi r^2 h$.\n\n---\n\n### 3. Euler's Polyhedral Formula & Platonic Solids\n\nFor any convex polyhedron:\n\n$$V - E + F = 2$$\n\n| Platonic Solid | Vertices ($V$) | Edges ($E$) | Faces ($F$) | Face Polygon |\n| :--- | :---: | :---: | :---: | :--- |\n| **Tetrahedron** | 4 | 6 | 4 | Equilateral Triangles |\n| **Hexahedron (Cube)** | 8 | 12 | 6 | Squares |\n| **Octahedron** | 6 | 12 | 8 | Equilateral Triangles |\n| **Dodecahedron** | 20 | 30 | 12 | Regular Pentagons |\n| **Icosahedron** | 12 | 30 | 20 | Equilateral Triangles |"
+  },
+  "examples": [
+    {
+      "problemStatement": "Find the volume of a frustum of a right circular cone with lower base radius R = 6 cm, upper base radius r = 3 cm, and vertical height h = 8 cm.",
+      "formalSolutionMarkdown": "#### Step 1: Apply the cone frustum volume formula\n$$V = \\frac{\\pi h}{3}(R^2 + r^2 + Rr)$$\n\n#### Step 2: Substitute parameters\n$$V = \\frac{\\pi(8)}{3}\\left(6^2 + 3^2 + (6)(3)\\right)$$\n$$V = \\frac{8\\pi}{3}\\left(36 + 9 + 18\\right) = \\frac{8\\pi}{3}(63)$$\n$$V = 8\\pi \\times 21 = 168\\pi \\approx 527.79\\text{ cm}^3$$",
+      "shortcutSolutionMarkdown": "#### ⚡ 2-Second Calculator Evaluation\n`8 × π ÷ 3 × (36 + 9 + 18)` = $168\\pi \\approx \\mathbf{527.79\\text{ cm}^3}$.",
+      "formalTimeSeconds": 30,
+      "shortcutTimeSeconds": 2
+    },
+    {
+      "problemStatement": "A regular polyhedron has 12 faces and 30 edges. How many vertices does it have, and which Platonic solid is it?",
+      "formalSolutionMarkdown": "#### Step 1: Apply Euler's Formula\n$$V - E + F = 2$$\n$$V - 30 + 12 = 2$$\n$$V - 18 = 2 \\implies V = 20\\text{ vertices}$$\n\n#### Step 2: Identify the solid\nA regular polyhedron with 12 pentagonal faces is a **Regular Dodecahedron**.",
+      "shortcutSolutionMarkdown": "#### ⚡ 2-Second Euler Mental Check\n$$V = 2 + E - F = 2 + 30 - 12 = \\mathbf{20\\text{ vertices (Dodecahedron)}}$$.",
+      "formalTimeSeconds": 20,
+      "shortcutTimeSeconds": 2
+    }
+  ],
+  "calculatorGuides": {
+    "karce": {
+      "techniqueTitle": "Direct Frustum Volume Calculation",
+      "problemType": "Evaluating πh/3 * (R² + r² + Rr)",
+      "sampleProblem": "Find frustum volume for R = 6, r = 3, h = 8.",
+      "mode": "COMP Mode (MODE 1)",
+      "keystrokes": [
+        "SHIFT",
+        "π",
+        "×",
+        "8",
+        "÷",
+        "3",
+        "×",
+        "(",
+        "6",
+        "x²",
+        "+",
+        "3",
+        "x²",
+        "+",
+        "6",
+        "×",
+        "3",
+        ")",
+        "="
+      ],
+      "notes": "Directly returns 527.79 cm³ (168π)."
+    },
+    "canon": {
+      "techniqueTitle": "Spherical Segment Cap Volume",
+      "problemType": "Volume of cap πh²/3 * (3r - h)",
+      "sampleProblem": "Find cap volume for r = 10, h = 3.",
+      "mode": "COMP Mode (MODE 1)",
+      "keystrokes": [
+        "SHIFT",
+        "π",
+        "×",
+        "3",
+        "x²",
+        "÷",
+        "3",
+        "×",
+        "(",
+        "3",
+        "×",
+        "1",
+        "0",
+        "-",
+        "3",
+        ")",
+        "="
+      ],
+      "notes": "Directly outputs 81π ≈ 254.47 cm³."
+    }
+  },
+  "conceptChecks": [
+    {
+      "id": "cc-math11-01",
+      "question": "What is the total number of vertices (V) in a regular Icosahedron (20-faced Platonic solid)?",
+      "options": [
+        "12",
+        "20",
+        "30",
+        "8"
+      ],
+      "correctAnswer": 0,
+      "explanation": "By Euler's formula V - E + F = 2: For an icosahedron (F = 20, E = 30), V = 2 + 30 - 20 = 12 vertices."
+    },
+    {
+      "id": "cc-math11-02",
+      "question": "A sphere of radius 10 cm is cut by two parallel planes 4 cm apart. What is the surface area of the resulting spherical zone?",
+      "options": [
+        "251.33 cm² (80π)",
+        "502.65 cm² (160π)",
+        "125.66 cm² (40π)",
+        "314.16 cm² (100π)"
+      ],
+      "correctAnswer": 0,
+      "explanation": "A_zone = 2πrh = 2π(10)(4) = 80π ≈ 251.327 cm²."
+    },
+    {
+      "id": "cc-math11-03",
+      "question": "If the diameter of a sphere is tripled, by what factor does its volume increase?",
+      "options": [
+        "27 times",
+        "9 times",
+        "3 times",
+        "81 times"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Volume scales with the cube of linear dimensions: V ∝ d³. Tripling the diameter increases volume by 3³ = 27 times."
+    },
+    {
+      "id": "cc-math11-04",
+      "question": "Which of the following Platonic solids has regular pentagons as its faces?",
+      "options": [
+        "Regular Dodecahedron",
+        "Regular Icosahedron",
+        "Regular Octahedron",
+        "Regular Tetrahedron"
+      ],
+      "correctAnswer": 0,
+      "explanation": "The Regular Dodecahedron consists of 12 regular pentagonal faces."
+    }
+  ]
+}

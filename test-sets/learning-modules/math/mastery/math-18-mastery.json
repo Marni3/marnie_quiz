@@ -1,0 +1,252 @@
+{
+  "moduleId": "math-18",
+  "moduleCode": "MATH 18",
+  "title": "MATH 18 Mastery Challenge: 1st-Order Differential Equations",
+  "description": "Comprehensive 22-question 4-quadrant companion mastery exam for MATH 18. Rigorously tests order/degree, separable variables, exact ODEs, Euler integrating factors, Bernoulli reductions, and circuit transient equations under timed board conditions.",
+  "totalQuestions": 22,
+  "timeLimitMinutes": 35,
+  "questions": [
+    {
+      "id": "m18-01",
+      "promptText": "What defines the **Degree** of an ordinary differential equation?",
+      "choiceA": "The algebraic exponent (power) of the highest-order derivative, evaluated after the equation is cleared of all fractional powers and radicals in derivatives.",
+      "choiceB": "The highest derivative appearing in the equation.",
+      "choiceC": "The total number of arbitrary constants.",
+      "choiceD": "The degree of the independent variable x.",
+      "correctChoice": "A",
+      "explanation": "The order is the highest derivative, while the degree is the power to which the highest derivative is raised after rationalizing any radicals or fractional exponents on derivatives.",
+      "archetype": "conceptual"
+    },
+    {
+      "id": "m18-02",
+      "promptText": "What is the mathematical condition for $M(x, y) dx + N(x, y) dy = 0$ to be an **EXACT** differential equation?",
+      "choiceA": "∂M/∂y = ∂N/∂x",
+      "choiceB": "∂M/∂x = ∂N/∂y",
+      "choiceC": "M(x, y) = N(x, y)",
+      "choiceD": "dM/dx + dN/dy = 0",
+      "correctChoice": "A",
+      "explanation": "By Clairaut's theorem, exactness requires that the partial derivative of $M$ with respect to $y$ equals the partial derivative of $N$ with respect to $x$: $\\frac{\\partial M}{\\partial y} = \\frac{\\partial N}{\\partial x}$.",
+      "archetype": "conceptual"
+    },
+    {
+      "id": "m18-03",
+      "promptText": "What is the formula for the **Integrating Factor ($\\text{I.F.}$)** of the standard 1st-order linear ODE $\\frac{dy}{dx} + P(x) y = Q(x)$?",
+      "choiceA": "I.F. = e^(∫ P(x) dx)",
+      "choiceB": "I.F. = e^(∫ Q(x) dx)",
+      "choiceC": "I.F. = ∫ P(x) dx",
+      "choiceD": "I.F. = e^(-∫ P(x) dx)",
+      "correctChoice": "A",
+      "explanation": "Multiplying by $\\text{I.F.} = e^{\\int P(x) dx}$ converts the left-hand side into the exact derivative of a product: $\\frac{d}{dx}[y \\cdot e^{\\int P(x) dx}]$.",
+      "archetype": "conceptual"
+    },
+    {
+      "id": "m18-04",
+      "promptText": "In **Bernoulli's Differential Equation** $\\frac{dy}{dx} + P(x) y = Q(x) y^n$, which substitution linearizes the equation into a 1st-order ODE in $u$?",
+      "choiceA": "u = y^(1 - n)",
+      "choiceB": "u = y^n",
+      "choiceC": "u = y^(n - 1)",
+      "choiceD": "u = 1 / y^n",
+      "correctChoice": "A",
+      "explanation": "Dividing by $y^n$ and substituting $u = y^{1 - n}$ transforms Bernoulli's equation into the linear ODE $\\frac{du}{dx} + (1 - n)P(x)u = (1 - n)Q(x)$.",
+      "archetype": "conceptual"
+    },
+    {
+      "id": "m18-05",
+      "promptText": "What substitution is used to solve a **homogeneous first-order differential equation** $M(x, y) dx + N(x, y) dy = 0$?",
+      "choiceA": "y = v x  (so dy = v dx + x dv)",
+      "choiceB": "y = v / x",
+      "choiceC": "y = v + x",
+      "choiceD": "y = e^(vx)",
+      "correctChoice": "A",
+      "explanation": "Because $M$ and $N$ have identical degree in $x$ and $y$, substituting $y = vx$ factors out $x^n$, reducing the equation to a separable ODE in $v$ and $x$.",
+      "archetype": "conceptual"
+    },
+    {
+      "id": "m18-06",
+      "promptText": "What distinguishes a **particular solution** from a **general solution** of a differential equation?",
+      "choiceA": "A particular solution satisfies specific initial/boundary conditions with all arbitrary constants evaluated.",
+      "choiceB": "A particular solution contains arbitrary constants C.",
+      "choiceC": "A particular solution has no derivatives.",
+      "choiceD": "A particular solution is always zero.",
+      "correctChoice": "A",
+      "explanation": "A general solution contains arbitrary integration constants ($C$), whereas a particular solution evaluates $C$ using given boundary values ($y(x_0) = y_0$).",
+      "archetype": "conceptual"
+    },
+    {
+      "id": "m18-07",
+      "promptText": "What are the **order and degree** of the differential equation $\\left(\\frac{d^2y}{dx^2}\\right)^2 = \\sqrt{1 + \\left(\\frac{dy}{dx}\\right)^3}$?",
+      "choiceA": "Order 2, Degree 4",
+      "choiceB": "Order 2, Degree 2",
+      "choiceC": "Order 3, Degree 2",
+      "choiceD": "Order 1, Degree 3",
+      "correctChoice": "A",
+      "explanation": "Squaring both sides to eliminate the radical: $\\left(\\frac{d^2y}{dx^2}\\right)^4 = 1 + \\left(\\frac{dy}{dx}\\right)^3$. The highest derivative is $\\frac{d^2y}{dx^2}$ (Order 2), raised to power 4 (Degree 4).",
+      "archetype": "numerical"
+    },
+    {
+      "id": "m18-08",
+      "promptText": "Find the integrating factor for the linear ODE: $\\frac{dy}{dx} + \\frac{1}{x} y = x^2$.",
+      "choiceA": "x",
+      "choiceB": "x²",
+      "choiceC": "ln x",
+      "choiceD": "e^x",
+      "correctChoice": "A",
+      "explanation": "$\\text{I.F.} = e^{\\int (1/x) dx} = e^{\\ln x} = x$.",
+      "archetype": "numerical"
+    },
+    {
+      "id": "m18-09",
+      "promptText": "Solve the separable differential equation: $\\frac{dy}{dx} = \\frac{x}{y}$.",
+      "choiceA": "y² - x² = C",
+      "choiceB": "y² + x² = C",
+      "choiceC": "y = x + C",
+      "choiceD": "y² = 2x + C",
+      "correctChoice": "A",
+      "explanation": "Separating variables: $y dy = x dx \\implies \\int y dy = \\int x dx \\implies \\frac{y^2}{2} = \\frac{x^2}{2} + C_1 \\implies y^2 - x^2 = C$.",
+      "archetype": "numerical"
+    },
+    {
+      "id": "m18-10",
+      "promptText": "Solve the linear differential equation: $\\frac{dy}{dx} + 2y = 4$.",
+      "choiceA": "y = 2 + C e^(-2x)",
+      "choiceB": "y = 4 + C e^(-2x)",
+      "choiceC": "y = 2 + C e^(2x)",
+      "choiceD": "y = 2x + C",
+      "correctChoice": "A",
+      "explanation": "$\\text{I.F.} = e^{2x}$. $y e^{2x} = \\int 4 e^{2x} dx = 2 e^{2x} + C \\implies y = 2 + C e^{-2x}$.",
+      "archetype": "numerical"
+    },
+    {
+      "id": "m18-11",
+      "promptText": "Find the general solution of the exact differential equation: $(2x + y) dx + (x + 2y) dy = 0$.",
+      "choiceA": "x² + xy + y² = C",
+      "choiceB": "2x² + xy + 2y² = C",
+      "choiceC": "x² + 2xy + y² = C",
+      "choiceD": "x² - xy + y² = C",
+      "correctChoice": "A",
+      "explanation": "Exact test: $\\partial M/\\partial y = 1, \\partial N/\\partial x = 1$. $\\int (2x + y) \\partial x = x^2 + xy + g(y)$. $\\frac{\\partial}{\\partial y}[x^2 + xy + g(y)] = x + g'(y) = x + 2y \\implies g(y) = y^2$. Solution: $x^2 + xy + y^2 = C$.",
+      "archetype": "numerical"
+    },
+    {
+      "id": "m18-12",
+      "promptText": "Find the particular solution to $\\frac{dy}{dx} = 3x^2$ subject to initial condition $y(0) = 5$.",
+      "choiceA": "y = x³ + 5",
+      "choiceB": "y = 3x³ + 5",
+      "choiceC": "y = x³ - 5",
+      "choiceD": "y = 6x + 5",
+      "correctChoice": "A",
+      "explanation": "$y = \\int 3x^2 dx = x^3 + C$. At $x = 0, y = 5 \\implies 5 = 0 + C \\implies C = 5$. Thus, $y = x^3 + 5$.",
+      "archetype": "numerical"
+    },
+    {
+      "id": "m18-13",
+      "promptText": "What linearizing substitution converts the Bernoulli equation $\\frac{dy}{dx} + y = x y^4$ into a linear ODE?",
+      "choiceA": "u = y^(-3)",
+      "choiceB": "u = y⁴",
+      "choiceC": "u = y^(-4)",
+      "choiceD": "u = 1 / y",
+      "correctChoice": "A",
+      "explanation": "Here $n = 4$, so $u = y^{1 - n} = y^{1 - 4} = y^{-3}$.",
+      "archetype": "numerical"
+    },
+    {
+      "id": "m18-14",
+      "promptText": "In an electrical circuit, a capacitor charges through a resistor according to $R C \\frac{dv}{dt} + v = V_0$. If $v(0) = 0$, what is the analytical expression for voltage $v(t)$?",
+      "choiceA": "v(t) = V₀ (1 - e^(-t / RC))",
+      "choiceB": "v(t) = V₀ e^(-t / RC)",
+      "choiceC": "v(t) = V₀ (1 + e^(-t / RC))",
+      "choiceD": "v(t) = V₀ t / (RC)",
+      "correctChoice": "A",
+      "explanation": "Standard 1st-order linear charging transient: $\\text{I.F.} = e^{t/RC} \\implies v(t) e^{t/RC} = \\int \\frac{V_0}{RC}e^{t/RC}dt = V_0 e^{t/RC} + C$. At $t=0, v=0 \\implies C = -V_0 \\implies v(t) = V_0(1 - e^{-t/RC})$.",
+      "archetype": "applied"
+    },
+    {
+      "id": "m18-15",
+      "promptText": "An inductor circuit obeys $L \\frac{di}{dt} + R i = E$ with initial current $i(0) = 0$. What is the steady-state current as $t \\to \\infty$?",
+      "choiceA": "I_ss = E / R",
+      "choiceB": "I_ss = E / L",
+      "choiceC": "I_ss = 0",
+      "choiceD": "I_ss = E · R",
+      "correctChoice": "A",
+      "explanation": "As $t \\to \\infty$, steady-state is reached so $\\frac{di}{dt} = 0$, reducing the ODE to $R i = E \\implies I_{\\text{ss}} = \\frac{E}{R}$.",
+      "archetype": "applied"
+    },
+    {
+      "id": "m18-16",
+      "promptText": "Solve the exact differential equation: $(\\cos y) dx - (x\\sin y) dy = 0$.",
+      "choiceA": "x cos y = C",
+      "choiceB": "x sin y = C",
+      "choiceC": "cos y - x sin y = C",
+      "choiceD": "x² cos y = C",
+      "correctChoice": "A",
+      "explanation": "Notice this is the direct differential of a product: $d(x\\cos y) = \\cos y dx - x\\sin y dy = 0 \\implies x\\cos y = C$.",
+      "archetype": "applied"
+    },
+    {
+      "id": "m18-17",
+      "promptText": "A falling body of mass $m$ with linear air resistance follows $m \\frac{dv}{dt} = m g - k v$. What is its **terminal velocity** $v_t$ as $t \\to \\infty$?",
+      "choiceA": "v_t = mg / k",
+      "choiceB": "v_t = k / (mg)",
+      "choiceC": "v_t = √(2gh)",
+      "choiceD": "v_t = mg k",
+      "correctChoice": "A",
+      "explanation": "At terminal velocity, acceleration ceases ($\\frac{dv}{dt} = 0$), so $mg - kv_t = 0 \\implies v_t = \\frac{mg}{k}$.",
+      "archetype": "applied"
+    },
+    {
+      "id": "m18-18",
+      "promptText": "Find the integrating factor for the differential equation $(x^2 + y) dx - x dy = 0$.",
+      "choiceA": "1 / x²",
+      "choiceB": "x²",
+      "choiceC": "1 / x",
+      "choiceD": "e^x",
+      "correctChoice": "A",
+      "explanation": "$M = x^2 + y, N = -x$. $\\frac{\\partial M}{\\partial y} = 1, \\frac{\\partial N}{\\partial x} = -1$. $\\frac{1}{N}(\\partial M/\\partial y - \\partial N/\\partial x) = \\frac{1}{-x}(1 - (-1)) = -\\frac{2}{x}$. $\\text{I.F.} = e^{\\int (-2/x) dx} = e^{-2\\ln x} = x^{-2} = \\frac{1}{x^2}$.",
+      "archetype": "applied"
+    },
+    {
+      "id": "m18-19",
+      "promptText": "What is the common trap when identifying $P(x)$ in a first-order linear ODE like $x \\frac{dy}{dx} + 3y = x^2$?",
+      "choiceA": "Failing to divide the entire equation by $x$ to achieve the standard form $\\frac{dy}{dx} + \\frac{3}{x}y = x$ before computing $\\text{I.F.} = e^{\\int P(x) dx}$.",
+      "choiceB": "Using natural logarithms.",
+      "choiceC": "Integrating $Q(x)$ first.",
+      "choiceD": "Setting the right-hand side to zero.",
+      "correctChoice": "A",
+      "explanation": "The standard linear form strictly requires the leading coefficient of $\\frac{dy}{dx}$ to be 1. Identifying $P(x) = 3$ instead of $P(x) = 3/x$ is a major trap.",
+      "archetype": "trap"
+    },
+    {
+      "id": "m18-20",
+      "promptText": "When evaluating the degree of an ODE containing radicals, what is the critical requirement?",
+      "choiceA": "All radicals and fractional powers on derivatives must be cleared by algebraic squaring/raising to powers before reading the exponent of the highest derivative.",
+      "choiceB": "The degree is always 1.",
+      "choiceC": "Ignore the radicals.",
+      "choiceD": "Differentiate again to eliminate radicals.",
+      "correctChoice": "A",
+      "explanation": "The degree of a differential equation is strictly defined only after the equation has been made rational and integral with respect to all derivatives.",
+      "archetype": "trap"
+    },
+    {
+      "id": "m18-21",
+      "promptText": "Using the 2-second integrating factor shortcut, what is the $\\text{I.F.}$ for $\\frac{dy}{dx} - \\frac{4}{x}y = x^3$?",
+      "choiceA": "1 / x⁴ (x^(-4))",
+      "choiceB": "x⁴",
+      "choiceC": "-4 ln x",
+      "choiceD": "x³",
+      "correctChoice": "A",
+      "explanation": "$\\text{I.F.} = e^{\\int (-4/x) dx} = e^{-4\\ln x} = x^{-4} = \\frac{1}{x^4}$ in 2 seconds.",
+      "archetype": "shortcut"
+    },
+    {
+      "id": "m18-22",
+      "promptText": "What is the steady-state value of $y(t) = 10(1 - e^{-5t})$ as $t \\to \\infty$ in 1 second?",
+      "choiceA": "10",
+      "choiceB": "0",
+      "choiceC": "5",
+      "choiceD": "50",
+      "correctChoice": "A",
+      "explanation": "As $t \\to \\infty$, $e^{-5t} \\to 0$, so $y(\\infty) = 10(1 - 0) = 10$ in 1 second.",
+      "archetype": "shortcut"
+    }
+  ]
+}

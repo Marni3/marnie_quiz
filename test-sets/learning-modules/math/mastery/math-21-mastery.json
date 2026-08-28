@@ -1,0 +1,252 @@
+{
+  "moduleId": "math-21",
+  "moduleCode": "MATH 21",
+  "title": "MATH 21 Mastery Challenge: Matrices & Linear Systems",
+  "description": "Comprehensive 22-question 4-quadrant companion mastery exam for MATH 21. Rigorously tests matrix multiplication, determinant properties, inverses, eigenvalues/trace relations, Cramer's rule, and matrix calculator mode bypasses under timed board conditions.",
+  "totalQuestions": 22,
+  "timeLimitMinutes": 35,
+  "questions": [
+    {
+      "id": "m21-01",
+      "promptText": "If $A$ is an $n \\times n$ square matrix and $k$ is a scalar constant, what is the value of **$\\det(k A)$**?",
+      "choiceA": "kⁿ det(A)",
+      "choiceB": "k det(A)",
+      "choiceC": "k² det(A)",
+      "choiceD": "n k det(A)",
+      "correctChoice": "A",
+      "explanation": "Factoring the scalar $k$ out of each of the $n$ rows of matrix $A$ multiplies the determinant by $k$ a total of $n$ times: $\\det(kA) = k^n\\det A$.",
+      "archetype": "conceptual"
+    },
+    {
+      "id": "m21-02",
+      "promptText": "What is the relationship between the **Trace of a matrix ($\\text{Tr}(A)$)** and its **Eigenvalues ($\\lambda_i$)**?",
+      "choiceA": "The Trace equals the sum of all eigenvalues: Tr(A) = ∑ λᵢ.",
+      "choiceB": "The Trace equals the product of all eigenvalues.",
+      "choiceC": "The Trace equals the maximum eigenvalue.",
+      "choiceD": "The Trace equals the square root of the determinant.",
+      "correctChoice": "A",
+      "explanation": "In linear algebra, the sum of the main diagonal entries $\\text{Tr}(A) = \\sum a_{ii}$ strictly equals the sum of all eigenvalues $\\sum \\lambda_i$.",
+      "archetype": "conceptual"
+    },
+    {
+      "id": "m21-03",
+      "promptText": "A square matrix $A$ is defined as **Singular** if and only if:",
+      "choiceA": "det(A) = 0 (possessing no multiplicative inverse).",
+      "choiceB": "det(A) = 1.",
+      "choiceC": "A is symmetric.",
+      "choiceD": "Tr(A) = 0.",
+      "correctChoice": "A",
+      "explanation": "A matrix is singular if its determinant is zero, meaning its rows are linearly dependent and it cannot be inverted ($A^{-1}$ does not exist).",
+      "archetype": "conceptual"
+    },
+    {
+      "id": "m21-04",
+      "promptText": "Which property strictly defines a real **Orthogonal Matrix**?",
+      "choiceA": "Aᵀ = A⁻¹ (its transpose is equal to its inverse).",
+      "choiceB": "det(A) = 0.",
+      "choiceC": "Aᵀ = -A.",
+      "choiceD": "A² = 0.",
+      "correctChoice": "A",
+      "explanation": "An orthogonal matrix satisfies $A A^T = I$, which is algebraically equivalent to $A^T = A^{-1}$.",
+      "archetype": "conceptual"
+    },
+    {
+      "id": "m21-05",
+      "promptText": "If matrix $A$ has dimension $3 \\times 4$ and matrix $B$ has dimension $4 \\times 2$, what is the dimension of their product matrix **$C = AB$**?",
+      "choiceA": "3 × 2",
+      "choiceB": "4 × 4",
+      "choiceC": "3 × 4",
+      "choiceD": "2 × 3",
+      "correctChoice": "A",
+      "explanation": "Multiplication of $A_{m \\times p} \\times B_{p \\times n}$ produces product matrix $C_{m \\times n}$. Here $(3 \\times 4) \\times (4 \\times 2) = (3 \\times 2)$.",
+      "archetype": "conceptual"
+    },
+    {
+      "id": "m21-06",
+      "promptText": "What is the **product of all eigenvalues** of an $n \\times n$ matrix $A$?",
+      "choiceA": "det(A)",
+      "choiceB": "Tr(A)",
+      "choiceC": "1 / det(A)",
+      "choiceD": "0",
+      "correctChoice": "A",
+      "explanation": "Setting $\\lambda = 0$ in the characteristic polynomial $\\det(A - \\lambda I) = 0$ proves that the product of all eigenvalues equals $\\det A$.",
+      "archetype": "conceptual"
+    },
+    {
+      "id": "m21-07",
+      "promptText": "Evaluate the determinant of the 2x2 matrix: $\\begin{pmatrix} 5 & 3 \\\\ 2 & 4 \\end{pmatrix}$.",
+      "choiceA": "14",
+      "choiceB": "26",
+      "choiceC": "10",
+      "choiceD": "-14",
+      "correctChoice": "A",
+      "explanation": "$\\det = (5)(4) - (3)(2) = 20 - 6 = 14$.",
+      "archetype": "numerical"
+    },
+    {
+      "id": "m21-08",
+      "promptText": "Find the determinant of the 3x3 matrix: $A = \\begin{pmatrix} 2 & -4 & 3 \\\\ 1 & 2 & -1 \\\\ 3 & 0 & 2 \\end{pmatrix}$.",
+      "choiceA": "10",
+      "choiceB": "-10",
+      "choiceC": "16",
+      "choiceD": "6",
+      "correctChoice": "A",
+      "explanation": "Expand along row 3: $3((-4)(-1) - (3)(2)) + 2((2)(2) - (-4)(1)) = 3(4 - 6) + 2(4 + 4) = 3(-2) + 2(8) = -6 + 16 = 10$.",
+      "archetype": "numerical"
+    },
+    {
+      "id": "m21-09",
+      "promptText": "If $A$ and $B$ are square matrices of identical size with $\\det(A) = 3$ and $\\det(B) = -4$, what is **$\\det(AB)$**?",
+      "choiceA": "-12",
+      "choiceB": "-1",
+      "choiceC": "12",
+      "choiceD": "-4/3",
+      "correctChoice": "A",
+      "explanation": "By the multiplicative property of determinants: $\\det(AB) = \\det(A)\\det(B) = (3)(-4) = -12$.",
+      "archetype": "numerical"
+    },
+    {
+      "id": "m21-10",
+      "promptText": "Find the eigenvalues of the matrix $A = \\begin{pmatrix} 2 & 1 \\\\ 1 & 2 \\end{pmatrix}$.",
+      "choiceA": "λ₁ = 3, λ₂ = 1",
+      "choiceB": "λ₁ = 2, λ₂ = 2",
+      "choiceC": "λ₁ = 4, λ₂ = 0",
+      "choiceD": "λ₁ = -3, λ₂ = -1",
+      "correctChoice": "A",
+      "explanation": "Characteristic equation: $\\det\\begin{pmatrix} 2-\\lambda & 1 \\\\ 1 & 2-\\lambda \\end{pmatrix} = (2-\\lambda)^2 - 1 = 0 \\implies (2-\\lambda)^2 = 1 \\implies 2-\\lambda = \\pm 1 \\implies \\lambda = 3, 1$.",
+      "archetype": "numerical"
+    },
+    {
+      "id": "m21-11",
+      "promptText": "Find the **Trace** of the 3x3 matrix $A = \\begin{pmatrix} 4 & 1 & -3 \\\\ 2 & -2 & 5 \\\\ 0 & 6 & 7 \\end{pmatrix}$.",
+      "choiceA": "9",
+      "choiceB": "13",
+      "choiceC": "7",
+      "choiceD": "5",
+      "correctChoice": "A",
+      "explanation": "$\\text{Tr}(A) = a_{11} + a_{22} + a_{33} = 4 + (-2) + 7 = 9$.",
+      "archetype": "numerical"
+    },
+    {
+      "id": "m21-12",
+      "promptText": "Find the inverse of the matrix $A = \\begin{pmatrix} 1 & 2 \\\\ 3 & 4 \\end{pmatrix}$.",
+      "choiceA": "[[ -2, 1 ], [ 1.5, -0.5 ]]",
+      "choiceB": "[[ 4, -2 ], [ -3, 1 ]]",
+      "choiceC": "[[ -0.5, 1.5 ], [ 1, -2 ]]",
+      "choiceD": "[[ 1, 3 ], [ 2, 4 ]]",
+      "correctChoice": "A",
+      "explanation": "$\\det A = (1)(4) - (2)(3) = 4 - 6 = -2$. $A^{-1} = \\frac{1}{-2}\\begin{pmatrix} 4 & -2 \\\\ -3 & 1 \\end{pmatrix} = \\begin{pmatrix} -2 & 1 \\\\ 1.5 & -0.5 \\end{pmatrix}$.",
+      "archetype": "numerical"
+    },
+    {
+      "id": "m21-13",
+      "promptText": "If $A$ is a 3x3 matrix with $\\det(A) = 4$, find the value of **$\\det(3 A)$**.",
+      "choiceA": "108 (3³ × 4)",
+      "choiceB": "12 (3 × 4)",
+      "choiceC": "36",
+      "choiceD": "64",
+      "correctChoice": "A",
+      "explanation": "$\\det(3A) = 3^3 \\det(A) = 27 \\times 4 = 108$.",
+      "archetype": "numerical"
+    },
+    {
+      "id": "m21-14",
+      "promptText": "In circuit analysis, three mesh loop currents satisfy the matrix system $\\begin{pmatrix} 4 & -1 & 0 \\\\ -1 & 5 & -2 \\\\ 0 & -2 & 6 \\end{pmatrix} \\begin{pmatrix} I_1 \\\\ I_2 \\\\ I_3 \\end{pmatrix} = \\begin{pmatrix} 12 \\\\ 0 \\\\ 0 \\end{pmatrix}$. Find the determinant of the impedance matrix.",
+      "choiceA": "98",
+      "choiceB": "100",
+      "choiceC": "96",
+      "choiceD": "112",
+      "correctChoice": "A",
+      "explanation": "$\\det Z = 4(5 \\times 6 - (-2)(-2)) - (-1)(-1 \\times 6 - 0) = 4(30 - 4) - (-1)(-6) = 4(26) - 6 = 104 - 6 = 98$.",
+      "archetype": "applied"
+    },
+    {
+      "id": "m21-15",
+      "promptText": "An RF two-port network has scattering parameter matrix $S = \\begin{pmatrix} 0.2 & 0.8 \\\\ 0.8 & 0.2 \\end{pmatrix}$. Find the determinant of the S-parameter matrix.",
+      "choiceA": "-0.60",
+      "choiceB": "0.68",
+      "choiceC": "0.60",
+      "choiceD": "-0.68",
+      "correctChoice": "A",
+      "explanation": "$\\det S = S_{11}S_{22} - S_{12}S_{21} = (0.2)(0.2) - (0.8)(0.8) = 0.04 - 0.64 = -0.60$.",
+      "archetype": "applied"
+    },
+    {
+      "id": "m21-16",
+      "promptText": "A 2D stress element in Mohr's circle analysis has plane stress tensor $\\sigma = \\begin{pmatrix} 80 & 30 \\\\ 30 & 0 \\end{pmatrix}\\text{ MPa}$. Find the maximum principal stress (the maximum eigenvalue $\\lambda_1$).",
+      "choiceA": "90 MPa",
+      "choiceB": "80 MPa",
+      "choiceC": "100 MPa",
+      "choiceD": "110 MPa",
+      "correctChoice": "A",
+      "explanation": "$\\text{Tr} = 80, \\det = 0 - 900 = -900$. $\\lambda^2 - 80\\lambda - 900 = 0 \\implies (\\lambda - 90)(\\lambda + 10) = 0 \\implies \\lambda_1 = 90\\text{ MPa}$.",
+      "archetype": "applied"
+    },
+    {
+      "id": "m21-17",
+      "promptText": "What is the **Rank** of the matrix $A = \\begin{pmatrix} 1 & 2 & 3 \\\\ 2 & 4 & 6 \\\\ 1 & 0 & 1 \\end{pmatrix}$?",
+      "choiceA": "Rank = 2 (Row 2 is exactly twice Row 1)",
+      "choiceB": "Rank = 3",
+      "choiceC": "Rank = 1",
+      "choiceD": "Rank = 0",
+      "correctChoice": "A",
+      "explanation": "Row 2 ($2, 4, 6$) is linearly dependent on Row 1 ($2 \\times R_1$). Rows 1 and 3 are linearly independent, so the maximum number of independent rows is 2.",
+      "archetype": "applied"
+    },
+    {
+      "id": "m21-18",
+      "promptText": "Using Cramer's Rule, solve for $x$ in the linear system: $2x + 3y = 8$ and $4x - y = 2$.",
+      "choiceA": "x = 1.0 (det(Ax) / det(A) = -14 / -14)",
+      "choiceB": "x = 2.0",
+      "choiceC": "x = 0.5",
+      "choiceD": "x = 3.0",
+      "correctChoice": "A",
+      "explanation": "$\\det A = (2)(-1) - (3)(4) = -2 - 12 = -14$. $\\det A_x = \\begin{vmatrix} 8 & 3 \\\\ 2 & -1 \\end{vmatrix} = (8)(-1) - (3)(2) = -8 - 6 = -14$. $x = \\frac{-14}{-14} = 1.0$.",
+      "archetype": "applied"
+    },
+    {
+      "id": "m21-19",
+      "promptText": "What is the common trap when computing the determinant of a scaled matrix $\\det(k A)$ for a 3x3 matrix?",
+      "choiceA": "Writing $k \\det A$ instead of $k^3 \\det A$, forgetting to raise the scalar $k$ to the power of the matrix dimension $n = 3$.",
+      "choiceB": "Dividing by $k$.",
+      "choiceC": "Squaring the determinant.",
+      "choiceD": "Taking the square root.",
+      "correctChoice": "A",
+      "explanation": "Multiplying a matrix by scalar $k$ multiplies every single row by $k$. For an $n \\times n$ matrix, this scales the determinant by $k^n$.",
+      "archetype": "trap"
+    },
+    {
+      "id": "m21-20",
+      "promptText": "When inverting a 2x2 matrix $A = \\begin{pmatrix} a & b \\\\ c & d \\end{pmatrix}$, what is the correct adjugate matrix formula?",
+      "choiceA": "adj(A) = [[ d, -b ], [ -c, a ]]",
+      "choiceB": "adj(A) = [[ a, -b ], [ -c, d ]]",
+      "choiceC": "adj(A) = [[ d, c ], [ b, a ]]",
+      "choiceD": "adj(A) = [[ -d, b ], [ c, -a ]]",
+      "correctChoice": "A",
+      "explanation": "For a 2x2 matrix, swap the main diagonal elements ($a \\leftrightarrow d$) and negate the off-diagonal elements ($-b, -c$): $\\text{adj}(A) = \\begin{pmatrix} d & -b \\\\ -c & a \\end{pmatrix}$.",
+      "archetype": "trap"
+    },
+    {
+      "id": "m21-21",
+      "promptText": "Using the 3-second Trace-Determinant shortcut, what are the eigenvalues of $\\begin{pmatrix} 6 & 2 \\\\ 2 & 3 \\end{pmatrix}$?",
+      "choiceA": "λ = 7 and λ = 2",
+      "choiceB": "λ = 6 and λ = 3",
+      "choiceC": "λ = 8 and λ = 1",
+      "choiceD": "λ = 5 and λ = 4",
+      "correctChoice": "A",
+      "explanation": "$\\text{Tr} = 6 + 3 = 9, \\det = 18 - 4 = 14$. Characteristic equation: $\\lambda^2 - 9\\lambda + 14 = 0 \\implies (\\lambda - 7)(\\lambda - 2) = 0 \\implies \\lambda = 7, 2$ in 2 seconds.",
+      "archetype": "shortcut"
+    },
+    {
+      "id": "m21-22",
+      "promptText": "If $\\det(A) = 8$, what is $\\det(A^{-1})$ in 1 second?",
+      "choiceA": "1/8 (0.125)",
+      "choiceB": "-8",
+      "choiceC": "8",
+      "choiceD": "1/64",
+      "correctChoice": "A",
+      "explanation": "$\\det(A^{-1}) = \\frac{1}{\\det A} = \\frac{1}{8} = 0.125$ in 1 second.",
+      "archetype": "shortcut"
+    }
+  ]
+}

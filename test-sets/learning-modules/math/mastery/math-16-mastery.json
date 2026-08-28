@@ -1,0 +1,252 @@
+{
+  "moduleId": "math-16",
+  "moduleCode": "MATH 16",
+  "title": "MATH 16 Mastery Challenge: Integration Techniques & Wallis' Formula",
+  "description": "Comprehensive 22-question 4-quadrant companion mastery exam for MATH 16. Rigorously tests antiderivatives, definite Riemann accumulation, Integration by Parts, trigonometric substitutions, Wallis' formula, and calculator integration bypasses under timed board conditions.",
+  "totalQuestions": 22,
+  "timeLimitMinutes": 35,
+  "questions": [
+    {
+      "id": "m16-01",
+      "promptText": "Under what condition is the factor **$\\alpha = \\frac{\\pi}{2}$** applied in **Wallis' Formula** for $\\int_0^{\\pi/2} \\sin^m\\theta \\cos^n\\theta \\, d\\theta$?",
+      "choiceA": "Only when BOTH exponents m and n are even non-negative integers.",
+      "choiceB": "Whenever either m or n is an even integer.",
+      "choiceC": "Only when m + n is an even integer.",
+      "choiceD": "For all integer powers m and n.",
+      "correctChoice": "A",
+      "explanation": "Wallis' formula uses $\\alpha = \\frac{\\pi}{2}$ strictly when both powers $m$ and $n$ are even integers. If either exponent is odd, $\\alpha = 1$.",
+      "archetype": "conceptual"
+    },
+    {
+      "id": "m16-02",
+      "promptText": "What is the value of the definite integral $\\int_{-a}^a f(x) dx$ if $f(x)$ is an **odd function** ($f(-x) = -f(x)$)?",
+      "choiceA": "0",
+      "choiceB": "2 ∫_0^a f(x) dx",
+      "choiceC": "f(a) - f(-a)",
+      "choiceD": "a · f(a)",
+      "correctChoice": "A",
+      "explanation": "For any odd function integrated over a symmetric interval $[-a, a]$, the negative area on the left cancels the positive area on the right, producing an exact value of 0.",
+      "archetype": "conceptual"
+    },
+    {
+      "id": "m16-03",
+      "promptText": "Which trigonometric substitution is mathematically required to eliminate the radical in an integrand containing **$\\sqrt{a^2 - u^2}$**?",
+      "choiceA": "u = a sin θ",
+      "choiceB": "u = a tan θ",
+      "choiceC": "u = a sec θ",
+      "choiceD": "u = a cosh θ",
+      "correctChoice": "A",
+      "explanation": "Substituting $u = a\\sin\\theta$ transforms $\\sqrt{a^2 - a^2\\sin^2\\theta} = \\sqrt{a^2\\cos^2\\theta} = a\\cos\\theta$ using the Pythagorean identity $1 - \\sin^2\\theta = \\cos^2\\theta$.",
+      "archetype": "conceptual"
+    },
+    {
+      "id": "m16-04",
+      "promptText": "In **Integration by Parts** ($\\int u dv = uv - \\int v du$), what heuristic hierarchy dictates the priority for selecting $u$?",
+      "choiceA": "LIATE (Logarithmic, Inverse trig, Algebraic, Trigonometric, Exponential)",
+      "choiceB": "PEMDAS (Parentheses, Exponents, Multiplication, Division, Addition, Subtraction)",
+      "choiceC": "Alphabetical order of functions",
+      "choiceD": "Highest power first",
+      "correctChoice": "A",
+      "explanation": "The LIATE rule provides the established standard hierarchy for choosing $u$ so that its derivative $du$ simplifies the remaining integral $\\int v du$.",
+      "archetype": "conceptual"
+    },
+    {
+      "id": "m16-05",
+      "promptText": "Why does the standard Power Rule $\\int u^n du = \\frac{u^{n+1}}{n+1} + C$ fail when **$n = -1$**?",
+      "choiceA": "It causes division by zero in the denominator (n + 1 = 0), requiring the logarithmic integral ∫ (1/u) du = ln|u| + C.",
+      "choiceB": "The integral becomes imaginary.",
+      "choiceC": "The function becomes discontinuous.",
+      "choiceD": "It produces a negative exponent.",
+      "correctChoice": "A",
+      "explanation": "Setting $n = -1$ produces $\\frac{u^0}{0}$, which is undefined. The antiderivative of $u^{-1} = 1/u$ is uniquely defined by the natural logarithm $\\ln|u| + C$.",
+      "archetype": "conceptual"
+    },
+    {
+      "id": "m16-06",
+      "promptText": "What does the **Fundamental Theorem of Calculus** formally state?",
+      "choiceA": "If f(x) is continuous on [a, b] and F'(x) = f(x), then ∫_a^b f(x) dx = F(b) - F(a).",
+      "choiceB": "The derivative of an integral is always zero.",
+      "choiceC": "All continuous functions can be integrated in elementary closed form.",
+      "choiceD": "The integral equals the product of the bounds.",
+      "correctChoice": "A",
+      "explanation": "The Fundamental Theorem of Calculus links differentiation and integration, establishing that definite accumulation equals the net change of the antiderivative $F(b) - F(a)$.",
+      "archetype": "conceptual"
+    },
+    {
+      "id": "m16-07",
+      "promptText": "Evaluate the integral: $\\int_0^{\\pi/2} \\sin^4\\theta \\, d\\theta$ using Wallis' Formula.",
+      "choiceA": "3π / 16",
+      "choiceB": "3 / 8",
+      "choiceC": "3π / 8",
+      "choiceD": "1 / 4",
+      "correctChoice": "A",
+      "explanation": "$m = 4$ (even), $n = 0$ (even) $\\implies \\alpha = \\frac{\\pi}{2}$. Value $= \\frac{3 \\times 1}{4 \\times 2} \\times \\frac{\\pi}{2} = \\frac{3}{8} \\times \\frac{\\pi}{2} = \\frac{3\\pi}{16}$.",
+      "archetype": "numerical"
+    },
+    {
+      "id": "m16-08",
+      "promptText": "Evaluate the integral: $\\int_0^{\\pi/2} \\sin^3\\theta \\cos^2\\theta \\, d\\theta$ using Wallis' Formula.",
+      "choiceA": "2/15",
+      "choiceB": "2π / 15",
+      "choiceC": "4/15",
+      "choiceD": "1/15",
+      "correctChoice": "A",
+      "explanation": "$m = 3$ (odd), $n = 2$ (even) $\\implies \\alpha = 1$. Value $= \\frac{(2)(1)}{(5)(3)(1)} \\times 1 = \\frac{2}{15}$.",
+      "archetype": "numerical"
+    },
+    {
+      "id": "m16-09",
+      "promptText": "Evaluate: $\\int x\\cos x \\, dx$.",
+      "choiceA": "x sin x + cos x + C",
+      "choiceB": "x sin x - cos x + C",
+      "choiceC": "-x sin x + cos x + C",
+      "choiceD": "x² sin x / 2 + C",
+      "correctChoice": "A",
+      "explanation": "Parts: $u = x, dv = \\cos x dx \\implies du = dx, v = \\sin x$. $\\int x\\cos x dx = x\\sin x - \\int \\sin x dx = x\\sin x - (-\\cos x) + C = x\\sin x + \\cos x + C$.",
+      "archetype": "numerical"
+    },
+    {
+      "id": "m16-10",
+      "promptText": "Evaluate the definite integral: $\\int_1^e \\frac{\\ln x}{x} \\, dx$.",
+      "choiceA": "1/2 (0.50)",
+      "choiceB": "1",
+      "choiceC": "e - 1",
+      "choiceD": "1/e",
+      "correctChoice": "A",
+      "explanation": "Let $u = \\ln x \\implies du = \\frac{1}{x} dx$. Bounds: $x = 1 \\implies u = 0; x = e \\implies u = 1$. $\\int_0^1 u du = \\left[\\frac{u^2}{2}\\right]_0^1 = \\frac{1}{2}$.",
+      "archetype": "numerical"
+    },
+    {
+      "id": "m16-11",
+      "promptText": "Evaluate: $\\int \\frac{dx}{x^2 + 9}$.",
+      "choiceA": "(1/3) arctan(x/3) + C",
+      "choiceB": "arctan(x/3) + C",
+      "choiceC": "(1/9) arctan(x/9) + C",
+      "choiceD": "ln(x² + 9) + C",
+      "correctChoice": "A",
+      "explanation": "Standard inverse tangent integral: $\\int \\frac{du}{u^2 + a^2} = \\frac{1}{a}\\arctan\\left(\\frac{u}{a}\\right) + C = \\frac{1}{3}\\arctan\\left(\\frac{x}{3}\\right) + C$.",
+      "archetype": "numerical"
+    },
+    {
+      "id": "m16-12",
+      "promptText": "Evaluate: $\\int \\frac{dx}{\\sqrt{16 - x^2}}$.",
+      "choiceA": "arcsin(x/4) + C",
+      "choiceB": "(1/4) arcsin(x/4) + C",
+      "choiceC": "arccos(x/4) + C",
+      "choiceD": "ln|x + √(16 - x²)| + C",
+      "correctChoice": "A",
+      "explanation": "Standard inverse sine integral: $\\int \\frac{du}{\\sqrt{a^2 - u^2}} = \\arcsin\\left(\\frac{u}{a}\\right) + C = \\arcsin\\left(\\frac{x}{4}\\right) + C$.",
+      "archetype": "numerical"
+    },
+    {
+      "id": "m16-13",
+      "promptText": "Evaluate the definite integral: $\\int_0^3 (3x^2 - 2x + 1) \\, dx$.",
+      "choiceA": "21",
+      "choiceB": "27",
+      "choiceC": "18",
+      "choiceD": "24",
+      "correctChoice": "A",
+      "explanation": "$[x^3 - x^2 + x]_0^3 = (3^3 - 3^2 + 3) - 0 = (27 - 9 + 3) = 21$.",
+      "archetype": "numerical"
+    },
+    {
+      "id": "m16-14",
+      "promptText": "Evaluate: $\\int_{-2}^2 x^5 e^{x^2} \\, dx$.",
+      "choiceA": "0",
+      "choiceB": "32 e⁴",
+      "choiceC": "16 e²",
+      "choiceD": "64",
+      "correctChoice": "A",
+      "explanation": "Because $f(-x) = (-x)^5 e^{(-x)^2} = -x^5 e^{x^2} = -f(x)$, the integrand is strictly an odd function over symmetric limits $[-2, 2]$, so the integral is 0.",
+      "archetype": "standard"
+    },
+    {
+      "id": "m16-15",
+      "promptText": "An electrical current $i(t) = (2t + 5)\\text{ A}$ charges an initially uncharged battery for $10\\text{ seconds}$. What total charge $Q = \\int_0^{10} i(t) dt$ is delivered?",
+      "choiceA": "150 Coulombs",
+      "choiceB": "100 Coulombs",
+      "choiceC": "200 Coulombs",
+      "choiceD": "125 Coulombs",
+      "correctChoice": "A",
+      "explanation": "$Q = \\int_0^{10} (2t + 5) dt = [t^2 + 5t]_0^{10} = 10^2 + 5(10) = 100 + 50 = 150\\text{ Coulombs}$.",
+      "archetype": "applied"
+    },
+    {
+      "id": "m16-16",
+      "promptText": "How much work is required to stretch a spring from $x = 0.1\\text{ m}$ to $x = 0.3\\text{ m}$ past its natural length if the spring constant is $k = 500\\text{ N/m}$?",
+      "choiceA": "20 Joules",
+      "choiceB": "25 Joules",
+      "choiceC": "15 Joules",
+      "choiceD": "40 Joules",
+      "correctChoice": "A",
+      "explanation": "$W = \\int_{0.1}^{0.3} 500x dx = \\left[250x^2\\right]_{0.1}^{0.3} = 250(0.09 - 0.01) = 250(0.08) = 20\\text{ Joules}$.",
+      "archetype": "applied"
+    },
+    {
+      "id": "m16-17",
+      "promptText": "A $2\\text{ H}$ inductor carries current rising from $0$ to $5\\text{ A}$. What total magnetic energy $W = \\int_0^5 L i di$ is stored?",
+      "choiceA": "25 Joules",
+      "choiceB": "50 Joules",
+      "choiceC": "10 Joules",
+      "choiceD": "12.5 Joules",
+      "correctChoice": "A",
+      "explanation": "$W = \\frac{1}{2} L I^2 = \\frac{1}{2}(2)(5^2) = 25\\text{ Joules}$.",
+      "archetype": "applied"
+    },
+    {
+      "id": "m16-18",
+      "promptText": "Evaluate the definite integral: $\\int_0^1 x\\sqrt{1 - x^2} \\, dx$.",
+      "choiceA": "1/3 (0.333)",
+      "choiceB": "2/3",
+      "choiceC": "1/2",
+      "choiceD": "π/4",
+      "correctChoice": "A",
+      "explanation": "Let $u = 1 - x^2 \\implies du = -2x dx \\implies x dx = -du/2$. At $x=0, u=1; x=1, u=0$. $\\int_1^0 -\\frac{1}{2}\\sqrt{u} du = \\frac{1}{2}\\int_0^1 u^{1/2} du = \\frac{1}{2}\\left[\\frac{2}{3}u^{3/2}\\right]_0^1 = \\frac{1}{3}$.",
+      "archetype": "applied"
+    },
+    {
+      "id": "m16-19",
+      "promptText": "What is the common trap when evaluating Wallis' formula $\\int_0^{\\pi/2} \\sin^m\\theta \\cos^n\\theta \\, d\\theta$?",
+      "choiceA": "Multiplying by $\\pi/2$ when only one exponent is even, rather than checking that BOTH exponents are even integers.",
+      "choiceB": "Subtracting 2 from the numerator.",
+      "choiceC": "Using radians instead of degrees.",
+      "choiceD": "Forgetting the factorial.",
+      "correctChoice": "A",
+      "explanation": "The factor $\\alpha = \\pi/2$ is applied ONLY when both $m$ and $n$ are even. If either power is odd, $\\alpha = 1$. Applying $\\pi/2$ when one power is odd is the most frequent board error.",
+      "archetype": "trap"
+    },
+    {
+      "id": "m16-20",
+      "promptText": "When integrating $\\int \\frac{dx}{x^2 + a^2}$, what is the common error compared to $\\int \\frac{dx}{\\sqrt{a^2 - x^2}}$?",
+      "choiceA": "Forgetting the leading $\\frac{1}{a}$ coefficient in the arctan formula ($\\frac{1}{a}\\arctan(x/a)$), whereas the arcsin formula has NO leading $\\frac{1}{a}$ (it is simply $\\arcsin(x/a)$).",
+      "choiceB": "Adding a negative sign.",
+      "choiceC": "Using hyperbolic functions.",
+      "choiceD": "Squaring the argument.",
+      "correctChoice": "A",
+      "explanation": "$\\int \\frac{dx}{x^2 + a^2} = \\frac{1}{a}\\arctan(x/a) + C$, while $\\int \\frac{dx}{\\sqrt{a^2 - x^2}} = \\arcsin(x/a) + C$ (no $1/a$ in front).",
+      "archetype": "trap"
+    },
+    {
+      "id": "m16-21",
+      "promptText": "How can any multiple-choice definite integral be solved on your calculator in 3 seconds?",
+      "choiceA": "Enter the expression into the numerical integration key `[∫dx]` with lower and upper limits in RADIAN mode.",
+      "choiceB": "Use MATRIX mode.",
+      "choiceC": "Use STAT regression.",
+      "choiceD": "Use TABLE mode.",
+      "correctChoice": "A",
+      "explanation": "The calculator's `[∫dx]` key computes exact numerical integration directly, immediately matching the correct multiple-choice value.",
+      "archetype": "shortcut"
+    },
+    {
+      "id": "m16-22",
+      "promptText": "Using the 2-second odd-function symmetry shortcut, what is $\\int_{-10}^{10} \\frac{x^7}{x^4 + 1} dx$?",
+      "choiceA": "0",
+      "choiceB": "100",
+      "choiceC": "50",
+      "choiceD": "Undefined",
+      "correctChoice": "A",
+      "explanation": "Because $f(-x) = \\frac{(-x)^7}{(-x)^4 + 1} = -\\frac{x^7}{x^4 + 1} = -f(x)$, the integrand is odd, so the symmetric integral is 0 in 1 second.",
+      "archetype": "shortcut"
+    }
+  ]
+}

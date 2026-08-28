@@ -1,0 +1,261 @@
+{
+  "id": "math-23",
+  "code": "MATH 23",
+  "domain": "MATH",
+  "topicCode": "MATH-23",
+  "topicTitle": "Advanced Engineering Mathematics",
+  "subtopicTitle": "Fourier Series, Continuous Fourier Transforms & Discrete Z-Transforms",
+  "order": 23,
+  "pairedQuizSetId": "math-23-mastery",
+  "toc": [
+    { "id": "sec-prereq-bridges", "title": "1. Introduction & Cross-Subject Bridges", "level": 2 },
+    { "id": "sec-theory", "title": "2. Lesson Proper", "level": 2 },
+    { "id": "sec-formulas", "title": "3. Compilation of Formulas", "level": 2 },
+    { "id": "sec-visualizer", "title": "4. Interactive Visualizer: Fourier Series Harmonic Synthesizer", "level": 2 },
+    { "id": "sec-terminology", "title": "5. Terms and Definitions", "level": 2 },
+    { "id": "sec-dual-method", "title": "6. Sample Problems and Solutions", "level": 2 },
+    { "id": "sec-calculator", "title": "7. Calculator Techniques (Karce & Canon)", "level": 2 },
+    { "id": "sec-concept-checks", "title": "8. In-Line Concept Checks", "level": 2 },
+    { "id": "sec-mastery-challenge", "title": "9. Paired Mastery Challenge", "level": 2 }
+  ],
+  "prerequisiteBridge": {
+    "priorModuleId": "math-22",
+    "text": "Extending continuous s-domain Laplace transforms from MATH 22, this module explores continuous-time Fourier series/transforms (Jean-Baptiste Fourier 1768–1830) and discrete-time Z-transforms for digital signal processing (DSP)."
+  },
+  "crossSubjectBridges": [
+    {
+      "targetDomain": "EST",
+      "targetTopicCode": "EST-01",
+      "badgeText": "AM/FM Spectral Modulation & Sinc Pulses",
+      "description": "Rectangular time-domain pulse trains modulate into continuous sinc spectral lobes ($T \\text{sinc}(\\omega T / 2)$), defining Nyquist minimum transmission bandwidths."
+    },
+    {
+      "targetDomain": "ELECS",
+      "targetTopicCode": "ELEC-05",
+      "badgeText": "Harmonic Distortion in Power Inverters",
+      "description": "Half-bridge power inverters generate square waves with odd harmonics ($b_n = 4V_{dc} / (n\\pi)$), filtered to reduce Total Harmonic Distortion (THD)."
+    },
+    {
+      "targetDomain": "GEAS",
+      "targetTopicCode": "GEAS-06",
+      "badgeText": "Digital Vibration Filters & DSP FIR/IIR",
+      "description": "Discrete structural vibration sensor sequences $x[n]$ transform into discrete transfer functions $H(z) = \\frac{Y(z)}{X(z)}$ using unilateral Z-transforms."
+    }
+  ],
+  "formulas": [
+    {
+      "id": "f-2301-01",
+      "title": "Continuous Fourier Transform & Inverse Transform",
+      "formula": "$$F(\\omega) = \\mathcal{F}\\{f(t)\\} = \\int_{-\\infty}^\\infty f(t) e^{-j\\omega t} dt, \\qquad f(t) = \\frac{1}{2\\pi}\\int_{-\\infty}^\\infty F(\\omega) e^{j\\omega t} d\\omega$$",
+      "note": "Converts continuous time-domain waveforms into continuous frequency spectrum F(ω)."
+    },
+    {
+      "id": "f-2301-02",
+      "title": "Elementary Fourier Transform Pairs Table",
+      "formula": "$$\\mathcal{F}\\{\\delta(t)\\} = 1, \\quad \\mathcal{F}\\{\\delta(t - t_0)\\} = e^{-j\\omega t_0}, \\quad \\mathcal{F}\\{1\\} = 2\\pi\\delta(\\omega), \\quad \\mathcal{F}\\{e^{-at} u(t)\\} = \\frac{1}{a + j\\omega}$$",
+      "note": "A rectangular pulse rect(t/T) transforms into T sinc(ωT / 2)."
+    },
+    {
+      "id": "f-2301-03",
+      "title": "Trigonometric Fourier Series for Periodic Signals",
+      "formula": "$$f(t) = \\frac{a_0}{2} + \\sum_{n=1}^\\infty \\left[ a_n \\cos(n\\omega_0 t) + b_n \\sin(n\\omega_0 t) \\right] \\qquad \\left(\\omega_0 = \\frac{2\\pi}{T_0}\\right)$$",
+      "note": "a₀/2 is the DC average component; aₙ and bₙ are harmonic coefficients."
+    },
+    {
+      "id": "f-2301-04",
+      "title": "Waveform Symmetry Shortcuts in Fourier Series",
+      "formula": "$$\\text{Even: } b_n = 0, \\quad \\text{Odd: } a_0 = a_n = 0, \\quad \\text{Half-Wave: } n = 1, 3, 5, \\dots \\text{ (Odd Harmonics Only)}$$",
+      "note": "Half-wave symmetry satisfies f(t - T/2) = -f(t)."
+    },
+    {
+      "id": "f-2301-05",
+      "title": "Unilateral Z-Transform for Discrete Signals",
+      "formula": "$$X(z) = \\mathcal{Z}\\{x[n]\\} = \\sum_{n=0}^\\infty x[n] z^{-n}$$",
+      "note": "Maps discrete sequences x[n] (n = 0, 1, 2, ...) to the complex z-plane."
+    },
+    {
+      "id": "f-2301-06",
+      "title": "Elementary Z-Transform Pairs Table",
+      "formula": "$$\\mathcal{Z}\\{\\delta[n]\\} = 1, \\quad \\mathcal{Z}\\{u[n]\\} = \\frac{z}{z - 1}, \\quad \\mathcal{Z}\\{a^n u[n]\\} = \\frac{z}{z - a} \\quad (|z| > |a|)$$",
+      "note": "Multiplication by n corresponds to -z d/dz [X(z)]: Z{n aⁿ} = a z / (z - a)²."
+    },
+    {
+      "id": "f-2301-07",
+      "title": "Parseval's Energy Theorem",
+      "formula": "$$\\int_{-\\infty}^\\infty |f(t)|^2 dt = \\frac{1}{2\\pi}\\int_{-\\infty}^\\infty |F(\\omega)|^2 d\\omega$$",
+      "note": "Total energy in the time domain strictly equals total energy across the frequency spectrum."
+    }
+  ],
+  "terms": [
+    {
+      "term": "Dirac Delta Impulse",
+      "symbol": "$\\delta(t)$",
+      "unit": "Distribution",
+      "definition": "An infinitely narrow unit-area impulse function at t = 0 having flat all-pass Fourier transform $\\mathcal{F}\\{\\delta(t)\\} = 1$.",
+      "keywordTrigger": "unit impulse function / flat all-pass spectrum equal to 1"
+    },
+    {
+      "term": "Half-Wave Symmetry",
+      "symbol": "$f(t - T/2) = -f(t)$",
+      "unit": "Harmonics",
+      "definition": "A symmetry property where inverting and shifting by half a period produces the original waveform, guaranteeing that all even harmonics are identically zero.",
+      "keywordTrigger": "half-wave symmetry / odd harmonics only / f(t - T/2) = -f(t)"
+    },
+    {
+      "term": "Z-Transform",
+      "symbol": "$X(z) = \\mathcal{Z}\\{x[n]\\}$",
+      "unit": "Discrete Transform",
+      "definition": "The discrete-time equivalent of the continuous Laplace transform, mapping discrete-time sequences into polynomials in $z = e^{sT}$.",
+      "keywordTrigger": "discrete time equivalent of laplace transform / sum x[n] z^(-n)"
+    },
+    {
+      "term": "Region of Convergence (ROC)",
+      "symbol": "ROC",
+      "unit": "Complex Domain",
+      "definition": "The set of all points in the complex z-plane for which the Z-transform summation converges to a finite value ($|z| > |a|$ for causal sequences).",
+      "keywordTrigger": "region of convergence / set of z points where sum converges"
+    }
+  ],
+  "visualizer": {
+    "archetype": "parameter_sweep",
+    "title": "Interactive Fourier Series Harmonic Synthesizer",
+    "description": "Adjust the number of odd harmonics (1, 3, 5, 7, 9) to observe sinusoidal harmonics sum and construct a crisp square wave with Gibbs phenomenon overshoot.",
+    "config": {
+      "canvasWidth": 640,
+      "canvasHeight": 320,
+      "controls": [
+        {
+          "id": "harmonicsCount",
+          "label": "Number of Harmonics (N)",
+          "min": 1,
+          "max": 9,
+          "step": 2,
+          "defaultValue": 5
+        },
+        {
+          "id": "waveAmplitude",
+          "label": "Wave Amplitude (A)",
+          "min": 1,
+          "max": 5,
+          "step": 1,
+          "defaultValue": 3
+        }
+      ]
+    }
+  },
+  "theory": {
+    "mentalAnchor": "Remember: **Fourier Transform of an impulse** $\\delta(t - t_0)$ is simply $e^{-j\\omega t_0}$. **Fourier Series symmetries**: Even $\\implies b_n = 0$ (Cosines), Odd $\\implies a_n = 0$ (Sines), Half-Wave $\\implies$ **Odd harmonics only** ($n = 1, 3, 5, \\dots$). For **Z-Transforms**, the unit step $u[n]$ maps to $\\frac{z}{z - 1}$ and geometric $a^n u[n]$ maps to $\\frac{z}{z - a}$.",
+    "contentMarkdown": "### 1. Continuous Fourier Transform & Symmetries\n\nThe Fourier transform resolves non-periodic signals into continuous spectral distributions:\n\n```diagram\n{\n  \"caption\": \"Figure 1: Time-domain square wave decomposing into fundamental and 3rd/5th odd harmonics\",\n  \"xRange\": [-4, 4],\n  \"yRange\": [-2, 2],\n  \"elements\": [\n    { \"type\": \"grid\" },\n    { \"type\": \"axes\" },\n    { \"type\": \"line\", \"from\": [-3, 1], \"to\": [0, 1], \"color\": \"#38bdf8\", \"width\": 2.5 },\n    { \"type\": \"line\", \"from\": [0, -1], \"to\": [3, -1], \"color\": \"#38bdf8\", \"width\": 2.5 },\n    { \"type\": \"segment\", \"from\": [0, -1], \"to\": [0, 1], \"color\": \"#38bdf8\", \"width\": 2.5 },\n    { \"type\": \"point\", \"at\": [0, 1], \"label\": \"Fundamental b1 = 4/π\", \"color\": \"#fbbf24\" },\n    { \"type\": \"point\", \"at\": [1.5, -1], \"label\": \"3rd Harmonic b3 = 4/(3π)\", \"color\": \"#f43f5e\" }\n  ]\n}\n```\n\n#### Waveform Symmetries in Fourier Series:\n- **Even Symmetry** ($f(-t) = f(t)$): $b_n = 0$ (Pure cosine series).\n- **Odd Symmetry** ($f(-t) = -f(t)$): $a_0 = 0, a_n = 0$ (Pure sine series).\n- **Half-Wave Symmetry** ($f(t - T/2) = -f(t)$): **Even harmonics vanish** ($a_{2k} = b_{2k} = 0$). Only odd harmonics $n = 1, 3, 5, \\dots$ exist.\n\n---\n\n### 2. Discrete-Time Z-Transforms\n\nThe Z-transform maps discrete sequences $x[n]$ to the complex $z$-plane ($z = r e^{j\\Omega}$):\n- **Unit Impulse**: $\\mathcal{Z}\\{\\delta[n]\\} = 1$.\n- **Unit Step**: $\\mathcal{Z}\\{u[n]\\} = \\frac{z}{z - 1} \\quad (|z| > 1)$.\n- **Exponential Sequence**: $\\mathcal{Z}\\{a^n u[n]\\} = \\frac{z}{z - a} \\quad (|z| > |a|)$.\n- **Ramp Sequence**: $\\mathcal{Z}\\{n u[n]\\} = \\frac{z}{(z - 1)^2}$."
+  },
+  "examples": [
+    {
+      "problemStatement": "Find the Fourier transform of the time-delayed unit impulse function: f(t) = δ(t - 3).",
+      "formalSolutionMarkdown": "#### Step 1: Apply the definition of the Fourier Transform\n$$F(\\omega) = \\int_{-\\infty}^\\infty f(t) e^{-j\\omega t} dt = \\int_{-\\infty}^\\infty \\delta(t - 3) e^{-j\\omega t} dt$$\n\n#### Step 2: Apply the sifting property of the Dirac Delta\nBy the sifting property, $\\int_{-\\infty}^\\infty \\delta(t - t_0) g(t) dt = g(t_0)$:\n$$F(\\omega) = e^{-j\\omega (3)} = e^{-j 3\\omega}$$\n\nMagnitude $|F(\\omega)| = 1$ (flat unity all-pass magnitude) with linear phase $\\theta(\\omega) = -3\\omega$.",
+      "shortcutSolutionMarkdown": "#### ⚡ 2-Second Delta Transform Recall\n$$\\mathcal{F}\\{\\delta(t - t_0)\\} = \\mathbf{e^{-j\\omega t_0}} = \\mathbf{e^{-j 3\\omega}}$$.",
+      "formalTimeSeconds": 20,
+      "shortcutTimeSeconds": 2
+    },
+    {
+      "problemStatement": "Find the Z-transform of the discrete sequence x[n] = (0.5)ⁿ u[n].",
+      "formalSolutionMarkdown": "#### Step 1: Apply the definition of the Z-transform\n$$X(z) = \\sum_{n=0}^\\infty x[n] z^{-n} = \\sum_{n=0}^\\infty (0.5)^n z^{-n} = \\sum_{n=0}^\\infty \\left(0.5 z^{-1}\\right)^n$$\n\n#### Step 2: Sum the infinite geometric series\nUsing $\\sum_{n=0}^\\infty r^n = \\frac{1}{1 - r}$ for $|r| < 1$:\n$$X(z) = \\frac{1}{1 - 0.5 z^{-1}} = \\frac{z}{z - 0.5}$$\n\n#### Step 3: Identify the Region of Convergence (ROC)\nConvergence requires $|0.5 z^{-1}| < 1 \\implies |z| > 0.5$.",
+      "shortcutSolutionMarkdown": "#### ⚡ 2-Second Z-Pair Recall\n$$\\mathcal{Z}\\{a^n u[n]\\} = \\frac{z}{z - a} \\xrightarrow{a = 0.5} \\mathbf{\\frac{z}{z - 0.5}} \\quad (|z| > 0.5)$$.",
+      "formalTimeSeconds": 30,
+      "shortcutTimeSeconds": 2
+    }
+  ],
+  "calculatorGuides": {
+    "karce": {
+      "techniqueTitle": "Evaluating Sums of Geometric Z-Sequences",
+      "problemType": "Summing ∑ (0.5)^n * z^(-n) at test value z = 2",
+      "sampleProblem": "Evaluate X(2) = 2 / (2 - 0.5) = 2 / 1.5 = 4/3.",
+      "mode": "COMP Mode (MODE 1)",
+      "keystrokes": [
+        "2",
+        "÷",
+        "(",
+        "2",
+        "-",
+        "0",
+        ".",
+        "5",
+        ")",
+        "="
+      ],
+      "notes": "Directly outputs 1.33333333 (4/3), matching the analytical Z-transform value."
+    },
+    "canon": {
+      "techniqueTitle": "Fourier Sinc Function Evaluation",
+      "problemType": "Evaluating sin(x) / x in Radian mode",
+      "sampleProblem": "Find sinc(π/2) = sin(π/2) / (π/2).",
+      "mode": "RAD Mode",
+      "keystrokes": [
+        "sin",
+        "(",
+        "SHIFT",
+        "π",
+        "÷",
+        "2",
+        ")",
+        "÷",
+        "(",
+        "SHIFT",
+        "π",
+        "÷",
+        "2",
+        ")",
+        "="
+      ],
+      "notes": "Directly outputs 0.6366 (2/π)."
+    }
+  },
+  "conceptChecks": [
+    {
+      "id": "cc-math23-01",
+      "question": "If a periodic waveform possesses Half-Wave Symmetry (f(t - T/2) = -f(t)), which harmonics exist in its Fourier Series?",
+      "options": [
+        "Only odd harmonics (n = 1, 3, 5, ...)",
+        "Only even harmonics (n = 2, 4, 6, ...)",
+        "Both even and odd harmonics",
+        "Only the DC component"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Half-wave symmetry guarantees that all even harmonics vanish identically: only odd harmonics (n = 1, 3, 5, ...) are present."
+    },
+    {
+      "id": "cc-math23-02",
+      "question": "What is the Fourier transform of the unit impulse function δ(t)?",
+      "options": [
+        "1 (a flat constant spectrum for all frequencies)",
+        "2π",
+        "0",
+        "1 / (jω)"
+      ],
+      "correctAnswer": 0,
+      "explanation": "The Dirac delta impulse contains all frequencies with equal unity amplitude: F{δ(t)} = 1."
+    },
+    {
+      "id": "cc-math23-03",
+      "question": "What is the Z-transform of the discrete unit step sequence u[n]?",
+      "options": [
+        "z / (z - 1)  (|z| > 1)",
+        "1 / (z - 1)",
+        "z / (z + 1)",
+        "1 / z"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Z{u[n]} = ∑_{n=0}^∞ z^(-n) = 1 / (1 - z^(-1)) = z / (z - 1) for ROC |z| > 1."
+    },
+    {
+      "id": "cc-math23-04",
+      "question": "What does Parseval's Theorem state regarding signal energy in the time and frequency domains?",
+      "options": [
+        "The total energy in the time domain equals the total energy across the continuous frequency spectrum.",
+        "The energy in the frequency domain is always double.",
+        "The energy depends on the phase angle.",
+        "The DC component contains 100% of the energy."
+      ],
+      "correctAnswer": 0,
+      "explanation": "Parseval's Theorem establishes energy conservation: ∫_{-∞}^∞ |f(t)|² dt = (1 / (2π)) ∫_{-∞}^∞ |F(ω)|² dω."
+    }
+  ]
+}

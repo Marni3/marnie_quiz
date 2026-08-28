@@ -1,0 +1,252 @@
+{
+  "moduleId": "math-11",
+  "moduleCode": "MATH 11",
+  "title": "MATH 11 Mastery Challenge: Solid Geometry & Platonic Solids",
+  "description": "Comprehensive 22-question 4-quadrant companion mastery exam for MATH 11. Rigorously tests prism/pyramid volumes, cone frustums, spherical zones/segments, Archimedean ratios, Euler's polyhedral formula, and 3D scaling laws under timed board conditions.",
+  "totalQuestions": 22,
+  "timeLimitMinutes": 35,
+  "questions": [
+    {
+      "id": "m11-01",
+      "promptText": "What fundamental relationship does **Euler's Polyhedral Formula** establish for any convex polyhedron with $V$ vertices, $E$ edges, and $F$ faces?",
+      "choiceA": "V - E + F = 2",
+      "choiceB": "V + E - F = 2",
+      "choiceC": "V - E + F = 0",
+      "choiceD": "V + E + F = 2",
+      "correctChoice": "A",
+      "explanation": "Euler's characteristic formula for all simply connected 3D convex polyhedra states $V - E + F = 2$.",
+      "archetype": "conceptual"
+    },
+    {
+      "id": "m11-02",
+      "promptText": "Which regular **Platonic Solid** is bounded by exactly **12 regular pentagonal faces**?",
+      "choiceA": "Regular Dodecahedron",
+      "choiceB": "Regular Icosahedron",
+      "choiceC": "Regular Octahedron",
+      "choiceD": "Regular Tetrahedron",
+      "correctChoice": "A",
+      "explanation": "The Regular Dodecahedron has 12 regular pentagonal faces, 20 vertices, and 30 edges.",
+      "archetype": "conceptual"
+    },
+    {
+      "id": "m11-03",
+      "promptText": "What formula calculates the surface area of a **Spherical Zone** of vertical height $h$ on a sphere of radius $r$?",
+      "choiceA": "A = 2π r h",
+      "choiceB": "A = 4π r h",
+      "choiceC": "A = π r² h",
+      "choiceD": "A = 2π r²",
+      "correctChoice": "A",
+      "explanation": "The surface area of a spherical zone is directly proportional to its vertical height: $A = 2\\pi r h$.",
+      "archetype": "conceptual"
+    },
+    {
+      "id": "m11-04",
+      "promptText": "In the **Prismoidal Formula** $V = \\frac{L}{6}(A_1 + 4A_m + A_2)$, what does the term **$A_m$** strictly represent?",
+      "choiceA": "The actual cross-sectional area evaluated at the exact geometric midpoint between base 1 and base 2.",
+      "choiceB": "The simple arithmetic average of the end areas: (A₁ + A₂) / 2.",
+      "choiceC": "The geometric mean of the end areas: √(A₁ · A₂).",
+      "choiceD": "The minimum cross-sectional area.",
+      "correctChoice": "A",
+      "explanation": "$A_m$ is the actual cross-sectional area at the midsection, computed from average linear dimensions (which is NOT equal to the average of the end areas).",
+      "archetype": "conceptual"
+    },
+    {
+      "id": "m11-05",
+      "promptText": "What is the ratio of the volume of a sphere of radius $r$ to the volume of its circumscribing right circular cylinder (Archimedes' tombstone ratio)?",
+      "choiceA": "2 : 3",
+      "choiceB": "3 : 4",
+      "choiceC": "1 : 2",
+      "choiceD": "3 : 2",
+      "correctChoice": "A",
+      "explanation": "$V_{\\text{sphere}} = \\frac{4}{3}\\pi r^3$, $V_{\\text{cylinder}} = \\pi r^2(2r) = 2\\pi r^3$. Ratio $= \\frac{4/3}{2} = \\frac{2}{3}$.",
+      "archetype": "conceptual"
+    },
+    {
+      "id": "m11-06",
+      "promptText": "How many **edges (E)** does a regular **Icosahedron** (20-faced Platonic solid) possess?",
+      "choiceA": "30 edges",
+      "choiceB": "20 edges",
+      "choiceC": "12 edges",
+      "choiceD": "24 edges",
+      "correctChoice": "A",
+      "explanation": "An icosahedron has 20 triangular faces: $20 \\times 3 / 2 = 30\\text{ edges}$. (And $V = 12$ vertices).",
+      "archetype": "conceptual"
+    },
+    {
+      "id": "m11-07",
+      "promptText": "Find the volume of a frustum of a right circular cone with lower radius $R = 4\\text{ cm}$, upper radius $r = 2\\text{ cm}$, and vertical height $h = 6\\text{ cm}$.",
+      "choiceA": "175.93 cm³ (56π)",
+      "choiceB": "201.06 cm³ (64π)",
+      "choiceC": "150.80 cm³ (48π)",
+      "choiceD": "125.66 cm³ (40π)",
+      "correctChoice": "A",
+      "explanation": "$V = \\frac{\\pi(6)}{3}(4^2 + 2^2 + (4)(2)) = 2\\pi(16 + 4 + 8) = 2\\pi(28) = 56\\pi \\approx 175.929\\text{ cm}^3$.",
+      "archetype": "numerical"
+    },
+    {
+      "id": "m11-08",
+      "promptText": "Find the total surface area of a solid sphere with a diameter of $14\\text{ cm}$.",
+      "choiceA": "615.75 cm² (196π)",
+      "choiceB": "153.94 cm²",
+      "choiceC": "1,436.76 cm²",
+      "choiceD": "307.88 cm²",
+      "correctChoice": "A",
+      "explanation": "$r = 7\\text{ cm}$. $A = 4\\pi r^2 = 4\\pi(49) = 196\\pi \\approx 615.752\\text{ cm}^2$.",
+      "archetype": "numerical"
+    },
+    {
+      "id": "m11-09",
+      "promptText": "A sphere of radius $r = 12\\text{ cm}$ is sliced by two parallel planes $5\\text{ cm}$ apart. Find the surface area of the spherical zone between the planes.",
+      "choiceA": "376.99 cm² (120π)",
+      "choiceB": "753.98 cm²",
+      "choiceC": "188.50 cm²",
+      "choiceD": "300.00 cm²",
+      "correctChoice": "A",
+      "explanation": "$A_{\\text{zone}} = 2\\pi r h = 2\\pi(12)(5) = 120\\pi \\approx 376.991\\text{ cm}^2$.",
+      "archetype": "numerical"
+    },
+    {
+      "id": "m11-10",
+      "promptText": "Find the volume of a **spherical segment (cap)** of height $h = 2\\text{ cm}$ cut from a sphere of radius $r = 6\\text{ cm}$.",
+      "choiceA": "67.02 cm³ (64π/3)",
+      "choiceB": "50.27 cm³",
+      "choiceC": "75.40 cm³",
+      "choiceD": "33.51 cm³",
+      "correctChoice": "A",
+      "explanation": "$V = \\frac{\\pi h^2}{3}(3r - h) = \\frac{\\pi(4)}{3}(3(6) - 2) = \\frac{4\\pi}{3}(16) = \\frac{64\\pi}{3} \\approx 67.0206\\text{ cm}^3$.",
+      "archetype": "numerical"
+    },
+    {
+      "id": "m11-11",
+      "promptText": "Find the volume of a regular pyramid with a square base of side length $10\\text{ cm}$ and vertical altitude $h = 12\\text{ cm}$.",
+      "choiceA": "400 cm³",
+      "choiceB": "1,200 cm³",
+      "choiceC": "600 cm³",
+      "choiceD": "300 cm³",
+      "correctChoice": "A",
+      "explanation": "$V = \\frac{1}{3} A_{\\text{base}} h = \\frac{1}{3}(10^2)(12) = \\frac{1}{3}(100)(12) = 400\\text{ cm}^3$.",
+      "archetype": "numerical"
+    },
+    {
+      "id": "m11-12",
+      "promptText": "Find the **lateral area** of a right circular cone with base radius $r = 5\\text{ cm}$ and vertical height $h = 12\\text{ cm}$.",
+      "choiceA": "204.20 cm² (65π)",
+      "choiceB": "188.50 cm² (60π)",
+      "choiceC": "102.10 cm²",
+      "choiceD": "282.74 cm²",
+      "correctChoice": "A",
+      "explanation": "Slant height $L = \\sqrt{5^2 + 12^2} = 13\\text{ cm}$. $A_{\\text{lat}} = \\pi r L = \\pi(5)(13) = 65\\pi \\approx 204.204\\text{ cm}^2$.",
+      "archetype": "numerical"
+    },
+    {
+      "id": "m11-13",
+      "promptText": "A closed convex polyhedron has 14 faces and 24 vertices. How many edges does it have?",
+      "choiceA": "36 edges",
+      "choiceB": "38 edges",
+      "choiceC": "40 edges",
+      "choiceD": "34 edges",
+      "correctChoice": "A",
+      "explanation": "Euler's Formula: $V - E + F = 2 \\implies 24 - E + 14 = 2 \\implies 38 - E = 2 \\implies E = 36\\text{ edges}$.",
+      "archetype": "numerical"
+    },
+    {
+      "id": "m11-14",
+      "promptText": "A solid lead cylinder of radius $6\\text{ cm}$ and height $18\\text{ cm}$ is melted down and recast into identical solid spheres of radius $3\\text{ cm}$. How many complete spheres can be cast?",
+      "choiceA": "18 spheres",
+      "choiceB": "12 spheres",
+      "choiceC": "24 spheres",
+      "choiceD": "16 spheres",
+      "correctChoice": "A",
+      "explanation": "$V_{\\text{cylinder}} = \\pi(6^2)(18) = 648\\pi$. $V_{\\text{sphere}} = \\frac{4}{3}\\pi(3^3) = 36\\pi$. Number of spheres $= \\frac{648\\pi}{36\\pi} = 18\\text{ spheres}$.",
+      "archetype": "standard"
+    },
+    {
+      "id": "m11-15",
+      "promptText": "If the linear dimensions of a solid cone are all scaled by a factor of **$k = 3$**, by what factor does its **volume** increase?",
+      "choiceA": "27 times (k³)",
+      "choiceB": "9 times (k²)",
+      "choiceC": "3 times",
+      "choiceD": "81 times",
+      "correctChoice": "A",
+      "explanation": "By 3D geometric similitude, volume scales with the cube of linear scale: $V_2 / V_1 = k^3 = 3^3 = 27$.",
+      "archetype": "applied"
+    },
+    {
+      "id": "m11-16",
+      "promptText": "A hemispherical dome has an internal base diameter of $20\\text{ meters}$. What is the interior curved surface area of the dome that requires acoustic dampening coating?",
+      "choiceA": "628.32 sq. m (200π)",
+      "choiceB": "1,256.64 sq. m",
+      "choiceC": "314.16 sq. m",
+      "choiceD": "500.00 sq. m",
+      "correctChoice": "A",
+      "explanation": "Radius $r = 10\\text{ m}$. Hemisphere curved area $= 2\\pi r^2 = 2\\pi(100) = 200\\pi \\approx 628.3185\\text{ m}^2$.",
+      "archetype": "applied"
+    },
+    {
+      "id": "m11-17",
+      "promptText": "A conical reservoir of depth $10\\text{ meters}$ and top radius $5\\text{ meters}$ is filled with water to a depth of $6\\text{ meters}$. What volume of water is currently in the reservoir?",
+      "choiceA": "56.55 cu. m (18π)",
+      "choiceB": "94.25 cu. m (30π)",
+      "choiceC": "47.12 cu. m",
+      "choiceD": "75.40 cu. m",
+      "correctChoice": "A",
+      "explanation": "By similar triangles, water surface radius $r = 5 \\times (6/10) = 3\\text{ m}$. Water volume $= \\frac{1}{3}\\pi r^2 h = \\frac{1}{3}\\pi(3^2)(6) = 18\\pi \\approx 56.5487\\text{ m}^3$.",
+      "archetype": "applied"
+    },
+    {
+      "id": "m11-18",
+      "promptText": "A regular tetrahedron has an edge length of $a = 6\\text{ cm}$. Find its total surface area.",
+      "choiceA": "62.35 cm² (36√3)",
+      "choiceB": "72.00 cm²",
+      "choiceC": "31.18 cm²",
+      "choiceD": "48.00 cm²",
+      "correctChoice": "A",
+      "explanation": "A tetrahedron has 4 equilateral triangular faces: $A = 4 \\times \\frac{a^2\\sqrt{3}}{4} = a^2\\sqrt{3} = 6^2\\sqrt{3} = 36\\sqrt{3} \\approx 62.3538\\text{ cm}^2$.",
+      "archetype": "applied"
+    },
+    {
+      "id": "m11-19",
+      "promptText": "What is the common trap when computing the lateral area of a frustum of a cone with radii $R, r$ and vertical height $h$?",
+      "choiceA": "Using the vertical height $h$ directly instead of calculating the true slant height $L = \\sqrt{(R - r)^2 + h^2}$.",
+      "choiceB": "Dividing by 3.",
+      "choiceC": "Squaring the sum of radii.",
+      "choiceD": "Using the average radius.",
+      "correctChoice": "A",
+      "explanation": "Lateral area requires the slant length $L$ along the sloping conical wall, where $L = \\sqrt{(R - r)^2 + h^2}$. Using vertical height $h$ underestimates the surface area.",
+      "archetype": "trap"
+    },
+    {
+      "id": "m11-20",
+      "promptText": "When applying the Prismoidal formula to an earthwork excavation cut, what is the critical error regarding the midsection area $A_m$?",
+      "choiceA": "Averaging the top and bottom areas: $A_m = \\frac{A_1 + A_2}{2}$ instead of evaluating the cross-section using mid-dimensions.",
+      "choiceB": "Multiplying by length $L$.",
+      "choiceC": "Dividing by 6.",
+      "choiceD": "Using meters instead of feet.",
+      "correctChoice": "A",
+      "explanation": "The midsection area $A_m$ must be calculated from dimensions $w_m = (w_1 + w_2)/2, h_m = (h_1 + h_2)/2$. Setting $A_m = (A_1 + A_2)/2$ erroneously converts the prismoidal formula into the crude end-area method.",
+      "archetype": "trap"
+    },
+    {
+      "id": "m11-21",
+      "promptText": "Using the 2-second volume scaling shortcut $V_2 = V_1 \\cdot k^3$, if a sphere's diameter is doubled ($k = 2$), its volume increases by:",
+      "choiceA": "8 times (2³)",
+      "choiceB": "4 times",
+      "choiceC": "2 times",
+      "choiceD": "16 times",
+      "correctChoice": "A",
+      "explanation": "$V_2 = V_1 \\times 2^3 = 8V_1$ in 2 seconds.",
+      "archetype": "shortcut"
+    },
+    {
+      "id": "m11-22",
+      "promptText": "What is the surface area of a sphere of radius $r = 5\\text{ cm}$ in 1 second?",
+      "choiceA": "314.16 cm² (100π)",
+      "choiceB": "157.08 cm²",
+      "choiceC": "523.60 cm²",
+      "choiceD": "78.54 cm²",
+      "correctChoice": "A",
+      "explanation": "$A = 4\\pi r^2 = 4\\pi(25) = 100\\pi \\approx 314.16\\text{ cm}^2$ in 1 second.",
+      "archetype": "shortcut"
+    }
+  ]
+}

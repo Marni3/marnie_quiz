@@ -1,0 +1,252 @@
+{
+  "moduleId": "math-22",
+  "moduleCode": "MATH 22",
+  "title": "MATH 22 Mastery Challenge: Laplace Transforms & Shifting Theorems",
+  "description": "Comprehensive 22-question 4-quadrant companion mastery exam for MATH 22. Rigorously tests elementary transform pairs, frequency/time shifting theorems, initial/final value theorems, inverse Laplace partial fractions, and s-domain transfer functions under timed board conditions.",
+  "totalQuestions": 22,
+  "timeLimitMinutes": 35,
+  "questions": [
+    {
+      "id": "m22-01",
+      "promptText": "What does the **First Shifting Theorem** state for the Laplace transform of $e^{at} f(t)$?",
+      "choiceA": "L{e^(at) f(t)} = F(s - a)",
+      "choiceB": "L{e^(at) f(t)} = F(s + a)",
+      "choiceC": "L{e^(at) f(t)} = e^(-as) F(s)",
+      "choiceD": "L{e^(at) f(t)} = F(s) / (s - a)",
+      "correctChoice": "A",
+      "explanation": "Multiplying a time function by $e^{at}$ shifts the frequency variable $s$ to $(s - a)$ in the transform: $\\mathcal{L}\\{e^{at} f(t)\\} = F(s - a)$.",
+      "archetype": "conceptual"
+    },
+    {
+      "id": "m22-02",
+      "promptText": "What does the **Initial Value Theorem** state for calculating $f(0^+) = \\lim_{t \\to 0^+} f(t)$ directly from $F(s)$?",
+      "choiceA": "f(0+) = lim_{s -> ∞} s F(s)",
+      "choiceB": "f(0+) = lim_{s -> 0} s F(s)",
+      "choiceC": "f(0+) = lim_{s -> ∞} F(s)",
+      "choiceD": "f(0+) = lim_{s -> 0} F(s) / s",
+      "correctChoice": "A",
+      "explanation": "The Initial Value Theorem evaluates the initial time-domain value as the high-frequency limit: $f(0^+) = \\lim_{s \\to \\infty} s F(s)$.",
+      "archetype": "conceptual"
+    },
+    {
+      "id": "m22-03",
+      "promptText": "Under what condition is the **Final Value Theorem** ($f(\\infty) = \\lim_{s \\to 0} s F(s)$) strictly mathematically valid?",
+      "choiceA": "Only if all poles of s F(s) lie strictly in the open left-half s-plane (Re(s) < 0).",
+      "choiceB": "For all stable and unstable transfer functions.",
+      "choiceC": "Whenever F(s) has poles on the imaginary axis.",
+      "choiceD": "Only for constant functions.",
+      "correctChoice": "A",
+      "explanation": "If $s F(s)$ has poles in the right-half plane or on the imaginary axis (e.g. sinusoidal oscillations $\\sin \\omega t$), the signal does not settle to a finite steady-state value and the FVT gives invalid results.",
+      "archetype": "conceptual"
+    },
+    {
+      "id": "m22-04",
+      "promptText": "What operation in the $s$-domain corresponds to **multiplying a time-domain function by $t$** ($\\mathcal{L}\\{t f(t)\\}$)?",
+      "choiceA": "-d/ds [F(s)] (negative derivative with respect to s)",
+      "choiceB": "d/ds [F(s)]",
+      "choiceC": "s F(s)",
+      "choiceD": "F(s) / s",
+      "correctChoice": "A",
+      "explanation": "By differentiating under the integral sign: $\\frac{d}{ds}\\int_0^\\infty f(t)e^{-st}dt = \\int_0^\\infty -t f(t)e^{-st}dt \\implies \\mathcal{L}\\{t f(t)\\} = -\\frac{d}{ds}F(s)$.",
+      "archetype": "conceptual"
+    },
+    {
+      "id": "m22-05",
+      "promptText": "What distinguishes the Laplace transform of **$\\sinh(kt)$** from that of **$\\sin(kt)$**?",
+      "choiceA": "L{sinh kt} has a minus sign in the denominator: k / (s² - k²), whereas L{sin kt} has a plus sign: k / (s² + k²).",
+      "choiceB": "L{sinh kt} has an s in the numerator.",
+      "choiceC": "L{sinh kt} is negative.",
+      "choiceD": "They are identical.",
+      "correctChoice": "A",
+      "explanation": "Hyperbolic sine transforms to $\\frac{k}{s^2 - k^2}$ ($s > |k|$), while standard trigonometric sine transforms to $\\frac{k}{s^2 + k^2}$.",
+      "archetype": "conceptual"
+    },
+    {
+      "id": "m22-06",
+      "promptText": "What does the **Second Shifting Theorem** state for a delayed signal $f(t - a) u(t - a)$?",
+      "choiceA": "L{f(t - a) u(t - a)} = e^(-as) F(s)",
+      "choiceB": "L{f(t - a) u(t - a)} = e^(as) F(s)",
+      "choiceC": "L{f(t - a) u(t - a)} = F(s - a)",
+      "choiceD": "L{f(t - a) u(t - a)} = F(s) / a",
+      "correctChoice": "A",
+      "explanation": "A time delay of $a$ seconds with a Heaviside unit step switch $u(t - a)$ multiplies the unshifted transform $F(s)$ by $e^{-as}$.",
+      "archetype": "conceptual"
+    },
+    {
+      "id": "m22-07",
+      "promptText": "Find the Laplace transform of $f(t) = t^4$.",
+      "choiceA": "24 / s⁵",
+      "choiceB": "4 / s⁵",
+      "choiceC": "24 / s⁴",
+      "choiceD": "120 / s⁵",
+      "correctChoice": "A",
+      "explanation": "$\\mathcal{L}\\{t^n\\} = \\frac{n!}{s^{n + 1}} \\implies \\mathcal{L}\\{t^4\\} = \\frac{4!}{s^5} = \\frac{24}{s^5}$.",
+      "archetype": "numerical"
+    },
+    {
+      "id": "m22-08",
+      "promptText": "Find the Laplace transform of $f(t) = \\cos(5t)$.",
+      "choiceA": "s / (s² + 25)",
+      "choiceB": "5 / (s² + 25)",
+      "choiceC": "s / (s² - 25)",
+      "choiceD": "5 / (s² - 25)",
+      "correctChoice": "A",
+      "explanation": "$\\mathcal{L}\\{\\cos kt\\} = \\frac{s}{s^2 + k^2} = \\frac{s}{s^2 + 25}$.",
+      "archetype": "numerical"
+    },
+    {
+      "id": "m22-09",
+      "promptText": "Find the Laplace transform of $f(t) = e^{3t} \\cos(2t)$.",
+      "choiceA": "(s - 3) / ((s - 3)² + 4)",
+      "choiceB": "(s + 3) / ((s + 3)² + 4)",
+      "choiceC": "2 / ((s - 3)² + 4)",
+      "choiceD": "(s - 3) / (s² + 4)",
+      "correctChoice": "A",
+      "explanation": "$\\mathcal{L}\\{\\cos 2t\\} = \\frac{s}{s^2 + 4}$. Applying 1st Shifting Theorem ($s \\to s - 3$) yields $\\frac{s - 3}{(s - 3)^2 + 4}$.",
+      "archetype": "numerical"
+    },
+    {
+      "id": "m22-10",
+      "promptText": "Find the Laplace transform of $f(t) = t e^{4t}$.",
+      "choiceA": "1 / (s - 4)²",
+      "choiceB": "1 / (s + 4)²",
+      "choiceC": "4 / (s - 4)²",
+      "choiceD": "1 / (s - 4)",
+      "correctChoice": "A",
+      "explanation": "$\\mathcal{L}\\{t\\} = \\frac{1}{s^2}$. Shifting by $a = 4$: $\\frac{1}{(s - 4)^2}$.",
+      "archetype": "numerical"
+    },
+    {
+      "id": "m22-11",
+      "promptText": "Find the inverse Laplace transform of $F(s) = \\frac{6}{s + 2}$.",
+      "choiceA": "6 e^(-2t)",
+      "choiceB": "6 e^(2t)",
+      "choiceC": "2 e^(-6t)",
+      "choiceD": "6t e^(-2t)",
+      "correctChoice": "A",
+      "explanation": "$\\mathcal{L}^{-1}\\left\\{\\frac{1}{s - a}\\right\\} = e^{at} \\implies \\mathcal{L}^{-1}\\left\\{\\frac{6}{s + 2}\\right\\} = 6 e^{-2t}$.",
+      "archetype": "numerical"
+    },
+    {
+      "id": "m22-12",
+      "promptText": "Find the inverse Laplace transform of $F(s) = \\frac{3}{s^2 + 9}$.",
+      "choiceA": "sin(3t)",
+      "choiceB": "cos(3t)",
+      "choiceC": "3 sin(3t)",
+      "choiceD": "e^(3t)",
+      "correctChoice": "A",
+      "explanation": "$\\mathcal{L}^{-1}\\left\\{\\frac{k}{s^2 + k^2}\\right\\} = \\sin kt \\implies \\mathcal{L}^{-1}\\left\\{\\frac{3}{s^2 + 9}\\right\\} = \\sin(3t)$.",
+      "archetype": "numerical"
+    },
+    {
+      "id": "m22-13",
+      "promptText": "Find the Laplace transform of $f(t) = t \\sin(2t)$.",
+      "choiceA": "4s / (s² + 4)²",
+      "choiceB": "(s² - 4) / (s² + 4)²",
+      "choiceC": "2 / (s² + 4)²",
+      "choiceD": "4 / (s² + 4)²",
+      "correctChoice": "A",
+      "explanation": "$\\mathcal{L}\\{\\sin 2t\\} = \\frac{2}{s^2 + 4}$. $\\mathcal{L}\\{t \\sin 2t\\} = -\\frac{d}{ds}\\left[\\frac{2}{s^2 + 4}\\right] = -\\left[\\frac{-2(2s)}{(s^2 + 4)^2}\\right] = \\frac{4s}{(s^2 + 4)^2}$.",
+      "archetype": "numerical"
+    },
+    {
+      "id": "m22-14",
+      "promptText": "Using the Initial Value Theorem, find $f(0^+)$ for $F(s) = \\frac{3s^2 + 2s + 1}{s^3 + 4s^2 + 5s + 2}$.",
+      "choiceA": "3",
+      "choiceB": "1/2",
+      "choiceC": "0",
+      "choiceD": "1",
+      "correctChoice": "A",
+      "explanation": "$f(0^+) = \\lim_{s \\to \\infty} s F(s) = \\lim_{s \\to \\infty} \\frac{3s^3 + 2s^2 + s}{s^3 + 4s^2 + 5s + 2} = \\frac{3}{1} = 3$.",
+      "archetype": "applied"
+    },
+    {
+      "id": "m22-15",
+      "promptText": "Using the Final Value Theorem, find the steady-state value $f(\\infty)$ for $F(s) = \\frac{10}{s(s^2 + 3s + 2)}$.",
+      "choiceA": "5.0",
+      "choiceB": "10.0",
+      "choiceC": "0.0",
+      "choiceD": "2.0",
+      "correctChoice": "A",
+      "explanation": "$f(\\infty) = \\lim_{s \\to 0} s F(s) = \\lim_{s \\to 0} \\frac{10}{s^2 + 3s + 2} = \\frac{10}{2} = 5.0$.",
+      "archetype": "applied"
+    },
+    {
+      "id": "m22-16",
+      "promptText": "Solve the initial value problem $\\frac{dy}{dt} + 2y = 4$ with $y(0) = 1$ using the Laplace Transform.",
+      "choiceA": "y(t) = 2 - e^(-2t)",
+      "choiceB": "y(t) = 2 + e^(-2t)",
+      "choiceC": "y(t) = 4 - 3 e^(-2t)",
+      "choiceD": "y(t) = 1 + 2 e^(-2t)",
+      "correctChoice": "A",
+      "explanation": "$s Y(s) - y(0) + 2 Y(s) = \\frac{4}{s} \\implies (s + 2)Y(s) = 1 + \\frac{4}{s} = \\frac{s + 4}{s}$. $Y(s) = \\frac{s + 4}{s(s + 2)} = \\frac{2}{s} - \\frac{1}{s + 2} \\implies y(t) = 2 - e^{-2t}$.",
+      "archetype": "applied"
+    },
+    {
+      "id": "m22-17",
+      "promptText": "An RLC electrical filter has transfer function $H(s) = \\frac{10}{s + 5}$. If a unit step input $u(t)$ ($X(s) = 1/s$) is applied, what is the output voltage $y(t)$?",
+      "choiceA": "y(t) = 2 (1 - e^(-5t))",
+      "choiceB": "y(t) = 10 e^(-5t)",
+      "choiceC": "y(t) = 2 e^(-5t)",
+      "choiceD": "y(t) = 10 (1 - e^(-5t))",
+      "correctChoice": "A",
+      "explanation": "$Y(s) = \\frac{10}{s(s + 5)} = \\frac{2}{s} - \\frac{2}{s + 5} \\implies y(t) = 2(1 - e^{-5t})$.",
+      "archetype": "applied"
+    },
+    {
+      "id": "m22-18",
+      "promptText": "What is the Laplace transform of the delayed pulse $f(t) = u(t - 3)$?",
+      "choiceA": "e^(-3s) / s",
+      "choiceB": "e^(3s) / s",
+      "choiceC": "3 / s",
+      "choiceD": "1 / (s - 3)",
+      "correctChoice": "A",
+      "explanation": "By the 2nd Shifting Theorem: $\\mathcal{L}\\{u(t - a)\\} = \\frac{e^{-as}}{s} \\implies \\mathcal{L}\\{u(t - 3)\\} = \\frac{e^{-3s}}{s}$.",
+      "archetype": "applied"
+    },
+    {
+      "id": "m22-19",
+      "promptText": "What is the common trap when taking the Laplace transform of $\\cos kt$ versus $\\sin kt$?",
+      "choiceA": "Putting constant $k$ in the numerator of cosine ($\\\\frac{k}{s^2 + k^2}$) instead of frequency variable $s$ ($\\\\frac{s}{s^2 + k^2}$).",
+      "choiceB": "Using a minus sign in the denominator.",
+      "choiceC": "Squaring the numerator.",
+      "choiceD": "Dividing by s.",
+      "correctChoice": "A",
+      "explanation": "Cosine has $s$ in the numerator: $\\mathcal{L}\\{\\cos kt\\} = \\frac{s}{s^2 + k^2}$, whereas sine has constant $k$: $\\mathcal{L}\\{\\sin kt\\} = \\frac{k}{s^2 + k^2}$.",
+      "archetype": "trap"
+    },
+    {
+      "id": "m22-20",
+      "promptText": "When applying the Final Value Theorem $\\lim_{s \\to 0} s F(s)$ to $F(s) = \\frac{1}{s^2 + 1}$ (the transform of $\\sin t$), why does the formula fail?",
+      "choiceA": "Because $F(s)$ has imaginary poles at $s = \\pm j$, causing perpetual sinusoidal oscillation without settling to any steady-state limit.",
+      "choiceB": "Because the numerator is zero.",
+      "choiceC": "Because the denominator is negative.",
+      "choiceD": "Because time is negative.",
+      "correctChoice": "A",
+      "explanation": "The Final Value Theorem strictly requires all poles of $s F(s)$ to lie in the open left-half s-plane (strictly negative real parts). Oscillating imaginary poles $\\pm j\\omega$ invalidate FVT.",
+      "archetype": "trap"
+    },
+    {
+      "id": "m22-21",
+      "promptText": "Using the 2-second ratio inspection shortcut, what is the initial value $f(0^+)$ for $F(s) = \\frac{8s + 3}{2s + 7}$?",
+      "choiceA": "4.0 (8 / 2)",
+      "choiceB": "0.43 (3 / 7)",
+      "choiceC": "8.0",
+      "choiceD": "0.0",
+      "correctChoice": "A",
+      "explanation": "Initial value ($s \\to \\infty$) is the ratio of leading coefficients: $\\frac{8}{2} = 4.0$ in 1 second.",
+      "archetype": "shortcut"
+    },
+    {
+      "id": "m22-22",
+      "promptText": "Using the 2-second ratio inspection shortcut, what is the final value $f(\\infty)$ for $F(s) = \\frac{12}{s(4s + 3)}$?",
+      "choiceA": "4.0 (12 / 3)",
+      "choiceB": "3.0 (12 / 4)",
+      "choiceC": "12.0",
+      "choiceD": "0.0",
+      "correctChoice": "A",
+      "explanation": "Final value ($s \\to 0$ of $s F(s)$) is the ratio of constant terms: $\\frac{12}{3} = 4.0$ in 1 second.",
+      "archetype": "shortcut"
+    }
+  ]
+}

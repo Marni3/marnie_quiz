@@ -1,0 +1,252 @@
+{
+  "moduleId": "math-20",
+  "moduleCode": "MATH 20",
+  "title": "MATH 20 Mastery Challenge: Complex Numbers & De Moivre's Theorem",
+  "description": "Comprehensive 22-question 4-quadrant companion mastery exam for MATH 20. Rigorously tests polar/exponential representations, De Moivre's powers, n-th roots polygons, complex logarithms, Euler identities, and AC impedance phasors under timed board conditions.",
+  "totalQuestions": 22,
+  "timeLimitMinutes": 35,
+  "questions": [
+    {
+      "id": "m20-01",
+      "promptText": "What does **De Moivre's Theorem** state for raising a complex number in polar form $z = r\\angle\\theta$ to an integer power $n$?",
+      "choiceA": "(r ∠ θ)ⁿ = rⁿ ∠ (nθ) = rⁿ (cos nθ + j sin nθ)",
+      "choiceB": "(r ∠ θ)ⁿ = (n r) ∠ θⁿ",
+      "choiceC": "(r ∠ θ)ⁿ = rⁿ ∠ (θ / n)",
+      "choiceD": "(r ∠ θ)ⁿ = r ∠ (nθ)",
+      "correctChoice": "A",
+      "explanation": "De Moivre's Theorem states that raising a complex number to power $n$ raises its modulus to power $n$ and multiplies its argument by $n$: $(r\\angle\\theta)^n = r^n\\angle(n\\theta)$.",
+      "archetype": "conceptual"
+    },
+    {
+      "id": "m20-02",
+      "promptText": "What is the exact mathematical value and nature of **$j^j$** (the imaginary unit raised to itself)?",
+      "choiceA": "A strictly real number: e^(-π/2) ≈ 0.20788",
+      "choiceB": "A purely imaginary number: j",
+      "choiceC": "-1",
+      "choiceD": "Undefined",
+      "correctChoice": "A",
+      "explanation": "$j^j = (e^{j\\pi/2})^j = e^{j^2 \\pi/2} = e^{-\\pi/2} \\approx 0.207879576$, which has zero imaginary component and is purely real.",
+      "archetype": "conceptual"
+    },
+    {
+      "id": "m20-03",
+      "promptText": "How are the $n$ distinct roots of a complex number $z^{1/n}$ arranged geometrically in the complex Argand plane?",
+      "choiceA": "They form the vertices of a regular n-sided polygon inscribed in a circle of radius r^(1/n) centered at the origin.",
+      "choiceB": "They lie along a straight radial line.",
+      "choiceC": "They are located along the real axis.",
+      "choiceD": "They form a logarithmic spiral.",
+      "correctChoice": "A",
+      "explanation": "Because each consecutive root is separated by angular spacing $\\Delta\\theta = 360^\\circ / n$ at constant radius $r^{1/n}$, they form a regular $n$-gon inscribed in a circle.",
+      "archetype": "conceptual"
+    },
+    {
+      "id": "m20-04",
+      "promptText": "What is the formula for the **Principal Natural Logarithm** of a complex number $z = r e^{j\\theta}$?",
+      "choiceA": "ln(z) = ln(r) + j θ  (where θ is in radians, -π < θ ≤ π)",
+      "choiceB": "ln(z) = ln(r) · j θ",
+      "choiceC": "ln(z) = ln(a) + j ln(b)",
+      "choiceD": "ln(z) = r + j θ",
+      "correctChoice": "A",
+      "explanation": "By properties of logarithms on exponentials: $\\ln(z) = \\ln(r e^{j\\theta}) = \\ln r + \\ln(e^{j\\theta}) = \\ln r + j\\theta$.",
+      "archetype": "conceptual"
+    },
+    {
+      "id": "m20-05",
+      "promptText": "What is the algebraic product of a complex number $z = a + jb$ and its **complex conjugate** $z^* = a - jb$?",
+      "choiceA": "a² + b² (strictly a real number equal to |z|²)",
+      "choiceB": "a² - b²",
+      "choiceC": "2a",
+      "choiceD": "2jb",
+      "correctChoice": "A",
+      "explanation": "$z \\cdot z^* = (a + jb)(a - jb) = a^2 - j^2 b^2 = a^2 - (-1)b^2 = a^2 + b^2 = |z|^2$.",
+      "archetype": "conceptual"
+    },
+    {
+      "id": "m20-06",
+      "promptText": "What is the quotient of two complex numbers in polar form: $\\frac{r_1\\angle\\theta_1}{r_2\\angle\\theta_2}$?",
+      "choiceA": "(r₁ / r₂) ∠ (θ₁ - θ₂)",
+      "choiceB": "(r₁ / r₂) ∠ (θ₁ + θ₂)",
+      "choiceC": "(r₁ · r₂) ∠ (θ₁ - θ₂)",
+      "choiceD": "(r₁ - r₂) ∠ (θ₁ / θ₂)",
+      "correctChoice": "A",
+      "explanation": "Division in polar form divides the magnitudes and subtracts the phase angles: $\\frac{r_1\\angle\\theta_1}{r_2\\angle\\theta_2} = \\left(\\frac{r_1}{r_2}\\right)\\angle(\\theta_1 - \\theta_2)$.",
+      "archetype": "conceptual"
+    },
+    {
+      "id": "m20-07",
+      "promptText": "Evaluate $(1 + j)^8$ using De Moivre's Theorem.",
+      "choiceA": "16",
+      "choiceB": "16j",
+      "choiceC": "64",
+      "choiceD": "-16",
+      "correctChoice": "A",
+      "explanation": "$1 + j = \\sqrt{2}\\angle 45^\\circ$. $(1 + j)^8 = (\\sqrt{2})^8 \\angle(8 \\times 45^\\circ) = 16\\angle 360^\\circ = 16(1 + j0) = 16$.",
+      "archetype": "numerical"
+    },
+    {
+      "id": "m20-08",
+      "promptText": "Multiply $(4\\angle 30^\\circ)(2\\angle 60^\\circ)$ and express the result in rectangular form.",
+      "choiceA": "8j (0 + 8j)",
+      "choiceB": "8",
+      "choiceC": "4 + 4√3 j",
+      "choiceD": "8 - 8j",
+      "correctChoice": "A",
+      "explanation": "$(4\\angle 30^\\circ)(2\\angle 60^\\circ) = (4 \\times 2)\\angle(30^\\circ + 60^\\circ) = 8\\angle 90^\\circ = 8(0 + j1) = 8j$.",
+      "archetype": "numerical"
+    },
+    {
+      "id": "m20-09",
+      "promptText": "Divide $\\frac{10\\angle 75^\\circ}{2\\angle 15^\\circ}$ and express the result in rectangular form.",
+      "choiceA": "2.5 + 4.33j (5 ∠ 60°)",
+      "choiceB": "4.33 + 2.5j",
+      "choiceC": "5 + 5j",
+      "choiceD": "5j",
+      "correctChoice": "A",
+      "explanation": "$\\frac{10\\angle 75^\\circ}{2\\angle 15^\\circ} = 5\\angle(75^\\circ - 15^\\circ) = 5\\angle 60^\\circ = 5(\\cos 60^\\circ + j\\sin 60^\\circ) = 5(0.5 + j\\frac{\\sqrt{3}}{2}) = 2.5 + 4.330j$.",
+      "archetype": "numerical"
+    },
+    {
+      "id": "m20-10",
+      "promptText": "Find the **multiplicative inverse (reciprocal)** of $z = 3 + 4j$.",
+      "choiceA": "0.12 - 0.16j (3/25 - 4/25 j)",
+      "choiceB": "0.12 + 0.16j",
+      "choiceC": "3 - 4j",
+      "choiceD": "0.33 - 0.25j",
+      "correctChoice": "A",
+      "explanation": "$\\frac{1}{z} = \\frac{z^*}{|z|^2} = \\frac{3 - 4j}{3^2 + 4^2} = \\frac{3 - 4j}{25} = \\frac{3}{25} - \\frac{4}{25}j = 0.12 - 0.16j$.",
+      "archetype": "numerical"
+    },
+    {
+      "id": "m20-11",
+      "promptText": "Find the principal value of $\\ln(1 + j)$.",
+      "choiceA": "0.3466 + 0.7854j (ln(√2) + j π/4)",
+      "choiceB": "0.6931 + 0.7854j",
+      "choiceC": "0.3466 + 1.5708j",
+      "choiceD": "1 + j π/4",
+      "correctChoice": "A",
+      "explanation": "$1 + j = \\sqrt{2} e^{j\\pi/4}$. $\\ln(1 + j) = \\ln(\\sqrt{2}) + j\\frac{\\pi}{4} = \\frac{1}{2}\\ln 2 + j\\frac{\\pi}{4} \\approx 0.34657 + 0.78540j$.",
+      "archetype": "numerical"
+    },
+    {
+      "id": "m20-12",
+      "promptText": "Evaluate the power of the imaginary unit: **$j^{2026}$**.",
+      "choiceA": "-1",
+      "choiceB": "1",
+      "choiceC": "j",
+      "choiceD": "-j",
+      "correctChoice": "A",
+      "explanation": "Divide exponent by 4: $2026 = 4(506) + 2$. Therefore, $j^{2026} = (j^4)^{506} \\cdot j^2 = (1)^{506}(-1) = -1$.",
+      "archetype": "numerical"
+    },
+    {
+      "id": "m20-13",
+      "promptText": "Find the principal square root of $j$ ($\\sqrt{j}$).",
+      "choiceA": "0.7071 + 0.7071j (1 ∠ 45° = (1 + j)/√2)",
+      "choiceB": "0.5 + 0.5j",
+      "choiceC": "1 + j",
+      "choiceD": "-1",
+      "correctChoice": "A",
+      "explanation": "$j = 1\\angle 90^\\circ \\implies \\sqrt{j} = 1\\angle(90^\\circ / 2) = 1\\angle 45^\\circ = \\frac{\\sqrt{2}}{2} + j\\frac{\\sqrt{2}}{2} \\approx 0.7071 + 0.7071j$.",
+      "archetype": "numerical"
+    },
+    {
+      "id": "m20-14",
+      "promptText": "Two AC parallel impedances are $Z_1 = 4 + 3j\\text{ }\\Omega$ and $Z_2 = 6 - 8j\\text{ }\\Omega$. What is the equivalent parallel impedance $Z_{\\text{eq}} = \\frac{Z_1 Z_2}{Z_1 + Z_2}$?",
+      "choiceA": "4.40 + 0.80j Ω",
+      "choiceB": "10.00 - 5.00j Ω",
+      "choiceC": "5.00 ∠ 36.87° Ω",
+      "choiceD": "2.40 + 3.20j Ω",
+      "correctChoice": "A",
+      "explanation": "$Z_1 Z_2 = (4 + 3j)(6 - 8j) = 48 - 14j$. $Z_1 + Z_2 = 10 - 5j$. $Z_{\\text{eq}} = \\frac{48 - 14j}{10 - 5j} = \\frac{(48 - 14j)(10 + 5j)}{125} = \\frac{550 + 100j}{125} = 4.40 + 0.80j\\text{ }\\Omega$.",
+      "archetype": "applied"
+    },
+    {
+      "id": "m20-15",
+      "promptText": "On an RF transmission line with characteristic impedance $Z_0 = 50\\text{ }\\Omega$ terminated in load $Z_L = 100 + 50j\\text{ }\\Omega$, what is the reflection coefficient magnitude $|\\Gamma| = \\left|\\frac{Z_L - Z_0}{Z_L + Z_0}\\right|$?",
+      "choiceA": "0.447 (1 / √5)",
+      "choiceB": "0.500",
+      "choiceC": "0.333",
+      "choiceD": "0.200",
+      "correctChoice": "A",
+      "explanation": "$\\Gamma = \\frac{(100 + 50j) - 50}{(100 + 50j) + 50} = \\frac{50 + 50j}{150 + 50j} = \\frac{1 + j}{3 + j}$. $|\\Gamma| = \\frac{\\sqrt{1^2 + 1^2}}{\\sqrt{3^2 + 1^2}} = \\frac{\\sqrt{2}}{\\sqrt{10}} = \\frac{1}{\\sqrt{5}} \\approx 0.4472$.",
+      "archetype": "applied"
+    },
+    {
+      "id": "m20-16",
+      "promptText": "Two sinusoidal voltages $v_1(t) = 10\\cos(\\omega t)\\text{ V}$ and $v_2(t) = 10\\sin(\\omega t)\\text{ V}$ are connected in series. What is the peak amplitude of the total resultant voltage $v_1(t) + v_2(t)$?",
+      "choiceA": "14.14 V (10√2 V)",
+      "choiceB": "20.00 V",
+      "choiceC": "10.00 V",
+      "choiceD": "0.00 V",
+      "correctChoice": "A",
+      "explanation": "In phasor form: $V_1 = 10\\angle 0^\\circ, V_2 = 10\\angle(-90^\\circ) = -10j$. Resultant magnitude $= |10 - 10j| = \\sqrt{10^2 + 10^2} = 10\\sqrt{2} \\approx 14.142\\text{ V}$.",
+      "archetype": "applied"
+    },
+    {
+      "id": "m20-17",
+      "promptText": "Find all four roots of the polynomial equation $z^4 + 16 = 0$.",
+      "choiceA": "z = 2 ∠ (45° + 90°k)  for k = 0, 1, 2, 3",
+      "choiceB": "z = ±2, ±2j",
+      "choiceC": "z = 4 ∠ 45°",
+      "choiceD": "z = 2 ∠ 0°",
+      "correctChoice": "A",
+      "explanation": "$z^4 = -16 = 16\\angle 180^\\circ \\implies z = 16^{1/4}\\angle\\left(\\frac{180^\\circ + 360^\\circ k}{4}\\right) = 2\\angle(45^\\circ + 90^\\circ k)$ for $k = 0, 1, 2, 3$.",
+      "archetype": "applied"
+    },
+    {
+      "id": "m20-18",
+      "promptText": "What is the value of $\\sin(j)$ (sine of the imaginary unit)?",
+      "choiceA": "j sinh(1) ≈ 1.1752 j",
+      "choiceB": "sinh(1) ≈ 1.1752",
+      "choiceC": "-j sinh(1)",
+      "choiceD": "0",
+      "correctChoice": "A",
+      "explanation": "By Euler's definition: $\\sin(jz) = j\\sinh(z) \\implies \\sin(j) = j\\sinh(1) \\approx 1.17520j$.",
+      "archetype": "applied"
+    },
+    {
+      "id": "m20-19",
+      "promptText": "What is the common trap when converting a complex number in Quadrant II or III (e.g. $z = -3 + 4j$) from rectangular to polar form on basic calculators?",
+      "choiceA": "Computing $\\arctan(4 / -3) = -53.13^\\circ$ without adding $180^\\circ$ to account for Quadrant II (correct argument is $180^\\circ - 53.13^\\circ = 126.87^\\circ$).",
+      "choiceB": "Squaring the imaginary unit.",
+      "choiceC": "Dividing by 2.",
+      "choiceD": "Using radians instead of degrees.",
+      "correctChoice": "A",
+      "explanation": "The standard $\\arctan(y/x)$ function has range $(-90^\\circ, 90^\\circ)$ (Quadrants I and IV). When $x < 0$, $180^\\circ$ must be added to reach Quadrants II and III.",
+      "archetype": "trap"
+    },
+    {
+      "id": "m20-20",
+      "promptText": "How can complex division and powers like $\\frac{4 + 3j}{1 - 2j}$ or $(2 + 3j)^5$ be solved in 3 seconds on board exams?",
+      "choiceA": "Switch the calculator to CMPLX mode (`MODE 2`) and input the expression directly using the `ENG` (i) key.",
+      "choiceB": "Use MATRIX mode.",
+      "choiceC": "Use STAT mode.",
+      "choiceD": "Use TABLE mode.",
+      "correctChoice": "A",
+      "explanation": "Modern board-approved scientific calculators have full complex arithmetic support in `MODE 2` (CMPLX), performing addition, multiplication, division, and conversions instantly.",
+      "archetype": "trap"
+    },
+    {
+      "id": "m20-21",
+      "promptText": "Using the 2-second De Moivre shortcut, what is $(1\\angle 30^\\circ)^{12}$?",
+      "choiceA": "1 (1 ∠ 360° = 1)",
+      "choiceB": "-1",
+      "choiceC": "j",
+      "choiceD": "12",
+      "correctChoice": "A",
+      "explanation": "$1^{12}\\angle(12 \\times 30^\\circ) = 1\\angle 360^\\circ = 1$ in 2 seconds.",
+      "archetype": "shortcut"
+    },
+    {
+      "id": "m20-22",
+      "promptText": "What is the complex conjugate of $z = -7 + 24j$ in 1 second?",
+      "choiceA": "-7 - 24j",
+      "choiceB": "7 - 24j",
+      "choiceC": "7 + 24j",
+      "choiceD": "24 - 7j",
+      "correctChoice": "A",
+      "explanation": "Conjugate negates only the imaginary part: $z^* = -7 - 24j$ in 1 second.",
+      "archetype": "shortcut"
+    }
+  ]
+}

@@ -1,0 +1,252 @@
+{
+  "moduleId": "math-15",
+  "moduleCode": "MATH 15",
+  "title": "MATH 15 Mastery Challenge: Maxima/Minima & Time Rates",
+  "description": "Comprehensive 22-question 4-quadrant companion mastery exam for MATH 15. Rigorously tests critical points, optimization word problems, hallway pipe lengths, ladder kinematics, related time rates, and curvature under timed board conditions.",
+  "totalQuestions": 22,
+  "timeLimitMinutes": 35,
+  "questions": [
+    {
+      "id": "m15-01",
+      "promptText": "If $f'(c) = 0$ and $f''(c) < 0$ at a point $x = c$, what does this point represent on the graph of $f(x)$?",
+      "choiceA": "A Local Maximum (the curve is concave downward).",
+      "choiceB": "A Local Minimum (the curve is concave upward).",
+      "choiceC": "A Point of Inflection.",
+      "choiceD": "A Vertical Asymptote.",
+      "correctChoice": "A",
+      "explanation": "By the Second Derivative Test, when the slope is zero ($f'(c) = 0$) and the second derivative is negative ($f''(c) < 0$), the curve bends downward like an inverted cup, establishing a local maximum.",
+      "archetype": "conceptual"
+    },
+    {
+      "id": "m15-02",
+      "promptText": "What geometric shape achieves the **maximum possible area** when inscribed inside a circle of radius $R$?",
+      "choiceA": "A Square with side length x = R√2 and Area = 2R².",
+      "choiceB": "A 2 : 1 golden rectangle.",
+      "choiceC": "An equilateral triangle.",
+      "choiceD": "A rectangle with side x = R / 2.",
+      "correctChoice": "A",
+      "explanation": "Maximizing $A = x y = x\\sqrt{4R^2 - x^2}$ yields $x = y = R\\sqrt{2}$ (a square) with maximum area $A_{\\max} = 2R^2$.",
+      "archetype": "conceptual"
+    },
+    {
+      "id": "m15-03",
+      "promptText": "What is the formula for the **Radius of Curvature ($R$)** of a plane curve $y = f(x)$ at any point?",
+      "choiceA": "R = [1 + (y')²]^(3/2) / |y''|",
+      "choiceB": "R = |y''| / [1 + (y')²]",
+      "choiceC": "R = [1 + y']² / |y''|",
+      "choiceD": "R = 1 / y'",
+      "correctChoice": "A",
+      "explanation": "The radius of curvature of the osculating circle is $R = \\frac{1}{K} = \\frac{[1 + (y')^2]^{3/2}}{|y''|}$.",
+      "archetype": "conceptual"
+    },
+    {
+      "id": "m15-04",
+      "promptText": "What fraction of a triangle's total area is occupied by the **largest rectangle** that can be inscribed inside it with one base on the triangle's base?",
+      "choiceA": "1/2 (50% of the triangle's area)",
+      "choiceB": "1/3 (33.33%)",
+      "choiceC": "2/3 (66.67%)",
+      "choiceD": "1/4 (25%)",
+      "correctChoice": "A",
+      "explanation": "The largest inscribed rectangle in any triangle has dimensions $x = b/2, y = h/2$, yielding an area of $\\frac{bh}{4} = \\frac{1}{2} A_{\\text{triangle}}$.",
+      "archetype": "conceptual"
+    },
+    {
+      "id": "m15-05",
+      "promptText": "What is the formula for the maximum length $L$ of a rigid pipe that can be carried horizontally around a right-angled hallway corner of widths $a$ and $b$?",
+      "choiceA": "L = (a^(2/3) + b^(2/3))^(3/2)",
+      "choiceB": "L = √(a² + b²)",
+      "choiceC": "L = a + b",
+      "choiceD": "L = (a + b)^(3/2)",
+      "correctChoice": "A",
+      "explanation": "By differentiating the envelope line $L(\\theta) = a\\csc\\theta + b\\sec\\theta$, the minimum clearing length is $L = (a^{2/3} + b^{2/3})^{3/2}$.",
+      "archetype": "conceptual"
+    },
+    {
+      "id": "m15-06",
+      "promptText": "What fraction of a sphere's volume is occupied by the **cylinder of maximum volume** inscribed inside it?",
+      "choiceA": "1 / √3 ≈ 57.74% of the sphere's volume",
+      "choiceB": "1 / 2 (50.00%)",
+      "choiceC": "2 / 3 (66.67%)",
+      "choiceD": "8 / 27 (29.63%)",
+      "correctChoice": "A",
+      "explanation": "The maximum inscribed cylinder has height $h = \\frac{2R}{\\sqrt{3}}$ and volume $V_{\\text{cyl}} = \\frac{4\\pi R^3}{3\\sqrt{3}} = \\frac{V_{\\text{sphere}}}{\\sqrt{3}} \\approx 57.74\\%$.",
+      "archetype": "conceptual"
+    },
+    {
+      "id": "m15-07",
+      "promptText": "Find the maximum value of the function $y = -2x^2 + 8x - 3$.",
+      "choiceA": "5 (at x = 2)",
+      "choiceB": "8 (at x = 4)",
+      "choiceC": "3 (at x = 0)",
+      "choiceD": "6 (at x = 1)",
+      "correctChoice": "A",
+      "explanation": "$y' = -4x + 8 = 0 \\implies x = 2$. $y(2) = -2(4) + 8(2) - 3 = -8 + 16 - 3 = 5$.",
+      "archetype": "numerical"
+    },
+    {
+      "id": "m15-08",
+      "promptText": "A 13-ft ladder leans against a vertical wall. If the bottom of the ladder slides away from the wall at $3\\text{ ft/s}$, how fast is the top sliding down the wall when the bottom is $5\\text{ ft}$ from the wall?",
+      "choiceA": "1.25 ft/s (sliding downward at -1.25 ft/s)",
+      "choiceB": "2.50 ft/s",
+      "choiceC": "1.50 ft/s",
+      "choiceD": "3.00 ft/s",
+      "correctChoice": "A",
+      "explanation": "$x^2 + y^2 = 13^2 = 169$. When $x = 5$, $y = \\sqrt{169 - 25} = 12\\text{ ft}$. $\\frac{dy}{dt} = -\\frac{x}{y}\\frac{dx}{dt} = -\\frac{5}{12}(3) = -\\frac{15}{12} = -1.25\\text{ ft/s}$.",
+      "archetype": "numerical"
+    },
+    {
+      "id": "m15-09",
+      "promptText": "A rigid pipe is moved around a corner between two hallways of widths $a = 1\\text{ ft}$ and $b = 8\\text{ ft}$. Find the maximum pipe length.",
+      "choiceA": "11.18 ft (5√5)",
+      "choiceB": "9.00 ft",
+      "choiceC": "13.00 ft",
+      "choiceD": "15.24 ft",
+      "correctChoice": "A",
+      "explanation": "$L = (1^{2/3} + 8^{2/3})^{3/2} = (1 + 4)^{3/2} = 5^{3/2} = 5\\sqrt{5} \\approx 11.1803\\text{ ft}$.",
+      "archetype": "numerical"
+    },
+    {
+      "id": "m15-10",
+      "promptText": "Find the maximum area of a rectangle that can be inscribed in the ellipse $\\frac{x^2}{16} + \\frac{y^2}{9} = 1$.",
+      "choiceA": "24 sq units (2ab)",
+      "choiceB": "36 sq units",
+      "choiceC": "12 sq units",
+      "choiceD": "37.70 sq units (πab)",
+      "correctChoice": "A",
+      "explanation": "For ellipse with semi-axes $a = 4$ and $b = 3$, $A_{\\max} = 2ab = 2(4)(3) = 24\\text{ sq units}$.",
+      "archetype": "numerical"
+    },
+    {
+      "id": "m15-11",
+      "promptText": "A farmer has $100\\text{ meters}$ of fencing to enclose a rectangular field. What is the maximum area that can be enclosed?",
+      "choiceA": "625 sq m (25 m × 25 m)",
+      "choiceB": "500 sq m",
+      "choiceC": "600 sq m",
+      "choiceD": "1,000 sq m",
+      "correctChoice": "A",
+      "explanation": "A rectangle of given perimeter maximizes area when it is a square: side $= 100/4 = 25\\text{ m}$. Area $= 25^2 = 625\\text{ m}^2$.",
+      "archetype": "numerical"
+    },
+    {
+      "id": "m15-12",
+      "promptText": "A spherical weather balloon is being inflated such that its radius increases at a constant rate of $2\\text{ cm/s}$. How fast is its volume increasing when the radius is $10\\text{ cm}$?",
+      "choiceA": "2,513.27 cm³/s (800π)",
+      "choiceB": "1,256.64 cm³/s (400π)",
+      "choiceC": "628.32 cm³/s",
+      "choiceD": "5,026.55 cm³/s",
+      "correctChoice": "A",
+      "explanation": "$V = \\frac{4}{3}\\pi r^3 \\implies \\frac{dV}{dt} = 4\\pi r^2 \\frac{dr}{dt} = 4\\pi(10^2)(2) = 800\\pi \\approx 2513.27\\text{ cm}^3/\\text{s}$.",
+      "archetype": "numerical"
+    },
+    {
+      "id": "m15-13",
+      "promptText": "Find the **radius of curvature ($R$)** of the curve $y = x^3$ at the point $(1, 1)$.",
+      "choiceA": "5.27 units (5√10 / 3)",
+      "choiceB": "6.00 units",
+      "choiceC": "3.16 units",
+      "choiceD": "10.00 units",
+      "correctChoice": "A",
+      "explanation": "At $x = 1$: $y' = 3(1^2) = 3$, $y'' = 6(1) = 6$. $R = \\frac{[1 + 3^2]^{3/2}}{6} = \\frac{10^{3/2}}{6} = \\frac{10\\sqrt{10}}{6} = \\frac{5\\sqrt{10}}{3} \\approx 5.2705\\text{ units}$.",
+      "archetype": "numerical"
+    },
+    {
+      "id": "m15-14",
+      "promptText": "Find the critical points of the function $f(x) = 2x^3 - 9x^2 + 12x + 1$.",
+      "choiceA": "x = 1 (Local Max) and x = 2 (Local Min)",
+      "choiceB": "x = 1 (Local Min) and x = 2 (Local Max)",
+      "choiceC": "x = -1 and x = -2",
+      "choiceD": "x = 0 and x = 3",
+      "correctChoice": "A",
+      "explanation": "$f'(x) = 6x^2 - 18x + 12 = 6(x^2 - 3x + 2) = 6(x - 1)(x - 2) = 0 \\implies x = 1, 2$. $f''(x) = 12x - 18$. $f''(1) = -6 < 0$ (Max); $f''(2) = +6 > 0$ (Min).",
+      "archetype": "standard"
+    },
+    {
+      "id": "m15-15",
+      "promptText": "An open rectangular box with a square base is to be constructed from a $16\\text{ in} \\times 16\\text{ in}$ square sheet of metal by cutting equal squares of side $x$ from each corner and folding up the sides. What cut size $x$ maximizes the box's volume?",
+      "choiceA": "x = 2.67 inches (8/3 in)",
+      "choiceB": "x = 4.00 inches",
+      "choiceC": "x = 2.00 inches",
+      "choiceD": "x = 3.00 inches",
+      "correctChoice": "A",
+      "explanation": "$V(x) = x(16 - 2x)^2 = x(256 - 64x + 4x^2) = 4x^3 - 64x^2 + 256x$. $V'(x) = 12x^2 - 128x + 256 = 0 \\implies 3x^2 - 32x + 64 = 0 \\implies (3x - 8)(x - 8) = 0 \\implies x = 8/3 \\approx 2.67\\text{ inches}$.",
+      "archetype": "applied"
+    },
+    {
+      "id": "m15-16",
+      "promptText": "Water is poured into an inverted conical tank of height $8\\text{ m}$ and top radius $4\\text{ m}$ at a constant rate of $10\\text{ m}^3/\\text{min}$. How fast is the water level rising when the water depth is $4\\text{ m}$?",
+      "choiceA": "0.796 m/min (10 / (4π))",
+      "choiceB": "1.592 m/min",
+      "choiceC": "0.398 m/min",
+      "choiceD": "2.000 m/min",
+      "correctChoice": "A",
+      "explanation": "Radius $r = 4(h/8) = h/2$. Volume $V = \\frac{1}{3}\\pi r^2 h = \\frac{1}{3}\\pi (h/2)^2 h = \\frac{\\pi}{12} h^3$. $\\frac{dV}{dt} = \\frac{\\pi}{4} h^2 \\frac{dh}{dt}$. At $h = 4\\text{ m}$: $10 = \\frac{\\pi}{4}(16) \\frac{dh}{dt} = 4\\pi \\frac{dh}{dt} \\implies \\frac{dh}{dt} = \\frac{10}{4\\pi} = \\frac{5}{2\\pi} \\approx 0.7958\\text{ m/min}$.",
+      "archetype": "applied"
+    },
+    {
+      "id": "m15-17",
+      "promptText": "A painting hangs on a museum wall with its bottom edge $2\\text{ m}$ above the viewer's eye level and its top edge $8\\text{ m}$ above eye level. At what distance $x$ from the wall should the viewer stand to maximize the vertical viewing angle?",
+      "choiceA": "x = 4.00 meters (√(y₁ · y₂))",
+      "choiceB": "x = 5.00 meters",
+      "choiceC": "x = 3.00 meters",
+      "choiceD": "x = 6.00 meters",
+      "correctChoice": "A",
+      "explanation": "By the statue/picture viewing angle optimization theorem, the best view distance is the geometric mean of heights: $x = \\sqrt{y_1 y_2} = \\sqrt{2 \\times 8} = \\sqrt{16} = 4.0\\text{ meters}$.",
+      "archetype": "applied"
+    },
+    {
+      "id": "m15-18",
+      "promptText": "To cut the strongest rectangular wooden beam (strength $S \\propto x y^2$) from a circular log of radius $r$, what is the optimal width $x$?",
+      "choiceA": "x = 2r / √3 ≈ 1.155 r",
+      "choiceB": "x = r",
+      "choiceC": "x = r√2",
+      "choiceD": "x = r / 2",
+      "correctChoice": "A",
+      "explanation": "$x^2 + y^2 = (2r)^2 = 4r^2 \\implies y^2 = 4r^2 - x^2$. Strength $S(x) = k x(4r^2 - x^2) = k(4r^2 x - x^3)$. $S'(x) = 4r^2 - 3x^2 = 0 \\implies x = \\frac{2r}{\\sqrt{3}}$.",
+      "archetype": "applied"
+    },
+    {
+      "id": "m15-19",
+      "promptText": "What is the common trap when calculating ladder rates $\\frac{dy}{dt}$ sliding down a wall?",
+      "choiceA": "Forgetting that $\\frac{dy}{dt}$ must be negative because the height $y$ is decreasing, or failing to differentiate the constant ladder length $L^2$ to zero.",
+      "choiceB": "Using tangent instead of sine.",
+      "choiceC": "Dividing by 2.",
+      "choiceD": "Squaring the velocity.",
+      "correctChoice": "A",
+      "explanation": "Because the ladder length $L$ is constant, $\\frac{d}{dt}[L^2] = 0$. Since height $y$ decreases, $\\frac{dy}{dt} = -\\frac{x}{y}\\frac{dx}{dt}$ is negative.",
+      "archetype": "trap"
+    },
+    {
+      "id": "m15-20",
+      "promptText": "When applying the hallway pipe shortcut $L = (a^{2/3} + b^{2/3})^{3/2}$, what is the critical assumption?",
+      "choiceA": "The two intersecting hallways meet at an exact 90° right angle and the pipe is rigid and carried horizontally.",
+      "choiceB": "The hallways have identical width.",
+      "choiceC": "The pipe is flexible.",
+      "choiceD": "The ceiling is infinite.",
+      "correctChoice": "A",
+      "explanation": "The formula $(a^{2/3} + b^{2/3})^{3/2}$ is derived strictly for perpendicular ($90^\\circ$) hallway intersections in the horizontal plane.",
+      "archetype": "trap"
+    },
+    {
+      "id": "m15-21",
+      "promptText": "Using the 2-second hallway shortcut, what is the maximum pipe length for two equal $8\\text{ ft}$ hallways?",
+      "choiceA": "22.63 ft (16√2)",
+      "choiceB": "16.00 ft",
+      "choiceC": "24.00 ft",
+      "choiceD": "18.50 ft",
+      "correctChoice": "A",
+      "explanation": "For $a = b = 8$: $L = 2\\sqrt{2} a = 2\\sqrt{2}(8) = 16\\sqrt{2} \\approx 22.627\\text{ ft}$ in 2 seconds.",
+      "archetype": "shortcut"
+    },
+    {
+      "id": "m15-22",
+      "promptText": "What is the maximum area of a rectangle inscribed in a triangle of base $14\\text{ cm}$ and height $8\\text{ cm}$ in 1 second?",
+      "choiceA": "28 cm² (bh / 4)",
+      "choiceB": "56 cm²",
+      "choiceC": "14 cm²",
+      "choiceD": "42 cm²",
+      "correctChoice": "A",
+      "explanation": "$A_{\\max} = \\frac{1}{2} A_{\\text{triangle}} = \\frac{1}{2}(0.5 \\times 14 \\times 8) = 28\\text{ cm}^2$ in 1 second.",
+      "archetype": "shortcut"
+    }
+  ]
+}

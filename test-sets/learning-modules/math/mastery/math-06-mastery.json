@@ -1,0 +1,252 @@
+{
+  "moduleId": "math-06",
+  "moduleCode": "MATH 06",
+  "title": "MATH 06 Mastery Challenge: Probability Theory & Distributions",
+  "description": "Comprehensive 22-question 4-quadrant companion mastery exam for MATH 06. Rigorously tests addition/multiplication probability rules, conditional events, Bayes' theorem, Bernoulli distributions, and complement 'at least one' shortcuts under timed board conditions.",
+  "totalQuestions": 22,
+  "timeLimitMinutes": 35,
+  "questions": [
+    {
+      "id": "m06-01",
+      "promptText": "If two events $A$ and $B$ are **mutually exclusive**, which of the following statements is strictly true?",
+      "choiceA": "$P(A \\cap B) = 0$",
+      "choiceB": "$P(A \\cap B) = P(A) \\cdot P(B)$",
+      "choiceC": "$P(A \\cup B) = 1$",
+      "choiceD": "$P(A|B) = P(A)$",
+      "correctChoice": "A",
+      "explanation": "Mutually exclusive (disjoint) events cannot occur simultaneously; their intersection is empty, so $P(A \\cap B) = 0$.",
+      "archetype": "conceptual"
+    },
+    {
+      "id": "m06-02",
+      "promptText": "Under what condition are two events $A$ and $B$ defined as statistically **independent**?",
+      "choiceA": "$P(A \\cap B) = P(A) \\cdot P(B)$",
+      "choiceB": "$P(A \\cap B) = 0$",
+      "choiceC": "$P(A \\cup B) = P(A) + P(B)$",
+      "choiceD": "$P(A|B) = 0$",
+      "correctChoice": "A",
+      "explanation": "Events are independent if the occurrence of one does not change the probability of the other, which is algebraically defined by $P(A \\cap B) = P(A) \\cdot P(B)$ or $P(A|B) = P(A)$.",
+      "archetype": "conceptual"
+    },
+    {
+      "id": "m06-03",
+      "promptText": "What formula defines the **Conditional Probability** of event $A$ given that event $B$ has already occurred ($P(B) > 0$)?",
+      "choiceA": "P(A ∩ B) / P(B)",
+      "choiceB": "P(A ∩ B) / P(A)",
+      "choiceC": "P(A) × P(B)",
+      "choiceD": "P(A ∪ B) / P(B)",
+      "correctChoice": "A",
+      "explanation": "By definition, the conditional probability is $P(A|B) = \\frac{P(A \\cap B)}{P(B)}$.",
+      "archetype": "conceptual"
+    },
+    {
+      "id": "m06-04",
+      "promptText": "What are the theoretical **mean ($\\mu$)** and **standard deviation ($\\sigma$)** of a Binomial distribution with $n$ independent trials and success probability $p$?",
+      "choiceA": "μ = n p,  σ = √(n p q)",
+      "choiceB": "μ = n / p,  σ = n p q",
+      "choiceC": "μ = n p q,  σ = √(n p)",
+      "choiceD": "μ = p / n,  σ = n p (1 - p)",
+      "correctChoice": "A",
+      "explanation": "For a binomial distribution, the expected value is $\\mu = n p$ and the variance is $\\sigma^2 = n p q$, making the standard deviation $\\sigma = \\sqrt{n p q}$.",
+      "archetype": "conceptual"
+    },
+    {
+      "id": "m06-05",
+      "promptText": "If the **odds in favor** of winning a game are $3 : 7$, what is the actual probability of winning?",
+      "choiceA": "3/10 (0.30)",
+      "choiceB": "3/7 (0.429)",
+      "choiceC": "7/10 (0.70)",
+      "choiceD": "4/7 (0.571)",
+      "correctChoice": "A",
+      "explanation": "If odds in favor are $a : b$, the probability is $P(E) = \\frac{a}{a + b} = \\frac{3}{3 + 7} = \\frac{3}{10} = 0.30$.",
+      "archetype": "conceptual"
+    },
+    {
+      "id": "m06-06",
+      "promptText": "In Bayesian inference, what does **Bayes' Theorem** calculate?",
+      "choiceA": "The posterior probability of a hypothesis given newly observed evidence.",
+      "choiceB": "The variance of continuous distributions.",
+      "choiceC": "The joint distribution of independent trials.",
+      "choiceD": "The sample size required for zero error.",
+      "correctChoice": "A",
+      "explanation": "Bayes' Theorem updates the prior probability $P(A_i)$ into a posterior probability $P(A_i|B)$ based on the likelihood of observing evidence $B$.",
+      "archetype": "conceptual"
+    },
+    {
+      "id": "m06-07",
+      "promptText": "A pair of fair 6-sided dice is rolled. What is the probability of rolling a sum of **8**?",
+      "choiceA": "5/36",
+      "choiceB": "4/36",
+      "choiceC": "6/36",
+      "choiceD": "1/6",
+      "correctChoice": "A",
+      "explanation": "Favorable pairs for sum = 8: (2,6), (3,5), (4,4), (5,3), (6,2) $\\implies 5$ outcomes out of 36 total. $P = 5/36$.",
+      "archetype": "numerical"
+    },
+    {
+      "id": "m06-08",
+      "promptText": "A card is drawn at random from a standard 52-card deck. What is the probability that it is an **Ace or a Spade**?",
+      "choiceA": "4/13",
+      "choiceB": "17/52",
+      "choiceC": "1/4",
+      "choiceD": "1/52",
+      "correctChoice": "A",
+      "explanation": "$P(\\text{Ace}) = 4/52$, $P(\\text{Spade}) = 13/52$, $P(\\text{Ace of Spades}) = 1/52$. $P(\\text{Ace} \\cup \\text{Spade}) = 4/52 + 13/52 - 1/52 = 16/52 = 4/13$.",
+      "archetype": "numerical"
+    },
+    {
+      "id": "m06-09",
+      "promptText": "A fair coin is tossed 4 times. What is the probability of getting **at least one Head**?",
+      "choiceA": "15/16",
+      "choiceB": "1/16",
+      "choiceC": "7/8",
+      "choiceD": "3/4",
+      "correctChoice": "A",
+      "explanation": "Use the complement rule: $P(\\ge 1\\text{ Head}) = 1 - P(0\\text{ Heads}) = 1 - (1/2)^4 = 1 - 1/16 = 15/16$.",
+      "archetype": "numerical"
+    },
+    {
+      "id": "m06-10",
+      "promptText": "An urn contains 5 red balls and 4 green balls. If 2 balls are drawn sequentially **without replacement**, what is the probability that both are red?",
+      "choiceA": "5/18",
+      "choiceB": "25/81",
+      "choiceC": "20/81",
+      "choiceD": "1/2",
+      "correctChoice": "A",
+      "explanation": "$P(R_1 \\cap R_2) = \\frac{5}{9} \\times \\frac{4}{8} = \\frac{20}{72} = \\frac{5}{18}$.",
+      "archetype": "numerical"
+    },
+    {
+      "id": "m06-11",
+      "promptText": "If $P(A) = 0.6$, $P(B) = 0.5$, and $P(A \\cap B) = 0.3$, evaluate the conditional probability **$P(A|B)$**.",
+      "choiceA": "0.60",
+      "choiceB": "0.50",
+      "choiceC": "0.30",
+      "choiceD": "0.80",
+      "correctChoice": "A",
+      "explanation": "$P(A|B) = \\frac{P(A \\cap B)}{P(B)} = \\frac{0.3}{0.5} = 0.60$. Since $P(A|B) = P(A)$, events $A$ and $B$ are independent.",
+      "archetype": "numerical"
+    },
+    {
+      "id": "m06-12",
+      "promptText": "A multiple-choice quiz has 5 questions, each with 4 options (1 correct). If a student guesses randomly on all questions, what is the probability of getting **exactly 3 correct**?",
+      "choiceA": "0.0879 (45/512)",
+      "choiceB": "0.2637",
+      "choiceC": "0.0156",
+      "choiceD": "0.1250",
+      "correctChoice": "A",
+      "explanation": "$n = 5, k = 3, p = 0.25, q = 0.75$. $P(X = 3) = \\binom{5}{3} (0.25)^3 (0.75)^2 = 10 \\times \\frac{1}{64} \\times \\frac{9}{16} = \\frac{90}{1024} = \\frac{45}{512} \\approx 0.08789$.",
+      "archetype": "numerical"
+    },
+    {
+      "id": "m06-13",
+      "promptText": "What is the mathematical expectation $E(X)$ of the score obtained by rolling a single fair 6-sided die?",
+      "choiceA": "3.5",
+      "choiceB": "3.0",
+      "choiceC": "4.0",
+      "choiceD": "3.6",
+      "correctChoice": "A",
+      "explanation": "$E(X) = \\sum x_i P(x_i) = \\frac{1 + 2 + 3 + 4 + 5 + 6}{6} = \\frac{21}{6} = 3.5$.",
+      "archetype": "numerical"
+    },
+    {
+      "id": "m06-14",
+      "promptText": "Three independent radar tracking stations have target detection probabilities of $0.8$, $0.7$, and $0.9$ respectively. What is the probability that a target will be detected by **at least one** station?",
+      "choiceA": "0.994",
+      "choiceB": "0.504",
+      "choiceC": "0.800",
+      "choiceD": "0.998",
+      "correctChoice": "A",
+      "explanation": "$P(\\ge 1) = 1 - P(\\text{none detect}) = 1 - (1 - 0.8)(1 - 0.7)(1 - 0.9) = 1 - (0.2)(0.3)(0.1) = 1 - 0.006 = 0.994$.",
+      "archetype": "standard"
+    },
+    {
+      "id": "m06-15",
+      "promptText": "A medical diagnostic screening test is $95\\%$ accurate for patients with a disease (sensitivity) and $90\\%$ accurate for healthy individuals (specificity). If $2\\%$ of a population has the disease, what is the probability that a randomly tested person who tests positive actually has the disease?",
+      "choiceA": "0.1624 (16.24%)",
+      "choiceB": "0.9500 (95.00%)",
+      "choiceC": "0.0200 (2.00%)",
+      "choiceD": "0.5000 (50.00%)",
+      "correctChoice": "A",
+      "explanation": "Bayes' Theorem: $P(D) = 0.02, P(H) = 0.98$. $P(+|D) = 0.95, P(+|H) = 1 - 0.90 = 0.10$. Total $P(+) = (0.02)(0.95) + (0.98)(0.10) = 0.019 + 0.098 = 0.117$. $P(D|+) = \\frac{0.019}{0.117} \\approx 0.16239 = 16.24\\%$.",
+      "archetype": "applied"
+    },
+    {
+      "id": "m06-16",
+      "promptText": "Two archers shoot at a bullseye independently. Archer A has hit probability $2/3$ and Archer B has hit probability $3/4$. What is the probability that **exactly one** of them hits the bullseye?",
+      "choiceA": "5/12",
+      "choiceB": "1/2",
+      "choiceC": "1/4",
+      "choiceD": "7/12",
+      "correctChoice": "A",
+      "explanation": "$P(\\text{A hits, B misses}) + P(\\text{A misses, B hits}) = (2/3)(1/4) + (1/3)(3/4) = 2/12 + 3/12 = 5/12$.",
+      "archetype": "applied"
+    },
+    {
+      "id": "m06-17",
+      "promptText": "A power substation relies on two independent generator units in parallel. Each unit has a failure probability of $0.05$. What is the overall operational reliability (probability that power is maintained)?",
+      "choiceA": "0.9975 (99.75%)",
+      "choiceB": "0.9500 (95.00%)",
+      "choiceC": "0.9025 (90.25%)",
+      "choiceD": "0.9950 (99.50%)",
+      "correctChoice": "A",
+      "explanation": "Substation fails only if both units fail simultaneously: $P(\\text{both fail}) = 0.05 \\times 0.05 = 0.0025$. Operational reliability $= 1 - 0.0025 = 0.9975$.",
+      "archetype": "applied"
+    },
+    {
+      "id": "m06-18",
+      "promptText": "In a digital communications link transmitting bytes of 8 bits, the bit error rate is $p = 0.01$. What is the probability that a transmitted byte contains **no errors**?",
+      "choiceA": "0.9227",
+      "choiceB": "0.9900",
+      "choiceC": "0.0800",
+      "choiceD": "0.9600",
+      "correctChoice": "A",
+      "explanation": "$P(X = 0) = (1 - p)^8 = (0.99)^8 \\approx 0.922744$.",
+      "archetype": "applied"
+    },
+    {
+      "id": "m06-19",
+      "promptText": "What is the common trap when computing the probability of **'at least one success'** in $n$ independent trials?",
+      "choiceA": "Attempting to sum individual probabilities directly instead of using the complement rule: $P(\\ge 1) = 1 - P(0) = 1 - q^n$.",
+      "choiceB": "Multiplying the success probabilities.",
+      "choiceC": "Dividing by $n$.",
+      "choiceD": "Assuming trials are dependent.",
+      "correctChoice": "A",
+      "explanation": "Summing $P(1) + P(2) + \\dots + P(n)$ requires evaluating $n$ separate combination terms, whereas $1 - q^n$ computes the exact result in one step.",
+      "archetype": "trap"
+    },
+    {
+      "id": "m06-20",
+      "promptText": "What is the common error when solving sequential urn sampling problems without replacement?",
+      "choiceA": "Failing to decrement both the numerator and the total sample denominator after the first draw.",
+      "choiceB": "Adding the probabilities instead of multiplying.",
+      "choiceC": "Taking the square root.",
+      "choiceD": "Using permutations.",
+      "correctChoice": "A",
+      "explanation": "Without replacement, the total pool decreases from $N$ to $N - 1$, and the remaining target elements decrease from $k$ to $k - 1$. Failing to decrement produces an incorrect sampling with replacement result.",
+      "archetype": "trap"
+    },
+    {
+      "id": "m06-21",
+      "promptText": "Using the 2-second complement shortcut, find the probability of getting at least one 6 when rolling 3 fair dice.",
+      "choiceA": "91/216 (42.13%)",
+      "choiceB": "125/216",
+      "choiceC": "1/2",
+      "choiceD": "1/6",
+      "correctChoice": "A",
+      "explanation": "$P(\\ge 1\\text{ six}) = 1 - (5/6)^3 = 1 - 125/216 = 91/216 \\approx 0.4213$ in 2 seconds.",
+      "archetype": "shortcut"
+    },
+    {
+      "id": "m06-22",
+      "promptText": "If the odds against an event occurring are $5 : 2$, what is the probability of the event in 2 seconds?",
+      "choiceA": "2/7",
+      "choiceB": "5/7",
+      "choiceC": "2/5",
+      "choiceD": "5/2",
+      "correctChoice": "A",
+      "explanation": "Odds against $= b : a = 5 : 2 \\implies P(E) = \\frac{a}{a + b} = \\frac{2}{2 + 5} = \\frac{2}{7}$ in 2 seconds.",
+      "archetype": "shortcut"
+    }
+  ]
+}

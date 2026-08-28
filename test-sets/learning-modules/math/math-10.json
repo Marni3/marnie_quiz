@@ -1,0 +1,283 @@
+{
+  "id": "math-10",
+  "code": "MATH 10",
+  "domain": "MATH",
+  "topicCode": "MATH-10",
+  "topicTitle": "Plane Geometry",
+  "subtopicTitle": "Regular Polygons, Interior/Exterior Angles & Circle Geometry Theorems",
+  "order": 10,
+  "pairedQuizSetId": "math-10-mastery",
+  "toc": [
+    { "id": "sec-prereq-bridges", "title": "1. Introduction & Cross-Subject Bridges", "level": 2 },
+    { "id": "sec-theory", "title": "2. Lesson Proper", "level": 2 },
+    { "id": "sec-formulas", "title": "3. Compilation of Formulas", "level": 2 },
+    { "id": "sec-visualizer", "title": "4. Interactive Visualizer: Regular Polygon & Circle Geometry Explorer", "level": 2 },
+    { "id": "sec-terminology", "title": "5. Terms and Definitions", "level": 2 },
+    { "id": "sec-dual-method", "title": "6. Sample Problems and Solutions", "level": 2 },
+    { "id": "sec-calculator", "title": "7. Calculator Techniques (Karce & Canon)", "level": 2 },
+    { "id": "sec-concept-checks", "title": "8. In-Line Concept Checks", "level": 2 },
+    { "id": "sec-mastery-challenge", "title": "9. Paired Mastery Challenge", "level": 2 }
+  ],
+  "prerequisiteBridge": {
+    "priorModuleId": "math-09",
+    "text": "Extending triangle and circle theorems from MATH 09, this module covers multi-sided regular polygons ($n$-gons), apothem radii, diagonal counts, circular segments/sectors, and the Intersecting Chord and Tangent-Secant theorems."
+  },
+  "crossSubjectBridges": [
+    {
+      "targetDomain": "EST",
+      "targetTopicCode": "EST-01",
+      "badgeText": "Hexagonal Cellular Cell Layouts",
+      "description": "Mobile telecommunication networks model frequency reuse and geographical cell coverage using regular hexagonal tiling ($n = 6$), minimizing adjacent cell overlap."
+    },
+    {
+      "targetDomain": "ELECS",
+      "targetTopicCode": "ELEC-05",
+      "badgeText": "Circular Radar Sweep Sectors",
+      "description": "Rotating marine radar antennas and PPI cathode ray displays calculate scanned geographical surface areas using circular sector equations ($A = \\frac{1}{2}r^2\\theta$)."
+    },
+    {
+      "targetDomain": "GEAS",
+      "targetTopicCode": "GEAS-08",
+      "badgeText": "Torsional Polar Moments of Inertia",
+      "description": "Shaft twisting and polar section moduli ($J = \\frac{\\pi d^4}{32}$) integrate solid circular cross-sections and annular segments."
+    }
+  ],
+  "formulas": [
+    {
+      "id": "f-1001-01",
+      "title": "Sum & Individual Interior Angles of an n-gon",
+      "formula": "$$S_{\\text{int}} = (n - 2) \\times 180^\\circ, \\qquad \\theta_{\\text{int}} = \\frac{(n - 2) \\times 180^\\circ}{n}$$",
+      "note": "Valid for any simple convex polygon with n sides."
+    },
+    {
+      "id": "f-1001-02",
+      "title": "Sum & Individual Exterior Angles",
+      "formula": "$$S_{\\text{ext}} = 360^\\circ, \\qquad \\theta_{\\text{ext}} = \\frac{360^\\circ}{n}$$",
+      "note": "The sum of exterior angles is always exactly 360° regardless of the number of sides."
+    },
+    {
+      "id": "f-1001-03",
+      "title": "Total Number of Diagonals in an n-gon",
+      "formula": "$$D = \\frac{n(n - 3)}{2}$$",
+      "note": "A triangle (n = 3) has 0 diagonals; a square (n = 4) has 2 diagonals."
+    },
+    {
+      "id": "f-1001-04",
+      "title": "Area of a Regular n-gon (Given Side Length x)",
+      "formula": "$$A = \\frac{n x^2}{4 \\tan(180^\\circ / n)} = \\frac{1}{2} n x a_{\\text{pothem}}$$",
+      "note": "Apothem a = x / (2 tan(180°/n)) is the inradius."
+    },
+    {
+      "id": "f-1001-05",
+      "title": "Area of a Regular n-gon (Given Circumradius R)",
+      "formula": "$$A = \\frac{1}{2} n R^2 \\sin\\left(\\frac{360^\\circ}{n}\\right)$$",
+      "note": "Formed by summing n identical isosceles sub-triangles."
+    },
+    {
+      "id": "f-1001-06",
+      "title": "Circular Arc Length & Sector Area",
+      "formula": "$$L = r\\theta, \\qquad A_{\\text{sector}} = \\frac{1}{2}r^2\\theta = \\frac{1}{2}r L$$",
+      "note": "Angle θ must strictly be measured in RADIANS."
+    },
+    {
+      "id": "f-1001-07",
+      "title": "Circular Segment Area",
+      "formula": "$$A_{\\text{segment}} = \\frac{1}{2}r^2(\\theta - \\sin\\theta)$$",
+      "note": "Area between arc and chord. θ in radians; evaluate sin θ with angle in radians."
+    },
+    {
+      "id": "f-1001-08",
+      "title": "Intersecting Chords & Tangent-Secant Theorems",
+      "formula": "$$PA \\cdot PB = PC \\cdot PD \\qquad PT^2 = PA \\cdot PB$$",
+      "note": "For chords intersecting inside at P; for tangent PT from external point P to secant PAB."
+    }
+  ],
+  "terms": [
+    {
+      "term": "Apothem",
+      "symbol": "$a$",
+      "unit": "Length",
+      "definition": "The perpendicular distance from the center of a regular polygon to the midpoint of any of its sides (equal to the inradius).",
+      "keywordTrigger": "perpendicular distance from center to side of regular polygon"
+    },
+    {
+      "term": "Convex Polygon",
+      "symbol": "Convex n-gon",
+      "unit": "Geometry",
+      "definition": "A polygon where every internal angle is strictly less than 180° and all line segments connecting any two interior points lie entirely within the polygon.",
+      "keywordTrigger": "all interior angles less than 180 degrees"
+    },
+    {
+      "term": "Circular Segment",
+      "symbol": "$A_{\\text{seg}}$",
+      "unit": "Area",
+      "definition": "The region of a circle bounded by a chord and the corresponding arc ($A_{\\text{seg}} = A_{\\text{sector}} - A_{\\text{triangle}}$).",
+      "keywordTrigger": "region bounded by chord and arc"
+    },
+    {
+      "term": "Tangent-Secant Theorem",
+      "symbol": "$PT^2 = PA \\cdot PB$",
+      "unit": "Theorem",
+      "definition": "Geometric theorem stating that if a tangent segment PT and a secant line PAB are drawn to a circle from an external point P, the square of the tangent equals the product of the external and entire secant segments.",
+      "keywordTrigger": "square of tangent equals product of external and whole secant"
+    }
+  ],
+  "visualizer": {
+    "archetype": "conic_explorer",
+    "title": "Interactive Regular Polygon & Circle Geometry Visualizer",
+    "description": "Adjust the number of polygon sides n and radius R to observe polygon convergence toward circular circumference and live interior/exterior angle measurements.",
+    "config": {
+      "canvasWidth": 640,
+      "canvasHeight": 320,
+      "controls": [
+        {
+          "id": "semiMajor",
+          "label": "Number of Sides (n)",
+          "min": 3,
+          "max": 12,
+          "step": 1,
+          "defaultValue": 6
+        },
+        {
+          "id": "eccentricity",
+          "label": "Radius Scale (R)",
+          "min": 1,
+          "max": 5,
+          "step": 1,
+          "defaultValue": 3
+        }
+      ]
+    }
+  },
+  "theory": {
+    "mentalAnchor": "For any $n$-gon: **Sum of interior angles** $= (n - 2) \\times 180^\\circ$. **Sum of exterior angles** $= 360^\\circ$ always. **Total diagonals** $= \\frac{n(n - 3)}{2}$. For circle arcs and sectors, ensure angle $\\theta$ is in **radians** ($L = r\\theta, A = \\frac{1}{2}r^2\\theta$). For secants from an external point, $\\text{Tangent}^2 = \\text{External} \\times \\text{Whole}$.",
+    "contentMarkdown": "### 1. Polygons: Angles, Diagonals & Areas\n\nA regular $n$-gon is equilateral and equiangular:\n\n```diagram\n{\n  \"caption\": \"Figure 1: Regular Hexagon (n = 6) with Apothem a and Circumradius R\",\n  \"xRange\": [-5, 5],\n  \"yRange\": [-5, 5],\n  \"elements\": [\n    { \"type\": \"grid\" },\n    { \"type\": \"axes\" },\n    { \"type\": \"polygon\", \"points\": [[3, 0], [1.5, 2.6], [-1.5, 2.6], [-3, 0], [-1.5, -2.6], [1.5, -2.6]], \"color\": \"#38bdf8\", \"fill\": \"rgba(56, 189, 248, 0.1)\" },\n    { \"type\": \"segment\", \"from\": [0, 0], \"to\": [0, 2.6], \"color\": \"#fbbf24\", \"width\": 2.5 },\n    { \"type\": \"segment\", \"from\": [0, 0], \"to\": [3, 0], \"color\": \"#f43f5e\", \"width\": 2.5 },\n    { \"type\": \"point\", \"at\": [0, 1.3], \"label\": \"Apothem (a)\", \"color\": \"#fbbf24\" },\n    { \"type\": \"point\", \"at\": [1.5, 0], \"label\": \"Radius (R)\", \"color\": \"#f43f5e\" }\n  ]\n}\n```\n\n#### Specific Formulas for Regular $n$-gons:\n- **Sum of Interior Angles**: $S_{\\text{int}} = (n - 2) \\times 180^\\circ$\n- **Each Interior Angle**: $\\theta_{\\text{int}} = \\frac{(n - 2) \\times 180^\\circ}{n}$\n- **Each Exterior Angle**: $\\theta_{\\text{ext}} = \\frac{360^\\circ}{n}$\n- **Total Diagonals**: $D = \\frac{n(n - 3)}{2}$\n- **Area with side $x$**: $A = \\frac{n x^2}{4 \\tan(180^\\circ / n)}$\n- **Area with circumradius $R$**: $A = \\frac{1}{2} n R^2 \\sin\\left(\\frac{360^\\circ}{n}\\right)$\n\n---\n\n### 2. Circle Geometry Theorems\n\n- **Arc Length**: $L = r\\theta$ ($\\theta$ in radians).\n- **Sector Area**: $A_{\\text{sector}} = \\frac{1}{2}r^2\\theta = \\frac{1}{2}r L$.\n- **Segment Area**: $A_{\\text{segment}} = \\frac{1}{2}r^2(\\theta - \\sin\\theta)$.\n- **Intersecting Chords Theorem**: When chords $AB$ and $CD$ intersect inside a circle at $P$:\n  $$PA \\cdot PB = PC \\cdot PD$$\n- **Tangent-Secant Theorem**: When tangent $PT$ and secant line $PAB$ meet at external point $P$:\n  $$PT^2 = PA \\cdot PB$$\n  *(Where $PA$ is the external secant segment and $PB$ is the entire secant)*."
+  },
+  "examples": [
+    {
+      "problemStatement": "Find the area and total number of diagonals of a regular Nonagon (9-sided polygon) inscribed in a circle of radius R = 10 cm.",
+      "formalSolutionMarkdown": "#### Step 1: Calculate total diagonals\n$$D = \\frac{n(n - 3)}{2} = \\frac{9(9 - 3)}{2} = \\frac{9(6)}{2} = 27\\text{ diagonals}$$\n\n#### Step 2: Calculate area using circumradius R\n$$A = \\frac{1}{2} n R^2 \\sin\\left(\\frac{360^\\circ}{n}\\right) = \\frac{1}{2}(9)(10^2)\\sin\\left(\\frac{360^\\circ}{9}\\right)$$\n$$A = 450 \\sin(40^\\circ) = 450(0.6427876) \\approx 289.25\\text{ cm}^2$$",
+      "shortcutSolutionMarkdown": "#### ⚡ 2-Second Calculator Evaluation\n1. Diagonals: `9 × 6 / 2` = $\\mathbf{27}$.\n2. Area: `0.5 × 9 × 100 × sin(40°)` = $\\mathbf{289.25\\text{ cm}^2}$.",
+      "formalTimeSeconds": 40,
+      "shortcutTimeSeconds": 2
+    },
+    {
+      "problemStatement": "From an external point P, a tangent line segment PT of length 12 cm is drawn to a circle. A secant line through P intersects the circle at point A and point B. If the external secant segment PA is 8 cm, find the total length of the secant chord AB.",
+      "formalSolutionMarkdown": "#### Step 1: Apply the Tangent-Secant Theorem\n$$PT^2 = PA \\cdot PB$$\n$$12^2 = 8 \\cdot PB$$\n$$144 = 8 \\cdot PB \\implies PB = \\frac{144}{8} = 18\\text{ cm}$$\n\n#### Step 2: Calculate the chord length AB\nSince $PB = PA + AB$:\n$$AB = PB - PA = 18 - 8 = 10\\text{ cm}$$",
+      "shortcutSolutionMarkdown": "#### ⚡ 3-Second Evaluation\n1. $PB = 12^2 / 8 = 144 / 8 = 18$.\n2. $AB = 18 - 8 = \\mathbf{10\\text{ cm}}$.",
+      "formalTimeSeconds": 30,
+      "shortcutTimeSeconds": 3
+    }
+  ],
+  "calculatorGuides": {
+    "karce": {
+      "techniqueTitle": "Regular Polygon Area Evaluation",
+      "problemType": "Evaluating (n * x²) / (4 * tan(180/n))",
+      "sampleProblem": "Find area of regular octagon with side x = 6.",
+      "mode": "DEG Mode",
+      "keystrokes": [
+        "8",
+        "×",
+        "6",
+        "x²",
+        "÷",
+        "(",
+        "4",
+        "×",
+        "tan",
+        "(",
+        "1",
+        "8",
+        "0",
+        "÷",
+        "8",
+        ")",
+        ")",
+        "="
+      ],
+      "notes": "Directly returns 173.82 in 2 seconds."
+    },
+    "canon": {
+      "techniqueTitle": "Circular Segment Area in Radian Mode",
+      "problemType": "Segment area 0.5 * r² * (θ - sin θ)",
+      "sampleProblem": "Find segment area for r = 10 and θ = 60° (π/3 rad).",
+      "mode": "RAD Mode",
+      "keystrokes": [
+        "0",
+        ".",
+        "5",
+        "×",
+        "1",
+        "0",
+        "0",
+        "×",
+        "(",
+        "SHIFT",
+        "π",
+        "÷",
+        "3",
+        "-",
+        "sin",
+        "(",
+        "SHIFT",
+        "π",
+        "÷",
+        "3",
+        ")",
+        ")",
+        "="
+      ],
+      "notes": "Directly returns 9.06 cm²."
+    }
+  },
+  "conceptChecks": [
+    {
+      "id": "cc-math10-01",
+      "question": "What is each interior angle of a regular Dodecagon (12-sided polygon)?",
+      "options": [
+        "150°",
+        "144°",
+        "135°",
+        "160°"
+      ],
+      "correctAnswer": 0,
+      "explanation": "θ_int = (n - 2) × 180° / n = (12 - 2) × 180° / 12 = 10 × 15° = 150°."
+    },
+    {
+      "id": "cc-math10-02",
+      "question": "How many diagonals does a regular Icosagon (20-sided polygon) possess?",
+      "options": [
+        "170",
+        "190",
+        "340",
+        "200"
+      ],
+      "correctAnswer": 0,
+      "explanation": "D = n(n - 3) / 2 = 20(17) / 2 = 10 × 17 = 170."
+    },
+    {
+      "id": "cc-math10-03",
+      "question": "In a circle of radius 6 cm, what is the area of a sector subtending an angle of 60° (π/3 radians)?",
+      "options": [
+        "18.85 cm² (6π)",
+        "37.70 cm² (12π)",
+        "9.42 cm² (3π)",
+        "24.00 cm²"
+      ],
+      "correctAnswer": 0,
+      "explanation": "A = 0.5 × r² × θ = 0.5 × 36 × (π/3) = 6π ≈ 18.8496 cm²."
+    },
+    {
+      "id": "cc-math10-04",
+      "question": "Two chords AB and CD intersect inside a circle at point P. If PA = 4, PB = 9, and PC = 3, find the length of PD.",
+      "options": [
+        "12",
+        "10",
+        "6",
+        "8"
+      ],
+      "correctAnswer": 0,
+      "explanation": "By the Intersecting Chords Theorem: PA × PB = PC × PD ⟹ 4 × 9 = 3 × PD ⟹ 36 = 3 × PD ⟹ PD = 12."
+    }
+  ]
+}

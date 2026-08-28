@@ -1,0 +1,271 @@
+{
+  "id": "math-15",
+  "code": "MATH 15",
+  "domain": "MATH",
+  "topicCode": "MATH-15",
+  "topicTitle": "Differential Calculus",
+  "subtopicTitle": "Maxima/Minima, Time Rates, Curvature & Optimization Shortcuts",
+  "order": 15,
+  "pairedQuizSetId": "math-15-mastery",
+  "toc": [
+    { "id": "sec-prereq-bridges", "title": "1. Introduction & Cross-Subject Bridges", "level": 2 },
+    { "id": "sec-theory", "title": "2. Lesson Proper", "level": 2 },
+    { "id": "sec-formulas", "title": "3. Compilation of Formulas", "level": 2 },
+    { "id": "sec-visualizer", "title": "4. Interactive Visualizer: Box Volume Optimization Sandbox", "level": 2 },
+    { "id": "sec-terminology", "title": "5. Terms and Definitions", "level": 2 },
+    { "id": "sec-dual-method", "title": "6. Sample Problems and Solutions", "level": 2 },
+    { "id": "sec-calculator", "title": "7. Calculator Techniques (Karce & Canon)", "level": 2 },
+    { "id": "sec-concept-checks", "title": "8. In-Line Concept Checks", "level": 2 },
+    { "id": "sec-mastery-challenge", "title": "9. Paired Mastery Challenge", "level": 2 }
+  ],
+  "prerequisiteBridge": {
+    "priorModuleId": "math-14",
+    "text": "Building upon differential derivative rules from MATH 14, this module applies derivatives to physical optimization (maxima and minima), related time rates, curvature/radius of curvature, and PRC board exam geometric shortcut formulas."
+  },
+  "crossSubjectBridges": [
+    {
+      "targetDomain": "ELECS",
+      "targetTopicCode": "ELEC-01",
+      "badgeText": "Maximum Power Transfer Theorem",
+      "description": "Differentiating load power $P_L = I^2 R_L = \\left(\\frac{V_{th}}{R_{th} + R_L}\\right)^2 R_L$ with respect to $R_L$ and setting $\\frac{dP_L}{dR_L} = 0$ proves the maximum power condition $R_L = R_{th}$."
+    },
+    {
+      "targetDomain": "EST",
+      "targetTopicCode": "EST-03",
+      "badgeText": "Optimal Channel Capacity & Bandwidth",
+      "description": "Shannon-Hartley capacity optimization ($C = B \\log_2(1 + S/N)$) differentiates throughput vs spectral bandwidth to find optimal multi-carrier SNR thresholds."
+    },
+    {
+      "targetDomain": "GEAS",
+      "targetTopicCode": "GEAS-06",
+      "badgeText": "Structural Beam Bending Curvature",
+      "description": "Euler-Bernoulli beam deflection theory ($EI \\frac{d^2y}{dx^2} = M(x)$) equates internal bending moments to the approximate physical radius of curvature ($R \\approx 1 / y''$)."
+    }
+  ],
+  "formulas": [
+    {
+      "id": "f-1501-01",
+      "title": "Critical Points & Second Derivative Test",
+      "formula": "$$f'(x) = 0 \\implies f''(x) > 0 \\quad (\\text{Local Min, Concave Up}), \\qquad f''(x) < 0 \\quad (\\text{Local Max, Concave Down})$$",
+      "note": "If f''(x) = 0, the test is inconclusive (possible point of inflection)."
+    },
+    {
+      "id": "f-1501-02",
+      "title": "Radius and Curvature of a Plane Curve",
+      "formula": "$$K = \\frac{|y''|}{\\left[1 + (y')^2\\right]^{3/2}}, \\qquad R = \\frac{1}{K} = \\frac{\\left[1 + (y')^2\\right]^{3/2}}{|y''|}$$",
+      "note": "At a local extremum where y' = 0, R = 1 / |y''|."
+    },
+    {
+      "id": "f-1501-03",
+      "title": "Kinematic Time Rates",
+      "formula": "$$v = \\frac{ds}{dt}, \\qquad a = \\frac{dv}{dt} = v \\frac{dv}{ds} = \\frac{d^2s}{dt^2}$$",
+      "note": "Relate geometric quantities through Pythagorean or trigonometric equations before taking d/dt."
+    },
+    {
+      "id": "f-1501-04",
+      "title": "Largest Rectangle Inscribed in a Circle (Radius R)",
+      "formula": "$$x = R\\sqrt{2}, \\quad y = R\\sqrt{2} \\quad (\\text{Square}), \\qquad A_{\\max} = 2R^2$$",
+      "note": "Area of inscribed rectangle is exactly 2R² = (2/π) A_circle."
+    },
+    {
+      "id": "f-1501-05",
+      "title": "Largest Rectangle Inscribed in a Triangle (Base b, Height h)",
+      "formula": "$$x = \\frac{b}{2}, \\quad y = \\frac{h}{2}, \\qquad A_{\\max} = \\frac{1}{2} A_{\\text{triangle}} = \\frac{bh}{4}$$",
+      "note": "Dimensions are always exactly half the base and half the height."
+    },
+    {
+      "id": "f-1501-06",
+      "title": "Largest Rectangle Inscribed in an Ellipse (x²/a² + y²/b² = 1)",
+      "formula": "$$x = \\frac{a}{\\sqrt{2}}, \\quad y = \\frac{b}{\\sqrt{2}}, \\qquad A_{\\max} = 2ab$$",
+      "note": "The ratio of ellipse area to maximum inscribed rectangle area is π / 2."
+    },
+    {
+      "id": "f-1501-07",
+      "title": "Maximum Volume Cylinder & Cone Inscribed in Sphere (Radius R)",
+      "formula": "$$h_{\\text{cyl}} = \\frac{2R}{\\sqrt{3}}, \\quad V_{\\text{cyl}} = \\frac{V_{\\text{sphere}}}{\\sqrt{3}} \\qquad h_{\\text{cone}} = \\frac{4R}{3}, \\quad V_{\\text{cone}} = \\frac{8}{27} V_{\\text{sphere}}$$",
+      "note": "Inscribed cone takes exactly 8/27 (29.63%) of the sphere's volume."
+    },
+    {
+      "id": "f-1501-08",
+      "title": "Maximum Length of Rigid Pipe Around Hallway Corner (Widths a and b)",
+      "formula": "$$L_{\\max} = \\left(a^{2/3} + b^{2/3}\\right)^{3/2}$$",
+      "note": "For equal hallway widths a = b: L = 2√2 a ≈ 2.828 a."
+    }
+  ],
+  "terms": [
+    {
+      "term": "Point of Inflection",
+      "symbol": "$f''(x) = 0$",
+      "unit": "Calculus",
+      "definition": "A point on a curve where the concavity changes from concave upward to concave downward (or vice versa).",
+      "keywordTrigger": "point where concavity changes / second derivative changes sign"
+    },
+    {
+      "term": "Radius of Curvature",
+      "symbol": "$R = 1/K$",
+      "unit": "Length",
+      "definition": "The radius of the osculating circle that best approximates a curve at a specific point ($R = [1 + (y')^2]^{3/2} / |y''|$).",
+      "keywordTrigger": "radius of osculating circle / 1 plus y prime squared over y double prime"
+    },
+    {
+      "term": "Related Rates",
+      "symbol": "$\\frac{d}{dt}$",
+      "unit": "Kinematics",
+      "definition": "Problems where the rate of change of one physical quantity is determined from the known rates of change of other related geometric quantities with respect to time.",
+      "keywordTrigger": "rates of change with respect to time t / d/dt"
+    },
+    {
+      "term": "Maximum Power Transfer Condition",
+      "symbol": "$R_L = R_{th}$",
+      "unit": "Electronics",
+      "definition": "The optimization condition where load resistance equals internal source Thévenin resistance, derived by maximizing power output via derivatives.",
+      "keywordTrigger": "load resistance equals thevenin resistance / dP/dR equals zero"
+    }
+  ],
+  "visualizer": {
+    "archetype": "parameter_sweep",
+    "title": "Interactive Box Volume Optimization Visualizer",
+    "description": "Adjust corner cutout size x from a sheet of dimensions L × W to observe the derivative dV/dx cross zero at the exact maximum enclosed volume point.",
+    "config": {
+      "canvasWidth": 640,
+      "canvasHeight": 320,
+      "controls": [
+        {
+          "id": "sheetLength",
+          "label": "Sheet Length (L)",
+          "min": 10,
+          "max": 30,
+          "step": 2,
+          "defaultValue": 20
+        },
+        {
+          "id": "sheetWidth",
+          "label": "Sheet Width (W)",
+          "min": 8,
+          "max": 20,
+          "step": 2,
+          "defaultValue": 12
+        }
+      ]
+    }
+  },
+  "theory": {
+    "mentalAnchor": "For **Maxima/Minima**, find $f'(x) = 0$ and check $f''(x) < 0$ (Max) or $f''(x) > 0$ (Min). For **hallway corner pipes**, use $L = (a^{2/3} + b^{2/3})^{3/2}$. For **largest rectangle in a circle**, it is a square of area $2R^2$. For **largest rectangle in a triangle**, it has area $\\frac{1}{2} A_{\\text{triangle}}$. For **ladder sliding down a wall**, use $x^2 + y^2 = L^2 \\implies 2x\\frac{dx}{dt} + 2y\\frac{dy}{dt} = 0$.",
+    "contentMarkdown": "### 1. Maxima, Minima & Concavity\n\nOptimizing functions involves finding critical points and evaluating concavity:\n\n```diagram\n{\n  \"caption\": \"Figure 1: Hallway corner of widths a and b with longest rigid pipe L = (a^(2/3) + b^(2/3))^(3/2)\",\n  \"xRange\": [-1, 7],\n  \"yRange\": [-1, 7],\n  \"elements\": [\n    { \"type\": \"grid\" },\n    { \"type\": \"axes\" },\n    { \"type\": \"segment\", \"from\": [0, 0], \"to\": [6, 0], \"color\": \"#94a3b8\", \"width\": 3 },\n    { \"type\": \"segment\", \"from\": [0, 0], \"to\": [0, 6], \"color\": \"#94a3b8\", \"width\": 3 },\n    { \"type\": \"segment\", \"from\": [2, 2], \"to\": [6, 2], \"color\": \"#94a3b8\", \"width\": 3 },\n    { \"type\": \"segment\", \"from\": [2, 2], \"to\": [2, 6], \"color\": \"#94a3b8\", \"width\": 3 },\n    { \"type\": \"line\", \"from\": [0, 4.5], \"to\": [4.5, 0], \"color\": \"#f43f5e\", \"width\": 2.5 },\n    { \"type\": \"point\", \"at\": [2, 2], \"label\": \"Corner (a, b)\", \"color\": \"#fbbf24\" }\n  ]\n}\n```\n\n#### Master PRC Board Optimization Shortcuts:\n1. **Largest Rectangle in a Circle ($R$)**: It is a SQUARE with side $x = R\\sqrt{2}$, Area $= 2R^2$.\n2. **Largest Rectangle in a Triangle ($b, h$)**: Base $x = b/2$, Height $y = h/2$, Area $= \\frac{1}{2} A_{\\text{triangle}}$.\n3. **Largest Rectangle in an Ellipse**: Area $= 2ab$.\n4. **Longest Pipe in Right-Angled Hallway ($a, b$)**: $L = (a^{2/3} + b^{2/3})^{3/2}$.\n5. **Cylinder of Max Volume in Sphere ($R$)**: $h = \\frac{2R}{\\sqrt{3}}, \\quad V = \\frac{V_{\\text{sphere}}}{\\sqrt{3}}$.\n6. **Cone of Max Volume in Sphere ($R$)**: $h = \\frac{4R}{3}, \\quad V = \\frac{8}{27} V_{\\text{sphere}}$.\n\n---\n\n### 2. Time Rates & Kinematics\n\n- Differentiate geometric constraint equations with respect to time $t$:\n  - Ladder sliding down a wall: $x^2 + y^2 = L^2 \\implies x\\frac{dx}{dt} + y\\frac{dy}{dt} = 0$.\n  - Conical water tank filling: $V = \\frac{1}{3}\\pi r^2 h = \\frac{1}{3}\\pi \\left(\\frac{R}{H}h\\right)^2 h = \\frac{\\pi R^2}{3H^2}h^3 \\implies \\frac{dV}{dt} = \\frac{\\pi R^2}{H^2}h^2\\frac{dh}{dt}$.\n\n---\n\n### 3. Curvature & Radius of Curvature\n\n$$K = \\frac{|y''|}{\\left[1 + (y')^2\\right]^{3/2}}, \\qquad R = \\frac{1}{K} = \\frac{\\left[1 + (y')^2\\right]^{3/2}}{|y''|}$$"
+  },
+  "examples": [
+    {
+      "problemStatement": "A rigid pipe must be carried horizontally around a right-angled corner where a hallway of width 8 ft meets a hallway of width 27 ft. Find the maximum length of the pipe.",
+      "formalSolutionMarkdown": "#### Step 1: Set up the pipe length function\nLet $\\theta$ be the angle the pipe makes with the wall. The length $L(\\theta)$ is:\n$$L(\\theta) = \\frac{8}{\\sin\\theta} + \\frac{27}{\\cos\\theta} = 8\\csc\\theta + 27\\sec\\theta$$\n\n#### Step 2: Differentiate and set to zero to find the critical angle\n$$L'(\\theta) = -8\\csc\\theta\\cot\\theta + 27\\sec\\theta\\tan\\theta = 0$$\n$$\\frac{27\\sin\\theta}{\\cos^2\\theta} = \\frac{8\\cos\\theta}{\\sin^2\\theta} \\implies \\frac{\\sin^3\\theta}{\\cos^3\\theta} = \\frac{8}{27} \\implies \\tan^3\\theta = \\frac{8}{27} \\implies \\tan\\theta = \\frac{2}{3}$$\n\n#### Step 3: Compute min length L\n$$\\sin\\theta = \\frac{2}{\\sqrt{13}}, \\quad \\cos\\theta = \\frac{3}{\\sqrt{13}}$$\n$$L = \\frac{8}{2/\\sqrt{13}} + \\frac{27}{3/\\sqrt{13}} = 4\\sqrt{13} + 9\\sqrt{13} = 13\\sqrt{13} \\approx 46.87\\text{ ft}$$",
+      "shortcutSolutionMarkdown": "#### ⚡ 2-Second Hallway Shortcut\n$$L = (a^{2/3} + b^{2/3})^{3/2} = (8^{2/3} + 27^{2/3})^{3/2} = (4 + 9)^{3/2} = 13^{3/2} = 13\\sqrt{13} \\approx \\mathbf{46.87\\text{ ft}}$$.",
+      "formalTimeSeconds": 60,
+      "shortcutTimeSeconds": 2
+    },
+    {
+      "problemStatement": "A 10-ft ladder leans against a vertical wall. If the bottom of the ladder slides away from the wall at 2 ft/s, how fast is the top of the ladder sliding down the wall when the bottom is 6 ft from the wall?",
+      "formalSolutionMarkdown": "#### Step 1: Geometric constraint\n$$x^2 + y^2 = 10^2 = 100$$\nWhen $x = 6\\text{ ft}$: $y = \\sqrt{100 - 36} = 8\\text{ ft}$.\n\n#### Step 2: Differentiate with respect to time t\n$$2x\\frac{dx}{dt} + 2y\\frac{dy}{dt} = 0 \\implies x\\frac{dx}{dt} + y\\frac{dy}{dt} = 0$$\n\n#### Step 3: Substitute known rates\n$$(6)(2) + (8)\\frac{dy}{dt} = 0 \\implies 12 + 8\\frac{dy}{dt} = 0 \\implies \\frac{dy}{dt} = -\\frac{12}{8} = -1.5\\text{ ft/s}$$\n\nThe top is sliding down at **1.5 ft/s**.",
+      "shortcutSolutionMarkdown": "#### ⚡ 3-Second Ladder Rate Formula\n$$\\frac{dy}{dt} = -\\frac{x}{y}\\frac{dx}{dt} = -\\frac{6}{8}(2) = -\\frac{12}{8} = \\mathbf{-1.5\\text{ ft/s}}$$.",
+      "formalTimeSeconds": 35,
+      "shortcutTimeSeconds": 3
+    }
+  ],
+  "calculatorGuides": {
+    "karce": {
+      "techniqueTitle": "Hallway Corner Power Evaluation",
+      "problemType": "Evaluating (a^(2/3) + b^(2/3))^(3/2)",
+      "sampleProblem": "Find pipe length for a = 8, b = 27.",
+      "mode": "COMP Mode (MODE 1)",
+      "keystrokes": [
+        "(",
+        "8",
+        "^",
+        "(",
+        "2",
+        "÷",
+        "3",
+        ")",
+        "+",
+        "2",
+        "7",
+        "^",
+        "(",
+        "2",
+        "÷",
+        "3",
+        ")",
+        ")",
+        "^",
+        "(",
+        "3",
+        "÷",
+        "2",
+        ")",
+        "="
+      ],
+      "notes": "Directly returns 46.87 ft (13√13)."
+    },
+    "canon": {
+      "techniqueTitle": "Curvature Radius at Local Extremum",
+      "problemType": "Radius of curvature 1 / |y''|",
+      "sampleProblem": "Find R for y = x² - 4x + 3 at vertex (x = 2).",
+      "mode": "COMP Mode (MODE 1)",
+      "keystrokes": [
+        "1",
+        "÷",
+        "2",
+        "="
+      ],
+      "notes": "Since y' = 0 and y'' = 2, R = 1/2 = 0.5 units."
+    }
+  },
+  "conceptChecks": [
+    {
+      "id": "cc-math15-01",
+      "question": "What is the maximum area of a rectangle that can be inscribed in a circle of radius R = 6 cm?",
+      "options": [
+        "72 cm² (2R²)",
+        "36 cm²",
+        "113.10 cm² (πR²)",
+        "50.93 cm²"
+      ],
+      "correctAnswer": 0,
+      "explanation": "The maximum inscribed rectangle is a square with side x = R√2 = 6√2 cm. Area = (6√2)² = 72 cm² = 2R²."
+    },
+    {
+      "id": "cc-math15-02",
+      "question": "What is the maximum area of a rectangle inscribed in a triangle with base b = 20 cm and height h = 10 cm?",
+      "options": [
+        "50 cm² (Half the triangle's area)",
+        "100 cm²",
+        "25 cm²",
+        "75 cm²"
+      ],
+      "correctAnswer": 0,
+      "explanation": "The maximum rectangle inscribed in any triangle has area equal to exactly half the triangle's area: A_max = 0.5 × (0.5 × 20 × 10) = 50 cm²."
+    },
+    {
+      "id": "cc-math15-03",
+      "question": "What is the radius of curvature R of the parabola y = x² at the origin (0, 0)?",
+      "options": [
+        "0.5 units",
+        "1.0 unit",
+        "2.0 units",
+        "0.25 units"
+      ],
+      "correctAnswer": 0,
+      "explanation": "At (0, 0): y' = 2x = 0, y'' = 2. R = [1 + (y')²]^(3/2) / |y''| = [1 + 0]^(3/2) / 2 = 1/2 = 0.5 units."
+    },
+    {
+      "id": "cc-math15-04",
+      "question": "What fraction of a sphere's volume is occupied by the largest possible cone inscribed inside it?",
+      "options": [
+        "8/27 (29.63%)",
+        "1/3 (33.33%)",
+        "1/2 (50.00%)",
+        "4/9 (44.44%)"
+      ],
+      "correctAnswer": 0,
+      "explanation": "The maximum volume cone inscribed in a sphere has height h = 4R/3 and volume V_cone = (8/27) V_sphere ≈ 29.63%."
+    }
+  ]
+}

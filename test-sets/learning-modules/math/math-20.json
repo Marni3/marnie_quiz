@@ -1,0 +1,255 @@
+{
+  "id": "math-20",
+  "code": "MATH 20",
+  "domain": "MATH",
+  "topicCode": "MATH-20",
+  "topicTitle": "Advanced Engineering Mathematics",
+  "subtopicTitle": "Complex Numbers, Euler's Identity, Phasors & De Moivre's Theorem",
+  "order": 20,
+  "pairedQuizSetId": "math-20-mastery",
+  "toc": [
+    { "id": "sec-prereq-bridges", "title": "1. Introduction & Cross-Subject Bridges", "level": 2 },
+    { "id": "sec-theory", "title": "2. Lesson Proper", "level": 2 },
+    { "id": "sec-formulas", "title": "3. Compilation of Formulas", "level": 2 },
+    { "id": "sec-visualizer", "title": "4. Interactive Visualizer: Argand Complex Plane & Root Polygon Sandbox", "level": 2 },
+    { "id": "sec-terminology", "title": "5. Terms and Definitions", "level": 2 },
+    { "id": "sec-dual-method", "title": "6. Sample Problems and Solutions", "level": 2 },
+    { "id": "sec-calculator", "title": "7. Calculator Techniques (Karce & Canon)", "level": 2 },
+    { "id": "sec-concept-checks", "title": "8. In-Line Concept Checks", "level": 2 },
+    { "id": "sec-mastery-challenge", "title": "9. Paired Mastery Challenge", "level": 2 }
+  ],
+  "prerequisiteBridge": {
+    "priorModuleId": "math-08",
+    "text": "Building upon plane trigonometry and Euler's formula from MATH 08, this module establishes complex algebra in the Argand plane, polar/exponential representations, De Moivre's power theorems, and complex impedance phasors."
+  },
+  "crossSubjectBridges": [
+    {
+      "targetDomain": "ELECS",
+      "targetTopicCode": "ELEC-05",
+      "badgeText": "AC Circuit Impedance & Phasors",
+      "description": "Sinusoidal AC analysis transforms time-domain differential equations into complex algebraic phasor equations ($V = I Z$) using complex impedance $Z = R + j(\\omega L - 1/\\omega C)$."
+    },
+    {
+      "targetDomain": "EST",
+      "targetTopicCode": "EST-05",
+      "badgeText": "Smith Chart Transmission Lines",
+      "description": "RF transmission lines and impedance matching on the Smith Chart calculate complex reflection coefficients ($\\Gamma = \\frac{Z_L - Z_0}{Z_L + Z_0}$) in polar magnitude and phase angle."
+    },
+    {
+      "targetDomain": "GEAS",
+      "targetTopicCode": "GEAS-10",
+      "badgeText": "Two-Dimensional Fluid Potential Flow",
+      "description": "Aerodynamic lift and inviscid fluid velocity fields map complex potentials ($W(z) = \\phi(x,y) + j\\psi(x,y)$) where streamlines and velocity potentials satisfy Cauchy-Riemann equations."
+    }
+  ],
+  "formulas": [
+    {
+      "id": "f-2001-01",
+      "title": "Four Coordinate Forms of a Complex Number",
+      "formula": "$$z = a + jb = r(\\cos\\theta + j\\sin\\theta) = r\\angle\\theta = r e^{j\\theta}$$",
+      "note": "a = Re(z), b = Im(z), r = √(a² + b²), θ = arctan(b/a). j = √(-1)."
+    },
+    {
+      "id": "f-2001-02",
+      "title": "Complex Conjugate and Multiplicative Inverse",
+      "formula": "$$z^* = a - jb = r\\angle(-\\theta), \\qquad \\frac{1}{z} = \\frac{z^*}{|z|^2} = \\frac{a - jb}{a^2 + b^2} = \\frac{1}{r}\\angle(-\\theta)$$",
+      "note": "Product with conjugate yields real magnitude squared: z · z* = |z|² = a² + b²."
+    },
+    {
+      "id": "f-2001-03",
+      "title": "Polar Multiplication and Division",
+      "formula": "$$(r_1\\angle\\theta_1)(r_2\\angle\\theta_2) = (r_1 r_2)\\angle(\\theta_1 + \\theta_2), \\qquad \\frac{r_1\\angle\\theta_1}{r_2\\angle\\theta_2} = \\left(\\frac{r_1}{r_2}\\right)\\angle(\\theta_1 - \\theta_2)$$",
+      "note": "Multiply magnitudes and add angles; divide magnitudes and subtract angles."
+    },
+    {
+      "id": "f-2001-04",
+      "title": "De Moivre's Theorem (Powers of Complex Numbers)",
+      "formula": "$$(r\\angle\\theta)^n = r^n\\angle(n\\theta) = r^n(\\cos n\\theta + j\\sin n\\theta) = r^n e^{j n\\theta}$$",
+      "note": "Abraham de Moivre (1667–1754). Valid for all real powers n."
+    },
+    {
+      "id": "f-2001-05",
+      "title": "Roots of a Complex Number (n-th Roots)",
+      "formula": "$$z^{1/n} = r^{1/n}\\angle\\left(\\frac{\\theta + 360^\\circ k}{n}\\right) \\qquad (k = 0, 1, 2, \\dots, n - 1)$$",
+      "note": "The n distinct roots form a regular n-sided polygon inscribed in a circle of radius r^(1/n)."
+    },
+    {
+      "id": "f-2001-06",
+      "title": "Complex Natural Logarithm",
+      "formula": "$$\\ln z = \\ln(r e^{j\\theta}) = \\ln r + j\\theta \\quad (\\theta \\text{ in radians})$$",
+      "note": "Principal value has -π < θ ≤ π. Notice ln(j) = j π/2."
+    },
+    {
+      "id": "f-2001-07",
+      "title": "Euler Exponential Relations for Complex Angles",
+      "formula": "$$\\sin z = \\frac{e^{jz} - e^{-jz}}{2j}, \\qquad \\cos z = \\frac{e^{jz} + e^{-jz}}{2}, \\qquad j^j = e^{-\\pi / 2} \\approx 0.20788$$",
+      "note": "j^j is a strictly REAL number: (e^(j π/2))^j = e^(-π/2) ≈ 0.20788."
+    }
+  ],
+  "terms": [
+    {
+      "term": "Argand Diagram",
+      "symbol": "Complex Plane",
+      "unit": "Geometry",
+      "definition": "A 2D geometric plot where the horizontal real axis (Re) and vertical imaginary axis (Im) represent complex numbers $z = x + jy$.",
+      "keywordTrigger": "geometric representation of complex numbers / real and imaginary axes"
+    },
+    {
+      "term": "Modulus and Argument",
+      "symbol": "$r = |z|, \\theta = \\arg(z)$",
+      "unit": "Polar",
+      "definition": "The modulus r is the absolute distance from origin to z, and the argument θ is the angle from the positive real axis.",
+      "keywordTrigger": "modulus and argument / magnitude and phase angle"
+    },
+    {
+      "term": "Phasor",
+      "symbol": "$V = V_m \\angle\\theta$",
+      "unit": "Electrical",
+      "definition": "A complex number representing the amplitude and phase angle of a sinusoidal voltage or current in steady-state AC analysis.",
+      "keywordTrigger": "representation of sinusoid in AC circuits / amplitude and phase"
+    },
+    {
+      "term": "Principal Value",
+      "symbol": "$-\\pi < \\text{Arg}(z) \\le \\pi$",
+      "unit": "Complex Analysis",
+      "definition": "The uniquely defined argument of a complex number restricted to the interval $(-\\pi, \\pi]$ or $[0, 360^\\circ)$.",
+      "keywordTrigger": "principal argument restricted between -pi and pi"
+    }
+  ],
+  "visualizer": {
+    "archetype": "conic_explorer",
+    "title": "Interactive Argand Plane & Complex Root Visualizer",
+    "description": "Adjust complex coordinates (a + jb) and root power n to observe the regular polygonal distribution of all n roots on the complex circle.",
+    "config": {
+      "canvasWidth": 640,
+      "canvasHeight": 320,
+      "controls": [
+        {
+          "id": "semiMajor",
+          "label": "Real Part (a)",
+          "min": -5,
+          "max": 5,
+          "step": 1,
+          "defaultValue": 3
+        },
+        {
+          "id": "eccentricity",
+          "label": "Imaginary Part (b)",
+          "min": -5,
+          "max": 5,
+          "step": 1,
+          "defaultValue": 4
+        }
+      ]
+    }
+  },
+  "theory": {
+    "mentalAnchor": "Remember the 4 forms: $a + jb = r(\\cos\\theta + j\\sin\\theta) = r\\angle\\theta = r e^{j\\theta}$. For **Powers**, use **De Moivre**: $(r\\angle\\theta)^n = r^n\\angle(n\\theta)$. For **Division**, divide magnitudes and subtract angles: $\\frac{r_1\\angle\\theta_1}{r_2\\angle\\theta_2} = \\frac{r_1}{r_2}\\angle(\\theta_1 - \\theta_2)$. Remember that **$j^j = e^{-\\pi/2} \\approx 0.20788$** is strictly a **real number**.",
+    "contentMarkdown": "### 1. Complex Numbers & Coordinate Representations\n\nA complex number $z = a + jb$ resides in the 2D Argand plane:\n\n```diagram\n{\n  \"caption\": \"Figure 1: Complex Argand Plane showing point z = a + jb = r ∠ θ\",\n  \"xRange\": [-1, 5],\n  \"yRange\": [-1, 5],\n  \"elements\": [\n    { \"type\": \"grid\" },\n    { \"type\": \"axes\" },\n    { \"type\": \"line\", \"from\": [0, 0], \"to\": [3, 4], \"color\": \"#38bdf8\", \"width\": 3 },\n    { \"type\": \"point\", \"at\": [3, 4], \"label\": \"z = 3 + 4j (5 ∠ 53.13°)\", \"color\": \"#fbbf24\" },\n    { \"type\": \"projection\", \"from\": [3, 4], \"to\": [3, 0], \"label\": \"b = 4\", \"color\": \"#f43f5e\" },\n    { \"type\": \"segment\", \"from\": [0, 0], \"to\": [3, 0], \"label\": \"a = 3\", \"color\": \"#38bdf8\" },\n    { \"type\": \"arc\", \"center\": [0, 0], \"radius\": 20, \"startAngle\": 0, \"endAngle\": 53.13, \"label\": \"θ = 53.13°\", \"color\": \"#fbbf24\" }\n  ]\n}\n```\n\n#### Fundamental Formulas:\n- Modulus: $r = \\sqrt{a^2 + b^2}$, Argument: $\\theta = \\arctan(b/a)$\n- Multiplication: $(r_1\\angle\\theta_1)(r_2\\angle\\theta_2) = (r_1 r_2)\\angle(\\theta_1 + \\theta_2)$\n- Division: $\\frac{r_1\\angle\\theta_1}{r_2\\angle\\theta_2} = \\left(\\frac{r_1}{r_2}\\right)\\angle(\\theta_1 - \\theta_2)$\n- De Moivre's Theorem: $(r\\angle\\theta)^n = r^n\\angle(n\\theta)$\n- Complex Roots ($n$-th roots): $z_k = r^{1/n}\\angle\\left(\\frac{\\theta + 360^\\circ k}{n}\\right) \\quad (k = 0, 1, \\dots, n-1)$"
+  },
+  "examples": [
+    {
+      "problemStatement": "Evaluate (1 + j√3)⁶ using De Moivre's Theorem.",
+      "formalSolutionMarkdown": "#### Step 1: Convert to polar form\n- Real part $a = 1$, Imaginary part $b = \\sqrt{3}$\n- Modulus $r = \\sqrt{1^2 + (\\sqrt{3})^2} = \\sqrt{1 + 3} = \\sqrt{4} = 2$\n- Argument $\\theta = \\arctan(\\sqrt{3} / 1) = 60^\\circ$\n\n$$z = 2\\angle 60^\\circ$$\n\n#### Step 2: Apply De Moivre's Theorem for n = 6\n$$z^6 = (2\\angle 60^\\circ)^6 = 2^6 \\angle(6 \\times 60^\\circ)$$\n$$z^6 = 64 \\angle 360^\\circ = 64(\\cos 360^\\circ + j\\sin 360^\\circ) = 64(1 + j0) = 64$$",
+      "shortcutSolutionMarkdown": "#### ⚡ 2-Second De Moivre Polar Recall\n$$(2\\angle 60^\\circ)^6 = 64\\angle 360^\\circ = \\mathbf{64}$$.",
+      "formalTimeSeconds": 30,
+      "shortcutTimeSeconds": 2
+    },
+    {
+      "problemStatement": "Evaluate the value of j^j.",
+      "formalSolutionMarkdown": "#### Step 1: Express j in exponential form\n$$j = 0 + 1j = 1\\angle 90^\\circ = e^{j\\pi/2}$$\n\n#### Step 2: Raise to power j\n$$j^j = \\left(e^{j\\pi/2}\\right)^j = e^{j^2 \\pi/2}$$\n\nSince $j^2 = -1$:\n$$j^j = e^{-\\pi/2} \\approx 0.207879576$$\n\nThus, $j^j$ is purely real: **≈ 0.20788**.",
+      "shortcutSolutionMarkdown": "#### ⚡ 2-Second Memory Anchor\n$$j^j = e^{-\\pi/2} \\approx \\mathbf{0.20788}$$ (strictly real).",
+      "formalTimeSeconds": 30,
+      "shortcutTimeSeconds": 2
+    }
+  ],
+  "calculatorGuides": {
+    "karce": {
+      "techniqueTitle": "CMPLX Mode Direct Complex Arithmetic",
+      "problemType": "Evaluating (1 + j√3)⁶ in complex mode",
+      "sampleProblem": "Evaluate (1 + i√3)⁶ directly.",
+      "mode": "CMPLX Mode (MODE 2)",
+      "keystrokes": [
+        "MODE",
+        "2",
+        "(",
+        "1",
+        "+",
+        "ENG",
+        "√",
+        "3",
+        ")",
+        "^",
+        "6",
+        "="
+      ],
+      "notes": "Directly returns 64 + 0i (64)."
+    },
+    "canon": {
+      "techniqueTitle": "Rectangular to Polar Coordinate Conversion",
+      "problemType": "Converting 3 + 4j to 5 ∠ 53.13°",
+      "sampleProblem": "Find r and θ for 3 + 4i.",
+      "mode": "CMPLX Mode",
+      "keystrokes": [
+        "3",
+        "+",
+        "4",
+        "ENG",
+        "SHIFT",
+        "►r∠θ",
+        "="
+      ],
+      "notes": "Directly outputs 5 ∠ 53.13°."
+    }
+  },
+  "conceptChecks": [
+    {
+      "id": "cc-math20-01",
+      "question": "What is the nature of the number j^j (imaginary unit raised to itself)?",
+      "options": [
+        "A strictly real number (e^(-π/2) ≈ 0.20788)",
+        "A purely imaginary number (j)",
+        "Zero",
+        "Undefined"
+      ],
+      "correctAnswer": 0,
+      "explanation": "j^j = (e^(j π/2))^j = e^(j² π/2) = e^(-π/2) ≈ 0.20788, which has no imaginary component and is purely real."
+    },
+    {
+      "id": "cc-math20-02",
+      "question": "If z₁ = 6 ∠ 45° and z₂ = 2 ∠ 15°, what is the quotient z₁ / z₂ in polar form?",
+      "options": [
+        "3 ∠ 30°",
+        "3 ∠ 60°",
+        "12 ∠ 60°",
+        "4 ∠ 30°"
+      ],
+      "correctAnswer": 0,
+      "explanation": "z₁ / z₂ = (6/2) ∠ (45° - 15°) = 3 ∠ 30°."
+    },
+    {
+      "id": "cc-math20-03",
+      "question": "What is the principal value of the natural logarithm ln(j)?",
+      "options": [
+        "j π/2 (1.5708 j)",
+        "-j π/2",
+        "0",
+        "1"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Since j = 1 e^(j π/2), ln(j) = ln(1) + j(π/2) = 0 + j π/2 = j π/2."
+    },
+    {
+      "id": "cc-math20-04",
+      "question": "What geometric figure is formed in the complex plane by the three cube roots of 8 (8^(1/3))?",
+      "options": [
+        "An equilateral triangle inscribed in a circle of radius 2",
+        "A right triangle",
+        "A straight line",
+        "A circle of radius 8"
+      ],
+      "correctAnswer": 0,
+      "explanation": "The n-th roots of any complex number form a regular n-sided polygon; for 3 roots, it forms an equilateral triangle inscribed in a circle of radius 8^(1/3) = 2."
+    }
+  ]
+}

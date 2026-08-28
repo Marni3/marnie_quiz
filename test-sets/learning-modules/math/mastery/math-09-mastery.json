@@ -1,0 +1,252 @@
+{
+  "moduleId": "math-09",
+  "moduleCode": "MATH 09",
+  "title": "MATH 09 Mastery Challenge: Triangle Centers & Cyclic Quadrilaterals",
+  "description": "Comprehensive 22-question 4-quadrant companion mastery exam for MATH 09. Rigorously tests the four triangle centers, Heron's formula, incircle/circumcircle radii, Brahmagupta's cyclic quadrilateral area, Ptolemy's theorem, and right triangle inradius shortcuts under timed board conditions.",
+  "totalQuestions": 22,
+  "timeLimitMinutes": 35,
+  "questions": [
+    {
+      "id": "m09-01",
+      "promptText": "Which point of concurrency in a triangle is formed by the intersection of the **three medians**, dividing each median in a strict **2 : 1 ratio** from vertex to midpoint?",
+      "choiceA": "Centroid (G)",
+      "choiceB": "Incenter (I)",
+      "choiceC": "Circumcenter (O)",
+      "choiceD": "Orthocenter (H)",
+      "correctChoice": "A",
+      "explanation": "The Centroid $G$ is the intersection of the three medians, located at $2/3$ the distance from each vertex to the midpoint of the opposite side.",
+      "archetype": "conceptual"
+    },
+    {
+      "id": "m09-02",
+      "promptText": "In any right triangle with legs $a, b$ and hypotenuse $c$, where is the **Circumcenter ($O$)** located?",
+      "choiceA": "At the exact midpoint of the hypotenuse (R = c / 2).",
+      "choiceB": "At the right-angle vertex.",
+      "choiceC": "Inside the triangle at (a + b) / 4.",
+      "choiceD": "Outside the triangle.",
+      "correctChoice": "A",
+      "explanation": "By Thales' theorem, the circumcenter of a right triangle is the midpoint of the hypotenuse, and the circumradius is $R = c/2$.",
+      "archetype": "conceptual"
+    },
+    {
+      "id": "m09-03",
+      "promptText": "What formula connects the area $A$ and semi-perimeter $s$ of a triangle to its **Inscribed Circle Radius ($r$)**?",
+      "choiceA": "r = A / s",
+      "choiceB": "r = s / A",
+      "choiceC": "r = abc / (4A)",
+      "choiceD": "r = √(A / s)",
+      "correctChoice": "A",
+      "explanation": "Because the triangle can be partitioned into three sub-triangles with common altitude $r$, $A = \\frac{1}{2}ar + \\frac{1}{2}br + \\frac{1}{2}cr = r s \\implies r = \\frac{A}{s}$.",
+      "archetype": "conceptual"
+    },
+    {
+      "id": "m09-04",
+      "promptText": "Under what condition is **Brahmagupta's Formula** ($A = \\sqrt{(s - a)(s - b)(s - c)(s - d)}$) strictly valid for calculating the area of a four-sided polygon?",
+      "choiceA": "When the quadrilateral is cyclic (all 4 vertices lie on a single circle, opposite angles add to 180°).",
+      "choiceB": "For all convex quadrilaterals.",
+      "choiceC": "Only for trapezoids.",
+      "choiceD": "Only when all sides are equal.",
+      "correctChoice": "A",
+      "explanation": "Brahmagupta's formula applies exclusively to cyclic quadrilaterals ($A + C = 180^\\circ$). For general non-cyclic quadrilaterals, Bretschneider's formula with the $-abcd\\cos^2\\theta$ subtraction must be used.",
+      "archetype": "conceptual"
+    },
+    {
+      "id": "m09-05",
+      "promptText": "What does **Ptolemy's Theorem** state regarding the diagonals $d_1, d_2$ and sides $a, b, c, d$ of a cyclic quadrilateral?",
+      "choiceA": "d₁ · d₂ = ac + bd",
+      "choiceB": "d₁ · d₂ = ab + cd",
+      "choiceC": "d₁² + d₂² = a² + b² + c² + d²",
+      "choiceD": "d₁ / d₂ = (ab) / (cd)",
+      "correctChoice": "A",
+      "explanation": "Ptolemy's Theorem states that in any cyclic quadrilateral, the product of the diagonals equals the sum of the products of opposite sides: $d_1 d_2 = ac + bd$.",
+      "archetype": "conceptual"
+    },
+    {
+      "id": "m09-06",
+      "promptText": "In an **Equilateral Triangle** of side length $a$, what is the exact ratio of the Circumradius ($R$) to the Inradius ($r$)?",
+      "choiceA": "R : r = 2 : 1",
+      "choiceB": "R : r = 3 : 1",
+      "choiceC": "R : r = √3 : 1",
+      "choiceD": "R : r = 4 : 1",
+      "correctChoice": "A",
+      "explanation": "For an equilateral triangle: $R = \\frac{a\\sqrt{3}}{3}$ and $r = \\frac{a\\sqrt{3}}{6}$. Therefore, $R / r = 2 \\implies R : r = 2 : 1$.",
+      "archetype": "conceptual"
+    },
+    {
+      "id": "m09-07",
+      "promptText": "Find the area of a triangle with side lengths $a = 9\\text{ cm}, b = 10\\text{ cm}$, and $c = 17\\text{ cm}$ using Heron's Formula.",
+      "choiceA": "36 cm²",
+      "choiceB": "45 cm²",
+      "choiceC": "30 cm²",
+      "choiceD": "40 cm²",
+      "correctChoice": "A",
+      "explanation": "$s = \\frac{9 + 10 + 17}{2} = \\frac{36}{2} = 18\\text{ cm}$. $A = \\sqrt{18(18 - 9)(18 - 10)(18 - 17)} = \\sqrt{18 \\times 9 \\times 8 \\times 1} = \\sqrt{1296} = 36\\text{ cm}^2$.",
+      "archetype": "numerical"
+    },
+    {
+      "id": "m09-08",
+      "promptText": "Find the **Inradius ($r$)** of a right triangle with legs $a = 6\\text{ cm}$ and $b = 8\\text{ cm}$ (hypotenuse $c = 10\\text{ cm}$).",
+      "choiceA": "2.0 cm",
+      "choiceB": "3.0 cm",
+      "choiceC": "1.5 cm",
+      "choiceD": "2.4 cm",
+      "correctChoice": "A",
+      "explanation": "Shortcut for right triangles: $r = \\frac{a + b - c}{2} = \\frac{6 + 8 - 10}{2} = \\frac{4}{2} = 2.0\\text{ cm}$. Or via $r = A/s = 24/12 = 2.0\\text{ cm}$.",
+      "archetype": "numerical"
+    },
+    {
+      "id": "m09-09",
+      "promptText": "Find the **Circumradius ($R$)** of a right triangle with legs $a = 5\\text{ cm}$ and $b = 12\\text{ cm}$ (hypotenuse $c = 13\\text{ cm}$).",
+      "choiceA": "6.5 cm",
+      "choiceB": "13.0 cm",
+      "choiceC": "2.0 cm",
+      "choiceD": "4.0 cm",
+      "correctChoice": "A",
+      "explanation": "For any right triangle, $R = c/2 = 13/2 = 6.5\\text{ cm}$.",
+      "archetype": "numerical"
+    },
+    {
+      "id": "m09-10",
+      "promptText": "Find the area of an **equilateral triangle** with side length $a = 8\\text{ cm}$.",
+      "choiceA": "27.71 cm² (16√3)",
+      "choiceB": "32.00 cm²",
+      "choiceC": "13.86 cm²",
+      "choiceD": "24.00 cm²",
+      "correctChoice": "A",
+      "explanation": "$A = \\frac{a^2\\sqrt{3}}{4} = \\frac{8^2\\sqrt{3}}{4} = \\frac{64\\sqrt{3}}{4} = 16\\sqrt{3} \\approx 27.713\\text{ cm}^2$.",
+      "archetype": "numerical"
+    },
+    {
+      "id": "m09-11",
+      "promptText": "A cyclic quadrilateral has consecutive sides $a = 2, b = 3, c = 4$, and $d = 5$. Find its area using Brahmagupta's Formula.",
+      "choiceA": "10.95 (√120)",
+      "choiceB": "12.00",
+      "choiceC": "14.42",
+      "choiceD": "9.80",
+      "correctChoice": "A",
+      "explanation": "$s = \\frac{2 + 3 + 4 + 5}{2} = 7$. $A = \\sqrt{(7 - 2)(7 - 3)(7 - 4)(7 - 5)} = \\sqrt{5 \\times 4 \\times 3 \\times 2} = \\sqrt{120} \\approx 10.954$.",
+      "archetype": "numerical"
+    },
+    {
+      "id": "m09-12",
+      "promptText": "A cyclic quadrilateral has opposite sides $a = 3, c = 7$ and $b = 4, d = 5$. What is the product of its diagonals ($d_1 \\cdot d_2$) by Ptolemy's Theorem?",
+      "choiceA": "41",
+      "choiceB": "35",
+      "choiceC": "47",
+      "choiceD": "56",
+      "correctChoice": "A",
+      "explanation": "Ptolemy's Theorem: $d_1 d_2 = ac + bd = (3)(7) + (4)(5) = 21 + 20 = 41$.",
+      "archetype": "numerical"
+    },
+    {
+      "id": "m09-13",
+      "promptText": "A triangle has area $A = 84\\text{ cm}^2$ and semi-perimeter $s = 21\\text{ cm}$. Find the **exradius ($r_a$)** tangent to side $a = 13\\text{ cm}$.",
+      "choiceA": "10.5 cm",
+      "choiceB": "12.0 cm",
+      "choiceC": "6.0 cm",
+      "choiceD": "4.0 cm",
+      "correctChoice": "A",
+      "explanation": "$r_a = \\frac{A}{s - a} = \\frac{84}{21 - 13} = \\frac{84}{8} = 10.5\\text{ cm}$.",
+      "archetype": "numerical"
+    },
+    {
+      "id": "m09-14",
+      "promptText": "Find the area of a parallelogram with side lengths $6\\text{ cm}$ and $10\\text{ cm}$ and an included angle of $30^\\circ$.",
+      "choiceA": "30 cm²",
+      "choiceB": "60 cm²",
+      "choiceC": "51.96 cm²",
+      "choiceD": "15 cm²",
+      "correctChoice": "A",
+      "explanation": "$A = ab\\sin\\theta = (6)(10)\\sin 30^\\circ = 60(0.5) = 30\\text{ cm}^2$.",
+      "archetype": "standard"
+    },
+    {
+      "id": "m09-15",
+      "promptText": "A circular cellular base station antenna tower is to be placed equidistant from three towns located at vertices of a triangle with sides $a = 13\\text{ km}, b = 14\\text{ km}, c = 15\\text{ km}$. What is the coverage radius required to reach all three towns?",
+      "choiceA": "8.125 km (65/8 km)",
+      "choiceB": "4.000 km",
+      "choiceC": "7.000 km",
+      "choiceD": "10.500 km",
+      "correctChoice": "A",
+      "explanation": "Equidistant from all 3 vertices $\\implies$ Circumradius $R$. $s = 21, A = \\sqrt{21(8)(7)(6)} = 84\\text{ km}^2$. $R = \\frac{abc}{4A} = \\frac{13 \\times 14 \\times 15}{4(84)} = \\frac{2730}{336} = 8.125\\text{ km}$.",
+      "archetype": "applied"
+    },
+    {
+      "id": "m09-16",
+      "promptText": "A circular park is inscribed inside a triangular city block bounded by streets of lengths $100\\text{ m}, 100\\text{ m}$, and $120\\text{ m}$. Find the radius of the park.",
+      "choiceA": "30.0 meters",
+      "choiceB": "37.5 meters",
+      "choiceC": "40.0 meters",
+      "choiceD": "25.0 meters",
+      "correctChoice": "A",
+      "explanation": "Isosceles triangle: base $= 120\\text{ m}$, legs $= 100\\text{ m}$. Altitude $h = \\sqrt{100^2 - 60^2} = \\sqrt{6400} = 80\\text{ m}$. Area $A = \\frac{1}{2}(120)(80) = 4800\\text{ m}^2$. Semi-perimeter $s = \\frac{100 + 100 + 120}{2} = 160\\text{ m}$. Inradius $r = A/s = 4800/160 = 30\\text{ meters}$.",
+      "archetype": "applied"
+    },
+    {
+      "id": "m09-17",
+      "promptText": "A rhombus has diagonals of lengths $d_1 = 16\\text{ cm}$ and $d_2 = 12\\text{ cm}$. Find the perimeter of the rhombus.",
+      "choiceA": "40 cm",
+      "choiceB": "48 cm",
+      "choiceC": "56 cm",
+      "choiceD": "32 cm",
+      "correctChoice": "A",
+      "explanation": "Diagonals of a rhombus are perpendicular bisectors, forming 4 right triangles with legs $8\\text{ cm}$ and $6\\text{ cm}$. Side $a = \\sqrt{8^2 + 6^2} = 10\\text{ cm}$. Perimeter $= 4a = 4(10) = 40\\text{ cm}$.",
+      "archetype": "applied"
+    },
+    {
+      "id": "m09-18",
+      "promptText": "A non-cyclic quadrilateral has side lengths $a = 2, b = 3, c = 4, d = 5$, and the sum of two opposite angles is $A + C = 120^\\circ$. What is its area by Bretschneider's Formula?",
+      "choiceA": "9.49 (3√10)",
+      "choiceB": "10.95 (√120)",
+      "choiceC": "12.00",
+      "choiceD": "8.50",
+      "correctChoice": "A",
+      "explanation": "$\\theta = (A + C)/2 = 60^\\circ$. $s = 7$. $A = \\sqrt{(5)(4)(3)(2) - (2)(3)(4)(5)\\cos^2 60^\\circ} = \\sqrt{120 - 120(0.5)^2} = \\sqrt{120 - 30} = \\sqrt{90} = 3\\sqrt{10} \\approx 9.4868 = 9.49$.",
+      "archetype": "applied"
+    },
+    {
+      "id": "m09-19",
+      "promptText": "What is the common trap when calculating the area of a quadrilateral using Brahmagupta's formula?",
+      "choiceA": "Applying Brahmagupta's formula to non-cyclic quadrilaterals without subtracting the $abcd\\cos^2\\theta$ term from Bretschneider's formula.",
+      "choiceB": "Dividing by 4.",
+      "choiceC": "Using the full perimeter instead of semi-perimeter.",
+      "choiceD": "Adding the diagonals.",
+      "correctChoice": "A",
+      "explanation": "Brahmagupta's formula produces the theoretical maximum area for a given set of four sides, which occurs only when the quadrilateral is cyclic. For non-cyclic shapes, the actual area is strictly smaller.",
+      "archetype": "trap"
+    },
+    {
+      "id": "m09-20",
+      "promptText": "When determining the circumcenter of an obtuse triangle, where does the circumcenter lie?",
+      "choiceA": "Completely outside the triangle.",
+      "choiceB": "Inside the triangle.",
+      "choiceC": "On the longest side.",
+      "choiceD": "At the obtuse vertex.",
+      "correctChoice": "A",
+      "explanation": "For acute triangles, the circumcenter is inside; for right triangles, it is on the hypotenuse; for obtuse triangles, it lies strictly outside the triangle.",
+      "archetype": "trap"
+    },
+    {
+      "id": "m09-21",
+      "promptText": "Using the 2-second right triangle inradius shortcut $r = \\frac{a + b - c}{2}$, find $r$ for legs $a = 9$ and $b = 12$ (hypotenuse $c = 15$).",
+      "choiceA": "3.0 cm",
+      "choiceB": "4.5 cm",
+      "choiceC": "2.0 cm",
+      "choiceD": "6.0 cm",
+      "correctChoice": "A",
+      "explanation": "$r = \\frac{9 + 12 - 15}{2} = \\frac{6}{2} = 3.0\\text{ cm}$ in 2 seconds.",
+      "archetype": "shortcut"
+    },
+    {
+      "id": "m09-22",
+      "promptText": "Using the equilateral circumradius shortcut $R = 2r$, if the incircle radius is $5\\text{ cm}$, what is the circumradius in 1 second?",
+      "choiceA": "10 cm",
+      "choiceB": "15 cm",
+      "choiceC": "2.5 cm",
+      "choiceD": "20 cm",
+      "correctChoice": "A",
+      "explanation": "$R = 2r = 2(5) = 10\\text{ cm}$ in 1 second.",
+      "archetype": "shortcut"
+    }
+  ]
+}

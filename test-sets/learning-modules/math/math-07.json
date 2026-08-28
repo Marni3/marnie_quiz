@@ -1,0 +1,260 @@
+{
+  "id": "math-07",
+  "code": "MATH 07",
+  "domain": "MATH",
+  "topicCode": "MATH-07",
+  "topicTitle": "College Algebra",
+  "subtopicTitle": "Algebraic Word Problems, Partial Fractions & Systems of Linear Equations",
+  "order": 7,
+  "pairedQuizSetId": "math-07-mastery",
+  "toc": [
+    { "id": "sec-prereq-bridges", "title": "1. Introduction & Cross-Subject Bridges", "level": 2 },
+    { "id": "sec-theory", "title": "2. Lesson Proper", "level": 2 },
+    { "id": "sec-formulas", "title": "3. Compilation of Formulas", "level": 2 },
+    { "id": "sec-visualizer", "title": "4. Interactive Visualizer: Clock Angle & Motion Rate Explorer", "level": 2 },
+    { "id": "sec-terminology", "title": "5. Terms and Definitions", "level": 2 },
+    { "id": "sec-dual-method", "title": "6. Sample Problems and Solutions", "level": 2 },
+    { "id": "sec-calculator", "title": "7. Calculator Techniques (Karce & Canon)", "level": 2 },
+    { "id": "sec-concept-checks", "title": "8. In-Line Concept Checks", "level": 2 },
+    { "id": "sec-mastery-challenge", "title": "9. Paired Mastery Challenge", "level": 2 }
+  ],
+  "prerequisiteBridge": {
+    "priorModuleId": "math-02",
+    "text": "Building upon linear equation systems and polynomial factoring from MATH 02, this module focuses on modeling real-world physical systems (motion, work, mixture, clock, age, and Diophantine equations) and algebraic partial fraction decomposition."
+  },
+  "crossSubjectBridges": [
+    {
+      "targetDomain": "ELECS",
+      "targetTopicCode": "ELEC-01",
+      "badgeText": "Mesh & Nodal Kirchhoff Systems",
+      "description": "Kirchhoff's Voltage and Current Laws generate simultaneous 2x2 and 3x3 linear equation systems solved via matrix determinants."
+    },
+    {
+      "targetDomain": "EST",
+      "targetTopicCode": "EST-01",
+      "badgeText": "Inverse Laplace Transfer Functions",
+      "description": "Continuous-time signal filters and circuit transfer functions $H(s) = \\frac{N(s)}{D(s)}$ decompose into simple pole residues via Heaviside partial fractions."
+    },
+    {
+      "targetDomain": "GEAS",
+      "targetTopicCode": "GEAS-04",
+      "badgeText": "Chemical Reaction Mass Balances",
+      "description": "Multi-tank chemical processes and metallurgical alloying apply continuous mixture concentration equations ($C_1 V_1 + C_2 V_2 = C_f V_f$)."
+    }
+  ],
+  "formulas": [
+    {
+      "id": "f-0701-01",
+      "title": "Work Rate Equation & 2-Worker Shortcut",
+      "formula": "$$\\frac{1}{t_1} + \\frac{1}{t_2} = \\frac{1}{T_{\\text{total}}} \\iff T_{\\text{total}} = \\frac{t_1 t_2}{t_1 + t_2}$$",
+      "note": "For drain pipes or opposing workers, subtract the corresponding rate 1/t."
+    },
+    {
+      "id": "f-0701-02",
+      "title": "Motion: Upstream and Downstream Rates",
+      "formula": "$$v_{\\text{down}} = v_{\\text{still}} + v_{\\text{current}}, \\qquad v_{\\text{up}} = v_{\\text{still}} - v_{\\text{current}}$$",
+      "note": "Wind velocity adds to airspeed with tailwind and subtracts with headwind."
+    },
+    {
+      "id": "f-0701-03",
+      "title": "Mixture Conservation of Mass",
+      "formula": "$$C_1 V_1 + C_2 V_2 = C_{\\text{final}} (V_1 + V_2)$$",
+      "note": "C is concentration percentage (as decimal); V is volume or weight."
+    },
+    {
+      "id": "f-0701-04",
+      "title": "Clock Hands Relative Angular Velocity",
+      "formula": "$$\\Delta\\omega = \\omega_{\\text{minute}} - \\omega_{\\text{hour}} = 6^\\circ/\\text{min} - 0.5^\\circ/\\text{min} = 5.5^\\circ/\\text{min} = \\frac{11}{2}^\\circ/\\text{min}$$",
+      "note": "Minute hand moves at 6°/min; Hour hand moves at 0.5°/min (30°/hour)."
+    },
+    {
+      "id": "f-0701-05",
+      "title": "Clock Angle Minutes Formula",
+      "formula": "$$M = \\frac{H \\times 30^\\circ \\pm \\theta}{5.5^\\circ} = \\frac{2}{11}(H \\times 30^\\circ \\pm \\theta)$$",
+      "note": "H is starting hour, θ is angle between hands in degrees. Coincidence θ = 0°, Opposite θ = 180°, Right angle θ = 90°."
+    },
+    {
+      "id": "f-0701-06",
+      "title": "Heaviside Cover-Up Partial Fraction Residue",
+      "formula": "$$A = \\left[ (x - a) \\frac{P(x)}{Q(x)} \\right]_{x = a}$$",
+      "note": "Cover the factor (x - a) in the denominator and substitute x = a into the rest."
+    },
+    {
+      "id": "f-0701-07",
+      "title": "Linear Partial Fraction Decomposition Cases",
+      "formula": "$$\\frac{P(x)}{(x - a)(x - b)} = \\frac{A}{x - a} + \\frac{B}{x - b} \\qquad \\frac{P(x)}{(x - a)^2} = \\frac{A}{x - a} + \\frac{B}{(x - a)^2}$$",
+      "note": "For irreducible quadratic factors (x² + c), the numerator is linear (Ax + B)."
+    }
+  ],
+  "terms": [
+    {
+      "term": "Work Rate",
+      "symbol": "$r = 1/t$",
+      "unit": "Jobs/Hour",
+      "definition": "The fraction of a complete job completed by a person or machine in one unit of time.",
+      "keywordTrigger": "rate of performing work / fraction of job per hour"
+    },
+    {
+      "term": "Heaviside Cover-Up Method",
+      "symbol": "Residue Method",
+      "unit": "Algebra",
+      "definition": "A high-speed algebraic technique for determining partial fraction coefficients of non-repeated linear factors without solving simultaneous equations.",
+      "keywordTrigger": "cover up denominator factor and evaluate residue"
+    },
+    {
+      "term": "Diophantine Equation",
+      "symbol": "$ax + by = c$",
+      "unit": "Number Theory",
+      "definition": "A polynomial equation whose solutions are strictly restricted to integers.",
+      "keywordTrigger": "equations with strictly integer solutions"
+    },
+    {
+      "term": "Relative Velocity in Clock Problems",
+      "symbol": "$5.5^\\circ/\\text{min}$",
+      "unit": "Degrees/Minute",
+      "definition": "The rate at which the minute hand gains on the hour hand ($6^\\circ - 0.5^\\circ = 5.5^\\circ/\\text{min}$ or $\\frac{11}{2}^\\circ/\\text{min}$).",
+      "keywordTrigger": "5.5 degrees per minute / 11/2 degrees per minute"
+    }
+  ],
+  "visualizer": {
+    "archetype": "parameter_sweep",
+    "title": "Interactive Clock Angle & Motion Visualizer",
+    "description": "Adjust the hour and target angle θ to observe the exact calculated minute position and angular separation between the hour and minute hands.",
+    "config": {
+      "canvasWidth": 640,
+      "canvasHeight": 320,
+      "controls": [
+        {
+          "id": "hourSetting",
+          "label": "Starting Hour (H)",
+          "min": 1,
+          "max": 12,
+          "step": 1,
+          "defaultValue": 3
+        },
+        {
+          "id": "targetAngle",
+          "label": "Target Angle θ (Degrees)",
+          "min": 0,
+          "max": 180,
+          "step": 15,
+          "defaultValue": 0
+        }
+      ]
+    }
+  },
+  "theory": {
+    "mentalAnchor": "For **Work problems**, sum the rates: $\\frac{1}{T} = \\frac{1}{t_1} + \\frac{1}{t_2} \\implies T = \\frac{t_1 t_2}{t_1 + t_2}$. For **Clock problems**, the minute hand gains $5.5^\\circ$ per minute, so $M = \\frac{2}{11}(H \\times 30^\\circ \\pm \\theta)$. For **Partial fractions with distinct linear factors**, use Heaviside cover-up: cover the factor and plug in its root.",
+    "contentMarkdown": "### 1. Motion, Work & Mixture Word Problems\n\nWord problems translate physical rates and balance constraints into linear algebraic equations:\n\n```diagram\n{\n  \"caption\": \"Figure 1: Circular clock dial showing hour hand at 3:00 (90°) and minute hand chasing at 5.5°/min\",\n  \"xRange\": [-5, 5],\n  \"yRange\": [-5, 5],\n  \"elements\": [\n    { \"type\": \"grid\" },\n    { \"type\": \"axes\" },\n    { \"type\": \"arc\", \"center\": [0, 0], \"radius\": 80, \"startAngle\": 0, \"endAngle\": 360, \"color\": \"#94a3b8\" },\n    { \"type\": \"segment\", \"from\": [0, 0], \"to\": [0, 3.5], \"color\": \"#38bdf8\", \"width\": 3 },\n    { \"type\": \"segment\", \"from\": [0, 0], \"to\": [2.5, 0], \"color\": \"#f43f5e\", \"width\": 4 },\n    { \"type\": \"point\", \"at\": [0, 3.5], \"label\": \"12:00 (0°)\", \"color\": \"#38bdf8\" },\n    { \"type\": \"point\", \"at\": [2.5, 0], \"label\": \"3:00 (90°)\", \"color\": \"#f43f5e\" }\n  ]\n}\n```\n\n#### Core Problem Archetypes:\n1. **Work Problems**: $T_{\\text{together}} = \\frac{t_1 t_2}{t_1 + t_2}$. (Inlet/outlet: $\\frac{1}{t_{\\text{in}}} - \\frac{1}{t_{\\text{out}}} = \\frac{1}{T}$).\n2. **Motion Problems**: $d = v \\cdot t$. River flow: $v_{\\text{down}} = v_b + v_c, \\quad v_{\\text{up}} = v_b - v_c$.\n3. **Mixture Problems**: $C_1 V_1 + C_2 V_2 = C_{\\text{final}} (V_1 + V_2)$. Pure water has $C = 0$; pure solute has $C = 1.0$.\n4. **Clock Problems**: Between hour $H$ and $H+1$, the hands are separated by angle $\\theta$ at minute:\n   $$M = \\frac{2}{11}(30^\\circ H \\pm \\theta)$$\n   - **Coincidence (Together)**: $\\theta = 0^\\circ \\implies M = \\frac{60}{11}H$.\n   - **Opposite (Straight Line, $180^\\circ$)**: $\\theta = 180^\\circ \\implies M = \\frac{2}{11}(30^\\circ H \\pm 180^\\circ)$.\n   - **Right Angle ($90^\\circ$)**: $\\theta = 90^\\circ \\implies M = \\frac{2}{11}(30^\\circ H \\pm 90^\\circ)$.\n\n---\n\n### 2. Partial Fraction Decomposition & Heaviside Cover-Up\n\nA rational function $\\frac{P(x)}{Q(x)}$ (where degree of $P <$ degree of $Q$) decomposes into simpler fractions based on the denominator factors:\n\n- **Case 1: Distinct Linear Factors**: $\\frac{P(x)}{(x - a)(x - b)} = \\frac{A}{x - a} + \\frac{B}{x - b}$.\n  - **Heaviside Shortcut**: $A = \\left[ \\frac{P(x)}{x - b} \\right]_{x = a}, \\quad B = \\left[ \\frac{P(x)}{x - a} \\right]_{x = b}$.\n- **Case 2: Repeated Linear Factors**: $\\frac{P(x)}{(x - a)^2} = \\frac{A}{x - a} + \\frac{B}{(x - a)^2}$.\n- **Case 3: Irreducible Quadratic Factors**: $\\frac{P(x)}{(x - a)(x^2 + c)} = \\frac{A}{x - a} + \\frac{Bx + C}{x^2 + c}$."
+  },
+  "examples": [
+    {
+      "problemStatement": "At what time between 3:00 and 4:00 will the hands of a clock be together (in coincidence)?",
+      "formalSolutionMarkdown": "#### Step 1: Apply clock relative motion formula\n- Starting hour $H = 3$\n- Coincidence angle $\\theta = 0^\\circ$\n\n#### Step 2: Calculate minutes M\n$$M = \\frac{2}{11}(30^\\circ H + \\theta) = \\frac{2}{11}(30^\\circ \\times 3) = \\frac{2}{11}(90^\\circ) = \\frac{180}{11}$$\n$$\\frac{180}{11} = 16\\frac{4}{11}\\text{ minutes} \\approx 16.36\\text{ minutes}$$\n\nThus, the hands are together at **3:16 and 4/11 min** (or approximately 3:16:21.8).",
+      "shortcutSolutionMarkdown": "#### ⚡ 2-Second Coincidence Formula\n$$M = \\frac{60}{11} H = \\frac{60 \\times 3}{11} = \\frac{180}{11} = \\mathbf{16\\frac{4}{11}\\text{ min}}$$.",
+      "formalTimeSeconds": 45,
+      "shortcutTimeSeconds": 2
+    },
+    {
+      "problemStatement": "Decompose into partial fractions: (7x - 1) / (x² - x - 6).",
+      "formalSolutionMarkdown": "#### Step 1: Factor the denominator\n$$x^2 - x - 6 = (x - 3)(x + 2)$$\n$$\\frac{7x - 1}{(x - 3)(x + 2)} = \\frac{A}{x - 3} + \\frac{B}{x + 2}$$\n\n#### Step 2: Apply Heaviside Cover-Up Method\n- For $A$ (at $x = 3$): Cover $(x - 3) \\implies A = \\frac{7(3) - 1}{3 + 2} = \\frac{20}{5} = 4$.\n- For $B$ (at $x = -2$): Cover $(x + 2) \\implies B = \\frac{7(-2) - 1}{-2 - 3} = \\frac{-15}{-5} = 3$.\n\nThus: $\\frac{4}{x - 3} + \\frac{3}{x + 2}$.",
+      "shortcutSolutionMarkdown": "#### ⚡ 4-Second Cover-Up Evaluation\n- $A = (7(3)-1)/(3+2) = 20/5 = \\mathbf{4}$.\n- $B = (7(-2)-1)/(-2-3) = -15/(-5) = \\mathbf{3}$.",
+      "formalTimeSeconds": 45,
+      "shortcutTimeSeconds": 4
+    }
+  ],
+  "calculatorGuides": {
+    "karce": {
+      "techniqueTitle": "EQN Mode 2x2 & 3x3 Linear System Solver",
+      "problemType": "Simultaneous linear equations",
+      "sampleProblem": "Solve: 2x + 3y = 13 and 5x - y = 7.",
+      "mode": "EQN Mode (MODE 3 1)",
+      "keystrokes": [
+        "MODE",
+        "3",
+        "1",
+        "2",
+        "=",
+        "3",
+        "=",
+        "1",
+        "3",
+        "=",
+        "5",
+        "=",
+        "-",
+        "1",
+        "=",
+        "7",
+        "="
+      ],
+      "notes": "Directly yields x = 2 and y = 3."
+    },
+    "canon": {
+      "techniqueTitle": "Fractional Minute Conversion",
+      "problemType": "Converting 180/11 to mixed fraction",
+      "sampleProblem": "Convert 180 / 11 to 16 4/11 min.",
+      "mode": "COMP Mode (MODE 1)",
+      "keystrokes": [
+        "1",
+        "8",
+        "0",
+        "a b/c",
+        "1",
+        "1",
+        "="
+      ],
+      "notes": "Directly outputs 16 4/11."
+    }
+  },
+  "conceptChecks": [
+    {
+      "id": "cc-math07-01",
+      "question": "Pipe A can fill a tank in 4 hours and Pipe B in 6 hours. How long will it take to fill the tank if both pipes are open simultaneously?",
+      "options": [
+        "2.4 hours (2 hours 24 min)",
+        "5.0 hours",
+        "2.0 hours",
+        "2.5 hours"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Apply the product-over-sum shortcut: T = (4 × 6) / (4 + 6) = 24 / 10 = 2.4 hours = 2 hours 24 minutes."
+    },
+    {
+      "id": "cc-math07-02",
+      "question": "At what relative angular speed does the minute hand gain on the hour hand?",
+      "options": [
+        "5.5° per minute (11/2°/min)",
+        "6.0° per minute",
+        "0.5° per minute",
+        "5.0° per minute"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Minute hand speed is 6°/min, hour hand is 0.5°/min. Relative speed = 6° - 0.5° = 5.5°/min = 11/2°/min."
+    },
+    {
+      "id": "cc-math07-03",
+      "question": "Using the Heaviside Cover-Up method, what is the numerator A in the partial fraction decomposition 5 / ((x - 2)(x + 3)) = A / (x - 2) + B / (x + 3)?",
+      "options": [
+        "1",
+        "-1",
+        "5",
+        "2"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Cover (x - 2) and substitute x = 2 into the remainder: A = 5 / (2 + 3) = 5 / 5 = 1."
+    },
+    {
+      "id": "cc-math07-04",
+      "question": "How many liters of pure water (0% concentration) must be added to 30 liters of a 40% acid solution to dilute it to a 24% solution?",
+      "options": [
+        "20 liters",
+        "15 liters",
+        "25 liters",
+        "10 liters"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Equation: (0)(x) + (0.40)(30) = (0.24)(30 + x) ⟹ 12 = 7.2 + 0.24x ⟹ 0.24x = 4.8 ⟹ x = 20 liters."
+    }
+  ]
+}

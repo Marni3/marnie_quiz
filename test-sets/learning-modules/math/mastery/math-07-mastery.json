@@ -1,0 +1,252 @@
+{
+  "moduleId": "math-07",
+  "moduleCode": "MATH 07",
+  "title": "MATH 07 Mastery Challenge: Word Problems & Partial Fractions",
+  "description": "Comprehensive 22-question 4-quadrant companion mastery exam for MATH 07. Rigorously tests work rates, upstream/downstream motion, clock hand angle formulas, mixture balances, Heaviside partial fractions, and EQN system solvers under timed board conditions.",
+  "totalQuestions": 22,
+  "timeLimitMinutes": 35,
+  "questions": [
+    {
+      "id": "m07-01",
+      "promptText": "At what exact rate does the **minute hand gain on the hour hand** on a standard 12-hour analog clock dial?",
+      "choiceA": "5.5° per minute (11/2°/min)",
+      "choiceB": "6.0° per minute",
+      "choiceC": "0.5° per minute",
+      "choiceD": "5.0° per minute",
+      "correctChoice": "A",
+      "explanation": "The minute hand moves at $360^\\circ / 60 = 6^\\circ/\\text{min}$ while the hour hand moves at $360^\\circ / 720 = 0.5^\\circ/\\text{min}$. The relative angular velocity is $6^\\circ - 0.5^\\circ = 5.5^\\circ/\\text{min} = \\frac{11}{2}^\\circ/\\text{min}$.",
+      "archetype": "conceptual"
+    },
+    {
+      "id": "m07-02",
+      "promptText": "In a partial fraction decomposition with an **irreducible quadratic factor** $\\frac{P(x)}{(x^2 + c)}$, what algebraic form must the numerator take?",
+      "choiceA": "Ax + B (a first-degree linear polynomial)",
+      "choiceB": "A (a single constant)",
+      "choiceC": "Ax² + Bx + C",
+      "choiceD": "A / x",
+      "correctChoice": "A",
+      "explanation": "For any non-factorable quadratic denominator factor $(x^2 + c)$, the numerator must be a complete linear polynomial $(Ax + B)$.",
+      "archetype": "conceptual"
+    },
+    {
+      "id": "m07-03",
+      "promptText": "What formula gives the combined time $T$ required for two workers with individual completion times $t_1$ and $t_2$ working together?",
+      "choiceA": "T = (t₁ · t₂) / (t₁ + t₂)",
+      "choiceB": "T = (t₁ + t₂) / 2",
+      "choiceC": "T = t₁ + t₂",
+      "choiceD": "T = √(t₁ · t₂)",
+      "correctChoice": "A",
+      "explanation": "Summing the reciprocal rates $\\frac{1}{T} = \\frac{1}{t_1} + \\frac{1}{t_2} = \\frac{t_1 + t_2}{t_1 t_2} \\implies T = \\frac{t_1 t_2}{t_1 + t_2}$.",
+      "archetype": "conceptual"
+    },
+    {
+      "id": "m07-04",
+      "promptText": "An algebraic polynomial equation whose solutions are strictly restricted to integers is termed a:",
+      "choiceA": "Diophantine Equation",
+      "choiceB": "Bernoulli Equation",
+      "choiceC": "Eulerian System",
+      "choiceD": "Cartesian Matrix",
+      "correctChoice": "A",
+      "explanation": "Named after ancient Greek mathematician Diophantus of Alexandria, Diophantine equations require integer solutions.",
+      "archetype": "conceptual"
+    },
+    {
+      "id": "m07-05",
+      "promptText": "When a boat travels **upstream** in a river with water current speed $v_c$ and engine still-water speed $v_b$, its effective ground speed is:",
+      "choiceA": "v_b - v_c",
+      "choiceB": "v_b + v_c",
+      "choiceC": "√(v_b² + v_c²)",
+      "choiceD": "v_b / v_c",
+      "correctChoice": "A",
+      "explanation": "Moving upstream directly opposes water flow, subtracting the river current velocity from the boat's still-water speed ($v_{\\text{up}} = v_b - v_c$).",
+      "archetype": "conceptual"
+    },
+    {
+      "id": "m07-06",
+      "promptText": "What is the Heaviside Cover-Up residue for a distinct linear denominator factor $(x - a)$ in $\\frac{P(x)}{(x - a)Q(x)}$?",
+      "choiceA": "P(a) / Q(a)",
+      "choiceB": "P(-a) / Q(-a)",
+      "choiceC": "P'(a) / Q'(a)",
+      "choiceD": "0",
+      "correctChoice": "A",
+      "explanation": "The Heaviside cover-up method covers the factor $(x - a)$ and evaluates the remaining expression at the root $x = a$, yielding residue $A = \\frac{P(a)}{Q(a)}$.",
+      "archetype": "conceptual"
+    },
+    {
+      "id": "m07-07",
+      "promptText": "Worker A can complete a wiring project in 6 hours and Worker B can complete it in 12 hours. How long will it take them to finish the project working together?",
+      "choiceA": "4 hours",
+      "choiceB": "9 hours",
+      "choiceC": "3 hours",
+      "choiceD": "4.5 hours",
+      "correctChoice": "A",
+      "explanation": "$T = \\frac{t_1 t_2}{t_1 + t_2} = \\frac{6 \\times 12}{6 + 12} = \\frac{72}{18} = 4\\text{ hours}$.",
+      "archetype": "numerical"
+    },
+    {
+      "id": "m07-08",
+      "promptText": "An inlet pipe fills a reservoir in 4 hours, while an outlet drain empties it in 6 hours. If both are open simultaneously, how long will it take to fill the empty reservoir?",
+      "choiceA": "12 hours",
+      "choiceB": "10 hours",
+      "choiceC": "2.4 hours",
+      "choiceD": "8 hours",
+      "correctChoice": "A",
+      "explanation": "Net filling rate: $\\frac{1}{T} = \\frac{1}{4} - \\frac{1}{6} = \\frac{3 - 2}{12} = \\frac{1}{12} \\implies T = 12\\text{ hours}$.",
+      "archetype": "numerical"
+    },
+    {
+      "id": "m07-09",
+      "promptText": "At what time between **4:00 and 5:00** will the hands of a clock be in **coincidence** (pointing in the exact same direction)?",
+      "choiceA": "4:21 and 9/11 min",
+      "choiceB": "4:20 min",
+      "choiceC": "4:22 and 4/11 min",
+      "choiceD": "4:21 and 5/11 min",
+      "correctChoice": "A",
+      "explanation": "$M = \\frac{60}{11} H = \\frac{60 \\times 4}{11} = \\frac{240}{11} = 21\\frac{9}{11}\\text{ minutes}$. Thus, the time is 4:21 and 9/11 min.",
+      "archetype": "numerical"
+    },
+    {
+      "id": "m07-10",
+      "promptText": "At what time between **2:00 and 3:00** will the hands of a clock form a **right angle (90°)** for the first time?",
+      "choiceA": "2:27 and 3/11 min",
+      "choiceB": "2:25 min",
+      "choiceC": "2:30 min",
+      "choiceD": "2:28 and 2/11 min",
+      "correctChoice": "A",
+      "explanation": "$M = \\frac{2}{11}(30^\\circ H + 90^\\circ) = \\frac{2}{11}(60^\\circ + 90^\\circ) = \\frac{2}{11}(150^\\circ) = \\frac{300}{11} = 27\\frac{3}{11}\\text{ minutes}$.",
+      "archetype": "numerical"
+    },
+    {
+      "id": "m07-11",
+      "promptText": "How many liters of pure water must be added to $50\\text{ liters}$ of a $60\\%$ alcohol solution to dilute it to a $30\\%$ alcohol concentration?",
+      "choiceA": "50 liters",
+      "choiceB": "25 liters",
+      "choiceC": "100 liters",
+      "choiceD": "30 liters",
+      "correctChoice": "A",
+      "explanation": "Mass balance: $(0.60)(50) = (0.30)(50 + x) \\implies 30 = 15 + 0.30x \\implies 0.30x = 15 \\implies x = 50\\text{ liters}$.",
+      "archetype": "numerical"
+    },
+    {
+      "id": "m07-12",
+      "promptText": "Decompose into partial fractions: $\\frac{3x + 1}{(x - 1)(x + 3)}$. What are the numerators $A$ and $B$ over $(x - 1)$ and $(x + 3)$ respectively?",
+      "choiceA": "A = 1, B = 2",
+      "choiceB": "A = 2, B = 1",
+      "choiceC": "A = 3, B = -1",
+      "choiceD": "A = 4, B = -1",
+      "correctChoice": "A",
+      "explanation": "Heaviside method: $A = \\left[ \\frac{3x + 1}{x + 3} \\right]_{x = 1} = \\frac{4}{4} = 1$. $B = \\left[ \\frac{3x + 1}{x - 1} \\right]_{x = -3} = \\frac{-8}{-4} = 2$.",
+      "archetype": "numerical"
+    },
+    {
+      "id": "m07-13",
+      "promptText": "A father is currently 3 times as old as his son. In 12 years, he will be only twice as old as his son. What is the father's current age?",
+      "choiceA": "36 years old",
+      "choiceB": "42 years old",
+      "choiceC": "30 years old",
+      "choiceD": "48 years old",
+      "correctChoice": "A",
+      "explanation": "Let son's age $= s$, father's age $= 3s$. In 12 years: $3s + 12 = 2(s + 12) \\implies 3s + 12 = 2s + 24 \\implies s = 12$. Father's age $= 3(12) = 36\\text{ years old}$.",
+      "archetype": "numerical"
+    },
+    {
+      "id": "m07-14",
+      "promptText": "A motorboat takes 2 hours to travel $36\\text{ km}$ downstream and 3 hours to return upstream along the same route. Find the speed of the river current.",
+      "choiceA": "3 km/h",
+      "choiceB": "15 km/h",
+      "choiceC": "6 km/h",
+      "choiceD": "12 km/h",
+      "correctChoice": "A",
+      "explanation": "$v_{\\text{down}} = 36/2 = 18\\text{ km/h} = v_b + v_c$. $v_{\\text{up}} = 36/3 = 12\\text{ km/h} = v_b - v_c$. Subtracting equations: $2v_c = 18 - 12 = 6 \\implies v_c = 3\\text{ km/h}$.",
+      "archetype": "standard"
+    },
+    {
+      "id": "m07-15",
+      "promptText": "A purse contains $\\text{₱4.50}$ in nickels ($\\text{₱0.05}$) and dimes ($\\text{₱0.10}$). If there are 60 coins in total, how many dimes are in the purse?",
+      "choiceA": "30 dimes",
+      "choiceB": "20 dimes",
+      "choiceC": "40 dimes",
+      "choiceD": "25 dimes",
+      "correctChoice": "A",
+      "explanation": "$n + d = 60 \\implies n = 60 - d$. Money: $0.05(60 - d) + 0.10d = 4.50 \\implies 3.00 + 0.05d = 4.50 \\implies 0.05d = 1.50 \\implies d = 30\\text{ dimes}$.",
+      "archetype": "applied"
+    },
+    {
+      "id": "m07-16",
+      "promptText": "The sum of the digits of a 2-digit number is 11. If the digits are reversed, the new number is 45 greater than the original number. Find the original number.",
+      "choiceA": "38",
+      "choiceB": "29",
+      "choiceC": "47",
+      "choiceD": "56",
+      "correctChoice": "A",
+      "explanation": "Original number: $10t + u$. $t + u = 11$. Reversed: $10u + t = (10t + u) + 45 \\implies 9u - 9t = 45 \\implies u - t = 5$. Adding equations: $2u = 16 \\implies u = 8, t = 3$. Original number $= 38$.",
+      "archetype": "applied"
+    },
+    {
+      "id": "m07-17",
+      "promptText": "Two bullet trains leave stations $450\\text{ km}$ apart at the same time, traveling toward each other. Train A travels at $120\\text{ km/h}$ and Train B at $180\\text{ km/h}$. After how many hours will they meet?",
+      "choiceA": "1.5 hours",
+      "choiceB": "2.0 hours",
+      "choiceC": "1.8 hours",
+      "choiceD": "1.2 hours",
+      "correctChoice": "A",
+      "explanation": "Relative closing speed $= 120 + 180 = 300\\text{ km/h}$. Time $= \\frac{450}{300} = 1.5\\text{ hours}$ (1 hour 30 min).",
+      "archetype": "applied"
+    },
+    {
+      "id": "m07-18",
+      "promptText": "Three pipes A, B, and C can fill a pool in 6, 8, and 12 hours respectively. If all three pipes are opened together, how long will it take to fill the pool?",
+      "choiceA": "2.67 hours (2 hours 40 min)",
+      "choiceB": "3.00 hours",
+      "choiceC": "2.50 hours",
+      "choiceD": "3.50 hours",
+      "correctChoice": "A",
+      "explanation": "$\\frac{1}{T} = \\frac{1}{6} + \\frac{1}{8} + \\frac{1}{12} = \\frac{4 + 3 + 2}{24} = \\frac{9}{24} = \\frac{3}{8} \\implies T = \\frac{8}{3} = 2\\frac{2}{3}\\text{ hours} = 2\\text{ hours } 40\\text{ min}$.",
+      "archetype": "applied"
+    },
+    {
+      "id": "m07-19",
+      "promptText": "What is the common trap when setting up clock coincidence problems between hour $H$ and $H+1$?",
+      "choiceA": "Assuming the minute hand only needs to travel $5H$ minutes, neglecting that the hour hand moves simultaneously at $0.5^\\circ/\\text{min}$.",
+      "choiceB": "Multiplying the hour by 60.",
+      "choiceC": "Dividing by 12.",
+      "choiceD": "Subtracting 30 degrees.",
+      "correctChoice": "A",
+      "explanation": "At hour $H$, the hour hand is already ahead by $30^\\circ H$. Because the hour hand continues creeping forward as the minute hand chases it, the minute hand must cover the extra distance at the relative rate of $\\frac{11}{2}^\\circ/\\text{min}$, requiring the factor of $\\frac{60}{11}$.",
+      "archetype": "trap"
+    },
+    {
+      "id": "m07-20",
+      "promptText": "When solving work problems involving drain pipes or opposing workers, what is the critical sign rule?",
+      "choiceA": "Subtract the emptying/opposing rate: $\\frac{1}{T} = \\frac{1}{t_{\\text{fill}}} - \\frac{1}{t_{\\text{drain}}}$.",
+      "choiceB": "Add all rates regardless of flow direction.",
+      "choiceC": "Divide the fill rate by the drain rate.",
+      "choiceD": "Multiply the fill and drain rates.",
+      "correctChoice": "A",
+      "explanation": "Drains and opposing workers reduce the net rate of progress, so their individual rates must be subtracted from the total working rate.",
+      "archetype": "trap"
+    },
+    {
+      "id": "m07-21",
+      "promptText": "Using the 2-second coincidence formula $M = \\frac{60}{11} H$, at what time between 6:00 and 7:00 are clock hands together?",
+      "choiceA": "6:32 and 8/11 min",
+      "choiceB": "6:30 min",
+      "choiceC": "6:35 min",
+      "choiceD": "6:33 and 3/11 min",
+      "correctChoice": "A",
+      "explanation": "$M = \\frac{60 \\times 6}{11} = \\frac{360}{11} = 32\\frac{8}{11}\\text{ min}$ in 2 seconds.",
+      "archetype": "shortcut"
+    },
+    {
+      "id": "m07-22",
+      "promptText": "Using the 2-worker shortcut $T = \\frac{t_1 t_2}{t_1 + t_2}$, if Worker A takes 20 days and Worker B takes 30 days, what is the combined time in 2 seconds?",
+      "choiceA": "12 days",
+      "choiceB": "25 days",
+      "choiceC": "10 days",
+      "choiceD": "15 days",
+      "correctChoice": "A",
+      "explanation": "$T = \\frac{20 \\times 30}{20 + 30} = \\frac{600}{50} = 12\\text{ days}$ in 2 seconds.",
+      "archetype": "shortcut"
+    }
+  ]
+}

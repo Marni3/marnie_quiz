@@ -1,0 +1,252 @@
+{
+  "moduleId": "math-14",
+  "moduleCode": "MATH 14",
+  "title": "MATH 14 Mastery Challenge: Limits & Derivative Rules",
+  "description": "Comprehensive 22-question 4-quadrant companion mastery exam for MATH 14. Rigorously tests indeterminate limits, L'Hôpital's rule, trigonometric/hyperbolic derivatives, chain rule expansions, and calculator numerical derivative bypass techniques under timed board conditions.",
+  "totalQuestions": 22,
+  "timeLimitMinutes": 35,
+  "questions": [
+    {
+      "id": "m14-01",
+      "promptText": "Under what strict mathematical conditions is **L'Hôpital's Rule** valid when evaluating $\\lim_{x \\to a} \\frac{f(x)}{g(x)}$?",
+      "choiceA": "Only when direct substitution yields the indeterminate forms 0/0 or ±∞/±∞.",
+      "choiceB": "For any fractional function quotient.",
+      "choiceC": "Whenever g(a) = 0 regardless of f(a).",
+      "choiceD": "Only for polynomial functions.",
+      "correctChoice": "A",
+      "explanation": "L'Hôpital's Rule is strictly applicable only to indeterminate quotients of the form $\\frac{0}{0}$ or $\\frac{\\pm\\infty}{\\pm\\infty}$. Applying it to determinate quotients (e.g. $1/0$ or $0/1$) yields incorrect results.",
+      "archetype": "conceptual"
+    },
+    {
+      "id": "m14-02",
+      "promptText": "What is the derivative of the **hyperbolic cosine function** $\\frac{d}{dx}[\\cosh u]$?",
+      "choiceA": "sinh(u) · u' (strictly positive sign)",
+      "choiceB": "-sinh(u) · u'",
+      "choiceC": "sech²(u) · u'",
+      "choiceD": "-cosh(u) · u'",
+      "correctChoice": "A",
+      "explanation": "Unlike standard trigonometric cosine which differentiates to $-\\sin u$, the hyperbolic cosine differentiates to positive $\\sinh u \\cdot u'$.",
+      "archetype": "conceptual"
+    },
+    {
+      "id": "m14-03",
+      "promptText": "Which condition must be met for a function $f(x)$ to be defined as **continuous** at $x = a$?",
+      "choiceA": "f(a) is defined, the limit as x approaches a exists, and lim_{x -> a} f(x) = f(a).",
+      "choiceB": "The derivative f'(a) must be zero.",
+      "choiceC": "The function must be a polynomial.",
+      "choiceD": "f(a) must be positive.",
+      "correctChoice": "A",
+      "explanation": "Continuity requires three strict conditions: (1) $f(a)$ exists, (2) $\\lim_{x \\to a} f(x)$ exists, and (3) the limit equals the exact function value $f(a)$.",
+      "archetype": "conceptual"
+    },
+    {
+      "id": "m14-04",
+      "promptText": "What is the general sign rule for the derivatives of all **trigonometric co-functions** (cosine, cotangent, cosecant)?",
+      "choiceA": "They all carry a negative (-) leading sign.",
+      "choiceB": "They all carry a positive (+) leading sign.",
+      "choiceC": "Only cosine is negative.",
+      "choiceD": "Their signs alternate depending on the quadrant.",
+      "correctChoice": "A",
+      "explanation": "All trigonometric co-functions have negative derivatives: $\\frac{d}{dx}[\\cos u] = -\\sin u \\cdot u', \\frac{d}{dx}[\\cot u] = -\\csc^2 u \\cdot u', \\frac{d}{dx}[\\csc u] = -\\csc u\\cot u \\cdot u'$.",
+      "archetype": "conceptual"
+    },
+    {
+      "id": "m14-05",
+      "promptText": "What is the **Chain Rule** for differentiating a composite function $y = f(g(x))$?",
+      "choiceA": "dy/dx = f'(g(x)) · g'(x)",
+      "choiceB": "dy/dx = f'(x) · g'(x)",
+      "choiceC": "dy/dx = f'(g'(x))",
+      "choiceD": "dy/dx = f(x) · g'(x) + g(x) · f'(x)",
+      "correctChoice": "A",
+      "explanation": "The chain rule states that the derivative of $f(g(x))$ equals the derivative of the outer function evaluated at the inner function, multiplied by the derivative of the inner function.",
+      "archetype": "conceptual"
+    },
+    {
+      "id": "m14-06",
+      "promptText": "What is the value of the exponential limit $\\lim_{x \\to \\infty} \\left(1 + \\frac{k}{x}\\right)^x$?",
+      "choiceA": "e^k",
+      "choiceB": "e",
+      "choiceC": "k",
+      "choiceD": "1",
+      "correctChoice": "A",
+      "explanation": "By definition of the natural exponential base: $\\lim_{x \\to \\infty} \\left(1 + \\frac{k}{x}\\right)^x = e^k$.",
+      "archetype": "conceptual"
+    },
+    {
+      "id": "m14-07",
+      "promptText": "Evaluate the limit: $\\lim_{x \\to 0} \\frac{\\sin 5x}{x}$.",
+      "choiceA": "5",
+      "choiceB": "1",
+      "choiceC": "0",
+      "choiceD": "1/5",
+      "correctChoice": "A",
+      "explanation": "$\\lim_{x \\to 0} \\frac{\\sin 5x}{x} = 5 \\lim_{x \\to 0} \\frac{\\sin 5x}{5x} = 5(1) = 5$.",
+      "archetype": "numerical"
+    },
+    {
+      "id": "m14-08",
+      "promptText": "Evaluate the limit: $\\lim_{x \\to 2} \\frac{x^2 - 4}{x - 2}$.",
+      "choiceA": "4",
+      "choiceB": "2",
+      "choiceC": "0",
+      "choiceD": "Undetermined",
+      "correctChoice": "A",
+      "explanation": "Factor the numerator: $\\frac{(x - 2)(x + 2)}{x - 2} = x + 2$. At $x = 2$: $2 + 2 = 4$.",
+      "archetype": "numerical"
+    },
+    {
+      "id": "m14-09",
+      "promptText": "Find the derivative of $y = \\arcsin(2x)$.",
+      "choiceA": "2 / √(1 - 4x²)",
+      "choiceB": "1 / √(1 - 4x²)",
+      "choiceC": "2 / (1 + 4x²)",
+      "choiceD": "-2 / √(1 - 4x²)",
+      "correctChoice": "A",
+      "explanation": "$\\frac{d}{dx}[\\arcsin u] = \\frac{u'}{\\sqrt{1 - u^2}} = \\frac{2}{\\sqrt{1 - (2x)^2}} = \\frac{2}{\\sqrt{1 - 4x^2}}$.",
+      "archetype": "numerical"
+    },
+    {
+      "id": "m14-10",
+      "promptText": "Find the derivative of $y = \\ln(\\sin x)$.",
+      "choiceA": "cot x",
+      "choiceB": "tan x",
+      "choiceC": "-cot x",
+      "choiceD": "csc x",
+      "correctChoice": "A",
+      "explanation": "$\\frac{d}{dx}[\\ln u] = \\frac{u'}{u} = \\frac{\\cos x}{\\sin x} = \\cot x$.",
+      "archetype": "numerical"
+    },
+    {
+      "id": "m14-11",
+      "promptText": "Find the derivative of $y = x^3 e^{2x}$.",
+      "choiceA": "e^(2x) (2x³ + 3x²)",
+      "choiceB": "3x² e^(2x)",
+      "choiceC": "6x² e^(2x)",
+      "choiceD": "2x³ e^(2x)",
+      "correctChoice": "A",
+      "explanation": "Product rule: $\\frac{d}{dx}[x^3 e^{2x}] = x^3(2e^{2x}) + e^{2x}(3x^2) = e^{2x}(2x^3 + 3x^2)$.",
+      "archetype": "numerical"
+    },
+    {
+      "id": "m14-12",
+      "promptText": "Find the derivative of $y = \\arctan(x / 3)$.",
+      "choiceA": "3 / (9 + x²)",
+      "choiceB": "1 / (9 + x²)",
+      "choiceC": "1 / (3 + x²)",
+      "choiceD": "3 / (1 + x²)",
+      "correctChoice": "A",
+      "explanation": "$\\frac{d}{dx}[\\arctan(x/3)] = \\frac{1/3}{1 + (x/3)^2} = \\frac{1/3}{1 + x^2/9} = \\frac{1/3}{(9 + x^2)/9} = \\frac{3}{9 + x^2}$.",
+      "archetype": "numerical"
+    },
+    {
+      "id": "m14-13",
+      "promptText": "Find the second derivative $\\frac{d^2y}{dx^2}$ of $y = \\sin(3x)$.",
+      "choiceA": "-9 sin(3x)",
+      "choiceB": "9 sin(3x)",
+      "choiceC": "-3 cos(3x)",
+      "choiceD": "-9 cos(3x)",
+      "correctChoice": "A",
+      "explanation": "$y' = 3\\cos(3x) \\implies y'' = 3(-3\\sin 3x) = -9\\sin(3x)$.",
+      "archetype": "numerical"
+    },
+    {
+      "id": "m14-14",
+      "promptText": "The voltage across a $0.5\\text{ F}$ capacitor is $v(t) = 10\\sin(100t)\\text{ V}$. Find the instantaneous current $i(t) = C \\frac{dv}{dt}$ at $t = 0$.",
+      "choiceA": "500 A",
+      "choiceB": "50 A",
+      "choiceC": "1,000 A",
+      "choiceD": "0 A",
+      "correctChoice": "A",
+      "explanation": "$i(t) = C \\frac{dv}{dt} = 0.5 \\times \\frac{d}{dt}[10\\sin(100t)] = 0.5(1000\\cos(100t)) = 500\\cos(100t)$. At $t = 0$: $i(0) = 500(1) = 500\\text{ A}$.",
+      "archetype": "applied"
+    },
+    {
+      "id": "m14-15",
+      "promptText": "A particle moves along a straight line with position $s(t) = t^3 - 6t^2 + 9t\\text{ meters}$. At what time $t > 0$ is its acceleration $a(t) = 0$?",
+      "choiceA": "t = 2 seconds",
+      "choiceB": "t = 1 second",
+      "choiceC": "t = 3 seconds",
+      "choiceD": "t = 4 seconds",
+      "correctChoice": "A",
+      "explanation": "$v(t) = s'(t) = 3t^2 - 12t + 9$. $a(t) = v'(t) = 6t - 12$. Setting $a(t) = 0 \\implies 6t = 12 \\implies t = 2\\text{ seconds}$.",
+      "archetype": "applied"
+    },
+    {
+      "id": "m14-16",
+      "promptText": "Find the slope of the tangent line to the curve $y = 3x^2 - 5x + 2$ at the point where $x = 2$.",
+      "choiceA": "7",
+      "choiceB": "12",
+      "choiceC": "4",
+      "choiceD": "5",
+      "correctChoice": "A",
+      "explanation": "$y' = 6x - 5$. At $x = 2$: $y'(2) = 6(2) - 5 = 12 - 5 = 7$.",
+      "archetype": "applied"
+    },
+    {
+      "id": "m14-17",
+      "promptText": "Evaluate the limit: $\\lim_{x \\to \\infty} \\left(1 + \\frac{3}{x}\\right)^x$.",
+      "choiceA": "e³ ≈ 20.086",
+      "choiceB": "e ≈ 2.718",
+      "choiceC": "3",
+      "choiceD": "∞",
+      "correctChoice": "A",
+      "explanation": "Standard exponential form: $\\lim_{x \\to \\infty} (1 + 3/x)^x = e^3 \\approx 20.0855$.",
+      "archetype": "applied"
+    },
+    {
+      "id": "m14-18",
+      "promptText": "Find the rate of change of the area $A$ of a circle with respect to its radius $r$ when $r = 5\\text{ cm}$.",
+      "choiceA": "31.42 cm²/cm (10π)",
+      "choiceB": "78.54 cm²/cm (25π)",
+      "choiceC": "15.71 cm²/cm (5π)",
+      "choiceD": "62.83 cm²/cm (20π)",
+      "correctChoice": "A",
+      "explanation": "$A = \\pi r^2 \\implies \\frac{dA}{dr} = 2\\pi r$. At $r = 5$: $\\frac{dA}{dr} = 2\\pi(5) = 10\\pi \\approx 31.4159\\text{ cm}^2/\\text{cm}$. (The rate of area growth equals the circumference).",
+      "archetype": "applied"
+    },
+    {
+      "id": "m14-19",
+      "promptText": "What is the common algebraic order trap when applying the **Quotient Rule** $\\frac{d}{dx}\\left[\\frac{u}{v}\\right]$?",
+      "choiceA": "Writing $u v' - v u'$ instead of $v u' - u v'$ in the numerator, reversing the sign of the entire derivative.",
+      "choiceB": "Squaring the numerator instead of denominator.",
+      "choiceC": "Forgetting the derivative of the denominator.",
+      "choiceD": "Multiplying the denominator by 2.",
+      "correctChoice": "A",
+      "explanation": "Because subtraction is not commutative, the numerator must strictly be $v u' - u v'$ ('Low d-High minus High d-Low'). Reversing the order produces an erroneous negative sign.",
+      "archetype": "trap"
+    },
+    {
+      "id": "m14-20",
+      "promptText": "When evaluating $\\lim_{x \\to 0} \\frac{1 - \\cos 3x}{x^2}$, what is the fastest small-angle substitution shortcut?",
+      "choiceA": "Replace $1 - \\cos 3x$ with $\\frac{(3x)^2}{2} = \\frac{9x^2}{2}$, yielding immediate limit $\\frac{9}{2} = 4.5$.",
+      "choiceB": "Substitute $x = 0$ directly.",
+      "choiceC": "Divide by 3.",
+      "choiceD": "Multiply by $\\pi$.",
+      "correctChoice": "A",
+      "explanation": "The Taylor approximation $1 - \\cos \\theta \\approx \\frac{\\theta^2}{2}$ simplifies $1 - \\cos 3x \\approx \\frac{9x^2}{2}$, immediately yielding $\\lim_{x \\to 0} \\frac{9x^2 / 2}{x^2} = \\frac{9}{2} = 4.5$ in 2 seconds.",
+      "archetype": "trap"
+    },
+    {
+      "id": "m14-21",
+      "promptText": "How can any multiple-choice analytical derivative problem $\\frac{dy}{dx}$ be verified on your calculator in 3 seconds?",
+      "choiceA": "Use the numerical derivative key `[d/dx]` on the given function at a test value (e.g. $x = 2$), then evaluate each choice at $x = 2$ to find the matching numerical value.",
+      "choiceB": "Use MATRIX mode.",
+      "choiceC": "Use STAT regression.",
+      "choiceD": "Use TABLE mode from 1 to 10.",
+      "correctChoice": "A",
+      "explanation": "The calculator's `d/dx(f(x), x=a)` evaluates the exact numerical slope at $x = a$. Evaluating the options at the same test point guarantees a 100% foolproof match in seconds.",
+      "archetype": "shortcut"
+    },
+    {
+      "id": "m14-22",
+      "promptText": "Using the 2-second small angle approximation, what is $\\lim_{x \\to 0} \\frac{1 - \\cos 6x}{x^2}$?",
+      "choiceA": "18 (6² / 2)",
+      "choiceB": "36",
+      "choiceC": "6",
+      "choiceD": "12",
+      "correctChoice": "A",
+      "explanation": "$\\frac{6^2}{2} = \\frac{36}{2} = 18$ in 2 seconds.",
+      "archetype": "shortcut"
+    }
+  ]
+}

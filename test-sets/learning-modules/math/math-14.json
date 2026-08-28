@@ -1,0 +1,282 @@
+{
+  "id": "math-14",
+  "code": "MATH 14",
+  "domain": "MATH",
+  "topicCode": "MATH-14",
+  "topicTitle": "Differential Calculus",
+  "subtopicTitle": "Limits, Continuity & 37 Standard Derivatives",
+  "order": 14,
+  "pairedQuizSetId": "math-14-mastery",
+  "toc": [
+    { "id": "sec-prereq-bridges", "title": "1. Introduction & Cross-Subject Bridges", "level": 2 },
+    { "id": "sec-theory", "title": "2. Lesson Proper", "level": 2 },
+    { "id": "sec-formulas", "title": "3. Compilation of Formulas", "level": 2 },
+    { "id": "sec-visualizer", "title": "4. Interactive Visualizer: Secant-to-Tangent Derivative Convergence", "level": 2 },
+    { "id": "sec-terminology", "title": "5. Terms and Definitions", "level": 2 },
+    { "id": "sec-dual-method", "title": "6. Sample Problems and Solutions", "level": 2 },
+    { "id": "sec-calculator", "title": "7. Calculator Techniques (Karce & Canon)", "level": 2 },
+    { "id": "sec-concept-checks", "title": "8. In-Line Concept Checks", "level": 2 },
+    { "id": "sec-mastery-challenge", "title": "9. Paired Mastery Challenge", "level": 2 }
+  ],
+  "prerequisiteBridge": {
+    "priorModuleId": "math-12-01",
+    "text": "Extending linear slopes ($m = \\Delta y / \\Delta x$) to curved polynomial and transcendental loci, this module establishes infinitesimal calculus, limits, L'Hôpital's rule, and the standard differentiation table."
+  },
+  "crossSubjectBridges": [
+    {
+      "targetDomain": "ELECS",
+      "targetTopicCode": "ELEC-01",
+      "badgeText": "Capacitor Current & Inductor Voltage",
+      "description": "Fundamental circuit governing relations define capacitor current ($i_C(t) = C \\frac{dv}{dt}$) and inductor voltage ($v_L(t) = L \\frac{di}{dt}$) as instantaneous time derivatives."
+    },
+    {
+      "targetDomain": "EST",
+      "targetTopicCode": "EST-01",
+      "badgeText": "Instantaneous Frequency & Phase Modulation",
+      "description": "Frequency modulation (FM) and phase modulation (PM) define instantaneous angular frequency $\\omega_i(t) = \\frac{d\\theta(t)}{dt}$ as the derivative of total carrier phase."
+    },
+    {
+      "targetDomain": "GEAS",
+      "targetTopicCode": "GEAS-06",
+      "badgeText": "Kinematic Velocity & Acceleration",
+      "description": "Classical mechanics defines instantaneous velocity ($v(t) = \\frac{ds}{dt}$) and acceleration ($a(t) = \\frac{dv}{dt} = \\frac{d^2s}{dt^2}$) via successive derivatives of displacement."
+    }
+  ],
+  "formulas": [
+    {
+      "id": "f-1401-01",
+      "title": "Fundamental Trigonometric & Exponential Limits",
+      "formula": "$$\\lim_{x \\to 0} \\frac{\\sin x}{x} = 1, \\quad \\lim_{x \\to 0} \\frac{1 - \\cos x}{x} = 0, \\quad \\lim_{n \\to \\infty} \\left(1 + \\frac{1}{n}\\right)^n = e$$",
+      "note": "For sin(kx)/x as x ⟹ 0, the limit is strictly k."
+    },
+    {
+      "id": "f-1401-02",
+      "title": "L'Hôpital's Rule for Indeterminate Forms",
+      "formula": "$$\\lim_{x \\to a} \\frac{f(x)}{g(x)} = \\lim_{x \\to a} \\frac{f'(x)}{g'(x)} \\qquad \\left(\\text{for } \\frac{0}{0} \\text{ or } \\frac{\\pm\\infty}{\\pm\\infty}\\right)$$",
+      "note": "Differentiate numerator and denominator separately (NOT the quotient rule)."
+    },
+    {
+      "id": "f-1401-03",
+      "title": "Formal Definition of the Derivative",
+      "formula": "$$f'(x) = \\lim_{\\Delta x \\to 0} \\frac{f(x + \\Delta x) - f(x)}{\\Delta x}$$",
+      "note": "Represents the instantaneous rate of change and tangent line slope."
+    },
+    {
+      "id": "f-1401-04",
+      "title": "Power, Product & Quotient Rules",
+      "formula": "$$\\frac{d}{dx}[u^n] = n u^{n - 1} u', \\quad \\frac{d}{dx}[uv] = uv' + vu', \\quad \\frac{d}{dx}\\left[\\frac{u}{v}\\right] = \\frac{v u' - u v'}{v^2}$$",
+      "note": "Remember for quotient rule: 'Low d-High minus High d-Low over Low squared'."
+    },
+    {
+      "id": "f-1401-05",
+      "title": "Trigonometric Function Derivatives",
+      "formula": "$$\\frac{d}{dx}[\\sin u] = \\cos u \\cdot u', \\quad \\frac{d}{dx}[\\cos u] = -\\sin u \\cdot u', \\quad \\frac{d}{dx}[\\tan u] = \\sec^2 u \\cdot u'$$",
+      "note": "All co-functions (cos, cot, csc) carry a negative derivative sign."
+    },
+    {
+      "id": "f-1401-06",
+      "title": "Inverse Trigonometric Derivatives",
+      "formula": "$$\\frac{d}{dx}[\\arcsin u] = \\frac{u'}{\\sqrt{1 - u^2}}, \\qquad \\frac{d}{dx}[\\arctan u] = \\frac{u'}{1 + u^2}$$",
+      "note": "Derivative of arccos u has negative numerator -u' / √(1 - u²)."
+    },
+    {
+      "id": "f-1401-07",
+      "title": "Exponential & Logarithmic Derivatives",
+      "formula": "$$\\frac{d}{dx}[e^u] = e^u u', \\qquad \\frac{d}{dx}[a^u] = a^u \\ln a \\cdot u', \\qquad \\frac{d}{dx}[\\ln u] = \\frac{u'}{u}$$",
+      "note": "General logarithm base b: d/dx[log_b u] = u' / (u ln b)."
+    },
+    {
+      "id": "f-1401-08",
+      "title": "Hyperbolic Function Derivatives",
+      "formula": "$$\\frac{d}{dx}[\\sinh u] = \\cosh u \\cdot u', \\quad \\frac{d}{dx}[\\cosh u] = \\sinh u \\cdot u', \\quad \\frac{d}{dx}[\\tanh u] = \\text{sech}^2 u \\cdot u'$$",
+      "note": "Notice derivative of cosh u is POSITIVE sinh u (no negative sign)."
+    }
+  ],
+  "terms": [
+    {
+      "term": "Indeterminate Form",
+      "symbol": "$0/0, \\infty/\\infty$",
+      "unit": "Limits",
+      "definition": "An algebraic expression obtained during limit substitution that does not provide enough information to determine the limit without further algebraic factoring or L'Hôpital differentiation.",
+      "keywordTrigger": "0/0 or infinity/infinity indeterminate limits"
+    },
+    {
+      "term": "L'Hôpital's Rule",
+      "symbol": "L'Hôpital Theorem",
+      "unit": "Calculus",
+      "definition": "A theorem stating that the limit of a quotient of functions equals the limit of the quotient of their derivatives when direct substitution yields 0/0 or ∞/∞.",
+      "keywordTrigger": "differentiate numerator and denominator separately for limits"
+    },
+    {
+      "term": "Chain Rule",
+      "symbol": "$\\frac{dy}{dx} = \\frac{dy}{du} \\cdot \\frac{du}{dx}$",
+      "unit": "Differentiation",
+      "definition": "A formula for computing the derivative of a composite function $f(g(x))$.",
+      "keywordTrigger": "derivative of composite function / dy/du times du/dx"
+    },
+    {
+      "term": "Continuous Function",
+      "symbol": "$\\lim_{x \\to a} f(x) = f(a)$",
+      "unit": "Continuity",
+      "definition": "A function with no gaps, jumps, or asymptotes, where the limit as x approaches a equals the exact function value f(a).",
+      "keywordTrigger": "limit equals function value at that point / no jumps"
+    }
+  ],
+  "visualizer": {
+    "archetype": "parameter_sweep",
+    "title": "Interactive Secant-to-Tangent Slope Visualizer",
+    "description": "Adjust step size Δx to observe the secant chord slope (f(x + Δx) - f(x)) / Δx converge smoothly to the exact instantaneous tangent line slope f'(x).",
+    "config": {
+      "canvasWidth": 640,
+      "canvasHeight": 320,
+      "controls": [
+        {
+          "id": "xPoint",
+          "label": "Evaluation Point (x)",
+          "min": -3,
+          "max": 3,
+          "step": 1,
+          "defaultValue": 1
+        },
+        {
+          "id": "deltaX",
+          "label": "Step Size (Δx × 10)",
+          "min": 1,
+          "max": 20,
+          "step": 1,
+          "defaultValue": 5
+        }
+      ]
+    }
+  },
+  "theory": {
+    "mentalAnchor": "For **0/0 limits**, differentiate top and bottom separately (**L'Hôpital's Rule**). For **Derivatives**, remember that all **'co-' functions** (cos, cot, csc) have **negative derivatives**. For **exponential functions**, $\\frac{d}{dx}[e^u] = e^u u'$ and $\\frac{d}{dx}[a^u] = a^u \\ln a \\cdot u'$. On board exams, verify any analytical derivative in 3 seconds using the calculator's numerical derivative button `d/dx` at a test point $x = 2$.",
+    "contentMarkdown": "### 1. Limits & L'Hôpital's Rule\n\nA limit $\\lim_{x \\to a} f(x) = L$ evaluates the behavior of a function near $x = a$:\n\n```diagram\n{\n  \"caption\": \"Figure 1: Curve y = x² with secant chord converging to instantaneous tangent line at x = 1\",\n  \"xRange\": [-1, 3],\n  \"yRange\": [-1, 5],\n  \"elements\": [\n    { \"type\": \"grid\" },\n    { \"type\": \"axes\" },\n    { \"type\": \"line\", \"from\": [-0.5, -2], \"to\": [2.5, 4], \"color\": \"#38bdf8\", \"width\": 2.5 },\n    { \"type\": \"point\", \"at\": [1, 1], \"label\": \"P(1, 1)\", \"color\": \"#fbbf24\" },\n    { \"type\": \"point\", \"at\": [2, 4], \"label\": \"Q(2, 4)\", \"color\": \"#f43f5e\" },\n    { \"type\": \"segment\", \"from\": [1, 1], \"to\": [2, 4], \"color\": \"#f43f5e\", \"dashed\": true },\n    { \"type\": \"projection\", \"from\": [2, 4], \"to\": [2, 1], \"label\": \"Δy = 3\", \"color\": \"#f43f5e\" },\n    { \"type\": \"projection\", \"from\": [1, 1], \"to\": [2, 1], \"label\": \"Δx = 1\", \"color\": \"#38bdf8\" }\n  ]\n}\n```\n\n#### Specific Indeterminate Limit Techniques:\n1. **Factor & Cancel**: Factor polynomials $(x - a)$ to eliminate $0/0$.\n2. **L'Hôpital's Rule**: If $\\frac{f(a)}{g(a)} = \\frac{0}{0}$ or $\\frac{\\pm\\infty}{\\pm\\infty}$:\n   $$\\lim_{x \\to a} \\frac{f(x)}{g(x)} = \\lim_{x \\to a} \\frac{f'(x)}{g'(x)}$$\n3. **Trigonometric Squeeze**: $\\lim_{x \\to 0} \\frac{\\sin(kx)}{x} = k$.\n\n---\n\n### 2. Standard Differentiation Rules\n\n- **Algebraic**: $\\frac{d}{dx}[u^n] = n u^{n-1} u', \\quad \\frac{d}{dx}[uv] = uv' + vu', \\quad \\frac{d}{dx}\\left[\\frac{u}{v}\\right] = \\frac{vu' - uv'}{v^2}$.\n- **Trigonometric**: $\\frac{d}{dx}[\\sin u] = \\cos u \\cdot u', \\quad \\frac{d}{dx}[\\cos u] = -\\sin u \\cdot u', \\quad \\frac{d}{dx}[\\tan u] = \\sec^2 u \\cdot u'$.\n- **Inverse Trig**: $\\frac{d}{dx}[\\arcsin u] = \\frac{u'}{\\sqrt{1 - u^2}}, \\quad \\frac{d}{dx}[\\arctan u] = \\frac{u'}{1 + u^2}$.\n- **Exponential & Log**: $\\frac{d}{dx}[e^u] = e^u u', \\quad \\frac{d}{dx}[\\ln u] = \\frac{u'}{u}, \\quad \\frac{d}{dx}[a^u] = a^u \\ln a \\cdot u'$."
+  },
+  "examples": [
+    {
+      "problemStatement": "Evaluate the limit: lim_{x -> 0} (1 - cos 4x) / (x²).",
+      "formalSolutionMarkdown": "#### Step 1: Check indeterminate form\nAt $x = 0$: $\\frac{1 - \\cos 0}{0^2} = \\frac{1 - 1}{0} = \\frac{0}{0}$ (Indeterminate).\n\n#### Step 2: Apply L'Hôpital's Rule (1st differentiation)\n$$\\lim_{x \\to 0} \\frac{\\frac{d}{dx}[1 - \\cos 4x]}{\\frac{d}{dx}[x^2]} = \\lim_{x \\to 0} \\frac{4\\sin 4x}{2x} = \\lim_{x \\to 0} \\frac{2\\sin 4x}{x}$$\n\n#### Step 3: Apply L'Hôpital's Rule (2nd differentiation)\n$$\\lim_{x \\to 0} \\frac{\\frac{d}{dx}[2\\sin 4x]}{\\frac{d}{dx}[x]} = \\lim_{x \\to 0} \\frac{2(4\\cos 4x)}{1} = \\lim_{x \\to 0} 8\\cos 4x = 8(1) = 8$$",
+      "shortcutSolutionMarkdown": "#### ⚡ 2-Second Small Angle Approximation\nSince $\\cos \\theta \\approx 1 - \\frac{\\theta^2}{2}$, $1 - \\cos 4x \\approx \\frac{(4x)^2}{2} = \\frac{16x^2}{2} = 8x^2$.\n$$\\lim_{x \\to 0} \\frac{8x^2}{x^2} = \\mathbf{8}$$.",
+      "formalTimeSeconds": 45,
+      "shortcutTimeSeconds": 2
+    },
+    {
+      "problemStatement": "Find the derivative of y = arctan(3x²).",
+      "formalSolutionMarkdown": "#### Step 1: Apply the inverse tangent derivative rule\n$$\\frac{d}{dx}[\\arctan u] = \\frac{u'}{1 + u^2}$$\n\n#### Step 2: Identify u and compute u'\n- $u = 3x^2$\n- $u' = 6x$\n- $u^2 = (3x^2)^2 = 9x^4$\n\n#### Step 3: Form the final derivative\n$$\\frac{dy}{dx} = \\frac{6x}{1 + 9x^4}$$",
+      "shortcutSolutionMarkdown": "#### ⚡ 3-Second Direct Rule\n$$\\frac{d(3x^2)}{1 + (3x^2)^2} = \\mathbf{\\frac{6x}{1 + 9x^4}}$$.",
+      "formalTimeSeconds": 30,
+      "shortcutTimeSeconds": 3
+    }
+  ],
+  "calculatorGuides": {
+    "karce": {
+      "techniqueTitle": "Numerical Derivative Verification at Test Point",
+      "problemType": "Verifying dy/dx against multiple-choice options",
+      "sampleProblem": "Find derivative of arctan(3x²) at x = 2.",
+      "mode": "RAD Mode",
+      "keystrokes": [
+        "SHIFT",
+        "d/dx",
+        "SHIFT",
+        "tan⁻¹",
+        "(",
+        "3",
+        "ALPHA",
+        "X",
+        "x²",
+        ")",
+        ",",
+        "2",
+        ")",
+        "="
+      ],
+      "notes": "Directly outputs 0.0827586. Evaluating 6(2)/(1 + 9(2⁴)) = 12/145 = 0.0827586 matches Choice A exactly."
+    },
+    "canon": {
+      "techniqueTitle": "Evaluating Limits via Small Increment Subsitution",
+      "problemType": "Limit of (1 - cos 4x) / x² as x ⟹ 0",
+      "sampleProblem": "Evaluate at x = 0.0001.",
+      "mode": "RAD Mode",
+      "keystrokes": [
+        "(",
+        "1",
+        "-",
+        "cos",
+        "(",
+        "4",
+        "×",
+        "0",
+        ".",
+        "0",
+        "0",
+        "0",
+        "1",
+        ")",
+        ")",
+        "÷",
+        "(",
+        "0",
+        ".",
+        "0",
+        "0",
+        "0",
+        "1",
+        ")",
+        "x²",
+        "="
+      ],
+      "notes": "Directly returns 7.999999 ≈ 8.0."
+    }
+  },
+  "conceptChecks": [
+    {
+      "id": "cc-math14-01",
+      "question": "What is the value of the limit lim_{x -> 0} (sin 7x) / (3x)?",
+      "options": [
+        "7/3",
+        "3/7",
+        "0",
+        "1"
+      ],
+      "correctAnswer": 0,
+      "explanation": "lim_{x -> 0} (sin 7x) / (3x) = (7/3) lim_{x -> 0} (sin 7x) / (7x) = (7/3)(1) = 7/3."
+    },
+    {
+      "id": "cc-math14-02",
+      "question": "What is the derivative of f(x) = ln(cos x)?",
+      "options": [
+        "-tan x",
+        "tan x",
+        "cot x",
+        "-cot x"
+      ],
+      "correctAnswer": 0,
+      "explanation": "f'(x) = (d/dx[cos x]) / (cos x) = (-sin x) / (cos x) = -tan x."
+    },
+    {
+      "id": "cc-math14-03",
+      "question": "Which of the following is the correct derivative of y = e^(5x²)?",
+      "options": [
+        "10x e^(5x²)",
+        "5x e^(5x²)",
+        "e^(10x)",
+        "10 e^(5x²)"
+      ],
+      "correctAnswer": 0,
+      "explanation": "By the chain rule: d/dx[e^(5x²)] = e^(5x²) × d/dx[5x²] = 10x e^(5x²)."
+    },
+    {
+      "id": "cc-math14-04",
+      "question": "What is the derivative of y = cosh(3x)?",
+      "options": [
+        "3 sinh(3x)",
+        "-3 sinh(3x)",
+        "3 cosh(3x)",
+        "-3 cosh(3x)"
+      ],
+      "correctAnswer": 0,
+      "explanation": "For hyperbolic cosine, d/dx[cosh u] = sinh u · u' (with positive sign), so d/dx[cosh 3x] = 3 sinh(3x)."
+    }
+  ]
+}
