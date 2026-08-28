@@ -46,7 +46,10 @@ export async function POST(req: NextRequest) {
       };
       const rawModel = model || "gemini-3.6-flash";
       const geminiModel = GEMINI_MODEL_ALIASES[rawModel] ?? rawModel;
-      const endpoint = `https://generativelanguage.googleapis.com/v1beta/models/${geminiModel}:streamGenerateContent?key=${encodeURIComponent(
+      const cleanGeminiModel = geminiModel.startsWith("models/")
+        ? geminiModel.replace("models/", "")
+        : geminiModel;
+      const endpoint = `https://generativelanguage.googleapis.com/v1beta/models/${cleanGeminiModel}:streamGenerateContent?alt=sse&key=${encodeURIComponent(
         apiKey.trim()
       )}`;
 
@@ -99,47 +102,41 @@ export async function POST(req: NextRequest) {
               if (done) break;
               buffer += decoder.decode(value, { stream: true });
 
-              // Gemini SSE / JSON chunks parsing
               const lines = buffer.split("\n");
               buffer = lines.pop() || "";
 
               for (const line of lines) {
                 const trimmed = line.trim();
-                if (!trimmed) continue;
+                if (!trimmed || trimmed.startsWith(":")) continue;
                 if (trimmed.startsWith("data:")) {
                   const jsonStr = trimmed.replace(/^data:\s*/, "");
                   if (jsonStr === "[DONE]") continue;
                   try {
                     const parsed = JSON.parse(jsonStr);
-                    const text =
-                      parsed.candidates?.[0]?.content?.parts?.[0]?.text || "";
-                    if (text) {
-                      controller.enqueue(new TextEncoder().encode(text));
-                    }
-                  } catch { }
-                } else if (trimmed.startsWith("[") || trimmed.startsWith("{")) {
-                  // Standard JSON array streaming chunk
-                  try {
-                    const cleaned = trimmed.replace(/^,/, "").replace(/\]$/, "");
-                    const parsed = JSON.parse(cleaned);
-                    const text =
-                      parsed.candidates?.[0]?.content?.parts?.[0]?.text || "";
-                    if (text) {
-                      controller.enqueue(new TextEncoder().encode(text));
+                    const parts = parsed.candidates?.[0]?.content?.parts;
+                    if (Array.isArray(parts)) {
+                      for (const part of parts) {
+                        if (part?.text) {
+                          controller.enqueue(new TextEncoder().encode(part.text));
+                        }
+                      }
                     }
                   } catch { }
                 }
               }
             }
 
-            if (buffer.trim()) {
+            if (buffer.trim().startsWith("data:")) {
               try {
-                const cleaned = buffer.trim().replace(/^,/, "").replace(/\]$/, "");
-                const parsed = JSON.parse(cleaned);
-                const text =
-                  parsed.candidates?.[0]?.content?.parts?.[0]?.text || "";
-                if (text) {
-                  controller.enqueue(new TextEncoder().encode(text));
+                const jsonStr = buffer.trim().replace(/^data:\s*/, "");
+                const parsed = JSON.parse(jsonStr);
+                const parts = parsed.candidates?.[0]?.content?.parts;
+                if (Array.isArray(parts)) {
+                  for (const part of parts) {
+                    if (part?.text) {
+                      controller.enqueue(new TextEncoder().encode(part.text));
+                    }
+                  }
                 }
               } catch { }
             }
@@ -184,7 +181,7 @@ export async function POST(req: NextRequest) {
             : {}),
         },
         body: JSON.stringify({
-          model: model || (provider === "deepseek" ? "deepseek-chat" : "gpt-4o"),
+          model: model || (provider === "deepseek" ? "deepseek-chat" : provider === "groq" ? "llama-3.3-70b-versatile" : "gpt-4o"),
           messages: openAiMessages,
           stream: true,
           temperature: 0.7,
@@ -226,7 +223,8 @@ export async function POST(req: NextRequest) {
 
                 try {
                   const parsed = JSON.parse(jsonStr);
-                  const content = parsed.choices?.[0]?.delta?.content || "";
+                  const delta = parsed.choices?.[0]?.delta;
+                  const content = delta?.content || delta?.reasoning_content || parsed.choices?.[0]?.text || "";
                   if (content) {
                     controller.enqueue(new TextEncoder().encode(content));
                   }

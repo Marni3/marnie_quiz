@@ -10,6 +10,8 @@ import {
   setStoredActiveProvider,
   getStoredActiveModel,
   setStoredActiveModel,
+  getStoredModelsForProvider,
+  setStoredModelsForProvider,
   exportStudyVault,
   importStudyVault,
 } from "@/lib/tutor/storage";
@@ -130,12 +132,16 @@ export function ByokModal({ isOpen, onClose, onKeysUpdated }: ByokModalProps) {
       setTestResult(null);
       setShowKey(false);
 
-      // Load stored model selections per provider
-      const stored: Partial<Record<AIProvider, string>> = {};
+      // Load stored models & model selections per provider
+      const storedSel: Partial<Record<AIProvider, string>> = {};
+      const storedMod: Partial<Record<AIProvider, ModelOption[]>> = {};
       PROVIDERS.forEach((p) => {
-        stored[p.id] = getStoredActiveModel(p.id);
+        storedSel[p.id] = getStoredActiveModel(p.id);
+        const cached = getStoredModelsForProvider(p.id);
+        if (cached) storedMod[p.id] = cached;
       });
-      setSelectedModels(stored);
+      setSelectedModels(storedSel);
+      setModels(storedMod);
     }
   }, [isOpen]);
 
@@ -150,8 +156,9 @@ export function ByokModal({ isOpen, onClose, onKeysUpdated }: ByokModalProps) {
         body: JSON.stringify({ provider, apiKey: apiKey.trim() }),
       });
       const data = await res.json();
-      if (data.models) {
+      if (data.models && Array.isArray(data.models) && data.models.length > 0) {
         setModels((prev) => ({ ...prev, [provider]: data.models }));
+        setStoredModelsForProvider(provider, data.models);
         setModelSource(data.source || "fallback");
         // If current selection isn't in the new list, reset to default
         const currentSel = selectedModels[provider];
@@ -163,13 +170,14 @@ export function ByokModal({ isOpen, onClose, onKeysUpdated }: ByokModalProps) {
             setStoredActiveModel(provider, rec.id);
           }
         }
+        if (onKeysUpdated) onKeysUpdated();
       }
     } catch {
-      // silently keep fallback list (will be fetched when modal loads models route returns fallback)
+      // silently keep fallback list
     } finally {
       setFetchingModels(false);
     }
-  }, [selectedModels]);
+  }, [selectedModels, onKeysUpdated]);
 
   // Auto-fetch when provider changes if we have a key and no models cached
   useEffect(() => {

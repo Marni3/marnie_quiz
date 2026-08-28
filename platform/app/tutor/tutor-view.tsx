@@ -23,6 +23,9 @@ import {
   getActiveSessionId,
   setActiveSessionId,
   getAndClearPendingReviewContext,
+  getStoredModelsForProvider,
+  setStoredModelsForProvider,
+  StoredModelOption,
 } from "@/lib/tutor/storage";
 import { MODEL_CATALOG, DEFAULT_MODELS } from "@/lib/tutor/prompts";
 import {
@@ -50,6 +53,7 @@ export function TutorView() {
   const [provider, setProvider] = useState<AIProvider>("gemini");
   const [model, setModel] = useState<string>("gemini-3.6-flash");
   const [hasKey, setHasKey] = useState(false);
+  const [availableModels, setAvailableModels] = useState<StoredModelOption[]>([]);
 
   // Chat sessions
   const [sessions, setSessions] = useState<ChatSession[]>([]);
@@ -65,6 +69,37 @@ export function TutorView() {
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
 
+  const loadModelsForProvider = (prov: AIProvider, key?: string) => {
+    const cached = getStoredModelsForProvider(prov);
+    if (cached && cached.length > 0) {
+      setAvailableModels(cached);
+      return;
+    }
+    const catalogList = MODEL_CATALOG.filter((m) => m.provider === prov).map((m) => ({
+      id: m.id,
+      name: m.name,
+      recommended: m.isRecommended,
+    }));
+    setAvailableModels(catalogList);
+
+    const apiKey = key !== undefined ? key : getStoredApiKey(prov);
+    if (apiKey && apiKey.trim()) {
+      fetch("/api/tutor/models", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ provider: prov, apiKey: apiKey.trim() }),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.models && Array.isArray(data.models) && data.models.length > 0) {
+            setAvailableModels(data.models);
+            setStoredModelsForProvider(prov, data.models);
+          }
+        })
+        .catch(() => {});
+    }
+  };
+
   // Initialize BYOK configs & sessions on mount
   useEffect(() => {
     const activeProv = getStoredActiveProvider();
@@ -74,6 +109,7 @@ export function TutorView() {
     setProvider(activeProv);
     setModel(activeMod);
     setHasKey(!!key && key.trim().length > 0);
+    loadModelsForProvider(activeProv, key);
 
     const storedSessions = getStoredSessions();
     setSessions(storedSessions);
@@ -150,6 +186,7 @@ export function TutorView() {
     setProvider(activeProv);
     setModel(activeMod);
     setHasKey(!!key && key.trim().length > 0);
+    loadModelsForProvider(activeProv, key);
   };
 
   const handleModelChange = (newModel: string) => {
@@ -331,7 +368,12 @@ export function TutorView() {
     }
   };
 
-  const availableModels = MODEL_CATALOG.filter((m) => m.provider === provider);
+  const hasCurrentModel = availableModels.some((m) => m.id === model);
+  const displayModels = hasCurrentModel
+    ? availableModels
+    : model
+    ? [{ id: model, name: model }, ...availableModels]
+    : availableModels;
 
   return (
     <div className="min-h-screen bg-[var(--background)] flex flex-col">
@@ -465,18 +507,18 @@ export function TutorView() {
               <select
                 value={model}
                 onChange={(e) => handleModelChange(e.target.value)}
-                className="bg-[var(--surface)] border border-[var(--border)] text-[var(--text)] text-xs rounded-xl px-2.5 py-1.5 focus:outline-none focus:border-primary font-mono"
+                className="bg-[var(--surface)] border border-[var(--border)] text-[var(--text)] text-xs rounded-xl px-2.5 py-1.5 focus:outline-none focus:border-primary font-mono max-w-[220px] sm:max-w-[320px] truncate"
               >
-                {availableModels.map((m) => (
+                {displayModels.map((m) => (
                   <option key={m.id} value={m.id}>
-                    {m.name}
+                    {m.name}{m.recommended ? " ⭐" : ""}
                   </option>
                 ))}
               </select>
 
               <button
                 onClick={() => setIsByokOpen(true)}
-                className="p-1.5 rounded-xl border border-[var(--border)] text-[var(--text2)] hover:text-primary hover:bg-[var(--surface)] transition-all"
+                className="p-1.5 rounded-xl border border-[var(--border)] text-[var(--text2)] hover:text-primary hover:bg-[var(--surface)] transition-all shrink-0"
                 title="Configure BYOK Key"
               >
                 <Key className="w-4 h-4" />
@@ -536,7 +578,7 @@ export function TutorView() {
                     Marnie AI Board Exam Tutor
                   </h2>
                   <p className="text-xs sm:text-sm text-[var(--text2)] max-w-md mx-auto">
-                    Bring-Your-Own-Key Socratic tutor trained on PRC ECE board exam questions, speed shortcuts, and formula derivations.
+                    Bring-Your-Own-Key AI tutor trained on PRC ECE board exam questions, speed shortcuts, and formula derivations.
                   </p>
                 </div>
 

@@ -66,6 +66,54 @@ export function ModuleReader({ module }: ModuleReaderProps) {
   // Active TOC Section on scroll
   const [activeSection, setActiveSection] = useState<string>("sec-prereq-bridges");
 
+  // Normalize Concept Checks so both Array and Object schemas across modules work seamlessly
+  const normalizedConceptChecks = useMemo(() => {
+    if (!module.conceptChecks || !Array.isArray(module.conceptChecks)) return [];
+    return module.conceptChecks.map((chk: any, idx: number) => {
+      const id = chk.id || `cc-${idx}`;
+      const question = chk.question || chk.questionText || "";
+
+      if (Array.isArray(chk.options)) {
+        const letters = ["A", "B", "C", "D"] as const;
+        const optionsObj: Record<string, string> = {};
+        const deconstructionObj: Record<string, string> = {};
+        let correctLetter: "A" | "B" | "C" | "D" = "A";
+
+        chk.options.forEach((opt: any, optIdx: number) => {
+          if (optIdx < 4) {
+            const letter = letters[optIdx];
+            const text = typeof opt === "string" ? opt : opt.text || "";
+            optionsObj[letter] = text;
+            deconstructionObj[letter] =
+              opt.distractorReason ||
+              (opt.isCorrect ? "Correct answer." : "Incorrect distractor.");
+            if (opt.isCorrect) {
+              correctLetter = letter;
+            }
+          }
+        });
+
+        return {
+          id,
+          question,
+          options: optionsObj,
+          correctAnswer: correctLetter,
+          distractorDeconstruction: deconstructionObj,
+          shortcutExplanation: chk.shortcutExplanation || chk.directExplanation || "",
+        };
+      }
+
+      return {
+        id,
+        question,
+        options: chk.options || {},
+        correctAnswer: (chk.correctAnswer || "A") as "A" | "B" | "C" | "D",
+        distractorDeconstruction: chk.distractorDeconstruction || {},
+        shortcutExplanation: chk.shortcutExplanation || "",
+      };
+    });
+  }, [module.conceptChecks]);
+
   const dynamicToc = useMemo(() => {
     const items: Array<{ id: string; title: string }> = [];
     if (module.prerequisiteBridge || (module.crossSubjectBridges && module.crossSubjectBridges.length > 0)) {
@@ -87,11 +135,11 @@ export function ModuleReader({ module }: ModuleReaderProps) {
     if (module.calculatorGuides) {
       items.push({ id: "sec-calculator", title: "7. Calculator Techniques" });
     }
-    if (module.conceptChecks && module.conceptChecks.length > 0) {
+    if (normalizedConceptChecks.length > 0) {
       items.push({ id: "sec-concept-checks", title: "8. Concept Checks" });
     }
     return items;
-  }, [module]);
+  }, [module, normalizedConceptChecks]);
 
   // Fetch initial progress on mount & record study session
   useEffect(() => {
@@ -183,7 +231,7 @@ export function ModuleReader({ module }: ModuleReaderProps) {
         topicCode: module.topicCode,
         domain: module.domain,
         conceptChecksCompleted: answeredCount,
-        conceptChecksTotal: module.conceptChecks.length,
+        conceptChecksTotal: normalizedConceptChecks.length,
         conceptChecksAccuracy: accuracy,
       }),
     }).catch((err) => console.warn("Failed to sync concept check score:", err));
@@ -434,7 +482,7 @@ export function ModuleReader({ module }: ModuleReaderProps) {
                   </h2>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 gap-4">
                   {module.formulas.map((item, idx) => (
                     <div
                       key={idx}
@@ -757,7 +805,7 @@ export function ModuleReader({ module }: ModuleReaderProps) {
               </div>
 
               <div className="space-y-6">
-                {module.conceptChecks?.map((chk, qIdx) => {
+                {normalizedConceptChecks.map((chk, qIdx) => {
                   const state = mcqState[chk.id];
                   const answered = !!state;
 

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { createPortal } from "react-dom";
 import { usePathname } from "next/navigation";
 import {
   MessageSquarePlus,
@@ -38,12 +39,17 @@ export function FeedbackModal({
   defaultCategory = "formatting",
 }: FeedbackModalProps) {
   const pathname = usePathname();
+  const [mounted, setMounted] = useState(false);
   const [category, setCategory] = useState(defaultCategory);
   const [comment, setComment] = useState("");
   const [moduleId, setModuleId] = useState(defaultModuleId || "");
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   useEffect(() => {
     if (isOpen) {
@@ -63,7 +69,7 @@ export function FeedbackModal({
     }
   }, [isOpen, pathname, defaultModuleId, defaultCategory]);
 
-  if (!isOpen) return null;
+  if (!isOpen || !mounted) return null;
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -112,7 +118,6 @@ export function FeedbackModal({
       setTimeout(() => onClose(), 1500);
     } catch (err: any) {
       console.warn("Feedback network save note:", err);
-      // localStorage already saved — still show success
       setSubmitted(true);
       setTimeout(() => onClose(), 1500);
     } finally {
@@ -120,12 +125,12 @@ export function FeedbackModal({
     }
   };
 
-  return (
+  const modalContent = (
     <div
-      className="fixed inset-0 z-[200] bg-black/60 backdrop-blur-sm flex items-center justify-center p-4"
+      className="fixed inset-0 z-[99999] bg-black/60 backdrop-blur-xs flex items-center justify-center p-4 overflow-y-auto"
       onClick={(e) => { if (e.target === e.currentTarget) onClose(); }}
     >
-      <div className="bg-[var(--surface)] border border-[var(--border)] rounded-2xl w-full max-w-md shadow-2xl flex flex-col max-h-[90vh]">
+      <div className="bg-[var(--surface)] border border-[var(--border)] rounded-2xl w-full max-w-md shadow-2xl flex flex-col my-auto max-h-[85vh] overflow-hidden animate-in fade-in zoom-in-95 duration-150">
 
         {/* Header */}
         <div className="flex items-center justify-between px-5 py-4 border-b border-[var(--border)] bg-[var(--surface2)] rounded-t-2xl shrink-0">
@@ -247,4 +252,6 @@ export function FeedbackModal({
       </div>
     </div>
   );
+
+  return createPortal(modalContent, document.body);
 }

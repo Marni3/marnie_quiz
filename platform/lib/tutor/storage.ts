@@ -10,6 +10,7 @@ const STORAGE_KEYS = {
   PENDING_REVIEW_CONTEXT: "marnie_tutor_pending_review_context",
   SAVED_FORMULAS: "marnie_tutor_saved_formulas",
   CUSTOM_MODULES: "marnie_tutor_custom_modules",
+  CACHED_MODELS: "marnie_cached_models",
 };
 
 export function getStoredActiveProvider(): AIProvider {
@@ -49,6 +50,31 @@ export function getStoredActiveModel(provider: AIProvider): string {
 export function setStoredActiveModel(provider: AIProvider, model: string): void {
   if (typeof window === "undefined") return;
   localStorage.setItem(`${STORAGE_KEYS.ACTIVE_MODEL}_${provider}`, model);
+}
+
+export interface StoredModelOption {
+  id: string;
+  name: string;
+  recommended?: boolean;
+}
+
+export function getStoredModelsForProvider(provider: AIProvider): StoredModelOption[] | null {
+  if (typeof window === "undefined") return null;
+  try {
+    const raw = localStorage.getItem(`${STORAGE_KEYS.CACHED_MODELS}_${provider}`);
+    if (!raw) return null;
+    const parsed = JSON.parse(raw);
+    return Array.isArray(parsed) && parsed.length > 0 ? parsed : null;
+  } catch {
+    return null;
+  }
+}
+
+export function setStoredModelsForProvider(provider: AIProvider, models: StoredModelOption[]): void {
+  if (typeof window === "undefined") return;
+  try {
+    localStorage.setItem(`${STORAGE_KEYS.CACHED_MODELS}_${provider}`, JSON.stringify(models));
+  } catch {}
 }
 
 export function getStoredApiKey(provider: AIProvider): string {

@@ -3,7 +3,7 @@ import { TutorView } from "./tutor-view";
 
 export const metadata = {
   title: "AI Tutor Workspace | Marnie Quiz",
-  description: "Personalized BYOK Socratic AI Tutor for Philippine PRC Electronics Engineering Board Exam prep.",
+  description: "Personalized BYOK AI Tutor for Philippine PRC Electronics Engineering Board Exam prep.",
 };
 
 export default function TutorPage() {

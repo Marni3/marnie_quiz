@@ -82,7 +82,7 @@ export function ChatMessageItem({ message, onTriggerAction }: ChatMessageProps) 
           <div className="flex items-center gap-2 pb-1 border-b border-[var(--border)] text-[10px] uppercase font-mono font-bold text-primary">
             <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
             <span>
-              {message.functionMode === "chat" && "AI Socratic Tutor"}
+              {message.functionMode === "chat" && "AI Tutor"}
               {message.functionMode === "custom_module" && "Custom Module & Tests"}
               {message.functionMode === "tricky_questions" && "Tricky Question Practice"}
               {message.functionMode === "formula_sheet" && "Formula Sheet Generator"}

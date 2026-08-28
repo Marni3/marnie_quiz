@@ -27,7 +27,7 @@ const ACTIONS: Array<{
   {
     mode: "chat",
     label: "AI Chat",
-    desc: "Socratic tutor, problem solver & speed shortcuts",
+    desc: "Conceptual tutor, problem solver & speed shortcuts",
     icon: MessageSquare,
     colorClass: "text-blue-500 bg-blue-500/10 border-blue-500/20",
     defaultPrompt: "Explain how to solve impedance matching and Smith Chart problems from first principles.",
