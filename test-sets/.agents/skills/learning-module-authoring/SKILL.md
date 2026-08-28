@@ -33,10 +33,12 @@ Modules are structured as an engaging, cohesive educational lesson rather than a
 
 ### Key Pedagogical Guidelines:
 
-1. **Explain the Theory First (Lesson Proper)**:
-   - Dive directly into explaining the concepts, physical principles, geometric proofs, and mathematical invariants in complete narrative prose before showing glossaries or summary tables.
-   - Use clear mental models, visual analogies, and a prominent **"Core Mental Anchor / Rule of Thumb"** callout box.
-   - Ground all equations in clear KaTeX notation with step-by-step contextual derivations.
+1. **Deep Narrative Lesson Proper (4-Layer Concept Framework)**:
+   Never present a dry list of bare equations or isolated bullet points. Every topic, theorem, or governing law in the **Lesson Proper** must be weaved into a 4-layer explanatory flow (Paul's Online Notes / Cisco Networking Academy style):
+   - **Layer 1: Intuitive Motivation / The "Why" (1–2 sentences)**: What physical intuition or geometric problem does this solve? Connect it to a tangible mental model (e.g. slope as elevation gained per step forward).
+   - **Layer 2: Governing Formula & Variable Breakdown**: State the clean KaTeX equation and immediately define what each symbol represents in context.
+   - **Layer 3: Behavioral Breakdown & Edge Cases**: Explain the physical/mathematical behavior across boundaries (e.g. what happens when slope is $0$ vs. undefined $\theta = 90^\circ$, why perpendicular slopes multiply to $-1$).
+   - **Layer 4: Board Exam Trap Alert & Practical Anchor**: Directly highlight the common algebraic trap or exam misconception (e.g. forgetting the negative sign in $m = -A/B$, or failing to scale parallel line coefficients $A, B$ to match).
 
 2. **Terms Section as an Indexed Reference Glossary**:
    - The **Terms and Definitions** section follows the lesson proper as a high-density summary and quick-reference lookup.

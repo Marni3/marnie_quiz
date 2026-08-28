@@ -378,7 +378,7 @@ export function ModuleReader({ module }: ModuleReaderProps) {
                     <span>Core Mental Anchor / Rule of Thumb</span>
                   </div>
                   <p className="text-sm font-semibold text-[var(--text)] leading-relaxed italic">
-                    &ldquo;{module.theory.mentalAnchor}&rdquo;
+                    <MathText text={`“${module.theory.mentalAnchor}”`} />
                   </p>
                 </div>
               )}

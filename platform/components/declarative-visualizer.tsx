@@ -144,19 +144,20 @@ export function DeclarativeVisualizer({
             })}
 
             {/* Bottom Canonical Summary Card */}
-            <g transform={`translate(${width / 2}, ${height - 35})`}>
+            <g transform={`translate(${width / 2}, ${height - 25})`}>
               <rect
                 x="-160"
-                y="-18"
+                y="-16"
                 width="320"
-                height="36"
+                height="32"
                 rx="8"
-                fill="currentColor"
-                className="fill-card stroke-border stroke"
+                fill="#18181b"
+                stroke="#3f3f46"
+                strokeWidth="1.2"
+                className="drop-shadow-md"
               />
-              <text x="0" y="5" textAnchor="middle" fill="currentColor" className="text-xs font-medium">
-                Canonical Decomposition:{" "}
-                <tspan className="font-mono font-bold fill-primary text-sm">{factorString || num}</tspan>
+              <text x="0" y="4" textAnchor="middle" fill="#f4f4f5" fontSize="11" fontWeight="500" fontFamily="monospace">
+                Canonical Decomposition: <tspan fill="#fb923c" fontWeight="bold">{factorString || num}</tspan>
               </text>
             </g>
           </svg>
@@ -288,15 +289,17 @@ export function DeclarativeVisualizer({
             <g transform={`translate(${width / 2}, ${height - 25})`}>
               <rect
                 x="-260"
-                y="-18"
+                y="-16"
                 width="520"
-                height="36"
-                rx="10"
-                fill="currentColor"
-                className="fill-card stroke-border stroke"
+                height="32"
+                rx="8"
+                fill="#18181b"
+                stroke="#3f3f46"
+                strokeWidth="1.2"
+                className="drop-shadow-md"
               />
-              <text x="0" y="5" textAnchor="middle" fill="currentColor" className="text-[11px] font-medium">
-                Line: <tspan className="font-mono font-bold fill-primary">y = {m.toFixed(2)}x {b >= 0 ? `+ ${b}` : `- ${Math.abs(b)}`}</tspan> • Slope: <tspan className="font-mono font-bold fill-cyan-400">m = {m.toFixed(2)}</tspan> • Distance to P: <tspan className="font-mono font-bold fill-rose-400">d = {dist.toFixed(2)} u</tspan>
+              <text x="0" y="4" textAnchor="middle" fill="#f4f4f5" fontSize="11" fontWeight="500" fontFamily="monospace">
+                Line: <tspan fill="#fb923c" fontWeight="bold">y = {m.toFixed(2)}x {b >= 0 ? `+ ${b}` : `- ${Math.abs(b)}`}</tspan> • Slope: <tspan fill="#38bdf8" fontWeight="bold">m = {m.toFixed(2)}</tspan> • Distance to P: <tspan fill="#fb7185" fontWeight="bold">d = {dist.toFixed(2)} u</tspan>
               </text>
             </g>
           </svg>
@@ -359,9 +362,9 @@ export function DeclarativeVisualizer({
 
             {/* Bottom HUD */}
             <g transform={`translate(${width / 2}, ${height - 25})`}>
-              <rect x="-220" y="-18" width="440" height="36" rx="10" fill="currentColor" className="fill-card stroke-border stroke" />
-              <text x="0" y="5" textAnchor="middle" fill="currentColor" className="text-[11px] font-medium">
-                Shoelace Area: <tspan className="font-mono font-bold fill-primary">{area.toFixed(1)} sq units</tspan> • Centroid G: <tspan className="font-mono font-bold fill-amber-400">({gx.toFixed(1)}, {gy.toFixed(1)})</tspan>
+              <rect x="-220" y="-16" width="440" height="32" rx="8" fill="#18181b" stroke="#3f3f46" strokeWidth="1.2" className="drop-shadow-md" />
+              <text x="0" y="4" textAnchor="middle" fill="#f4f4f5" fontSize="11" fontWeight="500" fontFamily="monospace">
+                Shoelace Area: <tspan fill="#fb923c" fontWeight="bold">{area.toFixed(1)} sq units</tspan> • Centroid G: <tspan fill="#fbbf24" fontWeight="bold">({gx.toFixed(1)}, {gy.toFixed(1)})</tspan>
               </text>
             </g>
           </svg>
@@ -482,17 +485,18 @@ export function DeclarativeVisualizer({
             {/* Bottom Status Banner */}
             <g transform={`translate(${width / 2}, ${height - 25})`}>
               <rect
-                x="-180"
-                y="-14"
-                width="360"
-                height="28"
-                rx="6"
-                fill="currentColor"
-                className="fill-card stroke-border stroke"
+                x="-200"
+                y="-16"
+                width="400"
+                height="32"
+                rx="8"
+                fill="#18181b"
+                stroke="#3f3f46"
+                strokeWidth="1.2"
+                className="drop-shadow-md"
               />
-              <text x="0" y="4" textAnchor="middle" fill="currentColor" className="text-xs">
-                Class: <tspan className="font-bold fill-primary">{conicType}</tspan> • Locus:{" "}
-                <tspan className="font-mono text-[11px] fill-muted-foreground">{formula}</tspan>
+              <text x="0" y="4" textAnchor="middle" fill="#f4f4f5" fontSize="11" fontWeight="500" fontFamily="monospace">
+                Class: <tspan fill="#fb923c" fontWeight="bold">{conicType}</tspan> • Locus: <tspan fill="#38bdf8" fontWeight="bold">{formula}</tspan>
               </text>
             </g>
           </svg>

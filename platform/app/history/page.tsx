@@ -87,6 +87,12 @@ export default async function HistoryPage() {
                     const total = item.totalQuestions || 1;
                     const pct = Math.round((score / total) * 100);
                     const isCompleted = !!item.completedAt;
+                    const targetLink = item.isMastery
+                      ? `/learn/${item.moduleId}/mastery`
+                      : `/quizzes/${item.questionSetId}`;
+                    const resultLink = item.isMastery
+                      ? `/learn/${item.moduleId}/mastery`
+                      : `/attempts/${item.id}/results`;
 
                     return (
                       <tr
@@ -95,10 +101,15 @@ export default async function HistoryPage() {
                       >
                         <td className="px-6 py-4 font-semibold text-[var(--text)]">
                           <Link
-                            href={`/quizzes/${item.questionSetId}`}
-                            className="hover:text-[var(--accent)] transition-colors"
+                            href={targetLink}
+                            className="hover:text-[var(--accent)] transition-colors inline-flex items-center gap-2"
                           >
-                            {item.setTitle}
+                            <span>{item.setTitle}</span>
+                            {item.isMastery && (
+                              <span className="px-1.5 py-0.5 text-[10px] uppercase tracking-wider font-bold rounded bg-purple-500/10 text-purple-600 dark:text-purple-400 border border-purple-500/20">
+                                Mastery
+                              </span>
+                            )}
                           </Link>
                         </td>
 
@@ -113,7 +124,13 @@ export default async function HistoryPage() {
                         </td>
 
                         <td className="px-6 py-4 capitalize text-[var(--text2)]">
-                          {item.mode.replace(/_/g, " ")}
+                          {item.isMastery ? (
+                            <span className="text-purple-600 dark:text-purple-400 font-medium">
+                              Mastery Challenge
+                            </span>
+                          ) : (
+                            item.mode.replace(/_/g, " ")
+                          )}
                         </td>
 
                         <td className="px-6 py-4">
@@ -150,15 +167,15 @@ export default async function HistoryPage() {
                           <div className="flex items-center justify-end gap-2">
                             {isCompleted ? (
                               <Link
-                                href={`/attempts/${item.id}/results`}
+                                href={resultLink}
                                 className="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-[var(--surface)] border border-[var(--border)] hover:border-[var(--accent)] text-[var(--accent)] text-xs font-semibold transition-colors"
                               >
-                                <span>Results</span>
+                                <span>{item.isMastery ? "Review" : "Results"}</span>
                                 <ExternalLink className="w-3 h-3" />
                               </Link>
                             ) : (
                               <Link
-                                href={`/attempts/${item.id}`}
+                                href={item.isMastery ? targetLink : `/attempts/${item.id}`}
                                 className="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-[var(--accent)] text-white text-xs font-semibold hover:brightness-110 transition-colors"
                               >
                                 Resume
@@ -166,9 +183,9 @@ export default async function HistoryPage() {
                             )}
 
                             <Link
-                              href={`/quizzes/${item.questionSetId}`}
+                              href={targetLink}
                               className="p-1.5 rounded-lg text-[var(--text3)] hover:text-[var(--accent)] hover:bg-[var(--surface)] transition-colors"
-                              title="Retake Quiz"
+                              title={item.isMastery ? "Retake Mastery Challenge" : "Retake Quiz"}
                             >
                               <RotateCcw className="w-4 h-4" />
                             </Link>

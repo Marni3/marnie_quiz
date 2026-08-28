@@ -5,10 +5,12 @@ import {
   questions,
   questionSets,
   questionSetItems,
+  userModuleProgress,
   Attempt,
 } from "./db/schema";
-import { eq, and, desc } from "drizzle-orm";
+import { eq, and, desc, isNotNull } from "drizzle-orm";
 import { getMockStore } from "./store";
+import { getAllLearningModules } from "./modules";
 import { randomUUID } from "crypto";
 
 export interface CreateAttemptInput {
@@ -16,6 +18,22 @@ export interface CreateAttemptInput {
   questionSetId: string;
   mode: "untimed" | "timed_per_question" | "timed_whole_exam";
   clientCreatedAt?: Date;
+}
+
+export interface AttemptHistoryItem {
+  id: string;
+  userId: string;
+  questionSetId: string;
+  mode: string;
+  startedAt: Date;
+  completedAt: Date | null;
+  durationSeconds: number | null;
+  score: number | null;
+  totalQuestions: number;
+  setTitle: string;
+  subjectTag: string | null;
+  isMastery?: boolean;
+  moduleId?: string;
 }
 
 export async function createAttempt(input: CreateAttemptInput): Promise<Attempt> {
@@ -105,23 +123,23 @@ export async function getAttemptForTaking(attemptId: string, userId: string) {
     // Fetch questions in order — SECURITY: correctChoice & explanation are omitted
     const items = await db
       .select({
-        orderIndex: questionSetItems.orderIndex,
-        q: questions,
+        item: questionSetItems,
+        question: questions,
       })
       .from(questionSetItems)
       .innerJoin(questions, eq(questionSetItems.questionId, questions.id))
-      .where(eq(questionSetItems.questionSetId, attempt.attempt.questionSetId))
+      .where(eq(questionSetItems.questionSetId, attempt.set.id))
       .orderBy(questionSetItems.orderIndex);
 
     const sanitizedQuestions: SanitizedQuestionForTaking[] = items.map((i) => ({
-      id: i.q.id,
-      orderIndex: i.orderIndex,
-      promptText: i.q.promptText,
-      choiceA: i.q.choiceA,
-      choiceB: i.q.choiceB,
-      choiceC: i.q.choiceC,
-      choiceD: i.q.choiceD,
-      imageUrl: i.q.imageUrl,
+      id: i.question.id,
+      orderIndex: i.item.orderIndex,
+      promptText: i.question.promptText,
+      choiceA: i.question.choiceA,
+      choiceB: i.question.choiceB,
+      choiceC: i.question.choiceC,
+      choiceD: i.question.choiceD,
+      imageUrl: i.question.imageUrl,
       subjectTag: attempt.set.subjectTag,
     }));
 
@@ -166,8 +184,12 @@ export async function getAttemptForTaking(attemptId: string, userId: string) {
   }
 }
 
-export async function getUserAttemptsHistory(userId: string) {
+export async function getUserAttemptsHistory(userId: string): Promise<AttemptHistoryItem[]> {
+  const modules = await getAllLearningModules();
+  const moduleMap = new Map(modules.map((m) => [m.id, m]));
+
   try {
+    // 1. Fetch standard quiz attempts
     const list = await db
       .select({
         attempt: attempts,
@@ -178,25 +200,113 @@ export async function getUserAttemptsHistory(userId: string) {
       .where(eq(attempts.userId, userId))
       .orderBy(desc(attempts.startedAt));
 
-    return list.map((item) => ({
-      ...item.attempt,
+    const standardAttempts: AttemptHistoryItem[] = list.map((item) => ({
+      id: item.attempt.id,
+      userId: item.attempt.userId,
+      questionSetId: item.attempt.questionSetId,
+      mode: item.attempt.mode,
+      startedAt: item.attempt.startedAt,
+      completedAt: item.attempt.completedAt,
+      durationSeconds: item.attempt.durationSeconds,
+      score: item.attempt.score,
+      totalQuestions: item.attempt.totalQuestions,
       setTitle: item.set.title,
       subjectTag: item.set.subjectTag,
+      isMastery: false,
     }));
+
+    // 2. Fetch module mastery attempts from userModuleProgress
+    const moduleProgressList = await db
+      .select()
+      .from(userModuleProgress)
+      .where(
+        and(
+          eq(userModuleProgress.userId, userId),
+          isNotNull(userModuleProgress.masteryScorePercent)
+        )
+      );
+
+    const masteryAttempts: AttemptHistoryItem[] = moduleProgressList.map((prog) => {
+      const mod = moduleMap.get(prog.moduleId);
+      const scorePct = prog.masteryScorePercent || 0;
+      const totalQ = 20;
+      const scoreNum = Math.round((scorePct / 100) * totalQ);
+
+      return {
+        id: `mastery-${prog.id}`,
+        userId: prog.userId,
+        questionSetId: prog.moduleId,
+        mode: "Mastery Challenge",
+        startedAt: prog.lastStudiedAt || prog.createdAt,
+        completedAt: prog.lastStudiedAt || prog.updatedAt,
+        durationSeconds: null,
+        score: scoreNum,
+        totalQuestions: totalQ,
+        setTitle: mod
+          ? `${mod.code}: ${mod.subtopicTitle} (Mastery Challenge)`
+          : `${prog.moduleId.toUpperCase()} (Mastery Challenge)`,
+        subjectTag: prog.domain,
+        isMastery: true,
+        moduleId: prog.moduleId,
+      };
+    });
+
+    return [...standardAttempts, ...masteryAttempts].sort(
+      (a, b) => new Date(b.startedAt).getTime() - new Date(a.startedAt).getTime()
+    );
   } catch (err) {
     console.warn("DB history fetch failed, reading fallback:", err);
     const store = getMockStore();
-    const list = Array.from(store.attempts.values())
+
+    const standardAttempts: AttemptHistoryItem[] = Array.from(store.attempts.values())
       .filter((a) => a.userId === userId)
-      .sort((a, b) => b.startedAt.getTime() - a.startedAt.getTime())
       .map((attempt) => {
         const set = store.questionSets.get(attempt.questionSetId);
         return {
-          ...attempt,
+          id: attempt.id,
+          userId: attempt.userId,
+          questionSetId: attempt.questionSetId,
+          mode: attempt.mode,
+          startedAt: attempt.startedAt,
+          completedAt: attempt.completedAt,
+          durationSeconds: attempt.durationSeconds,
+          score: attempt.score,
+          totalQuestions: attempt.totalQuestions,
           setTitle: set?.title || "Unknown Set",
           subjectTag: set?.subjectTag || null,
+          isMastery: false,
         };
       });
-    return list;
+
+    const masteryAttempts: AttemptHistoryItem[] = Array.from(store.userModuleProgress.values())
+      .filter((p) => p.userId === userId && p.masteryScorePercent !== null && p.masteryScorePercent !== undefined)
+      .map((prog) => {
+        const mod = moduleMap.get(prog.moduleId);
+        const scorePct = prog.masteryScorePercent || 0;
+        const totalQ = 20;
+        const scoreNum = Math.round((scorePct / 100) * totalQ);
+
+        return {
+          id: `mastery-${prog.id}`,
+          userId: prog.userId,
+          questionSetId: prog.moduleId,
+          mode: "Mastery Challenge",
+          startedAt: prog.lastStudiedAt || prog.createdAt,
+          completedAt: prog.lastStudiedAt || prog.updatedAt,
+          durationSeconds: null,
+          score: scoreNum,
+          totalQuestions: totalQ,
+          setTitle: mod
+            ? `${mod.code}: ${mod.subtopicTitle} (Mastery Challenge)`
+            : `${prog.moduleId.toUpperCase()} (Mastery Challenge)`,
+          subjectTag: prog.domain,
+          isMastery: true,
+          moduleId: prog.moduleId,
+        };
+      });
+
+    return [...standardAttempts, ...masteryAttempts].sort(
+      (a, b) => new Date(b.startedAt).getTime() - new Date(a.startedAt).getTime()
+    );
   }
 }
