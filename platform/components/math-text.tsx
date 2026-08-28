@@ -3,6 +3,7 @@
 import React, { useMemo } from "react";
 import katex from "katex";
 import "katex/dist/katex.min.css";
+import { InlineFigure, InlineFigureConfig } from "./inline-figure";
 
 interface MathTextProps {
   text: string | null | undefined;
@@ -28,7 +29,7 @@ export function MathText({
   );
 }
 
-// Parses multiline markdown blocks: headers, lists, horizontal rules, tables, and paragraphs
+// Parses multiline markdown blocks: headers, lists, horizontal rules, tables, diagrams, and paragraphs
 function renderMarkdownBlocks(markdown: string): React.ReactNode {
   // Normalize line endings
   const clean = markdown.replace(/\r\n/g, "\n");
@@ -42,6 +43,48 @@ function renderMarkdownBlocks(markdown: string): React.ReactNode {
 
     if (!trimmed) {
       i++;
+      continue;
+    }
+
+    // Fenced Diagram / Figure block (```diagram ... ``` or ```figure ... ```)
+    if (
+      trimmed.startsWith("```diagram") ||
+      trimmed.startsWith("```figure") ||
+      trimmed.startsWith("```json-diagram")
+    ) {
+      i++;
+      const jsonLines: string[] = [];
+      while (i < rawLines.length && !rawLines[i].trim().startsWith("```")) {
+        jsonLines.push(rawLines[i]);
+        i++;
+      }
+      if (i < rawLines.length && rawLines[i].trim().startsWith("```")) {
+        i++; // consume closing ```
+      }
+      try {
+        const config: InlineFigureConfig = JSON.parse(jsonLines.join("\n"));
+        elements.push(<InlineFigure key={`fig-${i}`} config={config} />);
+      } catch (err) {
+        console.warn("Failed to parse inline figure JSON:", err);
+      }
+      continue;
+    }
+
+    // Blockquote (> ...)
+    if (trimmed.startsWith("> ")) {
+      const quoteLines: string[] = [];
+      while (i < rawLines.length && rawLines[i].trim().startsWith(">")) {
+        quoteLines.push(rawLines[i].trim().replace(/^>\s*/, ""));
+        i++;
+      }
+      elements.push(
+        <div
+          key={`quote-${i}`}
+          className="bg-amber-500/10 border-l-4 border-l-amber-500 border border-amber-500/20 rounded-r-xl p-3.5 my-3 text-sm text-[var(--text)] leading-relaxed"
+        >
+          <InlineFormattedText content={quoteLines.join(" ")} />
+        </div>
+      );
       continue;
     }
 
