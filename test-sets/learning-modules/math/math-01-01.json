@@ -121,31 +121,22 @@
     }
   ],
   "visualizer": {
-    "archetype": "geometric",
-    "title": "Interactive Prime Factor Decomposition & Venn Engine",
-    "description": "Adjust numbers A and B to inspect their prime factor trees, the overlapping intersection (GCF), and the total union (LCM).",
+    "archetype": "factor_tree",
+    "title": "Interactive Prime Factor Tree & Canonical Decomposition",
+    "description": "Adjust the number slider to inspect its prime factor branches, individual prime powers, and canonical prime factorization.",
     "config": {
       "canvasWidth": 640,
       "canvasHeight": 320,
       "controls": [
         {
-          "id": "numA",
-          "label": "Number A",
+          "id": "number",
+          "label": "Integer to Factor",
           "min": 12,
           "max": 360,
-          "step": 12,
+          "step": 6,
           "defaultValue": 72
-        },
-        {
-          "id": "numB",
-          "label": "Number B",
-          "min": 12,
-          "max": 360,
-          "step": 12,
-          "defaultValue": 120
         }
-      ],
-      "renderFunction": "function(ctx, width, height, state) { const numA = state.numA || 72; const numB = state.numB || 120; function getPrimeFactors(n) { const factors = []; let d = 2; while (d * d <= n) { while (n % d === 0) { factors.push(d); n /= d; } d++; } if (n > 1) factors.push(n); return factors; } function gcd(a, b) { return b === 0 ? a : gcd(b, a % b); } const gcfVal = gcd(numA, numB); const lcmVal = (numA * numB) / gcfVal; const fA = getPrimeFactors(numA); const fB = getPrimeFactors(numB); const fCommon = getPrimeFactors(gcfVal); const fAOnly = [...fA]; const fBOnly = [...fB]; fCommon.forEach(f => { const idxA = fAOnly.indexOf(f); if (idxA !== -1) fAOnly.splice(idxA, 1); const idxB = fBOnly.indexOf(f); if (idxB !== -1) fBOnly.splice(idxB, 1); }); ctx.fillStyle = '#0f172a'; ctx.fillRect(0, 0, width, height); const cY = height / 2; const cXA = width / 2 - 75; const cXB = width / 2 + 75; const r = 85; ctx.beginPath(); ctx.arc(cXA, cY, r, 0, Math.PI * 2); ctx.fillStyle = 'rgba(59, 130, 246, 0.25)'; ctx.fill(); ctx.lineWidth = 2.5; ctx.strokeStyle = '#3b82f6'; ctx.stroke(); ctx.beginPath(); ctx.arc(cXB, cY, r, 0, Math.PI * 2); ctx.fillStyle = 'rgba(234, 179, 8, 0.25)'; ctx.fill(); ctx.strokeStyle = '#eab308'; ctx.stroke(); ctx.fillStyle = '#93c5fd'; ctx.font = 'bold 13px sans-serif'; ctx.textAlign = 'center'; ctx.fillText('A = ' + numA, cXA - 40, cY - 95); ctx.fillText('Factors: [' + fAOnly.join(', ') + ']', cXA - 40, cY); ctx.fillStyle = '#fde047'; ctx.fillText('B = ' + numB, cXB + 40, cY - 95); ctx.fillText('Factors: [' + fBOnly.join(', ') + ']', cXB + 40, cY); ctx.fillStyle = '#4ade80'; ctx.font = 'bold 14px sans-serif'; ctx.fillText('Intersection (GCF)', width / 2, cY - 40); ctx.font = 'bold 12px sans-serif'; ctx.fillText('[' + fCommon.join(', ') + ']', width / 2, cY - 15); ctx.fillStyle = '#38bdf8'; ctx.font = 'bold 14px sans-serif'; ctx.fillText('GCF: ' + gcfVal, width / 2, height - 35); ctx.fillStyle = '#f472b6'; ctx.fillText('LCM: ' + lcmVal, width / 2, height - 15); }"
+      ]
     }
   },
   "theory": {

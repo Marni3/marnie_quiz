@@ -18,7 +18,8 @@ The platform is designed to provide an optimal study experience for PRC ECE boar
 
 - **$0 Permanent Free Tier:** Hosted on Vercel Edge with Neon PostgreSQL Serverless ($0 hobby tier) and Drizzle ORM. Zero paid dependencies, zero converting free trials.
 - **Server-Side Grading:** Grading and score calculations are strictly computed server-side in API routes; client payloads are never trusted for grading.
-- **Sandboxed Interactive Modules:** Any standalone interactive HTML learning module or question rendering `interactive_html` is delivered inside an isolated iframe (`sandbox="allow-scripts"`, strictly no `allow-same-origin`).
+- **Declarative & Safe Visualizations:** No arbitrary runtime JavaScript evaluation (`new Function` / `eval`). Interactive modules use typed, declarative React/SVG components parameterized by JSON schemas, eliminating XSS risks and protecting client-side BYOK API keys.
+- **Git-Lean Asset Strategy:** To avoid repository bloat and GitHub storage limits, diagrams are generated programmatically (lightweight SVGs or Python/matplotlib/schemdraw vector assets) rather than committing heavy raster images.
 - **Secret Hygiene:** Database credentials and auth secrets live strictly in `.env.local` and Vercel project environment settings—never in git commits.
 
 ---
@@ -145,117 +146,284 @@ $$BRI = 	ext{Accuracy} 	imes 	ext{Average Retention} 	imes \sqrt{rac{	ext{Compl
 - **End-of-Module Strategy Catalog:** A comprehensive summary table indexing all common question archetypes for that topic and their matching speed shortcuts.
 
 ### 6.3. Puzzle-Game Progression & Paired 1-to-1 Mastery Sets
-Following puzzle-game design principles (*Introduce in Isolation $	o$ Practice Isolated Mechanic $	o$ Apply with Creative Complexity*):
+Following puzzle-game design principles (*Introduce in Isolation $\to$ Practice Isolated Mechanic $\to$ Apply with Creative Complexity*):
 1. **In-Module Micro-Checkpoints (8–15+):** Introduce techniques one-by-one with immediate, low-friction checks.
 2. **Paired 1-to-1 Mastery Challenge Test Set:**
    - Each module links directly to a partnered 20–30 question **Mastery Challenge Set**.
    - Tests every single shortcut and concept taught in the module with realistic, challenging board exam numbers, tricky distractor options, and multi-concept combinations.
 
+### 6.4. Visual Assets, Declarative Visualizers & Git-Lean Diagram Strategy
+- **Declarative Visualizers (Zero Raw Executable Code in JSON):**
+  - When interactive parameter sliders or graphs provide high pedagogical value (e.g., Conic Eccentricity Visualizer, RLC Resonance Frequency Response, AC Phasor Diagrams), they are built as **typed, pre-compiled React/SVG components**.
+  - Module JSON files only provide structured declarative parameters (e.g., `type: "conic_explorer"`, `params: { a: 5, b: 3, e: 0.8 }`, `controls: [...]`).
+  - Raw executable JavaScript strings (`renderFunction`) and dynamic `new Function()` / `eval()` executions are strictly prohibited, eliminating XSS vectors and protecting client-side BYOK API keys.
+- **Git-Lean Vector Diagram Generation:**
+  - **Programmatic SVG/Scripted Diagrams (Primary):** Technical schematics (circuits, logic gates, block diagrams, Smith charts) are generated via local Python scripts (`matplotlib`, `schemdraw`, vector SVGs) or inline SVGs.
+  - **Zero Repository Clutter / Size Limits:** To respect GitHub file and repo size limits, heavy bitmap images (PNG/JPEG) are avoided in git commits. Scalable, lightweight vector graphics ($\le 10\text{ KB}$ per diagram) are used instead.
+  - **Antigravity AI Generation (Targeted Conceptual Illustrations):** When a physical real-world analogy or non-schematic illustration is needed, images are generated via Antigravity image generation and compressed into modern web formats before referencing.
+
+---
+
 ## 7. AI Tutor Architecture, BYOK Integration & Standardized Prompts
 
-### 7.1. BYOK Provider Candidates & Failover Routing
-Users can connect their own free API keys in Settings (`/settings` or stored in browser `localStorage`), ensuring **$0 host infrastructure cost**:
+### 7.1. Bring-Your-Own-Key (BYOK) Architectural Model
+To deliver intelligent AI tutoring, dynamic test generation, and personalized concept debriefs while maintaining our **hard constraint of $0 perpetual host infrastructure cost**, the platform operates on a **Bring-Your-Own-Key (BYOK)** model. 
 
-| Provider | Recommended Model | Free Tier Allocation | Key Strengths |
+Examinees provide their own free API keys in Settings (`/settings`), which are managed with strict client-side privacy:
+- **Client-Side Key Vault:** API keys are stored exclusively in the browser's `localStorage` (with optional Web Crypto API / AES-GCM obfuscation). Keys are never written to the Neon PostgreSQL database, never logged, and never transmitted to third parties.
+- **Direct Client-to-Provider & Stateless Edge Proxy:** Requests execute either directly from the client browser to provider endpoints (using CORS-enabled SDKs) or via an ephemeral, stateless Next.js edge route (`/api/ai/proxy`) that attaches the examinee's client-supplied key without logging.
+
+| Provider | Recommended Model | Free Tier Allocation | Key Strengths & Use Cases |
 |---|---|---|---|
-| **Google AI Studio** *(Primary)* | `gemini-1.5-flash` / `gemini-2.0-flash` | **15 RPM • 1M TPM • 1,500 RPD** | Massive context window, superior math/diagram reasoning, generous permanent free quota. |
-| **Groq Cloud** *(Secondary)* | `llama-3.3-70b-versatile` | **30 RPM • 14,400 RPD** | Ultra-low latency (>300 tokens/sec), instant streaming feedback. |
-| **OpenRouter** *(Fallback)* | `meta-llama/llama-3.3-70b:free` | **Variable free models** | Universal OpenAI-compatible gateway; single key accesses multiple open-source models. |
+| **Google AI Studio** *(Primary)* | `gemini-1.5-flash` / `gemini-2.0-flash` | **15 RPM • 1M TPM • 1,500 RPD** | Massive 1M+ context window, superior multi-step math/circuit reasoning, generous permanent free tier. Ideal for deep module analysis and full-length exam debriefs. |
+| **Groq Cloud** *(Secondary)* | `llama-3.3-70b-versatile` | **30 RPM • 14,400 RPD** | Ultra-low latency (>300 tokens/sec), instant streaming feedback. Ideal for real-time Socratic hint chats and quick 10-second math shortcut derivations. |
+| **OpenRouter** *(Fallback)* | `meta-llama/llama-3.3-70b:free` / `deepseek-chat` | **Variable Free Quotas** | Universal OpenAI-compatible gateway; single key provides access to multiple backup open models during provider outages. |
 
-#### Client-Side Automatic Failover Routing
-Is multi-provider failover difficult? **No.** A lightweight, 25-line TypeScript client router attempts the primary provider (e.g., Google AI Studio); on HTTP 429 (rate limit) or network error, it automatically falls back to Groq or OpenRouter with zero user disruption:
+#### Client-Side Automatic Failover Router
+A resilient client router dispatches requests to the primary provider (Google AI Studio), seamlessly catching rate limits (HTTP 429), timeouts, or service errors, and failing over to secondary providers without interrupting the examinee:
+
 ```typescript
-async function fetchAITutor(prompt: string, keys: UserApiKeys): Promise<ReadableStream> {
-  const providers = [
-    { name: "gemini", fn: () => callGemini(prompt, keys.google) },
-    { name: "groq", fn: () => callGroq(prompt, keys.groq) },
-    { name: "openrouter", fn: () => callOpenRouter(prompt, keys.openrouter) },
-  ].filter(p => !!keys[p.name]);
+// platform/lib/ai/router.ts
+export interface UserApiKeys {
+  google?: string;
+  groq?: string;
+  openrouter?: string;
+}
 
+export async function fetchAITutorStream(
+  messages: Array<{ role: "system" | "user" | "assistant"; content: string }>,
+  keys: UserApiKeys,
+  options?: { jsonMode?: boolean; schema?: any }
+): Promise<ReadableStream<Uint8Array>> {
+  const providers = [
+    { name: "google", fn: () => callGeminiStream(messages, keys.google!, options) },
+    { name: "groq", fn: () => callGroqStream(messages, keys.groq!, options) },
+    { name: "openrouter", fn: () => callOpenRouterStream(messages, keys.openrouter!, options) },
+  ].filter(p => !!keys[p.name as keyof UserApiKeys]);
+
+  if (providers.length === 0) {
+    throw new Error("No AI API keys configured. Please add a free Google Gemini or Groq key in Settings.");
+  }
+
+  let lastError: Error | null = null;
   for (const provider of providers) {
     try {
       return await provider.fn();
-    } catch (err) {
-      console.warn(`Provider ${provider.name} failed, falling back...`, err);
+    } catch (err: any) {
+      console.warn(`[AI Router] Provider ${provider.name} failed (${err.message}). Falling back to next provider...`);
+      lastError = err;
     }
   }
-  throw new Error("All configured AI providers exceeded quota or failed.");
+
+  throw new Error(`All configured AI providers failed. Last error: ${lastError?.message || "Unknown error"}`);
 }
 ```
 
 ---
 
-### 7.2. Standardized AI System Prompts & Structured Response Schema
+### 7.2. Multi-System Integration Matrix
+The BYOK AI engine is deeply interwoven into three foundational review workflows:
 
-#### System Prompt Persona: Pragmatic Board Exam Topnotcher Mentor
+```mermaid
+graph TD
+    A[BYOK AI Engine] --> B[1. Interactive Learning Modules /learn]
+    A --> C[2. Post-Exam Debrief & Socratic Solver]
+    A --> D[3. Dynamic Weakness Drill Generator]
+    
+    B --> B1[Selected Text Explainer Popover]
+    B --> B2[1-Click Note Card Condensation]
+    B --> B3[Parametric Formula Deriver]
+    
+    C --> C1[Exam Misconception Pattern Analyzer]
+    C --> C2[4-Stage Socratic Hint Ladder]
+    C --> C3[Distractor Algebra Trap Explainer]
+    
+    D --> D1[FSRS Weakness Drill Generator]
+    D --> D2[Isomorphic Problem Variations]
+    D --> D3[Custom Board Simulation Sets]
 ```
-You are an expert PRC Electronics Engineering (ECE) Board Examination Topnotcher Mentor. 
-Your goal is to provide crisp, intuitive, high-speed explanations for engineering examinees.
 
-CRITICAL GUIDELINES:
-1. Avoid verbose academic fluff or robotic textbook preamble.
-2. Ground every mathematical concept in intuitive, accessible standard English.
-3. Always contrast the typical long academic solution with the fastest board exam technique or Casio fx-991ES calculator trick.
-4. Structure your response EXACTLY according to the standardized Note-Card format so the student can save it directly to their personal Notes.
+#### System A: AI-Generated Notes & Module Supplements (`/learn` and `/notes`)
+1. **Selected-Text Explainer Popover:** While reading any learning module, selecting a paragraph or formula displays a floating action bar:
+   - `[ 💡 Explain Intuitively ]`: Converts dense academic derivations into physical analogies (e.g., hydraulic analogy for voltage, momentum for inductors).
+   - `[ ⚡ Derive Board Shortcut ]`: Generates a $\le 15\text{s}$ calculator technique or ratio shortcut for the selected concept.
+   - `[ 📝 Save to Notes ]`: Formats the explanation into our standardized note card and saves it.
+2. **Formula Sheet & Mnemonic Synthesizer:** Compiles all formulas from a topic into a condensed 1-page cheat sheet with memory anchors.
+
+#### System B: AI Explainers & Socratic Tutor (`/quizzes` Runner & `/attempts/[id]/results`)
+1. **Post-Exam Automated Debriefing:** On the exam results screen, clicking **"🤖 Start AI Exam Debrief"** analyzes all incorrectly answered questions across the attempt, identifying root error archetypes:
+   - *Formula Misapplication* (e.g., used series impedance formula in a parallel branch).
+   - *Unit & Conversion Traps* (e.g., forgot $\text{kHz} \to \text{Hz}$ or $\text{dB} \to \text{Linear}$).
+   - *Stem Misreading* (e.g., missed *"which of the following is NOT..."*).
+2. **4-Stage Socratic Hint Ladder:** During practice drills (or post-exam review), the AI acts as a patient coach, delivering progressive hints rather than immediately spoiling the answer:
+   - *Level 1 (Intuitive Hook):* Reminds the student of the core physical principle without math.
+   - *Level 2 (Governing Formula):* Displays the exact formula in KaTeX.
+   - *Level 3 (Algebraic Setup):* Shows the numerical substitution with given values.
+   - *Level 4 (Board Exam Shortcut & Keystrokes):* Unlocks the 15-second Casio/Karce/Canon keystroke shortcut.
+
+#### System C: Dynamic Test-Set & Weakness Drill Generator
+1. **"Target My Weaknesses" Generator:** Using the examinee's live FSRS Retention Radar, the AI generates a customized 10-question drill focused precisely on subtopics where Retrievability $R < 70\%$ or recent accuracy was low.
+2. **Isomorphic Problem Generator:** Generates parallel practice problems with randomized parameters and fresh distractor numbers to test deep mathematical mastery and prevent rote memorization of answer keys.
+
+---
+
+### 7.3. Parsing Rigor, Math Rendering & Structured Output Guarantees
+To prevent malformed LaTeX, broken JSON schemas, or garbled text from degrading the examinee's experience, the platform enforces strict structural formatting safeguards:
+
+#### 1. Mathematical Notation Standards (KaTeX)
+The AI system prompts strictly mandate standard LaTeX math syntax:
+- **Inline Formulas:** Must be enclosed in single dollar signs: `$E = mc^2$`, `$\text{GCF}(a,b) = 24$`.
+- **Display / Block Equations:** Must be enclosed in double dollar signs: `$$\int_0^\infty e^{-st} f(t) \, dt$$`.
+- **Pre-Sanitization Engine (`MathText`):** Before rendering, all AI outputs pass through a resilient regex pre-processor in [`platform/components/math-text.tsx`](file:///c:/Users/reyna/OneDrive/Documents/marnie_quiz/platform/components/math-text.tsx) that:
+  - Replaces isolated brackets `\[ ... \]` and `\( ... \)` with standard `$$ ... $$` and `$ ... $`.
+  - Normalizes unescaped LaTeX backslashes (e.g., `\alpha`, `\frac`, `\sqrt`).
+  - Renders markdown tables, headers, and bulleted lists cleanly alongside math.
+
+#### 2. Strict Structured Outputs & Schema Auto-Repair
+When generating dynamic quiz sets, the system leverages native JSON mode (`response_format: { type: "json_object" }` on Gemini and Groq) with a strict TypeScript/Zod schema:
+
+```typescript
+// Dynamic Quiz Question Schema
+export interface AIGeneratedQuestion {
+  stem: string;
+  options: {
+    A: string;
+    B: string;
+    C: string;
+    D: string;
+  };
+  correctChoice: "A" | "B" | "C" | "D";
+  formalSolution: string;
+  shortcutSolution: string;
+  distractorTraps: {
+    A?: string;
+    B?: string;
+    C?: string;
+    D?: string;
+  };
+  calculatorKeystrokes?: string;
+}
 ```
 
-#### Standardized Output Format (1-Click "Save to Notes" Schema)
-Every AI Tutor response outputs structured markdown conforming to a standardized card format:
+- **Resilient JSON Parser:** If a provider output contains markdown code fences (````json ... ````), leading/trailing commentary, or trailing commas, the client parser automatically strips wrappers and sanitizes syntax before validation.
+
+---
+
+### 7.4. Conversation Storage Strategy: 100% Local-First Storage
+To honor our **$0 perpetual cost rule**, preserve complete examinee privacy, and eliminate database bloat, the platform implements a **Local-First Conversation Architecture**:
+
+```mermaid
+graph LR
+    User[Examinee Browser] -->|Prompts & Questions| LLM[BYOK Provider Gemini/Groq]
+    LLM -->|Streaming Responses| User
+    User -->|Auto-Save Full Chat History| IDB[(Browser IndexedDB)]
+    User -.->|Explicit 'Pin to Cloud' Only| Neon[(Neon PostgreSQL)]
+```
+
+#### 1. Zero Conversational Chat Logs in Neon PostgreSQL
+- **Zero Database Bloat:** Raw AI chat transcripts, Socratic dialogue logs, and debugging sessions are **NEVER saved to Neon PostgreSQL**.
+- **Privacy First:** Chat histories reside solely on the examinee's physical device.
+- **Zero Connection Overhead:** Massive multi-turn conversations do not consume serverless DB compute hours or database storage quota.
+
+#### 2. Local Storage Implementation (`IndexedDB` via `idb-keyval`)
+- All conversational threads are stored locally in the browser's **IndexedDB** under the `marnie_ai_conversations` store:
+  ```typescript
+  export interface LocalConversationThread {
+    id: string; // UUID
+    type: "module_explainer" | "post_exam_debrief" | "socratic_tutor" | "weakness_drill";
+    contextId?: string; // e.g. "math-01-01" or attemptId
+    title: string;
+    createdAt: number;
+    updatedAt: number;
+    messages: Array<{
+      id: string;
+      role: "user" | "assistant" | "system";
+      content: string;
+      timestamp: number;
+    }>;
+  }
+  ```
+- **Storage Limits & LRU Eviction:** IndexedDB provides $> 500\text{ MB}$ of local storage per origin—sufficient for tens of thousands of conversations. An automatic LRU (Least Recently Used) policy prunes conversations older than 90 days if local space exceeds $100\text{ MB}$.
+- **Export & Import Backup:** Students can export their full conversation history and generated practice drills as a single `.json` or `.md` archive at any time from Settings.
+
+#### 3. Cloud Synchronization for Finalized Notes Only
+- Only when an examinee explicitly clicks **"📌 Save to My Notebook"** on an AI note card is a lightweight Markdown record ($\approx 350\text{ bytes}$) saved to the Neon `notes` table for cross-device synchronization:
+  ```sql
+  CREATE TABLE notes (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    user_id UUID REFERENCES users(id) ON DELETE CASCADE,
+    topic_code TEXT NOT NULL,
+    title TEXT NOT NULL,
+    content TEXT NOT NULL,
+    tags TEXT[],
+    created_at TIMESTAMP DEFAULT now() NOT NULL
+  );
+  ```
+  *(10,000 saved note cards consume less than $3.5\text{ MB}$, using $< 1\%$ of Neon's permanent $500\text{ MB}$ free tier).*
+
+---
+
+### 7.5. Standardized System Prompts & Structured Card Schemas
+
+#### Persona System Prompt: PRC ECE Board Exam Topnotcher Mentor
 ```markdown
-### 💡 Concept Breakdown: [Topic / Question Title]
+You are an expert PRC Electronics Engineering (ECE) Board Examination Topnotcher Mentor.
+Your mission is to provide crisp, intuitive, high-speed explanations and derivations for engineering examinees.
 
-**1. Misconception / Trap Identified:**
-> [1-2 sentences explaining why the wrong choice was enticing or where the sign/formula error occurred]
+CRITICAL PEDAGOGICAL GUIDELINES:
+1. Ground every mathematical concept in intuitive standard English; eliminate academic fluff.
+2. Always contrast the typical academic long derivation with the fastest PRC board exam shortcut or Casio/Karce/Canon calculator technique.
+3. Use exact KaTeX formatting: `$ ... $` for inline math and `$$ ... $$` for display equations.
+4. When explaining missed questions, explicitly identify the distractor trap (e.g. sign error, inverse ratio, unit conversion trap).
+5. When asked to generate notes, format them strictly according to the Standardized Note Card Schema.
+```
 
-**2. Core Principle & Formula:**
-$$	ext{Formula in KaTeX}$$
-*Plain-English intuition of what the variables actually represent.*
+#### Standardized Note Card Output Schema
+```markdown
+### 💡 [Topic / Concept Title]
 
-**3. Board Exam Speed Shortcut / Calculator Technique:**
-- *Typical Long Method:* [Brief 1-sentence description of the tedious derivation]
-- *Board Exam Shortcut:* [Step-by-step 15-second shortcut, ratio trick, or Casio fx-991ES mode setup]
+**1. Intuitive Physical Principle:**
+*Plain-English explanation of what is actually happening physically or geometrically.*
 
-**4. 📝 High-Yield Takeaway Note:**
-> [A self-contained 2-sentence mnemonic or rule-of-thumb ready for revision]
+**2. Governing Formula & Parameters:**
+$$\text{Formula in KaTeX}$$
+- $V$: Parameter description and SI unit ($\text{Unit}$)
+- $I$: Parameter description and SI unit ($\text{Unit}$)
+
+**3. Board Exam Shortcut & Calculator Technique:**
+- *Academic Long Method:* [1-sentence summary of typical long textbook derivation]
+- *⚡ Board Exam Speed Technique:* [15-second shortcut, ratio trick, or Karce/Canon keystroke setup]
+
+**4. ⚠️ Common Exam Distractor Trap:**
+> [1 sentence explaining the classic algebraic or conceptual pitfall set by PRC board examiners]
+
+**5. 📝 High-Yield Takeaway Rule:**
+> [A crisp 1-sentence mnemonic or rule of thumb for instant recall]
 ```
 
 ---
 
-### 7.3. Compute & Storage Impact Evaluation ($0 Cost Assessment)
+### 7.6. Phased AI Tutor Roadmap
 
-- **Compute Impact:** **$0.** All LLM API calls are executed client-to-provider directly or streamed via stateless Next.js edge API routes. The host platform incurs zero GPU/LLM inference costs.
-- **Storage Impact on Neon PostgreSQL:**
-  - The `notes` table stores lightweight Markdown text:
-    ```sql
-    CREATE TABLE notes (
-      id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-      user_id UUID REFERENCES users(id) ON DELETE CASCADE,
-      topic_code TEXT NOT NULL,
-      title TEXT NOT NULL,
-      content TEXT NOT NULL,
-      tags TEXT[],
-      created_at TIMESTAMP DEFAULT now() NOT NULL
-    );
-    ```
-  - An average note card is $pprox 350	ext{ bytes}$.
-  - **10,000 saved notes** consume only **$pprox 3.5	ext{ MB}$**, which is less than $1\%$ of Neon's permanent $500	ext{ MB}$ free tier!
+```
+[➔] Phase 4.7: BYOK API Key Vault & Client-Side Failover Router
+    • Secure localStorage key management for Google AI Studio, Groq Cloud, OpenRouter
+    • Zero-latency automatic failover router with HTTP 429 catch and fallback
+
+[➔] Phase 4.8: In-Module Context AI Explainer & Local Chat Storage
+    • Floating text selection toolbar in /learn reader ([Explain Intuitively], [Derive Shortcut])
+    • Local IndexedDB conversation history store with JSON/Markdown export
+
+[➔] Phase 4.9: Post-Exam AI Debriefing & Socratic Hint Ladder
+    • 1-Click "Start AI Exam Debrief" on /attempts/[id]/results analyzing missed questions
+    • 4-level progressive Socratic hint modal inside practice drills
+
+[➔] Phase 4.10: Dynamic Weakness Drill & Isomorphic Question Generator
+    • FSRS-driven "Target My Weaknesses" drill generator with structured JSON schema validation
+    • 1-Click "Save AI Note" persistence to Neon DB /notes repository
+```
 
 ---
-
-### 7.4. Phased AI Roadmap
-
-```
-[➔] Phase 4.7: BYOK API Key Infrastructure & Client-Side Failover Router
-    • Secure localStorage key vault with support for Google AI Studio, Groq, OpenRouter
-    • Automatic 3-tier failover handling (Gemini -> Groq -> OpenRouter)
-
-[➔] Phase 4.8: Post-Exam Debrief & In-Module Context AI Tutor
-    • Post-Exam Results Screen ("🤖 Start Personal AI Debrief") analyzing missed questions
-    • Inline text highlight prompt ("Ask AI Tutor about this formula")
-
-[➔] Phase 4.9: Personal Study Notebook Knowledge Base (/notes)
-    • 1-Click "Save AI Note" persistence to Neon DB with topic tags and search/filter
-```
 
 ## 8. Implementation Phasing & Status
 

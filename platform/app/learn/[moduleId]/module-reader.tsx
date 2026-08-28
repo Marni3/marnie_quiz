@@ -1,9 +1,10 @@
 "use client";
 
-import React, { useState, useEffect, useRef, useMemo } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import Link from "next/link";
 import { LearningModule } from "@/lib/modules";
 import { MathText } from "@/components/math-text";
+import { DeclarativeVisualizer } from "@/components/declarative-visualizer";
 import {
   BookOpen,
   Zap,
@@ -43,8 +44,12 @@ export function ModuleReader({ module }: ModuleReaderProps) {
   // Calculator Tab: 'karce' | 'canon'
   const [calcTab, setCalcTab] = useState<"karce" | "canon">("karce");
 
-  // In-line MCQ Answers State: { [questionId]: { selectedChoice: 'A'|'B'|'C'|'D', revealed: boolean } }
+  // In-line MCQ Answers State: { [questionId]: { selectedChoice: 'A'|'B'|'C'|'D', isCorrect: boolean } }
   const [mcqState, setMcqState] = useState<Record<string, { selected: string; isCorrect: boolean }>>({});
+
+  // Module Completion and Bookmark State synced with API
+  const [isBookmarked, setIsBookmarked] = useState<boolean>(false);
+  const [isCompleted, setIsCompleted] = useState<boolean>(false);
 
   // Visualizer Slider Values
   const [vizControls, setVizControls] = useState<Record<string, number>>(() => {
@@ -55,49 +60,96 @@ export function ModuleReader({ module }: ModuleReaderProps) {
     return init;
   });
 
-  const canvasRef = useRef<HTMLCanvasElement | null>(null);
-
   // Active TOC Section on scroll
   const [activeSection, setActiveSection] = useState<string>("sec-prereq-bridges");
 
-  // Visualizer Canvas Render Effect
+  // Fetch initial progress on mount
   useEffect(() => {
-    if (!module.visualizer || !canvasRef.current) return;
-    const canvas = canvasRef.current;
-    const ctx = canvas.getContext("2d");
-    if (!ctx) return;
-
-    const width = module.visualizer.config.canvasWidth || 640;
-    const height = module.visualizer.config.canvasHeight || 320;
-
-    canvas.width = width;
-    canvas.height = height;
-
-    try {
-      // Execute the module's self-contained rendering logic
-      const renderFn = new Function(
-        "ctx",
-        "width",
-        "height",
-        "state",
-        `"use strict"; (${module.visualizer.config.renderFunction})(ctx, width, height, state);`
-      );
-      renderFn(ctx, width, height, vizControls);
-    } catch (err) {
-      console.warn("Visualizer rendering function error:", err);
+    async function loadProgress() {
+      try {
+        const res = await fetch(`/api/modules/${module.id}/progress`);
+        if (res.ok) {
+          const data = await res.json();
+          if (data.progress) {
+            setIsBookmarked(!!data.progress.isBookmarked);
+            setIsCompleted(!!data.progress.isCompleted);
+          }
+        }
+      } catch (err) {
+        console.warn("Could not load module progress:", err);
+      }
     }
-  }, [module.visualizer, vizControls]);
+    loadProgress();
+  }, [module.id]);
 
-  // Handle MCQ Answer Select
+  // Toggle Bookmark
+  const handleToggleBookmark = async () => {
+    const nextState = !isBookmarked;
+    setIsBookmarked(nextState);
+    try {
+      await fetch(`/api/modules/${module.id}/progress`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          topicCode: module.topicCode,
+          domain: module.domain,
+          isBookmarked: nextState,
+        }),
+      });
+    } catch (err) {
+      console.warn("Error updating bookmark:", err);
+    }
+  };
+
+  // Toggle Completed
+  const handleToggleCompleted = async () => {
+    const nextState = !isCompleted;
+    setIsCompleted(nextState);
+    try {
+      await fetch(`/api/modules/${module.id}/progress`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          topicCode: module.topicCode,
+          domain: module.domain,
+          isCompleted: nextState,
+        }),
+      });
+    } catch (err) {
+      console.warn("Error updating completion:", err);
+    }
+  };
+
+  // Handle MCQ Answer Select and sync progress
   const handleSelectOption = (qId: string, choice: string, correct: string) => {
-    setMcqState((prev) => ({
-      ...prev,
+    const isCorrect = choice === correct;
+    const updated = {
+      ...mcqState,
       [qId]: {
         selected: choice,
-        isCorrect: choice === correct,
+        isCorrect,
       },
-    }));
+    };
+    setMcqState(updated);
+
+    const answeredCount = Object.keys(updated).length;
+    const correctCount = Object.values(updated).filter((v) => v.isCorrect).length;
+    const accuracy = answeredCount > 0 ? correctCount / answeredCount : 0;
+
+    // Send async progress update
+    fetch(`/api/modules/${module.id}/progress`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        topicCode: module.topicCode,
+        domain: module.domain,
+        conceptChecksCompleted: answeredCount,
+        conceptChecksTotal: module.conceptChecks.length,
+        conceptChecksAccuracy: accuracy,
+      }),
+    }).catch((err) => console.warn("Failed to sync concept check score:", err));
   };
+
 
   const domainColors = {
     MATH: {
@@ -143,13 +195,39 @@ export function ModuleReader({ module }: ModuleReaderProps) {
             </span>
           </div>
 
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2.5">
+            <button
+              onClick={handleToggleBookmark}
+              className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl border text-xs font-semibold transition-all ${
+                isBookmarked
+                  ? "bg-amber-500/15 border-amber-500/40 text-amber-600 dark:text-amber-400"
+                  : "bg-[var(--surface2)] border-[var(--border)] text-[var(--text2)] hover:text-[var(--text)]"
+              }`}
+              title={isBookmarked ? "Remove Bookmark" : "Bookmark Module"}
+            >
+              <Bookmark className={`w-3.5 h-3.5 ${isBookmarked ? "fill-amber-500" : ""}`} />
+              <span>{isBookmarked ? "Bookmarked" : "Bookmark"}</span>
+            </button>
+
+            <button
+              onClick={handleToggleCompleted}
+              className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl border text-xs font-semibold transition-all ${
+                isCompleted
+                  ? "bg-emerald-500/15 border-emerald-500/40 text-emerald-600 dark:text-emerald-400"
+                  : "bg-[var(--surface2)] border-[var(--border)] text-[var(--text2)] hover:text-[var(--text)]"
+              }`}
+              title={isCompleted ? "Mark Incomplete" : "Mark as Completed"}
+            >
+              <CheckCircle2 className={`w-3.5 h-3.5 ${isCompleted ? "fill-emerald-500 text-white" : ""}`} />
+              <span>{isCompleted ? "Completed" : "Mark Done"}</span>
+            </button>
+
             <Link
-              href={`/quizzes/${module.pairedQuizSetId}`}
+              href={`/learn/${module.id}/mastery`}
               className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-[var(--accent)] text-white text-xs font-semibold hover:opacity-95 shadow-sm transition-all"
             >
-              <Zap className="w-3.5 h-3.5" />
-              <span>Launch Paired Quiz</span>
+              <Award className="w-3.5 h-3.5" />
+              <span>Mastery Challenge</span>
             </Link>
           </div>
         </div>
@@ -315,71 +393,26 @@ export function ModuleReader({ module }: ModuleReaderProps) {
             </div>
           </section>
 
-            {/* Section 3: Interactive Visualizer Sandbox */}
+            {/* Section 3: Interactive Declarative Visualizer */}
             {module.visualizer && (
               <section id="sec-visualizer" className="space-y-4">
-                <div className="flex items-center justify-between gap-2 pb-2 border-b border-[var(--border)]">
-                  <div className="flex items-center gap-2">
-                    <Sliders className="w-5 h-5 text-[var(--accent)]" />
-                    <h2 className="text-xl font-bold font-serif text-[var(--text)]">
-                      {module.visualizer.title}
-                    </h2>
-                  </div>
-                  <span className="text-xs font-mono uppercase px-2.5 py-0.5 rounded-full bg-[var(--surface2)] border border-[var(--border)] text-[var(--text3)]">
-                    {module.visualizer.archetype} Simulator
-                  </span>
-                </div>
-
-                <p className="text-xs sm:text-sm text-[var(--text2)]">
-                  {module.visualizer.description}
-                </p>
-
-                <div className="bg-slate-950 border border-slate-800 rounded-2xl overflow-hidden shadow-md">
-                  {/* Canvas Viewport */}
-                  <div className="flex justify-center items-center bg-[#0f172a] p-2">
-                    <canvas
-                      ref={canvasRef}
-                      className="max-w-full h-auto block rounded-lg shadow-inner"
-                    />
-                  </div>
-
-                  {/* Interactive Parameter Controls */}
-                  <div className="p-4 sm:p-5 bg-slate-900/90 border-t border-slate-800 space-y-4">
-                    <div className="text-xs font-bold uppercase tracking-wider text-slate-400">
-                      Live Parameter Sliders:
-                    </div>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                      {module.visualizer.config.controls.map((c) => (
-                        <div key={c.id} className="space-y-1.5">
-                          <div className="flex justify-between text-xs font-medium text-slate-300">
-                            <span>{c.label}</span>
-                            <span className="font-mono text-cyan-400">
-                              {vizControls[c.id]} {c.unit || ""}
-                            </span>
-                          </div>
-                          <input
-                            type="range"
-                            min={c.min}
-                            max={c.max}
-                            step={c.step}
-                            value={vizControls[c.id] ?? c.defaultValue}
-                            onChange={(e) =>
-                              setVizControls((prev) => ({
-                                ...prev,
-                                [c.id]: parseFloat(e.target.value),
-                              }))
-                            }
-                            className="w-full h-2 bg-slate-700 rounded-lg appearance-none cursor-pointer accent-cyan-400"
-                          />
-                          <div className="flex justify-between text-[10px] text-slate-500 font-mono">
-                            <span>{c.min}</span>
-                            <span>{c.max}</span>
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                </div>
+                <DeclarativeVisualizer
+                  visualizer={module.visualizer}
+                  controls={vizControls}
+                  onControlChange={(id, value) =>
+                    setVizControls((prev) => ({
+                      ...prev,
+                      [id]: value,
+                    }))
+                  }
+                  onReset={() => {
+                    const init: Record<string, number> = {};
+                    module.visualizer?.config.controls.forEach((c) => {
+                      init[c.id] = c.defaultValue;
+                    });
+                    setVizControls(init);
+                  }}
+                />
               </section>
             )}
 
@@ -793,21 +826,31 @@ export function ModuleReader({ module }: ModuleReaderProps) {
               </div>
               <div className="space-y-1 max-w-xl mx-auto">
                 <h3 className="text-xl sm:text-2xl font-bold font-serif text-[var(--text)]">
-                  Ready for the Paired Board Exam Quiz?
+                  Take the {module.code} Mastery Challenge
                 </h3>
                 <p className="text-xs sm:text-sm text-[var(--text2)]">
-                  Cement your speed shortcuts and theoretical mastery on authentic PRC board questions.
+                  Cement your speed shortcuts and theoretical mastery on module-exclusive practice questions.
                 </p>
               </div>
 
-              <div>
+              <div className="flex flex-wrap items-center justify-center gap-3">
                 <Link
-                  href={`/quizzes/${module.pairedQuizSetId}`}
+                  href={`/learn/${module.id}/mastery`}
                   className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-[var(--accent)] text-white text-sm font-bold shadow-md hover:opacity-95 transition-all cursor-pointer"
                 >
-                  <span>Launch Paired Quiz Set</span>
+                  <Award className="w-4 h-4" />
+                  <span>Launch Mastery Challenge</span>
                   <ArrowRight className="w-4 h-4" />
                 </Link>
+
+                {module.pairedQuizSetId && (
+                  <Link
+                    href={`/quizzes/${module.pairedQuizSetId}`}
+                    className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-[var(--surface)] border border-[var(--border)] text-[var(--text2)] hover:text-[var(--text)] text-sm font-medium transition-all"
+                  >
+                    <span>Browse Syllabus Library Set</span>
+                  </Link>
+                )}
               </div>
             </section>
           </main>

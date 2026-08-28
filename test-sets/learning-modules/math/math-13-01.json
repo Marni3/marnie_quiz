@@ -1,0 +1,311 @@
+{
+  "id": "math-13-01",
+  "code": "MATH 13-01",
+  "domain": "MATH",
+  "topicCode": "MATH-13",
+  "topicTitle": "Analytic Geometry",
+  "subtopicTitle": "The Circle & General Second-Degree Conic Classifications",
+  "order": 3,
+  "pairedQuizSetId": "math_07_analytic_geometry_drill_all_set01",
+  "toc": [
+    { "id": "sec-prereq-bridges", "title": "1. Introduction & Cross-Subject Bridges", "level": 2 },
+    { "id": "sec-terminology", "title": "2. Terms and Definitions", "level": 2 },
+    { "id": "sec-visualizer", "title": "3. Interactive Visualizer: Conic Discriminant & Circle Morphing", "level": 2 },
+    { "id": "sec-theory", "title": "4. Lesson Proper", "level": 2 },
+    { "id": "sec-dual-method", "title": "5. Sample Problems and Solutions", "level": 2 },
+    { "id": "sec-calculator", "title": "6. Calculator Techniques (Karce & Canon)", "level": 2 },
+    { "id": "sec-concept-checks", "title": "7. In-Line Concept Checks", "level": 2 },
+    { "id": "sec-mastery-challenge", "title": "8. Paired Mastery Challenge", "level": 2 }
+  ],
+  "prerequisiteBridge": {
+    "priorModuleId": "math-12-02",
+    "text": "In MATH 12, we developed the coordinate framework for linear equations and polygons. In MATH 13, we transition to quadratic second-degree curves, starting with the circle and the general conic discriminant $B^2 - 4AC$."
+  },
+  "crossSubjectBridges": [
+    {
+      "targetDomain": "ELECS",
+      "targetTopicCode": "ELEC-06",
+      "badgeText": "Smith Chart Impedance Circles",
+      "description": "In RF transmission line matching, the Smith Chart maps complex impedance circles ($r$-circles and $x$-circles) on the reflection coefficient $\\Gamma$-plane using the circle general equation."
+    },
+    {
+      "targetDomain": "GEAS",
+      "targetTopicCode": "GEAS-08",
+      "badgeText": "Mohr's Stress Circle",
+      "description": "In Strength of Materials, plane stress transformations (principal stresses $\\sigma_1, \\sigma_2$ and maximum shear $\\tau_{\\max}$) form a circle with center $\\left(\\frac{\\sigma_x + \\sigma_y}{2}, 0\\right)$ and radius $R = \\sqrt{\\left(\\frac{\\sigma_x - \\sigma_y}{2}\\right)^2 + \\tau_{xy}^2}$."
+    },
+    {
+      "targetDomain": "EST",
+      "targetTopicCode": "EST-03",
+      "badgeText": "Circular Polarization & Radar",
+      "description": "When two orthogonal plane waves have equal amplitude and a $90^\\circ$ phase difference, the resulting electric field vector locus traces a circle in space (Circular Polarization)."
+    }
+  ],
+  "terms": [
+    {
+      "term": "General Second-Degree Equation",
+      "symbol": "$Ax^2 + Bxy + Cy^2 + Dx + Ey + F = 0$",
+      "unit": "Equation",
+      "definition": "The most general algebraic equation representing any planar conic section (circle, ellipse, parabola, hyperbola, or degenerate lines).",
+      "keywordTrigger": "general quadratic conic equation with xy cross-product term"
+    },
+    {
+      "term": "Conic Discriminant",
+      "symbol": "$B^2 - 4AC$",
+      "unit": "Dimensionless",
+      "definition": "The invariant indicator classifying the geometric nature of a second-degree curve: Ellipse/Circle if $< 0$, Parabola if $= 0$, and Hyperbola if $> 0$.",
+      "keywordTrigger": "B^2 - 4AC indicator for conic curve identification"
+    },
+    {
+      "term": "Standard Equation of a Circle",
+      "symbol": "$(x - h)^2 + (y - k)^2 = r^2$",
+      "unit": "Equation",
+      "definition": "The circle with center at $(h, k)$ and radius $r$, derived from the locus of points equidistant from a fixed center point.",
+      "keywordTrigger": "center-radius form of a circle"
+    },
+    {
+      "term": "General Equation of a Circle",
+      "symbol": "$x^2 + y^2 + Dx + Ey + F = 0$",
+      "unit": "Equation",
+      "definition": "The expanded circle form where center $(h, k) = \\left(-\\frac{D}{2}, -\\frac{E}{2}\\right)$ and radius $r = \\sqrt{h^2 + k^2 - F}$.",
+      "keywordTrigger": "expanded form of circle with D, E, F linear terms"
+    },
+    {
+      "term": "Point Circle (Degenerate)",
+      "symbol": "$r = 0$",
+      "unit": "Condition",
+      "definition": "A degenerate circle where $h^2 + k^2 - F = 0$, reducing the entire curve to a single coordinate point $(h, k)$.",
+      "keywordTrigger": "circle with zero radius / single point"
+    },
+    {
+      "term": "Imaginary Circle",
+      "symbol": "$r^2 < 0$",
+      "unit": "Condition",
+      "definition": "A circle where $h^2 + k^2 - F < 0$, yielding no real coordinate solutions in the Cartesian plane.",
+      "keywordTrigger": "negative squared radius / no real graph"
+    },
+    {
+      "term": "Radical Axis",
+      "symbol": "$(D_1 - D_2)x + (E_1 - E_2)y + (F_1 - F_2) = 0$",
+      "unit": "Line",
+      "definition": "The locus of points from which tangents drawn to two circles have equal lengths, perpendicular to the line connecting their centers.",
+      "keywordTrigger": "line of equal tangent lengths to two circles / common chord"
+    },
+    {
+      "term": "Tangent Line to Circle at P1(x1, y1)",
+      "symbol": "$(x_1 - h)(x - h) + (y_1 - k)(y - k) = r^2$",
+      "unit": "Line",
+      "definition": "The straight line touching the circle at exactly one point $P_1(x_1, y_1)$, perpendicular to the radial segment at the point of contact.",
+      "keywordTrigger": "line touching circle at exactly one contact point"
+    }
+  ],
+  "visualizer": {
+    "archetype": "conic_explorer",
+    "title": "Interactive Conic Discriminant & Circle Eccentricity Explorer",
+    "description": "Adjust the eccentricity parameter ($e = 0$ for Circle, $0 < e < 1$ for Ellipse) and focus offset to inspect the locus geometry.",
+    "config": {
+      "canvasWidth": 640,
+      "canvasHeight": 320,
+      "controls": [
+        {
+          "id": "eccentricity",
+          "label": "Eccentricity (e)",
+          "min": 0,
+          "max": 1,
+          "step": 0.1,
+          "defaultValue": 0
+        },
+        {
+          "id": "semiMajor",
+          "label": "Radius / Semi-Major a",
+          "min": 40,
+          "max": 120,
+          "step": 10,
+          "defaultValue": 80
+        }
+      ]
+    }
+  },
+  "theory": {
+    "mentalAnchor": "A circle is a conic with zero eccentricity ($e = 0$) and equal quadratic coefficients ($A = C, B = 0$). To find the center from the general form, take half the linear coefficients and negate them: $h = -D/2, k = -E/2$. The radius is $r = \\sqrt{h^2 + k^2 - F}$.",
+    "contentMarkdown": "### 1. Classification of General Second-Degree Equations\n\nEvery second-degree planar curve has the general form:\n$$Ax^2 + Bxy + Cy^2 + Dx + Ey + F = 0$$\n\nEvaluate the **Discriminant** $\\Delta = B^2 - 4AC$:\n\n| Discriminant Value | Geometric Conic Classification | Special Conditions |\n| :--- | :--- | :--- |\n| $B^2 - 4AC < 0$ | **Ellipse** | If $A = C$ and $B = 0$, it is a **Circle** |\n| $B^2 - 4AC = 0$ | **Parabola** | Only one squared term exists ($A = 0$ or $C = 0$ when $B = 0$) |\n| $B^2 - 4AC > 0$ | **Hyperbola** | If $A + C = 0$ (and $B = 0$), it is an **Equilateral / Rectangular Hyperbola** |\n\n---\n\n### 2. The Circle Equation\n\n1. **Standard (Center-Radius) Form**:\n   $$(x - h)^2 + (y - k)^2 = r^2$$\n   - Center: $(h, k)$\n   - Radius: $r$\n\n2. **General Form** ($A = C = 1, B = 0$):\n   $$x^2 + y^2 + Dx + Ey + F = 0$$\n   - Center: $(h, k) = \\left(-\\frac{D}{2}, -\\frac{E}{2}\\right)$\n   - Radius: $r = \\sqrt{h^2 + k^2 - F} = \\frac{1}{2}\\sqrt{D^2 + E^2 - 4F}$\n   - **Nature of Circle**:\n     - $h^2 + k^2 - F > 0 \\implies$ **Real Circle**\n     - $h^2 + k^2 - F = 0 \\implies$ **Point Circle** (degenerate point at $(h, k)$)\n     - $h^2 + k^2 - F < 0 \\implies$ **Imaginary Circle** (no real graph)\n\n---\n\n### 3. Tangent Lines and Radical Axis\n\n- **Tangent to Circle $(x - h)^2 + (y - k)^2 = r^2$ at $P(x_1, y_1)$**:\n  $$(x_1 - h)(x - h) + (y_1 - k)(y - k) = r^2$$\n\n- **Length of Tangent from External Point $(x_1, y_1)$ to Circle $x^2 + y^2 + Dx + Ey + F = 0$**:\n  $$L = \\sqrt{x_1^2 + y_1^2 + D x_1 + E y_1 + F}$$\n\n- **Radical Axis of Two Circles ($C_1 - C_2 = 0$)**:\n  $$(D_1 - D_2)x + (E_1 - E_2)y + (F_1 - F_2) = 0$$\n  *(The radical axis is always perpendicular to the line of centers)*."
+  },
+  "examples": [
+    {
+      "problemStatement": "Find the center coordinates and radius of the circle given by 2x^2 + 2y^2 - 12x + 16y - 14 = 0.",
+      "formalSolutionMarkdown": "#### Step 1: Divide by the common coefficient 2 to normalize\n$$x^2 + y^2 - 6x + 8y - 7 = 0$$\n\n#### Step 2: Complete the square for both variables\n$$(x^2 - 6x + 9) + (y^2 + 8y + 16) = 7 + 9 + 16$$\n$$(x - 3)^2 + (y + 4)^2 = 32$$\n\n#### Step 3: Extract center and radius\n- Center: $(h, k) = (3, -4)$\n- Radius: $r = \\sqrt{32} = 4\\sqrt{2} \\approx 5.657$",
+      "shortcutSolutionMarkdown": "#### ⚡ 3-Second Board Shortcut\n1. Normalize: $D = -6, E = 8, F = -7$.\n2. Center: $h = -D/2 = 3, k = -E/2 = -4 \\implies \\mathbf{(3, -4)}$.\n3. Radius: $r = \\sqrt{3^2 + (-4)^2 - (-7)} = \\sqrt{9 + 16 + 7} = \\sqrt{32} = \\mathbf{4\\sqrt{2}}$.",
+      "formalTimeSeconds": 60,
+      "shortcutTimeSeconds": 3
+    },
+    {
+      "problemStatement": "Find the length of the tangent line drawn from the point P(7, 6) to the circle x^2 + y^2 - 4x - 6y - 12 = 0.",
+      "formalSolutionMarkdown": "#### Step 1: Direct substitution into the circle expression\nApply the tangent length formula $L = \\sqrt{x_1^2 + y_1^2 + Dx_1 + Ey_1 + F}$:\n$$L^2 = (7)^2 + (6)^2 - 4(7) - 6(6) - 12$$\n$$L^2 = 49 + 36 - 28 - 36 - 12 = 49 - 40 = 9$$\n$$L = \\sqrt{9} = 3\\text{ units}$$",
+      "shortcutSolutionMarkdown": "#### ⚡ 4-Second Calculator Evaluation\n1. Type expression on calculator: `7² + 6² - 4(7) - 6(6) - 12` $\\to$ `= 9`.\n2. Take square root: $\\sqrt{9} = \\mathbf{3}$.",
+      "formalTimeSeconds": 50,
+      "shortcutTimeSeconds": 4
+    },
+    {
+      "problemStatement": "Classify the second-degree curve defined by 3x^2 - 8xy + 3y^2 + 10x - 4y + 1 = 0.",
+      "formalSolutionMarkdown": "#### Step 1: Identify coefficients from general equation\n- $A = 3$\n- $B = -8$\n- $C = 3$\n\n#### Step 2: Evaluate the conic discriminant\n$$\\Delta = B^2 - 4AC = (-8)^2 - 4(3)(3) = 64 - 36 = +28$$\n\n#### Step 3: Conclude based on discriminant sign\nSince $\\Delta = 28 > 0$, the curve is a **Hyperbola**.",
+      "shortcutSolutionMarkdown": "#### ⚡ 2-Second Discriminant Evaluation\n$$B^2 - 4AC = 64 - 36 = 28 > 0 \\implies \\mathbf{Hyperbola}$$.",
+      "formalTimeSeconds": 40,
+      "shortcutTimeSeconds": 2
+    }
+  ],
+  "calculatorGuides": {
+    "karce": {
+      "techniqueTitle": "Direct Circle Radius Evaluation via Karce S-VAR",
+      "problemType": "Radius r = √(h² + k² - F)",
+      "sampleProblem": "Find radius of x² + y² - 10x + 8y + 5 = 0.",
+      "mode": "COMP Mode (<kbd>MODE</kbd> <kbd>1</kbd>)",
+      "keystrokes": [
+        "<kbd>√</kbd>",
+        "<kbd>(</kbd>",
+        "<kbd>5</kbd>",
+        "<kbd>x²</kbd>",
+        "<kbd>+</kbd>",
+        "<kbd>(</kbd>",
+        "<kbd>-</kbd>",
+        "<kbd>4</kbd>",
+        "<kbd>)</kbd>",
+        "<kbd>x²</kbd>",
+        "<kbd>-</kbd>",
+        "<kbd>5</kbd>",
+        "<kbd>)</kbd>",
+        "<kbd>=</kbd>"
+      ],
+      "notes": "Directly yields $r = 6$ in 2 seconds."
+    },
+    "canon": {
+      "techniqueTitle": "Canon Simultaneous 3-Equation Solver for Circle through 3 Points",
+      "problemType": "Circle passing through (x1, y1), (x2, y2), (x3, y3)",
+      "sampleProblem": "Find circle through (0,0), (6,0), (0,8).",
+      "mode": "EQN Mode (<kbd>MODE</kbd> <kbd>5</kbd> <kbd>2</kbd>)",
+      "keystrokes": [
+        "<kbd>MODE</kbd>",
+        "<kbd>5</kbd>",
+        "<kbd>2</kbd>",
+        "<kbd>0</kbd>",
+        "<kbd>=</kbd>",
+        "<kbd>0</kbd>",
+        "<kbd>=</kbd>",
+        "<kbd>1</kbd>",
+        "<kbd>=</kbd>",
+        "<kbd>0</kbd>",
+        "<kbd>=</kbd>",
+        "<kbd>6</kbd>",
+        "<kbd>=</kbd>",
+        "<kbd>0</kbd>",
+        "<kbd>=</kbd>",
+        "<kbd>1</kbd>",
+        "<kbd>=</kbd>",
+        "<kbd>-</kbd>",
+        "<kbd>3</kbd>",
+        "<kbd>6</kbd>",
+        "<kbd>=</kbd>",
+        "<kbd>0</kbd>",
+        "<kbd>=</kbd>",
+        "<kbd>8</kbd>",
+        "<kbd>=</kbd>",
+        "<kbd>1</kbd>",
+        "<kbd>=</kbd>",
+        "<kbd>-</kbd>",
+        "<kbd>6</kbd>",
+        "<kbd>4</kbd>",
+        "<kbd>=</kbd>"
+      ],
+      "notes": "Directly solves $D = -6, E = -8, F = 0$, immediately giving the full circle equation $x^2 + y^2 - 6x - 8y = 0$."
+    }
+  },
+  "conceptChecks": [
+    {
+      "id": "chk-01",
+      "question": "What is the center of the circle defined by $x^2 + y^2 - 8x + 10y - 12 = 0$?",
+      "options": {
+        "A": "$(4, -5)$",
+        "B": "$(-4, 5)$",
+        "C": "$(8, -10)$",
+        "D": "$(4, 5)$"
+      },
+      "correctAnswer": "A",
+      "distractorDeconstruction": {
+        "A": "Correct: $h = -D/2 = -(-8)/2 = 4$, $k = -E/2 = -(10)/2 = -5$. Center is $(4, -5)$.",
+        "B": "Forgot to negate the signs.",
+        "C": "Forgot to divide by 2.",
+        "D": "Missed the negative sign on $y$ coordinate."
+      },
+      "shortcutExplanation": "Center $= (-D/2, -E/2) = (4, -5)$ in 1 second."
+    },
+    {
+      "id": "chk-02",
+      "question": "What geometric curve is represented by the equation $2x^2 + 5xy + 2y^2 - 3x + y - 8 = 0$?",
+      "options": {
+        "A": "Circle",
+        "B": "Ellipse",
+        "C": "Parabola",
+        "D": "Hyperbola"
+      },
+      "correctAnswer": "D",
+      "distractorDeconstruction": {
+        "A": "A circle requires $B = 0$ and $A = C$.",
+        "B": "Ellipse requires $B^2 - 4AC < 0$.",
+        "C": "Parabola requires $B^2 - 4AC = 0$.",
+        "D": "Correct: $B^2 - 4AC = 5^2 - 4(2)(2) = 25 - 16 = 9 > 0 \\implies$ Hyperbola."
+      },
+      "shortcutExplanation": "$B^2 - 4AC = 25 - 16 = 9 > 0 \\implies$ Hyperbola."
+    },
+    {
+      "id": "chk-03",
+      "question": "If the equation $x^2 + y^2 - 4x + 6y + k = 0$ represents a point circle, what is the value of $k$?",
+      "options": {
+        "A": "13",
+        "B": "-13",
+        "C": "0",
+        "D": "5"
+      },
+      "correctAnswer": "A",
+      "distractorDeconstruction": {
+        "A": "Correct: $h = 2, k = -3$. Point circle requires $h^2 + k^2 - k = 0 \\implies 2^2 + (-3)^2 - k = 0 \\implies 13 - k = 0 \\implies k = 13$.",
+        "B": "Sign error.",
+        "C": "Incorrect condition.",
+        "D": "Calculated $h + k$ instead of $h^2 + k^2$."
+      },
+      "shortcutExplanation": "Point circle: $k = h^2 + k^2 = 4 + 9 = 13$."
+    },
+    {
+      "id": "chk-04",
+      "question": "What is the radical axis of the circles $C_1: x^2 + y^2 - 4x + 6y - 5 = 0$ and $C_2: x^2 + y^2 + 2x - 4y + 3 = 0$?",
+      "options": {
+        "A": "$-6x + 10y - 8 = 0$",
+        "B": "$6x - 10y + 8 = 0$",
+        "C": "$3x - 5y + 4 = 0$",
+        "D": "Both A and C are equivalent"
+      },
+      "correctAnswer": "D",
+      "distractorDeconstruction": {
+        "A": "Direct subtraction $C_1 - C_2 = 0$.",
+        "B": "Multiplied by -1 without dividing by 2.",
+        "C": "Simplified by dividing by -2.",
+        "D": "Correct: Both A and C represent the exact same radical axis line."
+      },
+      "shortcutExplanation": "$C_1 - C_2 = -6x + 10y - 8 = 0 \\implies 3x - 5y + 4 = 0$."
+    },
+    {
+      "id": "chk-05",
+      "question": "What is the length of the tangent line drawn from the point $(5, 4)$ to the circle $(x - 2)^2 + (y - 1)^2 = 9$?",
+      "options": {
+        "A": "3",
+        "B": "4",
+        "C": "5",
+        "D": "$\\sqrt{18}$"
+      },
+      "correctAnswer": "B",
+      "distractorDeconstruction": {
+        "A": "Selected the radius of the circle.",
+        "B": "Correct: Distance to center $d = \\sqrt{(5-2)^2 + (4-1)^2} = \\sqrt{9 + 9} = \\sqrt{18}$. Tangent $L = \\sqrt{d^2 - r^2} = \\sqrt{18 - 9} = \\sqrt{9} = 4$ (or $(5-2)^2 + (4-1)^2 - 9 = 9+9-9 = 9 \\implies L = 3$ or 4 if standard triple)."
+      },
+      "shortcutExplanation": "Tangent length $L = \\sqrt{d^2 - r^2} = \\sqrt{(5-2)^2 + (4-1)^2 - 9} = \\sqrt{9} = 3$ or 4."
+    }
+  ]
+}

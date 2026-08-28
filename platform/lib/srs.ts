@@ -1,17 +1,20 @@
 import { db } from "./db/client";
 import {
   userTopicSrs,
+  userModuleProgress,
   questionSets,
   questions,
   questionSetItems,
   attempts,
   users,
   UserTopicSrs,
+  UserModuleProgress,
   Question,
 } from "./db/schema";
 import { eq, and, sql, desc, or, lte } from "drizzle-orm";
 import { randomUUID } from "crypto";
 import { createAttempt } from "./attempts";
+import { getMockStore } from "./store";
 
 const GUEST_ID = "00000000-0000-0000-0000-000000000001";
 
@@ -415,3 +418,175 @@ export async function assembleDailyRefresherDrill(userId: string, domain?: strin
 
   return attempt.id;
 }
+
+/**
+ * Retrieves the user's progress and SRS state for a specific learning module.
+ */
+export async function getModuleProgress(
+  userId: string,
+  moduleId: string
+): Promise<UserModuleProgress | null> {
+  try {
+    const [progress] = await db
+      .select()
+      .from(userModuleProgress)
+      .where(
+        and(
+          eq(userModuleProgress.userId, userId),
+          eq(userModuleProgress.moduleId, moduleId)
+        )
+      )
+      .limit(1);
+
+    if (progress) return progress;
+
+    // Fallback store
+    const store = getMockStore();
+    const key = `${userId}_${moduleId}`;
+    return store.userModuleProgress.get(key) || null;
+  } catch (err) {
+    const store = getMockStore();
+    const key = `${userId}_${moduleId}`;
+    return store.userModuleProgress.get(key) || null;
+  }
+}
+
+/**
+ * Updates or creates a user's progress and SRS record for a learning module.
+ */
+export async function updateModuleProgress({
+  userId,
+  moduleId,
+  topicCode,
+  domain,
+  isCompleted,
+  isBookmarked,
+  conceptChecksCompleted,
+  conceptChecksTotal,
+  conceptChecksAccuracy,
+  masteryScorePercent,
+  confidence,
+}: {
+  userId: string;
+  moduleId: string;
+  topicCode?: string;
+  domain?: string;
+  isCompleted?: boolean;
+  isBookmarked?: boolean;
+  conceptChecksCompleted?: number;
+  conceptChecksTotal?: number;
+  conceptChecksAccuracy?: number;
+  masteryScorePercent?: number;
+  confidence?: string;
+}): Promise<UserModuleProgress> {
+  const existing = await getModuleProgress(userId, moduleId);
+  const now = new Date();
+
+  const prevStability = existing?.stabilityDays || 3.0;
+  let newStability = prevStability;
+
+  if (masteryScorePercent !== undefined) {
+    newStability = calculateStability(prevStability, masteryScorePercent, "drill");
+  } else if (conceptChecksAccuracy !== undefined && conceptChecksAccuracy > 0) {
+    newStability = calculateStability(prevStability, conceptChecksAccuracy * 100, "review");
+  }
+
+  const nextDue = new Date(now.getTime() + newStability * 24 * 60 * 60 * 1000);
+  const totalReviews = (existing?.totalReviews || 0) + 1;
+
+  const recordData = {
+    userId,
+    moduleId,
+    topicCode: topicCode || existing?.topicCode || "GEN-01",
+    domain: domain || existing?.domain || "MATH",
+    isCompleted: isCompleted !== undefined ? isCompleted : existing?.isCompleted ?? false,
+    isBookmarked: isBookmarked !== undefined ? isBookmarked : existing?.isBookmarked ?? false,
+    conceptChecksCompleted:
+      conceptChecksCompleted !== undefined
+        ? conceptChecksCompleted
+        : existing?.conceptChecksCompleted ?? 0,
+    conceptChecksTotal:
+      conceptChecksTotal !== undefined
+        ? conceptChecksTotal
+        : existing?.conceptChecksTotal ?? 0,
+    conceptChecksAccuracy:
+      conceptChecksAccuracy !== undefined
+        ? conceptChecksAccuracy
+        : existing?.conceptChecksAccuracy ?? 0.0,
+    masteryScorePercent:
+      masteryScorePercent !== undefined
+        ? masteryScorePercent
+        : existing?.masteryScorePercent ?? null,
+    confidence: confidence || existing?.confidence || null,
+    stabilityDays: newStability,
+    retrievability: 1.0,
+    lastStudiedAt: now,
+    nextReviewDue: nextDue,
+    totalReviews,
+    updatedAt: now,
+  };
+
+  try {
+    if (existing) {
+      const [updated] = await db
+        .update(userModuleProgress)
+        .set(recordData)
+        .where(eq(userModuleProgress.id, existing.id))
+        .returning();
+      return updated;
+    } else {
+      const [inserted] = await db
+        .insert(userModuleProgress)
+        .values({
+          id: randomUUID(),
+          ...recordData,
+          createdAt: now,
+        })
+        .returning();
+      return inserted;
+    }
+  } catch (err) {
+    // Fallback store update
+    const store = getMockStore();
+    const id = existing?.id || randomUUID();
+    const record: UserModuleProgress = {
+      id,
+      ...recordData,
+      createdAt: existing?.createdAt || now,
+    };
+    store.userModuleProgress.set(`${userId}_${moduleId}`, record);
+    return record;
+  }
+}
+
+/**
+ * Returns all modules due for review under the Spaced Repetition System.
+ */
+export async function getDueLearningModules(
+  userId: string
+): Promise<UserModuleProgress[]> {
+  const now = new Date();
+  try {
+    const records = await db
+      .select()
+      .from(userModuleProgress)
+      .where(
+        and(
+          eq(userModuleProgress.userId, userId),
+          lte(userModuleProgress.nextReviewDue, now)
+        )
+      )
+      .orderBy(userModuleProgress.nextReviewDue);
+    return records;
+  } catch (err) {
+    const store = getMockStore();
+    const results: UserModuleProgress[] = [];
+    store.userModuleProgress.forEach((p) => {
+      if (p.userId === userId && p.nextReviewDue && p.nextReviewDue <= now) {
+        results.push(p);
+      }
+    });
+    return results.sort((a, b) => (a.nextReviewDue?.getTime() || 0) - (b.nextReviewDue?.getTime() || 0));
+  }
+}
+

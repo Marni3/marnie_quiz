@@ -1,0 +1,230 @@
+{
+  "moduleId": "math-12-01",
+  "moduleCode": "MATH 12-01",
+  "title": "MATH 12-01 Mastery Challenge: Lines, Slopes & Distances",
+  "description": "Exclusive companion exam for MATH 12-01. Tests Cartesian line forms, parallel/perpendicular slopes, perpendicular point-to-line distances, and axis intercept triangles under timed board exam conditions.",
+  "totalQuestions": 20,
+  "timeLimitMinutes": 30,
+  "questions": [
+    {
+      "id": "m1201-01",
+      "promptText": "Find the distance between the points $A(-3, 5)$ and $B(5, -1)$.",
+      "choiceA": "8",
+      "choiceB": "10",
+      "choiceC": "12",
+      "choiceD": "14",
+      "correctChoice": "B",
+      "explanation": "$d = \\sqrt{(5 - (-3))^2 + (-1 - 5)^2} = \\sqrt{8^2 + (-6)^2} = \\sqrt{64 + 36} = \\sqrt{100} = 10$.",
+      "archetype": "numerical"
+    },
+    {
+      "id": "m1201-02",
+      "promptText": "What is the slope of the line passing through $(2, -3)$ and $(6, 5)$?",
+      "choiceA": "1",
+      "choiceB": "2",
+      "choiceC": "$\\frac{1}{2}$",
+      "choiceD": "-2",
+      "correctChoice": "B",
+      "explanation": "$m = \\frac{y_2 - y_1}{x_2 - x_1} = \\frac{5 - (-3)}{6 - 2} = \\frac{8}{4} = 2$.",
+      "archetype": "numerical"
+    },
+    {
+      "id": "m1201-03",
+      "promptText": "Find the general equation of the line passing through $(1, 4)$ with a slope of $-\\frac{2}{3}$.",
+      "choiceA": "$2x + 3y - 14 = 0$",
+      "choiceB": "$2x - 3y + 10 = 0$",
+      "choiceC": "$3x + 2y - 11 = 0$",
+      "choiceD": "$2x + 3y + 14 = 0$",
+      "correctChoice": "A",
+      "explanation": "Point-slope form: $y - 4 = -\\frac{2}{3}(x - 1) \\implies 3(y - 4) = -2(x - 1) \\implies 3y - 12 = -2x + 2 \\implies 2x + 3y - 14 = 0$.",
+      "archetype": "standard"
+    },
+    {
+      "id": "m1201-04",
+      "promptText": "Which of the following lines is perpendicular to $2x - 7y + 5 = 0$?",
+      "choiceA": "$2x - 7y - 8 = 0$",
+      "choiceB": "$7x + 2y - 15 = 0$",
+      "choiceC": "$7x - 2y + 4 = 0$",
+      "choiceD": "$2x + 7y + 1 = 0$",
+      "correctChoice": "B",
+      "explanation": "Slope of given line is $m_1 = 2/7$. The perpendicular slope is $m_2 = -7/2$, corresponding to $7x + 2y + C = 0$.",
+      "archetype": "theorem"
+    },
+    {
+      "id": "m1201-05",
+      "promptText": "Find the perpendicular distance from the point $(4, 1)$ to the line $3x - 4y + 12 = 0$.",
+      "choiceA": "2",
+      "choiceB": "4",
+      "choiceC": "5",
+      "choiceD": "20",
+      "correctChoice": "B",
+      "explanation": "$d = \\frac{|3(4) - 4(1) + 12|}{\\sqrt{3^2 + (-4)^2}} = \\frac{|12 - 4 + 12|}{5} = \\frac{20}{5} = 4$.",
+      "archetype": "numerical"
+    },
+    {
+      "id": "m1201-06",
+      "promptText": "Calculate the perpendicular distance between the parallel lines $4x - 3y + 15 = 0$ and $4x - 3y - 10 = 0$.",
+      "choiceA": "3",
+      "choiceB": "5",
+      "choiceC": "7",
+      "choiceD": "25",
+      "correctChoice": "B",
+      "explanation": "$d = \\frac{|15 - (-10)|}{\\sqrt{4^2 + (-3)^2}} = \\frac{25}{5} = 5$.",
+      "archetype": "numerical"
+    },
+    {
+      "id": "m1201-07",
+      "promptText": "Find the acute angle formed between the lines $y = 3x + 2$ and $y = -2x + 5$.",
+      "choiceA": "$30^\\circ$",
+      "choiceB": "$45^\\circ$",
+      "choiceC": "$60^\\circ$",
+      "choiceD": "$75^\\circ$",
+      "correctChoice": "B",
+      "explanation": "$\\tan\\theta = |\\frac{m_2 - m_1}{1 + m_1 m_2}| = |\\frac{-2 - 3}{1 + (3)(-2)}| = |\\frac{-5}{1 - 6}| = |\\frac{-5}{-5}| = 1 \\implies \\theta = 45^\\circ$.",
+      "archetype": "numerical"
+    },
+    {
+      "id": "m1201-08",
+      "promptText": "A line has an $x$-intercept of 5 and a $y$-intercept of 8. What is the standard equation of the line?",
+      "choiceA": "$8x + 5y - 40 = 0$",
+      "choiceB": "$5x + 8y - 40 = 0$",
+      "choiceC": "$8x - 5y + 40 = 0$",
+      "choiceD": "$5x - 8y + 40 = 0$",
+      "correctChoice": "A",
+      "explanation": "$\\frac{x}{5} + \\frac{y}{8} = 1 \\implies 8x + 5y = 40 \\implies 8x + 5y - 40 = 0$.",
+      "archetype": "standard"
+    },
+    {
+      "id": "m1201-09",
+      "promptText": "Find the equation of the line passing through $(-2, 3)$ and parallel to $5x - 2y + 7 = 0$.",
+      "choiceA": "$5x - 2y + 16 = 0$",
+      "choiceB": "$5x - 2y - 16 = 0$",
+      "choiceC": "$2x + 5y - 11 = 0$",
+      "choiceD": "$5x + 2y + 4 = 0$",
+      "correctChoice": "A",
+      "explanation": "Parallel lines share $5x - 2y + C = 0$. Substitute $(-2, 3)$: $5(-2) - 2(3) + C = 0 \\implies -10 - 6 + C = 0 \\implies C = 16$. Thus $5x - 2y + 16 = 0$.",
+      "archetype": "standard"
+    },
+    {
+      "id": "m1201-10",
+      "promptText": "What is the angle of inclination of the line $\\sqrt{3}x - y + 4 = 0$?",
+      "choiceA": "$30^\\circ$",
+      "choiceB": "$45^\\circ$",
+      "choiceC": "$60^\\circ$",
+      "choiceD": "$120^\\circ$",
+      "correctChoice": "C",
+      "explanation": "$y = \\sqrt{3}x + 4 \\implies m = \\sqrt{3}$. $\\tan\\theta = \\sqrt{3} \\implies \\theta = 60^\\circ$.",
+      "archetype": "numerical"
+    },
+    {
+      "id": "m1201-11",
+      "promptText": "Find the distance from the point $(-1, 4)$ to the vertical line $x = 3$.",
+      "choiceA": "2",
+      "choiceB": "3",
+      "choiceC": "4",
+      "choiceD": "5",
+      "correctChoice": "C",
+      "explanation": "For a vertical line $x = c$, distance is simply $|x_1 - c| = |-1 - 3| = 4$.",
+      "archetype": "numerical"
+    },
+    {
+      "id": "m1201-12",
+      "promptText": "The line $kx + 3y - 8 = 0$ is perpendicular to $2x - 4y + 5 = 0$. Find the value of $k$.",
+      "choiceA": "6",
+      "choiceB": "-6",
+      "choiceC": "$\\frac{3}{2}$",
+      "choiceD": "$-\\frac{3}{2}$",
+      "correctChoice": "A",
+      "explanation": "$m_1 = -k/3$ and $m_2 = 2/4 = 1/2$. For perpendicularity: $m_1 m_2 = -1 \\implies (-k/3)(1/2) = -1 \\implies -k/6 = -1 \\implies k = 6$.",
+      "archetype": "trap"
+    },
+    {
+      "id": "m1201-13",
+      "promptText": "Find the area of the triangle bounded by the line $3x + 4y - 24 = 0$ and the coordinate axes.",
+      "choiceA": "12 sq units",
+      "choiceB": "24 sq units",
+      "choiceC": "48 sq units",
+      "choiceD": "36 sq units",
+      "correctChoice": "B",
+      "explanation": "$x$-intercept: set $y = 0 \\implies 3x = 24 \\implies a = 8$. $y$-intercept: set $x = 0 \\implies 4y = 24 \\implies b = 6$. Area $= \\frac{1}{2}ab = \\frac{1}{2}(8)(6) = 24$.",
+      "archetype": "numerical"
+    },
+    {
+      "id": "m1201-14",
+      "promptText": "Which point is collinear with $(1, 2)$ and $(3, 6)$?",
+      "choiceA": "$(4, 8)$",
+      "choiceB": "$(5, 9)$",
+      "choiceC": "$(2, 5)$",
+      "choiceD": "$(0, 1)$",
+      "correctChoice": "A",
+      "explanation": "Slope between given points is $m = \\frac{6-2}{3-1} = \\frac{4}{2} = 2$. Line is $y = 2x$. Point $(4, 8)$ satisfies $8 = 2(4)$.",
+      "archetype": "standard"
+    },
+    {
+      "id": "m1201-15",
+      "promptText": "What is the distance between the origin and the line $12x - 5y + 39 = 0$?",
+      "choiceA": "2",
+      "choiceB": "3",
+      "choiceC": "4",
+      "choiceD": "5",
+      "correctChoice": "B",
+      "explanation": "$d = \\frac{|39|}{\\sqrt{12^2 + (-5)^2}} = \\frac{39}{13} = 3$.",
+      "archetype": "numerical"
+    },
+    {
+      "id": "m1201-16",
+      "promptText": "Find the equation of the line passing through $(3, 5)$ having an angle of inclination of $45^\\circ$.",
+      "choiceA": "$x - y + 2 = 0$",
+      "choiceB": "$x + y - 8 = 0$",
+      "choiceC": "$x - y - 2 = 0$",
+      "choiceD": "$2x - y - 1 = 0$",
+      "correctChoice": "A",
+      "explanation": "$m = \\tan 45^\\circ = 1$. Point-slope: $y - 5 = 1(x - 3) \\implies y - 5 = x - 3 \\implies x - y + 2 = 0$.",
+      "archetype": "standard"
+    },
+    {
+      "id": "m1201-17",
+      "promptText": "If the distance from $(k, 2)$ to $3x + 4y - 5 = 0$ is 3 units, find the positive value of $k$.",
+      "choiceA": "4",
+      "choiceB": "6",
+      "choiceC": "8",
+      "choiceD": "10",
+      "correctChoice": "A",
+      "explanation": "$\\frac{|3k + 4(2) - 5|}{5} = 3 \\implies |3k + 3| = 15 \\implies 3k + 3 = 15 \\implies 3k = 12 \\implies k = 4$.",
+      "archetype": "numerical"
+    },
+    {
+      "id": "m1201-18",
+      "promptText": "The lines $2x - y + 4 = 0$ and $ax + 2y - 6 = 0$ are parallel. What is the value of $a$?",
+      "choiceA": "4",
+      "choiceB": "-4",
+      "choiceC": "1",
+      "choiceD": "-1",
+      "correctChoice": "B",
+      "explanation": "$m_1 = 2$. For Line 2: $m_2 = -a/2$. Parallel $\\implies -a/2 = 2 \\implies a = -4$.",
+      "archetype": "numerical"
+    },
+    {
+      "id": "m1201-19",
+      "promptText": "Find the coordinates of the $y$-intercept of the line $5x - 3y + 18 = 0$.",
+      "choiceA": "$(0, 6)$",
+      "choiceB": "$(0, -6)$",
+      "choiceC": "$(6, 0)$",
+      "choiceD": "$(-6, 0)$",
+      "correctChoice": "A",
+      "explanation": "Set $x = 0 \\implies -3y + 18 = 0 \\implies 3y = 18 \\implies y = 6$. The point is $(0, 6)$.",
+      "archetype": "standard"
+    },
+    {
+      "id": "m1201-20",
+      "promptText": "Find the perpendicular distance from the point $(1, -3)$ to the line $8x + 6y - 10 = 0$.",
+      "choiceA": "1",
+      "choiceB": "2",
+      "choiceC": "3",
+      "choiceD": "4",
+      "correctChoice": "B",
+      "explanation": "$d = \\frac{|8(1) + 6(-3) - 10|}{\\sqrt{8^2 + 6^2}} = \\frac{|8 - 18 - 10|}{10} = \\frac{|-20|}{10} = 2$.",
+      "archetype": "numerical"
+    }
+  ]
+}

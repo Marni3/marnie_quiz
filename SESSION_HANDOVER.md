@@ -36,6 +36,9 @@ It has two core pillars:
 4. **Benchmark Module Redesigned**:
    - [`test-sets/learning-modules/math/math-01-01.json`](file:///c:/Users/reyna/OneDrive/Documents/marnie_quiz/test-sets/learning-modules/math/math-01-01.json) fully updated to reflect all new pedagogical and formatting standards.
 
+5. **BYOK AI Tutor & Local Storage Architecture Fully Specified**:
+   - Comprehensive Section 7 in [`implementation-plan.md`](file:///c:/Users/reyna/OneDrive/Documents/marnie_quiz/implementation-plan.md) details the multi-provider failover routing (Gemini 1.5/2.0 Flash $\to$ Groq Llama 3.3 70B $\to$ OpenRouter), multi-system integration (module text explainers, post-exam debriefs, Socratic hint ladders, FSRS weakness drill generators), strict KaTeX & JSON schema parsing guarantees, and 100% local-first conversation storage in browser `IndexedDB` (zero Neon PostgreSQL database bloat).
+
 ---
 
 ## 3. Mandatory Instructions for the Next Agent
@@ -89,6 +92,10 @@ $$\text{Concept Block} \longrightarrow \text{Immediate In-line Concept Check} \l
 - **Database Module Review Tracking**: In future backend implementations, add a mechanism (e.g. `user_module_progress` table with `last_reviewed_at`, `confidence_level`, `next_due_date`) to track when each module was last studied.
 - **Dual Recall Recommendations**: The Spaced Repetition System will be expanded beyond just generating dynamic/custom review sets to **recommend specific learning modules and/or their paired quiz sets** for periodic review.
 - **Forgetting Curve Refresher (Even for High Scores)**: Items and modules will be scheduled for recall based on retention decay curves—ensuring that topics examinees previously mastered or scored well on are still resurfaced at optimal intervals before long-term memory fades.
+
+### G. Declarative Visualizers & Git-Lean Diagram Strategy
+- **No Raw Code Execution in Module Schemas**: Interactive visualizers must strictly use pre-built, typed React/SVG components parameterized by JSON (`type`, `params`, `controls`). Raw JavaScript strings (`renderFunction`), `new Function()`, and `eval()` are banned to eliminate XSS risks and safeguard client-side BYOK API keys.
+- **Programmatic & Vector Diagrams (Git-Lean)**: Circuit schematics, vector diagrams, and graphs are generated via local Python scripts (`matplotlib`, `schemdraw`) as lightweight SVGs or inline SVGs. Avoid committing heavy bitmap images (PNG/JPEG) into the repository to prevent Git repo bloat and respect GitHub file size limits.
 
 ---
 

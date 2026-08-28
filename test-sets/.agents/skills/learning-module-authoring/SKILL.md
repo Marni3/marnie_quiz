@@ -60,14 +60,21 @@ Modules are designed as a **compounding, cohesive learning journey** through the
 
 ---
 
-## 2. Interactive Visualizer Framework
+## 2. Visual Assets, Declarative Visualizers & Git-Lean Diagram Strategy
 
-Where physical or geometric intuition is paramount, modules embed lightweight, self-contained SVG/HTML5 canvas visualizers with interactive sliders across 3 functional archetypes:
+Where physical or geometric intuition is paramount, modules embed visualizations and diagrams following these strict rules:
 
-### Visualizer Archetypes:
-1. **Morphological / Geometric Simulators**: Real-time shape morphing (e.g. Conic eccentricity *"measure of uncircleness"*, 3D Antenna radiation patterns, Mohr's stress circle).
-2. **Dynamic Parameter Sweepers**: Control knobs live-updating waveforms or spectra (e.g. RLC transient damping curves, AM/FM sideband power, BJT DC load lines, Bode gain/phase plots).
-3. **Step-by-Step Interactive Steppers**: User steps through multi-stage reductions (e.g. Thevenin source conversions, Karnaugh map grouping loops).
+### A. Declarative Visualizers (Zero Raw JavaScript Code Strings)
+- **No `new Function()` or `renderFunction`**: Visualizers must use pre-built, typed React/SVG components rendered declaratively from structured JSON parameters (`type`, `params`, `controls`).
+- **Standard Archetypes**:
+  1. **Morphological / Geometric Simulators**: Real-time shape morphing (e.g. Conic eccentricity *"measure of uncircleness"*, 3D Antenna radiation patterns, Mohr's stress circle).
+  2. **Dynamic Parameter Sweepers**: Sliders live-updating waveforms or spectra (e.g. RLC transient damping curves, AM/FM sideband power, BJT DC load lines, Bode gain/phase plots).
+  3. **Step-by-Step Interactive Steppers**: Multi-stage circuit reductions (e.g. Thevenin source conversions, Karnaugh map grouping loops).
+
+### B. Git-Lean Diagram Strategy (Preventing Repo Clutter & GitHub Size Limits)
+- **Scripted & Vector-First SVGs (Primary)**: Technical diagrams, circuit schematics, and geometric setups are generated via Python scripts (`matplotlib`, `schemdraw`, vector SVGs) or inline SVGs.
+- **Zero Heavy Bitmap Clutter**: Avoid committing large PNGs or JPEGs directly into the git repository to keep repository size lean and cloning fast.
+- **Targeted AI Generations**: Conceptual illustrations generated via Antigravity image generation are optimized and compressed before static reference.
 
 ---
 

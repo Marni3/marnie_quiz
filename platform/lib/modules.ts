@@ -1,6 +1,63 @@
 import fs from "fs";
 import path from "path";
 
+export interface VisualizerControl {
+  id: string;
+  label: string;
+  min: number;
+  max: number;
+  step: number;
+  defaultValue: number;
+  unit?: string;
+}
+
+export interface DeclarativeVisualizerConfig {
+  archetype:
+    | "factor_tree"
+    | "parameter_sweep"
+    | "geometric"
+    | "conic_explorer"
+    | "rlc_resonance"
+    | "circuit_phasor"
+    | "wave_interference"
+    | "modulation"
+    | "thermo_cycle"
+    | "stepper";
+  title: string;
+  description: string;
+  config: {
+    canvasWidth?: number;
+    canvasHeight?: number;
+    controls: VisualizerControl[];
+    initialParams?: Record<string, number | string | boolean>;
+    renderFunction?: string; // Optional fallback legacy string
+    data?: Record<string, any>;
+  };
+}
+
+export interface MasteryChallengeQuestion {
+  id: string;
+  promptText: string;
+  choiceA: string;
+  choiceB: string;
+  choiceC: string;
+  choiceD: string;
+  correctChoice: "A" | "B" | "C" | "D";
+  explanation: string;
+  imageUrl?: string;
+  archetype?: string;
+}
+
+export interface MasteryChallengeSet {
+  moduleId: string;
+  moduleCode: string;
+  title: string;
+  description: string;
+  totalQuestions: number;
+  timeLimitMinutes: number;
+  questions: MasteryChallengeQuestion[];
+}
+
 export interface LearningModule {
   id: string; // e.g. "math-01-01"
   code: string; // e.g. "MATH 01-01"
@@ -9,7 +66,7 @@ export interface LearningModule {
   topicTitle: string; // e.g. "College Algebra"
   subtopicTitle: string; // e.g. "Real Numbers, Operations & Factoring"
   order: number;
-  pairedQuizSetId: string;
+  pairedQuizSetId?: string;
   
   // Navigation & Header
   toc: Array<{ id: string; title: string; level: number }>;
@@ -35,26 +92,12 @@ export interface LearningModule {
     keywordTrigger: string;
   }>;
   
-  // Interactive Visualizer Configuration
-  visualizer?: {
-    archetype: "geometric" | "parameter_sweep" | "stepper";
-    title: string;
-    description: string;
-    config: {
-      canvasWidth: number;
-      canvasHeight: number;
-      controls: Array<{
-        id: string;
-        label: string;
-        min: number;
-        max: number;
-        step: number;
-        defaultValue: number;
-        unit?: string;
-      }>;
-      renderFunction: string;
-    };
-  };
+  // Interactive Declarative Visualizer Configuration
+  visualizer?: DeclarativeVisualizerConfig;
+
+  // Optional embedded Mastery Challenge
+  masteryChallenge?: MasteryChallengeSet;
+
   
   // Core Theory
   theory: {
@@ -122,7 +165,7 @@ export interface LearningModuleSummary {
   topicTitle: string;
   subtopicTitle: string;
   order: number;
-  pairedQuizSetId: string;
+  pairedQuizSetId?: string;
   termsCount: number;
   examplesCount: number;
   conceptChecksCount: number;
@@ -182,7 +225,7 @@ export async function getAllLearningModules(): Promise<LearningModuleSummary[]> 
           topicTitle: data.topicTitle,
           subtopicTitle: data.subtopicTitle,
           order: data.order,
-          pairedQuizSetId: data.pairedQuizSetId,
+          pairedQuizSetId: data.pairedQuizSetId || "",
           termsCount: data.terms?.length || 0,
           examplesCount: data.examples?.length || 0,
           conceptChecksCount: data.conceptChecks?.length || 0,
@@ -240,3 +283,48 @@ export async function getLearningModulesByTopic(topicCode: string): Promise<Lear
   const normalized = topicCode.toUpperCase().trim();
   return all.filter((m) => m.topicCode.toUpperCase() === normalized);
 }
+
+/**
+ * Loads the decoupled companion Mastery Challenge Set for a specific learning module.
+ */
+export async function getMasteryChallenge(
+  moduleId: string
+): Promise<MasteryChallengeSet | null> {
+  try {
+    const mod = await getLearningModuleById(moduleId);
+    if (mod?.masteryChallenge && mod.masteryChallenge.questions?.length > 0) {
+      return mod.masteryChallenge;
+    }
+
+    const rootDir = getModulesDirectory();
+    const targetFile = `${moduleId.toLowerCase().replace(/[^a-z0-9_-]/g, "")}-mastery.json`;
+
+    // Check domain mastery folders
+    const domains = ["math", "elecs", "geas", "est"];
+    for (const d of domains) {
+      const directPath = path.join(rootDir, d, "mastery", targetFile);
+      if (fs.existsSync(directPath)) {
+        const raw = fs.readFileSync(directPath, "utf8");
+        return JSON.parse(raw) as MasteryChallengeSet;
+      }
+      const directPathAlt = path.join(rootDir, d, targetFile);
+      if (fs.existsSync(directPathAlt)) {
+        const raw = fs.readFileSync(directPathAlt, "utf8");
+        return JSON.parse(raw) as MasteryChallengeSet;
+      }
+    }
+
+    // Direct check in mastery root
+    const rootMastery = path.join(rootDir, "mastery", targetFile);
+    if (fs.existsSync(rootMastery)) {
+      const raw = fs.readFileSync(rootMastery, "utf8");
+      return JSON.parse(raw) as MasteryChallengeSet;
+    }
+
+    return null;
+  } catch (err) {
+    console.error(`Error loading mastery challenge for module ${moduleId}:`, err);
+    return null;
+  }
+}
+

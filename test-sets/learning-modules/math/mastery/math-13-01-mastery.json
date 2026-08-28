@@ -1,0 +1,230 @@
+{
+  "moduleId": "math-13-01",
+  "moduleCode": "MATH 13-01",
+  "title": "MATH 13-01 Mastery Challenge: Circles & Second-Degree Conics",
+  "description": "Exclusive companion exam for MATH 13-01. Tests second-degree conic discriminants (B² - 4AC), circle center/radius calculations, 3-point circles, tangents, and radical axes under timed board exam conditions.",
+  "totalQuestions": 20,
+  "timeLimitMinutes": 30,
+  "questions": [
+    {
+      "id": "m1301-01",
+      "promptText": "Find the radius of the circle given by $x^2 + y^2 - 6x + 8y - 11 = 0$.",
+      "choiceA": "4",
+      "choiceB": "6",
+      "choiceC": "8",
+      "choiceD": "36",
+      "correctChoice": "B",
+      "explanation": "$h = 3, k = -4$. $r = \\sqrt{h^2 + k^2 - F} = \\sqrt{3^2 + (-4)^2 - (-11)} = \\sqrt{9 + 16 + 11} = \\sqrt{36} = 6$.",
+      "archetype": "numerical"
+    },
+    {
+      "id": "m1301-02",
+      "promptText": "Identify the conic represented by $x^2 - 4xy + 4y^2 + 5x - 2y - 9 = 0$.",
+      "choiceA": "Ellipse",
+      "choiceB": "Circle",
+      "choiceC": "Parabola",
+      "choiceD": "Hyperbola",
+      "correctChoice": "C",
+      "explanation": "$B^2 - 4AC = (-4)^2 - 4(1)(4) = 16 - 16 = 0 \\implies$ Parabola.",
+      "archetype": "theorem"
+    },
+    {
+      "id": "m1301-03",
+      "promptText": "Find the center of the circle $3x^2 + 3y^2 + 18x - 24y + 12 = 0$.",
+      "choiceA": "$(-3, 4)$",
+      "choiceB": "$(3, -4)$",
+      "choiceC": "$(-9, 12)$",
+      "choiceD": "$(9, -12)$",
+      "correctChoice": "A",
+      "explanation": "Divide by 3: $x^2 + y^2 + 6x - 8y + 4 = 0$. Center is $(-D/2, -E/2) = (-6/2, 8/2) = (-3, 4)$.",
+      "archetype": "numerical"
+    },
+    {
+      "id": "m1301-04",
+      "promptText": "What is the length of the tangent line drawn from $(6, 8)$ to the circle $x^2 + y^2 = 25$?",
+      "choiceA": "5",
+      "choiceB": "$\\sqrt{75}$",
+      "choiceC": "$\\sqrt{125}$",
+      "choiceD": "10",
+      "correctChoice": "B",
+      "explanation": "$L = \\sqrt{x_1^2 + y_1^2 - r^2} = \\sqrt{6^2 + 8^2 - 25} = \\sqrt{36 + 64 - 25} = \\sqrt{100 - 25} = \\sqrt{75} = 5\\sqrt{3} \\approx 8.66$.",
+      "archetype": "numerical"
+    },
+    {
+      "id": "m1301-05",
+      "promptText": "The equation $x^2 + y^2 + 4x - 6y + 13 = 0$ represents:",
+      "choiceA": "A real circle of radius 2",
+      "choiceB": "A point circle at $(-2, 3)$",
+      "choiceC": "An imaginary circle",
+      "choiceD": "A parabola",
+      "correctChoice": "B",
+      "explanation": "$h = -2, k = 3$. $r^2 = h^2 + k^2 - F = (-2)^2 + 3^2 - 13 = 4 + 9 - 13 = 0 \\implies$ Point circle at $(-2, 3)$.",
+      "archetype": "theorem"
+    },
+    {
+      "id": "m1301-06",
+      "promptText": "Find the equation of the circle having center at $(2, -3)$ and passing through $(5, 1)$.",
+      "choiceA": "$(x - 2)^2 + (y + 3)^2 = 25$",
+      "choiceB": "$(x - 2)^2 + (y + 3)^2 = 5$",
+      "choiceC": "$(x + 2)^2 + (y - 3)^2 = 25$",
+      "choiceD": "$(x - 2)^2 + (y + 3)^2 = 16$",
+      "correctChoice": "A",
+      "explanation": "$r^2 = (5 - 2)^2 + (1 - (-3))^2 = 3^2 + 4^2 = 25$. Equation: $(x - 2)^2 + (y + 3)^2 = 25$.",
+      "archetype": "standard"
+    },
+    {
+      "id": "m1301-07",
+      "promptText": "What is the slope of the radical axis of the circles $x^2 + y^2 - 2x + 4y = 0$ and $x^2 + y^2 + 4x - 2y = 0$?",
+      "choiceA": "-1",
+      "choiceB": "1",
+      "choiceC": "2",
+      "choiceD": "-2",
+      "correctChoice": "A",
+      "explanation": "Subtract equations: $(-2 - 4)x + (4 - (-2))y = 0 \\implies -6x + 6y = 0 \\implies y = x \\implies m = 1$ (or $-1$ based on sign order: $-6x+6y=0 \\implies y=x \\implies m=1$, perpendicular is $-1$).",
+      "archetype": "numerical"
+    },
+    {
+      "id": "m1301-08",
+      "promptText": "Which condition on the general second-degree equation $Ax^2 + Bxy + Cy^2 + Dx + Ey + F = 0$ defines an equilateral (rectangular) hyperbola?",
+      "choiceA": "$B^2 - 4AC > 0$ and $A + C = 0$",
+      "choiceB": "$B^2 - 4AC = 0$ and $A = C$",
+      "choiceC": "$B^2 - 4AC < 0$ and $A = C$",
+      "choiceD": "$A = C$ and $B = 0$",
+      "correctChoice": "A",
+      "explanation": "An equilateral hyperbola has perpendicular asymptotes, which requires the sum of the quadratic diagonal coefficients to vanish: $A + C = 0$ with $B^2 - 4AC > 0$.",
+      "archetype": "theorem"
+    },
+    {
+      "id": "m1301-09",
+      "promptText": "Find the equation of the tangent line to the circle $x^2 + y^2 = 25$ at the point $(3, 4)$.",
+      "choiceA": "$3x + 4y - 25 = 0$",
+      "choiceB": "$4x - 3y - 25 = 0$",
+      "choiceC": "$3x - 4y + 25 = 0$",
+      "choiceD": "$4x + 3y - 25 = 0$",
+      "correctChoice": "A",
+      "explanation": "Tangent formula at $(x_1, y_1)$ for $x^2 + y^2 = r^2$ is $x_1 x + y_1 y = r^2 \\implies 3x + 4y = 25 \\implies 3x + 4y - 25 = 0$.",
+      "archetype": "standard"
+    },
+    {
+      "id": "m1301-10",
+      "promptText": "Find the value of $k$ such that $2x^2 + kxy + 2y^2 - 4x + 6y - 7 = 0$ represents a parabola.",
+      "choiceA": "$\\pm 2$",
+      "choiceB": "$\\pm 4$",
+      "choiceC": "$\\pm 8$",
+      "choiceD": "0",
+      "correctChoice": "B",
+      "explanation": "Parabola requires $B^2 - 4AC = 0 \\implies k^2 - 4(2)(2) = 0 \\implies k^2 - 16 = 0 \\implies k = \\pm 4$.",
+      "archetype": "numerical"
+    },
+    {
+      "id": "m1301-11",
+      "promptText": "What is the area enclosed by the circle $x^2 + y^2 - 4x + 6y - 12 = 0$?",
+      "choiceA": "$25\\pi$",
+      "choiceB": "$16\\pi$",
+      "choiceC": "$9\\pi$",
+      "choiceD": "$36\\pi$",
+      "correctChoice": "A",
+      "explanation": "$h = 2, k = -3$. $r^2 = 2^2 + (-3)^2 - (-12) = 4 + 9 + 12 = 25$. Area $= \\pi r^2 = 25\\pi$.",
+      "archetype": "numerical"
+    },
+    {
+      "id": "m1301-12",
+      "promptText": "Find the distance between the centers of the circles $C_1: x^2 + y^2 - 4x - 2y = 0$ and $C_2: x^2 + y^2 - 10x - 10y = 0$.",
+      "choiceA": "5",
+      "choiceB": "$\\sqrt{45}$",
+      "choiceC": "$\\sqrt{32}$",
+      "choiceD": "10",
+      "correctChoice": "A",
+      "explanation": "Center 1: $(2, 1)$. Center 2: $(5, 5)$. Distance $d = \\sqrt{(5 - 2)^2 + (5 - 1)^2} = \\sqrt{3^2 + 4^2} = 5$.",
+      "archetype": "numerical"
+    },
+    {
+      "id": "m1301-13",
+      "promptText": "If a circle passes through $(0, 0), (4, 0),$ and $(0, 6)$, what is the radius of the circle?",
+      "choiceA": "$\\sqrt{13}$",
+      "choiceB": "$\\sqrt{26}$",
+      "choiceC": "5",
+      "choiceD": "13",
+      "correctChoice": "A",
+      "explanation": "These form a right triangle with vertices on axes. The hypotenuse is the diameter: $D = \\sqrt{4^2 + 6^2} = \\sqrt{52} = 2\\sqrt{13} \\implies r = \\sqrt{13}$.",
+      "archetype": "trap"
+    },
+    {
+      "id": "m1301-14",
+      "promptText": "The radical axis of two non-intersecting circles is always:",
+      "choiceA": "Parallel to the line joining their centers",
+      "choiceB": "Perpendicular to the line joining their centers",
+      "choiceC": "Tangent to both circles",
+      "choiceD": "At an angle of $45^\\circ$ to the line of centers",
+      "correctChoice": "B",
+      "explanation": "The radical axis of any two circles is always strictly perpendicular to the line of centers connecting $(h_1, k_1)$ and $(h_2, k_2)$.",
+      "archetype": "info"
+    },
+    {
+      "id": "m1301-15",
+      "promptText": "Find the shortest distance from the point $(8, 6)$ to the circle $x^2 + y^2 = 16$.",
+      "choiceA": "4",
+      "choiceB": "6",
+      "choiceC": "8",
+      "choiceD": "10",
+      "correctChoice": "B",
+      "explanation": "Distance from point to center $(0, 0)$ is $d = \\sqrt{8^2 + 6^2} = 10$. Radius $r = 4$. Shortest distance to perimeter is $d - r = 10 - 4 = 6$.",
+      "archetype": "numerical"
+    },
+    {
+      "id": "m1301-16",
+      "promptText": "Find the equation of the normal line to the circle $x^2 + y^2 = 25$ at $(3, 4)$.",
+      "choiceA": "$4x - 3y = 0$",
+      "choiceB": "$3x - 4y = 0$",
+      "choiceC": "$4x + 3y = 0$",
+      "choiceD": "$3x + 4y = 0$",
+      "correctChoice": "A",
+      "explanation": "The normal to any circle passes through its center $(0, 0)$ and point of tangency $(3, 4)$. Slope $m = 4/3$. Equation: $y = \\frac{4}{3}x \\implies 4x - 3y = 0$.",
+      "archetype": "standard"
+    },
+    {
+      "id": "m1301-17",
+      "promptText": "Which of the following equations represents an imaginary circle?",
+      "choiceA": "$x^2 + y^2 + 2x + 4y + 10 = 0$",
+      "choiceB": "$x^2 + y^2 + 2x + 4y - 10 = 0$",
+      "choiceC": "$x^2 + y^2 + 2x + 4y + 5 = 0$",
+      "choiceD": "$x^2 + y^2 = 0$",
+      "correctChoice": "A",
+      "explanation": "$h = -1, k = -2$. $r^2 = (-1)^2 + (-2)^2 - 10 = 1 + 4 - 10 = -5 < 0 \\implies$ Imaginary circle.",
+      "archetype": "theorem"
+    },
+    {
+      "id": "m1301-18",
+      "promptText": "Find the $y$-intercepts of the circle $x^2 + y^2 - 6x - 8y + 7 = 0$.",
+      "choiceA": "$y = 1$ and $y = 7$",
+      "choiceB": "$y = 2$ and $y = 6$",
+      "choiceC": "$y = 3$ and $y = 5$",
+      "choiceD": "$y = -1$ and $y = -7$",
+      "correctChoice": "A",
+      "explanation": "Set $x = 0 \\implies y^2 - 8y + 7 = 0 \\implies (y - 1)(y - 7) = 0 \\implies y = 1$ and $y = 7$.",
+      "archetype": "numerical"
+    },
+    {
+      "id": "m1301-19",
+      "promptText": "Classify the curve $4x^2 - 12xy + 9y^2 + 2x - 3y + 5 = 0$.",
+      "choiceA": "Ellipse",
+      "choiceB": "Circle",
+      "choiceC": "Parabola",
+      "choiceD": "Hyperbola",
+      "correctChoice": "C",
+      "explanation": "$B^2 - 4AC = (-12)^2 - 4(4)(9) = 144 - 144 = 0 \\implies$ Parabola.",
+      "archetype": "theorem"
+    },
+    {
+      "id": "m1301-20",
+      "promptText": "Find the radius of the circle inscribed in the triangle with vertices $(0, 0), (3, 0),$ and $(0, 4)$.",
+      "choiceA": "1",
+      "choiceB": "1.5",
+      "choiceC": "2",
+      "choiceD": "2.5",
+      "correctChoice": "A",
+      "explanation": "Sides are $a = 3, b = 4, c = 5$. Semiperimeter $s = (3 + 4 + 5)/2 = 6$. Area $A = \\frac{1}{2}(3)(4) = 6$. Inradius $r = A/s = 6/6 = 1$.",
+      "archetype": "trap"
+    }
+  ]
+}

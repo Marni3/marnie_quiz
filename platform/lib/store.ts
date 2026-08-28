@@ -11,6 +11,8 @@ import {
   QuestionSetItem,
   Attempt,
   AnswerRecord,
+  UserTopicSrs,
+  UserModuleProgress,
 } from "./db/schema";
 import seedData from "../data/seed-data.json";
 
@@ -22,6 +24,8 @@ export interface MockStore {
   questionSetItems: Map<string, QuestionSetItem>;
   attempts: Map<string, Attempt>;
   answerRecords: Map<string, AnswerRecord>;
+  userTopicSrs: Map<string, UserTopicSrs>;
+  userModuleProgress: Map<string, UserModuleProgress>;
 }
 
 const globalStore = globalThis as unknown as { __mockStore?: MockStore };
@@ -36,6 +40,8 @@ export function getMockStore(): MockStore {
       questionSetItems: new Map(),
       attempts: new Map(),
       answerRecords: new Map(),
+      userTopicSrs: new Map(),
+      userModuleProgress: new Map(),
     };
 
     // Seed default sample user

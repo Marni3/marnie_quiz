@@ -1,0 +1,311 @@
+{
+  "id": "math-12-01",
+  "code": "MATH 12-01",
+  "domain": "MATH",
+  "topicCode": "MATH-12",
+  "topicTitle": "Analytic Geometry",
+  "subtopicTitle": "Cartesian Coordinate System, Straight Lines, Slopes & Distances",
+  "order": 1,
+  "pairedQuizSetId": "math_07_analytic_geometry_drill_all_set01",
+  "toc": [
+    { "id": "sec-prereq-bridges", "title": "1. Introduction & Cross-Subject Bridges", "level": 2 },
+    { "id": "sec-terminology", "title": "2. Terms and Definitions", "level": 2 },
+    { "id": "sec-visualizer", "title": "3. Interactive Visualizer: Line Slope & Point-to-Line Distance", "level": 2 },
+    { "id": "sec-theory", "title": "4. Lesson Proper", "level": 2 },
+    { "id": "sec-dual-method", "title": "5. Sample Problems and Solutions", "level": 2 },
+    { "id": "sec-calculator", "title": "6. Calculator Techniques (Karce & Canon)", "level": 2 },
+    { "id": "sec-concept-checks", "title": "7. In-Line Concept Checks", "level": 2 },
+    { "id": "sec-mastery-challenge", "title": "8. Paired Mastery Challenge", "level": 2 }
+  ],
+  "prerequisiteBridge": {
+    "priorModuleId": "math-10-01",
+    "text": "In Plane Geometry, we studied shapes through axioms and pure Euclidean proofs. In Analytic Geometry, pioneered by René Descartes, we map every geometric shape onto algebraic equations using the Cartesian coordinate grid, enabling high-speed algebraic solving for lines, intersections, and distances."
+  },
+  "crossSubjectBridges": [
+    {
+      "targetDomain": "ELECS",
+      "targetTopicCode": "ELEC-01",
+      "badgeText": "DC Load Lines",
+      "description": "The DC load line of a transistor circuit ($V_{CE} = V_{CC} - I_C R_C$) is plotted directly in slope-intercept form on the $I_C$-$V_{CE}$ output characteristic plane to determine the Q-point operating region."
+    },
+    {
+      "targetDomain": "EST",
+      "targetTopicCode": "EST-03",
+      "badgeText": "Constellation Decision Boundaries",
+      "description": "In $M$-ary QAM and PSK digital demodulators, decision regions are bounded by linear Cartesian threshold lines that minimize symbol error probability in the $I$-$Q$ plane."
+    },
+    {
+      "targetDomain": "GEAS",
+      "targetTopicCode": "GEAS-10",
+      "badgeText": "Vector Statics & Moments",
+      "description": "The line of action of a 2D force vector uses point-to-line perpendicular distance ($d = \\frac{|Ax_1 + By_1 + C|}{\\sqrt{A^2 + B^2}}$) to calculate the moment of a force about an arbitrary coordinate pivot."
+    }
+  ],
+  "terms": [
+    {
+      "term": "Abscissa",
+      "symbol": "$x$",
+      "unit": "Coordinate",
+      "definition": "The horizontal signed distance of a point from the vertical $y$-axis in the Cartesian plane.",
+      "keywordTrigger": "horizontal coordinate / distance from y-axis"
+    },
+    {
+      "term": "Ordinate",
+      "symbol": "$y$",
+      "unit": "Coordinate",
+      "definition": "The vertical signed distance of a point from the horizontal $x$-axis in the Cartesian plane.",
+      "keywordTrigger": "vertical coordinate / distance from x-axis"
+    },
+    {
+      "term": "Distance Formula",
+      "symbol": "$d$",
+      "unit": "Length",
+      "definition": "The straight-line Euclidean distance between two points $P_1(x_1, y_1)$ and $P_2(x_2, y_2)$ derived from the Pythagorean theorem: $d = \\sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2}$.",
+      "keywordTrigger": "length of line segment between two coordinate points"
+    },
+    {
+      "term": "Slope of a Line (Gradient)",
+      "symbol": "$m$",
+      "unit": "Dimensionless",
+      "definition": "The tangent of the angle of inclination of a line: $m = \\tan\\theta = \\frac{y_2 - y_1}{x_2 - x_1} = \\frac{\\Delta y}{\\Delta x}$.",
+      "keywordTrigger": "tangent of angle of inclination / rise over run"
+    },
+    {
+      "term": "Parallel Lines Condition",
+      "symbol": "$m_1 = m_2$",
+      "unit": "Condition",
+      "definition": "Two non-vertical lines are strictly parallel if and only if their slopes are equal ($m_1 = m_2$).",
+      "keywordTrigger": "equal slopes / lines that never intersect"
+    },
+    {
+      "term": "Perpendicular Lines Condition",
+      "symbol": "$m_1 \\cdot m_2 = -1$",
+      "unit": "Condition",
+      "definition": "Two lines are perpendicular (orthogonal) if and only if their slopes are negative reciprocals: $m_2 = -\\frac{1}{m_1}$.",
+      "keywordTrigger": "negative reciprocal slopes / product of slopes equals -1"
+    },
+    {
+      "term": "Point-to-Line Distance",
+      "symbol": "$d$",
+      "unit": "Length",
+      "definition": "The perpendicular shortest distance from an external point $P_1(x_1, y_1)$ to a line $Ax + By + C = 0$: $d = \\frac{|Ax_1 + By_1 + C|}{\\sqrt{A^2 + B^2}}$.",
+      "keywordTrigger": "perpendicular distance from point to standard line equation"
+    },
+    {
+      "term": "Distance Between Parallel Lines",
+      "symbol": "$d$",
+      "unit": "Length",
+      "definition": "The perpendicular separation between two parallel lines $Ax + By + C_1 = 0$ and $Ax + By + C_2 = 0$: $d = \\frac{|C_1 - C_2|}{\\sqrt{A^2 + B^2}}$.",
+      "keywordTrigger": "perpendicular separation between two parallel lines"
+    },
+    {
+      "term": "Angle Between Two Lines",
+      "symbol": "$\\theta$",
+      "unit": "Degrees / Radians",
+      "definition": "The acute angle formed between two intersecting lines with slopes $m_1$ and $m_2$: $\\tan\\theta = \\left|\\frac{m_2 - m_1}{1 + m_1 m_2}\\right|$.",
+      "keywordTrigger": "angle between two intersecting slopes"
+    },
+    {
+      "term": "Intercept Form of a Line",
+      "symbol": "$\\frac{x}{a} + \\frac{y}{b} = 1$",
+      "unit": "Equation",
+      "definition": "The linear equation specified by its $x$-intercept $a$ and $y$-intercept $b$, where the triangle formed with coordinate axes has area $A = \\frac{1}{2}|ab|$.",
+      "keywordTrigger": "line equation given x-intercept a and y-intercept b"
+    }
+  ],
+  "visualizer": {
+    "archetype": "geometric",
+    "title": "Interactive Line Slope, Angle & Point-to-Line Distance Explorer",
+    "description": "Adjust the slope parameter and point coordinates to observe the live line equation, angle of inclination, and perpendicular distance normal.",
+    "config": {
+      "canvasWidth": 640,
+      "canvasHeight": 320,
+      "controls": [
+        {
+          "id": "eccentricity",
+          "label": "Slope Gradient (m)",
+          "min": 0,
+          "max": 2,
+          "step": 0.2,
+          "defaultValue": 0.8
+        },
+        {
+          "id": "semiMajor",
+          "label": "Line Offset / Intercept",
+          "min": 40,
+          "max": 140,
+          "step": 10,
+          "defaultValue": 90
+        }
+      ]
+    }
+  },
+  "theory": {
+    "mentalAnchor": "Slope is vertical rise over horizontal run ($m = \\tan\\theta$). Perpendicular lines always multiply to -1 ($m_1 m_2 = -1$). To find the distance from a point to a line, plug the point coordinates directly into the line equation and divide by the Euclidean hypotenuse $\\sqrt{A^2 + B^2}$.",
+    "contentMarkdown": "### 1. Cartesian Coordinates & Fundamental Distance\n\nIn a 2D Cartesian plane established by René Descartes (1596–1650, *Cartesius*), every point $P(x, y)$ is uniquely defined by its **abscissa** $x$ and **ordinate** $y$.\n\n1. **Distance Between Two Points**:\n   $$d = \\sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2}$$\n\n2. **Slope & Angle of Inclination**:\n   $$m = \\tan\\theta = \\frac{y_2 - y_1}{x_2 - x_1}$$\n   - Horizontal line: $\\theta = 0^\\circ \\implies m = 0$\n   - Vertical line: $\\theta = 90^\\circ \\implies m = \\infty$ (undefined)\n   - Lines inclined at $45^\\circ$: $m = 1$\n   - Lines inclined at $135^\\circ$: $m = -1$\n\n---\n\n### 2. Parallelism, Perpendicularity & Angle Between Lines\n\n- **Parallel Lines**: $m_1 = m_2$\n- **Perpendicular Lines**: $m_1 \\cdot m_2 = -1 \\iff m_2 = -\\frac{1}{m_1}$\n- **Angle $\\theta$ from Line 1 to Line 2**:\n  $$\\tan\\theta = \\frac{m_2 - m_1}{1 + m_1 m_2}$$\n  *(If the acute angle is required, take the absolute value $|\\tan\\theta|$)*.\n\n---\n\n### 3. Forms of Linear Equations\n\n| Form | Equation | When to Use |\n| :--- | :--- | :--- |\n| **General Form** | $Ax + By + C = 0$ | Standard form ($m = -A/B$, $y$-int $= -C/B$, $x$-int $= -C/A$) |\n| **Slope-Intercept** | $y = mx + b$ | Given slope $m$ and $y$-intercept $b$ |\n| **Point-Slope** | $y - y_1 = m(x - x_1)$ | Given slope $m$ and passing point $(x_1, y_1)$ |\n| **Two-Point** | $y - y_1 = \\frac{y_2 - y_1}{x_2 - x_1}(x - x_1)$ | Given two known coordinate points |\n| **Intercept Form** | $\\frac{x}{a} + \\frac{y}{b} = 1$ | Given intercepts $(a, 0)$ and $(0, b)$. Axis triangle area $A = \\frac{1}{2}\\|ab\\|$ |\n\n---\n\n### 4. Perpendicular Distance Formulas\n\n1. **Distance from Point $(x_1, y_1)$ to Line $Ax + By + C = 0$**:\n   $$d = \\frac{|Ax_1 + By_1 + C|}{\\sqrt{A^2 + B^2}}$$\n\n2. **Distance Between Two Parallel Lines $Ax + By + C_1 = 0$ and $Ax + By + C_2 = 0$**:\n   $$d = \\frac{|C_1 - C_2|}{\\sqrt{A^2 + B^2}}$$\n   *(Ensure the coefficients $A$ and $B$ are made strictly identical before applying)*."
+  },
+  "examples": [
+    {
+      "problemStatement": "Find the perpendicular distance from the point P(3, -2) to the line 5x - 12y + 10 = 0.",
+      "formalSolutionMarkdown": "#### Step 1: Identify coefficients and coordinates\n- $A = 5$\n- $B = -12$\n- $C = 10$\n- $x_1 = 3, y_1 = -2$\n\n#### Step 2: Apply the point-to-line distance formula\n$$d = \\frac{|Ax_1 + By_1 + C|}{\\sqrt{A^2 + B^2}}$$\n$$d = \\frac{|5(3) + (-12)(-2) + 10|}{\\sqrt{5^2 + (-12)^2}}$$\n$$d = \\frac{|15 + 24 + 10|}{\\sqrt{25 + 144}} = \\frac{|49|}{\\sqrt{169}} = \\frac{49}{13} \\approx 3.769$$",
+      "shortcutSolutionMarkdown": "#### ⚡ 5-Second Direct Calculation\n1. Evaluate numerator: $5(3) - 12(-2) + 10 = 15 + 24 + 10 = 49$.\n2. Denominator is the classic 5-12-13 Pythagorean triple $\\sqrt{5^2 + 12^2} = 13$.\n3. Distance $= \\frac{49}{13} \\approx \\mathbf{3.77}$.",
+      "formalTimeSeconds": 60,
+      "shortcutTimeSeconds": 5
+    },
+    {
+      "problemStatement": "Find the perpendicular distance between the parallel lines 3x + 4y - 12 = 0 and 6x + 8y + 16 = 0.",
+      "formalSolutionMarkdown": "#### Step 1: Normalize equations to have identical A and B coefficients\nDivide the second equation $6x + 8y + 16 = 0$ by 2:\n$$3x + 4y + 8 = 0$$\n\nNow:\n- $A = 3, B = 4$\n- $C_1 = -12$\n- $C_2 = +8$\n\n#### Step 2: Apply parallel line distance formula\n$$d = \\frac{|C_1 - C_2|}{\\sqrt{A^2 + B^2}} = \\frac{|-12 - 8|}{\\sqrt{3^2 + 4^2}} = \\frac{|-20|}{\\sqrt{25}} = \\frac{20}{5} = 4$$",
+      "shortcutSolutionMarkdown": "#### ⚡ 4-Second Shortcut\n1. Make coefficients match: Line 2 is $3x + 4y + 8 = 0$.\n2. Subtract constant terms: $|-12 - 8| = 20$.\n3. Divide by $\\sqrt{3^2 + 4^2} = 5 \\implies d = \\frac{20}{5} = \\mathbf{4}$.",
+      "formalTimeSeconds": 50,
+      "shortcutTimeSeconds": 4
+    },
+    {
+      "problemStatement": "Find the acute angle formed between the intersecting lines L1: 2x - y + 3 = 0 and L2: x - 3y + 6 = 0.",
+      "formalSolutionMarkdown": "#### Step 1: Determine slopes of both lines\n- For $L_1$: $2x - y + 3 = 0 \\implies y = 2x + 3 \\implies m_1 = 2$\n- For $L_2$: $x - 3y + 6 = 0 \\implies 3y = x + 6 \\implies y = \\frac{1}{3}x + 2 \\implies m_2 = \\frac{1}{3}$\n\n#### Step 2: Apply the tangent angle formula\n$$\\tan\\theta = \\left|\\frac{m_2 - m_1}{1 + m_1 m_2}\\right| = \\left|\\frac{\\frac{1}{3} - 2}{1 + (2)(\\frac{1}{3})}\\right| = \\left|\\frac{-\\frac{5}{3}}{1 + \\frac{2}{3}}\\right| = \\left|\\frac{-\\frac{5}{3}}{\\frac{5}{3}}\\right| = |-1| = 1$$\n$$\\theta = \\arctan(1) = 45^\\circ$$",
+      "shortcutSolutionMarkdown": "#### ⚡ 5-Second Angle Evaluation\n1. $m_1 = 2, m_2 = 1/3$.\n2. Numerator: $1/3 - 2 = -5/3$.\n3. Denominator: $1 + (2)(1/3) = 5/3$.\n4. $\\tan\\theta = 1 \\implies \\theta = \\mathbf{45^\\circ}$.",
+      "formalTimeSeconds": 75,
+      "shortcutTimeSeconds": 5
+    }
+  ],
+  "calculatorGuides": {
+    "karce": {
+      "techniqueTitle": "Direct Vector Distance & Angle Evaluation",
+      "problemType": "Points, Distance and Angle between Slopes",
+      "sampleProblem": "Find the distance between P1(3, -2) and P2(-1, 5).",
+      "mode": "COMP Mode (<kbd>MODE</kbd> <kbd>1</kbd>)",
+      "keystrokes": [
+        "<kbd>√</kbd>",
+        "<kbd>(</kbd>",
+        "<kbd>(</kbd>",
+        "<kbd>-</kbd>",
+        "<kbd>1</kbd>",
+        "<kbd>-</kbd>",
+        "<kbd>3</kbd>",
+        "<kbd>)</kbd>",
+        "<kbd>x²</kbd>",
+        "<kbd>+</kbd>",
+        "<kbd>(</kbd>",
+        "<kbd>5</kbd>",
+        "<kbd>-</kbd>",
+        "<kbd>(</kbd>",
+        "<kbd>-</kbd>",
+        "<kbd>2</kbd>",
+        "<kbd>)</kbd>",
+        "<kbd>)</kbd>",
+        "<kbd>x²</kbd>",
+        "<kbd>)</kbd>",
+        "<kbd>=</kbd>"
+      ],
+      "notes": "Or use the built-in Polar conversion function: <kbd>Pol(</kbd> Δx, Δy <kbd>)</kbd> $\\to$ directly outputs distance $r$ and angle $\\theta$ in 1 step!"
+    },
+    "canon": {
+      "techniqueTitle": "High-Speed Pol(Δx, Δy) Distance Shortcut",
+      "problemType": "Distance between (x1, y1) and (x2, y2)",
+      "sampleProblem": "Find the distance between (3, -2) and (-1, 5).",
+      "mode": "COMP Mode (<kbd>MODE</kbd> <kbd>1</kbd>)",
+      "keystrokes": [
+        "<kbd>SHIFT</kbd>",
+        "<kbd>Pol</kbd>",
+        "<kbd>-</kbd>",
+        "<kbd>4</kbd>",
+        "<kbd>,</kbd>",
+        "<kbd>7</kbd>",
+        "<kbd>)</kbd>",
+        "<kbd>=</kbd>"
+      ],
+      "notes": "The display directly yields $r = 8.06225... = \\sqrt{65}$, instantly solving Euclidean coordinate distance without typing parentheses and square roots."
+    }
+  },
+  "conceptChecks": [
+    {
+      "id": "chk-01",
+      "question": "What is the slope of the straight line defined by the general equation $4x + 6y - 15 = 0$?",
+      "options": {
+        "A": "$\\frac{2}{3}$",
+        "B": "$-\\frac{2}{3}$",
+        "C": "$\\frac{3}{2}$",
+        "D": "$-\\frac{3}{2}$"
+      },
+      "correctAnswer": "B",
+      "distractorDeconstruction": {
+        "A": "Forgot the negative sign in the slope formula $m = -A/B$.",
+        "B": "Correct: In $Ax + By + C = 0$, slope $m = -A/B = -4/6 = -2/3$.",
+        "C": "Inverted the fraction to $B/A$ and dropped the negative sign.",
+        "D": "Inverted the fraction to $-B/A$."
+      },
+      "shortcutExplanation": "Use $m = -A/B = -4/6 = -2/3$ in 1 second."
+    },
+    {
+      "id": "chk-02",
+      "question": "Which of the following lines is perpendicular to the line $3x - 5y + 12 = 0$?",
+      "options": {
+        "A": "$3x - 5y - 7 = 0$",
+        "B": "$5x + 3y - 9 = 0$",
+        "C": "$5x - 3y + 4 = 0$",
+        "D": "$3x + 5y + 1 = 0$"
+      },
+      "correctAnswer": "B",
+      "distractorDeconstruction": {
+        "A": "This line is parallel ($m = 3/5$), not perpendicular.",
+        "B": "Correct: Given $m_1 = 3/5$, perpendicular slope is $m_2 = -5/3$, matching $5x + 3y + C = 0$.",
+        "C": "Slope is $+5/3$, failing the negative sign requirement.",
+        "D": "Slope is $-3/5$."
+      },
+      "shortcutExplanation": "For perpendicularity, swap coefficients $A$ and $B$ and negate one sign: $3x - 5y \\to 5x + 3y$."
+    },
+    {
+      "id": "chk-03",
+      "question": "Find the perpendicular distance from the origin $(0, 0)$ to the line $3x + 4y - 25 = 0$.",
+      "options": {
+        "A": "3",
+        "B": "4",
+        "C": "5",
+        "D": "25"
+      },
+      "correctAnswer": "C",
+      "distractorDeconstruction": {
+        "A": "Selected coefficient $A$.",
+        "B": "Selected coefficient $B$.",
+        "C": "Correct: $d = \\frac{|-25|}{\\sqrt{3^2 + 4^2}} = \\frac{25}{5} = 5$.",
+        "D": "Forgot to divide by the denominator $\\sqrt{A^2 + B^2}$."
+      },
+      "shortcutExplanation": "Distance from origin is simply $\\frac{|C|}{\\sqrt{A^2 + B^2}} = \\frac{25}{5} = 5$."
+    },
+    {
+      "id": "chk-04",
+      "question": "A line has an $x$-intercept of 4 and a $y$-intercept of -6. What is the area of the triangle formed by this line and the coordinate axes?",
+      "options": {
+        "A": "10 sq units",
+        "B": "12 sq units",
+        "C": "24 sq units",
+        "D": "14 sq units"
+      },
+      "correctAnswer": "B",
+      "distractorDeconstruction": {
+        "A": "Added the intercepts instead of computing area.",
+        "B": "Correct: $A = \\frac{1}{2}|ab| = \\frac{1}{2}|(4)(-6)| = \\frac{1}{2}(24) = 12$.",
+        "C": "Forgot the $1/2$ triangle factor: $4 \\times 6 = 24$.",
+        "D": "Calculated $(a^2 + b^2)/2$."
+      },
+      "shortcutExplanation": "Axis triangle area $= \\frac{1}{2}|a \\cdot b| = \\frac{1}{2}(4)(6) = 12$."
+    },
+    {
+      "id": "chk-05",
+      "question": "What is the angle of inclination of a line whose slope is $m = -1$?",
+      "options": {
+        "A": "$45^\\circ$",
+        "B": "$90^\\circ$",
+        "C": "$135^\\circ$",
+        "D": "$180^\\circ$"
+      },
+      "correctAnswer": "C",
+      "distractorDeconstruction": {
+        "A": "$45^\\circ$ corresponds to $m = +1$.",
+        "B": "$90^\\circ$ corresponds to an undefined vertical slope.",
+        "C": "Correct: $\\tan\\theta = -1 \\implies \\theta = 180^\\circ - 45^\\circ = 135^\\circ$.",
+        "D": "$180^\\circ$ corresponds to $m = 0$."
+      },
+      "shortcutExplanation": "Negative slope lies in Quadrant II: $\\theta = 180^\\circ - \\arctan(1) = 135^\\circ$."
+    }
+  ]
+}

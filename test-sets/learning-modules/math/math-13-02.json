@@ -1,0 +1,287 @@
+{
+  "id": "math-13-02",
+  "code": "MATH 13-02",
+  "domain": "MATH",
+  "topicCode": "MATH-13",
+  "topicTitle": "Analytic Geometry",
+  "subtopicTitle": "Conic Sections: Parabola, Ellipse, Hyperbola & Polar Conics",
+  "order": 4,
+  "pairedQuizSetId": "math_07_analytic_geometry_drill_all_set01",
+  "toc": [
+    { "id": "sec-prereq-bridges", "title": "1. Introduction & Cross-Subject Bridges", "level": 2 },
+    { "id": "sec-terminology", "title": "2. Terms and Definitions", "level": 2 },
+    { "id": "sec-visualizer", "title": "3. Interactive Visualizer: Conic Eccentricity Locus Explorer", "level": 2 },
+    { "id": "sec-theory", "title": "4. Lesson Proper", "level": 2 },
+    { "id": "sec-dual-method", "title": "5. Sample Problems and Solutions", "level": 2 },
+    { "id": "sec-calculator", "title": "6. Calculator Techniques (Karce & Canon)", "level": 2 },
+    { "id": "sec-concept-checks", "title": "7. In-Line Concept Checks", "level": 2 },
+    { "id": "sec-mastery-challenge", "title": "8. Paired Mastery Challenge", "level": 2 }
+  ],
+  "prerequisiteBridge": {
+    "priorModuleId": "math-13-01",
+    "text": "Building upon the circle and general second-degree classification in MATH 13-01, we now explore the three open and closed eccentricity conics: the Parabola ($e = 1$), the Ellipse ($0 < e < 1$), and the Hyperbola ($e > 1$)."
+  },
+  "crossSubjectBridges": [
+    {
+      "targetDomain": "EST",
+      "targetTopicCode": "EST-05",
+      "badgeText": "Parabolic Reflector Antennas",
+      "description": "Satellite dish antennas and Cassegrain dual-reflector feeds utilize parabolic primary dishes ($e = 1$) and hyperbolic secondary sub-reflectors ($e > 1$) to collimate spherical waves into high-gain planar wavefronts."
+    },
+    {
+      "targetDomain": "GEAS",
+      "targetTopicCode": "GEAS-13",
+      "badgeText": "Orbital Mechanics & Kepler's Laws",
+      "description": "Under Newton's law of universal gravitation, planets and satellites follow elliptical orbits ($0 < e < 1$) with the central body at one focus (Kepler's First Law), escape trajectories follow parabolas ($e = 1$), and hyperbolic flybys follow $e > 1$."
+    },
+    {
+      "targetDomain": "ELECS",
+      "targetTopicCode": "ELEC-06",
+      "badgeText": "Boyle-Mariotte & Damped Phase Planes",
+      "description": "In nonlinear dynamics and RLC phase-plane state-space analysis, saddle points and undamped harmonic orbits trace hyperbolic and elliptical state trajectories."
+    }
+  ],
+  "terms": [
+    {
+      "term": "Eccentricity",
+      "symbol": "$e$",
+      "unit": "Dimensionless",
+      "definition": "The constant ratio of the distance from any point on the curve to the focus, to its perpendicular distance to the directrix: $e = \\frac{\\text{dist}(P, F)}{\\text{dist}(P, D)}$.",
+      "keywordTrigger": "ratio of distance to focus over distance to directrix / uncircleness"
+    },
+    {
+      "term": "Latus Rectum",
+      "symbol": "$LR$",
+      "unit": "Length",
+      "definition": "The focal chord passing through a focus perpendicular to the principal axis of symmetry ($LR = 4p$ for Parabola, $LR = \\frac{2b^2}{a}$ for Ellipse and Hyperbola).",
+      "keywordTrigger": "chord through focus perpendicular to axis of symmetry"
+    },
+    {
+      "term": "Focal Parameter (Parabola)",
+      "symbol": "$p$",
+      "unit": "Length",
+      "definition": "The directed distance from the vertex to the focus (and from vertex to directrix line) of a parabola.",
+      "keywordTrigger": "distance from vertex to focus"
+    },
+    {
+      "term": "Major & Minor Axes (Ellipse)",
+      "symbol": "$2a, 2b$",
+      "unit": "Length",
+      "definition": "The longest diameter $2a$ (major axis containing both foci) and perpendicular shortest diameter $2b$ (minor axis) of an ellipse, where $a^2 = b^2 + c^2$.",
+      "keywordTrigger": "longest and shortest diameters of an ellipse"
+    },
+    {
+      "term": "Transverse & Conjugate Axes (Hyperbola)",
+      "symbol": "$2a, 2b$",
+      "unit": "Length",
+      "definition": "The transverse axis $2a$ connecting the two vertices across branches, and the perpendicular conjugate axis $2b$, where $c^2 = a^2 + b^2$.",
+      "keywordTrigger": "axis connecting vertices and conjugate axis of hyperbola"
+    },
+    {
+      "term": "Asymptotes of a Hyperbola",
+      "symbol": "$y - k = \\pm \\frac{b}{a}(x - h)$",
+      "unit": "Lines",
+      "definition": "The pair of intersecting diagonal straight lines that the hyperbola branches approach indefinitely at infinity without touching.",
+      "keywordTrigger": "diagonal guide lines approached by hyperbola at infinity"
+    },
+    {
+      "term": "Equilateral (Rectangular) Hyperbola",
+      "symbol": "$a = b \\implies e = \\sqrt{2}$",
+      "unit": "Conic",
+      "definition": "A hyperbola whose asymptotes are mutually perpendicular ($90^\\circ$), with eccentricity $e = \\sqrt{2}$ and simplified rotated Cartesian form $xy = k$.",
+      "keywordTrigger": "hyperbola with perpendicular asymptotes / e equals square root of 2"
+    },
+    {
+      "term": "Polar Equation of a Conic",
+      "symbol": "$r = \\frac{ed}{1 \\pm e \\cos\\theta}$",
+      "unit": "Equation",
+      "definition": "The unified polar coordinate equation for any conic having one focus positioned at the origin pole and directrix at distance $d$.",
+      "keywordTrigger": "polar conic with focus at pole"
+    }
+  ],
+  "visualizer": {
+    "archetype": "conic_explorer",
+    "title": "Interactive Conic Eccentricity Locus Explorer",
+    "description": "Sweep the eccentricity slider across Circle ($e = 0$), Ellipse ($0 < e < 1$), Parabola ($e = 1$), and Hyperbola ($e > 1$) to observe the real-time locus formation.",
+    "config": {
+      "canvasWidth": 640,
+      "canvasHeight": 320,
+      "controls": [
+        {
+          "id": "eccentricity",
+          "label": "Eccentricity (e)",
+          "min": 0,
+          "max": 2.5,
+          "step": 0.1,
+          "defaultValue": 0.7
+        },
+        {
+          "id": "semiMajor",
+          "label": "Semi-Major / Scale a",
+          "min": 50,
+          "max": 120,
+          "step": 10,
+          "defaultValue": 80
+        }
+      ]
+    }
+  },
+  "theory": {
+    "mentalAnchor": "Conics are governed by eccentricity: $e = 0$ (Circle), $0 < e < 1$ (Ellipse), $e = 1$ (Parabola), $e > 1$ (Hyperbola). In an ellipse $a^2 = b^2 + c^2$ (a is largest); in a hyperbola $c^2 = a^2 + b^2$ (c is largest). Latus Rectum is $4p$ for parabola and $2b^2/a$ for ellipse/hyperbola.",
+    "contentMarkdown": "### 1. Unified Conic Definition by Eccentricity\n\nEvery conic section is the locus of a point $P$ moving such that its distance to a fixed **focus** $F$ divided by its perpendicular distance to a fixed line **directrix** $D$ equals the constant **eccentricity** $e$:\n\n$$e = \\frac{\\text{dist}(P, F)}{\\text{dist}(P, D)}$$\n\n- **Circle**: $e = 0$\n- **Ellipse**: $0 < e < 1$\n- **Parabola**: $e = 1$\n- **Hyperbola**: $e > 1$\n\n---\n\n### 2. The Parabola ($e = 1$)\n\n| Feature | Vertical Axis | Horizontal Axis |\n| :--- | :--- | :--- |\n| **Standard Equation** | $(x - h)^2 = \\pm 4p(y - k)$ | $(y - k)^2 = \\pm 4p(x - h)$ |\n| **Vertex** | $(h, k)$ | $(h, k)$ |\n| **Focus** | $(h, k \\pm p)$ | $(h \\pm p, k)$ |\n| **Directrix** | $y = k \\mp p$ | $x = h \\mp p$ |\n| **Latus Rectum** | $LR = 4p$ | $LR = 4p$ |\n| **Opening Direction** | $+4p \\to$ Up, $-4p \\to$ Down | $+4p \\to$ Right, $-4p \\to$ Left |\n\n---\n\n### 3. The Ellipse ($0 < e < 1$)\n\n- **Horizontal Major Axis**: $\\frac{(x - h)^2}{a^2} + \\frac{(y - k)^2}{b^2} = 1$ ($a > b$)\n- **Vertical Major Axis**: $\\frac{(x - h)^2}{b^2} + \\frac{(y - k)^2}{a^2} = 1$ ($a > b$)\n- **Pythagorean Invariant**: $a^2 = b^2 + c^2 \\iff c = \\sqrt{a^2 - b^2}$\n- **Eccentricity**: $e = \\frac{c}{a} = \\frac{\\sqrt{a^2 - b^2}}{a} < 1$\n- **Directrices**: $d = \\pm \\frac{a}{e} = \\pm \\frac{a^2}{c}$\n- **Latus Rectum**: $LR = \\frac{2b^2}{a}$\n- **Enclosed Area**: $A = \\pi a b$\n- **Approximate Perimeter**: $P \\approx 2\\pi \\sqrt{\\frac{a^2 + b^2}{2}}$\n\n---\n\n### 4. The Hyperbola ($e > 1$)\n\n- **Horizontal Transverse**: $\\frac{(x - h)^2}{a^2} - \\frac{(y - k)^2}{b^2} = 1$\n- **Vertical Transverse**: $\\frac{(y - k)^2}{a^2} - \\frac{(x - h)^2}{b^2} = 1$\n- **Pythagorean Invariant**: $c^2 = a^2 + b^2 \\iff c = \\sqrt{a^2 + b^2}$\n- **Eccentricity**: $e = \\frac{c}{a} = \\frac{\\sqrt{a^2 + b^2}}{a} > 1$\n- **Asymptotes (Horizontal Transverse)**: $y - k = \\pm \\frac{b}{a}(x - h)$\n- **Latus Rectum**: $LR = \\frac{2b^2}{a}$\n- **Equilateral (Rectangular) Hyperbola**: $a = b \\implies e = \\sqrt{2}$, asymptotes $y = \\pm x$ (perpendicular)."
+  },
+  "examples": [
+    {
+      "problemStatement": "Find the vertex, focus, directrix equation, and latus rectum of the parabola x^2 - 6x - 8y + 25 = 0.",
+      "formalSolutionMarkdown": "#### Step 1: Complete the square on x\n$$x^2 - 6x = 8y - 25$$\n$$(x^2 - 6x + 9) = 8y - 25 + 9$$\n$$(x - 3)^2 = 8y - 16$$\n$$(x - 3)^2 = 8(y - 2)$$\n\n#### Step 2: Extract standard form parameters\n- $(x - h)^2 = 4p(y - k)$\n- Vertex $(h, k) = (3, 2)$\n- $4p = 8 \\implies p = 2$\n\n#### Step 3: Compute focus, directrix, and latus rectum\n- Parabola opens **upward**.\n- Focus: $(h, k + p) = (3, 2 + 2) = (3, 4)$\n- Directrix: $y = k - p = 2 - 2 \\implies y = 0$ ($x$-axis)\n- Latus Rectum: $LR = 4p = 8$",
+      "shortcutSolutionMarkdown": "#### ⚡ 4-Second Inspection\n1. Vertex $h = -(-6)/2 = 3$. Substitute into $3^2 - 6(3) - 8y + 25 = 0 \\implies 9 - 18 - 8y + 25 = 0 \\implies 8y = 16 \\implies k = 2$.\n2. $4p = 8 \\implies p = 2$.\n3. Focus $= (3, 2 + 2) = \\mathbf{(3, 4)}$, Directrix is $y = \\mathbf{0}$, $LR = \\mathbf{8}$.",
+      "formalTimeSeconds": 60,
+      "shortcutTimeSeconds": 4
+    },
+    {
+      "problemStatement": "Find the eccentricity, foci coordinates, and latus rectum of the ellipse 9x^2 + 25y^2 = 225.",
+      "formalSolutionMarkdown": "#### Step 1: Divide by 225 to format into standard form\n$$\\frac{9x^2}{225} + \\frac{25y^2}{225} = 1 \\implies \\frac{x^2}{25} + \\frac{y^2}{9} = 1$$\n\n#### Step 2: Identify semi-axes\n- $a^2 = 25 \\implies a = 5$ (Major along $x$-axis)\n- $b^2 = 9 \\implies b = 3$\n\n#### Step 3: Compute focal distance c, eccentricity, and latus rectum\n- $c = \\sqrt{a^2 - b^2} = \\sqrt{25 - 9} = \\sqrt{16} = 4$\n- Eccentricity: $e = \\frac{c}{a} = \\frac{4}{5} = 0.8$\n- Foci: $(\\pm c, 0) = (\\pm 4, 0)$\n- Latus Rectum: $LR = \\frac{2b^2}{a} = \\frac{2(9)}{5} = \\frac{18}{5} = 3.6$",
+      "shortcutSolutionMarkdown": "#### ⚡ 3-Second Ratio Method\n1. $a = 5, b = 3 \\implies c = \\sqrt{5^2 - 3^2} = 4$.\n2. $e = c/a = 4/5 = \\mathbf{0.8}$.\n3. $LR = 2(9)/5 = \\mathbf{3.6}$.",
+      "formalTimeSeconds": 50,
+      "shortcutTimeSeconds": 3
+    },
+    {
+      "problemStatement": "Find the equations of the asymptotes of the hyperbola 16x^2 - 9y^2 = 144.",
+      "formalSolutionMarkdown": "#### Step 1: Divide by 144 to format into standard form\n$$\\frac{x^2}{9} - \\frac{y^2}{16} = 1$$\n- $a^2 = 9 \\implies a = 3$\n- $b^2 = 16 \\implies b = 4$\n\n#### Step 2: Apply asymptote formula\nFor horizontal transverse hyperbola $\\frac{x^2}{a^2} - \\frac{y^2}{b^2} = 1$:\n$$y = \\pm \\frac{b}{a}x = \\pm \\frac{4}{3}x$$\n$$3y = \\pm 4x \\implies 4x \\pm 3y = 0$$",
+      "shortcutSolutionMarkdown": "#### ⚡ 2-Second Zero-Constant Trick\nReplace constant 144 with 0:\n$$16x^2 - 9y^2 = 0 \\implies (4x - 3y)(4x + 3y) = 0$$\n$$\\mathbf{4x \\pm 3y = 0}$$.",
+      "formalTimeSeconds": 40,
+      "shortcutTimeSeconds": 2
+    }
+  ],
+  "calculatorGuides": {
+    "karce": {
+      "techniqueTitle": "Direct Conic Eccentricity and Focus Shortcut",
+      "problemType": "Ellipse & Hyperbola c = √(a² ± b²)",
+      "sampleProblem": "Find c and e for 16x² + 25y² = 400 (a=5, b=4).",
+      "mode": "COMP Mode (<kbd>MODE</kbd> <kbd>1</kbd>)",
+      "keystrokes": [
+        "<kbd>√</kbd>",
+        "<kbd>(</kbd>",
+        "<kbd>5</kbd>",
+        "<kbd>x²</kbd>",
+        "<kbd>-</kbd>",
+        "<kbd>4</kbd>",
+        "<kbd>x²</kbd>",
+        "<kbd>)</kbd>",
+        "<kbd>=</kbd>",
+        "<kbd>÷</kbd>",
+        "<kbd>5</kbd>",
+        "<kbd>=</kbd>"
+      ],
+      "notes": "Directly gives $c = 3$ and $e = 0.6$ without manual fraction setups."
+    },
+    "canon": {
+      "techniqueTitle": "Canon Pol(a, b) Function for Hyperbola Focal Distance",
+      "problemType": "Hyperbola c = √(a² + b²)",
+      "sampleProblem": "Find focal distance c for hyperbola with a = 6, b = 8.",
+      "mode": "COMP Mode (<kbd>MODE</kbd> <kbd>1</kbd>)",
+      "keystrokes": [
+        "<kbd>SHIFT</kbd>",
+        "<kbd>Pol</kbd>",
+        "<kbd>6</kbd>",
+        "<kbd>,</kbd>",
+        "<kbd>8</kbd>",
+        "<kbd>)</kbd>",
+        "<kbd>=</kbd>"
+      ],
+      "notes": "Directly outputs $r = 10$, which is the exact focal distance $c = \\sqrt{6^2 + 8^2} = 10$."
+    }
+  },
+  "conceptChecks": [
+    {
+      "id": "chk-01",
+      "question": "What is the eccentricity of a parabola?",
+      "options": {
+        "A": "$e = 0$",
+        "B": "$0 < e < 1$",
+        "C": "$e = 1$",
+        "D": "$e > 1$"
+      },
+      "correctAnswer": "C",
+      "distractorDeconstruction": {
+        "A": "$e = 0$ defines a circle.",
+        "B": "$0 < e < 1$ defines an ellipse.",
+        "C": "Correct: A parabola is strictly defined by $e = 1$.",
+        "D": "$e > 1$ defines a hyperbola."
+      },
+      "shortcutExplanation": "Parabola strictly has $e = 1$."
+    },
+    {
+      "id": "chk-02",
+      "question": "Find the length of the latus rectum of the parabola $y^2 = 12x$.",
+      "options": {
+        "A": "3",
+        "B": "6",
+        "C": "12",
+        "D": "24"
+      },
+      "correctAnswer": "C",
+      "distractorDeconstruction": {
+        "A": "3 is the focal parameter $p = 12/4 = 3$.",
+        "B": "6 is $2p$.",
+        "C": "Correct: $LR = 4p = 12$.",
+        "D": "24 is $2 \\times 12$."
+      },
+      "shortcutExplanation": "For $y^2 = 4px$, the latus rectum is the coefficient of $x$: $LR = 12$."
+    },
+    {
+      "id": "chk-03",
+      "question": "What is the area of an ellipse with semi-major axis $a = 6$ and semi-minor axis $b = 4$?",
+      "options": {
+        "A": "$24\\pi$",
+        "B": "$12\\pi$",
+        "C": "$48\\pi$",
+        "D": "$10\\pi$"
+      },
+      "correctAnswer": "A",
+      "distractorDeconstruction": {
+        "A": "Correct: Area $= \\pi a b = \\pi (6)(4) = 24\\pi$.",
+        "B": "Divided by 2 as if a triangle.",
+        "C": "Multiplied by 2.",
+        "D": "Added semi-axes."
+      },
+      "shortcutExplanation": "Ellipse Area $= \\pi a b = 24\\pi$."
+    },
+    {
+      "id": "chk-04",
+      "question": "What is the eccentricity of an equilateral (rectangular) hyperbola?",
+      "options": {
+        "A": "1",
+        "B": "$\\sqrt{2}$",
+        "C": "$\\sqrt{3}$",
+        "D": "2"
+      },
+      "correctAnswer": "B",
+      "distractorDeconstruction": {
+        "A": "1 is the eccentricity of a parabola.",
+        "B": "Correct: When $a = b$, $c = \\sqrt{a^2 + a^2} = a\\sqrt{2} \\implies e = c/a = \\sqrt{2} \\approx 1.414$.",
+        "C": "Incorrect radical.",
+        "D": "2 corresponds to an asymptote angle of $60^\\circ$."
+      },
+      "shortcutExplanation": "Equilateral Hyperbola always has $e = \\sqrt{2}$."
+    },
+    {
+      "id": "chk-05",
+      "question": "Find the length of the latus rectum of an ellipse having equation $\\frac{x^2}{16} + \\frac{y^2}{9} = 1$.",
+      "options": {
+        "A": "4.5",
+        "B": "2.25",
+        "C": "9",
+        "D": "3"
+      },
+      "correctAnswer": "A",
+      "distractorDeconstruction": {
+        "A": "Correct: $a = 4, b = 3$. $LR = \\frac{2b^2}{a} = \\frac{2(9)}{4} = \\frac{18}{4} = 4.5$.",
+        "B": "Forgot the factor of 2 ($b^2/a = 2.25$).",
+        "C": "Calculated $b^2$.",
+        "D": "Calculated $b$."
+      },
+      "shortcutExplanation": "$LR = 2b^2/a = 2(9)/4 = 4.5$."
+    }
+  ]
+}

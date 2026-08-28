@@ -136,6 +136,30 @@ export const userTopicSrs = pgTable("user_topic_srs", {
   createdAt: timestamp("created_at").defaultNow().notNull(),
 });
 
+export const userModuleProgress = pgTable("user_module_progress", {
+  id: uuid("id").defaultRandom().primaryKey(),
+  userId: uuid("user_id")
+    .notNull()
+    .references(() => users.id, { onDelete: "cascade" }),
+  moduleId: text("module_id").notNull(), // e.g. 'math-01-01', 'geas-17'
+  topicCode: text("topic_code").notNull(), // e.g. 'MATH-01', 'GEAS-17'
+  domain: text("domain").notNull(), // 'MATH' | 'ELECS' | 'GEAS' | 'EST'
+  isCompleted: boolean("is_completed").notNull().default(false),
+  isBookmarked: boolean("is_bookmarked").notNull().default(false),
+  conceptChecksCompleted: integer("concept_checks_completed").notNull().default(0),
+  conceptChecksTotal: integer("concept_checks_total").notNull().default(0),
+  conceptChecksAccuracy: real("concept_checks_accuracy").notNull().default(0.0),
+  masteryScorePercent: integer("mastery_score_percent"),
+  confidence: text("confidence"), // 'struggling' | 'moderate' | 'confident' | 'mastered'
+  stabilityDays: real("stability_days").notNull().default(3.0),
+  retrievability: real("retrievability").notNull().default(1.0),
+  lastStudiedAt: timestamp("last_studied_at").defaultNow(),
+  nextReviewDue: timestamp("next_review_due"),
+  totalReviews: integer("total_reviews").notNull().default(0),
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+  updatedAt: timestamp("updated_at").defaultNow().notNull(),
+});
+
 export type User = typeof users.$inferSelect;
 export type Folder = typeof folders.$inferSelect;
 export type QuestionSet = typeof questionSets.$inferSelect;
@@ -144,3 +168,4 @@ export type QuestionSetItem = typeof questionSetItems.$inferSelect;
 export type Attempt = typeof attempts.$inferSelect;
 export type AnswerRecord = typeof answerRecords.$inferSelect;
 export type UserTopicSrs = typeof userTopicSrs.$inferSelect;
+export type UserModuleProgress = typeof userModuleProgress.$inferSelect;
