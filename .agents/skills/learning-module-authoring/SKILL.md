@@ -1,6 +1,6 @@
 ---
 name: learning-module-authoring
-description: Authoring interactive, high-speed PRC ECE board exam learning modules (Paul's Online Notes / Brilliant style), lesson-first pedagogy, Karce KC-S991 & Canon F-789SGA keystroke shortcuts, interactive declarative visualizers, cross-subject conceptual bridges, and multiple-choice concept checks.
+description: Authoring interactive, high-speed PRC ECE board exam learning modules (Paul's Online Notes / Brilliant style), lesson-first pedagogy, Karce KC-S991 & Canon F-789SGA keystroke shortcuts, interactive declarative visualizers, declarative inline SVG diagrams, cross-subject conceptual bridges, and multiple-choice concept checks.
 ---
 
 # Learning Module Authoring & Visualization Standards Skill
@@ -16,9 +16,9 @@ Modules are structured as an engaging, cohesive educational lesson rather than a
 ```
 [1. Prerequisite & Cross-Subject Bridges] 
      ↓
-[2. Lesson Proper (Deep Narrative Theory, Equations & Derivations)]
+[2. Lesson Proper (Deep Narrative Theory, Equations, Inline Diagrams & Derivations)]
      ↓
-[3. Interactive Declarative Visualizer (Topic-Accurate Simulation)]
+[3. Interactive Declarative Visualizer (Topic-Accurate Simulation & Hardware Sliders)]
      ↓
 [4. Key Terms, Definitions & Symbol Quick-Reference (Lookup Glossary)]
      ↓
@@ -37,21 +37,48 @@ Modules are structured as an engaging, cohesive educational lesson rather than a
    Never present a dry list of bare equations or isolated bullet points. Every topic, theorem, or governing law in the **Lesson Proper** must be weaved into a 4-layer explanatory flow (Paul's Online Notes / Cisco Networking Academy style):
    - **Layer 1: Intuitive Motivation / The "Why" (1–2 sentences)**: What physical intuition or geometric problem does this solve? Connect it to a tangible mental model (e.g. slope as elevation gained per step forward).
    - **Layer 2: Governing Formula & Variable Breakdown**: State the clean KaTeX equation and immediately define what each symbol represents in context.
-   - **Layer 3: Behavioral Breakdown & Edge Cases**: Explain the physical/mathematical behavior across boundaries (e.g. what happens when slope is $0$ vs. undefined $\theta = 90^\circ$, why perpendicular slopes multiply to $-1$).
+   - **Layer 3: Specific Cases & Boundaries**: Explain the physical/mathematical behavior across boundaries (e.g. what happens when slope is $0$ vs. undefined $\theta = 90^\circ$, why perpendicular slopes multiply to $-1$). Always use natural phrasing like **"Specific Cases"** or **"Cases"** (never academic jargon like *"Key Behavioral Conditions"*).
    - **Layer 4: Board Exam Trap Alert & Practical Anchor**: Directly highlight the common algebraic trap or exam misconception (e.g. forgetting the negative sign in $m = -A/B$, or failing to scale parallel line coefficients $A, B$ to match).
 
-2. **Terms Section as an Indexed Reference Glossary**:
+2. **Inline Declarative Vector Diagrams (`InlineFigure`)**:
+   Whenever a geometric setup, vector triangle, or waveform would benefit from visual clarification, embed a declarative JSON block inside `contentMarkdown` using the ` ```diagram ` fence:
+   ```diagram
+   {
+     "caption": "Figure 1: Slope m = tan(θ) = Δy / Δx with angle of inclination θ measured counter-clockwise from +X",
+     "xRange": [-2, 6],
+     "yRange": [-2, 5],
+     "elements": [
+       { "type": "grid" },
+       { "type": "axes" },
+       { "type": "line", "from": [-1, -0.75], "to": [5, 3.75], "color": "#d97757", "width": 2.5 },
+       { "type": "point", "at": [4, 3], "label": "P(4, 3)", "color": "#fbbf24" },
+       { "type": "projection", "from": [4, 3], "to": [4, 0], "label": "Δy = 3", "color": "#f43f5e" },
+       { "type": "segment", "from": [0, 0], "to": [4, 0], "label": "Δx = 4", "color": "#38bdf8" },
+       { "type": "right_angle", "at": [4, 0], "size": 8 },
+       { "type": "arc", "center": [0, 0], "radius": 24, "startAngle": 0, "endAngle": 36.87, "label": "θ = 36.9°", "color": "#38bdf8" }
+     ]
+   }
+   ```
+   - **Supported Primitives**: `axes`, `grid`, `line`, `segment`, `arrow`, `point`, `arc`, `right_angle`, `projection`, `polygon`, `text`.
+   - **Zero External Dependencies**: Renders via pure React SVG with theme-aware palettes.
+
+3. **Natural Phrasing Standard (No Overly Academic Jargon)**:
+   - Use straightforward language standard in Philippine engineering review.
+   - Use *"Hypotenuse"* instead of *"Euclidean hypotenuse"*.
+   - In denominator descriptions: *"Dividing by the magnitude of the line's normal vector converts the scalar value into regular distance units."*
+
+4. **Terms Section as an Indexed Reference Glossary**:
    - The **Terms and Definitions** section follows the lesson proper as a high-density summary and quick-reference lookup.
    - Keep definitions atomic (1–2 crisp sentences) with explicit symbols, SI units, and **1-Second Keyword Trigger Associations** to train instant pattern recognition for board questions.
 
-3. **Dual-Method Problem Solving**:
+5. **Dual-Method Problem Solving**:
    - Every worked example demonstrates both the **Academic Derivation** (full rigor, ~60–120s) and the **⚡ Board Exam Shortcut** (elimination, ratio inspection, calculator shortcut, ~5–15s).
 
-4. **Clean Calculator Keystrokes**:
+6. **Clean Calculator Keystrokes**:
    - Store calculator button sequences as clean, plain token arrays in JSON (e.g. `["SHIFT", "Pol", "4", ",", "7", ")", "="]`), NOT raw `<kbd>` strings.
    - The UI automatically renders each token into tactile, physical keycap badges.
 
-5. **Direct Distractor Deconstruction**:
+7. **Direct Distractor Deconstruction**:
    - Explain the specific algebra trap or misconception directly (e.g. `"Forgot the negative sign in the slope formula $m = -A/B$."`).
    - Avoid redundant label prefixes like `"Option A ❌ (Distractor Trap):"` or `"(Correct Answer):"` in the text strings.
 
@@ -83,7 +110,7 @@ Every learning module is stored in `test-sets/learning-modules/[subject]/[code].
   ],
   "theory": {
     "mentalAnchor": "Slope is vertical rise over horizontal run ($m = \\tan\\theta$). Perpendicular lines always multiply to -1 ($m_1 m_2 = -1$). To find distance from a point to a line, evaluate the line equation at $(x_1, y_1)$ and divide by $\\sqrt{A^2 + B^2}$.",
-    "contentMarkdown": "### 1. Cartesian Coordinates & Fundamental Distance\n\nIn a 2D Cartesian plane established by René Descartes...\n\n### 2. Parallelism, Perpendicularity & Angle Between Lines\n\n..."
+    "contentMarkdown": "### 1. Cartesian Coordinates & Fundamental Distance\n\nIn a 2D Cartesian plane established by René Descartes...\n\n```diagram\n{\n  \"caption\": \"Figure 1: Distance between two points\",\n  \"xRange\": [-2, 6],\n  \"yRange\": [-2, 5],\n  \"elements\": [\n    { \"type\": \"grid\" },\n    { \"type\": \"axes\" }\n  ]\n}\n```\n\n#### Specific Cases:\n- **Horizontal Lines**: Rise is zero...\n\n### 2. Parallelism, Perpendicularity & Angle Between Lines\n\n..."
   },
   "visualizer": {
     "archetype": "cartesian_line",
@@ -171,3 +198,10 @@ All visualizers must use pure declarative archetypes with zero client-side `eval
 | **`factor_tree`** | Number Theory, Prime Factorization, Radicals | `number` ($n$) |
 | **`rlc_resonance`** | AC Circuits, Transient Oscillations | `resistance` ($R$), `inductance` ($L$), `capacitance` ($C$) |
 | **`wave_interference`** | Radiowave Propagation, Fiber Optics | `frequency` ($f$), `phaseShift` ($\\phi$), `attenuation` ($\\alpha$) |
+
+---
+
+## 4. Writing Pitfalls & Quality Checklist
+
+Always cross-check against `learning-modules-authoring-pitfalls.md` located at:
+`test-sets/Reference Documents/learning-modules-authoring-pitfalls.md`
