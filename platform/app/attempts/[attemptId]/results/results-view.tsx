@@ -13,8 +13,17 @@ import {
   MinusCircle,
   ExternalLink,
   Code,
+  Sparkles,
 } from "lucide-react";
 import { QuestionResultDetail } from "@/lib/grading";
+
+function formatDuration(sec: number | null) {
+  if (!sec) return "0s";
+  const m = Math.floor(sec / 60);
+  const s = sec % 60;
+  if (m === 0) return `${s}s`;
+  return `${m}m ${s.toString().padStart(2, "0")}s`;
+}
 
 interface ResultsViewProps {
   attempt: {
@@ -80,12 +89,31 @@ export function ResultsView({
     }
   };
 
-  const formatDuration = (sec: number | null) => {
-    if (!sec) return "0s";
-    const m = Math.floor(sec / 60);
-    const s = sec % 60;
-    if (m === 0) return `${s}s`;
-    return `${m}m ${s.toString().padStart(2, "0")}s`;
+  const handleReviewWithAI = () => {
+    try {
+      sessionStorage.setItem(
+        "marnie_tutor_pending_review_context",
+        JSON.stringify({
+          attemptId: attempt.id,
+          examTitle: questionSet.title,
+          subjectTag: questionSet.subjectTag || undefined,
+          score,
+          total,
+          percentage,
+          questions: questions.map((q) => ({
+            id: q.id,
+            promptText: q.promptText,
+            selectedChoice: q.selectedChoice,
+            correctChoice: q.correctChoice,
+            isCorrect: q.isCorrect,
+            explanation: q.explanation || "",
+          })),
+        })
+      );
+    } catch (err) {
+      console.error(err);
+    }
+    router.push("/tutor?mode=review_exam");
   };
 
   return (
@@ -149,6 +177,15 @@ export function ResultsView({
 
           {/* Actions */}
           <div className="flex items-center justify-center gap-3 mt-8 flex-wrap">
+            <button
+              type="button"
+              onClick={handleReviewWithAI}
+              className="inline-flex items-center gap-2 px-6 py-2.5 rounded-xl bg-gradient-to-r from-primary to-accent text-white font-bold text-xs hover:opacity-95 shadow-md transition-all cursor-pointer"
+            >
+              <Sparkles className="w-4 h-4 text-white animate-pulse" />
+              <span>Review Exam with AI</span>
+            </button>
+
             <button
               type="button"
               onClick={handleRetake}

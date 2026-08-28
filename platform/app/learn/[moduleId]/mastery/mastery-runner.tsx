@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useMemo } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { LearningModule, MasteryChallengeSet } from "@/lib/modules";
 import { MathText } from "@/components/math-text";
 import {
@@ -18,6 +19,7 @@ import {
   ShieldCheck,
   AlertTriangle,
   Zap,
+  Sparkles,
 } from "lucide-react";
 
 interface MasteryRunnerProps {
@@ -26,6 +28,7 @@ interface MasteryRunnerProps {
 }
 
 export function MasteryRunner({ module, mastery }: MasteryRunnerProps) {
+  const router = useRouter();
   const totalQuestions = mastery.questions.length;
   const initialTimeSeconds = (mastery.timeLimitMinutes || 30) * 60;
 
@@ -220,6 +223,43 @@ export function MasteryRunner({ module, mastery }: MasteryRunnerProps) {
 
             {/* Action Buttons */}
             <div className="flex flex-wrap items-center justify-center gap-3 pt-2">
+              <button
+                type="button"
+                onClick={() => {
+                  try {
+                    sessionStorage.setItem(
+                      "marnie_tutor_pending_review_context",
+                      JSON.stringify({
+                        attemptId: `mastery_${module.id}_${Date.now()}`,
+                        examTitle: `${module.code} Mastery Challenge: ${module.subtopicTitle}`,
+                        subjectTag: module.domain,
+                        score: results.correctCount,
+                        total: totalQuestions,
+                        percentage: results.scorePercent,
+                        questions: mastery.questions.map((q) => {
+                          const selected = answers[q.id] || null;
+                          return {
+                            id: q.id,
+                            promptText: q.promptText,
+                            selectedChoice: selected,
+                            correctChoice: q.correctChoice,
+                            isCorrect: selected === q.correctChoice,
+                            explanation: q.explanation || "",
+                          };
+                        }),
+                      })
+                    );
+                  } catch (err) {
+                    console.error(err);
+                  }
+                  router.push("/tutor?mode=review_exam");
+                }}
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-primary to-accent text-white text-sm font-bold shadow-md hover:opacity-95 transition-all cursor-pointer"
+              >
+                <Sparkles className="w-4 h-4 text-white animate-pulse" />
+                <span>Review Exam with AI</span>
+              </button>
+
               <Link
                 href={`/learn/${module.id}`}
                 className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-[var(--accent)] text-white text-sm font-bold shadow-md hover:opacity-95 transition-all"

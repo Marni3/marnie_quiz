@@ -66,6 +66,20 @@ export function Navbar({ breadcrumb }: { breadcrumb?: string }) {
           </Link>
 
           <Link
+            href="/tutor"
+            aria-label="AI Tutor Workspace"
+            title="AI Tutor Workspace (BYOK)"
+            className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs sm:text-sm font-medium transition-colors ${
+              pathname === "/tutor" || pathname.startsWith("/tutor/")
+                ? "bg-[var(--surface2)] text-[var(--accent)] border border-[var(--border)]"
+                : "text-[var(--text2)] hover:text-[var(--text)] hover:bg-[var(--surface2)]"
+            }`}
+          >
+            <Sparkles className="w-4 h-4 text-primary" />
+            <span className="hidden xs:inline">Tutor</span>
+          </Link>
+
+          <Link
             href="/analytics"
             aria-label="Retention Matrix"
             title="Retention & Spaced Repetition Matrix"
