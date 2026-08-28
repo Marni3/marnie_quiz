@@ -590,3 +590,29 @@ export async function getDueLearningModules(
   }
 }
 
+/**
+ * Returns all module progress records for a specific user.
+ */
+export async function getAllUserModuleProgress(
+  userId: string
+): Promise<UserModuleProgress[]> {
+  try {
+    const records = await db
+      .select()
+      .from(userModuleProgress)
+      .where(eq(userModuleProgress.userId, userId))
+      .orderBy(desc(userModuleProgress.updatedAt));
+    return records;
+  } catch (err) {
+    const store = getMockStore();
+    const results: UserModuleProgress[] = [];
+    store.userModuleProgress.forEach((p) => {
+      if (p.userId === userId) {
+        results.push(p);
+      }
+    });
+    return results.sort((a, b) => (b.updatedAt?.getTime() || 0) - (a.updatedAt?.getTime() || 0));
+  }
+}
+
+

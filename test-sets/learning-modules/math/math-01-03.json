@@ -8,15 +8,51 @@
   "order": 3,
   "pairedQuizSetId": "math-01-03-mastery",
   "toc": [
-    { "id": "sec-prereq-bridges", "title": "1. Introduction & Cross-Subject Connections", "level": 2 },
-    { "id": "sec-theory", "title": "2. Lesson Proper: Theory & Core Principles", "level": 2 },
-    { "id": "sec-formulas", "title": "3. Compilation of Formulas & Identities", "level": 2 },
-    { "id": "sec-visualizer", "title": "4. Interactive Visualizer: Parabola Roots & Discriminant", "level": 2 },
-    { "id": "sec-terminology", "title": "5. Key Terms and Definitions", "level": 2 },
-    { "id": "sec-dual-method", "title": "6. Worked Board Exam Problems", "level": 2 },
-    { "id": "sec-calculator", "title": "7. Calculator Speed Techniques (Karce & Canon)", "level": 2 },
-    { "id": "sec-concept-checks", "title": "8. In-Line Concept Checks", "level": 2 },
-    { "id": "sec-mastery-challenge", "title": "9. Paired Mastery Challenge Exam", "level": 2 }
+    {
+      "id": "sec-prereq-bridges",
+      "title": "1. Introduction & Cross-Subject Connections",
+      "level": 2
+    },
+    {
+      "id": "sec-theory",
+      "title": "2. Lesson Proper: Theory & Core Principles",
+      "level": 2
+    },
+    {
+      "id": "sec-formulas",
+      "title": "3. Compilation of Formulas & Identities",
+      "level": 2
+    },
+    {
+      "id": "sec-visualizer",
+      "title": "4. Interactive Visualizer: Parabola Roots & Discriminant",
+      "level": 2
+    },
+    {
+      "id": "sec-terminology",
+      "title": "5. Key Terms and Definitions",
+      "level": 2
+    },
+    {
+      "id": "sec-dual-method",
+      "title": "6. Worked Board Exam Problems",
+      "level": 2
+    },
+    {
+      "id": "sec-calculator",
+      "title": "7. Calculator Speed Techniques (Karce & Canon)",
+      "level": 2
+    },
+    {
+      "id": "sec-concept-checks",
+      "title": "8. In-Line Concept Checks",
+      "level": 2
+    },
+    {
+      "id": "sec-mastery-challenge",
+      "title": "9. Paired Mastery Challenge Exam",
+      "level": 2
+    }
   ],
   "prerequisiteBridge": {
     "priorModuleId": "math-01-02",
@@ -80,8 +116,22 @@
       "canvasWidth": 640,
       "canvasHeight": 320,
       "controls": [
-        { "id": "semiMajor", "label": "Linear Term (B)", "min": -6, "max": 6, "step": 1, "defaultValue": -4 },
-        { "id": "semiMinor", "label": "Constant Term (C)", "min": -6, "max": 6, "step": 1, "defaultValue": 4 }
+        {
+          "id": "semiMajor",
+          "label": "Linear Term (B)",
+          "min": -6,
+          "max": 6,
+          "step": 1,
+          "defaultValue": -4
+        },
+        {
+          "id": "semiMinor",
+          "label": "Constant Term (C)",
+          "min": -6,
+          "max": 6,
+          "step": 1,
+          "defaultValue": 4
+        }
       ]
     }
   },
@@ -144,7 +194,17 @@
       "problemType": "Solving Ax² + Bx + C = 0",
       "sampleProblem": "Solve 3x² - 5x - 2 = 0.",
       "mode": "EQN Mode (MODE 3 > 3)",
-      "keystrokes": ["3", "=", "-", "5", "=", "-", "2", "=", "="],
+      "keystrokes": [
+        "3",
+        "=",
+        "-",
+        "5",
+        "=",
+        "-",
+        "2",
+        "=",
+        "="
+      ],
       "notes": "Directly displays x1 = 2, x2 = -1/3, and maximum/minimum vertex coordinates."
     },
     "canon": {
@@ -152,7 +212,12 @@
       "problemType": "Evaluating combinations for term coefficients",
       "sampleProblem": "Evaluate 7C4 on Canon F-789SGA.",
       "mode": "COMP Mode (MODE 1)",
-      "keystrokes": ["7", "nCr", "4", "="],
+      "keystrokes": [
+        "7",
+        "nCr",
+        "4",
+        "="
+      ],
       "notes": "Directly gives 35 in 1 second."
     }
   },

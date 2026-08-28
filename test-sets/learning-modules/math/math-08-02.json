@@ -3,176 +3,257 @@
   "code": "MATH 08-02",
   "domain": "MATH",
   "topicCode": "MATH-08",
-  "topicTitle": "Plane & Spherical Trigonometry",
-  "subtopicTitle": "Trigonometric Identities, Product-Sum Formulas, Euler's Exponentials & Ambiguous Case",
+  "topicTitle": "Differential Calculus",
+  "subtopicTitle": "Complete Differentiation Rules: Algebraic, Transcendental, Hyperbolic & Inverse Hyperbolic",
   "order": 2,
   "pairedQuizSetId": "math-08-02-mastery",
   "toc": [
-    { "id": "sec-prereq-bridges", "title": "1. Introduction & Cross-Subject Connections", "level": 2 },
-    { "id": "sec-theory", "title": "2. Lesson Proper: The 12 Identity Families & Ambiguous Case", "level": 2 },
-    { "id": "sec-formulas", "title": "3. Compilation of Formulas & Euler's Exponentials", "level": 2 },
-    { "id": "sec-visualizer", "title": "4. Interactive Visualizer: Ambiguous Case Triangle SSA", "level": 2 },
-    { "id": "sec-terminology", "title": "5. Key Terms and Definitions", "level": 2 },
-    { "id": "sec-dual-method", "title": "6. Worked Board Exam Problems", "level": 2 },
-    { "id": "sec-calculator", "title": "7. Calculator Speed Techniques (Karce & Canon)", "level": 2 },
-    { "id": "sec-concept-checks", "title": "8. In-Line Concept Checks", "level": 2 },
-    { "id": "sec-mastery-challenge", "title": "9. Paired Mastery Challenge Exam", "level": 2 }
+    {
+      "id": "sec-prereq-bridges",
+      "title": "1. Introduction & Cross-Subject Connections",
+      "level": 2
+    },
+    {
+      "id": "sec-theory",
+      "title": "2. Lesson Proper: The 37 Fundamental Differentiation Rules",
+      "level": 2
+    },
+    {
+      "id": "sec-formulas",
+      "title": "3. Master Compilation of All 37 Derivative Formulas",
+      "level": 2
+    },
+    {
+      "id": "sec-visualizer",
+      "title": "4. Interactive Visualizer: Real-Time Derivative Function Plotter",
+      "level": 2
+    },
+    {
+      "id": "sec-terminology",
+      "title": "5. Key Terms and Definitions",
+      "level": 2
+    },
+    {
+      "id": "sec-dual-method",
+      "title": "6. Worked Board Exam Problems",
+      "level": 2
+    },
+    {
+      "id": "sec-calculator",
+      "title": "7. Calculator Speed Techniques (Karce & Canon)",
+      "level": 2
+    },
+    {
+      "id": "sec-concept-checks",
+      "title": "8. In-Line Concept Checks",
+      "level": 2
+    },
+    {
+      "id": "sec-mastery-challenge",
+      "title": "9. Paired Mastery Challenge Exam",
+      "level": 2
+    }
   ],
   "prerequisiteBridge": {
-    "priorModuleId": "math-08-01",
-    "text": "Building on basic triangle trigonometry from MATH 08-01, we now establish the full algebraic system of trigonometric identities—Pythagorean relations, sum/difference, double/half-angles, sum-to-product transforms, Euler's complex exponentials, and the SSA ambiguous case."
+    "priorModuleId": "math-14-01",
+    "text": "Building on limits and continuity from MATH 14-01, we now systematically compile and apply the complete catalog of 37 standard derivative formulas across algebraic, exponential, logarithmic, trigonometric, inverse trigonometric, hyperbolic, and inverse hyperbolic functions."
   },
   "crossSubjectBridges": [
     {
-      "targetDomain": "EST",
-      "targetTopicCode": "EST-01",
-      "badgeText": "AM Modulation",
-      "description": "Amplitude modulation (AM) sideband generation directly utilizes the product-to-sum identity $2\\cos(A)\\cos(B) = \\cos(A-B) + \\cos(A+B)$."
-    },
-    {
       "targetDomain": "ELECS",
       "targetTopicCode": "ELEC-05",
-      "badgeText": "Phasor Analysis",
-      "description": "Euler's exponential representations $\\cos x = \\frac{e^{jx} + e^{-jx}}{2}$ and $\\sin x = \\frac{e^{jx} - e^{-jx}}{2j}$ form the foundation of AC sinusoidal steady-state phasors."
+      "badgeText": "Inductors & Capacitors",
+      "description": "Capacitor current $i(t) = C \\frac{dv}{dt}$ and inductor voltage $v(t) = L \\frac{di}{dt}$ are direct instantaneous applications of differential calculus."
     },
     {
-      "targetDomain": "MATH",
-      "targetTopicCode": "MATH-16",
-      "badgeText": "Calculus",
-      "description": "Trigonometric power reduction identities $\\sin^2 x = \\frac{1-\\cos 2x}{2}$ are required to integrate even powers of sine and cosine."
+      "targetDomain": "EST",
+      "targetTopicCode": "EST-01",
+      "badgeText": "FM Frequency Deviation",
+      "description": "Instantaneous frequency in frequency modulation (FM) is the time derivative of total phase: $\\omega_i(t) = \\frac{d\\theta(t)}{dt}$."
+    },
+    {
+      "targetDomain": "GEAS",
+      "targetTopicCode": "GEAS-01",
+      "badgeText": "Kinematics",
+      "description": "Velocity $v(t) = \\frac{ds}{dt}$ and acceleration $a(t) = \\frac{dv}{dt} = \\frac{d^2s}{dt^2}$ represent first and second time derivatives of displacement."
     }
   ],
   "theory": {
-    "mentalAnchor": "Trigonometric identities: Pythagorean ($1+\\tan^2\\theta = \\sec^2\\theta$), Double Angle ($\\sin 2\\theta = 2\\sin\\theta\\cos\\theta$), Product-to-Sum ($2\\cos A \\cos B = \\cos(A+B)+\\cos(A-B)$), and Euler Exponentials ($\\cos x = \\frac{e^{ix}+e^{-ix}}{2}$). In SSA triangles, if $b\\sin A < a < b$, exactly two valid triangles exist (the Ambiguous Case).",
-    "contentMarkdown": "### 1. The 12 Fundamental Families of Trigonometric Identities\n\nA **trigonometric identity** is an equality relating trigonometric functions that remains valid for every domain angle where both expressions are defined.\n\n```diagram\n{\n  \"caption\": \"Figure 1: SSA Ambiguous Case - Two Triangles Formed When b sin A < a < b\",\n  \"xRange\": [-1, 13],\n  \"yRange\": [-1, 7],\n  \"elements\": [\n    { \"type\": \"polygon\", \"points\": [[0, 0], [12, 0], [6, 6]], \"color\": \"#64748b\", \"fill\": \"rgba(100, 116, 139, 0.05)\" },\n    { \"type\": \"line\", \"from\": [0, 0], \"to\": [12, 0], \"color\": \"#94a3b8\" },\n    { \"type\": \"line\", \"from\": [0, 0], \"to\": [6, 6], \"color\": \"#38bdf8\", \"label\": \"b = 12\" },\n    { \"type\": \"line\", \"from\": [6, 6], \"to\": [10, 0], \"color\": \"#f43f5e\", \"label\": \"a = 5 (Triangle 1)\" },\n    { \"type\": \"line\", \"from\": [6, 6], \"to\": [2, 0], \"color\": \"#fbbf24\", \"label\": \"a = 5 (Triangle 2)\" },\n    { \"type\": \"text\", \"at\": [1.5, 0.4], \"text\": \"30°\", \"color\": \"#38bdf8\" },\n    { \"type\": \"text\", \"at\": [2.5, 0.6], \"text\": \"180°-β\", \"color\": \"#fbbf24\" },\n    { \"type\": \"text\", \"at\": [9.2, 0.6], \"text\": \"β\", \"color\": \"#f43f5e\" }\n  ]\n}\n```\n\n#### Complete Identity Hierarchy:\n1. **Reciprocal**: $\\sin\\theta = \\frac{1}{\\csc\\theta}, \\quad \\cos\\theta = \\frac{1}{\\sec\\theta}, \\quad \\tan\\theta = \\frac{1}{\\cot\\theta}$.\n2. **Even-Odd (Parity)**: $\\cos(-\\theta) = \\cos\\theta, \\quad \\sin(-\\theta) = -\\sin\\theta, \\quad \\tan(-\\theta) = -\\tan\\theta$.\n3. **Co-functions**: $\\sin\\theta = \\cos(90^\\circ - \\theta), \\quad \\tan\\theta = \\cot(90^\\circ - \\theta), \\quad \\sec\\theta = \\csc(90^\\circ - \\theta)$.\n4. **Pythagorean**:\n   $$\\sin^2\\theta + \\cos^2\\theta = 1, \\quad 1 + \\tan^2\\theta = \\sec^2\\theta, \\quad 1 + \\cot^2\\theta = \\csc^2\\theta$$\n5. **Sum & Difference of Angles**:\n   $$\\sin(\\theta \\pm \\alpha) = \\sin\\theta\\cos\\alpha \\pm \\cos\\theta\\sin\\alpha$$\n   $$\\cos(\\theta \\pm \\alpha) = \\cos\\theta\\cos\\alpha \\mp \\sin\\theta\\sin\\alpha$$\n   $$\\tan(\\theta \\pm \\alpha) = \\frac{\\tan\\theta \\pm \\tan\\alpha}{1 \\mp \\tan\\theta\\tan\\alpha}$$\n6. **Double-Angle Formulas**:\n   $$\\sin 2\\theta = 2\\sin\\theta\\cos\\theta$$\n   $$\\cos 2\\theta = \\cos^2\\theta - \\sin^2\\theta = 2\\cos^2\\theta - 1 = 1 - 2\\sin^2\\theta$$\n   $$\\tan 2\\theta = \\frac{2\\tan\\theta}{1 - \\tan^2\\theta}$$\n7. **Power-Reducing (Half-Angle Squares)**:\n   $$\\sin^2\\theta = \\frac{1 - \\cos 2\\theta}{2}, \\quad \\cos^2\\theta = \\frac{1 + \\cos 2\\theta}{2}, \\quad \\tan^2\\theta = \\frac{1 - \\cos 2\\theta}{1 + \\cos 2\\theta}$$\n8. **Half-Angle Formulas**:\n   $$\\sin\\frac{\\theta}{2} = \\pm\\sqrt{\\frac{1 - \\cos\\theta}{2}}, \\quad \\cos\\frac{\\theta}{2} = \\pm\\sqrt{\\frac{1 + \\cos\\theta}{2}}, \\quad \\tan\\frac{\\theta}{2} = \\frac{1 - \\cos\\theta}{\\sin\\theta} = \\frac{\\sin\\theta}{1 + \\cos\\theta}$$\n9. **Sum-to-Product (Prosthaphaeresis)**:\n   $$\\sin\\theta + \\sin\\alpha = 2\\sin\\frac{\\theta + \\alpha}{2}\\cos\\frac{\\theta - \\alpha}{2}$$\n   $$\\cos\\theta + \\cos\\alpha = 2\\cos\\frac{\\theta + \\alpha}{2}\\cos\\frac{\\theta - \\alpha}{2}$$\n   $$\\cos\\theta - \\cos\\alpha = -2\\sin\\frac{\\theta + \\alpha}{2}\\sin\\frac{\\theta - \\alpha}{2}$$\n10. **Product-to-Sum**:\n   $$2\\sin\\theta\\sin\\alpha = \\cos(\\theta - \\alpha) - \\cos(\\theta + \\alpha)$$\n   $$2\\sin\\theta\\cos\\alpha = \\sin(\\theta + \\alpha) + \\sin(\\theta - \\alpha)$$\n   $$2\\cos\\theta\\cos\\alpha = \\cos(\\theta + \\alpha) + \\cos(\\theta - \\alpha)$$\n\n---\n\n### 2. Exponential Forms of Trigonometric Functions (Euler's Formulas)\n\nDerived from Euler's identity $e^{ix} = \\cos x + i\\sin x$:\n$$\\sin x = \\frac{e^{ix} - e^{-ix}}{2i}, \\quad \\cos x = \\frac{e^{ix} + e^{-ix}}{2}$$\n$$\\tan x = \\frac{-i(e^{ix} - e^{-ix})}{e^{ix} + e^{-ix}} = \\frac{e^{ix} - e^{-ix}}{i(e^{ix} + e^{-ix})}, \\quad \\cot x = \\frac{i(e^{ix} + e^{-ix})}{e^{ix} - e^{-ix}}$$\n\n---\n\n### 3. The Ambiguous Case of the Law of Sines (SSA)\n\nWhen given two sides $a, b$ and non-included acute angle $A$:\n- The altitude dropped to the opposite side is $h = b \\sin A$.\n- Because $\\sin\\beta = \\sin(180^\\circ - \\beta)$, the Law of Sines $\\sin B = \\frac{b \\sin A}{a}$ can yield two distinct angles:\n  1. If $a < b \\sin A$: **No triangle exists ($0$ solutions)**.\n  2. If $a = b \\sin A$: **One unique right triangle ($1$ solution)**.\n  3. If $b \\sin A < a < b$: **Two distinct oblique triangles (Ambiguous Case, $2$ solutions)**.\n  4. If $a \\ge b$: **One unique oblique triangle ($1$ solution)**."
+    "mentalAnchor": "Derivative $f'(x)$ is the slope of the tangent line. Product rule: $(uv)' = u'v + uv'$. Quotient rule: $(u/v)' = \\frac{u'v - uv'}{v^2}$. Chains: $\\frac{d}{dx}\\ln u = \\frac{u'}{u}$, $\\frac{d}{dx}e^u = e^u u'$, $\\frac{d}{dx}\\tan^{-1}u = \\frac{u'}{1+u^2}$, $\\frac{d}{dx}\\sinh u = \\cosh u$, $\\frac{d}{dx}\\cosh u = +\\sinh u$ (positive!), $\\frac{d}{dx}\\text{arctanh } u = \\frac{u'}{1-u^2}$.",
+    "contentMarkdown": "### 1. The Definition of Derivative & Geometric Meaning\n\nThe **derivative** of a function $f(x)$ represents the instantaneous rate of change of the dependent variable with respect to $x$:\n\n$$f'(x) = \\frac{dy}{dx} = \\lim_{h \\to 0} \\frac{f(x + h) - f(x)}{h}$$\n\n- **Geometric Meaning**: $f'(x)$ gives the **slope of the tangent line** ($m_{\\text{tan}}$) to the curve at $(x, f(x))$.\n\n```diagram\n{\n  \"caption\": \"Figure 1: Geometric Tangent Line Slope (m = dy/dx) and Function Monotonicity\",\n  \"xRange\": [-5, 5],\n  \"yRange\": [-3, 3],\n  \"elements\": [\n    { \"type\": \"line\", \"from\": [-4, -2], \"to\": [4, 2], \"color\": \"#38bdf8\", \"label\": \"Tangent Line (Slope m = f'(x))\" },\n    { \"type\": \"point\", \"at\": [0, 0], \"color\": \"#fbbf24\", \"label\": \"P(x, f(x))\" },\n    { \"type\": \"text\", \"at\": [2.5, 0.5], \"text\": \"f'(x) > 0: Increasing\", \"color\": \"#34d399\" },\n    { \"type\": \"text\", \"at\": [-3.5, 1.5], \"text\": \"f'(x) < 0: Decreasing\", \"color\": \"#f43f5e\" }\n  ]\n}\n```\n\n---\n\n### 2. Comprehensive 37 Derivative Formulas Catalog\n\n#### A. Algebraic Functions:\n1. $\\frac{d}{dx}(c) = 0$\n2. $\\frac{d}{dx}(u \\pm v) = \\frac{du}{dx} \\pm \\frac{dv}{dx}$\n3. $\\frac{d}{dx}(uv) = u \\frac{dv}{dx} + v \\frac{du}{dx}$ (Product Rule)\n4. $\\frac{d}{dx}\\left(\\frac{u}{v}\\right) = \\frac{v \\frac{du}{dx} - u \\frac{dv}{dx}}{v^2}$ (Quotient Rule: \"Low d-High minus High d-Low over Low squared\")\n5. $\\frac{d}{dx}(u^n) = n u^{n-1} \\frac{du}{dx}$ (General Power Rule)\n6. $\\frac{d}{dx}(\\sqrt{u}) = \\frac{\\frac{du}{dx}}{2\\sqrt{u}}$\n7. $\\frac{d}{dx}\\left(\\frac{u}{c}\\right) = \\frac{1}{c} \\frac{du}{dx}$\n8. $\\frac{d}{dx}\\left(\\frac{c}{u}\\right) = -\\frac{c}{u^2} \\frac{du}{dx}$\n\n#### B. Exponential & Logarithmic Functions:\n9. $\\frac{d}{dx}(a^u) = a^u \\ln a \\frac{du}{dx}$\n10. $\\frac{d}{dx}(e^u) = e^u \\frac{du}{dx}$\n11. $\\frac{d}{dx}(\\log_a u) = \\frac{1}{u \\ln a} \\frac{du}{dx} = \\frac{\\log_a e}{u} \\frac{du}{dx}$\n12. $\\frac{d}{dx}(\\log_{10} u) = \\frac{0.4343}{u} \\frac{du}{dx}$\n13. $\\frac{d}{dx}(\\ln u) = \\frac{1}{u} \\frac{du}{dx}$\n\n#### C. Trigonometric Functions:\n14. $\\frac{d}{dx}(\\sin u) = \\cos u \\frac{du}{dx}$\n15. $\\frac{d}{dx}(\\cos u) = -\\sin u \\frac{du}{dx}$\n16. $\\frac{d}{dx}(\\tan u) = \\sec^2 u \\frac{du}{dx}$\n17. $\\frac{d}{dx}(\\cot u) = -\\csc^2 u \\frac{du}{dx}$\n18. $\\frac{d}{dx}(\\sec u) = \\sec u \\tan u \\frac{du}{dx}$\n19. $\\frac{d}{dx}(\\csc u) = -\\csc u \\cot u \\frac{du}{dx}$\n\n#### D. Inverse Trigonometric Functions:\n20. $\\frac{d}{dx}(\\arcsin u) = \\frac{1}{\\sqrt{1 - u^2}} \\frac{du}{dx}$\n21. $\\frac{d}{dx}(\\arccos u) = \\frac{-1}{\\sqrt{1 - u^2}} \\frac{du}{dx}$\n22. $\\frac{d}{dx}(\\arctan u) = \\frac{1}{1 + u^2} \\frac{du}{dx}$\n23. $\\frac{d}{dx}(\\text{arccot } u) = \\frac{-1}{1 + u^2} \\frac{du}{dx}$\n24. $\\frac{d}{dx}(\\text{arcsec } u) = \\frac{1}{|u|\\sqrt{u^2 - 1}} \\frac{du}{dx}$\n25. $\\frac{d}{dx}(\\text{arccsc } u) = \\frac{-1}{|u|\\sqrt{u^2 - 1}} \\frac{du}{dx}$\n\n#### E. Hyperbolic Functions:\n26. $\\frac{d}{dx}(\\sinh u) = \\cosh u \\frac{du}{dx}$\n27. $\\frac{d}{dx}(\\cosh u) = \\mathbf{+\\sinh u} \\frac{du}{dx}$ *(Notice positive sign, unlike trigonometric cosine!)*\n28. $\\frac{d}{dx}(\\tanh u) = \\text{sech}^2 u \\frac{du}{dx}$\n29. $\\frac{d}{dx}(\\coth u) = -\\text{csch}^2 u \\frac{du}{dx}$\n30. $\\frac{d}{dx}(\\text{sech } u) = -\\text{sech } u \\tanh u \\frac{du}{dx}$\n31. $\\frac{d}{dx}(\\text{csch } u) = -\\text{csch } u \\coth u \\frac{du}{dx}$\n\n#### F. Inverse Hyperbolic Functions:\n32. $\\frac{d}{dx}(\\text{arcsinh } u) = \\frac{1}{\\sqrt{u^2 + 1}} \\frac{du}{dx}$\n33. $\\frac{d}{dx}(\\text{arccosh } u) = \\frac{1}{\\sqrt{u^2 - 1}} \\frac{du}{dx} \\quad (|u| > 1)$\n34. $\\frac{d}{dx}(\\text{arctanh } u) = \\frac{1}{1 - u^2} \\frac{du}{dx} \\quad (|u| < 1)$\n35. $\\frac{d}{dx}(\\text{arccoth } u) = \\frac{1}{1 - u^2} \\frac{du}{dx} \\quad (|u| > 1)$\n36. $\\frac{d}{dx}(\\text{arcsech } u) = \\frac{-1}{u\\sqrt{1 - u^2}} \\frac{du}{dx} \\quad (0 < u < 1)$\n37. $\\frac{d}{dx}(\\text{arccsch } u) = \\frac{-1}{|u|\\sqrt{1 + u^2}} \\frac{du}{dx} \\quad (u \\ne 0)$"
   },
   "formulas": [
     {
-      "id": "f-0802-01",
-      "title": "Euler's Complex Exponential Forms",
-      "formula": "$$\\sin x = \\frac{e^{ix} - e^{-ix}}{2i}, \\quad \\cos x = \\frac{e^{ix} + e^{-ix}}{2}$$",
-      "note": "Forms the theoretical foundation of AC phasor analysis."
+      "id": "f-1402-01",
+      "title": "Product and Quotient Rules",
+      "formula": "$$\\frac{d}{dx}(uv) = u v' + v u', \\quad \\frac{d}{dx}\\left(\\frac{u}{v}\\right) = \\frac{v u' - u v'}{v^2}$$",
+      "note": "Quotient rule denominator is always v²."
     },
     {
-      "id": "f-0802-02",
-      "title": "Product-to-Sum & Sum-to-Product",
-      "formula": "$$2\\cos A \\cos B = \\cos(A+B) + \\cos(A-B), \\quad 2\\sin A \\cos B = \\sin(A+B) + \\sin(A-B)$$",
-      "note": "Essential for AM/FM RF spectral analysis."
+      "id": "f-1402-02",
+      "title": "Inverse Trigonometric & Hyperbolic Derivatives",
+      "formula": "$$\\frac{d}{dx}(\\arctan u) = \\frac{u'}{1 + u^2}, \\quad \\frac{d}{dx}(\\arcsin u) = \\frac{u'}{\\sqrt{1 - u^2}}, \\quad \\frac{d}{dx}(\\text{arctanh } u) = \\frac{u'}{1 - u^2}$$",
+      "note": "Notice the crucial difference between 1+u² and 1-u²."
     },
     {
-      "id": "f-0802-03",
-      "title": "Ambiguous Case Condition (SSA)",
-      "formula": "$$b \\sin A < a < b \\implies 2 \\text{ Valid Oblique Triangles}$$",
-      "note": "Occurs because sin(β) = sin(180° - β)."
+      "id": "f-1402-03",
+      "title": "Hyperbolic Cosh Sign Invariant",
+      "formula": "$$\\frac{d}{dx}(\\cosh u) = +\\sinh u \\cdot u'$$",
+      "note": "Unlike trigonometric d/dx(cos u) = -sin u, hyperbolic cosh derivative is positive."
     }
   ],
   "visualizer": {
     "archetype": "parameter_sweep",
-    "title": "SSA Ambiguous Case Triangle Geometry Simulator",
-    "description": "Adjust side lengths a, b and angle A to explore 0, 1, or 2 triangle solutions in real time.",
+    "title": "Real-Time Derivative Function Plotter",
+    "description": "Adjust polynomial coefficients or frequency parameters to visualize function curves f(x) alongside their analytical first derivatives f'(x).",
     "config": {
       "canvasWidth": 640,
       "canvasHeight": 320,
       "controls": [
-        { "id": "sideB", "label": "Side b", "min": 5, "max": 15, "step": 1, "defaultValue": 12 },
-        { "id": "angleA", "label": "Angle A (deg)", "min": 20, "max": 60, "step": 5, "defaultValue": 30 },
-        { "id": "sideA", "label": "Opposite Side a", "min": 4, "max": 14, "step": 1, "defaultValue": 8 }
+        {
+          "id": "coeffA",
+          "label": "Leading Coefficient a",
+          "min": -5,
+          "max": 5,
+          "step": 0.5,
+          "defaultValue": 2
+        },
+        {
+          "id": "powerN",
+          "label": "Power n",
+          "min": 1,
+          "max": 4,
+          "step": 1,
+          "defaultValue": 3
+        }
       ]
     }
   },
   "terms": [
     {
-      "term": "Ambiguous Case",
-      "symbol": "$\\text{SSA}$",
-      "unit": "Geometry",
-      "definition": "The condition in solving oblique triangles where given two sides and an acute non-included angle produces two distinct valid triangles when b sin A < a < b.",
-      "keywordTrigger": "two triangles can be formed / b sin A < a < b"
+      "term": "Derivative",
+      "symbol": "$f'(x) = \\frac{dy}{dx}$",
+      "unit": "Calculus",
+      "definition": "The limit of the ratio of the change in a function to the corresponding change in its independent variable as the change approaches zero.",
+      "keywordTrigger": "rate of change / slope of tangent line / dy/dx"
     },
     {
-      "term": "Euler's Exponential Formula",
-      "symbol": "$e^{ix} = \\cos x + i\\sin x$",
+      "term": "Chain Rule",
+      "symbol": "$\\frac{dy}{dx} = \\frac{dy}{du}\\frac{du}{dx}$",
+      "unit": "Rule",
+      "definition": "Rule for differentiating composite functions by multiplying the derivative of the outer function by the derivative of the inner function.",
+      "keywordTrigger": "derivative of composite function / chain rule"
+    },
+    {
+      "term": "Hyperbolic Cosh Derivative",
+      "symbol": "$\\frac{d}{dx}\\cosh u = +\\sinh u$",
       "unit": "Formula",
-      "definition": "The fundamental mathematical equation linking trigonometric functions to complex exponentials.",
-      "keywordTrigger": "cos x = (e^ix + e^-ix)/2 / exponential form"
-    },
-    {
-      "term": "Prosthaphaeresis",
-      "symbol": "Sum-to-Product",
-      "unit": "Algorithm",
-      "definition": "Historical trigonometric method of converting products of trigonometric functions into sums and differences.",
-      "keywordTrigger": "sum-to-product transforms / prosthaphaeresis"
+      "definition": "The derivative of hyperbolic cosine, which is strictly positive sinh u without a negative sign.",
+      "keywordTrigger": "d/dx cosh u = sinh u"
     }
   ],
   "examples": [
     {
-      "problemStatement": "In triangle ABC, side b = 10, side a = 6, and angle A = 30°. Determine how many distinct triangles can be formed, and find angle B for both cases.",
-      "formalSolutionMarkdown": "#### Step 1: Compute altitude h\n$$h = b \\sin A = 10 \\sin 30^\\circ = 10(0.5) = 5$$\n\n#### Step 2: Compare side a with h and b\n- $h = 5$, $a = 6$, $b = 10$.\n- Since $h < a < b$ ($5 < 6 < 10$), **exactly 2 distinct triangles exist** (Ambiguous Case).\n\n#### Step 3: Solve for angle B using Law of Sines\n$$\\sin B = \\frac{b \\sin A}{a} = \\frac{10 \\sin 30^\\circ}{6} = \\frac{5}{6} \\approx 0.8333$$\n- **Acute Case**: $B_1 = \\arcsin(5/6) \\approx 56.44^\\circ$\n- **Obtuse Case**: $B_2 = 180^\\circ - 56.44^\\circ = 123.56^\\circ$",
-      "shortcutSolutionMarkdown": "#### ⚡ 10-Second Ambiguous Case Check\n$h = 10(0.5) = 5$. Since $5 < 6 < 10$, there are 2 solutions: $B_1 = 56.44^\\circ, B_2 = 123.56^\\circ$.",
-      "formalTimeSeconds": 60,
-      "shortcutTimeSeconds": 10
-    },
-    {
-      "problemStatement": "Express 2 sin(5x) cos(3x) as a sum or difference of trigonometric functions.",
-      "formalSolutionMarkdown": "#### Step 1: Apply product-to-sum identity\n$$2\\sin A \\cos B = \\sin(A + B) + \\sin(A - B)$$\n\n#### Step 2: Substitute A = 5x and B = 3x\n$$2\\sin(5x)\\cos(3x) = \\sin(5x + 3x) + \\sin(5x - 3x) = \\sin(8x) + \\sin(2x)$$",
-      "shortcutSolutionMarkdown": "#### ⚡ 2-Second Sum/Diff Inspection\n$$\\sin(5x+3x) + \\sin(5x-3x) = \\sin(8x) + \\sin(2x)$$",
+      "problemStatement": "Find the derivative of f(x) = arctan(3x²).",
+      "formalSolutionMarkdown": "#### Step 1: Identify outer and inner functions\n- $u = 3x^2 \\implies \\frac{du}{dx} = 6x$\n\n#### Step 2: Apply arctan derivative formula\n$$\\frac{d}{dx}(\\arctan u) = \\frac{1}{1 + u^2} \\frac{du}{dx}$$\n$$\\frac{df}{dx} = \\frac{1}{1 + (3x^2)^2} (6x) = \\frac{6x}{1 + 9x^4}$$",
+      "shortcutSolutionMarkdown": "#### ⚡ 2-Second Chain Rule\n$$\\frac{d}{dx} \\arctan(3x^2) = \\frac{6x}{1 + 9x^4}$$",
       "formalTimeSeconds": 30,
       "shortcutTimeSeconds": 2
+    },
+    {
+      "problemStatement": "Find the derivative of y = x³ · e^(2x).",
+      "formalSolutionMarkdown": "#### Step 1: Apply the Product Rule\n$$\\frac{dy}{dx} = u \\frac{dv}{dx} + v \\frac{du}{dx}$$\n- $u = x^3 \\implies u' = 3x^2$\n- $v = e^{2x} \\implies v' = 2e^{2x}$\n\n#### Step 2: Combine terms\n$$\\frac{dy}{dx} = x^3 (2e^{2x}) + e^{2x} (3x^2) = x^2 e^{2x} (2x + 3)$$",
+      "shortcutSolutionMarkdown": "#### ⚡ 3-Second Product Rule Factorization\n$$\\frac{dy}{dx} = x^2 e^{2x} (2x + 3)$$",
+      "formalTimeSeconds": 30,
+      "shortcutTimeSeconds": 3
     }
   ],
   "calculatorGuides": {
     "karce": {
-      "techniqueTitle": "Fast Identity Verification via CALC Mode",
-      "problemType": "Verifying algebraic trigonometric identities",
-      "sampleProblem": "Verify sin(2X) - 2sin(X)cos(X) = 0 at X = 37°.",
-      "mode": "COMP Mode (MODE 1, Ensure DEG)",
-      "keystrokes": ["sin", "(", "2", "ALPHA", "X", ")", "-", "2", "sin", "(", "ALPHA", "X", ")", "cos", "(", "ALPHA", "X", ")", "CALC", "3", "7", "="],
-      "notes": "Directly displays 0.00000000 verifying the identity."
+      "techniqueTitle": "Fast Numerical Derivative (d/dx Key)",
+      "problemType": "Evaluating numerical derivative d/dx at x = a",
+      "sampleProblem": "Find d/dx [arctan(3x²)] at x = 2.",
+      "mode": "COMP Mode (MODE 1, Set RAD)",
+      "keystrokes": [
+        "SHIFT",
+        "d/dx",
+        "tan⁻¹",
+        "(",
+        "3",
+        "ALPHA",
+        "X",
+        "x²",
+        ")",
+        ",",
+        "2",
+        ")",
+        "="
+      ],
+      "notes": "Directly evaluates 0.0827586 (12/145) in 1 second."
     },
     "canon": {
-      "techniqueTitle": "Complex Exponential Evaluation",
-      "problemType": "Evaluating (e^ix + e^-ix)/2 on Canon F-789SGA",
-      "sampleProblem": "Evaluate cos(1 rad) using Euler formula in CMPLX mode.",
-      "mode": "CMPLX Mode (MODE 2, RAD)",
-      "keystrokes": ["(", "SHIFT", "e^", "i", "+", "SHIFT", "e^", "-", "i", ")", "÷", "2", "="],
-      "notes": "Directly displays 0.5403023058 matching cos(1)."
+      "techniqueTitle": "Direct Numerical Derivative Shortcut",
+      "problemType": "Evaluating d/dx [x³ * e^(2x)] at x = 1 on Canon F-789SGA",
+      "sampleProblem": "Find dy/dx at x = 1.",
+      "mode": "COMP Mode (MODE 1)",
+      "keystrokes": [
+        "SHIFT",
+        "d/dx",
+        "ALPHA",
+        "X",
+        "x³",
+        "×",
+        "SHIFT",
+        "e^",
+        "(",
+        "2",
+        "ALPHA",
+        "X",
+        ")",
+        ",",
+        "1",
+        ")",
+        "="
+      ],
+      "notes": "Directly yields 36.94528 (5 * e²)."
     }
   },
   "conceptChecks": [
     {
-      "id": "chk-0802-01",
-      "question": "Which of the following expressions represents $\\cos x$ in complex exponential form?",
+      "id": "chk-1402-01",
+      "question": "What is the derivative of $f(x) = \\cosh(3x)$ with respect to $x$?",
       "options": [
-        "(e^(ix) + e^(-ix)) / 2",
-        "(e^(ix) - e^(-ix)) / (2i)",
-        "(e^(ix) + e^(-ix)) / (2i)",
-        "(e^(ix) - e^(-ix)) / 2"
+        "+3 sinh(3x)",
+        "-3 sinh(3x)",
+        "+3 cosh(3x)",
+        "-3 csch(3x)"
       ],
       "correctAnswer": 0,
-      "explanation": "By Euler's formula: cos x = (e^(ix) + e^(-ix)) / 2, while sin x = (e^(ix) - e^(-ix)) / (2i)."
+      "explanation": "Unlike trigonometric cos, the derivative of cosh is positive: d/dx[cosh(3x)] = +3 sinh(3x)."
     },
     {
-      "id": "chk-0802-02",
-      "question": "In the ambiguous case of the Law of Sines (SSA), under what condition do exactly TWO distinct triangles exist?",
+      "id": "chk-1402-02",
+      "question": "What is the derivative of $y = \\arctan(u)$ with respect to $x$?",
       "options": [
-        "b sin A < a < b",
-        "a < b sin A",
-        "a = b sin A",
-        "a ≥ b"
+        "u' / (1 + u²)",
+        "u' / (1 - u²)",
+        "u' / √(1 - u²)",
+        "-u' / (1 + u²)"
       ],
       "correctAnswer": 0,
-      "explanation": "Two triangles exist when the opposite side a is longer than altitude h = b sin A but shorter than adjacent side b."
+      "explanation": "The standard derivative of arctan(u) is u' / (1 + u²)."
     },
     {
-      "id": "chk-0802-03",
-      "question": "Simplify the expression: $\\frac{1 - \\cos 2\\theta}{1 + \\cos 2\\theta}$.",
+      "id": "chk-1402-03",
+      "question": "What is the derivative of $y = \\log_{10}(x)$?",
       "options": [
-        "tan² θ",
-        "cot² θ",
-        "sin² θ",
-        "sec² θ"
+        "(log₁₀ e) / x ≈ 0.4343 / x",
+        "1 / x",
+        "ln(10) / x",
+        "1 / (x ln e)"
       ],
       "correctAnswer": 0,
-      "explanation": "Since 1 - cos 2θ = 2sin² θ and 1 + cos 2θ = 2cos² θ, the ratio is 2sin² θ / 2cos² θ = tan² θ."
+      "explanation": "d/dx[log₁₀(x)] = (log₁₀ e)/x = 1 / (x ln 10) ≈ 0.4343 / x."
     }
   ]
 }

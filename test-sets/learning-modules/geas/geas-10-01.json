@@ -1,0 +1,291 @@
+{
+  "id": "geas-10-01",
+  "code": "GEAS 10-01",
+  "domain": "GEAS",
+  "topicCode": "GEAS-10",
+  "topicTitle": "ECE Laws, Ethics & Contracts (RA 9292)",
+  "subtopicTitle": "Legislative Origins, The 8 Articles, 43 Sections & Definition of Terms",
+  "order": 1,
+  "pairedQuizSetId": "geas-10-01-mastery",
+  "toc": [
+    {
+      "id": "sec-prereq-bridges",
+      "title": "1. Introduction & Statutory Context",
+      "level": 2
+    },
+    {
+      "id": "sec-theory",
+      "title": "2. Lesson Proper: Legislative Origins, The 8 Articles & 43 Sections",
+      "level": 2
+    },
+    {
+      "id": "sec-formulas",
+      "title": "3. Legal Signatures & Master Article Index",
+      "level": 2
+    },
+    {
+      "id": "sec-visualizer",
+      "title": "4. Interactive Statutory Navigator & Section Explorer",
+      "level": 2
+    },
+    {
+      "id": "sec-terminology",
+      "title": "5. Key Statutory Terms & Legal Definitions",
+      "level": 2
+    },
+    {
+      "id": "sec-dual-method",
+      "title": "6. Worked Board Exam Legal Problem Scenarios",
+      "level": 2
+    },
+    {
+      "id": "sec-calculator",
+      "title": "7. Board Exam Speed Techniques: Keyword Elimination",
+      "level": 2
+    },
+    {
+      "id": "sec-concept-checks",
+      "title": "8. In-Line Concept Checks",
+      "level": 2
+    },
+    {
+      "id": "sec-mastery-challenge",
+      "title": "9. Paired Mastery Challenge Exam",
+      "level": 2
+    }
+  ],
+  "prerequisiteBridge": {
+    "priorModuleId": "geas-01-01",
+    "text": "Republic Act No. 9292 ('The Electronics Engineering Law of 2004') serves as the governing legal bedrock for all electronics professionals in the Philippines. It completely repealed the archaic 1969 R.A. No. 5734, establishing modernized definitions for telecommunications, computers, ICT, broadcasting, and professional responsibilities."
+  },
+  "crossSubjectBridges": [
+    {
+      "targetDomain": "EST",
+      "targetTopicCode": "EST-01",
+      "badgeText": "GEAS → EST",
+      "description": "Statutory definitions of 'Telecommunications' and 'Broadcasting' in Section 3 define legal frequency spectrum and transmission standards regulated under NTC memorandum circulars."
+    },
+    {
+      "targetDomain": "ELECS",
+      "targetTopicCode": "ELEC-01",
+      "badgeText": "GEAS → ELECS",
+      "description": "The definition of 'Electronics' under Section 3(a) explicitly encompasses electron flow across vacuum, gases, plasma, semiconductors, and all modern solid-state devices."
+    }
+  ],
+  "theory": {
+    "mentalAnchor": "R.A. 9292 was approved on April 17, 2004 by President Gloria Macapagal-Arroyo, repealing R.A. 5734. It originated from House Bill 5224 and Senate Bill 2683, and is structured into 8 Articles and 43 Sections.",
+    "contentMarkdown": "### 1. Legislative Origins & Enactment Facts\n\nRepublic Act No. 9292, officially titled the **\"Electronics Engineering Law of 2004\"**, is *an Act providing for a more responsive and comprehensive regulation for the registration, licensing and practice of Professional Electronics Engineers (PECE), Electronics Engineers (ECE), and Electronics Technicians (ECT)*.\n\n| Statutory Milestone | Historical Fact / Legal Figure | Board Exam Keyword Memory Anchor |\n| :--- | :--- | :--- |\n| **Law Repealed** | **Republic Act No. 5734** | *The Electronics and Communications Engineering Act of the Philippines (1969)* |\n| **Date of Approval** | **April 17, 2004** | *Signed by President Gloria Macapagal-Arroyo* |\n| **Senate President Signatory** | **Franklin M. Drilon** | *Senate President of the 12th Congress* |\n| **Speaker of the House Signatory** | **Jose De Venecia Jr.** | *Speaker of the House of Representatives* |\n| **Secretary of the Senate** | **Oscar G. Yabes** | *Attested the Senate consolidation* |\n| **Secretary General of the House** | **Roberto P. Nazareno** | *Attested the House consolidation* |\n| **Legislative Bill Numbers** | **House Bill No. 5224** & **Senate Bill No. 2683** | *Consolidated bicameral conference report* |\n| **Total Structural Scope** | **8 Articles** and **43 Sections** | *8 Roman numeral articles, 43 Arabic sections* |\n\n---\n\n### 2. The 8 Articles of Republic Act No. 9292\n\nThe entire statute is organized into eight sequential articles:\n\n1. **Article I: General Provisions (Sections 1 to 5)**\n   - Short Title, Statement of Policy, Definition and Interpretation of Terms, Categories of Practice, Nature and Scope of Practice of ECE and ECT Professions.\n2. **Article II: Professional Regulatory Board of Electronics Engineering (Sections 6 to 12)**\n   - Composition of the Board, Powers and Functions, Qualifications of Members, Term of Office (3 years), Compensation, Removal, Custodian of Records.\n3. **Article III: Examination, Registration and Licensure (Sections 13 to 26)**\n   - Licensure Examination, Qualifications for Exam, Scope of Exam, Ratings (70% average, 70% min subject), Results within 15 days, Registration for PECE (7 yrs experience, 3 PECE certs), Professional ID, Professional Oath, Revocation/Suspension, Reinstatement (after 2 years), Roster, and Exemptions.\n4. **Article IV: Practice of PECE, ECE, and ECT (Sections 27 to 31)**\n   - Practice of the Profession, Prohibitions and Limitations, Seal of PECE (48 mm outer / 32 mm inner), Code of Ethics and Technical Standards, Continuing Professional Education (CPE/CPD).\n5. **Article V: Sundry Provisions (Sections 32 to 34)**\n   - Integrated and Accredited Professional Organization (IECEP as the sole APO), Foreign Reciprocity (Sec 33), Government Positions requiring PECE, ECE, ECT.\n6. **Article VI: Penal Provision and Assistance of Law Enforcement Agencies (Sections 35 to 36)**\n   - Penalties: Fines of **₱100,000 to ₱1,000,000** and/or imprisonment of **6 months to 6 years**; Assistance of Law Enforcement Agencies.\n7. **Article VII: Transitory Provisions (Sections 37 to 38)**\n   - Transitory Provisions, Vested Rights (All existing ECEs under RA 5734 automatically converted to Electronics Engineers).\n8. **Article VIII: Final Provisions (Sections 39 to 43)**\n   - Implementing Rules and Regulations (IRR), Appropriations, Separability Clause, Repealing Clause, Effectivity (15 days following publication in Official Gazette/newspapers).\n\n---\n\n### 3. Statutory Definitions of Terms (Section 3)\n\nSection 3 provides 15 specific, legally binding definitions that frequently appear verbatim in the PRC Board Examination:\n\n#### (a) Electronics\nThe science dealing with the development and application of devices and systems involving the flow of electrons or other carriers of electric charge, in a **vacuum, in gaseous media, in plasma, in semiconductors, in any other media**.\n\n#### (b) Professional Electronics Engineer (PECE)\nA person who is qualified to practice electronics engineering at the highest professional grade and who is a holder of a valid Certificate of Registration and Professional ID issued by the Board and the Commission.\n\n#### (c) Electronics Engineer (ECE)\nA person who is qualified to practice electronics engineering and who is a holder of a valid Certificate of Registration and Professional ID issued by the Board and the Commission.\n\n#### (d) Electronics Technician (ECT)\nA person who is qualified to practice and perform non-engineering technical work relating to electronics and who is a holder of a valid Certificate of Registration and Professional ID issued by the Board and the Commission.\n\n#### (e) Computer\nAny of a variety of electronic devices that are capable of **accepting data, programs and/or instructions, executing the programs and/or instructions to process the data and presenting the results**.\n\n#### (f) Information and Communications Technology (ICT)\nThe **acquisition, production, transformation, storage and transfer/transmission of data and information** by electronic and other modern means in vocal, textual, numerical, graphic, and/or cognitive forms.\n\n#### (g) Communications\nThe process of sending and/or receiving information, data, message, etc. between two or more points by any media.\n\n#### (h) Telecommunications\nAny transmission, emission or reception of **voice, data, text, image, audio, video and/or high-speed data** by wire, radio, optical or other technological means.\n\n#### (i) Broadcasting\nAn undertaking the purpose of which is to **transmit audio, video, text, images, etc. for reception of the general public**.\n\n#### (j) Industrial Plant\nManufacturing establishments and businesses where electronic machineries, systems, and equipment are **installed, used, sold, operated, or manufactured**.\n\n#### (k) Commercial Establishment\nBuildings used for business or profit where electronic or electronically-controlled equipment, systems, or circuits are **installed, used, sold, or operated**.\n\n#### (l) Consulting Services\nServices requiring and involving the technical expertise and professional capability for **advisory, review, design, evaluation, planning, or supervision** in the field of electronics engineering."
+  },
+  "formulas": [
+    {
+      "id": "f-geas10-01",
+      "title": "Statutory Identity of Republic Act No. 9292",
+      "formula": "$$\\text{R.A. 9292} = \\text{HB 5224} + \\text{SB 2683} \\quad [\\text{Approved: April 17, 2004}]$$",
+      "note": "Repealed R.A. 5734 (The ECE Act of 1969)."
+    },
+    {
+      "id": "f-geas10-02",
+      "title": "Structural Organization of R.A. 9292",
+      "formula": "$$\\text{Structure} = 8 \\text{ Articles} \\quad | \\quad 43 \\text{ Sections}$$",
+      "note": "Enforced by the Professional Regulatory Board of Electronics Engineering (PRB-ECE)."
+    },
+    {
+      "id": "f-geas10-03",
+      "title": "General Penal Formula (Section 35)",
+      "formula": "$$\\text{Penalty} = \\text{Fine: } \\text{₱100,000 to ₱1,000,000} \\quad \\text{and/or} \\quad \\text{Imprisonment: } 6\\text{ mos to } 6\\text{ yrs}$$",
+      "note": "Applies to fraud, unauthorized practice, illegal use of seal, and violations of Code of Ethics."
+    }
+  ],
+  "visualizer": {
+    "archetype": "stepper",
+    "title": "Interactive 8 Articles & 43 Sections Statutory Matrix",
+    "description": "Step through the 8 Articles of Republic Act No. 9292 to inspect section boundaries and statutory scopes.",
+    "config": {
+      "controls": [
+        {
+          "id": "articleIndex",
+          "label": "Select Article (1 to 8)",
+          "min": 1,
+          "max": 8,
+          "step": 1,
+          "defaultValue": 1
+        }
+      ],
+      "initialParams": {
+        "articleIndex": 1
+      }
+    }
+  },
+  "terms": [
+    {
+      "term": "Republic Act No. 9292",
+      "symbol": "RA 9292",
+      "definition": "The Electronics Engineering Law of 2004 approved on April 17, 2004 by President Gloria Macapagal-Arroyo.",
+      "keywordTrigger": "April 17, 2004 / 8 Articles / 43 Sections / Repealed RA 5734"
+    },
+    {
+      "term": "Electronics (Statutory)",
+      "symbol": "Sec. 3(a)",
+      "definition": "The science dealing with electron flow in vacuum, gases, plasma, semiconductors, or any other media.",
+      "keywordTrigger": "Vacuum, gases, plasma, semiconductors, other media"
+    },
+    {
+      "term": "ICT (Information & Communications Technology)",
+      "symbol": "Sec. 3(f)",
+      "definition": "Acquisition, production, transformation, storage and transfer of data/info by electronic means.",
+      "keywordTrigger": "Acquisition, production, transformation, storage, transfer"
+    },
+    {
+      "term": "Telecommunications (Statutory)",
+      "symbol": "Sec. 3(h)",
+      "definition": "Any transmission, emission or reception of voice, data, text, image, audio, or video by wire, radio, or optical systems.",
+      "keywordTrigger": "Transmission, emission, reception of voice, data, audio, video"
+    },
+    {
+      "term": "Broadcasting (Statutory)",
+      "symbol": "Sec. 3(i)",
+      "definition": "An undertaking transmitting audio, video, text, or images for reception by the general public.",
+      "keywordTrigger": "Reception of the general public"
+    }
+  ],
+  "examples": [
+    {
+      "id": "ex-geas10-01-01",
+      "title": "Statutory Origin Identification Problem",
+      "prompt": "Republic Act No. 9292 was signed into law on April 17, 2004. Which legislative measures were consolidated by Congress to enact this statute?",
+      "formalSolution": "Step 1: Inspect the legislative history of R.A. No. 9292 as recorded in the preamble and congressional records.\nStep 2: The House of Representatives passed House Bill No. 5224, while the Senate passed Senate Bill No. 2683.\nStep 3: The bicameral conference committee reconciled these bills on February 2, 2004, and the consolidated bill was enacted as R.A. 9292.",
+      "shortcutSolution": "Remember the mnemonic '5224 (House) and 2683 (Senate)'. Note that House bills have 4 digits starting with 5, Senate bills have 4 digits starting with 2.",
+      "finalAnswer": "House Bill No. 5224 and Senate Bill No. 2683"
+    },
+    {
+      "id": "ex-geas10-01-02",
+      "title": "Statutory Definition Trap: Telecommunications vs Broadcasting",
+      "prompt": "Under Section 3 of R.A. 9292, what key distinction separates 'Broadcasting' from 'Telecommunications'?",
+      "formalSolution": "Step 1: Examine Section 3(h) for Telecommunications: 'any transmission, emission or reception of signs, signals, writings, images, sounds or intelligence of any nature by wire, radio, optical or other electromagnetic systems'.\nStep 2: Examine Section 3(i) for Broadcasting: 'an undertaking the purpose of which is to transmit audio, video, text, images or other signals or message for reception of the general public'.\nStep 3: The defining legal characteristic of Broadcasting is intended reception by the *general public* (point-to-multipoint open dissemination).",
+      "shortcutSolution": "Look for the keyword 'general public' $\\to$ exclusively Broadcasting.",
+      "finalAnswer": "Broadcasting is specifically intended for reception by the general public."
+    }
+  ],
+  "calculatorShortcuts": [
+    {
+      "calculatorModel": "Karce KC-S991 / Canon F-789SGA",
+      "topic": "Non-Computational Statutory Topic",
+      "shortcutName": "Article-to-Section Number Index Memory Rule",
+      "keystrokeSequence": [
+        "MODE",
+        "1"
+      ],
+      "explanation": "R.A. 9292 questions are purely regulatory. Use the 8-Article Roman numeral mapping: Art I (1-5), Art II (6-12), Art III (13-26), Art IV (27-31), Art V (32-34), Art VI (35-36), Art VII (37-38), Art VIII (39-43)."
+    }
+  ],
+  "conceptChecks": [
+    {
+      "id": "cc-geas10-01-01",
+      "questionText": "What previous statute was repealed upon the effectivity of Republic Act No. 9292?",
+      "options": [
+        {
+          "text": "Republic Act No. 5734",
+          "isCorrect": true,
+          "distractorReason": "Correct: R.A. 5734 was the Electronics and Communications Engineering Act of the Philippines (1969)."
+        },
+        {
+          "text": "Republic Act No. 7925",
+          "isCorrect": false,
+          "distractorReason": "R.A. 7925 is the Public Telecommunications Policy Act of the Philippines."
+        },
+        {
+          "text": "Republic Act No. 8484",
+          "isCorrect": false,
+          "distractorReason": "R.A. 8484 is the Access Devices Regulation Act."
+        },
+        {
+          "text": "Republic Act No. 3846",
+          "isCorrect": false,
+          "distractorReason": "R.A. 3846 is the Radio Control Law of 1931."
+        }
+      ],
+      "directExplanation": "Section 42 (Repealing Clause) of R.A. 9292 expressly repeals Republic Act No. 5734, known as the Electronics and Communications Engineering Act of the Philippines."
+    },
+    {
+      "id": "cc-geas10-01-02",
+      "questionText": "How many Articles and Sections comprise Republic Act No. 9292?",
+      "options": [
+        {
+          "text": "8 Articles and 43 Sections",
+          "isCorrect": true,
+          "distractorReason": "Correct: Comprises 8 Articles (Articles I to VIII) and 43 Sections."
+        },
+        {
+          "text": "7 Articles and 42 Sections",
+          "isCorrect": false,
+          "distractorReason": "Incorrect section and article tally."
+        },
+        {
+          "text": "9 Articles and 45 Sections",
+          "isCorrect": false,
+          "distractorReason": "Overstates the statutory count."
+        },
+        {
+          "text": "10 Articles and 50 Sections",
+          "isCorrect": false,
+          "distractorReason": "Arbitrary round number."
+        }
+      ],
+      "directExplanation": "Republic Act No. 9292 is structured into exactly 8 Articles and 43 Sections."
+    },
+    {
+      "id": "cc-geas10-01-03",
+      "questionText": "Which President of the Republic of the Philippines signed R.A. 9292 into law on April 17, 2004?",
+      "options": [
+        {
+          "text": "Gloria Macapagal-Arroyo",
+          "isCorrect": true,
+          "distractorReason": "Correct: Approved by President Gloria Macapagal-Arroyo on April 17, 2004."
+        },
+        {
+          "text": "Fidel V. Ramos",
+          "isCorrect": false,
+          "distractorReason": "President Ramos signed RA 7925 in 1995."
+        },
+        {
+          "text": "Joseph Ejercito Estrada",
+          "isCorrect": false,
+          "distractorReason": "President Estrada was in office from 1998 to 2001."
+        },
+        {
+          "text": "Corazon C. Aquino",
+          "isCorrect": false,
+          "distractorReason": "President Aquino was in office from 1986 to 1992."
+        }
+      ],
+      "directExplanation": "Republic Act No. 9292 was approved and signed into law by President Gloria Macapagal-Arroyo on April 17, 2004."
+    },
+    {
+      "id": "cc-geas10-01-04",
+      "questionText": "Under Section 3(a) of RA 9292, the definition of 'Electronics' explicitly includes the flow of electrons in which media?",
+      "options": [
+        {
+          "text": "Vacuum, gaseous media, plasma, semiconductors, or any other media",
+          "isCorrect": true,
+          "distractorReason": "Correct: Captures the exact statutory definition in Section 3(a)."
+        },
+        {
+          "text": "Metallic conductors and dielectric insulators only",
+          "isCorrect": false,
+          "distractorReason": "Too restrictive and omits semiconductors/plasma."
+        },
+        {
+          "text": "Optical fiber waveguides only",
+          "isCorrect": false,
+          "distractorReason": "Optical fiber is photons, not electron flow."
+        },
+        {
+          "text": "Wireless free-space atmosphere only",
+          "isCorrect": false,
+          "distractorReason": "Omits all physical electronic states."
+        }
+      ],
+      "directExplanation": "Section 3(a) defines Electronics as the science dealing with electron flow in vacuum, in gaseous media, in plasma, in semiconductors, or in any other media."
+    }
+  ]
+}

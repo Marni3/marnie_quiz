@@ -3,182 +3,270 @@
   "code": "MATH 04-02",
   "domain": "MATH",
   "topicCode": "MATH-04",
-  "topicTitle": "Discrete Mathematics",
-  "subtopicTitle": "Set Operations, Cartesian Products, Relations & Functions",
+  "topicTitle": "Plane & Spherical Trigonometry",
+  "subtopicTitle": "Trigonometric Identities, Product-Sum Formulas, Euler's Exponentials & Ambiguous Case",
   "order": 2,
   "pairedQuizSetId": "math-04-02-mastery",
   "toc": [
-    { "id": "sec-prereq-bridges", "title": "1. Introduction & Cross-Subject Connections", "level": 2 },
-    { "id": "sec-theory", "title": "2. Lesson Proper: Set Operations & Relational Mapping", "level": 2 },
-    { "id": "sec-formulas", "title": "3. Compilation of Formulas & Set Laws", "level": 2 },
-    { "id": "sec-visualizer", "title": "4. Interactive Visualizer: Cartesian Product Grid", "level": 2 },
-    { "id": "sec-terminology", "title": "5. Key Terms and Definitions", "level": 2 },
-    { "id": "sec-dual-method", "title": "6. Worked Board Exam Problems", "level": 2 },
-    { "id": "sec-calculator", "title": "7. Calculator Speed Techniques (Karce & Canon)", "level": 2 },
-    { "id": "sec-concept-checks", "title": "8. In-Line Concept Checks", "level": 2 },
-    { "id": "sec-mastery-challenge", "title": "9. Paired Mastery Challenge Exam", "level": 2 }
+    {
+      "id": "sec-prereq-bridges",
+      "title": "1. Introduction & Cross-Subject Connections",
+      "level": 2
+    },
+    {
+      "id": "sec-theory",
+      "title": "2. Lesson Proper: The 12 Identity Families & Ambiguous Case",
+      "level": 2
+    },
+    {
+      "id": "sec-formulas",
+      "title": "3. Compilation of Formulas & Euler's Exponentials",
+      "level": 2
+    },
+    {
+      "id": "sec-visualizer",
+      "title": "4. Interactive Visualizer: Ambiguous Case Triangle SSA",
+      "level": 2
+    },
+    {
+      "id": "sec-terminology",
+      "title": "5. Key Terms and Definitions",
+      "level": 2
+    },
+    {
+      "id": "sec-dual-method",
+      "title": "6. Worked Board Exam Problems",
+      "level": 2
+    },
+    {
+      "id": "sec-calculator",
+      "title": "7. Calculator Speed Techniques (Karce & Canon)",
+      "level": 2
+    },
+    {
+      "id": "sec-concept-checks",
+      "title": "8. In-Line Concept Checks",
+      "level": 2
+    },
+    {
+      "id": "sec-mastery-challenge",
+      "title": "9. Paired Mastery Challenge Exam",
+      "level": 2
+    }
   ],
   "prerequisiteBridge": {
-    "priorModuleId": "math-04-01",
-    "text": "Building on basic set containment from MATH 04-01, we now establish algebraic set operations (union, intersection, relative complement), Cartesian coordinate products, and the foundational definition of mathematical relations and functions."
+    "priorModuleId": "math-08-01",
+    "text": "Building on basic triangle trigonometry from MATH 08-01, we now establish the full algebraic system of trigonometric identities—Pythagorean relations, sum/difference, double/half-angles, sum-to-product transforms, Euler's complex exponentials, and the SSA ambiguous case."
   },
   "crossSubjectBridges": [
     {
       "targetDomain": "EST",
-      "targetTopicCode": "EST-10",
-      "badgeText": "Relational DB",
-      "description": "SQL database tables, JOIN operations, and relational keys are direct Cartesian products and binary relation projections $R \\subseteq A \\times B$."
+      "targetTopicCode": "EST-01",
+      "badgeText": "AM Modulation",
+      "description": "Amplitude modulation (AM) sideband generation directly utilizes the product-to-sum identity $2\\cos(A)\\cos(B) = \\cos(A-B) + \\cos(A+B)$."
     },
     {
       "targetDomain": "ELECS",
-      "targetTopicCode": "ELEC-15",
-      "badgeText": "Logic Networks",
-      "description": "De Morgan's set complement laws $(A \\cup B)' = A' \\cap B'$ directly define NOR and NAND universal logic synthesis."
+      "targetTopicCode": "ELEC-05",
+      "badgeText": "Phasor Analysis",
+      "description": "Euler's exponential representations $\\cos x = \\frac{e^{jx} + e^{-jx}}{2}$ and $\\sin x = \\frac{e^{jx} - e^{-jx}}{2j}$ form the foundation of AC sinusoidal steady-state phasors."
     },
     {
       "targetDomain": "MATH",
-      "targetTopicCode": "MATH-14",
+      "targetTopicCode": "MATH-16",
       "badgeText": "Calculus",
-      "description": "The formal definition of a function (each input $x \\in \\text{Domain}$ maps to exactly one output $y$) underlies limits and derivatives."
+      "description": "Trigonometric power reduction identities $\\sin^2 x = \\frac{1-\\cos 2x}{2}$ are required to integrate even powers of sine and cosine."
     }
   ],
   "theory": {
-    "mentalAnchor": "Set intersection $A \\cap B$ is logical AND ($\\wedge$); set union $A \\cup B$ is logical OR ($\\vee$); set difference $A \\setminus B$ is $A$ excluding elements of $B$. The Cartesian product $A \\times B$ has cardinality $|A| \\cdot |B|$ and is non-commutative. A function is a relation where each domain input maps to exactly one output.",
-    "contentMarkdown": "### 1. Fundamental Set Operations & Logical Connectives\n\nSet theory operations mirror Boolean logic connectives in electrical engineering:\n\n1. **Intersection ($A \\cap B$)**: The set of elements belonging to **both** $A$ and $B$:\n   $$A \\cap B = \\{x \\mid x \\in A \\wedge x \\in B\\}$$\n   *(Corresponds to Boolean AND gate)*.\n\n2. **Union ($A \\cup B$)**: The set of elements belonging to $A$, or $B$, or both:\n   $$A \\cup B = \\{x \\mid x \\in A \\vee x \\in B\\}$$\n   *(Corresponds to Boolean OR gate)*.\n\n3. **Set Difference / Relative Complement ($A - B$ or $A \\setminus B$)**: The set of elements belonging to $A$ but **not** in $B$:\n   $$A \\setminus B = \\{x \\mid x \\in A \\wedge x \\notin B\\} = A \\cap B'$$\n\n4. **Absolute Complement ($A^c$, $A'$, or $\\overline{A}$)**: Elements of the universal set $U$ that are not in $A$:\n   $$A' = U \\setminus A = \\{x \\in U \\mid x \\notin A\\}$$\n\n```diagram\n{\n  \"caption\": \"Figure 1: Set Operations - Intersection, Difference, and Absolute Complement\",\n  \"xRange\": [-5, 5],\n  \"yRange\": [-3, 3],\n  \"elements\": [\n    { \"type\": \"polygon\", \"points\": [[-4.5, 2.5], [4.5, 2.5], [4.5, -2.5], [-4.5, -2.5]], \"color\": \"#64748b\", \"fill\": \"rgba(100, 116, 139, 0.05)\" },\n    { \"type\": \"arc\", \"center\": [-1.2, 0], \"radius\": 35, \"startAngle\": 0, \"endAngle\": 360, \"color\": \"#38bdf8\", \"label\": \"A - B\" },\n    { \"type\": \"arc\", \"center\": [1.2, 0], \"radius\": 35, \"startAngle\": 0, \"endAngle\": 360, \"color\": \"#fbbf24\", \"label\": \"B - A\" },\n    { \"type\": \"text\", \"at\": [0, 0], \"text\": \"A ∩ B\", \"color\": \"#34d399\" },\n    { \"type\": \"text\", \"at\": [-3.8, 2.0], \"text\": \"Universal (U)\", \"color\": \"#94a3b8\" }\n  ]\n}\n```\n\n---\n\n### 2. Cartesian Products & Ordered Pairs\n\nGiven two sets $A$ and $B$, the **Cartesian Product** (written $A \\times B$) is the set of all ordered pairs $(a, b)$ such that $a \\in A$ and $b \\in B$:\n\n$$A \\times B = \\{(a, b) \\mid a \\in A \\wedge b \\in B\\}$$\n\n#### Properties of Cartesian Products:\n- **Non-Commutative**: $A \\times B \\neq B \\times A$ (unless $A = B$ or one set is empty $\\emptyset$).\n- **Cardinality Multiplicative Rule**: $|A \\times B| = |A| \\times |B|$.\n- Example: If $A = \\{1, 2\\}$ and $B = \\{3, 4, 5\\}$, then:\n  $$A \\times B = \\{(1,3), (1,4), (1,5), (2,3), (2,4), (2,5)\\}$$\n  $$|A \\times B| = 2 \\times 3 = 6$$\n\n---\n\n### 3. Relations and Functions\n\n- **Relation ($R$)**: Any subset of a Cartesian product ($R \\subseteq A \\times B$). A relation establishes an association or link between elements of the **domain** (inputs) and the **range** (outputs).\n  - **Total Number of Relations**: For sets with $|A| = m$ and $|B| = n$, the number of possible binary relations is $2^{mn}$.\n- **Function ($f: A \\to B$)**: A special type of relation in which **each element $x$ in the domain $A$ is paired with exactly one unique element $y$ in the codomain $B$**.\n  - A relation fails to be a function if a single input produces multiple distinct outputs (e.g., $(2, 3)$ and $(2, 5)$ in the same relation)."
+    "mentalAnchor": "Trigonometric identities: Pythagorean ($1+\\tan^2\\theta = \\sec^2\\theta$), Double Angle ($\\sin 2\\theta = 2\\sin\\theta\\cos\\theta$), Product-to-Sum ($2\\cos A \\cos B = \\cos(A+B)+\\cos(A-B)$), and Euler Exponentials ($\\cos x = \\frac{e^{ix}+e^{-ix}}{2}$). In SSA triangles, if $b\\sin A < a < b$, exactly two valid triangles exist (the Ambiguous Case).",
+    "contentMarkdown": "### 1. The 12 Fundamental Families of Trigonometric Identities\n\nA **trigonometric identity** is an equality relating trigonometric functions that remains valid for every domain angle where both expressions are defined.\n\n```diagram\n{\n  \"caption\": \"Figure 1: SSA Ambiguous Case - Two Triangles Formed When b sin A < a < b\",\n  \"xRange\": [-1, 13],\n  \"yRange\": [-1, 7],\n  \"elements\": [\n    { \"type\": \"polygon\", \"points\": [[0, 0], [12, 0], [6, 6]], \"color\": \"#64748b\", \"fill\": \"rgba(100, 116, 139, 0.05)\" },\n    { \"type\": \"line\", \"from\": [0, 0], \"to\": [12, 0], \"color\": \"#94a3b8\" },\n    { \"type\": \"line\", \"from\": [0, 0], \"to\": [6, 6], \"color\": \"#38bdf8\", \"label\": \"b = 12\" },\n    { \"type\": \"line\", \"from\": [6, 6], \"to\": [10, 0], \"color\": \"#f43f5e\", \"label\": \"a = 5 (Triangle 1)\" },\n    { \"type\": \"line\", \"from\": [6, 6], \"to\": [2, 0], \"color\": \"#fbbf24\", \"label\": \"a = 5 (Triangle 2)\" },\n    { \"type\": \"text\", \"at\": [1.5, 0.4], \"text\": \"30°\", \"color\": \"#38bdf8\" },\n    { \"type\": \"text\", \"at\": [2.5, 0.6], \"text\": \"180°-β\", \"color\": \"#fbbf24\" },\n    { \"type\": \"text\", \"at\": [9.2, 0.6], \"text\": \"β\", \"color\": \"#f43f5e\" }\n  ]\n}\n```\n\n#### Complete Identity Hierarchy:\n1. **Reciprocal**: $\\sin\\theta = \\frac{1}{\\csc\\theta}, \\quad \\cos\\theta = \\frac{1}{\\sec\\theta}, \\quad \\tan\\theta = \\frac{1}{\\cot\\theta}$.\n2. **Even-Odd (Parity)**: $\\cos(-\\theta) = \\cos\\theta, \\quad \\sin(-\\theta) = -\\sin\\theta, \\quad \\tan(-\\theta) = -\\tan\\theta$.\n3. **Co-functions**: $\\sin\\theta = \\cos(90^\\circ - \\theta), \\quad \\tan\\theta = \\cot(90^\\circ - \\theta), \\quad \\sec\\theta = \\csc(90^\\circ - \\theta)$.\n4. **Pythagorean**:\n   $$\\sin^2\\theta + \\cos^2\\theta = 1, \\quad 1 + \\tan^2\\theta = \\sec^2\\theta, \\quad 1 + \\cot^2\\theta = \\csc^2\\theta$$\n5. **Sum & Difference of Angles**:\n   $$\\sin(\\theta \\pm \\alpha) = \\sin\\theta\\cos\\alpha \\pm \\cos\\theta\\sin\\alpha$$\n   $$\\cos(\\theta \\pm \\alpha) = \\cos\\theta\\cos\\alpha \\mp \\sin\\theta\\sin\\alpha$$\n   $$\\tan(\\theta \\pm \\alpha) = \\frac{\\tan\\theta \\pm \\tan\\alpha}{1 \\mp \\tan\\theta\\tan\\alpha}$$\n6. **Double-Angle Formulas**:\n   $$\\sin 2\\theta = 2\\sin\\theta\\cos\\theta$$\n   $$\\cos 2\\theta = \\cos^2\\theta - \\sin^2\\theta = 2\\cos^2\\theta - 1 = 1 - 2\\sin^2\\theta$$\n   $$\\tan 2\\theta = \\frac{2\\tan\\theta}{1 - \\tan^2\\theta}$$\n7. **Power-Reducing (Half-Angle Squares)**:\n   $$\\sin^2\\theta = \\frac{1 - \\cos 2\\theta}{2}, \\quad \\cos^2\\theta = \\frac{1 + \\cos 2\\theta}{2}, \\quad \\tan^2\\theta = \\frac{1 - \\cos 2\\theta}{1 + \\cos 2\\theta}$$\n8. **Half-Angle Formulas**:\n   $$\\sin\\frac{\\theta}{2} = \\pm\\sqrt{\\frac{1 - \\cos\\theta}{2}}, \\quad \\cos\\frac{\\theta}{2} = \\pm\\sqrt{\\frac{1 + \\cos\\theta}{2}}, \\quad \\tan\\frac{\\theta}{2} = \\frac{1 - \\cos\\theta}{\\sin\\theta} = \\frac{\\sin\\theta}{1 + \\cos\\theta}$$\n9. **Sum-to-Product (Prosthaphaeresis)**:\n   $$\\sin\\theta + \\sin\\alpha = 2\\sin\\frac{\\theta + \\alpha}{2}\\cos\\frac{\\theta - \\alpha}{2}$$\n   $$\\cos\\theta + \\cos\\alpha = 2\\cos\\frac{\\theta + \\alpha}{2}\\cos\\frac{\\theta - \\alpha}{2}$$\n   $$\\cos\\theta - \\cos\\alpha = -2\\sin\\frac{\\theta + \\alpha}{2}\\sin\\frac{\\theta - \\alpha}{2}$$\n10. **Product-to-Sum**:\n   $$2\\sin\\theta\\sin\\alpha = \\cos(\\theta - \\alpha) - \\cos(\\theta + \\alpha)$$\n   $$2\\sin\\theta\\cos\\alpha = \\sin(\\theta + \\alpha) + \\sin(\\theta - \\alpha)$$\n   $$2\\cos\\theta\\cos\\alpha = \\cos(\\theta + \\alpha) + \\cos(\\theta - \\alpha)$$\n\n---\n\n### 2. Exponential Forms of Trigonometric Functions (Euler's Formulas)\n\nDerived from Euler's identity $e^{ix} = \\cos x + i\\sin x$:\n$$\\sin x = \\frac{e^{ix} - e^{-ix}}{2i}, \\quad \\cos x = \\frac{e^{ix} + e^{-ix}}{2}$$\n$$\\tan x = \\frac{-i(e^{ix} - e^{-ix})}{e^{ix} + e^{-ix}} = \\frac{e^{ix} - e^{-ix}}{i(e^{ix} + e^{-ix})}, \\quad \\cot x = \\frac{i(e^{ix} + e^{-ix})}{e^{ix} - e^{-ix}}$$\n\n---\n\n### 3. The Ambiguous Case of the Law of Sines (SSA)\n\nWhen given two sides $a, b$ and non-included acute angle $A$:\n- The altitude dropped to the opposite side is $h = b \\sin A$.\n- Because $\\sin\\beta = \\sin(180^\\circ - \\beta)$, the Law of Sines $\\sin B = \\frac{b \\sin A}{a}$ can yield two distinct angles:\n  1. If $a < b \\sin A$: **No triangle exists ($0$ solutions)**.\n  2. If $a = b \\sin A$: **One unique right triangle ($1$ solution)**.\n  3. If $b \\sin A < a < b$: **Two distinct oblique triangles (Ambiguous Case, $2$ solutions)**.\n  4. If $a \\ge b$: **One unique oblique triangle ($1$ solution)**."
   },
   "formulas": [
     {
-      "id": "f-0402-01",
-      "title": "Cartesian Product Cardinality",
-      "formula": "$$|A \\times B| = |A| \\cdot |B|$$",
-      "note": "Total ordered pairs is the product of individual set cardinalities."
+      "id": "f-0802-01",
+      "title": "Euler's Complex Exponential Forms",
+      "formula": "$$\\sin x = \\frac{e^{ix} - e^{-ix}}{2i}, \\quad \\cos x = \\frac{e^{ix} + e^{-ix}}{2}$$",
+      "note": "Forms the theoretical foundation of AC phasor analysis."
     },
     {
-      "id": "f-0402-02",
-      "title": "Total Binary Relations Formula",
-      "formula": "$$\\text{Total Relations from } A \\text{ to } B = 2^{|A| \\cdot |B|}$$",
-      "note": "Since every relation is a subset of the Cartesian product A × B."
+      "id": "f-0802-02",
+      "title": "Product-to-Sum & Sum-to-Product",
+      "formula": "$$2\\cos A \\cos B = \\cos(A+B) + \\cos(A-B), \\quad 2\\sin A \\cos B = \\sin(A+B) + \\sin(A-B)$$",
+      "note": "Essential for AM/FM RF spectral analysis."
     },
     {
-      "id": "f-0402-03",
-      "title": "Set Difference Identity",
-      "formula": "$$A \\setminus B = A \\cap B' = A - (A \\cap B)$$",
-      "note": "Relative complement of B in A."
+      "id": "f-0802-03",
+      "title": "Ambiguous Case Condition (SSA)",
+      "formula": "$$b \\sin A < a < b \\implies 2 \\text{ Valid Oblique Triangles}$$",
+      "note": "Occurs because sin(β) = sin(180° - β)."
     }
   ],
   "visualizer": {
     "archetype": "parameter_sweep",
-    "title": "Cartesian Product & Relation Grid Explorer",
-    "description": "Adjust set sizes |A| and |B| to observe live Cartesian product pairs and total possible binary relations.",
+    "title": "SSA Ambiguous Case Triangle Geometry Simulator",
+    "description": "Adjust side lengths a, b and angle A to explore 0, 1, or 2 triangle solutions in real time.",
     "config": {
       "canvasWidth": 640,
       "canvasHeight": 320,
       "controls": [
-        { "id": "sizeA", "label": "Cardinality |A|", "min": 1, "max": 5, "step": 1, "defaultValue": 3 },
-        { "id": "sizeB", "label": "Cardinality |B|", "min": 1, "max": 5, "step": 1, "defaultValue": 4 }
+        {
+          "id": "sideB",
+          "label": "Side b",
+          "min": 5,
+          "max": 15,
+          "step": 1,
+          "defaultValue": 12
+        },
+        {
+          "id": "angleA",
+          "label": "Angle A (deg)",
+          "min": 20,
+          "max": 60,
+          "step": 5,
+          "defaultValue": 30
+        },
+        {
+          "id": "sideA",
+          "label": "Opposite Side a",
+          "min": 4,
+          "max": 14,
+          "step": 1,
+          "defaultValue": 8
+        }
       ]
     }
   },
   "terms": [
     {
-      "term": "Cartesian Product",
-      "symbol": "$A \\times B$",
-      "unit": "Set of Pairs",
-      "definition": "The set of all ordered pairs (a, b) where a ∈ A and b ∈ B, having cardinality |A| · |B|.",
-      "keywordTrigger": "set of all ordered pairs (a, b)"
+      "term": "Ambiguous Case",
+      "symbol": "$\\text{SSA}$",
+      "unit": "Geometry",
+      "definition": "The condition in solving oblique triangles where given two sides and an acute non-included angle produces two distinct valid triangles when b sin A < a < b.",
+      "keywordTrigger": "two triangles can be formed / b sin A < a < b"
     },
     {
-      "term": "Relation",
-      "symbol": "$R \\subseteq A \\times B$",
-      "unit": "Set",
-      "definition": "Any subset of the Cartesian product A × B that associates domain elements with range elements.",
-      "keywordTrigger": "subset of Cartesian product"
+      "term": "Euler's Exponential Formula",
+      "symbol": "$e^{ix} = \\cos x + i\\sin x$",
+      "unit": "Formula",
+      "definition": "The fundamental mathematical equation linking trigonometric functions to complex exponentials.",
+      "keywordTrigger": "cos x = (e^ix + e^-ix)/2 / exponential form"
     },
     {
-      "term": "Function",
-      "symbol": "$f: A \\to B$",
-      "unit": "Mapping",
-      "definition": "A relation where each element in the domain maps to exactly one unique element in the range.",
-      "keywordTrigger": "each input has exactly one output"
-    },
-    {
-      "term": "Relative Complement",
-      "symbol": "$A \\setminus B$",
-      "unit": "Set",
-      "definition": "The set of elements belonging to A but not to B, denoted A - B or A ∩ B'.",
-      "keywordTrigger": "elements in A but not in B"
+      "term": "Prosthaphaeresis",
+      "symbol": "Sum-to-Product",
+      "unit": "Algorithm",
+      "definition": "Historical trigonometric method of converting products of trigonometric functions into sums and differences.",
+      "keywordTrigger": "sum-to-product transforms / prosthaphaeresis"
     }
   ],
   "examples": [
     {
-      "problemStatement": "Let A = {1, 2, 3} and B = {x, y}. Find the Cartesian product A × B and the total number of binary relations from A to B.",
-      "formalSolutionMarkdown": "#### Step 1: Compute Cartesian Product pairs\n$$A \\times B = \\{(1,x), (1,y), (2,x), (2,y), (3,x), (3,y)\\}$$\n\n#### Step 2: Compute cardinality\n$$|A \\times B| = |A| \\times |B| = 3 \\times 2 = 6$$\n\n#### Step 3: Compute total possible binary relations\n$$\\text{Total Relations} = 2^{|A \\times B|} = 2^6 = 64$$",
-      "shortcutSolutionMarkdown": "#### ⚡ 2-Second Power Rule\n$$|A \\times B| = 6 \\implies \\text{Total Relations} = 2^6 = 64$$",
-      "formalTimeSeconds": 45,
-      "shortcutTimeSeconds": 2
+      "problemStatement": "In triangle ABC, side b = 10, side a = 6, and angle A = 30°. Determine how many distinct triangles can be formed, and find angle B for both cases.",
+      "formalSolutionMarkdown": "#### Step 1: Compute altitude h\n$$h = b \\sin A = 10 \\sin 30^\\circ = 10(0.5) = 5$$\n\n#### Step 2: Compare side a with h and b\n- $h = 5$, $a = 6$, $b = 10$.\n- Since $h < a < b$ ($5 < 6 < 10$), **exactly 2 distinct triangles exist** (Ambiguous Case).\n\n#### Step 3: Solve for angle B using Law of Sines\n$$\\sin B = \\frac{b \\sin A}{a} = \\frac{10 \\sin 30^\\circ}{6} = \\frac{5}{6} \\approx 0.8333$$\n- **Acute Case**: $B_1 = \\arcsin(5/6) \\approx 56.44^\\circ$\n- **Obtuse Case**: $B_2 = 180^\\circ - 56.44^\\circ = 123.56^\\circ$",
+      "shortcutSolutionMarkdown": "#### ⚡ 10-Second Ambiguous Case Check\n$h = 10(0.5) = 5$. Since $5 < 6 < 10$, there are 2 solutions: $B_1 = 56.44^\\circ, B_2 = 123.56^\\circ$.",
+      "formalTimeSeconds": 60,
+      "shortcutTimeSeconds": 10
     },
     {
-      "problemStatement": "Given universal set U = {1, 2, 3, 4, 5, 6, 7, 8, 9}, A = {1, 3, 5, 7}, and B = {3, 4, 5, 6}. Find (A ∪ B)' and A \\ B.",
-      "formalSolutionMarkdown": "#### Step 1: Compute A ∪ B\n$$A \\cup B = \\{1, 3, 4, 5, 6, 7\\}$$\n\n#### Step 2: Compute complement (A ∪ B)'\n$$(A \\cup B)' = U \\setminus (A \\cup B) = \\{2, 8, 9\\}$$\n\n#### Step 3: Compute set difference A \\ B\n$$A \\setminus B = \\{1, 3, 5, 7\\} \\setminus \\{3, 4, 5, 6\\} = \\{1, 7\\}$$",
-      "shortcutSolutionMarkdown": "#### ⚡ Direct Set Inspection\n$A \\setminus B = \\{1, 7\\}$ and $(A \\cup B)' = \\{2, 8, 9\\}$.",
-      "formalTimeSeconds": 60,
-      "shortcutTimeSeconds": 5
+      "problemStatement": "Express 2 sin(5x) cos(3x) as a sum or difference of trigonometric functions.",
+      "formalSolutionMarkdown": "#### Step 1: Apply product-to-sum identity\n$$2\\sin A \\cos B = \\sin(A + B) + \\sin(A - B)$$\n\n#### Step 2: Substitute A = 5x and B = 3x\n$$2\\sin(5x)\\cos(3x) = \\sin(5x + 3x) + \\sin(5x - 3x) = \\sin(8x) + \\sin(2x)$$",
+      "shortcutSolutionMarkdown": "#### ⚡ 2-Second Sum/Diff Inspection\n$$\\sin(5x+3x) + \\sin(5x-3x) = \\sin(8x) + \\sin(2x)$$",
+      "formalTimeSeconds": 30,
+      "shortcutTimeSeconds": 2
     }
   ],
   "calculatorGuides": {
     "karce": {
-      "techniqueTitle": "Direct Cartesian Cardinality Product",
-      "problemType": "Finding size of Cartesian product and power relations",
-      "sampleProblem": "Find relations from A (|A|=4) to B (|B|=3).",
-      "mode": "COMP Mode (MODE 1)",
-      "keystrokes": ["4", "×", "3", "=", "2", "^", "1", "2", "="],
-      "notes": "Directly evaluates 2^12 = 4096 relations."
+      "techniqueTitle": "Fast Identity Verification via CALC Mode",
+      "problemType": "Verifying algebraic trigonometric identities",
+      "sampleProblem": "Verify sin(2X) - 2sin(X)cos(X) = 0 at X = 37°.",
+      "mode": "COMP Mode (MODE 1, Ensure DEG)",
+      "keystrokes": [
+        "sin",
+        "(",
+        "2",
+        "ALPHA",
+        "X",
+        ")",
+        "-",
+        "2",
+        "sin",
+        "(",
+        "ALPHA",
+        "X",
+        ")",
+        "cos",
+        "(",
+        "ALPHA",
+        "X",
+        ")",
+        "CALC",
+        "3",
+        "7",
+        "="
+      ],
+      "notes": "Directly displays 0.00000000 verifying the identity."
     },
     "canon": {
-      "techniqueTitle": "Binary Relations Power Shortcut",
-      "problemType": "2^(m*n) relation calculations",
-      "sampleProblem": "Evaluate 2^(3*3) on Canon F-789SGA.",
-      "mode": "COMP Mode (MODE 1)",
-      "keystrokes": ["2", "^", "(", "3", "×", "3", ")", "="],
-      "notes": "Directly yields 512 relations."
+      "techniqueTitle": "Complex Exponential Evaluation",
+      "problemType": "Evaluating (e^ix + e^-ix)/2 on Canon F-789SGA",
+      "sampleProblem": "Evaluate cos(1 rad) using Euler formula in CMPLX mode.",
+      "mode": "CMPLX Mode (MODE 2, RAD)",
+      "keystrokes": [
+        "(",
+        "SHIFT",
+        "e^",
+        "i",
+        "+",
+        "SHIFT",
+        "e^",
+        "-",
+        "i",
+        ")",
+        "÷",
+        "2",
+        "="
+      ],
+      "notes": "Directly displays 0.5403023058 matching cos(1)."
     }
   },
   "conceptChecks": [
     {
-      "id": "chk-0402-01",
-      "question": "If set $A$ has 3 elements and set $B$ has 4 elements, how many distinct binary relations can be defined from $A$ to $B$?",
+      "id": "chk-0802-01",
+      "question": "Which of the following expressions represents $\\cos x$ in complex exponential form?",
       "options": [
-        "4,096",
-        "12",
-        "64",
-        "2,048"
+        "(e^(ix) + e^(-ix)) / 2",
+        "(e^(ix) - e^(-ix)) / (2i)",
+        "(e^(ix) + e^(-ix)) / (2i)",
+        "(e^(ix) - e^(-ix)) / 2"
       ],
       "correctAnswer": 0,
-      "explanation": "|A × B| = 3 × 4 = 12. Total possible subsets (relations) = 2^12 = 4,096."
+      "explanation": "By Euler's formula: cos x = (e^(ix) + e^(-ix)) / 2, while sin x = (e^(ix) - e^(-ix)) / (2i)."
     },
     {
-      "id": "chk-0402-02",
-      "question": "Which of the following sets of ordered pairs represents a valid mathematical function?",
+      "id": "chk-0802-02",
+      "question": "In the ambiguous case of the Law of Sines (SSA), under what condition do exactly TWO distinct triangles exist?",
       "options": [
-        "{(1, 2), (2, 3), (3, 4), (4, 5)}",
-        "{(1, 2), (1, 3), (2, 4), (3, 5)}",
-        "{(2, 5), (2, 7), (3, 8)}",
-        "{(4, 1), (4, 2), (4, 3)}"
+        "b sin A < a < b",
+        "a < b sin A",
+        "a = b sin A",
+        "a ≥ b"
       ],
       "correctAnswer": 0,
-      "explanation": "In a function, every input element must map to exactly one output. In the first set, each domain value (1, 2, 3, 4) appears exactly once."
+      "explanation": "Two triangles exist when the opposite side a is longer than altitude h = b sin A but shorter than adjacent side b."
     },
     {
-      "id": "chk-0402-03",
-      "question": "Is the Cartesian product commutative ($A \\times B = B \\times A$)?",
+      "id": "chk-0802-03",
+      "question": "Simplify the expression: $\\frac{1 - \\cos 2\\theta}{1 + \\cos 2\\theta}$.",
       "options": [
-        "No, because ordered pairs (a, b) and (b, a) are fundamentally distinct",
-        "Yes, Cartesian multiplication is always commutative",
-        "Yes, only when both sets are finite",
-        "Yes, provided the sets are disjoint"
+        "tan² θ",
+        "cot² θ",
+        "sin² θ",
+        "sec² θ"
       ],
       "correctAnswer": 0,
-      "explanation": "Ordered pairs depend on order ((a, b) ≠ (b, a)), so A × B ≠ B × A in general unless A = B or one set is empty."
+      "explanation": "Since 1 - cos 2θ = 2sin² θ and 1 + cos 2θ = 2cos² θ, the ratio is 2sin² θ / 2cos² θ = tan² θ."
     }
   ]
 }

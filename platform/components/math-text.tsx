@@ -259,13 +259,13 @@ function InlineFormattedText({ content }: { content: string }) {
     return tokens.map((token, i) => {
       if (token.startsWith("$$") && token.endsWith("$$") && token.length >= 4) {
         return (
-          <span key={i} className="block my-2 text-center">
+          <span key={i} className="block my-2.5 text-center overflow-x-auto max-w-full py-0.5">
             <RenderMathBlock math={token.slice(2, -2).trim()} display={true} />
           </span>
         );
       } else if (token.startsWith("$") && token.endsWith("$") && token.length >= 2) {
         return (
-          <span key={i} className="inline-math px-0.5">
+          <span key={i} className="inline-math px-0.5 max-w-full">
             <RenderMathBlock math={token.slice(1, -1).trim()} display={false} />
           </span>
         );
@@ -297,8 +297,14 @@ function RenderMathBlock({ math, display }: { math: string; display: boolean }) 
   }, [math, display]);
 
   if (!html) {
-    return <code>{math}</code>;
+    return <code className="break-all font-mono text-xs">{math}</code>;
   }
 
-  return <span dangerouslySetInnerHTML={{ __html: html }} />;
+  return (
+    <span
+      className={display ? "block max-w-full overflow-x-auto overflow-y-hidden" : "inline-block max-w-full overflow-x-auto overflow-y-hidden align-middle"}
+      dangerouslySetInnerHTML={{ __html: html }}
+    />
+  );
 }
+

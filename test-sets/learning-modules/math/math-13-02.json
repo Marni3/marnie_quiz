@@ -3,342 +3,240 @@
   "code": "MATH 13-02",
   "domain": "MATH",
   "topicCode": "MATH-13",
-  "topicTitle": "Analytic Geometry",
-  "subtopicTitle": "Conic Sections: Parabola, Ellipse, Hyperbola & Polar Conics",
-  "order": 4,
+  "topicTitle": "Advanced Transforms (Laplace, Fourier & Z)",
+  "subtopicTitle": "Trigonometric/Hyperbolic Laplace Pairs, Operational Theorems & Fourier Transform Spectrum",
+  "order": 2,
   "pairedQuizSetId": "math-13-02-mastery",
   "toc": [
-    { "id": "sec-prereq-bridges", "title": "1. Introduction & Cross-Subject Bridges", "level": 2 },
-    { "id": "sec-theory", "title": "2. Lesson Proper", "level": 2 },
-    { "id": "sec-formulas", "title": "3. Compilation of Formulas", "level": 2 },
-    { "id": "sec-visualizer", "title": "4. Interactive Visualizer: Conic Eccentricity Locus Explorer", "level": 2 },
-    { "id": "sec-terminology", "title": "5. Terms and Definitions", "level": 2 },
-    { "id": "sec-dual-method", "title": "6. Sample Problems and Solutions", "level": 2 },
-    { "id": "sec-calculator", "title": "7. Calculator Techniques (Karce & Canon)", "level": 2 },
-    { "id": "sec-concept-checks", "title": "8. In-Line Concept Checks", "level": 2 },
-    { "id": "sec-mastery-challenge", "title": "9. Paired Mastery Challenge", "level": 2 }
+    {
+      "id": "sec-prereq-bridges",
+      "title": "1. Introduction & Cross-Subject Connections",
+      "level": 2
+    },
+    {
+      "id": "sec-theory",
+      "title": "2. Lesson Proper: Trig/Hyperbolic Pairs, Transform Theorems & Fourier Integrals",
+      "level": 2
+    },
+    {
+      "id": "sec-formulas",
+      "title": "3. Master Compilation of Laplace & Fourier Transform Pairs",
+      "level": 2
+    },
+    {
+      "id": "sec-visualizer",
+      "title": "4. Interactive Visualizer: Frequency Response & Resonance Pole Spectrum",
+      "level": 2
+    },
+    {
+      "id": "sec-terminology",
+      "title": "5. Key Terms and Definitions",
+      "level": 2
+    },
+    {
+      "id": "sec-dual-method",
+      "title": "6. Worked Board Exam Problems",
+      "level": 2
+    },
+    {
+      "id": "sec-calculator",
+      "title": "7. Calculator Speed Techniques (Karce & Canon)",
+      "level": 2
+    },
+    {
+      "id": "sec-concept-checks",
+      "title": "8. In-Line Concept Checks",
+      "level": 2
+    },
+    {
+      "id": "sec-mastery-challenge",
+      "title": "9. Paired Mastery Challenge Exam",
+      "level": 2
+    }
   ],
   "prerequisiteBridge": {
-    "priorModuleId": "math-13-01",
-    "text": "Building upon the circle and parabola in MATH 13-01, we now complete our study of conics by exploring the closed and open dual-foci curves: the Ellipse ($0 < e < 1$), the Hyperbola ($e > 1$), and unified Polar Conics."
+    "priorModuleId": "math-22-01",
+    "text": "Expanding from basic polynomials and exponentials in MATH 22-01, we master the full Laplace catalog—sin, cos, sinh, cosh, damped harmonics, time/frequency derivatives, convolution $f*h \\leftrightarrow F(s)H(s)$, and Jean-Baptiste Fourier's forward/inverse transform spectrum."
   },
   "crossSubjectBridges": [
     {
-      "targetDomain": "EST",
-      "targetTopicCode": "EST-05",
-      "badgeText": "Parabolic Reflector Antennas",
-      "description": "Satellite dish antennas and Cassegrain dual-reflector feeds utilize parabolic primary dishes ($e = 1$) and hyperbolic secondary sub-reflectors ($e > 1$) to collimate spherical waves into high-gain planar wavefronts."
-    },
-    {
-      "targetDomain": "GEAS",
-      "targetTopicCode": "GEAS-13",
-      "badgeText": "Orbital Mechanics & Kepler's Laws",
-      "description": "Under Newton's law of universal gravitation, planets and satellites follow elliptical orbits ($0 < e < 1$) with the central body at one focus (Kepler's First Law), escape trajectories follow parabolas ($e = 1$), and hyperbolic flybys follow $e > 1$."
-    },
-    {
       "targetDomain": "ELECS",
-      "targetTopicCode": "ELEC-06",
-      "badgeText": "Boyle-Mariotte & Damped Phase Planes",
-      "description": "In nonlinear dynamics and RLC phase-plane state-space analysis, saddle points and undamped harmonic orbits trace hyperbolic and elliptical state trajectories."
+      "targetTopicCode": "ELEC-05",
+      "badgeText": "Resonant RLC Circuits",
+      "description": "Underdamped electrical resonant circuits produce sinusoidal transients whose $s$-domain transforms are damped sinusoids $\\frac{\\omega}{(s+\\alpha)^2 + \\omega^2}$."
+    },
+    {
+      "targetDomain": "EST",
+      "targetTopicCode": "EST-01",
+      "badgeText": "Fourier Signal Spectrum",
+      "description": "Continuous-time signal bandwidth, AM/FM modulation, and spectral density calculations are derived directly from Fourier transforms $F(\\omega)$."
+    },
+    {
+      "targetDomain": "EST",
+      "targetTopicCode": "EST-04",
+      "badgeText": "Convolutional Filtering",
+      "description": "Time-domain signal filtering $y(t) = x(t) * h(t)$ maps to simple multiplication in the frequency domain $Y(s) = X(s) H(s)$ via convolution."
     }
   ],
+  "theory": {
+    "mentalAnchor": "Trig: $\\mathcal{L}\\{\\sin kt\\} = \\frac{k}{s^2+k^2}, \\mathcal{L}\\{\\cos kt\\} = \\frac{s}{s^2+k^2}$. Hyperbolic: $\\mathcal{L}\\{\\sinh kt\\} = \\frac{k}{s^2-k^2}, \\mathcal{L}\\{\\cosh kt\\} = \\frac{s}{s^2-k^2}$. Damped: $\\mathcal{L}\\{e^{-at}\\sin kt\\} = \\frac{k}{(s+a)^2+k^2}$. Convolution: $\\mathcal{L}\\{f*h\\} = F(s)H(s)$. Derivative: $\\mathcal{L}\\{f'\\} = sF(s)-f(0)$. Fourier: $F(\\omega) = \\int_{-\\infty}^\\infty f(t)e^{-j\\omega t} dt$, $\\mathcal{F}\\{\\delta(t)\\} = 1, \\mathcal{F}\\{1\\} = 2\\pi\\delta(\\omega)$.",
+    "contentMarkdown": "### 1. Master Trigonometric & Hyperbolic Laplace Transform Pairs\n\n| Time Function $f(t)$ | Laplace Transform $F(s)$ | Key Algebraic Features |\n| :--- | :--- | :--- |\n| **Sine $\\sin(kt)$** | $\\mathbf{\\frac{k}{s^2 + k^2}}$ | Constant numerator $k$, sum of squares in denominator |\n| **Cosine $\\cos(kt)$** | $\\mathbf{\\frac{s}{s^2 + k^2}}$ | Frequency variable $s$ in numerator |\n| **Hyperbolic Sine $\\sinh(kt)$** | $\\mathbf{\\frac{k}{s^2 - k^2}}$ | Difference of squares in denominator |\n| **Hyperbolic Cosine $\\cosh(kt)$** | $\\mathbf{\\frac{s}{s^2 - k^2}}$ | Frequency variable $s$ numerator, minus sign in denominator |\n| **Damped Sine $e^{-at}\\sin(kt)$** | $\\mathbf{\\frac{k}{(s + a)^2 + k^2}}$ | Underdamped oscillator response |\n| **Damped Cosine $e^{-at}\\cos(kt)$** | $\\mathbf{\\frac{s + a}{(s + a)^2 + k^2}}$ | Underdamped envelope decay |\n| **Resonance $t \\sin(kt)$** | $\\mathbf{\\frac{2ks}{(s^2 + k^2)^2}}$ | Linear growth envelope / repeated poles |\n| **Modulation $t \\cos(kt)$** | $\\mathbf{\\frac{s^2 - k^2}{(s^2 + k^2)^2}}$ | Phase derivative pair |\n\n```diagram\n{\n  \"caption\": \"Figure 1: Convolution Theorem - Time Domain Convolution = Frequency Domain Multiplication\",\n  \"xRange\": [-5, 5],\n  \"yRange\": [-3, 3],\n  \"elements\": [\n    { \"type\": \"polygon\", \"points\": [[-4.5, -1.5], [-1.5, -1.5], [-1.5, 1.5], [-4.5, 1.5]], \"color\": \"#38bdf8\", \"fill\": \"rgba(56, 189, 248, 0.05)\" },\n    { \"type\": \"text\", \"at\": [-3, 0], \"text\": \"y(t) = f(t) * h(t)\", \"color\": \"#38bdf8\" },\n    { \"type\": \"line\", \"from\": [-1.2, 0], \"to\": [1.2, 0], \"color\": \"#fbbf24\", \"label\": \"Laplace Convolution\" },\n    { \"type\": \"polygon\", \"points\": [[1.5, -1.5], [4.5, -1.5], [4.5, 1.5], [1.5, 1.5]], \"color\": \"#34d399\", \"fill\": \"rgba(52, 211, 153, 0.05)\" },\n    { \"type\": \"text\", \"at\": [3, 0], \"text\": \"Y(s) = F(s) · H(s)\", \"color\": \"#34d399\" }\n  ]\n}\n```\n\n---\n\n### 2. Operational Theorems of Laplace Transforms\n\n1. **Time Differentiation**:\n   $$\\mathbf{\\mathcal{L}\\{f'(t)\\} = s F(s) - f(0^-), \\qquad \\mathcal{L}\\{f''(t)\\} = s^2 F(s) - s f(0^-) - f'(0^-)}$$\n2. **$s$-Domain Differentiation (Multiplication by $t$)**:\n   $$\\mathbf{\\mathcal{L}\\{t f(t)\\} = -\\frac{d}{ds} F(s)}$$\n3. **Time Integration**:\n   $$\\mathbf{\\mathcal{L}\\left\\{\\int_0^t f(\\tau) \\, d\\tau\\right\\} = \\frac{F(s)}{s}}$$\n4. **Convolution Theorem**:\n   $$\\mathbf{\\mathcal{L}\\{f(t) * h(t)\\} = F(s) \\cdot H(s)}$$\n\n---\n\n### 3. Continuous Fourier Transforms (Jean-Baptiste Fourier)\n\nDeveloped by French mathematician **Jean-Baptiste Joseph Fourier (1768–1830)** for analyzing both periodic and aperiodic continuous-time signals across infinite time ($-\\infty < t < \\infty$):\n\n$$\\mathbf{F(\\omega) = \\mathcal{F}\\{f(t)\\} = \\int_{-\\infty}^\\infty f(t) e^{-j\\omega t} \\, dt}$$\n$$\\mathbf{f(t) = \\mathcal{F}^{-1}\\{F(\\omega)\\} = \\frac{1}{2\\pi} \\int_{-\\infty}^\\infty F(\\omega) e^{j\\omega t} \\, d\\omega}$$\n\n#### Master Fourier Pairs:\n- **Dirac Delta**: $\\mathcal{F}\\{\\delta(t)\\} = \\mathbf{1}$\n- **DC Constant $1$**: $\\mathcal{F}\\{1\\} = \\mathbf{2\\pi \\delta(\\omega)}$\n- **Unit Step $u(t)$**: $\\mathcal{F}\\{u(t)\\} = \\mathbf{\\pi \\delta(\\omega) + \\frac{1}{j\\omega}}$\n- **Complex Exponential**: $\\mathcal{F}\\{e^{j\\omega_0 t}\\} = \\mathbf{2\\pi \\delta(\\omega - \\omega_0)}$\n- **Cosine Carrier**: $\\mathcal{F}\\{\\cos(\\omega_0 t)\\} = \\mathbf{\\pi [\\delta(\\omega + \\omega_0) + \\delta(\\omega - \\omega_0)]}$\n- **Sine Carrier**: $\\mathcal{F}\\{\\sin(\\omega_0 t)\\} = \\mathbf{j\\pi [\\delta(\\omega + \\omega_0) - \\delta(\\omega - \\omega_0)]}$\n- **Double-Sided Exponential**: $\\mathcal{F}\\{e^{-a|t|}\\} = \\mathbf{\\frac{2a}{a^2 + \\omega^2}}$ ($a > 0$)"
+  },
   "formulas": [
     {
-      "id": "f-1302-01",
-      "title": "Standard Equation of an Ellipse",
-      "formula": "$$\\frac{(x - h)^2}{a^2} + \\frac{(y - k)^2}{b^2} = 1 \\quad (a > b)$$",
-      "note": "For vertical major axis, a² is under (y - k)². a is always the largest semi-axis."
+      "id": "f-2202-01",
+      "title": "Trigonometric and Hyperbolic Laplace Pairs",
+      "formula": "$$\\mathcal{L}\\{\\sin kt\\} = \\frac{k}{s^2+k^2}, \\; \\mathcal{L}\\{\\cos kt\\} = \\frac{s}{s^2+k^2}, \\; \\mathcal{L}\\{\\sinh kt\\} = \\frac{k}{s^2-k^2}, \\; \\mathcal{L}\\{\\cosh kt\\} = \\frac{s}{s^2-k^2}$$",
+      "note": "Plus sign in denominator for trig; minus sign for hyperbolic."
     },
     {
-      "id": "f-1302-02",
-      "title": "Ellipse Focal Invariant & Eccentricity",
-      "formula": "$$a^2 = b^2 + c^2 \\iff c = \\sqrt{a^2 - b^2} \\qquad e = \\frac{c}{a} < 1$$",
-      "note": "c is the distance from the center to each focus. Directrices at d = a/e = a²/c."
+      "id": "f-2202-02",
+      "title": "Time Differentiation and Convolution Theorems",
+      "formula": "$$\\mathcal{L}\\{f'(t)\\} = sF(s) - f(0), \\quad \\mathcal{L}\\{f(t)*h(t)\\} = F(s) \\cdot H(s)$$",
+      "note": "Initial condition f(0) accounts for system energy at t=0."
     },
     {
-      "id": "f-1302-03",
-      "title": "Area and Perimeter of an Ellipse",
-      "formula": "$$\\text{Area} = \\pi a b \\qquad \\text{Perimeter} \\approx 2\\pi \\sqrt{\\frac{a^2 + b^2}{2}}$$",
-      "note": "When a = b = r, area reduces to πr² and perimeter to 2πr."
-    },
-    {
-      "id": "f-1302-04",
-      "title": "Standard Equation of a Hyperbola",
-      "formula": "$$\\frac{(x - h)^2}{a^2} - \\frac{(y - k)^2}{b^2} = 1 \\quad (\\text{horizontal}) \\qquad \\frac{(y - k)^2}{a^2} - \\frac{(x - h)^2}{b^2} = 1 \\quad (\\text{vertical})$$",
-      "note": "a² is strictly the denominator of the POSITIVE term (transverse axis)."
-    },
-    {
-      "id": "f-1302-05",
-      "title": "Hyperbola Focal Invariant & Eccentricity",
-      "formula": "$$c^2 = a^2 + b^2 \\iff c = \\sqrt{a^2 + b^2} \\qquad e = \\frac{c}{a} > 1$$",
-      "note": "c is the distance from center to each focus. c is always the largest parameter."
-    },
-    {
-      "id": "f-1302-06",
-      "title": "Asymptotes of a Hyperbola",
-      "formula": "$$y - k = \\pm \\frac{b}{a}(x - h) \\quad (\\text{horizontal}) \\qquad y - k = \\pm \\frac{a}{b}(x - h) \\quad (\\text{vertical})$$",
-      "note": "⚡ 2-second shortcut: replace the right-hand constant 1 with 0 and factor."
-    },
-    {
-      "id": "f-1302-07",
-      "title": "Equilateral Hyperbola Invariant",
-      "formula": "$$a = b \\implies e = \\sqrt{2} \\approx 1.4142 \\qquad xy = k$$",
-      "note": "Asymptotes are mutually perpendicular (slopes ±1). Rotated 45° form is xy = k."
-    },
-    {
-      "id": "f-1302-08",
-      "title": "Latus Rectum of Dual-Foci Conics",
-      "formula": "$$LR = \\frac{2b^2}{a}$$",
-      "note": "Applies identically to both the Ellipse and the Hyperbola."
-    },
-    {
-      "id": "f-1302-09",
-      "title": "Unified Polar Conic Equation",
-      "formula": "$$r = \\frac{ed}{1 \\pm e\\cos\\theta} \\quad (\\text{horizontal}) \\qquad r = \\frac{ed}{1 \\pm e\\sin\\theta} \\quad (\\text{vertical})$$",
-      "note": "Normalize the constant in denominator to 1; the coefficient of cos θ or sin θ is directly the eccentricity e."
-    }
-  ],
-  "terms": [
-    {
-      "term": "Eccentricity",
-      "symbol": "$e$",
-      "unit": "Dimensionless",
-      "definition": "The constant ratio of the distance from any point on the curve to the focus, to its perpendicular distance to the directrix: $e = \\frac{\\text{dist}(P, F)}{\\text{dist}(P, D)}$.",
-      "keywordTrigger": "ratio of distance to focus over distance to directrix / uncircleness"
-    },
-    {
-      "term": "Latus Rectum",
-      "symbol": "$LR$",
-      "unit": "Length",
-      "definition": "The focal chord passing through a focus perpendicular to the principal axis of symmetry ($LR = 4p$ for Parabola, $LR = \\frac{2b^2}{a}$ for Ellipse and Hyperbola).",
-      "keywordTrigger": "chord through focus perpendicular to axis of symmetry"
-    },
-    {
-      "term": "Focal Parameter (Parabola)",
-      "symbol": "$p$",
-      "unit": "Length",
-      "definition": "The directed distance from the vertex to the focus (and from vertex to directrix line) of a parabola.",
-      "keywordTrigger": "distance from vertex to focus"
-    },
-    {
-      "term": "Major & Minor Axes (Ellipse)",
-      "symbol": "$2a, 2b$",
-      "unit": "Length",
-      "definition": "The longest diameter $2a$ (major axis containing both foci) and perpendicular shortest diameter $2b$ (minor axis) of an ellipse, where $a^2 = b^2 + c^2$.",
-      "keywordTrigger": "longest and shortest diameters of an ellipse"
-    },
-    {
-      "term": "Transverse & Conjugate Axes (Hyperbola)",
-      "symbol": "$2a, 2b$",
-      "unit": "Length",
-      "definition": "The transverse axis $2a$ connecting the two vertices across branches, and the perpendicular conjugate axis $2b$, where $c^2 = a^2 + b^2$.",
-      "keywordTrigger": "axis connecting vertices and conjugate axis of hyperbola"
-    },
-    {
-      "term": "Asymptotes of a Hyperbola",
-      "symbol": "$y - k = \\pm \\frac{b}{a}(x - h)$",
-      "unit": "Lines",
-      "definition": "The pair of intersecting diagonal straight lines that the hyperbola branches approach indefinitely at infinity without touching.",
-      "keywordTrigger": "diagonal guide lines approached by hyperbola at infinity"
-    },
-    {
-      "term": "Equilateral (Rectangular) Hyperbola",
-      "symbol": "$a = b \\implies e = \\sqrt{2}$",
-      "unit": "Conic",
-      "definition": "A hyperbola whose asymptotes are mutually perpendicular ($90^\\circ$), with eccentricity $e = \\sqrt{2}$ and simplified rotated Cartesian form $xy = k$.",
-      "keywordTrigger": "hyperbola with perpendicular asymptotes / e equals square root of 2"
-    },
-    {
-      "term": "Polar Equation of a Conic",
-      "symbol": "$r = \\frac{ed}{1 \\pm e \\cos\\theta}$",
-      "unit": "Equation",
-      "definition": "The unified polar coordinate equation for any conic having one focus positioned at the origin pole and directrix at distance $d$.",
-      "keywordTrigger": "polar conic with focus at pole"
+      "id": "f-2202-03",
+      "title": "Fourier Transform Definition & Key Pairs",
+      "formula": "$$F(\\omega) = \\int_{-\\infty}^\\infty f(t) e^{-j\\omega t} dt, \\quad \\mathcal{F}\\{\\delta(t)\\} = 1, \\quad \\mathcal{F}\\{e^{-a|t|}\\} = \\frac{2a}{a^2+\\omega^2}$$",
+      "note": "Maps time signal into frequency spectrum F(ω)."
     }
   ],
   "visualizer": {
-    "archetype": "conic_explorer",
-    "title": "Interactive Conic Eccentricity Locus Explorer",
-    "description": "Sweep the eccentricity slider across Circle ($e = 0$), Ellipse ($0 < e < 1$), Parabola ($e = 1$), and Hyperbola ($e > 1$) to observe the real-time locus formation.",
+    "archetype": "parameter_sweep",
+    "title": "Frequency Response & Resonance Pole Spectrum",
+    "description": "Adjust natural resonant frequency k and damping ratio a to observe s-plane conjugate pole trajectories and time-domain oscillation decay.",
     "config": {
       "canvasWidth": 640,
       "canvasHeight": 320,
       "controls": [
         {
-          "id": "eccentricity",
-          "label": "Eccentricity (e)",
+          "id": "dampingA",
+          "label": "Damping Constant a",
           "min": 0,
-          "max": 2.5,
-          "step": 0.1,
-          "defaultValue": 0.7
+          "max": 5,
+          "step": 0.5,
+          "defaultValue": 1
         },
         {
-          "id": "semiMajor",
-          "label": "Semi-Major / Scale a",
-          "min": 50,
-          "max": 120,
-          "step": 10,
-          "defaultValue": 80
+          "id": "freqK",
+          "label": "Resonant Frequency k",
+          "min": 1,
+          "max": 10,
+          "step": 1,
+          "defaultValue": 4
         }
       ]
     }
   },
-  "theory": {
-    "mentalAnchor": "Conics are governed by eccentricity: $e = 0$ (Circle), $0 < e < 1$ (Ellipse), $e = 1$ (Parabola), $e > 1$ (Hyperbola). In an ellipse $a^2 = b^2 + c^2$ (a is largest); in a hyperbola $c^2 = a^2 + b^2$ (c is largest). Latus Rectum is $2b^2/a$ for both ellipse and hyperbola.",
-    "contentMarkdown": "### 1. Unified Conic Definition by Eccentricity\n\nEvery conic section is defined as the locus of a point $P(x, y)$ such that its distance to a fixed focus $F$ divided by its perpendicular distance to a fixed directrix line $D$ is constant, termed the **Eccentricity** $e$:\n\n$$e = \\frac{\\text{dist}(P, F)}{\\text{dist}(P, D)}$$\n\n- **Circle**: $e = 0$\n- **Ellipse**: $0 < e < 1$ (closed oval locus)\n- **Parabola**: $e = 1$ (open single-branch curve)\n- **Hyperbola**: $e > 1$ (open dual-branch curve)\n\n---\n\n### 2. The Ellipse ($0 < e < 1$)\n\nAn ellipse is the locus of points where the sum of distances to two fixed foci is constant ($PF_1 + PF_2 = 2a$):\n\n```diagram\n{\n  \"caption\": \"Figure 1: Ellipse with semi-major a = 5, semi-minor b = 3, foci F(±4, 0), and directrices x = ±6.25\",\n  \"xRange\": [-8, 8],\n  \"yRange\": [-5, 5],\n  \"elements\": [\n    { \"type\": \"grid\" },\n    { \"type\": \"axes\" },\n    { \"type\": \"segment\", \"from\": [-5, 0], \"to\": [5, 0], \"label\": \"Major Axis 2a = 10\", \"color\": \"#38bdf8\", \"width\": 2.5 },\n    { \"type\": \"segment\", \"from\": [0, -3], \"to\": [0, 3], \"label\": \"Minor Axis 2b = 6\", \"color\": \"#fbbf24\", \"width\": 2.5 },\n    { \"type\": \"point\", \"at\": [-4, 0], \"label\": \"F₁(-4, 0)\", \"color\": \"#f43f5e\" },\n    { \"type\": \"point\", \"at\": [4, 0], \"label\": \"F₂(4, 0)\", \"color\": \"#f43f5e\" },\n    { \"type\": \"line\", \"from\": [-6.25, -4], \"to\": [-6.25, 4], \"color\": \"#71717a\", \"dashed\": true },\n    { \"type\": \"line\", \"from\": [6.25, -4], \"to\": [6.25, 4], \"color\": \"#71717a\", \"dashed\": true },\n    { \"type\": \"segment\", \"from\": [4, 1.8], \"to\": [4, -1.8], \"label\": \"LR = 3.6\", \"color\": \"#d97757\", \"width\": 2 }\n  ]\n}\n```\n\n#### Governing Equations & Parameters:\n- **Horizontal Major Axis**: $\\frac{(x - h)^2}{a^2} + \\frac{(y - k)^2}{b^2} = 1$ ($a > b$)\n- **Vertical Major Axis**: $\\frac{(x - h)^2}{b^2} + \\frac{(y - k)^2}{a^2} = 1$ ($a > b$)\n- **Focal Invariant**: $a^2 = b^2 + c^2 \\iff c = \\sqrt{a^2 - b^2}$ ($a$ is always the longest semi-axis)\n- **Eccentricity**: $e = \\frac{c}{a} = \\frac{\\sqrt{a^2 - b^2}}{a} < 1$\n- **Directrices**: $x = h \\pm \\frac{a}{e} = h \\pm \\frac{a^2}{c}$\n- **Latus Rectum**: $LR = \\frac{2b^2}{a}$\n- **Area & Perimeter**: $\\text{Area} = \\pi a b, \\quad \\text{Perimeter} \\approx 2\\pi \\sqrt{\\frac{a^2 + b^2}{2}}$\n\n---\n\n### 3. The Hyperbola ($e > 1$)\n\nA hyperbola is the locus of points where the absolute difference of distances to two fixed foci is constant ($|PF_1 - PF_2| = 2a$):\n\n```diagram\n{\n  \"caption\": \"Figure 2: Hyperbola with semi-transverse a = 3, semi-conjugate b = 4, foci F(±5, 0), and asymptotes y = ±(4/3)x\",\n  \"xRange\": [-7, 7],\n  \"yRange\": [-6, 6],\n  \"elements\": [\n    { \"type\": \"grid\" },\n    { \"type\": \"axes\" },\n    { \"type\": \"line\", \"from\": [-4.5, -6], \"to\": [4.5, 6], \"color\": \"#71717a\", \"dashed\": true },\n    { \"type\": \"line\", \"from\": [-4.5, 6], \"to\": [4.5, -6], \"color\": \"#71717a\", \"dashed\": true },\n    { \"type\": \"point\", \"at\": [-3, 0], \"label\": \"V₁(-3, 0)\", \"color\": \"#fbbf24\" },\n    { \"type\": \"point\", \"at\": [3, 0], \"label\": \"V₂(3, 0)\", \"color\": \"#fbbf24\" },\n    { \"type\": \"point\", \"at\": [-5, 0], \"label\": \"F₁(-5, 0)\", \"color\": \"#f43f5e\" },\n    { \"type\": \"point\", \"at\": [5, 0], \"label\": \"F₂(5, 0)\", \"color\": \"#f43f5e\" },\n    { \"type\": \"segment\", \"from\": [5, 2.67], \"to\": [5, -2.67], \"label\": \"LR = 5.33\", \"color\": \"#38bdf8\", \"width\": 2 }\n  ]\n}\n```\n\n#### Governing Equations & Parameters:\n- **Horizontal Transverse Axis**: $\\frac{(x - h)^2}{a^2} - \\frac{(y - k)^2}{b^2} = 1$\n- **Vertical Transverse Axis**: $\\frac{(y - k)^2}{a^2} - \\frac{(x - h)^2}{b^2} = 1$\n- **Focal Invariant**: $c^2 = a^2 + b^2 \\iff c = \\sqrt{a^2 + b^2}$ ($c$ is always the largest parameter)\n- **Eccentricity**: $e = \\frac{c}{a} = \\frac{\\sqrt{a^2 + b^2}}{a} > 1$\n- **Asymptotes**: $y - k = \\pm \\frac{b}{a}(x - h)$ (for horizontal transverse)\n- **Latus Rectum**: $LR = \\frac{2b^2}{a}$\n\n#### Specific Cases:\n- **Equilateral (Rectangular) Hyperbola**: $a = b$. The asymptotes are mutually perpendicular ($y = \\pm x$), and the eccentricity is strictly $e = \\sqrt{2} \\approx 1.4142$. Its rotated Cartesian form is $xy = k$.\n\n---\n\n### 4. Unified Polar Equation of Conics\n\nWhen one focus of any conic section is placed directly at the origin pole $(0, 0)$ with directrix at distance $d$:\n\n$$r = \\frac{ed}{1 \\pm e \\cos\\theta} \\quad (\\text{horizontal axis}) \\qquad r = \\frac{ed}{1 \\pm e \\sin\\theta} \\quad (\\text{vertical axis})$$\n\n- To identify the conic instantly, normalize the constant in the denominator to **$1$**. The coefficient multiplying $\\cos\\theta$ or $\\sin\\theta$ is directly the eccentricity $e$."
-  },
+  "terms": [
+    {
+      "term": "Convolution",
+      "symbol": "$f(t) * h(t)$",
+      "unit": "Operation",
+      "definition": "An integral operation expressing the overlap of two functions, mapping to direct product multiplication in the Laplace s-domain.",
+      "keywordTrigger": "convolution theorem / f(t)*h(t) / F(s)H(s)"
+    },
+    {
+      "term": "Jean-Baptiste Fourier",
+      "symbol": "1768–1830",
+      "unit": "History",
+      "definition": "The French mathematician and physicist who initiated the study of Fourier series and Fourier transforms in heat propagation analysis.",
+      "keywordTrigger": "Jean-Baptiste Fourier / Fourier transform / 1768-1830"
+    },
+    {
+      "term": "Dirac Delta Function",
+      "symbol": "$\\delta(t)$",
+      "unit": "Distribution",
+      "definition": "An idealized unit impulse distribution of infinite amplitude and infinitesimal width having unity area, with Fourier transform F(ω) = 1.",
+      "keywordTrigger": "Dirac delta / unit impulse / delta(t) transform = 1"
+    }
+  ],
   "examples": [
     {
-      "problemStatement": "Find the vertex, focus, directrix equation, and latus rectum of the parabola x^2 - 6x - 8y + 25 = 0.",
-      "formalSolutionMarkdown": "#### Step 1: Complete the square on x\n$$x^2 - 6x = 8y - 25$$\n$$(x^2 - 6x + 9) = 8y - 25 + 9$$\n$$(x - 3)^2 = 8y - 16$$\n$$(x - 3)^2 = 8(y - 2)$$\n\n#### Step 2: Extract standard form parameters\n- $(x - h)^2 = 4p(y - k)$\n- Vertex $(h, k) = (3, 2)$\n- $4p = 8 \\implies p = 2$\n\n#### Step 3: Compute focus, directrix, and latus rectum\n- Parabola opens **upward**.\n- Focus: $(h, k + p) = (3, 2 + 2) = (3, 4)$\n- Directrix: $y = k - p = 2 - 2 \\implies y = 0$ ($x$-axis)\n- Latus Rectum: $LR = 4p = 8$",
-      "shortcutSolutionMarkdown": "#### ⚡ 4-Second Inspection\n1. Vertex $h = -(-6)/2 = 3$. Substitute into $3^2 - 6(3) - 8y + 25 = 0 \\implies 9 - 18 - 8y + 25 = 0 \\implies 8y = 16 \\implies k = 2$.\n2. $4p = 8 \\implies p = 2$.\n3. Focus $= (3, 2 + 2) = \\mathbf{(3, 4)}$, Directrix is $y = \\mathbf{0}$, $LR = \\mathbf{8}$.",
-      "formalTimeSeconds": 60,
-      "shortcutTimeSeconds": 4
-    },
-    {
-      "problemStatement": "Find the eccentricity, foci coordinates, and latus rectum of the ellipse 9x^2 + 25y^2 = 225.",
-      "formalSolutionMarkdown": "#### Step 1: Divide by 225 to format into standard form\n$$\\frac{9x^2}{225} + \\frac{25y^2}{225} = 1 \\implies \\frac{x^2}{25} + \\frac{y^2}{9} = 1$$\n\n#### Step 2: Identify semi-axes\n- $a^2 = 25 \\implies a = 5$ (Major along $x$-axis)\n- $b^2 = 9 \\implies b = 3$\n\n#### Step 3: Compute focal distance c, eccentricity, and latus rectum\n- $c = \\sqrt{a^2 - b^2} = \\sqrt{25 - 9} = \\sqrt{16} = 4$\n- Eccentricity: $e = \\frac{c}{a} = \\frac{4}{5} = 0.8$\n- Foci: $(\\pm c, 0) = (\\pm 4, 0)$\n- Latus Rectum: $LR = \\frac{2b^2}{a} = \\frac{2(9)}{5} = \\frac{18}{5} = 3.6$",
-      "shortcutSolutionMarkdown": "#### ⚡ 3-Second Ratio Method\n1. $a = 5, b = 3 \\implies c = \\sqrt{5^2 - 3^2} = 4$.\n2. $e = c/a = 4/5 = \\mathbf{0.8}$.\n3. $LR = 2(9)/5 = \\mathbf{3.6}$.",
-      "formalTimeSeconds": 50,
-      "shortcutTimeSeconds": 3
-    },
-    {
-      "problemStatement": "Find the equations of the asymptotes of the hyperbola 16x^2 - 9y^2 = 144.",
-      "formalSolutionMarkdown": "#### Step 1: Divide by 144 to format into standard form\n$$\\frac{x^2}{9} - \\frac{y^2}{16} = 1$$\n- $a^2 = 9 \\implies a = 3$\n- $b^2 = 16 \\implies b = 4$\n\n#### Step 2: Apply asymptote formula\nFor horizontal transverse hyperbola $\\frac{x^2}{a^2} - \\frac{y^2}{b^2} = 1$:\n$$y = \\pm \\frac{b}{a}x = \\pm \\frac{4}{3}x$$\n$$3y = \\pm 4x \\implies 4x \\pm 3y = 0$$",
-      "shortcutSolutionMarkdown": "#### ⚡ 2-Second Zero-Constant Trick\nReplace constant 144 with 0:\n$$16x^2 - 9y^2 = 0 \\implies (4x - 3y)(4x + 3y) = 0$$\n$$\\mathbf{4x \\pm 3y = 0}$$.",
-      "formalTimeSeconds": 40,
+      "problemStatement": "Find the Laplace transform of f(t) = e^(-2t) cos(5t).",
+      "formalSolutionMarkdown": "#### Step 1: Identify base cosine transform\n- $\\mathcal{L}\\{\\cos(5t)\\} = \\frac{s}{s^2 + 5^2} = \\frac{s}{s^2 + 25}$\n\n#### Step 2: Apply the First Shifting Theorem with a = -2\n- Replace $s$ with $(s + 2)$:\n$$\\mathcal{L}\\{e^{-2t}\\cos(5t)\\} = \\frac{s + 2}{(s + 2)^2 + 25} = \\frac{s + 2}{s^2 + 4s + 29}$$",
+      "shortcutSolutionMarkdown": "#### ⚡ 2-Second Damped Cosine Shortcut\n$$\\mathcal{L}\\{e^{-2t}\\cos(5t)\\} = \\frac{s + 2}{(s + 2)^2 + 25}$$",
+      "formalTimeSeconds": 20,
       "shortcutTimeSeconds": 2
+    },
+    {
+      "problemStatement": "Find the Fourier transform of the unit impulse function δ(t) and the delayed impulse δ(t - 3).",
+      "formalSolutionMarkdown": "#### Step 1: Fourier transform of δ(t)\n- By sifting property: $\\mathcal{F}\\{\\delta(t)\\} = \\int_{-\\infty}^\\infty \\delta(t) e^{-j\\omega t} dt = e^{-j\\omega(0)} = 1$\n\n#### Step 2: Time-shifting property for δ(t - 3)\n- $\\mathcal{F}\\{f(t - t_0)\\} = e^{-j\\omega t_0} F(\\omega)$\n$$\\mathcal{F}\\{\\delta(t - 3)\\} = e^{-j 3\\omega} \\cdot 1 = e^{-j 3\\omega}$$",
+      "shortcutSolutionMarkdown": "#### ⚡ 1-Second Fourier Sifting Shortcut\n$$\\mathcal{F}\\{\\delta(t)\\} = 1, \\quad \\mathcal{F}\\{\\delta(t - 3)\\} = e^{-j3\\omega}$$",
+      "formalTimeSeconds": 20,
+      "shortcutTimeSeconds": 1
     }
   ],
   "calculatorGuides": {
     "karce": {
-      "techniqueTitle": "Direct Conic Eccentricity and Focus Shortcut",
-      "problemType": "Ellipse & Hyperbola c = √(a² ± b²)",
-      "sampleProblem": "Find c and e for 16x² + 25y² = 400 (a=5, b=4).",
+      "techniqueTitle": "Fast Damped Frequency Evaluation",
+      "problemType": "Evaluating (s + a) / ((s + a)² + k²)",
+      "sampleProblem": "Find denominator for a=2, k=5.",
       "mode": "COMP Mode (MODE 1)",
       "keystrokes": [
-        "√",
-        "(",
+        "2",
+        "x²",
+        "+",
         "5",
         "x²",
-        "-",
-        "4",
-        "x²",
-        ")",
-        "=",
-        "÷",
-        "5",
         "="
       ],
-      "notes": "Directly gives c = 3 and e = 0.6 without manual fraction setups."
+      "notes": "Directly yields 29 in constant term (s² + 4s + 29)."
     },
     "canon": {
-      "techniqueTitle": "Canon Pol(a, b) Function for Hyperbola Focal Distance",
-      "problemType": "Hyperbola c = √(a² + b²)",
-      "sampleProblem": "Find focal distance c for hyperbola with a = 6, b = 8.",
-      "mode": "COMP Mode (MODE 1)",
+      "techniqueTitle": "Resonant Quadratic Roots on Canon F-789SGA",
+      "problemType": "Solving s² + 4s + 29 = 0 in EQN Mode",
+      "sampleProblem": "Find poles for damped oscillator.",
+      "mode": "EQN Mode (MODE 5 -> Quadratic 3)",
       "keystrokes": [
-        "SHIFT",
-        "Pol",
-        "6",
-        ",",
-        "8",
-        ")",
+        "1",
+        "=",
+        "4",
+        "=",
+        "2",
+        "9",
         "="
       ],
-      "notes": "Directly outputs r = 10, which is the exact focal distance c = √(6² + 8²) = 10."
+      "notes": "Directly yields complex conjugate poles s = -2 ± 5i."
     }
   },
   "conceptChecks": [
     {
-      "id": "chk-01",
-      "question": "What is the eccentricity of a parabola?",
-      "options": {
-        "A": "$e = 0$",
-        "B": "$0 < e < 1$",
-        "C": "$e = 1$",
-        "D": "$e > 1$"
-      },
-      "correctAnswer": "C",
-      "distractorDeconstruction": {
-        "A": "$e = 0$ defines a circle.",
-        "B": "$0 < e < 1$ defines an ellipse.",
-        "C": "A parabola is strictly defined by $e = 1$.",
-        "D": "$e > 1$ defines a hyperbola."
-      },
-      "shortcutExplanation": "Parabola strictly has $e = 1$."
+      "id": "chk-2202-01",
+      "question": "What is the Laplace transform of $f(t) = \\cosh(4t)$?",
+      "options": [
+        "s / (s² - 16)",
+        "s / (s² + 16)",
+        "4 / (s² - 16)",
+        "4 / (s² + 16)"
+      ],
+      "correctAnswer": 0,
+      "explanation": "L{cosh(kt)} = s / (s² - k²). For k = 4, L{cosh(4t)} = s / (s² - 16)."
     },
     {
-      "id": "chk-02",
-      "question": "Find the length of the latus rectum of the parabola $y^2 = 12x$.",
-      "options": {
-        "A": "3",
-        "B": "6",
-        "C": "12",
-        "D": "24"
-      },
-      "correctAnswer": "C",
-      "distractorDeconstruction": {
-        "A": "3 is the focal parameter $p = 12/4 = 3$.",
-        "B": "6 is $2p$.",
-        "C": "$LR = 4p = 12$.",
-        "D": "24 is $2 \\times 12$."
-      },
-      "shortcutExplanation": "For $y^2 = 4px$, the latus rectum is the coefficient of $x$: $LR = 12$."
+      "id": "chk-2202-02",
+      "question": "According to the Laplace Convolution Theorem, what is $\\mathcal{L}\\{f(t) * h(t)\\}$?",
+      "options": [
+        "F(s) · H(s) (Direct product in s-domain)",
+        "F(s) + H(s)",
+        "F(s) / H(s)",
+        "F(s) * H(s)"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Convolution in the time domain corresponds to simple algebraic multiplication in the frequency s-domain: L{f*h} = F(s)H(s)."
     },
     {
-      "id": "chk-03",
-      "question": "What is the area of an ellipse with semi-major axis $a = 6$ and semi-minor axis $b = 4$?",
-      "options": {
-        "A": "$24\\pi$",
-        "B": "$12\\pi$",
-        "C": "$48\\pi$",
-        "D": "$10\\pi$"
-      },
-      "correctAnswer": "A",
-      "distractorDeconstruction": {
-        "A": "Area $= \\pi a b = \\pi (6)(4) = 24\\pi$.",
-        "B": "Divided by 2 as if a triangle.",
-        "C": "Multiplied by 2.",
-        "D": "Added semi-axes."
-      },
-      "shortcutExplanation": "Ellipse Area $= \\pi a b = 24\\pi$."
-    },
-    {
-      "id": "chk-04",
-      "question": "What is the eccentricity of an equilateral (rectangular) hyperbola?",
-      "options": {
-        "A": "1",
-        "B": "$\\sqrt{2}$",
-        "C": "$\\sqrt{3}$",
-        "D": "2"
-      },
-      "correctAnswer": "B",
-      "distractorDeconstruction": {
-        "A": "1 is the eccentricity of a parabola.",
-        "B": "Correct: When $a = b$, $c = \\sqrt{a^2 + a^2} = a\\sqrt{2} \\implies e = c/a = \\sqrt{2} \\approx 1.414$.",
-        "C": "Incorrect radical.",
-        "D": "2 corresponds to an asymptote angle of $60^\\circ$."
-      },
-      "shortcutExplanation": "Equilateral Hyperbola always has $e = \\sqrt{2}$."
-    },
-    {
-      "id": "chk-05",
-      "question": "Find the length of the latus rectum of an ellipse having equation $\\frac{x^2}{16} + \\frac{y^2}{9} = 1$.",
-      "options": {
-        "A": "4.5",
-        "B": "2.25",
-        "C": "9",
-        "D": "3"
-      },
-      "correctAnswer": "A",
-      "distractorDeconstruction": {
-        "A": "Correct: $a = 4, b = 3$. $LR = \\frac{2b^2}{a} = \\frac{2(9)}{4} = \\frac{18}{4} = 4.5$.",
-        "B": "Forgot the factor of 2 ($b^2/a = 2.25$).",
-        "C": "Calculated $b^2$.",
-        "D": "Calculated $b$."
-      },
-      "shortcutExplanation": "$LR = 2b^2/a = 2(9)/4 = 4.5$."
+      "id": "chk-2202-03",
+      "question": "What is the Fourier transform of the Dirac delta function $\\delta(t)$?",
+      "options": [
+        "1 (Constant spectrum across all frequencies)",
+        "2π δ(ω)",
+        "1 / (jω)",
+        "0"
+      ],
+      "correctAnswer": 0,
+      "explanation": "The unit impulse contains equal energy at all frequencies, yielding F{δ(t)} = 1."
     }
   ]
 }

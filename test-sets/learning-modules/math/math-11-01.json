@@ -3,176 +3,250 @@
   "code": "MATH 11-01",
   "domain": "MATH",
   "topicCode": "MATH-11",
-  "topicTitle": "Solid Geometry",
-  "subtopicTitle": "Prisms, Cylinders, Pyramids, Cones & Frustums",
+  "topicTitle": "Complex Numbers",
+  "subtopicTitle": "Complex Numbers: 4 Representations, De Moivre's Theorem, nth Roots & Euler Formulas",
   "order": 1,
   "pairedQuizSetId": "math-11-01-mastery",
   "toc": [
-    { "id": "sec-prereq-bridges", "title": "1. Introduction & Cross-Subject Connections", "level": 2 },
-    { "id": "sec-theory", "title": "2. Lesson Proper: Prisms, Cylinders, Pyramids & Frustums", "level": 2 },
-    { "id": "sec-formulas", "title": "3. Compilation of Formulas & Frustum Volumes", "level": 2 },
-    { "id": "sec-visualizer", "title": "4. Interactive Visualizer: Frustum & Truncated Prism Simulator", "level": 2 },
-    { "id": "sec-terminology", "title": "5. Key Terms and Definitions", "level": 2 },
-    { "id": "sec-dual-method", "title": "6. Worked Board Exam Problems", "level": 2 },
-    { "id": "sec-calculator", "title": "7. Calculator Speed Techniques (Karce & Canon)", "level": 2 },
-    { "id": "sec-concept-checks", "title": "8. In-Line Concept Checks", "level": 2 },
-    { "id": "sec-mastery-challenge", "title": "9. Paired Mastery Challenge Exam", "level": 2 }
+    {
+      "id": "sec-prereq-bridges",
+      "title": "1. Introduction & Cross-Subject Connections",
+      "level": 2
+    },
+    {
+      "id": "sec-theory",
+      "title": "2. Lesson Proper: The 4 Forms, Arithmetic, Powers, Roots & Logs",
+      "level": 2
+    },
+    {
+      "id": "sec-formulas",
+      "title": "3. Master Compilation of Complex Analysis Formulas",
+      "level": 2
+    },
+    {
+      "id": "sec-visualizer",
+      "title": "4. Interactive Visualizer: Argand Plane & nth Root Polygon Simulator",
+      "level": 2
+    },
+    {
+      "id": "sec-terminology",
+      "title": "5. Key Terms and Definitions",
+      "level": 2
+    },
+    {
+      "id": "sec-dual-method",
+      "title": "6. Worked Board Exam Problems",
+      "level": 2
+    },
+    {
+      "id": "sec-calculator",
+      "title": "7. Calculator Speed Techniques (Karce & Canon)",
+      "level": 2
+    },
+    {
+      "id": "sec-concept-checks",
+      "title": "8. In-Line Concept Checks",
+      "level": 2
+    },
+    {
+      "id": "sec-mastery-challenge",
+      "title": "9. Paired Mastery Challenge Exam",
+      "level": 2
+    }
   ],
   "prerequisiteBridge": {
-    "priorModuleId": "math-10-05",
-    "text": "Extending from 2D plane geometry in MATH 10, we now transition into 3D Solid Geometry—analyzing volumes, lateral areas, oblique right sections, truncated prisms, pyramids, cones, and conical frustums."
+    "priorModuleId": "math-18-03",
+    "text": "Entering Advanced Engineering Mathematics, we establish complex variable analysis—the 4 canonical forms (Rectangular, Trigonometric cis, Phasor, Euler Exponential), De Moivre's powers and root polygons, complex logarithms ln(z), and Euler's transcendental bridges."
   },
   "crossSubjectBridges": [
     {
-      "targetDomain": "GEAS",
-      "targetTopicCode": "GEAS-03",
-      "badgeText": "Earthwork Volumes",
-      "description": "Highway excavation trench cut-and-fill calculations use truncated prism formulas $V = B \\left(\\frac{\\sum h_i}{n}\\right)$ and the prismoidal formula."
+      "targetDomain": "ELECS",
+      "targetTopicCode": "ELEC-05",
+      "badgeText": "AC Phasor Analysis",
+      "description": "AC electrical impedance $Z = R + jX = |Z|\\angle\\theta$ and phasor domain circuit calculations rely on complex number arithmetic."
     },
     {
-      "targetDomain": "ELECS",
-      "targetTopicCode": "ELEC-06",
-      "badgeText": "Capacitor Geometries",
-      "description": "Coaxial cylindrical capacitors and truncated conical conductors compute capacitance via electric field volume integration."
+      "targetDomain": "EST",
+      "targetTopicCode": "EST-01",
+      "badgeText": "I/Q Modulation",
+      "description": "Quadrature amplitude modulation (QAM) and constellation diagrams represent baseband in-phase (I) and quadrature (Q) data as complex points."
     },
     {
       "targetDomain": "EST",
       "targetTopicCode": "EST-05",
-      "badgeText": "Conical Horns",
-      "description": "Microwave conical horn antennas and waveguide tapers use conical frustum flare equations to match radiation impedance."
+      "badgeText": "Smith Chart Impedance",
+      "description": "Transmission line reflection coefficients $\\Gamma = |\\Gamma|e^{j\\phi}$ are mapped onto the complex Argand plane via bilinear transformations."
     }
   ],
   "theory": {
-    "mentalAnchor": "Prism/Cylinder: $V = Bh = K \\cdot e$. Truncated prism: $V = B\\left(\\frac{h_1+\\dots+h_n}{n}\\right)$. Pyramid/Cone: $V = \\frac{1}{3}Bh$. Frustum volume: $V = \\frac{h}{3}(B_1+B_2+\\sqrt{B_1 B_2})$. Conical frustum: $V = \\frac{\\pi h}{3}(R^2+r^2+Rr)$, Lateral Area $A_L = \\pi(R+r)L$ where slant height $L = \\sqrt{h^2+(R-r)^2}$.",
-    "contentMarkdown": "### 1. Prisms & Cylinders (Right & Oblique)\n\n#### A. Prisms:\n- **Cube (Regular Hexahedron)**: $V = a^3, \\quad A_s = 6a^2, \\quad d_{\\text{space}} = a\\sqrt{3}$.\n- **Rectangular Parallelepiped (Box)**: $V = abc, \\quad A_s = 2(ab + bc + ca), \\quad d_{\\text{space}} = \\sqrt{a^2 + b^2 + c^2}$.\n- **Right Prism**: Lateral faces perpendicular to base:\n  $$V = B h, \\quad A_L = h \\cdot p_b$$\n- **Oblique Prism**: Lateral edges inclined at angle $\\theta$ to base:\n  $$V = B h = K \\cdot e, \\quad A_L = e \\cdot p_K$$\n  *(where $e$ is lateral edge length, $K$ is the area of the perpendicular **right section**, and $p_K$ is its perimeter)*.\n- **Truncated Prism**: Prism sliced by a non-parallel inclined plane:\n  $$V = B \\left(\\frac{h_1 + h_2 + h_3 + \\dots + h_n}{n}\\right)$$\n\n#### B. Cylinders:\n- **Right Circular Cylinder**: $V = \\pi r^2 h, \\quad A_L = 2\\pi r h, \\quad A_T = 2\\pi r(h + r)$.\n- **Oblique Cylinder**: $V = B h = K \\cdot e, \\quad A_L = e \\cdot p_K$.\n\n```diagram\n{\n  \"caption\": \"Figure 1: Solid Geometry - Pyramid Frustum (B1, B2) and Conical Frustum (R, r, L)\",\n  \"xRange\": [-5, 5],\n  \"yRange\": [-3, 3],\n  \"elements\": [\n    { \"type\": \"polygon\", \"points\": [[-4, -2], [-1.5, -2], [-2.2, 1.5], [-3.3, 1.5]], \"color\": \"#38bdf8\", \"fill\": \"rgba(56, 189, 248, 0.05)\" },\n    { \"type\": \"text\", \"at\": [-2.75, 1.8], \"text\": \"Base B2\", \"color\": \"#38bdf8\" },\n    { \"type\": \"text\", \"at\": [-2.75, -2.3], \"text\": \"Base B1\", \"color\": \"#38bdf8\" },\n    { \"type\": \"text\", \"at\": [-2.75, -0.2], \"text\": \"V = h(B1+B2+√(B1B2))/3\", \"color\": \"#fbbf24\" },\n    { \"type\": \"line\", \"from\": [1.5, -2], \"to\": [4.5, -2], \"color\": \"#34d399\", \"label\": \"2R\" },\n    { \"type\": \"line\", \"from\": [2.3, 1.5], \"to\": [3.7, 1.5], \"color\": \"#34d399\", \"label\": \"2r\" },\n    { \"type\": \"line\", \"from\": [1.5, -2], \"to\": [2.3, 1.5], \"color\": \"#f43f5e\", \"label\": \"Slant L\" },\n    { \"type\": \"line\", \"from\": [4.5, -2], \"to\": [3.7, 1.5], \"color\": \"#f43f5e\" }\n  ]\n}\n```\n\n---\n\n### 2. Pyramids & Cones\n\n- **Pyramid**: Polyhedron with polygonal base $B$ and lateral triangular faces meeting at apex:\n  $$V = \\frac{1}{3} B h$$\n- **Right Circular Cone**: Apex centered over circular base:\n  $$V = \\frac{1}{3} \\pi r^2 h, \\quad A_L = \\pi r L, \\quad L = \\sqrt{r^2 + h^2}$$\n\n---\n\n### 3. Frustums of Pyramids and Cones\n\nA **frustum** is the lower portion of a pyramid or cone contained between its base and a plane parallel to the base:\n\n1. **General Frustum Volume Formula (Pyramid or Cone)**:\n   $$\\mathbf{V = \\frac{h}{3} \\left(B_1 + B_2 + \\sqrt{B_1 B_2}\\right)}$$\n\n2. **Frustum of a Right Circular Cone**:\n   $$V = \\frac{\\pi h}{3} (R^2 + r^2 + Rr)$$\n   $$\\text{Slant Height } L = \\sqrt{h^2 + (R - r)^2}$$\n   $$\\text{Lateral Surface Area } A_L = \\pi (R + r) L$$\n   $$\\text{Total Surface Area } A_T = \\pi L (R + r) + \\pi r^2 + \\pi R^2$$"
+    "mentalAnchor": "Forms: $z = a + jb = r\\text{ cis }\\theta = r\\angle\\theta = r e^{j\\theta}$. Modulus $r = \\sqrt{a^2+b^2}$, Argument $\\theta = \\arctan(b/a)$. Multiply: $(r_1\\angle\\theta_1)(r_2\\angle\\theta_2) = r_1 r_2 \\angle(\\theta_1+\\theta_2)$. De Moivre: $(r\\angle\\theta)^n = r^n\\angle(n\\theta)$. Complex log: $\\ln z = \\ln r + j\\theta$. Euler: $e^{j\\theta} = \\cos\\theta + j\\sin\\theta, \\sin\\theta = \\frac{e^{j\\theta}-e^{-j\\theta}}{2j}, \\cos\\theta = \\frac{e^{j\\theta}+e^{-j\\theta}}{2}$.",
+    "contentMarkdown": "### 1. Complex Numbers & The 4 Canonical Representations\n\nA **complex number** $z$ consists of a real part $a = \\text{Re}(z)$ and an imaginary part $b = \\text{Im}(z)$, where $j = \\sqrt{-1}$ ($j^2 = -1$, denoted $i$ in pure math and $j$ in engineering):\n\n| Form Name | Standard Mathematical Expression | Key Parameters |\n| :--- | :--- | :--- |\n| **1. Rectangular (Cartesian)** | $\\mathbf{z = a + jb}$ | Real part $a$, Imaginary part $b$ |\n| **2. Trigonometric (CIS)** | $\\mathbf{z = r(\\cos\\theta + j\\sin\\theta) = r\\text{ cis }\\theta}$ | Modulus $r$, Argument $\\theta$ |\n| **3. Steinmetz Polar (Phasor)** | $\\mathbf{z = r \\angle \\theta}$ | Magnitude $r = \\sqrt{a^2+b^2}$, Angle $\\theta = \\arctan(b/a)$ |\n| **4. Euler Exponential** | $\\mathbf{z = r e^{j\\theta}}$ | Magnitude $r$, Angle $\\theta$ in **radians** |\n\n```diagram\n{\n  \"caption\": \"Figure 1: Complex Argand Plane - Rectangular Components (a, b) and Polar Phasor (r, θ)\",\n  \"xRange\": [-5, 5],\n  \"yRange\": [-3, 3],\n  \"elements\": [\n    { \"type\": \"line\", \"from\": [-4, 0], \"to\": [4, 0], \"color\": \"#94a3b8\", \"label\": \"Real Axis (Re)\" },\n    { \"type\": \"line\", \"from\": [0, -2.5], \"to\": [0, 2.5], \"color\": \"#94a3b8\", \"label\": \"Imaginary Axis (Im)\" },\n    { \"type\": \"line\", \"from\": [0, 0], \"to\": [3, 2], \"color\": \"#38bdf8\", \"label\": \"z = r∠θ = a + jb\" },\n    { \"type\": \"point\", \"at\": [3, 2], \"color\": \"#fbbf24\" },\n    { \"type\": \"text\", \"at\": [1.5, 0.3], \"text\": \"θ\", \"color\": \"#fbbf24\" }\n  ]\n}\n```\n\n---\n\n### 2. Complex Arithmetic & De Moivre's Theorem\n\n#### A. Arithmetic Rules:\n- **Addition / Subtraction**: Work in **Rectangular Form**:\n  $$(a_1 + jb_1) \\pm (a_2 + jb_2) = (a_1 \\pm a_2) + j(b_1 \\pm b_2)$$\n- **Multiplication / Division**: Work in **Polar Form**:\n  $$(r_1 \\angle \\theta_1)(r_2 \\angle \\theta_2) = \\mathbf{r_1 r_2 \\angle (\\theta_1 + \\theta_2)}, \\qquad \\frac{r_1 \\angle \\theta_1}{r_2 \\angle \\theta_2} = \\mathbf{\\frac{r_1}{r_2} \\angle (\\theta_1 - \\theta_2)}$$\n\n#### B. De Moivre's Power & Root Theorem:\n- **Integer Powers**: $(r \\angle \\theta)^n = \\mathbf{r^n \\angle (n\\theta)}$\n- **Roots ($n$-th Roots)**: An $n$-th root has exactly $n$ distinct roots spaced evenly by $\\frac{360^\\circ}{n}$ on a circle of radius $\\sqrt[n]{r}$:\n  $$\\mathbf{(r \\angle \\theta)^{1/n} = r^{1/n} \\angle \\left(\\frac{\\theta + k \\cdot 360^\\circ}{n}\\right)}, \\quad k = 0, 1, 2, \\dots, n-1$$\n  *(Setting $k = 0$ yields the **principal root**)*.\n\n---\n\n### 3. Transcendental & Exponential Complex Functions\n\n- **Complex Natural Logarithm**:\n  $$\\mathbf{\\ln z = \\ln(r e^{j\\theta}) = \\ln r + j\\theta} \\quad (\\theta \\text{ in radians})$$\n- **Euler's Exponential Identities**:\n  $$e^{j\\theta} = \\cos\\theta + j\\sin\\theta, \\qquad e^{-j\\theta} = \\cos\\theta - j\\sin\\theta$$\n  $$\\mathbf{\\sin\\theta = \\frac{e^{j\\theta} - e^{-j\\theta}}{2j}}, \\qquad \\mathbf{\\cos\\theta = \\frac{e^{j\\theta} + e^{-j\\theta}}{2}}$$\n- **Hyperbolic Forms**:\n  $$\\sinh\\theta = \\frac{e^\\theta - e^{-\\theta}}{2}, \\qquad \\cosh\\theta = \\frac{e^\\theta + e^{-\\theta}}{2}$$"
   },
   "formulas": [
     {
-      "id": "f-1101-01",
-      "title": "General Frustum Volume Equation",
-      "formula": "$$V = \\frac{h}{3}\\left(B_1 + B_2 + \\sqrt{B_1 B_2}\\right)$$",
-      "note": "Valid for frustums of both regular pyramids and circular cones."
+      "id": "f-2001-01",
+      "title": "4 Complex Canonical Forms",
+      "formula": "$$z = a + jb = r(\\cos\\theta + j\\sin\\theta) = r\\angle\\theta = r e^{j\\theta}$$",
+      "note": "r = √(a² + b²), θ = arctan(b/a)."
     },
     {
-      "id": "f-1101-02",
-      "title": "Conical Frustum Volume & Lateral Area",
-      "formula": "$$V = \\frac{\\pi h}{3}(R^2 + r^2 + Rr), \\quad A_L = \\pi(R + r)L, \\quad L = \\sqrt{h^2 + (R - r)^2}$$",
-      "note": "R is bottom radius, r is top radius, h is altitude, L is slant height."
+      "id": "f-2001-02",
+      "title": "De Moivre's Powers and Roots",
+      "formula": "$$(r\\angle\\theta)^n = r^n\\angle(n\\theta), \\quad z^{1/n} = r^{1/n}\\angle\\left(\\frac{\\theta + 360^\\circ k}{n}\\right)$$",
+      "note": "For k = 0, 1, ..., n-1."
     },
     {
-      "id": "f-1101-03",
-      "title": "Oblique Prism & Truncated Prism Volume",
-      "formula": "$$V_{\\text{oblique}} = K \\cdot e, \\quad V_{\\text{truncated}} = B \\left(\\frac{\\sum_{i=1}^n h_i}{n}\\right)$$",
-      "note": "K is right section area, e is lateral edge, h_i are lateral heights."
+      "id": "f-2001-03",
+      "title": "Complex Natural Logarithm & Euler Sin/Cos",
+      "formula": "$$\\ln z = \\ln r + j\\theta, \\quad \\sin\\theta = \\frac{e^{j\\theta}-e^{-j\\theta}}{2j}, \\quad \\cos\\theta = \\frac{e^{j\\theta}+e^{-j\\theta}}{2}$$",
+      "note": "Angle θ must be in radians when evaluating ln z."
     }
   ],
   "visualizer": {
     "archetype": "parameter_sweep",
-    "title": "Conical Frustum & Truncated Solid Simulator",
-    "description": "Adjust bottom radius R, top radius r, and height h to calculate live frustum volume, slant height L, and lateral surface area.",
+    "title": "Argand Plane & nth Root Polygon Simulator",
+    "description": "Adjust real part a, imaginary part b, and root power n to observe root polygons centered at origin on the complex Argand plane.",
     "config": {
       "canvasWidth": 640,
       "canvasHeight": 320,
       "controls": [
-        { "id": "bottomR", "label": "Bottom Radius R", "min": 3, "max": 20, "step": 1, "defaultValue": 10 },
-        { "id": "topR", "label": "Top Radius r", "min": 1, "max": 15, "step": 1, "defaultValue": 4 },
-        { "id": "heightH", "label": "Height h", "min": 4, "max": 25, "step": 1, "defaultValue": 8 }
+        {
+          "id": "realA",
+          "label": "Real Part a",
+          "min": -10,
+          "max": 10,
+          "step": 1,
+          "defaultValue": 3
+        },
+        {
+          "id": "imagB",
+          "label": "Imaginary Part b",
+          "min": -10,
+          "max": 10,
+          "step": 1,
+          "defaultValue": 4
+        },
+        {
+          "id": "rootN",
+          "label": "Root Power n",
+          "min": 2,
+          "max": 6,
+          "step": 1,
+          "defaultValue": 3
+        }
       ]
     }
   },
   "terms": [
     {
-      "term": "Frustum",
-      "symbol": "$V_{\\text{frustum}}$",
-      "unit": "Solid",
-      "definition": "The portion of a cone or pyramid lying between the base and a plane parallel to the base.",
-      "keywordTrigger": "portion between base and parallel plane / frustum"
+      "term": "Modulus",
+      "symbol": "$r = |z| = \\sqrt{a^2+b^2}$",
+      "unit": "Magnitude",
+      "definition": "The Euclidean distance from the origin to the complex point (a, b) in the Argand plane.",
+      "keywordTrigger": "modulus / absolute value of complex number / |z|"
     },
     {
-      "term": "Right Section",
-      "symbol": "$K$",
-      "unit": "Area",
-      "definition": "The cross-section of an oblique prism or cylinder made by a plane perpendicular to its lateral edges.",
-      "keywordTrigger": "perpendicular to lateral edge / V = K * e"
+      "term": "Argument",
+      "symbol": "$\\theta = \\text{arg}(z)$",
+      "unit": "Degrees / Radians",
+      "definition": "The angle made by the complex phasor vector with the positive real axis.",
+      "keywordTrigger": "argument / amplitude / phase angle"
     },
     {
-      "term": "Truncated Prism",
-      "symbol": "$V = B(\\sum h/n)$",
-      "unit": "Solid",
-      "definition": "A prism cut by a non-parallel intersecting plane, with volume equal to base area multiplied by average edge height.",
-      "keywordTrigger": "cut by non-parallel plane / average of lateral heights"
+      "term": "De Moivre's Theorem",
+      "symbol": "$[r(\\cos\\theta + j\\sin\\theta)]^n = r^n(\\cos n\\theta + j\\sin n\\theta)$",
+      "unit": "Theorem",
+      "definition": "Fundamental theorem published by Abraham de Moivre in 1730 for raising complex numbers to powers and extracting roots.",
+      "keywordTrigger": "De Moivre's theorem / complex powers / nth roots"
     }
   ],
   "examples": [
     {
-      "problemStatement": "Find the volume and lateral surface area of a frustum of a right circular cone whose base radii are R = 8 cm, r = 2 cm, and altitude h = 8 cm.",
-      "formalSolutionMarkdown": "#### Step 1: Compute Slant Height L\n$$L = \\sqrt{h^2 + (R - r)^2} = \\sqrt{8^2 + (8 - 2)^2} = \\sqrt{64 + 36} = \\sqrt{100} = 10\\text{ cm}$$\n\n#### Step 2: Compute Volume\n$$V = \\frac{\\pi h}{3} (R^2 + r^2 + Rr) = \\frac{8\\pi}{3} (8^2 + 2^2 + 8 \\times 2) = \\frac{8\\pi}{3} (64 + 4 + 16) = \\frac{8\\pi}{3} (84) = 224\\pi \\approx 703.72\\text{ cm}^3$$\n\n#### Step 3: Compute Lateral Surface Area\n$$A_L = \\pi (R + r) L = \\pi (8 + 2)(10) = 100\\pi \\approx 314.16\\text{ cm}^2$$",
-      "shortcutSolutionMarkdown": "#### ⚡ 10-Second Conical Frustum Shortcut\n$$L = \\sqrt{8^2 + 6^2} = 10, \\quad V = \\frac{8\\pi}{3}(84) = 224\\pi \\approx 703.72, \\quad A_L = 100\\pi \\approx 314.16$$",
-      "formalTimeSeconds": 60,
-      "shortcutTimeSeconds": 10
+      "problemStatement": "Convert z = 3 + j4 into Polar and Exponential forms, and compute z³ using De Moivre's Theorem.",
+      "formalSolutionMarkdown": "#### Step 1: Compute Modulus and Argument\n- $r = \\sqrt{3^2 + 4^2} = \\sqrt{9 + 16} = \\sqrt{25} = 5$\n- $\\theta = \\arctan(4/3) \\approx 53.1301^\\circ \\approx 0.9273\\text{ rad}$\n- Polar Form: $z = 5\\angle 53.13^\\circ$\n- Exponential Form: $z = 5 e^{j 0.9273}$\n\n#### Step 2: Apply De Moivre's Theorem for z³\n$$z^3 = (5\\angle 53.13^\\circ)^3 = 5^3 \\angle (3 \\times 53.13^\\circ) = 125 \\angle 159.39^\\circ$$\n- Rectangular Conversion: $125\\cos(159.39^\\circ) + j 125\\sin(159.39^\\circ) = -117 + j44$",
+      "shortcutSolutionMarkdown": "#### ⚡ 3-Second Polar Power Evaluation\n$$z = 5\\angle 53.13^\\circ \\implies z^3 = 125\\angle 159.39^\\circ = -117 + j44$$",
+      "formalTimeSeconds": 45,
+      "shortcutTimeSeconds": 3
     },
     {
-      "problemStatement": "A truncated right square prism has a base area of B = 36 cm² and four vertical corner heights of h1 = 5 cm, h2 = 7 cm, h3 = 8 cm, and h4 = 12 cm. Find its volume.",
-      "formalSolutionMarkdown": "#### Step 1: Compute average height\n$$h_{\\text{avg}} = \\frac{h_1 + h_2 + h_3 + h_4}{4} = \\frac{5 + 7 + 8 + 12}{4} = \\frac{32}{4} = 8\\text{ cm}$$\n\n#### Step 2: Compute volume\n$$V = B \\times h_{\\text{avg}} = 36 \\times 8 = 288\\text{ cm}^3$$",
-      "shortcutSolutionMarkdown": "#### ⚡ 3-Second Average Height Product\n$$V = 36 \\times \\left(\\frac{32}{4}\\right) = 36 \\times 8 = 288\\text{ cm}^3$$",
+      "problemStatement": "Evaluate the principal value of the complex natural logarithm: ln(1 + j√3).",
+      "formalSolutionMarkdown": "#### Step 1: Convert to Exponential Form (r e^(jθ))\n- $r = \\sqrt{1^2 + (\\sqrt{3})^2} = \\sqrt{1 + 3} = 2$\n- $\\theta = \\arctan(\\sqrt{3}/1) = 60^\\circ = \\frac{\\pi}{3}\\text{ radians}$\n\n#### Step 2: Apply ln z = ln r + jθ\n$$\\ln(1 + j\\sqrt{3}) = \\ln(2) + j\\frac{\\pi}{3} \\approx 0.69315 + j 1.04720$$",
+      "shortcutSolutionMarkdown": "#### ⚡ 2-Second Complex Log Shortcut\n$$\\ln(2 e^{j\\pi/3}) = \\ln 2 + j\\frac{\\pi}{3} \\approx 0.693 + j1.047$$",
       "formalTimeSeconds": 30,
-      "shortcutTimeSeconds": 3
+      "shortcutTimeSeconds": 2
     }
   ],
   "calculatorGuides": {
     "karce": {
-      "techniqueTitle": "Fast Conical Frustum Volume Formula",
-      "problemType": "Evaluating (π*h/3)*(R² + r² + R*r)",
-      "sampleProblem": "Find V for R=8, r=2, h=8.",
-      "mode": "COMP Mode (MODE 1)",
-      "keystrokes": ["SHIFT", "π", "×", "8", "÷", "3", "×", "(", "8", "x²", "+", "2", "x²", "+", "8", "×", "2", ")", "="],
-      "notes": "Directly evaluates 703.71675 in 2 seconds."
+      "techniqueTitle": "Fast CMPLX Mode Rectangular-to-Polar Conversion",
+      "problemType": "Converting 3 + 4i to r∠θ and evaluating powers",
+      "sampleProblem": "Convert 3 + 4i to polar.",
+      "mode": "CMPLX Mode (MODE 2)",
+      "keystrokes": [
+        "3",
+        "+",
+        "4",
+        "i",
+        "SHIFT",
+        "r∠θ",
+        "="
+      ],
+      "notes": "Directly displays 5∠53.13° in 1 second."
     },
     "canon": {
-      "techniqueTitle": "Truncated Prism Average Height Shortcut",
-      "problemType": "B * sum(h) / n on Canon F-789SGA",
-      "sampleProblem": "Evaluate 36 * (5 + 7 + 8 + 12) / 4.",
-      "mode": "COMP Mode (MODE 1)",
-      "keystrokes": ["3", "6", "×", "(", "5", "+", "7", "+", "8", "+", "1", "2", ")", "÷", "4", "="],
-      "notes": "Directly yields 288."
+      "techniqueTitle": "Complex Polar Operations on Canon F-789SGA",
+      "problemType": "(5∠53.13010354)³ on Canon F-789SGA",
+      "sampleProblem": "Find (3 + 4i)³ in CMPLX mode.",
+      "mode": "CMPLX Mode (MODE 2)",
+      "keystrokes": [
+        "(",
+        "3",
+        "+",
+        "4",
+        "i",
+        ")",
+        "x³",
+        "="
+      ],
+      "notes": "Directly yields -117 + 44i."
     }
   },
   "conceptChecks": [
     {
-      "id": "chk-1101-01",
-      "question": "What is the general formula for the volume of a frustum of any pyramid or cone with base areas $B_1$ and $B_2$ and height $h$?",
+      "id": "chk-2001-01",
+      "question": "What is the principal value of $\\ln(z)$ for $z = 1 + j$?",
       "options": [
-        "V = (h/3)(B₁ + B₂ + √(B₁ B₂))",
-        "V = (h/2)(B₁ + B₂)",
-        "V = h √(B₁ B₂)",
-        "V = (h/3)(B₁ + B₂)"
+        "ln(√2) + j (π/4) ≈ 0.3466 + j 0.7854",
+        "ln(2) + j (π/2)",
+        "√2 e^(j π/4)",
+        "0.5 + j 0.5"
       ],
       "correctAnswer": 0,
-      "explanation": "The frustum formula is V = (h/3)(B₁ + B₂ + √(B₁B₂))."
+      "explanation": "Since r = √2 and θ = π/4: ln(1 + j) = ln(√2) + j(π/4) ≈ 0.3466 + j 0.7854."
     },
     {
-      "id": "chk-1101-02",
-      "question": "For an oblique prism with lateral edge length $e$ and right section area $K$, what is its volume?",
+      "id": "chk-2001-02",
+      "question": "According to Euler's formula, what is the trigonometric equivalent of $e^{j\\pi} + 1$?",
       "options": [
-        "V = K · e",
-        "V = K · e / 3",
-        "V = K · e / 2",
-        "V = 2 K · e"
+        "0 (Euler's Identity)",
+        "2",
+        "-1",
+        "j"
       ],
       "correctAnswer": 0,
-      "explanation": "The volume of any prism is equal to the area of its right section K multiplied by the lateral edge e (V = Ke)."
+      "explanation": "e^(jπ) = cos(π) + j sin(π) = -1 + 0 = -1. Therefore, e^(jπ) + 1 = 0."
     },
     {
-      "id": "chk-1101-03",
-      "question": "What is the lateral surface area of a conical frustum with base radii $R, r$ and slant height $L$?",
+      "id": "chk-2001-03",
+      "question": "How are the $n$ distinct $n$-th roots of a complex number arranged geometrically on the Argand plane?",
       "options": [
-        "A_L = π (R + r) L",
-        "A_L = 2π (R + r) L",
-        "A_L = π (R - r) L",
-        "A_L = π (R² - r²) L"
+        "Evenly spaced at angular intervals of 360°/n on a circle of radius r^(1/n)",
+        "Along a single straight radial line",
+        "On an ellipse with focal distance 2c",
+        "At random positions"
       ],
       "correctAnswer": 0,
-      "explanation": "Lateral surface area of a conical frustum is A_L = π(R + r)L."
+      "explanation": "The n roots form the vertices of a regular n-gon centered at the origin with radius r^(1/n)."
     }
   ]
 }

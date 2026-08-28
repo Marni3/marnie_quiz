@@ -3,183 +3,254 @@
   "code": "MATH 10-03",
   "domain": "MATH",
   "topicCode": "MATH-10",
-  "topicTitle": "Plane Geometry",
-  "subtopicTitle": "Polygon Diagonals, Reentrant Angles & Quadrilateral Taxonomy",
+  "topicTitle": "Differential Equations",
+  "subtopicTitle": "Orthogonal Trajectories, Kinematic Air Resistance & Second-Order Mechanical Oscillations",
   "order": 3,
   "pairedQuizSetId": "math-10-03-mastery",
   "toc": [
-    { "id": "sec-prereq-bridges", "title": "1. Introduction & Cross-Subject Connections", "level": 2 },
-    { "id": "sec-theory", "title": "2. Lesson Proper: Polygon Diagonals & Quadrilateral Geometry", "level": 2 },
-    { "id": "sec-formulas", "title": "3. Compilation of Formulas & Quadrilateral Areas", "level": 2 },
-    { "id": "sec-visualizer", "title": "4. Interactive Visualizer: Polygon Diagonal & Area Explorer", "level": 2 },
-    { "id": "sec-terminology", "title": "5. Key Terms and Definitions", "level": 2 },
-    { "id": "sec-dual-method", "title": "6. Worked Board Exam Problems", "level": 2 },
-    { "id": "sec-calculator", "title": "7. Calculator Speed Techniques (Karce & Canon)", "level": 2 },
-    { "id": "sec-concept-checks", "title": "8. In-Line Concept Checks", "level": 2 },
-    { "id": "sec-mastery-challenge", "title": "9. Paired Mastery Challenge Exam", "level": 2 }
+    {
+      "id": "sec-prereq-bridges",
+      "title": "1. Introduction & Cross-Subject Connections",
+      "level": 2
+    },
+    {
+      "id": "sec-theory",
+      "title": "2. Lesson Proper: Orthogonal Trajectories, Kinematics & Oscillators",
+      "level": 2
+    },
+    {
+      "id": "sec-formulas",
+      "title": "3. Master Compilation of Trajectory & Physical Formulas",
+      "level": 2
+    },
+    {
+      "id": "sec-visualizer",
+      "title": "4. Interactive Visualizer: Orthogonal Trajectory Grid Simulator",
+      "level": 2
+    },
+    {
+      "id": "sec-terminology",
+      "title": "5. Key Terms and Definitions",
+      "level": 2
+    },
+    {
+      "id": "sec-dual-method",
+      "title": "6. Worked Board Exam Problems",
+      "level": 2
+    },
+    {
+      "id": "sec-calculator",
+      "title": "7. Calculator Speed Techniques (Karce & Canon)",
+      "level": 2
+    },
+    {
+      "id": "sec-concept-checks",
+      "title": "8. In-Line Concept Checks",
+      "level": 2
+    },
+    {
+      "id": "sec-mastery-challenge",
+      "title": "9. Paired Mastery Challenge Exam",
+      "level": 2
+    }
   ],
   "prerequisiteBridge": {
-    "priorModuleId": "math-10-02",
-    "text": "Extending from angular classifications and polygon nomenclature in MATH 10-02, we now analyze internal polygon combinatorics (diagonals $\\frac{n(n-3)}{2}$), reentrant/salient angles, and the complete area formulas for all 9 quadrilateral families."
+    "priorModuleId": "math-18-02",
+    "text": "Concluding Differential Equations, we apply dynamic and geometric modeling—systematic derivation of Orthogonal Trajectories (Cartesian and Polar), terminal velocity with linear/quadratic air resistance, and spring-mass mechanical harmonic oscillators."
   },
   "crossSubjectBridges": [
     {
-      "targetDomain": "EST",
-      "targetTopicCode": "EST-10",
-      "badgeText": "Mesh Networks",
-      "description": "Full-mesh data communication network topologies with $n$ nodes require exactly $\\frac{n(n-1)}{2}$ links (equivalent to sides + diagonals ${}_n C_2$)."
+      "targetDomain": "ELECS",
+      "targetTopicCode": "ELEC-06",
+      "badgeText": "Electric Equipotentials",
+      "description": "Electric field lines $\\vec{E}$ are orthogonal trajectories to equipotential voltage contours $V(x, y) = C$ in electrostatics."
     },
     {
       "targetDomain": "GEAS",
-      "targetTopicCode": "GEAS-01",
-      "badgeText": "Statics",
-      "description": "Structural truss analysis and quadrilateral frame rigidity require calculation of diagonal internal bracing tension."
+      "targetTopicCode": "GEAS-03",
+      "badgeText": "Fluid Flow Nets",
+      "description": "Streamlines $\\psi(x, y) = C$ and velocity potential lines $\\phi(x, y) = K$ in 2D fluid dynamics form mutual orthogonal trajectories."
     },
     {
       "targetDomain": "ELECS",
-      "targetTopicCode": "ELEC-01",
-      "badgeText": "Bridge Circuits",
-      "description": "Wheatstone, Maxwell, and Hay AC bridge circuit topologies are configured as quadrilateral impedance meshes with cross-diagonal galvanometers."
+      "targetTopicCode": "ELEC-05",
+      "badgeText": "RLC Oscillators",
+      "description": "Series RLC circuit transient differential equations $L\\frac{d^2q}{dt^2} + R\\frac{dq}{dt} + \\frac{q}{C} = 0$ are isomorphic to damped mechanical oscillators."
     }
   ],
   "theory": {
-    "mentalAnchor": "Total diagonals in an $n$-gon is $\\frac{n(n-3)}{2}$. Concave polygons have at least one inward-pointing reentrant angle ($>180^\\circ$). Areas: Square ($a^2$), Rectangle ($ab$), Rhombus ($bh = \\frac{1}{2}d_1 d_2 = a^2 \\sin\\theta$), Parallelogram ($bh = ab\\sin\\theta = \\frac{1}{2}d_1 d_2 \\sin\\theta$), Trapezoid ($\\frac{b+B}{2}h$), Kite/Rhombus ($\\frac{1}{2}d_1 d_2$).",
-    "contentMarkdown": "### 1. Polygon Diagonals & Angle Combinatorics\n\nA **diagonal** of a polygon is any straight line segment connecting two non-adjacent vertices:\n\n$$\\text{Total Number of Diagonals} = \\frac{n(n - 3)}{2} = {}_n C_2 - n$$\n\n- From each of the $n$ vertices, exactly $n - 3$ diagonals can be drawn (excluding the vertex itself and its 2 adjacent neighbors).\n- **Interior Angles Sum**: $\\sum \\theta_{\\text{int}} = (n - 2) \\times 180^\\circ$.\n- **Reentrant Angle**: An inward-pointing interior reflex angle ($> 180^\\circ$) characteristic of **concave polygons**.\n- **Salient Angle**: Standard outward-pointing interior angle ($< 180^\\circ$).\n\n```diagram\n{\n  \"caption\": \"Figure 1: Quadrilateral Taxonomy - Parallelogram, Rhombus, Trapezoid, and Kite\",\n  \"xRange\": [-5, 5],\n  \"yRange\": [-3, 3],\n  \"elements\": [\n    { \"type\": \"polygon\", \"points\": [[-4.5, 0.5], [-2, 0.5], [-2.8, 2.5], [-5.3, 2.5]], \"color\": \"#38bdf8\", \"fill\": \"rgba(56, 189, 248, 0.05)\" },\n    { \"type\": \"text\", \"at\": [-3.6, 1.5], \"text\": \"Parallelogram: bh\", \"color\": \"#38bdf8\" },\n    { \"type\": \"polygon\", \"points\": [[1, 0.5], [4, 0.5], [3, 2.5], [2, 2.5]], \"color\": \"#fbbf24\", \"fill\": \"rgba(251, 191, 36, 0.05)\" },\n    { \"type\": \"text\", \"at\": [2.5, 1.5], \"text\": \"Trapezoid: (b+B)h/2\", \"color\": \"#fbbf24\" },\n    { \"type\": \"polygon\", \"points\": [[-3, -2.5], [-1.5, -1], [-3, -0.2], [-4.5, -1]], \"color\": \"#34d399\", \"fill\": \"rgba(52, 211, 153, 0.05)\" },\n    { \"type\": \"text\", \"at\": [-3, -1.2], \"text\": \"Rhombus: d1 d2 / 2\", \"color\": \"#34d399\" },\n    { \"type\": \"polygon\", \"points\": [[2, -2.8], [3.5, -1.2], [2, 0], [0.5, -1.2]], \"color\": \"#f43f5e\", \"fill\": \"rgba(244, 63, 94, 0.05)\" },\n    { \"type\": \"text\", \"at\": [2, -1.5], \"text\": \"Kite: d1 d2 / 2\", \"color\": \"#f43f5e\" }\n  ]\n}\n```\n\n---\n\n### 2. Complete Taxonomy & Area Formulas of Quadrilaterals\n\nA **quadrilateral** (quadrangle or tetragon) is a 4-sided polygon:\n\n1. **Square**: Regular 4-gon ($a = b = c = d$, all angles $90^\\circ$):\n   $$A = a^2 = \\frac{1}{2} d^2, \\quad P = 4a$$\n\n2. **Rectangle**: Parallelogram with four $90^\\circ$ right angles:\n   $$A = ab, \\quad P = 2(a + b), \\quad d = \\sqrt{a^2 + b^2}$$\n\n3. **Rhombus (Equilateral Parallelogram / Diamond)**: All 4 sides equal ($a$), opposite angles equal, diagonals are **perpendicular bisectors** ($\\theta = 90^\\circ$):\n   $$A = bh = \\frac{1}{2} d_1 d_2 = a^2 \\sin \\theta, \\quad P = 4a$$\n\n4. **Parallelogram (Rhomboid)**: Opposite sides parallel and equal ($a, b$):\n   $$A = bh = ab \\sin \\theta = \\frac{1}{2} d_1 d_2 \\sin \\phi, \\quad P = 2(a + b)$$\n\n5. **Trapezoid**: Exactly two sides are parallel (bases $b$ and $B$, separated by height $h$):\n   $$A = \\frac{1}{2}(b + B)h = \\text{Median} \\times h$$\n\n6. **Trapezium (General Irregular Quadrilateral)**: No sides parallel:\n   $$A = \\frac{1}{2} d_1 d_2 \\sin \\theta = \\sqrt{(s - a)(s - b)(s - c)(s - d) - abcd \\cos^2 \\theta}$$\n\n7. **Kite**: Convex quadrilateral with two distinct pairs of equal adjacent sides. Diagonals are perpendicular ($d_1 \\perp d_2$):\n   $$A = \\frac{1}{2} d_1 d_2$$\n\n8. **Deltoid (Arrowhead)**: Concave quadrilateral with equal adjacent sides in pairs.\n\n9. **Cyclic Quadrilateral**: All 4 vertices lie on a circumcircle ($A + C = 180^\\circ$, $B + D = 180^\\circ$)."
+    "mentalAnchor": "Orthogonal trajectory replacement: $\\frac{dy}{dx} \\to -\\frac{dx}{dy}$. Polar: $\\frac{dr}{d\\theta} \\to -r^2\\frac{d\\theta}{dr}$. Terminal velocity: $v_t = \\frac{mg}{k}$. Harmonic oscillator: $m x'' + k x = 0 \\implies \\omega_n = \\sqrt{k/m}, f_n = \\frac{1}{2\\pi}\\sqrt{k/m}$.",
+    "contentMarkdown": "### 1. Orthogonal Trajectories\n\nAn **orthogonal trajectory** is a curve (or family of curves) that cuts every curve of a given family $F(x, y, C) = 0$ at **right angles** ($90^\\circ$):\n\n#### The 4-Step Orthogonal Trajectory Protocol:\n1. Differentiate the given family $F(x, y, C) = 0$ implicitly with respect to $x$ to find $\\left(\\frac{dy}{dx}\\right)_g$.\n2. Eliminate the arbitrary constant $C$ to obtain the differential equation of the given family: $\\left(\\frac{dy}{dx}\\right)_g = f(x, y)$.\n3. Replace the slope with its negative reciprocal:\n   $$\\mathbf{\\left(\\frac{dy}{dx}\\right)_t = -\\frac{1}{\\left(\\frac{dy}{dx}\\right)_g} = -\\frac{1}{f(x, y)}}$$\n4. Integrate the new differential equation to find the orthogonal family of curves $G(x, y, K) = 0$.\n\n#### Polar Coordinates Orthogonal Trajectories:\n- Replace $\\frac{dr}{d\\theta}$ with $\\mathbf{-r^2 \\frac{d\\theta}{dr}}$.\n\n```diagram\n{\n  \"caption\": \"Figure 1: Orthogonal Trajectories - Family of Parabolas y = Cx² (Blue) vs Orthogonal Ellipses (Gold)\",\n  \"xRange\": [-5, 5],\n  \"yRange\": [-3, 3],\n  \"elements\": [\n    { \"type\": \"line\", \"from\": [-3, 2.5], \"to\": [3, 2.5], \"color\": \"#38bdf8\", \"label\": \"y = C1 x²\" },\n    { \"type\": \"arc\", \"center\": [0, 0], \"radius\": 40, \"startAngle\": 0, \"endAngle\": 360, \"color\": \"#fbbf24\" },\n    { \"type\": \"text\", \"at\": [0, -1.8], \"text\": \"Orthogonal: x² + 2y² = K\", \"color\": \"#fbbf24\" }\n  ]\n}\n```\n\n---\n\n### 2. Kinematics with Air Resistance & Terminal Velocity\n\n- When an object of mass $m$ falls under gravity with air resistance proportional to velocity ($F_{\\text{drag}} = kv$):\n  $$m \\frac{dv}{dt} = mg - kv \\implies \\frac{dv}{dt} = g - \\frac{k}{m} v$$\n- **Velocity Function**: $v(t) = v_t (1 - e^{-(k/m)t})$\n- **Terminal Velocity** (as $t \\to \\infty$ when acceleration $a = 0$):\n  $$\\mathbf{v_t = \\frac{mg}{k}}$$\n\n---\n\n### 3. Second-Order Harmonic Oscillations\n\n- **Free Undamped Mechanical Oscillator**: $m \\frac{d^2x}{dt^2} + kx = 0$\n  - Natural Angular Frequency: $\\mathbf{\\omega_n = \\sqrt{\\frac{k}{m}}}$ (rad/s)\n  - Natural Cyclic Frequency: $\\mathbf{f_n = \\frac{1}{2\\pi}\\sqrt{\\frac{k}{m}}}$ (Hz)\n  - Natural Period: $\\mathbf{T = 2\\pi \\sqrt{\\frac{m}{k}}}$ (seconds)"
   },
   "formulas": [
     {
-      "id": "f-1003-01",
-      "title": "Polygon Diagonals Formula",
-      "formula": "$$\\text{Diagonals} = \\frac{n(n - 3)}{2} = {}_n C_2 - n$$",
-      "note": "A triangle has 0 diagonals, quadrilateral has 2, hexagon has 9."
+      "id": "f-1803-01",
+      "title": "Cartesian & Polar Orthogonal Trajectory Replacement",
+      "formula": "$$\\left(\\frac{dy}{dx}\\right)_t = -\\frac{dx}{dy}, \\quad \\left(\\frac{dr}{d\\theta}\\right)_t = -r^2 \\frac{d\\theta}{dr}$$",
+      "note": "Eliminate the parameter C before taking the negative reciprocal."
     },
     {
-      "id": "f-1003-02",
-      "title": "Perpendicular Diagonal Area (Rhombus, Kite, Square)",
-      "formula": "$$A = \\frac{1}{2} d_1 d_2$$",
-      "note": "Valid whenever diagonals intersect at right angles (θ = 90°)."
+      "id": "f-1803-02",
+      "title": "Terminal Velocity Formula",
+      "formula": "$$v_t = \\frac{mg}{k}$$",
+      "note": "Occurs when downward gravity exactly balances upward air resistance."
     },
     {
-      "id": "f-1003-03",
-      "title": "Trapezoid Median Area Formula",
-      "formula": "$$A = \\frac{b + B}{2} h = m \\cdot h$$",
-      "note": "Where median m = (b + B) / 2 is the line connecting midpoints of non-parallel legs."
+      "id": "f-1803-03",
+      "title": "Natural Oscillation Frequency & Period",
+      "formula": "$$\\omega_n = \\sqrt{\\frac{k}{m}}, \\quad f_n = \\frac{1}{2\\pi}\\sqrt{\\frac{k}{m}}, \\quad T = 2\\pi\\sqrt{\\frac{m}{k}}$$",
+      "note": "k is spring constant in N/m; m is mass in kg."
     }
   ],
   "visualizer": {
     "archetype": "parameter_sweep",
-    "title": "Polygon Diagonal & Quadrilateral Area Calculator",
-    "description": "Adjust polygon sides n or quadrilateral diagonals to compute total diagonals and live areas.",
+    "title": "Orthogonal Trajectory Grid Simulator",
+    "description": "Adjust curve parameter C to display families of radial lines and concentric circles or orthogonal parabolas and ellipses.",
     "config": {
       "canvasWidth": 640,
       "canvasHeight": 320,
       "controls": [
-        { "id": "sidesN", "label": "Polygon Sides (n)", "min": 3, "max": 20, "step": 1, "defaultValue": 8 },
-        { "id": "diag1", "label": "Diagonal d1", "min": 5, "max": 25, "step": 1, "defaultValue": 12 },
-        { "id": "diag2", "label": "Diagonal d2", "min": 5, "max": 25, "step": 1, "defaultValue": 16 }
+        {
+          "id": "paramC",
+          "label": "Curve Parameter C",
+          "min": 0.5,
+          "max": 4,
+          "step": 0.5,
+          "defaultValue": 1.5
+        },
+        {
+          "id": "massM",
+          "label": "Oscillator Mass m (kg)",
+          "min": 0.5,
+          "max": 5,
+          "step": 0.5,
+          "defaultValue": 2
+        },
+        {
+          "id": "springK",
+          "label": "Spring k (N/m)",
+          "min": 50,
+          "max": 500,
+          "step": 50,
+          "defaultValue": 200
+        }
       ]
     }
   },
   "terms": [
     {
-      "term": "Reentrant Angle",
-      "symbol": "$\\theta > 180^\\circ$",
-      "unit": "Angle",
-      "definition": "An inward-pointing interior reflex angle greater than 180 degrees in a concave polygon.",
-      "keywordTrigger": "inward-pointing angle of concave polygon / reentrant"
+      "term": "Orthogonal Trajectory",
+      "symbol": "$m_1 m_2 = -1$",
+      "unit": "Geometry",
+      "definition": "A family of curves that intersects every curve of another given family at right angles (perpendicularly).",
+      "keywordTrigger": "orthogonal trajectory / negative reciprocal slope"
     },
     {
-      "term": "Rhombus",
-      "symbol": "Diamond",
-      "unit": "Polygon",
-      "definition": "An equilateral parallelogram whose diagonals intersect perpendicularly at 90 degrees.",
-      "keywordTrigger": "all sides equal no right angle / d1 d2 / 2"
+      "term": "Terminal Velocity",
+      "symbol": "$v_t = mg/k$",
+      "unit": "m/s",
+      "definition": "The constant maximum velocity reached by a falling body when the drag force equals the gravitational pull.",
+      "keywordTrigger": "terminal velocity / zero acceleration / mg/k"
     },
     {
-      "term": "Kite",
-      "symbol": "Convex",
-      "unit": "Polygon",
-      "definition": "A convex quadrilateral with two pairs of equal-length adjacent sides and mutually perpendicular diagonals.",
-      "keywordTrigger": "adjacent sides equal in pair / perpendicular diagonals"
-    },
-    {
-      "term": "Deltoid",
-      "symbol": "Concave",
-      "unit": "Polygon",
-      "definition": "A concave arrowhead quadrilateral whose adjacent sides are equal in pairs.",
-      "keywordTrigger": "concave quadrilateral adjacent sides equal in pair"
+      "term": "Natural Frequency",
+      "symbol": "$\\omega_n = \\sqrt{k/m}$",
+      "unit": "rad/s",
+      "definition": "The undamped angular frequency at which a dynamic system tends to oscillate in the absence of external driving forces.",
+      "keywordTrigger": "natural frequency / sqrt(k/m) / undamped"
     }
   ],
   "examples": [
     {
-      "problemStatement": "Find the number of diagonals in a 12-sided regular dodecagon.",
-      "formalSolutionMarkdown": "#### Step 1: Apply the polygon diagonal formula\n$$\\text{Diagonals} = \\frac{n(n - 3)}{2}$$\n\n#### Step 2: Substitute n = 12\n$$\\text{Diagonals} = \\frac{12(12 - 3)}{2} = \\frac{12(9)}{2} = 6 \\times 9 = 54$$",
-      "shortcutSolutionMarkdown": "#### ⚡ 2-Second Diagonal Shortcut\n$$\\text{Diagonals} = 6 \\times 9 = 54$$",
-      "formalTimeSeconds": 30,
-      "shortcutTimeSeconds": 2
+      "problemStatement": "Find the orthogonal trajectories of the family of parabolas y = C x².",
+      "formalSolutionMarkdown": "#### Step 1: Differentiate given family\n$$y = C x^2 \\implies \\frac{dy}{dx} = 2Cx$$\n\n#### Step 2: Eliminate C\n- From original equation: $C = \\frac{y}{x^2}$\n$$\\left(\\frac{dy}{dx}\\right)_g = 2\\left(\\frac{y}{x^2}\\right)x = \\frac{2y}{x}$$\n\n#### Step 3: Replace with negative reciprocal\n$$\\left(\\frac{dy}{dx}\\right)_t = -\\frac{x}{2y}$$\n\n#### Step 4: Separate and integrate\n$$2y \\, dy = -x \\, dx \\implies x \\, dx + 2y \\, dy = 0$$\n$$\\frac{x^2}{2} + y^2 = C_1 \\implies x^2 + 2y^2 = K$$\n*(A family of concentric ellipses)*.",
+      "shortcutSolutionMarkdown": "#### ⚡ 3-Second Orthogonal Trajectory Shortcut\n$$y = C x^2 \\implies \\frac{dy}{dx} = \\frac{2y}{x} \\to -\\frac{x}{2y} \\implies x^2 + 2y^2 = K$$",
+      "formalTimeSeconds": 45,
+      "shortcutTimeSeconds": 3
     },
     {
-      "problemStatement": "A rhombus has a perimeter of 40 cm and one diagonal of length 12 cm. Find the area of the rhombus.",
-      "formalSolutionMarkdown": "#### Step 1: Find the side length of the rhombus\n$$a = \\frac{P}{4} = \\frac{40}{4} = 10\\text{ cm}$$\n\n#### Step 2: Use the right-triangle property of perpendicular diagonals\n- Half of given diagonal: $d_1 / 2 = 12 / 2 = 6\\text{ cm}$.\n- By Pythagorean theorem on the 4 internal right triangles:\n$$\\left(\\frac{d_2}{2}\\right) = \\sqrt{a^2 - \\left(\\frac{d_1}{2}\\right)^2} = \\sqrt{10^2 - 6^2} = \\sqrt{100 - 36} = \\sqrt{64} = 8\\text{ cm}$$\n$$d_2 = 2 \\times 8 = 16\\text{ cm}$$\n\n#### Step 3: Compute the area\n$$A = \\frac{1}{2} d_1 d_2 = \\frac{1}{2}(12)(16) = 96\\text{ cm}^2$$",
-      "shortcutSolutionMarkdown": "#### ⚡ 5-Second 6-8-10 Pythagorean Triple\n$$\\text{Area} = 4 \\times \\left(\\frac{1}{2} \\times 6 \\times 8\\right) = 4 \\times 24 = 96\\text{ cm}^2$$",
-      "formalTimeSeconds": 60,
-      "shortcutTimeSeconds": 5
+      "problemStatement": "A skydiver weighing 80 kg falls from an airplane. If air resistance is F_drag = 16v (where k = 16 N·s/m and g = 9.8 m/s²), find the skydiver's terminal velocity.",
+      "formalSolutionMarkdown": "#### Step 1: Apply terminal velocity balance equation\n$$mg - k v_t = 0 \\implies v_t = \\frac{mg}{k}$$\n\n#### Step 2: Substitute m = 80 kg, g = 9.8 m/s², k = 16 N·s/m\n$$v_t = \\frac{80 \\times 9.8}{16} = 5 \\times 9.8 = 49\\text{ m/s}$$",
+      "shortcutSolutionMarkdown": "#### ⚡ 2-Second Terminal Velocity Evaluation\n$$v_t = \\frac{80 \\times 9.8}{16} = 49\\text{ m/s}$$",
+      "formalTimeSeconds": 30,
+      "shortcutTimeSeconds": 2
     }
   ],
   "calculatorGuides": {
     "karce": {
-      "techniqueTitle": "Fast Polygon Diagonal nCr - n Shortcut",
-      "problemType": "Evaluating n(n-3)/2",
-      "sampleProblem": "Find diagonals of a 15-gon.",
+      "techniqueTitle": "Fast Terminal Velocity Evaluation",
+      "problemType": "Evaluating (m * g) / k",
+      "sampleProblem": "Find vt for m=80, g=9.8, k=16.",
       "mode": "COMP Mode (MODE 1)",
-      "keystrokes": ["1", "5", "SHIFT", "nCr", "2", "-", "1", "5", "="],
-      "notes": "Directly yields 105 - 15 = 90 diagonals."
+      "keystrokes": [
+        "8",
+        "0",
+        "×",
+        "9",
+        ".",
+        "8",
+        "÷",
+        "1",
+        "6",
+        "="
+      ],
+      "notes": "Directly yields 49 m/s in 1 second."
     },
     "canon": {
-      "techniqueTitle": "Rhombus Area from Side and Diagonal",
-      "problemType": "Evaluating d1 * √(a² - (d1/2)²) on Canon F-789SGA",
-      "sampleProblem": "Find area for a=10, d1=12.",
+      "techniqueTitle": "Natural Frequency Solver",
+      "problemType": "√(k / m) on Canon F-789SGA",
+      "sampleProblem": "Find ωn for k=800, m=2.",
       "mode": "COMP Mode (MODE 1)",
-      "keystrokes": ["1", "2", "×", "√", "(", "1", "0", "x²", "-", "6", "x²", ")", "="],
-      "notes": "Directly yields 96 cm² in 1 second."
+      "keystrokes": [
+        "√",
+        "(",
+        "8",
+        "0",
+        "0",
+        "÷",
+        "2",
+        ")",
+        "="
+      ],
+      "notes": "Directly displays 20 rad/s."
     }
   },
   "conceptChecks": [
     {
-      "id": "chk-1003-01",
-      "question": "How many diagonals does a regular nonagon (9-sided polygon) possess?",
+      "id": "chk-1803-01",
+      "question": "What is the slope relation between a given family of curves and its orthogonal trajectory family at their point of intersection?",
       "options": [
-        "27",
-        "36",
-        "20",
-        "18"
+        "(dy/dx)_t = -1 / (dy/dx)_g (Negative reciprocal)",
+        "(dy/dx)_t = (dy/dx)_g",
+        "(dy/dx)_t = 1 / (dy/dx)_g",
+        "(dy/dx)_t = -(dy/dx)_g"
       ],
       "correctAnswer": 0,
-      "explanation": "Diagonals = 9(9 - 3) / 2 = 9(6) / 2 = 27."
+      "explanation": "Orthogonal trajectories meet perpendicularly ($90^\\circ$), so their slopes are negative reciprocals: m_t = -1 / m_g."
     },
     {
-      "id": "chk-1003-02",
-      "question": "What is an inward-pointing angle greater than 180° in a concave polygon called?",
+      "id": "chk-1803-02",
+      "question": "What is the terminal velocity of a falling mass $m$ experiencing linear drag $F = kv$ under gravity $g$?",
       "options": [
-        "Reentrant angle",
-        "Salient angle",
-        "Perigon",
-        "Explementary angle"
+        "v_t = m g / k",
+        "v_t = k / (m g)",
+        "v_t = √(m g / k)",
+        "v_t = 2 m g / k"
       ],
       "correctAnswer": 0,
-      "explanation": "The inward-pointing reflex angle of a concave polygon is defined as a reentrant angle."
+      "explanation": "At terminal velocity, drag equals gravity (k vt = mg), giving vt = mg/k."
     },
     {
-      "id": "chk-1003-03",
-      "question": "Which quadrilateral is defined as a concave polygon whose adjacent sides are equal in pairs?",
+      "id": "chk-1803-03",
+      "question": "What is the natural period of vibration $T$ of a mass $m$ attached to a spring of constant $k$?",
       "options": [
-        "Deltoid (Arrowhead)",
-        "Kite",
-        "Trapezium",
-        "Rhomboid"
+        "T = 2π √(m / k)",
+        "T = 2π √(k / m)",
+        "T = 1 / (2π) √(m / k)",
+        "T = √(k / m)"
       ],
       "correctAnswer": 0,
-      "explanation": "A deltoid (or arrowhead) is the concave counterpart of the convex kite with adjacent sides equal in pairs."
+      "explanation": "Since ω_n = √(k/m), the period is T = 2π / ω_n = 2π √(m/k)."
     }
   ]
 }

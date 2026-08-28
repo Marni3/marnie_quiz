@@ -1,0 +1,291 @@
+{
+  "id": "geas-10-02",
+  "code": "GEAS 10-02",
+  "domain": "GEAS",
+  "topicCode": "GEAS-10",
+  "topicTitle": "ECE Laws, Ethics & Contracts (RA 9292)",
+  "subtopicTitle": "ECE Board Structure, Powers, 3 Categories of Practice & Qualifications",
+  "order": 2,
+  "pairedQuizSetId": "geas-10-02-mastery",
+  "toc": [
+    {
+      "id": "sec-prereq-bridges",
+      "title": "1. Introduction & Cross-Subject Connections",
+      "level": 2
+    },
+    {
+      "id": "sec-theory",
+      "title": "2. Lesson Proper: Board Structure, Powers & The 3 Professional Tiers",
+      "level": 2
+    },
+    {
+      "id": "sec-formulas",
+      "title": "3. Master Summary of Board Governance & Practice Matrix",
+      "level": 2
+    },
+    {
+      "id": "sec-visualizer",
+      "title": "4. Interactive Practice Scope & Board Appointment Simulator",
+      "level": 2
+    },
+    {
+      "id": "sec-terminology",
+      "title": "5. Key Statutory Terms & Legal Definitions",
+      "level": 2
+    },
+    {
+      "id": "sec-dual-method",
+      "title": "6. Worked Board Exam Practice Scope Scenarios",
+      "level": 2
+    },
+    {
+      "id": "sec-calculator",
+      "title": "7. Board Exam Speed Techniques: Number & Year Memory Anchors",
+      "level": 2
+    },
+    {
+      "id": "sec-concept-checks",
+      "title": "8. In-Line Concept Checks",
+      "level": 2
+    },
+    {
+      "id": "sec-mastery-challenge",
+      "title": "9. Paired Mastery Challenge Exam",
+      "level": 2
+    }
+  ],
+  "prerequisiteBridge": {
+    "priorModuleId": "geas-10-01",
+    "text": "Building upon the statutory origins and Article structure of R.A. 9292 from GEAS 10-01, we now examine the governance body (The Professional Regulatory Board of Electronics Engineering) and the explicit statutory boundaries separating PECE, ECE, and ECT practices."
+  },
+  "crossSubjectBridges": [
+    {
+      "targetDomain": "EST",
+      "targetTopicCode": "EST-02",
+      "badgeText": "GEAS → EST",
+      "description": "Broadcast station and telecommunication network plans, antenna tower structural layouts, and frequency assignment filings require mandatory review, signing, and sealing by a licensed PECE under Section 5."
+    },
+    {
+      "targetDomain": "ELECS",
+      "targetTopicCode": "ELEC-02",
+      "badgeText": "GEAS → ELECS",
+      "description": "Industrial plant control automation systems and commercial building electronic security/fire-alarm designs fall under Section 5(a) PECE sole signing authority and ECE project supervision."
+    }
+  ],
+  "theory": {
+    "mentalAnchor": "The Board consists of 1 Chairman + 2 Members (appointed by the President from 3 PRC recommendees chosen from 5 APO nominees). Board members serve a 3-year term (max 6 years total tenure) and must be PECEs with 10 years active practice. Only PECEs can sign/seal plans and offer consulting services.",
+    "contentMarkdown": "### 1. The Professional Regulatory Board of Electronics Engineering (PRB-ECE)\n\nArticle II (Sections 6 to 12) governs the creation, composition, qualifications, and administrative powers of the Board.\n\n#### A. Composition and Appointment Flow (Section 6)\n- **Structure**: Composed of a **Chairman** and **two (2) Members**.\n- **Supervisory Body**: Supervised and administratively attached to the **Professional Regulation Commission (PRC)**.\n- **Appointment Process**:\n  1. The **Accredited Professional Organization (IECEP)** submits a list of **five (5) nominees** per position.\n  2. The **PRC** screens the nominees and ranks a shortlist of **three (3) recommendees** per position.\n  3. The **President of the Philippines** appoints the Chairman and Members from the shortlist.\n\n$$\\text{IECEP (5 Nominees)} \\xrightarrow{\\text{Screens}} \\text{PRC (3 Recommendees)} \\xrightarrow{\\text{Appoints}} \\text{President of the Philippines}$$\n\n#### B. Qualifications of Board Members (Section 8)\nEvery Member of the Board must meet the following mandatory criteria at the time of appointment:\n1. **Citizenship**: Citizen and resident of the Philippines for **at least five (5) consecutive years** prior to appointment.\n2. **Moral Standing**: Good moral character and integrity, with no conviction of any crime involving moral turpitude.\n3. **License & Grade**: Holder of a valid Certificate of Registration and Professional ID as a **Professional Electronics Engineer (PECE)**.\n4. **Organizational Standing**: Member in good standing of the Integrated and Accredited Professional Organization (APO / IECEP).\n5. **Active Professional Practice**: In active practice of the electronics engineering profession for **at least ten (10) continuous years** prior to appointment, whether self-employed or in the government or private sector.\n6. **No Academic/Review Pecuniary Conflict**: Must **not** be a member of the faculty of any school, college, or university where a regular course in ECE/ECT is taught, nor have any pecuniary interest in any such institution or review center. Any member must officially resign from teaching or review center activities before taking the oath of office.\n\n#### C. Term of Office and Reappointment (Section 9)\n- **Term Duration**: **Three (3) years** from the date of appointment or until their successors have been appointed and qualified.\n- **Vacancies**: A vacancy occurring within a term is filled for the **unexpired portion** of the term only.\n- **Reappointment Limit**: A member may be reappointed for another term, provided that the **total continuous tenure shall not exceed six (6) years**.\n\n---\n\n### 2. Powers and Functions of the Board (Section 7)\n\nThe Board is vested with comprehensive regulatory, administrative, and quasi-judicial powers:\n1. **Administer & Enforce**: Administer all provisions of R.A. 9292 and administer professional oaths.\n2. **Licensure & IDs**: Issue, suspend, revoke, or reinstate Certificates of Registration and Professional IDs for PECE, ECE, and ECT.\n3. **Roster Maintenance**: Prepare and maintain an official comprehensive Roster of all PECEs, ECEs, and ECTs.\n4. **Special Permits**: Issue, suspend, or cancel Special Permits to foreign electronics professionals under Section 26 and Section 33.\n5. **Syllabi & Computerization**: Prescribe or revise the syllabi for licensure examination subjects and implement full computerization of the board exams.\n6. **Academic Curriculum Standards**: Inspect schools, colleges, and universities offering ECE/ECT programs (in coordination with CHED and TESDA); recommend opening, upgrading, or closure of programs.\n7. **National Building Code (PD 1096)**: Formulate guidelines and rules for electronic installations in buildings in coordination with DPWH.\n8. **Subpoena Powers**: Conduct hearings on violations of R.A. 9292, Code of Ethics, and Technical Standards; issue *subpoena ad testificandum* (compelling witness testimony) and *subpoena duces tecum* (compelling document production).\n9. **Appeals Window**: Decisions/resolutions of the Board are appealable to the PRC within **fifteen (15) days** from receipt. If no appeal is perfected within 15 days, the decision becomes final and executory.\n10. **Annual Reports**: Submit an annual action plan and comprehensive report of activities at the beginning and close of each fiscal year.\n\n---\n\n### 3. The 3 Categories of Practice (Sections 4 & 5)\n\nR.A. 9292 recognizes three distinct, hierarchically defined professional tiers:\n\n- **1. Professional Electronics Engineer (PECE)**:\n  - Highest professional grade.\n  - Sole legal authority to sign and seal electronics engineering plans, specifications, reports, and schematics.\n  - Authorized to render independent consulting services and expert witness testimonies.\n  - Includes all rights and scope of an ECE.\n- **2. Electronics Engineer (ECE)**:\n  - Professional engineering tier.\n  - Authorized for engineering design, principles, administration, supervision, and teaching.\n  - Engineering supervision of Electronics Technicians (ECT).\n  - *Cannot* sign and seal final permit documents or render independent consulting services.\n- **3. Electronics Technician (ECT)**:\n  - Technical operational tier.\n  - Non-engineering operational tasks: installation, operation, maintenance, testing, and sales of electronics systems.\n\n#### Comparison of Practice Boundaries:\n\n| Professional Tier | Core Scope of Practice | Signature & Sealing Authority | Consulting Services | Minimum Academic / Prerequisite |\n| :--- | :--- | :--- | :--- | :--- |\n| **PECE** | Full engineering practice + consulting + highest technical leadership | **YES (Sole Legal Authority)** for all plans, specs, schematics, and reports | **YES** | Valid ECE + 7 years active practice (2 yrs significant work) + 3 PECE certs + En Banc interview |\n| **ECE** | Engineering design, administration, supervision, testing, research, and teaching | **NO** (Cannot sign/seal final permit plans or contract documents) | **NO** (Only as part of a PECE-led consulting team) | BS Electronics Engineering (BSECE) + Passed PRC ECE Licensure Exam |\n| **ECT** | Non-engineering technical operations, installation, calibration, testing, maintenance, sales | **NO** | **NO** | 2-year Technical Course OR $ge 3$ years BSECE completion + Passed ECT Exam |"
+  },
+  "formulas": [
+    {
+      "id": "f-geas10-04",
+      "title": "Board Composition Formula",
+      "formula": "$$\\text{PRB-ECE} = 1 \\text{ Chairman} + 2 \\text{ Members} \\quad [\\text{Appointed by President of the Philippines}]$$",
+      "note": "Nomination flow: 5 APO Nominees → 3 PRC Recommendees → 1 Appointee."
+    },
+    {
+      "id": "f-geas10-05",
+      "title": "Board Member Experience & Tenure Rule",
+      "formula": "$$\\text{Experience} \\ge 10 \\text{ yrs active PECE practice} \\quad | \\quad \\text{Term} = 3 \\text{ yrs} \\quad | \\quad \\text{Max Tenure} \\le 6 \\text{ yrs}$$",
+      "note": "Must be a citizen/resident for at least 5 years prior to appointment."
+    },
+    {
+      "id": "f-geas10-06",
+      "title": "PECE Licensure Upgrade Formula",
+      "formula": "$$\\text{PECE Requirements} = \\text{Valid ECE} + 7 \\text{ yrs practice} \\; (2 \\text{ yrs significant work}) + 3 \\text{ PECE certs} + \\text{Board Oral Interview}$$",
+      "note": "Sole tier authorized to sign and seal electronics engineering plans."
+    }
+  ],
+  "visualizer": {
+    "archetype": "stepper",
+    "title": "Interactive ECE Professional Practice & Board Governance Matrix",
+    "description": "Toggle between the 3 Professional Tiers (PECE, ECE, ECT) and Board Governance criteria to inspect statutory rights and prerequisites.",
+    "config": {
+      "controls": [
+        {
+          "id": "tierIndex",
+          "label": "Select Professional Tier (1: ECT, 2: ECE, 3: PECE, 4: Board Member)",
+          "min": 1,
+          "max": 4,
+          "step": 1,
+          "defaultValue": 3
+        }
+      ],
+      "initialParams": {
+        "tierIndex": 3
+      }
+    }
+  },
+  "terms": [
+    {
+      "term": "Professional Regulatory Board of Electronics Engineering (PRB-ECE)",
+      "symbol": "Sec. 6",
+      "definition": "The regulatory body under PRC composed of a Chairman and 2 Members appointed by the President.",
+      "keywordTrigger": "Chairman + 2 Members / Appointed by President / 3-year term"
+    },
+    {
+      "term": "PECE (Professional Electronics Engineer)",
+      "symbol": "Sec. 4 / Sec. 5",
+      "definition": "The highest professional tier authorized to render consulting services and sign/seal electronics plans.",
+      "keywordTrigger": "Sole authority to sign and seal / Consulting services / 7 years practice"
+    },
+    {
+      "term": "ECE (Electronics Engineer)",
+      "symbol": "Sec. 4 / Sec. 5",
+      "definition": "Licensed professional authorized for general electronics engineering practice, design, supervision, and teaching.",
+      "keywordTrigger": "General engineering practice / BSECE graduate / Licensure exam passer"
+    },
+    {
+      "term": "ECT (Electronics Technician)",
+      "symbol": "Sec. 4 / Sec. 5",
+      "definition": "Licensed professional performing non-engineering technical work, installation, operation, maintenance, and testing.",
+      "keywordTrigger": "Non-engineering technical work / Installation, maintenance, testing"
+    },
+    {
+      "term": "Tenure of Board Member",
+      "symbol": "Sec. 9",
+      "definition": "Term is 3 years with allowable reappointment up to a maximum continuous tenure of 6 years.",
+      "keywordTrigger": "3 years per term / Maximum 6 years total tenure"
+    }
+  ],
+  "examples": [
+    {
+      "id": "ex-geas10-02-01",
+      "title": "Board Member Appointment Flow Scenario",
+      "prompt": "When a vacancy occurs in the Professional Regulatory Board of Electronics Engineering, how many names must the Accredited Professional Organization (IECEP) submit to the PRC, and how many names does the PRC recommend to the President of the Philippines?",
+      "formalSolution": "Step 1: Check Section 6 of R.A. 9292 regarding Board composition and appointment.\nStep 2: The APO (IECEP) must submit a list of five (5) nominees for each position.\nStep 3: The PRC screens the 5 nominees and submits a ranked list of three (3) recommendees per position to the President of the Philippines.\nStep 4: The President chooses and appoints 1 individual per position.",
+      "shortcutSolution": "Remember the 5-3-1 rule: 5 Nominees (APO) $\\to$ 3 Recommendees (PRC) $\\to$ 1 Appointed (President).",
+      "finalAnswer": "5 nominees from the APO, 3 recommendees from the PRC."
+    },
+    {
+      "id": "ex-geas10-02-02",
+      "title": "Practice Scope Authority Problem: Signing Building Telecom Plans",
+      "prompt": "An engineer who passed the PRC Electronics Engineer Licensure Examination 3 years ago is hired to design the telecommunications distribution cabling and fire alarm system for a 20-story commercial building. Can this engineer legally sign and seal the plans for permit issuance?",
+      "formalSolution": "Step 1: Inspect Section 5(a) of R.A. 9292 governing the nature and scope of practice of PECE vs ECE.\nStep 2: Section 5 states that while an ECE may perform engineering design, the sole legal authority to sign and seal electronics engineering plans, specifications, reports, and building permit documents is strictly restricted to a licensed Professional Electronics Engineer (PECE).\nStep 3: An ECE (with only 3 years of experience) cannot sign and seal building permit plans; they must be reviewed, signed, and sealed by a PECE.",
+      "shortcutSolution": "Signing and sealing = Exclusively PECE. An ECE can never sign and seal plans.",
+      "finalAnswer": "No. Only a registered and licensed Professional Electronics Engineer (PECE) has the legal authority to sign and seal electronics plans."
+    }
+  ],
+  "calculatorShortcuts": [
+    {
+      "calculatorModel": "Karce KC-S991 / Canon F-789SGA",
+      "topic": "Board Qualifications & Numbers Recall",
+      "shortcutName": "Key Numerical Quantities of R.A. 9292",
+      "keystrokeSequence": [
+        "MODE",
+        "1"
+      ],
+      "explanation": "Key figures: Board composition = 1 + 2 = 3; Board term = 3 yrs (max 6 yrs); Board experience = 10 yrs PECE practice; PECE upgrade = 7 yrs practice (2 yrs significant work) + 3 PECE certs; Appeals window = 15 days."
+    }
+  ],
+  "conceptChecks": [
+    {
+      "id": "cc-geas10-02-01",
+      "questionText": "How many members compose the Professional Regulatory Board of Electronics Engineering (PRB-ECE)?",
+      "options": [
+        {
+          "text": "One Chairman and two Members",
+          "isCorrect": true,
+          "distractorReason": "Correct: Section 6 establishes 1 Chairman + 2 Members (total of 3)."
+        },
+        {
+          "text": "One Chairman and four Members",
+          "isCorrect": false,
+          "distractorReason": "That is the composition of the PRC Commission, not PRB-ECE."
+        },
+        {
+          "text": "One Chairman and one Vice-Chairman",
+          "isCorrect": false,
+          "distractorReason": "There is no statutory Vice-Chairman."
+        },
+        {
+          "text": "Five Members including the Chairman",
+          "isCorrect": false,
+          "distractorReason": "Overstates the Board size."
+        }
+      ],
+      "directExplanation": "Section 6 specifies that the Board of Electronics Engineering is composed of a Chairman and two (2) Members."
+    },
+    {
+      "id": "cc-geas10-02-02",
+      "questionText": "What is the minimum number of years of active professional practice required for a PECE to qualify as a member of the Board of ECE?",
+      "options": [
+        {
+          "text": "At least 10 years",
+          "isCorrect": true,
+          "distractorReason": "Correct: Section 8(e) requires at least 10 continuous years of active practice as a PECE."
+        },
+        {
+          "text": "At least 5 years",
+          "isCorrect": false,
+          "distractorReason": "5 years is the minimum citizenship/residency requirement."
+        },
+        {
+          "text": "At least 7 years",
+          "isCorrect": false,
+          "distractorReason": "7 years is the requirement to upgrade from ECE to PECE."
+        },
+        {
+          "text": "At least 15 years",
+          "isCorrect": false,
+          "distractorReason": "Exceeds the statutory minimum."
+        }
+      ],
+      "directExplanation": "Section 8(e) explicitly requires at least ten (10) years of active practice of the electronics engineering profession prior to appointment."
+    },
+    {
+      "id": "cc-geas10-02-03",
+      "questionText": "What is the standard term of office for a member of the Board of ECE, and what is the maximum allowable tenure including reappointment?",
+      "options": [
+        {
+          "text": "3 years per term, maximum 6 years total tenure",
+          "isCorrect": true,
+          "distractorReason": "Correct: Section 9 specifies 3 years per term, maximum 6 years continuous tenure."
+        },
+        {
+          "text": "2 years per term, maximum 4 years total tenure",
+          "isCorrect": false,
+          "distractorReason": "Understates the statutory term."
+        },
+        {
+          "text": "5 years per term, maximum 10 years total tenure",
+          "isCorrect": false,
+          "distractorReason": "Overstates the statutory term."
+        },
+        {
+          "text": "4 years per term, maximum 8 years total tenure",
+          "isCorrect": false,
+          "distractorReason": "Incorrect term length."
+        }
+      ],
+      "directExplanation": "Section 9 mandates a term of three (3) years with a maximum continuous tenure not exceeding six (6) years."
+    },
+    {
+      "id": "cc-geas10-02-04",
+      "questionText": "Which professional category has the sole legal authority to sign and seal electronics engineering plans, specifications, and reports?",
+      "options": [
+        {
+          "text": "Professional Electronics Engineer (PECE)",
+          "isCorrect": true,
+          "distractorReason": "Correct: Section 5 restricts signing and sealing exclusively to PECEs."
+        },
+        {
+          "text": "Electronics Engineer (ECE)",
+          "isCorrect": false,
+          "distractorReason": "ECEs can design and supervise, but cannot sign/seal plans."
+        },
+        {
+          "text": "Electronics Technician (ECT)",
+          "isCorrect": false,
+          "distractorReason": "ECTs perform non-engineering operational tasks."
+        },
+        {
+          "text": "Master Electrician",
+          "isCorrect": false,
+          "distractorReason": "Governed under the Electrical Engineering Law (RA 7920)."
+        }
+      ],
+      "directExplanation": "Section 5 of R.A. 9292 reserves the authority to sign and seal electronics plans, schematics, and reports solely to registered PECEs."
+    }
+  ]
+}

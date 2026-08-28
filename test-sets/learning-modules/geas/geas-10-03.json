@@ -1,0 +1,297 @@
+{
+  "id": "geas-10-03",
+  "code": "GEAS 10-03",
+  "domain": "GEAS",
+  "topicCode": "GEAS-10",
+  "topicTitle": "ECE Laws, Ethics & Contracts (RA 9292)",
+  "subtopicTitle": "Licensure Ratings, PECE/Board Seals, Penal Provisions & Foreign Reciprocity",
+  "order": 3,
+  "pairedQuizSetId": "geas-10-03-mastery",
+  "toc": [
+    {
+      "id": "sec-prereq-bridges",
+      "title": "1. Introduction & Cross-Subject Connections",
+      "level": 2
+    },
+    {
+      "id": "sec-theory",
+      "title": "2. Lesson Proper: Exam Grading, Official Seals & Legal Penalties",
+      "level": 2
+    },
+    {
+      "id": "sec-formulas",
+      "title": "3. Master Summary of Dimensions, Fines & Pass Criteria",
+      "level": 2
+    },
+    {
+      "id": "sec-visualizer",
+      "title": "4. Interactive PECE vs Board Seal Dimension Comparator",
+      "level": 2
+    },
+    {
+      "id": "sec-terminology",
+      "title": "5. Key Statutory Terms & Legal Definitions",
+      "level": 2
+    },
+    {
+      "id": "sec-dual-method",
+      "title": "6. Worked Board Exam Scoring & Legal Problem Scenarios",
+      "level": 2
+    },
+    {
+      "id": "sec-calculator",
+      "title": "7. Board Exam Speed Techniques: Seal Dimension & Penalty Rules",
+      "level": 2
+    },
+    {
+      "id": "sec-concept-checks",
+      "title": "8. In-Line Concept Checks",
+      "level": 2
+    },
+    {
+      "id": "sec-mastery-challenge",
+      "title": "9. Paired Mastery Challenge Exam",
+      "level": 2
+    }
+  ],
+  "prerequisiteBridge": {
+    "priorModuleId": "geas-10-02",
+    "text": "Following the board structure and practice categories in GEAS 10-02, we conclude R.A. 9292 with the strict licensure rating criteria, the geometric specifications of the PECE and Board dry seals, penal provisions, foreign reciprocity, and the 2-understudy rule for foreign consultants."
+  },
+  "crossSubjectBridges": [
+    {
+      "targetDomain": "EST",
+      "targetTopicCode": "EST-01",
+      "badgeText": "GEAS → EST",
+      "description": "NTC commercial broadcast permit applications require engineering drawings bearing the official PECE dry seal adhering strictly to the 48 mm / 32 mm dimensional standard under Section 29."
+    },
+    {
+      "targetDomain": "GEAS",
+      "targetTopicCode": "GEAS-01",
+      "badgeText": "GEAS → GEAS",
+      "description": "Engineers drafting commercial procurement or construction contracts must integrate the mandatory penal liabilities (₱100K–₱1M fine / 6 mos–6 yrs imprisonment) for unauthorized engineering work."
+    }
+  ],
+  "theory": {
+    "mentalAnchor": "Passing the board exam requires General Average ≥ 70% with no subject < 70% (removal exam allowed if average ≥ 70% and lowest subject is 60%–69%). Results are released in 15 days. PECE seal is 48 mm outer / 32 mm inner, while Board seal is 48 mm outer / 28 mm inner. Section 35 penalizes violations with ₱100,000–₱1,000,000 fine and/or 6 months–6 years imprisonment.",
+    "contentMarkdown": "### 1. Licensure Examination Ratings & Passing Criteria (Section 16)\n\nSection 16 sets the statutory standards for determining whether an examinee passes the Electronics Engineer (ECE) or Electronics Technician (ECT) licensure examinations:\n\n| Examination Outcome | Statutory Criteria Under Section 16 | Legal Result & Action Required |\n| :--- | :--- | :--- |\n| **PASSED** | **General Weighted Average $\\ge 70\\%$** AND **no score below $70\\%$** in any individual subject | Issued Certificate of Registration and Professional ID upon taking oath. |\n| **CONDITIONALLY PASSED (Removal Exam)** | **General Weighted Average $\\ge 70\\%$**, but with a score below $70\\%$ in one or more subjects, provided **no subject score is below $60\\%$** | Must take a removal examination in the failed subject(s) within **two (2) years**. Passing requires $\\ge 70\\%$ in the removal subject. |\n| **FAILED** | **General Weighted Average $< 70\\%$** OR **any individual subject score $< 60\\%$** | Must retake the entire licensure examination. |\n\n- **Release of Results (Section 17)**: The Board and the Commission must release the official licensure examination results within **fifteen (15) days** after the last day of the examination.\n\n---\n\n### 2. Official Seal Specifications (Section 29)\n\nSection 29 mandates that all Professional Electronics Engineers (PECE) must obtain and use an official dry seal of the prescribed dimensions and visual layout. The statute specifies two distinct official seals:\n\n#### A. Seal of a Professional Electronics Engineer (PECE)\n- **Shape**: Two concentric circles.\n- **Outer Circle Diameter**: **$48\\text{ mm}$**\n- **Inner Circle Diameter**: **$32\\text{ mm}$**\n- **Upper Annular Space**: Bears the words **`PROFESSIONAL ELECTRONICS ENGINEER`**\n- **Lower Annular Space**: Bears the word **`PHILIPPINES`**\n- **Inner Circle (Upper Portion)**: Symbol of an **atom with a nucleus and electrons**\n- **Inner Circle (Middle Diametral Space)**: Horizontal space bearing **`LICENSE NO. 0000000`**\n- **Inner Circle (Lower Portion)**: Full name of the PECE (e.g. **`JUAN DE LA CRUZ`**)\n\n#### B. Seal of the Professional Regulatory Board of Electronics Engineering (BECE)\n- **Shape**: Two concentric circles.\n- **Outer Circle Diameter**: **$48\\text{ mm}$**\n- **Inner Circle Diameter**: **$28\\text{ mm}$** *(Note: $4\\text{ mm}$ smaller inner circle than the PECE seal!)*\n- **Upper Annular Space**: Bears **`BOARD OF ELECTRONICS ENGINEERING`**\n- **Lower Annular Space**: Bears **`PROFESSIONAL REGULATION COMMISSION`**\n- **Color Specifications**:\n  - Outer and inner rings filled with **orange** with boundaries in **navy blue**.\n  - Text in **black** with a **white** background.\n  - Inner circle filled with a **navy blue** background.\n  - Atom in **white** with the nucleus and electrons in **red**.\n\n---\n\n### 3. Exemptions from Examination & Foreign Reciprocity\n\n#### A. Exemption from Examination (Section 26)\nForeign electronics professionals may be issued a **Special Temporary Permit** to work in the Philippines without taking the licensure examination under strict statutory safeguards:\n1. **No Filipino Available**: Certified that no qualified Filipino professional is available for the specialized engagement.\n2. **Specific Contract**: Employment is strictly temporary and limited to the designated project/contract.\n3. **Mandatory 2-Understudy Rule**: For every foreign professional hired, the employer must employ at least **two (2) Filipino registered engineers/technicians** as understudies/counterparts.\n4. **No Private Practice**: The foreigner shall **not** engage in independent private practice.\n5. **Validity of Special Permit**: Valid for **six (6) months** and renewable for another 6 months upon valid justification.\n\n#### B. Foreign Reciprocity (Section 33)\nNo foreign citizen may take the PRC licensure examination or be registered as a PECE, ECE, or ECT unless the country or state of which they are a citizen **admits citizens of the Philippines to practice electronics engineering on the same basis as its own citizens** (demonstrated via international treaty, agreement, or certified reciprocal law).\n\n---\n\n### 4. Penal Provisions (Section 35)\n\nSection 35 establishes strict criminal and financial penalties for violations of the Act:\n\n- **Financial Penalty (Fine)**: Not less than **₱100,000** nor more than **₱1,000,000** (PHP 100K to 1M).\n- **Penal Penalty (Imprisonment)**: Not less than **six (6) months** nor more than **six (6) years**.\n- **Discretion**: The court may impose both the fine and imprisonment.\n\n#### Penalized Acts:\n1. Practicing without a valid Certificate of Registration and Professional ID.\n2. Presenting or attempting to use the license, ID, or seal of another person.\n3. Giving false or forged evidence to the Board to obtain a license.\n4. Impersonating a registered PECE, ECE, or ECT.\n5. Using a revoked or suspended Certificate/ID or using an official seal while suspended.\n6. Aiding or abetting unauthorized persons in illegal electronics practice.\n7. Any violation of R.A. 9292, its IRR, the Code of Ethics, or the Code of Technical Standards.\n\n---\n\n### 5. Other Critical Section Provisions\n\n- **Section 24 (Reinstatement of License)**: The Board may reinstate a revoked Certificate of Registration and Professional ID after the expiration of **two (2) years** from the date of revocation, upon proper application and showing of good moral cause.\n- **Section 30 (Code of Ethics & Technical Standards)**: Promulgated and updated by the Accredited Professional Organization (APO / IECEP) and adopted by the Board.\n- **Section 32 (Integrated and Accredited Professional Organization)**: There shall be only **one (1) integrated and accredited national organization** of PECEs, ECEs, and ECTs in the country (IECEP)."
+  },
+  "formulas": [
+    {
+      "id": "f-geas10-07",
+      "title": "Licensure Examination Passing Criteria (Section 16)",
+      "formula": "$$\\text{PASSED} \\iff \\text{GWA} \\ge 70\\% \\quad \\land \\quad \\forall i, \\; \\text{Score}_i \\ge 70\\%$$",
+      "note": "Removal exam granted if GWA ≥ 70% and all subject scores ≥ 60%."
+    },
+    {
+      "id": "f-geas10-08",
+      "title": "PECE vs Board Seal Dimensional Invariant (Section 29)",
+      "formula": "$$\\text{PECE Seal}: \\; D_{\\text{out}} = 48\\text{ mm}, \\; D_{\\text{in}} = 32\\text{ mm} \\quad \\Big| \\quad \\text{Board Seal}: \\; D_{\\text{out}} = 48\\text{ mm}, \\; D_{\\text{in}} = 28\\text{ mm}$$",
+      "note": "PECE inner circle is 32 mm; Board inner circle is 28 mm."
+    },
+    {
+      "id": "f-geas10-09",
+      "title": "Foreign Consultant Understudy & Permit Rule (Section 26)",
+      "formula": "$$\\text{Ratio} = \\frac{2 \\text{ Filipino Understudies}}{1 \\text{ Foreign Consultant}} \\quad | \\quad \\text{Permit Validity} = 6 \\text{ months (renewable)}$$",
+      "note": "Foreigner is strictly prohibited from engaging in private practice."
+    }
+  ],
+  "visualizer": {
+    "archetype": "stepper",
+    "title": "Interactive Official Seal & Licensing Standards Inspector",
+    "description": "Compare the geometric dimensions, text inscriptions, and visual layouts of the PECE Dry Seal versus the PRB-ECE Board Seal.",
+    "config": {
+      "controls": [
+        {
+          "id": "sealType",
+          "label": "Select Seal (1: PECE Seal 48mm/32mm, 2: Board Seal 48mm/28mm)",
+          "min": 1,
+          "max": 2,
+          "step": 1,
+          "defaultValue": 1
+        }
+      ],
+      "initialParams": {
+        "sealType": 1
+      }
+    }
+  },
+  "terms": [
+    {
+      "term": "Section 16 (Licensure Ratings)",
+      "symbol": "Sec. 16",
+      "definition": "Passing requirement: GWA ≥ 70% with no subject below 70%. Removal exam allowed if lowest score is 60%–69%.",
+      "keywordTrigger": "GWA ≥ 70% / No score < 70% / Removal if 60%–69%"
+    },
+    {
+      "term": "Seal of PECE",
+      "symbol": "Sec. 29",
+      "definition": "Official dry seal with 48 mm outer diameter and 32 mm inner diameter bearing atom and license number.",
+      "keywordTrigger": "48 mm outer / 32 mm inner / Atom / LICENSE NO."
+    },
+    {
+      "term": "Seal of the Board (BECE)",
+      "symbol": "Sec. 29",
+      "definition": "Official seal with 48 mm outer diameter and 28 mm inner diameter with navy blue, orange, and red colors.",
+      "keywordTrigger": "48 mm outer / 28 mm inner / Orange & Navy Blue"
+    },
+    {
+      "term": "Penal Provision (Section 35)",
+      "symbol": "Sec. 35",
+      "definition": "Fines of ₱100,000 to ₱1,000,000 and/or imprisonment of 6 months to 6 years.",
+      "keywordTrigger": "₱100k to ₱1M / 6 months to 6 years"
+    },
+    {
+      "term": "Foreign Understudy Rule",
+      "symbol": "Sec. 26",
+      "definition": "Requires employing at least 2 Filipino registered professionals as counterparts for every foreign consultant.",
+      "keywordTrigger": "2 Filipino understudies per foreigner / 6 months permit"
+    },
+    {
+      "term": "Reinstatement of License",
+      "symbol": "Sec. 24",
+      "definition": "Revoked license may be reinstated after 2 years upon application and proof of good moral character.",
+      "keywordTrigger": "Reinstatement after 2 years"
+    }
+  ],
+  "examples": [
+    {
+      "id": "ex-geas10-03-01",
+      "title": "Licensure Scoring Condition Analysis",
+      "prompt": "An examinee takes the 4-subject ECE Licensure Examination and obtains the following scores: Math = 82%, GEAS = 78%, Electronics = 71%, EST = 64%. The general weighted average is 73.75%. What is the examinee's official status under Section 16 of R.A. 9292?",
+      "formalSolution": "Step 1: Check General Weighted Average (GWA). The GWA is 73.75%, which is $\\ge 70\\%$.\nStep 2: Check individual subject scores. Math (82%), GEAS (78%), and Electronics (71%) are all $\\ge 70\\%$. However, EST is 64%, which is below 70%.\nStep 3: Check condition for removal examination: The lowest subject score (EST = 64%) is not below 60%.\nStep 4: Under Section 16, the examinee is given a conditional pass with a removal examination in EST to be taken within 2 years.",
+      "shortcutSolution": "Average is $\\ge 70\\%$ and lowest subject is between 60% and 69% $\\to$ Conditioned (Removal Exam in EST).",
+      "finalAnswer": "Conditionally Passed (Removal examination in EST within 2 years)."
+    },
+    {
+      "id": "ex-geas10-03-02",
+      "title": "Seal Diameter Trap: PECE vs Board Seal",
+      "prompt": "What is the diameter of the inner circle of the official dry seal of a Professional Electronics Engineer (PECE), and how does it compare to the inner circle diameter of the Board of Electronics Engineering seal?",
+      "formalSolution": "Step 1: Refer to Section 29 of R.A. 9292 for official seal dimensions.\nStep 2: Both seals have an identical outer circle diameter of 48 mm.\nStep 3: The PECE dry seal has an inner circle measuring 32 mm in diameter.\nStep 4: The Board of ECE seal has an inner circle measuring 28 mm in diameter.\nStep 5: The PECE inner circle is 32 mm (which is 4 mm larger than the Board seal's 28 mm inner circle).",
+      "shortcutSolution": "Outer is always 48 mm. Inner: PECE = 32 mm, Board = 28 mm.",
+      "finalAnswer": "PECE inner diameter is 32 mm; Board inner diameter is 28 mm."
+    }
+  ],
+  "calculatorShortcuts": [
+    {
+      "calculatorModel": "Karce KC-S991 / Canon F-789SGA",
+      "topic": "Scoring & Penalty Recall",
+      "shortcutName": "Numerical Constants of Section 16, 26, 29, 35",
+      "keystrokeSequence": [
+        "MODE",
+        "1"
+      ],
+      "explanation": "Memory table: Passing = 70% avg, 70% min subject; Removal threshold = 60%; Results = 15 days; Reinstatement = 2 years; Understudies = 2 Filipinos; PECE Seal = 48mm / 32mm; Board Seal = 48mm / 28mm; Fines = 100K to 1M; Prison = 6 mos to 6 yrs."
+    }
+  ],
+  "conceptChecks": [
+    {
+      "id": "cc-geas10-03-01",
+      "questionText": "Within how many days after the last day of the examination must the PRC and Board of ECE release the official licensure results?",
+      "options": [
+        {
+          "text": "Within 15 days",
+          "isCorrect": true,
+          "distractorReason": "Correct: Section 17 mandates release of results within 15 days."
+        },
+        {
+          "text": "Within 30 days",
+          "isCorrect": false,
+          "distractorReason": "Overstates the statutory window."
+        },
+        {
+          "text": "Within 3 days",
+          "isCorrect": false,
+          "distractorReason": "Understates the statutory window."
+        },
+        {
+          "text": "Within 60 days",
+          "isCorrect": false,
+          "distractorReason": "Incorrect."
+        }
+      ],
+      "directExplanation": "Section 17 requires the Board and Commission to release the examination results within fifteen (15) days after the last day of the examination."
+    },
+    {
+      "id": "cc-geas10-03-02",
+      "questionText": "What are the outer and inner circle diameters of the official dry seal of a Professional Electronics Engineer (PECE)?",
+      "options": [
+        {
+          "text": "48 mm outer diameter and 32 mm inner diameter",
+          "isCorrect": true,
+          "distractorReason": "Correct: Section 29 specifies 48 mm outer / 32 mm inner."
+        },
+        {
+          "text": "48 mm outer diameter and 28 mm inner diameter",
+          "isCorrect": false,
+          "distractorReason": "48 mm / 28 mm is the dimension of the Board of ECE seal."
+        },
+        {
+          "text": "50 mm outer diameter and 30 mm inner diameter",
+          "isCorrect": false,
+          "distractorReason": "Incorrect dimensions."
+        },
+        {
+          "text": "40 mm outer diameter and 25 mm inner diameter",
+          "isCorrect": false,
+          "distractorReason": "Incorrect dimensions."
+        }
+      ],
+      "directExplanation": "Section 29 specifies that the PECE dry seal has an outer diameter of 48 mm and an inner diameter of 32 mm."
+    },
+    {
+      "id": "cc-geas10-03-03",
+      "questionText": "What is the penalty prescribed under Section 35 of R.A. 9292 for practicing electronics engineering without a valid license?",
+      "options": [
+        {
+          "text": "Fine of ₱100,000 to ₱1,000,000 and/or imprisonment of 6 months to 6 years",
+          "isCorrect": true,
+          "distractorReason": "Correct: Section 35 penalizes violations with ₱100k–₱1M fine and/or 6 mos–6 yrs imprisonment."
+        },
+        {
+          "text": "Fine of ₱10,000 to ₱50,000 and/or imprisonment of 1 month to 6 months",
+          "isCorrect": false,
+          "distractorReason": "These were old penalties under the repealed RA 5734."
+        },
+        {
+          "text": "Fine of ₱500,000 and community service for 30 days",
+          "isCorrect": false,
+          "distractorReason": "Incorrect penalty formulation."
+        },
+        {
+          "text": "Administrative reprimand with no financial fine",
+          "isCorrect": false,
+          "distractorReason": "Violates the statutory penal mandate."
+        }
+      ],
+      "directExplanation": "Section 35 prescribes a fine of not less than ₱100,000 nor more than ₱1,000,000, or imprisonment of not less than 6 months nor more than 6 years, or both."
+    },
+    {
+      "id": "cc-geas10-03-04",
+      "questionText": "How many Filipino registered professionals must be employed as understudies/counterparts for every foreign consultant hired under Section 26?",
+      "options": [
+        {
+          "text": "At least two (2) Filipino professionals",
+          "isCorrect": true,
+          "distractorReason": "Correct: Section 26 mandates a minimum of 2 Filipino understudies per foreign specialist."
+        },
+        {
+          "text": "At least one (1) Filipino professional",
+          "isCorrect": false,
+          "distractorReason": "Understates the statutory ratio."
+        },
+        {
+          "text": "At least five (5) Filipino professionals",
+          "isCorrect": false,
+          "distractorReason": "Overstates the statutory ratio."
+        },
+        {
+          "text": "No understudies are required if the foreigner pays an accreditation fee",
+          "isCorrect": false,
+          "distractorReason": "Understudies are a strict statutory requirement."
+        }
+      ],
+      "directExplanation": "Section 26 mandates that at least two (2) Filipino professionals shall be employed as understudies for every foreign professional hired."
+    }
+  ]
+}

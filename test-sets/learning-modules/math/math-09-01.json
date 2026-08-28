@@ -1,0 +1,274 @@
+{
+  "id": "math-09-01",
+  "code": "MATH 09-01",
+  "domain": "MATH",
+  "topicCode": "MATH-09",
+  "topicTitle": "Integral Calculus",
+  "subtopicTitle": "Fundamental Theorem of Calculus, Master Catalog of 41 Integrals & Standard Antiderivatives",
+  "order": 1,
+  "pairedQuizSetId": "math-09-01-mastery",
+  "toc": [
+    {
+      "id": "sec-prereq-bridges",
+      "title": "1. Introduction & Cross-Subject Connections",
+      "level": 2
+    },
+    {
+      "id": "sec-theory",
+      "title": "2. Lesson Proper: FTC & The 41 Standard Antiderivative Formulas",
+      "level": 2
+    },
+    {
+      "id": "sec-formulas",
+      "title": "3. Master Compilation of All 41 Integral Formulas",
+      "level": 2
+    },
+    {
+      "id": "sec-visualizer",
+      "title": "4. Interactive Visualizer: Definite Integral Riemann Area Accumulator",
+      "level": 2
+    },
+    {
+      "id": "sec-terminology",
+      "title": "5. Key Terms and Definitions",
+      "level": 2
+    },
+    {
+      "id": "sec-dual-method",
+      "title": "6. Worked Board Exam Problems",
+      "level": 2
+    },
+    {
+      "id": "sec-calculator",
+      "title": "7. Calculator Speed Techniques (Karce & Canon)",
+      "level": 2
+    },
+    {
+      "id": "sec-concept-checks",
+      "title": "8. In-Line Concept Checks",
+      "level": 2
+    },
+    {
+      "id": "sec-mastery-challenge",
+      "title": "9. Paired Mastery Challenge Exam",
+      "level": 2
+    }
+  ],
+  "prerequisiteBridge": {
+    "priorModuleId": "math-14-04",
+    "text": "Transitioning from differential to integral calculus, we explore antiderivatives, Leibniz's calculus summatorius notation, the Fundamental Theorem of Calculus (FTC), and the master catalog of 41 elementary and transcendental integral formulas."
+  },
+  "crossSubjectBridges": [
+    {
+      "targetDomain": "ELECS",
+      "targetTopicCode": "ELEC-05",
+      "badgeText": "Energy & Charge",
+      "description": "Capacitor voltage $v(t) = \\frac{1}{C} \\int i(t) dt$ and energy $W = \\int p(t) dt$ are fundamental time-integral accumulations."
+    },
+    {
+      "targetDomain": "EST",
+      "targetTopicCode": "EST-01",
+      "badgeText": "Signal Energy",
+      "description": "Total energy and power of continuous-time signals are computed via infinite definite integrals $E = \\int_{-\\infty}^{\\infty} |x(t)|^2 dt$."
+    },
+    {
+      "targetDomain": "GEAS",
+      "targetTopicCode": "GEAS-01",
+      "badgeText": "Work & Impulse",
+      "description": "Mechanical work $W = \\int F dx$ and impulse $J = \\int F dt$ integrate variable forces over spatial and temporal domains."
+    }
+  ],
+  "theory": {
+    "mentalAnchor": "FTC: $\\int_a^b f(x)dx = F(b) - F(a)$. Leibniz elongated S ($\\int$) from *summa*. Key integrals: $\\int \\tan u du = \\ln|\\sec u|$, $\\int \\sec u du = \\ln|\\sec u + \\tan u|$, $\\int \\ln u du = u\\ln u - u$, $\\int u e^u du = e^u(u - 1)$, $\\int \\text{sech } u du = \\tan^{-1}(\\sinh u)$, $\\int \\sin^2 u du = \\frac{1}{2}u - \\frac{1}{4}\\sin 2u$.",
+    "contentMarkdown": "### 1. The Fundamental Theorem of Calculus & History\n\n- **Integration**: The inverse operation of differentiation. The function being integrated is the **integrand**, and the outcome is the **integral** (or primitive / antiderivative).\n- **Etymology & Notation**: The integral symbol $\\int$ is an elongated Latin letter **S** (standing for *summa*, \"sum\"), introduced by **Gottfried Wilhelm Leibniz** in 1675, who originally called this branch *calculus summatorius*.\n\n#### The Fundamental Theorem of Calculus (FTC):\nIf $f(x)$ is continuous on $[a, b]$ and $F'(x) = f(x)$:\n$$\\mathbf{\\int_a^b f(x) dx = F(b) - F(a)}$$\n\n```diagram\n{\n  \"caption\": \"Figure 1: Definite Integral as Net Signed Area under Curve from a to b\",\n  \"xRange\": [-5, 5],\n  \"yRange\": [-3, 3],\n  \"elements\": [\n    { \"type\": \"line\", \"from\": [-4, 0], \"to\": [4, 0], \"color\": \"#94a3b8\" },\n    { \"type\": \"line\", \"from\": [-2, 0], \"to\": [-2, 2], \"color\": \"#fbbf24\", \"label\": \"x = a\" },\n    { \"type\": \"line\", \"from\": [2, 0], \"to\": [2, 2], \"color\": \"#fbbf24\", \"label\": \"x = b\" },\n    { \"type\": \"polygon\", \"points\": [[-2, 0], [-2, 2], [2, 2], [2, 0]], \"color\": \"#38bdf8\", \"fill\": \"rgba(56, 189, 248, 0.15)\" },\n    { \"type\": \"text\", \"at\": [0, 1], \"text\": \"Area = ∫ f(x)dx = F(b) - F(a)\", \"color\": \"#38bdf8\" }\n  ]\n}\n```\n\n---\n\n### 2. Master Compilation of All 41 Standard Integrals\n\n#### A. Algebraic & Transcendental Basics (1–9):\n1. $\\int du = u + C$\n2. $\\int a du = au + C$\n3. $\\int u^n du = \\frac{u^{n+1}}{n+1} + C \\quad (n \\ne -1)$\n4. $\\int \\frac{du}{u} = \\ln|u| + C$\n5. $\\int e^u du = e^u + C$\n6. $\\int a^u du = \\frac{a^u}{\\ln a} + C$\n7. $\\int u e^u du = e^u(u - 1) + C$\n8. $\\int \\ln u du = u \\ln u - u + C$\n9. $\\int \\frac{du}{u \\ln u} = \\ln|\\ln u| + C$\n\n#### B. Trigonometric Integrals (10–23):\n10. $\\int \\sin u du = -\\cos u + C$\n11. $\\int \\cos u du = \\sin u + C$\n12. $\\int \\tan u du = \\ln|\\sec u| + C = -\\ln|\\cos u| + C$\n13. $\\int \\cot u du = \\ln|\\sin u| + C$\n14. $\\int \\sec u du = \\ln|\\sec u + \\tan u| + C$\n15. $\\int \\csc u du = \\ln|\\csc u - \\cot u| + C = \\ln|\\tan(u/2)| + C$\n16. $\\int \\sec^2 u du = \\tan u + C$\n17. $\\int \\csc^2 u du = -\\cot u + C$\n18. $\\int \\sec u \\tan u du = \\sec u + C$\n19. $\\int \\csc u \\cot u du = -\\csc u + C$\n20. $\\int \\sin^2 u du = \\frac{1}{2}u - \\frac{1}{4}\\sin(2u) + C$\n21. $\\int \\cos^2 u du = \\frac{1}{2}u + \\frac{1}{4}\\sin(2u) + C$\n22. $\\int \\tan^2 u du = \\tan u - u + C$\n23. $\\int \\cot^2 u du = -\\cot u - u + C$\n\n#### C. Inverse Trigonometric Integrals (24–29):\n24. $\\int \\arcsin u du = u \\arcsin u + \\sqrt{1 - u^2} + C$\n25. $\\int \\arccos u du = u \\arccos u - \\sqrt{1 - u^2} + C$\n26. $\\int \\arctan u du = u \\arctan u - \\frac{1}{2}\\ln(1 + u^2) + C$\n27. $\\int \\text{arccot } u du = u \\text{arccot } u + \\frac{1}{2}\\ln(1 + u^2) + C$\n28. $\\int \\text{arcsec } u du = u \\text{arcsec } u - \\ln|u + \\sqrt{u^2 - 1}| + C$\n29. $\\int \\text{arccsc } u du = u \\text{arccsc } u + \\ln|u + \\sqrt{u^2 - 1}| + C$\n\n#### D. Hyperbolic Integrals (30–41):\n30. $\\int \\sinh u du = \\cosh u + C$\n31. $\\int \\cosh u du = \\sinh u + C$\n32. $\\int \\tanh u du = \\ln(\\cosh u) + C$\n33. $\\int \\coth u du = \\ln|\\sinh u| + C$\n34. $\\int \\text{sech } u du = \\tan^{-1}(\\sinh u) + C$\n35. $\\int \\text{csch } u du = \\ln\\left|\\tanh\\frac{u}{2}\\right| + C$\n36. $\\int \\text{sech}^2 u du = \\tanh u + C$\n37. $\\int \\text{csch}^2 u du = -\\coth u + C$\n38. $\\int \\text{sech } u \\tanh u du = -\\text{sech } u + C$\n39. $\\int \\text{csch } u \\coth u du = -\\text{csch } u + C$\n40. $\\int \\sinh^2 u du = \\frac{1}{4}\\sinh(2u) - \\frac{1}{2}u + C$\n41. $\\int \\cosh^2 u du = \\frac{1}{4}\\sinh(2u) + \\frac{1}{2}u + C$"
+  },
+  "formulas": [
+    {
+      "id": "f-1601-01",
+      "title": "Fundamental Theorem of Calculus",
+      "formula": "$$\\int_a^b f(x) dx = F(b) - F(a)$$",
+      "note": "Where F'(x) = f(x)."
+    },
+    {
+      "id": "f-1601-02",
+      "title": "Core Logarithmic & Secant Integrals",
+      "formula": "$$\\int \\ln u du = u\\ln u - u + C, \\quad \\int \\sec u du = \\ln|\\sec u + \\tan u| + C$$",
+      "note": "Frequent high-yield PRC board exam questions."
+    },
+    {
+      "id": "f-1601-03",
+      "title": "Product-Exponential Integration Shortcut",
+      "formula": "$$\\int u e^u du = e^u(u - 1) + C, \\quad \\int u^2 e^u du = e^u(u^2 - 2u + 2) + C$$",
+      "note": "Sign alternates: (+, -, +, -)."
+    }
+  ],
+  "visualizer": {
+    "archetype": "parameter_sweep",
+    "title": "Definite Integral Riemann Area Accumulator",
+    "description": "Adjust integration limits a and b or polynomial power n to calculate exact definite area under f(x) = x^n in real time.",
+    "config": {
+      "canvasWidth": 640,
+      "canvasHeight": 320,
+      "controls": [
+        {
+          "id": "limitA",
+          "label": "Lower Limit a",
+          "min": 0,
+          "max": 5,
+          "step": 0.5,
+          "defaultValue": 0
+        },
+        {
+          "id": "limitB",
+          "label": "Upper Limit b",
+          "min": 1,
+          "max": 6,
+          "step": 0.5,
+          "defaultValue": 3
+        },
+        {
+          "id": "powerN",
+          "label": "Power n",
+          "min": 1,
+          "max": 3,
+          "step": 1,
+          "defaultValue": 2
+        }
+      ]
+    }
+  },
+  "terms": [
+    {
+      "term": "Calculus Summatorius",
+      "symbol": "$\\int$",
+      "unit": "History",
+      "definition": "The original name given to integral calculus by Gottfried Wilhelm Leibniz, representing the continuous summation of infinitesimals.",
+      "keywordTrigger": "calculus summatorius / Leibniz / elongated S"
+    },
+    {
+      "term": "Fundamental Theorem of Calculus",
+      "symbol": "FTC",
+      "unit": "Theorem",
+      "definition": "The theorem connecting differentiation and integration, establishing that definite integrals can be computed via antiderivatives.",
+      "keywordTrigger": "FTC / integral f(x) dx = F(b) - F(a)"
+    },
+    {
+      "term": "Antiderivative",
+      "symbol": "$F(x) + C$",
+      "unit": "Calculus",
+      "definition": "A differentiable function F whose derivative is equal to the original function f.",
+      "keywordTrigger": "primitive integral / antiderivative"
+    }
+  ],
+  "examples": [
+    {
+      "problemStatement": "Evaluate the indefinite integral: ∫ (x · e^(3x)) dx.",
+      "formalSolutionMarkdown": "#### Step 1: Use Integration by Parts (or Tabular)\n- $u = x \\implies du = dx$\n- $dv = e^{3x} dx \\implies v = \\frac{1}{3} e^{3x}$\n\n#### Step 2: Apply formula ∫ u dv = uv - ∫ v du\n$$\\int x e^{3x} dx = \\frac{1}{3} x e^{3x} - \\int \\frac{1}{3} e^{3x} dx = \\frac{1}{3} x e^{3x} - \\frac{1}{9} e^{3x} + C = \\frac{e^{3x}}{9}(3x - 1) + C$$",
+      "shortcutSolutionMarkdown": "#### ⚡ 2-Second Product-Exponential Shortcut\n$$\\int x e^{ax} dx = \\frac{e^{ax}}{a^2}(ax - 1) + C = \\frac{e^{3x}}{9}(3x - 1) + C$$",
+      "formalTimeSeconds": 30,
+      "shortcutTimeSeconds": 2
+    },
+    {
+      "problemStatement": "Evaluate the definite integral: ∫ from 0 to π/4 of (sec² x) dx.",
+      "formalSolutionMarkdown": "#### Step 1: Find antiderivative of sec² x\n- $\\int \\sec^2 x dx = \\tan x$\n\n#### Step 2: Apply Fundamental Theorem of Calculus\n$$\\int_0^{\\pi/4} \\sec^2 x dx = [\\tan x]_0^{\\pi/4} = \\tan(\\pi/4) - \\tan(0) = 1 - 0 = 1$$",
+      "shortcutSolutionMarkdown": "#### ⚡ 1-Second FTC Evaluation\n$$\\tan(\\pi/4) - 0 = 1$$",
+      "formalTimeSeconds": 20,
+      "shortcutTimeSeconds": 1
+    }
+  ],
+  "calculatorGuides": {
+    "karce": {
+      "techniqueTitle": "Fast Numerical Definite Integral (∫dx Key)",
+      "problemType": "Evaluating definite integrals ∫[a,b] f(x) dx",
+      "sampleProblem": "Evaluate ∫(0 to π/4) sec²(x) dx in RAD mode.",
+      "mode": "COMP Mode (MODE 1, Set RAD)",
+      "keystrokes": [
+        "∫dx",
+        "(",
+        "1",
+        "÷",
+        "cos",
+        "(",
+        "ALPHA",
+        "X",
+        ")",
+        "x²",
+        ")",
+        ",",
+        "0",
+        ",",
+        "SHIFT",
+        "π",
+        "÷",
+        "4",
+        ")",
+        "="
+      ],
+      "notes": "Directly yields 1 in 1 second."
+    },
+    "canon": {
+      "techniqueTitle": "Definite Integral Tabular Verification",
+      "problemType": "Evaluating ∫[0, 2] (x * e^(3x)) dx on Canon F-789SGA",
+      "sampleProblem": "Evaluate ∫[0,2] x*e^(3x) dx.",
+      "mode": "COMP Mode (MODE 1)",
+      "keystrokes": [
+        "∫dx",
+        "ALPHA",
+        "X",
+        "×",
+        "SHIFT",
+        "e^",
+        "(",
+        "3",
+        "ALPHA",
+        "X",
+        ")",
+        ",",
+        "0",
+        ",",
+        "2",
+        ")",
+        "="
+      ],
+      "notes": "Directly displays 224.2372 (e^6 * 5/9 + 1/9)."
+    }
+  },
+  "conceptChecks": [
+    {
+      "id": "chk-1601-01",
+      "question": "What is the indefinite integral of $\\ln(x)$ with respect to $x$?",
+      "options": [
+        "x ln(x) - x + C",
+        "1 / x + C",
+        "ln²(x) / 2 + C",
+        "x ln(x) + x + C"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Integrating by parts: ∫ ln x dx = x ln x - ∫ x (1/x) dx = x ln x - x + C."
+    },
+    {
+      "id": "chk-1601-02",
+      "question": "What is the integral $\\int \\sec(u) du$?",
+      "options": [
+        "ln |sec u + tan u| + C",
+        "sec u tan u + C",
+        "ln |cos u| + C",
+        "tan² u / 2 + C"
+      ],
+      "correctAnswer": 0,
+      "explanation": "The standard integral of secant is ln|sec u + tan u| + C."
+    },
+    {
+      "id": "chk-1601-03",
+      "question": "Who introduced the elongated Latin 'S' symbol $\\int$ for integration?",
+      "options": [
+        "Gottfried Wilhelm Leibniz",
+        "Sir Isaac Newton",
+        "Leonhard Euler",
+        "Bernhard Riemann"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Leibniz introduced the integral sign (elongated S for summa) in 1675."
+    }
+  ]
+}

@@ -384,20 +384,20 @@ export function MasteryRunner({ module, mastery }: MasteryRunnerProps) {
     <div className="min-h-screen bg-[var(--background)] text-[var(--text)] pb-24">
       {/* Top Fixed Exam Banner */}
       <section className="sticky top-16 z-30 bg-[var(--surface)] border-b border-[var(--border)] backdrop-blur-md">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 py-3 flex items-center justify-between gap-4">
-          <div className="flex items-center gap-2">
-            <span className="px-2.5 py-0.5 rounded-md font-mono text-xs font-bold bg-primary/10 text-primary border border-primary/20">
+        <div className="max-w-6xl mx-auto px-3 sm:px-6 py-2.5 sm:py-3 flex items-center justify-between gap-2 sm:gap-4">
+          <div className="flex items-center gap-1.5 sm:gap-2 min-w-0">
+            <span className="px-2 py-0.5 rounded-md font-mono text-xs font-bold bg-primary/10 text-primary border border-primary/20 shrink-0">
               {module.code}
             </span>
-            <span className="text-xs font-semibold truncate max-w-[180px] sm:max-w-sm text-[var(--text)]">
+            <span className="text-xs font-semibold truncate max-w-[140px] sm:max-w-sm text-[var(--text)]">
               {mastery.title}
             </span>
           </div>
 
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2 sm:gap-3 shrink-0">
             {/* Timer Badge */}
             <div
-              className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl border text-xs font-mono font-bold ${
+              className={`inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-xl border text-xs font-mono font-bold ${
                 timeRemaining < 300
                   ? "bg-rose-500/15 text-rose-600 dark:text-rose-400 border-rose-500/30 animate-pulse"
                   : "bg-[var(--surface2)] border-[var(--border)] text-[var(--text)]"
@@ -410,20 +410,49 @@ export function MasteryRunner({ module, mastery }: MasteryRunnerProps) {
             {/* Finish Button */}
             <button
               onClick={() => setShowSubmitModal(true)}
-              className="px-4 py-1.5 rounded-xl bg-[var(--accent)] text-white text-xs font-bold shadow-sm hover:opacity-95 transition-all"
+              className="px-3 sm:px-4 py-1 sm:py-1.5 rounded-xl bg-[var(--accent)] text-white text-xs font-bold shadow-sm hover:opacity-95 transition-all"
             >
-              Submit Exam
+              Finish
             </button>
           </div>
+        </div>
+
+        {/* Mobile Horizontal Quick-Jump Question Strip (Visible on < lg screens) */}
+        <div className="lg:hidden px-3 py-2 border-t border-[var(--border)]/60 bg-[var(--surface2)]/50 overflow-x-auto flex items-center gap-1.5 no-scrollbar">
+          {mastery.questions.map((q, idx) => {
+            const isCurrent = currentIndex === idx;
+            const isAnswered = !!answers[q.id];
+            const isFlagged = flagged.has(q.id);
+
+            let bgStyle = "bg-[var(--surface)] border-[var(--border)] text-[var(--text3)]";
+            if (isCurrent) {
+              bgStyle = "ring-2 ring-[var(--accent)] bg-[var(--accent)] text-white font-bold";
+            } else if (isAnswered) {
+              bgStyle = "bg-primary/15 border-primary/40 text-primary font-semibold";
+            }
+
+            return (
+              <button
+                key={q.id}
+                onClick={() => setCurrentIndex(idx)}
+                className={`w-8 h-8 rounded-lg border text-xs font-mono flex items-center justify-center shrink-0 relative transition-all cursor-pointer ${bgStyle}`}
+              >
+                <span>{idx + 1}</span>
+                {isFlagged && (
+                  <span className="absolute -top-0.5 -right-0.5 w-2 h-2 rounded-full bg-amber-500" />
+                )}
+              </button>
+            );
+          })}
         </div>
       </section>
 
       {/* Main Runner Layout */}
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 pt-8">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+      <div className="max-w-6xl mx-auto px-3 sm:px-6 pt-4 sm:pt-8">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-start">
           {/* Left / Main Question Area */}
-          <main className="lg:col-span-8 space-y-6">
-            <div className="bg-[var(--surface)] border border-[var(--border)] rounded-3xl p-6 sm:p-8 shadow-sm space-y-6">
+          <main className="lg:col-span-8 space-y-4 sm:space-y-6">
+            <div className="bg-[var(--surface)] border border-[var(--border)] rounded-2xl sm:rounded-3xl p-4 sm:p-8 shadow-sm space-y-5 sm:space-y-6">
               {/* Question Header Status */}
               <div className="flex items-center justify-between pb-3 border-b border-[var(--border)]">
                 <div className="flex items-center gap-2">
@@ -433,24 +462,24 @@ export function MasteryRunner({ module, mastery }: MasteryRunnerProps) {
                 </div>
                 <button
                   onClick={() => toggleFlag(currentQuestion.id)}
-                  className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-xl text-xs font-medium border transition-all ${
+                  className={`inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-1 rounded-xl text-xs font-medium border transition-all ${
                     flagged.has(currentQuestion.id)
                       ? "bg-amber-500/15 border-amber-500/40 text-amber-500 font-bold"
                       : "bg-[var(--surface2)] border-[var(--border)] text-[var(--text3)] hover:text-[var(--text)]"
                   }`}
                 >
                   <Flag className={`w-3.5 h-3.5 ${flagged.has(currentQuestion.id) ? "fill-amber-500" : ""}`} />
-                  <span>{flagged.has(currentQuestion.id) ? "Flagged" : "Flag for Review"}</span>
+                  <span>{flagged.has(currentQuestion.id) ? "Flagged" : "Flag"}</span>
                 </button>
               </div>
 
               {/* Question Prompt */}
-              <div className="text-base sm:text-lg font-medium text-[var(--text)] leading-relaxed">
+              <div className="text-sm sm:text-lg font-medium text-[var(--text)] leading-relaxed">
                 <MathText text={currentQuestion.promptText} />
               </div>
 
               {/* Choices Options */}
-              <div className="space-y-3 pt-2">
+              <div className="space-y-2.5 sm:space-y-3 pt-1 sm:pt-2">
                 {(["A", "B", "C", "D"] as const).map((choiceKey) => {
                   const choiceText = currentQuestion[`choice${choiceKey}` as "choiceA" | "choiceB" | "choiceC" | "choiceD"];
                   const isSelected = answers[currentQuestion.id] === choiceKey;
@@ -459,14 +488,14 @@ export function MasteryRunner({ module, mastery }: MasteryRunnerProps) {
                     <button
                       key={choiceKey}
                       onClick={() => handleSelectChoice(choiceKey)}
-                      className={`w-full text-left p-4 rounded-2xl border transition-all flex items-start gap-3.5 cursor-pointer ${
+                      className={`w-full text-left p-3.5 sm:p-4 rounded-xl sm:rounded-2xl border transition-all flex items-start gap-3 cursor-pointer active:scale-[0.99] ${
                         isSelected
                           ? "bg-[var(--accent)]/10 border-[var(--accent)] text-[var(--text)] shadow-xs ring-1 ring-[var(--accent)]"
                           : "bg-[var(--surface2)] border-[var(--border)] text-[var(--text2)] hover:border-[var(--accent)]/40 hover:text-[var(--text)]"
                       }`}
                     >
                       <span
-                        className={`flex items-center justify-center w-7 h-7 rounded-xl font-mono font-bold text-xs shrink-0 transition-colors ${
+                        className={`flex items-center justify-center w-6 h-6 sm:w-7 sm:h-7 rounded-lg sm:rounded-xl font-mono font-bold text-xs shrink-0 transition-colors ${
                           isSelected
                             ? "bg-[var(--accent)] text-white"
                             : "bg-[var(--surface)] border border-[var(--border)] text-[var(--text)]"
@@ -474,7 +503,7 @@ export function MasteryRunner({ module, mastery }: MasteryRunnerProps) {
                       >
                         {choiceKey}
                       </span>
-                      <div className="flex-1 text-sm sm:text-base pt-0.5">
+                      <div className="flex-1 text-xs sm:text-base pt-0.5 overflow-x-auto">
                         <MathText text={choiceText} />
                       </div>
                     </button>
@@ -487,16 +516,20 @@ export function MasteryRunner({ module, mastery }: MasteryRunnerProps) {
                 <button
                   onClick={() => setCurrentIndex((prev) => Math.max(0, prev - 1))}
                   disabled={currentIndex === 0}
-                  className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-[var(--surface2)] border border-[var(--border)] text-xs font-semibold disabled:opacity-30 disabled:cursor-not-allowed hover:bg-[var(--border)] transition-all"
+                  className="inline-flex items-center gap-1.5 px-3.5 sm:px-4 py-2 rounded-xl bg-[var(--surface2)] border border-[var(--border)] text-xs font-semibold disabled:opacity-30 disabled:cursor-not-allowed hover:bg-[var(--border)] transition-all"
                 >
                   <ArrowLeft className="w-4 h-4" />
                   <span>Previous</span>
                 </button>
 
+                <div className="text-xs font-mono text-[var(--text3)] hidden sm:block">
+                  {Object.keys(answers).length}/{totalQuestions} Answered
+                </div>
+
                 {currentIndex < totalQuestions - 1 ? (
                   <button
                     onClick={() => setCurrentIndex((prev) => Math.min(totalQuestions - 1, prev + 1))}
-                    className="inline-flex items-center gap-1.5 px-5 py-2 rounded-xl bg-[var(--accent)] text-white text-xs font-bold shadow-sm hover:opacity-95 transition-all"
+                    className="inline-flex items-center gap-1.5 px-4 sm:px-5 py-2 rounded-xl bg-[var(--accent)] text-white text-xs font-bold shadow-sm hover:opacity-95 transition-all"
                   >
                     <span>Next</span>
                     <ArrowRight className="w-4 h-4" />
@@ -504,7 +537,7 @@ export function MasteryRunner({ module, mastery }: MasteryRunnerProps) {
                 ) : (
                   <button
                     onClick={() => setShowSubmitModal(true)}
-                    className="inline-flex items-center gap-1.5 px-5 py-2 rounded-xl bg-emerald-600 text-white text-xs font-bold shadow-sm hover:opacity-95 transition-all"
+                    className="inline-flex items-center gap-1.5 px-4 sm:px-5 py-2 rounded-xl bg-emerald-600 text-white text-xs font-bold shadow-sm hover:opacity-95 transition-all"
                   >
                     <span>Finish Exam</span>
                     <CheckCircle2 className="w-4 h-4" />
@@ -514,8 +547,8 @@ export function MasteryRunner({ module, mastery }: MasteryRunnerProps) {
             </div>
           </main>
 
-          {/* Right Sidebar Question Grid Navigator */}
-          <aside className="lg:col-span-4 space-y-5">
+          {/* Right Sidebar Question Grid Navigator (Desktop Only) */}
+          <aside className="hidden lg:block lg:col-span-4 space-y-5">
             <div className="bg-[var(--surface)] border border-[var(--border)] rounded-3xl p-5 shadow-sm space-y-4">
               <div className="flex items-center justify-between pb-2 border-b border-[var(--border)]">
                 <h3 className="text-xs font-bold uppercase tracking-wider text-[var(--text)]">Question Navigator</h3>
@@ -523,6 +556,7 @@ export function MasteryRunner({ module, mastery }: MasteryRunnerProps) {
                   {Object.keys(answers).length}/{totalQuestions} Answered
                 </span>
               </div>
+
 
               {/* Jump Grid */}
               <div className="grid grid-cols-5 gap-2">

@@ -132,12 +132,42 @@ body::after {
   border-radius: 99px;
 }
 
-/* KaTeX math display tuning */
+/* KaTeX math display tuning & Mobile Overflow Prevention */
 .katex-display {
-  margin: 1em 0;
+  margin: 0.85em 0;
+  max-width: 100%;
   overflow-x: auto;
   overflow-y: hidden;
-  padding: 4px 0;
+  -webkit-overflow-scrolling: touch;
+  padding: 6px 0;
+}
+
+.katex {
+  max-width: 100%;
+  line-height: 1.25;
+  text-rendering: geometricPrecision;
+}
+
+/* Mobile font scaling for equations to prevent bursting on 360px screens */
+@media (max-width: 640px) {
+  .katex-display {
+    font-size: 0.94em;
+    padding: 4px 0;
+  }
+  .katex {
+    font-size: 0.96em;
+  }
+}
+
+/* Inline math wrapping */
+.inline-math {
+  display: inline-block;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  vertical-align: middle;
+  -webkit-overflow-scrolling: touch;
+  padding: 0 1px;
 }
 
 /* Tactile Hardware Range Sliders */
@@ -145,12 +175,13 @@ input[type="range"] {
   -webkit-appearance: none;
   appearance: none;
   width: 100%;
-  height: 8px;
+  height: 10px;
   background: var(--surface3) !important;
   border: 1px solid var(--border) !important;
   border-radius: 9999px !important;
   outline: none;
   cursor: pointer;
+  touch-action: manipulation;
   transition: all 0.15s ease;
 }
 
@@ -161,30 +192,36 @@ input[type="range"]:hover {
 input[type="range"]::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
-  width: 18px;
-  height: 18px;
+  width: 22px;
+  height: 22px;
   border-radius: 50%;
   background: var(--accent);
-  border: 2px solid var(--surface);
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  border: 2.5px solid var(--surface);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
   cursor: grab;
   transition: transform 0.1s ease, box-shadow 0.1s ease;
 }
 
 input[type="range"]:active::-webkit-slider-thumb {
   cursor: grabbing;
-  transform: scale(1.18);
-  box-shadow: 0 3px 10px rgba(217, 107, 39, 0.5);
+  transform: scale(1.22);
+  box-shadow: 0 3px 12px rgba(217, 107, 39, 0.6);
 }
 
 input[type="range"]::-moz-range-thumb {
-  width: 18px;
-  height: 18px;
+  width: 22px;
+  height: 22px;
   border-radius: 50%;
   background: var(--accent);
-  border: 2px solid var(--surface);
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  border: 2.5px solid var(--surface);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
   cursor: grab;
+}
+
+/* Touch action and smooth scrolling */
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
 }
 
 /* Solid Surface & Card Utilities */
@@ -197,4 +234,5 @@ input[type="range"]::-moz-range-thumb {
   background-color: var(--surface2) !important;
   border: 1px solid var(--border) !important;
 }
+
 

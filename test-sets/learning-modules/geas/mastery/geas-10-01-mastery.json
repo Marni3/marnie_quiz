@@ -1,0 +1,260 @@
+{
+  "moduleId": "geas-10-01",
+  "moduleCode": "GEAS 10-01",
+  "title": "GEAS 10-01 Mastery Challenge: Legislative Origins, Articles & Terms",
+  "description": "Comprehensive 25-item decoupled board examination challenge covering statutory enactment facts, the 8 Articles, 43 Sections, and Section 3 definitions under Republic Act No. 9292.",
+  "totalQuestions": 25,
+  "timeLimitMinutes": 30,
+  "questions": [
+    {
+      "id": "q-geas10-01-01",
+      "promptText": "What is the official short title of Republic Act No. 9292 as stated in Section 1?",
+      "choiceA": "Electronics and Communications Engineering Act of 2004",
+      "choiceB": "Electronics Engineering Law of 2004",
+      "choiceC": "Philippine Telecommunications Regulatory Act of 2004",
+      "choiceD": "Professional Electronics Practice Code of the Philippines",
+      "correctChoice": "B",
+      "explanation": "Section 1 states: 'This Act shall be known as the Electronics Engineering Law of 2004.' Notice that 'Communications' was dropped from the official short title."
+    },
+    {
+      "id": "q-geas10-01-02",
+      "promptText": "On what exact date was Republic Act No. 9292 signed into law by the President of the Philippines?",
+      "choiceA": "April 17, 2004",
+      "choiceB": "June 21, 1969",
+      "choiceC": "March 1, 2004",
+      "choiceD": "May 25, 2004",
+      "correctChoice": "A",
+      "explanation": "R.A. No. 9292 was approved on April 17, 2004. (June 21, 1969 was the approval date of the repealed R.A. 5734)."
+    },
+    {
+      "id": "q-geas10-01-03",
+      "promptText": "Which Republic Act was repealed and superseded upon the passage of Republic Act No. 9292?",
+      "choiceA": "Republic Act No. 5734",
+      "choiceB": "Republic Act No. 7925",
+      "choiceC": "Republic Act No. 3846",
+      "choiceD": "Republic Act No. 6541",
+      "correctChoice": "A",
+      "explanation": "R.A. 5734 (The Electronics and Communications Engineering Act of the Philippines, enacted June 21, 1969) was repealed by Section 42 of R.A. 9292."
+    },
+    {
+      "id": "q-geas10-01-04",
+      "promptText": "Republic Act No. 9292 was a consolidation of which legislative measures in the 12th Congress?",
+      "choiceA": "House Bill No. 5224 and Senate Bill No. 2683",
+      "choiceB": "House Bill No. 2683 and Senate Bill No. 5224",
+      "choiceC": "House Bill No. 1096 and Senate Bill No. 3846",
+      "choiceD": "House Bill No. 7925 and Senate Bill No. 8484",
+      "correctChoice": "A",
+      "explanation": "R.A. 9292 originated from House Bill No. 5224 and Senate Bill No. 2683."
+    },
+    {
+      "id": "q-geas10-01-05",
+      "promptText": "Who was the Senate President who signed the enrolled copy of Republic Act No. 9292?",
+      "choiceA": "Franklin M. Drilon",
+      "choiceB": "Jose De Venecia Jr.",
+      "choiceC": "Oscar G. Yabes",
+      "choiceD": "Juan Ponce Enrile",
+      "correctChoice": "A",
+      "explanation": "Franklin M. Drilon was the Senate President, while Jose De Venecia Jr. was the Speaker of the House."
+    },
+    {
+      "id": "q-geas10-01-06",
+      "promptText": "How many Articles and Sections comprise Republic Act No. 9292?",
+      "choiceA": "8 Articles and 43 Sections",
+      "choiceB": "7 Articles and 42 Sections",
+      "choiceC": "10 Articles and 50 Sections",
+      "choiceD": "6 Articles and 36 Sections",
+      "correctChoice": "A",
+      "explanation": "Republic Act No. 9292 contains 8 Articles and 43 Sections."
+    },
+    {
+      "id": "q-geas10-01-07",
+      "promptText": "Which Article of R.A. 9292 covers 'Examination, Registration and Licensure'?",
+      "choiceA": "Article I",
+      "choiceB": "Article II",
+      "choiceC": "Article III",
+      "choiceD": "Article IV",
+      "correctChoice": "C",
+      "explanation": "Article III (Sections 13 to 26) is dedicated to Examination, Registration and Licensure."
+    },
+    {
+      "id": "q-geas10-01-08",
+      "promptText": "Under what Article of R.A. 9292 is the creation, composition, and powers of the Professional Regulatory Board of Electronics Engineering specified?",
+      "choiceA": "Article II",
+      "choiceB": "Article I",
+      "choiceC": "Article III",
+      "choiceD": "Article V",
+      "correctChoice": "A",
+      "explanation": "Article II (Sections 6 to 12) governs the Professional Regulatory Board of Electronics Engineering."
+    },
+    {
+      "id": "q-geas10-01-09",
+      "promptText": "Under Section 3(a) of R.A. 9292, which carrier of electric charge or media is explicitly mentioned in the statutory definition of Electronics?",
+      "choiceA": "Vacuum, gaseous media, plasma, semiconductors, or any other media",
+      "choiceB": "Superconducting quantum fluids only",
+      "choiceC": "Metallic wires and coaxial shields only",
+      "choiceD": "Biological neurons and synapses only",
+      "correctChoice": "A",
+      "explanation": "Section 3(a) defines Electronics as dealing with electron flow in vacuum, in gaseous media, in plasma, in semiconductors, or in any other media."
+    },
+    {
+      "id": "q-geas10-01-10",
+      "promptText": "How does Section 3(e) of R.A. 9292 legally define a 'Computer'?",
+      "choiceA": "Any electronic device capable of accepting data, executing programs/instructions, and presenting results",
+      "choiceB": "A mechanical device calculating mathematical matrices using decimal gears",
+      "choiceC": "Any network server hosting website protocols over TCP/IP",
+      "choiceD": "A cellular handset operating over 3G/4G telecommunications spectrum",
+      "correctChoice": "A",
+      "explanation": "Section 3(e) defines a Computer as any of a variety of electronic devices capable of accepting data, programs/instructions, executing them to process data, and presenting results."
+    },
+    {
+      "id": "q-geas10-01-11",
+      "promptText": "Under Section 3(f), what processes define 'Information and Communications Technology (ICT)'?",
+      "choiceA": "Acquisition, production, transformation, storage, and transfer/transmission of data and information",
+      "choiceB": "Manufacturing of copper cables and circuit boards only",
+      "choiceC": "Broadcasting of analog frequency modulated audio signals only",
+      "choiceD": "Installation of fiber optic underwater cable lines only",
+      "correctChoice": "A",
+      "explanation": "Section 3(f) states that ICT is the acquisition, production, transformation, storage and transfer/transmission of data and info by electronic and other modern means."
+    },
+    {
+      "id": "q-geas10-01-12",
+      "promptText": "What is the key statutory phrase that distinguishes 'Broadcasting' from other forms of telecommunications in Section 3(i)?",
+      "choiceA": "Intended for the reception of the general public",
+      "choiceB": "Operates exclusively above 1 GHz frequency",
+      "choiceC": "Uses fiber optic laser transmission",
+      "choiceD": "Requires two-way full duplex encryption",
+      "correctChoice": "A",
+      "explanation": "Section 3(i) defines Broadcasting as an undertaking transmitting audio, video, text, or images 'for reception of the general public'."
+    },
+    {
+      "id": "q-geas10-01-13",
+      "promptText": "Under Section 3(j), what constitutes an 'Industrial Plant'?",
+      "choiceA": "Manufacturing establishments and businesses where electronic machineries/equipment are installed, used, sold, operated, etc.",
+      "choiceB": "Retail shopping malls and restaurants only",
+      "choiceC": "Academic university lecture halls only",
+      "choiceD": "Government legislative session halls only",
+      "correctChoice": "A",
+      "explanation": "Section 3(j) defines Industrial Plant as manufacturing establishments and businesses where electronic machineries/equipment are installed, used, sold, operated, etc."
+    },
+    {
+      "id": "q-geas10-01-14",
+      "promptText": "What are 'Consulting Services' as defined in Section 3(l) of R.A. 9292?",
+      "choiceA": "Services requiring technical expertise and professional capability for advisory, review, design, and evaluation",
+      "choiceB": "Routine soldering and assembly line repair",
+      "choiceC": "Retail counter sales of electronics components",
+      "choiceD": "Clerical filing of board exam records",
+      "correctChoice": "A",
+      "explanation": "Section 3(l) defines Consulting Services as services involving technical expertise and professional capability for advisory, review, design, evaluation, planning, or supervision."
+    },
+    {
+      "id": "q-geas10-01-15",
+      "promptText": "Which Section of R.A. 9292 contains the General Penal Provisions?",
+      "choiceA": "Section 35",
+      "choiceB": "Section 25",
+      "choiceC": "Section 15",
+      "choiceD": "Section 43",
+      "correctChoice": "A",
+      "explanation": "Section 35 under Article VI prescribes the fines (₱100k to ₱1M) and imprisonment terms (6 months to 6 years)."
+    },
+    {
+      "id": "q-geas10-01-16",
+      "promptText": "Which Section defines the 'Categories of Practice' under R.A. 9292?",
+      "choiceA": "Section 4",
+      "choiceB": "Section 1",
+      "choiceC": "Section 8",
+      "choiceD": "Section 12",
+      "correctChoice": "A",
+      "explanation": "Section 4 (under Article I) establishes the 3 categories of practice: PECE, ECE, and ECT."
+    },
+    {
+      "id": "q-geas10-01-17",
+      "promptText": "Which Article contains 'Sundry Provisions', including the Accredited Professional Organization (APO) and Foreign Reciprocity?",
+      "choiceA": "Article V",
+      "choiceB": "Article II",
+      "choiceC": "Article IV",
+      "choiceD": "Article VII",
+      "correctChoice": "A",
+      "explanation": "Article V (Sections 32 to 34) contains the Sundry Provisions."
+    },
+    {
+      "id": "q-geas10-01-18",
+      "promptText": "What does Section 41 of R.A. 9292 provide?",
+      "choiceA": "Separability Clause",
+      "choiceB": "Repealing Clause",
+      "choiceC": "Effectivity Clause",
+      "choiceD": "Appropriations Clause",
+      "correctChoice": "A",
+      "explanation": "Section 41 is the Separability Clause (if any section is declared unconstitutional, the remainder stays valid). Section 42 is Repealing, Section 43 is Effectivity."
+    },
+    {
+      "id": "q-geas10-01-19",
+      "promptText": "What is the Effectivity period specified in Section 43 of R.A. 9292?",
+      "choiceA": "15 days following its full publication in the Official Gazette or two newspapers of general circulation",
+      "choiceB": "Immediately upon signature of the President",
+      "choiceC": "30 days after registration with the United Nations",
+      "choiceD": "1 year after publication by IECEP",
+      "correctChoice": "A",
+      "explanation": "Section 43 states effectivity takes place 15 days following full publication in the Official Gazette or at least two newspapers of general circulation."
+    },
+    {
+      "id": "q-geas10-01-20",
+      "promptText": "What is the title of Article VII of R.A. 9292?",
+      "choiceA": "Transitory Provisions",
+      "choiceB": "Penal Provisions",
+      "choiceC": "Sundry Provisions",
+      "choiceD": "Final Provisions",
+      "correctChoice": "A",
+      "explanation": "Article VII comprises Sections 37 and 38 and is titled 'Transitory Provisions'."
+    },
+    {
+      "id": "q-geas10-01-21",
+      "promptText": "Under Section 38 (Vested Rights), what happened to all registered Electronics and Communications Engineers (ECEs) upon enactment of R.A. 9292?",
+      "choiceA": "They were automatically converted into Electronics Engineers (ECEs)",
+      "choiceB": "They were required to retake the licensure examination within 1 year",
+      "choiceC": "They were automatically upgraded to Professional Electronics Engineers (PECE)",
+      "choiceD": "Their licenses were cancelled until they completed a Master's degree",
+      "correctChoice": "A",
+      "explanation": "Section 38 explicitly protects vested rights: all existing ECEs under RA 5734 automatically became registered Electronics Engineers under RA 9292."
+    },
+    {
+      "id": "q-geas10-01-22",
+      "promptText": "Which Section governs the 'Code of Ethics and Code of Technical Standard of Practice'?",
+      "choiceA": "Section 30",
+      "choiceB": "Section 20",
+      "choiceC": "Section 10",
+      "choiceD": "Section 40",
+      "correctChoice": "A",
+      "explanation": "Section 30 (Article IV) states that the Board shall adopt a Code of Ethics and Code of Technical Standards of Practice promulgated by the Accredited Professional Organization."
+    },
+    {
+      "id": "q-geas10-01-23",
+      "promptText": "Under Section 3(k), how is a 'Commercial Establishment' defined?",
+      "choiceA": "Buildings used for business or profit where electronic or electronically-controlled equipment are installed, used, sold, operated, etc.",
+      "choiceB": "Private residential houses with home appliances",
+      "choiceC": "Farming lands and open irrigation canals",
+      "choiceD": "Public recreational parks and plazas",
+      "correctChoice": "A",
+      "explanation": "Section 3(k) defines Commercial Establishment as buildings used for business or profit where electronic equipment/circuits are installed, operated, or sold."
+    },
+    {
+      "id": "q-geas10-01-24",
+      "promptText": "Who attested the enrolled copy of R.A. 9292 as Secretary General of the House of Representatives?",
+      "choiceA": "Roberto P. Nazareno",
+      "choiceB": "Oscar G. Yabes",
+      "choiceC": "Franklin Drilon",
+      "choiceD": "Jose De Venecia Jr.",
+      "correctChoice": "A",
+      "explanation": "Roberto P. Nazareno was Secretary General of the House, while Oscar G. Yabes was Secretary of the Senate."
+    },
+    {
+      "id": "q-geas10-01-25",
+      "promptText": "Under Section 3(g), how is 'Communications' defined?",
+      "choiceA": "The process of sending and/or receiving information, data, message, etc. between two or more points by any media",
+      "choiceB": "Oral conversation between people in the same room only",
+      "choiceC": "Printed newspaper publishing only",
+      "choiceD": "Mechanical semaphore flags on naval ships only",
+      "correctChoice": "A",
+      "explanation": "Section 3(g) defines Communications as the process of sending and/or receiving information, data, message, etc. between two or more points by any media."
+    }
+  ]
+}

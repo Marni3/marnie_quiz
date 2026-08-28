@@ -8,15 +8,51 @@
   "order": 4,
   "pairedQuizSetId": "math-01-04-mastery",
   "toc": [
-    { "id": "sec-prereq-bridges", "title": "1. Introduction & Cross-Subject Connections", "level": 2 },
-    { "id": "sec-theory", "title": "2. Lesson Proper: Progressions & Figurate Geometry", "level": 2 },
-    { "id": "sec-formulas", "title": "3. Compilation of Formulas & Identities", "level": 2 },
-    { "id": "sec-visualizer", "title": "4. Interactive Visualizer: Progression & Figurate Explorer", "level": 2 },
-    { "id": "sec-terminology", "title": "5. Key Terms and Definitions", "level": 2 },
-    { "id": "sec-dual-method", "title": "6. Worked Board Exam Problems", "level": 2 },
-    { "id": "sec-calculator", "title": "7. Calculator Speed Techniques (Karce & Canon)", "level": 2 },
-    { "id": "sec-concept-checks", "title": "8. In-Line Concept Checks", "level": 2 },
-    { "id": "sec-mastery-challenge", "title": "9. Paired Mastery Challenge Exam", "level": 2 }
+    {
+      "id": "sec-prereq-bridges",
+      "title": "1. Introduction & Cross-Subject Connections",
+      "level": 2
+    },
+    {
+      "id": "sec-theory",
+      "title": "2. Lesson Proper: Progressions & Figurate Geometry",
+      "level": 2
+    },
+    {
+      "id": "sec-formulas",
+      "title": "3. Compilation of Formulas & Identities",
+      "level": 2
+    },
+    {
+      "id": "sec-visualizer",
+      "title": "4. Interactive Visualizer: Progression & Figurate Explorer",
+      "level": 2
+    },
+    {
+      "id": "sec-terminology",
+      "title": "5. Key Terms and Definitions",
+      "level": 2
+    },
+    {
+      "id": "sec-dual-method",
+      "title": "6. Worked Board Exam Problems",
+      "level": 2
+    },
+    {
+      "id": "sec-calculator",
+      "title": "7. Calculator Speed Techniques (Karce & Canon)",
+      "level": 2
+    },
+    {
+      "id": "sec-concept-checks",
+      "title": "8. In-Line Concept Checks",
+      "level": 2
+    },
+    {
+      "id": "sec-mastery-challenge",
+      "title": "9. Paired Mastery Challenge Exam",
+      "level": 2
+    }
   ],
   "prerequisiteBridge": {
     "priorModuleId": "math-01-03",
@@ -74,7 +110,14 @@
       "canvasWidth": 640,
       "canvasHeight": 320,
       "controls": [
-        { "id": "n", "label": "Term Index (n)", "min": 1, "max": 12, "step": 1, "defaultValue": 5 }
+        {
+          "id": "n",
+          "label": "Term Index (n)",
+          "min": 1,
+          "max": 12,
+          "step": 1,
+          "defaultValue": 5
+        }
       ]
     }
   },
@@ -137,7 +180,26 @@
       "problemType": "Evaluating sum of AP/GP terms",
       "sampleProblem": "Find sum of 10 terms of AP: a1 = 3, d = 4.",
       "mode": "COMP Mode (MODE 1)",
-      "keystrokes": ["SHIFT", "Σ", "3", "+", "4", "(", "ALPHA", "X", "-", "1", ")", ",", "1", ",", "1", "0", ")", "="],
+      "keystrokes": [
+        "SHIFT",
+        "Σ",
+        "3",
+        "+",
+        "4",
+        "(",
+        "ALPHA",
+        "X",
+        "-",
+        "1",
+        ")",
+        ",",
+        "1",
+        ",",
+        "1",
+        "0",
+        ")",
+        "="
+      ],
       "notes": "Directly computes sum = 210 in 2 seconds."
     },
     "canon": {
@@ -145,7 +207,19 @@
       "problemType": "Summing convergent series",
       "sampleProblem": "Find sum of 18 + 6 + 2 + ... on Canon F-789SGA.",
       "mode": "COMP Mode (MODE 1)",
-      "keystrokes": ["1", "8", "÷", "(", "1", "-", "1", "/", "3", ")", "="],
+      "keystrokes": [
+        "1",
+        "8",
+        "÷",
+        "(",
+        "1",
+        "-",
+        "1",
+        "/",
+        "3",
+        ")",
+        "="
+      ],
       "notes": "Directly yields 27 in 1 step."
     }
   },

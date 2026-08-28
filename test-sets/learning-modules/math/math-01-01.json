@@ -8,15 +8,51 @@
   "order": 1,
   "pairedQuizSetId": "math-01-01-mastery",
   "toc": [
-    { "id": "sec-prereq-bridges", "title": "1. Introduction & Cross-Subject Connections", "level": 2 },
-    { "id": "sec-theory", "title": "2. Lesson Proper: Theory & Number Systems", "level": 2 },
-    { "id": "sec-formulas", "title": "3. Compilation of Formulas & Rules", "level": 2 },
-    { "id": "sec-visualizer", "title": "4. Interactive Visualizer: Real & Imaginary Tree", "level": 2 },
-    { "id": "sec-terminology", "title": "5. Key Terms and Definitions", "level": 2 },
-    { "id": "sec-dual-method", "title": "6. Worked Board Exam Problems", "level": 2 },
-    { "id": "sec-calculator", "title": "7. Calculator Speed Techniques (Karce & Canon)", "level": 2 },
-    { "id": "sec-concept-checks", "title": "8. In-Line Concept Checks", "level": 2 },
-    { "id": "sec-mastery-challenge", "title": "9. Paired Mastery Challenge Exam", "level": 2 }
+    {
+      "id": "sec-prereq-bridges",
+      "title": "1. Introduction & Cross-Subject Connections",
+      "level": 2
+    },
+    {
+      "id": "sec-theory",
+      "title": "2. Lesson Proper: Theory & Number Systems",
+      "level": 2
+    },
+    {
+      "id": "sec-formulas",
+      "title": "3. Compilation of Formulas & Rules",
+      "level": 2
+    },
+    {
+      "id": "sec-visualizer",
+      "title": "4. Interactive Visualizer: Real & Imaginary Tree",
+      "level": 2
+    },
+    {
+      "id": "sec-terminology",
+      "title": "5. Key Terms and Definitions",
+      "level": 2
+    },
+    {
+      "id": "sec-dual-method",
+      "title": "6. Worked Board Exam Problems",
+      "level": 2
+    },
+    {
+      "id": "sec-calculator",
+      "title": "7. Calculator Speed Techniques (Karce & Canon)",
+      "level": 2
+    },
+    {
+      "id": "sec-concept-checks",
+      "title": "8. In-Line Concept Checks",
+      "level": 2
+    },
+    {
+      "id": "sec-mastery-challenge",
+      "title": "9. Paired Mastery Challenge Exam",
+      "level": 2
+    }
   ],
   "prerequisiteBridge": {
     "priorModuleId": "none",
@@ -74,7 +110,14 @@
       "canvasWidth": 640,
       "canvasHeight": 320,
       "controls": [
-        { "id": "exponent", "label": "Exponent (n)", "min": 1, "max": 25, "step": 1, "defaultValue": 13 }
+        {
+          "id": "exponent",
+          "label": "Exponent (n)",
+          "min": 1,
+          "max": 25,
+          "step": 1,
+          "defaultValue": 13
+        }
       ]
     }
   },
@@ -144,7 +187,15 @@
       "problemType": "Simplifying i^N on Karce KC-S991",
       "sampleProblem": "Evaluate i^79 in CMPLX mode.",
       "mode": "CMPLX Mode (MODE 2)",
-      "keystrokes": ["7", "9", "÷", "4", "=", "SHIFT", "d/c"],
+      "keystrokes": [
+        "7",
+        "9",
+        "÷",
+        "4",
+        "=",
+        "SHIFT",
+        "d/c"
+      ],
       "notes": "Look at the remainder or fractional part: .75 corresponds to 3/4 (i³ = -i). Or directly evaluate (i²)³⁹ × i = (-1)³⁹ × i = -i."
     },
     "canon": {
@@ -152,7 +203,16 @@
       "problemType": "Complex calculations in CMPLX mode",
       "sampleProblem": "Evaluate (1 + i)^4 on Canon F-789SGA.",
       "mode": "CMPLX Mode (MODE 2)",
-      "keystrokes": ["(", "1", "+", "i", ")", "x²", "x²", "="],
+      "keystrokes": [
+        "(",
+        "1",
+        "+",
+        "i",
+        ")",
+        "x²",
+        "x²",
+        "="
+      ],
       "notes": "The calculator directly yields -4 without manual binomial expansion."
     }
   },

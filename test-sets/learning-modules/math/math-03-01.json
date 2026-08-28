@@ -1,0 +1,260 @@
+{
+  "id": "math-03-01",
+  "code": "MATH 03-01",
+  "domain": "MATH",
+  "topicCode": "MATH-03",
+  "topicTitle": "Probability & Statistics",
+  "subtopicTitle": "Permutations, Inversions, Circular Arrangements, Combinations & Classical Probability",
+  "order": 1,
+  "pairedQuizSetId": "math-03-01-mastery",
+  "toc": [
+    {
+      "id": "sec-prereq-bridges",
+      "title": "1. Introduction & Cross-Subject Connections",
+      "level": 2
+    },
+    {
+      "id": "sec-theory",
+      "title": "2. Lesson Proper: Counting Principles & Probability Theory",
+      "level": 2
+    },
+    {
+      "id": "sec-formulas",
+      "title": "3. Compilation of Formulas & Identities",
+      "level": 2
+    },
+    {
+      "id": "sec-visualizer",
+      "title": "4. Interactive Visualizer: Permutation vs. Combination",
+      "level": 2
+    },
+    {
+      "id": "sec-terminology",
+      "title": "5. Key Terms and Definitions",
+      "level": 2
+    },
+    {
+      "id": "sec-dual-method",
+      "title": "6. Worked Board Exam Problems",
+      "level": 2
+    },
+    {
+      "id": "sec-calculator",
+      "title": "7. Calculator Speed Techniques (Karce & Canon)",
+      "level": 2
+    },
+    {
+      "id": "sec-concept-checks",
+      "title": "8. In-Line Concept Checks",
+      "level": 2
+    },
+    {
+      "id": "sec-mastery-challenge",
+      "title": "9. Paired Mastery Challenge Exam",
+      "level": 2
+    }
+  ],
+  "prerequisiteBridge": {
+    "priorModuleId": "math-04-03",
+    "text": "Moving from discrete relations and logic, we now master combinatorial counting—permutations, inversions, circular tables, identical element partitions, and the classical probability foundations established by Gerolamo Cardano."
+  },
+  "crossSubjectBridges": [
+    {
+      "targetDomain": "EST",
+      "targetTopicCode": "EST-09",
+      "badgeText": "Digital Comms",
+      "description": "Bit Error Rate (BER) and block coding parity checks use permutations and combinations to calculate transmission symbol error probabilities."
+    },
+    {
+      "targetDomain": "ELECS",
+      "targetTopicCode": "ELEC-15",
+      "badgeText": "Digital Logic",
+      "description": "Permutation inversions determine the odd/even parity bit generation in serial communication busses (UART/I2C/SPI)."
+    },
+    {
+      "targetDomain": "MATH",
+      "targetTopicCode": "MATH-21",
+      "badgeText": "Determinants",
+      "description": "The determinant of an n×n matrix is defined as the sum over all permutations, where sign is (-1)^k based on the permutation's inversion count."
+    }
+  ],
+  "theory": {
+    "mentalAnchor": "Permutation is ordered arrangement ($nPr = \\frac{n!}{(n-r)!}$); Combination is unordered selection ($nCr = \\frac{n!}{r!(n-r)!}$). Circular seating of $n$ people is $(n-1)!$. Permutation with identical elements is $\\frac{n!}{p! q! s!}$. Classical probability is $P(E) = \\frac{n(E)}{n(S)}$, founded by Gerolamo Cardano.",
+    "contentMarkdown": "### 1. Fundamental Principle of Counting & Permutations\n\n- **Multiplication Rule of Counting**: If an event can occur in $m$ distinct ways, and a subsequent independent event can occur in $n$ distinct ways, the composite sequence of events can occur in $N = m \\cdot n$ ways.\n- **Permutation**: An ordered arrangement of distinct objects where **sequence/order matters**:\n  - Linear permutation of $n$ distinct objects taken $r$ at a time:\n    $${}_n P_r = \\frac{n!}{(n - r)!} = n(n - 1)(n - 2)\\dots(n - r + 1)$$\n  - Linear permutation of all $n$ objects: ${}_n P_n = n!$.\n\n---\n\n### 2. Permutation Inversions & Parity\n\nAn **inversion** occurs whenever two elements in a permutation of distinct objects appear in reverse order relative to their standard reference order:\n- **Total Inversions ($I$)**: Count how many smaller/subsequent elements appear after each element.\n- **Parity Classification**:\n  - **Even Permutation**: Total number of inversions $I$ is **even**.\n  - **Odd Permutation**: Total number of inversions $I$ is **odd**.\n- *Example*: In $(C, E, D, B, A)$ with natural alphabetical order $(A, B, C, D, E)$:\n  - $C$ precedes $B, A \\to 2$ inversions\n  - $E$ precedes $D, B, A \\to 3$ inversions\n  - $D$ precedes $B, A \\to 2$ inversions\n  - $B$ precedes $A \\to 1$ inversion\n  - $\\text{Total Inversions } I = 2 + 3 + 2 + 1 = 8$ (An **Even Permutation**).\n\n```diagram\n{\n  \"caption\": \"Figure 1: Circular Seating Permutation - Fixing 1 Anchor Node Eliminates Rotational Symmetry\",\n  \"xRange\": [-4, 4],\n  \"yRange\": [-3, 3],\n  \"elements\": [\n    { \"type\": \"arc\", \"center\": [0, 0], \"radius\": 45, \"startAngle\": 0, \"endAngle\": 360, \"color\": \"#38bdf8\" },\n    { \"type\": \"point\", \"at\": [0, 1.8], \"label\": \"Seat 1 (Fixed Anchor)\", \"color\": \"#f43f5e\" },\n    { \"type\": \"point\", \"at\": [1.6, 0.9], \"label\": \"Seat 2\", \"color\": \"#fbbf24\" },\n    { \"type\": \"point\", \"at\": [1.6, -0.9], \"label\": \"Seat 3\", \"color\": \"#34d399\" },\n    { \"type\": \"point\", \"at\": [0, -1.8], \"label\": \"Seat 4\", \"color\": \"#34d399\" },\n    { \"type\": \"point\", \"at\": [-1.6, -0.9], \"label\": \"Seat 5\", \"color\": \"#34d399\" },\n    { \"type\": \"point\", \"at\": [-1.6, 0.9], \"label\": \"Seat 6\", \"color\": \"#34d399\" },\n    { \"type\": \"text\", \"at\": [0, 0], \"text\": \"Ways = (6-1)! = 120\", \"color\": \"#38bdf8\" }\n  ]\n}\n```\n\n---\n\n### 3. Special Permutation Types\n\n1. **Circular / Cyclic Permutations**:\n   Arranging $n$ objects around a circle where rotational shifts are identical:\n   $$P_{\\text{circle}} = (n - 1)!$$\n   If the circle can be flipped in 3D (such as keys on a key ring or beads on a necklace with no distinction between clockwise and counter-clockwise):\n   $$P_{\\text{necklace}} = \\frac{(n - 1)!}{2}$$\n\n2. **Permutations with Identical Elements (Partitions)**:\n   When a group of $n$ total objects contains $p$ identical items of one kind, $q$ identical items of a second kind, and $s$ of a third:\n   $$P = \\frac{n!}{p! \\, q! \\, s! \\dots}$$\n   *Example*: Number of permutations of the letters in **MATHEMATICS** ($11$ letters: $M=2, A=2, T=2$):\n   $$P = \\frac{11!}{2! \\, 2! \\, 2!} = \\frac{39,916,800}{8} = 4,989,600$$\n\n---\n\n### 4. Combinations & Classical Probability\n\n- **Combination**: A selection of $r$ objects from $n$ available objects **regardless of order**:\n  $${}_n C_r = \\frac{n!}{(n - r)! r!} = \\frac{{}_n P_r}{r!}$$\n  $${}_n C_n = 1, \\quad {}_n C_0 = 1, \\quad {}_n C_r = {}_n C_{n-r}$$\n\n- **Classical Probability ($P(E)$)**:\n  Founded by Italian physician and mathematician **Gerolamo Cardano (1501–1576)** in his work *On Casting the Die* (*Liber de Ludo Aleae*), known as the **Father of Probability Theory**:\n  $$P(E) = \\frac{n(E)}{n(S)} = \\frac{\\text{Number of Favorable Outcomes}}{\\text{Total Number of Possible Outcomes}}$$\n  $$0 \\le P(E) \\le 1, \\quad P(\\text{not } E) = 1 - P(E)$$"
+  },
+  "formulas": [
+    {
+      "id": "f-0601-01",
+      "title": "Permutations and Combinations",
+      "formula": "$${}_n P_r = \\frac{n!}{(n - r)!}, \\quad {}_n C_r = \\frac{n!}{(n - r)! r!} = \\frac{{}_n P_r}{r!}$$",
+      "note": "nPr order matters; nCr order does not matter."
+    },
+    {
+      "id": "f-0601-02",
+      "title": "Circular Permutation & Identical Partitions",
+      "formula": "$$P_{\\text{circle}} = (n - 1)!, \\quad P_{\\text{identical}} = \\frac{n!}{p! \\, q! \\, s!}$$",
+      "note": "Keyring/necklace: (n - 1)! / 2."
+    },
+    {
+      "id": "f-0601-03",
+      "title": "Cardano's Classical Probability Formula",
+      "formula": "$$P(E) = \\frac{n(E)}{n(S)}, \\quad P(E') = 1 - P(E)$$",
+      "note": "Where n(E) is favorable outcomes and n(S) is total sample space."
+    }
+  ],
+  "visualizer": {
+    "archetype": "parameter_sweep",
+    "title": "Permutations & Combinations Comparative Explorer",
+    "description": "Adjust total objects n and selection r to observe the ratio nPr / nCr = r! live.",
+    "config": {
+      "canvasWidth": 640,
+      "canvasHeight": 320,
+      "controls": [
+        {
+          "id": "n",
+          "label": "Total Items (n)",
+          "min": 3,
+          "max": 10,
+          "step": 1,
+          "defaultValue": 6
+        },
+        {
+          "id": "r",
+          "label": "Selected Items (r)",
+          "min": 1,
+          "max": 6,
+          "step": 1,
+          "defaultValue": 3
+        }
+      ]
+    }
+  },
+  "terms": [
+    {
+      "term": "Permutation",
+      "symbol": "${}_n P_r$",
+      "unit": "Count",
+      "definition": "An ordered arrangement of a finite collection of elements where sequence/position determines uniqueness.",
+      "keywordTrigger": "ordered arrangement / order matters"
+    },
+    {
+      "term": "Combination",
+      "symbol": "${}_n C_r$",
+      "unit": "Count",
+      "definition": "An unordered selection of elements from a set where arrangement sequence does not matter.",
+      "keywordTrigger": "selection regardless of order"
+    },
+    {
+      "term": "Inversion",
+      "symbol": "$I$",
+      "unit": "Count",
+      "definition": "A pair of elements in a permutation that appear out of their natural alphabetical or numerical order.",
+      "keywordTrigger": "elements in reverse order relative to natural order"
+    },
+    {
+      "term": "Gerolamo Cardano",
+      "symbol": "Historian",
+      "unit": "Biography",
+      "definition": "16th-century Italian mathematician (1501–1576) who wrote On Casting the Die, recognized as the Father of Probability Theory.",
+      "keywordTrigger": "Father of the theory of probability / On Casting the Die"
+    }
+  ],
+  "examples": [
+    {
+      "problemStatement": "In how many ways can 4 mathematics books, 3 physics books, and 2 electronics books be arranged on a shelf if books of the same subject must stay together?",
+      "formalSolutionMarkdown": "#### Step 1: Arrange the 3 subject blocks\n- Number of subject groups $= 3! = 6$ ways.\n\n#### Step 2: Arrange internal books within each subject\n- Mathematics books: $4! = 24$ ways.\n- Physics books: $3! = 6$ ways.\n- Electronics books: $2! = 2$ ways.\n\n#### Step 3: Apply multiplication rule\n$$\\text{Total Ways} = 3! \\times 4! \\times 3! \\times 2! = 6 \\times 24 \\times 6 \\times 2 = 1,728$$",
+      "shortcutSolutionMarkdown": "#### ⚡ 5-Second Block Principle\n$$\\text{Ways} = 6 \\times 24 \\times 6 \\times 2 = 1,728$$",
+      "formalTimeSeconds": 60,
+      "shortcutTimeSeconds": 5
+    },
+    {
+      "problemStatement": "Find the number of distinct permutations that can be formed using all letters of the word \"PHILIPPINES\".",
+      "formalSolutionMarkdown": "#### Step 1: Count letter frequencies\n- Total letters $n = 11$.\n- Letter counts: $\\text{P} = 3, \\text{I} = 3, \\text{L} = 1, \\text{H} = 1, \\text{N} = 1, \\text{E} = 1, \\text{S} = 1$.\n\n#### Step 2: Apply identical partition formula\n$$P = \\frac{11!}{3! \\, 3! \\, 1! \\, 1! \\, 1! \\, 1! \\, 1!} = \\frac{39,916,800}{6 \\times 6} = \\frac{39,916,800}{36} = 1,108,800$$",
+      "shortcutSolutionMarkdown": "#### ⚡ 10-Second Calculation\n$$\\frac{11!}{36} = 1,108,800$$",
+      "formalTimeSeconds": 60,
+      "shortcutTimeSeconds": 10
+    }
+  ],
+  "calculatorGuides": {
+    "karce": {
+      "techniqueTitle": "Fast nPr & nCr Evaluation",
+      "problemType": "Evaluating permutations and combinations",
+      "sampleProblem": "Evaluate 11P3 and 11C3.",
+      "mode": "COMP Mode (MODE 1)",
+      "keystrokes": [
+        "1",
+        "1",
+        "SHIFT",
+        "nPr",
+        "3",
+        "=",
+        "1",
+        "1",
+        "SHIFT",
+        "nCr",
+        "3",
+        "="
+      ],
+      "notes": "Directly displays 11P3 = 990 and 11C3 = 165."
+    },
+    "canon": {
+      "techniqueTitle": "Identical Element Partition Shortcut",
+      "problemType": "Calculating n! / (p! q! s!) on Canon F-789SGA",
+      "sampleProblem": "Evaluate 11! / (3! × 3!).",
+      "mode": "COMP Mode (MODE 1)",
+      "keystrokes": [
+        "1",
+        "1",
+        "x!",
+        "÷",
+        "(",
+        "3",
+        "x!",
+        "×",
+        "3",
+        "x!",
+        ")",
+        "="
+      ],
+      "notes": "Directly yields 1,108,800 in 2 seconds."
+    }
+  },
+  "conceptChecks": [
+    {
+      "id": "chk-0601-01",
+      "question": "How many ways can 7 electronics engineers be seated around a circular conference table?",
+      "options": [
+        "720",
+        "5,040",
+        "120",
+        "2,520"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Circular permutation formula is (n - 1)!: (7 - 1)! = 6! = 720."
+    },
+    {
+      "id": "chk-0601-02",
+      "question": "Who is historically recognized as the \"Father of the Theory of Probability\" after publishing On Casting the Die in the 16th century?",
+      "options": [
+        "Gerolamo Cardano",
+        "Blaise Pascal",
+        "Pierre de Fermat",
+        "Christiaan Huygens"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Italian physician and mathematician Gerolamo Cardano (1501–1576) wrote Liber de Ludo Aleae, founding the mathematical definition of probability."
+    },
+    {
+      "id": "chk-0601-03",
+      "question": "In the permutation (D, A, C, B) with natural order (A, B, C, D), how many inversions are present, and is the permutation even or odd?",
+      "options": [
+        "4 inversions (Even permutation)",
+        "3 inversions (Odd permutation)",
+        "5 inversions (Odd permutation)",
+        "2 inversions (Even permutation)"
+      ],
+      "correctAnswer": 0,
+      "explanation": "D precedes A, C, B (3 inversions); C precedes B (1 inversion). Total = 3 + 1 = 4 inversions. Since 4 is even, it is an even permutation."
+    }
+  ]
+}

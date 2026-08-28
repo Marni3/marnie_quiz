@@ -3,396 +3,255 @@
   "code": "MATH 12-02",
   "domain": "MATH",
   "topicCode": "MATH-12",
-  "topicTitle": "Analytic Geometry",
-  "subtopicTitle": "Segment Division, Triangle Centers & Coordinate Area (Shoelace Formula)",
+  "topicTitle": "Linear Algebra & Matrices",
+  "subtopicTitle": "Matrix Operations: Symmetric/Skew-Symmetric, Addition, Scalar & Matrix Multiplication",
   "order": 2,
   "pairedQuizSetId": "math-12-02-mastery",
   "toc": [
-    { "id": "sec-prereq-bridges", "title": "1. Introduction & Cross-Subject Bridges", "level": 2 },
-    { "id": "sec-theory", "title": "2. Lesson Proper", "level": 2 },
-    { "id": "sec-formulas", "title": "3. Compilation of Formulas", "level": 2 },
-    { "id": "sec-visualizer", "title": "4. Interactive Visualizer: Coordinate Polygon Area & Centroid", "level": 2 },
-    { "id": "sec-terminology", "title": "5. Terms and Definitions", "level": 2 },
-    { "id": "sec-dual-method", "title": "6. Sample Problems and Solutions", "level": 2 },
-    { "id": "sec-calculator", "title": "7. Calculator Techniques (Karce & Canon)", "level": 2 },
-    { "id": "sec-concept-checks", "title": "8. In-Line Concept Checks", "level": 2 },
-    { "id": "sec-mastery-challenge", "title": "9. Paired Mastery Challenge", "level": 2 }
+    {
+      "id": "sec-prereq-bridges",
+      "title": "1. Introduction & Cross-Subject Connections",
+      "level": 2
+    },
+    {
+      "id": "sec-theory",
+      "title": "2. Lesson Proper: Symmetric, Skew-Symmetric & Matrix Arithmetic Operations",
+      "level": 2
+    },
+    {
+      "id": "sec-formulas",
+      "title": "3. Master Compilation of Matrix Algebraic Laws",
+      "level": 2
+    },
+    {
+      "id": "sec-visualizer",
+      "title": "4. Interactive Visualizer: Matrix Multiplication & Symmetry Inspector",
+      "level": 2
+    },
+    {
+      "id": "sec-terminology",
+      "title": "5. Key Terms and Definitions",
+      "level": 2
+    },
+    {
+      "id": "sec-dual-method",
+      "title": "6. Worked Board Exam Problems",
+      "level": 2
+    },
+    {
+      "id": "sec-calculator",
+      "title": "7. Calculator Speed Techniques (Karce & Canon)",
+      "level": 2
+    },
+    {
+      "id": "sec-concept-checks",
+      "title": "8. In-Line Concept Checks",
+      "level": 2
+    },
+    {
+      "id": "sec-mastery-challenge",
+      "title": "9. Paired Mastery Challenge Exam",
+      "level": 2
+    }
   ],
   "prerequisiteBridge": {
-    "priorModuleId": "math-12-01",
-    "text": "Having mastered lines and distances in MATH 12-01, we now extend coordinate algebra to division of segments, multi-point polygon enclosed areas via the Shoelace matrix formula, and the four classical triangle centers."
+    "priorModuleId": "math-21-01",
+    "text": "Building on basic matrix taxonomy and trace from MATH 21-01, we now explore matrix symmetries (Symmetric $A^T=A$ and Skew-Symmetric $A^T=-A$), scalar multiplication, matrix addition/subtraction, and the non-commutative mechanics of matrix multiplication $AB$."
   },
   "crossSubjectBridges": [
     {
-      "targetDomain": "GEAS",
-      "targetTopicCode": "GEAS-10",
-      "badgeText": "Center of Gravity & Centroids",
-      "description": "In Engineering Mechanics, the center of gravity and area centroid of complex composite planar lamina are calculated using the exact coordinate centroid equations ($\bar{x} = \\frac{\\sum A_i x_i}{\\sum A_i}$)."
+      "targetDomain": "ELECS",
+      "targetTopicCode": "ELEC-05",
+      "badgeText": "Two-Port Z & Y Matrices",
+      "description": "Reciprocal electrical two-port networks produce symmetric impedance matrices $[Z]$ where $Z_{12} = Z_{21}$."
     },
     {
-      "targetDomain": "ELECS",
-      "targetTopicCode": "ELEC-02",
-      "badgeText": "Resistive Potential Dividers",
-      "description": "The linear ratio division formula ($r_1 : r_2$) mirrors the potential divider rule along uniform resistive slide-wires and linear potentiometers."
+      "targetDomain": "GEAS",
+      "targetTopicCode": "GEAS-01",
+      "badgeText": "Stress Tensors",
+      "description": "Cauchy stress tensors $\\boldsymbol{\\sigma}$ in solid mechanics are symmetric $3 \\times 3$ matrices ($\\tau_{xy} = \\tau_{yx}$)."
     },
     {
       "targetDomain": "EST",
       "targetTopicCode": "EST-01",
-      "badgeText": "Voronoi Tessellation in Cellular Networks",
-      "description": "Cellular base station service polygons and coverage areas are computed by applying coordinate area matrix formulas to cell tower boundary vertices."
+      "badgeText": "Channel Transition",
+      "description": "Digital communications Markov state transition matrices utilize row-stochastic matrix multiplication $[p_{t+1}] = [p_t][P]$."
     }
   ],
+  "theory": {
+    "mentalAnchor": "Symmetric: $A^T = A$ ($a_{ij}=a_{ji}$). Skew-symmetric: $A^T = -A$ ($a_{ij}=-a_{ji}$, diagonal entries MUST be 0). Matrix multiply: $(m \\times p)(p \\times n) = (m \\times n)$. $AB \\ne BA$ (non-commutative). $AB = 0$ does not mean $A = 0$ or $B = 0$.",
+    "contentMarkdown": "### 1. Matrix Symmetries: Symmetric vs Skew-Symmetric\n\n#### A. Symmetric Matrix ($A^T = A$):\nA square matrix is **symmetric** if it is equal to its transpose ($a_{ij} = a_{ji}$ for all $i, j$):\n$$\\begin{bmatrix} 3 & 2 & 6 \\\\ 2 & 5 & 4 \\\\ 6 & 4 & 5 \\end{bmatrix}^T = \\begin{bmatrix} 3 & 2 & 6 \\\\ 2 & 5 & 4 \\\\ 6 & 4 & 5 \\end{bmatrix}$$\n\n#### B. Skew-Symmetric (Antisymmetric) Matrix ($A^T = -A$):\nA square matrix is **skew-symmetric** if its transpose equals its negative ($a_{ij} = -a_{ji}$ for all $i, j$):\n- **Essential Diagonal Invariant**: When $i = j$, $a_{ii} = -a_{ii} \\implies 2a_{ii} = 0 \\implies \\mathbf{a_{ii} = 0}$. All main diagonal entries **must strictly be ZERO**.\n$$\\begin{bmatrix} 0 & 2 & -6 \\\\ -2 & 0 & 4 \\\\ 6 & -4 & 0 \\end{bmatrix}^T = -\\begin{bmatrix} 0 & 2 & -6 \\\\ -2 & 0 & 4 \\\\ 6 & -4 & 0 \\end{bmatrix}$$\n\n```diagram\n{\n  \"caption\": \"Figure 1: Matrix Multiplication Compatibility - (m x p) * (p x n) = (m x n)\",\n  \"xRange\": [-5, 5],\n  \"yRange\": [-3, 3],\n  \"elements\": [\n    { \"type\": \"polygon\", \"points\": [[-4.5, -1.5], [-2, -1.5], [-2, 1.5], [-4.5, 1.5]], \"color\": \"#38bdf8\", \"fill\": \"rgba(56, 189, 248, 0.05)\" },\n    { \"type\": \"text\", \"at\": [-3.25, 0], \"text\": \"Matrix A (m x p)\", \"color\": \"#38bdf8\" },\n    { \"type\": \"polygon\", \"points\": [[-1.5, -1.5], [1.5, -1.5], [1.5, 1.5], [-1.5, 1.5]], \"color\": \"#fbbf24\", \"fill\": \"rgba(251, 191, 36, 0.05)\" },\n    { \"type\": \"text\", \"at\": [0, 0], \"text\": \"Matrix B (p x n)\", \"color\": \"#fbbf24\" },\n    { \"type\": \"polygon\", \"points\": [[2, -1.5], [4.5, -1.5], [4.5, 1.5], [2, 1.5]], \"color\": \"#34d399\", \"fill\": \"rgba(52, 211, 153, 0.05)\" },\n    { \"type\": \"text\", \"at\": [3.25, 0], \"text\": \"AB (m x n)\", \"color\": \"#34d399\" }\n  ]\n}\n```\n\n---\n\n### 2. Matrix Arithmetic Operations\n\n#### A. Scalar Multiplication ($c A$):\nMultiplies every individual element by the scalar $c$ ($[c A]_{ij} = c \\cdot a_{ij}$).\n\n#### B. Matrix Addition & Subtraction ($A \\pm B$):\nRequires identical dimensions ($m \\times n$). Evaluated entry-by-entry: $[A \\pm B]_{ij} = a_{ij} \\pm b_{ij}$.\n- Commutative: $A + B = B + A$\n- Associative: $(A + B) + C = A + (B + C)$\n\n#### C. Matrix Multiplication ($A B$):\nDefined if and only if **Inner Dimensions Match**: $A_{m \\times p} \\cdot B_{p \\times n} = C_{m \\times n}$.\n- Element $(i, j)$ is the dot product of Row $i$ of $A$ and Column $j$ of $B$:\n  $$c_{ij} = \\sum_{k=1}^p a_{ik} b_{kj} = a_{i1}b_{1j} + a_{i2}b_{2j} + \\dots + a_{ip}b_{pj}$$\n\n#### Critical Properties of Matrix Multiplication:\n1. **NOT Commutative**: In general, $\\mathbf{AB \\ne BA}$.\n2. **Associative**: $A(BC) = (AB)C$.\n3. **Distributive**: $A(B + C) = AB + AC$.\n4. **Zero Product Property Fails**: $AB = O$ does **not** imply $A = O$ or $B = O$."
+  },
   "formulas": [
     {
-      "id": "f-1202-01",
-      "title": "Division of a Line Segment by Ratio",
-      "formula": "$$x = \\frac{x_1 r_2 + x_2 r_1}{r_1 + r_2}, \\quad y = \\frac{y_1 r_2 + y_2 r_1}{r_1 + r_2}$$",
-      "note": "Ratio r₁ : r₂ represents distance from P₁ to P over distance from P to P₂."
+      "id": "f-2102-01",
+      "title": "Symmetric and Skew-Symmetric Invariants",
+      "formula": "$$\\text{Symmetric: } A^T = A \\; (a_{ij}=a_{ji}), \\quad \\text{Skew-Symmetric: } A^T = -A \\; (a_{ij}=-a_{ji}, a_{ii}=0)$$",
+      "note": "Main diagonal entries of a skew-symmetric matrix must always be zero."
     },
     {
-      "id": "f-1202-02",
-      "title": "Midpoint Coordinates",
-      "formula": "$$x_m = \\frac{x_1 + x_2}{2}, \\quad y_m = \\frac{y_1 + y_2}{2}$$",
-      "note": "Special case where r₁ = r₂ = 1."
+      "id": "f-2102-02",
+      "title": "Matrix Multiplication Formula",
+      "formula": "$$C_{ij} = \\sum_{k=1}^p a_{ik} b_{kj} \\quad \\text{where } A_{m \\times p} \\cdot B_{p \\times n} = C_{m \\times n}$$",
+      "note": "Number of columns in A must equal number of rows in B."
     },
     {
-      "id": "f-1202-03",
-      "title": "Centroid of a Triangle",
-      "formula": "$$G = \\left( \\frac{x_1 + x_2 + x_3}{3}, \\frac{y_1 + y_2 + y_3}{3} \\right)$$",
-      "note": "Intersection of 3 medians; divides each median in a 2 : 1 ratio from vertex to midpoint."
-    },
-    {
-      "id": "f-1202-04",
-      "title": "Incenter Coordinates",
-      "formula": "$$I = \\left( \\frac{a x_1 + b x_2 + c x_3}{a + b + c}, \\frac{a y_1 + b y_2 + c y_3}{a + b + c} \\right)$$",
-      "note": "a, b, c are opposite side lengths. Center of inscribed circle."
-    },
-    {
-      "id": "f-1202-05",
-      "title": "Right Triangle Inradius Shortcut",
-      "formula": "$$r = \\frac{a + b - c}{2}$$",
-      "note": "Valid for right triangles with legs a, b and hypotenuse c."
-    },
-    {
-      "id": "f-1202-06",
-      "title": "Euler Line Distance Ratio",
-      "formula": "$$HG = 2 \\cdot GO \\iff HG : GO = 2 : 1$$",
-      "note": "H = Orthocenter, G = Centroid, O = Circumcenter. Strictly collinear."
-    },
-    {
-      "id": "f-1202-07",
-      "title": "Shoelace Polygon Area Formula",
-      "formula": "$$A = \\frac{1}{2} |\\sum (x_i y_{i+1} - y_i x_{i+1})| = \\frac{1}{2} |\\Sigma R - \\Sigma L|$$",
-      "note": "List vertices counter-clockwise and repeat the first vertex at the bottom. A = 0 implies collinearity."
-    }
-  ],
-  "terms": [
-    {
-      "term": "Segment Division Ratio",
-      "symbol": "$r_1 : r_2$",
-      "unit": "Ratio",
-      "definition": "The point $P(x, y)$ dividing the directed line segment from $P_1(x_1, y_1)$ to $P_2(x_2, y_2)$ in the ratio $r_1 : r_2$: $x = \\frac{x_1 r_2 + x_2 r_1}{r_1 + r_2}, \\quad y = \\frac{y_1 r_2 + y_2 r_1}{r_1 + r_2}$.",
-      "keywordTrigger": "point dividing line segment in ratio r1 to r2"
-    },
-    {
-      "term": "Midpoint",
-      "symbol": "$M(x_m, y_m)$",
-      "unit": "Point",
-      "definition": "The exact geometric center of a line segment ($r_1 = r_2 = 1$): $x_m = \\frac{x_1 + x_2}{2}, \\quad y_m = \\frac{y_1 + y_2}{2}$.",
-      "keywordTrigger": "equal division of line segment / average of endpoints"
-    },
-    {
-      "term": "Centroid of a Triangle",
-      "symbol": "$G(\\bar{x}, \\bar{y})$",
-      "unit": "Point",
-      "definition": "The intersection point of the three medians of a triangle, dividing each median in a $2 : 1$ ratio from vertex to midpoint: $G = \\left(\\frac{x_1 + x_2 + x_3}{3}, \\frac{y_1 + y_2 + y_3}{3}\\right)$.",
-      "keywordTrigger": "intersection of medians / center of mass of triangle"
-    },
-    {
-      "term": "Incenter",
-      "symbol": "$I$",
-      "unit": "Point",
-      "definition": "The point of concurrency of the three angle bisectors of a triangle, forming the center of the inscribed circle (incircle).",
-      "keywordTrigger": "intersection of angle bisectors / center of incircle"
-    },
-    {
-      "term": "Circumcenter",
-      "symbol": "$O$",
-      "unit": "Point",
-      "definition": "The point of concurrency of the perpendicular bisectors of the three sides of a triangle, forming the center of the circumscribed circle.",
-      "keywordTrigger": "intersection of perpendicular bisectors of sides"
-    },
-    {
-      "term": "Orthocenter",
-      "symbol": "$H$",
-      "unit": "Point",
-      "definition": "The point of concurrency of the three altitudes of a triangle drawn from vertices perpendicular to the opposite sides.",
-      "keywordTrigger": "intersection of altitudes of a triangle"
-    },
-    {
-      "term": "Euler Line",
-      "symbol": "$H-G-O$",
-      "unit": "Theorem",
-      "definition": "The line passing through the Orthocenter $H$, Centroid $G$, and Circumcenter $O$, where $G$ divides $HO$ in the exact ratio $2 : 1$ ($HG = 2 \\cdot GO$).",
-      "keywordTrigger": "line connecting orthocenter, centroid, and circumcenter"
-    },
-    {
-      "term": "Shoelace Formula (Gauss's Area)",
-      "symbol": "$A$",
-      "unit": "Area",
-      "definition": "The algebraic algorithm to calculate the area of any polygon from its ordered coordinate vertices $(x_1, y_1), \\dots, (x_n, y_n)$: $A = \\frac{1}{2}|\\sum (x_i y_{i+1} - y_i x_{i+1})|$.",
-      "keywordTrigger": "surveyor's matrix method / area of polygon by coordinates"
-    },
-    {
-      "term": "Collinearity Condition",
-      "symbol": "$A = 0$",
-      "unit": "Condition",
-      "definition": "Three points lie on the exact same straight line if and only if the coordinate area of the triangle formed by them is strictly zero ($A = 0$).",
-      "keywordTrigger": "points lying on same line / zero enclosed area"
+      "id": "f-2102-03",
+      "title": "Transpose Product Law",
+      "formula": "$$(AB)^T = B^T A^T, \\quad (ABC)^T = C^T B^T A^T$$",
+      "note": "The order of factors reverses upon taking the transpose."
     }
   ],
   "visualizer": {
-    "archetype": "polygon_shoelace",
-    "title": "Interactive Polygon Area & Triangle Centroid Sandbox",
-    "description": "Adjust vertex coordinate offsets to observe the live Shoelace cross-multiplication matrix, area calculation, and the balancing centroid position.",
+    "archetype": "parameter_sweep",
+    "title": "Matrix Multiplication & Symmetry Inspector",
+    "description": "Enter 2x2 matrix elements to verify AB vs BA non-commutativity, symmetric condition A^T = A, and transpose reversal (AB)^T = B^T A^T.",
     "config": {
       "canvasWidth": 640,
       "canvasHeight": 320,
       "controls": [
         {
-          "id": "x1",
-          "label": "Vertex A (x)",
-          "min": -80,
-          "max": 80,
-          "step": 10,
-          "defaultValue": 20
+          "id": "elemA11",
+          "label": "A[1,1]",
+          "min": -5,
+          "max": 5,
+          "step": 1,
+          "defaultValue": 1
         },
         {
-          "id": "y1",
-          "label": "Vertex A (y)",
-          "min": -60,
-          "max": 60,
-          "step": 10,
-          "defaultValue": 50
+          "id": "elemA12",
+          "label": "A[1,2]",
+          "min": -5,
+          "max": 5,
+          "step": 1,
+          "defaultValue": 2
         },
         {
-          "id": "x2",
-          "label": "Vertex B (x)",
-          "min": -80,
-          "max": 80,
-          "step": 10,
-          "defaultValue": 70
+          "id": "elemA21",
+          "label": "A[2,1]",
+          "min": -5,
+          "max": 5,
+          "step": 1,
+          "defaultValue": 3
         },
         {
-          "id": "y2",
-          "label": "Vertex B (y)",
-          "min": -60,
-          "max": 60,
-          "step": 10,
-          "defaultValue": -30
-        },
-        {
-          "id": "x3",
-          "label": "Vertex C (x)",
-          "min": -80,
-          "max": 80,
-          "step": 10,
-          "defaultValue": -60
-        },
-        {
-          "id": "y3",
-          "label": "Vertex C (y)",
-          "min": -60,
-          "max": 60,
-          "step": 10,
-          "defaultValue": -40
+          "id": "elemA22",
+          "label": "A[2,2]",
+          "min": -5,
+          "max": 5,
+          "step": 1,
+          "defaultValue": 4
         }
       ]
     }
   },
-  "theory": {
-    "mentalAnchor": "Centroid is simply the arithmetic average of vertices ($G = \\frac{\\sum x}{3}, \\frac{\\sum y}{3}$). For polygon area, list coordinates in order, wrap around to the first point, cross-multiply diagonals (Shoelace formula), subtract left products from right products, and divide by 2.",
-    "contentMarkdown": "### 1. Division of a Line Segment by a Ratio\n\nWhen a point $P(x, y)$ divides a directed line segment connecting $P_1(x_1, y_1)$ to $P_2(x_2, y_2)$ into two segments $P_1P$ and $PP_2$ with ratio $\\frac{P_1P}{PP_2} = \\frac{r_1}{r_2}$:\n\n$$x = \\frac{x_1 r_2 + x_2 r_1}{r_1 + r_2}, \\quad y = \\frac{y_1 r_2 + y_2 r_1}{r_1 + r_2}$$\n\n```diagram\n{\n  \"caption\": \"Figure 1: Internal segment division P(x, y) dividing P₁(1, 2) to P₂(7, 5) in a 1 : 2 ratio\",\n  \"xRange\": [-1, 9],\n  \"yRange\": [-1, 7],\n  \"elements\": [\n    { \"type\": \"grid\" },\n    { \"type\": \"axes\" },\n    { \"type\": \"segment\", \"from\": [1, 2], \"to\": [7, 5], \"color\": \"#d97757\", \"width\": 2.5 },\n    { \"type\": \"point\", \"at\": [1, 2], \"label\": \"P₁(1, 2)\", \"color\": \"#38bdf8\" },\n    { \"type\": \"point\", \"at\": [3, 3], \"label\": \"P(3, 3) [1 : 2]\", \"color\": \"#fbbf24\" },\n    { \"type\": \"point\", \"at\": [7, 5], \"label\": \"P₂(7, 5)\", \"color\": \"#38bdf8\" },\n    { \"type\": \"projection\", \"from\": [3, 3], \"to\": [3, 0], \"label\": \"x = 3\", \"color\": \"#71717a\" },\n    { \"type\": \"projection\", \"from\": [3, 3], \"to\": [0, 3], \"label\": \"y = 3\", \"color\": \"#71717a\" }\n  ]\n}\n```\n\n#### Specific Cases:\n- **Midpoint ($r_1 = r_2 = 1$)**: When the point divides the segment exactly in half, the formula reduces to the arithmetic mean:\n  $$x_m = \\frac{x_1 + x_2}{2}, \\quad y_m = \\frac{y_1 + y_2}{2}$$\n- **Internal Division ($r_1, r_2 > 0$)**: The point $P$ lies strictly between $P_1$ and $P_2$.\n- **External Division ($r_1/r_2 < 0$)**: The point $P$ lies outside the segment along its extended line.\n\n---\n\n### 2. Triangle Centers & The Euler Line\n\nIn Euclidean geometry, every triangle possesses four classical concurrency centers:\n\n```diagram\n{\n  \"caption\": \"Figure 2: Triangle with three medians meeting at Centroid G(3.33, 3.33) in a 2 : 1 ratio\",\n  \"xRange\": [-1, 9],\n  \"yRange\": [-1, 8],\n  \"elements\": [\n    { \"type\": \"grid\" },\n    { \"type\": \"axes\" },\n    { \"type\": \"polygon\", \"points\": [[1, 6], [2, 1], [7, 3]], \"color\": \"#38bdf8\", \"fill\": \"rgba(56, 189, 248, 0.1)\" },\n    { \"type\": \"segment\", \"from\": [1, 6], \"to\": [4.5, 2], \"color\": \"#71717a\", \"dashed\": true },\n    { \"type\": \"segment\", \"from\": [2, 1], \"to\": [4, 4.5], \"color\": \"#71717a\", \"dashed\": true },\n    { \"type\": \"segment\", \"from\": [7, 3], \"to\": [1.5, 3.5], \"color\": \"#71717a\", \"dashed\": true },\n    { \"type\": \"point\", \"at\": [1, 6], \"label\": \"A(1, 6)\", \"color\": \"#38bdf8\" },\n    { \"type\": \"point\", \"at\": [2, 1], \"label\": \"B(2, 1)\", \"color\": \"#38bdf8\" },\n    { \"type\": \"point\", \"at\": [7, 3], \"label\": \"C(7, 3)\", \"color\": \"#38bdf8\" },\n    { \"type\": \"point\", \"at\": [3.33, 3.33], \"label\": \"G(3.33, 3.33)\", \"color\": \"#fbbf24\", \"size\": 4.5 }\n  ]\n}\n```\n\n| Center | Point of Concurrency | Core Coordinate Formula & Key Property |\n| :--- | :--- | :--- |\n| **Centroid ($G$)** | 3 Medians | $G = \\left(\\frac{x_1 + x_2 + x_3}{3}, \\frac{y_1 + y_2 + y_3}{3}\\right)$. Divides each median in a $2 : 1$ ratio from vertex to opposite midpoint. |\n| **Incenter ($I$)** | 3 Angle Bisectors | $I = \\left(\\frac{a x_1 + b x_2 + c x_3}{a + b + c}, \\frac{a y_1 + b y_2 + c y_3}{a + b + c}\\right)$, where $a, b, c$ are opposite side lengths. Center of inscribed incircle. |\n| **Circumcenter ($O$)** | 3 Perpendicular Bisectors | Equidistant from all three vertices ($OA = OB = OC = R$). Center of circumscribed circle. |\n| **Orthocenter ($H$)** | 3 Altitudes | Concurrency of perpendicular heights from vertices to opposite sides. |\n\n#### ⚡ The Euler Line Ratio:\nIn any non-equilateral triangle, the Orthocenter ($H$), Centroid ($G$), and Circumcenter ($O$) are strictly collinear, satisfying the fixed distance ratio:\n$$HG : GO = 2 : 1 \\iff HG = 2 \\cdot GO$$\n*(In an equilateral triangle, all four centers $G, I, O, H$ merge into a single point)*.\n\n---\n\n### 3. Shoelace Formula (Gauss's Area Algorithm)\n\nTo find the area of any $n$-sided polygon from its coordinate vertices $(x_1, y_1), (x_2, y_2), \\dots, (x_n, y_n)$ listed consecutively in counter-clockwise order:\n\n$$A = \\frac{1}{2} \\begin{vmatrix} x_1 & y_1 \\\\ x_2 & y_2 \\\\ x_3 & y_3 \\\\ \\vdots & \\vdots \\\\ x_n & y_n \\\\ x_1 & y_1 \\end{vmatrix} = \\frac{1}{2} |(x_1 y_2 + x_2 y_3 + \\dots + x_n y_1) - (y_1 x_2 + y_2 x_3 + \\dots + y_n x_1)|$$\n\n- **Right Diagonals ($\\Sigma R$)**: Multiply downwards from top-left to bottom-right: $x_1 y_2 + x_2 y_3 + \\dots + x_n y_1$.\n- **Left Diagonals ($\\Sigma L$)**: Multiply downwards from top-right to bottom-left: $y_1 x_2 + y_2 x_3 + \\dots + y_n x_1$.\n- **Area Result**: $A = \\frac{1}{2}|\\Sigma R - \\Sigma L|$.\n- **Collinearity Test**: If the Shoelace area evaluates to $A = 0$, all three points lie on a straight line."
-  },
+  "terms": [
+    {
+      "term": "Symmetric Matrix",
+      "symbol": "$A^T = A$",
+      "unit": "Type",
+      "definition": "A square matrix that is invariant under transposition, where every entry a_ij equals a_ji.",
+      "keywordTrigger": "symmetric matrix / A^T = A / a_ij = a_ji"
+    },
+    {
+      "term": "Skew-Symmetric Matrix",
+      "symbol": "$A^T = -A$",
+      "unit": "Type",
+      "definition": "A square matrix whose transpose equals its negative, having all main diagonal entries equal to zero.",
+      "keywordTrigger": "skew-symmetric matrix / A^T = -A / diagonal zero"
+    },
+    {
+      "term": "Matrix Non-Commutativity",
+      "symbol": "$AB \\ne BA$",
+      "unit": "Property",
+      "definition": "The algebraic property stating that matrix multiplication order matters and in general AB does not equal BA.",
+      "keywordTrigger": "AB != BA / non-commutative matrix multiplication"
+    }
+  ],
   "examples": [
     {
-      "problemStatement": "Find the coordinates of the point P that divides the segment from A(2, 3) to B(8, -6) in the ratio 1 : 2.",
-      "formalSolutionMarkdown": "#### Step 1: Identify given parameters\n- $x_1 = 2, y_1 = 3$\n- $x_2 = 8, y_2 = -6$\n- $r_1 = 1, r_2 = 2$\n\n#### Step 2: Apply the segment division formula\n$$x = \\frac{x_1 r_2 + x_2 r_1}{r_1 + r_2} = \\frac{2(2) + 8(1)}{1 + 2} = \\frac{4 + 8}{3} = \\frac{12}{3} = 4$$\n$$y = \\frac{y_1 r_2 + y_2 r_1}{r_1 + r_2} = \\frac{3(2) + (-6)(1)}{1 + 2} = \\frac{6 - 6}{3} = \\frac{0}{3} = 0$$\n\nThus, the dividing point is $P(4, 0)$.",
-      "shortcutSolutionMarkdown": "#### ⚡ 4-Second Vector Step Method\n1. Total horizontal change $\\Delta x = 8 - 2 = 6$. Step by $1/3$: $x = 2 + \\frac{1}{3}(6) = 4$.\n2. Total vertical change $\\Delta y = -6 - 3 = -9$. Step by $1/3$: $y = 3 + \\frac{1}{3}(-9) = 0$.\n3. Point is $(4, 0)$.",
-      "formalTimeSeconds": 60,
-      "shortcutTimeSeconds": 4
-    },
-    {
-      "problemStatement": "Find the area of the quadrilateral with vertices at A(1, 1), B(5, 2), C(4, 6), and D(-1, 4).",
-      "formalSolutionMarkdown": "#### Step 1: Set up the Shoelace matrix\n$$A = \\frac{1}{2} \\begin{vmatrix} 1 & 1 \\\\ 5 & 2 \\\\ 4 & 6 \\\\ -1 & 4 \\\\ 1 & 1 \\end{vmatrix}$$\n\n#### Step 2: Compute downward (right) diagonal products (ΣR)\n$$\\Sigma R = (1)(2) + (5)(6) + (4)(4) + (-1)(1) = 2 + 30 + 16 - 1 = 47$$\n\n#### Step 3: Compute upward (left) diagonal products (ΣL)\n$$\\Sigma L = (1)(5) + (2)(4) + (6)(-1) + (4)(1) = 5 + 8 - 6 + 4 = 11$$\n\n#### Step 4: Calculate final area\n$$A = \\frac{1}{2} |\\Sigma R - \\Sigma L| = \\frac{1}{2} |47 - 11| = \\frac{1}{2} (36) = 18\\text{ sq units}$$",
-      "shortcutSolutionMarkdown": "#### ⚡ 10-Second Calculator Matrix Determinant\n1. Sum right diagonals: $2 + 30 + 16 - 1 = 47$.\n2. Sum left diagonals: $5 + 8 - 6 + 4 = 11$.\n3. Area $= \\frac{47 - 11}{2} = \\frac{36}{2} = \\mathbf{18}$.",
-      "formalTimeSeconds": 90,
-      "shortcutTimeSeconds": 10
-    },
-    {
-      "problemStatement": "Find the coordinates of the centroid of a triangle with vertices at (1, 4), (5, -2), and (9, 7).",
-      "formalSolutionMarkdown": "#### Step 1: Apply centroid coordinate formula\n$$\\bar{x} = \\frac{x_1 + x_2 + x_3}{3} = \\frac{1 + 5 + 9}{3} = \\frac{15}{3} = 5$$\n$$\\bar{y} = \\frac{y_1 + y_2 + y_3}{3} = \\frac{4 + (-2) + 7}{3} = \\frac{9}{3} = 3$$\n\nThus, the centroid is $G(5, 3)$.",
-      "shortcutSolutionMarkdown": "#### ⚡ 3-Second Average\n- $x = (1 + 5 + 9)/3 = 5$\n- $y = (4 - 2 + 7)/3 = 3$\n- Centroid $= \\mathbf{(5, 3)}$.",
-      "formalTimeSeconds": 40,
+      "problemStatement": "Given D = [[2, -3], [4, -1], [1, 5]] (3x2) and C = [[-4, 1, 3], [-1, 2, 5]] (2x3), compute the product matrix DC.",
+      "formalSolutionMarkdown": "#### Step 1: Check dimensions\n- $D$ is $3 \\times 2$, $C$ is $2 \\times 3$. Inner dimensions match ($2 = 2$).\n- Product $DC$ will be a $3 \\times 3$ matrix.\n\n#### Step 2: Compute each row-column dot product\n- Row 1: $[2(-4) + (-3)(-1), \\; 2(1) + (-3)(2), \\; 2(3) + (-3)(5)] = [-8+3, \\; 2-6, \\; 6-15] = [-5, -4, -9]$\n- Row 2: $[4(-4) + (-1)(-1), \\; 4(1) + (-1)(2), \\; 4(3) + (-1)(5)] = [-16+1, \\; 4-2, \\; 12-5] = [-15, 2, 7]$\n- Row 3: $[1(-4) + 5(-1), \\; 1(1) + 5(2), \\; 1(3) + 5(5)] = [-4-5, \\; 1+10, \\; 3+25] = [-9, 11, 28]$\n\n$$DC = \\begin{bmatrix} -5 & -4 & -9 \\\\ -15 & 2 & 7 \\\\ -9 & 11 & 28 \\end{bmatrix}$$",
+      "shortcutSolutionMarkdown": "#### ⚡ 3-Second Matrix Product\n$$DC = \\begin{bmatrix} -5 & -4 & -9 \\\\ -15 & 2 & 7 \\\\ -9 & 11 & 28 \\end{bmatrix}$$",
+      "formalTimeSeconds": 45,
       "shortcutTimeSeconds": 3
+    },
+    {
+      "problemStatement": "Show that the matrix A = [[0, 3, -5], [-3, 0, 2], [5, -2, 0]] is skew-symmetric.",
+      "formalSolutionMarkdown": "#### Step 1: Compute Transpose A^T\n$$A^T = \\begin{bmatrix} 0 & -3 & 5 \\\\ 3 & 0 & -2 \\\\ -5 & 2 & 0 \\end{bmatrix}$$\n\n#### Step 2: Factor out negative sign\n$$-A = -\\begin{bmatrix} 0 & 3 & -5 \\\\ -3 & 0 & 2 \\\\ 5 & -2 & 0 \\end{bmatrix} = \\begin{bmatrix} 0 & -3 & 5 \\\\ 3 & 0 & -2 \\\\ -5 & 2 & 0 \\end{bmatrix} = A^T$$\n- Since $A^T = -A$ and all diagonal entries are 0, $A$ is skew-symmetric.",
+      "shortcutSolutionMarkdown": "#### ⚡ 1-Second Skew-Symmetry Verification\n$$A^T = -A \\quad \\text{and} \\quad a_{ii} = 0 \\implies \\text{Skew-Symmetric}$$",
+      "formalTimeSeconds": 20,
+      "shortcutTimeSeconds": 1
     }
   ],
   "calculatorGuides": {
     "karce": {
-      "techniqueTitle": "STAT Mode Coordinate Mean for Centroids",
-      "problemType": "Centroid of multi-point vertices",
-      "sampleProblem": "Find the centroid of (1, 4), (5, -2), (9, 7).",
-      "mode": "STAT Mode (MODE 2)",
-      "keystrokes": [
-        "MODE",
-        "2",
-        "1",
-        "1",
-        "M+",
-        "5",
-        "M+",
-        "9",
-        "M+",
-        "SHIFT",
-        "S-VAR",
-        "x̄",
-        "="
-      ],
-      "notes": "Directly evaluates the mean x̄ = 5. Repeat for y coordinates to obtain ȳ = 3 without manual sum fractions."
-    },
-    "canon": {
-      "techniqueTitle": "Canon 3x3 Matrix Determinant for Triangle Area",
-      "problemType": "Triangle area from 3 vertices (x1, y1), (x2, y2), (x3, y3)",
-      "sampleProblem": "Find the area of triangle with vertices (1, 2), (3, 8), (5, 4).",
+      "techniqueTitle": "Fast Matrix Multiplication Verification",
+      "problemType": "Multiplying 2x2 matrices MatA * MatB",
+      "sampleProblem": "Multiply [[1,2],[3,4]] by [[2,0],[1,2]].",
       "mode": "MATRIX Mode (MODE 6)",
       "keystrokes": [
-        "MODE",
-        "6",
-        "1",
-        "1",
-        "1",
-        "=",
-        "2",
-        "=",
-        "1",
-        "=",
-        "3",
-        "=",
-        "8",
-        "=",
-        "1",
-        "=",
-        "5",
-        "=",
-        "4",
-        "=",
-        "1",
-        "=",
-        "AC",
-        "SHIFT",
-        "4",
-        "7",
-        "SHIFT",
-        "4",
-        "3",
-        ")",
-        "÷",
-        "2",
+        "MatA",
+        "×",
+        "MatB",
         "="
       ],
-      "notes": "Evaluates 1/2 det(A) = 10 sq units with zero paper calculations."
+      "notes": "Directly displays [[4, 4], [10, 8]]."
+    },
+    "canon": {
+      "techniqueTitle": "Direct Matrix Product (MatA * MatB)",
+      "problemType": "Evaluating (3x2) * (2x3) on Canon F-789SGA",
+      "sampleProblem": "Compute DC product.",
+      "mode": "MATRIX Mode (MODE 6)",
+      "keystrokes": [
+        "SHIFT",
+        "MATRIX",
+        "3",
+        "×",
+        "SHIFT",
+        "MATRIX",
+        "4",
+        "="
+      ],
+      "notes": "Directly displays 3x3 result matrix."
     }
   },
   "conceptChecks": [
     {
-      "id": "chk-01",
-      "question": "What is the midpoint of the line segment connecting $(-4, 7)$ and $(6, -3)$?",
-      "options": {
-        "A": "$(1, 2)$",
-        "B": "$(2, 4)$",
-        "C": "$(-1, 2)$",
-        "D": "$(1, 5)$"
-      },
-      "correctAnswer": "A",
-      "distractorDeconstruction": {
-        "A": "$x_m = (-4 + 6)/2 = 1$, $y_m = (7 - 3)/2 = 2$. Point is $(1, 2)$.",
-        "B": "Forgot to divide by 2.",
-        "C": "Arithmetic sign error on $x$ coordinate.",
-        "D": "Arithmetic error on $y$ coordinate."
-      },
-      "shortcutExplanation": "Average coordinates: $(-4+6)/2 = 1$, $(7-3)/2 = 2 \\implies (1, 2)$."
+      "id": "chk-2102-01",
+      "question": "What must the value of all main diagonal entries be in ANY skew-symmetric matrix ($A^T = -A$)?",
+      "options": [
+        "All diagonal entries must be strictly ZERO (a_ii = 0)",
+        "All diagonal entries must be 1",
+        "All diagonal entries must be negative",
+        "Any real number is allowed"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Since a_ii = -a_ii, we have 2a_ii = 0 => a_ii = 0 for all diagonal elements."
     },
     {
-      "id": "chk-02",
-      "question": "In any general triangle, which center is formed by the intersection of its three medians?",
-      "options": {
-        "A": "Incenter",
-        "B": "Circumcenter",
-        "C": "Centroid",
-        "D": "Orthocenter"
-      },
-      "correctAnswer": "C",
-      "distractorDeconstruction": {
-        "A": "Incenter is formed by angle bisectors.",
-        "B": "Circumcenter is formed by perpendicular bisectors of sides.",
-        "C": "Correct: The 3 medians concur at the Centroid ($G$).",
-        "D": "Orthocenter is formed by altitudes."
-      },
-      "shortcutExplanation": "Median $\\to$ Centroid ($G$)."
+      "id": "chk-2102-02",
+      "question": "If matrix $A$ has dimension $4 \\times 3$ and matrix $B$ has dimension $3 \\times 5$, what is the dimension of the product matrix $A B$?",
+      "options": [
+        "4 x 5",
+        "3 x 3",
+        "5 x 4",
+        "Multiplication is undefined"
+      ],
+      "correctAnswer": 0,
+      "explanation": "The product of (4 x 3) and (3 x 5) is a (4 x 5) matrix."
     },
     {
-      "id": "chk-03",
-      "question": "If the vertices of a triangle are $(0, 0), (6, 0),$ and $(0, 8)$, what are the coordinates of its centroid?",
-      "options": {
-        "A": "$(2, 2.67)$",
-        "B": "$(3, 4)$",
-        "C": "$(2, 4)$",
-        "D": "$(3, 2.67)$"
-      },
-      "correctAnswer": "A",
-      "distractorDeconstruction": {
-        "A": "Correct: $\\bar{x} = (0+6+0)/3 = 2$, $\\bar{y} = (0+0+8)/3 = 8/3 \\approx 2.67$.",
-        "B": "Divided by 2 instead of 3 (midpoint of hypotenuse instead of centroid).",
-        "C": "Divided $y$ by 2 instead of 3.",
-        "D": "Divided $x$ by 2 and $y$ by 3."
-      },
-      "shortcutExplanation": "Sum and divide by 3: $x = 6/3 = 2, y = 8/3 \\approx 2.67$."
-    },
-    {
-      "id": "chk-04",
-      "question": "Three points $(1, 2), (3, k),$ and $(5, 10)$ are known to be collinear. What is the value of $k$?",
-      "options": {
-        "A": "4",
-        "B": "6",
-        "C": "8",
-        "D": "5"
-      },
-      "correctAnswer": "B",
-      "distractorDeconstruction": {
-        "A": "Incorrect slope calculation.",
-        "B": "Correct: Overall slope $m = (10-2)/(5-1) = 8/4 = 2$. Thus $k = 2 + 2(3-1) = 2 + 4 = 6$.",
-        "C": "Assumed linear step was 3 instead of 2.",
-        "D": "Simple average of 2 and 10 without weighting."
-      },
-      "shortcutExplanation": "Midpoint of $(1, 2)$ and $(5, 10)$ is $(3, 6) \\implies k = 6$."
-    },
-    {
-      "id": "chk-05",
-      "question": "Along the Euler line of a triangle, what is the ratio of the distance from the Orthocenter to Centroid ($HG$) compared to Centroid to Circumcenter ($GO$)?",
-      "options": {
-        "A": "$1 : 1$",
-        "B": "$2 : 1$",
-        "C": "$3 : 1$",
-        "D": "$1 : 2$"
-      },
-      "correctAnswer": "B",
-      "distractorDeconstruction": {
-        "A": "Only in equilateral triangles where all centers coincide.",
-        "B": "Correct: $HG : GO = 2 : 1$ by Euler's theorem.",
-        "C": "Incorrect ratio.",
-        "D": "Inverted ratio."
-      },
-      "shortcutExplanation": "Euler Line: $HG = 2 \\cdot GO$ ($2 : 1$ ratio)."
+      "id": "chk-2102-03",
+      "question": "What is the transpose of the product of two matrices $(A B)^T$ equal to?",
+      "options": [
+        "B^T A^T (Order of factors reverses)",
+        "A^T B^T",
+        "(A + B)^T",
+        "A B"
+      ],
+      "correctAnswer": 0,
+      "explanation": "The reversal law of transposes states that (AB)^T = B^T A^T."
     }
   ]
 }

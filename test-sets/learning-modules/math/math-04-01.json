@@ -3,190 +3,285 @@
   "code": "MATH 04-01",
   "domain": "MATH",
   "topicCode": "MATH-04",
-  "topicTitle": "Discrete Mathematics",
-  "subtopicTitle": "Set Theory, Cardinality, Subsets, Disjoint Sets & Venn Diagrams",
+  "topicTitle": "Plane & Spherical Trigonometry",
+  "subtopicTitle": "Right Triangles, Special Angles, Law of Sines, Cosines & Tangents",
   "order": 1,
   "pairedQuizSetId": "math-04-01-mastery",
   "toc": [
-    { "id": "sec-prereq-bridges", "title": "1. Introduction & Cross-Subject Connections", "level": 2 },
-    { "id": "sec-theory", "title": "2. Lesson Proper: Set Theory Foundations", "level": 2 },
-    { "id": "sec-formulas", "title": "3. Compilation of Formulas & Set Laws", "level": 2 },
-    { "id": "sec-visualizer", "title": "4. Interactive Visualizer: Venn Diagram Overlaps", "level": 2 },
-    { "id": "sec-terminology", "title": "5. Key Terms and Definitions", "level": 2 },
-    { "id": "sec-dual-method", "title": "6. Worked Board Exam Problems", "level": 2 },
-    { "id": "sec-calculator", "title": "7. Calculator Speed Techniques (Karce & Canon)", "level": 2 },
-    { "id": "sec-concept-checks", "title": "8. In-Line Concept Checks", "level": 2 },
-    { "id": "sec-mastery-challenge", "title": "9. Paired Mastery Challenge Exam", "level": 2 }
+    {
+      "id": "sec-prereq-bridges",
+      "title": "1. Introduction & Cross-Subject Connections",
+      "level": 2
+    },
+    {
+      "id": "sec-theory",
+      "title": "2. Lesson Proper: Triangle Geometry & Oblique Laws",
+      "level": 2
+    },
+    {
+      "id": "sec-formulas",
+      "title": "3. Compilation of Formulas & Trigonometric Laws",
+      "level": 2
+    },
+    {
+      "id": "sec-visualizer",
+      "title": "4. Interactive Visualizer: Oblique Triangle Solver",
+      "level": 2
+    },
+    {
+      "id": "sec-terminology",
+      "title": "5. Key Terms and Definitions",
+      "level": 2
+    },
+    {
+      "id": "sec-dual-method",
+      "title": "6. Worked Board Exam Problems",
+      "level": 2
+    },
+    {
+      "id": "sec-calculator",
+      "title": "7. Calculator Speed Techniques (Karce & Canon)",
+      "level": 2
+    },
+    {
+      "id": "sec-concept-checks",
+      "title": "8. In-Line Concept Checks",
+      "level": 2
+    },
+    {
+      "id": "sec-mastery-challenge",
+      "title": "9. Paired Mastery Challenge Exam",
+      "level": 2
+    }
   ],
   "prerequisiteBridge": {
-    "priorModuleId": "math-01-04",
-    "text": "Having mastered algebraic progressions, we now transition into discrete structures. Set theory forms the fundamental language of digital logic gates, relational databases, probability sample spaces, and network routing."
+    "priorModuleId": "math-06-03",
+    "text": "Moving from discrete probability, we now transition into continuous geometric trigonometry—fundamental right-triangle ratios, Pythagorean theorems, and the universal laws of Sines, Cosines, and Tangents for oblique triangles."
   },
   "crossSubjectBridges": [
     {
       "targetDomain": "ELECS",
-      "targetTopicCode": "ELEC-15",
-      "badgeText": "Digital Logic",
-      "description": "Set union ($A \\cup B$) and intersection ($A \\cap B$) correspond directly to Boolean OR and AND logic gates in digital circuit design."
-    },
-    {
-      "targetDomain": "MATH",
-      "targetTopicCode": "MATH-06",
-      "badgeText": "Probability",
-      "description": "Sample spaces $S$ and compound events use set cardinality $|A \\cup B| = |A| + |B| - |A \\cap B|$ to compute probabilities."
+      "targetTopicCode": "ELEC-04",
+      "badgeText": "AC Circuits",
+      "description": "AC impedance power triangles ($S = P + jQ$) and power factor $\\cos \\theta$ directly utilize right triangle trigonometric ratios."
     },
     {
       "targetDomain": "EST",
-      "targetTopicCode": "EST-10",
-      "badgeText": "Data Comms",
-      "description": "IP subnet addressing, routing masks, and packet filter rules apply set containment ($A \\subseteq B$) and disjoint partition concepts."
+      "targetTopicCode": "EST-04",
+      "badgeText": "Microwave Comms",
+      "description": "Line-of-sight path profiling, earth curvature clearance, and antenna azimuth calculations apply the Law of Cosines and spherical trigonometry."
+    },
+    {
+      "targetDomain": "GEAS",
+      "targetTopicCode": "GEAS-01",
+      "badgeText": "Statics",
+      "description": "Lami's Theorem for 3-force concurrent equilibrium is a direct physical manifestation of the trigonometric Law of Sines."
     }
   ],
   "theory": {
-    "mentalAnchor": "A set is an unordered collection of well-defined elements. A proper subset $A \\subset B$ requires $B$ to have at least one element not in $A$. The empty set $\\emptyset$ is a subset of every set. For finite sets, total number of subsets is $2^n$ and proper subsets is $2^n - 1$.",
-    "contentMarkdown": "### 1. Discrete Mathematics & Set Theory Fundamentals\n\n**Discrete Mathematics** is the branch of mathematics dealing with objects that take on distinct, separated values rather than continuous gradations (excluding smooth calculus). The foundational framework of discrete mathematics is **Set Theory**, developed by German mathematician **Georg Cantor (1845–1918)**.\n\nA **set** is an unordered collection of well-defined objects, called **elements** or **members**.\n\n#### Set Notations:\n1. **Roster / Listing Method**: Enumerates elements explicitly within braces: $A = \\{2, 4, 6, 8\\}$.\n2. **Set-Builder / Rule Method**: Uses a property classifier: $A = \\{x \\in \\mathbb{Z} \\mid 1 \\le x \\le 10 \\text{ and } x \\text{ is even}\\}$.\n3. **Membership Symbols**:\n   - $\\in$: *\"is an element of\"* (e.g., $4 \\in A$).\n   - $\\notin$: *\"is not an element of\"* (e.g., $5 \\notin A$).\n4. **Cardinality / Order ($|A|$ or $n(A)$)**: The total number of distinct elements in set $A$. Note that element order does not matter: $\\{1, 2, 3\\} = \\{3, 1, 2\\}$.\n\n```diagram\n{\n  \"caption\": \"Figure 1: Venn Diagram Representation of Subsets and Disjoint Sets\",\n  \"xRange\": [-5, 5],\n  \"yRange\": [-3, 3],\n  \"elements\": [\n    { \"type\": \"polygon\", \"points\": [[-4.5, 2.5], [4.5, 2.5], [4.5, -2.5], [-4.5, -2.5]], \"color\": \"#64748b\", \"fill\": \"rgba(100, 116, 139, 0.05)\" },\n    { \"type\": \"text\", \"at\": [-4.0, 2.1], \"text\": \"Universal Set (U)\", \"color\": \"#94a3b8\" },\n    { \"type\": \"arc\", \"center\": [-1.5, 0], \"radius\": 40, \"startAngle\": 0, \"endAngle\": 360, \"color\": \"#38bdf8\", \"label\": \"Set A\" },\n    { \"type\": \"arc\", \"center\": [1.5, 0], \"radius\": 40, \"startAngle\": 0, \"endAngle\": 360, \"color\": \"#fbbf24\", \"label\": \"Set B\" },\n    { \"type\": \"text\", \"at\": [0, 0], \"text\": \"A ∩ B\", \"color\": \"#34d399\" }\n  ]\n}\n```\n\n---\n\n### 2. Universal Set, Subsets, Proper Subsets & Supersets\n\n- **Universal Set ($U$)**: The comprehensive set containing all objects under current consideration, represented as a bounding rectangle in Venn diagrams.\n- **Empty / Null Set ($\\emptyset$ or $\\{\\}$)**: The unique set containing zero elements. **Crucial Rule**: The empty set is a subset of *every* set ($\\emptyset \\subseteq A$), including itself ($\\emptyset \\subseteq \\emptyset$).\n- **Subsets ($A \\subseteq B$)**: $A$ is a subset of $B$ if every element in $A$ is also in $B$ ($x \\in A \\implies x \\in B$).\n- **Proper Subsets ($A \\subset B$)**: $A$ is a proper subset of $B$ if $A \\subseteq B$ and $B$ contains **at least one element not present in $A$** ($A \\neq B$).\n  - Example: If $A = \\{1, 2, 3\\}$ and $B = \\{1, 2, 3\\}$, then $A \\subseteq B$ is **True**, but $A \\subset B$ is **False**.\n  - If $C = \\{1, 2, 3, 4\\}$, then $A \\subset C$ is **True**.\n- **Superset ($A \\supseteq B$)**: Set $A$ contains all elements of $B$.\n- **Disjoint / Mutually Exclusive Sets**: Two sets with zero common elements ($A \\cap B = \\emptyset$).\n\n#### Total Subsets & Power Set Formula:\nFor any finite set $A$ with cardinality $n = |A|$:\n$$\\text{Total Number of Subsets} = 2^n$$\n$$\\text{Total Number of Proper Subsets} = 2^n - 1$$\n$$\\text{Total Non-Empty Proper Subsets} = 2^n - 2$$\n\n---\n\n### 3. Venn Diagrams & Principle of Inclusion-Exclusion\n\nConceived around 1880 by English philosopher **John Venn (1834–1923)**, Venn diagrams represent sets as closed overlapping geometric figures:\n\n1. **Two-Set Inclusion-Exclusion**:\n   $$|A \\cup B| = |A| + |B| - |A \\cap B|$$\n2. **Three-Set Inclusion-Exclusion**:\n   $$|A \\cup B \\cup C| = |A| + |B| + |C| - (|A \\cap B| + |A \\cap C| + |B \\cap C|) + |A \\cap B \\cap C|$$\n3. **De Morgan's Laws**:\n   $$(A \\cup B)' = A' \\cap B'$$\n   $$(A \\cap B)' = A' \\cup B'$$"
+    "mentalAnchor": "Right triangles use SOH-CAH-TOA and Pythagorean $a^2 + b^2 = c^2$. For oblique triangles: use Law of Sines ($\\frac{a}{\\sin A} = \\frac{b}{\\sin B} = \\frac{c}{\\sin C}$) for AAS/ASA/SSA; use Law of Cosines ($c^2 = a^2 + b^2 - 2ab\\cos C$) for SAS/SSS; use Law of Tangents ($\\frac{a-b}{a+b} = \\frac{\\tan \\frac{A-B}{2}}{\\tan \\frac{A+B}{2}}$) for SAS.",
+    "contentMarkdown": "### 1. Etymology, Branches & Classification of Triangles\n\n- **Trigonometry**: Derived from the Greek *trigonon* (\"triangle\") and *metria* (\"measurement\").\n- **Branches**:\n  1. **Plane Trigonometry**: Deals with triangles lying on a flat 2D Euclidean plane.\n  2. **Spherical Trigonometry**: Concerns triangles formed by great-circle arcs on the 3D surface of a sphere.\n- **Triangle Classifications**:\n  - **Right Triangle**: Contains one right angle ($90^\\circ$).\n  - **Oblique Triangle**: Contains no right angle. Subdivided into **Acute** (all three angles $< 90^\\circ$) and **Obtuse** (one angle $> 90^\\circ$).\n  - **Isosceles Triangle**: Two equal sides and two equal base angles (can be right or oblique).\n\n---\n\n### 2. Right Triangles & Special Standard Ratios\n\nFor a right triangle with legs $a, b$ and hypotenuse $c$:\n$$\\sin \\theta = \\frac{a}{c}, \\quad \\cos \\theta = \\frac{b}{c}, \\quad \\tan \\theta = \\frac{a}{b}$$\n$$\\csc \\theta = \\frac{c}{a}, \\quad \\sec \\theta = \\frac{c}{b}, \\quad \\cot \\theta = \\frac{b}{a}$$\n\n#### The Pythagorean Theorem:\nFormulated by **Pythagoras of Samos (c. 580–500 B.C.)**, it is historically recognized as the **most proved theorem in all of mathematics**:\n$$a^2 + b^2 = c^2$$\n\n#### Standard Special Triangles:\n1. **Egyptian Triangle ($3 - 4 - 5$)**: The earliest recorded integer Pythagorean triple.\n2. **$45^\\circ - 45^\\circ - 90^\\circ$ Isosceles Right Triangle**: Side ratio is $1 : 1 : \\sqrt{2}$.\n3. **$30^\\circ - 60^\\circ - 90^\\circ$ Right Triangle**: Side ratio is $1 : \\sqrt{3} : 2$.\n\n```diagram\n{\n  \"caption\": \"Figure 1: Special Right Triangles - Egyptian (3-4-5), 45-45-90, and 30-60-90\",\n  \"xRange\": [-5, 5],\n  \"yRange\": [-3, 3],\n  \"elements\": [\n    { \"type\": \"polygon\", \"points\": [[-4.5, -2], [-1.5, -2], [-1.5, 2]], \"color\": \"#38bdf8\", \"fill\": \"rgba(56, 189, 248, 0.05)\" },\n    { \"type\": \"text\", \"at\": [-3, -2.4], \"text\": \"3\", \"color\": \"#38bdf8\" },\n    { \"type\": \"text\", \"at\": [-1.2, 0], \"text\": \"4\", \"color\": \"#38bdf8\" },\n    { \"type\": \"text\", \"at\": [-3.2, 0.3], \"text\": \"5\", \"color\": \"#38bdf8\" },\n    { \"type\": \"polygon\", \"points\": [[0, -2], [2.5, -2], [0, 0.5]], \"color\": \"#fbbf24\", \"fill\": \"rgba(251, 191, 36, 0.05)\" },\n    { \"type\": \"text\", \"at\": [1.2, -2.4], \"text\": \"1\", \"color\": \"#fbbf24\" },\n    { \"type\": \"text\", \"at\": [-0.3, -0.8], \"text\": \"1\", \"color\": \"#fbbf24\" },\n    { \"type\": \"text\", \"at\": [1.5, -0.6], \"text\": \"√2\", \"color\": \"#fbbf24\" }\n  ]\n}\n```\n\n---\n\n### 3. Universal Laws for Oblique Triangles\n\n#### A. Law of Sines:\nDemonstrated by **Ptolemy of Alexandria (c. 150 A.D.)** in the *Almagest*:\n$$\\frac{a}{\\sin A} = \\frac{b}{\\sin B} = \\frac{c}{\\sin C} = 2R$$\n- **When to Apply**: Given AAS (two angles and one opposite side), ASA (two angles and included side), or SSA (two sides and an opposite angle—the *ambiguous case*).\n- $R$ is the radius of the triangle's circumscribed circle (circumcircle).\n\n#### B. Law of Cosines:\nDemonstrated in generalized form by French mathematician **François Viète (1540–1603)** (and Persian mathematician Ghiyath al-Kashi):\n$$a^2 = b^2 + c^2 - 2bc \\cos A$$\n$$b^2 = a^2 + c^2 - 2ac \\cos B$$\n$$c^2 = a^2 + b^2 - 2ab \\cos C$$\n- **When to Apply**: Given SAS (two sides and included angle) or SSS (all three sides).\n\n#### C. Law of Tangents:\nDemonstrated by **François Viète** and first published by Danish mathematician/physician **Thomas Fincke (1561–1656)** in 1583:\n$$\\frac{a - b}{a + b} = \\frac{\\tan \\frac{1}{2}(A - B)}{\\tan \\frac{1}{2}(A + B)}$$\n- **When to Apply**: Given SAS (two sides and included angle)."
   },
   "formulas": [
     {
-      "id": "f-0401-01",
-      "title": "Subsets & Power Set Counting Formula",
-      "formula": "$$\\text{Subsets} = 2^n, \\quad \\text{Proper Subsets} = 2^n - 1$$",
-      "note": "Where n = |A| is the cardinality of the set."
+      "id": "f-0801-01",
+      "title": "Law of Sines & Circumradius",
+      "formula": "$$\\frac{a}{\\sin A} = \\frac{b}{\\sin B} = \\frac{c}{\\sin C} = 2R$$",
+      "note": "Demonstrated by Ptolemy of Alexandria (150 A.D.)."
     },
     {
-      "id": "f-0401-02",
-      "title": "Principle of Inclusion-Exclusion (2 Sets)",
-      "formula": "$$|A \\cup B| = |A| + |B| - |A \\cap B|$$",
-      "note": "Subtracts the overlapping intersection to prevent double-counting."
+      "id": "f-0801-02",
+      "title": "Law of Cosines (Viète's Relation)",
+      "formula": "$$c^2 = a^2 + b^2 - 2ab \\cos C \\iff \\cos C = \\frac{a^2 + b^2 - c^2}{2ab}$$",
+      "note": "Reduces to Pythagorean theorem when C = 90°."
     },
     {
-      "id": "f-0401-03",
-      "title": "De Morgan's Laws of Set Complements",
-      "formula": "$$(A \\cup B)' = A' \\cap B', \\quad (A \\cap B)' = A' \\cup B'$$",
-      "note": "Complement of union is intersection of complements."
+      "id": "f-0801-03",
+      "title": "Law of Tangents (Fincke-Viète)",
+      "formula": "$$\\frac{a - b}{a + b} = \\frac{\\tan \\frac{1}{2}(A - B)}{\\tan \\frac{1}{2}(A + B)}$$",
+      "note": "Published by Thomas Fincke (1583) and François Viète."
     }
   ],
   "visualizer": {
     "archetype": "parameter_sweep",
-    "title": "Two-Set Venn Overlap Calculator",
-    "description": "Adjust set sizes |A|, |B|, and intersection |A ∩ B| to observe live union and disjoint counts.",
+    "title": "Oblique Triangle Law of Cosines Solver",
+    "description": "Adjust side lengths a, b and included angle C to compute unknown side c and all interior angles live.",
     "config": {
       "canvasWidth": 640,
       "canvasHeight": 320,
       "controls": [
-        { "id": "cardA", "label": "Size of Set A", "min": 5, "max": 50, "step": 5, "defaultValue": 25 },
-        { "id": "cardB", "label": "Size of Set B", "min": 5, "max": 50, "step": 5, "defaultValue": 20 },
-        { "id": "cardAB", "label": "Overlap |A ∩ B|", "min": 0, "max": 20, "step": 1, "defaultValue": 8 }
+        {
+          "id": "sideA",
+          "label": "Side a",
+          "min": 3,
+          "max": 20,
+          "step": 1,
+          "defaultValue": 8
+        },
+        {
+          "id": "sideB",
+          "label": "Side b",
+          "min": 3,
+          "max": 20,
+          "step": 1,
+          "defaultValue": 11
+        },
+        {
+          "id": "angleC",
+          "label": "Angle C (degrees)",
+          "min": 15,
+          "max": 150,
+          "step": 5,
+          "defaultValue": 60
+        }
       ]
     }
   },
   "terms": [
     {
-      "term": "Proper Subset",
-      "symbol": "$A \\subset B$",
-      "unit": "Relation",
-      "definition": "A subset A of B where B contains at least one element not present in A (A ⊆ B and A ≠ B).",
-      "keywordTrigger": "A is subset of B and A ≠ B"
+      "term": "Law of Sines",
+      "symbol": "$\\frac{a}{\\sin A} = 2R$",
+      "unit": "Theorem",
+      "definition": "The ratio of any side length to the sine of its opposite angle is constant and equal to the circumcircle diameter.",
+      "keywordTrigger": "a/sin A = b/sin B = c/sin C / Ptolemy"
     },
     {
-      "term": "Disjoint Sets",
-      "symbol": "$A \\cap B = \\emptyset$",
-      "unit": "Property",
-      "definition": "Two or more sets having no elements in common, such that their intersection is the empty set.",
-      "keywordTrigger": "no elements in common / intersection is empty"
+      "term": "Law of Cosines",
+      "symbol": "$c^2 = a^2+b^2-2ab\\cos C$",
+      "unit": "Theorem",
+      "definition": "A generalization of the Pythagorean theorem relating the cosine of an angle to the lengths of all three sides.",
+      "keywordTrigger": "c² = a² + b² - 2ab cos C / François Viète"
     },
     {
-      "term": "Cardinality",
-      "symbol": "$|A|$ or $n(A)$",
-      "unit": "Integer",
-      "definition": "The total count of distinct elements contained in a finite set.",
-      "keywordTrigger": "number of distinct elements in a set"
+      "term": "Law of Tangents",
+      "symbol": "$\\frac{a-b}{a+b} = \\frac{\\tan \\frac{A-B}{2}}{\\tan \\frac{A+B}{2}}$",
+      "unit": "Theorem",
+      "definition": "Relation connecting the difference and sum of two sides to the half-angle tangents, described by Thomas Fincke in 1583.",
+      "keywordTrigger": "Law of Tangents / Thomas Fincke"
     },
     {
-      "term": "Empty Set",
-      "symbol": "$\\emptyset$ or $\\{\\}$",
-      "unit": "Set",
-      "definition": "The unique mathematical set containing no elements, which is a subset of every set.",
-      "keywordTrigger": "set containing zero elements / subset of every set"
-    },
-    {
-      "term": "Universal Set",
-      "symbol": "$U$",
-      "unit": "Set",
-      "definition": "The set of all objects or elements currently under discussion in a given context.",
-      "keywordTrigger": "all objects under current consideration"
+      "term": "Pythagorean Theorem",
+      "symbol": "$a^2 + b^2 = c^2$",
+      "unit": "Theorem",
+      "definition": "The fundamental geometric theorem stating the square of the hypotenuse equals the sum of squares of the legs in a right triangle.",
+      "keywordTrigger": "most proved theorem in mathematics / Pythagoras"
     }
   ],
   "examples": [
     {
-      "problemStatement": "How many proper subsets does the set S = {a, b, c, d, e} have?",
-      "formalSolutionMarkdown": "#### Step 1: Count cardinality\n- Cardinality $n = |S| = 5$.\n\n#### Step 2: Apply the proper subset formula\n$$\\text{Total Subsets} = 2^n = 2^5 = 32$$\n$$\\text{Proper Subsets} = 2^n - 1 = 32 - 1 = 31$$\n*(The single excluded subset is the set $S$ itself)*.",
-      "shortcutSolutionMarkdown": "#### ⚡ 2-Second Power Set Rule\n$$\\text{Proper Subsets} = 2^5 - 1 = 32 - 1 = 31$$",
-      "formalTimeSeconds": 45,
-      "shortcutTimeSeconds": 2
-    },
-    {
-      "problemStatement": "In an ECE class of 50 students, 30 passed Electronics, 25 passed Math, and 15 passed both. How many students failed both subjects?",
-      "formalSolutionMarkdown": "#### Step 1: Identify given quantities\n- Total students $|U| = 50$\n- $|E| = 30$, $|M| = 25$, $|E \\cap M| = 15$\n\n#### Step 2: Compute students who passed at least one subject\n$$|E \\cup M| = |E| + |M| - |E \\cap M| = 30 + 25 - 15 = 40$$\n\n#### Step 3: Compute students who failed both\n$$\\text{Failed Both} = |U| - |E \\cup M| = 50 - 40 = 10$$",
-      "shortcutSolutionMarkdown": "#### ⚡ 5-Second Inclusion-Exclusion Inspection\n$$\\text{Passed at least one} = 30 + 25 - 15 = 40 \\implies \\text{Failed both} = 50 - 40 = 10$$",
+      "problemStatement": "In an oblique triangle ABC, side a = 10 m, side b = 15 m, and included angle C = 60°. Find side c.",
+      "formalSolutionMarkdown": "#### Step 1: Apply the Law of Cosines\n$$c^2 = a^2 + b^2 - 2ab \\cos C$$\n$$c^2 = 10^2 + 15^2 - 2(10)(15) \\cos 60^\\circ$$\n\n#### Step 2: Evaluate trigonometric values\n- $\\cos 60^\\circ = 0.5$\n$$c^2 = 100 + 225 - 300(0.5) = 325 - 150 = 175$$\n$$c = \\sqrt{175} = 5\\sqrt{7} \\approx 13.23\\text{ m}$$",
+      "shortcutSolutionMarkdown": "#### ⚡ 5-Second Law of Cosines Keystroke\n$$c = \\sqrt{10^2 + 15^2 - 2(10)(15)(0.5)} = \\sqrt{175} \\approx 13.23\\text{ m}$$",
       "formalTimeSeconds": 60,
       "shortcutTimeSeconds": 5
+    },
+    {
+      "problemStatement": "In triangle ABC, side a = 20, angle A = 30°, and angle B = 45°. Find side b.",
+      "formalSolutionMarkdown": "#### Step 1: Apply the Law of Sines\n$$\\frac{a}{\\sin A} = \\frac{b}{\\sin B}$$\n$$\\frac{20}{\\sin 30^\\circ} = \\frac{b}{\\sin 45^\\circ}$$\n\n#### Step 2: Solve for side b\n$$b = \\frac{20 \\sin 45^\\circ}{\\sin 30^\\circ} = \\frac{20 (\\sqrt{2}/2)}{1/2} = 20\\sqrt{2} \\approx 28.28$$",
+      "shortcutSolutionMarkdown": "#### ⚡ 3-Second Cross Multiplication\n$$b = \\frac{20 \\times \\sin 45^\\circ}{0.5} = 20\\sqrt{2} \\approx 28.28$$",
+      "formalTimeSeconds": 45,
+      "shortcutTimeSeconds": 3
     }
   ],
   "calculatorGuides": {
     "karce": {
-      "techniqueTitle": "Power Set 2^n Cardinality Shortcut",
-      "problemType": "Finding number of subsets/proper subsets",
-      "sampleProblem": "Find subsets of a 7-element set.",
-      "mode": "COMP Mode (MODE 1)",
-      "keystrokes": ["2", "^", "7", "=", "-", "1", "="],
-      "notes": "Directly yields 128 subsets and 127 proper subsets."
+      "techniqueTitle": "Law of Cosines Direct Square Root",
+      "problemType": "Solving c = √(a² + b² - 2ab cos C)",
+      "sampleProblem": "Solve c for a=10, b=15, C=60° in DEG mode.",
+      "mode": "COMP Mode (MODE 1, Ensure DEG)",
+      "keystrokes": [
+        "√",
+        "(",
+        "1",
+        "0",
+        "x²",
+        "+",
+        "1",
+        "5",
+        "x²",
+        "-",
+        "2",
+        "×",
+        "1",
+        "0",
+        "×",
+        "1",
+        "5",
+        "×",
+        "cos",
+        "6",
+        "0",
+        ")",
+        "="
+      ],
+      "notes": "Directly yields 13.22875656 in 2 seconds."
     },
     "canon": {
-      "techniqueTitle": "Two-Set Union Calculation Shortcut",
-      "problemType": "Evaluating |A ∪ B| in COMP mode",
-      "sampleProblem": "Find union of sets with |A|=35, |B|=28, |A ∩ B|=12.",
+      "techniqueTitle": "Polar Coordinate Conversion Shortcut",
+      "problemType": "Vector side addition for oblique triangles",
+      "sampleProblem": "Find resultant of 10∠0° and 15∠120° on Canon F-789SGA.",
       "mode": "COMP Mode (MODE 1)",
-      "keystrokes": ["3", "5", "+", "2", "8", "-", "1", "2", "="],
-      "notes": "Directly yields 51 in 1 second."
+      "keystrokes": [
+        "SHIFT",
+        "Pol(",
+        "1",
+        "0",
+        "+",
+        "1",
+        "5",
+        "cos",
+        "1",
+        "2",
+        "0",
+        ",",
+        "1",
+        "5",
+        "sin",
+        "1",
+        "2",
+        "0",
+        ")",
+        "="
+      ],
+      "notes": "Directly yields r = 13.2287 in 1 step."
     }
   },
   "conceptChecks": [
     {
-      "id": "chk-0401-01",
-      "question": "Which of the following statements regarding the empty set $\\emptyset$ is mathematically FALSE?",
+      "id": "chk-0801-01",
+      "question": "Which ancient Greek astronomer demonstrated the Law of Sines in his astronomical treatise Almagest around 150 A.D.?",
       "options": [
-        "$\\{\\emptyset\\}$ is an empty set with 0 elements",
-        "$\\emptyset \\subseteq A$ for every set $A$",
-        "$\\emptyset$ contains zero elements",
-        "$\\emptyset \\subseteq \\emptyset$"
+        "Ptolemy of Alexandria",
+        "Pythagoras of Samos",
+        "Euclid of Alexandria",
+        "Archimedes of Syracuse"
       ],
       "correctAnswer": 0,
-      "explanation": "{\\emptyset} is a singleton set containing 1 element (the empty set itself), so it is not empty."
+      "explanation": "Claudius Ptolemaeus (Ptolemy of Alexandria) demonstrated the Law of Sines using chords of circles around 150 A.D."
     },
     {
-      "id": "chk-0401-02",
-      "question": "If set $A$ has 6 elements, how many non-empty proper subsets does it have?",
+      "id": "chk-0801-02",
+      "question": "Which mathematician first described the Law of Tangents in 1583?",
       "options": [
-        "62",
-        "63",
-        "64",
-        "31"
+        "Thomas Fincke",
+        "François Viète",
+        "John Napier",
+        "Niccolò Tartaglia"
       ],
       "correctAnswer": 0,
-      "explanation": "Total subsets = 2^6 = 64. Excluding the empty set and the set itself gives 2^6 - 2 = 64 - 2 = 62."
+      "explanation": "Danish mathematician and physician Thomas Fincke (1561–1656) first published the Law of Tangents in his 1583 work Geometria Rotundi."
     },
     {
-      "id": "chk-0401-03",
-      "question": "Who was the German mathematician who founded modern set theory and proved that infinities have different sizes?",
+      "id": "chk-0801-03",
+      "question": "What is the side ratio of an Isosceles Right Triangle ($45^\\circ - 45^\\circ - 90^\\circ$)?",
       "options": [
-        "Georg Cantor",
-        "John Venn",
-        "Blaise Pascal",
-        "Leonardo of Pisa"
+        "1 : 1 : √2",
+        "1 : √3 : 2",
+        "3 : 4 : 5",
+        "1 : 2 : √5"
       ],
       "correctAnswer": 0,
-      "explanation": "Georg Cantor (1845–1918) developed set theory and introduced transfinite cardinal numbers."
+      "explanation": "By the Pythagorean theorem: 1² + 1² = 2 ⇒ hypotenuse is √2, yielding 1 : 1 : √2."
     }
   ]
 }

@@ -1,0 +1,280 @@
+{
+  "id": "math-05-05",
+  "code": "MATH 05-05",
+  "domain": "MATH",
+  "topicCode": "MATH-05",
+  "topicTitle": "Plane Geometry",
+  "subtopicTitle": "Circle Theorems, Intersecting Chords/Secants, Ellipse Geometry & Annulus Area",
+  "order": 5,
+  "pairedQuizSetId": "math-05-05-mastery",
+  "toc": [
+    {
+      "id": "sec-prereq-bridges",
+      "title": "1. Introduction & Cross-Subject Connections",
+      "level": 2
+    },
+    {
+      "id": "sec-theory",
+      "title": "2. Lesson Proper: Circle Power Theorems, Ellipses & Annulus",
+      "level": 2
+    },
+    {
+      "id": "sec-formulas",
+      "title": "3. Compilation of Formulas & Circle Power Theorems",
+      "level": 2
+    },
+    {
+      "id": "sec-visualizer",
+      "title": "4. Interactive Visualizer: Power of a Point & Annulus Explorer",
+      "level": 2
+    },
+    {
+      "id": "sec-terminology",
+      "title": "5. Key Terms and Definitions",
+      "level": 2
+    },
+    {
+      "id": "sec-dual-method",
+      "title": "6. Worked Board Exam Problems",
+      "level": 2
+    },
+    {
+      "id": "sec-calculator",
+      "title": "7. Calculator Speed Techniques (Karce & Canon)",
+      "level": 2
+    },
+    {
+      "id": "sec-concept-checks",
+      "title": "8. In-Line Concept Checks",
+      "level": 2
+    },
+    {
+      "id": "sec-mastery-challenge",
+      "title": "9. Paired Mastery Challenge Exam",
+      "level": 2
+    }
+  ],
+  "prerequisiteBridge": {
+    "priorModuleId": "math-10-04",
+    "text": "Building on basic circle parts from MATH 10-04, we now analyze the 6 fundamental circle theorems (Central angle = 2x Inscribed, Thales' right triangle, Intersecting Chords ab=cd, Secant-Secant, Secant-Tangent t²=a(a+b)), Ellipse geometry (Area = πab), and Annulus ring areas."
+  },
+  "crossSubjectBridges": [
+    {
+      "targetDomain": "EST",
+      "targetTopicCode": "EST-06",
+      "badgeText": "Satellite Orbits",
+      "description": "Keplerian elliptical satellite orbits calculate orbital track area using $A = \\pi a b$ and focal eccentricity $e = c/a$."
+    },
+    {
+      "targetDomain": "ELECS",
+      "targetTopicCode": "ELEC-06",
+      "badgeText": "Coaxial Cables",
+      "description": "Coaxial transmission lines and annular dielectric insulators calculate cross-sectional insulation area using $A = \\pi(R^2 - r^2)$."
+    },
+    {
+      "targetDomain": "MATH",
+      "targetTopicCode": "MATH-13",
+      "badgeText": "Conics",
+      "description": "Coordinate ellipse equations $\\frac{x^2}{a^2} + \\frac{y^2}{b^2} = 1$ derive directly from the focal distance locus definition $d_1 + d_2 = 2a$."
+    }
+  ],
+  "theory": {
+    "mentalAnchor": "Central angle is $2\\times$ inscribed angle. Inscribed angle in a semicircle is $90^\\circ$ (Thales). Power of a point: Intersecting chords $ab = cd$; Secant-secant $a(a+b) = c(c+d)$; Secant-tangent $t^2 = a(a+b)$. Ellipse: Area $= \\pi ab$, Perimeter $\\approx 2\\pi\\sqrt{\\frac{a^2+b^2}{2}}$. Annulus: Area $= \\pi(R^2 - r^2) = \\frac{\\pi x^2}{4}$ (where $x$ is tangent chord).",
+    "contentMarkdown": "### 1. Six Fundamental Theorems Involving Circles\n\n1. **Central vs Inscribed (Peripheral) Angle Theorem**:\n   A central angle subtended by an arc is **twice as large** as any inscribed angle subtended by the same arc:\n   $$\\theta_{\\text{central}} = 2 \\times \\theta_{\\text{inscribed}}$$\n\n2. **Inscribed Angles Subtending the Same Arc**:\n   All inscribed angles with vertices on the circumference that intercept the identical arc are strictly **equal** ($\\theta_1 = \\theta_2$).\n\n3. **Thales' Theorem (Angle Inscribed in a Semicircle)**:\n   Any angle inscribed in a semicircle (subtended by the circle's diameter) is a **right angle** ($90^\\circ$ or $\\pi/2\\text{ rad}$).\n\n4. **Intersecting Chords Theorem (Internal Power of a Point)**:\n   When two chords intersect inside a circle at point $P$, the products of their segments are equal:\n   $$a \\cdot b = c \\cdot d$$\n\n5. **Secant-Secant Theorem (External Power of a Point)**:\n   When two secant lines are drawn from an external point to a circle:\n   $$\\text{External}_1 \\times \\text{Total}_1 = \\text{External}_2 \\times \\text{Total}_2 \\implies a(a + b) = c(c + d)$$\n\n6. **Secant-Tangent Theorem**:\n   When a tangent of length $t$ and a secant are drawn from an external point:\n   $$t^2 = a(a + b)$$\n\n```diagram\n{\n  \"caption\": \"Figure 1: Circle Theorems - Intersecting Chords (ab=cd), Secant-Tangent (t²=a(a+b)), and Annulus\",\n  \"xRange\": [-5, 5],\n  \"yRange\": [-3, 3],\n  \"elements\": [\n    { \"type\": \"arc\", \"center\": [-2.5, 0], \"radius\": 40, \"startAngle\": 0, \"endAngle\": 360, \"color\": \"#38bdf8\" },\n    { \"type\": \"line\", \"from\": [-4.5, -0.8], \"to\": [-0.5, 0.8], \"color\": \"#fbbf24\", \"label\": \"Chord 1\" },\n    { \"type\": \"line\", \"from\": [-4.2, 1.0], \"to\": [-1.0, -1.2], \"color\": \"#f43f5e\", \"label\": \"Chord 2\" },\n    { \"type\": \"text\", \"at\": [-2.5, -2.0], \"text\": \"ab = cd\", \"color\": \"#38bdf8\" },\n    { \"type\": \"arc\", \"center\": [2.5, 0], \"radius\": 45, \"startAngle\": 0, \"endAngle\": 360, \"color\": \"#34d399\" },\n    { \"type\": \"arc\", \"center\": [2.5, 0], \"radius\": 25, \"startAngle\": 0, \"endAngle\": 360, \"color\": \"#94a3b8\" },\n    { \"type\": \"line\", \"from\": [0.2, 0.9], \"to\": [4.8, 0.9], \"color\": \"#f43f5e\", \"label\": \"Tangent Chord x\" },\n    { \"type\": \"text\", \"at\": [2.5, -2.0], \"text\": \"Annulus Area = πx²/4\", \"color\": \"#34d399\" }\n  ]\n}\n```\n\n---\n\n### 2. Ellipse Geometry\n\nAn **ellipse** is the locus of a point whose sum of distances from two fixed focal points $F_1, F_2$ is constant and equal to the major axis length $2a$ ($d_1 + d_2 = 2a$):\n- **Semi-major axis**: $a$, **Semi-minor axis**: $b$.\n- **Focal Distance**: $c = \\sqrt{a^2 - b^2}$, **Eccentricity**: $e = \\frac{c}{a} < 1$.\n- **Area of Ellipse**:\n  $$A = \\pi a b$$\n- **Perimeter of Ellipse (Euler's Approximation)**:\n  $$P \\approx 2\\pi \\sqrt{\\frac{a^2 + b^2}{2}}$$\n\n---\n\n### 3. Annulus (Circular Ring)\n\nAn **annulus** is a planar ring bounded by two concentric circles of outer radius $R$ and inner radius $r$:\n\n1. **Given Radii $R$ and $r$**:\n   $$A = \\pi(R^2 - r^2)$$\n\n2. **Given Length of Tangent Chord ($x$)** (Mamikon's Theorem):\n   A straight chord of the outer circle that is tangent to the inner circle has length $x$. By the Pythagorean theorem, $(x/2)^2 + r^2 = R^2 \\implies R^2 - r^2 = x^2/4$:\n   $$\\mathbf{A = \\frac{\\pi x^2}{4}}$$\n   *(Remarkably, the area depends purely on tangent chord length $x$, independent of the specific individual radii $R$ and $r$)*."
+  },
+  "formulas": [
+    {
+      "id": "f-1005-01",
+      "title": "Circle Power of a Point Theorems",
+      "formula": "$$ab = cd \\quad (\\text{Chords}), \\quad a(a+b) = c(c+d) \\quad (\\text{Secants}), \\quad t^2 = a(a+b) \\quad (\\text{Secant-Tangent})$$",
+      "note": "Where a is external segment and (a+b) is total secant length."
+    },
+    {
+      "id": "f-1005-02",
+      "title": "Ellipse Area & Euler Perimeter",
+      "formula": "$$A = \\pi a b, \\quad P \\approx 2\\pi \\sqrt{\\frac{a^2 + b^2}{2}}$$",
+      "note": "Where a is semi-major axis and b is semi-minor axis."
+    },
+    {
+      "id": "f-1005-03",
+      "title": "Annulus Area from Tangent Chord",
+      "formula": "$$A = \\pi(R^2 - r^2) = \\frac{\\pi x^2}{4}$$",
+      "note": "x is the length of the outer chord tangent to the inner circle."
+    }
+  ],
+  "visualizer": {
+    "archetype": "parameter_sweep",
+    "title": "Circle Power Theorems & Annulus Area Simulator",
+    "description": "Adjust chord segments, secant lengths, or ellipse axes to verify circle power invariants and live annulus areas.",
+    "config": {
+      "canvasWidth": 640,
+      "canvasHeight": 320,
+      "controls": [
+        {
+          "id": "semiMajorA",
+          "label": "Semi-major Axis a",
+          "min": 3,
+          "max": 15,
+          "step": 1,
+          "defaultValue": 8
+        },
+        {
+          "id": "semiMinorB",
+          "label": "Semi-minor Axis b",
+          "min": 2,
+          "max": 12,
+          "step": 1,
+          "defaultValue": 5
+        },
+        {
+          "id": "tangentChordX",
+          "label": "Tangent Chord x",
+          "min": 4,
+          "max": 20,
+          "step": 1,
+          "defaultValue": 10
+        }
+      ]
+    }
+  },
+  "terms": [
+    {
+      "term": "Thales' Theorem",
+      "symbol": "$90^\\circ$",
+      "unit": "Theorem",
+      "definition": "Geometric theorem stating that an angle inscribed in a semicircle is always a right angle.",
+      "keywordTrigger": "inscribed in semicircle / Thales / right angle"
+    },
+    {
+      "term": "Annulus",
+      "symbol": "$A = \\pi(R^2-r^2)$",
+      "unit": "Geometry",
+      "definition": "A ring-shaped plane region bounded by two concentric circles of different radii.",
+      "keywordTrigger": "ring-shaped region / concentric circles / pi x^2 / 4"
+    },
+    {
+      "term": "Secant-Tangent Theorem",
+      "symbol": "$t^2 = a(a+b)$",
+      "unit": "Theorem",
+      "definition": "Theorem stating that the square of a tangent segment from an external point equals the product of external and total secant segments.",
+      "keywordTrigger": "t^2 = a(a+b) / secant-tangent power"
+    },
+    {
+      "term": "Ellipse Locus",
+      "symbol": "$d_1 + d_2 = 2a$",
+      "unit": "Conic",
+      "definition": "The plane curve traced by a point where the sum of its distances to two fixed focal points is constant.",
+      "keywordTrigger": "sum of distances to foci is constant / 2a"
+    }
+  ],
+  "examples": [
+    {
+      "problemStatement": "Two chords intersect inside a circle. One chord is divided into segments of 4 cm and 9 cm. The other chord has one segment of length 3 cm. Find the length of the entire second chord.",
+      "formalSolutionMarkdown": "#### Step 1: Apply Intersecting Chords Theorem\n$$a \\cdot b = c \\cdot d$$\n$$(4)(9) = (3)(d)$$\n\n#### Step 2: Solve for segment d\n$$36 = 3d \\implies d = 12\\text{ cm}$$\n\n#### Step 3: Compute total chord length\n$$\\text{Total Length} = c + d = 3 + 12 = 15\\text{ cm}$$",
+      "shortcutSolutionMarkdown": "#### ⚡ 3-Second Chord Product\n$$d = \\frac{4 \\times 9}{3} = 12 \\implies \\text{Total} = 3 + 12 = 15\\text{ cm}$$",
+      "formalTimeSeconds": 30,
+      "shortcutTimeSeconds": 3
+    },
+    {
+      "problemStatement": "Find the area of an annulus if a chord of the outer circle tangent to the inner circle measures 16 cm.",
+      "formalSolutionMarkdown": "#### Step 1: Apply Mamikon's tangent chord area formula\n$$A = \\frac{\\pi x^2}{4}$$\n\n#### Step 2: Substitute x = 16 cm\n$$A = \\frac{\\pi (16^2)}{4} = \\frac{256\\pi}{4} = 64\\pi \\approx 201.06\\text{ cm}^2$$",
+      "shortcutSolutionMarkdown": "#### ⚡ 2-Second Tangent Chord Shortcut\n$$A = \\pi \\times 8^2 = 64\\pi \\approx 201.06\\text{ cm}^2$$",
+      "formalTimeSeconds": 30,
+      "shortcutTimeSeconds": 2
+    }
+  ],
+  "calculatorGuides": {
+    "karce": {
+      "techniqueTitle": "Fast Ellipse Area & Perimeter Approximation",
+      "problemType": "Evaluating πab and 2π√((a²+b²)/2)",
+      "sampleProblem": "Find area and perimeter for a=8, b=5.",
+      "mode": "COMP Mode (MODE 1)",
+      "keystrokes": [
+        "SHIFT",
+        "π",
+        "×",
+        "8",
+        "×",
+        "5",
+        "=",
+        "2",
+        "SHIFT",
+        "π",
+        "×",
+        "√",
+        "(",
+        "(",
+        "8",
+        "x²",
+        "+",
+        "5",
+        "x²",
+        ")",
+        "÷",
+        "2",
+        ")",
+        "="
+      ],
+      "notes": "Displays Area = 125.6637 and Perimeter = 41.9168."
+    },
+    "canon": {
+      "techniqueTitle": "Secant-Tangent External Segment Solver",
+      "problemType": "Solving t² = a(a+b) on Canon F-789SGA",
+      "sampleProblem": "Solve t for a=4, b=12.",
+      "mode": "COMP Mode (MODE 1)",
+      "keystrokes": [
+        "√",
+        "(",
+        "4",
+        "×",
+        "(",
+        "4",
+        "+",
+        "1",
+        "2",
+        ")",
+        ")",
+        "="
+      ],
+      "notes": "Directly yields t = 8 in 1 second."
+    }
+  },
+  "conceptChecks": [
+    {
+      "id": "chk-1005-01",
+      "question": "If an inscribed angle intercepts an arc measuring $70^\\circ$, what is the measure of the inscribed angle and its corresponding central angle?",
+      "options": [
+        "Inscribed = 35°, Central = 70°",
+        "Inscribed = 70°, Central = 140°",
+        "Inscribed = 70°, Central = 35°",
+        "Inscribed = 140°, Central = 70°"
+      ],
+      "correctAnswer": 0,
+      "explanation": "The central angle equals the intercepted arc measure (70°), while the inscribed angle is half of that (35°)."
+    },
+    {
+      "id": "chk-1005-02",
+      "question": "What is the area of an ellipse with major axis $2a = 16\\text{ cm}$ and minor axis $2b = 10\\text{ cm}$?",
+      "options": [
+        "40π cm² (≈ 125.66 cm²)",
+        "80π cm²",
+        "160π cm²",
+        "20π cm²"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Semi-major a = 8, semi-minor b = 5. Area = πab = π(8)(5) = 40π ≈ 125.66 cm²."
+    },
+    {
+      "id": "chk-1005-03",
+      "question": "From an external point P, a tangent of length $t = 8\\text{ cm}$ is drawn to a circle. A secant line through P has external segment $a = 4\\text{ cm}$. What is the internal chord segment $b$ of the secant?",
+      "options": [
+        "12 cm",
+        "16 cm",
+        "8 cm",
+        "4 cm"
+      ],
+      "correctAnswer": 0,
+      "explanation": "t² = a(a + b) => 8² = 4(4 + b) => 64 = 16 + 4b => 4b = 48 => b = 12 cm."
+    }
+  ]
+}

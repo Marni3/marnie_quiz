@@ -201,13 +201,42 @@ export function QuizRunner({ attempt, questionSet, questions }: QuizRunnerProps)
             style={{ width: `${progressPct}%` }}
           />
         </div>
+
+        {/* Mobile Horizontal Quick-Jump Question Strip (Visible on < lg screens) */}
+        <div className="lg:hidden px-3 py-2 border-t border-[var(--border)] bg-[var(--surface2)]/60 overflow-x-auto flex items-center gap-1.5 no-scrollbar">
+          {questions.map((q, idx) => {
+            const isCurrent = currentIdx === idx;
+            const isAnswered = !!answers[q.id];
+            const isFlagged = !!flagged[q.id];
+
+            let bgStyle = "border-[var(--border)] bg-[var(--surface)] text-[var(--text3)]";
+            if (isCurrent) {
+              bgStyle = "border-[var(--accent)] bg-[rgba(217,119,87,0.18)] text-[var(--accent)] ring-2 ring-[var(--accent)]";
+            } else if (isFlagged) {
+              bgStyle = "border-[var(--yellow)] bg-[rgba(212,160,58,0.12)] text-[var(--yellow)]";
+            } else if (isAnswered) {
+              bgStyle = "border-[var(--accent)] bg-[rgba(217,119,87,0.1)] text-[var(--accent)] font-semibold";
+            }
+
+            return (
+              <button
+                key={q.id}
+                type="button"
+                onClick={() => setCurrentIdx(idx)}
+                className={`w-8 h-8 rounded-lg font-mono text-xs font-bold flex items-center justify-center shrink-0 transition-all cursor-pointer border ${bgStyle}`}
+              >
+                {idx + 1}
+              </button>
+            );
+          })}
+        </div>
       </header>
 
       {/* Main Body */}
-      <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
+      <main className="flex-1 max-w-7xl w-full mx-auto px-3 sm:px-6 lg:px-8 py-4 sm:py-8">
+        <div className="grid grid-cols-1 lg:grid-cols-4 gap-6 sm:gap-8">
           {/* Question Column */}
-          <div className="lg:col-span-3 space-y-6">
+          <div className="lg:col-span-3 space-y-4 sm:space-y-6">
             {/* Meta bar */}
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2">
@@ -216,24 +245,29 @@ export function QuizRunner({ attempt, questionSet, questions }: QuizRunnerProps)
                     {currentQ.subjectTag}
                   </span>
                 )}
+                {attempt.mode !== "untimed" && (
+                  <span className="lg:hidden text-xs font-mono font-bold text-[var(--accent)] px-2 py-0.5 rounded bg-[var(--surface2)] border border-[var(--border)]">
+                    ⏳ {formatTime(timerRemaining)}
+                  </span>
+                )}
               </div>
 
               <button
                 type="button"
                 onClick={toggleFlag}
-                className={`inline-flex items-center gap-1.5 text-xs font-semibold px-3 py-1 rounded-lg border transition-colors cursor-pointer ${
+                className={`inline-flex items-center gap-1.5 text-xs font-semibold px-2.5 sm:px-3 py-1 rounded-lg border transition-colors cursor-pointer ${
                   flagged[currentQ.id]
                     ? "bg-[rgba(212,160,58,0.12)] border-[var(--yellow)] text-[var(--yellow)]"
                     : "bg-[var(--surface2)] border-[var(--border)] text-[var(--text3)] hover:text-[var(--yellow)]"
                 }`}
               >
                 <Flag className={`w-3.5 h-3.5 ${flagged[currentQ.id] ? "fill-current" : ""}`} />
-                <span>{flagged[currentQ.id] ? "Flagged" : "Flag for Review"}</span>
+                <span>{flagged[currentQ.id] ? "Flagged" : "Flag"}</span>
               </button>
             </div>
 
             {/* Question Card */}
-            <div className="bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-6 sm:p-8 shadow-[var(--shadow-lg)] space-y-6">
+            <div className="bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-4 sm:p-8 shadow-[var(--shadow-lg)] space-y-5 sm:space-y-6">
               {currentQ.imageUrl && (
                 <div className="text-center">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -246,12 +280,12 @@ export function QuizRunner({ attempt, questionSet, questions }: QuizRunnerProps)
               )}
 
               {/* Prompt Stem */}
-              <div className="text-base sm:text-lg font-serif font-medium text-[var(--text)] leading-relaxed">
+              <div className="text-sm sm:text-lg font-serif font-medium text-[var(--text)] leading-relaxed">
                 <MathText text={currentQ.promptText} />
               </div>
 
               {/* Choices A, B, C, D */}
-              <div className="space-y-3 pt-2">
+              <div className="space-y-2.5 sm:space-y-3 pt-1 sm:pt-2">
                 {(["a", "b", "c", "d"] as const).map((letter) => {
                   const isSelected = answers[currentQ.id] === letter;
                   const choiceText =
@@ -267,14 +301,14 @@ export function QuizRunner({ attempt, questionSet, questions }: QuizRunnerProps)
                     <div
                       key={letter}
                       onClick={() => handleSelectChoice(letter)}
-                      className={`flex items-start gap-3.5 p-4 rounded-xl border-2 transition-all cursor-pointer ${
+                      className={`flex items-start gap-3 p-3.5 sm:p-4 rounded-xl border-2 transition-all cursor-pointer active:scale-[0.99] ${
                         isSelected
                           ? "border-[var(--accent)] bg-[rgba(217,119,87,0.08)] shadow-sm"
                           : "border-[var(--border)] hover:border-[var(--accent)] bg-[var(--surface2)]"
                       }`}
                     >
                       <div
-                        className={`w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold font-mono shrink-0 transition-colors ${
+                        className={`w-6 h-6 sm:w-7 sm:h-7 rounded-full flex items-center justify-center text-xs font-bold font-mono shrink-0 transition-colors ${
                           isSelected
                             ? "bg-[var(--accent)] text-white"
                             : "bg-[var(--surface)] border border-[var(--border2)] text-[var(--text2)]"
@@ -282,7 +316,7 @@ export function QuizRunner({ attempt, questionSet, questions }: QuizRunnerProps)
                       >
                         {letter.toUpperCase()}
                       </div>
-                      <div className="text-sm text-[var(--text)] pt-0.5 leading-normal flex-1">
+                      <div className="text-xs sm:text-sm text-[var(--text)] pt-0.5 leading-normal flex-1 overflow-x-auto">
                         <MathText text={choiceText} />
                       </div>
                     </div>
@@ -297,7 +331,7 @@ export function QuizRunner({ attempt, questionSet, questions }: QuizRunnerProps)
                 type="button"
                 onClick={() => setCurrentIdx((i) => Math.max(0, i - 1))}
                 disabled={currentIdx === 0}
-                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[var(--surface2)] border border-[var(--border2)] text-[var(--text2)] font-semibold text-xs hover:border-[var(--accent)] hover:text-[var(--accent)] transition-all disabled:opacity-30 cursor-pointer"
+                className="inline-flex items-center gap-2 px-4 sm:px-5 py-2 sm:py-2.5 rounded-xl bg-[var(--surface2)] border border-[var(--border2)] text-[var(--text2)] font-semibold text-xs hover:border-[var(--accent)] hover:text-[var(--accent)] transition-all disabled:opacity-30 cursor-pointer"
               >
                 <ArrowLeft className="w-4 h-4" />
                 <span>Previous</span>
@@ -308,7 +342,7 @@ export function QuizRunner({ attempt, questionSet, questions }: QuizRunnerProps)
                   <button
                     type="button"
                     onClick={() => setCurrentIdx((i) => Math.min(questions.length - 1, i + 1))}
-                    className="inline-flex items-center gap-2 px-6 py-2.5 rounded-xl bg-[var(--accent)] text-white font-semibold text-xs hover:brightness-110 shadow-sm transition-all cursor-pointer"
+                    className="inline-flex items-center gap-2 px-5 sm:px-6 py-2 sm:py-2.5 rounded-xl bg-[var(--accent)] text-white font-semibold text-xs hover:brightness-110 shadow-sm transition-all cursor-pointer"
                   >
                     <span>Next</span>
                     <ArrowRight className="w-4 h-4" />
@@ -318,7 +352,7 @@ export function QuizRunner({ attempt, questionSet, questions }: QuizRunnerProps)
                     type="button"
                     onClick={handleSubmit}
                     disabled={submitting}
-                    className="inline-flex items-center gap-2 px-6 py-2.5 rounded-xl bg-[var(--green)] text-white font-semibold text-xs hover:brightness-110 shadow-sm transition-all cursor-pointer disabled:opacity-50"
+                    className="inline-flex items-center gap-2 px-5 sm:px-6 py-2 sm:py-2.5 rounded-xl bg-[var(--green)] text-white font-semibold text-xs hover:brightness-110 shadow-sm transition-all cursor-pointer disabled:opacity-50"
                   >
                     <Send className="w-4 h-4" />
                     <span>{submitting ? "Grading..." : "Submit Exam"}</span>
@@ -328,8 +362,8 @@ export function QuizRunner({ attempt, questionSet, questions }: QuizRunnerProps)
             </div>
           </div>
 
-          {/* Navigator Sidebar */}
-          <aside className="lg:col-span-1 space-y-6">
+          {/* Navigator Sidebar (Desktop Only) */}
+          <aside className="hidden lg:block lg:col-span-1 space-y-6">
             <div className="bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-5 shadow-[var(--shadow)] sticky top-24 space-y-5">
               {/* Timer Display */}
               {attempt.mode !== "untimed" && (

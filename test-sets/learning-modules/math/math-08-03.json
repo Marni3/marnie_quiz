@@ -3,183 +3,256 @@
   "code": "MATH 08-03",
   "domain": "MATH",
   "topicCode": "MATH-08",
-  "topicTitle": "Plane & Spherical Trigonometry",
-  "subtopicTitle": "Triangle Geometry: Altitudes, Medians, Bisectors, Inradius, Circumradius & Heron's Area",
+  "topicTitle": "Differential Calculus",
+  "subtopicTitle": "Maxima & Minima Optimization, Geometric Invariants & Related Time Rates",
   "order": 3,
   "pairedQuizSetId": "math-08-03-mastery",
   "toc": [
-    { "id": "sec-prereq-bridges", "title": "1. Introduction & Cross-Subject Connections", "level": 2 },
-    { "id": "sec-theory", "title": "2. Lesson Proper: Triangle Segments, Centers & Radii", "level": 2 },
-    { "id": "sec-formulas", "title": "3. Compilation of Formulas & Geometric Radii", "level": 2 },
-    { "id": "sec-visualizer", "title": "4. Interactive Visualizer: Incircle & Circumcircle Explorer", "level": 2 },
-    { "id": "sec-terminology", "title": "5. Key Terms and Definitions", "level": 2 },
-    { "id": "sec-dual-method", "title": "6. Worked Board Exam Problems", "level": 2 },
-    { "id": "sec-calculator", "title": "7. Calculator Speed Techniques (Karce & Canon)", "level": 2 },
-    { "id": "sec-concept-checks", "title": "8. In-Line Concept Checks", "level": 2 },
-    { "id": "sec-mastery-challenge", "title": "9. Paired Mastery Challenge Exam", "level": 2 }
+    {
+      "id": "sec-prereq-bridges",
+      "title": "1. Introduction & Cross-Subject Connections",
+      "level": 2
+    },
+    {
+      "id": "sec-theory",
+      "title": "2. Lesson Proper: Optimization, Invariants & Related Time Rates",
+      "level": 2
+    },
+    {
+      "id": "sec-formulas",
+      "title": "3. Master Table of 13 Optimization Speed Shortcuts",
+      "level": 2
+    },
+    {
+      "id": "sec-visualizer",
+      "title": "4. Interactive Visualizer: Geometric Maxima/Minima Simulator",
+      "level": 2
+    },
+    {
+      "id": "sec-terminology",
+      "title": "5. Key Terms and Definitions",
+      "level": 2
+    },
+    {
+      "id": "sec-dual-method",
+      "title": "6. Worked Board Exam Problems",
+      "level": 2
+    },
+    {
+      "id": "sec-calculator",
+      "title": "7. Calculator Speed Techniques (Karce & Canon)",
+      "level": 2
+    },
+    {
+      "id": "sec-concept-checks",
+      "title": "8. In-Line Concept Checks",
+      "level": 2
+    },
+    {
+      "id": "sec-mastery-challenge",
+      "title": "9. Paired Mastery Challenge Exam",
+      "level": 2
+    }
   ],
   "prerequisiteBridge": {
-    "priorModuleId": "math-08-02",
-    "text": "Having mastered trigonometric identities in MATH 08-02, we now analyze internal geometric segments of general triangles—altitudes, medians, angle bisectors, Heron's formula, and circumradius/inradius relations."
+    "priorModuleId": "math-14-02",
+    "text": "Equipped with the 37 differentiation rules from MATH 14-02, we now apply differential calculus to physical optimization (1st and 2nd derivative tests, 13 PRC Board exam geometric shortcuts) and dynamic related time rates."
   },
   "crossSubjectBridges": [
     {
-      "targetDomain": "GEAS",
-      "targetTopicCode": "GEAS-01",
-      "badgeText": "Statics",
-      "description": "The center of gravity (centroid) of triangular plates is located at the intersection of medians, exactly 2/3 distance from the vertex."
+      "targetDomain": "ELECS",
+      "targetTopicCode": "ELEC-01",
+      "badgeText": "Maximum Power Transfer",
+      "description": "The Maximum Power Transfer Theorem $\\frac{dP_L}{dR_L} = 0 \\implies R_L = R_{th}$ is proven directly using differential calculus optimization."
     },
     {
       "targetDomain": "EST",
       "targetTopicCode": "EST-05",
-      "badgeText": "Antennas",
-      "description": "Triangular 3-element antenna tower guy-wire anchor footprints use inradius and circumradius circles to optimize base stability."
+      "badgeText": "Antenna Aperture",
+      "description": "Optimal parabolic dish focal length to diameter ratios ($f/D$) are derived by maximizing effective capture aperture area."
     },
     {
-      "targetDomain": "MATH",
-      "targetTopicCode": "MATH-10",
-      "badgeText": "Plane Geometry",
-      "description": "Triangle circumcenters and incenters form the basis of Euler line collinearity and Nine-point circle theorems."
+      "targetDomain": "GEAS",
+      "targetTopicCode": "GEAS-01",
+      "badgeText": "Fluid Dynamics",
+      "description": "Filling and draining rates of conical and cylindrical reservoir tanks are calculated using time rate differentials $\\frac{dV}{dt} = A \\frac{dh}{dt}$."
     }
   ],
   "theory": {
-    "mentalAnchor": "Area of triangle: $A = \\frac{1}{2}ab\\sin C = \\sqrt{s(s-a)(s-b)(s-c)} = rs = \\frac{abc}{4R}$. Median length: $m_c = \\frac{1}{2}\\sqrt{2a^2+2b^2-c^2}$. Centroid divides median in 2:1 ratio. Inradius: $r = A/s$. Circumradius: $R = \\frac{abc}{4A}$. For a right triangle, $R = c/2$ and $r = \\frac{a+b-c}{2}$.",
-    "contentMarkdown": "### 1. Internal Segments of a General Triangle\n\nFor a triangle with side lengths $a, b, c$ and semiperimeter $s = \\frac{a + b + c}{2}$:\n\n1. **Altitude / Height ($h_c$)**: The perpendicular line segment dropped from a vertex to the opposite base $c$:\n   $$h_c = \\frac{2A}{c} = \\frac{2\\sqrt{s(s - a)(s - b)(s - c)}}{c}$$\n\n2. **Median ($m_c$)**: The line segment connecting a vertex to the midpoint of the opposite side $c$ (Apollonius' Theorem):\n   $$m_c = \\frac{1}{2}\\sqrt{2a^2 + 2b^2 - c^2}$$\n\n3. **Angle Bisector ($t_c$)**: The line segment bisecting the interior angle $C$ and terminating on opposite side $c$:\n   $$t_c = \\sqrt{ab \\left[1 - \\left(\\frac{c}{a + b}\\right)^2\\right]} = \\frac{2\\sqrt{ab \\cdot s(s - c)}}{a + b}$$\n\n```diagram\n{\n  \"caption\": \"Figure 1: Triangle Centers & Incircle / Circumcircle Invariants\",\n  \"xRange\": [-5, 5],\n  \"yRange\": [-3, 3],\n  \"elements\": [\n    { \"type\": \"polygon\", \"points\": [[-3.5, -2], [3.5, -2], [0, 2.5]], \"color\": \"#38bdf8\", \"fill\": \"rgba(56, 189, 248, 0.05)\" },\n    { \"type\": \"arc\", \"center\": [0, -0.3], \"radius\": 34, \"startAngle\": 0, \"endAngle\": 360, \"color\": \"#fbbf24\", \"label\": \"Incircle (r)\" },\n    { \"type\": \"arc\", \"center\": [0, 0.1], \"radius\": 58, \"startAngle\": 0, \"endAngle\": 360, \"color\": \"#34d399\", \"label\": \"Circumcircle (R)\" },\n    { \"type\": \"point\", \"at\": [0, -0.5], \"label\": \"Centroid G (2/3 from vertex)\", \"color\": \"#f43f5e\" }\n  ]\n}\n```\n\n---\n\n### 2. The Four Classical Triangle Centers & Fundamental Properties\n\n- **Centroid ($G$)**: Concurrency of the 3 **medians**. It divides each median in a **$2:1$ ratio** (the centroid is located at $\\frac{2}{3}$ of the distance from any vertex to the midpoint of the opposite side).\n- **Incenter ($I$)**: Concurrency of the 3 **angle bisectors**, equidistant from all 3 sides (center of the **inscribed circle**).\n- **Circumcenter ($O$)**: Concurrency of the 3 **perpendicular bisectors** of the sides, equidistant from all 3 vertices (center of the **circumscribed circle**).\n- **Orthocenter ($H$)**: Concurrency of the 3 **altitudes**.\n- **Triangle Inequality Invariant**: $a + b > c, \\quad b + c > a, \\quad a + c > b, \\quad |a - b| < c$.\n\n---\n\n### 3. Inscribed & Circumscribed Radii Formulas\n\n| Triangle Geometry | Inradius ($r$) | Circumradius ($R$) |\n| :--- | :---: | :---: |\n| **General Triangle** | $r = \\frac{A}{s} = \\frac{2A}{a + b + c}$ | $R = \\frac{abc}{4A}$ |\n| **Equilateral Triangle** (side $a$) | $r = \\frac{a\\sqrt{3}}{6}$ | $R = \\frac{a\\sqrt{3}}{3} = 2r$ |\n| **Right Triangle** (legs $a, b$, hyp $c$) | $r = \\frac{ab}{a + b + c} = \\frac{a + b - c}{2}$ | $R = \\frac{c}{2}$ |\n\n---\n\n### 4. Comprehensive Triangle Area Formulas\n\n1. **Base and Altitude**: $A = \\frac{1}{2} b h$.\n2. **Two Sides and Included Angle (SAS)**: $A = \\frac{1}{2} ab \\sin C$.\n3. **Heron's Formula (SSS)**: Discovered by **Heron of Alexandria (1st Century A.D.)**:\n   $$A = \\sqrt{s(s - a)(s - b)(s - c)} \\quad \\text{where } s = \\frac{a + b + c}{2}$$\n4. **In terms of Inradius**: $A = r \\cdot s$.\n5. **In terms of Circumradius**: $A = \\frac{abc}{4R}$."
+    "mentalAnchor": "Max/Min occurs where $f'(x) = 0$. $f''(x) < 0 \\implies$ Maximum, $f''(x) > 0 \\implies$ Minimum, $f''(x) = 0 \\implies$ Inflection point. 13 Instant Shortcuts: Inscribed in circle $\\implies$ Square; Inscribed in triangle $\\implies x = b/2, y = h/2, A = \\frac{1}{2}A_\\Delta$; Inscribed in ellipse $\\implies A = 2ab, A_{\\text{ell}}/A_{\\text{rect}} = \\pi/2$; Circular sector minimum perimeter $\\implies \\theta = 2\\text{ rad}, r = \\sqrt{A}$; Norman window $\\implies h = x, y = r = x/2$. Related rates: Differentiate with respect to time $t$, substitute specific values ONLY AFTER differentiating.",
+    "contentMarkdown": "### 1. The 6-Step Optimization Protocol & Derivative Tests\n\n1. Draw a clear diagram and label constants versus variables.\n2. Formulate the primary equation for the quantity to be maximized or minimized ($Q$).\n3. Use geometric or physical constraints to eliminate extra variables, expressing $Q = f(x)$ in **one variable**.\n4. Compute the first derivative $\\frac{dQ}{dx}$.\n5. Set $\\frac{dQ}{dx} = 0$ and solve for critical values $x_c$.\n6. Verify extremum nature using the **Second Derivative Test**:\n\n| Derivative State | Geometric Meaning | Physical State |\n| :--- | :--- | :--- |\n| $f'(x) = 0, \\quad f''(x) < 0$ | Curve is concave down ($\\cap$) | **Local Maximum** |\n| $f'(x) = 0, \\quad f''(x) > 0$ | Curve is concave up ($\\cup$) | **Local Minimum** |\n| $f''(x) = 0$ (with concavity change) | Inflection point | **Point of Inflection** |\n\n```diagram\n{\n  \"caption\": \"Figure 1: Critical Extrema - Maximum (f''<0), Inflection (f''=0), and Minimum (f''>0)\",\n  \"xRange\": [-5, 5],\n  \"yRange\": [-3, 3],\n  \"elements\": [\n    { \"type\": \"point\", \"at\": [-2.5, 1.8], \"color\": \"#38bdf8\", \"label\": \"Max (f'=0, f''<0)\" },\n    { \"type\": \"point\", \"at\": [0, 0], \"color\": \"#fbbf24\", \"label\": \"Inflection (f''=0)\" },\n    { \"type\": \"point\", \"at\": [2.5, -1.8], \"color\": \"#34d399\", \"label\": \"Min (f'=0, f''>0)\" }\n  ]\n}\n```\n\n---\n\n### 2. The 13 PRC Board Exam Geometric Optimization Invariants\n\n1. **Largest Rectangle Inscribed in a Circle**: Always a **SQUARE** with side $a = R\\sqrt{2} = \\frac{d}{\\sqrt{2}}$ and $A_{\\text{max}} = 2R^2 = \\frac{d^2}{2}$.\n2. **Largest Rectangle Inscribed in a Semicircle**: Length $a = R\\sqrt{2}$, Height $y = \\frac{R}{\\sqrt{2}} = \\frac{a}{2}$ (Aspect ratio $2 : 1$, Area $= R^2$).\n3. **Largest Rectangle Inscribed in a Triangle (base $b$, height $h$)**:\n   $$x = \\frac{b}{2}, \\quad y = \\frac{h}{2}, \\quad A_{\\text{max}} = \\frac{1}{4} bh = \\frac{1}{2} A_{\\text{triangle}}$$\n4. **Largest Rectangle Inscribed in an Ellipse (semi-axes $a, b$)**:\n   $$x = \\frac{a}{\\sqrt{2}}, \\quad y = \\frac{b}{\\sqrt{2}}, \\quad A_{\\text{max}} = 2ab, \\quad \\frac{A_{\\text{ellipse}}}{A_{\\text{rect}}} = \\frac{\\pi}{2}$$\n5. **Largest Triangle with Fixed Perimeter $P$**: Always an **EQUILATERAL TRIANGLE** with side $a = b = c = \\frac{P}{3}$.\n6. **Smallest Perimeter Sector with Fixed Area $A$**:\n   $$r = \\sqrt{A}, \\quad \\theta = 2\\text{ radians} \\approx 114.59^\\circ, \\quad P_{\\text{min}} = 4\\sqrt{A}$$\n7. **Smallest Perimeter Rectangle with Fixed Area $A$**: Always a **SQUARE** with side $a = b = \\sqrt{A}$.\n8. **Right Triangle with Smallest Perimeter for Given Area**: Always an **ISOSCELES RIGHT TRIANGLE** ($\\theta = 45^\\circ, x = y$).\n9. **Norman Window (Rectangle with Semicircular Top) Maximum Light Admittance**:\n   $$\\text{Total Height } h = x \\text{ (overall width)}, \\quad \\text{Rectangular Height } y = \\text{Radius } r = \\frac{x}{2}$$\n10. **Maximum Length of Tangent Segment between Ellipse Coordinate Axes**: $L_{\\text{max}} = a + b$.\n11. **Largest Open Top Box Folded from Square Sheet (side $S$)**: Cutout corner square $x = \\frac{S}{6}$, $V_{\\text{max}} = \\frac{2}{27} S^3$.\n12. **Largest Cylinder Inscribed in a Cone (radius $R$, height $H$)**:\n   $$r_{\\text{cyl}} = \\frac{2}{3} R, \\quad h_{\\text{cyl}} = \\frac{1}{3} H, \\quad V_{\\text{max}} = \\frac{4}{9} V_{\\text{cone}}$$\n13. **Largest Cone Inscribed in a Sphere (radius $R$)**:\n   $$h_{\\text{cone}} = \\frac{4}{3} R, \\quad r_{\\text{cone}} = \\frac{2\\sqrt{2}}{3} R, \\quad V_{\\text{max}} = \\frac{8}{27} V_{\\text{sphere}}$$\n\n---\n\n### 3. Dynamic Related Time Rates\n\n- Time rates quantify how multiple related variables change simultaneously with respect to time $t$ ($\\frac{dx}{dt}, \\frac{dy}{dt}, \\frac{dV}{dt}$).\n- **Golden Rule**: Differentiate implicitly with respect to time $t$ **before** substituting any instant numeric values."
   },
   "formulas": [
     {
-      "id": "f-0803-01",
-      "title": "Heron's Formula & Semiperimeter",
-      "formula": "$$A = \\sqrt{s(s - a)(s - b)(s - c)}, \\quad s = \\frac{a + b + c}{2}$$",
-      "note": "Named after Heron of Alexandria (1st Century A.D.)."
+      "id": "f-1403-01",
+      "title": "Master Inscribed Rectangle Invariants",
+      "formula": "$$A_{\\text{in-triangle}} = \\frac{1}{2} A_{\\Delta}, \\quad A_{\\text{in-ellipse}} = 2ab = \\frac{2}{\\pi} A_{\\text{ellipse}}, \\quad A_{\\text{in-circle}} = 2R^2$$",
+      "note": "For any triangle, the maximum inscribed rectangle is exactly half the triangle's area."
     },
     {
-      "id": "f-0803-02",
-      "title": "Inradius & Circumradius Relations",
-      "formula": "$$r = \\frac{A}{s}, \\quad R = \\frac{abc}{4A}$$",
-      "note": "Right triangle: R = c/2, r = (a + b - c)/2."
+      "id": "f-1403-02",
+      "title": "Minimum Perimeter Circular Sector",
+      "formula": "$$r = \\sqrt{A}, \\quad \\theta = 2\\text{ rad} \\approx 114.59^\\circ, \\quad P_{\\text{min}} = 4\\sqrt{A}$$",
+      "note": "Arc length equals twice the radius (s = 2r)."
     },
     {
-      "id": "f-0803-03",
-      "title": "Median Length (Apollonius' Theorem)",
-      "formula": "$$m_c = \\frac{1}{2}\\sqrt{2a^2 + 2b^2 - c^2}$$",
-      "note": "Centroid partitions median in 2:1 ratio from vertex."
+      "id": "f-1403-03",
+      "title": "Norman Window Light Maximization",
+      "formula": "$$y = r = \\frac{x}{2}, \\quad h = x = \\frac{P}{1 + \\pi/2}$$",
+      "note": "Rectangular height equals the semicircular radius."
     }
   ],
   "visualizer": {
     "archetype": "parameter_sweep",
-    "title": "Triangle Inradius, Circumradius & Area Simulator",
-    "description": "Adjust side lengths a, b, c to compute live area, inradius r, circumradius R, and median lengths.",
+    "title": "Geometric Maxima & Minima Optimization Simulator",
+    "description": "Adjust rectangle dimensions inside triangles, circles, and ellipses to verify maximum area invariants in real time.",
     "config": {
       "canvasWidth": 640,
       "canvasHeight": 320,
       "controls": [
-        { "id": "sideA", "label": "Side a", "min": 3, "max": 15, "step": 1, "defaultValue": 7 },
-        { "id": "sideB", "label": "Side b", "min": 3, "max": 15, "step": 1, "defaultValue": 8 },
-        { "id": "sideC", "label": "Side c", "min": 3, "max": 15, "step": 1, "defaultValue": 9 }
+        {
+          "id": "baseB",
+          "label": "Triangle Base b",
+          "min": 5,
+          "max": 25,
+          "step": 1,
+          "defaultValue": 12
+        },
+        {
+          "id": "heightH",
+          "label": "Triangle Height h",
+          "min": 4,
+          "max": 20,
+          "step": 1,
+          "defaultValue": 10
+        }
       ]
     }
   },
   "terms": [
     {
-      "term": "Centroid",
-      "symbol": "$G$",
-      "unit": "Center",
-      "definition": "Point of intersection of the three medians of a triangle, located at 2/3 of the median distance from any vertex.",
-      "keywordTrigger": "intersection of medians / 2/3 distance from vertex"
+      "term": "Point of Inflection",
+      "symbol": "$f''(x) = 0$",
+      "unit": "Calculus",
+      "definition": "A point on a curve where the second derivative equals zero and changes sign, indicating a transition in concavity.",
+      "keywordTrigger": "change in concavity / f''(x) = 0"
     },
     {
-      "term": "Incenter",
-      "symbol": "$I$",
-      "unit": "Center",
-      "definition": "Point of concurrency of the angle bisectors, serving as the center of the inscribed circle (incircle).",
-      "keywordTrigger": "intersection of angle bisectors / center of incircle"
+      "term": "Norman Window",
+      "symbol": "$h = x, y = r$",
+      "unit": "Optimization",
+      "definition": "A composite window consisting of a rectangle surmounted by a semicircle, maximizing light when rectangular height equals radius.",
+      "keywordTrigger": "rectangle surmounted by semicircle / Norman window"
     },
     {
-      "term": "Circumcenter",
-      "symbol": "$O$",
-      "unit": "Center",
-      "definition": "Point of concurrency of the perpendicular bisectors of the sides, serving as the center of the circumscribing circle.",
-      "keywordTrigger": "intersection of perpendicular bisectors / circumscribed circle"
-    },
-    {
-      "term": "Heron's Formula",
-      "symbol": "$A = \\sqrt{s(s-a)(s-b)(s-c)}$",
-      "unit": "Theorem",
-      "definition": "Classical formula computing triangle area purely from its three side lengths and semiperimeter s.",
-      "keywordTrigger": "Heron of Alexandria / sqrt(s(s-a)(s-b)(s-c))"
+      "term": "Related Rates",
+      "symbol": "$\\frac{d}{dt}$",
+      "unit": "Calculus",
+      "definition": "Problems involving finding a rate at which a quantity changes by relating that quantity to other quantities whose rates of change are known.",
+      "keywordTrigger": "rate of change with respect to time / time rates"
     }
   ],
   "examples": [
     {
-      "problemStatement": "Find the area, inradius, and circumradius of a triangle with sides a = 7 cm, b = 8 cm, and c = 9 cm.",
-      "formalSolutionMarkdown": "#### Step 1: Compute semiperimeter s\n$$s = \\frac{7 + 8 + 9}{2} = \\frac{24}{2} = 12\\text{ cm}$$\n\n#### Step 2: Apply Heron's formula for area\n$$A = \\sqrt{12(12 - 7)(12 - 8)(12 - 9)} = \\sqrt{12(5)(4)(3)} = \\sqrt{720} = 12\\sqrt{5} \\approx 26.83\\text{ cm}^2$$\n\n#### Step 3: Compute inradius r\n$$r = \\frac{A}{s} = \\frac{12\\sqrt{5}}{12} = \\sqrt{5} \\approx 2.236\\text{ cm}$$\n\n#### Step 4: Compute circumradius R\n$$R = \\frac{abc}{4A} = \\frac{7 \\times 8 \\times 9}{4(12\\sqrt{5})} = \\frac{504}{48\\sqrt{5}} = \\frac{21}{2\\sqrt{5}} = \\frac{21\\sqrt{5}}{10} \\approx 4.696\\text{ cm}$$",
-      "shortcutSolutionMarkdown": "#### ⚡ 10-Second Calculation\n$s = 12 \\implies A = \\sqrt{12 \\times 5 \\times 4 \\times 3} = \\sqrt{720} \\approx 26.83$.\n$r = A/12 = 2.24\\text{ cm}$. $R = 504 / (4 \\times 26.83) = 4.70\\text{ cm}$.",
-      "formalTimeSeconds": 75,
-      "shortcutTimeSeconds": 10
-    },
-    {
-      "problemStatement": "In triangle ABC with a = 6, b = 8, c = 10, find the length of the median to side c (mc).",
-      "formalSolutionMarkdown": "#### Step 1: Recognize right triangle\n- $6^2 + 8^2 = 36 + 64 = 100 = 10^2$, so $c = 10$ is the hypotenuse.\n\n#### Step 2: Apply median formula\n$$m_c = \\frac{1}{2}\\sqrt{2a^2 + 2b^2 - c^2} = \\frac{1}{2}\\sqrt{2(36) + 2(64) - 100} = \\frac{1}{2}\\sqrt{72 + 128 - 100} = \\frac{1}{2}\\sqrt{100} = 5$$\n*(In any right triangle, the median to the hypotenuse is exactly half the hypotenuse: $m_c = c/2 = 5$)*.",
-      "shortcutSolutionMarkdown": "#### ⚡ Right Triangle Median Invariant\n$$m_c = \\frac{c}{2} = \\frac{10}{2} = 5$$",
+      "problemStatement": "Find the dimensions and maximum area of a rectangle that can be inscribed in an ellipse with equation x²/16 + y²/9 = 1.",
+      "formalSolutionMarkdown": "#### Step 1: Identify semi-axes\n- $a^2 = 16 \\implies a = 4$\n- $b^2 = 9 \\implies b = 3$\n\n#### Step 2: Formulate rectangle area\n- Let corner be $(x, y) = (4\\cos\\theta, 3\\sin\\theta)$.\n- Area $A = (2x)(2y) = 4xy = 4(4\\cos\\theta)(3\\sin\\theta) = 24(2\\sin\\theta\\cos\\theta) = 24\\sin(2\\theta)$.\n\n#### Step 3: Maximize with respect to θ\n- $\\sin(2\\theta) = 1 \\implies 2\\theta = 90^\\circ \\implies \\theta = 45^\\circ$.\n- $x = \\frac{a}{\\sqrt{2}} = \\frac{4}{\\sqrt{2}} = 2\\sqrt{2}$, $y = \\frac{b}{\\sqrt{2}} = \\frac{3}{\\sqrt{2}}$.\n- $A_{\\text{max}} = 2ab = 2(4)(3) = 24$.\n- Dimensions: Width $2x = 4\\sqrt{2} \\approx 5.66$, Height $2y = 3\\sqrt{2} \\approx 4.24$.",
+      "shortcutSolutionMarkdown": "#### ⚡ 2-Second Inscribed Ellipse Shortcut\n$$A_{\\text{max}} = 2ab = 2(4)(3) = 24, \\quad \\text{Width} = a\\sqrt{2} = 4\\sqrt{2}, \\quad \\text{Height} = b\\sqrt{2} = 3\\sqrt{2}$$",
       "formalTimeSeconds": 45,
       "shortcutTimeSeconds": 2
+    },
+    {
+      "problemStatement": "A 10-meter ladder leans against a vertical wall. If the bottom of the ladder slides away from the wall at 2 m/s, how fast is the top of the ladder sliding down when the bottom is 6 meters from the wall?",
+      "formalSolutionMarkdown": "#### Step 1: Set up Pythagorean relation\n$$x^2 + y^2 = L^2 = 10^2 = 100$$\n\n#### Step 2: Differentiate with respect to time t\n$$2x \\frac{dx}{dt} + 2y \\frac{dy}{dt} = 0 \\implies \\frac{dy}{dt} = -\\frac{x}{y} \\frac{dx}{dt}$$\n\n#### Step 3: Substitute specific values\n- When $x = 6\\text{ m}$: $y = \\sqrt{100 - 36} = 8\\text{ m}$.\n- Given $\\frac{dx}{dt} = +2\\text{ m/s}$:\n$$\\frac{dy}{dt} = -\\frac{6}{8}(2) = -\\frac{12}{8} = -1.5\\text{ m/s}$$\n*(The top slides down at a rate of 1.5 m/s)*.",
+      "shortcutSolutionMarkdown": "#### ⚡ 5-Second Related Rate Ratio\n$$\\frac{dy}{dt} = -\\frac{x}{y} v_x = -\\frac{6}{8}(2) = -1.5\\text{ m/s}$$",
+      "formalTimeSeconds": 45,
+      "shortcutTimeSeconds": 5
     }
   ],
   "calculatorGuides": {
     "karce": {
-      "techniqueTitle": "Fast Heron's Area Evaluation",
-      "problemType": "Evaluating √(s(s-a)(s-b)(s-c))",
-      "sampleProblem": "Find area for a=7, b=8, c=9.",
+      "techniqueTitle": "Fast Derivative Extrema Check",
+      "problemType": "Checking critical point f'(x) = 0 via d/dx",
+      "sampleProblem": "Verify derivative of x³ - 12x at x = 2.",
       "mode": "COMP Mode (MODE 1)",
-      "keystrokes": ["(", "7", "+", "8", "+", "9", ")", "÷", "2", "SHIFT", "STO", "A", "√", "(", "ALPHA", "A", "×", "(", "ALPHA", "A", "-", "7", ")", "×", "(", "ALPHA", "A", "-", "8", ")", "×", "(", "ALPHA", "A", "-", "9", ")", ")", "="],
-      "notes": "Directly evaluates 26.83281573 in 3 seconds."
+      "keystrokes": [
+        "SHIFT",
+        "d/dx",
+        "ALPHA",
+        "X",
+        "x³",
+        "-",
+        "1",
+        "2",
+        "ALPHA",
+        "X",
+        ",",
+        "2",
+        ")",
+        "="
+      ],
+      "notes": "Directly displays 0 confirming critical extremum."
     },
     "canon": {
-      "techniqueTitle": "Inradius & Circumradius Shortcut",
-      "problemType": "Evaluating A/s and abc/(4A)",
-      "sampleProblem": "Find r and R for a=7, b=8, c=9 on Canon F-789SGA.",
+      "techniqueTitle": "Related Rate Ratio Solver",
+      "problemType": "-(x / √(L² - x²)) * vx on Canon F-789SGA",
+      "sampleProblem": "Solve dy/dt for L=10, x=6, vx=2.",
       "mode": "COMP Mode (MODE 1)",
-      "keystrokes": ["2", "6", ".", "8", "3", "2", "8", "÷", "1", "2", "="],
-      "notes": "Directly yields r = 2.236067."
+      "keystrokes": [
+        "-",
+        "6",
+        "÷",
+        "√",
+        "(",
+        "1",
+        "0",
+        "0",
+        "-",
+        "3",
+        "6",
+        ")",
+        "×",
+        "2",
+        "="
+      ],
+      "notes": "Directly yields -1.5 m/s."
     }
   },
   "conceptChecks": [
     {
-      "id": "chk-0803-01",
-      "question": "At what fraction of the distance along a median (from vertex to the opposite midpoint) is the Centroid located?",
+      "id": "chk-1403-01",
+      "question": "What is the ratio of the area of an ellipse to the area of the largest rectangle that can be inscribed inside it?",
       "options": [
-        "2/3 of the distance from the vertex",
-        "1/2 of the distance from the vertex",
-        "3/4 of the distance from the vertex",
-        "1/3 of the distance from the vertex"
+        "π / 2 ≈ 1.571",
+        "π / 4",
+        "2 / π",
+        "4 / π"
       ],
       "correctAnswer": 0,
-      "explanation": "The centroid divides every median in a 2:1 ratio, located at 2/3 of the distance from the vertex to the opposite midpoint."
+      "explanation": "Area of ellipse is πab, and maximum inscribed rectangle area is 2ab. The ratio is πab / (2ab) = π/2."
     },
     {
-      "id": "chk-0803-02",
-      "question": "What is the circumradius $R$ of a right-angled triangle with legs 6 and 8 and hypotenuse 10?",
+      "id": "chk-1403-02",
+      "question": "For a circular sector with a given fixed area $A$, what central angle $\\theta$ produces the minimum possible perimeter?",
       "options": [
-        "5",
-        "2.4",
-        "2",
-        "10"
+        "2 radians (≈ 114.59°)",
+        "1 radian (≈ 57.30°)",
+        "π/2 radians (90°)",
+        "π radians (180°)"
       ],
       "correctAnswer": 0,
-      "explanation": "In any right triangle, the circumcenter is the midpoint of the hypotenuse, so R = c/2 = 10/2 = 5."
+      "explanation": "Minimizing P = 2r + 2A/r yields dP/dr = 2 - 2A/r² = 0 => r = √A, giving arc length s = 2r and central angle θ = s/r = 2 radians."
     },
     {
-      "id": "chk-0803-03",
-      "question": "Who was the ancient Greek mathematician and engineer credited with discovering the formula $A = \\sqrt{s(s-a)(s-b)(s-c)}$?",
+      "id": "chk-1403-03",
+      "question": "What is the maximum area of a rectangle that can be inscribed in a triangle of base $b = 16\\text{ cm}$ and height $h = 10\\text{ cm}$?",
       "options": [
-        "Heron of Alexandria",
-        "Ptolemy of Alexandria",
-        "Pythagoras of Samos",
-        "Euclid of Alexandria"
+        "40 cm² (Half the triangle area)",
+        "80 cm²",
+        "20 cm²",
+        "60 cm²"
       ],
       "correctAnswer": 0,
-      "explanation": "Heron of Alexandria (1st Century A.D.) published this area theorem in his treatise Metrica."
+      "explanation": "A_max = (1/4) bh = (1/4)(16)(10) = 40 cm², which is exactly half of the triangle's area (80 cm²)."
     }
   ]
 }

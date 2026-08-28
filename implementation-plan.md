@@ -325,13 +325,14 @@ graph LR
 - **Privacy First:** Chat histories reside solely on the examinee's physical device.
 - **Zero Connection Overhead:** Massive multi-turn conversations do not consume serverless DB compute hours or database storage quota.
 
-#### 2. Local Storage Implementation (`IndexedDB` via `idb-keyval`)
-- All conversational threads are stored locally in the browser's **IndexedDB** under the `marnie_ai_conversations` store:
+#### 2. Local Storage Implementation (`IndexedDB` via `idb-keyval`) & Study Vault
+- All conversational threads, query history, and private settings are stored locally in the browser's **IndexedDB** under `marnie_ai_conversations` and `marnie_byok_vault`:
   ```typescript
   export interface LocalConversationThread {
     id: string; // UUID
-    type: "module_explainer" | "post_exam_debrief" | "socratic_tutor" | "weakness_drill";
+    type: "module_explainer" | "post_exam_debrief" | "socratic_tutor" | "weakness_drill" | "freeform_query";
     contextId?: string; // e.g. "math-01-01" or attemptId
+    topicCode?: string; // e.g. "MATH-01"
     title: string;
     createdAt: number;
     updatedAt: number;
@@ -343,27 +344,68 @@ graph LR
     }>;
   }
   ```
-- **Storage Limits & LRU Eviction:** IndexedDB provides $> 500\text{ MB}$ of local storage per origin—sufficient for tens of thousands of conversations. An automatic LRU (Least Recently Used) policy prunes conversations older than 90 days if local space exceeds $100\text{ MB}$.
-- **Export & Import Backup:** Students can export their full conversation history and generated practice drills as a single `.json` or `.md` archive at any time from Settings.
-
-#### 3. Cloud Synchronization for Finalized Notes Only
-- Only when an examinee explicitly clicks **"📌 Save to My Notebook"** on an AI note card is a lightweight Markdown record ($\approx 350\text{ bytes}$) saved to the Neon `notes` table for cross-device synchronization:
-  ```sql
-  CREATE TABLE notes (
-    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-    user_id UUID REFERENCES users(id) ON DELETE CASCADE,
-    topic_code TEXT NOT NULL,
-    title TEXT NOT NULL,
-    content TEXT NOT NULL,
-    tags TEXT[],
-    created_at TIMESTAMP DEFAULT now() NOT NULL
-  );
-  ```
-  *(10,000 saved note cards consume less than $3.5\text{ MB}$, using $< 1\%$ of Neon's permanent $500\text{ MB}$ free tier).*
+- **Storage Limits & LRU Eviction:** IndexedDB provides $> 500\text{ MB}$ of local storage per origin—sufficient for tens of thousands of conversations. An automatic LRU (Least Recently Used) policy prunes unpinned conversations older than 90 days if local space exceeds $100\text{ MB}$.
+- **1-Click Study Vault Backup & Restore (`.json` Sync at $0 Cost):**
+  - **`[ 📥 Export Study Vault (.json) ]`**: Bundles all local AI conversations, custom notes, saved formula cards, and BYOK settings into a single structured file (`marnie-vault-YYYY-MM-DD.json`).
+  - **`[ 📤 Import / Restore Vault ]`**: Allows examinees to import their study vault onto another device (e.g. laptop $\to$ phone) to restore all private AI queries and note cards without database sync fees.
 
 ---
 
-### 7.5. Standardized System Prompts & Structured Card Schemas
+### 7.5. Dedicated AI Workspace (`/tutor`) & 5 High-Yield Core Functions
+
+A dedicated top-level navigation tab (`✨ AI Tutor` at `/tutor`) provides a full-featured workspace for AI-powered board review, directly integrating with the authoring workflows and schemas defined in `.agents/skills/`:
+
+```mermaid
+graph TD
+    AI[✨ AI Topnotcher Engine]
+    
+    AI --> F1[1. General Socratic Chat & Deep Explainer]
+    AI --> F2[2. Custom Module & Mastery Challenge Author]
+    AI --> F3[3. Isomorphic Quiz & Distractor Trap Generator]
+    AI --> F4[4. Formula Sheet & Mnemonic Card Synthesizer]
+    AI --> F5[5. Post-Exam Diagnostic Debrief & Study Material Synthesizer]
+```
+
+#### The 5 High-Yield Core Functions:
+
+1. **General Socratic Chat & Deep Explainer:**
+   - Freeform tutoring with automatic context injection of active module derivations, formulas, or quiz questions.
+   - Delivers multi-level hints, intuitive mental models, and board exam trap warnings without spoiling numerical answers.
+
+2. **Custom Learning Module & Paired Mastery Challenge Author:**
+   - Leverages the pedagogy standards from `learning-module-authoring` and `mastery-challenge-authoring` to author standardized, fully valid `LearningModule` and 20-item `MasteryChallenge` JSON sets.
+   - **Presets**: Freeform topic, pasted textbook/syllabus notes, or the **"Target My Weakest Topic"** preset (auto-selected from the examinee's live SRS Retrievability $R < 60\%$).
+   - **Direct Actions**: `[ 📖 Save & Read Module ]` and `[ ⚡ Start Paired Mastery Challenge ]`.
+
+3. **Isomorphic Practice Set & Distractor Trap Generator:**
+   - Leverages `ece-test-authoring` standards to generate custom 10, 25, or 50-question drill sets.
+   - Ingests past questions answered incorrectly, keeps the core concept archetype, but randomizes numerical parameters and crafts realistic distractor options based on common calculation slips (e.g. sign error, inverted fraction, radians/degrees omission).
+   - **Direct Action**: `[ 🚀 Launch Custom Quiz Set ]` (grades server-side and logs to SRS).
+
+4. **Formula Sheet & Mnemonic Card Synthesizer (Notebook Integration):**
+   - Compiles subtopics into condensed KaTeX formula matrices, boundary conditions, and memory anchors/acronyms.
+   - **Direct Action**: `[ 📌 Pin to My Notebook ]` (saved to local Study Vault and optional cloud notes).
+
+5. **Post-Exam Root-Cause Diagnostic Debrief & High-Yield Study Material Synthesizer:**
+   - Automatically ingests all missed questions from `/attempts/[id]/results` and classifies root errors into:
+     - 🔴 *Conceptual Gap* (misunderstood fundamental physical law)
+     - 🟡 *Formula Misapplication* (used series formula in parallel branch)
+     - 🟠 *Algebra & Unit Traps* (missed $\text{kHz} \to \text{Hz}$ or $\text{dB} \leftrightarrow \text{Linear}$)
+     - ⚪ *Stem Misreading* (missed *"which of the following is NOT"*)
+   - Provides a $\le 15\text{s}$ calculator speed technique (Karce KC-S991 / Canon F-789SGA / Casio fx-991ES Plus) for each missed item.
+   - **High-Yield Study Material Generation**: 1-click **`[ 📝 Generate Focused Review Sheet from Mistakes ]`** converts the debrief into a structured, printable study note card saved to the student's Study Vault.
+
+#### Workspace Layout & Mobile Design:
+- **Dual-Pane Desktop & Mobile Slide-Over Drawer:** Query history and saved threads are tucked in a sliding drawer on mobile (`< lg`) to provide 100% vertical viewport for chat.
+- **Context Selector Ribbon:** Attach any active curriculum module (e.g., `[ 📎 MATH-22-02 Laplace ]`) with 1 click.
+- **One-Tap Quick-Action Ribbon:** Horizontal scrolling prompt chips (`[ 🎯 Target Weakest Topic ]`, `[ 📝 Write Module + Exam ]`, `[ 🎲 10 Isomorphic Qs ]`, `[ 📋 Formula Sheet ]`, `[ 📊 Post-Exam Debrief ]`).
+- **Fixed Mobile Bottom Composer:** Keyboard-avoidant input bar with safe-area insets (`env(safe-area-inset-bottom)`).
+
+
+
+---
+
+### 7.6. Standardized System Prompts & Structured Card Schemas
 
 #### Persona System Prompt: PRC ECE Board Exam Topnotcher Mentor
 ```markdown

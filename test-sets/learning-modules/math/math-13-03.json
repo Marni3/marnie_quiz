@@ -1,0 +1,255 @@
+{
+  "id": "math-13-03",
+  "code": "MATH 13-03",
+  "domain": "MATH",
+  "topicCode": "MATH-13",
+  "topicTitle": "Advanced Transforms (Laplace, Fourier & Z)",
+  "subtopicTitle": "Fourier Series, Harmonic Symmetries, Continuous Fourier Properties & Discrete z-Transforms",
+  "order": 3,
+  "pairedQuizSetId": "math-13-03-mastery",
+  "toc": [
+    {
+      "id": "sec-prereq-bridges",
+      "title": "1. Introduction & Cross-Subject Connections",
+      "level": 2
+    },
+    {
+      "id": "sec-theory",
+      "title": "2. Lesson Proper: Fourier Series, Harmonic Symmetries, Fourier Properties & z-Transforms",
+      "level": 2
+    },
+    {
+      "id": "sec-formulas",
+      "title": "3. Master Compilation of Fourier & z-Transform Formulas",
+      "level": 2
+    },
+    {
+      "id": "sec-visualizer",
+      "title": "4. Interactive Visualizer: Fourier Harmonic Synthesis & z-Plane Pole Simulator",
+      "level": 2
+    },
+    {
+      "id": "sec-terminology",
+      "title": "5. Key Terms and Definitions",
+      "level": 2
+    },
+    {
+      "id": "sec-dual-method",
+      "title": "6. Worked Board Exam Problems",
+      "level": 2
+    },
+    {
+      "id": "sec-calculator",
+      "title": "7. Calculator Speed Techniques (Karce & Canon)",
+      "level": 2
+    },
+    {
+      "id": "sec-concept-checks",
+      "title": "8. In-Line Concept Checks",
+      "level": 2
+    },
+    {
+      "id": "sec-mastery-challenge",
+      "title": "9. Paired Mastery Challenge Exam",
+      "level": 2
+    }
+  ],
+  "prerequisiteBridge": {
+    "priorModuleId": "math-22-02",
+    "text": "In this capstone module of the Mathematics curriculum, we integrate continuous and discrete spectrum analysis—Euler-Fourier series expansions, harmonic symmetry eliminations (even, odd, half-wave), continuous Fourier operational properties (duality, modulation), and discrete z-transform transfer functions."
+  },
+  "crossSubjectBridges": [
+    {
+      "targetDomain": "EST",
+      "targetTopicCode": "EST-01",
+      "badgeText": "Digital Signal Processing",
+      "description": "Discrete-time digital filters (IIR and FIR) are synthesized and analyzed directly in the $z$-plane using transfer functions $H(z) = Y(z)/X(z)$."
+    },
+    {
+      "targetDomain": "ELECS",
+      "targetTopicCode": "ELEC-05",
+      "badgeText": "Total Harmonic Distortion",
+      "description": "Power electronic inverter AC voltage quality and Total Harmonic Distortion (THD) are quantified using Fourier series harmonic coefficients."
+    },
+    {
+      "targetDomain": "EST",
+      "targetTopicCode": "EST-06",
+      "badgeText": "Frequency Shift Keying",
+      "description": "Carrier modulation $f(t)e^{j\\omega_0 t} \\leftrightarrow F(\\omega - \\omega_0)$ shifts baseband message spectra to RF broadcast passbands."
+    }
+  ],
+  "theory": {
+    "mentalAnchor": "Fourier Series: $f(x) = \\frac{a_0}{2} + \\sum (a_n\\cos nx + b_n\\sin nx)$. Even $f(-x)=f(x) \\implies b_n=0$. Odd $f(-x)=-f(x) \\implies a_0=a_n=0$. Half-wave $f(x+\\pi)=-f(x) \\implies$ odd harmonics only. z-Transform: $\\mathcal{Z}\\{1\\} = \\frac{z}{z-1}, \\mathcal{Z}\\{e^{-at}\\} = \\frac{z}{z-e^{-aT}}$. Fourier Duality: $\\mathcal{F}\\{F(t)\\} = 2\\pi f(-\\omega)$. Delay: $\\mathcal{F}\\{f(t-t_0)\\} = e^{-j\\omega t_0}F(\\omega)$.",
+    "contentMarkdown": "### 1. Fourier Series & Waveform Harmonic Symmetries\n\nAny periodic function $f(x)$ of period $T = 2\\pi$ (or $2L$) satisfying Dirichlet's conditions can be expanded into an infinite series of sinusoids:\n\n$$\\mathbf{f(x) = \\frac{a_0}{2} + \\sum_{n=1}^\\infty \\left(a_n \\cos nx + b_n \\sin nx\\right)}$$\n\n#### Euler-Fourier Formulas:\n- $a_0 = \\frac{1}{\\pi} \\int_{-\\pi}^\\pi f(x) \\, dx$ *(Note: $\\frac{a_0}{2}$ is the true DC average of the waveform)*.\n- $a_n = \\frac{1}{\\pi} \\int_{-\\pi}^\\pi f(x) \\cos(nx) \\, dx$\n- $b_n = \\frac{1}{\\pi} \\int_{-\\pi}^\\pi f(x) \\sin(nx) \\, dx$\n\n#### Master Harmonic Symmetry Shortcut Rules:\n1. **Even Symmetry ($f(-x) = f(x)$)**: Symmetrical about the $y$-axis $\\implies \\mathbf{b_n = 0}$ (Pure Cosine Series).\n2. **Odd Symmetry ($f(-x) = -f(x)$)**: Symmetrical about the origin $\\implies \\mathbf{a_0 = 0, \\; a_n = 0}$ (Pure Sine Series, zero DC average).\n3. **Half-Wave Symmetry ($f(x + \\pi) = -f(x)$)**: Negative half-cycle mirrors positive half-cycle $\\implies \\mathbf{a_n = b_n = 0 \\text{ for all even } n}$ (Contains **ODD harmonics only**: $n = 1, 3, 5, \\dots$).\n4. **Quarter-Wave Symmetry**: Combines half-wave and even/odd symmetry $\\implies$ only odd cosine or odd sine harmonics exist.\n\n```diagram\n{\n  \"caption\": \"Figure 1: Waveform Symmetries - Odd Square Wave (Sine Series Only) vs Even Triangular Wave (Cosine Series Only)\",\n  \"xRange\": [-5, 5],\n  \"yRange\": [-3, 3],\n  \"elements\": [\n    { \"type\": \"line\", \"from\": [-4, 0], \"to\": [4, 0], \"color\": \"#94a3b8\", \"label\": \"Time Axis\" },\n    { \"type\": \"line\", \"from\": [-3, 1.5], \"to\": [0, 1.5], \"color\": \"#38bdf8\", \"label\": \"Odd: f(-x) = -f(x)\" },\n    { \"type\": \"line\", \"from\": [0, -1.5], \"to\": [3, -1.5], \"color\": \"#38bdf8\" },\n    { \"type\": \"text\", \"at\": [0, 2.2], \"text\": \"Square: bn != 0, an = 0\", \"color\": \"#38bdf8\" }\n  ]\n}\n```\n\n---\n\n### 2. Continuous Fourier Transform Properties\n\n- **Duality (Similarity)**: $\\mathbf{\\mathcal{F}\\{F(t)\\} = 2\\pi f(-\\omega)}$\n- **Frequency-Shifting (Modulation)**: $\\mathbf{\\mathcal{F}\\{f(t) e^{j\\omega_0 t}\\} = F(\\omega - \\omega_0)}$\n- **Time Differentiation**: $\\mathbf{\\mathcal{F}\\{f'(t)\\} = j\\omega F(\\omega)}$\n- **Time Reversal**: $\\mathbf{\\mathcal{F}\\{f(-t)\\} = F(-\\omega)}$\n\n---\n\n### 3. The Discrete z-Transform (DSP Foundations)\n\nThe **unilateral z-transform** converts discrete-time sequences $f(n)$ (sampled at interval $T$) into the complex frequency $z$-plane ($z = r e^{j\\Omega}$):\n\n$$\\mathbf{F(z) = \\mathcal{Z}\\{f(n)\\} = \\sum_{n=0}^\\infty f(n) z^{-n}}$$\n\n#### Master Catalog of Elementary z-Transform Pairs:\n- **Unit Step $u(n)$**: $\\mathbf{\\mathcal{Z}\\{1\\} = \\frac{z}{z - 1}} = \\frac{1}{1 - z^{-1}}$\n- **Discrete Ramp $n T$**: $\\mathbf{\\mathcal{Z}\\{t\\} = T \\frac{z}{(z - 1)^2}}$\n- **Discrete Exponential $e^{-at}$**: $\\mathbf{\\mathcal{Z}\\{e^{-at}\\} = \\frac{z}{z - e^{-aT}}}$\n- **Geometric Decay $a^n$**: $\\mathbf{\\mathcal{Z}\\{a^n\\} = \\frac{z}{z - a}}$\n- **Time Delay (Right Shift)**: $\\mathbf{\\mathcal{Z}\\{f(t - n)\\} = z^{-n} F(z)}$\n- **Multiplication by $t$**: $\\mathbf{\\mathcal{Z}\\{t f(t)\\} = -z T \\frac{d F(z)}{dz}}$"
+  },
+  "formulas": [
+    {
+      "id": "f-2301-01",
+      "title": "Euler-Fourier Trigonometric Series Expansion",
+      "formula": "$$f(x) = \\frac{a_0}{2} + \\sum_{n=1}^\\infty (a_n\\cos nx + b_n\\sin nx), \\quad a_n = \\frac{1}{\\pi}\\int_{-\\pi}^\\pi f(x)\\cos(nx)dx$$",
+      "note": "a0/2 is the waveform DC average value."
+    },
+    {
+      "id": "f-2301-02",
+      "title": "Harmonic Symmetry Zero Coefficients",
+      "formula": "$$\\text{Even: } b_n = 0, \\quad \\text{Odd: } a_0 = a_n = 0, \\quad \\text{Half-Wave: } a_{2k} = b_{2k} = 0$$",
+      "note": "Half-wave symmetry contains only odd harmonic numbers (1, 3, 5, ...)."
+    },
+    {
+      "id": "f-2301-03",
+      "title": "z-Transform Definition & Key Pairs",
+      "formula": "$$F(z) = \\sum_{n=0}^\\infty f(n) z^{-n}, \\quad \\mathcal{Z}\\{1\\} = \\frac{z}{z-1}, \\quad \\mathcal{Z}\\{e^{-at}\\} = \\frac{z}{z-e^{-aT}}$$",
+      "note": "T is the discrete sampling period in seconds."
+    }
+  ],
+  "visualizer": {
+    "archetype": "parameter_sweep",
+    "title": "Fourier Harmonic Synthesis & z-Plane Pole Simulator",
+    "description": "Adjust number of Fourier harmonics n to observe Gibbs phenomenon convergence on square waves and place z-plane poles to check DSP stability.",
+    "config": {
+      "canvasWidth": 640,
+      "canvasHeight": 320,
+      "controls": [
+        {
+          "id": "harmonicsN",
+          "label": "Number of Harmonics N",
+          "min": 1,
+          "max": 15,
+          "step": 2,
+          "defaultValue": 5
+        },
+        {
+          "id": "poleRadiusZ",
+          "label": "z-Plane Pole Radius |z|",
+          "min": 0.2,
+          "max": 1.2,
+          "step": 0.1,
+          "defaultValue": 0.8
+        }
+      ]
+    }
+  },
+  "terms": [
+    {
+      "term": "Fourier Series",
+      "symbol": "$f(x) = \\frac{a_0}{2} + \\sum (a_n\\cos nx + b_n\\sin nx)$",
+      "unit": "Series",
+      "definition": "An expansion of a periodic function into an infinite sum of harmonically related sines and cosines.",
+      "keywordTrigger": "Fourier series / periodic expansion / harmonic synthesis"
+    },
+    {
+      "term": "Half-Wave Symmetry",
+      "symbol": "$f(x + \\pi) = -f(x)$",
+      "unit": "Symmetry",
+      "definition": "A periodic waveform symmetry where shifting by half a period inverts amplitude, ensuring all even harmonics are zero.",
+      "keywordTrigger": "half-wave symmetry / odd harmonics only / f(x+pi) = -f(x)"
+    },
+    {
+      "term": "z-Transform",
+      "symbol": "$F(z) = \\sum f(n) z^{-n}$",
+      "unit": "Discrete Transform",
+      "definition": "The discrete-time equivalent of the Laplace transform mapping sampled sequences to the complex z-plane.",
+      "keywordTrigger": "z-transform / discrete-time / sum f(n) z^(-n)"
+    },
+    {
+      "term": "Fourier Duality",
+      "symbol": "$\\mathcal{F}\\{F(t)\\} = 2\\pi f(-\\omega)$",
+      "unit": "Property",
+      "definition": "Property stating that the time and frequency domains can be interchanged up to a 2π scale factor and sign reversal.",
+      "keywordTrigger": "Fourier duality / similarity property / F(t) -> 2pi f(-w)"
+    }
+  ],
+  "examples": [
+    {
+      "problemStatement": "Determine which Fourier coefficients are zero for a periodic square wave with odd symmetry and half-wave symmetry: f(-x) = -f(x) and f(x + π) = -f(x).",
+      "formalSolutionMarkdown": "#### Step 1: Apply Odd Symmetry Condition\n- Since $f(-x) = -f(x)$, the waveform is odd.\n- Therefore, $a_0 = 0$ and $a_n = 0$ for all $n$.\n\n#### Step 2: Apply Half-Wave Symmetry Condition\n- Since $f(x + \\pi) = -f(x)$, all even harmonics vanish ($b_n = 0$ for $n = 2, 4, 6, \\dots$).\n\n#### Step 3: Conclusion\n- The Fourier series contains **only odd sine harmonics** ($b_1, b_3, b_5, \\dots$).",
+      "shortcutSolutionMarkdown": "#### ⚡ 2-Second Symmetry Elimination\n$$\\text{Odd} \\implies a_0 = a_n = 0; \\quad \\text{Half-Wave} \\implies \\text{Odd } n \\text{ only } (b_1, b_3, b_5, \\dots)$$",
+      "formalTimeSeconds": 25,
+      "shortcutTimeSeconds": 2
+    },
+    {
+      "problemStatement": "Find the z-transform of the discrete sampled exponential sequence f(t) = e^(-3t) with sampling period T = 0.1 seconds.",
+      "formalSolutionMarkdown": "#### Step 1: Apply elementary z-transform formula\n$$\\mathcal{Z}\\{e^{-at}\\} = \\frac{z}{z - e^{-aT}}$$\n\n#### Step 2: Substitute a = 3 and T = 0.1 s\n- $a T = 3(0.1) = 0.3$\n- $e^{-0.3} \\approx 0.7408$\n$$F(z) = \\frac{z}{z - e^{-0.3}} = \\frac{z}{z - 0.7408}$$",
+      "shortcutSolutionMarkdown": "#### ⚡ 2-Second z-Transform Evaluation\n$$F(z) = \\frac{z}{z - e^{-0.3}} \\approx \\frac{z}{z - 0.7408}$$",
+      "formalTimeSeconds": 20,
+      "shortcutTimeSeconds": 2
+    }
+  ],
+  "calculatorGuides": {
+    "karce": {
+      "techniqueTitle": "Fast Discrete Pole Evaluation",
+      "problemType": "Evaluating e^(-aT) in COMP Mode",
+      "sampleProblem": "Find pole for a=3, T=0.1.",
+      "mode": "COMP Mode (MODE 1)",
+      "keystrokes": [
+        "e",
+        "^",
+        "(",
+        "-",
+        "0",
+        ".",
+        "3",
+        ")",
+        "="
+      ],
+      "notes": "Directly yields 0.740818 in 1 second."
+    },
+    "canon": {
+      "techniqueTitle": "DC Average (a0/2) Numerical Integration",
+      "problemType": "(1/2π) ∫ f(x) dx on Canon F-789SGA",
+      "sampleProblem": "Integrate square wave over period.",
+      "mode": "COMP Mode (MODE 1)",
+      "keystrokes": [
+        "1",
+        "÷",
+        "(",
+        "2",
+        "π",
+        ")",
+        "×",
+        "∫",
+        "f(x)",
+        "dx"
+      ],
+      "notes": "Directly computes waveform DC average."
+    }
+  },
+  "conceptChecks": [
+    {
+      "id": "chk-2301-01",
+      "question": "What Fourier series coefficients are automatically ZERO for any periodic function possessing pure EVEN symmetry ($f(-x) = f(x)$)?",
+      "options": [
+        "b_n = 0 for all n (Contains only cosine terms and DC)",
+        "a_n = 0 for all n",
+        "a_0 = 0",
+        "All coefficients are zero"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Even functions have zero sine coefficients (b_n = 0), producing an even cosine series."
+    },
+    {
+      "id": "chk-2301-02",
+      "question": "What type of harmonics exist in the Fourier series of a waveform with Half-Wave Symmetry ($f(x + \\pi) = -f(x)$)?",
+      "options": [
+        "Odd harmonics only (n = 1, 3, 5, ...)",
+        "Even harmonics only (n = 2, 4, 6, ...)",
+        "All integer harmonics",
+        "DC component only"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Half-wave symmetry eliminates all even harmonics, leaving strictly odd harmonics (n = 1, 3, 5, ...)."
+    },
+    {
+      "id": "chk-2301-03",
+      "question": "What is the z-transform of the discrete unit step sequence $u(n)$?",
+      "options": [
+        "z / (z - 1) = 1 / (1 - z⁻¹)",
+        "1 / (z - 1)",
+        "z / (z + 1)",
+        "1 / z"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Z{u(n)} = ∑ z^(-n) = 1 / (1 - z^(-1)) = z / (z - 1) for |z| > 1."
+    }
+  ]
+}

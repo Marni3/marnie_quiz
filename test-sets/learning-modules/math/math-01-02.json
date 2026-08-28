@@ -8,15 +8,51 @@
   "order": 2,
   "pairedQuizSetId": "math-01-02-mastery",
   "toc": [
-    { "id": "sec-prereq-bridges", "title": "1. Introduction & Cross-Subject Connections", "level": 2 },
-    { "id": "sec-theory", "title": "2. Lesson Proper: Theory, Laws & Theorems", "level": 2 },
-    { "id": "sec-formulas", "title": "3. Compilation of Formulas & Identities", "level": 2 },
-    { "id": "sec-visualizer", "title": "4. Interactive Visualizer: Exponent & Logarithm Sweep", "level": 2 },
-    { "id": "sec-terminology", "title": "5. Key Terms and Definitions", "level": 2 },
-    { "id": "sec-dual-method", "title": "6. Worked Board Exam Problems", "level": 2 },
-    { "id": "sec-calculator", "title": "7. Calculator Speed Techniques (Karce & Canon)", "level": 2 },
-    { "id": "sec-concept-checks", "title": "8. In-Line Concept Checks", "level": 2 },
-    { "id": "sec-mastery-challenge", "title": "9. Paired Mastery Challenge Exam", "level": 2 }
+    {
+      "id": "sec-prereq-bridges",
+      "title": "1. Introduction & Cross-Subject Connections",
+      "level": 2
+    },
+    {
+      "id": "sec-theory",
+      "title": "2. Lesson Proper: Theory, Laws & Theorems",
+      "level": 2
+    },
+    {
+      "id": "sec-formulas",
+      "title": "3. Compilation of Formulas & Identities",
+      "level": 2
+    },
+    {
+      "id": "sec-visualizer",
+      "title": "4. Interactive Visualizer: Exponent & Logarithm Sweep",
+      "level": 2
+    },
+    {
+      "id": "sec-terminology",
+      "title": "5. Key Terms and Definitions",
+      "level": 2
+    },
+    {
+      "id": "sec-dual-method",
+      "title": "6. Worked Board Exam Problems",
+      "level": 2
+    },
+    {
+      "id": "sec-calculator",
+      "title": "7. Calculator Speed Techniques (Karce & Canon)",
+      "level": 2
+    },
+    {
+      "id": "sec-concept-checks",
+      "title": "8. In-Line Concept Checks",
+      "level": 2
+    },
+    {
+      "id": "sec-mastery-challenge",
+      "title": "9. Paired Mastery Challenge Exam",
+      "level": 2
+    }
   ],
   "prerequisiteBridge": {
     "priorModuleId": "math-01-01",
@@ -80,8 +116,22 @@
       "canvasWidth": 640,
       "canvasHeight": 320,
       "controls": [
-        { "id": "base", "label": "Log Base (b)", "min": 2, "max": 10, "step": 1, "defaultValue": 2 },
-        { "id": "val", "label": "Argument (x)", "min": 1, "max": 64, "step": 1, "defaultValue": 16 }
+        {
+          "id": "base",
+          "label": "Log Base (b)",
+          "min": 2,
+          "max": 10,
+          "step": 1,
+          "defaultValue": 2
+        },
+        {
+          "id": "val",
+          "label": "Argument (x)",
+          "min": 1,
+          "max": 64,
+          "step": 1,
+          "defaultValue": 16
+        }
       ]
     }
   },
@@ -144,7 +194,24 @@
       "problemType": "Evaluating Remainder P(k) in COMP Mode",
       "sampleProblem": "Find remainder of 3X^4 - 2X^2 + 5 when divided by (X + 2).",
       "mode": "COMP Mode (MODE 1)",
-      "keystrokes": ["3", "ALPHA", "X", "^", "4", "-", "2", "ALPHA", "X", "x²", "+", "5", "CALC", "-", "2", "="],
+      "keystrokes": [
+        "3",
+        "ALPHA",
+        "X",
+        "^",
+        "4",
+        "-",
+        "2",
+        "ALPHA",
+        "X",
+        "x²",
+        "+",
+        "5",
+        "CALC",
+        "-",
+        "2",
+        "="
+      ],
       "notes": "By Remainder Theorem, substitute k = -2. The display directly evaluates R = 45 in under 3 seconds."
     },
     "canon": {
@@ -152,7 +219,15 @@
       "problemType": "Evaluating log_b(x) directly",
       "sampleProblem": "Evaluate log_2(128) on Canon F-789SGA.",
       "mode": "COMP Mode (MODE 1)",
-      "keystrokes": ["log■■", "2", "►", "1", "2", "8", "="],
+      "keystrokes": [
+        "log■■",
+        "2",
+        "►",
+        "1",
+        "2",
+        "8",
+        "="
+      ],
       "notes": "Uses the dedicated log base button. Or use ln(128)/ln(2) to directly get 7."
     }
   },

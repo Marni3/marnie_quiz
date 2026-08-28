@@ -279,16 +279,59 @@ export async function getAllLearningModules(): Promise<LearningModuleSummary[]> 
   }
 }
 
+const LEGACY_ID_ALIASES: Record<string, string> = {
+  "math-04-01": "math-02-01",
+  "math-04-02": "math-02-02",
+  "math-04-03": "math-02-03",
+  "math-06-01": "math-03-01",
+  "math-06-02": "math-03-02",
+  "math-06-03": "math-03-03",
+  "math-08-01": "math-04-01",
+  "math-08-02": "math-04-02",
+  "math-08-03": "math-04-03",
+  "math-08-04": "math-04-04",
+  "math-10-01": "math-05-01",
+  "math-10-02": "math-05-02",
+  "math-10-03": "math-05-03",
+  "math-10-04": "math-05-04",
+  "math-10-05": "math-05-05",
+  "math-11-01": "math-06-01",
+  "math-11-02": "math-06-02",
+  "math-11-03": "math-06-03",
+  "math-12-01": "math-07-01",
+  "math-12-02": "math-07-02",
+  "math-13-01": "math-07-03",
+  "math-13-02": "math-07-04",
+  "math-14-01": "math-08-01",
+  "math-14-02": "math-08-02",
+  "math-14-03": "math-08-03",
+  "math-14-04": "math-08-04",
+  "math-16-01": "math-09-01",
+  "math-16-02": "math-09-02",
+  "math-16-03": "math-09-03",
+  "math-18-01": "math-10-01",
+  "math-18-02": "math-10-02",
+  "math-18-03": "math-10-03",
+  "math-20-01": "math-11-01",
+  "math-21-01": "math-12-01",
+  "math-21-02": "math-12-02",
+  "math-21-03": "math-12-03",
+  "math-22-01": "math-13-01",
+  "math-22-02": "math-13-02",
+  "math-23-01": "math-13-03",
+};
+
 export async function getLearningModuleById(id: string): Promise<LearningModule | null> {
   try {
     const rootDir = getModulesDirectory();
     const jsonPaths = scanJsonFilesRecursively(rootDir);
-    const targetFile = id.toLowerCase().replace(/[^a-z0-9_-]/g, "");
+    const normalizedInput = id.toLowerCase().replace(/[^a-z0-9_-]/g, "");
+    const targetFile = LEGACY_ID_ALIASES[normalizedInput] || normalizedInput;
 
     // 1. Direct check across scanned paths
     for (const filePath of jsonPaths) {
       const filename = path.basename(filePath, ".json");
-      if (filename.toLowerCase() === targetFile) {
+      if (filename.toLowerCase() === targetFile || filename.toLowerCase() === normalizedInput) {
         const raw = fs.readFileSync(filePath, "utf8");
         return JSON.parse(raw) as LearningModule;
       }
@@ -335,7 +378,9 @@ export async function getMasteryChallenge(
     }
 
     const rootDir = getModulesDirectory();
-    const targetFile = `${moduleId.toLowerCase().replace(/[^a-z0-9_-]/g, "")}-mastery.json`;
+    const normalizedInput = moduleId.toLowerCase().replace(/[^a-z0-9_-]/g, "");
+    const resolvedId = LEGACY_ID_ALIASES[normalizedInput] || normalizedInput;
+    const targetFile = `${resolvedId}-mastery.json`;
 
     // 1. Check active domain mastery folders
     const domains = ["math", "elecs", "geas", "est"];
