@@ -78,7 +78,7 @@ export function LibraryView({
   const [learningModules] = useState<LearningModuleSummary[]>(initialLearningModules);
   const [srsOverview, setSrsOverview] = useState(
     initialSrsOverview || {
-      averageRetention: 100,
+      averageRetention: 0,
       activeDueCount: 0,
       totalTrackedTopics: 0,
       topicMap: {},

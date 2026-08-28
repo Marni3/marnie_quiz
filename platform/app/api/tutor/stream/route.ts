@@ -34,7 +34,18 @@ export async function POST(req: NextRequest) {
 
     // 1. GOOGLE GEMINI STREAMING
     if (provider === "gemini") {
-      const geminiModel = model || "gemini-3.6-flash";
+      // Remap deprecated/renamed model IDs transparently
+      const GEMINI_MODEL_ALIASES: Record<string, string> = {
+        "gemini-2.0-flash": "gemini-3.6-flash",
+        "gemini-2.0-flash-exp": "gemini-3.6-flash",
+        "gemini-2.0-flash-001": "gemini-3.6-flash",
+        "gemini-1.5-flash": "gemini-3.6-flash",
+        "gemini-1.5-flash-latest": "gemini-3.6-flash",
+        "gemini-pro": "gemini-3.6-flash",
+        "models/gemini-2.0-flash": "gemini-3.6-flash",
+      };
+      const rawModel = model || "gemini-3.6-flash";
+      const geminiModel = GEMINI_MODEL_ALIASES[rawModel] ?? rawModel;
       const endpoint = `https://generativelanguage.googleapis.com/v1beta/models/${geminiModel}:streamGenerateContent?key=${encodeURIComponent(
         apiKey.trim()
       )}`;

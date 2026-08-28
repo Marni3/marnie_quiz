@@ -22,10 +22,28 @@ export function setStoredActiveProvider(provider: AIProvider): void {
   localStorage.setItem(STORAGE_KEYS.ACTIVE_PROVIDER, provider);
 }
 
+const GEMINI_MODEL_ALIASES: Record<string, string> = {
+  "gemini-2.0-flash": "gemini-3.6-flash",
+  "gemini-2.0-flash-exp": "gemini-3.6-flash",
+  "gemini-2.0-flash-001": "gemini-3.6-flash",
+  "gemini-1.5-flash": "gemini-3.6-flash",
+  "gemini-1.5-flash-latest": "gemini-3.6-flash",
+  "gemini-pro": "gemini-3.6-flash",
+  "models/gemini-2.0-flash": "gemini-3.6-flash",
+};
+
 export function getStoredActiveModel(provider: AIProvider): string {
   if (typeof window === "undefined") return DEFAULT_MODELS[provider] || "gemini-3.6-flash";
   const model = localStorage.getItem(`${STORAGE_KEYS.ACTIVE_MODEL}_${provider}`);
-  return model || DEFAULT_MODELS[provider] || "gemini-3.6-flash";
+  const resolved = model || DEFAULT_MODELS[provider] || "gemini-3.6-flash";
+  // Transparently remap deprecated model IDs
+  if (provider === "gemini" && GEMINI_MODEL_ALIASES[resolved]) {
+    const canonical = GEMINI_MODEL_ALIASES[resolved];
+    // Persist the corrected value so the user doesn't hit this again
+    localStorage.setItem(`${STORAGE_KEYS.ACTIVE_MODEL}_${provider}`, canonical);
+    return canonical;
+  }
+  return resolved;
 }
 
 export function setStoredActiveModel(provider: AIProvider, model: string): void {

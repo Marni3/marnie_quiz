@@ -7,7 +7,6 @@ import {
   X,
   CheckCircle2,
   AlertCircle,
-  Sparkles,
   Send,
   Loader2,
   Bug,
@@ -53,14 +52,11 @@ export function FeedbackModal({
       setComment("");
       setCategory(defaultCategory || "formatting");
 
-      // Auto-detect module ID from pathname if on /learn/[moduleId]
       if (defaultModuleId) {
         setModuleId(defaultModuleId);
       } else if (pathname.startsWith("/learn/")) {
         const parts = pathname.split("/learn/")[1]?.split("/");
-        if (parts && parts[0]) {
-          setModuleId(parts[0]);
-        }
+        if (parts && parts[0]) setModuleId(parts[0]);
       } else {
         setModuleId("");
       }
@@ -94,7 +90,6 @@ export function FeedbackModal({
     };
 
     try {
-      // 1. Mirrored Local Storage Save
       try {
         const localRaw = localStorage.getItem("marnie_local_feedbacks");
         const list = localRaw ? JSON.parse(localRaw) : [];
@@ -102,7 +97,6 @@ export function FeedbackModal({
         localStorage.setItem("marnie_local_feedbacks", JSON.stringify(list.slice(0, 50)));
       } catch {}
 
-      // 2. Database API Call
       const res = await fetch("/api/feedback", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -115,141 +109,141 @@ export function FeedbackModal({
       }
 
       setSubmitted(true);
-      setTimeout(() => {
-        onClose();
-      }, 1500);
+      setTimeout(() => onClose(), 1500);
     } catch (err: any) {
       console.warn("Feedback network save note:", err);
-      // Even if database network fails, local storage succeeded
+      // localStorage already saved — still show success
       setSubmitted(true);
-      setTimeout(() => {
-        onClose();
-      }, 1500);
+      setTimeout(() => onClose(), 1500);
     } finally {
       setSubmitting(false);
     }
   };
 
   return (
-    <div className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center p-3 sm:p-4 animate-in fade-in duration-150">
-      <div className="bg-[var(--surface)] border border-[var(--border)] rounded-2xl max-w-lg w-full shadow-2xl overflow-hidden flex flex-col">
+    <div
+      className="fixed inset-0 z-[200] bg-black/60 backdrop-blur-sm flex items-center justify-center p-4"
+      onClick={(e) => { if (e.target === e.currentTarget) onClose(); }}
+    >
+      <div className="bg-[var(--surface)] border border-[var(--border)] rounded-2xl w-full max-w-md shadow-2xl flex flex-col max-h-[90vh]">
+
         {/* Header */}
-        <div className="flex items-center justify-between px-5 py-4 border-b border-[var(--border)] bg-[var(--surface2)]">
-          <div className="flex items-center gap-2.5">
-            <div className="w-8 h-8 rounded-xl bg-amber-500/10 text-amber-500 flex items-center justify-center border border-amber-500/20">
+        <div className="flex items-center justify-between px-5 py-4 border-b border-[var(--border)] bg-[var(--surface2)] rounded-t-2xl shrink-0">
+          <div className="flex items-center gap-3">
+            <div className="w-8 h-8 rounded-xl bg-amber-500/15 text-amber-500 flex items-center justify-center border border-amber-500/25 shrink-0">
               <MessageSquarePlus className="w-4 h-4" />
             </div>
             <div>
-              <h2 className="text-sm sm:text-base font-bold text-[var(--text)]">
-                Feedback & Bug Note
-              </h2>
+              <h2 className="text-sm font-bold text-[var(--text)]">Feedback & Bug Note</h2>
               <p className="text-[11px] text-[var(--text2)]">
-                Spotted a formula issue, diagram glitch, or typo? Jot it down here.
+                Spotted an issue? Jot it here for the next squashing session.
               </p>
             </div>
           </div>
           <button
+            type="button"
             onClick={onClose}
-            className="p-1.5 rounded-lg text-[var(--text2)] hover:text-[var(--text)] hover:bg-[var(--surface)] transition-all"
+            className="p-1.5 rounded-lg text-[var(--text2)] hover:text-[var(--text)] hover:bg-[var(--surface)] transition-all shrink-0"
           >
             <X className="w-4 h-4" />
           </button>
         </div>
 
-        {/* Content Body */}
-        {submitted ? (
-          <div className="p-8 text-center space-y-3">
-            <div className="w-12 h-12 rounded-full bg-emerald-500/10 text-emerald-500 border border-emerald-500/20 flex items-center justify-center mx-auto">
-              <CheckCircle2 className="w-6 h-6" />
-            </div>
-            <h3 className="text-base font-bold text-[var(--text)]">Feedback Saved!</h3>
-            <p className="text-xs text-[var(--text2)] max-w-xs mx-auto">
-              Logged to the feedback queue for inspection during our next bug squashing session.
-            </p>
-          </div>
-        ) : (
-          <form onSubmit={handleSubmit} className="p-5 space-y-4">
-            {/* Auto Context Banner */}
-            <div className="bg-[var(--surface2)] p-2.5 rounded-xl border border-[var(--border)] text-xs flex items-center justify-between">
-              <span className="text-[var(--text2)] font-medium">Context:</span>
-              <span className="font-mono text-primary font-bold truncate max-w-[260px]">
-                {moduleId ? `Module: ${moduleId}` : pathname}
-              </span>
-            </div>
-
-            {/* Category Selection */}
-            <div>
-              <label className="text-xs font-semibold text-[var(--text2)] uppercase tracking-wider block mb-2">
-                Issue Category
-              </label>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                {CATEGORIES.map((cat) => {
-                  const Icon = cat.icon;
-                  const isSelected = category === cat.id;
-                  return (
-                    <button
-                      type="button"
-                      key={cat.id}
-                      onClick={() => setCategory(cat.id)}
-                      className={`p-2.5 rounded-xl border text-left flex items-center gap-2.5 transition-all ${
-                        isSelected
-                          ? "bg-primary/10 border-primary/40 shadow-xs font-semibold text-[var(--text)]"
-                          : "bg-[var(--surface2)] border-[var(--border)] text-[var(--text2)] hover:border-primary/20"
-                      }`}
-                    >
-                      <Icon className={`w-4 h-4 shrink-0 ${cat.color}`} />
-                      <span className="text-xs">{cat.label}</span>
-                    </button>
-                  );
-                })}
+        {/* Body */}
+        <div className="overflow-y-auto flex-1">
+          {submitted ? (
+            <div className="p-8 text-center space-y-3">
+              <div className="w-12 h-12 rounded-full bg-emerald-500/10 text-emerald-500 border border-emerald-500/20 flex items-center justify-center mx-auto">
+                <CheckCircle2 className="w-6 h-6" />
               </div>
+              <h3 className="text-base font-bold text-[var(--text)]">Feedback Saved!</h3>
+              <p className="text-xs text-[var(--text2)]">
+                Logged to the feedback queue for inspection during our next bug squashing session.
+              </p>
             </div>
+          ) : (
+            <form onSubmit={handleSubmit} className="p-5 space-y-4">
 
-            {/* Note Textarea */}
-            <div>
-              <label className="text-xs font-semibold text-[var(--text2)] uppercase tracking-wider block mb-1.5">
-                Note / Observation
-              </label>
-              <textarea
-                value={comment}
-                onChange={(e) => setComment(e.target.value)}
-                placeholder="e.g. Formula in Layer 2 is missing a minus sign; or slider in Figure 1 freezes at x=0..."
-                rows={4}
-                className="w-full bg-[var(--surface2)] border border-[var(--border)] rounded-xl p-3 text-xs text-[var(--text)] placeholder-[var(--text3)] focus:outline-none focus:border-primary resize-none"
-              />
-            </div>
-
-            {errorMsg && (
-              <div className="text-xs text-rose-500 flex items-center gap-1.5">
-                <AlertCircle className="w-4 h-4" />
-                <span>{errorMsg}</span>
+              {/* Context tag */}
+              <div className="bg-[var(--surface2)] px-3 py-2 rounded-xl border border-[var(--border)] flex items-center justify-between gap-2 text-xs">
+                <span className="text-[var(--text3)] font-medium shrink-0">Context:</span>
+                <span className="font-mono text-primary font-bold truncate text-right">
+                  {moduleId ? `Module: ${moduleId}` : pathname}
+                </span>
               </div>
-            )}
 
-            {/* Footer Actions */}
-            <div className="flex items-center justify-end gap-2 pt-2 border-t border-[var(--border)]">
-              <button
-                type="button"
-                onClick={onClose}
-                className="px-4 py-2 rounded-xl border border-[var(--border)] text-xs text-[var(--text2)] hover:text-[var(--text)] transition-all"
-              >
-                Cancel
-              </button>
-              <button
-                type="submit"
-                disabled={submitting || !comment.trim()}
-                className="inline-flex items-center gap-2 px-5 py-2 rounded-xl bg-primary text-white text-xs font-bold shadow-md hover:opacity-95 disabled:opacity-50 transition-all"
-              >
-                {submitting ? (
-                  <Loader2 className="w-3.5 h-3.5 animate-spin" />
-                ) : (
-                  <Send className="w-3.5 h-3.5" />
-                )}
-                <span>{submitting ? "Saving..." : "Submit Note"}</span>
-              </button>
-            </div>
-          </form>
-        )}
+              {/* Category grid */}
+              <div>
+                <label className="text-[10px] font-bold text-[var(--text3)] uppercase tracking-widest block mb-2">
+                  Issue Category
+                </label>
+                <div className="grid grid-cols-2 gap-1.5">
+                  {CATEGORIES.map((cat) => {
+                    const Icon = cat.icon;
+                    const isSelected = category === cat.id;
+                    return (
+                      <button
+                        type="button"
+                        key={cat.id}
+                        onClick={() => setCategory(cat.id)}
+                        className={`px-3 py-2.5 rounded-xl border text-left flex items-center gap-2 transition-all ${
+                          isSelected
+                            ? "bg-primary/10 border-primary/40 shadow-xs"
+                            : "bg-[var(--surface2)] border-[var(--border)] text-[var(--text2)] hover:border-primary/25"
+                        }`}
+                      >
+                        <Icon className={`w-3.5 h-3.5 shrink-0 ${cat.color}`} />
+                        <span className={`text-[11px] font-medium leading-tight ${isSelected ? "text-[var(--text)]" : ""}`}>
+                          {cat.label}
+                        </span>
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+
+              {/* Note textarea */}
+              <div>
+                <label className="text-[10px] font-bold text-[var(--text3)] uppercase tracking-widest block mb-1.5">
+                  Note / Observation
+                </label>
+                <textarea
+                  value={comment}
+                  onChange={(e) => setComment(e.target.value)}
+                  placeholder="e.g. Formula in Layer 2 is missing a minus sign; or slider in Figure 1 freezes at x=0..."
+                  rows={3}
+                  className="w-full bg-[var(--surface2)] border border-[var(--border)] rounded-xl p-3 text-xs text-[var(--text)] placeholder-[var(--text3)] focus:outline-none focus:border-primary resize-none"
+                />
+              </div>
+
+              {errorMsg && (
+                <div className="text-xs text-rose-500 flex items-center gap-1.5">
+                  <AlertCircle className="w-3.5 h-3.5 shrink-0" />
+                  <span>{errorMsg}</span>
+                </div>
+              )}
+
+              {/* Footer */}
+              <div className="flex items-center justify-end gap-2 pt-1 border-t border-[var(--border)]">
+                <button
+                  type="button"
+                  onClick={onClose}
+                  className="px-4 py-2 rounded-xl border border-[var(--border)] text-xs text-[var(--text2)] hover:text-[var(--text)] transition-all"
+                >
+                  Cancel
+                </button>
+                <button
+                  type="submit"
+                  disabled={submitting || !comment.trim()}
+                  className="inline-flex items-center gap-2 px-5 py-2 rounded-xl bg-primary text-white text-xs font-bold shadow-md hover:opacity-95 disabled:opacity-50 transition-all"
+                >
+                  {submitting ? <Loader2 className="w-3.5 h-3.5 animate-spin" /> : <Send className="w-3.5 h-3.5" />}
+                  <span>{submitting ? "Saving..." : "Submit Note"}</span>
+                </button>
+              </div>
+            </form>
+          )}
+        </div>
       </div>
     </div>
   );
