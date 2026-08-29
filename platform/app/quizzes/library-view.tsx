@@ -966,6 +966,14 @@ export function LibraryView({
           </>
         )}
       </main>
+
+      {/* Refresher Customizer Modal */}
+      <RefresherCustomizerModal
+        key={refresherModalDomain}
+        isOpen={isRefresherModalOpen}
+        onClose={() => setIsRefresherModalOpen(false)}
+        defaultDomain={refresherModalDomain}
+      />
     </div>
   );
 }
