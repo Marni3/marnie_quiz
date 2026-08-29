@@ -22,6 +22,7 @@ import {
   FoldVertical,
   UnfoldVertical,
   Trash2,
+  Wrench,
 } from "lucide-react";
 
 interface LearnCatalogProps {
@@ -176,6 +177,31 @@ export function LearnCatalog({ initialModules, initialProgress = [] }: LearnCata
 
       {/* Main Content */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 sm:pt-8 space-y-6">
+        {/* Figures & Visualizers Under Construction Notice Banner */}
+        <div className="p-3.5 sm:p-4 rounded-2xl bg-amber-500/10 border border-amber-500/30 flex items-start sm:items-center justify-between gap-3 text-xs shadow-2xs">
+          <div className="flex items-start sm:items-center gap-2.5">
+            <div className="w-8 h-8 rounded-xl bg-amber-500/20 text-amber-600 dark:text-amber-400 flex items-center justify-center shrink-0 border border-amber-500/30">
+              <Wrench className="w-4 h-4" />
+            </div>
+            <div>
+              <div className="font-bold text-amber-800 dark:text-amber-300">
+                Figures and visualizers are under construction!
+              </div>
+              <div className="text-amber-700/90 dark:text-amber-400/90 text-[11px] sm:text-xs mt-0.5">
+                A lot of them might be broken or not work as intended. Submit feedback to support development and fixes in the future!
+              </div>
+            </div>
+          </div>
+          <button
+            type="button"
+            onClick={() => window.dispatchEvent(new CustomEvent("open-feedback-modal"))}
+            className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-amber-500/20 hover:bg-amber-500/30 text-amber-800 dark:text-amber-200 border border-amber-500/40 text-xs font-semibold shrink-0 transition-all cursor-pointer"
+          >
+            <span>Feedback</span>
+            <ChevronRight className="w-3 h-3" />
+          </button>
+        </div>
+
         {/* Continue Where You Left Off Prompt */}
         {continueModule && (
           <div className="bg-gradient-to-r from-[var(--surface)] to-[var(--surface2)] border-2 border-[var(--accent)]/40 rounded-2xl p-4 sm:p-6 shadow-sm flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
