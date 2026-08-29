@@ -137,7 +137,7 @@ const TOUR_STEPS: TourStep[] = [
     ],
   },
   {
-    badge: "AI Topnotcher • Step 6 of 6",
+    badge: "AI Mentor • Step 6 of 6",
     title: "AI Tutor & BYOK Workspace",
     icon: <Sparkles className="w-6 h-6 text-cyan-500" />,
     accentColor: "from-cyan-500/20 to-blue-500/20 border-cyan-500/30",

@@ -1159,7 +1159,7 @@ export function ModuleReader({ module }: ModuleReaderProps) {
                 </div>
 
                 <p className="text-xs sm:text-sm text-[var(--text2)] leading-relaxed">
-                  Synthesize key provisions and rules from memory before revealing topnotcher model answers and checkpoints.
+                  Recall from memory concepts and summaries and write it down here or on paper!
                 </p>
 
                 <div className="space-y-6">
@@ -1189,7 +1189,7 @@ export function ModuleReader({ module }: ModuleReaderProps) {
                           rows={3}
                           value={studentText}
                           onChange={(e) => handleWrittenChange(wc.id, e.target.value)}
-                          placeholder="Type your explanation or list key points here from memory..."
+                          placeholder="Type your explanation or write key points here (or jot them down in your notebook)..."
                           className="w-full p-3 rounded-xl bg-[var(--surface2)] border border-[var(--border)] text-xs sm:text-sm text-[var(--text)] placeholder:text-[var(--text3)] focus:outline-hidden focus:border-[var(--accent)] transition-colors resize-y"
                         />
 
@@ -1200,14 +1200,14 @@ export function ModuleReader({ module }: ModuleReaderProps) {
                             className="px-4 py-2 rounded-xl bg-[var(--surface2)] hover:bg-[var(--surface)] border border-[var(--border)] text-xs font-bold text-[var(--accent)] transition-all cursor-pointer flex items-center gap-1.5"
                           >
                             <Lightbulb className="w-3.5 h-3.5" />
-                            <span>{isRevealed ? "Hide Model Answer" : "Reveal Model Answer & Checkpoints"}</span>
+                            <span>{isRevealed ? "Hide Key Answer" : "Reveal Key Answer & Checkpoints"}</span>
                           </button>
                         </div>
 
                         {isRevealed && (
                           <div className="mt-4 pt-4 border-t border-[var(--border)] space-y-3 bg-[var(--surface2)]/50 rounded-xl p-4 animate-in fade-in duration-200">
                             <div className="text-xs font-mono font-bold text-emerald-600 dark:text-emerald-400 uppercase tracking-wider">
-                              ⭐ Model Topnotcher Answer:
+                              ⭐ Key Answer:
                             </div>
                             <div className="prose dark:prose-invert max-w-none text-xs sm:text-sm text-[var(--text)] leading-relaxed">
                               <MathText text={wc.modelAnswer} splitParagraphs={true} />
