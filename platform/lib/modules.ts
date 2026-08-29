@@ -69,13 +69,27 @@ export interface FormulaCard {
   note?: string; // Optional very minimal context / condition / sign rule
 }
 
+export interface ComparisonTable {
+  id: string;
+  title: string;
+  headers: string[];
+  rows: string[][];
+}
+
+export interface WrittenChallenge {
+  id: string;
+  prompt: string;
+  modelAnswer: string;
+  keyCheckpoints: string[];
+}
+
 export interface LearningModule {
-  id: string; // e.g. "math-01-01"
-  code: string; // e.g. "MATH 01-01"
+  id: string;
+  code: string;
   domain: "MATH" | "ELECS" | "GEAS" | "EST";
-  topicCode: string; // e.g. "MATH-01"
-  topicTitle: string; // e.g. "College Algebra"
-  subtopicTitle: string; // e.g. "Real Numbers, Operations & Factoring"
+  topicCode: string;
+  topicTitle: string;
+  subtopicTitle: string;
   order: number;
   pairedQuizSetId?: string;
   
@@ -84,7 +98,7 @@ export interface LearningModule {
   
   // Bridges
   prerequisiteBridge?: {
-    priorModuleId: string;
+    priorModuleId?: string;
     text: string;
   };
   crossSubjectBridges: Array<{
@@ -94,8 +108,11 @@ export interface LearningModule {
     description: string;
   }>;
   
-  // Compilation of Formulas (High-Visibility Formula Cards)
+  // Compilation of Formulas (High-Visibility Formula Cards - Optional for legal/qualitative topics)
   formulas?: FormulaCard[];
+
+  // Comparison & Statutory Matrices (Optional / Unconstrained for concept-heavy topics)
+  comparisonTables?: ComparisonTable[];
 
   // Terminology & Identification Signatures
   terms: Array<{
@@ -106,12 +123,11 @@ export interface LearningModule {
     keywordTrigger: string;
   }>;
   
-  // Interactive Declarative Visualizer Configuration
+  // Interactive Declarative Visualizer Configuration (Optional)
   visualizer?: DeclarativeVisualizerConfig;
 
   // Optional embedded Mastery Challenge
   masteryChallenge?: MasteryChallengeSet;
-
   
   // Core Theory
   theory: {
@@ -119,18 +135,18 @@ export interface LearningModule {
     contentMarkdown: string;
   };
   
-  // Dual-Method Worked Examples
+  // Dual-Method Worked Examples or Qualitative Case Scenarios
   examples: Array<{
     problemStatement: string;
     formalSolutionMarkdown: string;
     shortcutSolutionMarkdown: string;
-    shortcutTimeSeconds: number;
-    formalTimeSeconds: number;
+    shortcutTimeSeconds?: number;
+    formalTimeSeconds?: number;
   }>;
   
-  // Calculator Techniques
-  calculatorGuides: {
-    karce: {
+  // Calculator Techniques (Optional for qualitative topics)
+  calculatorGuides?: {
+    karce?: {
       techniqueTitle?: string;
       problemType?: string;
       sampleProblem?: string;
@@ -139,7 +155,7 @@ export interface LearningModule {
       keystrokes: string[];
       notes: string;
     };
-    canon: {
+    canon?: {
       techniqueTitle?: string;
       problemType?: string;
       sampleProblem?: string;
@@ -167,8 +183,11 @@ export interface LearningModule {
       C: string;
       D: string;
     };
-    shortcutExplanation: string;
+    shortcutExplanation?: string;
   }>;
+
+  // Active Recall Written Challenge (Optional 3–5 open-ended prompts)
+  writtenChallenges?: WrittenChallenge[];
 }
 
 export interface LearningModuleSummary {

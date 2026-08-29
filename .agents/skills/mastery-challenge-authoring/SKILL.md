@@ -21,16 +21,25 @@ This skill defines the authoring standards, question balance, and schema for **D
 
 ---
 
-## 2. Four-Quadrant Question Composition (Balance Protocol)
+## 2. Four-Quadrant Question Composition by Archetype
 
-Every Mastery Challenge must strictly follow this **4-Quadrant pedagogical distribution** to balance deep conceptual understanding with high-speed problem solving:
+Every Mastery Challenge follows a balanced 4-quadrant distribution adapted to the subject's domain archetype:
 
-| Quadrant | Percentage | Target (for 20–25 items) | Focus & Cognitive Objective |
+### A. 📐 Computational & 📡 Hybrid Archetypes (MATH, Circuits, Signals, Comms)
+| Quadrant | Percentage | Target (20–25 Qs) | Focus & Cognitive Objective |
 | :--- | :---: | :---: | :--- |
-| **Q1: Conceptual Understanding & Theoretical Invariants** | **30%** | **6–8 Questions** | Tests foundational definitions, conditions, geometric invariants, qualitative comparisons, and physical meaning (e.g. *Why does eccentricity determine conic type? Under what condition is a slope undefined?*). |
-| **Q2: Standard Formula & Direct Computation** | **35%** | **7–9 Questions** | Direct application of core formulas, equation conversions, and parameter evaluations standard in PRC licensure exams. |
-| **Q3: Multi-Step & Applied Problem Solving** | **20%** | **4–5 Questions** | Compound setups, coordinate intersections, geometric area/distance combinations, and real-world engineering contexts. |
-| **Q4: Speed Shortcuts, Traps & Calculator Bypasses** | **15%** | **3–4 Questions** | Questions designed to reward 5-second inspection tricks, calculator mode shortcuts (e.g., `Pol` function, matrix determinants), and common algebraic sign traps. |
+| **Q1: Conceptual Invariants** | **30%** | **6–8 Qs** | Definitions, conditions, physical meaning, and qualitative behavior. |
+| **Q2: Standard Computation** | **35%** | **7–9 Qs** | Direct application of core governing formulas and standard numerical solves. |
+| **Q3: Multi-Step Solves** | **20%** | **4–5 Qs** | Compound circuit loops, cascade stages, parameter transformations. |
+| **Q4: Speed Shortcuts & Traps** | **15%** | **3–4 Qs** | 5-second inspection tricks, calculator shortcuts (`Pol`, mode tricks), sign traps. |
+
+### B. 📜 Qualitative & Statutory Archetypes (RA 9292, Ethics, Materials Science, Env Laws)
+| Quadrant | Percentage | Target (20–25 Qs) | Focus & Cognitive Objective |
+| :--- | :---: | :---: | :--- |
+| **Q1: Statutory & Threshold Recall** | **35%** | **7–9 Qs** | Exact fine schedules, imprisonment ranges, board term limits, enactment dates, quorum requirements. |
+| **Q2: Scope of Practice & Classifications** | **30%** | **6–8 Qs** | Distinguishing PECE vs ECE vs ECT duties, seal requirements, foreign reciprocity rules. |
+| **Q3: Applied Ethical Dilemmas & Scenarios** | **20%** | **4–5 Qs** | Real-world engineering scenarios testing code of ethics violations, conflict of interest, and liability. |
+| **Q4: Wording Traps & Distractor Deconstructions** | **15%** | **3–4 Qs** | *"Shall"* vs *"May"*, negative stem questions (*"which is NOT required"*), tricky legal phrasing. |
 
 ---
 
@@ -41,12 +50,12 @@ Solutions must get **straight to the point** without fluff or redundant label cl
 ### Rules:
 1. **No Redundant Boilerplate**:
    - Do **NOT** prefix explanations with `"(Correct Answer)"`, `"(Distractor Trap)"`, or `Option A is incorrect because...`.
-   - Write direct, elegant mathematical derivations and physical insights.
-2. **Formula State & Substitution**:
-   - State the governing equation in KaTeX: `$$d = \frac{|Ax_1 + By_1 + C|}{\sqrt{A^2 + B^2}}$$`.
-   - Show the primary substitution step and the exact final evaluated result.
+   - Write direct, rigorous derivations, statutory citations, and physical insights.
+2. **Formula / Legal Citation State**:
+   - In math: State the formula in KaTeX (`$$d = \frac{|Ax_1 + By_1 + C|}{\sqrt{A^2 + B^2}}$$`).
+   - In law: State the exact statutory article (`Under Section 29 of RA 9292...`).
 3. **Mandatory ⚡ Speed Shortcut Callout**:
-   - Include a 1–2 sentence `⚡ Board Exam Shortcut:` or `⚡ Calculator Shortcut:` demonstrating the 5–10 second bypass whenever applicable.
+   - Include a 1–2 sentence `⚡ Board Exam Shortcut:` or `⚡ 1-Second Keyword Trigger:` bypass.
 
 ---
 
@@ -56,38 +65,25 @@ Saved at: `test-sets/learning-modules/[subject]/mastery/[moduleId]-mastery.json`
 
 ```json
 {
-  "id": "math-12-01-mastery",
-  "moduleId": "math-12-01",
-  "title": "Mastery Challenge: Lines, Slopes, Angles & Distance",
-  "topicCode": "MATH-12",
-  "domain": "MATH",
+  "id": "geas-10-01-mastery",
+  "moduleId": "geas-10-01",
+  "title": "Mastery Challenge: RA 9292 & ECE Law",
+  "topicCode": "GEAS-10",
+  "domain": "GEAS",
   "timeLimitMinutes": 35,
   "passingScorePercent": 70,
   "questions": [
     {
-      "id": "m12-01-q01",
+      "id": "g10-01-q01",
       "questionNumber": 1,
-      "promptText": "If the angle of inclination of a straight line is obtuse ($\\frac{\\pi}{2} < \\theta < \\pi$), what can be definitively concluded regarding its slope $m$?",
-      "choiceA": "$m > 0$",
-      "choiceB": "$m < 0$",
-      "choiceC": "$m = 0$",
-      "choiceD": "$m$ is undefined",
+      "promptText": "Under Section 35 of RA 9292, what is the statutory penalty for any person who engages in the illegal practice of electronics engineering without a valid Certificate of Registration?",
+      "choiceA": "Fine of not less than ₱50,000 nor more than ₱500,000",
+      "choiceB": "Fine of not less than ₱100,000 nor more than ₱1,000,000, or imprisonment from 6 months to 6 years",
+      "choiceC": "Fine of not less than ₱20,000 and 1 year imprisonment",
+      "choiceD": "Revocation of business permit and fine of ₱200,000",
       "correctChoice": "B",
-      "explanation": "Since slope is defined as $m = \\tan\\theta$, and the tangent function is strictly negative in the second quadrant ($90^\\circ < \\theta < 180^\\circ$), an obtuse angle of inclination always produces a negative slope ($m < 0$).",
-      "category": "conceptual",
-      "difficulty": "easy"
-    },
-    {
-      "id": "m12-01-q02",
-      "questionNumber": 2,
-      "promptText": "Find the perpendicular distance from point $P(3, -2)$ to the line $5x - 12y + 10 = 0$.",
-      "choiceA": "$3.77$",
-      "choiceB": "$2.54$",
-      "choiceC": "$4.12$",
-      "choiceD": "$1.85$",
-      "correctChoice": "A",
-      "explanation": "Apply the point-to-line distance formula:\n$$d = \\frac{|Ax_1 + By_1 + C|}{\\sqrt{A^2 + B^2}} = \\frac{|5(3) + (-12)(-2) + 10|}{\\sqrt{5^2 + (-12)^2}} = \\frac{49}{13} \\approx 3.77$$\n\n⚡ Board Exam Shortcut: Numerator is $15 + 24 + 10 = 49$. Denominator is the 5-12-13 Pythagorean triple ($13$). $49/13 = 3.77$.",
-      "category": "computational",
+      "explanation": "Section 35 of RA 9292 imposes a fine of not less than ₱100,000 nor more than ₱1,000,000, or imprisonment of not less than six (6) months nor more than six (6) years, or both, at the discretion of the court.\n\n⚡ 1-Second Exam Rule: RA 9292 Penal Schedule = ₱100k to ₱1M fine / 6 months to 6 years prison.",
+      "category": "statutory",
       "difficulty": "medium"
     }
   ]

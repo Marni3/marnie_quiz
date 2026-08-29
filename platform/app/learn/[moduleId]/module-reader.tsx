@@ -49,6 +49,31 @@ export function ModuleReader({ module }: ModuleReaderProps) {
   // In-line MCQ Answers State: { [questionId]: { selectedChoice: 'A'|'B'|'C'|'D', isCorrect: boolean } }
   const [mcqState, setMcqState] = useState<Record<string, { selected: string; isCorrect: boolean }>>({});
 
+  // Active Recall Written Challenge state (persisted locally)
+  const [writtenAnswers, setWrittenAnswers] = useState<Record<string, string>>({});
+  const [revealedAnswers, setRevealedAnswers] = useState<Record<string, boolean>>({});
+
+  useEffect(() => {
+    if (typeof window === "undefined" || !module.writtenChallenges) return;
+    const loaded: Record<string, string> = {};
+    module.writtenChallenges.forEach((wc) => {
+      const saved = localStorage.getItem(`mq_written_recall_${module.id}_${wc.id}`);
+      if (saved) loaded[wc.id] = saved;
+    });
+    setWrittenAnswers(loaded);
+  }, [module.id, module.writtenChallenges]);
+
+  const handleWrittenChange = (challengeId: string, text: string) => {
+    setWrittenAnswers((prev) => ({ ...prev, [challengeId]: text }));
+    try {
+      localStorage.setItem(`mq_written_recall_${module.id}_${challengeId}`, text);
+    } catch {}
+  };
+
+  const toggleRevealAnswer = (challengeId: string) => {
+    setRevealedAnswers((prev) => ({ ...prev, [challengeId]: !prev[challengeId] }));
+  };
+
   // Module Completion and Bookmark State synced with API
   const [isBookmarked, setIsBookmarked] = useState<boolean>(false);
   const [isCompleted, setIsCompleted] = useState<boolean>(false);
@@ -115,30 +140,43 @@ export function ModuleReader({ module }: ModuleReaderProps) {
   }, [module.conceptChecks]);
 
   const dynamicToc = useMemo(() => {
-    const items: Array<{ id: string; title: string }> = [];
+    const rawSections: Array<{ id: string; title: string }> = [];
+
     if (module.prerequisiteBridge || (module.crossSubjectBridges && module.crossSubjectBridges.length > 0)) {
-      items.push({ id: "sec-prereq-bridges", title: "1. Prerequisite Bridges" });
+      rawSections.push({ id: "sec-prereq-bridges", title: "Prerequisite Bridges" });
     }
-    items.push({ id: "sec-theory", title: "2. Lesson Proper" });
+    rawSections.push({ id: "sec-theory", title: "Lesson Proper" });
+
     if (module.formulas && module.formulas.length > 0) {
-      items.push({ id: "sec-formulas", title: "3. Compilation of Formulas" });
+      rawSections.push({ id: "sec-formulas", title: "Compilation of Formulas" });
+    }
+    if (module.comparisonTables && module.comparisonTables.length > 0) {
+      rawSections.push({ id: "sec-comparison-tables", title: "Comparison Matrices" });
     }
     if (module.visualizer) {
-      items.push({ id: "sec-visualizer", title: "4. Interactive Sandbox" });
+      rawSections.push({ id: "sec-visualizer", title: "Interactive Sandbox" });
     }
     if (module.terms && module.terms.length > 0) {
-      items.push({ id: "sec-terminology", title: "5. Key Terms & Definitions" });
+      rawSections.push({ id: "sec-terminology", title: "Key Terms & Definitions" });
     }
     if (module.examples && module.examples.length > 0) {
-      items.push({ id: "sec-dual-method", title: "6. Sample Problems" });
+      const isLaw = module.domain === "GEAS" && module.topicCode.startsWith("GEAS-10");
+      rawSections.push({ id: "sec-dual-method", title: isLaw ? "Board Exam Case Dilemmas" : "Sample Problems" });
     }
-    if (module.calculatorGuides) {
-      items.push({ id: "sec-calculator", title: "7. Calculator Techniques" });
+    if (module.calculatorGuides && (module.calculatorGuides.karce || module.calculatorGuides.canon)) {
+      rawSections.push({ id: "sec-calculator", title: "Calculator Techniques" });
     }
     if (normalizedConceptChecks.length > 0) {
-      items.push({ id: "sec-concept-checks", title: "8. Concept Checks" });
+      rawSections.push({ id: "sec-concept-checks", title: "In-Line Concept Checks" });
     }
-    return items;
+    if (module.writtenChallenges && module.writtenChallenges.length > 0) {
+      rawSections.push({ id: "sec-written-challenge", title: "Active Recall Written Challenge" });
+    }
+
+    return rawSections.map((sec, idx) => ({
+      id: sec.id,
+      title: `${idx + 1}. ${sec.title}`,
+    }));
   }, [module, normalizedConceptChecks]);
 
   // Fetch initial progress on mount & record study session
@@ -502,6 +540,66 @@ export function ModuleReader({ module }: ModuleReaderProps) {
                           <MathText text={item.note} />
                         </p>
                       )}
+                    </div>
+                  ))}
+                </div>
+              </section>
+            )}
+
+            {/* Comparison & Statutory Matrices */}
+            {module.comparisonTables && module.comparisonTables.length > 0 && (
+              <section id="sec-comparison-tables" className="space-y-6">
+                <div className="flex items-center gap-2 pb-2 border-b border-[var(--border)]">
+                  <Layers className="w-5 h-5 text-[var(--accent)]" />
+                  <h2 className="text-xl font-bold font-serif text-[var(--text)]">
+                    Comparison & Statutory Matrices
+                  </h2>
+                </div>
+
+                <div className="space-y-6">
+                  {module.comparisonTables.map((tbl, tIdx) => (
+                    <div
+                      key={tbl.id || tIdx}
+                      className="bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-5 shadow-xs space-y-3 overflow-hidden"
+                    >
+                      <h3 className="font-bold text-base text-[var(--text)]">
+                        {tbl.title}
+                      </h3>
+                      <div className="overflow-x-auto">
+                        <table className="w-full text-left border-collapse text-xs sm:text-sm">
+                          <thead>
+                            <tr className="border-b border-[var(--border)] bg-[var(--surface2)]/60">
+                              {tbl.headers.map((h, hIdx) => (
+                                <th
+                                  key={hIdx}
+                                  className="p-3 font-mono font-bold text-[var(--text)] uppercase tracking-wider"
+                                >
+                                  <MathText text={h} />
+                                </th>
+                              ))}
+                            </tr>
+                          </thead>
+                          <tbody className="divide-y divide-[var(--border)]/60">
+                            {tbl.rows.map((row, rIdx) => (
+                              <tr
+                                key={rIdx}
+                                className="hover:bg-[var(--surface2)]/40 transition-colors"
+                              >
+                                {row.map((cell, cIdx) => (
+                                  <td
+                                    key={cIdx}
+                                    className={`p-3 text-[var(--text2)] leading-relaxed ${
+                                      cIdx === 0 ? "font-semibold text-[var(--text)]" : ""
+                                    }`}
+                                  >
+                                    <MathText text={cell} />
+                                  </td>
+                                ))}
+                              </tr>
+                            ))}
+                          </tbody>
+                        </table>
+                      </div>
                     </div>
                   ))}
                 </div>
@@ -924,6 +1022,100 @@ export function ModuleReader({ module }: ModuleReaderProps) {
                 })}
               </div>
             </section>
+
+            {/* Active Recall Written Challenge */}
+            {module.writtenChallenges && module.writtenChallenges.length > 0 && (
+              <section id="sec-written-challenge" className="space-y-6">
+                <div className="flex items-center justify-between pb-2 border-b border-[var(--border)]">
+                  <div className="flex items-center gap-2">
+                    <Sparkles className="w-5 h-5 text-[var(--accent)]" />
+                    <h2 className="text-xl font-bold font-serif text-[var(--text)]">
+                      Active Recall Written Challenge
+                    </h2>
+                  </div>
+                  <span className="text-xs font-mono text-[var(--text3)]">
+                    Generative Self-Check
+                  </span>
+                </div>
+
+                <p className="text-xs sm:text-sm text-[var(--text2)] leading-relaxed">
+                  Synthesize key provisions and rules from memory before revealing topnotcher model answers and checkpoints.
+                </p>
+
+                <div className="space-y-6">
+                  {module.writtenChallenges.map((wc, wIdx) => {
+                    const isRevealed = !!revealedAnswers[wc.id];
+                    const studentText = writtenAnswers[wc.id] || "";
+
+                    return (
+                      <div
+                        key={wc.id || wIdx}
+                        className="bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-5 sm:p-6 shadow-xs space-y-4"
+                      >
+                        <div className="flex items-center justify-between gap-2">
+                          <span className="text-xs font-mono font-bold text-[var(--accent)] uppercase">
+                            Synthesis Prompt #{wIdx + 1}
+                          </span>
+                          <span className="text-[11px] font-mono text-[var(--text3)]">
+                            Auto-saved locally
+                          </span>
+                        </div>
+
+                        <p className="font-semibold text-base text-[var(--text)]">
+                          <MathText text={wc.prompt} />
+                        </p>
+
+                        <textarea
+                          rows={3}
+                          value={studentText}
+                          onChange={(e) => handleWrittenChange(wc.id, e.target.value)}
+                          placeholder="Type your explanation or list key points here from memory..."
+                          className="w-full p-3 rounded-xl bg-[var(--surface2)] border border-[var(--border)] text-xs sm:text-sm text-[var(--text)] placeholder:text-[var(--text3)] focus:outline-hidden focus:border-[var(--accent)] transition-colors resize-y"
+                        />
+
+                        <div className="flex items-center justify-between gap-3 pt-1">
+                          <button
+                            type="button"
+                            onClick={() => toggleRevealAnswer(wc.id)}
+                            className="px-4 py-2 rounded-xl bg-[var(--surface2)] hover:bg-[var(--surface)] border border-[var(--border)] text-xs font-bold text-[var(--accent)] transition-all cursor-pointer flex items-center gap-1.5"
+                          >
+                            <Lightbulb className="w-3.5 h-3.5" />
+                            <span>{isRevealed ? "Hide Model Answer" : "Reveal Model Answer & Checkpoints"}</span>
+                          </button>
+                        </div>
+
+                        {isRevealed && (
+                          <div className="mt-4 pt-4 border-t border-[var(--border)] space-y-3 bg-[var(--surface2)]/50 rounded-xl p-4 animate-in fade-in duration-200">
+                            <div className="text-xs font-mono font-bold text-emerald-600 dark:text-emerald-400 uppercase tracking-wider">
+                              ⭐ Model Topnotcher Answer:
+                            </div>
+                            <div className="prose dark:prose-invert max-w-none text-xs sm:text-sm text-[var(--text)] leading-relaxed">
+                              <MathText text={wc.modelAnswer} splitParagraphs={true} />
+                            </div>
+
+                            {wc.keyCheckpoints && wc.keyCheckpoints.length > 0 && (
+                              <div className="pt-2 border-t border-[var(--border)]/60 space-y-1.5">
+                                <div className="text-[11px] font-mono font-bold text-[var(--text2)] uppercase">
+                                  Self-Check Rubric:
+                                </div>
+                                <ul className="space-y-1 text-xs text-[var(--text2)]">
+                                  {wc.keyCheckpoints.map((cp, cpIdx) => (
+                                    <li key={cpIdx} className="flex items-start gap-2">
+                                      <CheckCircle2 className="w-3.5 h-3.5 text-emerald-500 shrink-0 mt-0.5" />
+                                      <span><MathText text={cp} /></span>
+                                    </li>
+                                  ))}
+                                </ul>
+                              </div>
+                            )}
+                          </div>
+                        )}
+                      </div>
+                    );
+                  })}
+                </div>
+              </section>
+            )}
 
             {/* Section 8: Paired Mastery Challenge CTA */}
             <section
