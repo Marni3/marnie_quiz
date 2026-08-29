@@ -3,6 +3,7 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
 import { SessionProvider } from "next-auth/react";
 import { OnboardingTour } from "./onboarding-tour";
+import { OmniSearch } from "./omni-search";
 
 type Theme = "light" | "dark";
 
@@ -55,6 +56,7 @@ export function Providers({ children }: { children: React.ReactNode }) {
       <ThemeProvider>
         {children}
         <OnboardingTour />
+        <OmniSearch />
       </ThemeProvider>
     </SessionProvider>
   );

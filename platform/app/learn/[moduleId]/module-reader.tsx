@@ -6,6 +6,7 @@ import { LearningModule } from "@/lib/modules";
 import { MathText } from "@/components/math-text";
 import { DeclarativeVisualizer } from "@/components/declarative-visualizer";
 import { FeedbackModal } from "@/components/feedback-modal";
+import { UserNote, saveStoredNote } from "@/lib/notes";
 import {
   BookOpen,
   Zap,
@@ -19,6 +20,7 @@ import {
   ArrowRight,
   Share2,
   Bookmark,
+  BookMarked,
   Check,
   RotateCcw,
   Sliders,
@@ -27,6 +29,8 @@ import {
   ShieldCheck,
   Lightbulb,
   MessageSquarePlus,
+  Copy,
+  Bot,
 } from "lucide-react";
 
 interface ModuleReaderProps {
@@ -78,6 +82,76 @@ export function ModuleReader({ module }: ModuleReaderProps) {
   const [isBookmarked, setIsBookmarked] = useState<boolean>(false);
   const [isCompleted, setIsCompleted] = useState<boolean>(false);
   const [isFeedbackOpen, setIsFeedbackOpen] = useState<boolean>(false);
+
+  // Floating Text Selection Popover & Quick Note
+  const [selectionPopover, setSelectionPopover] = useState<{
+    text: string;
+    x: number;
+    y: number;
+  } | null>(null);
+  const [savedNoteToast, setSavedNoteToast] = useState(false);
+
+  const handleTextSelection = () => {
+    if (typeof window === "undefined") return;
+    const sel = window.getSelection();
+    if (!sel || sel.isCollapsed) {
+      setSelectionPopover(null);
+      return;
+    }
+    const text = sel.toString().trim();
+    if (text.length < 3) {
+      setSelectionPopover(null);
+      return;
+    }
+    try {
+      const range = sel.getRangeAt(0);
+      const rect = range.getBoundingClientRect();
+      if (rect.width === 0 || rect.height === 0) {
+        setSelectionPopover(null);
+        return;
+      }
+      setSelectionPopover({
+        text,
+        x: Math.max(12, Math.min(window.innerWidth - 260, rect.left + rect.width / 2 - 120)),
+        y: Math.max(12, rect.top - 46),
+      });
+    } catch {}
+  };
+
+  const handleSaveSelectionToNotes = () => {
+    if (!selectionPopover) return;
+    const newNote: UserNote = {
+      id: `note_${Date.now()}`,
+      title: `${module.code || "Module"} Highlight: ${selectionPopover.text.slice(0, 36)}...`,
+      domain: (module.domain as any) || "GENERAL",
+      topicCode: module.topicCode,
+      type: "module_highlight",
+      content: selectionPopover.text,
+      sourceModuleId: module.id,
+      sourceSubtopicTitle: module.subtopicTitle,
+      createdAt: Date.now(),
+      updatedAt: Date.now(),
+    };
+    saveStoredNote(newNote);
+    setSelectionPopover(null);
+    setSavedNoteToast(true);
+    setTimeout(() => setSavedNoteToast(false), 2500);
+  };
+
+  const handleAskAITutor = () => {
+    if (!selectionPopover) return;
+    const query = encodeURIComponent(
+      `Regarding ${module.subtopicTitle} (${module.code}): "${selectionPopover.text}" - Can you explain this principle and provide board exam shortcuts?`
+    );
+    window.open(`/tutor?prompt=${query}`, "_blank");
+    setSelectionPopover(null);
+  };
+
+  const handleCopySelection = () => {
+    if (!selectionPopover) return;
+    navigator.clipboard.writeText(selectionPopover.text);
+    setSelectionPopover(null);
+  };
 
   // Visualizer Slider Values
   const [vizControls, setVizControls] = useState<Record<string, number>>(() => {
@@ -425,7 +499,11 @@ export function ModuleReader({ module }: ModuleReaderProps) {
           </aside>
 
           {/* Center Main Content Document */}
-          <main className="lg:col-span-9 space-y-10">
+          <main
+            onMouseUp={handleTextSelection}
+            onTouchEnd={handleTextSelection}
+            className="lg:col-span-9 space-y-10"
+          >
             {/* Title & Domain Banner */}
             <div className="space-y-4">
               <div className="flex flex-wrap items-center gap-2">
@@ -1166,6 +1244,61 @@ export function ModuleReader({ module }: ModuleReaderProps) {
                 <span>Notice a typo, formula error, or visualizer issue in this module? Leave a note</span>
               </button>
             </div>
+
+            {/* Floating Text-Selection Quick Action Popover */}
+            {selectionPopover && (
+              <div
+                style={{
+                  position: "fixed",
+                  left: `${selectionPopover.x}px`,
+                  top: `${selectionPopover.y}px`,
+                }}
+                className="z-50 flex items-center gap-1 p-1 bg-[var(--surface)] border border-primary/30 rounded-xl shadow-xl backdrop-blur-md animate-in fade-in zoom-in-95 duration-150"
+              >
+                <button
+                  type="button"
+                  onClick={handleSaveSelectionToNotes}
+                  className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-primary text-white text-xs font-semibold shadow-xs hover:opacity-95 transition-all cursor-pointer"
+                  title="Save highlight to Personal Study Notebook"
+                >
+                  <BookMarked className="w-3.5 h-3.5" />
+                  <span>Save Note</span>
+                </button>
+
+                <button
+                  type="button"
+                  onClick={handleAskAITutor}
+                  className="inline-flex items-center gap-1 px-2 py-1 rounded-lg bg-[var(--surface2)] text-primary hover:bg-primary/10 border border-[var(--border)] text-xs font-semibold transition-all cursor-pointer"
+                  title="Ask AI Tutor about this concept"
+                >
+                  <Bot className="w-3.5 h-3.5" />
+                  <span>Ask AI</span>
+                </button>
+
+                <button
+                  type="button"
+                  onClick={handleCopySelection}
+                  className="p-1 rounded-lg text-[var(--text3)] hover:text-[var(--text)] hover:bg-[var(--surface2)] transition-colors cursor-pointer"
+                  title="Copy selected text"
+                >
+                  <Copy className="w-3.5 h-3.5" />
+                </button>
+              </div>
+            )}
+
+            {/* Saved Note Toast Notification */}
+            {savedNoteToast && (
+              <div className="fixed bottom-6 right-6 z-50 p-3 bg-[var(--surface)] border border-emerald-500/40 rounded-xl shadow-2xl flex items-center gap-2 text-xs font-semibold text-emerald-600 dark:text-emerald-400 animate-in slide-in-from-bottom-2 fade-in">
+                <CheckCircle2 className="w-4 h-4 text-emerald-500" />
+                <span>Saved highlight to Personal Notebook!</span>
+                <Link
+                  href="/notes"
+                  className="ml-2 underline text-[var(--text)] hover:text-emerald-500"
+                >
+                  View Notebook →
+                </Link>
+              </div>
+            )}
           </main>
         </div>
       </div>

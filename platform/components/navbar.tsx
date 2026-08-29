@@ -6,7 +6,20 @@ import { usePathname } from "next/navigation";
 import { useSession, signOut } from "next-auth/react";
 import { ThemeToggle } from "./theme-toggle";
 import { FeedbackModal } from "./feedback-modal";
-import { BookOpen, History, Upload, LogOut, Sparkles, Brain, LogIn, GraduationCap, MessageSquarePlus, Compass } from "lucide-react";
+import {
+  BookOpen,
+  History,
+  Upload,
+  LogOut,
+  Sparkles,
+  Brain,
+  LogIn,
+  GraduationCap,
+  MessageSquarePlus,
+  Compass,
+  BookMarked,
+  Search,
+} from "lucide-react";
 
 export function Navbar({ breadcrumb }: { breadcrumb?: string }) {
   const pathname = usePathname();
@@ -83,6 +96,20 @@ export function Navbar({ breadcrumb }: { breadcrumb?: string }) {
           </Link>
 
           <Link
+            href="/notes"
+            aria-label="Personal Notebook"
+            title="Personal Study Notebook & Vault"
+            className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs sm:text-sm font-medium transition-colors ${
+              pathname === "/notes" || pathname.startsWith("/notes/")
+                ? "bg-[var(--surface2)] text-[var(--accent)] border border-[var(--border)]"
+                : "text-[var(--text2)] hover:text-[var(--text)] hover:bg-[var(--surface2)]"
+            }`}
+          >
+            <BookMarked className="w-4 h-4" />
+            <span className="hidden xs:inline">Notebook</span>
+          </Link>
+
+          <Link
             href="/analytics"
             aria-label="Retention Matrix"
             title="Retention & Spaced Repetition Matrix"
@@ -126,8 +153,19 @@ export function Navbar({ breadcrumb }: { breadcrumb?: string }) {
           </Link>
         </nav>
 
-        {/* Right: Tour Button, Feedback Button, Theme Toggle & User Profile */}
-        <div className="flex items-center gap-2 sm:gap-3 shrink-0">
+        {/* Right: Search, Tour, Feedback, Theme Toggle & User Profile */}
+        <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
+          <button
+            type="button"
+            onClick={() => window.dispatchEvent(new CustomEvent("open-omni-search"))}
+            aria-label="Search Topics, Modules & Notes (Press / or ⌘K)"
+            title="Global Search (Press / or ⌘K)"
+            className="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-medium text-[var(--text2)] hover:text-[var(--accent)] hover:bg-[var(--surface2)] border border-[var(--border)] transition-colors cursor-pointer"
+          >
+            <Search className="w-3.5 h-3.5" />
+            <span className="hidden lg:inline text-[10px] font-mono text-[var(--text3)]">⌘K</span>
+          </button>
+
           <button
             type="button"
             onClick={() => window.dispatchEvent(new CustomEvent("open-onboarding-tour"))}
