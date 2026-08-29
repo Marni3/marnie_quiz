@@ -28,30 +28,39 @@ import {
   StoredModelOption,
 } from "@/lib/tutor/storage";
 import { MODEL_CATALOG, DEFAULT_MODELS } from "@/lib/tutor/prompts";
+import { recordStudyActivity } from "@/lib/streak";
 import {
   Sparkles,
   Send,
   Key,
   PlusCircle,
-  Trash2,
-  Menu,
-  X,
-  Paperclip,
-  CheckCircle2,
-  AlertCircle,
+  MessageSquare,
   BookOpen,
+  Target,
+  FileSpreadsheet,
   CheckSquare,
+  ChevronDown,
+  Paperclip,
+  Trash2,
+  CheckCircle2,
   RefreshCw,
+  Check,
+  AlertCircle,
+  Menu,
+  Settings2,
+  X,
+  Bot,
 } from "lucide-react";
 
 export function TutorView() {
   const searchParams = useSearchParams();
   const [isByokOpen, setIsByokOpen] = useState(false);
+  const [isContextPickerOpen, setIsContextPickerOpen] = useState(false);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   // Active configuration
   const [provider, setProvider] = useState<AIProvider>("gemini");
-  const [model, setModel] = useState<string>("gemini-3.6-flash");
+  const [model, setModel] = useState<string>("gemini-3.7-flash");
   const [hasKey, setHasKey] = useState(false);
   const [availableModels, setAvailableModels] = useState<StoredModelOption[]>([]);
 
@@ -326,6 +335,7 @@ export function TutorView() {
 
     setActiveSession(updatedSession);
     saveStoredSession(updatedSession);
+    recordStudyActivity("tutor");
     setInputPrompt("");
     setIsStreaming(true);
     setStreamingContent("");
@@ -412,21 +422,22 @@ export function TutorView() {
     : availableModels;
 
   return (
-    <div className="min-h-screen bg-[var(--background)] flex flex-col">
+    <div className="h-[100dvh] bg-[var(--background)] flex flex-col overflow-hidden pb-16 md:pb-0">
       <Navbar />
 
-      <main className="flex-1 flex overflow-hidden relative max-w-7xl w-full mx-auto p-2 sm:p-4 gap-4">
+      <main className="flex-1 flex overflow-hidden relative max-w-7xl w-full mx-auto p-2 sm:p-4 gap-4 min-h-0">
         {/* SIDEBAR (Desktop Left Pane & Mobile Slide-Over) */}
         <aside
-          className={`fixed inset-y-0 left-0 z-40 w-72 sm:w-80 bg-[var(--surface)] border-r border-[var(--border)] p-4 flex flex-col justify-between transition-transform duration-200 lg:static lg:translate-x-0 lg:rounded-2xl lg:border lg:z-auto ${isSidebarOpen ? "translate-x-0" : "-translate-x-full"
-            }`}
+          className={`fixed inset-y-0 left-0 z-40 w-72 sm:w-80 bg-[var(--surface)] border-r border-[var(--border)] p-4 flex flex-col justify-between transition-transform duration-200 lg:static lg:translate-x-0 lg:rounded-2xl lg:border lg:z-auto ${
+            isSidebarOpen ? "translate-x-0" : "-translate-x-full"
+          }`}
         >
           {/* Top Session Actions */}
           <div className="space-y-3">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2 text-sm font-bold text-[var(--text)]">
                 <Sparkles className="w-4 h-4 text-primary" />
-                <span>AI Tutor Workspace</span>
+                <span>Conversations</span>
               </div>
               <button
                 onClick={() => setIsSidebarOpen(false)}
@@ -437,8 +448,11 @@ export function TutorView() {
             </div>
 
             <button
-              onClick={() => createNewSession()}
-              className="w-full flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-primary text-white text-xs font-bold shadow-sm hover:opacity-95 transition-all"
+              onClick={() => {
+                createNewSession();
+                setIsSidebarOpen(false);
+              }}
+              className="w-full flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-primary text-white text-xs font-bold shadow-sm hover:opacity-95 transition-all cursor-pointer"
             >
               <PlusCircle className="w-4 h-4" />
               <span>New AI Study Chat</span>
@@ -460,16 +474,21 @@ export function TutorView() {
                 return (
                   <div
                     key={s.id}
-                    onClick={() => handleSelectSession(s)}
-                    className={`group/session w-full flex items-center justify-between p-2.5 rounded-xl text-left text-xs transition-all cursor-pointer ${isActive
+                    onClick={() => {
+                      handleSelectSession(s);
+                      setIsSidebarOpen(false);
+                    }}
+                    className={`group/session w-full flex items-center justify-between p-2.5 rounded-xl text-left text-xs transition-all cursor-pointer ${
+                      isActive
                         ? "bg-primary/10 text-primary font-semibold border border-primary/20"
                         : "text-[var(--text2)] hover:bg-[var(--surface2)] hover:text-[var(--text)] border border-transparent"
-                      }`}
+                    }`}
                   >
                     <span className="truncate flex-1 mr-2">{s.title || "Untitled Session"}</span>
                     <button
                       onClick={(e) => handleDeleteSession(s.id, e)}
-                      className="opacity-0 group-hover/session:opacity-100 p-1 hover:text-rose-500 transition-opacity"
+                      className="opacity-70 sm:opacity-0 sm:group-hover/session:opacity-100 p-1 text-[var(--text3)] hover:text-rose-500 transition-opacity"
+                      title="Delete conversation"
                     >
                       <Trash2 className="w-3.5 h-3.5" />
                     </button>
@@ -479,20 +498,23 @@ export function TutorView() {
             )}
           </div>
 
-          {/* BYOK Status & Key Manager Trigger */}
+          {/* BYOK Status & Settings Trigger */}
           <div className="pt-3 border-t border-[var(--border)] space-y-2">
             <button
-              onClick={() => setIsByokOpen(true)}
-              className="w-full flex items-center justify-between p-2.5 rounded-xl bg-[var(--surface2)] border border-[var(--border)] hover:border-primary/40 text-xs transition-all group"
+              onClick={() => {
+                setIsByokOpen(true);
+                setIsSidebarOpen(false);
+              }}
+              className="w-full flex items-center justify-between p-2.5 rounded-xl bg-[var(--surface2)] border border-[var(--border)] hover:border-primary/40 text-xs transition-all group cursor-pointer"
             >
               <div className="flex items-center gap-2">
                 <Key className="w-4 h-4 text-primary" />
                 <div className="text-left">
                   <div className="font-bold text-[var(--text)] group-hover:text-primary transition-colors">
-                    BYOK Settings
+                    AI Settings & BYOK
                   </div>
-                  <div className="text-[10px] text-[var(--text2)] uppercase font-mono">
-                    {provider.toUpperCase()}
+                  <div className="text-[10px] text-[var(--text2)] uppercase font-mono truncate max-w-[120px]">
+                    {provider.toUpperCase()} • {model}
                   </div>
                 </div>
               </div>
@@ -516,75 +538,49 @@ export function TutorView() {
         )}
 
         {/* MAIN CHAT STREAM & COMPOSER */}
-        <section className="flex-1 flex flex-col bg-[var(--surface)] border border-[var(--border)] rounded-2xl overflow-hidden shadow-xs relative">
-          {/* Top Chat Header Ribbon */}
-          <div className="px-3.5 sm:px-4 py-2.5 sm:py-3 border-b border-[var(--border)] bg-[var(--surface2)]/80 backdrop-blur-xs flex flex-col sm:flex-row sm:items-center justify-between gap-2 shrink-0">
-            <div className="flex items-center justify-between gap-2 min-w-0">
-              <div className="flex items-center gap-2 min-w-0">
-                <button
-                  onClick={() => setIsSidebarOpen(true)}
-                  className="lg:hidden p-1.5 rounded-lg border border-[var(--border)] text-[var(--text)] hover:bg-[var(--surface)] shrink-0"
-                  title="Open Chat Sessions Menu"
-                >
-                  <Menu className="w-4 h-4" />
-                </button>
-                <div className="min-w-0">
-                  <h1 className="text-xs sm:text-sm font-bold text-[var(--text)] truncate">
-                    {activeSession?.title || "AI Study Chat"}
-                  </h1>
-                  <div className="hidden sm:flex items-center gap-2 text-[10px] text-[var(--text3)]">
-                    <span>Provider: {provider.toUpperCase()}</span>
-                    <span>•</span>
-                    <span>Model: {model}</span>
-                  </div>
-                </div>
-              </div>
-
-              {/* Mobile BYOK Trigger Button on Row 1 */}
+        <section className="flex-1 flex flex-col bg-[var(--surface)] border border-[var(--border)] rounded-2xl overflow-hidden shadow-xs relative min-h-0">
+          {/* Sleek Top Chat Header */}
+          <div className="px-3 sm:px-4 py-2 sm:py-2.5 border-b border-[var(--border)] bg-[var(--surface2)]/80 backdrop-blur-xs flex items-center justify-between gap-2 shrink-0">
+            <div className="flex items-center gap-2 min-w-0">
               <button
-                onClick={() => setIsByokOpen(true)}
-                className="sm:hidden p-1.5 rounded-xl border border-[var(--border)] text-[var(--text2)] hover:text-primary hover:bg-[var(--surface)] transition-all shrink-0"
-                title="Configure BYOK Key"
+                onClick={() => setIsSidebarOpen(true)}
+                className="p-1.5 rounded-lg border border-[var(--border)] text-[var(--text)] hover:bg-[var(--surface)] shrink-0 transition-colors cursor-pointer"
+                title="Open Chat Sessions Menu"
               >
-                <Key className="w-4 h-4" />
+                <Menu className="w-4 h-4" />
               </button>
+              <div className="min-w-0">
+                <h1 className="text-xs sm:text-sm font-bold text-[var(--text)] truncate max-w-[180px] sm:max-w-md">
+                  {activeSession?.title || "AI Study Chat"}
+                </h1>
+              </div>
             </div>
 
-            {/* Model Selector (Full width on mobile, aligned on desktop) */}
-            <div className="flex items-center gap-2 w-full sm:w-auto">
-              <select
-                value={model}
-                onChange={(e) => handleModelChange(e.target.value)}
-                className="flex-1 sm:flex-initial bg-[var(--surface)] border border-[var(--border)] text-[var(--text)] text-xs rounded-xl px-2.5 py-1.5 focus:outline-none focus:border-primary font-mono sm:max-w-[280px] truncate"
-              >
-                {displayModels.map((m) => (
-                  <option key={m.id} value={m.id}>
-                    {m.name}{m.recommended ? " ⭐" : ""}
-                  </option>
-                ))}
-              </select>
-
+            {/* Model Badge / Settings Button */}
+            <div className="flex items-center gap-1.5 shrink-0">
               <button
                 onClick={() => setIsByokOpen(true)}
-                className="hidden sm:inline-flex p-1.5 rounded-xl border border-[var(--border)] text-[var(--text2)] hover:text-primary hover:bg-[var(--surface)] transition-all shrink-0"
-                title="Configure BYOK Key"
+                className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-xl bg-[var(--surface)] border border-[var(--border)] hover:border-primary/50 text-[11px] font-mono text-[var(--text2)] hover:text-primary transition-all cursor-pointer shadow-2xs"
+                title="Open AI Model & Key Settings"
               >
-                <Key className="w-4 h-4" />
+                <Sparkles className="w-3.5 h-3.5 text-primary" />
+                <span className="truncate max-w-[110px] sm:max-w-[160px] font-semibold">{model}</span>
               </button>
             </div>
           </div>
 
           {/* Attached Context Banner */}
           {attachedContext && (
-            <div className="px-4 py-2 bg-primary/5 border-b border-primary/20 flex items-center justify-between text-xs text-[var(--text)]">
-              <div className="flex items-center gap-2">
-                <Paperclip className="w-3.5 h-3.5 text-primary" />
-                <span className="font-semibold text-primary">Attached Context:</span>
-                <span className="truncate max-w-xs">{attachedContext.title}</span>
+            <div className="px-4 py-2 bg-primary/5 border-b border-primary/20 flex items-center justify-between text-xs text-[var(--text)] shrink-0">
+              <div className="flex items-center gap-2 min-w-0">
+                <Paperclip className="w-3.5 h-3.5 text-primary shrink-0" />
+                <span className="font-semibold text-primary shrink-0">Attached Context:</span>
+                <span className="truncate">{attachedContext.title}</span>
               </div>
               <button
                 onClick={() => setAttachedContext(null)}
-                className="text-[var(--text3)] hover:text-[var(--text)] p-0.5"
+                className="text-[var(--text3)] hover:text-[var(--text)] p-0.5 ml-2"
+                title="Remove attached context"
               >
                 <X className="w-3.5 h-3.5" />
               </button>
@@ -593,7 +589,7 @@ export function TutorView() {
 
           {/* Missing Key Banner */}
           {!hasKey && (
-            <div className="m-4 p-3.5 rounded-2xl bg-amber-500/10 border border-amber-500/30 flex items-start justify-between gap-3 text-xs">
+            <div className="m-3 p-3 rounded-2xl bg-amber-500/10 border border-amber-500/30 flex items-start justify-between gap-3 text-xs shrink-0">
               <div className="flex items-start gap-2.5">
                 <AlertCircle className="w-4 h-4 text-amber-500 shrink-0 mt-0.5" />
                 <div>
@@ -607,15 +603,15 @@ export function TutorView() {
               </div>
               <button
                 onClick={() => setIsByokOpen(true)}
-                className="px-3 py-1.5 rounded-xl bg-amber-500 text-white font-bold text-xs shadow-xs hover:opacity-95 shrink-0"
+                className="px-3 py-1.5 rounded-xl bg-amber-500 text-white font-bold text-xs shadow-xs hover:opacity-95 shrink-0 cursor-pointer"
               >
                 Set Key
               </button>
             </div>
           )}
 
-          {/* Message Stream */}
-          <div className="flex-1 overflow-y-auto p-4 space-y-4">
+          {/* Message Stream (THE ONLY SCROLLING CONTAINER) */}
+          <div className="flex-1 overflow-y-auto p-3 sm:p-5 space-y-4 min-h-0">
             {activeSession?.messages.length === 0 ? (
               <div className="max-w-2xl mx-auto py-6 sm:py-10 space-y-6 text-center">
                 <div className="w-12 h-12 rounded-2xl bg-primary/10 text-primary border border-primary/20 flex items-center justify-center mx-auto shadow-sm">
@@ -630,7 +626,7 @@ export function TutorView() {
                   </p>
                 </div>
 
-                {/* 5 Accessible Functions Quick Ribbon */}
+                {/* Accessible Functions Quick Ribbon */}
                 <QuickActions
                   onSelectAction={handleQuickAction}
                   hasAttachedExam={attachedContext?.type === "attempt"}
@@ -670,54 +666,115 @@ export function TutorView() {
             )}
           </div>
 
-          {/* Bottom Composer */}
-          <div className="p-3 sm:p-4 border-t border-[var(--border)] bg-[var(--surface2)]/60 space-y-2">
-            {/* Context & Intent Quick Chips */}
-            <div className="flex items-center gap-1.5 overflow-x-auto pb-1 text-xs scrollbar-none">
+          {/* Bottom Composer Bar */}
+          <div className="p-2.5 sm:p-3 border-t border-[var(--border)] bg-[var(--surface)] shrink-0 space-y-2 relative">
+            {/* Popover Action / Context Drawer triggered by [+] */}
+            {isContextPickerOpen && (
+              <div className="absolute bottom-full left-3 right-3 mb-2 p-3 bg-[var(--surface)] border border-[var(--border)] rounded-2xl shadow-2xl space-y-2 animate-in slide-in-from-bottom-2 fade-in z-30 max-w-md">
+                <div className="flex items-center justify-between pb-1 border-b border-[var(--border)] text-xs font-bold text-[var(--text)]">
+                  <span>Quick Context & Prompts</span>
+                  <button
+                    onClick={() => setIsContextPickerOpen(false)}
+                    className="p-1 text-[var(--text3)] hover:text-[var(--text)]"
+                  >
+                    <X className="w-3.5 h-3.5" />
+                  </button>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-1.5 pt-1 text-xs">
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setInputPrompt("What are my weakest topics according to FSRS, and what should I practice today?");
+                      setIsContextPickerOpen(false);
+                    }}
+                    className="p-2 rounded-xl bg-[var(--surface2)] hover:bg-primary/10 hover:text-primary text-left transition-colors flex items-center gap-2 text-[11px]"
+                  >
+                    <span>🧠</span>
+                    <span>Weak Topics (FSRS)</span>
+                  </button>
+
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setInputPrompt("What are the most common exam traps and calculator shortcuts for my weakest subjects?");
+                      setIsContextPickerOpen(false);
+                    }}
+                    className="p-2 rounded-xl bg-[var(--surface2)] hover:bg-primary/10 hover:text-primary text-left transition-colors flex items-center gap-2 text-[11px]"
+                  >
+                    <span>⚡</span>
+                    <span>Traps & Shortcuts</span>
+                  </button>
+
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setFunctionMode("custom_module");
+                      setInputPrompt("Please generate an interactive learning module with formulas, worked examples, and concept checks on my lowest-retention topic.");
+                      setIsContextPickerOpen(false);
+                    }}
+                    className="p-2 rounded-xl bg-[var(--surface2)] hover:bg-primary/10 hover:text-primary text-left transition-colors flex items-center gap-2 text-[11px]"
+                  >
+                    <span>📘</span>
+                    <span>Custom Module</span>
+                  </button>
+
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setFunctionMode("tricky_questions");
+                      setInputPrompt("Generate a 5-question tricky practice drill targeting distractor traps on my weakest topic.");
+                      setIsContextPickerOpen(false);
+                    }}
+                    className="p-2 rounded-xl bg-[var(--surface2)] hover:bg-primary/10 hover:text-primary text-left transition-colors flex items-center gap-2 text-[11px]"
+                  >
+                    <span>🎯</span>
+                    <span>Tricky Drill</span>
+                  </button>
+
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setFunctionMode("low_friction");
+                      setInputPrompt("I'm really not feeling like studying today. Give me something super low friction and fast to keep my momentum and study streak going!");
+                      setIsContextPickerOpen(false);
+                    }}
+                    className="p-2 rounded-xl bg-amber-500/10 border border-amber-500/20 hover:bg-amber-500/20 text-amber-600 dark:text-amber-400 text-left transition-colors flex items-center gap-2 text-[11px] font-semibold sm:col-span-2"
+                  >
+                    <span>☕</span>
+                    <span>Low-Energy Study (5 Mins) — Keep Streak Alive!</span>
+                  </button>
+                </div>
+              </div>
+            )}
+
+            {/* Input Composer Field */}
+            <div className="flex items-end gap-1.5 sm:gap-2 bg-[var(--surface2)] border border-[var(--border)] rounded-2xl p-1.5 focus-within:border-primary transition-all">
+              {/* [+] Context / Action Picker Button */}
               <button
                 type="button"
-                onClick={() => {
-                  setInputPrompt("What are my weakest topics according to FSRS, and what should I practice today?");
-                }}
-                className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-[var(--surface)] border border-[var(--border)] hover:border-primary/50 text-[var(--text2)] hover:text-primary text-[11px] font-medium transition-all shrink-0 cursor-pointer shadow-2xs"
+                onClick={() => setIsContextPickerOpen((prev) => !prev)}
+                className={`p-2 rounded-xl border transition-all cursor-pointer shrink-0 ${
+                  isContextPickerOpen
+                    ? "bg-primary text-white border-primary"
+                    : "bg-[var(--surface)] border-[var(--border)] text-[var(--text2)] hover:text-primary hover:border-primary/50"
+                }`}
+                title="Add Context or Quick Action"
               >
-                <span>🧠 Weak Topics (FSRS)</span>
+                <PlusCircle className="w-4 h-4" />
               </button>
 
+              {/* [⚙️] Settings & Model Selector Cog Button */}
               <button
                 type="button"
-                onClick={() => {
-                  setInputPrompt("What are the most common exam traps and calculator shortcuts for my weakest subjects?");
-                }}
-                className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-[var(--surface)] border border-[var(--border)] hover:border-primary/50 text-[var(--text2)] hover:text-primary text-[11px] font-medium transition-all shrink-0 cursor-pointer shadow-2xs"
+                onClick={() => setIsByokOpen(true)}
+                className="p-2 rounded-xl bg-[var(--surface)] border border-[var(--border)] text-[var(--text2)] hover:text-primary hover:border-primary/50 transition-all cursor-pointer shrink-0"
+                title="AI Settings & Model Configuration"
               >
-                <span>⚡ Traps & Shortcuts</span>
+                <Key className="w-4 h-4" />
               </button>
 
-              <button
-                type="button"
-                onClick={() => {
-                  setFunctionMode("custom_module");
-                  setInputPrompt("Please generate an interactive learning module with formulas, worked examples, and concept checks on my lowest-retention topic.");
-                }}
-                className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-[var(--surface)] border border-[var(--border)] hover:border-primary/50 text-[var(--text2)] hover:text-primary text-[11px] font-medium transition-all shrink-0 cursor-pointer shadow-2xs"
-              >
-                <span>📘 Custom Module</span>
-              </button>
-
-              <button
-                type="button"
-                onClick={() => {
-                  setFunctionMode("tricky_questions");
-                  setInputPrompt("Generate a 5-question tricky practice drill targeting distractor traps on my weakest topic.");
-                }}
-                className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-[var(--surface)] border border-[var(--border)] hover:border-primary/50 text-[var(--text2)] hover:text-primary text-[11px] font-medium transition-all shrink-0 cursor-pointer shadow-2xs"
-              >
-                <span>🎯 Tricky Drill</span>
-              </button>
-            </div>
-
-            <div className="flex items-end gap-2 bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-2 focus-within:border-primary transition-all">
+              {/* Auto-Expanding Textarea */}
               <textarea
                 ref={textareaRef}
                 value={inputPrompt}
@@ -728,23 +785,21 @@ export function TutorView() {
                     handleSendMessage();
                   }
                 }}
-                placeholder="Ask any Math, ELECS, GEAS, or EST question..."
+                placeholder="Ask Marnie AI anything..."
                 rows={1}
-                className="flex-1 bg-transparent text-xs sm:text-sm text-[var(--text)] placeholder-[var(--text3)] focus:outline-none resize-none px-2 py-1 max-h-32 min-h-[28px]"
+                className="flex-1 bg-transparent text-xs sm:text-sm text-[var(--text)] placeholder-[var(--text3)] focus:outline-none resize-none px-2 py-1.5 max-h-32 min-h-[34px] leading-relaxed"
               />
 
+              {/* Send Button */}
               <button
+                type="button"
                 onClick={() => handleSendMessage()}
                 disabled={isStreaming || !inputPrompt.trim()}
-                className="p-2.5 rounded-xl bg-primary text-white hover:opacity-95 disabled:opacity-40 transition-all shadow-sm shrink-0"
+                className="p-2 sm:p-2.5 rounded-xl bg-primary text-white hover:opacity-95 disabled:opacity-40 transition-all shadow-sm shrink-0 cursor-pointer"
+                title="Send message"
               >
                 <Send className="w-4 h-4" />
               </button>
-            </div>
-
-            <div className="flex items-center justify-between text-[11px] text-[var(--text3)] px-1">
-              <span>Press Enter to send, Shift+Enter for new line</span>
-              <span className="font-mono text-[10px]">{provider.toUpperCase()} • {model}</span>
             </div>
           </div>
         </section>

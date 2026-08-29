@@ -64,6 +64,14 @@ const ACTIONS: Array<{
     colorClass: "text-rose-500 bg-rose-500/10 border-rose-500/20",
     defaultPrompt: "Please analyze my exam attempt results step-by-step, deconstruct my missed questions, and teach me how to avoid these traps.",
   },
+  {
+    mode: "low_friction",
+    label: "Low-Energy Study (5 Mins)",
+    desc: "Guilt-free micro-dose learning when tired or unmotivated",
+    icon: Sparkles,
+    colorClass: "text-amber-500 bg-amber-500/10 border-amber-500/20",
+    defaultPrompt: "I'm really not feeling like studying today. Give me something super low friction and fast to keep my momentum and study streak going!",
+  },
 ];
 
 export function QuickActions({ onSelectAction, hasAttachedExam }: QuickActionsProps) {

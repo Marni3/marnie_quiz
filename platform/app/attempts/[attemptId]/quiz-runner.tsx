@@ -16,6 +16,7 @@ import {
   Send,
 } from "lucide-react";
 import { SanitizedQuestionForTaking } from "@/lib/attempts";
+import { recordStudyActivity } from "@/lib/streak";
 
 interface QuizRunnerProps {
   attempt: {
@@ -144,6 +145,7 @@ export function QuizRunner({ attempt, questionSet, questions }: QuizRunnerProps)
       });
 
       if (res.ok) {
+        recordStudyActivity("quiz");
         router.push(`/attempts/${attempt.id}/results`);
       } else {
         alert("Failed to submit exam. Please try again.");

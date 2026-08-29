@@ -7,6 +7,7 @@ import { MathText } from "@/components/math-text";
 import { DeclarativeVisualizer } from "@/components/declarative-visualizer";
 import { FeedbackModal } from "@/components/feedback-modal";
 import { UserNote, saveStoredNote } from "@/lib/notes";
+import { recordStudyActivity } from "@/lib/streak";
 import {
   BookOpen,
   Zap,
@@ -40,6 +41,7 @@ interface ModuleReaderProps {
 
 export function ModuleReader({ module }: ModuleReaderProps) {
   const [isMobileTocOpen, setIsMobileTocOpen] = useState(false);
+  const [formulaFitMode, setFormulaFitMode] = useState<"scroll" | "fit">("scroll");
   // Solution Toggle per example: 'formal' | 'shortcut' | 'combined'
   const [exampleModes, setExampleModes] = useState<Record<number, "formal" | "shortcut" | "combined">>(() => {
     const initial: Record<number, "formal" | "shortcut" | "combined"> = {};
@@ -268,7 +270,8 @@ export function ModuleReader({ module }: ModuleReaderProps) {
             setIsCompleted(!!data.progress.isCompleted);
           }
         }
-        // Touch progress to record lastStudiedAt
+        // Touch progress to record lastStudiedAt and update study streak
+        recordStudyActivity("module");
         fetch(`/api/modules/${module.id}/progress`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -399,6 +402,20 @@ export function ModuleReader({ module }: ModuleReaderProps) {
 
           {/* Action Buttons */}
           <div className="flex items-center gap-1.5 sm:gap-2.5 shrink-0">
+            {/* Formula Fit Mode Toggle */}
+            <button
+              type="button"
+              onClick={() => setFormulaFitMode((prev) => (prev === "scroll" ? "fit" : "scroll"))}
+              className={`inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-xl border text-xs font-semibold transition-all cursor-pointer ${
+                formulaFitMode === "fit"
+                  ? "bg-primary/15 border-primary/40 text-primary font-bold"
+                  : "bg-[var(--surface2)] border-[var(--border)] text-[var(--text2)] hover:text-[var(--text)]"
+              }`}
+              title={formulaFitMode === "fit" ? "Switch to Scrollable Formulas" : "Fit Formulas to Screen Width"}
+            >
+              <span>{formulaFitMode === "fit" ? "📐 Fit Math" : "↔️ Scroll Math"}</span>
+            </button>
+
             <button
               onClick={handleToggleBookmark}
               className={`inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-xl border text-xs font-semibold transition-all ${
@@ -486,7 +503,11 @@ export function ModuleReader({ module }: ModuleReaderProps) {
           <main
             onMouseUp={handleTextSelection}
             onTouchEnd={handleTextSelection}
-            className="lg:col-span-9 space-y-10"
+            className={`lg:col-span-9 space-y-10 ${
+              formulaFitMode === "fit"
+                ? "[&_.katex-display]:text-[12px] sm:[&_.katex-display]:text-sm [&_.katex-html]:text-[12px] sm:[&_.katex-html]:text-sm [&_.base]:max-w-full [&_.katex]:overflow-hidden"
+                : ""
+            }`}
           >
             {/* Title & Domain Banner */}
             <div className="space-y-4">

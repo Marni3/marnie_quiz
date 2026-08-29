@@ -3,8 +3,10 @@
 import { useState } from "react";
 import { LearningModule } from "@/lib/modules";
 import { ModuleReader } from "@/app/learn/[moduleId]/module-reader";
-import { X, Sparkles, Download, Check } from "lucide-react";
+import { X, Sparkles, Download, Check, BookMarked } from "lucide-react";
 import { getStoredCustomModules } from "@/lib/tutor/storage";
+import { saveStoredNote } from "@/lib/notes";
+import { recordStudyActivity } from "@/lib/streak";
 
 interface CustomModuleModalProps {
   isOpen: boolean;
@@ -20,6 +22,7 @@ export function CustomModuleModal({
   onSaved,
 }: CustomModuleModalProps) {
   const [saved, setSaved] = useState(false);
+  const [savedNote, setSavedNote] = useState(false);
 
   if (!isOpen || !module) return null;
 
@@ -33,11 +36,34 @@ export function CustomModuleModal({
         existing.unshift(module);
       }
       localStorage.setItem("marnie_tutor_custom_modules", JSON.stringify(existing));
+      recordStudyActivity("module");
       setSaved(true);
       if (onSaved) onSaved();
       setTimeout(() => setSaved(false), 2500);
     } catch (err) {
       console.error("Failed to save custom module to library:", err);
+    }
+  };
+
+  const handleSaveToNotes = () => {
+    try {
+      const theoryText = typeof module.theory === "string" ? module.theory : JSON.stringify(module.theory || "", null, 2);
+      const noteContent = `# ${module.code || "CUSTOM"}: ${module.subtopicTitle}\n\n**Domain:** ${module.domain} | **Topic:** ${module.topicTitle}\n\n## Theory & Key Provisions\n${theoryText}\n\n## Key Formulas\n${JSON.stringify(module.formulas || [], null, 2)}`;
+
+      saveStoredNote({
+        id: `note_mod_${module.id || Date.now()}`,
+        title: `${module.code || "Module"}: ${module.subtopicTitle}`,
+        type: "custom_note",
+        content: noteContent,
+        tags: ["Custom Module", module.domain || "EST", "AI Study"],
+        createdAt: Date.now(),
+        updatedAt: Date.now(),
+      });
+      recordStudyActivity("note");
+      setSavedNote(true);
+      setTimeout(() => setSavedNote(false), 2500);
+    } catch (err) {
+      console.error("Failed to save module as note:", err);
     }
   };
 
@@ -63,6 +89,18 @@ export function CustomModuleModal({
           </div>
 
           <div className="flex items-center gap-2">
+            <button
+              onClick={handleSaveToNotes}
+              className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-bold transition-all cursor-pointer border ${
+                savedNote
+                  ? "bg-emerald-500/15 border-emerald-500/30 text-emerald-600 dark:text-emerald-400"
+                  : "bg-[var(--surface)] border-[var(--border)] text-[var(--text2)] hover:text-primary hover:border-primary/40"
+              }`}
+            >
+              {savedNote ? <Check className="w-3.5 h-3.5" /> : <BookMarked className="w-3.5 h-3.5" />}
+              <span>{savedNote ? "Saved to Notes!" : "Save to Notes"}</span>
+            </button>
+
             <button
               onClick={handleSaveToLibrary}
               className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-primary text-white text-xs font-bold shadow-xs hover:opacity-95 transition-all cursor-pointer"

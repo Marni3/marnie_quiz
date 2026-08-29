@@ -1,29 +1,33 @@
 import { TutorFunctionMode } from "./types";
 
 export const DEFAULT_MODELS: Record<string, string> = {
-  gemini: "gemini-3.6-flash",
+  gemini: "gemini-3.7-flash",
   openai: "gpt-4o",
   anthropic: "claude-3-5-sonnet-20241022",
   deepseek: "deepseek-chat",
-  openrouter: "google/gemini-3.6-flash-001",
-  groq: "llama-3.3-70b-versatile",
+  openrouter: "google/gemini-3.7-flash",
+  groq: "qwen/qwen3.8-27b",
 };
 
 export const MODEL_CATALOG = [
-  { id: "gemini-3.6-flash", name: "Gemini 3.6 Flash (Fast & Free Tier)", provider: "gemini" as const, isRecommended: true },
-  { id: "gemini-1.5-pro", name: "Gemini 1.5 Pro (Deep Reasoning)", provider: "gemini" as const },
+  { id: "gemini-3.7-flash", name: "Gemini 3.7 Flash (Latest & Most Capable)", provider: "gemini" as const, isRecommended: true },
+  { id: "gemini-3.6-flash", name: "Gemini 3.6 Flash (Fast Multimodal)", provider: "gemini" as const },
+  { id: "gemini-3.5-flash", name: "Gemini 3.5 Flash (Baseline)", provider: "gemini" as const },
   { id: "gpt-4o", name: "GPT-4o (Omni High Precision)", provider: "openai" as const, isRecommended: true },
   { id: "gpt-4o-mini", name: "GPT-4o Mini (Fast & Low Cost)", provider: "openai" as const },
   { id: "claude-3-5-sonnet-20241022", name: "Claude 3.5 Sonnet (Pedagogical Master)", provider: "anthropic" as const, isRecommended: true },
   { id: "claude-3-5-haiku-20241022", name: "Claude 3.5 Haiku (Ultra Fast)", provider: "anthropic" as const },
   { id: "deepseek-chat", name: "DeepSeek V3 (High Value / Low Cost)", provider: "deepseek" as const },
   { id: "deepseek-reasoner", name: "DeepSeek R1 (Math & Code Reasoning)", provider: "deepseek" as const },
-  { id: "google/gemini-3.6-flash-001", name: "Gemini 3.6 Flash (via OpenRouter)", provider: "openrouter" as const },
+  { id: "google/gemini-3.7-flash", name: "Gemini 3.7 Flash (via OpenRouter)", provider: "openrouter" as const },
   { id: "anthropic/claude-3.5-sonnet", name: "Claude 3.5 Sonnet (via OpenRouter)", provider: "openrouter" as const },
-  { id: "llama-3.3-70b-versatile", name: "Llama 3.3 70B (Fast & Free Tier)", provider: "groq" as const, isRecommended: true },
-  { id: "llama-3.1-8b-instant", name: "Llama 3.1 8B Instant (Ultra Fast)", provider: "groq" as const },
-  { id: "mixtral-8x7b-32768", name: "Mixtral 8x7B (Long Context)", provider: "groq" as const },
-  { id: "gemma2-9b-it", name: "Gemma 2 9B Instruct", provider: "groq" as const },
+  { id: "qwen/qwen3.8-27b", name: "Qwen 3.8 27B (Multimodal Vision & Reasoning)", provider: "groq" as const, isRecommended: true },
+  { id: "openai/gpt-oss-120b", name: "GPT OSS 120B (Deep Reasoning & JSON)", provider: "groq" as const, isRecommended: true },
+  { id: "openai/gpt-oss-20b", name: "GPT OSS 20B (Ultra Fast)", provider: "groq" as const },
+  { id: "qwen/qwen3.6-27b", name: "Qwen 3.6 27B (Vision)", provider: "groq" as const },
+  { id: "groq/compound", name: "Groq Compound (131k Context)", provider: "groq" as const },
+  { id: "groq/compound-mini", name: "Groq Compound Mini", provider: "groq" as const },
+  { id: "llama-3.3-70b-versatile", name: "Llama 3.3 70B (Legacy)", provider: "groq" as const },
 ];
 
 export const BASE_SOCRATIC_PROMPT = `You are "Marnie AI", a world-class PRC Electronics Engineering (ECE) Board Examination Master Tutor and Senior Full-Stack Engineering Mentor.
@@ -257,6 +261,26 @@ INSTRUCTIONS FOR THE DEBRIEF:
    - Present two clear next-step action buttons:
      - **[ 📘 Create Targeted Learning Module ]**: Offer to generate an in-depth customized module targeting these exact mistakes.
      - **[ ⚡ Practice Exam Remix ]**: Offer to generate a fresh 10-to-15 question practice remix of similar questions to test mastery immediately.`;
+
+    case "low_friction":
+      return `${basePrompt}
+
+MODE: Low-Friction Study Mode & Micro-Learning Coach (Low Energy / Procrastination Buster)
+The student is feeling tired, low on motivation, or procrastinating today.
+Your goal is to provide ZERO-GUILT, EMPATHETIC, ULTRA-LOW FRICTION micro-learning (under 5 minutes) that breaks inertia immediately.
+
+PEDAGOGICAL DIRECTIVES:
+1. **Empathy & Immediate Validation**: Start with a warm, friendly note: *"Totally understand—consistency beats intensity. Let's do a quick 3-minute win to keep your streak and momentum alive without burning any mental energy."*
+2. **Immediate 1-Minute High-Yield Micro-Lesson**:
+   - Inspect the student's profile context (weakest FSRS topics or recent mistakes). If unavailable, pick a fun, high-yield board exam topic (e.g. *De Morgan's Laws*, *Resistor Parallel Shortcut*, *R.A. 9292 ECE Law keywords*, *Superposition Shortcut*).
+   - Present a crisp, 60-second mental anchor:
+     - **The 1-Second Rule / Mnemonic Trigger**
+     - **The 10-Second Calculator Trick** (Karce / Canon keystrokes)
+3. **Instant 3-Question Micro-Check (In-line)**:
+   - Provide 3 rapid conceptual true/false or quick multiple-choice questions right in the markdown text with answers blurred/revealed.
+4. **Closing Momentum Hand-off**:
+   - Conclude by cheering them on for keeping their study streak active today.
+   - Mention that if they feel a spark of energy now that the hardest part (starting) is done, they can dive into the full module or wrap up for the day!`;
 
     default:
       return basePrompt;

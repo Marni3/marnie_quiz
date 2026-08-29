@@ -9,28 +9,39 @@ interface MathTextProps {
   text: string | null | undefined;
   className?: string;
   splitParagraphs?: boolean;
+  fitMode?: "scroll" | "fit";
 }
 
 export function MathText({
   text,
   className = "",
   splitParagraphs = false,
+  fitMode = "scroll",
 }: MathTextProps) {
   if (!text) return null;
 
+  const fitClasses =
+    fitMode === "fit"
+      ? "[&_.katex-display]:text-[12px] sm:[&_.katex-display]:text-sm [&_.katex-html]:text-[12px] sm:[&_.katex-html]:text-sm [&_.base]:max-w-full [&_.katex]:leading-normal"
+      : "";
+
   if (splitParagraphs) {
-    return <div className={`space-y-4 ${className}`}>{renderMarkdownBlocks(text)}</div>;
+    return (
+      <div className={`space-y-4 ${fitClasses} ${className}`}>
+        {renderMarkdownBlocks(text, fitMode)}
+      </div>
+    );
   }
 
   return (
-    <span className={className}>
-      <InlineFormattedText content={text} />
+    <span className={`${fitClasses} ${className}`}>
+      <InlineFormattedText content={text} fitMode={fitMode} />
     </span>
   );
 }
 
 // Parses multiline markdown blocks: headers, lists, horizontal rules, tables, diagrams, and paragraphs
-function renderMarkdownBlocks(markdown: string): React.ReactNode {
+function renderMarkdownBlocks(markdown: string, fitMode: "scroll" | "fit" = "scroll"): React.ReactNode {
   // Normalize line endings
   const clean = markdown.replace(/\r\n/g, "\n");
   const rawLines = clean.split("\n");
@@ -118,82 +129,86 @@ function renderMarkdownBlocks(markdown: string): React.ReactNode {
           key={`quote-${i}`}
           className="bg-amber-500/10 border-l-4 border-l-amber-500 border border-amber-500/20 rounded-r-xl p-3.5 my-3 text-sm sm:text-base text-[var(--text)] leading-relaxed"
         >
-          <InlineFormattedText content={quoteLines.join(" ")} />
+          {quoteLines.map((q, qIdx) => (
+            <p key={qIdx} className="leading-relaxed">
+              <InlineFormattedText content={q} fitMode={fitMode} />
+            </p>
+          ))}
         </div>
       );
       continue;
     }
 
-    // Horizontal Rule
-    if (/^---+$|^\*\*\*+$/.test(trimmed)) {
-      elements.push(
-        <hr key={`hr-${i}`} className="my-4 border-[var(--border)] border-t" />
-      );
+    // Horizontal Rule (---, ***, ___)
+    if (/^(---|___|\*\*\*)$/.test(trimmed)) {
+      elements.push(<hr key={`hr-${i}`} className="my-6 border-[var(--border)]" />);
       i++;
       continue;
     }
 
-    // Headings
-    if (trimmed.startsWith("#### ")) {
-      elements.push(
-        <h4 key={`h4-${i}`} className="text-sm sm:text-base font-bold text-[var(--text)] mt-4 mb-1">
-          <InlineFormattedText content={trimmed.slice(5)} />
-        </h4>
-      );
-      i++;
-      continue;
-    }
-    if (trimmed.startsWith("### ")) {
-      elements.push(
-        <h3 key={`h3-${i}`} className="text-base sm:text-lg font-bold font-serif text-[var(--text)] mt-5 mb-2 pb-1 border-b border-[var(--border)]/40">
-          <InlineFormattedText content={trimmed.slice(4)} />
-        </h3>
-      );
-      i++;
-      continue;
-    }
-    if (trimmed.startsWith("## ")) {
-      elements.push(
-        <h2 key={`h2-${i}`} className="text-lg sm:text-xl font-bold font-serif text-[var(--text)] mt-6 mb-2">
-          <InlineFormattedText content={trimmed.slice(3)} />
-        </h2>
-      );
-      i++;
-      continue;
-    }
-    if (trimmed.startsWith("# ")) {
-      elements.push(
-        <h1 key={`h1-${i}`} className="text-xl sm:text-2xl font-extrabold font-serif text-[var(--text)] mt-7 mb-3">
-          <InlineFormattedText content={trimmed.slice(2)} />
-        </h1>
-      );
-      i++;
-      continue;
-    }
-
-    // Table detection (starts with |)
+    // Markdown Table (| ... |)
     if (trimmed.startsWith("|") && trimmed.endsWith("|")) {
       const tableLines: string[] = [];
       while (i < rawLines.length && rawLines[i].trim().startsWith("|") && rawLines[i].trim().endsWith("|")) {
         tableLines.push(rawLines[i].trim());
         i++;
       }
-      elements.push(renderMarkdownTable(`tbl-${i}`, tableLines));
+      const tableEl = renderMarkdownTable(`tbl-${i}`, tableLines, fitMode);
+      if (tableEl) elements.push(tableEl);
       continue;
     }
 
-    // Unordered List
-    if (/^[-*]\s+/.test(trimmed)) {
+    // Headers (# ...)
+    if (trimmed.startsWith("#")) {
+      const match = trimmed.match(/^(#{1,6})\s+(.*)$/);
+      if (match) {
+        const level = match[1].length;
+        const text = match[2];
+        if (level === 1) {
+          elements.push(
+            <h1 key={`h1-${i}`} className="text-xl sm:text-2xl font-bold font-serif text-[var(--text)] pt-4 pb-1 border-b border-[var(--border)]">
+              <InlineFormattedText content={text} fitMode={fitMode} />
+            </h1>
+          );
+        } else if (level === 2) {
+          elements.push(
+            <h2 key={`h2-${i}`} className="text-lg sm:text-xl font-bold font-serif text-[var(--text)] pt-3 pb-1">
+              <InlineFormattedText content={text} fitMode={fitMode} />
+            </h2>
+          );
+        } else if (level === 3) {
+          elements.push(
+            <h3 key={`h3-${i}`} className="text-sm sm:text-base font-bold font-serif text-primary pt-2">
+              <InlineFormattedText content={text} fitMode={fitMode} />
+            </h3>
+          );
+        } else {
+          elements.push(
+            <h4 key={`h4-${i}`} className="text-xs sm:text-sm font-semibold text-[var(--text2)] pt-1">
+              <InlineFormattedText content={text} fitMode={fitMode} />
+            </h4>
+          );
+        }
+        i++;
+        continue;
+      }
+    }
+
+    // Unordered List (- or *)
+    if (trimmed.startsWith("- ") || trimmed.startsWith("* ")) {
       const listItems: string[] = [];
-      while (i < rawLines.length && /^[-*]\s+/.test(rawLines[i].trim())) {
-        listItems.push(rawLines[i].trim().replace(/^[-*]\s+/, ""));
+      while (i < rawLines.length && (rawLines[i].trim().startsWith("- ") || rawLines[i].trim().startsWith("* "))) {
+        listItems.push(rawLines[i].trim().slice(2));
         i++;
       }
       elements.push(
-        <ul key={`ul-${i}`} className="list-disc list-inside space-y-2 pl-2 text-sm sm:text-base text-[var(--text)]">
+        <ul key={`ul-${i}`} className="space-y-1.5 pl-2 text-sm sm:text-base text-[var(--text)]">
           {listItems.map((item, lIdx) => (
-            <li key={lIdx} className="leading-relaxed">
-              <InlineFormattedText content={item} />
+            <li key={lIdx} className="flex items-start gap-2 leading-relaxed">
+              <span className="w-1.5 h-1.5 rounded-full bg-[var(--accent)] shrink-0 mt-2" />
+              <span>
+                <InlineFormattedText content={item} fitMode={fitMode} />
+              </span>
             </li>
           ))}
         </ul>
@@ -212,7 +227,7 @@ function renderMarkdownBlocks(markdown: string): React.ReactNode {
         <ol key={`ol-${i}`} className="list-decimal list-inside space-y-2 pl-2 text-sm sm:text-base text-[var(--text)]">
           {listItems.map((item, lIdx) => (
             <li key={lIdx} className="leading-relaxed">
-              <InlineFormattedText content={item} />
+              <InlineFormattedText content={item} fitMode={fitMode} />
             </li>
           ))}
         </ol>
@@ -223,8 +238,8 @@ function renderMarkdownBlocks(markdown: string): React.ReactNode {
     // Display Math block ($$...$$)
     if (trimmed.startsWith("$$") && trimmed.endsWith("$$") && trimmed.length >= 4) {
       elements.push(
-        <div key={`math-${i}`} className="my-3 text-center overflow-x-auto">
-          <RenderMathBlock math={trimmed.slice(2, -2).trim()} display={true} />
+        <div key={`math-${i}`} className={`my-3 text-center ${fitMode === "fit" ? "max-w-full overflow-hidden" : "overflow-x-auto"}`}>
+          <RenderMathBlock math={trimmed.slice(2, -2).trim()} display={true} fitMode={fitMode} />
         </div>
       );
       i++;
@@ -234,7 +249,7 @@ function renderMarkdownBlocks(markdown: string): React.ReactNode {
     // Regular paragraph
     elements.push(
       <p key={`p-${i}`} className="leading-relaxed text-sm sm:text-base text-[var(--text)]">
-        <InlineFormattedText content={trimmed} />
+        <InlineFormattedText content={trimmed} fitMode={fitMode} />
       </p>
     );
     i++;
@@ -243,7 +258,7 @@ function renderMarkdownBlocks(markdown: string): React.ReactNode {
   return elements;
 }
 
-function renderMarkdownTable(key: string, lines: string[]): React.ReactNode {
+function renderMarkdownTable(key: string, lines: string[], fitMode: "scroll" | "fit" = "scroll"): React.ReactNode {
   if (lines.length < 2) return null;
   const headerCells = lines[0].slice(1, -1).split("|").map((c) => c.trim());
   const rowLines = lines.slice(2); // skip header and separator row
@@ -255,7 +270,7 @@ function renderMarkdownTable(key: string, lines: string[]): React.ReactNode {
           <tr>
             {headerCells.map((cell, idx) => (
               <th key={idx} className="px-3 py-2 border-r border-[var(--border)] last:border-r-0">
-                <InlineFormattedText content={cell} />
+                <InlineFormattedText content={cell} fitMode={fitMode} />
               </th>
             ))}
           </tr>
@@ -267,7 +282,7 @@ function renderMarkdownTable(key: string, lines: string[]): React.ReactNode {
               <tr key={rIdx} className="hover:bg-[var(--surface2)]/50 transition-colors">
                 {cells.map((cell, cIdx) => (
                   <td key={cIdx} className="px-3 py-2 border-r border-[var(--border)] last:border-r-0 text-[var(--text)]">
-                    <InlineFormattedText content={cell} />
+                    <InlineFormattedText content={cell} fitMode={fitMode} />
                   </td>
                 ))}
               </tr>
@@ -280,7 +295,7 @@ function renderMarkdownTable(key: string, lines: string[]): React.ReactNode {
 }
 
 // In-line formatter for Math ($...$, $$...$$), Bold (**...**), and Italics (*...*)
-function InlineFormattedText({ content }: { content: string }) {
+function InlineFormattedText({ content, fitMode = "scroll" }: { content: string; fitMode?: "scroll" | "fit" }) {
   const parts = useMemo(() => {
     // Tokenize on $$...$$, $...$, and **...**
     const regex = /(\$\$[\s\S]*?\$\$|\$[\s\S]*?\$|\*\*[\s\S]*?\*\*)/g;
@@ -289,32 +304,32 @@ function InlineFormattedText({ content }: { content: string }) {
     return tokens.map((token, i) => {
       if (token.startsWith("$$") && token.endsWith("$$") && token.length >= 4) {
         return (
-          <span key={i} className="block my-2.5 text-center overflow-x-auto max-w-full py-0.5">
-            <RenderMathBlock math={token.slice(2, -2).trim()} display={true} />
+          <span key={i} className={`block my-2.5 text-center max-w-full py-0.5 ${fitMode === "fit" ? "overflow-hidden" : "overflow-x-auto"}`}>
+            <RenderMathBlock math={token.slice(2, -2).trim()} display={true} fitMode={fitMode} />
           </span>
         );
       } else if (token.startsWith("$") && token.endsWith("$") && token.length >= 2) {
         return (
           <span key={i} className="inline-math px-0.5 max-w-full">
-            <RenderMathBlock math={token.slice(1, -1).trim()} display={false} />
+            <RenderMathBlock math={token.slice(1, -1).trim()} display={false} fitMode={fitMode} />
           </span>
         );
       } else if (token.startsWith("**") && token.endsWith("**") && token.length >= 4) {
         return (
           <strong key={i} className="font-bold text-[var(--text)]">
-            <InlineFormattedText content={token.slice(2, -2)} />
+            <InlineFormattedText content={token.slice(2, -2)} fitMode={fitMode} />
           </strong>
         );
       } else {
         return <React.Fragment key={i}>{token}</React.Fragment>;
       }
     });
-  }, [content]);
+  }, [content, fitMode]);
 
   return <>{parts}</>;
 }
 
-function RenderMathBlock({ math, display }: { math: string; display: boolean }) {
+function RenderMathBlock({ math, display, fitMode = "scroll" }: { math: string; display: boolean; fitMode?: "scroll" | "fit" }) {
   const html = useMemo(() => {
     try {
       return katex.renderToString(math, {
@@ -330,9 +345,19 @@ function RenderMathBlock({ math, display }: { math: string; display: boolean }) 
     return <code className="break-all font-mono text-xs">{math}</code>;
   }
 
+  const fitStyle = fitMode === "fit"
+    ? "[&_.katex-display]:text-[12px] sm:[&_.katex-display]:text-sm [&_.katex-html]:text-[12px] sm:[&_.katex-html]:text-sm [&_.base]:max-w-full"
+    : "";
+
   return (
     <span
-      className={display ? "block max-w-full overflow-x-auto overflow-y-hidden" : "inline-block max-w-full overflow-x-auto overflow-y-hidden align-middle"}
+      className={`${fitStyle} ${
+        display
+          ? fitMode === "fit"
+            ? "block max-w-full overflow-hidden"
+            : "block max-w-full overflow-x-auto overflow-y-hidden"
+          : "inline-block max-w-full overflow-x-auto overflow-y-hidden align-middle"
+      }`}
       dangerouslySetInnerHTML={{ __html: html }}
     />
   );

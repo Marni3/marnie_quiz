@@ -1,9 +1,12 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Link from "next/link";
 import { ChatMessage, TutorFunctionMode } from "@/lib/tutor/types";
 import { MathText } from "@/components/math-text";
 import { CustomModuleModal } from "./custom-module-modal";
+import { saveStoredNote } from "@/lib/notes";
+import { recordStudyActivity } from "@/lib/streak";
 import {
   Copy,
   Check,
@@ -14,82 +17,73 @@ import {
   Target,
   Rocket,
   Download,
+  BookMarked,
+  CheckCircle2,
+  Zap,
 } from "lucide-react";
+
+import { safeParseLlmJson } from "@/lib/tutor/json-parser";
 
 interface ChatMessageProps {
   message: ChatMessage;
   onTriggerAction?: (mode: TutorFunctionMode, promptText: string) => void;
 }
 
-function tryParseJsonBlock(raw: string): any {
-  if (!raw) return null;
-
-  // 1. Direct parse attempt
-  try {
-    return JSON.parse(raw);
-  } catch {}
-
-  // 2. Fix unescaped backslashes (common in LaTeX outputs like \frac, \sqrt, \tau, \alpha)
-  try {
-    const sanitized = raw.replace(/\\(?!["\\/bfnrtu]|u[0-9a-fA-F]{4})/g, "\\\\");
-    return JSON.parse(sanitized);
-  } catch {}
-
-  // 3. Fix unescaped backslashes + trailing commas before closing braces/brackets
-  try {
-    const fixed = raw
-      .replace(/,\s*}/g, "}")
-      .replace(/,\s*]/g, "]")
-      .replace(/\\(?!["\\/bfnrtu]|u[0-9a-fA-F]{4})/g, "\\\\");
-    return JSON.parse(fixed);
-  } catch {}
-
-  return null;
-}
-
 function extractArtifactFromMessage(content: string): { module: any | null; quiz: any | null; rawJson: string } {
-  if (!content) return { module: null, quiz: null, rawJson: "" };
+  if (!content || typeof content !== "string") return { module: null, quiz: null, rawJson: "" };
 
-  let candidateJson = "";
+  // 1. Try extracting all fenced code blocks (```json ... ```)
+  const matches = Array.from(content.matchAll(/```(?:json)?\s*([\s\S]*?)(?:```|$)/gi));
+  for (const m of matches) {
+    if (m[1]) {
+      const candidate = m[1].trim();
+      const parsed = safeParseLlmJson(candidate);
+      if (parsed && typeof parsed === "object") {
+        const isModule =
+          Boolean(parsed.subtopicTitle || parsed.topicTitle || parsed.id || parsed.code) &&
+          Boolean(parsed.toc || parsed.theory || parsed.sections || parsed.formulas || parsed.comparisonTables || parsed.sampleProblems || parsed.conceptChecks);
 
-  // Check 1: Fenced code block (```json or ```)
-  const codeBlockMatch = content.match(/```(?:json)?\s*([\s\S]*?)(?:```|$)/);
-  if (codeBlockMatch && codeBlockMatch[1]) {
-    const trimmed = codeBlockMatch[1].trim();
-    if (trimmed.startsWith("{") || trimmed.startsWith("[")) {
-      candidateJson = trimmed;
+        if (isModule) {
+          return { module: parsed, quiz: null, rawJson: candidate };
+        }
+
+        const isQuiz =
+          (Array.isArray(parsed.questions) && parsed.questions.length > 0) ||
+          (Array.isArray(parsed.items) && parsed.items.length > 0);
+
+        if (isQuiz) {
+          return { module: null, quiz: parsed, rawJson: candidate };
+        }
+      }
     }
   }
 
-  // Check 2: Outer-most curly braces
-  if (!candidateJson) {
-    const firstBrace = content.indexOf("{");
-    const lastBrace = content.lastIndexOf("}");
-    if (firstBrace !== -1 && lastBrace !== -1 && lastBrace > firstBrace) {
-      candidateJson = content.substring(firstBrace, lastBrace + 1).trim();
+  // 2. Try whole-message parser fallback
+  const parsed = safeParseLlmJson(content);
+  if (parsed && typeof parsed === "object") {
+    const isModule =
+      Boolean(parsed.subtopicTitle || parsed.topicTitle || parsed.id || parsed.code) &&
+      Boolean(parsed.toc || parsed.theory || parsed.sections || parsed.formulas || parsed.comparisonTables || parsed.sampleProblems || parsed.conceptChecks);
+
+    if (isModule) {
+      return { module: parsed, quiz: null, rawJson: content };
+    }
+
+    const isQuiz =
+      (Array.isArray(parsed.questions) && parsed.questions.length > 0) ||
+      (Array.isArray(parsed.items) && parsed.items.length > 0);
+
+    if (isQuiz) {
+      return { module: null, quiz: parsed, rawJson: content };
     }
   }
 
-  if (!candidateJson) return { module: null, quiz: null, rawJson: "" };
-
-  const parsed = tryParseJsonBlock(candidateJson);
-  if (!parsed) return { module: null, quiz: null, rawJson: candidateJson };
-
-  // Detect Learning Module
-  if (parsed.subtopicTitle && (parsed.theory || parsed.formulas || parsed.toc || parsed.comparisonTables)) {
-    return { module: parsed, quiz: null, rawJson: candidateJson };
-  }
-
-  // Detect Question Set / Quiz Drill
-  if (parsed.questions && Array.isArray(parsed.questions) && parsed.questions.length > 0) {
-    return { module: null, quiz: parsed, rawJson: candidateJson };
-  }
-
-  return { module: null, quiz: null, rawJson: candidateJson };
+  return { module: null, quiz: null, rawJson: "" };
 }
 
 export function ChatMessageItem({ message, onTriggerAction }: ChatMessageProps) {
   const [copied, setCopied] = useState(false);
+  const [savedToNotebook, setSavedToNotebook] = useState(false);
   const [previewModule, setPreviewModule] = useState<any | null>(null);
   const isUser = message.role === "user";
 
@@ -99,6 +93,54 @@ export function ChatMessageItem({ message, onTriggerAction }: ChatMessageProps) 
     navigator.clipboard.writeText(message.content);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
+  };
+
+  const handleSaveToNotebook = (contentToSave: string) => {
+    let title = "AI Study Note";
+    const headingMatch = contentToSave.match(/^#+\s+(.*)$/m);
+    if (headingMatch && headingMatch[1]) {
+      title = headingMatch[1].trim();
+    } else if (message.functionMode === "custom_module") {
+      title = `AI Custom Module Summary`;
+    } else if (message.functionMode === "tricky_questions") {
+      title = `AI Tricky Questions & Traps`;
+    } else if (message.functionMode === "formula_sheet") {
+      title = `AI Formula Compilation`;
+    } else if (message.functionMode === "review_exam") {
+      title = `AI Exam Diagnostic Note`;
+    } else {
+      title = `AI Tutor Note (${new Date().toLocaleDateString()})`;
+    }
+
+    try {
+      const newNote = {
+        id: `note_${Date.now()}_${Math.random().toString(36).slice(2, 7)}`,
+        title,
+        type: "custom_note" as const,
+        content: contentToSave,
+        tags: ["AI Tutor", message.functionMode || "General"],
+        createdAt: Date.now(),
+        updatedAt: Date.now(),
+      };
+      saveStoredNote(newNote);
+      recordStudyActivity("note");
+      setSavedToNotebook(true);
+      setTimeout(() => setSavedToNotebook(false), 3000);
+    } catch (err) {
+      console.error("Save note failed:", err);
+    }
+  };
+
+  const handleDownloadMarkdown = (contentToDownload: string) => {
+    const blob = new Blob([contentToDownload], { type: "text/markdown" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = `marnie-ai-note-${Date.now()}.md`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
   };
 
   const handleDownloadJson = (data: any, filename: string) => {
@@ -192,6 +234,7 @@ export function ChatMessageItem({ message, onTriggerAction }: ChatMessageProps) 
               {message.functionMode === "tricky_questions" && "Tricky Question Practice"}
               {message.functionMode === "formula_sheet" && "Formula Sheet Generator"}
               {message.functionMode === "review_exam" && "Exam Diagnostic Review"}
+              {message.functionMode === "low_friction" && "☕ Low-Energy Study Coach"}
             </span>
           </div>
         )}
@@ -371,15 +414,120 @@ export function ChatMessageItem({ message, onTriggerAction }: ChatMessageProps) 
           </div>
         )}
 
-        {/* Copy Button */}
-        <div className="flex items-center justify-end pt-1">
+        {/* Interactive Momentum-Riding Card for Low-Friction Study Mode */}
+        {!isUser && (message.functionMode === "low_friction" || displayContent.includes("consistency beats intensity") || displayContent.includes("streak and momentum alive")) && (
+          <div className="mt-4 pt-3 border-t border-[var(--border)] bg-gradient-to-br from-amber-500/10 via-primary/5 to-emerald-500/10 -mx-4 -mb-4 p-4 rounded-b-2xl space-y-3">
+            <div className="flex items-center justify-between">
+              <div className="text-xs font-bold text-[var(--text)] flex items-center gap-1.5">
+                <Sparkles className="w-4 h-4 text-amber-500" />
+                <span>Ride the Momentum? You've already broken the inertia!</span>
+              </div>
+              <span className="text-[10px] font-mono font-bold text-amber-600 dark:text-amber-400 bg-amber-500/10 px-2 py-0.5 rounded-full border border-amber-500/20">
+                🔥 Streak Saved!
+              </span>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 pt-1">
+              <Link
+                href="/learn"
+                className="p-2.5 rounded-xl bg-[var(--surface)] border border-primary/30 hover:border-primary hover:bg-primary/5 text-left flex flex-col justify-between transition-all group/btn"
+              >
+                <div className="flex items-center gap-1.5 text-xs font-bold text-[var(--text)] group-hover/btn:text-primary transition-colors">
+                  <BookOpen className="w-3.5 h-3.5 text-primary shrink-0" />
+                  <span>Open Full Module</span>
+                </div>
+                <div className="text-[10px] text-[var(--text2)] leading-tight mt-1">
+                  Explore complete lesson & formulas
+                </div>
+              </Link>
+
+              {onTriggerAction && (
+                <button
+                  type="button"
+                  onClick={() =>
+                    onTriggerAction(
+                      "tricky_questions",
+                      "I have a bit of energy now! Give me a rapid 5-question practice drill on this topic."
+                    )
+                  }
+                  className="p-2.5 rounded-xl bg-[var(--surface)] border border-emerald-500/30 hover:border-emerald-500 hover:bg-emerald-500/5 text-left flex flex-col justify-between transition-all group/btn cursor-pointer"
+                >
+                  <div className="flex items-center gap-1.5 text-xs font-bold text-[var(--text)] group-hover/btn:text-emerald-500 transition-colors">
+                    <Zap className="w-3.5 h-3.5 text-emerald-500 shrink-0" />
+                    <span>5-Min Practice Drill</span>
+                  </div>
+                  <div className="text-[10px] text-[var(--text2)] leading-tight mt-1">
+                    Test 5 questions right here
+                  </div>
+                </button>
+              )}
+
+              <div className="p-2.5 rounded-xl bg-[var(--surface)] border border-[var(--border)] text-left flex flex-col justify-between opacity-80 hover:opacity-100 transition-opacity">
+                <div className="flex items-center gap-1.5 text-xs font-semibold text-[var(--text)]">
+                  <span>✅ Done for Today</span>
+                </div>
+                <div className="text-[10px] text-[var(--text2)] leading-tight mt-1">
+                  Great job keeping your daily habit!
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* Message Actions Toolbar */}
+        <div className="flex items-center justify-between pt-1 border-t border-[var(--border)]/40 mt-2">
+          {!isUser ? (
+            <div className="flex items-center gap-1">
+              <button
+                type="button"
+                onClick={() => handleSaveToNotebook(displayContent)}
+                className={`p-1.5 rounded-lg text-xs flex items-center gap-1 transition-all cursor-pointer ${
+                  savedToNotebook
+                    ? "bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 font-bold border border-emerald-500/30"
+                    : "text-[var(--text3)] hover:text-primary hover:bg-[var(--surface2)]"
+                }`}
+                title="Save this explanation to your Personal Study Notebook"
+              >
+                {savedToNotebook ? (
+                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-500" />
+                ) : (
+                  <BookMarked className="w-3.5 h-3.5" />
+                )}
+                <span className="text-[10px]">{savedToNotebook ? "Saved to Notes!" : "Save Note"}</span>
+              </button>
+
+              {savedToNotebook && (
+                <Link
+                  href="/notes"
+                  className="text-[10px] text-primary underline hover:opacity-80 ml-1"
+                >
+                  View Vault →
+                </Link>
+              )}
+
+              <button
+                type="button"
+                onClick={() => handleDownloadMarkdown(displayContent)}
+                className="p-1.5 rounded-lg text-xs flex items-center gap-1 text-[var(--text3)] hover:text-[var(--text)] hover:bg-[var(--surface2)] transition-all cursor-pointer"
+                title="Download as Markdown file (.md)"
+              >
+                <Download className="w-3.5 h-3.5" />
+                <span className="text-[10px]">.md</span>
+              </button>
+            </div>
+          ) : (
+            <div />
+          )}
+
           <button
+            type="button"
             onClick={handleCopy}
-            className={`p-1.5 rounded-lg text-xs flex items-center gap-1 transition-all ${
+            className={`p-1.5 rounded-lg text-xs flex items-center gap-1 transition-all cursor-pointer ${
               isUser
                 ? "text-white/80 hover:text-white hover:bg-white/10"
                 : "text-[var(--text3)] hover:text-[var(--text)] hover:bg-[var(--surface2)]"
             }`}
+            title="Copy message content"
           >
             {copied ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Copy className="w-3.5 h-3.5" />}
             <span className="text-[10px]">{copied ? "Copied" : "Copy"}</span>

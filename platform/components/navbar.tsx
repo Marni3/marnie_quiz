@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import { useSession, signOut } from "next-auth/react";
 import { ThemeToggle } from "./theme-toggle";
 import { FeedbackModal } from "./feedback-modal";
+import { StreakBadge } from "./streak-badge";
 import {
   BookOpen,
   History,
@@ -153,8 +154,10 @@ export function Navbar({ breadcrumb }: { breadcrumb?: string }) {
           </Link>
         </nav>
 
-        {/* Right: Search, Tour, Feedback, Theme Toggle & User Profile */}
+        {/* Right: Streak, Search, Tour, Feedback, Theme Toggle & User Profile */}
         <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
+          <StreakBadge />
+
           <button
             type="button"
             onClick={() => window.dispatchEvent(new CustomEvent("open-omni-search"))}

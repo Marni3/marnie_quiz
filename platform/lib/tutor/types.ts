@@ -20,7 +20,8 @@ export type TutorFunctionMode =
   | "custom_module"
   | "tricky_questions"
   | "formula_sheet"
-  | "review_exam";
+  | "review_exam"
+  | "low_friction";
 
 export interface ChatMessage {
   id: string;

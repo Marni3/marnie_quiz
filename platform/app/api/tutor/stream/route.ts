@@ -39,26 +39,21 @@ export async function POST(req: NextRequest) {
     const userProfileContext = await getUserStudyProfileContext(userId);
     const systemPrompt = getSystemPrompt(functionMode, contextPayload, userProfileContext);
 
-    // 1. GOOGLE GEMINI STREAMING
+    // 1. GOOGLE GEMINI STREAMING (With Intra-Provider Resilient Fallback Waterfall)
     if (provider === "gemini") {
-      // Remap deprecated/renamed model IDs transparently
-      const GEMINI_MODEL_ALIASES: Record<string, string> = {
-        "gemini-2.0-flash": "gemini-3.6-flash",
-        "gemini-2.0-flash-exp": "gemini-3.6-flash",
-        "gemini-2.0-flash-001": "gemini-3.6-flash",
-        "gemini-1.5-flash": "gemini-3.6-flash",
-        "gemini-1.5-flash-latest": "gemini-3.6-flash",
-        "gemini-pro": "gemini-3.6-flash",
-        "models/gemini-2.0-flash": "gemini-3.6-flash",
-      };
-      const rawModel = model || "gemini-3.6-flash";
-      const geminiModel = GEMINI_MODEL_ALIASES[rawModel] ?? rawModel;
-      const cleanGeminiModel = geminiModel.startsWith("models/")
-        ? geminiModel.replace("models/", "")
-        : geminiModel;
-      const endpoint = `https://generativelanguage.googleapis.com/v1beta/models/${cleanGeminiModel}:streamGenerateContent?alt=sse&key=${encodeURIComponent(
-        apiKey.trim()
-      )}`;
+      const requestedModel = (model || "gemini-3.7-flash").replace("models/", "");
+      const GEMINI_CANDIDATES = Array.from(
+        new Set([
+          requestedModel,
+          "gemini-3.7-flash",
+          "gemini-3.6-flash",
+          "gemini-3.5-flash",
+          "gemini-3.5-flash-lite",
+          "gemini-3.1-flash-lite",
+          "gemini-2.0-flash",
+          "gemini-1.5-flash",
+        ])
+      );
 
       // Convert standard messages to Gemini contents format
       const contents = messages
@@ -79,33 +74,63 @@ export async function POST(req: NextRequest) {
         },
       };
 
-      const upstreamRes = await fetch(endpoint, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(geminiPayload),
-      });
+      let upstreamRes: Response | null = null;
+      let usedModel = requestedModel;
+      let lastErrText = "";
 
-      if (!upstreamRes.ok) {
-        const errText = await upstreamRes.text();
-        console.error("Gemini upstream error:", upstreamRes.status, errText);
-        let userFriendly = `Gemini API error (${upstreamRes.status}): ${errText}`;
-        if (
-          upstreamRes.status === 429 ||
-          upstreamRes.status === 503 ||
-          errText.toLowerCase().includes("resource_exhausted") ||
-          errText.toLowerCase().includes("high demand")
-        ) {
-          userFriendly = `Google Gemini is currently experiencing peak demand or rate limits (HTTP ${upstreamRes.status}).\n\n💡 **Tip**: To bypass rate limits and continue studying without interruptions, add a free Groq (ultra-low latency Llama 3.3) or OpenRouter backup key in your AI Tutor settings.`;
+      // Attempt requested model, then waterfall through fallback candidates
+      for (const candidate of GEMINI_CANDIDATES) {
+        const endpoint = `https://generativelanguage.googleapis.com/v1beta/models/${candidate}:streamGenerateContent?alt=sse&key=${encodeURIComponent(
+          apiKey.trim()
+        )}`;
+
+        try {
+          const res = await fetch(endpoint, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(geminiPayload),
+          });
+
+          if (res.ok) {
+            upstreamRes = res;
+            usedModel = candidate;
+            break;
+          } else {
+            lastErrText = await res.text();
+            console.warn(`Gemini candidate ${candidate} failed (${res.status}):`, lastErrText);
+            // If it's a 429 or 503 or 404, try the next candidate
+            if (res.status === 429 || res.status === 503 || res.status === 404 || lastErrText.includes("RESOURCE_EXHAUSTED") || lastErrText.includes("high demand")) {
+              continue;
+            } else {
+              // Fatal auth or payload error — stop trying
+              upstreamRes = res;
+              break;
+            }
+          }
+        } catch (fetchErr: any) {
+          console.warn(`Fetch error for Gemini candidate ${candidate}:`, fetchErr?.message);
         }
+      }
+
+      if (!upstreamRes || !upstreamRes.ok) {
+        const status = upstreamRes ? upstreamRes.status : 503;
+        let userFriendly = `Google Gemini is currently experiencing peak demand across all tiers (HTTP ${status}).\n\n💡 **Tip**: Add a free Groq (ultra-low latency Llama 3.3 70B) or OpenRouter backup key in your AI Tutor settings to study with zero interruptions.`;
         return NextResponse.json(
           { error: userFriendly, isRateLimit: true },
-          { status: upstreamRes.status }
+          { status }
         );
       }
 
+      const isFallback = usedModel !== requestedModel;
+
       const stream = new ReadableStream({
         async start(controller) {
-          const reader = upstreamRes.body?.getReader();
+          if (isFallback) {
+            const fallbackNotice = `> *⚡ Note: Streamed via ${usedModel} (due to peak demand on ${requestedModel}).*\n\n`;
+            controller.enqueue(new TextEncoder().encode(fallbackNotice));
+          }
+
+          const reader = upstreamRes!.body?.getReader();
           if (!reader) {
             controller.close();
             return;
@@ -198,7 +223,7 @@ export async function POST(req: NextRequest) {
             : {}),
         },
         body: JSON.stringify({
-          model: model || (provider === "deepseek" ? "deepseek-chat" : provider === "groq" ? "llama-3.3-70b-versatile" : "gpt-4o"),
+          model: model || (provider === "deepseek" ? "deepseek-chat" : provider === "groq" ? "qwen/qwen3.8-27b" : "gpt-4o"),
           messages: openAiMessages,
           stream: true,
           temperature: 0.7,
