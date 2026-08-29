@@ -46,7 +46,7 @@ export function ModuleReader({ module }: ModuleReaderProps) {
   // Solution Toggle per example: 'formal' | 'shortcut' | 'combined'
   const [exampleModes, setExampleModes] = useState<Record<number, "formal" | "shortcut" | "combined">>(() => {
     const initial: Record<number, "formal" | "shortcut" | "combined"> = {};
-    module.examples.forEach((_, idx) => {
+    (module.examples || []).forEach((_, idx) => {
       initial[idx] = "shortcut"; // default to speed shortcut
     });
     return initial;

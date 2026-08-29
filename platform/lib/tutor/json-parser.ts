@@ -84,7 +84,70 @@ export function sanitizeLlmJsonString(raw: string): string {
 }
 
 /**
- * Safely parses LLM JSON outputs containing LaTeX and possible formatting quirks
+ * Attempts to repair truncated JSON by closing open quotes and balancing open brackets/braces
+ */
+export function repairTruncatedJson(str: string): string {
+  if (!str) return "{}";
+
+  let sanitized = sanitizeLlmJsonString(str);
+  if (!sanitized) return "{}";
+
+  // Step 1: Scan string character by character to detect if we ended inside an open string
+  let inString = false;
+  let isEscaped = false;
+  const stack: string[] = [];
+
+  for (let i = 0; i < sanitized.length; i++) {
+    const char = sanitized[i];
+
+    if (inString) {
+      if (char === "\\" && !isEscaped) {
+        isEscaped = true;
+      } else if (char === '"' && !isEscaped) {
+        inString = false;
+      } else {
+        isEscaped = false;
+      }
+    } else {
+      if (char === '"') {
+        inString = true;
+      } else if (char === "{") {
+        stack.push("}");
+      } else if (char === "[") {
+        stack.push("]");
+      } else if (char === "}" || char === "]") {
+        if (stack.length > 0 && stack[stack.length - 1] === char) {
+          stack.pop();
+        }
+      }
+    }
+  }
+
+  let repaired = sanitized.trim();
+
+  // If ended inside a string literal, close the quote
+  if (inString) {
+    repaired += '"';
+  }
+
+  // Remove any trailing comma or dangling colon before closing
+  repaired = repaired.replace(/,\s*$/, "");
+  repaired = repaired.replace(/:\s*$/, ': ""');
+
+  // Close all remaining open brackets/braces in reverse order
+  while (stack.length > 0) {
+    const closingChar = stack.pop();
+    repaired += closingChar;
+  }
+
+  // Remove any newly created trailing commas before closing braces/brackets
+  repaired = repaired.replace(/,\s*([}\]])/g, "$1");
+
+  return repaired;
+}
+
+/**
+ * Safely parses LLM JSON outputs containing LaTeX, formatting quirks, and handles truncated streams
  */
 export function safeParseLlmJson<T = any>(raw: string): T | null {
   if (!raw || typeof raw !== "string") return null;
@@ -109,5 +172,12 @@ export function safeParseLlmJson<T = any>(raw: string): T | null {
     return JSON.parse(sanitized);
   } catch {}
 
+  // 4. Truncation Repair Fallback: Auto-close open strings, arrays, and object braces
+  try {
+    const repaired = repairTruncatedJson(raw);
+    return JSON.parse(repaired);
+  } catch {}
+
   return null;
 }
+

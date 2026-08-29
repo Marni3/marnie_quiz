@@ -69,130 +69,80 @@ Proactively use the student's FSRS memory state and past exam history if availab
     case "custom_module":
       return `${basePrompt}
 
-MODE: Custom Learning Module Generator (Skill: learning-module-authoring)
-When requested to create a learning module or lesson on a topic, generate a complete, interactive, executable module complying EXACTLY with the platform JSON schema so it can be previewed, launched, and saved in the Module Reader.
+MODE: Custom Sprint Learning Module Generator (Skill: learning-module-authoring)
+When requested to create a learning module or lesson on a topic, generate a high-yield, streamlined **Sprint Module** complying EXACTLY with the platform JSON schema so it can be previewed, launched, and saved in the Module Reader.
 
-ARCHETYPE CLASSIFICATION:
-Classify the topic into ONE of three archetypes:
-1. 📐 COMPUTATIONAL (MATH, Circuits, Calculus, Signals): Heavy KaTeX derivations, Formal vs ⚡ shortcut dual-solves, Karce/Canon keystrokes, 4–6 concept checks.
-2. 📡 HYBRID SYSTEMS (EST Digital Comms, Fiber, Radar, Microelectronics): System architecture, Governing equations, 5–8 dual-solve examples, 6–10 concept checks.
-3. 📜 QUALITATIVE / STATUTORY (RA 9292, Ethics, Laws, Materials): Comparison matrices, 5–10 scenario dilemmas, 1-second keyword triggers, 8–15 concept checks, active recall written challenges (omit formulas & calc guides).
+SPRINT MODULE DIRECTIVES:
+- Keep the payload focused and high-density (target ~1,000 to 1,400 tokens) so generation is ultra-fast and never truncates.
+- Structure:
+  1. **Lesson Proper (\`theory\`)**: Crisp 1-sentence mental anchor + 2–3 paragraphs of intuitive physics/math + Board Exam Trap Alerts.
+  2. **Key Formulas (\`formulas\`)**: Exactly 3 to 4 core governing equations with practical notes.
+  3. **Guide Problems (\`examples\`)**: Exactly 2 worked board exam problems with formal proof AND **⚡ 10–15s Calculator / Speed Shortcut**.
+  4. (Omit \`prerequisiteBridge\`, \`terms\`, \`calculatorGuides\`, and \`conceptChecks\` from custom sprint modules — practice items are handled via interactive test sets).
 
 FORMAT INSTRUCTIONS:
-1. Provide a brief 2-3 sentence overview in markdown first.
-2. Output exactly ONE fenced \`\`\`json block with the module.
-3. After the JSON block, offer the companion Mastery Challenge in text:
-   "> 🏆 **Want a Mastery Challenge?** Say *'Generate the mastery challenge for this module'* and I'll create a paired 20-question test set you can take immediately."
+1. Provide a brief 2-sentence overview in markdown first.
+2. Output exactly ONE fenced \`\`\`json block with the sprint module.
+3. After the JSON block, offer the companion practice set:
+   "> 🎯 **Ready for Practice?** Say *'Generate a 10-question practice drill on this topic'* to test your recall with interactive scoring and timers!"
 
 JSON SCHEMA TEMPLATE:
 \`\`\`json
 {
   "id": "custom-topic-slug",
   "code": "CUSTOM 01-01",
-  "domain": "MATH", // "MATH" | "ELECS" | "GEAS" | "EST"
+  "domain": "EST", // "MATH" | "ELECS" | "GEAS" | "EST"
   "topicCode": "CUSTOM-01",
   "topicTitle": "Topic Main Title",
   "subtopicTitle": "Subtopic Comprehensive Title",
   "order": 1,
   "pairedQuizSetId": "custom-topic-slug-mastery",
   "toc": [
-    { "id": "sec-prereq-bridges", "title": "Prerequisite Bridges", "level": 2 },
     { "id": "sec-theory", "title": "Lesson Proper", "level": 2 },
     { "id": "sec-formulas", "title": "Compilation of Formulas", "level": 2 },
-    { "id": "sec-terminology", "title": "Key Terms & Definitions", "level": 2 },
-    { "id": "sec-dual-method", "title": "Sample Problems", "level": 2 },
-    { "id": "sec-calculator", "title": "Calculator Techniques", "level": 2 },
-    { "id": "sec-concept-checks", "title": "In-Line Concept Checks", "level": 2 }
-  ],
-  "prerequisiteBridge": {
-    "text": "1–2 sentences connecting prior knowledge to this lesson."
-  },
-  "crossSubjectBridges": [
-    {
-      "badgeText": "MATH → Elecs",
-      "targetTopicCode": "ELEC-01",
-      "description": "How this concept directly applies to another subject domain."
-    }
+    { "id": "sec-dual-method", "title": "Guide Problems & Speed Shortcuts", "level": 2 }
   ],
   "theory": {
-    "mentalAnchor": "1-sentence intuitive rule of thumb or governing principle.",
-    "contentMarkdown": "### 1. Intuitive Motivation\\nExplain from first principles...\\n\\n### 2. Governing Equations\\n$$\\\\text{Formula}$$\\n\\n### 3. Board Exam Trap Alert\\nHighlight exact algebraic, sign, or unit pitfalls."
+    "mentalAnchor": "1-sentence core governing mental anchor or rule of thumb.",
+    "contentMarkdown": "### 1. Intuitive Motivation\\nExplain the physical / geometric problem from first principles...\\n\\n### 2. Governing Physics & Equations\\n$$\\\\text{Formula}$$\\n\\n### 3. Board Exam Trap Alert\\n- **Trap 1**: Highlight exact algebraic, unit, or sign pitfalls examinees make."
   },
   "formulas": [
     {
       "id": "f-01",
       "title": "Main Governing Equation",
-      "formula": "$$y = mx + b$$",
-      "note": "Valid under specified boundary conditions."
-    }
-  ],
-  "terms": [
+      "formula": "$$Z_0 = \\\\sqrt{\\\\frac{L}{C}}$$",
+      "note": "Units and specific boundary conditions."
+    },
     {
-      "term": "Key Statutory or Engineering Term",
-      "symbol": "$m$",
-      "unit": "Dimensionless",
-      "definition": "Precise definition of the term.",
-      "keywordTrigger": "1-second keyword trigger for identification questions"
+      "id": "f-02",
+      "title": "Secondary Parameter",
+      "formula": "$$\\\\Gamma = \\\\frac{Z_L - Z_0}{Z_L + Z_0}$$",
+      "note": "Polar/rectangular conversion note."
     }
   ],
   "examples": [
     {
-      "problemStatement": "PRC Board Exam worked example scenario with KaTeX math $...$",
-      "formalSolutionMarkdown": "#### Step 1: Formal Derivation\\nStep-by-step full proof...\\n$$x = \\\\dots$$",
-      "shortcutSolutionMarkdown": "#### ⚡ 10-Second Speed Shortcut\\nInspection, substitution, or calculator speed trick...",
+      "problemStatement": "(ECE Board Exam) Worked problem statement with KaTeX math $...$?",
+      "formalSolutionMarkdown": "#### Step 1: Formal Derivation\\nStep-by-step rigorous proof...\\n$$x = \\\\dots$$",
+      "shortcutSolutionMarkdown": "#### ⚡ 10-Second Speed Shortcut\\nCalculator CMPLX mode or ratio inspection trick...",
       "formalTimeSeconds": 90,
       "shortcutTimeSeconds": 10
-    }
-  ],
-  "calculatorGuides": {
-    "karce": {
-      "techniqueTitle": "Direct Calculator Evaluation",
-      "problemType": "Problem category",
-      "sampleProblem": "Brief sample expression",
-      "mode": "COMP Mode (MODE 1)",
-      "whyItWorks": "1–2 sentences on why the numerical technique works.",
-      "keystrokes": ["SHIFT", "Pol", "4", ",", "7", ")", "="],
-      "notes": "💡 Specific test values and display output.",
-      "searchAdvisory": "Search 'technique name Karce KC-S991' for video walkthroughs."
     },
-    "canon": {
-      "techniqueTitle": "Canon F-789SGA High-Speed Shortcut",
-      "problemType": "Problem category",
-      "sampleProblem": "Brief sample expression",
-      "mode": "COMP Mode (MODE 1)",
-      "whyItWorks": "1–2 sentences on why the numerical technique works.",
-      "keystrokes": ["SHIFT", "Pol", "4", ",", "7", ")", "="],
-      "notes": "💡 Direct result saves 45 seconds.",
-      "searchAdvisory": "Search 'technique name Canon F-789SGA' for video walkthroughs."
-    }
-  },
-  "conceptChecks": [
     {
-      "id": "chk-01",
-      "question": "Conceptual check question testing the governing rule?",
-      "options": {
-        "A": "Option A text",
-        "B": "Option B text",
-        "C": "Option C text",
-        "D": "Option D text"
-      },
-      "correctAnswer": "B",
-      "distractorDeconstruction": {
-        "A": "Why A is a trap (e.g. missing factor).",
-        "B": "Why B is correct (matches governing law).",
-        "C": "Why C is a trap (e.g. inverted sign).",
-        "D": "Why D is a trap (e.g. wrong prefix)."
-      },
-      "shortcutExplanation": "⚡ 1-sentence rule of thumb for instant identification."
+      "problemStatement": "(ECE Board Exam) Second representative calculation scenario?",
+      "formalSolutionMarkdown": "#### Step 1: Apply Formula\\nStep-by-step substitution...",
+      "shortcutSolutionMarkdown": "#### ⚡ 15-Second Direct Keys\\nKeystroke sequence or direct rule of thumb...",
+      "formalTimeSeconds": 120,
+      "shortcutTimeSeconds": 15
     }
   ]
 }
 \`\`\`
 
 CRITICAL RULES:
-- TOC titles MUST NOT contain hardcoded numbers (write "Lesson Proper", NOT "2. Lesson Proper") — the platform UI auto-numbers them sequentially.
-- In JSON string values, ALWAYS double-escape backslashes for all LaTeX math commands (e.g. use \`\\\\frac{a}{b}\`, \`\\\\sqrt{x}\`, \`\\\\tau\`, \`\\\\Delta\`, \`\\\\times\`, \`\\\\log\`, \`\\\\cdot\`, \`\\\\dots\`).
-- Do NOT embed the 20-question mastery challenge inside the JSON object — offer it in text after the block so generation stays well within token limits and finishes quickly.`;
+- In JSON string values, ALWAYS double-escape backslashes for all LaTeX math commands (e.g. use \`\\\\frac{a}{b}\`, \`\\\\sqrt{x}\`, \`\\\\tau\`, \`\\\\Delta\`, \`\\\\Gamma\`, \`\\\\times\`, \`\\\\log\`, \`\\\\cdot\`, \`\\\\dots\`, \`\\\\Omega\`).
+- Never write unescaped single backslashes like \`\\frac\` inside JSON string fields.
+- Strictly limit to 2 high-yield examples so the payload stays light, fast, and 100% reliable.`;
 
     case "tricky_questions":
       return `${basePrompt}
