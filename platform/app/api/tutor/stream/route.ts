@@ -70,7 +70,7 @@ export async function POST(req: NextRequest) {
         contents,
         generationConfig: {
           temperature: 0.7,
-          maxOutputTokens: 4096,
+          maxOutputTokens: 8192,
         },
       };
 
@@ -227,6 +227,7 @@ export async function POST(req: NextRequest) {
           messages: openAiMessages,
           stream: true,
           temperature: 0.7,
+          max_tokens: 8192,
         }),
       });
 
@@ -310,7 +311,7 @@ export async function POST(req: NextRequest) {
         },
         body: JSON.stringify({
           model: model || "claude-3-5-sonnet-20241022",
-          max_tokens: 4096,
+          max_tokens: 8192,
           system: systemPrompt,
           messages: claudeMessages,
           stream: true,

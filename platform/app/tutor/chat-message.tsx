@@ -41,7 +41,11 @@ function extractArtifactFromMessage(content: string): { module: any | null; quiz
       if (parsed && typeof parsed === "object") {
         const isModule =
           Boolean(parsed.subtopicTitle || parsed.topicTitle || parsed.id || parsed.code) &&
-          Boolean(parsed.toc || parsed.theory || parsed.sections || parsed.formulas || parsed.comparisonTables || parsed.sampleProblems || parsed.conceptChecks);
+          Boolean(
+            parsed.toc || parsed.theory || parsed.sections || parsed.formulas ||
+            parsed.comparisonTables || parsed.sampleProblems || parsed.conceptChecks ||
+            parsed.terms || parsed.examples || parsed.learningObjectives || parsed.calculatorGuides
+          );
 
         if (isModule) {
           return { module: parsed, quiz: null, rawJson: candidate };
@@ -63,7 +67,11 @@ function extractArtifactFromMessage(content: string): { module: any | null; quiz
   if (parsed && typeof parsed === "object") {
     const isModule =
       Boolean(parsed.subtopicTitle || parsed.topicTitle || parsed.id || parsed.code) &&
-      Boolean(parsed.toc || parsed.theory || parsed.sections || parsed.formulas || parsed.comparisonTables || parsed.sampleProblems || parsed.conceptChecks);
+      Boolean(
+        parsed.toc || parsed.theory || parsed.sections || parsed.formulas ||
+        parsed.comparisonTables || parsed.sampleProblems || parsed.conceptChecks ||
+        parsed.terms || parsed.examples || parsed.learningObjectives || parsed.calculatorGuides
+      );
 
     if (isModule) {
       return { module: parsed, quiz: null, rawJson: content };
