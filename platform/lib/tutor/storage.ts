@@ -411,3 +411,30 @@ export function getStoredSavedFormulas(): any[] {
     return [];
   }
 }
+
+export interface LastActiveModuleInfo {
+  id: string;
+  code: string;
+  subtopicTitle: string;
+  topicTitle?: string;
+  domain?: string;
+  isCustom?: boolean;
+  timestamp: number;
+}
+
+export function getLastActiveModule(): LastActiveModuleInfo | null {
+  if (typeof window === "undefined") return null;
+  try {
+    const raw = localStorage.getItem("marnie_last_active_module");
+    return raw ? JSON.parse(raw) : null;
+  } catch {
+    return null;
+  }
+}
+
+export function setLastActiveModule(info: LastActiveModuleInfo) {
+  if (typeof window === "undefined" || !info) return;
+  try {
+    localStorage.setItem("marnie_last_active_module", JSON.stringify(info));
+  } catch {}
+}

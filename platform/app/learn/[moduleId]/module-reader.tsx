@@ -9,6 +9,11 @@ import { FeedbackModal } from "@/components/feedback-modal";
 import { UserNote, saveStoredNote } from "@/lib/notes";
 import { recordStudyActivity } from "@/lib/streak";
 import {
+  getLastActiveModule,
+  setLastActiveModule,
+  LastActiveModuleInfo,
+} from "@/lib/tutor/storage";
+import {
   BookOpen,
   Zap,
   Clock,
@@ -73,6 +78,27 @@ export function ModuleReader({
   const [revealedAnswers, setRevealedAnswers] = useState<Record<string, boolean>>({});
   const [compactTables, setCompactTables] = useState<Record<number, boolean>>({});
   const [isStreakCredited, setIsStreakCredited] = useState(false);
+  const [lastModule, setLastModule] = useState<LastActiveModuleInfo | null>(null);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const prev = getLastActiveModule();
+    if (prev && prev.id !== module.id) {
+      setLastModule(prev);
+    }
+
+    if (!(module as any).isLowFriction && !module.id.startsWith("micro")) {
+      setLastActiveModule({
+        id: module.id,
+        code: module.code,
+        subtopicTitle: module.subtopicTitle,
+        topicTitle: module.topicTitle,
+        domain: module.domain,
+        isCustom: (module as any).isCustom || module.id.startsWith("custom"),
+        timestamp: Date.now(),
+      });
+    }
+  }, [module.id, module.code, module.subtopicTitle, module.topicTitle, module.domain]);
 
   useEffect(() => {
     if (typeof window === "undefined" || !module.writtenChallenges) return;
@@ -1375,7 +1401,7 @@ export function ModuleReader({
                       recordStudyActivity("module");
                       setIsStreakCredited(true);
                     }}
-                    className={`inline-flex items-center gap-2 px-6 py-3 rounded-xl text-sm font-bold shadow-md transition-all cursor-pointer ${
+                    className={`inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold shadow-md transition-all cursor-pointer ${
                       isStreakCredited
                         ? "bg-emerald-600 text-white"
                         : "bg-[var(--surface)] border border-emerald-500/40 text-emerald-600 dark:text-emerald-400 hover:bg-emerald-500/10"
@@ -1385,14 +1411,34 @@ export function ModuleReader({
                     <span>{isStreakCredited ? "Streak Credited! Take a Break 🎉" : "Mark Done for Today (Save Streak)"}</span>
                   </button>
 
+                  {lastModule && lastModule.id !== module.id ? (
+                    <Link
+                      href={`/learn/${lastModule.id}`}
+                      className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-primary text-white text-xs sm:text-sm font-bold shadow-md hover:opacity-95 transition-all"
+                    >
+                      <BookOpen className="w-4 h-4" />
+                      <span>Continue Last Module: {lastModule.code}</span>
+                      <ArrowRight className="w-4 h-4" />
+                    </Link>
+                  ) : (
+                    <Link
+                      href="/learn"
+                      className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-primary text-white text-xs sm:text-sm font-bold shadow-md hover:opacity-95 transition-all"
+                    >
+                      <BookOpen className="w-4 h-4" />
+                      <span>Explore Module Library</span>
+                      <ArrowRight className="w-4 h-4" />
+                    </Link>
+                  )}
+
                   {onOpenMastery && (
                     <button
                       type="button"
                       onClick={onOpenMastery}
-                      className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-[var(--accent)] text-white text-sm font-bold shadow-md hover:opacity-95 transition-all cursor-pointer"
+                      className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[var(--accent)] text-white text-xs sm:text-sm font-bold shadow-md hover:opacity-95 transition-all cursor-pointer"
                     >
                       <Zap className="w-4 h-4" />
-                      <span>Ride the Momentum: 10-Question Drill</span>
+                      <span>Ride the Momentum: 5-Question Drill</span>
                       <ArrowRight className="w-4 h-4" />
                     </button>
                   )}
