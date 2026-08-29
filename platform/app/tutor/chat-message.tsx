@@ -436,66 +436,6 @@ export function ChatMessageItem({ message, onTriggerAction }: ChatMessageProps) 
           </div>
         )}
 
-        {/* Interactive Momentum-Riding Card for Low-Friction Study Mode */}
-        {!isUser && (message.functionMode === "low_friction" || displayContent.includes("consistency beats intensity") || displayContent.includes("streak and momentum alive")) && (
-          <div className="mt-4 pt-3 border-t border-[var(--border)] bg-gradient-to-br from-amber-500/10 via-primary/5 to-emerald-500/10 -mx-4 -mb-4 p-4 rounded-b-2xl space-y-3">
-            <div className="flex items-center justify-between">
-              <div className="text-xs font-bold text-[var(--text)] flex items-center gap-1.5">
-                <Sparkles className="w-4 h-4 text-amber-500" />
-                <span>Ride the Momentum? You've already broken the inertia!</span>
-              </div>
-              <span className="text-[10px] font-mono font-bold text-amber-600 dark:text-amber-400 bg-amber-500/10 px-2 py-0.5 rounded-full border border-amber-500/20">
-                🔥 Streak Saved!
-              </span>
-            </div>
-
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 pt-1">
-              <Link
-                href="/learn"
-                className="p-2.5 rounded-xl bg-[var(--surface)] border border-primary/30 hover:border-primary hover:bg-primary/5 text-left flex flex-col justify-between transition-all group/btn"
-              >
-                <div className="flex items-center gap-1.5 text-xs font-bold text-[var(--text)] group-hover/btn:text-primary transition-colors">
-                  <BookOpen className="w-3.5 h-3.5 text-primary shrink-0" />
-                  <span>Open Full Module</span>
-                </div>
-                <div className="text-[10px] text-[var(--text2)] leading-tight mt-1">
-                  Explore complete lesson & formulas
-                </div>
-              </Link>
-
-              {onTriggerAction && (
-                <button
-                  type="button"
-                  onClick={() =>
-                    onTriggerAction(
-                      "tricky_questions",
-                      "I have a bit of energy now! Give me a rapid 5-question practice drill on this topic."
-                    )
-                  }
-                  className="p-2.5 rounded-xl bg-[var(--surface)] border border-emerald-500/30 hover:border-emerald-500 hover:bg-emerald-500/5 text-left flex flex-col justify-between transition-all group/btn cursor-pointer"
-                >
-                  <div className="flex items-center gap-1.5 text-xs font-bold text-[var(--text)] group-hover/btn:text-emerald-500 transition-colors">
-                    <Zap className="w-3.5 h-3.5 text-emerald-500 shrink-0" />
-                    <span>5-Min Practice Drill</span>
-                  </div>
-                  <div className="text-[10px] text-[var(--text2)] leading-tight mt-1">
-                    Test 5 questions right here
-                  </div>
-                </button>
-              )}
-
-              <div className="p-2.5 rounded-xl bg-[var(--surface)] border border-[var(--border)] text-left flex flex-col justify-between opacity-80 hover:opacity-100 transition-opacity">
-                <div className="flex items-center gap-1.5 text-xs font-semibold text-[var(--text)]">
-                  <span>✅ Done for Today</span>
-                </div>
-                <div className="text-[10px] text-[var(--text2)] leading-tight mt-1">
-                  Great job keeping your daily habit!
-                </div>
-              </div>
-            </div>
-          </div>
-        )}
-
         {/* Message Actions Toolbar */}
         <div className="flex items-center justify-between pt-1 border-t border-[var(--border)]/40 mt-2">
           {!isUser ? (

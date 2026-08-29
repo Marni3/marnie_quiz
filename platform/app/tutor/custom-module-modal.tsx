@@ -78,10 +78,10 @@ export function CustomModuleModal({
   };
 
   return (
-    <div className="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm flex items-center justify-center p-2 sm:p-4 animate-in fade-in duration-150">
-      <div className="bg-[var(--surface)] border border-[var(--border)] rounded-2xl w-full max-w-5xl h-[92vh] shadow-2xl overflow-hidden flex flex-col">
+    <div className="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm flex items-center justify-center p-0 sm:p-4 animate-in fade-in duration-150">
+      <div className="bg-[var(--surface)] border-0 sm:border border-[var(--border)] rounded-none sm:rounded-2xl w-full max-w-5xl h-[100dvh] sm:h-[92vh] shadow-2xl overflow-hidden flex flex-col">
         {/* Modal Top Bar */}
-        <div className="flex items-center justify-between px-5 py-3 border-b border-[var(--border)] bg-[var(--surface2)] shrink-0 gap-2">
+        <div className="flex items-center justify-between px-3.5 sm:px-5 py-2.5 sm:py-3 border-b border-[var(--border)] bg-[var(--surface2)] shrink-0 gap-2">
           <div className="flex items-center gap-2.5 min-w-0">
             <div className="w-8 h-8 rounded-xl bg-primary/10 text-primary flex items-center justify-center border border-primary/20 shrink-0">
               <Sparkles className="w-4 h-4" />

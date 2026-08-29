@@ -25,9 +25,16 @@ import {
 interface MasteryRunnerProps {
   module: LearningModule;
   mastery: MasteryChallengeSet;
+  isModal?: boolean;
+  onCloseModal?: () => void;
 }
 
-export function MasteryRunner({ module, mastery }: MasteryRunnerProps) {
+export function MasteryRunner({
+  module,
+  mastery,
+  isModal = false,
+  onCloseModal,
+}: MasteryRunnerProps) {
   const router = useRouter();
   const totalQuestions = mastery.questions.length;
   const initialTimeSeconds = (mastery.timeLimitMinutes || 30) * 60;
@@ -421,24 +428,26 @@ export function MasteryRunner({ module, mastery }: MasteryRunnerProps) {
 
   // ================= ACTIVE EXAM RUNNER =================
   return (
-    <div className="min-h-screen bg-[var(--background)] text-[var(--text)] pb-24">
+    <div className={isModal ? "min-h-full bg-[var(--background)] text-[var(--text)] pb-8" : "min-h-screen bg-[var(--background)] text-[var(--text)] pb-24"}>
       {/* Top Fixed Exam Banner */}
-      <section className="sticky top-16 z-30 bg-[var(--surface)] border-b border-[var(--border)] backdrop-blur-md">
+      <section className={`${isModal ? "sticky top-0 z-30" : "sticky top-16 z-30"} bg-[var(--surface)] border-b border-[var(--border)] backdrop-blur-md`}>
         <div className="max-w-6xl mx-auto px-3 sm:px-6 py-2.5 sm:py-3 flex items-center justify-between gap-2 sm:gap-4">
           <div className="flex items-center gap-1.5 sm:gap-2 min-w-0">
-            <Link
-              href={`/learn/${module.id}`}
-              onClick={(e) => {
-                if (!confirm("Exit this mastery challenge? Current progress will be lost.")) {
-                  e.preventDefault();
-                }
-              }}
-              className="text-xs font-semibold text-[var(--text2)] hover:text-primary flex items-center gap-1 shrink-0 mr-1"
-              title="Exit Mastery Challenge"
-            >
-              <ArrowLeft className="w-4 h-4" />
-              <span className="hidden sm:inline">Exit</span>
-            </Link>
+            {!isModal && (
+              <Link
+                href={`/learn/${module.id}`}
+                onClick={(e) => {
+                  if (!confirm("Exit this mastery challenge? Current progress will be lost.")) {
+                    e.preventDefault();
+                  }
+                }}
+                className="text-xs font-semibold text-[var(--text2)] hover:text-primary flex items-center gap-1 shrink-0 mr-1"
+                title="Exit Mastery Challenge"
+              >
+                <ArrowLeft className="w-4 h-4" />
+                <span className="hidden sm:inline">Exit</span>
+              </Link>
+            )}
             <span className="px-2 py-0.5 rounded-md font-mono text-xs font-bold bg-primary/10 text-primary border border-primary/20 shrink-0">
               {module.code}
             </span>
@@ -463,7 +472,7 @@ export function MasteryRunner({ module, mastery }: MasteryRunnerProps) {
             {/* Finish Button */}
             <button
               onClick={() => setShowSubmitModal(true)}
-              className="px-3 sm:px-4 py-1 sm:py-1.5 rounded-xl bg-[var(--accent)] text-white text-xs font-bold shadow-sm hover:opacity-95 transition-all"
+              className="px-3 sm:px-4 py-1 sm:py-1.5 rounded-xl bg-[var(--accent)] text-white text-xs font-bold shadow-sm hover:opacity-95 transition-all cursor-pointer"
             >
               Finish
             </button>

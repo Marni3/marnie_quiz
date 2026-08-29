@@ -72,6 +72,7 @@ export function ModuleReader({
   const [writtenAnswers, setWrittenAnswers] = useState<Record<string, string>>({});
   const [revealedAnswers, setRevealedAnswers] = useState<Record<string, boolean>>({});
   const [compactTables, setCompactTables] = useState<Record<number, boolean>>({});
+  const [isStreakCredited, setIsStreakCredited] = useState(false);
 
   useEffect(() => {
     if (typeof window === "undefined" || !module.writtenChallenges) return;
@@ -172,7 +173,7 @@ export function ModuleReader({
   // Visualizer Slider Values
   const [vizControls, setVizControls] = useState<Record<string, number>>(() => {
     const init: Record<string, number> = {};
-    module.visualizer?.config.controls.forEach((c) => {
+    (module.visualizer?.config?.controls || []).forEach((c) => {
       init[c.id] = c.defaultValue;
     });
     return init;
@@ -180,6 +181,16 @@ export function ModuleReader({
 
   // Active TOC Section on scroll
   const [activeSection, setActiveSection] = useState<string>("sec-prereq-bridges");
+
+  // Robust Theory Normalization
+  const normalizedTheory = useMemo(() => {
+    if (!module.theory) return { mentalAnchor: "", contentMarkdown: "" };
+    if (typeof module.theory === "string") return { mentalAnchor: "", contentMarkdown: module.theory };
+    return {
+      mentalAnchor: (module.theory as any).mentalAnchor || "",
+      contentMarkdown: (module.theory as any).contentMarkdown || (typeof module.theory === "object" ? JSON.stringify(module.theory) : ""),
+    };
+  }, [module.theory]);
 
   // Normalize Concept Checks so both Array and Object schemas across modules work seamlessly
   const normalizedConceptChecks = useMemo(() => {
@@ -201,8 +212,14 @@ export function ModuleReader({
             optionsObj[letter] = text;
             deconstructionObj[letter] =
               opt.distractorReason ||
+              chk.explanation ||
               (opt.isCorrect ? "Correct answer." : "Incorrect distractor.");
-            if (opt.isCorrect) {
+            if (
+              opt.isCorrect ||
+              (typeof chk.correctAnswer === "number" && chk.correctAnswer === optIdx) ||
+              chk.correctAnswer === letter ||
+              chk.correctAnswer === text
+            ) {
               correctLetter = letter;
             }
           }
@@ -214,7 +231,7 @@ export function ModuleReader({
           options: optionsObj,
           correctAnswer: correctLetter,
           distractorDeconstruction: deconstructionObj,
-          shortcutExplanation: chk.shortcutExplanation || chk.directExplanation || "",
+          shortcutExplanation: chk.shortcutExplanation || chk.directExplanation || chk.explanation || "",
         };
       }
 
@@ -224,7 +241,7 @@ export function ModuleReader({
         options: chk.options || {},
         correctAnswer: (chk.correctAnswer || "A") as "A" | "B" | "C" | "D",
         distractorDeconstruction: chk.distractorDeconstruction || {},
-        shortcutExplanation: chk.shortcutExplanation || "",
+        shortcutExplanation: chk.shortcutExplanation || chk.explanation || "",
       };
     });
   }, [module.conceptChecks]);
@@ -668,21 +685,21 @@ export function ModuleReader({
               </div>
 
               {/* Mental Anchor Callout Box */}
-              {module.theory.mentalAnchor && (
+              {normalizedTheory.mentalAnchor && (
                 <div className="bg-amber-500/10 border-l-4 border-l-amber-500 border border-amber-500/20 rounded-r-2xl p-4 sm:p-5 shadow-xs">
                   <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-amber-600 dark:text-amber-400 mb-1">
                     <Lightbulb className="w-4 h-4" />
                     <span>Core Mental Anchor / Rule of Thumb</span>
                   </div>
                   <p className="text-sm font-semibold text-[var(--text)] leading-relaxed italic">
-                    <MathText text={`“${module.theory.mentalAnchor}”`} />
+                    <MathText text={`“${normalizedTheory.mentalAnchor}”`} />
                   </p>
                 </div>
               )}
 
               {/* KaTeX Markdown Theory Body */}
               <div className="bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-5 sm:p-6 shadow-xs leading-relaxed text-[var(--text)] text-sm sm:text-base">
-                <MathText text={module.theory.contentMarkdown} splitParagraphs={true} />
+                <MathText text={normalizedTheory.contentMarkdown} splitParagraphs={true} />
               </div>
             </section>
 
@@ -697,27 +714,35 @@ export function ModuleReader({
                 </div>
 
                 <div className="grid grid-cols-1 gap-4">
-                  {module.formulas.map((item, idx) => (
-                    <div
-                      key={idx}
-                      id={`formula-${idx}`}
-                      className="bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-4 sm:p-5 shadow-xs space-y-3 flex flex-col justify-between hover:border-[var(--accent)]/50 transition-colors"
-                    >
-                      <div className="space-y-2">
-                        <h3 className="font-bold text-sm sm:text-base font-serif text-[var(--text)]">
-                          {item.title}
-                        </h3>
-                        <div className="py-2.5 px-3 bg-[var(--surface2)] rounded-xl border border-[var(--border)] text-center overflow-x-auto text-base sm:text-lg font-medium text-[var(--text)]">
-                          <MathText text={item.formula.startsWith("$$") ? item.formula : `$$${item.formula}$$`} />
+                  {module.formulas.map((item, idx) => {
+                    const formulaTitle = item.title || (item as any).name || `Formula #${idx + 1}`;
+                    const rawFormula = item.formula || (item as any).latex || (item as any).equation || "";
+                    const formulaText = rawFormula ? (rawFormula.startsWith("$$") ? rawFormula : `$$${rawFormula}$$`) : "";
+
+                    return (
+                      <div
+                        key={idx}
+                        id={`formula-${idx}`}
+                        className="bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-4 sm:p-5 shadow-xs space-y-3 flex flex-col justify-between hover:border-[var(--accent)]/50 transition-colors"
+                      >
+                        <div className="space-y-2">
+                          <h3 className="font-bold text-sm sm:text-base font-serif text-[var(--text)]">
+                            {formulaTitle}
+                          </h3>
+                          {formulaText && (
+                            <div className="py-2.5 px-3 bg-[var(--surface2)] rounded-xl border border-[var(--border)] text-center overflow-x-auto text-base sm:text-lg font-medium text-[var(--text)]">
+                              <MathText text={formulaText} />
+                            </div>
+                          )}
                         </div>
+                        {item.note && (
+                          <p className="text-xs text-[var(--text2)] italic leading-relaxed pt-1.5 border-t border-[var(--border)]/40">
+                            <MathText text={item.note} />
+                          </p>
+                        )}
                       </div>
-                      {item.note && (
-                        <p className="text-xs text-[var(--text2)] italic leading-relaxed pt-1.5 border-t border-[var(--border)]/40">
-                          <MathText text={item.note} />
-                        </p>
-                      )}
-                    </div>
-                  ))}
+                    );
+                  })}
                 </div>
               </section>
             )}
@@ -970,7 +995,11 @@ export function ModuleReader({
                         </div>
                         <div className="prose dark:prose-invert max-w-none text-xs sm:text-sm text-[var(--text)] leading-relaxed">
                           <MathText
-                            text={mode === "shortcut" ? ex.shortcutSolutionMarkdown : ex.formalSolutionMarkdown}
+                            text={
+                              mode === "shortcut"
+                                ? ex.shortcutSolutionMarkdown || (ex as any).calculatorShortcut || (ex as any).formalSolution || ""
+                                : ex.formalSolutionMarkdown || (ex as any).formalSolution || (ex as any).solution || ""
+                            }
                             splitParagraphs={true}
                           />
                         </div>
@@ -982,7 +1011,7 @@ export function ModuleReader({
             </section>
 
             {/* Section 6: Calculator Speed Techniques */}
-            {module.calculatorGuides && (
+            {module.calculatorGuides && (module.calculatorGuides.karce || module.calculatorGuides.canon) && (
               <section id="sec-calculator" className="space-y-4">
                 <div className="flex items-center justify-between pb-2 border-b border-[var(--border)]">
                   <div className="flex items-center gap-2">
@@ -1021,7 +1050,7 @@ export function ModuleReader({
 
                 {/* Selected Calculator Guide Box */}
                 {(() => {
-                  const guide = module.calculatorGuides[calcTab];
+                  const guide = module.calculatorGuides ? module.calculatorGuides[calcTab] : null;
                   if (!guide) return null;
 
                   const cleanMode = guide.mode ? guide.mode.replace(/<\/?kbd>/gi, "") : "";
@@ -1318,59 +1347,111 @@ export function ModuleReader({
               </section>
             )}
 
-            {/* Section 8: Paired Mastery Challenge CTA */}
-            <section
-              id="sec-mastery-challenge"
-              className="bg-gradient-to-br from-[var(--surface)] to-[var(--surface2)] border-2 border-[var(--accent)] rounded-3xl p-6 sm:p-8 text-center space-y-4 shadow-lg"
-            >
-              <div className="inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-[var(--accent)]/15 text-[var(--accent)]">
-                <Award className="w-6 h-6" />
-              </div>
-              <div className="space-y-1 max-w-xl mx-auto">
-                <h3 className="text-xl sm:text-2xl font-bold font-serif text-[var(--text)]">
-                  Take the {module.code} Mastery Challenge
-                </h3>
-                <p className="text-xs sm:text-sm text-[var(--text2)]">
-                  Cement your speed shortcuts and theoretical mastery on module-exclusive practice questions.
-                </p>
-              </div>
+            {/* Section 8: Paired Mastery Challenge or Low-Friction Quick-Win Celebration */}
+            {(module as any).isLowFriction || module.id.startsWith("micro") ? (
+              <section
+                id="sec-mastery-challenge"
+                className="bg-gradient-to-br from-amber-500/15 via-primary/10 to-emerald-500/15 border-2 border-emerald-500/40 rounded-3xl p-6 sm:p-8 text-center space-y-4 shadow-lg animate-in fade-in"
+              >
+                <div className="inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-emerald-500/20 text-emerald-600 dark:text-emerald-400">
+                  <Sparkles className="w-6 h-6" />
+                </div>
+                <div className="space-y-1 max-w-xl mx-auto">
+                  <span className="text-xs font-mono font-bold px-3 py-1 rounded-full bg-amber-500/15 text-amber-600 dark:text-amber-400 border border-amber-500/30 uppercase">
+                    🔥 5-Minute Micro-Drill Completed
+                  </span>
+                  <h3 className="text-xl sm:text-2xl font-bold font-serif text-[var(--text)] pt-1">
+                    Streak Saved! You've Broken the Inertia!
+                  </h3>
+                  <p className="text-xs sm:text-sm text-[var(--text2)]">
+                    Outstanding job keeping your daily study momentum alive today without burning out.
+                  </p>
+                </div>
 
-              <div className="flex flex-wrap items-center justify-center gap-3">
-                {onOpenMastery ? (
+                <div className="flex flex-wrap items-center justify-center gap-3 pt-2">
                   <button
                     type="button"
-                    onClick={onOpenMastery}
-                    className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-[var(--accent)] text-white text-sm font-bold shadow-md hover:opacity-95 transition-all cursor-pointer"
+                    onClick={() => {
+                      recordStudyActivity("module");
+                      setIsStreakCredited(true);
+                    }}
+                    className={`inline-flex items-center gap-2 px-6 py-3 rounded-xl text-sm font-bold shadow-md transition-all cursor-pointer ${
+                      isStreakCredited
+                        ? "bg-emerald-600 text-white"
+                        : "bg-[var(--surface)] border border-emerald-500/40 text-emerald-600 dark:text-emerald-400 hover:bg-emerald-500/10"
+                    }`}
                   >
-                    <Award className="w-4 h-4" />
-                    <span>Launch Mastery Challenge</span>
-                    <ArrowRight className="w-4 h-4" />
+                    <Check className="w-4 h-4" />
+                    <span>{isStreakCredited ? "Streak Credited! Take a Break 🎉" : "Mark Done for Today (Save Streak)"}</span>
                   </button>
-                ) : (
-                  <Link
-                    href={
-                      (module as any).isCustom || module.id.startsWith("custom") || module.code.startsWith("CUSTOM")
-                        ? `/tutor?prompt=${encodeURIComponent(`Generate a 10-question practice mastery challenge test for "${module.subtopicTitle}" (${module.code})`)}&mode=tricky_questions`
-                        : `/learn/${module.id}/mastery`
-                    }
-                    className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-[var(--accent)] text-white text-sm font-bold shadow-md hover:opacity-95 transition-all cursor-pointer"
-                  >
-                    <Award className="w-4 h-4" />
-                    <span>Launch Mastery Challenge</span>
-                    <ArrowRight className="w-4 h-4" />
-                  </Link>
-                )}
 
-                {module.pairedQuizSetId && !(module as any).isCustom && !module.id.startsWith("custom") && (
-                  <Link
-                    href={`/quizzes/${module.pairedQuizSetId}`}
-                    className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-[var(--surface)] border border-[var(--border)] text-[var(--text2)] hover:text-[var(--text)] text-sm font-medium transition-all"
-                  >
-                    <span>Browse Syllabus Library Set</span>
-                  </Link>
-                )}
-              </div>
-            </section>
+                  {onOpenMastery && (
+                    <button
+                      type="button"
+                      onClick={onOpenMastery}
+                      className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-[var(--accent)] text-white text-sm font-bold shadow-md hover:opacity-95 transition-all cursor-pointer"
+                    >
+                      <Zap className="w-4 h-4" />
+                      <span>Ride the Momentum: 10-Question Drill</span>
+                      <ArrowRight className="w-4 h-4" />
+                    </button>
+                  )}
+                </div>
+              </section>
+            ) : (
+              <section
+                id="sec-mastery-challenge"
+                className="bg-gradient-to-br from-[var(--surface)] to-[var(--surface2)] border-2 border-[var(--accent)] rounded-3xl p-6 sm:p-8 text-center space-y-4 shadow-lg"
+              >
+                <div className="inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-[var(--accent)]/15 text-[var(--accent)]">
+                  <Award className="w-6 h-6" />
+                </div>
+                <div className="space-y-1 max-w-xl mx-auto">
+                  <h3 className="text-xl sm:text-2xl font-bold font-serif text-[var(--text)]">
+                    Take the {module.code} Mastery Challenge
+                  </h3>
+                  <p className="text-xs sm:text-sm text-[var(--text2)]">
+                    Cement your speed shortcuts and theoretical mastery on module-exclusive practice questions.
+                  </p>
+                </div>
+
+                <div className="flex flex-wrap items-center justify-center gap-3">
+                  {onOpenMastery ? (
+                    <button
+                      type="button"
+                      onClick={onOpenMastery}
+                      className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-[var(--accent)] text-white text-sm font-bold shadow-md hover:opacity-95 transition-all cursor-pointer"
+                    >
+                      <Award className="w-4 h-4" />
+                      <span>Launch Mastery Challenge</span>
+                      <ArrowRight className="w-4 h-4" />
+                    </button>
+                  ) : (
+                    <Link
+                      href={
+                        (module as any).isCustom || module.id.startsWith("custom") || module.code.startsWith("CUSTOM")
+                          ? `/tutor?prompt=${encodeURIComponent(`Generate a 10-question practice mastery challenge test for "${module.subtopicTitle}" (${module.code})`)}&mode=tricky_questions`
+                          : `/learn/${module.id}/mastery`
+                      }
+                      className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-[var(--accent)] text-white text-sm font-bold shadow-md hover:opacity-95 transition-all cursor-pointer"
+                    >
+                      <Award className="w-4 h-4" />
+                      <span>Launch Mastery Challenge</span>
+                      <ArrowRight className="w-4 h-4" />
+                    </Link>
+                  )}
+
+                  {module.pairedQuizSetId && !(module as any).isCustom && !module.id.startsWith("custom") && (
+                    <Link
+                      href={`/quizzes/${module.pairedQuizSetId}`}
+                      className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-[var(--surface)] border border-[var(--border)] text-[var(--text2)] hover:text-[var(--text)] text-sm font-medium transition-all"
+                    >
+                      <span>Browse Syllabus Library Set</span>
+                    </Link>
+                  )}
+                </div>
+              </section>
+            )}
 
             {/* Bottom Feedback Trigger */}
             <div className="flex items-center justify-center pt-2 pb-6">
