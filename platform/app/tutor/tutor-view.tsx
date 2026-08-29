@@ -50,11 +50,14 @@ import {
   Settings2,
   X,
   Bot,
+  ShieldCheck,
+  Zap,
 } from "lucide-react";
 
 export function TutorView() {
   const searchParams = useSearchParams();
   const [isByokOpen, setIsByokOpen] = useState(false);
+  const [byokInitialTab, setByokInitialTab] = useState<"keys" | "guide">("keys");
   const [isContextPickerOpen, setIsContextPickerOpen] = useState(false);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
@@ -556,10 +559,25 @@ export function TutorView() {
               </div>
             </div>
 
-            {/* Model Badge / Settings Button */}
+            {/* Model Badge & Setup Guide Trigger */}
             <div className="flex items-center gap-1.5 shrink-0">
               <button
-                onClick={() => setIsByokOpen(true)}
+                onClick={() => {
+                  setByokInitialTab("guide");
+                  setIsByokOpen(true);
+                }}
+                className="hidden sm:inline-flex items-center gap-1.5 px-2.5 py-1 rounded-xl bg-primary/10 border border-primary/25 hover:bg-primary/15 text-[11px] font-bold text-primary transition-all cursor-pointer shadow-2xs"
+                title="View 30-Second Free AI Key Setup Guide"
+              >
+                <BookOpen className="w-3.5 h-3.5" />
+                <span>Setup Guide ($0)</span>
+              </button>
+
+              <button
+                onClick={() => {
+                  setByokInitialTab("keys");
+                  setIsByokOpen(true);
+                }}
                 className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-xl bg-[var(--surface)] border border-[var(--border)] hover:border-primary/50 text-[11px] font-mono text-[var(--text2)] hover:text-primary transition-all cursor-pointer shadow-2xs"
                 title="Open AI Model & Key Settings"
               >
@@ -587,8 +605,8 @@ export function TutorView() {
             </div>
           )}
 
-          {/* Missing Key Banner */}
-          {!hasKey && (
+          {/* Missing Key Banner (when user has messages but key was removed) */}
+          {!hasKey && activeSession && activeSession.messages.length > 0 && (
             <div className="m-3 p-3 rounded-2xl bg-amber-500/10 border border-amber-500/30 flex items-start justify-between gap-3 text-xs shrink-0">
               <div className="flex items-start gap-2.5">
                 <AlertCircle className="w-4 h-4 text-amber-500 shrink-0 mt-0.5" />
@@ -597,12 +615,15 @@ export function TutorView() {
                     No API Key Configured
                   </div>
                   <div className="text-[var(--text2)] text-[11px] mt-0.5">
-                    Please provide your free Google Gemini or OpenAI key to start AI tutoring.
+                    Please provide your free Google Gemini or Groq key to start AI tutoring.
                   </div>
                 </div>
               </div>
               <button
-                onClick={() => setIsByokOpen(true)}
+                onClick={() => {
+                  setByokInitialTab("keys");
+                  setIsByokOpen(true);
+                }}
                 className="px-3 py-1.5 rounded-xl bg-amber-500 text-white font-bold text-xs shadow-xs hover:opacity-95 shrink-0 cursor-pointer"
               >
                 Set Key
@@ -613,25 +634,95 @@ export function TutorView() {
           {/* Message Stream (THE ONLY SCROLLING CONTAINER) */}
           <div className="flex-1 overflow-y-auto p-3 sm:p-5 space-y-4 min-h-0">
             {activeSession?.messages.length === 0 ? (
-              <div className="max-w-2xl mx-auto py-6 sm:py-10 space-y-6 text-center">
-                <div className="w-12 h-12 rounded-2xl bg-primary/10 text-primary border border-primary/20 flex items-center justify-center mx-auto shadow-sm">
-                  <Sparkles className="w-6 h-6" />
-                </div>
-                <div className="space-y-1">
-                  <h2 className="text-xl sm:text-2xl font-bold font-serif text-[var(--text)]">
-                    Marnie AI Board Exam Tutor
-                  </h2>
-                  <p className="text-xs sm:text-sm text-[var(--text2)] max-w-md mx-auto">
-                    Bring-Your-Own-Key AI tutor trained on PRC ECE board exam questions, speed shortcuts, and formula derivations.
-                  </p>
-                </div>
+              !hasKey ? (
+                /* First-Time Onboarding Welcome Card */
+                <div className="max-w-xl mx-auto py-6 sm:py-10 space-y-6 text-center animate-in fade-in duration-200">
+                  <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-primary to-accent text-white flex items-center justify-center mx-auto shadow-md">
+                    <Sparkles className="w-7 h-7" />
+                  </div>
 
-                {/* Accessible Functions Quick Ribbon */}
-                <QuickActions
-                  onSelectAction={handleQuickAction}
-                  hasAttachedExam={attachedContext?.type === "attempt"}
-                />
-              </div>
+                  <div className="space-y-2">
+                    <h2 className="text-xl sm:text-2xl font-bold font-serif text-[var(--text)]">
+                      Welcome to Marnie AI Tutor
+                    </h2>
+                    <p className="text-xs sm:text-sm text-[var(--text2)] max-w-md mx-auto leading-relaxed">
+                      Your personal PRC ECE board exam mentor. Powered by your own free AI key with <strong>$0 subscription fees</strong> and zero server markups.
+                    </p>
+                  </div>
+
+                  {/* 3 Quick Value Highlights */}
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5 text-left text-xs">
+                    <div className="p-3 rounded-xl bg-[var(--surface2)] border border-[var(--border)] space-y-1">
+                      <div className="font-bold text-primary flex items-center gap-1.5">
+                        <CheckCircle2 className="w-3.5 h-3.5" />
+                        <span>100% Free Forever</span>
+                      </div>
+                      <div className="text-[11px] text-[var(--text2)]">Use generous daily free tiers from Google & Groq. No credit card needed.</div>
+                    </div>
+
+                    <div className="p-3 rounded-xl bg-[var(--surface2)] border border-[var(--border)] space-y-1">
+                      <div className="font-bold text-emerald-600 dark:text-emerald-400 flex items-center gap-1.5">
+                        <ShieldCheck className="w-3.5 h-3.5" />
+                        <span>Client-Side Privacy</span>
+                      </div>
+                      <div className="text-[11px] text-[var(--text2)]">Keys stay exclusively in your browser's encrypted storage.</div>
+                    </div>
+
+                    <div className="p-3 rounded-xl bg-[var(--surface2)] border border-[var(--border)] space-y-1">
+                      <div className="font-bold text-accent flex items-center gap-1.5">
+                        <Zap className="w-3.5 h-3.5" />
+                        <span>30-Sec Setup</span>
+                      </div>
+                      <div className="text-[11px] text-[var(--text2)]">Generate a key in 3 quick clicks and start learning immediately.</div>
+                    </div>
+                  </div>
+
+                  {/* Primary CTA Buttons */}
+                  <div className="flex flex-col sm:flex-row items-center justify-center gap-3 pt-2">
+                    <button
+                      onClick={() => {
+                        setByokInitialTab("guide");
+                        setIsByokOpen(true);
+                      }}
+                      className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-primary text-white text-xs font-bold shadow-md hover:brightness-110 active:scale-95 transition-all cursor-pointer"
+                    >
+                      <BookOpen className="w-4 h-4" />
+                      <span>View 30-Sec Setup Guide</span>
+                    </button>
+
+                    <button
+                      onClick={() => {
+                        setByokInitialTab("keys");
+                        setIsByokOpen(true);
+                      }}
+                      className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-[var(--surface2)] border border-[var(--border)] text-[var(--text)] hover:border-primary/40 text-xs font-bold hover:bg-[var(--surface)] transition-all cursor-pointer"
+                    >
+                      <Key className="w-4 h-4 text-primary" />
+                      <span>Enter API Key</span>
+                    </button>
+                  </div>
+                </div>
+              ) : (
+                <div className="max-w-2xl mx-auto py-6 sm:py-10 space-y-6 text-center">
+                  <div className="w-12 h-12 rounded-2xl bg-primary/10 text-primary border border-primary/20 flex items-center justify-center mx-auto shadow-sm">
+                    <Sparkles className="w-6 h-6" />
+                  </div>
+                  <div className="space-y-1">
+                    <h2 className="text-xl sm:text-2xl font-bold font-serif text-[var(--text)]">
+                      Marnie AI Board Exam Tutor
+                    </h2>
+                    <p className="text-xs sm:text-sm text-[var(--text2)] max-w-md mx-auto">
+                      Bring-Your-Own-Key AI tutor trained on PRC ECE board exam questions, speed shortcuts, and formula derivations.
+                    </p>
+                  </div>
+
+                  {/* Accessible Functions Quick Ribbon */}
+                  <QuickActions
+                    onSelectAction={handleQuickAction}
+                    hasAttachedExam={attachedContext?.type === "attempt"}
+                  />
+                </div>
+              )
             ) : (
               <>
                 {activeSession?.messages.map((m) => (
@@ -808,6 +899,7 @@ export function TutorView() {
       {/* BYOK Settings Modal */}
       <ByokModal
         isOpen={isByokOpen}
+        initialTab={byokInitialTab}
         onClose={() => setIsByokOpen(false)}
         onKeysUpdated={handleKeysUpdated}
       />

@@ -137,21 +137,6 @@ export function Navbar({ breadcrumb }: { breadcrumb?: string }) {
             <History className="w-4 h-4" />
             <span className="hidden xs:inline">History</span>
           </Link>
-
-          {/* Secondary Outline Button in Navbar to avoid competing with hero primary CTA */}
-          <Link
-            href="/quizzes/upload"
-            aria-label="Upload CSV"
-            title="Upload CSV Test Set"
-            className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs sm:text-sm font-medium transition-colors ${
-              pathname === "/quizzes/upload"
-                ? "bg-[var(--surface2)] text-[var(--accent)] border border-[var(--accent)]"
-                : "bg-[var(--surface2)] border border-[var(--border)] text-[var(--text2)] hover:border-[var(--accent)] hover:text-[var(--accent)]"
-            }`}
-          >
-            <Upload className="w-4 h-4" />
-            <span className="hidden sm:inline">Upload CSV</span>
-          </Link>
         </nav>
 
         {/* Right: Streak, Search, Tour, Feedback, Theme Toggle & User Profile */}
