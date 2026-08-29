@@ -56,6 +56,7 @@ export function ModuleReader({ module }: ModuleReaderProps) {
   // Active Recall Written Challenge state (persisted locally)
   const [writtenAnswers, setWrittenAnswers] = useState<Record<string, string>>({});
   const [revealedAnswers, setRevealedAnswers] = useState<Record<string, boolean>>({});
+  const [compactTables, setCompactTables] = useState<Record<number, boolean>>({});
 
   useEffect(() => {
     if (typeof window === "undefined" || !module.writtenChallenges) return;
@@ -635,51 +636,76 @@ export function ModuleReader({ module }: ModuleReaderProps) {
                 </div>
 
                 <div className="space-y-6">
-                  {module.comparisonTables.map((tbl, tIdx) => (
-                    <div
-                      key={tbl.id || tIdx}
-                      className="bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-5 shadow-xs space-y-3 overflow-hidden"
-                    >
-                      <h3 className="font-bold text-base text-[var(--text)]">
-                        {tbl.title}
-                      </h3>
-                      <div className="overflow-x-auto">
-                        <table className="w-full text-left border-collapse text-xs sm:text-sm">
-                          <thead>
-                            <tr className="border-b border-[var(--border)] bg-[var(--surface2)]/60">
-                              {tbl.headers.map((h, hIdx) => (
-                                <th
-                                  key={hIdx}
-                                  className="p-3 font-mono font-bold text-[var(--text)] uppercase tracking-wider"
-                                >
-                                  <MathText text={h} />
-                                </th>
-                              ))}
-                            </tr>
-                          </thead>
-                          <tbody className="divide-y divide-[var(--border)]/60">
-                            {tbl.rows.map((row, rIdx) => (
-                              <tr
-                                key={rIdx}
-                                className="hover:bg-[var(--surface2)]/40 transition-colors"
-                              >
-                                {row.map((cell, cIdx) => (
-                                  <td
-                                    key={cIdx}
-                                    className={`p-3 text-[var(--text2)] leading-relaxed ${
-                                      cIdx === 0 ? "font-semibold text-[var(--text)]" : ""
-                                    }`}
+                  {module.comparisonTables.map((tbl, tIdx) => {
+                    const isCompact = !!compactTables[tIdx];
+                    return (
+                      <div
+                        key={tbl.id || tIdx}
+                        className="bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-4 sm:p-5 shadow-xs space-y-3 overflow-hidden"
+                      >
+                        <div className="flex items-center justify-between gap-2">
+                          <h3 className="font-bold text-sm sm:text-base text-[var(--text)]">
+                            {tbl.title}
+                          </h3>
+                          <button
+                            type="button"
+                            onClick={() =>
+                              setCompactTables((prev) => ({
+                                ...prev,
+                                [tIdx]: !prev[tIdx],
+                              }))
+                            }
+                            className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg text-[11px] font-mono font-medium bg-[var(--surface2)] hover:bg-[var(--surface)] border border-[var(--border)] text-[var(--text2)] transition-colors cursor-pointer shrink-0"
+                            title="Toggle between compact fit view and horizontal scrolling view"
+                          >
+                            <span>{isCompact ? "📱 Fit Mode" : "↔️ Scroll Mode"}</span>
+                          </button>
+                        </div>
+
+                        <div className={isCompact ? "w-full overflow-x-hidden" : "overflow-x-auto"}>
+                          <table
+                            className={`w-full text-left border-collapse ${
+                              isCompact ? "text-[10px] leading-tight" : "text-xs sm:text-sm"
+                            }`}
+                          >
+                            <thead>
+                              <tr className="border-b border-[var(--border)] bg-[var(--surface2)]/60">
+                                {tbl.headers.map((h, hIdx) => (
+                                  <th
+                                    key={hIdx}
+                                    className={`${
+                                      isCompact ? "p-1.5 font-bold" : "p-3 font-bold"
+                                    } font-mono text-[var(--text)] uppercase tracking-wider`}
                                   >
-                                    <MathText text={cell} />
-                                  </td>
+                                    <MathText text={h} />
+                                  </th>
                                 ))}
                               </tr>
-                            ))}
-                          </tbody>
-                        </table>
+                            </thead>
+                            <tbody className="divide-y divide-[var(--border)]/60">
+                              {tbl.rows.map((row, rIdx) => (
+                                <tr
+                                  key={rIdx}
+                                  className="hover:bg-[var(--surface2)]/40 transition-colors"
+                                >
+                                  {row.map((cell, cIdx) => (
+                                    <td
+                                      key={cIdx}
+                                      className={`${
+                                        isCompact ? "p-1.5 text-[var(--text2)]" : "p-3 text-[var(--text2)] leading-relaxed"
+                                      } ${cIdx === 0 ? "font-semibold text-[var(--text)]" : ""}`}
+                                    >
+                                      <MathText text={cell} />
+                                    </td>
+                                  ))}
+                                </tr>
+                              ))}
+                            </tbody>
+                          </table>
+                        </div>
                       </div>
-                    </div>
-                  ))}
+                    );
+                  })}
                 </div>
               </section>
             )}

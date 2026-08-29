@@ -374,74 +374,71 @@ export function LibraryView({
             </div>
           </div>
 
-          <div className="flex items-center gap-3 w-full md:w-auto relative z-10">
-            {/* Primary Action Button & Per-Subject Refresher Chips */}
-            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 w-full md:w-auto">
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 w-full md:w-auto relative z-10">
+            <button
+              type="button"
+              onClick={() => {
+                setRefresherModalDomain("ALL");
+                setIsRefresherModalOpen(true);
+              }}
+              className="flex-1 md:flex-initial inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-[var(--accent)] text-white text-xs sm:text-sm font-bold shadow-md hover:brightness-110 active:scale-95 transition-all cursor-pointer"
+            >
+              <Zap className="w-4 h-4 fill-current" />
+              <span>Start Refresher Drill</span>
+            </button>
+
+            {/* Per-Subject Quick Refresher Chips */}
+            <div className="flex items-center justify-between sm:justify-start gap-1 bg-[var(--surface2)] p-1 rounded-xl border border-[var(--border)] overflow-x-auto no-scrollbar">
               <button
                 type="button"
                 onClick={() => {
-                  setRefresherModalDomain("ALL");
+                  setRefresherModalDomain("MATH");
                   setIsRefresherModalOpen(true);
                 }}
-                className="flex-1 md:flex-initial inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-[var(--accent)] text-white text-xs sm:text-sm font-bold shadow-md hover:brightness-110 active:scale-95 transition-all cursor-pointer"
+                className="px-2.5 py-1.5 rounded-lg text-xs font-mono font-bold text-blue-500 hover:bg-[var(--surface)] transition-all cursor-pointer"
+                title="Customize Math Refresher"
               >
-                <Zap className="w-4 h-4 fill-current" />
-                <span>Start Refresher Drill</span>
+                📘 Math
               </button>
-
-              {/* Per-Subject Quick Refresher Chips */}
-              <div className="flex items-center gap-1 bg-[var(--surface2)] p-1 rounded-xl border border-[var(--border)] overflow-x-auto">
-                <button
-                  type="button"
-                  onClick={() => {
-                    setRefresherModalDomain("MATH");
-                    setIsRefresherModalOpen(true);
-                  }}
-                  className="px-2.5 py-1.5 rounded-lg text-xs font-mono font-bold text-blue-500 hover:bg-[var(--surface)] transition-all cursor-pointer"
-                  title="Customize Math Refresher"
-                >
-                  📘 Math
-                </button>
-                <button
-                  type="button"
-                  onClick={() => {
-                    setRefresherModalDomain("ELEC");
-                    setIsRefresherModalOpen(true);
-                  }}
-                  className="px-2.5 py-1.5 rounded-lg text-xs font-mono font-bold text-amber-500 hover:bg-[var(--surface)] transition-all cursor-pointer"
-                  title="Customize Electronics Refresher"
-                >
-                  📙 Elecs
-                </button>
-                <button
-                  type="button"
-                  onClick={() => {
-                    setRefresherModalDomain("GEAS");
-                    setIsRefresherModalOpen(true);
-                  }}
-                  className="px-2.5 py-1.5 rounded-lg text-xs font-mono font-bold text-emerald-500 hover:bg-[var(--surface)] transition-all cursor-pointer"
-                  title="Customize GEAS Refresher"
-                >
-                  📗 GEAS
-                </button>
-                <button
-                  type="button"
-                  onClick={() => {
-                    setRefresherModalDomain("EST");
-                    setIsRefresherModalOpen(true);
-                  }}
-                  className="px-2.5 py-1.5 rounded-lg text-xs font-mono font-bold text-purple-500 hover:bg-[var(--surface)] transition-all cursor-pointer"
-                  title="Customize EST Refresher"
-                >
-                  📕 EST
-                </button>
-              </div>
+              <button
+                type="button"
+                onClick={() => {
+                  setRefresherModalDomain("ELEC");
+                  setIsRefresherModalOpen(true);
+                }}
+                className="px-2.5 py-1.5 rounded-lg text-xs font-mono font-bold text-amber-500 hover:bg-[var(--surface)] transition-all cursor-pointer"
+                title="Customize Electronics Refresher"
+              >
+                📙 Elecs
+              </button>
+              <button
+                type="button"
+                onClick={() => {
+                  setRefresherModalDomain("GEAS");
+                  setIsRefresherModalOpen(true);
+                }}
+                className="px-2.5 py-1.5 rounded-lg text-xs font-mono font-bold text-emerald-500 hover:bg-[var(--surface)] transition-all cursor-pointer"
+                title="Customize GEAS Refresher"
+              >
+                📗 GEAS
+              </button>
+              <button
+                type="button"
+                onClick={() => {
+                  setRefresherModalDomain("EST");
+                  setIsRefresherModalOpen(true);
+                }}
+                className="px-2.5 py-1.5 rounded-lg text-xs font-mono font-bold text-purple-500 hover:bg-[var(--surface)] transition-all cursor-pointer"
+                title="Customize EST Refresher"
+              >
+                📕 EST
+              </button>
             </div>
 
             {/* Secondary Action Button */}
             <Link
               href="/analytics"
-              className="inline-flex items-center justify-center gap-1.5 px-4 py-3 rounded-xl bg-[var(--surface)] border border-[var(--border)] text-[var(--text2)] text-xs sm:text-sm font-semibold hover:text-[var(--text)] hover:bg-[var(--surface2)] transition-all"
+              className="inline-flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-xl bg-[var(--surface)] border border-[var(--border)] text-[var(--text2)] text-xs sm:text-sm font-semibold hover:text-[var(--text)] hover:bg-[var(--surface2)] transition-all"
             >
               <BarChart2 className="w-4 h-4" />
               <span>Retention Matrix</span>
@@ -515,8 +512,8 @@ export function LibraryView({
           <SkillTreeMap quizzes={quizzes} topicMap={srsOverview.topicMap} />
         ) : (
           <>
-            {/* Filter Toolbar with Standardized PRC Subject Taxonomy */}
-            <div className="bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-4 sm:p-5 shadow-[var(--shadow)] space-y-4">
+            {/* Filter Toolbar with Touch-Scrollable PRC Subject & Tier Ribbons */}
+            <div className="bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-4 sm:p-5 shadow-[var(--shadow)] space-y-3 sm:space-y-4">
               <div className="relative">
                 <Search className="w-4 h-4 absolute left-3.5 top-1/2 -translate-y-1/2 text-[var(--text3)]" />
                 <input
@@ -528,52 +525,56 @@ export function LibraryView({
                 />
               </div>
 
-              <div className="flex flex-wrap items-center gap-2 pt-1 border-t border-[var(--border)]">
-                <span className="text-xs font-mono text-[var(--text3)] uppercase mr-1">Subject:</span>
-                {[
-                  { id: "all", label: "All Subjects" },
-                  { id: "MATH", label: "MATH" },
-                  { id: "ELECS", label: "ELECS" },
-                  { id: "GEAS", label: "GEAS" },
-                  { id: "EST", label: "EST" },
-                ].map((d) => (
-                  <button
-                    key={d.id}
-                    type="button"
-                    onClick={() => setSelectedSubject(d.id)}
-                    className={`px-3 py-1 rounded-lg text-xs font-medium transition-all cursor-pointer ${
-                      selectedSubject === d.id
-                        ? "bg-[var(--accent)] text-white shadow-sm"
-                        : "bg-[var(--surface2)] text-[var(--text2)] hover:text-[var(--text)] border border-[var(--border)]"
-                    }`}
-                  >
-                    {d.label}
-                  </button>
-                ))}
+              <div className="space-y-2 pt-1 border-t border-[var(--border)]">
+                {/* Subject Ribbon */}
+                <div className="flex items-center gap-1.5 overflow-x-auto no-scrollbar py-0.5">
+                  <span className="text-[10px] font-mono text-[var(--text3)] uppercase mr-1 shrink-0">Subject:</span>
+                  {[
+                    { id: "all", label: "All Subjects" },
+                    { id: "MATH", label: "MATH" },
+                    { id: "ELECS", label: "ELECS" },
+                    { id: "GEAS", label: "GEAS" },
+                    { id: "EST", label: "EST" },
+                  ].map((d) => (
+                    <button
+                      key={d.id}
+                      type="button"
+                      onClick={() => setSelectedSubject(d.id)}
+                      className={`px-3 py-1 rounded-lg text-xs font-medium transition-all shrink-0 cursor-pointer ${
+                        selectedSubject === d.id
+                          ? "bg-[var(--accent)] text-white shadow-sm font-semibold"
+                          : "bg-[var(--surface2)] text-[var(--text2)] hover:text-[var(--text)] border border-[var(--border)]"
+                      }`}
+                    >
+                      {d.label}
+                    </button>
+                  ))}
+                </div>
 
-                <div className="h-4 w-px bg-[var(--border)] mx-1 hidden sm:block"></div>
-
-                <span className="text-xs font-mono text-[var(--text3)] uppercase mr-1">Tier:</span>
-                {[
-                  { id: "all", label: "All Tiers" },
-                  { id: "diagnostic", label: "Diagnostic (30Q)" },
-                  { id: "review", label: "Review (25Q)" },
-                  { id: "drill", label: "Drill (10Q)" },
-                  { id: "simulation", label: "Simulation (50Q)" },
-                ].map((t) => (
-                  <button
-                    key={t.id}
-                    type="button"
-                    onClick={() => setSelectedTier(t.id)}
-                    className={`px-3 py-1 rounded-lg text-xs font-medium transition-all cursor-pointer ${
-                      selectedTier === t.id
-                        ? "bg-[var(--accent)] text-white shadow-sm"
-                        : "bg-[var(--surface2)] text-[var(--text2)] hover:text-[var(--text)] border border-[var(--border)]"
-                    }`}
-                  >
-                    {t.label}
-                  </button>
-                ))}
+                {/* Tier Ribbon */}
+                <div className="flex items-center gap-1.5 overflow-x-auto no-scrollbar py-0.5">
+                  <span className="text-[10px] font-mono text-[var(--text3)] uppercase mr-1 shrink-0">Tier:</span>
+                  {[
+                    { id: "all", label: "All Tiers" },
+                    { id: "diagnostic", label: "Diagnostic (30Q)" },
+                    { id: "review", label: "Review (25Q)" },
+                    { id: "drill", label: "Drill (10Q)" },
+                    { id: "simulation", label: "Simulation (50Q)" },
+                  ].map((t) => (
+                    <button
+                      key={t.id}
+                      type="button"
+                      onClick={() => setSelectedTier(t.id)}
+                      className={`px-3 py-1 rounded-lg text-xs font-medium transition-all shrink-0 cursor-pointer ${
+                        selectedTier === t.id
+                          ? "bg-[var(--accent)] text-white shadow-sm font-semibold"
+                          : "bg-[var(--surface2)] text-[var(--text2)] hover:text-[var(--text)] border border-[var(--border)]"
+                      }`}
+                    >
+                      {t.label}
+                    </button>
+                  ))}
+                </div>
               </div>
             </div>
 
@@ -598,13 +599,13 @@ export function LibraryView({
                       className={`bg-[var(--surface)] border border-[var(--border)] border-l-4 ${subjectConfig.borderClass} rounded-2xl overflow-visible shadow-[var(--shadow)] transition-all`}
                     >
                       {/* Topic Header Accordion */}
-                      <div className="p-4 sm:p-5 flex items-center justify-between gap-4">
+                      <div className="p-3.5 sm:p-5 flex items-start sm:items-center justify-between gap-3">
                         <button
                           type="button"
                           onClick={() => toggleTopic(group.name)}
-                          className="flex-1 flex items-center gap-3 text-left cursor-pointer select-none group min-w-0"
+                          className="flex-1 flex items-start sm:items-center gap-2.5 sm:gap-3 text-left cursor-pointer select-none group min-w-0"
                         >
-                          <div className="w-7 h-7 rounded-lg bg-[var(--surface2)] border border-[var(--border)] flex items-center justify-center text-[var(--text2)] group-hover:text-[var(--accent)] group-hover:border-[var(--accent)] transition-colors shrink-0">
+                          <div className="w-7 h-7 rounded-lg bg-[var(--surface2)] border border-[var(--border)] flex items-center justify-center text-[var(--text2)] group-hover:text-[var(--accent)] group-hover:border-[var(--accent)] transition-colors shrink-0 mt-0.5 sm:mt-0">
                             {isCollapsed ? (
                               <ChevronRight className="w-4 h-4" />
                             ) : (
@@ -612,16 +613,16 @@ export function LibraryView({
                             )}
                           </div>
 
-                          <div className="min-w-0">
-                            <div className="flex items-center gap-2">
-                              <span className={`px-2 py-0.2 rounded text-[10px] font-mono font-bold uppercase ${subjectConfig.badgeClass}`}>
+                          <div className="min-w-0 flex-1">
+                            <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
+                              <span className={`px-2 py-0.5 rounded text-[10px] font-mono font-bold uppercase shrink-0 ${subjectConfig.badgeClass}`}>
                                 {subjectConfig.label}
                               </span>
-                              <h2 className="text-base sm:text-lg font-bold font-serif text-[var(--text)] group-hover:text-[var(--accent)] transition-colors truncate">
+                              <h2 className="text-sm sm:text-base font-bold font-serif text-[var(--text)] group-hover:text-[var(--accent)] transition-colors leading-snug line-clamp-2">
                                 {group.name}
                               </h2>
                             </div>
-                            <div className="flex items-center gap-2 text-xs text-[var(--text3)] font-mono mt-0.5">
+                            <div className="flex flex-wrap items-center gap-x-2 gap-y-1 text-[11px] sm:text-xs text-[var(--text3)] font-mono mt-1">
                               <span>{formatTopicCode(group.topicCode)}</span>
                               <span>•</span>
                               <span>{pluralize(group.items.length, "set")}</span>

@@ -186,8 +186,8 @@ export function QuizRunner({ attempt, questionSet, questions }: QuizRunnerProps)
             </span>
           </div>
 
-          <div className="flex items-center gap-3">
-            <div className="px-3.5 py-1 rounded-full bg-[rgba(217,119,87,0.12)] border border-[rgba(217,119,87,0.3)] text-xs font-bold font-mono text-[var(--accent)]">
+          <div className="flex items-center gap-2 sm:gap-3 shrink-0">
+            <div className="px-3 py-1 rounded-full bg-[rgba(217,119,87,0.12)] border border-[rgba(217,119,87,0.3)] text-xs font-bold font-mono text-[var(--accent)] shrink-0 whitespace-nowrap">
               Q {currentIdx + 1} / {questions.length}
             </div>
             <ThemeToggle />

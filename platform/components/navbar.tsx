@@ -30,15 +30,15 @@ export function Navbar({ breadcrumb }: { breadcrumb?: string }) {
     <header className="sticky top-0 z-50 w-full border-b backdrop-blur-md transition-colors bg-[var(--surface)] border-[var(--border)]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-4">
         {/* Left: Logo & Breadcrumbs */}
-        <div className="flex items-center gap-3 min-w-0">
+        <div className="flex items-center gap-2 sm:gap-3 min-w-0">
           <Link
             href="/quizzes"
             aria-label="Marnie Quiz Home"
             title="Marnie Quiz Home"
-            className="text-xl font-bold tracking-tight text-[var(--accent)] font-serif hover:opacity-90 flex items-center gap-1.5 shrink-0"
+            className="text-lg sm:text-xl font-bold tracking-tight text-[var(--accent)] font-serif hover:opacity-90 flex items-center gap-1.5 shrink-0"
           >
             <Sparkles className="w-5 h-5 text-[var(--accent)]" />
-            <span>Marnie Quiz</span>
+            <span className="hidden sm:inline">Marnie Quiz</span>
           </Link>
 
           {breadcrumb && (
@@ -51,8 +51,8 @@ export function Navbar({ breadcrumb }: { breadcrumb?: string }) {
           )}
         </div>
 
-        {/* Center: Navigation Links with Title tooltips */}
-        <nav className="flex items-center gap-1 sm:gap-2">
+        {/* Center: Navigation Links for Desktop & Tablet (hidden on mobile; MobileNav handles < md) */}
+        <nav className="hidden md:flex items-center gap-1 sm:gap-2">
           <Link
             href="/quizzes"
             aria-label="Library"

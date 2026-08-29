@@ -426,6 +426,19 @@ export function MasteryRunner({ module, mastery }: MasteryRunnerProps) {
       <section className="sticky top-16 z-30 bg-[var(--surface)] border-b border-[var(--border)] backdrop-blur-md">
         <div className="max-w-6xl mx-auto px-3 sm:px-6 py-2.5 sm:py-3 flex items-center justify-between gap-2 sm:gap-4">
           <div className="flex items-center gap-1.5 sm:gap-2 min-w-0">
+            <Link
+              href={`/learn/${module.id}`}
+              onClick={(e) => {
+                if (!confirm("Exit this mastery challenge? Current progress will be lost.")) {
+                  e.preventDefault();
+                }
+              }}
+              className="text-xs font-semibold text-[var(--text2)] hover:text-primary flex items-center gap-1 shrink-0 mr-1"
+              title="Exit Mastery Challenge"
+            >
+              <ArrowLeft className="w-4 h-4" />
+              <span className="hidden sm:inline">Exit</span>
+            </Link>
             <span className="px-2 py-0.5 rounded-md font-mono text-xs font-bold bg-primary/10 text-primary border border-primary/20 shrink-0">
               {module.code}
             </span>

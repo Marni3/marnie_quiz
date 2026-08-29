@@ -21,12 +21,12 @@ export function ThemeToggle({ className = "" }: { className?: string }) {
       {isDark ? (
         <>
           <Sun className="w-3.5 h-3.5 text-[#e8895a]" />
-          <span>Light mode</span>
+          <span className="hidden sm:inline">Light mode</span>
         </>
       ) : (
         <>
           <Moon className="w-3.5 h-3.5 text-[#c2622a]" />
-          <span>Dark mode</span>
+          <span className="hidden sm:inline">Dark mode</span>
         </>
       )}
     </button>

@@ -180,10 +180,10 @@ export function ResultsView({
             <button
               type="button"
               onClick={handleReviewWithAI}
-              className="inline-flex items-center gap-2 px-6 py-2.5 rounded-xl bg-gradient-to-r from-primary to-accent text-white font-bold text-xs hover:opacity-95 shadow-md transition-all cursor-pointer"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-rose-500 via-amber-500 to-primary text-white font-bold text-xs sm:text-sm hover:brightness-110 shadow-lg hover:shadow-primary/20 active:scale-95 transition-all cursor-pointer"
             >
               <Sparkles className="w-4 h-4 text-white animate-pulse" />
-              <span>Review Exam with AI</span>
+              <span>Review Exam with AI Debrief</span>
             </button>
 
             <button

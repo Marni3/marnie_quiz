@@ -4,6 +4,7 @@ import React, { createContext, useContext, useEffect, useState } from "react";
 import { SessionProvider } from "next-auth/react";
 import { OnboardingTour } from "./onboarding-tour";
 import { OmniSearch } from "./omni-search";
+import { MobileNav } from "./mobile-nav";
 
 type Theme = "light" | "dark";
 
@@ -57,6 +58,7 @@ export function Providers({ children }: { children: React.ReactNode }) {
         {children}
         <OnboardingTour />
         <OmniSearch />
+        <MobileNav />
       </ThemeProvider>
     </SessionProvider>
   );

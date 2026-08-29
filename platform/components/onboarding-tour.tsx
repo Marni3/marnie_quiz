@@ -239,20 +239,20 @@ export function OnboardingTour() {
       />
 
       {/* Dialog Body */}
-      <div className="relative w-full max-w-lg bg-[var(--surface)] border border-[var(--border)] rounded-3xl shadow-2xl overflow-hidden flex flex-col z-10 transition-all">
+      <div className="relative w-full max-w-lg bg-[var(--surface)] border border-[var(--border)] rounded-2xl sm:rounded-3xl shadow-2xl overflow-hidden flex flex-col z-10 max-h-[85vh] transition-all">
         {/* Top Header Card Banner */}
         <div
-          className={`p-6 bg-gradient-to-br ${step.accentColor} border-b flex items-start justify-between gap-4`}
+          className={`p-4 sm:p-6 bg-gradient-to-br ${step.accentColor} border-b flex items-start justify-between gap-3 sm:gap-4`}
         >
-          <div className="flex items-center gap-3">
-            <div className="w-12 h-12 rounded-2xl bg-[var(--surface)] border border-[var(--border)] flex items-center justify-center shrink-0 shadow-sm">
+          <div className="flex items-center gap-2.5 sm:gap-3">
+            <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl bg-[var(--surface)] border border-[var(--border)] flex items-center justify-center shrink-0 shadow-sm">
               {step.icon}
             </div>
             <div>
-              <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-[var(--text2)]">
+              <span className="text-[10px] sm:text-[11px] font-mono font-bold uppercase tracking-wider text-[var(--text2)]">
                 {step.badge}
               </span>
-              <h2 className="text-xl sm:text-2xl font-bold font-serif text-[var(--text)] tracking-tight mt-0.5">
+              <h2 className="text-lg sm:text-2xl font-bold font-serif text-[var(--text)] tracking-tight mt-0.5">
                 {step.title}
               </h2>
             </div>
@@ -260,7 +260,7 @@ export function OnboardingTour() {
 
           <button
             onClick={handleClose}
-            className="p-1.5 rounded-full text-[var(--text3)] hover:text-[var(--text)] hover:bg-[var(--surface2)] transition-colors cursor-pointer"
+            className="p-1.5 rounded-full text-[var(--text3)] hover:text-[var(--text)] hover:bg-[var(--surface2)] transition-colors cursor-pointer shrink-0"
             aria-label="Close Tour"
           >
             <X className="w-5 h-5" />
@@ -268,7 +268,7 @@ export function OnboardingTour() {
         </div>
 
         {/* Slide Body */}
-        <div className="p-6 space-y-4 overflow-y-auto max-h-[60vh] text-xs sm:text-sm">
+        <div className="p-4 sm:p-6 space-y-3 sm:space-y-4 overflow-y-auto max-h-[55vh] text-xs sm:text-sm">
           <p className="text-[var(--text2)] leading-relaxed">{step.lead}</p>
 
           {/* Bullet Points */}

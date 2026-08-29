@@ -63,10 +63,10 @@ export default async function AnalyticsPage() {
           <LaunchDrillButton />
         </div>
 
-        {/* Hero Metrics Grid with Honest Calibration States */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        {/* Hero Metrics Grid with Honest Calibration States (Dense 2x2 on mobile) */}
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
           {/* PRC Board Readiness Index */}
-          <div className="bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-5 shadow-[var(--shadow)] relative overflow-hidden flex flex-col justify-between">
+          <div className="bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-3.5 sm:p-5 shadow-[var(--shadow)] relative overflow-hidden flex flex-col justify-between">
             <div>
               <div className="flex items-center justify-between mb-2">
                 <span
@@ -114,25 +114,25 @@ export default async function AnalyticsPage() {
           </div>
 
           {/* Average Memory Retrievability */}
-          <div className="bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-5 shadow-[var(--shadow)] flex flex-col justify-between">
+          <div className="bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-3.5 sm:p-5 shadow-[var(--shadow)] flex flex-col justify-between">
             <div>
               <div className="flex items-center justify-between mb-2">
                 <span
                   title={METRIC_DEFINITIONS.retrievability}
-                  className="text-xs font-mono uppercase text-[var(--text3)] flex items-center gap-1 cursor-help"
+                  className="text-[10px] sm:text-xs font-mono uppercase text-[var(--text3)] flex items-center gap-1 cursor-help truncate"
                 >
-                  <span>Average Retention</span>
-                  <HelpCircle className="w-3.5 h-3.5" />
+                  <span>Retention</span>
+                  <HelpCircle className="w-3 h-3" />
                 </span>
-                <ShieldCheck className="w-4 h-4 text-emerald-500" />
+                <ShieldCheck className="w-3.5 h-3.5 text-emerald-500 shrink-0" />
               </div>
 
               {srsOverview.totalTrackedTopics >= 3 ? (
                 <div>
-                  <div className="text-3xl font-bold font-serif text-[var(--text)]">
+                  <div className="text-2xl sm:text-3xl font-bold font-serif text-[var(--text)]">
                     {srsOverview.averageRetention}%
                   </div>
-                  <div className="w-full bg-[var(--surface2)] h-1.5 rounded-full mt-3 overflow-hidden">
+                  <div className="w-full bg-[var(--surface2)] h-1.5 rounded-full mt-2 sm:mt-3 overflow-hidden">
                     <div
                       className="bg-emerald-500 h-full transition-all duration-500"
                       style={{ width: `${srsOverview.averageRetention}%` }}
@@ -141,10 +141,10 @@ export default async function AnalyticsPage() {
                 </div>
               ) : (
                 <div>
-                  <div className="text-lg font-bold font-serif text-emerald-600 dark:text-emerald-400">
-                    {srsOverview.totalTrackedTopics > 0 ? "Initial Sample" : "No Memory Data"}
+                  <div className="text-base sm:text-lg font-bold font-serif text-emerald-600 dark:text-emerald-400">
+                    {srsOverview.totalTrackedTopics > 0 ? "Initial Sample" : "No Data"}
                   </div>
-                  <div className="w-full bg-[var(--surface2)] h-1.5 rounded-full mt-3 overflow-hidden">
+                  <div className="w-full bg-[var(--surface2)] h-1.5 rounded-full mt-2 sm:mt-3 overflow-hidden">
                     <div
                       className="bg-emerald-500/50 h-full transition-all duration-500"
                       style={{ width: `${(srsOverview.totalTrackedTopics / 3) * 100}%` }}
@@ -154,48 +154,48 @@ export default async function AnalyticsPage() {
               )}
             </div>
 
-            <p className="text-[11px] text-[var(--text3)] mt-3">
+            <p className="text-[10px] sm:text-[11px] text-[var(--text3)] mt-2 sm:mt-3 leading-tight">
               {srsOverview.totalTrackedTopics >= 3
-                ? `${srsOverview.activeDueCount} topics currently due for review`
-                : `${srsOverview.totalTrackedTopics} / 3 topics studied to compute global retention`}
+                ? `${srsOverview.activeDueCount} due for review`
+                : `${srsOverview.totalTrackedTopics}/3 topics studied`}
             </p>
           </div>
 
           {/* Overall Solving Speed */}
-          <div className="bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-5 shadow-[var(--shadow)] flex flex-col justify-between">
+          <div className="bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-3.5 sm:p-5 shadow-[var(--shadow)] flex flex-col justify-between">
             <div>
               <div className="flex items-center justify-between mb-2">
-                <span className="text-xs font-mono uppercase text-[var(--text3)] flex items-center gap-1">
-                  <span>Solving Pace</span>
-                  <Timer className="w-3.5 h-3.5 text-blue-500" />
+                <span className="text-[10px] sm:text-xs font-mono uppercase text-[var(--text3)] flex items-center gap-1">
+                  <span>Pace</span>
+                  <Timer className="w-3 h-3 text-blue-500 shrink-0" />
                 </span>
               </div>
-              <div className="text-3xl font-bold font-serif text-[var(--text)]">
+              <div className="text-2xl sm:text-3xl font-bold font-serif text-[var(--text)]">
                 {analytics.totalQuestionsAnswered > 0 ? `${analytics.overallAvgPaceSeconds}s` : "—"}
               </div>
             </div>
 
             <div>
-              <p className="text-xs text-[var(--text2)] mt-2">
-                Target pace: &lt;60s per item
+              <p className="text-[10px] sm:text-xs text-[var(--text2)] mt-1.5 sm:mt-2">
+                Target: &lt;60s/item
               </p>
-              <p className="text-[11px] text-[var(--text3)] mt-0.5 font-mono">
-                {pluralize(analytics.totalQuestionsAnswered, "question")} answered total
+              <p className="text-[10px] sm:text-[11px] text-[var(--text3)] mt-0.5 font-mono truncate">
+                {pluralize(analytics.totalQuestionsAnswered, "Q")} total
               </p>
             </div>
           </div>
 
           {/* Global Syllabus & Learning Coverage */}
-          <div className="bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-5 shadow-[var(--shadow)] flex flex-col justify-between">
+          <div className="bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-3.5 sm:p-5 shadow-[var(--shadow)] flex flex-col justify-between">
             <div>
               <div className="flex items-center justify-between mb-2">
-                <span className="text-xs font-mono uppercase text-[var(--text3)]">Syllabus Coverage</span>
-                <Layers className="w-4 h-4 text-purple-500" />
+                <span className="text-[10px] sm:text-xs font-mono uppercase text-[var(--text3)] truncate">Syllabus</span>
+                <Layers className="w-3.5 h-3.5 text-purple-500 shrink-0" />
               </div>
-              <div className="text-3xl font-bold font-serif text-[var(--text)]">
+              <div className="text-xl sm:text-3xl font-bold font-serif text-[var(--text)] truncate">
                 {analytics.totalUniqueQuestionsAnswered} / {TOTAL_SYLLABUS_QUESTIONS.toLocaleString()}
               </div>
-              <div className="w-full bg-[var(--surface2)] h-1.5 rounded-full mt-3 overflow-hidden">
+              <div className="w-full bg-[var(--surface2)] h-1.5 rounded-full mt-2 sm:mt-3 overflow-hidden">
                 <div
                   className="bg-purple-500 h-full transition-all duration-500"
                   style={{ width: `${Math.max(1, Math.round((analytics.totalUniqueQuestionsAnswered / TOTAL_SYLLABUS_QUESTIONS) * 100))}%` }}

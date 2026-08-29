@@ -88,6 +88,8 @@ export function FeedbackModal({
       comment: comment.trim(),
       metadata: {
         pathname,
+        device: typeof window !== "undefined" && window.innerWidth < 768 ? "mobile" : "desktop",
+        screenResolution: typeof window !== "undefined" ? `${window.innerWidth}x${window.innerHeight}` : null,
         viewportWidth: typeof window !== "undefined" ? window.innerWidth : null,
         viewportHeight: typeof window !== "undefined" ? window.innerHeight : null,
         userAgent: typeof navigator !== "undefined" ? navigator.userAgent : null,

@@ -87,8 +87,18 @@ export async function POST(req: NextRequest) {
 
       if (!upstreamRes.ok) {
         const errText = await upstreamRes.text();
+        console.error("Gemini upstream error:", upstreamRes.status, errText);
+        let userFriendly = `Gemini API error (${upstreamRes.status}): ${errText}`;
+        if (
+          upstreamRes.status === 429 ||
+          upstreamRes.status === 503 ||
+          errText.toLowerCase().includes("resource_exhausted") ||
+          errText.toLowerCase().includes("high demand")
+        ) {
+          userFriendly = `Google Gemini is currently experiencing peak demand or rate limits (HTTP ${upstreamRes.status}).\n\n💡 **Tip**: To bypass rate limits and continue studying without interruptions, add a free Groq (ultra-low latency Llama 3.3) or OpenRouter backup key in your AI Tutor settings.`;
+        }
         return NextResponse.json(
-          { error: `Gemini API error (${upstreamRes.status}): ${errText}` },
+          { error: userFriendly, isRateLimit: true },
           { status: upstreamRes.status }
         );
       }
@@ -197,8 +207,13 @@ export async function POST(req: NextRequest) {
 
       if (!upstreamRes.ok) {
         const errText = await upstreamRes.text();
+        console.error(`${provider} upstream error:`, upstreamRes.status, errText);
+        let userFriendly = `${provider.toUpperCase()} API error (${upstreamRes.status}): ${errText}`;
+        if (upstreamRes.status === 429 || upstreamRes.status === 503) {
+          userFriendly = `The ${provider.toUpperCase()} API is experiencing high demand or rate limits (HTTP ${upstreamRes.status}).\n\n💡 **Tip**: Check your API key quotas or switch to a Google Gemini or OpenRouter backup key in Settings.`;
+        }
         return NextResponse.json(
-          { error: `${provider.toUpperCase()} API error (${upstreamRes.status}): ${errText}` },
+          { error: userFriendly, isRateLimit: true },
           { status: upstreamRes.status }
         );
       }

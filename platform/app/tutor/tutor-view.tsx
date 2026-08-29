@@ -518,32 +518,44 @@ export function TutorView() {
         {/* MAIN CHAT STREAM & COMPOSER */}
         <section className="flex-1 flex flex-col bg-[var(--surface)] border border-[var(--border)] rounded-2xl overflow-hidden shadow-xs relative">
           {/* Top Chat Header Ribbon */}
-          <div className="px-4 py-3 border-b border-[var(--border)] bg-[var(--surface2)]/80 backdrop-blur-xs flex items-center justify-between shrink-0">
-            <div className="flex items-center gap-2">
-              <button
-                onClick={() => setIsSidebarOpen(true)}
-                className="lg:hidden p-1.5 rounded-lg border border-[var(--border)] text-[var(--text)] hover:bg-[var(--surface)]"
-              >
-                <Menu className="w-4 h-4" />
-              </button>
-              <div>
-                <h1 className="text-xs sm:text-sm font-bold text-[var(--text)] truncate max-w-[200px] sm:max-w-md">
-                  {activeSession?.title || "AI Study Chat"}
-                </h1>
-                <div className="flex items-center gap-2 text-[10px] text-[var(--text3)]">
-                  <span>Provider: {provider.toUpperCase()}</span>
-                  <span>•</span>
-                  <span>Model: {model}</span>
+          <div className="px-3.5 sm:px-4 py-2.5 sm:py-3 border-b border-[var(--border)] bg-[var(--surface2)]/80 backdrop-blur-xs flex flex-col sm:flex-row sm:items-center justify-between gap-2 shrink-0">
+            <div className="flex items-center justify-between gap-2 min-w-0">
+              <div className="flex items-center gap-2 min-w-0">
+                <button
+                  onClick={() => setIsSidebarOpen(true)}
+                  className="lg:hidden p-1.5 rounded-lg border border-[var(--border)] text-[var(--text)] hover:bg-[var(--surface)] shrink-0"
+                  title="Open Chat Sessions Menu"
+                >
+                  <Menu className="w-4 h-4" />
+                </button>
+                <div className="min-w-0">
+                  <h1 className="text-xs sm:text-sm font-bold text-[var(--text)] truncate">
+                    {activeSession?.title || "AI Study Chat"}
+                  </h1>
+                  <div className="hidden sm:flex items-center gap-2 text-[10px] text-[var(--text3)]">
+                    <span>Provider: {provider.toUpperCase()}</span>
+                    <span>•</span>
+                    <span>Model: {model}</span>
+                  </div>
                 </div>
               </div>
+
+              {/* Mobile BYOK Trigger Button on Row 1 */}
+              <button
+                onClick={() => setIsByokOpen(true)}
+                className="sm:hidden p-1.5 rounded-xl border border-[var(--border)] text-[var(--text2)] hover:text-primary hover:bg-[var(--surface)] transition-all shrink-0"
+                title="Configure BYOK Key"
+              >
+                <Key className="w-4 h-4" />
+              </button>
             </div>
 
-            {/* Model Selector & BYOK Trigger */}
-            <div className="flex items-center gap-2">
+            {/* Model Selector (Full width on mobile, aligned on desktop) */}
+            <div className="flex items-center gap-2 w-full sm:w-auto">
               <select
                 value={model}
                 onChange={(e) => handleModelChange(e.target.value)}
-                className="bg-[var(--surface)] border border-[var(--border)] text-[var(--text)] text-xs rounded-xl px-2.5 py-1.5 focus:outline-none focus:border-primary font-mono max-w-[220px] sm:max-w-[320px] truncate"
+                className="flex-1 sm:flex-initial bg-[var(--surface)] border border-[var(--border)] text-[var(--text)] text-xs rounded-xl px-2.5 py-1.5 focus:outline-none focus:border-primary font-mono sm:max-w-[280px] truncate"
               >
                 {displayModels.map((m) => (
                   <option key={m.id} value={m.id}>
@@ -554,7 +566,7 @@ export function TutorView() {
 
               <button
                 onClick={() => setIsByokOpen(true)}
-                className="p-1.5 rounded-xl border border-[var(--border)] text-[var(--text2)] hover:text-primary hover:bg-[var(--surface)] transition-all shrink-0"
+                className="hidden sm:inline-flex p-1.5 rounded-xl border border-[var(--border)] text-[var(--text2)] hover:text-primary hover:bg-[var(--surface)] transition-all shrink-0"
                 title="Configure BYOK Key"
               >
                 <Key className="w-4 h-4" />
