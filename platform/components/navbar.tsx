@@ -6,7 +6,7 @@ import { usePathname } from "next/navigation";
 import { useSession, signOut } from "next-auth/react";
 import { ThemeToggle } from "./theme-toggle";
 import { FeedbackModal } from "./feedback-modal";
-import { BookOpen, History, Upload, LogOut, Sparkles, Brain, LogIn, GraduationCap, MessageSquarePlus } from "lucide-react";
+import { BookOpen, History, Upload, LogOut, Sparkles, Brain, LogIn, GraduationCap, MessageSquarePlus, Compass } from "lucide-react";
 
 export function Navbar({ breadcrumb }: { breadcrumb?: string }) {
   const pathname = usePathname();
@@ -126,8 +126,19 @@ export function Navbar({ breadcrumb }: { breadcrumb?: string }) {
           </Link>
         </nav>
 
-        {/* Right: Feedback Button, Theme Toggle & User Profile */}
+        {/* Right: Tour Button, Feedback Button, Theme Toggle & User Profile */}
         <div className="flex items-center gap-2 sm:gap-3 shrink-0">
+          <button
+            type="button"
+            onClick={() => window.dispatchEvent(new CustomEvent("open-onboarding-tour"))}
+            aria-label="Open Guided Tour"
+            title="Open Guided Tour"
+            className="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-medium text-[var(--text2)] hover:text-[var(--accent)] hover:bg-[var(--surface2)] border border-[var(--border)] transition-colors cursor-pointer"
+          >
+            <Compass className="w-3.5 h-3.5 text-[var(--accent)]" />
+            <span className="hidden md:inline">Tour</span>
+          </button>
+
           <button
             type="button"
             onClick={() => setIsFeedbackOpen(true)}

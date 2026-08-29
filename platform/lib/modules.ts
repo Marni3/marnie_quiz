@@ -187,26 +187,35 @@ export interface LearningModuleSummary {
   isLegacy?: boolean;
 }
 
+let _cachedModulesDir: string | null = null;
+let _cachedModuleSummaries: LearningModuleSummary[] | null = null;
+
 function getModulesDirectory(): string {
-  // Check possible relative and workspace paths
-  const candidatePaths = [
-    path.join(process.cwd(), "test-sets", "learning-modules"),
-    path.join(process.cwd(), "..", "test-sets", "learning-modules"),
-    path.resolve(process.cwd(), "test-sets", "learning-modules"),
-  ];
+  if (_cachedModulesDir) return _cachedModulesDir;
 
-  for (const p of candidatePaths) {
-    if (fs.existsSync(p)) {
-      return p;
+  const directPath = path.join(process.cwd(), "test-sets", "learning-modules");
+  const parentPath = path.join(process.cwd(), "..", "test-sets", "learning-modules");
+
+  try {
+    if (fs.existsSync(/* turbopackIgnore: true */ directPath)) {
+      _cachedModulesDir = directPath;
+      return directPath;
     }
-  }
+  } catch {}
 
-  // Fallback
-  return path.join(process.cwd(), "..", "test-sets", "learning-modules");
+  try {
+    if (fs.existsSync(/* turbopackIgnore: true */ parentPath)) {
+      _cachedModulesDir = parentPath;
+      return parentPath;
+    }
+  } catch {}
+
+  _cachedModulesDir = parentPath;
+  return parentPath;
 }
 
 function scanJsonFilesRecursively(dir: string, includeMastery: boolean = false): string[] {
-  if (!fs.existsSync(dir)) return [];
+  if (!fs.existsSync(/* turbopackIgnore: true */ dir)) return [];
   const entries = fs.readdirSync(dir, { withFileTypes: true });
   let files: string[] = [];
 
@@ -228,6 +237,10 @@ function scanJsonFilesRecursively(dir: string, includeMastery: boolean = false):
 }
 
 export async function getAllLearningModules(): Promise<LearningModuleSummary[]> {
+  if (_cachedModuleSummaries && _cachedModuleSummaries.length > 0) {
+    return _cachedModuleSummaries;
+  }
+
   try {
     const rootDir = getModulesDirectory();
     const jsonPaths = scanJsonFilesRecursively(rootDir, false);
@@ -266,13 +279,16 @@ export async function getAllLearningModules(): Promise<LearningModuleSummary[]> 
       }
     }
 
-    return summaries.sort((a, b) => {
+    const sorted = summaries.sort((a, b) => {
       // Keep active modules first, legacy modules at the end
       if (a.isLegacy !== b.isLegacy) return a.isLegacy ? 1 : -1;
       if (a.domain !== b.domain) return (a.domain || "").localeCompare(b.domain || "");
       if (a.topicCode !== b.topicCode) return (a.topicCode || "").localeCompare(b.topicCode || "");
       return (a.order || 0) - (b.order || 0);
     });
+
+    _cachedModuleSummaries = sorted;
+    return sorted;
   } catch (err) {
     console.error("Error reading learning modules directory:", err);
     return [];

@@ -21,6 +21,30 @@ interface ChatMessageProps {
   onTriggerAction?: (mode: TutorFunctionMode, promptText: string) => void;
 }
 
+function tryParseJsonBlock(raw: string): any {
+  if (!raw) return null;
+  try {
+    return JSON.parse(raw);
+  } catch {}
+
+  // Attempt to fix unescaped LaTeX backslashes inside JSON string values
+  try {
+    const sanitized = raw.replace(/\\(?!["\\/bfnrtu]|u[0-9a-fA-F]{4})/g, "\\\\");
+    return JSON.parse(sanitized);
+  } catch {}
+
+  // Attempt to fix trailing commas + unescaped backslashes
+  try {
+    const fixed = raw
+      .replace(/,\s*}/g, "}")
+      .replace(/,\s*]/g, "]")
+      .replace(/\\(?!["\\/bfnrtu]|u[0-9a-fA-F]{4})/g, "\\\\");
+    return JSON.parse(fixed);
+  } catch {}
+
+  return null;
+}
+
 export function ChatMessageItem({ message, onTriggerAction }: ChatMessageProps) {
   const [copied, setCopied] = useState(false);
   const [previewModule, setPreviewModule] = useState<any | null>(null);
@@ -77,7 +101,7 @@ export function ChatMessageItem({ message, onTriggerAction }: ChatMessageProps) 
       const jsonMatch = message.content.match(/```json\s*([\s\S]*?)\s*```/);
       if (jsonMatch && jsonMatch[1]) {
         rawJsonBlock = jsonMatch[1].trim();
-        const parsed = JSON.parse(rawJsonBlock);
+        const parsed = tryParseJsonBlock(rawJsonBlock);
         if (parsed) {
           if (parsed.subtopicTitle && (parsed.theory || parsed.formulas)) {
             detectedModule = parsed;

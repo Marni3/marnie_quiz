@@ -191,7 +191,11 @@ Provide a friendly 2-3 sentence overview in markdown first, followed immediately
   }
 }
 \`\`\`
-Ensure all JSON syntax is valid so the user can launch, preview, and download it with 1-click.`;
+
+CRITICAL JSON ESCAPING RULES:
+- In JSON string values, ALWAYS double-escape backslashes for all LaTeX math commands (e.g. use \`\\\\frac{a}{b}\`, \`\\\\sqrt{x}\`, \`\\\\tau\`, \`\\\\Delta\`, \`\\\\times\`, \`\\\\log\`, \`\\\\cdot\`, \`\\\\dots\`).
+- Never write unescaped single backslashes like \`\\frac\` inside JSON string fields.
+- Ensure the JSON block is completely valid so the user can launch, preview, and download it with 1-click.`;
 
     case "tricky_questions":
       return `${basePrompt}
