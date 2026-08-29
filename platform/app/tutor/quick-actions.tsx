@@ -30,15 +30,15 @@ const ACTIONS: Array<{
     desc: "Conceptual tutor, problem solver & speed shortcuts",
     icon: MessageSquare,
     colorClass: "text-blue-500 bg-blue-500/10 border-blue-500/20",
-    defaultPrompt: "Explain how to solve impedance matching and Smith Chart problems from first principles.",
+    defaultPrompt: "Explain how to solve impedance matching and Smith Chart problems from first principles with Karce calculator shortcuts.",
   },
   {
     mode: "custom_module",
-    label: "Custom Learning Module and Tests",
+    label: "Custom Learning Module & Tests",
     desc: "Generate an interactive lesson + paired mastery test",
     icon: BookOpen,
     colorClass: "text-emerald-500 bg-emerald-500/10 border-emerald-500/20",
-    defaultPrompt: "Write a comprehensive learning module and paired mastery test on: ",
+    defaultPrompt: "Generate a comprehensive, interactive learning module with 5-10 case scenarios, calculator speed shortcuts, and a 5-question companion mastery test for my highest priority weak topic (or specified topic below): ",
   },
   {
     mode: "tricky_questions",
@@ -46,7 +46,7 @@ const ACTIONS: Array<{
     desc: "Board exam trap variants with cognitive distractor analysis",
     icon: Target,
     colorClass: "text-amber-500 bg-amber-500/10 border-amber-500/20",
-    defaultPrompt: "Generate 3 tricky PRC board exam multiple-choice questions on: ",
+    defaultPrompt: "Generate 3 tricky PRC board exam trap multiple-choice questions with cognitive distractor deconstructions on my weakest topic based on my FSRS profile: ",
   },
   {
     mode: "formula_sheet",
@@ -54,7 +54,7 @@ const ACTIONS: Array<{
     desc: "Dense KaTeX formula cheat-sheet & memory triggers",
     icon: FileSpreadsheet,
     colorClass: "text-purple-500 bg-purple-500/10 border-purple-500/20",
-    defaultPrompt: "Generate a dense, high-yield KaTeX formula cheat-sheet with memory anchors for: ",
+    defaultPrompt: "Generate a dense, high-yield KaTeX formula cheat-sheet with 1-second keyword memory anchors for: ",
   },
   {
     mode: "review_exam",
@@ -62,7 +62,7 @@ const ACTIONS: Array<{
     desc: "Step-by-step diagnostic review of exam misses",
     icon: CheckSquare,
     colorClass: "text-rose-500 bg-rose-500/10 border-rose-500/20",
-    defaultPrompt: "Please analyze my exam attempt results step-by-step, deconstruct my mistakes, and teach me how to avoid these traps.",
+    defaultPrompt: "Please analyze my exam attempt results step-by-step, deconstruct my missed questions, and teach me how to avoid these traps.",
   },
 ];
 

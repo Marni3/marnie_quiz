@@ -248,6 +248,9 @@ export function LearnCatalog({ initialModules, initialProgress = [] }: LearnCata
               <span className="text-xs font-mono text-[var(--text3)] uppercase mr-1">Subject:</span>
               {[
                 { id: "all", label: "All" },
+                ...(customModules.length > 0
+                  ? [{ id: "custom", label: `🤖 Custom (${customModules.length})` }]
+                  : []),
                 { id: "MATH", label: "MATH" },
                 { id: "ELECS", label: "ELECS" },
                 { id: "GEAS", label: "GEAS" },
@@ -322,7 +325,7 @@ export function LearnCatalog({ initialModules, initialProgress = [] }: LearnCata
         </div>
 
         {/* Custom AI Modules Section (if any saved) */}
-        {customModules.length > 0 && (
+        {(selectedDomain === "all" || selectedDomain === "custom") && customModules.length > 0 && (
           <div className="bg-[var(--surface)] border-2 border-primary/30 rounded-2xl shadow-xs overflow-hidden transition-all mb-6">
             <div className="p-4 sm:p-5 bg-gradient-to-r from-primary/10 via-[var(--surface2)] to-transparent flex items-center justify-between">
               <div className="flex items-center gap-3">
@@ -387,7 +390,7 @@ export function LearnCatalog({ initialModules, initialProgress = [] }: LearnCata
         )}
 
         {/* Modules Listing Grouped by Topic with Collapsible Accordions */}
-        {groupedByTopic.length === 0 ? (
+        {selectedDomain !== "custom" && (groupedByTopic.length === 0 ? (
           <div className="p-12 text-center bg-[var(--surface)] border border-[var(--border)] rounded-2xl space-y-2">
             <BookOpen className="w-8 h-8 mx-auto text-[var(--text3)] opacity-50" />
             <div className="font-semibold text-[var(--text)]">No learning modules found</div>
@@ -581,7 +584,7 @@ export function LearnCatalog({ initialModules, initialProgress = [] }: LearnCata
               );
             })}
           </div>
-        )}
+        ))}
       </div>
 
       {activeCustomModule && (
