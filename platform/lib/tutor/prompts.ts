@@ -69,10 +69,22 @@ Proactively use the student's FSRS memory state and past exam history if availab
     case "custom_module":
       return `${basePrompt}
 
-MODE: Custom Learning Module & Tests Generator (Skill: learning-module-authoring)
-When requested to create a learning module or lesson on a topic, you MUST generate a complete, interactive, executable module complying EXACTLY with the platform's JSON schema so it can be previewed, launched, and taken interactively in the Module Reader.
+MODE: Custom Learning Module Generator (Skill: learning-module-authoring)
+When requested to create a learning module or lesson on a topic, generate a complete, interactive, executable module complying EXACTLY with the platform JSON schema so it can be previewed, launched, and saved in the Module Reader.
 
-Provide a friendly 2-3 sentence overview in markdown first, followed immediately by a single fenced JSON block:
+ARCHETYPE CLASSIFICATION:
+Classify the topic into ONE of three archetypes:
+1. 📐 COMPUTATIONAL (MATH, Circuits, Calculus, Signals): Heavy KaTeX derivations, Formal vs ⚡ shortcut dual-solves, Karce/Canon keystrokes, 4–6 concept checks.
+2. 📡 HYBRID SYSTEMS (EST Digital Comms, Fiber, Radar, Microelectronics): System architecture, Governing equations, 5–8 dual-solve examples, 6–10 concept checks.
+3. 📜 QUALITATIVE / STATUTORY (RA 9292, Ethics, Laws, Materials): Comparison matrices, 5–10 scenario dilemmas, 1-second keyword triggers, 8–15 concept checks, active recall written challenges (omit formulas & calc guides).
+
+FORMAT INSTRUCTIONS:
+1. Provide a brief 2-3 sentence overview in markdown first.
+2. Output exactly ONE fenced \`\`\`json block with the module.
+3. After the JSON block, offer the companion Mastery Challenge in text:
+   "> 🏆 **Want a Mastery Challenge?** Say *'Generate the mastery challenge for this module'* and I'll create a paired 20-question test set you can take immediately."
+
+JSON SCHEMA TEMPLATE:
 \`\`\`json
 {
   "id": "custom-topic-slug",
@@ -84,30 +96,27 @@ Provide a friendly 2-3 sentence overview in markdown first, followed immediately
   "order": 1,
   "pairedQuizSetId": "custom-topic-slug-mastery",
   "toc": [
-    { "id": "sec-prereq-bridges", "title": "1. Prerequisite Bridges", "level": 2 },
-    { "id": "sec-theory", "title": "2. Lesson Proper", "level": 2 },
-    { "id": "sec-formulas", "title": "3. Compilation of Formulas", "level": 2 },
-    { "id": "sec-terminology", "title": "4. Key Terms & Definitions", "level": 2 },
-    { "id": "sec-dual-method", "title": "5. Sample Problems", "level": 2 },
-    { "id": "sec-calculator", "title": "6. Calculator Techniques", "level": 2 },
-    { "id": "sec-concept-checks", "title": "7. In-Line Concept Checks", "level": 2 },
-    { "id": "sec-mastery-challenge", "title": "8. Paired Mastery Challenge", "level": 2 }
+    { "id": "sec-prereq-bridges", "title": "Prerequisite Bridges", "level": 2 },
+    { "id": "sec-theory", "title": "Lesson Proper", "level": 2 },
+    { "id": "sec-formulas", "title": "Compilation of Formulas", "level": 2 },
+    { "id": "sec-terminology", "title": "Key Terms & Definitions", "level": 2 },
+    { "id": "sec-dual-method", "title": "Sample Problems", "level": 2 },
+    { "id": "sec-calculator", "title": "Calculator Techniques", "level": 2 },
+    { "id": "sec-concept-checks", "title": "In-Line Concept Checks", "level": 2 }
   ],
   "prerequisiteBridge": {
-    "priorModuleId": "prior-topic-id",
-    "text": "Prerequisite foundational concept bridge connecting prior knowledge to this lesson..."
+    "text": "1–2 sentences connecting prior knowledge to this lesson."
   },
   "crossSubjectBridges": [
     {
-      "badgeText": "Math -> Elecs",
-      "targetDomain": "ELECS",
+      "badgeText": "MATH → Elecs",
       "targetTopicCode": "ELEC-01",
-      "description": "How this mathematical concept directly applies to semiconductor circuits or waveforms."
+      "description": "How this concept directly applies to another subject domain."
     }
   ],
   "theory": {
-    "mentalAnchor": "1-sentence intuitive rule of thumb / core governing mental anchor.",
-    "contentMarkdown": "### 1. Intuitive Motivation\nExplain the physical / geometric problem from first principles...\n\n### 2. Governing Equations & Derivations\n$$\\\\text{Formula}$$\n\n#### Specific Cases & Boundaries:\n- **Case 1**: When boundary variable is 0...\n\n### 3. Board Exam Trap Alert\nHighlight the exact algebraic, sign, or unit mistake PRC examinees make."
+    "mentalAnchor": "1-sentence intuitive rule of thumb or governing principle.",
+    "contentMarkdown": "### 1. Intuitive Motivation\\nExplain from first principles...\\n\\n### 2. Governing Equations\\n$$\\\\text{Formula}$$\\n\\n### 3. Board Exam Trap Alert\\nHighlight exact algebraic, sign, or unit pitfalls."
   },
   "formulas": [
     {
@@ -123,14 +132,14 @@ Provide a friendly 2-3 sentence overview in markdown first, followed immediately
       "symbol": "$m$",
       "unit": "Dimensionless",
       "definition": "Precise definition of the term.",
-      "keywordTrigger": "1-second keyword trigger association for identification questions"
+      "keywordTrigger": "1-second keyword trigger for identification questions"
     }
   ],
   "examples": [
     {
       "problemStatement": "PRC Board Exam worked example scenario with KaTeX math $...$",
-      "formalSolutionMarkdown": "#### Step 1: Formal Rigorous Derivation\nStep-by-step full proof...\n$$x = \\\\dots$$",
-      "shortcutSolutionMarkdown": "#### ⚡ 10-Second Speed Shortcut\nInspection, substitution, or calculator speed trick...",
+      "formalSolutionMarkdown": "#### Step 1: Formal Derivation\\nStep-by-step full proof...\\n$$x = \\\\dots$$",
+      "shortcutSolutionMarkdown": "#### ⚡ 10-Second Speed Shortcut\\nInspection, substitution, or calculator speed trick...",
       "formalTimeSeconds": 90,
       "shortcutTimeSeconds": 10
     }
@@ -141,16 +150,20 @@ Provide a friendly 2-3 sentence overview in markdown first, followed immediately
       "problemType": "Problem category",
       "sampleProblem": "Brief sample expression",
       "mode": "COMP Mode (MODE 1)",
-      "keystrokes": ["[MODE]", "[1]", "SHIFT", "Pol", "4", ",", "7", ")", "="],
-      "notes": "Direct result yields instant answer."
+      "whyItWorks": "1–2 sentences on why the numerical technique works.",
+      "keystrokes": ["SHIFT", "Pol", "4", ",", "7", ")", "="],
+      "notes": "💡 Specific test values and display output.",
+      "searchAdvisory": "Search 'technique name Karce KC-S991' for video walkthroughs."
     },
     "canon": {
       "techniqueTitle": "Canon F-789SGA High-Speed Shortcut",
       "problemType": "Problem category",
       "sampleProblem": "Brief sample expression",
       "mode": "COMP Mode (MODE 1)",
+      "whyItWorks": "1–2 sentences on why the numerical technique works.",
       "keystrokes": ["SHIFT", "Pol", "4", ",", "7", ")", "="],
-      "notes": "Direct result saves 45 seconds."
+      "notes": "💡 Direct result saves 45 seconds.",
+      "searchAdvisory": "Search 'technique name Canon F-789SGA' for video walkthroughs."
     }
   },
   "conceptChecks": [
@@ -165,41 +178,21 @@ Provide a friendly 2-3 sentence overview in markdown first, followed immediately
       },
       "correctAnswer": "B",
       "distractorDeconstruction": {
-        "A": "Option A trap: Missing factor of 2.",
-        "B": "Option B is correct: Matches governing law.",
-        "C": "Option C trap: Inverted sign.",
-        "D": "Option D trap: Wrong unit prefix."
+        "A": "Why A is a trap (e.g. missing factor).",
+        "B": "Why B is correct (matches governing law).",
+        "C": "Why C is a trap (e.g. inverted sign).",
+        "D": "Why D is a trap (e.g. wrong prefix)."
       },
-      "shortcutExplanation": "⚡ Rule of thumb: Higher frequency directly reduces impedance."
+      "shortcutExplanation": "⚡ 1-sentence rule of thumb for instant identification."
     }
-  ],
-  "masteryChallenge": {
-    "moduleId": "custom-topic-slug",
-    "moduleCode": "CUSTOM 01-01",
-    "title": "Mastery Challenge: Topic Name",
-    "description": "20-Question Decoupled Companion Mastery Challenge Test Set",
-    "totalQuestions": 5,
-    "timeLimitMinutes": 15,
-    "questions": [
-      {
-        "id": "q-01",
-        "promptText": "PRC Board Exam practice problem #1 with math $...$?",
-        "choiceA": "Choice A text",
-        "choiceB": "Choice B text",
-        "choiceC": "Choice C text",
-        "choiceD": "Choice D text",
-        "correctChoice": "A",
-        "explanation": "Detailed worked explanation and calculator technique."
-      }
-    ]
-  }
+  ]
 }
 \`\`\`
 
-CRITICAL JSON ESCAPING RULES:
+CRITICAL RULES:
+- TOC titles MUST NOT contain hardcoded numbers (write "Lesson Proper", NOT "2. Lesson Proper") — the platform UI auto-numbers them sequentially.
 - In JSON string values, ALWAYS double-escape backslashes for all LaTeX math commands (e.g. use \`\\\\frac{a}{b}\`, \`\\\\sqrt{x}\`, \`\\\\tau\`, \`\\\\Delta\`, \`\\\\times\`, \`\\\\log\`, \`\\\\cdot\`, \`\\\\dots\`).
-- Never write unescaped single backslashes like \`\\frac\` inside JSON string fields.
-- Ensure the JSON block is completely valid so the user can launch, preview, and download it with 1-click.`;
+- Do NOT embed the 20-question mastery challenge inside the JSON object — offer it in text after the block so generation stays well within token limits and finishes quickly.`;
 
     case "tricky_questions":
       return `${basePrompt}
