@@ -310,7 +310,7 @@ export function saveCustomQuiz(quiz: any): { isNew: boolean; totalCount: number 
   if (typeof window === "undefined" || !quiz) return { isNew: false, totalCount: 0 };
   try {
     const existing = getStoredCustomQuizzes();
-    const id = quiz.id || quiz.moduleId ? `${quiz.moduleId}-mastery` : `custom-quiz-${Date.now()}`;
+    const id = quiz.id || (quiz.moduleId ? `${quiz.moduleId}-mastery` : `custom-quiz-${Date.now()}`);
     const normalizedQuiz = { ...quiz, id, isCustom: true };
 
     const idx = existing.findIndex((q: any) => q.id === id || (quiz.moduleId && q.moduleId === quiz.moduleId));
@@ -324,6 +324,20 @@ export function saveCustomQuiz(quiz: any): { isNew: boolean; totalCount: number 
     }
 
     localStorage.setItem(STORAGE_KEYS.CUSTOM_QUIZZES, JSON.stringify(existing.slice(0, 100)));
+
+    // Cross-link with custom modules in local storage if moduleId is present
+    if (quiz.moduleId) {
+      try {
+        const modules = getStoredCustomModules();
+        const mIdx = modules.findIndex((m: any) => m.id === quiz.moduleId || m.code === quiz.moduleCode);
+        if (mIdx >= 0) {
+          modules[mIdx].masteryChallenge = normalizedQuiz;
+          modules[mIdx].pairedQuizSetId = id;
+          localStorage.setItem(STORAGE_KEYS.CUSTOM_MODULES, JSON.stringify(modules));
+        }
+      } catch {}
+    }
+
     return { isNew, totalCount: existing.length };
   } catch (err) {
     console.error("Failed to save custom quiz:", err);
@@ -337,17 +351,54 @@ export function saveCustomQuiz(quiz: any): { isNew: boolean; totalCount: number 
 export function getCustomMasteryQuizForModule(moduleId: string): any | null {
   if (typeof window === "undefined" || !moduleId) return null;
   try {
+    // 1. Direct query in custom quizzes
     const quizzes = getStoredCustomQuizzes();
-    return (
-      quizzes.find(
-        (q: any) =>
-          q.moduleId === moduleId ||
-          q.id === `${moduleId}-mastery` ||
-          q.id === moduleId
-      ) || null
+    const found = quizzes.find(
+      (q: any) =>
+        q.moduleId === moduleId ||
+        q.id === `${moduleId}-mastery` ||
+        q.id === moduleId
     );
+    if (found) return found;
+
+    // 2. Query custom modules for embedded masteryChallenge
+    const modules = getStoredCustomModules();
+    const mod = modules.find((m: any) => m.id === moduleId);
+    if (mod?.masteryChallenge) return mod.masteryChallenge;
+
+    // 3. Fallback to latest quiz if only 1 exists
+    if (quizzes.length > 0) {
+      return quizzes[0];
+    }
+    return null;
   } catch {
     return null;
+  }
+}
+
+/**
+ * Clears and resets all local user progress (attempts, streaks, flashcards, notes, custom modules)
+ */
+export function resetAllProgressData(): boolean {
+  if (typeof window === "undefined") return false;
+  try {
+    const keysToRemove = [
+      STORAGE_KEYS.CHAT_SESSIONS,
+      STORAGE_KEYS.ACTIVE_SESSION_ID,
+      STORAGE_KEYS.PENDING_REVIEW_CONTEXT,
+      STORAGE_KEYS.SAVED_FORMULAS,
+      STORAGE_KEYS.CUSTOM_MODULES,
+      STORAGE_KEYS.CUSTOM_QUIZZES,
+      "marnie_stored_notes",
+      "marnie_study_streak_v1",
+      "marnie_study_activities_v1",
+      "marnie_fsrs_cards_v1",
+    ];
+    keysToRemove.forEach((key) => localStorage.removeItem(key));
+    return true;
+  } catch (err) {
+    console.error("Failed to reset progress data:", err);
+    return false;
   }
 }
 

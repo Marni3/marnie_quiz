@@ -25,6 +25,7 @@ export function CustomModuleModal({
   const [saved, setSaved] = useState(false);
   const [savedNote, setSavedNote] = useState(false);
   const [activeQuizModal, setActiveQuizModal] = useState<any | null>(null);
+  const [formulaFitMode, setFormulaFitMode] = useState<"scroll" | "fit">("scroll");
 
   if (!isOpen || !module) return null;
 
@@ -80,24 +81,38 @@ export function CustomModuleModal({
     <div className="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm flex items-center justify-center p-2 sm:p-4 animate-in fade-in duration-150">
       <div className="bg-[var(--surface)] border border-[var(--border)] rounded-2xl w-full max-w-5xl h-[92vh] shadow-2xl overflow-hidden flex flex-col">
         {/* Modal Top Bar */}
-        <div className="flex items-center justify-between px-5 py-3 border-b border-[var(--border)] bg-[var(--surface2)] shrink-0">
-          <div className="flex items-center gap-2.5">
-            <div className="w-8 h-8 rounded-xl bg-primary/10 text-primary flex items-center justify-center border border-primary/20">
+        <div className="flex items-center justify-between px-5 py-3 border-b border-[var(--border)] bg-[var(--surface2)] shrink-0 gap-2">
+          <div className="flex items-center gap-2.5 min-w-0">
+            <div className="w-8 h-8 rounded-xl bg-primary/10 text-primary flex items-center justify-center border border-primary/20 shrink-0">
               <Sparkles className="w-4 h-4" />
             </div>
-            <div>
+            <div className="min-w-0">
               <div className="flex items-center gap-2">
-                <span className="text-xs font-mono font-bold px-2 py-0.5 rounded-full bg-primary/10 text-primary border border-primary/20">
+                <span className="text-xs font-mono font-bold px-2 py-0.5 rounded-full bg-primary/10 text-primary border border-primary/20 shrink-0">
                   {module.code || "CUSTOM-AI"}
                 </span>
-                <h2 className="text-sm sm:text-base font-bold text-[var(--text)] truncate max-w-md">
+                <h2 className="text-sm sm:text-base font-bold text-[var(--text)] truncate max-w-xs sm:max-w-md">
                   {module.subtopicTitle}
                 </h2>
               </div>
             </div>
           </div>
 
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2 shrink-0">
+            {/* Formula Fit Mode Toggle */}
+            <button
+              type="button"
+              onClick={() => setFormulaFitMode((prev) => (prev === "scroll" ? "fit" : "scroll"))}
+              className={`inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-xl border text-xs font-semibold transition-all cursor-pointer ${
+                formulaFitMode === "fit"
+                  ? "bg-primary/15 border-primary/40 text-primary font-bold"
+                  : "bg-[var(--surface)] border-[var(--border)] text-[var(--text2)] hover:text-[var(--text)]"
+              }`}
+              title={formulaFitMode === "fit" ? "Switch to Scrollable Formulas" : "Fit Formulas to Screen Width"}
+            >
+              <span>{formulaFitMode === "fit" ? "📐 Fit Math" : "↔️ Scroll Math"}</span>
+            </button>
+
             <button
               onClick={handleOpenMasteryQuiz}
               className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-[var(--accent)] text-white text-xs font-bold hover:brightness-110 shadow-xs transition-all cursor-pointer"
@@ -116,7 +131,7 @@ export function CustomModuleModal({
               }`}
             >
               {savedNote ? <Check className="w-3.5 h-3.5" /> : <BookMarked className="w-3.5 h-3.5" />}
-              <span>{savedNote ? "Saved to Notes!" : "Save to Notes"}</span>
+              <span className="hidden sm:inline">{savedNote ? "Saved to Notes!" : "Save to Notes"}</span>
             </button>
 
             <button
@@ -124,7 +139,7 @@ export function CustomModuleModal({
               className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-primary text-white text-xs font-bold shadow-xs hover:opacity-95 transition-all cursor-pointer"
             >
               {saved ? <Check className="w-3.5 h-3.5" /> : <Download className="w-3.5 h-3.5" />}
-              <span>{saved ? "Saved to Library!" : "Save to My Modules"}</span>
+              <span className="hidden sm:inline">{saved ? "Saved to Library!" : "Save to My Modules"}</span>
             </button>
 
             <button
@@ -138,7 +153,12 @@ export function CustomModuleModal({
 
         {/* Modal Body: Full Interactive Module Reader */}
         <div className="flex-1 overflow-y-auto">
-          <ModuleReader module={module} isModal={true} />
+          <ModuleReader
+            module={module}
+            isModal={true}
+            externalFitMode={formulaFitMode}
+            onOpenMastery={handleOpenMasteryQuiz}
+          />
         </div>
       </div>
 

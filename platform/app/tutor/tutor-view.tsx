@@ -78,9 +78,32 @@ export function TutorView() {
   const [isStreaming, setIsStreaming] = useState(false);
   const [streamingContent, setStreamingContent] = useState("");
   const [attachedContext, setAttachedContext] = useState<any | null>(null);
+  const [attachedFile, setAttachedFile] = useState<{
+    name: string;
+    size: number;
+    content: string;
+  } | null>(null);
 
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
+  const fileInputRef = useRef<HTMLInputElement>(null);
+
+  const handleFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    const reader = new FileReader();
+    reader.onload = (event) => {
+      const text = (event.target?.result as string) || "";
+      setAttachedFile({
+        name: file.name,
+        size: file.size,
+        content: text,
+      });
+    };
+    reader.readAsText(file);
+    e.target.value = "";
+  };
 
   const loadModelsForProvider = (prov: AIProvider, key?: string) => {
     const cached = getStoredModelsForProvider(prov);
@@ -315,6 +338,17 @@ export function TutorView() {
 
     const currentMode = overrideMode || functionMode;
     const currentContext = overrideContext || attachedContext?.payload;
+    const finalContext = attachedFile
+      ? {
+          ...(currentContext || {}),
+          attachedDocument: {
+            name: attachedFile.name,
+            content: attachedFile.content,
+          },
+        }
+      : currentContext;
+
+    setAttachedFile(null);
 
     const userMsg: ChatMessage = {
       id: `msg_${Date.now()}`,
@@ -354,7 +388,7 @@ export function TutorView() {
           model,
           messages: updatedMessages.map((m) => ({ role: m.role, content: m.content })),
           functionMode: currentMode,
-          contextPayload: currentContext,
+          contextPayload: finalContext,
         }),
       });
 
@@ -863,6 +897,25 @@ export function TutorView() {
               </div>
             )}
 
+            {/* Attached File Context Pill */}
+            {attachedFile && (
+              <div className="flex items-center justify-between gap-2 px-3 py-1.5 rounded-xl bg-primary/10 border border-primary/25 text-xs text-primary font-mono animate-in fade-in">
+                <div className="flex items-center gap-1.5 min-w-0">
+                  <Paperclip className="w-3.5 h-3.5 shrink-0" />
+                  <span className="truncate font-semibold">{attachedFile.name}</span>
+                  <span className="text-[10px] opacity-75">({(attachedFile.size / 1024).toFixed(1)} KB)</span>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => setAttachedFile(null)}
+                  className="p-1 hover:text-rose-500 transition-colors cursor-pointer"
+                  title="Remove attachment"
+                >
+                  <X className="w-3.5 h-3.5" />
+                </button>
+              </div>
+            )}
+
             {/* Input Composer Field */}
             <div className="flex items-end gap-1.5 sm:gap-2 bg-[var(--surface2)] border border-[var(--border)] rounded-2xl p-1.5 focus-within:border-primary transition-all">
               {/* [+] Context / Action Picker Button */}
@@ -878,6 +931,27 @@ export function TutorView() {
               >
                 <PlusCircle className="w-4 h-4" />
               </button>
+
+              {/* [📎] Attach Document / Notes File */}
+              <button
+                type="button"
+                onClick={() => fileInputRef.current?.click()}
+                className={`p-2 rounded-xl border transition-all cursor-pointer shrink-0 ${
+                  attachedFile
+                    ? "bg-primary/15 border-primary/40 text-primary font-bold"
+                    : "bg-[var(--surface)] border-[var(--border)] text-[var(--text2)] hover:text-primary hover:border-primary/50"
+                }`}
+                title="Attach document or study notes (.txt, .md, .csv, .json)"
+              >
+                <Paperclip className="w-4 h-4" />
+              </button>
+              <input
+                ref={fileInputRef}
+                type="file"
+                accept=".txt,.md,.json,.csv,.js,.ts"
+                onChange={handleFileUpload}
+                className="hidden"
+              />
 
               {/* [⚙️] Settings & Model Selector Cog Button */}
               <button

@@ -303,22 +303,6 @@ export function ChatMessageItem({ message, onTriggerAction }: ChatMessageProps) 
                 <BookOpen className="w-4 h-4" />
                 <span>Open Module Reader</span>
               </button>
-
-              {onTriggerAction && (
-                <button
-                  onClick={() =>
-                    onTriggerAction(
-                      "tricky_questions",
-                      `Generate a 10-question practice mastery challenge test set for "${detectedModule.subtopicTitle}" (${detectedModule.code || "CUSTOM"}) covering its formulas, conditions, and board exam traps.`
-                    )
-                  }
-                  className="inline-flex items-center justify-center gap-1.5 px-3.5 py-2 rounded-xl bg-[var(--accent)] text-white text-xs font-bold shadow-md hover:brightness-110 active:scale-95 transition-all cursor-pointer"
-                  title="Generate a 10-question interactive Mastery Quiz for this module"
-                >
-                  <Target className="w-3.5 h-3.5" />
-                  <span>Generate Mastery Quiz</span>
-                </button>
-              )}
             </div>
 
             {/* Collapsible Raw JSON Code Block */}

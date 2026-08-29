@@ -20,6 +20,7 @@ import {
   Compass,
   BookMarked,
   Search,
+  Settings,
 } from "lucide-react";
 
 export function Navbar({ breadcrumb }: { breadcrumb?: string }) {
@@ -177,6 +178,15 @@ export function Navbar({ breadcrumb }: { breadcrumb?: string }) {
           </button>
 
           <ThemeToggle />
+
+          <Link
+            href="/settings"
+            aria-label="Settings & Data Management"
+            title="Settings & Data Management"
+            className="p-1.5 rounded-lg text-[var(--text2)] hover:text-[var(--accent)] hover:bg-[var(--surface2)] border border-[var(--border)] transition-colors cursor-pointer"
+          >
+            <Settings className="w-4 h-4" />
+          </Link>
 
           {session?.user ? (
             <div className="flex items-center gap-2 pl-2 border-l border-[var(--border)]">

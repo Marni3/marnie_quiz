@@ -157,6 +157,8 @@ When the student asks to practice tricky questions on a topic:
 3. Conclude with a single executable JSON code block so the student can launch the quiz interactively:
 \`\`\`json
 {
+  "moduleId": "module-id-from-request-or-topic-slug",
+  "moduleCode": "EST-01",
   "title": "Targeted Drill: Topic Name",
   "subjectTag": "MATH", // "MATH" | "ELECS" | "GEAS" | "EST"
   "topicCode": "CUSTOM-DRILL",
@@ -212,21 +214,19 @@ INSTRUCTIONS FOR THE DEBRIEF:
       return `${basePrompt}
 
 MODE: Low-Friction Study Mode & Micro-Learning Coach (Low Energy / Procrastination Buster)
-The student is feeling tired, low on motivation, or procrastinating today.
-Your goal is to provide ZERO-GUILT, EMPATHETIC, ULTRA-LOW FRICTION micro-learning (under 5 minutes) that breaks inertia immediately.
+The student is feeling tired, low on motivation, or short on time today.
+Your goal is to provide ZERO-GUILT, EMPATHETIC, ULTRA-LOW FRICTION micro-learning (under 3–5 minutes) that breaks inertia and locks in 1 high-yield board exam concept.
 
-PEDAGOGICAL DIRECTIVES:
-1. **Empathy & Immediate Validation**: Start with a warm, friendly note: *"Totally understand—consistency beats intensity. Let's do a quick 3-minute win to keep your streak and momentum alive without burning any mental energy."*
-2. **Immediate 1-Minute High-Yield Micro-Lesson**:
-   - Inspect the student's profile context (weakest FSRS topics or recent mistakes). If unavailable, pick a fun, high-yield board exam topic (e.g. *De Morgan's Laws*, *Resistor Parallel Shortcut*, *R.A. 9292 ECE Law keywords*, *Superposition Shortcut*).
-   - Present a crisp, 60-second mental anchor:
-     - **The 1-Second Rule / Mnemonic Trigger**
-     - **The 10-Second Calculator Trick** (Karce / Canon keystrokes)
-3. **Instant 3-Question Micro-Check (In-line)**:
-   - Provide 3 rapid conceptual true/false or quick multiple-choice questions right in the markdown text with answers blurred/revealed.
-4. **Closing Momentum Hand-off**:
-   - Conclude by cheering them on for keeping their study streak active today.
-   - Mention that if they feel a spark of energy now that the hardest part (starting) is done, they can dive into the full module or wrap up for the day!`;
+FORMAT YOUR RESPONSE EXACTLY AS FOLLOWS:
+1. **Empathy Warm-Up**: Start with 1 warm, encouraging sentence (e.g. *"Totally understand—consistency beats intensity. Let's lock in 1 quick win in under 3 minutes to keep your streak and momentum alive."*)
+2. **# [Topic Name] ([Code])** (e.g. \`# Parallel Resistor Shortcut (GEAS-01)\`)
+3. **## 🧠 60-Second Mental Anchor**: A crisp rule of thumb or memory keyword.
+4. **## ⚡ 10-Second Speed Shortcut**: The exact formula and calculator keystroke shortcut for Karce / Canon.
+5. **## 🎯 Rapid Micro-Check (1 Question)**:
+   - Provide 1 realistic multiple-choice question ($A, B, C, D$).
+   - Immediately beneath, provide the answer and why the common distractor trap occurs.
+6. **## 🎉 Micro-Session Complete!**:
+   - Short 2-sentence celebration confirming their study streak is protected today!`;
 
     default:
       return basePrompt;

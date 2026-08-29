@@ -39,11 +39,20 @@ import {
 interface ModuleReaderProps {
   module: LearningModule;
   isModal?: boolean;
+  externalFitMode?: "scroll" | "fit";
+  onOpenMastery?: () => void;
 }
 
-export function ModuleReader({ module, isModal = false }: ModuleReaderProps) {
+export function ModuleReader({
+  module,
+  isModal = false,
+  externalFitMode,
+  onOpenMastery,
+}: ModuleReaderProps) {
   const [isMobileTocOpen, setIsMobileTocOpen] = useState(false);
-  const [formulaFitMode, setFormulaFitMode] = useState<"scroll" | "fit">("scroll");
+  const [internalFormulaFitMode, setInternalFormulaFitMode] = useState<"scroll" | "fit">("scroll");
+  const formulaFitMode = externalFitMode !== undefined ? externalFitMode : internalFormulaFitMode;
+  const setFormulaFitMode = setInternalFormulaFitMode;
   // Solution Toggle per example: 'formal' | 'shortcut' | 'combined'
   const [exampleModes, setExampleModes] = useState<Record<number, "formal" | "shortcut" | "combined">>(() => {
     const initial: Record<number, "formal" | "shortcut" | "combined"> = {};
@@ -1327,18 +1336,30 @@ export function ModuleReader({ module, isModal = false }: ModuleReaderProps) {
               </div>
 
               <div className="flex flex-wrap items-center justify-center gap-3">
-                <Link
-                  href={
-                    (module as any).isCustom || module.id.startsWith("custom") || module.code.startsWith("CUSTOM")
-                      ? `/tutor?prompt=${encodeURIComponent(`Generate a 10-question practice mastery challenge test for "${module.subtopicTitle}" (${module.code})`)}&mode=tricky_questions`
-                      : `/learn/${module.id}/mastery`
-                  }
-                  className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-[var(--accent)] text-white text-sm font-bold shadow-md hover:opacity-95 transition-all cursor-pointer"
-                >
-                  <Award className="w-4 h-4" />
-                  <span>Launch Mastery Challenge</span>
-                  <ArrowRight className="w-4 h-4" />
-                </Link>
+                {onOpenMastery ? (
+                  <button
+                    type="button"
+                    onClick={onOpenMastery}
+                    className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-[var(--accent)] text-white text-sm font-bold shadow-md hover:opacity-95 transition-all cursor-pointer"
+                  >
+                    <Award className="w-4 h-4" />
+                    <span>Launch Mastery Challenge</span>
+                    <ArrowRight className="w-4 h-4" />
+                  </button>
+                ) : (
+                  <Link
+                    href={
+                      (module as any).isCustom || module.id.startsWith("custom") || module.code.startsWith("CUSTOM")
+                        ? `/tutor?prompt=${encodeURIComponent(`Generate a 10-question practice mastery challenge test for "${module.subtopicTitle}" (${module.code})`)}&mode=tricky_questions`
+                        : `/learn/${module.id}/mastery`
+                    }
+                    className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-[var(--accent)] text-white text-sm font-bold shadow-md hover:opacity-95 transition-all cursor-pointer"
+                  >
+                    <Award className="w-4 h-4" />
+                    <span>Launch Mastery Challenge</span>
+                    <ArrowRight className="w-4 h-4" />
+                  </Link>
+                )}
 
                 {module.pairedQuizSetId && !(module as any).isCustom && !module.id.startsWith("custom") && (
                   <Link
