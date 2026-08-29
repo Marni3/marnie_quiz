@@ -38,9 +38,10 @@ import {
 
 interface ModuleReaderProps {
   module: LearningModule;
+  isModal?: boolean;
 }
 
-export function ModuleReader({ module }: ModuleReaderProps) {
+export function ModuleReader({ module, isModal = false }: ModuleReaderProps) {
   const [isMobileTocOpen, setIsMobileTocOpen] = useState(false);
   const [formulaFitMode, setFormulaFitMode] = useState<"scroll" | "fit">("scroll");
   // Solution Toggle per example: 'formal' | 'shortcut' | 'combined'
@@ -382,9 +383,10 @@ export function ModuleReader({ module }: ModuleReaderProps) {
   const domStyle = domainColors[module.domain] || domainColors.MATH;
 
   return (
-    <div className="min-h-screen bg-[var(--background)] text-[var(--text)] pb-24">
-      {/* Top Sticky Header */}
-      <section className="border-b border-[var(--border)] bg-[var(--surface)] sticky top-16 z-30 backdrop-blur-md">
+    <div className={`${isModal ? "p-4 sm:p-6" : "min-h-screen pb-24"} bg-[var(--background)] text-[var(--text)]`}>
+      {/* Top Sticky Header (Hidden in Modal Mode to avoid duplication) */}
+      {!isModal && (
+        <section className="border-b border-[var(--border)] bg-[var(--surface)] sticky top-16 z-30 backdrop-blur-md">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2.5 sm:py-3.5 flex items-center justify-between gap-2 sm:gap-4">
           {/* Breadcrumbs */}
           <div className="flex items-center gap-1.5 sm:gap-2 text-xs text-[var(--text3)] min-w-0">
@@ -444,7 +446,11 @@ export function ModuleReader({ module }: ModuleReaderProps) {
             </button>
 
             <Link
-              href={`/learn/${module.id}/mastery`}
+              href={
+                (module as any).isCustom || module.id.startsWith("custom") || module.code.startsWith("CUSTOM")
+                  ? `/tutor?prompt=${encodeURIComponent(`Generate a 10-question practice mastery challenge test for "${module.subtopicTitle}" (${module.code})`)}&mode=tricky_questions`
+                  : `/learn/${module.id}/mastery`
+              }
               className="inline-flex items-center gap-1.5 px-3 sm:px-3.5 py-1.5 rounded-xl bg-[var(--accent)] text-white text-xs font-bold hover:opacity-95 shadow-sm transition-all"
             >
               <Award className="w-3.5 h-3.5" />
@@ -453,6 +459,7 @@ export function ModuleReader({ module }: ModuleReaderProps) {
           </div>
         </div>
       </section>
+      )}
 
       {/* Main Grid: Sidebar TOC + Reading Canvas */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 sm:pt-8">
@@ -485,18 +492,36 @@ export function ModuleReader({ module }: ModuleReaderProps) {
 
             {/* Quick Stats Pill */}
             <div className="bg-[var(--surface2)] border border-[var(--border)] rounded-2xl p-4 space-y-2 text-xs text-[var(--text3)]">
-              <div className="flex justify-between">
-                <span>Key Terms:</span>
-                <span className="font-semibold text-[var(--text)]">{module.terms?.length || 0} Signatures</span>
-              </div>
-              <div className="flex justify-between">
-                <span>Worked Examples:</span>
-                <span className="font-semibold text-[var(--text)]">{module.examples?.length || 0} Dual-Method</span>
-              </div>
-              <div className="flex justify-between">
-                <span>Concept Checks:</span>
-                <span className="font-semibold text-[var(--text)]">{module.conceptChecks?.length || 0} MCQs</span>
-              </div>
+              {Boolean(module.formulas?.length) && (
+                <div className="flex justify-between">
+                  <span>Key Formulas:</span>
+                  <span className="font-semibold text-[var(--text)]">{module.formulas?.length} Equations</span>
+                </div>
+              )}
+              {Boolean(module.examples?.length) && (
+                <div className="flex justify-between">
+                  <span>Worked Examples:</span>
+                  <span className="font-semibold text-[var(--text)]">{module.examples?.length} Dual-Method</span>
+                </div>
+              )}
+              {Boolean(module.terms?.length) && (
+                <div className="flex justify-between">
+                  <span>Key Terms:</span>
+                  <span className="font-semibold text-[var(--text)]">{module.terms?.length} Signatures</span>
+                </div>
+              )}
+              {Boolean(module.conceptChecks?.length) && (
+                <div className="flex justify-between">
+                  <span>Concept Checks:</span>
+                  <span className="font-semibold text-[var(--text)]">{module.conceptChecks?.length} MCQs</span>
+                </div>
+              )}
+              {Boolean(module.comparisonTables?.length) && (
+                <div className="flex justify-between">
+                  <span>Comparison Tables:</span>
+                  <span className="font-semibold text-[var(--text)]">{module.comparisonTables?.length} Matrices</span>
+                </div>
+              )}
             </div>
           </aside>
 
@@ -1303,7 +1328,11 @@ export function ModuleReader({ module }: ModuleReaderProps) {
 
               <div className="flex flex-wrap items-center justify-center gap-3">
                 <Link
-                  href={`/learn/${module.id}/mastery`}
+                  href={
+                    (module as any).isCustom || module.id.startsWith("custom") || module.code.startsWith("CUSTOM")
+                      ? `/tutor?prompt=${encodeURIComponent(`Generate a 10-question practice mastery challenge test for "${module.subtopicTitle}" (${module.code})`)}&mode=tricky_questions`
+                      : `/learn/${module.id}/mastery`
+                  }
                   className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-[var(--accent)] text-white text-sm font-bold shadow-md hover:opacity-95 transition-all cursor-pointer"
                 >
                   <Award className="w-4 h-4" />
@@ -1311,7 +1340,7 @@ export function ModuleReader({ module }: ModuleReaderProps) {
                   <ArrowRight className="w-4 h-4" />
                 </Link>
 
-                {module.pairedQuizSetId && (
+                {module.pairedQuizSetId && !(module as any).isCustom && !module.id.startsWith("custom") && (
                   <Link
                     href={`/quizzes/${module.pairedQuizSetId}`}
                     className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-[var(--surface)] border border-[var(--border)] text-[var(--text2)] hover:text-[var(--text)] text-sm font-medium transition-all"

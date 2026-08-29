@@ -297,9 +297,14 @@ function renderMarkdownTable(key: string, lines: string[], fitMode: "scroll" | "
 // In-line formatter for Math ($...$, $$...$$), Bold (**...**), and Italics (*...*)
 function InlineFormattedText({ content, fitMode = "scroll" }: { content: string; fitMode?: "scroll" | "fit" }) {
   const parts = useMemo(() => {
+    // 1. Normalize ($$...$$) -> ($ ... $) so display math doesn't break parentheses onto new lines
+    const normalized = content
+      .replace(/\(\s*\$\$([\s\S]*?)\$\$\s*\)/g, "($$$1$)")
+      .replace(/\[\s*\$\$([\s\S]*?)\$\$\s*\]/g, "[$$$1$]");
+
     // Tokenize on $$...$$, $...$, and **...**
     const regex = /(\$\$[\s\S]*?\$\$|\$[\s\S]*?\$|\*\*[\s\S]*?\*\*)/g;
-    const tokens = content.split(regex);
+    const tokens = normalized.split(regex);
 
     return tokens.map((token, i) => {
       if (token.startsWith("$$") && token.endsWith("$$") && token.length >= 4) {
@@ -321,6 +326,25 @@ function InlineFormattedText({ content, fitMode = "scroll" }: { content: string;
           </strong>
         );
       } else {
+        // Auto-detect unwrapped math patterns (e.g. i^{2026}, \sqrt{...}, \frac{...}) in raw text tokens
+        const unwrappedMathRegex = /([a-zA-Z0-9_]+\^\{[a-zA-Z0-9\+\-\*\/\s,.]+\}|[a-zA-Z0-9_]+\^[a-zA-Z0-9]|\\(?:frac|sqrt|Omega|Gamma|tau|alpha|beta|Delta|theta|phi|times|cdot|approx|le|ge|pm|infty|pi|mu|lambda|sigma)\b(?:\s*\{[^}]*\})*)/g;
+        if (unwrappedMathRegex.test(token)) {
+          const subTokens = token.split(unwrappedMathRegex);
+          return (
+            <React.Fragment key={i}>
+              {subTokens.map((sub, sIdx) => {
+                if (unwrappedMathRegex.test(sub)) {
+                  return (
+                    <span key={sIdx} className="inline-math px-0.5 max-w-full">
+                      <RenderMathBlock math={sub} display={false} fitMode={fitMode} />
+                    </span>
+                  );
+                }
+                return <React.Fragment key={sIdx}>{sub}</React.Fragment>;
+              })}
+            </React.Fragment>
+          );
+        }
         return <React.Fragment key={i}>{token}</React.Fragment>;
       }
     });

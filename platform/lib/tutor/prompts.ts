@@ -74,9 +74,12 @@ When requested to create a learning module or lesson on a topic, generate a high
 
 SPRINT MODULE DIRECTIVES:
 - Keep the payload focused and high-density (target ~1,000 to 1,400 tokens) so generation is ultra-fast and never truncates.
+- Explicit Symbol & Variable Definitions:
+  - ALWAYS explicitly define every Greek letter (e.g. \`\\\\Gamma = \\\\text{Voltage Reflection Coefficient}\`, \`\\\\tau = \\\\text{Time Constant}\`, \`\\\\phi = \\\\text{Phase Angle}\`), variable, and acronym on its first appearance in \`theory\`.
+  - In each formula's \`note\` field, provide a clean variable glossary defining every symbol and its SI unit (e.g., \`"note": "$Z_0$ = characteristic impedance (\\\\Omega), $L$ = inductance (H/m), $C$ = capacitance (F/m)."\`).
 - Structure:
   1. **Lesson Proper (\`theory\`)**: Crisp 1-sentence mental anchor + 2–3 paragraphs of intuitive physics/math + Board Exam Trap Alerts.
-  2. **Key Formulas (\`formulas\`)**: Exactly 3 to 4 core governing equations with practical notes.
+  2. **Key Formulas (\`formulas\`)**: Exactly 3 to 4 core governing equations with full variable definitions in the \`note\` field.
   3. **Guide Problems (\`examples\`)**: Exactly 2 worked board exam problems with formal proof AND **⚡ 10–15s Calculator / Speed Shortcut**.
   4. (Omit \`prerequisiteBridge\`, \`terms\`, \`calculatorGuides\`, and \`conceptChecks\` from custom sprint modules — practice items are handled via interactive test sets).
 
@@ -104,32 +107,32 @@ JSON SCHEMA TEMPLATE:
   ],
   "theory": {
     "mentalAnchor": "1-sentence core governing mental anchor or rule of thumb.",
-    "contentMarkdown": "### 1. Intuitive Motivation\\nExplain the physical / geometric problem from first principles...\\n\\n### 2. Governing Physics & Equations\\n$$\\\\text{Formula}$$\\n\\n### 3. Board Exam Trap Alert\\n- **Trap 1**: Highlight exact algebraic, unit, or sign pitfalls examinees make."
+    "contentMarkdown": "### 1. Intuitive Motivation\\nExplain the physical / geometric problem from first principles...\\n\\n### 2. Governing Physics & Equations\\n$$\\\\text{Formula}$$\\nWhere $\\\\Gamma$ is the Greek letter Gamma representing reflection coefficient...\\n\\n### 3. Board Exam Trap Alert\\n- **Trap 1**: Highlight exact algebraic, unit, or sign pitfalls examinees make."
   },
   "formulas": [
     {
       "id": "f-01",
-      "title": "Main Governing Equation",
+      "title": "Lossless Characteristic Impedance",
       "formula": "$$Z_0 = \\\\sqrt{\\\\frac{L}{C}}$$",
-      "note": "Units and specific boundary conditions."
+      "note": "$Z_0$ = characteristic impedance (\\\\Omega), $L$ = inductance per unit length (H/m), $C$ = capacitance per unit length (F/m)."
     },
     {
       "id": "f-02",
-      "title": "Secondary Parameter",
-      "formula": "$$\\\\Gamma = \\\\frac{Z_L - Z_0}{Z_L + Z_0}$$",
-      "note": "Polar/rectangular conversion note."
+      "title": "Voltage Reflection Coefficient",
+      "formula": "$$\\\\Gamma = \\\\frac{Z_L - Z_0}{Z_L + Z_0} = |\\\\Gamma| \\\\angle \\\\phi$$",
+      "note": "$\\\\Gamma$ (Gamma) = complex reflection coefficient, $|\\\\Gamma|$ = magnitude (0 to 1), $\\\\phi$ = phase angle (degrees), $Z_L$ = load impedance, $Z_0$ = line impedance."
     }
   ],
   "examples": [
     {
-      "problemStatement": "(ECE Board Exam) Worked problem statement with KaTeX math $...$?",
+      "problemStatement": "(ECE Board Exam) Simplify the expression $E = i^{2026} + i^{2027} + i^{2028} + i^{2029}$.",
       "formalSolutionMarkdown": "#### Step 1: Formal Derivation\\nStep-by-step rigorous proof...\\n$$x = \\\\dots$$",
       "shortcutSolutionMarkdown": "#### ⚡ 10-Second Speed Shortcut\\nCalculator CMPLX mode or ratio inspection trick...",
       "formalTimeSeconds": 90,
       "shortcutTimeSeconds": 10
     },
     {
-      "problemStatement": "(ECE Board Exam) Second representative calculation scenario?",
+      "problemStatement": "(ECE Board Exam) Second representative calculation scenario with math $...$?",
       "formalSolutionMarkdown": "#### Step 1: Apply Formula\\nStep-by-step substitution...",
       "shortcutSolutionMarkdown": "#### ⚡ 15-Second Direct Keys\\nKeystroke sequence or direct rule of thumb...",
       "formalTimeSeconds": 120,

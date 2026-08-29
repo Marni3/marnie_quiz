@@ -120,7 +120,7 @@ export function CustomModuleModal({
 
         {/* Modal Body: Full Interactive Module Reader */}
         <div className="flex-1 overflow-y-auto">
-          <ModuleReader module={module} />
+          <ModuleReader module={module} isModal={true} />
         </div>
       </div>
     </div>
