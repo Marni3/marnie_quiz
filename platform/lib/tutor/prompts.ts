@@ -215,18 +215,49 @@ INSTRUCTIONS FOR THE DEBRIEF:
 
 MODE: Low-Friction Study Mode & Micro-Learning Coach (Low Energy / Procrastination Buster)
 The student is feeling tired, low on motivation, or short on time today.
-Your goal is to provide ZERO-GUILT, EMPATHETIC, ULTRA-LOW FRICTION micro-learning (under 3–5 minutes) that breaks inertia and locks in 1 high-yield board exam concept.
+Your goal is to provide ZERO-GUILT, EMPATHETIC, ULTRA-LOW FRICTION micro-learning (under 2–3 minutes) that breaks inertia and locks in 1 high-yield board exam concept.
 
-FORMAT YOUR RESPONSE EXACTLY AS FOLLOWS:
-1. **Empathy Warm-Up**: Start with 1 warm, encouraging sentence (e.g. *"Totally understand—consistency beats intensity. Let's lock in 1 quick win in under 3 minutes to keep your streak and momentum alive."*)
-2. **# [Topic Name] ([Code])** (e.g. \`# Parallel Resistor Shortcut (GEAS-01)\`)
-3. **## 🧠 60-Second Mental Anchor**: A crisp rule of thumb or memory keyword.
-4. **## ⚡ 10-Second Speed Shortcut**: The exact formula and calculator keystroke shortcut for Karce / Canon.
-5. **## 🎯 Rapid Micro-Check (1 Question)**:
-   - Provide 1 realistic multiple-choice question ($A, B, C, D$).
-   - Immediately beneath, provide the answer and why the common distractor trap occurs.
-6. **## 🎉 Micro-Session Complete!**:
-   - Short 2-sentence celebration confirming their study streak is protected today!`;
+INSTRUCTIONS:
+1. Start with 1 warm, empathetic sentence in conversational prose (e.g., *"Totally understand—consistency beats intensity every single day! Let's lock in 1 quick board exam win in under 2 minutes to protect your momentum and keep your streak alive."*)
+2. Follow immediately with a single executable JSON code block formatted as a high-yield Sprint Micro-Module containing 1 mental anchor, 1 key formula, 1 worked example with calculator shortcut, and 1-2 interactive concept check MCQs:
+
+\`\`\`json
+{
+  "id": "micro-topic-slug",
+  "code": "EST-01",
+  "domain": "EST",
+  "topicTitle": "Core Topic Name",
+  "subtopicTitle": "Micro-Topic Title (2-Min Micro-Drill)",
+  "order": 1,
+  "theory": {
+    "mentalAnchor": "Crisp 1-sentence physical intuition or rule of thumb.",
+    "contentMarkdown": "Clear 2-to-3 sentence explanation defining all variables and physical meaning."
+  },
+  "formulas": [
+    {
+      "name": "Governing Equation",
+      "latex": "Z_0 = \\\\sqrt{Z_{in} \\\\cdot Z_L}",
+      "note": "$Z_0$ = characteristic impedance of matching section (\\\\Omega), $Z_{in}$ = input impedance (\\\\Omega), $Z_L$ = load impedance (\\\\Omega)."
+    }
+  ],
+  "examples": [
+    {
+      "problemStatement": "Realistic board exam problem statement with KaTeX $...$.",
+      "formalSolution": "Step-by-step substitution and solution.",
+      "calculatorShortcut": "⚡ 10-15s Calculator Trick: Key sequences for Karce KC-S991 / Canon F-789SGA."
+    }
+  ],
+  "conceptChecks": [
+    {
+      "id": "cc-1",
+      "question": "Realistic conceptual or calculation MCQ stem with KaTeX $...$?",
+      "options": ["$150\\\\,\\\\Omega$", "$187.5\\\\,\\\\Omega$", "$225\\\\,\\\\Omega$", "$375\\\\,\\\\Omega$"],
+      "correctAnswer": 0,
+      "explanation": "Direct explanation of why Choice A is correct and why the common distractor trap occurs."
+    }
+  ]
+}
+\`\`\``;
 
     default:
       return basePrompt;
