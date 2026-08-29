@@ -632,3 +632,52 @@ graph TD
   - **Configurable Length:** Select test length (10, 20, or 30 questions) depending on available study time.
 - **Declare v1.0 Feature Complete & Enter Pure Study Mode.**
 
+---
+
+## 16. Future Sessions & Post-V1 Roadmap (V2 & Beyond)
+
+The following architectural initiatives and product enhancements are formally logged and scheduled for post-exam / future V2 development sessions:
+
+### 16.1. Google Drive Cloud Sync (`Save Progress to Google Drive`)
+- **Objective:** Provide a 1-click cloud backup and multi-device sync solution for examinees without recurring server database costs.
+- **Implementation Strategy:**
+  - Leverage Google Drive REST API with standard OAuth `https://www.googleapis.com/auth/drive.appdata` (hidden application data folder) or user root.
+  - Automatically or manually backup the **Study Vault** (custom modules, user notes, SRS retrievability vectors, quiz attempt logs, and theme settings) as an encrypted JSON archive.
+  - 1-click **"Restore from Google Drive"** to easily migrate across smartphones, tablets, and laptops.
+
+### 16.2. Dedicated Settings Center & Legal Compliance (`/settings`)
+- **Objective:** Consolidate configuration, account management, and compliance documents into a unified, dedicated settings hub.
+- **Core Sections:**
+  1. **Account & Auth:** Manage Google OAuth profile, active sessions, and multi-device tokens.
+  2. **AI BYOK Configuration:** Global default provider selection (Gemini, Groq, OpenAI, Anthropic, DeepSeek, OpenRouter), API key management, and temperature/creativity sliders.
+  3. **Display & Reader Preferences:** Default formula display mode (`Fit Math` vs `Scroll Math`), KaTeX font scale, and theme presets.
+  4. **Legal & Compliance:**
+     - **Terms of Service (TOS):** User responsibilities, BYOK liability disclaimers, and fair-use study standards.
+     - **Privacy Policy:** Transparent disclosure that API keys and personal notes are client-side only and never monetized or exposed.
+     - **Non-Affiliation Disclaimer:** Explicit notice affirming independence from all commercial review centers and the Professional Regulation Commission (PRC).
+
+### 16.3. Granular User Data Control & Privacy Suite
+- **Objective:** Give students complete agency over their personal study data with fine-grained management controls.
+- **Feature Set:**
+  - **Selective Data Reset:**
+    - *Reset Quiz Attempt Records* (wipes attempt history while preserving custom notes and learning module progress).
+    - *Recalibrate SRS Memory Engine* (resets stability and retrievability curves to day 0).
+    - *Wipe Personal Notes Vault* (`marnie_user_notes`).
+    - *Wipe Custom AI Modules* (`marnie_tutor_custom_modules`).
+  - **Full Data Export (GDPR / Portability):** 1-click zip bundle containing all study records, attempt CSVs, Markdown notes, and custom module JSONs.
+  - **Account Termination:** 1-click permanent deletion of PostgreSQL user rows and cascading database progress.
+
+### 16.4. Canonical TOS-Compliant PRC Taxonomy & Clean De-identification
+- **Objective:** Cleanly decouple all syllabus course numbering and subtopic structures from commercial review center sequences (`MATH 01–13`, `ELEC 01–15`, `GEAS 01–14`, `EST 01–10`) to eliminate all proprietary traces for public release, open-source distribution, or future commercialization.
+- **Standardized PRC Board Exam Taxonomy:**
+  - **Mathematics (MATH):** `MATH-ALG-01` (Algebra), `MATH-PROB-01` (Probability), `MATH-STAT-01` (Statistics), `MATH-TRIG-01` (Trigonometry), `MATH-GEOM-01` (Geometry), `MATH-CALC-01` (Calculus), `MATH-DE-01` (Differential Equations), `MATH-ADV-01` (Advanced Engineering Math).
+  - **Electronics (ELECS):** `ELECS-CKT-01` (Circuits), `ELECS-SEMI-01` (Semiconductors & Diodes), `ELECS-BJT-01` (Transistors), `ELECS-OPAMP-01` (Operational Amplifiers), `ELECS-DIGI-01` (Digital Logic), `ELECS-PWR-01` (Power Regulators).
+  - **General Engineering (GEAS):** `GEAS-CHEM-01` (Chemistry), `GEAS-PHYS-01` (Physics), `GEAS-MECH-01` (Strength of Materials), `GEAS-THERMO-01` (Thermodynamics), `GEAS-ECON-01` (Engineering Economics), `GEAS-LAW-01` (R.A. 9292 ECE Law).
+  - **Communications (EST):** `EST-COMM-01` (Modulation & Noise), `EST-PROP-01` (Radiowave Propagation), `EST-TXLINE-01` (Transmission Lines & Smith Charts), `EST-ANT-01` (Antennas), `EST-OPTIC-01` (Fiber Optics), `EST-DIGI-01` (Digital Communications & OSI).
+- **Migration Pipeline:** A safe migration script to map legacy database records and JSON modules to canonical taxonomy keys without breaking existing user progress.
+
+### 16.5. Module Content Authoring Backlog
+- **GEAS Modules:** `geas-10-02.json` (Board of ECE, Powers & Scope), `geas-10-03.json` (Examination, Registration & Licensure), followed by Chemistry, Physics, and Thermodynamics modules.
+- **EST & ELECS Modules:** Transmission lines, Antennas, BJTs, Op-Amps, and Digital Logic per [`modules-authoring-plan.md`](file:///c:/Users/reyna/OneDrive/Documents/marnie_quiz/test-sets/Reference%20Documents/modules-authoring-plan.md).
+
+

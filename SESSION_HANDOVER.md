@@ -2,104 +2,64 @@
 
 > **Project**: Philippine PRC Electronics Engineering (ECE) Board Exam Review Platform (Marnie Quiz & Learning Modules)  
 > **Source of Truth**: [`implementation-plan.md`](file:///c:/Users/reyna/OneDrive/Documents/marnie_quiz/implementation-plan.md) & [`AGENTS.md`](file:///c:/Users/reyna/OneDrive/Documents/marnie_quiz/AGENTS.md)  
-> **Handover Timestamp**: August 28, 2026
+> **Status**: **V1.0 Feature Complete & Feature Frozen** (August 29, 2026)
 
 ---
 
-## 1. Quick Orientation: What We Are Building
+## 1. Quick Orientation: What We Have Built
 
-This is a **free, small-scale personal review platform** ($0 cost, local-first / Next.js 16 + Neon PostgreSQL + Drizzle ORM) for Philippine PRC Electronics Engineering Licensure Examination review.
+A high-performance, $0-infrastructure personal review platform and licensure companion for the Philippine PRC Electronics Engineering Board Exam, built on Next.js 16 (App Router), Neon Serverless PostgreSQL, Drizzle ORM, KaTeX Markdown rendering, and Client-Side BYOK AI.
 
-It has two core pillars:
-1. **The Quiz Engine & Question Library (`/quizzes`)**: 201 authentic question sets across 50 syllabus topics with diagnostic, review, drill, and simulation tiers, topic SRS tracking, and custom quiz generation.
-2. **Interactive Learning Modules (`/learn` and `/learn/[moduleId]`)**: Rich, full-page interactive lessons transcribing review center materials with plain-English theory, atomic definitions, interactive HTML5 canvas simulators, dual-method derivations (Textbook vs. $\le 20\text{s}$ Board Shortcut), Karce/Canon calculator techniques, and instant in-line concept checks with distractor breakdowns.
-
----
-
-## 2. Where We Are Right Now (Completed Work)
-
-1. **Test-Set Database & Taxonomy Fixes**:
-   - Synchronized canonical `topic_code` (`MATH-01` to `MATH-13`, `ELEC-01` to `ELEC-15`, `GEAS-01` to `GEAS-12`, `EST-01` to `EST-10`) across all 201 question sets in live Neon PostgreSQL.
-   - Built `TOPIC_CATALOG` and `inferSubjectAndTopicCode` in [`platform/lib/constants.ts`](file:///c:/Users/reyna/OneDrive/Documents/marnie_quiz/platform/lib/constants.ts).
-   - Subject tabs (MATH, ELECS, GEAS, EST) and topic accordions sort sequentially by syllabus order, with quiz cards sorted by tier (Diagnostic $\to$ Review $\to$ Drill $\to$ Simulation).
-
-2. **Full-Page Interactive Learning Module System**:
-   - [`platform/lib/modules.ts`](file:///c:/Users/reyna/OneDrive/Documents/marnie_quiz/platform/lib/modules.ts): Server-side loader scanning `test-sets/learning-modules/` JSON files.
-   - [`platform/app/learn/[moduleId]/page.tsx`](file:///c:/Users/reyna/OneDrive/Documents/marnie_quiz/platform/app/learn/[moduleId]/page.tsx) & [`module-reader.tsx`](file:///c:/Users/reyna/OneDrive/Documents/marnie_quiz/platform/app/learn/[moduleId]/module-reader.tsx): Full-page reader featuring sticky TOC sidebar, interactive canvas sandboxes, dual-method solution switcher, calculator techniques cards with sample problems, and in-line MCQ grading.
-   - [`platform/app/learn/page.tsx`](file:///c:/Users/reyna/OneDrive/Documents/marnie_quiz/platform/app/learn/page.tsx) & [`learn-catalog.tsx`](file:///c:/Users/reyna/OneDrive/Documents/marnie_quiz/platform/app/learn/learn-catalog.tsx): Searchable, filterable catalog.
-   - [`platform/components/navbar.tsx`](file:///c:/Users/reyna/OneDrive/Documents/marnie_quiz/platform/components/navbar.tsx): "Modules" navigation link.
-   - [`platform/app/quizzes/library-view.tsx`](file:///c:/Users/reyna/OneDrive/Documents/marnie_quiz/platform/app/quizzes/library-view.tsx): Displays companion interactive module cards inside topic accordions.
-
-3. **Markdown & KaTeX Parser Upgrade**:
-   - Upgraded [`platform/components/math-text.tsx`](file:///c:/Users/reyna/OneDrive/Documents/marnie_quiz/platform/components/math-text.tsx) to a full Markdown parser supporting headers (`#`, `##`, `###`, `####`), tables (`| ... |`), unordered/ordered lists, bolding, horizontal rules, display math (`$$...$$`), and inline math (`$...$`).
-
-4. **Benchmark Module Redesigned**:
-   - [`test-sets/learning-modules/math/math-01-01.json`](file:///c:/Users/reyna/OneDrive/Documents/marnie_quiz/test-sets/learning-modules/math/math-01-01.json) fully updated to reflect all new pedagogical and formatting standards.
-
-5. **BYOK AI Tutor & Local Storage Architecture Fully Specified**:
-   - Comprehensive Section 7 in [`implementation-plan.md`](file:///c:/Users/reyna/OneDrive/Documents/marnie_quiz/implementation-plan.md) details the multi-provider failover routing (Gemini 1.5/2.0 Flash $\to$ Groq Llama 3.3 70B $\to$ OpenRouter), multi-system integration (module text explainers, post-exam debriefs, Socratic hint ladders, FSRS weakness drill generators), strict KaTeX & JSON schema parsing guarantees, and 100% local-first conversation storage in browser `IndexedDB` (zero Neon PostgreSQL database bloat).
+### The 6 Core Pillars in V1:
+1. **The Quiz Engine & Question Library (`/quizzes`)**: 202 authentic question sets across 50 continuous syllabus topics with Diagnostic (30Q), Review (25Q), Drill (10–20Q), and Simulation (50Q) tiers, subtopic range filters, and customizable test generators.
+2. **Spaced Repetition & Retention Engine (`/analytics` & Daily SRS)**: Exponential retrievability curve modeling ($R(t) = \exp(-\Delta t / S)$), Per-Subject Recovery Drills, 1d/3d/7d snooze controls, and calibrated Board Readiness Index ($BRI$).
+3. **Interactive Learning Modules (`/learn` and `/learn/[moduleId]`)**: Rich, full-page lessons with atomic definitions, declarative visualizers, dual-method derivations (Textbook vs. $\le 20\text{s}$ Board Shortcut), Karce/Canon calculator keystrokes, in-line concept checks, and companion 20–25 question Mastery Challenges (`/mastery`).
+4. **BYOK AI Tutor & Post-Exam Debriefing (`/tutor` & `/attempts/[id]/results`)**: Multi-provider AI mentor (Google Gemini 3.7 Flash, Groq Qwen 3.8 / GPT OSS 120B, OpenAI, DeepSeek, Anthropic, OpenRouter) with real-time streaming, intra-provider demand fallbacks, and 30-Second Setup Guide.
+5. **Unified Personal Notebook (`/notes`)**: Full Markdown/KaTeX editor, highlight-to-note captures from modules and quiz attempts, topic tagging, and AI formula cheat-sheet condensation.
+6. **Study Streak Tracking & Gamification (`StreakBadge`)**: Database-backed streak engine (`/api/streak`) computing active review days directly from PostgreSQL `attempts` and `userModuleProgress`, merged with offline `localStorage`.
 
 ---
 
-## 3. Mandatory Instructions for the Next Agent
+## 2. Post-V1 Roadmap: Future Sessions Backlog (V2 & Beyond)
 
-Before writing code or authoring modules, you **MUST** read the following source files in order:
+The following initiatives are formally documented in Section 16 of [`implementation-plan.md`](file:///c:/Users/reyna/OneDrive/Documents/marnie_quiz/implementation-plan.md) and saved for post-exam / V2 sessions:
 
-1. [`implementation-plan.md`](file:///c:/Users/reyna/OneDrive/Documents/marnie_quiz/implementation-plan.md) — Single source of truth for architecture, schema, features, and non-negotiables.
-2. [`AGENTS.md`](file:///c:/Users/reyna/OneDrive/Documents/marnie_quiz/AGENTS.md) — Working principles, $0 budget constraint, and daily changelog rules.
-3. [`test-sets/.agents/skills/learning-module-authoring/SKILL.md`](file:///c:/Users/reyna/OneDrive/Documents/marnie_quiz/test-sets/.agents/skills/learning-module-authoring/SKILL.md) — The authoring skill containing master rules.
-4. [`test-sets/Reference Documents/MODULE_RESTRUCTURING_AND_PEDAGOGICAL_REFINEMENT_GUIDE.md`](file:///c:/Users/reyna/OneDrive/Documents/marnie_quiz/test-sets/Reference%20Documents/MODULE_RESTRUCTURING_AND_PEDAGOGICAL_REFINEMENT_GUIDE.md) — Authoring blueprint, naming standards, and visual guidelines.
-5. [`test-sets/Reference Documents/LEARNING_MODULE_AUTHORING_TAKEOVER_GUIDE.md`](file:///c:/Users/reyna/OneDrive/Documents/marnie_quiz/test-sets/Reference%20Documents/LEARNING_MODULE_AUTHORING_TAKEOVER_GUIDE.md) — Schema definitions and module blueprints.
-6. The latest changelog entries in [`test-sets/changelog/`](file:///c:/Users/reyna/OneDrive/Documents/marnie_quiz/test-sets/changelog/) (specifically [`2026-08-25.md`](file:///c:/Users/reyna/OneDrive/Documents/marnie_quiz/test-sets/changelog/2026-08-25.md) and [`2026-08-26.md`](file:///c:/Users/reyna/OneDrive/Documents/marnie_quiz/test-sets/changelog/2026-08-26.md)).
+### 1. Google Drive Cloud Sync (`Save Progress to Google Drive`)
+- 1-click cloud backup and multi-device sync utilizing Google Drive REST API (`appDataFolder` or root).
+- Encrypts and backs up the **Study Vault** (custom AI modules, user notes, SRS retrievability vectors, quiz attempt logs, and settings) as a single portable JSON file without recurring database costs.
+- 1-click **"Restore from Google Drive"** to migrate seamlessly between phones, tablets, and computers.
 
----
+### 2. Dedicated Settings Center & Legal Compliance (`/settings`)
+- A dedicated page consolidating:
+  - **Account & Multi-Device Auth**: Profile, active sessions, and tokens.
+  - **AI BYOK Management**: Default model selector, API keys, temperature/creativity sliders.
+  - **Display Preferences**: Default formula fitting mode (`Fit Math` vs `Scroll Math`), KaTeX font size, theme presets.
+  - **Legal & Compliance**:
+    - *Terms of Service (TOS)*: User responsibilities and BYOK liability disclaimers.
+    - *Privacy Policy*: Complete disclosure that keys and personal notes remain client-side only.
+    - *Non-Affiliation Disclaimer*: Explicit notice affirming independence from commercial review centers and the PRC.
 
-## 4. Non-Negotiable V1 Authoring Standards
+### 3. Granular User Data Control & Privacy Suite
+- **Selective Data Reset**:
+  - *Reset Quiz Attempt Records* (clears attempts while preserving custom notes and learning module progress).
+  - *Recalibrate SRS Memory Engine* (resets stability curves to day 0).
+  - *Wipe Personal Notes Vault* (`marnie_user_notes`).
+  - *Wipe Custom AI Modules* (`marnie_tutor_custom_modules`).
+- **Full Data Export (GDPR / Portability)**: 1-click zip export containing all study logs, attempt CSVs, Markdown notes, and custom module JSONs.
+- **Account Termination**: 1-click permanent deletion of PostgreSQL user rows and cascading data.
 
-When writing or generating learning modules, strictly follow these core rules:
+### 4. Canonical TOS-Compliant PRC Taxonomy & Clean De-identification
+- Re-architect course numbering from review center proprietary sequences (`MATH 01–13`, `ELEC 01–15`, `GEAS 01–14`, `EST 01–10`) into an independent, canonical, 100% TOS-compliant PRC Board Exam Taxonomy (`MATH-ALG-01`, `ELECS-SEMI-01`, `GEAS-THERMO-01`, `EST-TXLINE-01`, etc.).
+- Decouples all proprietary review center labels to ensure zero copyright traces for public release, open-source sharing, or future commercialization.
+- Includes a safe database migration script to preserve existing progress records.
 
-### A. 1-to-1 Grounding in Actual Reviewer Notes (`Reference Documents/`)
-- The primary learning modules are **directly grounded 1-to-1** with the actual review center lecture notes (e.g., Excel Review Center) in `Reference Documents/`.
-- **No artificial length limits**: Modules must be as detailed and comprehensive as the source material requires. Transcribe every specific classification, table, property, and formula (e.g., in Algebra 1: Cardinal vs. Ordinal numbers, Arabic vs. Roman numerals, Roman multipliers Bracket $\times 100$, Vinculum $\times 1,000$, Doorframe $\times 1,000,000$, properties of integers/addition/multiplication/equality, powers of $i$, etc.).
-
-### B. Mandatory Multimodal PDF-to-Image Protocol
-- **NEVER USE PDF TEXT EXTRACTION LIBRARIES**. Raw PDF text extraction corrupts column layouts, tables, math symbols, and handwritten annotations.
-- **Conversion Rule**: Use a lightweight Python script (`pymupdf`/`fitz` or `pdf2image`) to render PDF pages as PNG images into `scratch/`.
-- Inspect the page images directly using **multimodal vision capabilities** to guarantee 100% transcription fidelity.
-
-### C. Interleaved Reinforcement Micro-Cycle
-Within the **Lesson Proper**, do not dump all theory first and all questions at the end. Follow this continuous active-recall loop:
-$$\text{Concept Block} \longrightarrow \text{Immediate In-line Concept Check} \longrightarrow \text{Worked Sample Problem \& Solution} \longrightarrow \text{Follow-up Self-Practice Check} \longrightarrow \text{Calculator Technique (if applicable)}$$
-
-- **Concept Checks Capacity**: Scale concept checks per block/module up to 5, 6, or 10+ multiple-choice questions as needed for exhaustive active-recall coverage.
-
-### D. Atomic Terms in Strict Dependency Order
-- Keep definitions short, punchy, and "atomic" (1–2 concise sentences maximum). The board rewards breadth over depth.
-- Terms must appear in strict order of appearance and logical dependency (e.g., $\mathbb{N} \to \mathbb{W} \to \mathbb{Z} \to \mathbb{Q} \to \mathbb{Q}' \to \mathbb{R}$). Never introduce a term before defining its prerequisite.
-- All math symbols must be wrapped in `$...$` (e.g., `$\mathbb{Q}$`, `$\text{GCF}(a, b)$`).
-
-### E. Standardized Section Titles
-1. `1. Introduction & Links to Related Topics`
-2. `2. Terms and Definitions`
-3. `3. Lesson Proper` (with interleaved concept checks)
-4. `4. Interactive Visualizer Sandbox` (if applicable)
-5. `5. Sample Problems and Solutions` (Dual-Method toggle: `[Formal]` vs `[⚡ Shortcut]`)
-6. `6. Calculator Techniques` (Karce KC-S991 & Canon F-789SGA — show technique title, problem type, and sample problem first)
-7. `7. In-Line Concept Checks & Distractor Deconstruction`
-8. `8. Paired Mastery Challenge & Next Module Bridge`
-
-### F. Future Spaced Repetition (SRS) Integration & Module Recall System
-- **Database Module Review Tracking**: In future backend implementations, add a mechanism (e.g. `user_module_progress` table with `last_reviewed_at`, `confidence_level`, `next_due_date`) to track when each module was last studied.
-- **Dual Recall Recommendations**: The Spaced Repetition System will be expanded beyond just generating dynamic/custom review sets to **recommend specific learning modules and/or their paired quiz sets** for periodic review.
-- **Forgetting Curve Refresher (Even for High Scores)**: Items and modules will be scheduled for recall based on retention decay curves—ensuring that topics examinees previously mastered or scored well on are still resurfaced at optimal intervals before long-term memory fades.
-
-### G. Declarative Visualizers & Git-Lean Diagram Strategy
-- **No Raw Code Execution in Module Schemas**: Interactive visualizers must strictly use pre-built, typed React/SVG components parameterized by JSON (`type`, `params`, `controls`). Raw JavaScript strings (`renderFunction`), `new Function()`, and `eval()` are banned to eliminate XSS risks and safeguard client-side BYOK API keys.
-- **Programmatic & Vector Diagrams (Git-Lean)**: Circuit schematics, vector diagrams, and graphs are generated via local Python scripts (`matplotlib`, `schemdraw`) as lightweight SVGs or inline SVGs. Avoid committing heavy bitmap images (PNG/JPEG) into the repository to prevent Git repo bloat and respect GitHub file size limits.
+### 5. Module Content Authoring Backlog
+- **GEAS Modules**: `geas-10-02.json` (Board of ECE, Powers & Scope), `geas-10-03.json` (Examination, Registration & Licensure), followed by Chemistry, Physics, and Thermodynamics.
+- **EST & ELECS Modules**: Transmission lines, Antennas, BJTs, Op-Amps, and Digital Logic per [`modules-authoring-plan.md`](file:///c:/Users/reyna/OneDrive/Documents/marnie_quiz/test-sets/Reference%20Documents/modules-authoring-plan.md).
 
 ---
 
-## 5. Directory & Codebase Layout
+## 3. Directory Layout
 
 ```
 marnie_quiz/
@@ -108,39 +68,23 @@ marnie_quiz/
 ├── SESSION_HANDOVER.md             # This takeover document
 ├── platform/                       # Next.js 16 web application
 │   ├── app/
-│   │   ├── learn/                  # Module catalog & full-page interactive reader
-│   │   │   ├── page.tsx            # /learn catalog server page
-│   │   │   ├── learn-catalog.tsx   # /learn interactive catalog client component
-│   │   │   └── [moduleId]/
-│   │   │       ├── page.tsx        # /learn/[moduleId] server page
-│   │   │       └── module-reader.tsx # Full interactive reader client component
-│   │   ├── quizzes/                # Question library & quiz runner
-│   │   │   ├── page.tsx            # /quizzes server page
-│   │   │   └── library-view.tsx    # Topic accordions & library browser
-│   │   └── api/                    # Quiz grading, submission, and auth endpoints
-│   ├── components/
-│   │   ├── math-text.tsx           # Full Markdown + KaTeX math rendering engine
-│   │   └── navbar.tsx              # Main navigation header (Library, Modules, Retention, History)
-│   └── lib/
-│       ├── constants.ts            # TOPIC_CATALOG (50 topics) & inferSubjectAndTopicCode
-│       ├── modules.ts              # Server filesystem loader for learning module JSON files
-│       ├── quizzes.ts              # Quiz queries & database handlers
-│       └── db/schema.ts            # Drizzle ORM schema for Neon PostgreSQL
+│   │   ├── api/                    # Attempts, SRS, feedback, streaks, tutor streaming/models
+│   │   ├── attempts/               # Quiz runner & post-exam results review
+│   │   ├── history/                # Historical attempt logs & review
+│   │   ├── learn/                  # Learning module catalog & full-page interactive reader
+│   │   ├── notes/                  # Personal study notebook & AI formula cheat sheet
+│   │   ├── quizzes/                # Question library, custom quiz generator & CSV upload
+│   │   └── tutor/                  # AI Study Chat, BYOK modal, and 30-Sec Setup Guide
+│   ├── components/                 # Navbar, MathText, StreakBadge, FeedbackModal, etc.
+│   └── lib/                        # constants, modules, notes, srs, streak, tutor engine
 └── test-sets/                      # Curriculum assets & authoring tools
     ├── .agents/skills/             # Authoring skill definitions
-    │   └── learning-module-authoring/SKILL.md
-    ├── changelog/                  # Daily running changelogs (YYYY-MM-DD.md)
-    ├── learning-modules/           # Master JSON Learning Modules
-    │   ├── math/                   # e.g., math-01-01.json, math-01-02.json, math-01-03.json
-    │   ├── elecs/
-    │   ├── geas/
-    │   └── est/
-    ├── Reference Documents/        # Syllabus notes, review center PDFs & authoring guides
-    └── scratch/                    # Scratchpad for python scripts & PDF-to-PNG renders
+    ├── learning-modules/           # Master JSON Learning Modules (MATH, ELECS, GEAS, EST)
+    └── Reference Documents/        # Syllabus notes, review center PDFs & authoring guides
 ```
 
 ---
 
-## 6. Daily Changelog Reminder
+## 4. Daily Changelog Rule
 
-Remember to maintain daily development changelogs in [`test-sets/changelog/`](file:///c:/Users/reyna/OneDrive/Documents/marnie_quiz/test-sets/changelog/). Always check if a file for the current date (`YYYY-MM-DD.md`) exists before starting; if it exists, append your progress; if not, create a new one.
+Remember to maintain daily development changelogs in [`changelog/`](file:///c:/Users/reyna/OneDrive/Documents/marnie_quiz/changelog/). Always check if a file for the current date (`YYYY-MM-DD.md`) exists before starting; if it exists, append your progress; if not, create a new one.
