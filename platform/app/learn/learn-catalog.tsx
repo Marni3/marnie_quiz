@@ -179,20 +179,20 @@ export function LearnCatalog({ initialModules, initialProgress = [] }: LearnCata
         {/* Continue Where You Left Off Prompt */}
         {continueModule && (
           <div className="bg-gradient-to-r from-[var(--surface)] to-[var(--surface2)] border-2 border-[var(--accent)]/40 rounded-2xl p-4 sm:p-6 shadow-sm flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
-            <div className="space-y-1.5 min-w-0">
-              <div className="flex items-center gap-2">
-                <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[11px] font-mono font-bold bg-[var(--accent)] text-white">
+            <div className="space-y-1.5 min-w-0 w-full md:w-auto">
+              <div className="flex items-center gap-1.5 sm:gap-2 flex-wrap">
+                <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[10px] sm:text-[11px] font-mono font-bold bg-[var(--accent)] text-white shrink-0">
                   <Clock className="w-3 h-3" />
                   <span>CONTINUE WHERE YOU LEFT OFF</span>
                 </span>
-                <span className={`px-2 py-0.5 rounded text-[11px] font-mono font-bold border ${domainBadges[continueModule.module.domain] || ""}`}>
+                <span className={`px-2 py-0.5 rounded text-[10px] sm:text-[11px] font-mono font-bold border shrink-0 ${domainBadges[continueModule.module.domain] || ""}`}>
                   {continueModule.module.code}
                 </span>
               </div>
-              <h2 className="font-serif font-bold text-base sm:text-lg text-[var(--text)] truncate">
+              <h2 className="font-serif font-bold text-base sm:text-lg text-[var(--text)] leading-snug break-words">
                 {continueModule.module.subtopicTitle}
               </h2>
-              <div className="flex flex-wrap items-center gap-3 text-xs text-[var(--text3)]">
+              <div className="flex flex-wrap items-center gap-2 sm:gap-3 text-xs text-[var(--text3)]">
                 <span>{continueModule.module.topicTitle}</span>
                 <span>•</span>
                 {continueModule.progress.masteryScorePercent !== null ? (
@@ -209,10 +209,10 @@ export function LearnCatalog({ initialModules, initialProgress = [] }: LearnCata
               </div>
             </div>
 
-            <div className="flex items-center gap-2 self-stretch sm:self-auto shrink-0">
+            <div className="flex items-center gap-2 w-full md:w-auto shrink-0">
               <Link
                 href={`/learn/${continueModule.module.id}`}
-                className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-[var(--accent)] text-white text-xs sm:text-sm font-bold hover:opacity-95 shadow-sm transition-all"
+                className="flex-1 md:flex-initial inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-[var(--accent)] text-white text-xs sm:text-sm font-bold hover:opacity-95 shadow-sm transition-all"
               >
                 <span>Resume Module</span>
                 <ArrowRight className="w-4 h-4" />
@@ -244,8 +244,8 @@ export function LearnCatalog({ initialModules, initialProgress = [] }: LearnCata
           </div>
 
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-3 pt-1 border-t border-[var(--border)]">
-            <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
-              <span className="text-xs font-mono text-[var(--text3)] uppercase mr-1">Subject:</span>
+            <div className="flex items-center gap-1.5 sm:gap-2 overflow-x-auto no-scrollbar py-0.5 w-full md:w-auto">
+              <span className="text-xs font-mono text-[var(--text3)] uppercase mr-1 shrink-0">Subject:</span>
               {[
                 { id: "all", label: "All" },
                 ...(customModules.length > 0
@@ -260,9 +260,9 @@ export function LearnCatalog({ initialModules, initialProgress = [] }: LearnCata
                   key={d.id}
                   type="button"
                   onClick={() => setSelectedDomain(d.id)}
-                  className={`px-3 py-1 rounded-lg text-xs font-medium transition-all cursor-pointer ${
+                  className={`px-3 py-1 rounded-lg text-xs font-medium transition-all shrink-0 cursor-pointer ${
                     selectedDomain === d.id
-                      ? "bg-[var(--accent)] text-white shadow-sm font-semibold"
+                      ? "bg-[var(--accent)] text-white shadow-xs font-semibold"
                       : "bg-[var(--surface2)] text-[var(--text2)] hover:text-[var(--text)] border border-[var(--border)]"
                   }`}
                 >
@@ -324,9 +324,9 @@ export function LearnCatalog({ initialModules, initialProgress = [] }: LearnCata
           </div>
         </div>
 
-        {/* Custom AI Modules Section (if any saved) */}
-        {(selectedDomain === "all" || selectedDomain === "custom") && customModules.length > 0 && (
-          <div className="bg-[var(--surface)] border-2 border-primary/30 rounded-2xl shadow-xs overflow-hidden transition-all mb-6">
+        {/* Custom Modules Banner */}
+        {customModules.length > 0 && (selectedDomain === "all" || selectedDomain === "custom") && (
+          <div className="bg-[var(--surface)] border border-primary/30 rounded-2xl overflow-hidden shadow-xs">
             <div className="p-4 sm:p-5 bg-gradient-to-r from-primary/10 via-[var(--surface2)] to-transparent flex items-center justify-between">
               <div className="flex items-center gap-3">
                 <div className="w-8 h-8 rounded-xl bg-primary/15 text-primary flex items-center justify-center font-bold">
@@ -431,20 +431,24 @@ export function LearnCatalog({ initialModules, initialProgress = [] }: LearnCata
                     onClick={() => toggleTopicCollapse(group.topicCode)}
                     className="w-full p-4 sm:p-5 flex items-center justify-between gap-3 text-left hover:bg-[var(--surface2)]/50 transition-colors cursor-pointer"
                   >
-                    <div className="flex items-center gap-2.5 min-w-0">
+                    <div className="flex items-start sm:items-center gap-2 sm:gap-2.5 min-w-0 flex-1">
                       <span
-                        className={`px-2 py-0.5 rounded text-xs font-mono font-bold border shrink-0 ${
+                        className={`px-2 py-0.5 rounded text-xs font-mono font-bold border shrink-0 mt-0.5 sm:mt-0 ${
                           domainBadges[group.domain] || "border-[var(--border)]"
                         }`}
                       >
                         {group.topicCode}
                       </span>
-                      <h2 className="font-serif font-bold text-base sm:text-lg text-[var(--text)] truncate">
-                        {group.topicTitle}
-                      </h2>
-                      <span className="text-xs text-[var(--text3)] shrink-0">
-                        ({group.items.length} {group.items.length === 1 ? "module" : "modules"})
-                      </span>
+                      <div className="min-w-0 flex-1">
+                        <div className="flex items-baseline gap-1.5 sm:gap-2 flex-wrap">
+                          <h2 className="font-serif font-bold text-sm sm:text-lg text-[var(--text)] leading-snug break-words">
+                            {group.topicTitle}
+                          </h2>
+                          <span className="text-[11px] sm:text-xs text-[var(--text3)] shrink-0">
+                            ({group.items.length} {group.items.length === 1 ? "module" : "modules"})
+                          </span>
+                        </div>
+                      </div>
                     </div>
 
                     <div className="flex items-center gap-2.5 shrink-0">

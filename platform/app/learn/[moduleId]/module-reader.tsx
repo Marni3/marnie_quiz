@@ -31,6 +31,7 @@ import {
   MessageSquarePlus,
   Copy,
   Bot,
+  X,
 } from "lucide-react";
 
 interface ModuleReaderProps {
@@ -38,6 +39,7 @@ interface ModuleReaderProps {
 }
 
 export function ModuleReader({ module }: ModuleReaderProps) {
+  const [isMobileTocOpen, setIsMobileTocOpen] = useState(false);
   // Solution Toggle per example: 'formal' | 'shortcut' | 'combined'
   const [exampleModes, setExampleModes] = useState<Record<number, "formal" | "shortcut" | "combined">>(() => {
     const initial: Record<number, "formal" | "shortcut" | "combined"> = {};
@@ -432,25 +434,6 @@ export function ModuleReader({ module }: ModuleReaderProps) {
             </Link>
           </div>
         </div>
-
-        {/* Mobile Horizontal Quick-Jump Ribbon (Visible on < lg screens) */}
-        <div className="lg:hidden px-4 py-2 border-t border-[var(--border)]/60 bg-[var(--surface2)]/50 overflow-x-auto flex items-center gap-1.5 no-scrollbar">
-          {dynamicToc.map((item) => (
-            <a
-              key={item.id}
-              href={`#${item.id}`}
-              className="px-2.5 py-1 rounded-lg text-[11px] font-medium whitespace-nowrap bg-[var(--surface)] border border-[var(--border)] text-[var(--text2)] hover:text-[var(--text)] hover:border-[var(--accent)] transition-all shrink-0"
-            >
-              {item.title}
-            </a>
-          ))}
-          <a
-            href="#sec-mastery-challenge"
-            className="px-2.5 py-1 rounded-lg text-[11px] font-bold whitespace-nowrap bg-[var(--accent)] text-white shadow-2xs shrink-0"
-          >
-            ★ Mastery Challenge
-          </a>
-        </div>
       </section>
 
       {/* Main Grid: Sidebar TOC + Reading Canvas */}
@@ -518,6 +501,39 @@ export function ModuleReader({ module }: ModuleReaderProps) {
               <h1 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold font-serif tracking-tight text-[var(--text)]">
                 {module.subtopicTitle}
               </h1>
+            </div>
+
+            {/* Mobile First-Card Lesson Outline */}
+            <div className="lg:hidden bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-4 sm:p-5 shadow-xs space-y-3">
+              <div className="flex items-center justify-between pb-2 border-b border-[var(--border)]">
+                <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[var(--text)]">
+                  <Layers className="w-4 h-4 text-[var(--accent)]" />
+                  <span>Lesson Outline & Sections</span>
+                </div>
+                <span className="text-[10px] font-mono font-bold text-[var(--text3)] uppercase">
+                  {dynamicToc.length} Topics
+                </span>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 pt-1">
+                {dynamicToc.map((item) => (
+                  <a
+                    key={item.id}
+                    href={`#${item.id}`}
+                    className="flex items-center gap-2.5 px-3 py-2.5 rounded-xl bg-[var(--surface2)]/80 hover:bg-[var(--surface2)] text-xs font-medium text-[var(--text)] transition-colors"
+                  >
+                    <span className="w-1.5 h-1.5 rounded-full bg-[var(--accent)] shrink-0"></span>
+                    <span className="line-clamp-1">{item.title}</span>
+                  </a>
+                ))}
+                <a
+                  href="#sec-mastery-challenge"
+                  className="flex items-center gap-2 px-3 py-2.5 rounded-xl bg-[var(--accent)]/10 border border-[var(--accent)]/30 text-xs font-bold text-[var(--accent)] hover:bg-[var(--accent)]/20 transition-colors"
+                >
+                  <span>★</span>
+                  <span>Mastery Challenge Exam</span>
+                </a>
+              </div>
             </div>
 
             {/* Section 1: Prerequisite & Cross-Subject Bridges */}
@@ -1328,6 +1344,63 @@ export function ModuleReader({ module }: ModuleReaderProps) {
           </main>
         </div>
       </div>
+
+      {/* Floating Outline Button for Mobile Readers */}
+      <div className="fixed bottom-20 left-4 z-40 lg:hidden">
+        <button
+          type="button"
+          onClick={() => setIsMobileTocOpen(true)}
+          className="inline-flex items-center gap-2 px-3.5 py-2 rounded-full bg-[var(--surface)] border-2 border-[var(--accent)] text-[var(--text)] shadow-xl text-xs font-bold hover:bg-[var(--surface2)] active:scale-95 transition-all cursor-pointer backdrop-blur-md"
+        >
+          <Layers className="w-4 h-4 text-[var(--accent)]" />
+          <span>Outline</span>
+        </button>
+      </div>
+
+      {/* Mobile Slide-Up TOC Drawer */}
+      {isMobileTocOpen && (
+        <div className="fixed inset-0 z-50 lg:hidden flex flex-col justify-end animate-in fade-in duration-200">
+          <div
+            className="fixed inset-0 bg-black/60 backdrop-blur-xs"
+            onClick={() => setIsMobileTocOpen(false)}
+          />
+          <div className="relative bg-[var(--surface)] border-t border-[var(--border)] rounded-t-3xl p-5 shadow-2xl z-10 max-h-[75vh] flex flex-col space-y-4 animate-in slide-in-from-bottom duration-200">
+            <div className="flex items-center justify-between pb-3 border-b border-[var(--border)]">
+              <div className="flex items-center gap-2 text-sm font-bold font-serif text-[var(--text)]">
+                <Layers className="w-4 h-4 text-[var(--accent)]" />
+                <span>Jump to Section</span>
+              </div>
+              <button
+                type="button"
+                onClick={() => setIsMobileTocOpen(false)}
+                className="p-1 rounded-lg text-[var(--text2)] hover:text-[var(--text)]"
+              >
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+
+            <div className="overflow-y-auto space-y-1.5 py-1">
+              {dynamicToc.map((item) => (
+                <a
+                  key={item.id}
+                  href={`#${item.id}`}
+                  onClick={() => setIsMobileTocOpen(false)}
+                  className="block px-3 py-2.5 rounded-xl bg-[var(--surface2)]/60 hover:bg-[var(--surface2)] text-xs font-medium text-[var(--text)] transition-colors leading-relaxed"
+                >
+                  {item.title}
+                </a>
+              ))}
+              <a
+                href="#sec-mastery-challenge"
+                onClick={() => setIsMobileTocOpen(false)}
+                className="block px-3 py-2.5 rounded-xl bg-[var(--accent)] text-white text-xs font-bold shadow-xs transition-colors"
+              >
+                ★ Mastery Challenge Exam
+              </a>
+            </div>
+          </div>
+        </div>
+      )}
 
       <FeedbackModal
         isOpen={isFeedbackOpen}
