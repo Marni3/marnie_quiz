@@ -10,6 +10,7 @@ const STORAGE_KEYS = {
   PENDING_REVIEW_CONTEXT: "marnie_tutor_pending_review_context",
   SAVED_FORMULAS: "marnie_tutor_saved_formulas",
   CUSTOM_MODULES: "marnie_tutor_custom_modules",
+  CUSTOM_QUIZZES: "marnie_tutor_custom_quizzes",
   CACHED_MODELS: "marnie_cached_models",
 };
 
@@ -261,6 +262,92 @@ export function getStoredCustomModules(): any[] {
     return raw ? JSON.parse(raw) : [];
   } catch {
     return [];
+  }
+}
+
+/**
+ * Saves or updates a custom module in local storage with strict ID deduplication
+ */
+export function saveCustomModule(mod: any): { isNew: boolean; totalCount: number } {
+  if (typeof window === "undefined" || !mod) return { isNew: false, totalCount: 0 };
+  try {
+    const existing = getStoredCustomModules();
+    const id = mod.id || `custom-${Date.now()}`;
+    const normalizedMod = { ...mod, id, isCustom: true };
+
+    const idx = existing.findIndex((m: any) => m.id === id);
+    let isNew = false;
+
+    if (idx >= 0) {
+      existing[idx] = normalizedMod; // Update in place
+    } else {
+      existing.unshift(normalizedMod); // Add to front
+      isNew = true;
+    }
+
+    localStorage.setItem(STORAGE_KEYS.CUSTOM_MODULES, JSON.stringify(existing.slice(0, 100)));
+    return { isNew, totalCount: existing.length };
+  } catch (err) {
+    console.error("Failed to save custom module:", err);
+    return { isNew: false, totalCount: 0 };
+  }
+}
+
+export function getStoredCustomQuizzes(): any[] {
+  if (typeof window === "undefined") return [];
+  try {
+    const raw = localStorage.getItem(STORAGE_KEYS.CUSTOM_QUIZZES);
+    return raw ? JSON.parse(raw) : [];
+  } catch {
+    return [];
+  }
+}
+
+/**
+ * Saves or updates a custom practice quiz in local storage with strict ID deduplication
+ */
+export function saveCustomQuiz(quiz: any): { isNew: boolean; totalCount: number } {
+  if (typeof window === "undefined" || !quiz) return { isNew: false, totalCount: 0 };
+  try {
+    const existing = getStoredCustomQuizzes();
+    const id = quiz.id || quiz.moduleId ? `${quiz.moduleId}-mastery` : `custom-quiz-${Date.now()}`;
+    const normalizedQuiz = { ...quiz, id, isCustom: true };
+
+    const idx = existing.findIndex((q: any) => q.id === id || (quiz.moduleId && q.moduleId === quiz.moduleId));
+    let isNew = false;
+
+    if (idx >= 0) {
+      existing[idx] = normalizedQuiz; // Update in place
+    } else {
+      existing.unshift(normalizedQuiz); // Add to front
+      isNew = true;
+    }
+
+    localStorage.setItem(STORAGE_KEYS.CUSTOM_QUIZZES, JSON.stringify(existing.slice(0, 100)));
+    return { isNew, totalCount: existing.length };
+  } catch (err) {
+    console.error("Failed to save custom quiz:", err);
+    return { isNew: false, totalCount: 0 };
+  }
+}
+
+/**
+ * Retrieves a custom mastery challenge quiz linked to a specific module ID
+ */
+export function getCustomMasteryQuizForModule(moduleId: string): any | null {
+  if (typeof window === "undefined" || !moduleId) return null;
+  try {
+    const quizzes = getStoredCustomQuizzes();
+    return (
+      quizzes.find(
+        (q: any) =>
+          q.moduleId === moduleId ||
+          q.id === `${moduleId}-mastery` ||
+          q.id === moduleId
+      ) || null
+    );
+  } catch {
+    return null;
   }
 }
 

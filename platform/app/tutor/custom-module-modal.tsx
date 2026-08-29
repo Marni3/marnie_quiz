@@ -3,8 +3,9 @@
 import { useState } from "react";
 import { LearningModule } from "@/lib/modules";
 import { ModuleReader } from "@/app/learn/[moduleId]/module-reader";
-import { X, Sparkles, Download, Check, BookMarked } from "lucide-react";
-import { getStoredCustomModules } from "@/lib/tutor/storage";
+import { CustomQuizModal } from "./custom-quiz-modal";
+import { X, Sparkles, Download, Check, BookMarked, Target } from "lucide-react";
+import { getStoredCustomModules, saveCustomModule, getCustomMasteryQuizForModule } from "@/lib/tutor/storage";
 import { saveStoredNote } from "@/lib/notes";
 import { recordStudyActivity } from "@/lib/streak";
 
@@ -23,25 +24,33 @@ export function CustomModuleModal({
 }: CustomModuleModalProps) {
   const [saved, setSaved] = useState(false);
   const [savedNote, setSavedNote] = useState(false);
+  const [activeQuizModal, setActiveQuizModal] = useState<any | null>(null);
 
   if (!isOpen || !module) return null;
 
   const handleSaveToLibrary = () => {
     try {
-      const existing = getStoredCustomModules();
-      const idx = existing.findIndex((m: any) => m.id === module.id);
-      if (idx >= 0) {
-        existing[idx] = module;
-      } else {
-        existing.unshift(module);
-      }
-      localStorage.setItem("marnie_tutor_custom_modules", JSON.stringify(existing));
+      saveCustomModule(module);
       recordStudyActivity("module");
       setSaved(true);
       if (onSaved) onSaved();
       setTimeout(() => setSaved(false), 2500);
     } catch (err) {
       console.error("Failed to save custom module to library:", err);
+    }
+  };
+
+  const handleOpenMasteryQuiz = () => {
+    const quiz = getCustomMasteryQuizForModule(module.id);
+    if (quiz) {
+      setActiveQuizModal(quiz);
+    } else {
+      // Fallback synthetic quiz placeholder if still generating
+      setActiveQuizModal({
+        moduleId: module.id,
+        title: `Mastery Challenge: ${module.subtopicTitle}`,
+        questions: [],
+      });
     }
   };
 
@@ -90,6 +99,15 @@ export function CustomModuleModal({
 
           <div className="flex items-center gap-2">
             <button
+              onClick={handleOpenMasteryQuiz}
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-[var(--accent)] text-white text-xs font-bold hover:brightness-110 shadow-xs transition-all cursor-pointer"
+              title="Launch Paired Mastery Challenge"
+            >
+              <Target className="w-3.5 h-3.5" />
+              <span>Mastery Challenge</span>
+            </button>
+
+            <button
               onClick={handleSaveToNotes}
               className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-bold transition-all cursor-pointer border ${
                 savedNote
@@ -111,7 +129,7 @@ export function CustomModuleModal({
 
             <button
               onClick={onClose}
-              className="p-1.5 rounded-lg text-[var(--text2)] hover:text-[var(--text)] hover:bg-[var(--surface)] transition-all"
+              className="p-1.5 rounded-lg text-[var(--text2)] hover:text-[var(--text)] hover:bg-[var(--surface)] transition-all cursor-pointer"
             >
               <X className="w-5 h-5" />
             </button>
@@ -123,6 +141,16 @@ export function CustomModuleModal({
           <ModuleReader module={module} isModal={true} />
         </div>
       </div>
+
+      {/* Paired Custom Mastery Quiz Modal */}
+      {activeQuizModal && (
+        <CustomQuizModal
+          isOpen={!!activeQuizModal}
+          onClose={() => setActiveQuizModal(null)}
+          quiz={activeQuizModal}
+          module={module}
+        />
+      )}
     </div>
   );
 }

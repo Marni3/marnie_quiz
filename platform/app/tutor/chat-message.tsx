@@ -5,8 +5,10 @@ import Link from "next/link";
 import { ChatMessage, TutorFunctionMode } from "@/lib/tutor/types";
 import { MathText } from "@/components/math-text";
 import { CustomModuleModal } from "./custom-module-modal";
+import { CustomQuizModal } from "./custom-quiz-modal";
 import { saveStoredNote } from "@/lib/notes";
 import { recordStudyActivity } from "@/lib/streak";
+import { saveCustomModule, saveCustomQuiz } from "@/lib/tutor/storage";
 import {
   Copy,
   Check,
@@ -93,6 +95,7 @@ export function ChatMessageItem({ message, onTriggerAction }: ChatMessageProps) 
   const [copied, setCopied] = useState(false);
   const [savedToNotebook, setSavedToNotebook] = useState(false);
   const [previewModule, setPreviewModule] = useState<any | null>(null);
+  const [previewQuiz, setPreviewQuiz] = useState<any | null>(null);
   const isUser = message.role === "user";
 
   const [showRawJson, setShowRawJson] = useState(false);
@@ -168,23 +171,15 @@ export function ChatMessageItem({ message, onTriggerAction }: ChatMessageProps) 
     ? extractArtifactFromMessage(message.content)
     : { module: null, quiz: null, rawJson: "" };
 
-  // Automatically persist any generated module to localStorage under marnie_tutor_custom_modules
+  // Automatically persist any generated module or quiz to localStorage with unique ID deduplication
   useEffect(() => {
-    if (!detectedModule || typeof window === "undefined") return;
-    try {
-      const raw = localStorage.getItem("marnie_tutor_custom_modules");
-      const list = raw ? JSON.parse(raw) : [];
-      const idx = list.findIndex((m: any) => m.id === detectedModule.id);
-      if (idx >= 0) {
-        list[idx] = detectedModule;
-      } else {
-        list.unshift(detectedModule);
-      }
-      localStorage.setItem("marnie_tutor_custom_modules", JSON.stringify(list));
-    } catch (err) {
-      console.error("Auto-save custom module failed:", err);
+    if (detectedModule && typeof window !== "undefined") {
+      saveCustomModule(detectedModule);
     }
-  }, [detectedModule]);
+    if (detectedQuiz && typeof window !== "undefined") {
+      saveCustomQuiz(detectedQuiz);
+    }
+  }, [detectedModule, detectedQuiz]);
 
   // Check if message ends with the Review Exam next-step prompt
   const isExamReviewResponse =
@@ -339,26 +334,31 @@ export function ChatMessageItem({ message, onTriggerAction }: ChatMessageProps) 
 
         {/* Detected Quiz Interactive Launch Banner */}
         {detectedQuiz && (
-          <div className="mt-4 p-4 rounded-2xl bg-gradient-to-br from-emerald-500/10 via-emerald-500/5 to-accent/10 border border-emerald-500/25 space-y-3 shadow-xs">
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-              <div className="flex items-center gap-2.5">
+          <div className="mt-4 p-4 sm:p-5 rounded-2xl bg-gradient-to-br from-emerald-500/10 via-emerald-500/5 to-accent/10 border border-emerald-500/25 space-y-3.5 shadow-xs">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5">
+              <div className="flex items-center gap-2.5 min-w-0">
                 <div className="w-9 h-9 rounded-xl bg-emerald-600 text-white flex items-center justify-center shrink-0 shadow-xs">
                   <Target className="w-4 h-4" />
                 </div>
-                <div>
-                  <div className="text-xs font-bold text-[var(--text)]">
+                <div className="min-w-0">
+                  <div className="text-xs sm:text-sm font-bold text-[var(--text)]">
                     Custom Practice Drill Generated ({detectedQuiz.questions?.length || 0} Questions)
                   </div>
-                  <div className="text-[11px] text-[var(--text2)] truncate max-w-xs sm:max-w-sm">
-                    {detectedQuiz.title || "Targeted Topic Practice"}
+                  <div className="text-[11px] text-[var(--text2)] truncate max-w-xs sm:max-w-md">
+                    {detectedQuiz.title || "Targeted Topic Practice Drill"}
                   </div>
                 </div>
               </div>
 
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-1.5 shrink-0 self-end sm:self-auto">
+                <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-mono font-bold bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20">
+                  <Check className="w-3 h-3" />
+                  <span>Auto-Saved</span>
+                </span>
+
                 <button
                   onClick={() => setShowRawJson((prev) => !prev)}
-                  className="px-2.5 py-1.5 rounded-xl bg-[var(--surface)] border border-[var(--border)] text-[var(--text2)] hover:text-[var(--text)] text-xs font-mono font-medium transition-all shrink-0 cursor-pointer"
+                  className="px-2.5 py-1 rounded-xl bg-[var(--surface)] border border-[var(--border)] text-[var(--text2)] hover:text-[var(--text)] text-xs font-mono font-medium transition-all cursor-pointer"
                   title="Toggle raw JSON code view"
                 >
                   {showRawJson ? "Hide Code" : "View Code"}
@@ -371,12 +371,23 @@ export function ChatMessageItem({ message, onTriggerAction }: ChatMessageProps) 
                       `custom-drill-${Date.now()}.json`
                     )
                   }
-                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-[var(--surface)] border border-[var(--border)] hover:border-emerald-500/40 text-[var(--text)] text-xs font-semibold transition-all shrink-0 cursor-pointer"
+                  className="p-1.5 rounded-xl bg-[var(--surface)] border border-[var(--border)] text-[var(--text2)] hover:text-[var(--text)] text-xs font-semibold transition-all cursor-pointer"
+                  title="Download Drill JSON"
                 >
                   <Download className="w-3.5 h-3.5" />
-                  <span>Download JSON</span>
                 </button>
               </div>
+            </div>
+
+            {/* Action Buttons Row */}
+            <div className="flex flex-wrap items-center gap-2 pt-2.5 border-t border-emerald-500/20">
+              <button
+                onClick={() => setPreviewQuiz(detectedQuiz)}
+                className="inline-flex items-center justify-center gap-1.5 px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold shadow-md hover:brightness-110 active:scale-95 transition-all cursor-pointer"
+              >
+                <Rocket className="w-4 h-4" />
+                <span>Launch Quiz Runner</span>
+              </button>
             </div>
 
             {/* Collapsible Raw JSON Code Block */}
@@ -568,6 +579,16 @@ export function ChatMessageItem({ message, onTriggerAction }: ChatMessageProps) 
           isOpen={!!previewModule}
           onClose={() => setPreviewModule(null)}
           module={previewModule}
+        />
+      )}
+
+      {/* Interactive Custom Quiz Modal */}
+      {previewQuiz && (
+        <CustomQuizModal
+          isOpen={!!previewQuiz}
+          onClose={() => setPreviewQuiz(null)}
+          quiz={previewQuiz}
+          module={detectedModule}
         />
       )}
     </div>

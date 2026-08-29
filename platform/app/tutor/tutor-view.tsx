@@ -28,6 +28,7 @@ import {
   StoredModelOption,
 } from "@/lib/tutor/storage";
 import { MODEL_CATALOG, DEFAULT_MODELS } from "@/lib/tutor/prompts";
+import { safeParseLlmJson } from "@/lib/tutor/json-parser";
 import { recordStudyActivity } from "@/lib/streak";
 import {
   Sparkles,
@@ -395,6 +396,29 @@ export function TutorView() {
       setSessions((prev) =>
         prev.map((s) => (s.id === finalSession.id ? finalSession : s))
       );
+
+      // Auto-chain Mastery Quiz Generation if a custom Sprint Module was just produced
+      if (currentMode === "custom_module") {
+        try {
+          const parsed = safeParseLlmJson(accumulated);
+          if (parsed && (parsed.subtopicTitle || parsed.topicTitle || parsed.id)) {
+            const moduleId = parsed.id || `custom-${Date.now()}`;
+            const subtopicTitle = parsed.subtopicTitle || parsed.topicTitle || "this topic";
+            const code = parsed.code || "CUSTOM";
+
+            setTimeout(() => {
+              handleSendMessage(
+                `Generate a 10-question companion Mastery Challenge test set for module "${moduleId}": "${subtopicTitle}" (${code}) covering its key governing formulas, conditions, and tricky board traps.`,
+                "tricky_questions",
+                { moduleId, moduleTitle: subtopicTitle, moduleCode: code },
+                finalSession
+              );
+            }, 600);
+          }
+        } catch (chainErr) {
+          console.warn("Auto-chain mastery quiz trigger failed:", chainErr);
+        }
+      }
     } catch (err: any) {
       console.error("AI stream error:", err);
       const errorMsg: ChatMessage = {
