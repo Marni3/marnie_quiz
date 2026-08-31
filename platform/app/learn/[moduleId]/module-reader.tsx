@@ -1422,11 +1422,11 @@ export function ModuleReader({
                     </Link>
                   ) : (
                     <Link
-                      href="/learn"
+                      href={`/learn/${module.code ? module.code.toLowerCase() : ""}`}
                       className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-primary text-white text-xs sm:text-sm font-bold shadow-md hover:opacity-95 transition-all"
                     >
                       <BookOpen className="w-4 h-4" />
-                      <span>Explore Module Library</span>
+                      <span>Continue Last Module: {module.code || "EST-01"}</span>
                       <ArrowRight className="w-4 h-4" />
                     </Link>
                   )}

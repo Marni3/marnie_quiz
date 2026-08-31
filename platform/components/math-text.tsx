@@ -294,7 +294,7 @@ function renderMarkdownTable(key: string, lines: string[], fitMode: "scroll" | "
   );
 }
 
-// In-line formatter for Math ($...$, $$...$$), Bold (**...**), and Italics (*...*)
+// In-line formatter for Math ($...$, $$...$$), Bold (**...**), Code Spans (`...`), and Italics (*...*)
 function InlineFormattedText({ content, fitMode = "scroll" }: { content: string; fitMode?: "scroll" | "fit" }) {
   const parts = useMemo(() => {
     // 1. Normalize ($$...$$) -> ($ ... $) so display math doesn't break parentheses onto new lines
@@ -302,8 +302,8 @@ function InlineFormattedText({ content, fitMode = "scroll" }: { content: string;
       .replace(/\(\s*\$\$([\s\S]*?)\$\$\s*\)/g, "($$$1$)")
       .replace(/\[\s*\$\$([\s\S]*?)\$\$\s*\]/g, "[$$$1$]");
 
-    // Tokenize on $$...$$, $...$, and **...**
-    const regex = /(\$\$[\s\S]*?\$\$|\$[\s\S]*?\$|\*\*[\s\S]*?\*\*)/g;
+    // Tokenize on $$...$$, $...$ (single-line), **...**, and `...`
+    const regex = /(\$\$[\s\S]*?\$\$|\$[^\$\n\r]+?\$|\*\*[^\*]+?\*\*|`[^`\n\r]+?`)/g;
     const tokens = normalized.split(regex);
 
     return tokens.map((token, i) => {
@@ -314,10 +314,25 @@ function InlineFormattedText({ content, fitMode = "scroll" }: { content: string;
           </span>
         );
       } else if (token.startsWith("$") && token.endsWith("$") && token.length >= 2) {
+        const inner = token.slice(1, -1);
+        // Guard against LLM hallucinations where whole English paragraphs with markdown were wrapped in $...$
+        if (inner.includes("**") || (inner.split(" ").length > 8 && !inner.includes("\\"))) {
+          return (
+            <React.Fragment key={i}>
+              <InlineFormattedText content={inner} fitMode={fitMode} />
+            </React.Fragment>
+          );
+        }
         return (
           <span key={i} className="inline-math px-0.5 max-w-full">
-            <RenderMathBlock math={token.slice(1, -1).trim()} display={false} fitMode={fitMode} />
+            <RenderMathBlock math={inner.trim()} display={false} fitMode={fitMode} />
           </span>
+        );
+      } else if (token.startsWith("`") && token.endsWith("`") && token.length >= 2) {
+        return (
+          <code key={i} className="px-1.5 py-0.5 rounded-md bg-[var(--surface2)] border border-[var(--border)] font-mono text-xs text-[var(--accent)] font-semibold">
+            {token.slice(1, -1)}
+          </code>
         );
       } else if (token.startsWith("**") && token.endsWith("**") && token.length >= 4) {
         return (
