@@ -48,6 +48,7 @@ export function SettingsView() {
 
   const [isResetConfirmOpen, setIsResetConfirmOpen] = useState(false);
   const [confirmInputText, setConfirmInputText] = useState("");
+  const [isResetting, setIsResetting] = useState(false);
   const [isFeedbackOpen, setIsFeedbackOpen] = useState(false);
   const [statusMessage, setStatusMessage] = useState<{ type: "success" | "error"; text: string } | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -112,15 +113,35 @@ export function SettingsView() {
     e.target.value = "";
   };
 
-  const handleResetAllProgress = () => {
-    const success = resetAllProgressData();
-    if (success) {
+  const handleResetAllProgress = async () => {
+    setIsResetting(true);
+    try {
+      // 1. Wipe server-side database progress (attempts, answer records, user_topic_srs, user_module_progress)
+      await fetch("/api/user/reset", { method: "POST" });
+
+      // 2. Wipe client-side storage (FSRS intervals, streaks, custom modules, notebook entries)
+      resetAllProgressData();
+
+      // 3. Reset streak events
+      window.dispatchEvent(new CustomEvent("marnie-streak-updated", { detail: { state: null } }));
+
       refreshStats();
       setIsResetConfirmOpen(false);
-      setStatusMessage({ type: "success", text: "All local study progress and data have been reset to zero." });
-      setTimeout(() => setStatusMessage(null), 4000);
-    } else {
-      setStatusMessage({ type: "error", text: "Failed to reset progress data." });
+      setConfirmInputText("");
+      setStatusMessage({
+        type: "success",
+        text: "All study attempts, FSRS memory retention matrix, and streak history have been permanently reset to zero.",
+      });
+
+      setTimeout(() => {
+        setStatusMessage(null);
+        window.location.reload();
+      }, 1200);
+    } catch (err) {
+      console.error("Failed to reset progress data:", err);
+      setStatusMessage({ type: "error", text: "Failed to completely reset progress data." });
+    } finally {
+      setIsResetting(false);
     }
   };
 
@@ -378,15 +399,15 @@ export function SettingsView() {
             <div className="flex items-center gap-2 pt-1">
               <button
                 type="button"
-                disabled={confirmInputText.trim() !== "Reset my progress"}
+                disabled={confirmInputText.trim() !== "Reset my progress" || isResetting}
                 onClick={handleResetAllProgress}
                 className={`px-4 py-2 rounded-xl text-xs font-bold transition-all cursor-pointer ${
-                  confirmInputText.trim() === "Reset my progress"
+                  confirmInputText.trim() === "Reset my progress" && !isResetting
                     ? "bg-rose-600 text-white hover:bg-rose-700 shadow-xs"
                     : "bg-[var(--surface3)] text-[var(--text3)] cursor-not-allowed opacity-50"
                 }`}
               >
-                Permanently Reset All Data
+                {isResetting ? "Resetting Database & Local Engine..." : "Permanently Reset All Data"}
               </button>
               <button
                 type="button"
