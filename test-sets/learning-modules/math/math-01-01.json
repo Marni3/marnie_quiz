@@ -183,27 +183,20 @@
   ],
   "calculatorGuides": {
     "karce": {
-      "techniqueTitle": "High-Power i Exponent Evaluation",
-      "problemType": "Simplifying i^N on Karce KC-S991",
-      "sampleProblem": "Evaluate i^79 in CMPLX mode.",
+      "techniqueTitle": "High-Power i & Complex Polynomial Evaluation",
+      "problemType": "Cyclic powers of i and complex powers on Karce KC-S991",
+      "sampleProblem": "Evaluate i^79 + (1 + i)^4 in CMPLX mode.",
       "mode": "CMPLX Mode (MODE 2)",
       "keystrokes": [
+        "MODE",
+        "2",
         "7",
         "9",
         "÷",
         "4",
         "=",
         "SHIFT",
-        "d/c"
-      ],
-      "notes": "Look at the remainder or fractional part: .75 corresponds to 3/4 (i³ = -i). Or directly evaluate (i²)³⁹ × i = (-1)³⁹ × i = -i."
-    },
-    "canon": {
-      "techniqueTitle": "Direct Complex Number Power Shortcut",
-      "problemType": "Complex calculations in CMPLX mode",
-      "sampleProblem": "Evaluate (1 + i)^4 on Canon F-789SGA.",
-      "mode": "CMPLX Mode (MODE 2)",
-      "keystrokes": [
+        "d/c",
         "(",
         "1",
         "+",
@@ -213,7 +206,31 @@
         "x²",
         "="
       ],
-      "notes": "The calculator directly yields -4 without manual binomial expansion."
+      "notes": "1. 79 ÷ 4 = 19.75. The fractional .75 (3/4) indicates remainder 3, so i^79 = i^3 = -i.\n2. For (1+i)^4, enter (1+i) then press x² twice to get -4.\n3. Net combined result: -4 - i."
+    },
+    "canon": {
+      "techniqueTitle": "High-Power i & Complex Polynomial Evaluation",
+      "problemType": "Cyclic powers of i and complex powers on Canon F-789SGA",
+      "sampleProblem": "Evaluate i^79 + (1 + i)^4 in CMPLX mode.",
+      "mode": "CMPLX Mode (MODE 2)",
+      "keystrokes": [
+        "MODE",
+        "2",
+        "7",
+        "9",
+        "÷",
+        "4",
+        "=",
+        "(",
+        "1",
+        "+",
+        "i",
+        ")",
+        "x²",
+        "x²",
+        "="
+      ],
+      "notes": "1. 79 ÷ 4 = 19.75. The fractional .75 (3/4) indicates remainder 3, so i^79 = i^3 = -i.\n2. For (1+i)^4, enter (1+i) then press x² twice to get -4.\n3. Net combined result: -4 - i."
     }
   },
   "conceptChecks": [
@@ -221,36 +238,75 @@
       "id": "chk-0101-01",
       "question": "What is the equivalent Arabic value of the Roman numeral with a vinculum $\\overline{\\text{D}}$?",
       "options": [
-        "500,000",
-        "50,000",
-        "5,000,000",
-        "5,000"
+        {
+          "text": "50,000",
+          "distractorReason": "Trap: Mistaking a vinculum (1,000×) for a bracket (100×), or using L (50) instead of D (500)."
+        },
+        {
+          "text": "500,000",
+          "isCorrect": true,
+          "distractorReason": "Correct: Base letter D represents 500. The vinculum (bar above) multiplies by 1,000: 500 × 1,000 = 500,000."
+        },
+        {
+          "text": "5,000,000",
+          "distractorReason": "Trap: Mistaking a vinculum (1,000×) for a doorframe modifier (|D̄|, 1,000,000×)."
+        },
+        {
+          "text": "5,000",
+          "distractorReason": "Trap: Mistaking D (500) for V (5) multiplied by 1,000 (V̄ = 5,000)."
+        }
       ],
-      "correctAnswer": 0,
+      "correctAnswer": "B",
       "explanation": "The base letter D represents 500. A vinculum (horizontal bar above) multiplies the base value by 1,000: 500 × 1,000 = 500,000."
     },
     {
       "id": "chk-0101-02",
       "question": "Which of the following numbers is an irrational number?",
       "options": [
-        "$\\sqrt{3}$",
-        "$0.375$",
-        "$0.454545\\dots$",
-        "$\\frac{22}{7}$"
+        {
+          "text": "$0.375$",
+          "distractorReason": "Trap: 0.375 is a terminating decimal, which is a rational number expressible as 3/8."
+        },
+        {
+          "text": "$0.454545\\dots$",
+          "distractorReason": "Trap: Non-terminating repeating decimals are rational numbers (0.4545... = 5/11)."
+        },
+        {
+          "text": "$\\sqrt{3}$",
+          "isCorrect": true,
+          "distractorReason": "Correct: √3 cannot be expressed as a ratio of two integers p/q; its decimal expansion is non-terminating and non-repeating (1.73205...)."
+        },
+        {
+          "text": "$\\frac{22}{7}$",
+          "distractorReason": "Trap: 22/7 is a rational fraction (quotient of two integers), commonly used as an approximation for π."
+        }
       ],
-      "correctAnswer": 0,
+      "correctAnswer": "C",
       "explanation": "√3 cannot be expressed as a ratio of two integers and has an endless non-repeating decimal expansion. 0.375 is terminating (3/8), 0.4545... is repeating (5/11), and 22/7 is a rational fraction."
     },
     {
       "id": "chk-0101-03",
       "question": "Which algebraic property is illustrated by the equation $(x + 4) + 9 = x + (4 + 9)$?",
       "options": [
-        "Associative Property of Addition",
-        "Commutative Property of Addition",
-        "Distributive Property",
-        "Transitive Property"
+        {
+          "text": "Associative Property of Addition",
+          "isCorrect": true,
+          "distractorReason": "Correct: The associative property states that grouping of addends does not affect the sum: (a + b) + c = a + (b + c)."
+        },
+        {
+          "text": "Commutative Property of Addition",
+          "distractorReason": "Trap: The commutative property involves reordering terms (a + b = b + a), whereas this equation alters grouping parentheses."
+        },
+        {
+          "text": "Distributive Property",
+          "distractorReason": "Trap: The distributive property involves multiplying a factor across a sum: a(b + c) = ab + ac."
+        },
+        {
+          "text": "Transitive Property",
+          "distractorReason": "Trap: The transitive property chains equality across 3 quantities (if a = b and b = c, then a = c)."
+        }
       ],
-      "correctAnswer": 0,
+      "correctAnswer": "A",
       "explanation": "The associative property states that grouping of addends does not affect the sum: (a + b) + c = a + (b + c)."
     }
   ]

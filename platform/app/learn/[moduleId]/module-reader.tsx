@@ -255,17 +255,22 @@ export function ModuleReader({
             const letter = letters[optIdx];
             const text = typeof opt === "string" ? opt : opt.text || "";
             optionsObj[letter] = text;
-            deconstructionObj[letter] =
-              opt.distractorReason ||
-              chk.explanation ||
-              (opt.isCorrect ? "Correct answer." : "Incorrect distractor.");
-            if (
+            const isThisCorrect =
               opt.isCorrect ||
               (typeof chk.correctAnswer === "number" && chk.correctAnswer === optIdx) ||
               chk.correctAnswer === letter ||
-              chk.correctAnswer === text
-            ) {
+              chk.correctAnswer === text;
+
+            if (isThisCorrect) {
               correctLetter = letter;
+              deconstructionObj[letter] =
+                opt.distractorReason ||
+                chk.explanation ||
+                "Correct answer.";
+            } else {
+              deconstructionObj[letter] =
+                opt.distractorReason ||
+                `Incorrect distractor option (${letter}). Review the governing formula and theory in Section 2 above.`;
             }
           }
         });
@@ -280,12 +285,26 @@ export function ModuleReader({
         };
       }
 
+      const correctL = (chk.correctAnswer || "A") as "A" | "B" | "C" | "D";
+      const baseDecon = chk.distractorDeconstruction || {};
+      const deconstructionObj: Record<string, string> = {};
+
+      (["A", "B", "C", "D"] as const).forEach((l) => {
+        if (baseDecon[l]) {
+          deconstructionObj[l] = baseDecon[l];
+        } else if (l === correctL) {
+          deconstructionObj[l] = chk.explanation || "Correct answer.";
+        } else {
+          deconstructionObj[l] = `Incorrect distractor option (${l}). Review the governing formula and theory in Section 2 above.`;
+        }
+      });
+
       return {
         id,
         question,
         options: chk.options || {},
-        correctAnswer: (chk.correctAnswer || "A") as "A" | "B" | "C" | "D",
-        distractorDeconstruction: chk.distractorDeconstruction || {},
+        correctAnswer: correctL,
+        distractorDeconstruction: deconstructionObj,
         shortcutExplanation: chk.shortcutExplanation || chk.explanation || "",
       };
     });
