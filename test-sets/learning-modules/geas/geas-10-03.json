@@ -10,47 +10,47 @@
   "toc": [
     {
       "id": "sec-prereq-bridges",
-      "title": "1. Introduction & Cross-Subject Connections",
+      "title": "Introduction & Cross-Subject Connections",
       "level": 2
     },
     {
       "id": "sec-theory",
-      "title": "2. Lesson Proper: Exam Grading, Official Seals & Legal Penalties",
+      "title": "Lesson Proper: Exam Grading, Official Seals & Legal Penalties",
       "level": 2
     },
     {
       "id": "sec-formulas",
-      "title": "3. Master Summary of Dimensions, Fines & Pass Criteria",
+      "title": "Master Summary of Dimensions, Fines & Pass Criteria",
       "level": 2
     },
     {
       "id": "sec-visualizer",
-      "title": "4. Interactive PECE vs Board Seal Dimension Comparator",
+      "title": "Interactive PECE vs Board Seal Dimension Comparator",
       "level": 2
     },
     {
       "id": "sec-terminology",
-      "title": "5. Key Statutory Terms & Legal Definitions",
+      "title": "Key Statutory Terms & Legal Definitions",
       "level": 2
     },
     {
       "id": "sec-dual-method",
-      "title": "6. Worked Board Exam Scoring & Legal Problem Scenarios",
+      "title": "Worked Board Exam Scoring & Legal Problem Scenarios",
       "level": 2
     },
     {
       "id": "sec-calculator",
-      "title": "7. Board Exam Speed Techniques: Seal Dimension & Penalty Rules",
+      "title": "Board Exam Speed Techniques: Seal Dimension & Penalty Rules",
       "level": 2
     },
     {
       "id": "sec-concept-checks",
-      "title": "8. In-Line Concept Checks",
+      "title": "In-Line Concept Checks",
       "level": 2
     },
     {
       "id": "sec-mastery-challenge",
-      "title": "9. Paired Mastery Challenge Exam",
+      "title": "Paired Mastery Challenge Exam",
       "level": 2
     }
   ],
@@ -190,26 +190,27 @@
       "questionText": "Within how many days after the last day of the examination must the PRC and Board of ECE release the official licensure results?",
       "options": [
         {
-          "text": "Within 15 days",
+          "text": "Within 30 calendar days",
+          "isCorrect": false,
+          "distractorReason": "Trap: Overstates the statutory window; 30 days is the deadline for oath-taking registration."
+        },
+        {
+          "text": "Within 15 calendar days",
           "isCorrect": true,
-          "distractorReason": "Correct: Section 17 mandates release of results within 15 days."
+          "distractorReason": "Correct: Section 17 mandates release of results within 15 days after the last exam day."
         },
         {
-          "text": "Within 30 days",
+          "text": "Within 3 working days",
           "isCorrect": false,
-          "distractorReason": "Overstates the statutory window."
+          "distractorReason": "Trap: Understates the statutory maximum window."
         },
         {
-          "text": "Within 3 days",
+          "text": "Within 60 calendar days",
           "isCorrect": false,
-          "distractorReason": "Understates the statutory window."
-        },
-        {
-          "text": "Within 60 days",
-          "isCorrect": false,
-          "distractorReason": "Incorrect."
+          "distractorReason": "Trap: Far exceeds the strict 15-day statutory limit in Section 17."
         }
       ],
+      "correctAnswer": "B",
       "directExplanation": "Section 17 requires the Board and Commission to release the examination results within fifteen (15) days after the last day of the examination."
     },
     {
@@ -217,26 +218,27 @@
       "questionText": "What are the outer and inner circle diameters of the official dry seal of a Professional Electronics Engineer (PECE)?",
       "options": [
         {
-          "text": "48 mm outer diameter and 32 mm inner diameter",
-          "isCorrect": true,
-          "distractorReason": "Correct: Section 29 specifies 48 mm outer / 32 mm inner."
-        },
-        {
           "text": "48 mm outer diameter and 28 mm inner diameter",
           "isCorrect": false,
-          "distractorReason": "48 mm / 28 mm is the dimension of the Board of ECE seal."
+          "distractorReason": "Trap: 48 mm / 28 mm is the dimension of the Official Seal of the Board of ECE (Section 10)."
         },
         {
           "text": "50 mm outer diameter and 30 mm inner diameter",
           "isCorrect": false,
-          "distractorReason": "Incorrect dimensions."
+          "distractorReason": "Trap: Incorrect dimensions not found in Section 29."
+        },
+        {
+          "text": "48 mm outer diameter and 32 mm inner diameter",
+          "isCorrect": true,
+          "distractorReason": "Correct: Section 29 specifies that the PECE dry seal has an outer diameter of 48 mm and an inner diameter of 32 mm."
         },
         {
           "text": "40 mm outer diameter and 25 mm inner diameter",
           "isCorrect": false,
-          "distractorReason": "Incorrect dimensions."
+          "distractorReason": "Trap: Incorrect seal sizing."
         }
       ],
+      "correctAnswer": "C",
       "directExplanation": "Section 29 specifies that the PECE dry seal has an outer diameter of 48 mm and an inner diameter of 32 mm."
     },
     {
@@ -244,26 +246,27 @@
       "questionText": "What is the penalty prescribed under Section 35 of R.A. 9292 for practicing electronics engineering without a valid license?",
       "options": [
         {
-          "text": "Fine of ₱100,000 to ₱1,000,000 and/or imprisonment of 6 months to 6 years",
-          "isCorrect": true,
-          "distractorReason": "Correct: Section 35 penalizes violations with ₱100k–₱1M fine and/or 6 mos–6 yrs imprisonment."
-        },
-        {
           "text": "Fine of ₱10,000 to ₱50,000 and/or imprisonment of 1 month to 6 months",
           "isCorrect": false,
-          "distractorReason": "These were old penalties under the repealed RA 5734."
+          "distractorReason": "Trap: These were the lower penal limits under the repealed R.A. 5734."
         },
         {
-          "text": "Fine of ₱500,000 and community service for 30 days",
+          "text": "Fine of ₱500,000 with mandatory 30 days community service",
           "isCorrect": false,
-          "distractorReason": "Incorrect penalty formulation."
+          "distractorReason": "Trap: Community service is not a statutory penalty formulation in Section 35."
         },
         {
-          "text": "Administrative reprimand with no financial fine",
+          "text": "Administrative warning with automatic license suspension for 1 year",
           "isCorrect": false,
-          "distractorReason": "Violates the statutory penal mandate."
+          "distractorReason": "Trap: Practicing without a license is a criminal violation subject to fines and imprisonment."
+        },
+        {
+          "text": "Fine of ₱100,000 to ₱1,000,000 and/or imprisonment of 6 months to 6 years",
+          "isCorrect": true,
+          "distractorReason": "Correct: Section 35 penalizes statutory violations with ₱100k–₱1M fine and/or 6 mos–6 yrs imprisonment."
         }
       ],
+      "correctAnswer": "D",
       "directExplanation": "Section 35 prescribes a fine of not less than ₱100,000 nor more than ₱1,000,000, or imprisonment of not less than 6 months nor more than 6 years, or both."
     },
     {
@@ -271,26 +274,27 @@
       "questionText": "How many Filipino registered professionals must be employed as understudies/counterparts for every foreign consultant hired under Section 26?",
       "options": [
         {
-          "text": "At least two (2) Filipino professionals",
+          "text": "At least two (2) Filipino registered professionals",
           "isCorrect": true,
           "distractorReason": "Correct: Section 26 mandates a minimum of 2 Filipino understudies per foreign specialist."
         },
         {
-          "text": "At least one (1) Filipino professional",
+          "text": "At least one (1) Filipino registered professional",
           "isCorrect": false,
-          "distractorReason": "Understates the statutory ratio."
+          "distractorReason": "Trap: Understates the statutory ratio; Section 26 requires at least two (2)."
         },
         {
-          "text": "At least five (5) Filipino professionals",
+          "text": "At least five (5) Filipino registered professionals",
           "isCorrect": false,
-          "distractorReason": "Overstates the statutory ratio."
+          "distractorReason": "Trap: Overstates the statutory understudy mandate."
         },
         {
-          "text": "No understudies are required if the foreigner pays an accreditation fee",
+          "text": "No understudies required if foreign reciprocity is certified",
           "isCorrect": false,
-          "distractorReason": "Understudies are a strict statutory requirement."
+          "distractorReason": "Trap: The understudy requirement is mandatory under Section 26 regardless of reciprocity."
         }
       ],
+      "correctAnswer": "A",
       "directExplanation": "Section 26 mandates that at least two (2) Filipino professionals shall be employed as understudies for every foreign professional hired."
     }
   ]

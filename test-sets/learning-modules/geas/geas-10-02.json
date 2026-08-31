@@ -10,47 +10,47 @@
   "toc": [
     {
       "id": "sec-prereq-bridges",
-      "title": "1. Introduction & Cross-Subject Connections",
+      "title": "Introduction & Cross-Subject Connections",
       "level": 2
     },
     {
       "id": "sec-theory",
-      "title": "2. Lesson Proper: Board Structure, Powers & The 3 Professional Tiers",
+      "title": "Lesson Proper: Board Structure, Powers & The 3 Professional Tiers",
       "level": 2
     },
     {
       "id": "sec-formulas",
-      "title": "3. Master Summary of Board Governance & Practice Matrix",
+      "title": "Master Summary of Board Governance & Practice Matrix",
       "level": 2
     },
     {
       "id": "sec-visualizer",
-      "title": "4. Interactive Practice Scope & Board Appointment Simulator",
+      "title": "Interactive Practice Scope & Board Appointment Simulator",
       "level": 2
     },
     {
       "id": "sec-terminology",
-      "title": "5. Key Statutory Terms & Legal Definitions",
+      "title": "Key Statutory Terms & Legal Definitions",
       "level": 2
     },
     {
       "id": "sec-dual-method",
-      "title": "6. Worked Board Exam Practice Scope Scenarios",
+      "title": "Worked Board Exam Practice Scope Scenarios",
       "level": 2
     },
     {
       "id": "sec-calculator",
-      "title": "7. Board Exam Speed Techniques: Number & Year Memory Anchors",
+      "title": "Board Exam Speed Techniques: Number & Year Memory Anchors",
       "level": 2
     },
     {
       "id": "sec-concept-checks",
-      "title": "8. In-Line Concept Checks",
+      "title": "In-Line Concept Checks",
       "level": 2
     },
     {
       "id": "sec-mastery-challenge",
-      "title": "9. Paired Mastery Challenge Exam",
+      "title": "Paired Mastery Challenge Exam",
       "level": 2
     }
   ],
@@ -184,26 +184,27 @@
       "questionText": "How many members compose the Professional Regulatory Board of Electronics Engineering (PRB-ECE)?",
       "options": [
         {
-          "text": "One Chairman and two Members",
-          "isCorrect": true,
-          "distractorReason": "Correct: Section 6 establishes 1 Chairman + 2 Members (total of 3)."
-        },
-        {
           "text": "One Chairman and four Members",
           "isCorrect": false,
-          "distractorReason": "That is the composition of the PRC Commission, not PRB-ECE."
+          "distractorReason": "Trap: That reflects other 5-member boards, whereas PRB-ECE has exactly 3 members."
+        },
+        {
+          "text": "One Chairman and two Members (Total of 3)",
+          "isCorrect": true,
+          "distractorReason": "Correct: Section 6 establishes 1 Chairman and 2 Members (total of 3)."
         },
         {
           "text": "One Chairman and one Vice-Chairman",
           "isCorrect": false,
-          "distractorReason": "There is no statutory Vice-Chairman."
+          "distractorReason": "Trap: There is no statutory Vice-Chairman position created under R.A. 9292."
         },
         {
-          "text": "Five Members including the Chairman",
+          "text": "Five Members appointed directly by the APO",
           "isCorrect": false,
-          "distractorReason": "Overstates the Board size."
+          "distractorReason": "Trap: The APO submits 5 nominees, but the President appoints 3 members."
         }
       ],
+      "correctAnswer": "B",
       "directExplanation": "Section 6 specifies that the Board of Electronics Engineering is composed of a Chairman and two (2) Members."
     },
     {
@@ -211,26 +212,27 @@
       "questionText": "What is the minimum number of years of active professional practice required for a PECE to qualify as a member of the Board of ECE?",
       "options": [
         {
-          "text": "At least 10 years",
+          "text": "At least 5 continuous years",
+          "isCorrect": false,
+          "distractorReason": "Trap: 5 years is the minimum citizenship and residency requirement prior to appointment."
+        },
+        {
+          "text": "At least 7 continuous years",
+          "isCorrect": false,
+          "distractorReason": "Trap: 7 years is the practice experience required to upgrade from ECE to PECE."
+        },
+        {
+          "text": "At least 10 continuous years",
           "isCorrect": true,
           "distractorReason": "Correct: Section 8(e) requires at least 10 continuous years of active practice as a PECE."
         },
         {
-          "text": "At least 5 years",
+          "text": "At least 15 continuous years",
           "isCorrect": false,
-          "distractorReason": "5 years is the minimum citizenship/residency requirement."
-        },
-        {
-          "text": "At least 7 years",
-          "isCorrect": false,
-          "distractorReason": "7 years is the requirement to upgrade from ECE to PECE."
-        },
-        {
-          "text": "At least 15 years",
-          "isCorrect": false,
-          "distractorReason": "Exceeds the statutory minimum."
+          "distractorReason": "Trap: Exceeds the statutory minimum prescribed in Section 8."
         }
       ],
+      "correctAnswer": "C",
       "directExplanation": "Section 8(e) explicitly requires at least ten (10) years of active practice of the electronics engineering profession prior to appointment."
     },
     {
@@ -238,26 +240,27 @@
       "questionText": "What is the standard term of office for a member of the Board of ECE, and what is the maximum allowable tenure including reappointment?",
       "options": [
         {
-          "text": "3 years per term, maximum 6 years total tenure",
-          "isCorrect": true,
-          "distractorReason": "Correct: Section 9 specifies 3 years per term, maximum 6 years continuous tenure."
-        },
-        {
           "text": "2 years per term, maximum 4 years total tenure",
           "isCorrect": false,
-          "distractorReason": "Understates the statutory term."
+          "distractorReason": "Trap: Understates the statutory term length."
         },
         {
           "text": "5 years per term, maximum 10 years total tenure",
           "isCorrect": false,
-          "distractorReason": "Overstates the statutory term."
+          "distractorReason": "Trap: Overstates the statutory term length."
         },
         {
           "text": "4 years per term, maximum 8 years total tenure",
           "isCorrect": false,
-          "distractorReason": "Incorrect term length."
+          "distractorReason": "Trap: Incorrect term duration."
+        },
+        {
+          "text": "3 years per term, maximum 6 years total continuous tenure",
+          "isCorrect": true,
+          "distractorReason": "Correct: Section 9 specifies 3 years per term, maximum 6 years continuous tenure."
         }
       ],
+      "correctAnswer": "D",
       "directExplanation": "Section 9 mandates a term of three (3) years with a maximum continuous tenure not exceeding six (6) years."
     },
     {
@@ -272,19 +275,20 @@
         {
           "text": "Electronics Engineer (ECE)",
           "isCorrect": false,
-          "distractorReason": "ECEs can design and supervise, but cannot sign/seal plans."
+          "distractorReason": "Trap: ECEs can design, supervise, and teach, but cannot sign/seal permit plans or tender documents."
         },
         {
           "text": "Electronics Technician (ECT)",
           "isCorrect": false,
-          "distractorReason": "ECTs perform non-engineering operational tasks."
+          "distractorReason": "Trap: ECTs perform non-engineering operational, installation, and maintenance tasks."
         },
         {
-          "text": "Master Electrician",
+          "text": "Master Electrician / Electrical Engineer",
           "isCorrect": false,
-          "distractorReason": "Governed under the Electrical Engineering Law (RA 7920)."
+          "distractorReason": "Trap: Governed under Republic Act No. 7920 (Electrical Engineering Law)."
         }
       ],
+      "correctAnswer": "A",
       "directExplanation": "Section 5 of R.A. 9292 reserves the authority to sign and seal electronics plans, schematics, and reports solely to registered PECEs."
     }
   ]
