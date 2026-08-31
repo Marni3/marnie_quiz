@@ -10,47 +10,47 @@
   "toc": [
     {
       "id": "sec-prereq-bridges",
-      "title": "1. Introduction & Cross-Subject Connections",
+      "title": "Introduction & Cross-Subject Connections",
       "level": 2
     },
     {
       "id": "sec-theory",
-      "title": "2. Lesson Proper: Triangle Segments, Centers & Radii",
+      "title": "Lesson Proper: Triangle Segments, Centers & Radii",
       "level": 2
     },
     {
       "id": "sec-formulas",
-      "title": "3. Compilation of Formulas & Geometric Radii",
+      "title": "Compilation of Formulas & Geometric Radii",
       "level": 2
     },
     {
       "id": "sec-visualizer",
-      "title": "4. Interactive Visualizer: Incircle & Circumcircle Explorer",
+      "title": "Interactive Visualizer: Incircle & Circumcircle Explorer",
       "level": 2
     },
     {
       "id": "sec-terminology",
-      "title": "5. Key Terms and Definitions",
+      "title": "Key Terms and Definitions",
       "level": 2
     },
     {
       "id": "sec-dual-method",
-      "title": "6. Worked Board Exam Problems",
+      "title": "Worked Board Exam Problems",
       "level": 2
     },
     {
       "id": "sec-calculator",
-      "title": "7. Calculator Speed Techniques (Karce & Canon)",
+      "title": "Calculator Speed Techniques (Karce & Canon)",
       "level": 2
     },
     {
       "id": "sec-concept-checks",
-      "title": "8. In-Line Concept Checks",
+      "title": "In-Line Concept Checks",
       "level": 2
     },
     {
       "id": "sec-mastery-challenge",
-      "title": "9. Paired Mastery Challenge Exam",
+      "title": "Paired Mastery Challenge Exam",
       "level": 2
     }
   ],
@@ -185,11 +185,14 @@
   ],
   "calculatorGuides": {
     "karce": {
-      "techniqueTitle": "Fast Heron's Area Evaluation",
-      "problemType": "Evaluating √(s(s-a)(s-b)(s-c))",
-      "sampleProblem": "Find area for a=7, b=8, c=9.",
+      "techniqueTitle": "Fast Heron's Area Evaluation & Inradius Calculation",
+      "problemType": "Evaluating Heron's Area and Incircle Radius r = A/s",
+      "sampleProblem": "Find semi-perimeter s, Heron's Area A = √(s(s-a)(s-b)(s-c)), and inradius r = A/s for a=7, b=8, c=9.",
       "mode": "COMP Mode (MODE 1)",
+      "whyItWorks": "Storing semi-perimeter s = (7+8+9)/2 = 12 into calculator variable A allows rapid evaluation of Heron's area formula without retyping s multiple times. Inradius r = Area / s and circumradius R = abc / (4·Area) follow immediately.",
       "keystrokes": [
+        "MODE",
+        "1",
         "(",
         "7",
         "+",
@@ -228,29 +231,71 @@
         "9",
         ")",
         ")",
+        "=",
+        "Ans",
+        "÷",
+        "ALPHA",
+        "A",
         "="
       ],
-      "notes": "Directly evaluates 26.83281573 in 3 seconds."
+      "notes": "💡 Keystroke Rules:\n1. Semi-perimeter: (7 + 8 + 9) ÷ 2 = 12 → SHIFT STO A.\n2. Area: √(A(A-7)(A-8)(A-9)) = 26.83281573.\n3. Inradius: Ans ÷ A = 2.236067977.",
+      "searchAdvisory": "Search 'Karce KC-S991 Heron formula memory storage and inradius tricks' for video walkthroughs."
     },
     "canon": {
-      "techniqueTitle": "Inradius & Circumradius Shortcut",
-      "problemType": "Evaluating A/s and abc/(4A)",
-      "sampleProblem": "Find r and R for a=7, b=8, c=9 on Canon F-789SGA.",
+      "techniqueTitle": "Fast Heron's Area Evaluation & Inradius Calculation",
+      "problemType": "Evaluating Heron's Area and Incircle Radius r = A/s",
+      "sampleProblem": "Find semi-perimeter s, Heron's Area A = √(s(s-a)(s-b)(s-c)), and inradius r = A/s for a=7, b=8, c=9.",
       "mode": "COMP Mode (MODE 1)",
+      "whyItWorks": "Storing semi-perimeter s = (7+8+9)/2 = 12 into calculator variable A allows rapid evaluation of Heron's area formula without retyping s multiple times. Inradius r = Area / s and circumradius R = abc / (4·Area) follow immediately.",
       "keystrokes": [
-        "2",
-        "6",
-        ".",
-        "8",
-        "3",
-        "2",
-        "8",
-        "÷",
+        "MODE",
         "1",
+        "(",
+        "7",
+        "+",
+        "8",
+        "+",
+        "9",
+        ")",
+        "÷",
         "2",
+        "STO",
+        "A",
+        "√",
+        "(",
+        "ALPHA",
+        "A",
+        "×",
+        "(",
+        "ALPHA",
+        "A",
+        "-",
+        "7",
+        ")",
+        "×",
+        "(",
+        "ALPHA",
+        "A",
+        "-",
+        "8",
+        ")",
+        "×",
+        "(",
+        "ALPHA",
+        "A",
+        "-",
+        "9",
+        ")",
+        ")",
+        "=",
+        "Ans",
+        "÷",
+        "ALPHA",
+        "A",
         "="
       ],
-      "notes": "Directly yields r = 2.236067."
+      "notes": "💡 Keystroke Rules:\n1. Semi-perimeter: (7 + 8 + 9) ÷ 2 = 12 → STO A.\n2. Area: √(A(A-7)(A-8)(A-9)) = 26.83281573.\n3. Inradius: Ans ÷ A = 2.236067977.",
+      "searchAdvisory": "Search 'Canon F-789SGA Heron area formula variable memory and inradius shortcuts' for video breakdowns."
     }
   },
   "conceptChecks": [
@@ -258,36 +303,75 @@
       "id": "chk-0803-01",
       "question": "At what fraction of the distance along a median (from vertex to the opposite midpoint) is the Centroid located?",
       "options": [
-        "2/3 of the distance from the vertex",
-        "1/2 of the distance from the vertex",
-        "3/4 of the distance from the vertex",
-        "1/3 of the distance from the vertex"
+        {
+          "text": "2/3 of the distance from the vertex",
+          "isCorrect": true,
+          "distractorReason": "Correct: The centroid divides every median in a 2:1 ratio, located at 2/3 of the distance from the vertex to the opposite midpoint."
+        },
+        {
+          "text": "1/2 of the distance from the vertex",
+          "distractorReason": "Trap: 1/2 is the midpoint of the median, not the centroid."
+        },
+        {
+          "text": "3/4 of the distance from the vertex",
+          "distractorReason": "Trap: 3/4 is the centroid of a solid tetrahedron, not a planar triangle."
+        },
+        {
+          "text": "1/3 of the distance from the vertex",
+          "distractorReason": "Trap: 1/3 is the distance from the midpoint of the side to the centroid (not from the vertex)."
+        }
       ],
-      "correctAnswer": 0,
+      "correctAnswer": "A",
       "explanation": "The centroid divides every median in a 2:1 ratio, located at 2/3 of the distance from the vertex to the opposite midpoint."
     },
     {
       "id": "chk-0803-02",
       "question": "What is the circumradius $R$ of a right-angled triangle with legs 6 and 8 and hypotenuse 10?",
       "options": [
-        "5",
-        "2.4",
-        "2",
-        "10"
+        {
+          "text": "2.4",
+          "distractorReason": "Trap: 2.4 is the altitude to the hypotenuse h = (6 × 8) / 10 = 4.8 / 2."
+        },
+        {
+          "text": "5",
+          "isCorrect": true,
+          "distractorReason": "Correct: In any right triangle, the circumcenter lies exactly on the midpoint of the hypotenuse, so R = c/2 = 10/2 = 5."
+        },
+        {
+          "text": "2",
+          "distractorReason": "Trap: 2 is the inradius r = (a + b - c) / 2 = (6 + 8 - 10) / 2 = 2, not the circumradius."
+        },
+        {
+          "text": "10",
+          "distractorReason": "Trap: 10 is the entire hypotenuse length (circumdiameter 2R)."
+        }
       ],
-      "correctAnswer": 0,
+      "correctAnswer": "B",
       "explanation": "In any right triangle, the circumcenter is the midpoint of the hypotenuse, so R = c/2 = 10/2 = 5."
     },
     {
       "id": "chk-0803-03",
       "question": "Who was the ancient Greek mathematician and engineer credited with discovering the formula $A = \\sqrt{s(s-a)(s-b)(s-c)}$?",
       "options": [
-        "Heron of Alexandria",
-        "Ptolemy of Alexandria",
-        "Pythagoras of Samos",
-        "Euclid of Alexandria"
+        {
+          "text": "Ptolemy of Alexandria",
+          "distractorReason": "Trap: Ptolemy discovered Ptolemy's Theorem for cyclic quadrilaterals."
+        },
+        {
+          "text": "Pythagoras of Samos",
+          "distractorReason": "Trap: Pythagoras discovered the right-triangle square relation."
+        },
+        {
+          "text": "Heron of Alexandria",
+          "isCorrect": true,
+          "distractorReason": "Correct: Heron of Alexandria (c. 10–70 A.D.) published this area theorem in his treatise Metrica."
+        },
+        {
+          "text": "Euclid of Alexandria",
+          "distractorReason": "Trap: Euclid authored the Elements."
+        }
       ],
-      "correctAnswer": 0,
+      "correctAnswer": "C",
       "explanation": "Heron of Alexandria (1st Century A.D.) published this area theorem in his treatise Metrica."
     }
   ]

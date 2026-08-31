@@ -10,47 +10,47 @@
   "toc": [
     {
       "id": "sec-prereq-bridges",
-      "title": "1. Introduction & Cross-Subject Connections",
+      "title": "Introduction & Cross-Subject Connections",
       "level": 2
     },
     {
       "id": "sec-theory",
-      "title": "2. Lesson Proper: Trig/Hyperbolic Pairs, Transform Theorems & Fourier Integrals",
+      "title": "Lesson Proper: Trig/Hyperbolic Pairs, Transform Theorems & Fourier Integrals",
       "level": 2
     },
     {
       "id": "sec-formulas",
-      "title": "3. Master Compilation of Laplace & Fourier Transform Pairs",
+      "title": "Master Compilation of Laplace & Fourier Transform Pairs",
       "level": 2
     },
     {
       "id": "sec-visualizer",
-      "title": "4. Interactive Visualizer: Frequency Response & Resonance Pole Spectrum",
+      "title": "Interactive Visualizer: Frequency Response & Resonance Pole Spectrum",
       "level": 2
     },
     {
       "id": "sec-terminology",
-      "title": "5. Key Terms and Definitions",
+      "title": "Key Terms and Definitions",
       "level": 2
     },
     {
       "id": "sec-dual-method",
-      "title": "6. Worked Board Exam Problems",
+      "title": "Worked Board Exam Problems",
       "level": 2
     },
     {
       "id": "sec-calculator",
-      "title": "7. Calculator Speed Techniques (Karce & Canon)",
+      "title": "Calculator Speed Techniques (Karce & Canon)",
       "level": 2
     },
     {
       "id": "sec-concept-checks",
-      "title": "8. In-Line Concept Checks",
+      "title": "In-Line Concept Checks",
       "level": 2
     },
     {
       "id": "sec-mastery-challenge",
-      "title": "9. Paired Mastery Challenge Exam",
+      "title": "Paired Mastery Challenge Exam",
       "level": 2
     }
   ],
@@ -170,26 +170,23 @@
   ],
   "calculatorGuides": {
     "karce": {
-      "techniqueTitle": "Fast Damped Frequency Evaluation",
-      "problemType": "Evaluating (s + a) / ((s + a)² + k²)",
-      "sampleProblem": "Find denominator for a=2, k=5.",
-      "mode": "COMP Mode (MODE 1)",
+      "techniqueTitle": "Fast Damped Frequency & Characteristic Pole Evaluation",
+      "problemType": "Evaluating Damped Oscillator Quadratic Constants and Roots in EQN Mode",
+      "sampleProblem": "Evaluate the damped quadratic pole denominator s² + 4s + 29 = 0 for a=2, k=5 (a² + k² = 29), and find the complex conjugate poles in EQN mode (s = -2 ± 5i).",
+      "mode": "COMP Mode (MODE 1) & EQN Mode (MODE 3 or 5)",
+      "whyItWorks": "For damped sinusoidal transform L{e^(-at)cos(kt)} = (s+a)/((s+a)²+k²), expanding denominator gives s² + 2as + (a²+k²) = s² + 4s + 29. EQN mode verifies the poles at s = -2 ± 5i in 1 step.",
       "keystrokes": [
+        "MODE",
+        "1",
         "2",
         "x²",
         "+",
         "5",
         "x²",
-        "="
-      ],
-      "notes": "Directly yields 29 in constant term (s² + 4s + 29)."
-    },
-    "canon": {
-      "techniqueTitle": "Resonant Quadratic Roots on Canon F-789SGA",
-      "problemType": "Solving s² + 4s + 29 = 0 in EQN Mode",
-      "sampleProblem": "Find poles for damped oscillator.",
-      "mode": "EQN Mode (MODE 5 -> Quadratic 3)",
-      "keystrokes": [
+        "=",
+        "MODE",
+        "3",
+        "3",
         "1",
         "=",
         "4",
@@ -198,7 +195,37 @@
         "9",
         "="
       ],
-      "notes": "Directly yields complex conjugate poles s = -2 ± 5i."
+      "notes": "💡 Keystroke Rules:\n1. Constant term: 2² + 5² = 29.\n2. EQN Quadratic Roots: s = -2 ± 5i.",
+      "searchAdvisory": "Search 'Karce KC-S991 damped harmonic oscillator Laplace poles and quadratic equation' for video tutorials."
+    },
+    "canon": {
+      "techniqueTitle": "Fast Damped Frequency & Characteristic Pole Evaluation",
+      "problemType": "Evaluating Damped Oscillator Quadratic Constants and Roots in EQN Mode",
+      "sampleProblem": "Evaluate the damped quadratic pole denominator s² + 4s + 29 = 0 for a=2, k=5 (a² + k² = 29), and find the complex conjugate poles in EQN mode (s = -2 ± 5i).",
+      "mode": "COMP Mode (MODE 1) & EQN Mode (MODE 5 -> Quadratic 3)",
+      "whyItWorks": "For damped sinusoidal transform L{e^(-at)cos(kt)} = (s+a)/((s+a)²+k²), expanding denominator gives s² + 2as + (a²+k²) = s² + 4s + 29. EQN mode verifies the poles at s = -2 ± 5i in 1 step.",
+      "keystrokes": [
+        "MODE",
+        "1",
+        "2",
+        "x²",
+        "+",
+        "5",
+        "x²",
+        "=",
+        "MODE",
+        "5",
+        "3",
+        "1",
+        "=",
+        "4",
+        "=",
+        "2",
+        "9",
+        "="
+      ],
+      "notes": "💡 Keystroke Rules:\n1. Constant term: 2² + 5² = 29.\n2. EQN Quadratic Roots: s = -2 ± 5i.",
+      "searchAdvisory": "Search 'Canon F-789SGA damped harmonic poles EQN mode complex quadratic roots' for video breakdowns."
     }
   },
   "conceptChecks": [
@@ -206,36 +233,75 @@
       "id": "chk-2202-01",
       "question": "What is the Laplace transform of $f(t) = \\cosh(4t)$?",
       "options": [
-        "s / (s² - 16)",
-        "s / (s² + 16)",
-        "4 / (s² - 16)",
-        "4 / (s² + 16)"
+        {
+          "text": "s / (s² - 16)",
+          "isCorrect": true,
+          "distractorReason": "Correct: By the hyperbolic cosine transform identity $\\mathcal{L}\\{\\cosh(kt)\\} = \\frac{s}{s^2 - k^2}$. For $k = 4$, $\\mathcal{L}\\{\\cosh(4t)\\} = \\frac{s}{s^2 - 16}$."
+        },
+        {
+          "text": "s / (s² + 16)",
+          "distractorReason": "Trap: $\\frac{s}{s^2 + 16}$ is the Laplace transform of ordinary circular cosine $\\cos(4t)$, not hyperbolic cosine."
+        },
+        {
+          "text": "4 / (s² - 16)",
+          "distractorReason": "Trap: $\\frac{4}{s^2 - 16}$ is the Laplace transform of hyperbolic sine $\\sinh(4t)$."
+        },
+        {
+          "text": "4 / (s² + 16)",
+          "distractorReason": "Trap: $\\frac{4}{s^2 + 16}$ is the Laplace transform of circular sine $\\sin(4t)$."
+        }
       ],
-      "correctAnswer": 0,
+      "correctAnswer": "A",
       "explanation": "L{cosh(kt)} = s / (s² - k²). For k = 4, L{cosh(4t)} = s / (s² - 16)."
     },
     {
       "id": "chk-2202-02",
       "question": "According to the Laplace Convolution Theorem, what is $\\mathcal{L}\\{f(t) * h(t)\\}$?",
       "options": [
-        "F(s) · H(s) (Direct product in s-domain)",
-        "F(s) + H(s)",
-        "F(s) / H(s)",
-        "F(s) * H(s)"
+        {
+          "text": "F(s) + H(s)",
+          "distractorReason": "Trap: Addition in the $s$-domain corresponds to linearity $\\mathcal{L}\\{f(t) + h(t)\\}$, not convolution."
+        },
+        {
+          "text": "F(s) · H(s) (Direct product in s-domain)",
+          "isCorrect": true,
+          "distractorReason": "Correct: The Convolution Theorem states that convolution in the time domain transforms into direct algebraic multiplication in the complex frequency $s$-domain: $\\mathcal{L}\\{(f * h)(t)\\} = F(s) \\cdot H(s)$."
+        },
+        {
+          "text": "F(s) / H(s)",
+          "distractorReason": "Trap: Division in the $s$-domain represents deconvolution / transfer function inversion."
+        },
+        {
+          "text": "F(s) * H(s)",
+          "distractorReason": "Trap: Convolution does not remain convolution in the transform domain."
+        }
       ],
-      "correctAnswer": 0,
+      "correctAnswer": "B",
       "explanation": "Convolution in the time domain corresponds to simple algebraic multiplication in the frequency s-domain: L{f*h} = F(s)H(s)."
     },
     {
       "id": "chk-2202-03",
       "question": "What is the Fourier transform of the Dirac delta function $\\delta(t)$?",
       "options": [
-        "1 (Constant spectrum across all frequencies)",
-        "2π δ(ω)",
-        "1 / (jω)",
-        "0"
+        {
+          "text": "2π δ(ω)",
+          "distractorReason": "Trap: $2\\pi \\delta(\\omega)$ is the Fourier transform of the constant time signal $f(t) = 1$, not the Dirac delta."
+        },
+        {
+          "text": "1 / (jω)",
+          "distractorReason": "Trap: $\\frac{1}{j\\omega}$ is part of the Fourier transform of the unit step function $u(t)$."
+        },
+        {
+          "text": "1 (Constant spectrum across all frequencies)",
+          "isCorrect": true,
+          "distractorReason": "Correct: By the sifting property of the Dirac delta, $\\mathcal{F}\\{\\delta(t)\\} = \\int_{-\\infty}^\\infty \\delta(t) e^{-j\\omega t}\\,dt = e^{-j\\omega(0)} = 1$. The impulse contains uniform spectral energy across all frequencies."
+        },
+        {
+          "text": "0",
+          "distractorReason": "Trap: The delta function has infinite amplitude at $t=0$ and unit integral area, producing a non-zero constant spectrum."
+        }
       ],
-      "correctAnswer": 0,
+      "correctAnswer": "C",
       "explanation": "The unit impulse contains equal energy at all frequencies, yielding F{δ(t)} = 1."
     }
   ]

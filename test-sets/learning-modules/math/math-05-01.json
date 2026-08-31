@@ -10,47 +10,47 @@
   "toc": [
     {
       "id": "sec-prereq-bridges",
-      "title": "1. Introduction & Cross-Subject Connections",
+      "title": "Introduction & Cross-Subject Connections",
       "level": 2
     },
     {
       "id": "sec-theory",
-      "title": "2. Lesson Proper: Axiomatic Foundations & Angle Taxonomy",
+      "title": "Lesson Proper: Axiomatic Foundations & Angle Taxonomy",
       "level": 2
     },
     {
       "id": "sec-formulas",
-      "title": "3. Compilation of Formulas & Angle Relations",
+      "title": "Compilation of Formulas & Angle Relations",
       "level": 2
     },
     {
       "id": "sec-visualizer",
-      "title": "4. Interactive Visualizer: Angle Sweep & Perigon Simulator",
+      "title": "Interactive Visualizer: Angle Sweep & Perigon Simulator",
       "level": 2
     },
     {
       "id": "sec-terminology",
-      "title": "5. Key Terms and Definitions",
+      "title": "Key Terms and Definitions",
       "level": 2
     },
     {
       "id": "sec-dual-method",
-      "title": "6. Worked Board Exam Problems",
+      "title": "Worked Board Exam Problems",
       "level": 2
     },
     {
       "id": "sec-calculator",
-      "title": "7. Calculator Speed Techniques (Karce & Canon)",
+      "title": "Calculator Speed Techniques (Karce & Canon)",
       "level": 2
     },
     {
       "id": "sec-concept-checks",
-      "title": "8. In-Line Concept Checks",
+      "title": "In-Line Concept Checks",
       "level": 2
     },
     {
       "id": "sec-mastery-challenge",
-      "title": "9. Paired Mastery Challenge Exam",
+      "title": "Paired Mastery Challenge Exam",
       "level": 2
     }
   ],
@@ -169,11 +169,14 @@
   ],
   "calculatorGuides": {
     "karce": {
-      "techniqueTitle": "Angle Unit Conversion (DMS to Rad)",
-      "problemType": "Converting degrees, minutes, seconds to radians",
-      "sampleProblem": "Convert 257° 50' to radians.",
-      "mode": "COMP Mode (MODE 1, Set RAD)",
+      "techniqueTitle": "Angle DMS-to-Radian Conversion & Reflex Classification",
+      "problemType": "Converting Degrees-Minutes-Seconds to Radians and Angle Taxonomy",
+      "sampleProblem": "Convert DMS angle 257°50' to radians, and convert 4.5 radians to decimal degrees.",
+      "mode": "COMP Mode (MODE 1)",
+      "whyItWorks": "The DMS key (°'\") converts sexagesimal degrees and minutes into decimal degrees instantly upon pressing =. Multiplying by π/180 or evaluating 4.5 · 180 / π yields 257.831°, classifying it as a reflex angle (180° < θ < 360°).",
       "keystrokes": [
+        "MODE",
+        "1",
         "2",
         "5",
         "7",
@@ -182,19 +185,15 @@
         "0",
         "°'\"",
         "=",
+        "Ans",
+        "×",
         "SHIFT",
-        "DRG►",
+        "π",
+        "÷",
         "1",
-        "="
-      ],
-      "notes": "Directly yields 4.4999 radians in 2 seconds."
-    },
-    "canon": {
-      "techniqueTitle": "Direct Angle Classification Shortcut",
-      "problemType": "Evaluating radian bounds on Canon F-789SGA",
-      "sampleProblem": "Evaluate 4.5 * 180 / π.",
-      "mode": "COMP Mode (MODE 1)",
-      "keystrokes": [
+        "8",
+        "0",
+        "=",
         "4",
         ".",
         "5",
@@ -207,7 +206,49 @@
         "π",
         "="
       ],
-      "notes": "Directly displays 257.831°."
+      "notes": "💡 Keystroke Rules:\n1. DMS to Rad: 257°50' = 257.8333° → Ans × π ÷ 180 = 4.4999 rad.\n2. Rad to Deg: 4.5 × 180 ÷ π = 257.831° (Reflex Angle).",
+      "searchAdvisory": "Search 'Karce KC-S991 DMS degree minute second conversion and radian calculations' for video examples."
+    },
+    "canon": {
+      "techniqueTitle": "Angle DMS-to-Radian Conversion & Reflex Classification",
+      "problemType": "Converting Degrees-Minutes-Seconds to Radians and Angle Taxonomy",
+      "sampleProblem": "Convert DMS angle 257°50' to radians, and convert 4.5 radians to decimal degrees.",
+      "mode": "COMP Mode (MODE 1)",
+      "whyItWorks": "The DMS key (°'\") converts sexagesimal degrees and minutes into decimal degrees instantly upon pressing =. Multiplying by π/180 or evaluating 4.5 · 180 / π yields 257.831°, classifying it as a reflex angle (180° < θ < 360°).",
+      "keystrokes": [
+        "MODE",
+        "1",
+        "2",
+        "5",
+        "7",
+        "°'\"",
+        "5",
+        "0",
+        "°'\"",
+        "=",
+        "Ans",
+        "×",
+        "SHIFT",
+        "π",
+        "÷",
+        "1",
+        "8",
+        "0",
+        "=",
+        "4",
+        ".",
+        "5",
+        "×",
+        "1",
+        "8",
+        "0",
+        "÷",
+        "SHIFT",
+        "π",
+        "="
+      ],
+      "notes": "💡 Keystroke Rules:\n1. DMS to Rad: 257°50' = 257.8333° → Ans × π ÷ 180 = 4.4999 rad.\n2. Rad to Deg: 4.5 × 180 ÷ π = 257.831° (Reflex Angle).",
+      "searchAdvisory": "Search 'Canon F-789SGA DMS conversion and angle unit radians to degrees' for video breakdowns."
     }
   },
   "conceptChecks": [
@@ -215,36 +256,75 @@
       "id": "chk-1001-01",
       "question": "What is an angle measuring strictly between $180^\\circ$ and $360^\\circ$ called?",
       "options": [
-        "Reflex Angle",
-        "Obtuse Angle",
-        "Perigon",
-        "Straight Angle"
+        {
+          "text": "Reflex Angle",
+          "isCorrect": true,
+          "distractorReason": "Correct: By geometric definition, an angle strictly between 180° and 360° is classified as a Reflex Angle."
+        },
+        {
+          "text": "Obtuse Angle",
+          "distractorReason": "Trap: An obtuse angle measures strictly between 90° and 180°."
+        },
+        {
+          "text": "Perigon",
+          "distractorReason": "Trap: A perigon (round angle) measures exactly 360°."
+        },
+        {
+          "text": "Straight Angle",
+          "distractorReason": "Trap: A straight angle measures exactly 180°."
+        }
       ],
-      "correctAnswer": 0,
+      "correctAnswer": "A",
       "explanation": "By geometric definition, an angle between 180° and 360° is a reflex angle."
     },
     {
       "id": "chk-1001-02",
       "question": "Which of Euclid's five postulates is commonly referred to as the \"Parallel Postulate\"?",
       "options": [
-        "Postulate 5",
-        "Postulate 4",
-        "Postulate 3",
-        "Postulate 1"
+        {
+          "text": "Postulate 4",
+          "distractorReason": "Trap: Postulate 4 states that all right angles are equal to one another."
+        },
+        {
+          "text": "Postulate 5",
+          "isCorrect": true,
+          "distractorReason": "Correct: Postulate 5 states that if two lines intersect a third such that the interior angles on one side sum to less than two right angles, the lines will meet on that side (the Parallel Postulate)."
+        },
+        {
+          "text": "Postulate 3",
+          "distractorReason": "Trap: Postulate 3 states that a circle can be described with any center and radius."
+        },
+        {
+          "text": "Postulate 1",
+          "distractorReason": "Trap: Postulate 1 states that a straight line segment can be drawn joining any two points."
+        }
       ],
-      "correctAnswer": 0,
+      "correctAnswer": "B",
       "explanation": "Postulate 5 governs parallel lines, forming the dividing boundary between Euclidean and Non-Euclidean geometry."
     },
     {
       "id": "chk-1001-03",
       "question": "Who was the French mathematician who invented Analytic Geometry by introducing coordinate systems to solve geometric problems?",
       "options": [
-        "René Descartes",
-        "François Viète",
-        "Blaise Pascal",
-        "Pierre de Fermat"
+        {
+          "text": "François Viète",
+          "distractorReason": "Trap: Viète revolutionized symbolic algebra, but Descartes formulated coordinate analytic geometry."
+        },
+        {
+          "text": "Blaise Pascal",
+          "distractorReason": "Trap: Pascal developed projective geometry and probability theory."
+        },
+        {
+          "text": "René Descartes",
+          "isCorrect": true,
+          "distractorReason": "Correct: René Descartes (1596–1650) founded Analytic Geometry in his 1637 work La Géométrie, introducing the Cartesian coordinate system."
+        },
+        {
+          "text": "Pierre de Fermat",
+          "distractorReason": "Trap: Fermat co-founded number theory and analytic geometry independently, but Descartes published the definitive foundational system."
+        }
       ],
-      "correctAnswer": 0,
+      "correctAnswer": "C",
       "explanation": "René Descartes (1596–1650) founded Analytic Geometry in La Géométrie (1637)."
     }
   ]

@@ -10,47 +10,47 @@
   "toc": [
     {
       "id": "sec-prereq-bridges",
-      "title": "1. Introduction & Cross-Subject Connections",
+      "title": "Introduction & Cross-Subject Connections",
       "level": 2
     },
     {
       "id": "sec-theory",
-      "title": "2. Lesson Proper: Orthogonal Trajectories, Kinematics & Oscillators",
+      "title": "Lesson Proper: Orthogonal Trajectories, Kinematics & Oscillators",
       "level": 2
     },
     {
       "id": "sec-formulas",
-      "title": "3. Master Compilation of Trajectory & Physical Formulas",
+      "title": "Master Compilation of Trajectory & Physical Formulas",
       "level": 2
     },
     {
       "id": "sec-visualizer",
-      "title": "4. Interactive Visualizer: Orthogonal Trajectory Grid Simulator",
+      "title": "Interactive Visualizer: Orthogonal Trajectory Grid Simulator",
       "level": 2
     },
     {
       "id": "sec-terminology",
-      "title": "5. Key Terms and Definitions",
+      "title": "Key Terms and Definitions",
       "level": 2
     },
     {
       "id": "sec-dual-method",
-      "title": "6. Worked Board Exam Problems",
+      "title": "Worked Board Exam Problems",
       "level": 2
     },
     {
       "id": "sec-calculator",
-      "title": "7. Calculator Speed Techniques (Karce & Canon)",
+      "title": "Calculator Speed Techniques (Karce & Canon)",
       "level": 2
     },
     {
       "id": "sec-concept-checks",
-      "title": "8. In-Line Concept Checks",
+      "title": "In-Line Concept Checks",
       "level": 2
     },
     {
       "id": "sec-mastery-challenge",
-      "title": "9. Paired Mastery Challenge Exam",
+      "title": "Paired Mastery Challenge Exam",
       "level": 2
     }
   ],
@@ -178,11 +178,14 @@
   ],
   "calculatorGuides": {
     "karce": {
-      "techniqueTitle": "Fast Terminal Velocity Evaluation",
-      "problemType": "Evaluating (m * g) / k",
-      "sampleProblem": "Find vt for m=80, g=9.8, k=16.",
+      "techniqueTitle": "Fast Terminal Velocity & Mechanical Oscillator Evaluation",
+      "problemType": "Evaluating Terminal Velocity vt = (m·g)/k and Natural Frequency ωn = √(k/m)",
+      "sampleProblem": "Evaluate linear drag terminal velocity vt = (m·g)/k for m=80 kg, g=9.8 m/s², k=16 N·s/m (vt = 49 m/s), and evaluate spring-mass undamped natural frequency ωn = √(k/m) for k=800 N/m, m=2 kg (ωn = 20 rad/s).",
       "mode": "COMP Mode (MODE 1)",
+      "whyItWorks": "At terminal equilibrium, gravitational force mg balances linear air drag kv, yielding vt = (80·9.8)/16 = 49 m/s. Undamped harmonic oscillator circular frequency evaluates directly as ωn = √(800/2) = √400 = 20 rad/s in COMP mode.",
       "keystrokes": [
+        "MODE",
+        "1",
         "8",
         "0",
         "×",
@@ -192,16 +195,7 @@
         "÷",
         "1",
         "6",
-        "="
-      ],
-      "notes": "Directly yields 49 m/s in 1 second."
-    },
-    "canon": {
-      "techniqueTitle": "Natural Frequency Solver",
-      "problemType": "√(k / m) on Canon F-789SGA",
-      "sampleProblem": "Find ωn for k=800, m=2.",
-      "mode": "COMP Mode (MODE 1)",
-      "keystrokes": [
+        "=",
         "√",
         "(",
         "8",
@@ -212,7 +206,40 @@
         ")",
         "="
       ],
-      "notes": "Directly displays 20 rad/s."
+      "notes": "💡 Keystroke Rules:\n1. Terminal Velocity: 80 × 9.8 ÷ 16 = 49 m/s.\n2. Natural Frequency: √(800 ÷ 2) = 20 rad/s.",
+      "searchAdvisory": "Search 'Karce KC-S991 terminal velocity drag and spring natural frequency oscillator' for video tutorials."
+    },
+    "canon": {
+      "techniqueTitle": "Fast Terminal Velocity & Mechanical Oscillator Evaluation",
+      "problemType": "Evaluating Terminal Velocity vt = (m·g)/k and Natural Frequency ωn = √(k/m)",
+      "sampleProblem": "Evaluate linear drag terminal velocity vt = (m·g)/k for m=80 kg, g=9.8 m/s², k=16 N·s/m (vt = 49 m/s), and evaluate spring-mass undamped natural frequency ωn = √(k/m) for k=800 N/m, m=2 kg (ωn = 20 rad/s).",
+      "mode": "COMP Mode (MODE 1)",
+      "whyItWorks": "At terminal equilibrium, gravitational force mg balances linear air drag kv, yielding vt = (80·9.8)/16 = 49 m/s. Undamped harmonic oscillator circular frequency evaluates directly as ωn = √(800/2) = √400 = 20 rad/s in COMP mode.",
+      "keystrokes": [
+        "MODE",
+        "1",
+        "8",
+        "0",
+        "×",
+        "9",
+        ".",
+        "8",
+        "÷",
+        "1",
+        "6",
+        "=",
+        "√",
+        "(",
+        "8",
+        "0",
+        "0",
+        "÷",
+        "2",
+        ")",
+        "="
+      ],
+      "notes": "💡 Keystroke Rules:\n1. Terminal Velocity: 80 × 9.8 ÷ 16 = 49 m/s.\n2. Natural Frequency: √(800 ÷ 2) = 20 rad/s.",
+      "searchAdvisory": "Search 'Canon F-789SGA terminal velocity linear drag and oscillator natural frequency' for video breakdowns."
     }
   },
   "conceptChecks": [
@@ -220,36 +247,75 @@
       "id": "chk-1803-01",
       "question": "What is the slope relation between a given family of curves and its orthogonal trajectory family at their point of intersection?",
       "options": [
-        "(dy/dx)_t = -1 / (dy/dx)_g (Negative reciprocal)",
-        "(dy/dx)_t = (dy/dx)_g",
-        "(dy/dx)_t = 1 / (dy/dx)_g",
-        "(dy/dx)_t = -(dy/dx)_g"
+        {
+          "text": "(dy/dx)_t = -1 / (dy/dx)_g (Negative reciprocal)",
+          "isCorrect": true,
+          "distractorReason": "Correct: Orthogonal trajectories intersect at right angles ($90^\\circ$). By perpendicular line geometry, the slope of the trajectory family is the negative reciprocal of the original family's slope: $m_t = -1 / m_g$."
+        },
+        {
+          "text": "(dy/dx)_t = (dy/dx)_g",
+          "distractorReason": "Trap: Equal slopes define parallel or tangent curves, not orthogonal trajectories."
+        },
+        {
+          "text": "(dy/dx)_t = 1 / (dy/dx)_g",
+          "distractorReason": "Trap: Forgot the negative sign (reciprocal without negation)."
+        },
+        {
+          "text": "(dy/dx)_t = -(dy/dx)_g",
+          "distractorReason": "Trap: Negated slope without taking the reciprocal."
+        }
       ],
-      "correctAnswer": 0,
+      "correctAnswer": "A",
       "explanation": "Orthogonal trajectories meet perpendicularly ($90^\\circ$), so their slopes are negative reciprocals: m_t = -1 / m_g."
     },
     {
       "id": "chk-1803-02",
       "question": "What is the terminal velocity of a falling mass $m$ experiencing linear drag $F = kv$ under gravity $g$?",
       "options": [
-        "v_t = m g / k",
-        "v_t = k / (m g)",
-        "v_t = √(m g / k)",
-        "v_t = 2 m g / k"
+        {
+          "text": "v_t = k / (m g)",
+          "distractorReason": "Trap: Inverted expression."
+        },
+        {
+          "text": "v_t = m g / k",
+          "isCorrect": true,
+          "distractorReason": "Correct: At terminal velocity, acceleration ceases ($a = 0$), so downward gravitational force equals upward drag force: $mg - kv_t = 0 \\implies v_t = \\frac{mg}{k}$."
+        },
+        {
+          "text": "v_t = √(m g / k)",
+          "distractorReason": "Trap: Square root form applies to quadratic drag ($F_{\\text{drag}} = k v^2$), not linear drag."
+        },
+        {
+          "text": "v_t = 2 m g / k",
+          "distractorReason": "Trap: Unnecessary factor of 2."
+        }
       ],
-      "correctAnswer": 0,
+      "correctAnswer": "B",
       "explanation": "At terminal velocity, drag equals gravity (k vt = mg), giving vt = mg/k."
     },
     {
       "id": "chk-1803-03",
       "question": "What is the natural period of vibration $T$ of a mass $m$ attached to a spring of constant $k$?",
       "options": [
-        "T = 2π √(m / k)",
-        "T = 2π √(k / m)",
-        "T = 1 / (2π) √(m / k)",
-        "T = √(k / m)"
+        {
+          "text": "T = 2π √(k / m)",
+          "distractorReason": "Trap: Inverted mass-spring ratio (this is $2\\pi \\omega_n$ rather than $2\\pi / \\omega_n$)."
+        },
+        {
+          "text": "T = 1 / (2π) √(m / k)",
+          "distractorReason": "Trap: Corresponds to natural frequency $f_n$ in Hertz, not period $T$."
+        },
+        {
+          "text": "T = 2π √(m / k)",
+          "isCorrect": true,
+          "distractorReason": "Correct: For an undamped spring-mass system, the circular frequency is $\\omega_n = \\sqrt{k/m}$ rad/s. The period of oscillation is $T = \\frac{2\\pi}{\\omega_n} = 2\\pi \\sqrt{\\frac{m}{k}}$ seconds."
+        },
+        {
+          "text": "T = √(k / m)",
+          "distractorReason": "Trap: Circular frequency $\\omega_n$, not time period."
+        }
       ],
-      "correctAnswer": 0,
+      "correctAnswer": "C",
       "explanation": "Since ω_n = √(k/m), the period is T = 2π / ω_n = 2π √(m/k)."
     }
   ]

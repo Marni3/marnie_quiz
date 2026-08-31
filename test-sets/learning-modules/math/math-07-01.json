@@ -10,47 +10,47 @@
   "toc": [
     {
       "id": "sec-prereq-bridges",
-      "title": "1. Introduction & Cross-Subject Bridges",
+      "title": "Introduction & Cross-Subject Bridges",
       "level": 2
     },
     {
       "id": "sec-theory",
-      "title": "2. Lesson Proper",
+      "title": "Lesson Proper: Lines, Slopes & Coordinate Geometry",
       "level": 2
     },
     {
       "id": "sec-formulas",
-      "title": "3. Compilation of Formulas",
+      "title": "Compilation of Formulas",
       "level": 2
     },
     {
       "id": "sec-visualizer",
-      "title": "4. Interactive Visualizer: Line Slope & Point-to-Line Distance",
+      "title": "Interactive Visualizer: Line Slope & Point-to-Line Distance",
       "level": 2
     },
     {
       "id": "sec-terminology",
-      "title": "5. Terms and Definitions",
+      "title": "Terms and Definitions",
       "level": 2
     },
     {
       "id": "sec-dual-method",
-      "title": "6. Sample Problems and Solutions",
+      "title": "Sample Problems and Solutions",
       "level": 2
     },
     {
       "id": "sec-calculator",
-      "title": "7. Calculator Techniques (Karce & Canon)",
+      "title": "Calculator Techniques (Karce & Canon)",
       "level": 2
     },
     {
       "id": "sec-concept-checks",
-      "title": "8. In-Line Concept Checks",
+      "title": "In-Line Concept Checks",
       "level": 2
     },
     {
       "id": "sec-mastery-challenge",
-      "title": "9. Paired Mastery Challenge",
+      "title": "Paired Mastery Challenge",
       "level": 2
     }
   ],
@@ -272,22 +272,21 @@
   ],
   "calculatorGuides": {
     "karce": {
-      "techniqueTitle": "Direct Vector Distance & Angle Evaluation",
-      "problemType": "Points, Distance and Angle between Slopes",
-      "sampleProblem": "Find the distance between P1(3, -2) and P2(-1, 5).",
+      "techniqueTitle": "High-Speed Pol(Δx, Δy) Coordinate Distance & Angle Shortcut",
+      "problemType": "Distance and Direction Angle between (x1, y1) and (x2, y2)",
+      "sampleProblem": "Find the distance and angle between P1(3, -2) and P2(-1, 5) using the Pol(Δx, Δy) function.",
       "mode": "COMP Mode (MODE 1)",
+      "whyItWorks": "The built-in Pol(Δx, Δy) rectangular-to-polar coordinate converter calculates distance r = √(Δx² + Δy²) = √((-4)² + 7²) = √65 ≈ 8.0622577 and direction angle θ in 1 step without typing square roots or parentheses.",
       "keystrokes": [
-        "√",
-        "(",
+        "MODE",
+        "1",
+        "Pol",
         "(",
         "-",
         "1",
         "-",
         "3",
-        ")",
-        "x²",
-        "+",
-        "(",
+        ",",
         "5",
         "-",
         "(",
@@ -295,18 +294,20 @@
         "2",
         ")",
         ")",
-        "x²",
-        ")",
         "="
       ],
-      "notes": "Or use the built-in Polar conversion function: Pol(Δx, Δy) which directly outputs distance r and angle θ in 1 step."
+      "notes": "💡 Keystroke Rules:\n1. Input: Pol(-4, 7) = r = 8.062257748 (Distance), θ = 119.74°.\n2. To recall exact values: RCL X (Distance r), RCL Y (Angle θ).",
+      "searchAdvisory": "Search 'Karce KC-S991 Pol function distance between points coordinate geometry' for video tutorials."
     },
     "canon": {
-      "techniqueTitle": "High-Speed Pol(Δx, Δy) Distance Shortcut",
-      "problemType": "Distance between (x1, y1) and (x2, y2)",
-      "sampleProblem": "Find the distance between (3, -2) and (-1, 5).",
+      "techniqueTitle": "High-Speed Pol(Δx, Δy) Coordinate Distance & Angle Shortcut",
+      "problemType": "Distance and Direction Angle between (x1, y1) and (x2, y2)",
+      "sampleProblem": "Find the distance and angle between P1(3, -2) and P2(-1, 5) using the Pol(Δx, Δy) function.",
       "mode": "COMP Mode (MODE 1)",
+      "whyItWorks": "The built-in Pol(Δx, Δy) rectangular-to-polar coordinate converter calculates distance r = √(Δx² + Δy²) = √((-4)² + 7²) = √65 ≈ 8.0622577 and direction angle θ in 1 step without typing square roots or parentheses.",
       "keystrokes": [
+        "MODE",
+        "1",
         "SHIFT",
         "Pol",
         "-",
@@ -316,99 +317,135 @@
         ")",
         "="
       ],
-      "notes": "The display directly yields r = 8.06225... = √65, instantly solving Euclidean coordinate distance without typing parentheses and square roots."
+      "notes": "💡 Keystroke Rules:\n1. Input: SHIFT Pol(-4, 7) = r = 8.062257748 (Distance), θ = 119.74°.\n2. To recall exact values: RCL X (Distance r), RCL Y (Angle θ).",
+      "searchAdvisory": "Search 'Canon F-789SGA Pol distance formula coordinate geometry shortcuts' for video breakdowns."
     }
   },
   "conceptChecks": [
     {
       "id": "chk-01",
       "question": "What is the slope of the straight line defined by the general equation $4x + 6y - 15 = 0$?",
-      "options": {
-        "A": "$\\frac{2}{3}$",
-        "B": "$-\\frac{2}{3}$",
-        "C": "$\\frac{3}{2}$",
-        "D": "$-\\frac{3}{2}$"
-      },
+      "options": [
+        {
+          "text": "$\\frac{2}{3}$",
+          "distractorReason": "Trap: Forgot the negative sign in the slope formula $m = -A/B$."
+        },
+        {
+          "text": "$-\\frac{2}{3}$",
+          "isCorrect": true,
+          "distractorReason": "Correct: In $Ax + By + C = 0$, slope $m = -A/B = -4/6 = -2/3$."
+        },
+        {
+          "text": "$\\frac{3}{2}$",
+          "distractorReason": "Trap: Inverted the fraction to $B/A$ and dropped the negative sign."
+        },
+        {
+          "text": "$-\\frac{3}{2}$",
+          "distractorReason": "Trap: Inverted the fraction to $-B/A$."
+        }
+      ],
       "correctAnswer": "B",
-      "distractorDeconstruction": {
-        "A": "Forgot the negative sign in the slope formula $m = -A/B$.",
-        "B": "In $Ax + By + C = 0$, slope $m = -A/B = -4/6 = -2/3$.",
-        "C": "Inverted the fraction to $B/A$ and dropped the negative sign.",
-        "D": "Inverted the fraction to $-B/A$."
-      },
-      "shortcutExplanation": "Use $m = -A/B = -4/6 = -2/3$ in 1 second."
+      "explanation": "In Ax + By + C = 0, slope m = -A/B = -4/6 = -2/3."
     },
     {
       "id": "chk-02",
       "question": "Which of the following lines is perpendicular to the line $3x - 5y + 12 = 0$?",
-      "options": {
-        "A": "$3x - 5y - 7 = 0$",
-        "B": "$5x + 3y - 9 = 0$",
-        "C": "$5x - 3y + 4 = 0$",
-        "D": "$3x + 5y + 1 = 0$"
-      },
-      "correctAnswer": "B",
-      "distractorDeconstruction": {
-        "A": "This line is parallel ($m = 3/5$), not perpendicular.",
-        "B": "Given $m_1 = 3/5$, perpendicular slope is $m_2 = -5/3$, matching $5x + 3y + C = 0$.",
-        "C": "Slope is $+5/3$, failing the negative sign requirement.",
-        "D": "Slope is $-3/5$."
-      },
-      "shortcutExplanation": "For perpendicularity, swap coefficients $A$ and $B$ and negate one sign: $3x - 5y \\to 5x + 3y$."
+      "options": [
+        {
+          "text": "$3x - 5y - 7 = 0$",
+          "distractorReason": "Trap: This line is parallel ($m = 3/5$), not perpendicular."
+        },
+        {
+          "text": "$5x - 3y + 4 = 0$",
+          "distractorReason": "Trap: Slope is $+5/3$, failing the negative reciprocal sign requirement."
+        },
+        {
+          "text": "$5x + 3y - 9 = 0$",
+          "isCorrect": true,
+          "distractorReason": "Correct: Given $m_1 = 3/5$, perpendicular slope is $m_2 = -5/3$, matching $5x + 3y + C = 0$."
+        },
+        {
+          "text": "$3x + 5y + 1 = 0$",
+          "distractorReason": "Trap: Slope is $-3/5$."
+        }
+      ],
+      "correctAnswer": "C",
+      "explanation": "For perpendicularity, swap coefficients A and B and negate one sign: 3x - 5y -> 5x + 3y."
     },
     {
       "id": "chk-03",
       "question": "Find the perpendicular distance from the origin $(0, 0)$ to the line $3x + 4y - 25 = 0$.",
-      "options": {
-        "A": "3",
-        "B": "4",
-        "C": "5",
-        "D": "25"
-      },
-      "correctAnswer": "C",
-      "distractorDeconstruction": {
-        "A": "Selected coefficient $A$.",
-        "B": "Selected coefficient $B$.",
-        "C": "Correct: $d = \\frac{|-25|}{\\sqrt{3^2 + 4^2}} = \\frac{25}{5} = 5$.",
-        "D": "Forgot to divide by the denominator $\\sqrt{A^2 + B^2}$."
-      },
-      "shortcutExplanation": "Distance from origin is simply $\\frac{|C|}{\\sqrt{A^2 + B^2}} = \\frac{25}{5} = 5$."
+      "options": [
+        {
+          "text": "3",
+          "distractorReason": "Trap: Selected coefficient A."
+        },
+        {
+          "text": "4",
+          "distractorReason": "Trap: Selected coefficient B."
+        },
+        {
+          "text": "25",
+          "distractorReason": "Trap: Forgot to divide by the denominator √(A² + B²)."
+        },
+        {
+          "text": "5",
+          "isCorrect": true,
+          "distractorReason": "Correct: Distance from origin is d = |C| / √(A² + B²) = |-25| / √(3² + 4²) = 25 / 5 = 5."
+        }
+      ],
+      "correctAnswer": "D",
+      "explanation": "Distance from origin is simply |C| / √(A² + B²) = 25 / 5 = 5."
     },
     {
       "id": "chk-04",
       "question": "A line has an $x$-intercept of 4 and a $y$-intercept of -6. What is the area of the triangle formed by this line and the coordinate axes?",
-      "options": {
-        "A": "10 sq units",
-        "B": "12 sq units",
-        "C": "24 sq units",
-        "D": "14 sq units"
-      },
-      "correctAnswer": "B",
-      "distractorDeconstruction": {
-        "A": "Added the intercepts instead of computing area.",
-        "B": "Correct: $A = \\frac{1}{2}|ab| = \\frac{1}{2}|(4)(-6)| = \\frac{1}{2}(24) = 12$.",
-        "C": "Forgot the $1/2$ triangle factor: $4 \\times 6 = 24$.",
-        "D": "Calculated $(a^2 + b^2)/2$."
-      },
-      "shortcutExplanation": "Axis triangle area $= \\frac{1}{2}|a \\cdot b| = \\frac{1}{2}(4)(6) = 12$."
+      "options": [
+        {
+          "text": "12 sq units",
+          "isCorrect": true,
+          "distractorReason": "Correct: Area = (1/2)|a · b| = (1/2)|(4)(-6)| = (1/2)(24) = 12."
+        },
+        {
+          "text": "10 sq units",
+          "distractorReason": "Trap: Added the intercepts (4 + 6 = 10) instead of computing triangle area."
+        },
+        {
+          "text": "24 sq units",
+          "distractorReason": "Trap: Forgot the 1/2 triangle factor: 4 × 6 = 24."
+        },
+        {
+          "text": "14 sq units",
+          "distractorReason": "Trap: Calculated (a² + b²)/2."
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": "Axis triangle area = (1/2)|a · b| = (1/2)(4)(6) = 12."
     },
     {
       "id": "chk-05",
       "question": "What is the angle of inclination of a line whose slope is $m = -1$?",
-      "options": {
-        "A": "$45^\\circ$",
-        "B": "$90^\\circ$",
-        "C": "$135^\\circ$",
-        "D": "$180^\\circ$"
-      },
-      "correctAnswer": "C",
-      "distractorDeconstruction": {
-        "A": "$45^\\circ$ corresponds to $m = +1$.",
-        "B": "$90^\\circ$ corresponds to an undefined vertical slope.",
-        "C": "Correct: $\\tan\\theta = -1 \\implies \\theta = 180^\\circ - 45^\\circ = 135^\\circ$.",
-        "D": "$180^\\circ$ corresponds to $m = 0$."
-      },
-      "shortcutExplanation": "Negative slope lies in Quadrant II: $\\theta = 180^\\circ - \\arctan(1) = 135^\\circ$."
+      "options": [
+        {
+          "text": "$45^\\circ$",
+          "distractorReason": "Trap: 45° corresponds to slope m = +1."
+        },
+        {
+          "text": "$135^\\circ$",
+          "isCorrect": true,
+          "distractorReason": "Correct: Negative slope lies in Quadrant II: θ = 180° - arctan(1) = 180° - 45° = 135°."
+        },
+        {
+          "text": "$90^\\circ$",
+          "distractorReason": "Trap: 90° corresponds to an undefined vertical slope."
+        },
+        {
+          "text": "$180^\\circ$",
+          "distractorReason": "Trap: 180° corresponds to a horizontal line (m = 0)."
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": "Negative slope lies in Quadrant II: θ = 180° - arctan(1) = 135°."
     }
   ]
 }

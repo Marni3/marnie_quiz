@@ -10,47 +10,47 @@
   "toc": [
     {
       "id": "sec-prereq-bridges",
-      "title": "1. Introduction & Cross-Subject Connections",
+      "title": "Introduction & Cross-Subject Connections",
       "level": 2
     },
     {
       "id": "sec-theory",
-      "title": "2. Lesson Proper: Progressions & Figurate Geometry",
+      "title": "Lesson Proper: Progressions & Figurate Geometry",
       "level": 2
     },
     {
       "id": "sec-formulas",
-      "title": "3. Compilation of Formulas & Identities",
+      "title": "Compilation of Formulas & Identities",
       "level": 2
     },
     {
       "id": "sec-visualizer",
-      "title": "4. Interactive Visualizer: Progression & Figurate Explorer",
+      "title": "Interactive Visualizer: Progression & Figurate Explorer",
       "level": 2
     },
     {
       "id": "sec-terminology",
-      "title": "5. Key Terms and Definitions",
+      "title": "Key Terms and Definitions",
       "level": 2
     },
     {
       "id": "sec-dual-method",
-      "title": "6. Worked Board Exam Problems",
+      "title": "Worked Board Exam Problems",
       "level": 2
     },
     {
       "id": "sec-calculator",
-      "title": "7. Calculator Speed Techniques (Karce & Canon)",
+      "title": "Calculator Speed Techniques (Karce & Canon)",
       "level": 2
     },
     {
       "id": "sec-concept-checks",
-      "title": "8. In-Line Concept Checks",
+      "title": "In-Line Concept Checks",
       "level": 2
     },
     {
       "id": "sec-mastery-challenge",
-      "title": "9. Paired Mastery Challenge Exam",
+      "title": "Paired Mastery Challenge Exam",
       "level": 2
     }
   ],
@@ -176,11 +176,14 @@
   ],
   "calculatorGuides": {
     "karce": {
-      "techniqueTitle": "Direct Finite Series Summation (Σ)",
-      "problemType": "Evaluating sum of AP/GP terms",
-      "sampleProblem": "Find sum of 10 terms of AP: a1 = 3, d = 4.",
+      "techniqueTitle": "Finite Progression Summation via Sigma (Σ) & Infinite GP Evaluation",
+      "problemType": "Evaluating Sum of AP/GP Terms and Convergent Infinite Series",
+      "sampleProblem": "Find sum of 10 terms of AP: a1 = 3, d = 4 (Σ function), and find sum of infinite GP: 18 + 6 + 2 + ...",
       "mode": "COMP Mode (MODE 1)",
+      "whyItWorks": "The sigma summation key SHIFT + Σ directly accumulates discrete sequence terms a_n = a1 + (X - 1)d over index range [1, N] in 2 seconds. The infinite geometric progression sum S_∞ = a1 / (1 - r) evaluates convergent series in 1 step without manual iterations.",
       "keystrokes": [
+        "MODE",
+        "1",
         "SHIFT",
         "Σ",
         "3",
@@ -198,16 +201,48 @@
         "1",
         "0",
         ")",
+        "=",
+        "1",
+        "8",
+        "÷",
+        "(",
+        "1",
+        "-",
+        "1",
+        "ab/c",
+        "3",
+        ")",
         "="
       ],
-      "notes": "Directly computes sum = 210 in 2 seconds."
+      "notes": "💡 Keystroke Rules:\n1. Finite AP Sum: Press SHIFT + Σ, input expression 3 + 4(X - 1), specify limits [1, 10], press = to get 210.\n2. Infinite GP Sum: Enter a1 / (1 - r) = 18 ÷ (1 - 1/3) = 27.",
+      "searchAdvisory": "Search 'Karce KC-S991 sigma sum function arithmetic geometric progression shortcuts' for video guides."
     },
     "canon": {
-      "techniqueTitle": "Infinite GP Summation Shortcut",
-      "problemType": "Summing convergent series",
-      "sampleProblem": "Find sum of 18 + 6 + 2 + ... on Canon F-789SGA.",
+      "techniqueTitle": "Finite Progression Summation via Sigma (Σ) & Infinite GP Evaluation",
+      "problemType": "Evaluating Sum of AP/GP Terms and Convergent Infinite Series",
+      "sampleProblem": "Find sum of 10 terms of AP: a1 = 3, d = 4 (Σ function), and find sum of infinite GP: 18 + 6 + 2 + ...",
       "mode": "COMP Mode (MODE 1)",
+      "whyItWorks": "The sigma summation key SHIFT + Σ directly accumulates discrete sequence terms a_n = a1 + (X - 1)d over index range [1, N] in 2 seconds. The infinite geometric progression sum S_∞ = a1 / (1 - r) evaluates convergent series in 1 step without manual iterations.",
       "keystrokes": [
+        "MODE",
+        "1",
+        "SHIFT",
+        "Σ",
+        "3",
+        "+",
+        "4",
+        "(",
+        "ALPHA",
+        "X",
+        "-",
+        "1",
+        ")",
+        "►",
+        "1",
+        "►",
+        "1",
+        "0",
+        "=",
         "1",
         "8",
         "÷",
@@ -220,7 +255,8 @@
         ")",
         "="
       ],
-      "notes": "Directly yields 27 in 1 step."
+      "notes": "💡 Keystroke Rules:\n1. Finite AP Sum: Press SHIFT + Σ, input 3 + 4(X - 1), enter lower limit 1, upper limit 10, press = to get 210.\n2. Infinite GP Sum: Enter 18 ÷ (1 - 1/3) = 27.",
+      "searchAdvisory": "Search 'Canon F-789SGA sigma notation series summation and infinite geometric series' for video demos."
     }
   },
   "conceptChecks": [
@@ -228,36 +264,75 @@
       "id": "chk-0104-01",
       "question": "What is the 5th tetrahedral figurate number?",
       "options": [
-        "35",
-        "20",
-        "55",
-        "15"
+        {
+          "text": "35",
+          "isCorrect": true,
+          "distractorReason": "Correct: Using Te_n = n(n+1)(n+2)/6 for n = 5: Te_5 = 5(6)(7)/6 = 35."
+        },
+        {
+          "text": "20",
+          "distractorReason": "Trap: 20 is the 4th tetrahedral number (Te_4 = 4(5)(6)/6 = 20)."
+        },
+        {
+          "text": "55",
+          "distractorReason": "Trap: 55 is the 5th square pyramidal number (Py_5 = 5(6)(11)/6 = 55)."
+        },
+        {
+          "text": "15",
+          "distractorReason": "Trap: 15 is the 5th triangular number (T_5 = 5(6)/2 = 15)."
+        }
       ],
-      "correctAnswer": 0,
+      "correctAnswer": "A",
       "explanation": "Using Te_n = n(n+1)(n+2)/6 for n = 5: Te_5 = 5(6)(7)/6 = 35."
     },
     {
       "id": "chk-0104-02",
       "question": "If the Arithmetic Mean between two positive numbers is 25 and their Harmonic Mean is 9, what is their Geometric Mean?",
       "options": [
-        "15",
-        "17",
-        "225",
-        "12"
+        {
+          "text": "17",
+          "distractorReason": "Trap: Taking the average of 25 and 9 ((25 + 9)/2 = 17)."
+        },
+        {
+          "text": "15",
+          "isCorrect": true,
+          "distractorReason": "Correct: By the fundamental mean invariant (GM)² = AM × HM = 25 × 9 = 225 ⇒ GM = √225 = 15."
+        },
+        {
+          "text": "225",
+          "distractorReason": "Trap: Forgetting to take the square root of (GM)² = 225."
+        },
+        {
+          "text": "12",
+          "distractorReason": "Trap: Arithmetic calculation error."
+        }
       ],
-      "correctAnswer": 0,
+      "correctAnswer": "B",
       "explanation": "By the fundamental relation (GM)² = AM × HM = 25 × 9 = 225 ⇒ GM = √225 = 15."
     },
     {
       "id": "chk-0104-03",
       "question": "What is the name of the sequence 1, 3, 4, 7, 11, 18, 29... where each term is the sum of the two preceding terms, starting with 1 and 3?",
       "options": [
-        "Lucas Sequence",
-        "Fibonacci Sequence",
-        "Harmonic Sequence",
-        "Euler Sequence"
+        {
+          "text": "Fibonacci Sequence",
+          "distractorReason": "Trap: Fibonacci sequence starts with 1, 1 (or 0, 1) and generates 1, 1, 2, 3, 5, 8, 13..."
+        },
+        {
+          "text": "Harmonic Sequence",
+          "distractorReason": "Trap: Harmonic sequence is formed by the reciprocals of an arithmetic progression."
+        },
+        {
+          "text": "Lucas Sequence",
+          "isCorrect": true,
+          "distractorReason": "Correct: The Lucas sequence begins with 1 and 3 and follows the recurrence L_n = L_{n-1} + L_{n-2}, named after French mathematician Édouard Lucas."
+        },
+        {
+          "text": "Euler-Cauchy Sequence",
+          "distractorReason": "Trap: Associated with differential equations, not additive integer recurrence relations."
+        }
       ],
-      "correctAnswer": 0,
+      "correctAnswer": "C",
       "explanation": "The Lucas sequence begins with 1 and 3 and follows the additive recurrence Ln = Ln-1 + Ln-2, named after Édouard Lucas."
     }
   ]

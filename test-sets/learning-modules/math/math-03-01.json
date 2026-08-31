@@ -10,47 +10,47 @@
   "toc": [
     {
       "id": "sec-prereq-bridges",
-      "title": "1. Introduction & Cross-Subject Connections",
+      "title": "Introduction & Cross-Subject Connections",
       "level": 2
     },
     {
       "id": "sec-theory",
-      "title": "2. Lesson Proper: Counting Principles & Probability Theory",
+      "title": "Lesson Proper: Counting Principles & Probability Theory",
       "level": 2
     },
     {
       "id": "sec-formulas",
-      "title": "3. Compilation of Formulas & Identities",
+      "title": "Compilation of Formulas & Identities",
       "level": 2
     },
     {
       "id": "sec-visualizer",
-      "title": "4. Interactive Visualizer: Permutation vs. Combination",
+      "title": "Interactive Visualizer: Permutation vs. Combination",
       "level": 2
     },
     {
       "id": "sec-terminology",
-      "title": "5. Key Terms and Definitions",
+      "title": "Key Terms and Definitions",
       "level": 2
     },
     {
       "id": "sec-dual-method",
-      "title": "6. Worked Board Exam Problems",
+      "title": "Worked Board Exam Problems",
       "level": 2
     },
     {
       "id": "sec-calculator",
-      "title": "7. Calculator Speed Techniques (Karce & Canon)",
+      "title": "Calculator Speed Techniques (Karce & Canon)",
       "level": 2
     },
     {
       "id": "sec-concept-checks",
-      "title": "8. In-Line Concept Checks",
+      "title": "In-Line Concept Checks",
       "level": 2
     },
     {
       "id": "sec-mastery-challenge",
-      "title": "9. Paired Mastery Challenge Exam",
+      "title": "Paired Mastery Challenge Exam",
       "level": 2
     }
   ],
@@ -177,11 +177,14 @@
   ],
   "calculatorGuides": {
     "karce": {
-      "techniqueTitle": "Fast nPr & nCr Evaluation",
-      "problemType": "Evaluating permutations and combinations",
-      "sampleProblem": "Evaluate 11P3 and 11C3.",
+      "techniqueTitle": "Fast nPr & nCr Combinatorics & Identical Element Partitions",
+      "problemType": "Evaluating Linear Permutations, Combinations and Factorial Partitions",
+      "sampleProblem": "Evaluate 11P3, 11C3, and identical element partition 11! / (3! × 3!).",
       "mode": "COMP Mode (MODE 1)",
+      "whyItWorks": "Dedicated nPr and nCr function keys evaluate order-dependent and subset-selection combinatorics instantly. The factorial operator x! rapidly handles identical element multiset permutations in 2 seconds.",
       "keystrokes": [
+        "MODE",
+        "1",
         "1",
         "1",
         "SHIFT",
@@ -193,16 +196,45 @@
         "SHIFT",
         "nCr",
         "3",
+        "=",
+        "1",
+        "1",
+        "SHIFT",
+        "x!",
+        "÷",
+        "(",
+        "3",
+        "SHIFT",
+        "x!",
+        "×",
+        "3",
+        "SHIFT",
+        "x!",
+        ")",
         "="
       ],
-      "notes": "Directly displays 11P3 = 990 and 11C3 = 165."
+      "notes": "💡 Keystroke Rules:\n1. Permutation: 11 SHIFT nPr 3 = 990.\n2. Combination: 11 SHIFT nCr 3 = 165.\n3. Identical Partitions: 11! ÷ (3! × 3!) = 1,108,800.",
+      "searchAdvisory": "Search 'Karce KC-S991 nPr nCr permutations and factorial partitions speed tricks' for video walkthroughs."
     },
     "canon": {
-      "techniqueTitle": "Identical Element Partition Shortcut",
-      "problemType": "Calculating n! / (p! q! s!) on Canon F-789SGA",
-      "sampleProblem": "Evaluate 11! / (3! × 3!).",
+      "techniqueTitle": "Fast nPr & nCr Combinatorics & Identical Element Partitions",
+      "problemType": "Evaluating Linear Permutations, Combinations and Factorial Partitions",
+      "sampleProblem": "Evaluate 11P3, 11C3, and identical element partition 11! / (3! × 3!).",
       "mode": "COMP Mode (MODE 1)",
+      "whyItWorks": "Dedicated nPr and nCr function keys evaluate order-dependent and subset-selection combinatorics instantly. The factorial operator x! rapidly handles identical element multiset permutations in 2 seconds.",
       "keystrokes": [
+        "MODE",
+        "1",
+        "1",
+        "1",
+        "nPr",
+        "3",
+        "=",
+        "1",
+        "1",
+        "nCr",
+        "3",
+        "=",
         "1",
         "1",
         "x!",
@@ -216,7 +248,8 @@
         ")",
         "="
       ],
-      "notes": "Directly yields 1,108,800 in 2 seconds."
+      "notes": "💡 Keystroke Rules:\n1. Permutation: 11 nPr 3 = 990.\n2. Combination: 11 nCr 3 = 165.\n3. Identical Partitions: 11! ÷ (3! × 3!) = 1,108,800.",
+      "searchAdvisory": "Search 'Canon F-789SGA nPr nCr and multiset factorial calculation shortcuts' for video breakdowns."
     }
   },
   "conceptChecks": [
@@ -224,36 +257,75 @@
       "id": "chk-0601-01",
       "question": "How many ways can 7 electronics engineers be seated around a circular conference table?",
       "options": [
-        "720",
-        "5,040",
-        "120",
-        "2,520"
+        {
+          "text": "720 ways",
+          "isCorrect": true,
+          "distractorReason": "Correct: Circular permutation formula is (n - 1)!: (7 - 1)! = 6! = 720."
+        },
+        {
+          "text": "5,040 ways",
+          "distractorReason": "Trap: 5,040 is linear permutation 7! (not circular)."
+        },
+        {
+          "text": "120 ways",
+          "distractorReason": "Trap: 120 is 5! (circular permutation for 6 people)."
+        },
+        {
+          "text": "2,520 ways",
+          "distractorReason": "Trap: 2,520 is key-ring/necklace circular permutation (n-1)! / 2."
+        }
       ],
-      "correctAnswer": 0,
+      "correctAnswer": "A",
       "explanation": "Circular permutation formula is (n - 1)!: (7 - 1)! = 6! = 720."
     },
     {
       "id": "chk-0601-02",
       "question": "Who is historically recognized as the \"Father of the Theory of Probability\" after publishing On Casting the Die in the 16th century?",
       "options": [
-        "Gerolamo Cardano",
-        "Blaise Pascal",
-        "Pierre de Fermat",
-        "Christiaan Huygens"
+        {
+          "text": "Blaise Pascal",
+          "distractorReason": "Trap: Pascal co-developed classical probability with Fermat in 1654, but Cardano wrote the foundational text 100 years earlier."
+        },
+        {
+          "text": "Gerolamo Cardano",
+          "isCorrect": true,
+          "distractorReason": "Correct: Italian physician and mathematician Gerolamo Cardano (1501–1576) wrote Liber de Ludo Aleae, founding the mathematical definition of probability."
+        },
+        {
+          "text": "Pierre de Fermat",
+          "distractorReason": "Trap: Fermat collaborated with Pascal on the Problem of Points."
+        },
+        {
+          "text": "Christiaan Huygens",
+          "distractorReason": "Trap: Huygens published the first textbook on probability in 1657."
+        }
       ],
-      "correctAnswer": 0,
+      "correctAnswer": "B",
       "explanation": "Italian physician and mathematician Gerolamo Cardano (1501–1576) wrote Liber de Ludo Aleae, founding the mathematical definition of probability."
     },
     {
       "id": "chk-0601-03",
       "question": "In the permutation (D, A, C, B) with natural order (A, B, C, D), how many inversions are present, and is the permutation even or odd?",
       "options": [
-        "4 inversions (Even permutation)",
-        "3 inversions (Odd permutation)",
-        "5 inversions (Odd permutation)",
-        "2 inversions (Even permutation)"
+        {
+          "text": "3 inversions (Odd permutation)",
+          "distractorReason": "Trap: Overlooking the (C, B) inversion."
+        },
+        {
+          "text": "5 inversions (Odd permutation)",
+          "distractorReason": "Trap: Counting non-inverted pairs."
+        },
+        {
+          "text": "4 inversions (Even permutation)",
+          "isCorrect": true,
+          "distractorReason": "Correct: D precedes A, C, B (3 inversions); C precedes B (1 inversion). Total = 3 + 1 = 4 inversions. Since 4 is even, it is an even permutation."
+        },
+        {
+          "text": "2 inversions (Even permutation)",
+          "distractorReason": "Trap: Under-counting inversions."
+        }
       ],
-      "correctAnswer": 0,
+      "correctAnswer": "C",
       "explanation": "D precedes A, C, B (3 inversions); C precedes B (1 inversion). Total = 3 + 1 = 4 inversions. Since 4 is even, it is an even permutation."
     }
   ]

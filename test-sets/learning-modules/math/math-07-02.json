@@ -10,47 +10,47 @@
   "toc": [
     {
       "id": "sec-prereq-bridges",
-      "title": "1. Introduction & Cross-Subject Bridges",
+      "title": "Introduction & Cross-Subject Bridges",
       "level": 2
     },
     {
       "id": "sec-theory",
-      "title": "2. Lesson Proper",
+      "title": "Lesson Proper: Segment Division & Triangle Centers",
       "level": 2
     },
     {
       "id": "sec-formulas",
-      "title": "3. Compilation of Formulas",
+      "title": "Compilation of Formulas",
       "level": 2
     },
     {
       "id": "sec-visualizer",
-      "title": "4. Interactive Visualizer: Coordinate Polygon Area & Centroid",
+      "title": "Interactive Visualizer: Coordinate Polygon Area & Centroid",
       "level": 2
     },
     {
       "id": "sec-terminology",
-      "title": "5. Terms and Definitions",
+      "title": "Terms and Definitions",
       "level": 2
     },
     {
       "id": "sec-dual-method",
-      "title": "6. Sample Problems and Solutions",
+      "title": "Sample Problems and Solutions",
       "level": 2
     },
     {
       "id": "sec-calculator",
-      "title": "7. Calculator Techniques (Karce & Canon)",
+      "title": "Calculator Techniques (Karce & Canon)",
       "level": 2
     },
     {
       "id": "sec-concept-checks",
-      "title": "8. In-Line Concept Checks",
+      "title": "In-Line Concept Checks",
       "level": 2
     },
     {
       "id": "sec-mastery-challenge",
-      "title": "9. Paired Mastery Challenge",
+      "title": "Paired Mastery Challenge",
       "level": 2
     }
   ],
@@ -275,32 +275,55 @@
   ],
   "calculatorGuides": {
     "karce": {
-      "techniqueTitle": "STAT Mode Coordinate Mean for Centroids",
-      "problemType": "Centroid of multi-point vertices",
-      "sampleProblem": "Find the centroid of (1, 4), (5, -2), (9, 7).",
-      "mode": "STAT Mode (MODE 2)",
+      "techniqueTitle": "Fast 3x3 Matrix Determinant for Coordinate Triangle Area",
+      "problemType": "Evaluating Triangle Area from 3 Vertices (x1, y1), (x2, y2), (x3, y3)",
+      "sampleProblem": "Find the area of the triangle with vertices (1, 2), (3, 8), and (5, 4) using the 3x3 coordinate matrix determinant Area = 0.5 · |det([x y 1])|.",
+      "mode": "MATRIX Mode (MODE 6)",
+      "whyItWorks": "The shoelace formula is mathematically equivalent to half the absolute determinant of the 3x3 homogeneous coordinate matrix: Area = 0.5 · |det([[1,2,1],[3,8,1],[5,4,1]])| = 0.5 · |-20| = 10 sq units in MATRIX mode without manual cross-multiplication errors.",
       "keystrokes": [
         "MODE",
+        "6",
+        "1",
+        "1",
+        "1",
+        "=",
         "2",
+        "=",
         "1",
+        "=",
+        "3",
+        "=",
+        "8",
+        "=",
         "1",
-        "M+",
+        "=",
         "5",
-        "M+",
-        "9",
-        "M+",
+        "=",
+        "4",
+        "=",
+        "1",
+        "=",
+        "AC",
         "SHIFT",
-        "S-VAR",
-        "x̄",
+        "MATRIX",
+        "7",
+        "SHIFT",
+        "MATRIX",
+        "3",
+        ")",
+        "÷",
+        "2",
         "="
       ],
-      "notes": "Directly evaluates the mean x̄ = 5. Repeat for y coordinates to obtain ȳ = 3 without manual sum fractions."
+      "notes": "💡 Keystroke Rules:\n1. Enter Matrix A (3x3): rows are [x1, y1, 1], [x2, y2, 1], [x3, y3, 1].\n2. Compute: det(MatA) ÷ 2 = 10 sq units.",
+      "searchAdvisory": "Search 'Karce KC-S991 matrix mode determinant triangle area shoelace' for video tutorials."
     },
     "canon": {
-      "techniqueTitle": "Canon 3x3 Matrix Determinant for Triangle Area",
-      "problemType": "Triangle area from 3 vertices (x1, y1), (x2, y2), (x3, y3)",
-      "sampleProblem": "Find the area of triangle with vertices (1, 2), (3, 8), (5, 4).",
+      "techniqueTitle": "Fast 3x3 Matrix Determinant for Coordinate Triangle Area",
+      "problemType": "Evaluating Triangle Area from 3 Vertices (x1, y1), (x2, y2), (x3, y3)",
+      "sampleProblem": "Find the area of the triangle with vertices (1, 2), (3, 8), and (5, 4) using the 3x3 coordinate matrix determinant Area = 0.5 · |det([x y 1])|.",
       "mode": "MATRIX Mode (MODE 6)",
+      "whyItWorks": "The shoelace formula is mathematically equivalent to half the absolute determinant of the 3x3 homogeneous coordinate matrix: Area = 0.5 · |det([[1,2,1],[3,8,1],[5,4,1]])| = 0.5 · |-20| = 10 sq units in MATRIX mode without manual cross-multiplication errors.",
       "keystrokes": [
         "MODE",
         "6",
@@ -336,99 +359,135 @@
         "2",
         "="
       ],
-      "notes": "Evaluates 1/2 det(A) = 10 sq units with zero paper calculations."
+      "notes": "💡 Keystroke Rules:\n1. Enter Matrix A (3x3): rows are [x1, y1, 1], [x2, y2, 1], [x3, y3, 1].\n2. Compute: det(MatA) ÷ 2 = 10 sq units.",
+      "searchAdvisory": "Search 'Canon F-789SGA matrix determinant coordinate triangle area shortcut' for video breakdowns."
     }
   },
   "conceptChecks": [
     {
       "id": "chk-01",
       "question": "What is the midpoint of the line segment connecting $(-4, 7)$ and $(6, -3)$?",
-      "options": {
-        "A": "$(1, 2)$",
-        "B": "$(2, 4)$",
-        "C": "$(-1, 2)$",
-        "D": "$(1, 5)$"
-      },
+      "options": [
+        {
+          "text": "$(1, 2)$",
+          "isCorrect": true,
+          "distractorReason": "Correct: $x_m = (-4 + 6)/2 = 1$, $y_m = (7 - 3)/2 = 2$. Midpoint is $(1, 2)$."
+        },
+        {
+          "text": "$(2, 4)$",
+          "distractorReason": "Trap: Forgot to divide by 2: $(-4 + 6) = 2, (7 - 3) = 4$."
+        },
+        {
+          "text": "$(-1, 2)$",
+          "distractorReason": "Trap: Arithmetic sign error on x-coordinate."
+        },
+        {
+          "text": "$(1, 5)$",
+          "distractorReason": "Trap: Added rather than subtracted in y-coordinate."
+        }
+      ],
       "correctAnswer": "A",
-      "distractorDeconstruction": {
-        "A": "$x_m = (-4 + 6)/2 = 1$, $y_m = (7 - 3)/2 = 2$. Point is $(1, 2)$.",
-        "B": "Forgot to divide by 2.",
-        "C": "Arithmetic sign error on $x$ coordinate.",
-        "D": "Arithmetic error on $y$ coordinate."
-      },
-      "shortcutExplanation": "Average coordinates: $(-4+6)/2 = 1$, $(7-3)/2 = 2 \\implies (1, 2)$."
+      "explanation": "Average coordinates: (-4+6)/2 = 1, (7-3)/2 = 2 => (1, 2)."
     },
     {
       "id": "chk-02",
       "question": "In any general triangle, which center is formed by the intersection of its three medians?",
-      "options": {
-        "A": "Incenter",
-        "B": "Circumcenter",
-        "C": "Centroid",
-        "D": "Orthocenter"
-      },
-      "correctAnswer": "C",
-      "distractorDeconstruction": {
-        "A": "Incenter is formed by angle bisectors.",
-        "B": "Circumcenter is formed by perpendicular bisectors of sides.",
-        "C": "Correct: The 3 medians concur at the Centroid ($G$).",
-        "D": "Orthocenter is formed by altitudes."
-      },
-      "shortcutExplanation": "Median $\\to$ Centroid ($G$)."
+      "options": [
+        {
+          "text": "Incenter",
+          "distractorReason": "Trap: The incenter is formed by the intersection of the angle bisectors."
+        },
+        {
+          "text": "Centroid",
+          "isCorrect": true,
+          "distractorReason": "Correct: The 3 medians (connecting vertices to opposite midpoints) always concur at the Centroid (G), which divides each median in a 2:1 ratio."
+        },
+        {
+          "text": "Circumcenter",
+          "distractorReason": "Trap: The circumcenter is formed by the perpendicular bisectors of the sides."
+        },
+        {
+          "text": "Orthocenter",
+          "distractorReason": "Trap: The orthocenter is formed by the altitudes."
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": "The 3 medians concur at the Centroid (G)."
     },
     {
       "id": "chk-03",
       "question": "If the vertices of a triangle are $(0, 0), (6, 0),$ and $(0, 8)$, what are the coordinates of its centroid?",
-      "options": {
-        "A": "$(2, 2.67)$",
-        "B": "$(3, 4)$",
-        "C": "$(2, 4)$",
-        "D": "$(3, 2.67)$"
-      },
-      "correctAnswer": "A",
-      "distractorDeconstruction": {
-        "A": "Correct: $\\bar{x} = (0+6+0)/3 = 2$, $\\bar{y} = (0+0+8)/3 = 8/3 \\approx 2.67$.",
-        "B": "Divided by 2 instead of 3 (midpoint of hypotenuse instead of centroid).",
-        "C": "Divided $y$ by 2 instead of 3.",
-        "D": "Divided $x$ by 2 and $y$ by 3."
-      },
-      "shortcutExplanation": "Sum and divide by 3: $x = 6/3 = 2, y = 8/3 \\approx 2.67$."
+      "options": [
+        {
+          "text": "$(3, 4)$",
+          "distractorReason": "Trap: Divided by 2 instead of 3 (finding hypotenuse midpoint instead of centroid)."
+        },
+        {
+          "text": "$(2, 4)$",
+          "distractorReason": "Trap: Divided y by 2 instead of 3."
+        },
+        {
+          "text": "$(2, 2.67)$",
+          "isCorrect": true,
+          "distractorReason": "Correct: Centroid coordinates are $\\bar{x} = (0+6+0)/3 = 2$, $\\bar{y} = (0+0+8)/3 = 8/3 \\approx 2.67$."
+        },
+        {
+          "text": "$(3, 2.67)$",
+          "distractorReason": "Trap: Divided x by 2 and y by 3."
+        }
+      ],
+      "correctAnswer": "C",
+      "explanation": "Sum and divide by 3: x = 6/3 = 2, y = 8/3 ≈ 2.67."
     },
     {
       "id": "chk-04",
       "question": "Three points $(1, 2), (3, k),$ and $(5, 10)$ are known to be collinear. What is the value of $k$?",
-      "options": {
-        "A": "4",
-        "B": "6",
-        "C": "8",
-        "D": "5"
-      },
-      "correctAnswer": "B",
-      "distractorDeconstruction": {
-        "A": "Incorrect slope calculation.",
-        "B": "Correct: Overall slope $m = (10-2)/(5-1) = 8/4 = 2$. Thus $k = 2 + 2(3-1) = 2 + 4 = 6$.",
-        "C": "Assumed linear step was 3 instead of 2.",
-        "D": "Simple average of 2 and 10 without weighting."
-      },
-      "shortcutExplanation": "Midpoint of $(1, 2)$ and $(5, 10)$ is $(3, 6) \\implies k = 6$."
+      "options": [
+        {
+          "text": "4",
+          "distractorReason": "Trap: Incorrect slope difference."
+        },
+        {
+          "text": "5",
+          "distractorReason": "Trap: Simple average of 2 and 10 without weighting."
+        },
+        {
+          "text": "8",
+          "distractorReason": "Trap: Assumed linear step was 3 instead of 2."
+        },
+        {
+          "text": "6",
+          "isCorrect": true,
+          "distractorReason": "Correct: Overall slope $m = (10-2)/(5-1) = 8/4 = 2$. Thus $k = 2 + 2(3-1) = 2 + 4 = 6$ (or note that (3, k) is the exact midpoint of (1, 2) and (5, 10))."
+        }
+      ],
+      "correctAnswer": "D",
+      "explanation": "Midpoint of (1, 2) and (5, 10) is (3, 6) => k = 6."
     },
     {
       "id": "chk-05",
       "question": "Along the Euler line of a triangle, what is the ratio of the distance from the Orthocenter to Centroid ($HG$) compared to Centroid to Circumcenter ($GO$)?",
-      "options": {
-        "A": "$1 : 1$",
-        "B": "$2 : 1$",
-        "C": "$3 : 1$",
-        "D": "$1 : 2$"
-      },
-      "correctAnswer": "B",
-      "distractorDeconstruction": {
-        "A": "Only in equilateral triangles where all centers coincide.",
-        "B": "Correct: $HG : GO = 2 : 1$ by Euler's theorem.",
-        "C": "Incorrect ratio.",
-        "D": "Inverted ratio."
-      },
-      "shortcutExplanation": "Euler Line: $HG = 2 \\cdot GO$ ($2 : 1$ ratio)."
+      "options": [
+        {
+          "text": "$2 : 1$",
+          "isCorrect": true,
+          "distractorReason": "Correct: By Euler's collinearity theorem, the distance from Orthocenter to Centroid is always exactly twice the distance from Centroid to Circumcenter: $HG : GO = 2 : 1$."
+        },
+        {
+          "text": "$1 : 1$",
+          "distractorReason": "Trap: Only true in equilateral triangles where all triangle centers coincide at a single point."
+        },
+        {
+          "text": "$3 : 1$",
+          "distractorReason": "Trap: Confusing median partition ratio with Euler line segment ratio."
+        },
+        {
+          "text": "$1 : 2$",
+          "distractorReason": "Trap: Inverted the ratio."
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": "Euler Line: HG = 2 · GO (2 : 1 ratio)."
     }
   ]
 }

@@ -10,47 +10,47 @@
   "toc": [
     {
       "id": "sec-prereq-bridges",
-      "title": "1. Introduction & Cross-Subject Connections",
+      "title": "Introduction & Cross-Subject Connections",
       "level": 2
     },
     {
       "id": "sec-theory",
-      "title": "2. Lesson Proper: Theory & Core Principles",
+      "title": "Lesson Proper: Theory & Core Principles",
       "level": 2
     },
     {
       "id": "sec-formulas",
-      "title": "3. Compilation of Formulas & Identities",
+      "title": "Compilation of Formulas & Identities",
       "level": 2
     },
     {
       "id": "sec-visualizer",
-      "title": "4. Interactive Visualizer: Parabola Roots & Discriminant",
+      "title": "Interactive Visualizer: Parabola Roots & Discriminant",
       "level": 2
     },
     {
       "id": "sec-terminology",
-      "title": "5. Key Terms and Definitions",
+      "title": "Key Terms and Definitions",
       "level": 2
     },
     {
       "id": "sec-dual-method",
-      "title": "6. Worked Board Exam Problems",
+      "title": "Worked Board Exam Problems",
       "level": 2
     },
     {
       "id": "sec-calculator",
-      "title": "7. Calculator Speed Techniques (Karce & Canon)",
+      "title": "Calculator Speed Techniques (Karce & Canon)",
       "level": 2
     },
     {
       "id": "sec-concept-checks",
-      "title": "8. In-Line Concept Checks",
+      "title": "In-Line Concept Checks",
       "level": 2
     },
     {
       "id": "sec-mastery-challenge",
-      "title": "9. Paired Mastery Challenge Exam",
+      "title": "Paired Mastery Challenge Exam",
       "level": 2
     }
   ],
@@ -190,11 +190,15 @@
   ],
   "calculatorGuides": {
     "karce": {
-      "techniqueTitle": "High-Speed Quadratic Roots via EQN Mode",
-      "problemType": "Solving Ax² + Bx + C = 0",
-      "sampleProblem": "Solve 3x² - 5x - 2 = 0.",
-      "mode": "EQN Mode (MODE 3 > 3)",
+      "techniqueTitle": "Quadratic Root Solver & Fast Binomial Combinations",
+      "problemType": "Solving Ax² + Bx + C = 0 and Evaluating nCr",
+      "sampleProblem": "Solve 3x² - 5x - 2 = 0, and evaluate 7C4 for binomial term expansion.",
+      "mode": "EQN Mode (MODE 3 > 3) and COMP Mode (MODE 1)",
+      "whyItWorks": "EQN Mode rapidly applies the quadratic formula internally, yielding exact roots x1, x2 and parabola vertex coordinates without factoring. In COMP mode, the nCr function computes binomial coefficients in 1 second.",
       "keystrokes": [
+        "MODE",
+        "3",
+        "3",
         "3",
         "=",
         "-",
@@ -203,22 +207,46 @@
         "-",
         "2",
         "=",
+        "=",
+        "MODE",
+        "1",
+        "7",
+        "SHIFT",
+        "nCr",
+        "4",
         "="
       ],
-      "notes": "Directly displays x1 = 2, x2 = -1/3, and maximum/minimum vertex coordinates."
+      "notes": "💡 Keystroke Rules:\n1. In EQN Mode: Press MODE > 3 > 3 (degree 2 quadratic), input A=3, B=-5, C=-2. Press = to obtain x₁ = 2 and x₂ = -1/3.\n2. In COMP Mode: Enter 7, press SHIFT + nCr, enter 4, press = to obtain 35.",
+      "searchAdvisory": "Search 'Karce KC-S991 EQN mode quadratic solver and nCr speed tricks' for video tutorials."
     },
     "canon": {
-      "techniqueTitle": "Fast Binomial Coefficient nCr Evaluation",
-      "problemType": "Evaluating combinations for term coefficients",
-      "sampleProblem": "Evaluate 7C4 on Canon F-789SGA.",
-      "mode": "COMP Mode (MODE 1)",
+      "techniqueTitle": "Quadratic Root Solver & Fast Binomial Combinations",
+      "problemType": "Solving Ax² + Bx + C = 0 and Evaluating nCr",
+      "sampleProblem": "Solve 3x² - 5x - 2 = 0, and evaluate 7C4 for binomial term expansion.",
+      "mode": "EQN Mode (MODE 5 > 3) and COMP Mode (MODE 1)",
+      "whyItWorks": "EQN Mode rapidly applies the quadratic formula internally, yielding exact roots x1, x2 and parabola vertex coordinates without factoring. In COMP mode, the nCr key computes binomial coefficients in 1 second.",
       "keystrokes": [
+        "MODE",
+        "5",
+        "3",
+        "3",
+        "=",
+        "-",
+        "5",
+        "=",
+        "-",
+        "2",
+        "=",
+        "=",
+        "MODE",
+        "1",
         "7",
         "nCr",
         "4",
         "="
       ],
-      "notes": "Directly gives 35 in 1 second."
+      "notes": "💡 Keystroke Rules:\n1. In EQN Mode: Press MODE > 5 > 3 (ax² + bx + c = 0), input A=3, B=-5, C=-2. Press = to obtain x₁ = 2 and x₂ = -1/3.\n2. In COMP Mode: Enter 7, press dedicated [nCr] key, enter 4, press = to obtain 35.",
+      "searchAdvisory": "Search 'Canon F-789SGA EQN mode quadratic solver and nCr combination tricks' for video walkthroughs."
     }
   },
   "conceptChecks": [
@@ -226,36 +254,75 @@
       "id": "chk-0103-01",
       "question": "What is the sum of the roots of the quadratic equation $3x^2 - 12x + 7 = 0$?",
       "options": [
-        "4",
-        "-4",
-        "7/3",
-        "-7/3"
+        {
+          "text": "4",
+          "isCorrect": true,
+          "distractorReason": "Correct: By Vieta's formula, sum of roots r₁ + r₂ = -B/A = -(-12)/3 = +4."
+        },
+        {
+          "text": "-4",
+          "distractorReason": "Trap: Sign error in Vieta's formula (forgetting the leading negative sign in -B/A)."
+        },
+        {
+          "text": "7/3",
+          "distractorReason": "Trap: 7/3 is the product of roots (C/A = 7/3), not the sum."
+        },
+        {
+          "text": "-7/3",
+          "distractorReason": "Trap: Inverting the sign of the product of roots."
+        }
       ],
-      "correctAnswer": 0,
+      "correctAnswer": "A",
       "explanation": "By Vieta's formula, sum of roots r1 + r2 = -B/A = -(-12)/3 = +4."
     },
     {
       "id": "chk-0103-02",
       "question": "How many terms are in the algebraic expansion of $(3x - 2y)^{11}$?",
       "options": [
-        "12",
-        "11",
-        "10",
-        "22"
+        {
+          "text": "11 terms",
+          "distractorReason": "Trap: Forgetting the zeroth constant power term; (x + y)^n always has n + 1 terms."
+        },
+        {
+          "text": "12 terms",
+          "isCorrect": true,
+          "distractorReason": "Correct: The number of terms in any binomial expansion (x + y)^n is always n + 1: 11 + 1 = 12 terms."
+        },
+        {
+          "text": "10 terms",
+          "distractorReason": "Trap: Subtracting 1 instead of adding 1."
+        },
+        {
+          "text": "22 terms",
+          "distractorReason": "Trap: Multiplying exponent 11 by the 2 binomial base terms."
+        }
       ],
-      "correctAnswer": 0,
+      "correctAnswer": "B",
       "explanation": "The number of terms in any binomial expansion (x + y)^n is always n + 1: 11 + 1 = 12 terms."
     },
     {
       "id": "chk-0103-03",
       "question": "If the discriminant of a quadratic equation is $D = -16$, what can be definitively concluded regarding its roots?",
       "options": [
-        "Imaginary and unequal (complex conjugate pair)",
-        "Real and equal",
-        "Real and unequal rational",
-        "Real and unequal irrational"
+        {
+          "text": "Real and equal roots",
+          "distractorReason": "Trap: Real and equal roots occur strictly when D = 0."
+        },
+        {
+          "text": "Real and unequal rational roots",
+          "distractorReason": "Trap: Real rational roots require D > 0 and D being a perfect square."
+        },
+        {
+          "text": "Imaginary and unequal (complex conjugate pair)",
+          "isCorrect": true,
+          "distractorReason": "Correct: When D < 0, √D produces an imaginary radical (±4i), yielding two unequal complex conjugate roots."
+        },
+        {
+          "text": "Real and unequal irrational roots",
+          "distractorReason": "Trap: Real irrational roots require D > 0 and D being non-square."
+        }
       ],
-      "correctAnswer": 0,
+      "correctAnswer": "C",
       "explanation": "When D < 0, the square root √D is imaginary, producing two unequal complex conjugate roots."
     }
   ]

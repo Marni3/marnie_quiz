@@ -10,47 +10,47 @@
   "toc": [
     {
       "id": "sec-prereq-bridges",
-      "title": "1. Introduction & Cross-Subject Connections",
+      "title": "Introduction & Cross-Subject Connections",
       "level": 2
     },
     {
       "id": "sec-theory",
-      "title": "2. Lesson Proper: Relations, Injections & Formal Logic",
+      "title": "Lesson Proper: Relations, Injections & Formal Logic",
       "level": 2
     },
     {
       "id": "sec-formulas",
-      "title": "3. Compilation of Formulas & Logic Tables",
+      "title": "Compilation of Formulas & Logic Tables",
       "level": 2
     },
     {
       "id": "sec-visualizer",
-      "title": "4. Interactive Visualizer: Logic Gate & Truth Table",
+      "title": "Interactive Visualizer: Logic Gate & Truth Table",
       "level": 2
     },
     {
       "id": "sec-terminology",
-      "title": "5. Key Terms and Definitions",
+      "title": "Key Terms and Definitions",
       "level": 2
     },
     {
       "id": "sec-dual-method",
-      "title": "6. Worked Board Exam Problems",
+      "title": "Worked Board Exam Problems",
       "level": 2
     },
     {
       "id": "sec-calculator",
-      "title": "7. Calculator Speed Techniques (Karce & Canon)",
+      "title": "Calculator Speed Techniques (Karce & Canon)",
       "level": 2
     },
     {
       "id": "sec-concept-checks",
-      "title": "8. In-Line Concept Checks",
+      "title": "In-Line Concept Checks",
       "level": 2
     },
     {
       "id": "sec-mastery-challenge",
-      "title": "9. Paired Mastery Challenge Exam",
+      "title": "Paired Mastery Challenge Exam",
       "level": 2
     }
   ],
@@ -177,26 +177,22 @@
   ],
   "calculatorGuides": {
     "karce": {
-      "techniqueTitle": "Logic Truth Evaluation in BASE-N Mode",
-      "problemType": "Evaluating Boolean propositions",
-      "sampleProblem": "Evaluate (1 AND 0) XOR 1 in BASE-N mode.",
-      "mode": "BASE-N Mode (MODE 4)",
+      "techniqueTitle": "Boolean Logic in BASE-N & Composite Function Evaluation",
+      "problemType": "Evaluating Boolean Logic Operations and Composite Function CALC",
+      "sampleProblem": "Evaluate Boolean proposition (1 AND 0) XOR 1 in BASE-N mode, and evaluate composite function 2(X² - 1) + 3 at X = 3.",
+      "mode": "BASE-N Mode (MODE 4) and COMP Mode (MODE 1)",
+      "whyItWorks": "BASE-N mode features bitwise Boolean logic operators (AND, OR, NOT, XOR, XNOR) to compute truth table outputs directly. In COMP mode, the CALC function evaluates nested composite functions f(g(x)) instantly without manual algebraic expansion.",
       "keystrokes": [
+        "MODE",
+        "4",
         "1",
         "and",
         "0",
         "xor",
         "1",
-        "="
-      ],
-      "notes": "Directly yields 1 (True)."
-    },
-    "canon": {
-      "techniqueTitle": "Composite Function CALC Shortcut",
-      "problemType": "Evaluating f(g(x)) in COMP mode",
-      "sampleProblem": "Evaluate 2(X² - 1) + 3 at X = 3 on Canon F-789SGA.",
-      "mode": "COMP Mode (MODE 1)",
-      "keystrokes": [
+        "=",
+        "MODE",
+        "1",
         "2",
         "(",
         "ALPHA",
@@ -211,7 +207,42 @@
         "3",
         "="
       ],
-      "notes": "Directly evaluates 19 in 1 second."
+      "notes": "💡 Keystroke Rules:\n1. In BASE-N Mode: Input 1 and 0 xor 1, press = to obtain 1 (True).\n2. In COMP Mode: Input 2(X² - 1) + 3, press CALC, enter 3, press = to obtain 19 in 1 second.",
+      "searchAdvisory": "Search 'Karce KC-S991 BASE-N logic operations and CALC composite functions' for video tutorials."
+    },
+    "canon": {
+      "techniqueTitle": "Boolean Logic in BASE-N & Composite Function Evaluation",
+      "problemType": "Evaluating Boolean Logic Operations and Composite Function CALC",
+      "sampleProblem": "Evaluate Boolean proposition (1 AND 0) XOR 1 in BASE-N mode, and evaluate composite function 2(X² - 1) + 3 at X = 3.",
+      "mode": "BASE-N Mode (MODE 4) and COMP Mode (MODE 1)",
+      "whyItWorks": "BASE-N mode features bitwise Boolean logic operators (AND, OR, NOT, XOR, XNOR) to compute truth table outputs directly. In COMP mode, the CALC function evaluates nested composite functions f(g(x)) instantly without manual algebraic expansion.",
+      "keystrokes": [
+        "MODE",
+        "4",
+        "1",
+        "and",
+        "0",
+        "xor",
+        "1",
+        "=",
+        "MODE",
+        "1",
+        "2",
+        "(",
+        "ALPHA",
+        "X",
+        "x²",
+        "-",
+        "1",
+        ")",
+        "+",
+        "3",
+        "CALC",
+        "3",
+        "="
+      ],
+      "notes": "💡 Keystroke Rules:\n1. In BASE-N Mode: Input 1 and 0 xor 1, press = to obtain 1 (True).\n2. In COMP Mode: Input 2(X² - 1) + 3, press CALC, enter 3, press = to obtain 19 in 1 second.",
+      "searchAdvisory": "Search 'Canon F-789SGA BASE-N logic gates and composite function CALC shortcuts' for video breakdowns."
     }
   },
   "conceptChecks": [
@@ -219,36 +250,75 @@
       "id": "chk-0403-01",
       "question": "Which statement variation is logically equivalent to the direct conditional statement $p \\to q$?",
       "options": [
-        "Contrapositive (¬q → ¬p)",
-        "Converse (q → p)",
-        "Inverse (¬p → ¬q)",
-        "Biconditional (p ↔ q)"
+        {
+          "text": "Contrapositive (¬q → ¬p)",
+          "isCorrect": true,
+          "distractorReason": "Correct: A conditional statement and its contrapositive always share identical truth tables (p → q ≡ ¬q → ¬p)."
+        },
+        {
+          "text": "Converse (q → p)",
+          "distractorReason": "Trap: The converse reverses direction (q → p) and is not logically equivalent to p → q."
+        },
+        {
+          "text": "Inverse (¬p → ¬q)",
+          "distractorReason": "Trap: The inverse negates both terms (¬p → ¬q) and is logically equivalent to the converse, not the conditional."
+        },
+        {
+          "text": "Biconditional (p ↔ q)",
+          "distractorReason": "Trap: The biconditional requires both p → q AND q → p."
+        }
       ],
-      "correctAnswer": 0,
+      "correctAnswer": "A",
       "explanation": "A conditional statement and its contrapositive always share identical truth tables (p → q ≡ ¬q → ¬p)."
     },
     {
       "id": "chk-0403-02",
       "question": "What three properties must a relation satisfy to be classified as an Equivalence Relation?",
       "options": [
-        "Reflexive, Symmetric, and Transitive",
-        "Reflexive, Antisymmetric, and Transitive",
-        "Irreflexive, Symmetric, and Transitive",
-        "Reflexive, Symmetric, and Injective"
+        {
+          "text": "Reflexive, Antisymmetric, and Transitive",
+          "distractorReason": "Trap: This defines a Partial Order Relation (Poset), not an Equivalence Relation."
+        },
+        {
+          "text": "Reflexive, Symmetric, and Transitive",
+          "isCorrect": true,
+          "distractorReason": "Correct: An equivalence relation must satisfy reflexivity (a~a), symmetry (a~b ⇒ b~a), and transitivity (a~b and b~c ⇒ a~c)."
+        },
+        {
+          "text": "Irreflexive, Symmetric, and Transitive",
+          "distractorReason": "Trap: Equivalence requires reflexivity, not irreflexivity."
+        },
+        {
+          "text": "Reflexive, Symmetric, and Injective",
+          "distractorReason": "Trap: Injectivity is a property of functions/mappings, not an equivalence relation criterion."
+        }
       ],
-      "correctAnswer": 0,
+      "correctAnswer": "B",
       "explanation": "By mathematical definition, an equivalence relation is reflexive, symmetric, and transitive."
     },
     {
       "id": "chk-0403-03",
       "question": "When is the conditional statement $p \\to q$ evaluated as FALSE?",
       "options": [
-        "Only when p is True and q is False",
-        "Only when both p and q are False",
-        "When p is False and q is True",
-        "When both p and q are True"
+        {
+          "text": "Only when both p and q are False",
+          "distractorReason": "Trap: False → False evaluates as True by vacuous truth."
+        },
+        {
+          "text": "When p is False and q is True",
+          "distractorReason": "Trap: False → True evaluates as True."
+        },
+        {
+          "text": "Only when p is True and q is False",
+          "isCorrect": true,
+          "distractorReason": "Correct: A conditional implication is broken only when the premise p is True but the conclusion q fails (False)."
+        },
+        {
+          "text": "When both p and q are True",
+          "distractorReason": "Trap: True → True evaluates as True."
+        }
       ],
-      "correctAnswer": 0,
+      "correctAnswer": "C",
       "explanation": "A conditional promise is broken only when the hypothesis p occurs (True) but the conclusion q fails to occur (False)."
     }
   ]

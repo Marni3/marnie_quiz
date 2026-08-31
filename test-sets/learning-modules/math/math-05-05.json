@@ -10,47 +10,47 @@
   "toc": [
     {
       "id": "sec-prereq-bridges",
-      "title": "1. Introduction & Cross-Subject Connections",
+      "title": "Introduction & Cross-Subject Connections",
       "level": 2
     },
     {
       "id": "sec-theory",
-      "title": "2. Lesson Proper: Circle Power Theorems, Ellipses & Annulus",
+      "title": "Lesson Proper: Circle Power Theorems, Ellipses & Annulus",
       "level": 2
     },
     {
       "id": "sec-formulas",
-      "title": "3. Compilation of Formulas & Circle Power Theorems",
+      "title": "Compilation of Formulas & Circle Power Theorems",
       "level": 2
     },
     {
       "id": "sec-visualizer",
-      "title": "4. Interactive Visualizer: Power of a Point & Annulus Explorer",
+      "title": "Interactive Visualizer: Power of a Point & Annulus Explorer",
       "level": 2
     },
     {
       "id": "sec-terminology",
-      "title": "5. Key Terms and Definitions",
+      "title": "Key Terms and Definitions",
       "level": 2
     },
     {
       "id": "sec-dual-method",
-      "title": "6. Worked Board Exam Problems",
+      "title": "Worked Board Exam Problems",
       "level": 2
     },
     {
       "id": "sec-calculator",
-      "title": "7. Calculator Speed Techniques (Karce & Canon)",
+      "title": "Calculator Speed Techniques (Karce & Canon)",
       "level": 2
     },
     {
       "id": "sec-concept-checks",
-      "title": "8. In-Line Concept Checks",
+      "title": "In-Line Concept Checks",
       "level": 2
     },
     {
       "id": "sec-mastery-challenge",
-      "title": "9. Paired Mastery Challenge Exam",
+      "title": "Paired Mastery Challenge Exam",
       "level": 2
     }
   ],
@@ -185,11 +185,14 @@
   ],
   "calculatorGuides": {
     "karce": {
-      "techniqueTitle": "Fast Ellipse Area & Perimeter Approximation",
-      "problemType": "Evaluating πab and 2π√((a²+b²)/2)",
-      "sampleProblem": "Find area and perimeter for a=8, b=5.",
+      "techniqueTitle": "Fast Ellipse Area & Secant-Tangent Power of a Point Calculation",
+      "problemType": "Evaluating Ellipse Area πab and Tangent-Secant Segment t = √(a(a+b))",
+      "sampleProblem": "Evaluate ellipse area for a=8, b=5, and solve tangent length t = √(a(a+b)) for external secant segment a=4, chord b=12.",
       "mode": "COMP Mode (MODE 1)",
+      "whyItWorks": "Ellipse area A = πab evaluates directly in COMP mode. By the Tangent-Secant Theorem (Power of a Point), tangent length t = √(external · total) = √(a(a+b)) evaluates directly in 1 step.",
       "keystrokes": [
+        "MODE",
+        "1",
         "SHIFT",
         "π",
         "×",
@@ -197,32 +200,6 @@
         "×",
         "5",
         "=",
-        "2",
-        "SHIFT",
-        "π",
-        "×",
-        "√",
-        "(",
-        "(",
-        "8",
-        "x²",
-        "+",
-        "5",
-        "x²",
-        ")",
-        "÷",
-        "2",
-        ")",
-        "="
-      ],
-      "notes": "Displays Area = 125.6637 and Perimeter = 41.9168."
-    },
-    "canon": {
-      "techniqueTitle": "Secant-Tangent External Segment Solver",
-      "problemType": "Solving t² = a(a+b) on Canon F-789SGA",
-      "sampleProblem": "Solve t for a=4, b=12.",
-      "mode": "COMP Mode (MODE 1)",
-      "keystrokes": [
         "√",
         "(",
         "4",
@@ -236,7 +213,40 @@
         ")",
         "="
       ],
-      "notes": "Directly yields t = 8 in 1 second."
+      "notes": "💡 Keystroke Rules:\n1. Ellipse Area: π × 8 × 5 = 40π = 125.6637 cm².\n2. Tangent Length: √(4 × (4 + 12)) = 8 cm.",
+      "searchAdvisory": "Search 'Karce KC-S991 ellipse area and power of a point tangent secant solver' for video tutorials."
+    },
+    "canon": {
+      "techniqueTitle": "Fast Ellipse Area & Secant-Tangent Power of a Point Calculation",
+      "problemType": "Evaluating Ellipse Area πab and Tangent-Secant Segment t = √(a(a+b))",
+      "sampleProblem": "Evaluate ellipse area for a=8, b=5, and solve tangent length t = √(a(a+b)) for external secant segment a=4, chord b=12.",
+      "mode": "COMP Mode (MODE 1)",
+      "whyItWorks": "Ellipse area A = πab evaluates directly in COMP mode. By the Tangent-Secant Theorem (Power of a Point), tangent length t = √(external · total) = √(a(a+b)) evaluates directly in 1 step.",
+      "keystrokes": [
+        "MODE",
+        "1",
+        "SHIFT",
+        "π",
+        "×",
+        "8",
+        "×",
+        "5",
+        "=",
+        "√",
+        "(",
+        "4",
+        "×",
+        "(",
+        "4",
+        "+",
+        "1",
+        "2",
+        ")",
+        ")",
+        "="
+      ],
+      "notes": "💡 Keystroke Rules:\n1. Ellipse Area: π × 8 × 5 = 40π = 125.6637 cm².\n2. Tangent Length: √(4 × (4 + 12)) = 8 cm.",
+      "searchAdvisory": "Search 'Canon F-789SGA ellipse geometry formula and secant tangent theorem shortcuts' for video breakdowns."
     }
   },
   "conceptChecks": [
@@ -244,36 +254,75 @@
       "id": "chk-1005-01",
       "question": "If an inscribed angle intercepts an arc measuring $70^\\circ$, what is the measure of the inscribed angle and its corresponding central angle?",
       "options": [
-        "Inscribed = 35°, Central = 70°",
-        "Inscribed = 70°, Central = 140°",
-        "Inscribed = 70°, Central = 35°",
-        "Inscribed = 140°, Central = 70°"
+        {
+          "text": "Inscribed = 35°, Central = 70°",
+          "isCorrect": true,
+          "distractorReason": "Correct: The central angle equals the intercepted arc measure (70°), while the inscribed angle is exactly half of the central angle / arc (35°)."
+        },
+        {
+          "text": "Inscribed = 70°, Central = 140°",
+          "distractorReason": "Trap: Doubling the arc measure for the central angle."
+        },
+        {
+          "text": "Inscribed = 70°, Central = 35°",
+          "distractorReason": "Trap: Reversing the roles of inscribed and central angles."
+        },
+        {
+          "text": "Inscribed = 140°, Central = 70°",
+          "distractorReason": "Trap: Doubling the inscribed angle."
+        }
       ],
-      "correctAnswer": 0,
+      "correctAnswer": "A",
       "explanation": "The central angle equals the intercepted arc measure (70°), while the inscribed angle is half of that (35°)."
     },
     {
       "id": "chk-1005-02",
       "question": "What is the area of an ellipse with major axis $2a = 16\\text{ cm}$ and minor axis $2b = 10\\text{ cm}$?",
       "options": [
-        "40π cm² (≈ 125.66 cm²)",
-        "80π cm²",
-        "160π cm²",
-        "20π cm²"
+        {
+          "text": "80π cm²",
+          "distractorReason": "Trap: 80π is calculated using full axis lengths 2a and 2b (16 × 5 or 8 × 10)."
+        },
+        {
+          "text": "40π cm² (≈ 125.66 cm²)",
+          "isCorrect": true,
+          "distractorReason": "Correct: Semi-major axis a = 16/2 = 8, semi-minor axis b = 10/2 = 5. Area = πab = π(8)(5) = 40π ≈ 125.66 cm²."
+        },
+        {
+          "text": "160π cm²",
+          "distractorReason": "Trap: 160π is (2a)(2b)π = (16)(10)π."
+        },
+        {
+          "text": "20π cm²",
+          "distractorReason": "Trap: 20π is (1/2)πab."
+        }
       ],
-      "correctAnswer": 0,
+      "correctAnswer": "B",
       "explanation": "Semi-major a = 8, semi-minor b = 5. Area = πab = π(8)(5) = 40π ≈ 125.66 cm²."
     },
     {
       "id": "chk-1005-03",
       "question": "From an external point P, a tangent of length $t = 8\\text{ cm}$ is drawn to a circle. A secant line through P has external segment $a = 4\\text{ cm}$. What is the internal chord segment $b$ of the secant?",
       "options": [
-        "12 cm",
-        "16 cm",
-        "8 cm",
-        "4 cm"
+        {
+          "text": "16 cm",
+          "distractorReason": "Trap: 16 cm is the total secant length (a + b = 4 + 12 = 16), not the internal chord segment b."
+        },
+        {
+          "text": "8 cm",
+          "distractorReason": "Trap: Setting chord segment b equal to tangent length t."
+        },
+        {
+          "text": "12 cm",
+          "isCorrect": true,
+          "distractorReason": "Correct: By Tangent-Secant theorem: t² = a(a + b) ⇒ 8² = 4(4 + b) ⇒ 64 = 16 + 4b ⇒ 4b = 48 ⇒ b = 12 cm."
+        },
+        {
+          "text": "4 cm",
+          "distractorReason": "Trap: Setting chord segment equal to external segment."
+        }
       ],
-      "correctAnswer": 0,
+      "correctAnswer": "C",
       "explanation": "t² = a(a + b) => 8² = 4(4 + b) => 64 = 16 + 4b => 4b = 48 => b = 12 cm."
     }
   ]

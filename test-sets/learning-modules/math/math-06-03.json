@@ -10,47 +10,47 @@
   "toc": [
     {
       "id": "sec-prereq-bridges",
-      "title": "1. Introduction & Cross-Subject Connections",
+      "title": "Introduction & Cross-Subject Connections",
       "level": 2
     },
     {
       "id": "sec-theory",
-      "title": "2. Lesson Proper: Polyhedra, Euler's Formula & The 5 Platonic Solids",
+      "title": "Lesson Proper: Polyhedra, Euler's Formula & The 5 Platonic Solids",
       "level": 2
     },
     {
       "id": "sec-formulas",
-      "title": "3. Compilation of Formulas & Polyhedral Invariants",
+      "title": "Compilation of Formulas & Polyhedral Invariants",
       "level": 2
     },
     {
       "id": "sec-visualizer",
-      "title": "4. Interactive Visualizer: Platonic Solids & Euler Formula Validator",
+      "title": "Interactive Visualizer: Platonic Solids & Euler Formula Validator",
       "level": 2
     },
     {
       "id": "sec-terminology",
-      "title": "5. Key Terms and Definitions",
+      "title": "Key Terms and Definitions",
       "level": 2
     },
     {
       "id": "sec-dual-method",
-      "title": "6. Worked Board Exam Problems",
+      "title": "Worked Board Exam Problems",
       "level": 2
     },
     {
       "id": "sec-calculator",
-      "title": "7. Calculator Speed Techniques (Karce & Canon)",
+      "title": "Calculator Speed Techniques (Karce & Canon)",
       "level": 2
     },
     {
       "id": "sec-concept-checks",
-      "title": "8. In-Line Concept Checks",
+      "title": "In-Line Concept Checks",
       "level": 2
     },
     {
       "id": "sec-mastery-challenge",
-      "title": "9. Paired Mastery Challenge Exam",
+      "title": "Paired Mastery Challenge Exam",
       "level": 2
     }
   ],
@@ -177,11 +177,14 @@
   ],
   "calculatorGuides": {
     "karce": {
-      "techniqueTitle": "Fast Platonic Solid Volume Calculation",
-      "problemType": "Evaluating (e³*√2)/12 and (e³*√2)/3",
-      "sampleProblem": "Find Tetrahedron V for e=6.",
+      "techniqueTitle": "Fast Platonic Solid Volume & Euler Polyhedral Solver",
+      "problemType": "Evaluating Regular Polyhedra Volume and Euler Formula V = 2 + E - F",
+      "sampleProblem": "Evaluate regular tetrahedron volume for edge e=6, and solve vertices V = 2 + E - F for a dodecahedron with E=30, F=12.",
       "mode": "COMP Mode (MODE 1)",
+      "whyItWorks": "Regular tetrahedron volume follows directly from V = (e³√2)/12 in COMP mode. Euler's polyhedral formula V - E + F = 2 isolates missing vertices via V = 2 + E - F in 1 step.",
       "keystrokes": [
+        "MODE",
+        "1",
         "6",
         "x³",
         "×",
@@ -190,16 +193,7 @@
         "÷",
         "1",
         "2",
-        "="
-      ],
-      "notes": "Directly yields 25.455844 cm³ in 1 second."
-    },
-    "canon": {
-      "techniqueTitle": "Euler Vertex Solver Shortcut",
-      "problemType": "2 + E - F on Canon F-789SGA",
-      "sampleProblem": "Solve V for E=30, F=12 (Dodecahedron).",
-      "mode": "COMP Mode (MODE 1)",
-      "keystrokes": [
+        "=",
         "2",
         "+",
         "3",
@@ -209,7 +203,38 @@
         "2",
         "="
       ],
-      "notes": "Directly yields 20 vertices."
+      "notes": "💡 Keystroke Rules:\n1. Tetrahedron Volume: 6³ × √2 ÷ 12 = 25.455844 cm³.\n2. Euler Vertex Solver: 2 + 30 - 12 = 20 vertices.",
+      "searchAdvisory": "Search 'Karce KC-S991 Platonic solids volume formula and Euler polyhedral equation' for video walkthroughs."
+    },
+    "canon": {
+      "techniqueTitle": "Fast Platonic Solid Volume & Euler Polyhedral Solver",
+      "problemType": "Evaluating Regular Polyhedra Volume and Euler Formula V = 2 + E - F",
+      "sampleProblem": "Evaluate regular tetrahedron volume for edge e=6, and solve vertices V = 2 + E - F for a dodecahedron with E=30, F=12.",
+      "mode": "COMP Mode (MODE 1)",
+      "whyItWorks": "Regular tetrahedron volume follows directly from V = (e³√2)/12 in COMP mode. Euler's polyhedral formula V - E + F = 2 isolates missing vertices via V = 2 + E - F in 1 step.",
+      "keystrokes": [
+        "MODE",
+        "1",
+        "6",
+        "x³",
+        "×",
+        "√",
+        "2",
+        "÷",
+        "1",
+        "2",
+        "=",
+        "2",
+        "+",
+        "3",
+        "0",
+        "-",
+        "1",
+        "2",
+        "="
+      ],
+      "notes": "💡 Keystroke Rules:\n1. Tetrahedron Volume: 6³ × √2 ÷ 12 = 25.455844 cm³.\n2. Euler Vertex Solver: 2 + 30 - 12 = 20 vertices.",
+      "searchAdvisory": "Search 'Canon F-789SGA Platonic solid metrics and Euler formula polyhedra calculation' for video breakdowns."
     }
   },
   "conceptChecks": [
@@ -217,36 +242,75 @@
       "id": "chk-1103-01",
       "question": "How many vertices ($V$), edges ($E$), and faces ($F$) does a regular Dodecahedron have?",
       "options": [
-        "V = 20, E = 30, F = 12",
-        "V = 12, E = 30, F = 20",
-        "V = 8, E = 12, F = 6",
-        "V = 6, E = 12, F = 8"
+        {
+          "text": "V = 20, E = 30, F = 12",
+          "isCorrect": true,
+          "distractorReason": "Correct: A regular dodecahedron has 12 regular pentagonal faces, 30 edges, and 20 vertices (V - E + F = 20 - 30 + 12 = 2)."
+        },
+        {
+          "text": "V = 12, E = 30, F = 20",
+          "distractorReason": "Trap: V = 12, E = 30, F = 20 is the metric description of the dual Regular Icosahedron."
+        },
+        {
+          "text": "V = 8, E = 12, F = 6",
+          "distractorReason": "Trap: V = 8, E = 12, F = 6 describes a Cube (Hexahedron)."
+        },
+        {
+          "text": "V = 6, E = 12, F = 8",
+          "distractorReason": "Trap: V = 6, E = 12, F = 8 describes a Regular Octahedron."
+        }
       ],
-      "correctAnswer": 0,
+      "correctAnswer": "A",
       "explanation": "A regular dodecahedron has 12 pentagonal faces, 30 edges, and 20 vertices."
     },
     {
       "id": "chk-1103-02",
       "question": "Which of the 5 Platonic Solids is geometrically self-dual?",
       "options": [
-        "Regular Tetrahedron",
-        "Regular Hexahedron (Cube)",
-        "Regular Octahedron",
-        "Regular Icosahedron"
+        {
+          "text": "Regular Hexahedron (Cube)",
+          "distractorReason": "Trap: The Cube is dual to the Regular Octahedron."
+        },
+        {
+          "text": "Regular Tetrahedron",
+          "isCorrect": true,
+          "distractorReason": "Correct: The regular tetrahedron has 4 triangular faces and 4 vertices (F = V = 4), meaning connecting its face centers produces another inverted regular tetrahedron (self-dual)."
+        },
+        {
+          "text": "Regular Octahedron",
+          "distractorReason": "Trap: The Octahedron is dual to the Cube."
+        },
+        {
+          "text": "Regular Icosahedron",
+          "distractorReason": "Trap: The Icosahedron is dual to the Dodecahedron."
+        }
       ],
-      "correctAnswer": 0,
+      "correctAnswer": "B",
       "explanation": "The regular tetrahedron has 4 faces and 4 vertices, making it its own dual."
     },
     {
       "id": "chk-1103-03",
       "question": "If a convex polyhedron has 8 vertices and 6 faces, what is this polyhedron and how many edges does it have?",
       "options": [
-        "Hexahedron (Cube), with E = 12 edges",
-        "Octahedron, with E = 12 edges",
-        "Tetrahedron, with E = 6 edges",
-        "Dodecahedron, with E = 30 edges"
+        {
+          "text": "Octahedron, with E = 12 edges",
+          "distractorReason": "Trap: An octahedron has 6 vertices and 8 faces (the dual configuration)."
+        },
+        {
+          "text": "Tetrahedron, with E = 6 edges",
+          "distractorReason": "Trap: A tetrahedron has 4 vertices and 4 faces."
+        },
+        {
+          "text": "Hexahedron (Cube), with E = 12 edges",
+          "isCorrect": true,
+          "distractorReason": "Correct: By Euler's formula: E = V + F - 2 = 8 + 6 - 2 = 12 edges, which uniquely defines a Hexahedron (Cube)."
+        },
+        {
+          "text": "Dodecahedron, with E = 30 edges",
+          "distractorReason": "Trap: A dodecahedron has 20 vertices and 12 faces."
+        }
       ],
-      "correctAnswer": 0,
+      "correctAnswer": "C",
       "explanation": "By Euler's formula: E = V + F - 2 = 8 + 6 - 2 = 12 edges (a hexahedron / cube)."
     }
   ]

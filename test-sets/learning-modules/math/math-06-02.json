@@ -10,47 +10,47 @@
   "toc": [
     {
       "id": "sec-prereq-bridges",
-      "title": "1. Introduction & Cross-Subject Connections",
+      "title": "Introduction & Cross-Subject Connections",
       "level": 2
     },
     {
       "id": "sec-theory",
-      "title": "2. Lesson Proper: Prismoids, Spherical Solids, Toroids & Spheroids",
+      "title": "Lesson Proper: Prismoids, Spherical Solids, Toroids & Spheroids",
       "level": 2
     },
     {
       "id": "sec-formulas",
-      "title": "3. Compilation of Formulas & Spherical Invariants",
+      "title": "Compilation of Formulas & Spherical Invariants",
       "level": 2
     },
     {
       "id": "sec-visualizer",
-      "title": "4. Interactive Visualizer: Spherical Segment & Torus Simulator",
+      "title": "Interactive Visualizer: Spherical Segment & Torus Simulator",
       "level": 2
     },
     {
       "id": "sec-terminology",
-      "title": "5. Key Terms and Definitions",
+      "title": "Key Terms and Definitions",
       "level": 2
     },
     {
       "id": "sec-dual-method",
-      "title": "6. Worked Board Exam Problems",
+      "title": "Worked Board Exam Problems",
       "level": 2
     },
     {
       "id": "sec-calculator",
-      "title": "7. Calculator Speed Techniques (Karce & Canon)",
+      "title": "Calculator Speed Techniques (Karce & Canon)",
       "level": 2
     },
     {
       "id": "sec-concept-checks",
-      "title": "8. In-Line Concept Checks",
+      "title": "In-Line Concept Checks",
       "level": 2
     },
     {
       "id": "sec-mastery-challenge",
-      "title": "9. Paired Mastery Challenge Exam",
+      "title": "Paired Mastery Challenge Exam",
       "level": 2
     }
   ],
@@ -193,11 +193,14 @@
   ],
   "calculatorGuides": {
     "karce": {
-      "techniqueTitle": "Fast Torus & Spheroid Evaluation",
-      "problemType": "Evaluating 2*π²*R*r² and (4/3)*π*a²*b",
-      "sampleProblem": "Find Torus V for R=10, r=3.",
+      "techniqueTitle": "Fast Torus & Universal Prismoidal Earthwork Calculation",
+      "problemType": "Evaluating Torus Volume 2π²Rr² and Prismoidal Volume (L/6)(A1 + 4Am + A2)",
+      "sampleProblem": "Evaluate Torus volume for R=10, r=3, and evaluate prismoidal volume for L=100, A1=50, Am=75, A2=110.",
       "mode": "COMP Mode (MODE 1)",
+      "whyItWorks": "By Pappus' centroid theorem, torus volume equals circular cross-section area (πr²) multiplied by circular path length (2πR) yielding V = 2π²Rr². The universal Prismoidal formula computes exact volume across parabolic or linear transitions in 1 step.",
       "keystrokes": [
+        "MODE",
+        "1",
         "2",
         "×",
         "SHIFT",
@@ -209,16 +212,7 @@
         "×",
         "3",
         "x²",
-        "="
-      ],
-      "notes": "Directly displays 1776.528792 in 2 seconds."
-    },
-    "canon": {
-      "techniqueTitle": "Prismoidal Earthwork Shortcut",
-      "problemType": "(L/6)*(A1 + 4*Am + A2) on Canon F-789SGA",
-      "sampleProblem": "Evaluate (100/6)*(50 + 4*75 + 110).",
-      "mode": "COMP Mode (MODE 1)",
-      "keystrokes": [
+        "=",
         "1",
         "0",
         "0",
@@ -240,7 +234,53 @@
         ")",
         "="
       ],
-      "notes": "Directly yields 7666.67 m³."
+      "notes": "💡 Keystroke Rules:\n1. Torus Volume: 2 × π² × 10 × 3² = 1776.528792 cm³.\n2. Prismoidal Volume: (100 ÷ 6) × (50 + 4×75 + 110) = 7666.67 m³.",
+      "searchAdvisory": "Search 'Karce KC-S991 torus volume formula and prismoidal earthwork calculation' for video guides."
+    },
+    "canon": {
+      "techniqueTitle": "Fast Torus & Universal Prismoidal Earthwork Calculation",
+      "problemType": "Evaluating Torus Volume 2π²Rr² and Prismoidal Volume (L/6)(A1 + 4Am + A2)",
+      "sampleProblem": "Evaluate Torus volume for R=10, r=3, and evaluate prismoidal volume for L=100, A1=50, Am=75, A2=110.",
+      "mode": "COMP Mode (MODE 1)",
+      "whyItWorks": "By Pappus' centroid theorem, torus volume equals circular cross-section area (πr²) multiplied by circular path length (2πR) yielding V = 2π²Rr². The universal Prismoidal formula computes exact volume across parabolic or linear transitions in 1 step.",
+      "keystrokes": [
+        "MODE",
+        "1",
+        "2",
+        "×",
+        "SHIFT",
+        "π",
+        "x²",
+        "×",
+        "1",
+        "0",
+        "×",
+        "3",
+        "x²",
+        "=",
+        "1",
+        "0",
+        "0",
+        "÷",
+        "6",
+        "×",
+        "(",
+        "5",
+        "0",
+        "+",
+        "4",
+        "×",
+        "7",
+        "5",
+        "+",
+        "1",
+        "1",
+        "0",
+        ")",
+        "="
+      ],
+      "notes": "💡 Keystroke Rules:\n1. Torus Volume: 2 × π² × 10 × 3² = 1776.528792 cm³.\n2. Prismoidal Volume: (100 ÷ 6) × (50 + 4×75 + 110) = 7666.67 m³.",
+      "searchAdvisory": "Search 'Canon F-789SGA torus geometry and prismoidal formula volume shortcuts' for video breakdowns."
     }
   },
   "conceptChecks": [
@@ -248,36 +288,75 @@
       "id": "chk-1102-01",
       "question": "What is the surface area of a spherical zone on a sphere of radius $R$ with altitude $h$ between parallel planes?",
       "options": [
-        "2πRh",
-        "4πRh",
-        "πRh",
-        "2πR²h"
+        {
+          "text": "2πRh",
+          "isCorrect": true,
+          "distractorReason": "Correct: The surface area of a spherical zone is A = 2πRh, which depends solely on the sphere radius R and the vertical altitude h between the slicing planes."
+        },
+        {
+          "text": "4πRh",
+          "distractorReason": "Trap: 4πRh incorporates an extra factor of 2 (confusing total sphere area 4πR² with zone area)."
+        },
+        {
+          "text": "πRh",
+          "distractorReason": "Trap: Missing the factor of 2."
+        },
+        {
+          "text": "2πR²h",
+          "distractorReason": "Trap: Incorrect dimensions (volume units instead of area)."
+        }
       ],
-      "correctAnswer": 0,
+      "correctAnswer": "A",
       "explanation": "The surface area of a spherical zone is A = 2πRh, depending only on sphere radius R and vertical height h."
     },
     {
       "id": "chk-1102-02",
       "question": "What solid of revolution is generated by revolving an ellipse about its MINOR axis?",
       "options": [
-        "Oblate Spheroid (V = 4/3 π a² b)",
-        "Prolate Spheroid (V = 4/3 π a b²)",
-        "Torus",
-        "Paraboloid of Revolution"
+        {
+          "text": "Prolate Spheroid (V = 4/3 π a b²)",
+          "distractorReason": "Trap: A prolate spheroid (football shape) is generated by revolving an ellipse about its MAJOR axis."
+        },
+        {
+          "text": "Oblate Spheroid (V = 4/3 π a² b)",
+          "isCorrect": true,
+          "distractorReason": "Correct: Revolving an ellipse about its MINOR axis generates a flattened disc-like Oblate Spheroid with volume V = (4/3)π a² b."
+        },
+        {
+          "text": "Torus",
+          "distractorReason": "Trap: A torus is generated by revolving a circle around an external coplanar axis."
+        },
+        {
+          "text": "Paraboloid of Revolution",
+          "distractorReason": "Trap: A paraboloid is generated by revolving a parabola around its axis of symmetry."
+        }
       ],
-      "correctAnswer": 0,
+      "correctAnswer": "B",
       "explanation": "Revolving an ellipse about its minor axis generates a flattened oblate spheroid (V = 4/3 π a² b)."
     },
     {
       "id": "chk-1102-03",
       "question": "What is the volume of a torus generated by a circle of radius $r$ rotated around an axis at distance $R$ ($R \\ge r$)?",
       "options": [
-        "2π² R r²",
-        "4π² R r",
-        "π² R² r",
-        "2π R² r"
+        {
+          "text": "4π² R r",
+          "distractorReason": "Trap: 4π² R r is the surface area formula of the torus (A = (2πr)(2πR) = 4π²Rr), not its volume."
+        },
+        {
+          "text": "π² R² r",
+          "distractorReason": "Trap: Squaring the axis radius R instead of the tube radius r."
+        },
+        {
+          "text": "2π² R r²",
+          "isCorrect": true,
+          "distractorReason": "Correct: By Pappus' Centroid Theorem: Volume = (Cross-sectional Area) · (Path Length) = (πr²) · (2πR) = 2π² R r²."
+        },
+        {
+          "text": "2π R² r",
+          "distractorReason": "Trap: Missing π² factor."
+        }
       ],
-      "correctAnswer": 0,
+      "correctAnswer": "C",
       "explanation": "By Pappus' second centroid theorem: V = (π r²)(2π R) = 2π² R r²."
     }
   ]

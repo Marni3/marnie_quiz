@@ -10,47 +10,47 @@
   "toc": [
     {
       "id": "sec-prereq-bridges",
-      "title": "1. Introduction & Cross-Subject Connections",
+      "title": "Introduction & Cross-Subject Connections",
       "level": 2
     },
     {
       "id": "sec-theory",
-      "title": "2. Lesson Proper: ODE Classification, Separation of Variables & Homogeneity",
+      "title": "Lesson Proper: ODE Classification, Separation of Variables & Homogeneity",
       "level": 2
     },
     {
       "id": "sec-formulas",
-      "title": "3. Compilation of Formulas & Solution Algorithms",
+      "title": "Compilation of Formulas & Solution Algorithms",
       "level": 2
     },
     {
       "id": "sec-visualizer",
-      "title": "4. Interactive Visualizer: Slope Field & Solution Curves Simulator",
+      "title": "Interactive Visualizer: Slope Field & Solution Curves Simulator",
       "level": 2
     },
     {
       "id": "sec-terminology",
-      "title": "5. Key Terms and Definitions",
+      "title": "Key Terms and Definitions",
       "level": 2
     },
     {
       "id": "sec-dual-method",
-      "title": "6. Worked Board Exam Problems",
+      "title": "Worked Board Exam Problems",
       "level": 2
     },
     {
       "id": "sec-calculator",
-      "title": "7. Calculator Speed Techniques (Karce & Canon)",
+      "title": "Calculator Speed Techniques (Karce & Canon)",
       "level": 2
     },
     {
       "id": "sec-concept-checks",
-      "title": "8. In-Line Concept Checks",
+      "title": "In-Line Concept Checks",
       "level": 2
     },
     {
       "id": "sec-mastery-challenge",
-      "title": "9. Paired Mastery Challenge Exam",
+      "title": "Paired Mastery Challenge Exam",
       "level": 2
     }
   ],
@@ -186,17 +186,26 @@
   "calculatorGuides": {
     "karce": {
       "techniqueTitle": "Fast Particular Constant C Evaluation",
-      "problemType": "Solving for C given initial conditions y(x0) = y0",
-      "sampleProblem": "Find C for 2x³ - 3y² + 6x - 12y = C at (1, 2).",
+      "problemType": "Evaluating Particular Constant C given Initial Conditions (x0, y0)",
+      "sampleProblem": "Evaluate the particular constant C for the integrated ODE solution 2x³ - 3y² + 6x - 12y = C passing through initial condition point (x=1, y=2).",
       "mode": "COMP Mode (MODE 1)",
+      "whyItWorks": "Substituting initial condition coordinates (x_0, y_0) = (1, 2) directly into the general solution evaluates the particular constant C = 2(1)³ - 3(2)² + 6(1) - 12(2) = 2 - 12 + 6 - 24 = -28 in 1 second in COMP mode.",
       "keystrokes": [
+        "MODE",
+        "1",
         "2",
         "×",
+        "(",
         "1",
+        ")",
+        "x³",
         "-",
         "3",
         "×",
-        "4",
+        "(",
+        "2",
+        ")",
+        "x²",
         "+",
         "6",
         "×",
@@ -208,25 +217,29 @@
         "2",
         "="
       ],
-      "notes": "Directly yields C = -28 in 1 second."
+      "notes": "💡 Keystroke Rules:\n1. Initial Condition Eval: 2(1)³ - 3(2)² + 6(1) - 12(2) = -28.\n2. Particular Solution: 2x³ - 3y² + 6x - 12y = -28.",
+      "searchAdvisory": "Search 'Karce KC-S991 initial condition substitution differential equations constant C' for video guides."
     },
     "canon": {
-      "techniqueTitle": "Separable Differential Solution Checker",
-      "problemType": "Evaluating integrated polynomials on Canon F-789SGA",
-      "sampleProblem": "Evaluate C for (1, 2).",
+      "techniqueTitle": "Fast Particular Constant C Evaluation",
+      "problemType": "Evaluating Particular Constant C given Initial Conditions (x0, y0)",
+      "sampleProblem": "Evaluate the particular constant C for the integrated ODE solution 2x³ - 3y² + 6x - 12y = C passing through initial condition point (x=1, y=2).",
       "mode": "COMP Mode (MODE 1)",
+      "whyItWorks": "Substituting initial condition coordinates (x_0, y_0) = (1, 2) directly into the general solution evaluates the particular constant C = 2(1)³ - 3(2)² + 6(1) - 12(2) = 2 - 12 + 6 - 24 = -28 in 1 second in COMP mode.",
       "keystrokes": [
+        "MODE",
+        "1",
         "2",
         "(",
         "1",
         ")",
-        "³",
+        "x³",
         "-",
         "3",
         "(",
         "2",
         ")",
-        "²",
+        "x²",
         "+",
         "6",
         "(",
@@ -240,7 +253,8 @@
         ")",
         "="
       ],
-      "notes": "Directly displays -28."
+      "notes": "💡 Keystroke Rules:\n1. Initial Condition Eval: 2(1)³ - 3(2)² + 6(1) - 12(2) = -28.\n2. Particular Solution: 2x³ - 3y² + 6x - 12y = -28.",
+      "searchAdvisory": "Search 'Canon F-789SGA differential equation constant C verification and initial values' for video breakdowns."
     }
   },
   "conceptChecks": [
@@ -248,36 +262,75 @@
       "id": "chk-1801-01",
       "question": "What are the order and degree of the differential equation $\\left(\\frac{d^3y}{dx^3}\\right)^2 - 4x\\left(\\frac{d^2y}{dx^2}\\right)^5 + y = 0$?",
       "options": [
-        "Order 3, Degree 2",
-        "Order 3, Degree 5",
-        "Order 2, Degree 5",
-        "Order 5, Degree 3"
+        {
+          "text": "Order 3, Degree 2",
+          "isCorrect": true,
+          "distractorReason": "Correct: Order is the highest derivative present ($d^3y/dx^3 \\implies$ Order 3), and degree is the exponent of that highest derivative ($(\\dots)^2 \\implies$ Degree 2)."
+        },
+        {
+          "text": "Order 3, Degree 5",
+          "distractorReason": "Trap: Selected the highest exponent anywhere in the equation instead of the power of the highest-order derivative."
+        },
+        {
+          "text": "Order 2, Degree 5",
+          "distractorReason": "Trap: Confused the second-order derivative term with the overall equation order."
+        },
+        {
+          "text": "Order 5, Degree 3",
+          "distractorReason": "Trap: Inverted order and degree definitions."
+        }
       ],
-      "correctAnswer": 0,
+      "correctAnswer": "A",
       "explanation": "The highest derivative is d³y/dx³ (Order 3), and its power is 2 (Degree 2)."
     },
     {
       "id": "chk-1801-02",
       "question": "Which standard algebraic substitution transforms a homogeneous 1st-order differential equation $M(x, y)dx + N(x, y)dy = 0$ into a variable separable equation?",
       "options": [
-        "y = vx (with dy = v dx + x dv)",
-        "y = v + x",
-        "y = e^(vx)",
-        "y = v / x"
+        {
+          "text": "y = v + x",
+          "distractorReason": "Trap: Linear shift substitution used for linear non-homogeneous systems $(ax+by+c)dx + \\dots$."
+        },
+        {
+          "text": "y = vx (with dy = v dx + x dv)",
+          "isCorrect": true,
+          "distractorReason": "Correct: In any homogeneous 1st-order ODE where $M$ and $N$ have identical degree, the substitution $y = vx \\implies dy = v\\,dx + x\\,dv$ eliminates $y$ and produces a variable separable ODE in $x$ and $v$."
+        },
+        {
+          "text": "y = e^(vx)",
+          "distractorReason": "Trap: Exponential ansatz used for constant-coefficient higher-order ODEs."
+        },
+        {
+          "text": "y = v / x",
+          "distractorReason": "Trap: Incorrect reciprocal ratio."
+        }
       ],
-      "correctAnswer": 0,
+      "correctAnswer": "B",
       "explanation": "Substituting y = vx (dy = v dx + x dv) reduces any homogeneous equation into a separable equation in v and x."
     },
     {
       "id": "chk-1801-03",
       "question": "How many arbitrary constants of integration $C$ are present in the general solution of a 4th-order ordinary differential equation?",
       "options": [
-        "4 arbitrary constants",
-        "1 arbitrary constant",
-        "2 arbitrary constants",
-        "0 (No constants)"
+        {
+          "text": "1 arbitrary constant",
+          "distractorReason": "Trap: 1 constant corresponds to a 1st-order ODE."
+        },
+        {
+          "text": "2 arbitrary constants",
+          "distractorReason": "Trap: 2 constants correspond to a 2nd-order ODE."
+        },
+        {
+          "text": "4 arbitrary constants",
+          "isCorrect": true,
+          "distractorReason": "Correct: By the fundamental theorem of ODEs, the general solution of an $n$-th order ordinary differential equation contains exactly $n$ independent arbitrary constants. For a 4th-order ODE, there are exactly 4 constants."
+        },
+        {
+          "text": "0 (No constants)",
+          "distractorReason": "Trap: Zero constants represents a particular solution, not a general solution."
+        }
       ],
-      "correctAnswer": 0,
+      "correctAnswer": "C",
       "explanation": "The general solution of an n-th order ODE always contains exactly n independent arbitrary constants."
     }
   ]

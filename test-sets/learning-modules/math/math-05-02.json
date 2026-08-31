@@ -10,47 +10,47 @@
   "toc": [
     {
       "id": "sec-prereq-bridges",
-      "title": "1. Introduction & Cross-Subject Connections",
+      "title": "Introduction & Cross-Subject Connections",
       "level": 2
     },
     {
       "id": "sec-theory",
-      "title": "2. Lesson Proper: Angular Measurement Systems & Polygon Classes",
+      "title": "Lesson Proper: Angular Measurement Systems & Polygon Classes",
       "level": 2
     },
     {
       "id": "sec-formulas",
-      "title": "3. Compilation of Formulas & Conversion Invariants",
+      "title": "Compilation of Formulas & Conversion Invariants",
       "level": 2
     },
     {
       "id": "sec-visualizer",
-      "title": "4. Interactive Visualizer: Angular Units & Regular Polygon Explorer",
+      "title": "Interactive Visualizer: Angular Units & Regular Polygon Explorer",
       "level": 2
     },
     {
       "id": "sec-terminology",
-      "title": "5. Key Terms and Definitions",
+      "title": "Key Terms and Definitions",
       "level": 2
     },
     {
       "id": "sec-dual-method",
-      "title": "6. Worked Board Exam Problems",
+      "title": "Worked Board Exam Problems",
       "level": 2
     },
     {
       "id": "sec-calculator",
-      "title": "7. Calculator Speed Techniques (Karce & Canon)",
+      "title": "Calculator Speed Techniques (Karce & Canon)",
       "level": 2
     },
     {
       "id": "sec-concept-checks",
-      "title": "8. In-Line Concept Checks",
+      "title": "In-Line Concept Checks",
       "level": 2
     },
     {
       "id": "sec-mastery-challenge",
-      "title": "9. Paired Mastery Challenge Exam",
+      "title": "Paired Mastery Challenge Exam",
       "level": 2
     }
   ],
@@ -169,27 +169,21 @@
   ],
   "calculatorGuides": {
     "karce": {
-      "techniqueTitle": "Fast Angular Unit Conversion (DRG)",
-      "problemType": "Converting between Deg, Rad, and Grad",
-      "sampleProblem": "Convert 150 gons to degrees in DEG mode.",
-      "mode": "COMP Mode (MODE 1, Ensure DEG)",
+      "techniqueTitle": "Fast Angular Unit Conversion (DRG) & Mils Scaling",
+      "problemType": "Converting between Degrees, Radians, Gons/Grads, and Military Mils",
+      "sampleProblem": "Convert 150 grads/gons directly to degrees via DRG menu, and convert 2400 mils to degrees via scaling (2400 · 360 / 6400).",
+      "mode": "COMP Mode (MODE 1, Ensure DEG Mode)",
+      "whyItWorks": "The DRG conversion command tags an input with its original unit (e.g. 150 Grads) and converts it to the active screen angular mode (DEG: 135°) in 1 step. Military mils scale via θ = Mils · (360° / 6400) = 135°.",
       "keystrokes": [
+        "MODE",
+        "1",
         "1",
         "5",
         "0",
         "SHIFT",
         "DRG►",
         "3",
-        "="
-      ],
-      "notes": "Directly converts 150g to 135° in 1 second."
-    },
-    "canon": {
-      "techniqueTitle": "Mils to Degrees Scale Shortcut",
-      "problemType": "Evaluating (mils / 6400) * 360",
-      "sampleProblem": "Convert 2400 mils to degrees on Canon F-789SGA.",
-      "mode": "COMP Mode (MODE 1)",
-      "keystrokes": [
+        "=",
         "2",
         "4",
         "0",
@@ -205,7 +199,41 @@
         "0",
         "="
       ],
-      "notes": "Directly yields 135°."
+      "notes": "💡 Keystroke Rules:\n1. Gons to Deg: 150 SHIFT DRG► 3 = 135°.\n2. Mils to Deg: 2400 × 360 ÷ 6400 = 135°.",
+      "searchAdvisory": "Search 'Karce KC-S991 angular unit conversion DRG menu and mils formula' for video tutorials."
+    },
+    "canon": {
+      "techniqueTitle": "Fast Angular Unit Conversion (DRG) & Mils Scaling",
+      "problemType": "Converting between Degrees, Radians, Gons/Grads, and Military Mils",
+      "sampleProblem": "Convert 150 grads/gons directly to degrees via DRG menu, and convert 2400 mils to degrees via scaling (2400 · 360 / 6400).",
+      "mode": "COMP Mode (MODE 1, Ensure DEG Mode)",
+      "whyItWorks": "The DRG conversion command tags an input with its original unit (e.g. 150 Grads) and converts it to the active screen angular mode (DEG: 135°) in 1 step. Military mils scale via θ = Mils · (360° / 6400) = 135°.",
+      "keystrokes": [
+        "MODE",
+        "1",
+        "1",
+        "5",
+        "0",
+        "DRG►",
+        "3",
+        "=",
+        "2",
+        "4",
+        "0",
+        "0",
+        "×",
+        "3",
+        "6",
+        "0",
+        "÷",
+        "6",
+        "4",
+        "0",
+        "0",
+        "="
+      ],
+      "notes": "💡 Keystroke Rules:\n1. Gons to Deg: 150 DRG► 3 = 135°.\n2. Mils to Deg: 2400 × 360 ÷ 6400 = 135°.",
+      "searchAdvisory": "Search 'Canon F-789SGA DRG conversion key and artillery mils conversion shortcuts' for video breakdowns."
     }
   },
   "conceptChecks": [
@@ -213,36 +241,75 @@
       "id": "chk-1002-01",
       "question": "How many angular mils are there in one complete revolution ($360^\\circ$)?",
       "options": [
-        "6,400 mils",
-        "400 mils",
-        "1,600 mils",
-        "3,200 mils"
+        {
+          "text": "6,400 mils",
+          "isCorrect": true,
+          "distractorReason": "Correct: By international military convention (NATO standard), one complete revolution of 360° is divided into exactly 6,400 angular mils."
+        },
+        {
+          "text": "400 mils",
+          "distractorReason": "Trap: 400 is the number of grads/gons in a complete revolution, not mils."
+        },
+        {
+          "text": "1,600 mils",
+          "distractorReason": "Trap: 1,600 mils represents one quadrant (90°)."
+        },
+        {
+          "text": "3,200 mils",
+          "distractorReason": "Trap: 3,200 mils represents a straight angle (180°)."
+        }
       ],
-      "correctAnswer": 0,
+      "correctAnswer": "A",
       "explanation": "By international military convention, one full 360-degree circle is divided into exactly 6,400 mils."
     },
     {
       "id": "chk-1002-02",
       "question": "What is the measure of each interior angle in a regular nonagon (9-sided polygon)?",
       "options": [
-        "140°",
-        "135°",
-        "120°",
-        "144°"
+        {
+          "text": "135°",
+          "distractorReason": "Trap: 135° is the interior angle of a regular octagon (8-sided polygon)."
+        },
+        {
+          "text": "140°",
+          "isCorrect": true,
+          "distractorReason": "Correct: Interior angle = (n - 2) × 180° / n = (9 - 2) × 180° / 9 = 7 × 20° = 140°."
+        },
+        {
+          "text": "120°",
+          "distractorReason": "Trap: 120° is the interior angle of a regular hexagon (6-sided polygon)."
+        },
+        {
+          "text": "144°",
+          "distractorReason": "Trap: 144° is the interior angle of a regular decagon (10-sided polygon)."
+        }
       ],
-      "correctAnswer": 0,
+      "correctAnswer": "B",
       "explanation": "Interior angle = (9 - 2) × 180° / 9 = 7 × 20° = 140°."
     },
     {
       "id": "chk-1002-03",
       "question": "Which of the following describes a Concave Polygon?",
       "options": [
-        "A polygon with at least one interior angle greater than 180° (a reflex angle)",
-        "A polygon where all interior angles are strictly less than 180°",
-        "A polygon with all sides and angles equal",
-        "A polygon inscribed in a circle"
+        {
+          "text": "A polygon where all interior angles are strictly less than 180°",
+          "distractorReason": "Trap: This defines a Convex Polygon."
+        },
+        {
+          "text": "A polygon with all sides and angles equal",
+          "distractorReason": "Trap: This defines a Regular Polygon."
+        },
+        {
+          "text": "A polygon with at least one interior angle greater than 180° (a reflex angle)",
+          "isCorrect": true,
+          "distractorReason": "Correct: A concave polygon has at least one indented vertex where the interior angle exceeds 180° (a reflex angle), causing some interior lines to pass outside the polygon."
+        },
+        {
+          "text": "A polygon inscribed inside a circle",
+          "distractorReason": "Trap: This defines a Cyclic Polygon."
+        }
       ],
-      "correctAnswer": 0,
+      "correctAnswer": "C",
       "explanation": "A concave polygon has an indented vertex where the interior angle exceeds 180° (reflex angle)."
     }
   ]

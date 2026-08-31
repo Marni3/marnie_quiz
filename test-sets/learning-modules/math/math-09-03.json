@@ -10,47 +10,47 @@
   "toc": [
     {
       "id": "sec-prereq-bridges",
-      "title": "1. Introduction & Cross-Subject Connections",
+      "title": "Introduction & Cross-Subject Connections",
       "level": 2
     },
     {
       "id": "sec-theory",
-      "title": "2. Lesson Proper: Disk/Shell Volumes, Work, Hooke's Law & Inertia",
+      "title": "Lesson Proper: Disk/Shell Volumes, Work, Hooke's Law & Inertia",
       "level": 2
     },
     {
       "id": "sec-formulas",
-      "title": "3. Master Compilation of Physical Integration Formulas",
+      "title": "Master Compilation of Physical Integration Formulas",
       "level": 2
     },
     {
       "id": "sec-visualizer",
-      "title": "4. Interactive Visualizer: Cylindrical Shell & Washer Volume Simulator",
+      "title": "Interactive Visualizer: Cylindrical Shell & Washer Volume Simulator",
       "level": 2
     },
     {
       "id": "sec-terminology",
-      "title": "5. Key Terms and Definitions",
+      "title": "Key Terms and Definitions",
       "level": 2
     },
     {
       "id": "sec-dual-method",
-      "title": "6. Worked Board Exam Problems",
+      "title": "Worked Board Exam Problems",
       "level": 2
     },
     {
       "id": "sec-calculator",
-      "title": "7. Calculator Speed Techniques (Karce & Canon)",
+      "title": "Calculator Speed Techniques (Karce & Canon)",
       "level": 2
     },
     {
       "id": "sec-concept-checks",
-      "title": "8. In-Line Concept Checks",
+      "title": "In-Line Concept Checks",
       "level": 2
     },
     {
       "id": "sec-mastery-challenge",
-      "title": "9. Paired Mastery Challenge Exam",
+      "title": "Paired Mastery Challenge Exam",
       "level": 2
     }
   ],
@@ -186,11 +186,14 @@
   ],
   "calculatorGuides": {
     "karce": {
-      "techniqueTitle": "Fast Cylindrical Shell Evaluation",
-      "problemType": "Evaluating 2*π * ∫[0, 2] x*x² dx",
-      "sampleProblem": "Find shell volume for y=x² about y-axis.",
+      "techniqueTitle": "Fast Cylindrical Shell & Hooke's Law Spring Work Integration",
+      "problemType": "Evaluating Shell Volume 2π ∫[a,b] x·f(x) dx and Spring Work 0.5·k·(x2² - x1²)",
+      "sampleProblem": "Evaluate cylindrical shell volume of revolution V = 2π ∫(0 to 2) x·x² dx = 8π ≈ 25.13274 for y=x² about the y-axis, and evaluate Hooke's law spring work W = 0.5·k·(x2² - x1²) for k=400 N/m stretched from 0.1 m to 0.3 m.",
       "mode": "COMP Mode (MODE 1)",
+      "whyItWorks": "Shell volume integral V = 2π ∫_0^2 x³ dx = 2π [x⁴/4]_0^2 = 8π ≈ 25.13274 evaluates in 1 step via ∫dx. Spring work evaluates directly as W = 1/2 (400)(0.3² - 0.1²) = 200(0.08) = 16 Joules in COMP mode.",
       "keystrokes": [
+        "MODE",
+        "1",
         "2",
         "×",
         "SHIFT",
@@ -205,16 +208,7 @@
         ",",
         "2",
         ")",
-        "="
-      ],
-      "notes": "Directly evaluates 25.13274 (8π) in 1 second."
-    },
-    "canon": {
-      "techniqueTitle": "Spring Work Calculator Shortcut",
-      "problemType": "0.5 * k * (x2² - x1²) on Canon F-789SGA",
-      "sampleProblem": "Evaluate 0.5 * 400 * (0.09 - 0.01).",
-      "mode": "COMP Mode (MODE 1)",
-      "keystrokes": [
+        "=",
         "0",
         ".",
         "5",
@@ -226,17 +220,66 @@
         "(",
         "0",
         ".",
-        "0",
-        "9",
+        "3",
+        "x²",
         "-",
         "0",
         ".",
-        "0",
         "1",
+        "x²",
         ")",
         "="
       ],
-      "notes": "Directly displays 16 Joules."
+      "notes": "💡 Keystroke Rules:\n1. Shell Volume: 2π × ∫(X³, 0, 2) = 25.13274 = 8π.\n2. Spring Work: 0.5 × 400 × (0.3² - 0.1²) = 16 J.",
+      "searchAdvisory": "Search 'Karce KC-S991 cylindrical shell volume and spring work integration' for video guides."
+    },
+    "canon": {
+      "techniqueTitle": "Fast Cylindrical Shell & Hooke's Law Spring Work Integration",
+      "problemType": "Evaluating Shell Volume 2π ∫[a,b] x·f(x) dx and Spring Work 0.5·k·(x2² - x1²)",
+      "sampleProblem": "Evaluate cylindrical shell volume of revolution V = 2π ∫(0 to 2) x·x² dx = 8π ≈ 25.13274 for y=x² about the y-axis, and evaluate Hooke's law spring work W = 0.5·k·(x2² - x1²) for k=400 N/m stretched from 0.1 m to 0.3 m.",
+      "mode": "COMP Mode (MODE 1)",
+      "whyItWorks": "Shell volume integral V = 2π ∫_0^2 x³ dx = 2π [x⁴/4]_0^2 = 8π ≈ 25.13274 evaluates in 1 step via ∫dx. Spring work evaluates directly as W = 1/2 (400)(0.3² - 0.1²) = 200(0.08) = 16 Joules in COMP mode.",
+      "keystrokes": [
+        "MODE",
+        "1",
+        "2",
+        "×",
+        "SHIFT",
+        "π",
+        "×",
+        "∫dx",
+        "ALPHA",
+        "X",
+        "x³",
+        ",",
+        "0",
+        ",",
+        "2",
+        ")",
+        "=",
+        "0",
+        ".",
+        "5",
+        "×",
+        "4",
+        "0",
+        "0",
+        "×",
+        "(",
+        "0",
+        ".",
+        "3",
+        "x²",
+        "-",
+        "0",
+        ".",
+        "1",
+        "x²",
+        ")",
+        "="
+      ],
+      "notes": "💡 Keystroke Rules:\n1. Shell Volume: 2π × ∫(X³, 0, 2) = 25.13274 = 8π.\n2. Spring Work: 0.5 × 400 × (0.3² - 0.1²) = 16 J.",
+      "searchAdvisory": "Search 'Canon F-789SGA cylindrical shells volume of revolution and Hookes law work' for video breakdowns."
     }
   },
   "conceptChecks": [
@@ -244,36 +287,75 @@
       "id": "chk-1603-01",
       "question": "What is the formula for the volume of revolution using the Cylindrical Shell method when revolving about the $y$-axis with vertical strips?",
       "options": [
-        "V = 2π ∫ x [y_top - y_bot] dx",
-        "V = π ∫ y² dx",
-        "V = 2π ∫ y [x_right - x_left] dy",
-        "V = π ∫ (R² - r²) dy"
+        {
+          "text": "V = 2π ∫ x [y_top - y_bot] dx",
+          "isCorrect": true,
+          "distractorReason": "Correct: The cylindrical shell method about the y-axis integrates concentric thin cylinders with circumference $2\\pi x$, height $(y_{\\text{top}} - y_{\\text{bot}})$, and thickness $dx$: $V = 2\\pi \\int x (y_{\\text{top}} - y_{\\text{bot}})\\,dx$."
+        },
+        {
+          "text": "V = π ∫ y² dx",
+          "distractorReason": "Trap: Circular disk formula for revolution about the x-axis."
+        },
+        {
+          "text": "V = 2π ∫ y [x_right - x_left] dy",
+          "distractorReason": "Trap: Cylindrical shell formula for revolution about the x-axis, not the y-axis."
+        },
+        {
+          "text": "V = π ∫ (R² - r²) dy",
+          "distractorReason": "Trap: Circular washer formula for revolution about the y-axis."
+        }
       ],
-      "correctAnswer": 0,
+      "correctAnswer": "A",
       "explanation": "Cylindrical shell method about y-axis integrates circumference 2πx times height y times thickness dx."
     },
     {
       "id": "chk-1603-02",
       "question": "How much work is done winding up a 20-meter cable weighing 5 N/m hanging vertically down a shaft?",
       "options": [
-        "1,000 Joules (1/2 w L²)",
-        "2,000 Joules",
-        "500 Joules",
-        "100 Joules"
+        {
+          "text": "2,000 Joules",
+          "distractorReason": "Trap: Calculated $w L^2$ without the factor of 1/2."
+        },
+        {
+          "text": "1,000 Joules (1/2 w L²)",
+          "isCorrect": true,
+          "distractorReason": "Correct: Total work done lifting a uniform hanging cable is $W = \\int_0^L w x\\,dx = \\frac{1}{2} w L^2 = \\frac{1}{2}(5)(20^2) = \\frac{1}{2}(5)(400) = 1,000\\text{ Joules}$."
+        },
+        {
+          "text": "500 Joules",
+          "distractorReason": "Trap: Calculated $\\frac{1}{4} w L^2$."
+        },
+        {
+          "text": "100 Joules",
+          "distractorReason": "Trap: Multiplied weight density by length ($w L = 100$ N, which is total cable weight, not work)."
+        }
       ],
-      "correctAnswer": 0,
+      "correctAnswer": "B",
       "explanation": "W = (1/2) w L² = (1/2)(5)(20²) = (1/2)(5)(400) = 1,000 J."
     },
     {
       "id": "chk-1603-03",
       "question": "What is the moment of inertia $I_x$ of a planar area $A$ with respect to the $x$-axis defined as?",
       "options": [
-        "I_x = ∫ y² dA",
-        "I_x = ∫ x² dA",
-        "I_x = ∫ x y dA",
-        "I_x = ∫ y dA"
+        {
+          "text": "I_x = ∫ x² dA",
+          "distractorReason": "Trap: $\\int x^2 dA$ is $I_y$ (moment of inertia with respect to the y-axis)."
+        },
+        {
+          "text": "I_x = ∫ x y dA",
+          "distractorReason": "Trap: $\\int x y dA$ is the product of inertia $I_{xy}$."
+        },
+        {
+          "text": "I_x = ∫ y² dA",
+          "isCorrect": true,
+          "distractorReason": "Correct: The second moment of area (moment of inertia) with respect to the x-axis is defined as the integral of the squared perpendicular distance from the x-axis ($y$) over the differential area: $I_x = \\int y^2 dA$."
+        },
+        {
+          "text": "I_x = ∫ y dA",
+          "distractorReason": "Trap: $\\int y dA$ is the first moment of area $Q_x$, used for finding centroids."
+        }
       ],
-      "correctAnswer": 0,
+      "correctAnswer": "C",
       "explanation": "The moment of inertia with respect to the x-axis is the integral of the square of the distance from the x-axis (y) times dA: I_x = ∫ y² dA."
     }
   ]

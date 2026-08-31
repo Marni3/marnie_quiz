@@ -10,47 +10,47 @@
   "toc": [
     {
       "id": "sec-prereq-bridges",
-      "title": "1. Introduction & Cross-Subject Connections",
+      "title": "Introduction & Cross-Subject Connections",
       "level": 2
     },
     {
       "id": "sec-theory",
-      "title": "2. Lesson Proper: Higher-Order Determinants, Sarrus & Laplace Transform Foundations",
+      "title": "Lesson Proper: Higher-Order Determinants, Sarrus & Laplace Transform Foundations",
       "level": 2
     },
     {
       "id": "sec-formulas",
-      "title": "3. Master Compilation of Laplace Transform Elementary Pairs",
+      "title": "Master Compilation of Laplace Transform Elementary Pairs",
       "level": 2
     },
     {
       "id": "sec-visualizer",
-      "title": "4. Interactive Visualizer: Laplace Transform & s-Domain Pole Mapper",
+      "title": "Interactive Visualizer: Laplace Transform & s-Domain Pole Mapper",
       "level": 2
     },
     {
       "id": "sec-terminology",
-      "title": "5. Key Terms and Definitions",
+      "title": "Key Terms and Definitions",
       "level": 2
     },
     {
       "id": "sec-dual-method",
-      "title": "6. Worked Board Exam Problems",
+      "title": "Worked Board Exam Problems",
       "level": 2
     },
     {
       "id": "sec-calculator",
-      "title": "7. Calculator Speed Techniques (Karce & Canon)",
+      "title": "Calculator Speed Techniques (Karce & Canon)",
       "level": 2
     },
     {
       "id": "sec-concept-checks",
-      "title": "8. In-Line Concept Checks",
+      "title": "In-Line Concept Checks",
       "level": 2
     },
     {
       "id": "sec-mastery-challenge",
-      "title": "9. Paired Mastery Challenge Exam",
+      "title": "Paired Mastery Challenge Exam",
       "level": 2
     }
   ],
@@ -170,30 +170,108 @@
   ],
   "calculatorGuides": {
     "karce": {
-      "techniqueTitle": "Fast Factorial and Exponent Evaluation",
-      "problemType": "Evaluating n! / (s - a)^(n+1)",
-      "sampleProblem": "Find numerator for t^4.",
-      "mode": "COMP Mode (MODE 1)",
+      "techniqueTitle": "Fast Laplace Factorial & 3x3 Sarrus Determinant Evaluation",
+      "problemType": "Evaluating Factorials n! for L{tⁿ} and 3x3 Determinants in MATRIX Mode",
+      "sampleProblem": "Evaluate the Laplace transform numerator n! for f(t) = t^4 (n=4! = 24), and evaluate 3x3 Sarrus determinant for Matrix A = [[-2, -5, 7], [5, 0, -5], [3, 11, -6]] in MATRIX mode (det = 200).",
+      "mode": "COMP Mode (MODE 1) & MATRIX Mode (MODE 6)",
+      "whyItWorks": "The Laplace transform of t^n is n!/s^(n+1), where n! = 4! = 24 is calculated directly via factorial x!. For 3x3 systems, MATRIX mode evaluates det(MatA) = 200 instantaneously without manual forward/backward Sarrus diagonals.",
       "keystrokes": [
+        "MODE",
+        "1",
         "4",
         "x!",
-        "="
-      ],
-      "notes": "Directly yields 24 in 1 second."
-    },
-    "canon": {
-      "techniqueTitle": "3x3 Sarrus Matrix Determinant on Canon F-789SGA",
-      "problemType": "Evaluating 3x3 matrix determinant",
-      "sampleProblem": "Find det of [[-2,-5,7],[5,0,-5],[3,11,-6]].",
-      "mode": "MATRIX Mode (MODE 6)",
-      "keystrokes": [
-        "det",
-        "(",
-        "MatA",
+        "=",
+        "MODE",
+        "6",
+        "1",
+        "1",
+        "-",
+        "2",
+        "=",
+        "-",
+        "5",
+        "=",
+        "7",
+        "=",
+        "5",
+        "=",
+        "0",
+        "=",
+        "-",
+        "5",
+        "=",
+        "3",
+        "=",
+        "1",
+        "1",
+        "=",
+        "-",
+        "6",
+        "=",
+        "AC",
+        "SHIFT",
+        "MATRIX",
+        "7",
+        "SHIFT",
+        "MATRIX",
+        "3",
         ")",
         "="
       ],
-      "notes": "Directly yields 200."
+      "notes": "💡 Keystroke Rules:\n1. Factorial: 4! = 24.\n2. Sarrus Determinant: det(MatA) = 200.",
+      "searchAdvisory": "Search 'Karce KC-S991 Laplace transform factorials and matrix determinant calculation' for video tutorials."
+    },
+    "canon": {
+      "techniqueTitle": "Fast Laplace Factorial & 3x3 Sarrus Determinant Evaluation",
+      "problemType": "Evaluating Factorials n! for L{tⁿ} and 3x3 Determinants in MATRIX Mode",
+      "sampleProblem": "Evaluate the Laplace transform numerator n! for f(t) = t^4 (n=4! = 24), and evaluate 3x3 Sarrus determinant for Matrix A = [[-2, -5, 7], [5, 0, -5], [3, 11, -6]] in MATRIX mode (det = 200).",
+      "mode": "COMP Mode (MODE 1) & MATRIX Mode (MODE 6)",
+      "whyItWorks": "The Laplace transform of t^n is n!/s^(n+1), where n! = 4! = 24 is calculated directly via factorial x!. For 3x3 systems, MATRIX mode evaluates det(MatA) = 200 instantaneously without manual forward/backward Sarrus diagonals.",
+      "keystrokes": [
+        "MODE",
+        "1",
+        "4",
+        "x!",
+        "=",
+        "MODE",
+        "6",
+        "1",
+        "1",
+        "-",
+        "2",
+        "=",
+        "-",
+        "5",
+        "=",
+        "7",
+        "=",
+        "5",
+        "=",
+        "0",
+        "=",
+        "-",
+        "5",
+        "=",
+        "3",
+        "=",
+        "1",
+        "1",
+        "=",
+        "-",
+        "6",
+        "=",
+        "AC",
+        "SHIFT",
+        "MATRIX",
+        "7",
+        "SHIFT",
+        "MATRIX",
+        "3",
+        ")",
+        "="
+      ],
+      "notes": "💡 Keystroke Rules:\n1. Factorial: 4! = 24.\n2. Sarrus Determinant: det(MatA) = 200.",
+      "searchAdvisory": "Search 'Canon F-789SGA Laplace factorial key and 3x3 matrix determinant' for video breakdowns."
     }
   },
   "conceptChecks": [
@@ -201,36 +279,75 @@
       "id": "chk-2201-01",
       "question": "What is the Laplace transform of $f(t) = e^{-3t}$?",
       "options": [
-        "1 / (s + 3)",
-        "1 / (s - 3)",
-        "-3 / s",
-        "1 / (s² + 9)"
+        {
+          "text": "1 / (s + 3)",
+          "isCorrect": true,
+          "distractorReason": "Correct: By the elementary transform definition $\\mathcal{L}\\{e^{-at}\\} = \\int_0^\\infty e^{-at} e^{-st}\\,dt = \\frac{1}{s + a}$. Substituting $a = 3$ gives $\\frac{1}{s + 3}$."
+        },
+        {
+          "text": "1 / (s - 3)",
+          "distractorReason": "Trap: $\\frac{1}{s - 3}$ is the Laplace transform of $e^{+3t}$, not $e^{-3t}$."
+        },
+        {
+          "text": "-3 / s",
+          "distractorReason": "Trap: Mistook the transform for a scaled constant derivative."
+        },
+        {
+          "text": "1 / (s² + 9)",
+          "distractorReason": "Trap: Quadratic denominator corresponds to sinusoidal functions like $\\frac{1}{3}\\sin(3t)$."
+        }
       ],
-      "correctAnswer": 0,
+      "correctAnswer": "A",
       "explanation": "By the elementary pair L{e^(-at)} = 1 / (s + a), for a = 3: L{e^(-3t)} = 1 / (s + 3)."
     },
     {
       "id": "chk-2201-02",
       "question": "According to the First Shifting Theorem, if $\\mathcal{L}\\{f(t)\\} = F(s)$, what is $\\mathcal{L}\\{e^{at} f(t)\\}$?",
       "options": [
-        "F(s - a)",
-        "F(s + a)",
-        "e^(as) F(s)",
-        "F(s) / (s - a)"
+        {
+          "text": "F(s + a)",
+          "distractorReason": "Trap: $F(s + a)$ corresponds to multiplication by $e^{-at}$ (frequency shift to the left)."
+        },
+        {
+          "text": "F(s - a)",
+          "isCorrect": true,
+          "distractorReason": "Correct: By the First Shifting (Frequency Translation) Theorem, multiplying a time function by $e^{at}$ shifts its $s$-domain transform rightwards: $\\mathcal{L}\\{e^{at} f(t)\\} = \\int_0^\\infty f(t) e^{-(s-a)t}\\,dt = F(s - a)$."
+        },
+        {
+          "text": "e^(as) F(s)",
+          "distractorReason": "Trap: $e^{-as} F(s)$ represents the Second Shifting (Time Delay) Theorem $\\mathcal{L}\\{f(t-a)u(t-a)\\}$."
+        },
+        {
+          "text": "F(s) / (s - a)",
+          "distractorReason": "Trap: Division by $(s-a)$ is not a valid shifting property."
+        }
       ],
-      "correctAnswer": 0,
+      "correctAnswer": "B",
       "explanation": "Multiplying by e^(at) translates the Laplace transform in the s-domain: L{e^(at) f(t)} = F(s - a)."
     },
     {
       "id": "chk-2201-03",
       "question": "What is the Laplace transform of the parabolic time function $f(t) = t^2$?",
       "options": [
-        "2 / s³",
-        "1 / s³",
-        "2 / s²",
-        "6 / s⁴"
+        {
+          "text": "1 / s³",
+          "distractorReason": "Trap: Forgot the $n! = 2! = 2$ numerator coefficient."
+        },
+        {
+          "text": "2 / s²",
+          "distractorReason": "Trap: Denominator power should be $n+1 = 3$, not $n = 2$."
+        },
+        {
+          "text": "2 / s³",
+          "isCorrect": true,
+          "distractorReason": "Correct: For any integer power $n \\ge 0$, $\\mathcal{L}\\{t^n\\} = \\frac{n!}{s^{n+1}}$. For $n = 2$, $\\mathcal{L}\\{t^2\\} = \\frac{2!}{s^{2+1}} = \\frac{2}{s^3}$."
+        },
+        {
+          "text": "6 / s⁴",
+          "distractorReason": "Trap: $\\frac{6}{s^4} = \\frac{3!}{s^4} = \\mathcal{L}\\{t^3\\}$."
+        }
       ],
-      "correctAnswer": 0,
+      "correctAnswer": "C",
       "explanation": "L{t²} = 2! / s^(2+1) = 2 / s³."
     }
   ]

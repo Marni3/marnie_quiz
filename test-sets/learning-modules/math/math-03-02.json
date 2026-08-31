@@ -10,47 +10,47 @@
   "toc": [
     {
       "id": "sec-prereq-bridges",
-      "title": "1. Introduction & Cross-Subject Connections",
+      "title": "Introduction & Cross-Subject Connections",
       "level": 2
     },
     {
       "id": "sec-theory",
-      "title": "2. Lesson Proper: Event Classification & Binomial Trials",
+      "title": "Lesson Proper: Event Classification & Binomial Trials",
       "level": 2
     },
     {
       "id": "sec-formulas",
-      "title": "3. Compilation of Formulas & Odds Relations",
+      "title": "Compilation of Formulas & Odds Relations",
       "level": 2
     },
     {
       "id": "sec-visualizer",
-      "title": "4. Interactive Visualizer: Binomial Distribution PMF",
+      "title": "Interactive Visualizer: Binomial Distribution PMF",
       "level": 2
     },
     {
       "id": "sec-terminology",
-      "title": "5. Key Terms and Definitions",
+      "title": "Key Terms and Definitions",
       "level": 2
     },
     {
       "id": "sec-dual-method",
-      "title": "6. Worked Board Exam Problems",
+      "title": "Worked Board Exam Problems",
       "level": 2
     },
     {
       "id": "sec-calculator",
-      "title": "7. Calculator Speed Techniques (Karce & Canon)",
+      "title": "Calculator Speed Techniques (Karce & Canon)",
       "level": 2
     },
     {
       "id": "sec-concept-checks",
-      "title": "8. In-Line Concept Checks",
+      "title": "In-Line Concept Checks",
       "level": 2
     },
     {
       "id": "sec-mastery-challenge",
-      "title": "9. Paired Mastery Challenge Exam",
+      "title": "Paired Mastery Challenge Exam",
       "level": 2
     }
   ],
@@ -177,11 +177,14 @@
   ],
   "calculatorGuides": {
     "karce": {
-      "techniqueTitle": "Binomial Probability Evaluation",
-      "problemType": "Evaluating nCr * p^r * (1-p)^(n-r)",
-      "sampleProblem": "Evaluate 6C4 * (0.5)^6 in COMP mode.",
+      "techniqueTitle": "Binomial Point PMF & Cumulative Sigma (Σ) Summation",
+      "problemType": "Evaluating Binomial Probability P(X = r) and Cumulative Range P(X ≥ r)",
+      "sampleProblem": "Evaluate Binomial PMF P(X = 4) = 6C4 * (0.5)^6, and find cumulative probability P(X ≥ 4) for n=6, p=0.5 via Σ summation.",
       "mode": "COMP Mode (MODE 1)",
+      "whyItWorks": "The Binomial PMF formula nCr · p^k · (1-p)^(n-k) evaluates single-outcome probabilities in COMP mode. For cumulative sums P(X ≥ k), the sigma function SHIFT + Σ sums the PMF across the discrete integer range [k, n] in 2 seconds.",
       "keystrokes": [
+        "MODE",
+        "1",
         "6",
         "SHIFT",
         "nCr",
@@ -194,26 +197,20 @@
         ")",
         "^",
         "6",
-        "="
-      ],
-      "notes": "Directly yields 15/64 (0.234375) in 1 second."
-    },
-    "canon": {
-      "techniqueTitle": "Direct Binomial Summation Shortcut",
-      "problemType": "Finding cumulative binomial probability P(X ≥ r)",
-      "sampleProblem": "Find P(X ≥ 4) for n=6, p=0.5 on Canon F-789SGA.",
-      "mode": "COMP Mode (MODE 1)",
-      "keystrokes": [
+        "=",
         "SHIFT",
         "Σ",
         "6",
+        "SHIFT",
         "nCr",
         "ALPHA",
         "X",
         "×",
+        "(",
         "0",
         ".",
         "5",
+        ")",
         "^",
         "6",
         ",",
@@ -223,7 +220,52 @@
         ")",
         "="
       ],
-      "notes": "Directly computes cumulative probability 11/32 in 2 seconds."
+      "notes": "💡 Keystroke Rules:\n1. Point PMF: 6 SHIFT nCr 4 × (0.5)^6 = 15/64 (0.234375).\n2. Cumulative Sum: Press SHIFT + Σ, input 6nCrX × (0.5)^6, range [4, 6], press = to get 11/32 (0.34375).",
+      "searchAdvisory": "Search 'Karce KC-S991 binomial distribution sigma summation cumulative probability' for video guides."
+    },
+    "canon": {
+      "techniqueTitle": "Binomial Point PMF & Cumulative Sigma (Σ) Summation",
+      "problemType": "Evaluating Binomial Probability P(X = r) and Cumulative Range P(X ≥ r)",
+      "sampleProblem": "Evaluate Binomial PMF P(X = 4) = 6C4 * (0.5)^6, and find cumulative probability P(X ≥ 4) for n=6, p=0.5 via Σ summation.",
+      "mode": "COMP Mode (MODE 1)",
+      "whyItWorks": "The Binomial PMF formula nCr · p^k · (1-p)^(n-k) evaluates single-outcome probabilities in COMP mode. For cumulative sums P(X ≥ k), the sigma function SHIFT + Σ sums the PMF across the discrete integer range [k, n] in 2 seconds.",
+      "keystrokes": [
+        "MODE",
+        "1",
+        "6",
+        "nCr",
+        "4",
+        "×",
+        "(",
+        "0",
+        ".",
+        "5",
+        ")",
+        "^",
+        "6",
+        "=",
+        "SHIFT",
+        "Σ",
+        "6",
+        "nCr",
+        "ALPHA",
+        "X",
+        "×",
+        "(",
+        "0",
+        ".",
+        "5",
+        ")",
+        "^",
+        "6",
+        "►",
+        "4",
+        "►",
+        "6",
+        "="
+      ],
+      "notes": "💡 Keystroke Rules:\n1. Point PMF: 6 nCr 4 × (0.5)^6 = 15/64 (0.234375).\n2. Cumulative Sum: Press SHIFT + Σ, input 6nCrX × (0.5)^6, lower limit 4, upper limit 6, press = to get 11/32 (0.34375).",
+      "searchAdvisory": "Search 'Canon F-789SGA binomial probability distribution and sigma notation cumulative tricks' for video breakdowns."
     }
   },
   "conceptChecks": [
@@ -231,36 +273,75 @@
       "id": "chk-0602-01",
       "question": "If the odds in favor of an event are 3-to-5, what is the exact probability that the event occurs?",
       "options": [
-        "3/8 (37.5%)",
-        "3/5 (60%)",
-        "5/8 (62.5%)",
-        "2/5 (40%)"
+        {
+          "text": "3/8 (37.5%)",
+          "isCorrect": true,
+          "distractorReason": "Correct: If odds in favor are a : b, then probability P(E) = a / (a + b) = 3 / (3 + 5) = 3/8 = 37.5%."
+        },
+        {
+          "text": "3/5 (60.0%)",
+          "distractorReason": "Trap: Dividing favorable odds directly by unfavorable odds (a/b) instead of total outcomes (a/(a+b))."
+        },
+        {
+          "text": "5/8 (62.5%)",
+          "distractorReason": "Trap: 5/8 is the probability of the event failing (odds against: b / (a + b))."
+        },
+        {
+          "text": "2/5 (40.0%)",
+          "distractorReason": "Trap: Subtracting odds values (5 - 3)/5."
+        }
       ],
-      "correctAnswer": 0,
+      "correctAnswer": "A",
       "explanation": "If odds in favor are a : b, then P(E) = a / (a + b) = 3 / (3 + 5) = 3/8 = 37.5%."
     },
     {
       "id": "chk-0602-02",
-      "question": "For a Binomial distribution with $n = 100$ independent trials and $p = 0.2$, what is the variance $\\sigma^2$?",
+      "question": "For a Binomial distribution with $n = 100$ independent trials and success probability $p = 0.2$, what is the variance $\\sigma^2$?",
       "options": [
-        "16",
-        "20",
-        "4",
-        "80"
+        {
+          "text": "20",
+          "distractorReason": "Trap: 20 is the expected mean value μ = np = 100(0.2) = 20."
+        },
+        {
+          "text": "16",
+          "isCorrect": true,
+          "distractorReason": "Correct: Binomial variance is σ² = np(1 - p) = 100(0.2)(0.8) = 16 (standard deviation σ = 4)."
+        },
+        {
+          "text": "4",
+          "distractorReason": "Trap: 4 is the standard deviation σ = √16 = 4, not the variance σ²."
+        },
+        {
+          "text": "80",
+          "distractorReason": "Trap: 80 is n(1 - p) = 100(0.8)."
+        }
       ],
-      "correctAnswer": 0,
+      "correctAnswer": "B",
       "explanation": "Variance formula for Binomial distribution: σ² = np(1 - p) = 100(0.2)(0.8) = 16."
     },
     {
       "id": "chk-0602-03",
       "question": "If events $A$ and $B$ are independent with $P(A) = 0.4$ and $P(B) = 0.5$, what is $P(A \\cup B)$?",
       "options": [
-        "0.70",
-        "0.90",
-        "0.20",
-        "0.60"
+        {
+          "text": "0.90",
+          "distractorReason": "Trap: Simply adding P(A) + P(B) without subtracting the intersection P(A ∩ B) (valid only for mutually exclusive events)."
+        },
+        {
+          "text": "0.20",
+          "distractorReason": "Trap: 0.20 is the intersection probability P(A ∩ B) = 0.4 × 0.5 = 0.20."
+        },
+        {
+          "text": "0.70",
+          "isCorrect": true,
+          "distractorReason": "Correct: Since independent, P(A ∩ B) = 0.4 × 0.5 = 0.20. Then P(A ∪ B) = P(A) + P(B) - P(A ∩ B) = 0.4 + 0.5 - 0.20 = 0.70."
+        },
+        {
+          "text": "0.60",
+          "distractorReason": "Trap: Arithmetic subtraction error."
+        }
       ],
-      "correctAnswer": 0,
+      "correctAnswer": "C",
       "explanation": "Since independent, P(A ∩ B) = 0.4 × 0.5 = 0.20. Then P(A ∪ B) = P(A) + P(B) - P(A ∩ B) = 0.4 + 0.5 - 0.20 = 0.70."
     }
   ]

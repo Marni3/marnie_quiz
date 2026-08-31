@@ -10,47 +10,47 @@
   "toc": [
     {
       "id": "sec-prereq-bridges",
-      "title": "1. Introduction & Cross-Subject Connections",
+      "title": "Introduction & Cross-Subject Connections",
       "level": 2
     },
     {
       "id": "sec-theory",
-      "title": "2. Lesson Proper: Fourier Series, Harmonic Symmetries, Fourier Properties & z-Transforms",
+      "title": "Lesson Proper: Fourier Series, Harmonic Symmetries, Fourier Properties & z-Transforms",
       "level": 2
     },
     {
       "id": "sec-formulas",
-      "title": "3. Master Compilation of Fourier & z-Transform Formulas",
+      "title": "Master Compilation of Fourier & z-Transform Formulas",
       "level": 2
     },
     {
       "id": "sec-visualizer",
-      "title": "4. Interactive Visualizer: Fourier Harmonic Synthesis & z-Plane Pole Simulator",
+      "title": "Interactive Visualizer: Fourier Harmonic Synthesis & z-Plane Pole Simulator",
       "level": 2
     },
     {
       "id": "sec-terminology",
-      "title": "5. Key Terms and Definitions",
+      "title": "Key Terms and Definitions",
       "level": 2
     },
     {
       "id": "sec-dual-method",
-      "title": "6. Worked Board Exam Problems",
+      "title": "Worked Board Exam Problems",
       "level": 2
     },
     {
       "id": "sec-calculator",
-      "title": "7. Calculator Speed Techniques (Karce & Canon)",
+      "title": "Calculator Speed Techniques (Karce & Canon)",
       "level": 2
     },
     {
       "id": "sec-concept-checks",
-      "title": "8. In-Line Concept Checks",
+      "title": "In-Line Concept Checks",
       "level": 2
     },
     {
       "id": "sec-mastery-challenge",
-      "title": "9. Paired Mastery Challenge Exam",
+      "title": "Paired Mastery Challenge Exam",
       "level": 2
     }
   ],
@@ -177,41 +177,84 @@
   ],
   "calculatorGuides": {
     "karce": {
-      "techniqueTitle": "Fast Discrete Pole Evaluation",
-      "problemType": "Evaluating e^(-aT) in COMP Mode",
-      "sampleProblem": "Find pole for a=3, T=0.1.",
+      "techniqueTitle": "Fast Discrete Pole & DC Average Integration",
+      "problemType": "Evaluating z = e^(-aT) and DC Average (a0/2) via Numerical Integration",
+      "sampleProblem": "Evaluate discrete z-plane pole location z = e^(-aT) for a=3, sampling period T=0.1s (z = e^(-0.3) ≈ 0.740818), and compute DC average value (a0/2) for f(t) = 10 over [0, π] and 0 over [π, 2π] via numerical integration (1/(2π))∫[0 to π] 10 dt = 5.",
       "mode": "COMP Mode (MODE 1)",
+      "whyItWorks": "Discrete mapping converts continuous s-plane pole s = -a into z-plane pole z = e^(-aT) = e^(-0.3) ≈ 0.740818. DC average a0/2 evaluates directly via definite integral (1/(2π))·(10π) = 5 in COMP mode.",
       "keystrokes": [
-        "e",
-        "^",
+        "MODE",
+        "1",
+        "SHIFT",
+        "e^x",
         "(",
         "-",
         "0",
         ".",
         "3",
         ")",
-        "="
-      ],
-      "notes": "Directly yields 0.740818 in 1 second."
-    },
-    "canon": {
-      "techniqueTitle": "DC Average (a0/2) Numerical Integration",
-      "problemType": "(1/2π) ∫ f(x) dx on Canon F-789SGA",
-      "sampleProblem": "Integrate square wave over period.",
-      "mode": "COMP Mode (MODE 1)",
-      "keystrokes": [
+        "=",
         "1",
         "÷",
         "(",
         "2",
+        "SHIFT",
         "π",
         ")",
         "×",
-        "∫",
-        "f(x)",
-        "dx"
+        "∫dx",
+        "1",
+        "0",
+        ",",
+        "0",
+        ",",
+        "SHIFT",
+        "π",
+        ")",
+        "="
       ],
-      "notes": "Directly computes waveform DC average."
+      "notes": "💡 Keystroke Rules:\n1. Discrete Pole: e^(-0.3) = 0.740818.\n2. DC Average: (1/(2π)) ∫[0, π] 10 dt = 5.",
+      "searchAdvisory": "Search 'Karce KC-S991 z-transform discrete pole and numerical integration DC average' for video tutorials."
+    },
+    "canon": {
+      "techniqueTitle": "Fast Discrete Pole & DC Average Integration",
+      "problemType": "Evaluating z = e^(-aT) and DC Average (a0/2) via Numerical Integration",
+      "sampleProblem": "Evaluate discrete z-plane pole location z = e^(-aT) for a=3, sampling period T=0.1s (z = e^(-0.3) ≈ 0.740818), and compute DC average value (a0/2) for f(t) = 10 over [0, π] and 0 over [π, 2π] via numerical integration (1/(2π))∫[0 to π] 10 dt = 5.",
+      "mode": "COMP Mode (MODE 1)",
+      "whyItWorks": "Discrete mapping converts continuous s-plane pole s = -a into z-plane pole z = e^(-aT) = e^(-0.3) ≈ 0.740818. DC average a0/2 evaluates directly via definite integral (1/(2π))·(10π) = 5 in COMP mode.",
+      "keystrokes": [
+        "MODE",
+        "1",
+        "SHIFT",
+        "e^x",
+        "(",
+        "-",
+        "0",
+        ".",
+        "3",
+        ")",
+        "=",
+        "1",
+        "÷",
+        "(",
+        "2",
+        "SHIFT",
+        "π",
+        ")",
+        "×",
+        "∫dx",
+        "1",
+        "0",
+        ",",
+        "0",
+        ",",
+        "SHIFT",
+        "π",
+        ")",
+        "="
+      ],
+      "notes": "💡 Keystroke Rules:\n1. Discrete Pole: e^(-0.3) = 0.740818.\n2. DC Average: (1/(2π)) ∫[0, π] 10 dt = 5.",
+      "searchAdvisory": "Search 'Canon F-789SGA z-transform pole evaluation and Fourier DC average integral' for video breakdowns."
     }
   },
   "conceptChecks": [
@@ -219,36 +262,75 @@
       "id": "chk-2301-01",
       "question": "What Fourier series coefficients are automatically ZERO for any periodic function possessing pure EVEN symmetry ($f(-x) = f(x)$)?",
       "options": [
-        "b_n = 0 for all n (Contains only cosine terms and DC)",
-        "a_n = 0 for all n",
-        "a_0 = 0",
-        "All coefficients are zero"
+        {
+          "text": "b_n = 0 for all n (Contains only cosine terms and DC)",
+          "isCorrect": true,
+          "distractorReason": "Correct: For any even periodic function, the integrand $f(x)\\sin(nx)$ is odd, so $\\int_{-T/2}^{T/2} f(x)\\sin(nx)\\,dx = 0$, proving all sine coefficients $b_n = 0$."
+        },
+        {
+          "text": "a_n = 0 for all n",
+          "distractorReason": "Trap: $a_n = 0$ occurs for pure odd symmetry ($f(-x) = -f(x)$), not even symmetry."
+        },
+        {
+          "text": "a_0 = 0",
+          "distractorReason": "Trap: Even functions can have non-zero DC average offsets $a_0$."
+        },
+        {
+          "text": "All coefficients are zero",
+          "distractorReason": "Trap: A non-trivial periodic function always has non-zero Fourier coefficients."
+        }
       ],
-      "correctAnswer": 0,
+      "correctAnswer": "A",
       "explanation": "Even functions have zero sine coefficients (b_n = 0), producing an even cosine series."
     },
     {
       "id": "chk-2301-02",
       "question": "What type of harmonics exist in the Fourier series of a waveform with Half-Wave Symmetry ($f(x + \\pi) = -f(x)$)?",
       "options": [
-        "Odd harmonics only (n = 1, 3, 5, ...)",
-        "Even harmonics only (n = 2, 4, 6, ...)",
-        "All integer harmonics",
-        "DC component only"
+        {
+          "text": "Even harmonics only (n = 2, 4, 6, ...)",
+          "distractorReason": "Trap: Full-wave rectified waveforms generate even harmonics, while half-wave symmetry eliminates all even harmonics."
+        },
+        {
+          "text": "Odd harmonics only (n = 1, 3, 5, ...)",
+          "isCorrect": true,
+          "distractorReason": "Correct: Waveforms satisfying half-wave symmetry $f(t + T/2) = -f(t)$ contain only odd harmonics ($n = 1, 3, 5, \\dots$) because all even harmonic integrals over the period cancel identically to zero."
+        },
+        {
+          "text": "All integer harmonics",
+          "distractorReason": "Trap: General periodic waveforms without symmetry contain all integer harmonics."
+        },
+        {
+          "text": "DC component only",
+          "distractorReason": "Trap: Half-wave symmetric signals have zero DC component ($a_0 = 0$)."
+        }
       ],
-      "correctAnswer": 0,
+      "correctAnswer": "B",
       "explanation": "Half-wave symmetry eliminates all even harmonics, leaving strictly odd harmonics (n = 1, 3, 5, ...)."
     },
     {
       "id": "chk-2301-03",
       "question": "What is the z-transform of the discrete unit step sequence $u(n)$?",
       "options": [
-        "z / (z - 1) = 1 / (1 - z⁻¹)",
-        "1 / (z - 1)",
-        "z / (z + 1)",
-        "1 / z"
+        {
+          "text": "1 / (z - 1)",
+          "distractorReason": "Trap: Missing the numerator factor $z$."
+        },
+        {
+          "text": "z / (z + 1)",
+          "distractorReason": "Trap: Corresponds to alternating sequence $(-1)^n u(n)$."
+        },
+        {
+          "text": "z / (z - 1) = 1 / (1 - z⁻¹)",
+          "isCorrect": true,
+          "distractorReason": "Correct: By the definition of the unilateral $z$-transform, $\\mathcal{Z}\\{u(n)\\} = \\sum_{n=0}^\\infty z^{-n} = \\frac{1}{1 - z^{-1}} = \\frac{z}{z - 1}$ for region of convergence $|z| > 1$."
+        },
+        {
+          "text": "1 / z",
+          "distractorReason": "Trap: $z^{-1}$ corresponds to delayed impulse $\\delta(n - 1)$."
+        }
       ],
-      "correctAnswer": 0,
+      "correctAnswer": "C",
       "explanation": "Z{u(n)} = ∑ z^(-n) = 1 / (1 - z^(-1)) = z / (z - 1) for |z| > 1."
     }
   ]

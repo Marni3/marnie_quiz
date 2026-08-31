@@ -10,47 +10,47 @@
   "toc": [
     {
       "id": "sec-prereq-bridges",
-      "title": "1. Introduction & Cross-Subject Bridges",
+      "title": "Introduction & Cross-Subject Bridges",
       "level": 2
     },
     {
       "id": "sec-theory",
-      "title": "2. Lesson Proper",
+      "title": "Lesson Proper: Conic Sections (Parabola, Ellipse, Hyperbola & Polar)",
       "level": 2
     },
     {
       "id": "sec-formulas",
-      "title": "3. Compilation of Formulas",
+      "title": "Compilation of Formulas",
       "level": 2
     },
     {
       "id": "sec-visualizer",
-      "title": "4. Interactive Visualizer: Conic Eccentricity Locus Explorer",
+      "title": "Interactive Visualizer: Conic Eccentricity Locus Explorer",
       "level": 2
     },
     {
       "id": "sec-terminology",
-      "title": "5. Terms and Definitions",
+      "title": "Terms and Definitions",
       "level": 2
     },
     {
       "id": "sec-dual-method",
-      "title": "6. Sample Problems and Solutions",
+      "title": "Sample Problems and Solutions",
       "level": 2
     },
     {
       "id": "sec-calculator",
-      "title": "7. Calculator Techniques (Karce & Canon)",
+      "title": "Calculator Techniques (Karce & Canon)",
       "level": 2
     },
     {
       "id": "sec-concept-checks",
-      "title": "8. In-Line Concept Checks",
+      "title": "In-Line Concept Checks",
       "level": 2
     },
     {
       "id": "sec-mastery-challenge",
-      "title": "9. Paired Mastery Challenge",
+      "title": "Paired Mastery Challenge",
       "level": 2
     }
   ],
@@ -248,11 +248,14 @@
   ],
   "calculatorGuides": {
     "karce": {
-      "techniqueTitle": "Direct Conic Eccentricity and Focus Shortcut",
-      "problemType": "Ellipse & Hyperbola c = √(a² ± b²)",
-      "sampleProblem": "Find c and e for 16x² + 25y² = 400 (a=5, b=4).",
+      "techniqueTitle": "Fast Conic Foci, Eccentricity & Pol(a, b) Shortcut",
+      "problemType": "Ellipse c = √(a² - b²) and Hyperbola c = √(a² + b²)",
+      "sampleProblem": "Find focal distance c and eccentricity e for ellipse (a=5, b=4) and hyperbola (a=6, b=8).",
       "mode": "COMP Mode (MODE 1)",
+      "whyItWorks": "For an ellipse, $c = \\sqrt{a^2 - b^2} = \\sqrt{5^2 - 4^2} = 3$ and $e = c/a = 0.6$. For a hyperbola, $c = \\sqrt{a^2 + b^2} = \\sqrt{6^2 + 8^2} = 10$ evaluates in 1 step via Pol(6, 8) with eccentricity $e = c/a = 10/6 = 1.6667$.",
       "keystrokes": [
+        "MODE",
+        "1",
         "√",
         "(",
         "5",
@@ -264,117 +267,182 @@
         "=",
         "÷",
         "5",
+        "=",
+        "Pol",
+        "(",
+        "6",
+        ",",
+        "8",
+        ")",
+        "=",
+        "÷",
+        "6",
         "="
       ],
-      "notes": "Directly gives c = 3 and e = 0.6 without manual fraction setups."
+      "notes": "💡 Keystroke Rules:\n1. Ellipse: √(5² - 4²) = 3 (c), Ans ÷ 5 = 0.6 (e).\n2. Hyperbola: Pol(6, 8) = 10 (c), Ans ÷ 6 = 1.6667 (e).",
+      "searchAdvisory": "Search 'Karce KC-S991 ellipse hyperbola focal distance eccentricity Pol function' for video walkthroughs."
     },
     "canon": {
-      "techniqueTitle": "Canon Pol(a, b) Function for Hyperbola Focal Distance",
-      "problemType": "Hyperbola c = √(a² + b²)",
-      "sampleProblem": "Find focal distance c for hyperbola with a = 6, b = 8.",
+      "techniqueTitle": "Fast Conic Foci, Eccentricity & Pol(a, b) Shortcut",
+      "problemType": "Ellipse c = √(a² - b²) and Hyperbola c = √(a² + b²)",
+      "sampleProblem": "Find focal distance c and eccentricity e for ellipse (a=5, b=4) and hyperbola (a=6, b=8).",
       "mode": "COMP Mode (MODE 1)",
+      "whyItWorks": "For an ellipse, $c = \\sqrt{a^2 - b^2} = \\sqrt{5^2 - 4^2} = 3$ and $e = c/a = 0.6$. For a hyperbola, $c = \\sqrt{a^2 + b^2} = \\sqrt{6^2 + 8^2} = 10$ evaluates in 1 step via Pol(6, 8) with eccentricity $e = c/a = 10/6 = 1.6667$.",
       "keystrokes": [
+        "MODE",
+        "1",
+        "√",
+        "(",
+        "5",
+        "x²",
+        "-",
+        "4",
+        "x²",
+        ")",
+        "=",
+        "÷",
+        "5",
+        "=",
         "SHIFT",
         "Pol",
         "6",
         ",",
         "8",
         ")",
+        "=",
+        "÷",
+        "6",
         "="
       ],
-      "notes": "Directly outputs r = 10, which is the exact focal distance c = √(6² + 8²) = 10."
+      "notes": "💡 Keystroke Rules:\n1. Ellipse: √(5² - 4²) = 3 (c), Ans ÷ 5 = 0.6 (e).\n2. Hyperbola: SHIFT Pol(6, 8) = 10 (c), Ans ÷ 6 = 1.6667 (e).",
+      "searchAdvisory": "Search 'Canon F-789SGA Pol hyperbola focal distance and ellipse eccentricity shortcuts' for video breakdowns."
     }
   },
   "conceptChecks": [
     {
       "id": "chk-01",
       "question": "What is the eccentricity of a parabola?",
-      "options": {
-        "A": "$e = 0$",
-        "B": "$0 < e < 1$",
-        "C": "$e = 1$",
-        "D": "$e > 1$"
-      },
+      "options": [
+        {
+          "text": "$e = 0$",
+          "distractorReason": "Trap: $e = 0$ defines a circle."
+        },
+        {
+          "text": "$0 < e < 1$",
+          "distractorReason": "Trap: $0 < e < 1$ defines an ellipse."
+        },
+        {
+          "text": "$e = 1$",
+          "isCorrect": true,
+          "distractorReason": "Correct: A parabola is geometrically defined as the locus of points equidistant from a point (focus) and a line (directrix), making its eccentricity strictly $e = 1$."
+        },
+        {
+          "text": "$e > 1$",
+          "distractorReason": "Trap: $e > 1$ defines a hyperbola."
+        }
+      ],
       "correctAnswer": "C",
-      "distractorDeconstruction": {
-        "A": "$e = 0$ defines a circle.",
-        "B": "$0 < e < 1$ defines an ellipse.",
-        "C": "A parabola is strictly defined by $e = 1$.",
-        "D": "$e > 1$ defines a hyperbola."
-      },
-      "shortcutExplanation": "Parabola strictly has $e = 1$."
+      "explanation": "Parabola strictly has e = 1."
     },
     {
       "id": "chk-02",
       "question": "Find the length of the latus rectum of the parabola $y^2 = 12x$.",
-      "options": {
-        "A": "3",
-        "B": "6",
-        "C": "12",
-        "D": "24"
-      },
-      "correctAnswer": "C",
-      "distractorDeconstruction": {
-        "A": "3 is the focal parameter $p = 12/4 = 3$.",
-        "B": "6 is $2p$.",
-        "C": "$LR = 4p = 12$.",
-        "D": "24 is $2 \\times 12$."
-      },
-      "shortcutExplanation": "For $y^2 = 4px$, the latus rectum is the coefficient of $x$: $LR = 12$."
+      "options": [
+        {
+          "text": "3",
+          "distractorReason": "Trap: 3 is the focal parameter $p = 12/4 = 3$."
+        },
+        {
+          "text": "6",
+          "distractorReason": "Trap: 6 is the semi-latus rectum $2p$."
+        },
+        {
+          "text": "24",
+          "distractorReason": "Trap: Multiplied by 2 unnecessarily."
+        },
+        {
+          "text": "12",
+          "isCorrect": true,
+          "distractorReason": "Correct: In standard parabola form $y^2 = 4px$, the latus rectum length is equal to the linear coefficient: $LR = 4p = 12$."
+        }
+      ],
+      "correctAnswer": "D",
+      "explanation": "For y² = 4px, the latus rectum is the coefficient of x: LR = 12."
     },
     {
       "id": "chk-03",
       "question": "What is the area of an ellipse with semi-major axis $a = 6$ and semi-minor axis $b = 4$?",
-      "options": {
-        "A": "$24\\pi$",
-        "B": "$12\\pi$",
-        "C": "$48\\pi$",
-        "D": "$10\\pi$"
-      },
+      "options": [
+        {
+          "text": "$24\\pi$",
+          "isCorrect": true,
+          "distractorReason": "Correct: Area $= \\pi a b = \\pi (6)(4) = 24\\pi$."
+        },
+        {
+          "text": "$12\\pi$",
+          "distractorReason": "Trap: Divided by 2 as if calculating triangle area."
+        },
+        {
+          "text": "$48\\pi$",
+          "distractorReason": "Trap: Multiplied by 2."
+        },
+        {
+          "text": "$10\\pi$",
+          "distractorReason": "Trap: Added semi-axes $(6 + 4)\\pi$ instead of multiplying."
+        }
+      ],
       "correctAnswer": "A",
-      "distractorDeconstruction": {
-        "A": "Area $= \\pi a b = \\pi (6)(4) = 24\\pi$.",
-        "B": "Divided by 2 as if a triangle.",
-        "C": "Multiplied by 2.",
-        "D": "Added semi-axes."
-      },
-      "shortcutExplanation": "Ellipse Area $= \\pi a b = 24\\pi$."
+      "explanation": "Ellipse Area = π a b = 24π."
     },
     {
       "id": "chk-04",
       "question": "What is the eccentricity of an equilateral (rectangular) hyperbola?",
-      "options": {
-        "A": "1",
-        "B": "$\\sqrt{2}$",
-        "C": "$\\sqrt{3}$",
-        "D": "2"
-      },
+      "options": [
+        {
+          "text": "1",
+          "distractorReason": "Trap: 1 is the eccentricity of a parabola."
+        },
+        {
+          "text": "$\\sqrt{2}$",
+          "isCorrect": true,
+          "distractorReason": "Correct: In an equilateral hyperbola, transverse and conjugate semi-axes are equal ($a = b$). Focal distance $c = \\sqrt{a^2 + a^2} = a\\sqrt{2} \\implies e = c/a = \\sqrt{2} \\approx 1.414$."
+        },
+        {
+          "text": "$\\sqrt{3}$",
+          "distractorReason": "Trap: Incorrect radical."
+        },
+        {
+          "text": "2",
+          "distractorReason": "Trap: Corresponds to an asymptote angle of 60°."
+        }
+      ],
       "correctAnswer": "B",
-      "distractorDeconstruction": {
-        "A": "1 is the eccentricity of a parabola.",
-        "B": "Correct: When $a = b$, $c = \\sqrt{a^2 + a^2} = a\\sqrt{2} \\implies e = c/a = \\sqrt{2} \\approx 1.414$.",
-        "C": "Incorrect radical.",
-        "D": "2 corresponds to an asymptote angle of $60^\\circ$."
-      },
-      "shortcutExplanation": "Equilateral Hyperbola always has $e = \\sqrt{2}$."
+      "explanation": "Equilateral Hyperbola always has e = √2."
     },
     {
       "id": "chk-05",
       "question": "Find the length of the latus rectum of an ellipse having equation $\\frac{x^2}{16} + \\frac{y^2}{9} = 1$.",
-      "options": {
-        "A": "4.5",
-        "B": "2.25",
-        "C": "9",
-        "D": "3"
-      },
-      "correctAnswer": "A",
-      "distractorDeconstruction": {
-        "A": "Correct: $a = 4, b = 3$. $LR = \\frac{2b^2}{a} = \\frac{2(9)}{4} = \\frac{18}{4} = 4.5$.",
-        "B": "Forgot the factor of 2 ($b^2/a = 2.25$).",
-        "C": "Calculated $b^2$.",
-        "D": "Calculated $b$."
-      },
-      "shortcutExplanation": "$LR = 2b^2/a = 2(9)/4 = 4.5$."
+      "options": [
+        {
+          "text": "2.25",
+          "distractorReason": "Trap: Forgot the factor of 2 in $LR = 2b^2/a$ (calculating $b^2/a = 2.25$)."
+        },
+        {
+          "text": "9",
+          "distractorReason": "Trap: Selected $b^2$."
+        },
+        {
+          "text": "4.5",
+          "isCorrect": true,
+          "distractorReason": "Correct: Semi-major axis $a = \\sqrt{16} = 4$, semi-minor axis $b = \\sqrt{9} = 3$. Latus rectum $LR = \\frac{2b^2}{a} = \\frac{2(9)}{4} = \\frac{18}{4} = 4.5$."
+        },
+        {
+          "text": "3",
+          "distractorReason": "Trap: Selected semi-minor axis $b = 3$."
+        }
+      ],
+      "correctAnswer": "C",
+      "explanation": "LR = 2b²/a = 2(9)/4 = 4.5."
     }
   ]
 }

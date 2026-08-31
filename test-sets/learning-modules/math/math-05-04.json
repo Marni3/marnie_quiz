@@ -10,47 +10,47 @@
   "toc": [
     {
       "id": "sec-prereq-bridges",
-      "title": "1. Introduction & Cross-Subject Connections",
+      "title": "Introduction & Cross-Subject Connections",
       "level": 2
     },
     {
       "id": "sec-theory",
-      "title": "2. Lesson Proper: Parameshvara, Regular Polygons & Circles",
+      "title": "Lesson Proper: Parameshvara, Regular Polygons & Circles",
       "level": 2
     },
     {
       "id": "sec-formulas",
-      "title": "3. Compilation of Formulas & Circle Segments",
+      "title": "Compilation of Formulas & Circle Segments",
       "level": 2
     },
     {
       "id": "sec-visualizer",
-      "title": "4. Interactive Visualizer: Circle Sector & Segment Calculator",
+      "title": "Interactive Visualizer: Circle Sector & Segment Calculator",
       "level": 2
     },
     {
       "id": "sec-terminology",
-      "title": "5. Key Terms and Definitions",
+      "title": "Key Terms and Definitions",
       "level": 2
     },
     {
       "id": "sec-dual-method",
-      "title": "6. Worked Board Exam Problems",
+      "title": "Worked Board Exam Problems",
       "level": 2
     },
     {
       "id": "sec-calculator",
-      "title": "7. Calculator Speed Techniques (Karce & Canon)",
+      "title": "Calculator Speed Techniques (Karce & Canon)",
       "level": 2
     },
     {
       "id": "sec-concept-checks",
-      "title": "8. In-Line Concept Checks",
+      "title": "In-Line Concept Checks",
       "level": 2
     },
     {
       "id": "sec-mastery-challenge",
-      "title": "9. Paired Mastery Challenge Exam",
+      "title": "Paired Mastery Challenge Exam",
       "level": 2
     }
   ],
@@ -177,11 +177,14 @@
   ],
   "calculatorGuides": {
     "karce": {
-      "techniqueTitle": "Fast Circular Segment Evaluation",
-      "problemType": "Evaluating 0.5 * r² * (θ - sin θ) in RAD mode",
-      "sampleProblem": "Find segment area for r=12, θ=π/3 in RAD mode.",
-      "mode": "COMP Mode (MODE 1, Set RAD)",
+      "techniqueTitle": "Fast Circular Segment & Inscribed Regular Polygon Evaluation",
+      "problemType": "Evaluating Circular Segment Area 0.5*r²*(θ - sin θ) and Inscribed Polygon Area",
+      "sampleProblem": "Evaluate circular segment area for r=12, θ=π/3 rad, and find inscribed regular octagon area for n=8, r=10.",
+      "mode": "COMP Mode (MODE 1, Set RAD Mode for Segment, DEG Mode for Polygons)",
+      "whyItWorks": "Circular segment area subtracts the triangular core from the sector: A = 0.5·r²·(θ - sin θ) in RAD mode. Inscribed regular polygons divide into n isoceles triangles of area 0.5·r²·sin(360°/n) in DEG mode.",
       "keystrokes": [
+        "MODE",
+        "1",
         "0",
         ".",
         "5",
@@ -204,16 +207,7 @@
         "3",
         ")",
         ")",
-        "="
-      ],
-      "notes": "Directly yields 13.04439975 in 2 seconds."
-    },
-    "canon": {
-      "techniqueTitle": "Inscribed Regular Polygon Shortcut",
-      "problemType": "0.5 * n * r² * sin(360/n) on Canon F-789SGA",
-      "sampleProblem": "Find area for n=8, r=10.",
-      "mode": "COMP Mode (MODE 1, DEG)",
-      "keystrokes": [
+        "=",
         "0",
         ".",
         "5",
@@ -225,11 +219,66 @@
         "x²",
         "×",
         "sin",
+        "(",
         "4",
         "5",
+        ")",
         "="
       ],
-      "notes": "Directly displays 282.8427 cm²."
+      "notes": "💡 Keystroke Rules:\n1. Circular Segment (RAD): 0.5 × 12² × (π/3 - sin(π/3)) = 13.04439975.\n2. Inscribed Octagon (DEG): 0.5 × 8 × 10² × sin(45) = 282.8427 cm².",
+      "searchAdvisory": "Search 'Karce KC-S991 circular segment RAD mode and regular polygon inscribed area' for video guides."
+    },
+    "canon": {
+      "techniqueTitle": "Fast Circular Segment & Inscribed Regular Polygon Evaluation",
+      "problemType": "Evaluating Circular Segment Area 0.5*r²*(θ - sin θ) and Inscribed Polygon Area",
+      "sampleProblem": "Evaluate circular segment area for r=12, θ=π/3 rad, and find inscribed regular octagon area for n=8, r=10.",
+      "mode": "COMP Mode (MODE 1, Set RAD Mode for Segment, DEG Mode for Polygons)",
+      "whyItWorks": "Circular segment area subtracts the triangular core from the sector: A = 0.5·r²·(θ - sin θ) in RAD mode. Inscribed regular polygons divide into n isoceles triangles of area 0.5·r²·sin(360°/n) in DEG mode.",
+      "keystrokes": [
+        "MODE",
+        "1",
+        "0",
+        ".",
+        "5",
+        "×",
+        "1",
+        "2",
+        "x²",
+        "×",
+        "(",
+        "SHIFT",
+        "π",
+        "÷",
+        "3",
+        "-",
+        "sin",
+        "(",
+        "SHIFT",
+        "π",
+        "÷",
+        "3",
+        ")",
+        ")",
+        "=",
+        "0",
+        ".",
+        "5",
+        "×",
+        "8",
+        "×",
+        "1",
+        "0",
+        "x²",
+        "×",
+        "sin",
+        "(",
+        "4",
+        "5",
+        ")",
+        "="
+      ],
+      "notes": "💡 Keystroke Rules:\n1. Circular Segment (RAD): 0.5 × 12² × (π/3 - sin(π/3)) = 13.04439975.\n2. Inscribed Octagon (DEG): 0.5 × 8 × 10² × sin(45) = 282.8427 cm².",
+      "searchAdvisory": "Search 'Canon F-789SGA circle segment area radian formula and inscribed polygon shortcuts' for video breakdowns."
     }
   },
   "conceptChecks": [
@@ -237,36 +286,75 @@
       "id": "chk-1004-01",
       "question": "What is the area of a Bicentric Quadrilateral (which is simultaneously cyclic and tangential) with sides $a, b, c, d$?",
       "options": [
-        "√(abcd)",
-        "√((s-a)(s-b)(s-c)(s-d))",
-        "(ab + cd)/2",
-        "rs/2"
+        {
+          "text": "√(abcd)",
+          "isCorrect": true,
+          "distractorReason": "Correct: For a bicentric quadrilateral, opposite angles sum to 180° and opposite sides satisfy Pitot's theorem (a+c = b+d = s), simplifying Brahmagupta's formula to Area = √(abcd)."
+        },
+        {
+          "text": "√((s-a)(s-b)(s-c)(s-d))",
+          "distractorReason": "Trap: This is Brahmagupta's general cyclic quadrilateral formula (not simplified for bicentric)."
+        },
+        {
+          "text": "(ab + cd)/2",
+          "distractorReason": "Trap: Incorrect diagonal average combination."
+        },
+        {
+          "text": "rs/2",
+          "distractorReason": "Trap: Tangential quadrilateral area is A = r · s, not rs/2."
+        }
       ],
-      "correctAnswer": 0,
+      "correctAnswer": "A",
       "explanation": "For a bicentric quadrilateral, Brahmagupta's formula simplifies exactly to A = √(abcd)."
     },
     {
       "id": "chk-1004-02",
       "question": "Who was the 15th-century Indian mathematician who derived the exact circumradius formula for a cyclic quadrilateral?",
       "options": [
-        "Vatasseri Parameshvara",
-        "Brahmagupta",
-        "Aryabhata",
-        "Bhaskara I"
+        {
+          "text": "Brahmagupta",
+          "distractorReason": "Trap: Brahmagupta (7th century) derived the cyclic quadrilateral area formula, not the circumradius."
+        },
+        {
+          "text": "Vatasseri Parameshvara",
+          "isCorrect": true,
+          "distractorReason": "Correct: Indian astronomer and mathematician Vatasseri Parameshvara (c. 1380–1460) derived the circumradius formula R = √[(ab+cd)(ac+bd)(ad+bc)] / (4A)."
+        },
+        {
+          "text": "Aryabhata",
+          "distractorReason": "Trap: Aryabhata calculated accurate approximations of π and sine tables in 499 A.D."
+        },
+        {
+          "text": "Bhaskara I",
+          "distractorReason": "Trap: Bhaskara I developed the rational approximation for the sine function in the 7th century."
+        }
       ],
-      "correctAnswer": 0,
+      "correctAnswer": "B",
       "explanation": "Vatasseri Parameshvara (c. 1380–1460) derived the circumradius formula R = √[(ab+cd)(ac+bd)(ad+bc)] / (4A)."
     },
     {
       "id": "chk-1004-03",
       "question": "What is the formula for the area of a circular segment of radius $r$ and central angle $\\theta$ (in radians)?",
       "options": [
-        "½ r² (θ - sin θ)",
-        "½ r² θ",
-        "½ r² sin θ",
-        "r² (θ - cos θ)"
+        {
+          "text": "½ r² θ",
+          "distractorReason": "Trap: ½ r² θ is the area of the entire circular SECTOR, not the segment."
+        },
+        {
+          "text": "½ r² sin θ",
+          "distractorReason": "Trap: ½ r² sin θ is the area of the isosceles triangle formed by the radii and the chord."
+        },
+        {
+          "text": "½ r² (θ - sin θ)",
+          "isCorrect": true,
+          "distractorReason": "Correct: Segment Area = Sector Area - Triangle Area = ½ r² θ - ½ r² sin θ = ½ r² (θ - sin θ)."
+        },
+        {
+          "text": "r² (θ - cos θ)",
+          "distractorReason": "Trap: Incorrect trigonometric subtraction term."
+        }
       ],
-      "correctAnswer": 0,
+      "correctAnswer": "C",
       "explanation": "Segment area = Sector area - Triangle area = ½ r² θ - ½ r² sin θ = ½ r² (θ - sin θ)."
     }
   ]

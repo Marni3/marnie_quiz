@@ -10,47 +10,47 @@
   "toc": [
     {
       "id": "sec-prereq-bridges",
-      "title": "1. Introduction & Cross-Subject Connections",
+      "title": "Introduction & Cross-Subject Connections",
       "level": 2
     },
     {
       "id": "sec-theory",
-      "title": "2. Lesson Proper: The 12 Identity Families & Ambiguous Case",
+      "title": "Lesson Proper: The 12 Identity Families & Ambiguous Case",
       "level": 2
     },
     {
       "id": "sec-formulas",
-      "title": "3. Compilation of Formulas & Euler's Exponentials",
+      "title": "Compilation of Formulas & Euler's Exponentials",
       "level": 2
     },
     {
       "id": "sec-visualizer",
-      "title": "4. Interactive Visualizer: Ambiguous Case Triangle SSA",
+      "title": "Interactive Visualizer: Ambiguous Case Triangle SSA",
       "level": 2
     },
     {
       "id": "sec-terminology",
-      "title": "5. Key Terms and Definitions",
+      "title": "Key Terms and Definitions",
       "level": 2
     },
     {
       "id": "sec-dual-method",
-      "title": "6. Worked Board Exam Problems",
+      "title": "Worked Board Exam Problems",
       "level": 2
     },
     {
       "id": "sec-calculator",
-      "title": "7. Calculator Speed Techniques (Karce & Canon)",
+      "title": "Calculator Speed Techniques (Karce & Canon)",
       "level": 2
     },
     {
       "id": "sec-concept-checks",
-      "title": "8. In-Line Concept Checks",
+      "title": "In-Line Concept Checks",
       "level": 2
     },
     {
       "id": "sec-mastery-challenge",
-      "title": "9. Paired Mastery Challenge Exam",
+      "title": "Paired Mastery Challenge Exam",
       "level": 2
     }
   ],
@@ -178,11 +178,14 @@
   ],
   "calculatorGuides": {
     "karce": {
-      "techniqueTitle": "Fast Identity Verification via CALC Mode",
-      "problemType": "Verifying algebraic trigonometric identities",
-      "sampleProblem": "Verify sin(2X) - 2sin(X)cos(X) = 0 at X = 37°.",
-      "mode": "COMP Mode (MODE 1, Ensure DEG)",
+      "techniqueTitle": "Trigonometric Identity Verification via CALC & Euler Complex Exponentials",
+      "problemType": "Verifying Trigonometric Identities and Evaluating Euler Complex Exponentials",
+      "sampleProblem": "Verify identity sin(2X) - 2sin(X)cos(X) = 0 at test angle X = 37°, and evaluate cos(1 rad) via Euler formula (e^i + e^-i)/2.",
+      "mode": "COMP Mode (MODE 1, Ensure DEG Mode) and CMPLX Mode (MODE 2, RAD Mode)",
+      "whyItWorks": "Substituting a non-trivial test angle (X = 37°) into an identity difference via the CALC button evaluates to identically 0 in under 3 seconds. In CMPLX mode (RAD), Euler's formula (e^(ix) + e^(-ix))/2 computes trigonometric cosine directly via imaginary powers.",
       "keystrokes": [
+        "MODE",
+        "1",
         "sin",
         "(",
         "2",
@@ -204,16 +207,9 @@
         "CALC",
         "3",
         "7",
-        "="
-      ],
-      "notes": "Directly displays 0.00000000 verifying the identity."
-    },
-    "canon": {
-      "techniqueTitle": "Complex Exponential Evaluation",
-      "problemType": "Evaluating (e^ix + e^-ix)/2 on Canon F-789SGA",
-      "sampleProblem": "Evaluate cos(1 rad) using Euler formula in CMPLX mode.",
-      "mode": "CMPLX Mode (MODE 2, RAD)",
-      "keystrokes": [
+        "=",
+        "MODE",
+        "2",
         "(",
         "SHIFT",
         "e^",
@@ -228,7 +224,58 @@
         "2",
         "="
       ],
-      "notes": "Directly displays 0.5403023058 matching cos(1)."
+      "notes": "💡 Keystroke Rules:\n1. Identity Test: In COMP mode (DEG), input expression, press CALC, enter 37, press = to obtain 0.\n2. Euler Evaluation: In CMPLX mode (RAD), evaluate (e^i + e^-i)/2 = 0.5403023059 (cos 1 rad).",
+      "searchAdvisory": "Search 'Karce KC-S991 CALC identity substitution and CMPLX Euler formula tricks' for video walkthroughs."
+    },
+    "canon": {
+      "techniqueTitle": "Trigonometric Identity Verification via CALC & Euler Complex Exponentials",
+      "problemType": "Verifying Trigonometric Identities and Evaluating Euler Complex Exponentials",
+      "sampleProblem": "Verify identity sin(2X) - 2sin(X)cos(X) = 0 at test angle X = 37°, and evaluate cos(1 rad) via Euler formula (e^i + e^-i)/2.",
+      "mode": "COMP Mode (MODE 1, Ensure DEG Mode) and CMPLX Mode (MODE 2, RAD Mode)",
+      "whyItWorks": "Substituting a non-trivial test angle (X = 37°) into an identity difference via the CALC button evaluates to identically 0 in under 3 seconds. In CMPLX mode (RAD), Euler's formula (e^(ix) + e^(-ix))/2 computes trigonometric cosine directly via imaginary powers.",
+      "keystrokes": [
+        "MODE",
+        "1",
+        "sin",
+        "(",
+        "2",
+        "ALPHA",
+        "X",
+        ")",
+        "-",
+        "2",
+        "sin",
+        "(",
+        "ALPHA",
+        "X",
+        ")",
+        "cos",
+        "(",
+        "ALPHA",
+        "X",
+        ")",
+        "CALC",
+        "3",
+        "7",
+        "=",
+        "MODE",
+        "2",
+        "(",
+        "SHIFT",
+        "e^",
+        "i",
+        "+",
+        "SHIFT",
+        "e^",
+        "-",
+        "i",
+        ")",
+        "÷",
+        "2",
+        "="
+      ],
+      "notes": "💡 Keystroke Rules:\n1. Identity Test: In COMP mode (DEG), input expression, press CALC, enter 37, press = to obtain 0.\n2. Euler Evaluation: In CMPLX mode (RAD), evaluate (e^i + e^-i)/2 = 0.5403023059 (cos 1 rad).",
+      "searchAdvisory": "Search 'Canon F-789SGA trigonometric identity CALC test and Euler exponential formulas' for video breakdowns."
     }
   },
   "conceptChecks": [
@@ -236,36 +283,75 @@
       "id": "chk-0802-01",
       "question": "Which of the following expressions represents $\\cos x$ in complex exponential form?",
       "options": [
-        "(e^(ix) + e^(-ix)) / 2",
-        "(e^(ix) - e^(-ix)) / (2i)",
-        "(e^(ix) + e^(-ix)) / (2i)",
-        "(e^(ix) - e^(-ix)) / 2"
+        {
+          "text": "(e^(ix) + e^(-ix)) / 2",
+          "isCorrect": true,
+          "distractorReason": "Correct: By Euler's formula, cos x = (e^(ix) + e^(-ix)) / 2, while sin x = (e^(ix) - e^(-ix)) / (2i)."
+        },
+        {
+          "text": "(e^(ix) - e^(-ix)) / (2i)",
+          "distractorReason": "Trap: (e^(ix) - e^(-ix)) / (2i) is the complex exponential definition of sin x."
+        },
+        {
+          "text": "(e^(ix) + e^(-ix)) / (2i)",
+          "distractorReason": "Trap: Incorrect division by 2i instead of 2."
+        },
+        {
+          "text": "(e^(ix) - e^(-ix)) / 2",
+          "distractorReason": "Trap: (e^(ix) - e^(-ix)) / 2 is the definition of hyperbolic sine sinh(ix) / i."
+        }
       ],
-      "correctAnswer": 0,
+      "correctAnswer": "A",
       "explanation": "By Euler's formula: cos x = (e^(ix) + e^(-ix)) / 2, while sin x = (e^(ix) - e^(-ix)) / (2i)."
     },
     {
       "id": "chk-0802-02",
       "question": "In the ambiguous case of the Law of Sines (SSA), under what condition do exactly TWO distinct triangles exist?",
       "options": [
-        "b sin A < a < b",
-        "a < b sin A",
-        "a = b sin A",
-        "a ≥ b"
+        {
+          "text": "a < b sin A",
+          "distractorReason": "Trap: When a < b sin A, opposite side a cannot reach the base line, so 0 triangles exist."
+        },
+        {
+          "text": "b sin A < a < b",
+          "isCorrect": true,
+          "distractorReason": "Correct: Exactly two distinct triangles exist when opposite side a is longer than altitude h = b sin A but strictly shorter than adjacent side b."
+        },
+        {
+          "text": "a = b sin A",
+          "distractorReason": "Trap: When a = b sin A, exactly one right triangle exists (a is the exact perpendicular altitude)."
+        },
+        {
+          "text": "a ≥ b",
+          "distractorReason": "Trap: When a ≥ b, exactly one triangle exists (the second circle intersection swings behind angle A)."
+        }
       ],
-      "correctAnswer": 0,
+      "correctAnswer": "B",
       "explanation": "Two triangles exist when the opposite side a is longer than altitude h = b sin A but shorter than adjacent side b."
     },
     {
       "id": "chk-0802-03",
       "question": "Simplify the expression: $\\frac{1 - \\cos 2\\theta}{1 + \\cos 2\\theta}$.",
       "options": [
-        "tan² θ",
-        "cot² θ",
-        "sin² θ",
-        "sec² θ"
+        {
+          "text": "cot² θ",
+          "distractorReason": "Trap: cot² θ is the reciprocal ratio (1 + cos 2θ) / (1 - cos 2θ)."
+        },
+        {
+          "text": "sin² θ",
+          "distractorReason": "Trap: Forgetting the denominator identity 1 + cos 2θ = 2cos² θ."
+        },
+        {
+          "text": "tan² θ",
+          "isCorrect": true,
+          "distractorReason": "Correct: Since 1 - cos 2θ = 2sin² θ and 1 + cos 2θ = 2cos² θ, the ratio is 2sin² θ / 2cos² θ = tan² θ."
+        },
+        {
+          "text": "sec² θ",
+          "distractorReason": "Trap: sec² θ = 1 + tan² θ, not tan² θ."
+        }
       ],
-      "correctAnswer": 0,
+      "correctAnswer": "C",
       "explanation": "Since 1 - cos 2θ = 2sin² θ and 1 + cos 2θ = 2cos² θ, the ratio is 2sin² θ / 2cos² θ = tan² θ."
     }
   ]

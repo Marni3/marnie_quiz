@@ -10,47 +10,47 @@
   "toc": [
     {
       "id": "sec-prereq-bridges",
-      "title": "1. Introduction & Cross-Subject Connections",
+      "title": "Introduction & Cross-Subject Connections",
       "level": 2
     },
     {
       "id": "sec-theory",
-      "title": "2. Lesson Proper: Wallis' Formula, Substitutions & Pappus' Propositions",
+      "title": "Lesson Proper: Wallis' Formula, Substitutions & Pappus' Propositions",
       "level": 2
     },
     {
       "id": "sec-formulas",
-      "title": "3. Compilation of Advanced Integration & Geometric Formulas",
+      "title": "Compilation of Advanced Integration & Geometric Formulas",
       "level": 2
     },
     {
       "id": "sec-visualizer",
-      "title": "4. Interactive Visualizer: Wallis' Evaluator & Arc Length Simulator",
+      "title": "Interactive Visualizer: Wallis' Evaluator & Arc Length Simulator",
       "level": 2
     },
     {
       "id": "sec-terminology",
-      "title": "5. Key Terms and Definitions",
+      "title": "Key Terms and Definitions",
       "level": 2
     },
     {
       "id": "sec-dual-method",
-      "title": "6. Worked Board Exam Problems",
+      "title": "Worked Board Exam Problems",
       "level": 2
     },
     {
       "id": "sec-calculator",
-      "title": "7. Calculator Speed Techniques (Karce & Canon)",
+      "title": "Calculator Speed Techniques (Karce & Canon)",
       "level": 2
     },
     {
       "id": "sec-concept-checks",
-      "title": "8. In-Line Concept Checks",
+      "title": "In-Line Concept Checks",
       "level": 2
     },
     {
       "id": "sec-mastery-challenge",
-      "title": "9. Paired Mastery Challenge Exam",
+      "title": "Paired Mastery Challenge Exam",
       "level": 2
     }
   ],
@@ -170,11 +170,14 @@
   ],
   "calculatorGuides": {
     "karce": {
-      "techniqueTitle": "Fast Wallis Numerical Verification",
-      "problemType": "Evaluating ∫[0, π/2] sin⁴(x)cos²(x) dx",
-      "sampleProblem": "Evaluate ∫(0 to π/2) (sin x)⁴ * (cos x)² dx in RAD mode.",
-      "mode": "COMP Mode (MODE 1, Set RAD)",
+      "techniqueTitle": "Fast Wallis' Formula & Polar Area Numerical Integration",
+      "problemType": "Evaluating Wallis' Definite Integrals & Polar Cardioid Area 0.5·∫[0, 2π] r² dθ",
+      "sampleProblem": "Evaluate definite integral ∫(0 to π/2) sin⁴(x)·cos²(x) dx in RAD mode (∫ = π/32 ≈ 0.098175), and evaluate polar area of cardioid r = 2(1 + cos θ) via 0.5·∫(0 to 2π) [2(1 + cos X)]² dx.",
+      "mode": "COMP Mode (MODE 1, Set RAD Mode for Trigonometric Functions)",
+      "whyItWorks": "Wallis definite trigonometric integral ∫_0^(π/2) sin⁴ x cos² x dx = (3·1)(1)/(6·4·2) · (π/2) = π/32 ≈ 0.098175 evaluates directly via ∫dx in RAD mode. Polar area A = 1/2 ∫_0^(2π) r² dθ = 1/2 ∫_0^(2π) 4(1+cos θ)² dθ = 6π ≈ 18.849556 executes in 1 step.",
       "keystrokes": [
+        "MODE",
+        "1",
         "∫dx",
         "(",
         "sin",
@@ -202,16 +205,7 @@
         "÷",
         "2",
         ")",
-        "="
-      ],
-      "notes": "Directly evaluates 0.09817477 (π/32) in 2 seconds."
-    },
-    "canon": {
-      "techniqueTitle": "Polar Cardioid Area Evaluation",
-      "problemType": "0.5 * ∫[0, 2π] (2*(1+cos(X)))² dx on Canon F-789SGA",
-      "sampleProblem": "Evaluate polar area of cardioid.",
-      "mode": "COMP Mode (MODE 1, Set RAD)",
-      "keystrokes": [
+        "=",
         "0",
         ".",
         "5",
@@ -240,7 +234,76 @@
         ")",
         "="
       ],
-      "notes": "Directly yields 18.84955592 (6π)."
+      "notes": "💡 Keystroke Rules:\n1. Wallis' Trig Integral (RAD): ∫(sin⁴X × cos²X, 0, π/2) = 0.09817477 = π/32.\n2. Cardioid Polar Area (RAD): 0.5 × ∫((2(1 + cos X))², 0, 2π) = 18.849556 = 6π.",
+      "searchAdvisory": "Search 'Karce KC-S991 Wallis formula and polar area cardioid integration' for video tutorials."
+    },
+    "canon": {
+      "techniqueTitle": "Fast Wallis' Formula & Polar Area Numerical Integration",
+      "problemType": "Evaluating Wallis' Definite Integrals & Polar Cardioid Area 0.5·∫[0, 2π] r² dθ",
+      "sampleProblem": "Evaluate definite integral ∫(0 to π/2) sin⁴(x)·cos²(x) dx in RAD mode (∫ = π/32 ≈ 0.098175), and evaluate polar area of cardioid r = 2(1 + cos θ) via 0.5·∫(0 to 2π) [2(1 + cos X)]² dx.",
+      "mode": "COMP Mode (MODE 1, Set RAD Mode for Trigonometric Functions)",
+      "whyItWorks": "Wallis definite trigonometric integral ∫_0^(π/2) sin⁴ x cos² x dx = (3·1)(1)/(6·4·2) · (π/2) = π/32 ≈ 0.098175 evaluates directly via ∫dx in RAD mode. Polar area A = 1/2 ∫_0^(2π) r² dθ = 1/2 ∫_0^(2π) 4(1+cos θ)² dθ = 6π ≈ 18.849556 executes in 1 step.",
+      "keystrokes": [
+        "MODE",
+        "1",
+        "∫dx",
+        "(",
+        "sin",
+        "(",
+        "ALPHA",
+        "X",
+        ")",
+        ")",
+        "^",
+        "4",
+        "×",
+        "(",
+        "cos",
+        "(",
+        "ALPHA",
+        "X",
+        ")",
+        ")",
+        "x²",
+        ",",
+        "0",
+        ",",
+        "SHIFT",
+        "π",
+        "÷",
+        "2",
+        ")",
+        "=",
+        "0",
+        ".",
+        "5",
+        "×",
+        "∫dx",
+        "(",
+        "2",
+        "×",
+        "(",
+        "1",
+        "+",
+        "cos",
+        "(",
+        "ALPHA",
+        "X",
+        ")",
+        ")",
+        ")",
+        "x²",
+        ",",
+        "0",
+        ",",
+        "2",
+        "SHIFT",
+        "π",
+        ")",
+        "="
+      ],
+      "notes": "💡 Keystroke Rules:\n1. Wallis' Trig Integral (RAD): ∫(sin⁴X × cos²X, 0, π/2) = 0.09817477 = π/32.\n2. Cardioid Polar Area (RAD): 0.5 × ∫((2(1 + cos X))², 0, 2π) = 18.849556 = 6π.",
+      "searchAdvisory": "Search 'Canon F-789SGA Wallis definite integral and polar curve area shortcuts' for video breakdowns."
     }
   },
   "conceptChecks": [
@@ -248,36 +311,75 @@
       "id": "chk-1602-01",
       "question": "What is the value of $\\alpha$ in Wallis' formula for $\\int_0^{\\pi/2} \\sin^3\\theta \\cos^4\\theta \\, d\\theta$?",
       "options": [
-        "α = 1 (Because the sine power 3 is odd)",
-        "α = π/2",
-        "α = 2/π",
-        "α = 2"
+        {
+          "text": "α = 1 (Because the sine power 3 is odd)",
+          "isCorrect": true,
+          "distractorReason": "Correct: In Wallis' formula, the scaling constant $\\alpha = \\pi/2$ ONLY when BOTH exponents $m$ and $n$ are even. Since the exponent of sine is odd (3), $\\alpha = 1$."
+        },
+        {
+          "text": "α = π/2",
+          "distractorReason": "Trap: $\\alpha = \\pi/2$ only applies when both powers are even (e.g. sin⁴θ cos²θ)."
+        },
+        {
+          "text": "α = 2/π",
+          "distractorReason": "Trap: Inverted constant."
+        },
+        {
+          "text": "α = 2",
+          "distractorReason": "Trap: Incorrect multiplier."
+        }
       ],
-      "correctAnswer": 0,
+      "correctAnswer": "A",
       "explanation": "In Wallis' formula, α is equal to π/2 ONLY when BOTH exponents are even. Since 3 is odd, α = 1."
     },
     {
       "id": "chk-1602-02",
       "question": "What trigonometric substitution should be used to integrate an expression containing $\\sqrt{25 - x^2}$?",
       "options": [
-        "x = 5 sin θ",
-        "x = 5 tan θ",
-        "x = 5 sec θ",
-        "x = 25 sin θ"
+        {
+          "text": "x = 5 tan θ",
+          "distractorReason": "Trap: $x = a\\tan\\theta$ is used for forms containing $\\sqrt{a^2 + x^2}$."
+        },
+        {
+          "text": "x = 5 sin θ",
+          "isCorrect": true,
+          "distractorReason": "Correct: For radicals of the form $\\sqrt{a^2 - x^2}$, substitute $x = a\\sin\\theta$ so that $\\sqrt{a^2 - a^2\\sin^2\\theta} = a\\cos\\theta$. With $a = 5$, substitute $x = 5\\sin\\theta$."
+        },
+        {
+          "text": "x = 5 sec θ",
+          "distractorReason": "Trap: $x = a\\sec\\theta$ is used for forms containing $\\sqrt{x^2 - a^2}$."
+        },
+        {
+          "text": "x = 25 sin θ",
+          "distractorReason": "Trap: Substituted $a^2$ instead of $a = \\sqrt{25} = 5$."
+        }
       ],
-      "correctAnswer": 0,
+      "correctAnswer": "B",
       "explanation": "For √(a² - x²), substitute x = a sin θ, so here x = 5 sin θ."
     },
     {
       "id": "chk-1602-03",
       "question": "What does Pappus' Second Proposition state regarding solids of revolution?",
       "options": [
-        "Volume equals generating plane area multiplied by the circular path distance of its centroid (V = 2π d̄ A)",
-        "Volume equals 4/3 π r³",
-        "Surface area equals circumference times height",
-        "Volume equals area divided by distance"
+        {
+          "text": "Volume equals 4/3 π r³",
+          "distractorReason": "Trap: Specific formula for sphere volume, not general Pappus proposition."
+        },
+        {
+          "text": "Surface area equals circumference times height",
+          "distractorReason": "Trap: Specific cylinder lateral area formula."
+        },
+        {
+          "text": "Volume equals generating plane area multiplied by the circular path distance of its centroid (V = 2π d̄ A)",
+          "isCorrect": true,
+          "distractorReason": "Correct: Pappus' Second Proposition states that the volume generated by revolving a plane figure about a non-intersecting coplanar axis equals the product of its area $A$ and the distance traveled by its centroid: $V = 2\\pi \\bar{d} A$."
+        },
+        {
+          "text": "Volume equals area divided by distance",
+          "distractorReason": "Trap: Dimensionally inconsistent (units of length instead of volume)."
+        }
       ],
-      "correctAnswer": 0,
+      "correctAnswer": "C",
       "explanation": "Pappus' second theorem states that V = (Area) * (2π d̄)."
     }
   ]

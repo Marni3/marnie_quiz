@@ -10,47 +10,47 @@
   "toc": [
     {
       "id": "sec-prereq-bridges",
-      "title": "1. Introduction & Cross-Subject Connections",
+      "title": "Introduction & Cross-Subject Connections",
       "level": 2
     },
     {
       "id": "sec-theory",
-      "title": "2. Lesson Proper: Set Theory Foundations",
+      "title": "Lesson Proper: Set Theory Foundations",
       "level": 2
     },
     {
       "id": "sec-formulas",
-      "title": "3. Compilation of Formulas & Set Laws",
+      "title": "Compilation of Formulas & Set Laws",
       "level": 2
     },
     {
       "id": "sec-visualizer",
-      "title": "4. Interactive Visualizer: Venn Diagram Overlaps",
+      "title": "Interactive Visualizer: Venn Diagram Overlaps",
       "level": 2
     },
     {
       "id": "sec-terminology",
-      "title": "5. Key Terms and Definitions",
+      "title": "Key Terms and Definitions",
       "level": 2
     },
     {
       "id": "sec-dual-method",
-      "title": "6. Worked Board Exam Problems",
+      "title": "Worked Board Exam Problems",
       "level": 2
     },
     {
       "id": "sec-calculator",
-      "title": "7. Calculator Speed Techniques (Karce & Canon)",
+      "title": "Calculator Speed Techniques (Karce & Canon)",
       "level": 2
     },
     {
       "id": "sec-concept-checks",
-      "title": "8. In-Line Concept Checks",
+      "title": "In-Line Concept Checks",
       "level": 2
     },
     {
       "id": "sec-mastery-challenge",
-      "title": "9. Paired Mastery Challenge Exam",
+      "title": "Paired Mastery Challenge Exam",
       "level": 2
     }
   ],
@@ -192,27 +192,21 @@
   ],
   "calculatorGuides": {
     "karce": {
-      "techniqueTitle": "Power Set 2^n Cardinality Shortcut",
-      "problemType": "Finding number of subsets/proper subsets",
-      "sampleProblem": "Find subsets of a 7-element set.",
+      "techniqueTitle": "Power Set Cardinality (2^n) & Inclusion-Exclusion Union",
+      "problemType": "Evaluating Subsets/Proper Subsets and Two-Set Union Cardinalities",
+      "sampleProblem": "Find subsets/proper subsets of a 7-element set, and evaluate two-set union with |A|=35, |B|=28, |A ∩ B|=12.",
       "mode": "COMP Mode (MODE 1)",
+      "whyItWorks": "Power set cardinality 2^n directly yields total subsets in COMP mode (with proper subsets = 2^n - 1). The Principle of Inclusion-Exclusion |A ∪ B| = |A| + |B| - |A ∩ B| rapidly computes union cardinality in 1 step.",
       "keystrokes": [
+        "MODE",
+        "1",
         "2",
         "^",
         "7",
         "=",
         "-",
         "1",
-        "="
-      ],
-      "notes": "Directly yields 128 subsets and 127 proper subsets."
-    },
-    "canon": {
-      "techniqueTitle": "Two-Set Union Calculation Shortcut",
-      "problemType": "Evaluating |A ∪ B| in COMP mode",
-      "sampleProblem": "Find union of sets with |A|=35, |B|=28, |A ∩ B|=12.",
-      "mode": "COMP Mode (MODE 1)",
-      "keystrokes": [
+        "=",
         "3",
         "5",
         "+",
@@ -223,7 +217,37 @@
         "2",
         "="
       ],
-      "notes": "Directly yields 51 in 1 second."
+      "notes": "💡 Keystroke Rules:\n1. Power Set: Enter 2^7 = 128 total subsets. Press - 1 = 127 proper subsets.\n2. Union Cardinality: Enter 35 + 28 - 12 = 51.",
+      "searchAdvisory": "Search 'Karce KC-S991 set theory power set and inclusion exclusion calculator tricks' for video walkthroughs."
+    },
+    "canon": {
+      "techniqueTitle": "Power Set Cardinality (2^n) & Inclusion-Exclusion Union",
+      "problemType": "Evaluating Subsets/Proper Subsets and Two-Set Union Cardinalities",
+      "sampleProblem": "Find subsets/proper subsets of a 7-element set, and evaluate two-set union with |A|=35, |B|=28, |A ∩ B|=12.",
+      "mode": "COMP Mode (MODE 1)",
+      "whyItWorks": "Power set cardinality 2^n directly yields total subsets in COMP mode (with proper subsets = 2^n - 1). The Principle of Inclusion-Exclusion |A ∪ B| = |A| + |B| - |A ∩ B| rapidly computes union cardinality in 1 step.",
+      "keystrokes": [
+        "MODE",
+        "1",
+        "2",
+        "^",
+        "7",
+        "=",
+        "-",
+        "1",
+        "=",
+        "3",
+        "5",
+        "+",
+        "2",
+        "8",
+        "-",
+        "1",
+        "2",
+        "="
+      ],
+      "notes": "💡 Keystroke Rules:\n1. Power Set: Enter 2^7 = 128 total subsets. Press - 1 = 127 proper subsets.\n2. Union Cardinality: Enter 35 + 28 - 12 = 51.",
+      "searchAdvisory": "Search 'Canon F-789SGA set theory union intersection and power set calculation' for video demos."
     }
   },
   "conceptChecks": [
@@ -231,36 +255,75 @@
       "id": "chk-0401-01",
       "question": "Which of the following statements regarding the empty set $\\emptyset$ is mathematically FALSE?",
       "options": [
-        "$\\{\\emptyset\\}$ is an empty set with 0 elements",
-        "$\\emptyset \\subseteq A$ for every set $A$",
-        "$\\emptyset$ contains zero elements",
-        "$\\emptyset \\subseteq \\emptyset$"
+        {
+          "text": "$\\{\\emptyset\\}$ is an empty set with 0 elements",
+          "isCorrect": true,
+          "distractorReason": "Correct: {∅} is a singleton set containing exactly 1 element (the empty set itself), so it is not an empty set."
+        },
+        {
+          "text": "$\\emptyset \\subseteq A$ for every set $A$",
+          "distractorReason": "Trap: This is a TRUE statement (the empty set is a subset of every set by vacuous truth)."
+        },
+        {
+          "text": "$\\emptyset$ contains zero elements ($|\\emptyset| = 0$)",
+          "distractorReason": "Trap: This is a TRUE definition of the empty/null set."
+        },
+        {
+          "text": "$\\emptyset \\subseteq \\emptyset$",
+          "distractorReason": "Trap: This is a TRUE statement (every set is a subset of itself)."
+        }
       ],
-      "correctAnswer": 0,
+      "correctAnswer": "A",
       "explanation": "{\\emptyset} is a singleton set containing 1 element (the empty set itself), so it is not empty."
     },
     {
       "id": "chk-0401-02",
       "question": "If set $A$ has 6 elements, how many non-empty proper subsets does it have?",
       "options": [
-        "62",
-        "63",
-        "64",
-        "31"
+        {
+          "text": "63 subsets",
+          "distractorReason": "Trap: 63 (2^6 - 1) is the number of proper subsets including the empty set."
+        },
+        {
+          "text": "62 subsets",
+          "isCorrect": true,
+          "distractorReason": "Correct: Total subsets = 2^6 = 64. Excluding both the empty set (∅) and the set itself (A) gives 2^6 - 2 = 64 - 2 = 62 non-empty proper subsets."
+        },
+        {
+          "text": "64 subsets",
+          "distractorReason": "Trap: 64 is the total number of power set elements (2^6)."
+        },
+        {
+          "text": "31 subsets",
+          "distractorReason": "Trap: 31 is the number of proper subsets for a 5-element set (2^5 - 1)."
+        }
       ],
-      "correctAnswer": 0,
+      "correctAnswer": "B",
       "explanation": "Total subsets = 2^6 = 64. Excluding the empty set and the set itself gives 2^6 - 2 = 64 - 2 = 62."
     },
     {
       "id": "chk-0401-03",
       "question": "Who was the German mathematician who founded modern set theory and proved that infinities have different sizes?",
       "options": [
-        "Georg Cantor",
-        "John Venn",
-        "Blaise Pascal",
-        "Leonardo of Pisa"
+        {
+          "text": "John Venn",
+          "distractorReason": "Trap: John Venn introduced Venn diagrams in 1880 to visually represent set relations."
+        },
+        {
+          "text": "Blaise Pascal",
+          "distractorReason": "Trap: Blaise Pascal developed probability theory and Pascal's triangle."
+        },
+        {
+          "text": "Georg Cantor",
+          "isCorrect": true,
+          "distractorReason": "Correct: Georg Cantor (1845–1918) created set theory and established the theory of transfinite cardinal numbers."
+        },
+        {
+          "text": "Leonardo of Pisa (Fibonacci)",
+          "distractorReason": "Trap: Introduced the Fibonacci sequence and Hindu-Arabic numerals to Europe."
+        }
       ],
-      "correctAnswer": 0,
+      "correctAnswer": "C",
       "explanation": "Georg Cantor (1845–1918) developed set theory and introduced transfinite cardinal numbers."
     }
   ]

@@ -10,47 +10,47 @@
   "toc": [
     {
       "id": "sec-prereq-bridges",
-      "title": "1. Introduction & Cross-Subject Connections",
+      "title": "Introduction & Cross-Subject Connections",
       "level": 2
     },
     {
       "id": "sec-theory",
-      "title": "2. Lesson Proper: Theory, Laws & Theorems",
+      "title": "Lesson Proper: Theory, Laws & Theorems",
       "level": 2
     },
     {
       "id": "sec-formulas",
-      "title": "3. Compilation of Formulas & Identities",
+      "title": "Compilation of Formulas & Identities",
       "level": 2
     },
     {
       "id": "sec-visualizer",
-      "title": "4. Interactive Visualizer: Exponent & Logarithm Sweep",
+      "title": "Interactive Visualizer: Exponent & Logarithm Sweep",
       "level": 2
     },
     {
       "id": "sec-terminology",
-      "title": "5. Key Terms and Definitions",
+      "title": "Key Terms and Definitions",
       "level": 2
     },
     {
       "id": "sec-dual-method",
-      "title": "6. Worked Board Exam Problems",
+      "title": "Worked Board Exam Problems",
       "level": 2
     },
     {
       "id": "sec-calculator",
-      "title": "7. Calculator Speed Techniques (Karce & Canon)",
+      "title": "Calculator Speed Techniques (Karce & Canon)",
       "level": 2
     },
     {
       "id": "sec-concept-checks",
-      "title": "8. In-Line Concept Checks",
+      "title": "In-Line Concept Checks",
       "level": 2
     },
     {
       "id": "sec-mastery-challenge",
-      "title": "9. Paired Mastery Challenge Exam",
+      "title": "Paired Mastery Challenge Exam",
       "level": 2
     }
   ],
@@ -190,11 +190,14 @@
   ],
   "calculatorGuides": {
     "karce": {
-      "techniqueTitle": "High-Speed Polynomial Remainder via CALC",
-      "problemType": "Evaluating Remainder P(k) in COMP Mode",
-      "sampleProblem": "Find remainder of 3X^4 - 2X^2 + 5 when divided by (X + 2).",
+      "techniqueTitle": "Polynomial Remainder via CALC & Change-of-Base Logarithms",
+      "problemType": "Evaluating Remainder P(k) and Arbitrary Base Logarithms",
+      "sampleProblem": "Evaluate remainder of P(X) = 3X^4 - 2X^2 + 5 divided by (X + 2), and calculate log_2(128).",
       "mode": "COMP Mode (MODE 1)",
+      "whyItWorks": "By Bézout's Remainder Theorem, substituting the root k = -2 into P(X) via the CALC function evaluates the exact polynomial remainder in 1 step without polynomial long division. For arbitrary base logarithms log_b(x), change-of-base evaluates ln(x)/ln(b) in standard COMP mode.",
       "keystrokes": [
+        "MODE",
+        "1",
         "3",
         "ALPHA",
         "X",
@@ -210,16 +213,44 @@
         "CALC",
         "-",
         "2",
+        "=",
+        "ln",
+        "1",
+        "2",
+        "8",
+        "÷",
+        "ln",
+        "2",
         "="
       ],
-      "notes": "By Remainder Theorem, substitute k = -2. The display directly evaluates R = 45 in under 3 seconds."
+      "notes": "💡 Keystroke Rules:\n1. For Remainder: Input 3X⁴ - 2X² + 5, press CALC, enter -2, press = to get R = 45.\n2. For Logarithm: Enter ln(128) ÷ ln(2) = 7.",
+      "searchAdvisory": "Search 'Karce KC-S991 CALC function remainder theorem speed tricks' for video walkthroughs."
     },
     "canon": {
-      "techniqueTitle": "Arbitrary Base Logarithm Evaluation",
-      "problemType": "Evaluating log_b(x) directly",
-      "sampleProblem": "Evaluate log_2(128) on Canon F-789SGA.",
+      "techniqueTitle": "Polynomial Remainder via CALC & Dedicated Log Base Button",
+      "problemType": "Evaluating Remainder P(k) and Arbitrary Base Logarithms",
+      "sampleProblem": "Evaluate remainder of P(X) = 3X^4 - 2X^2 + 5 divided by (X + 2), and calculate log_2(128).",
       "mode": "COMP Mode (MODE 1)",
+      "whyItWorks": "By Bézout's Remainder Theorem, substituting the root k = -2 into P(X) via the CALC function evaluates the exact polynomial remainder in 1 step without polynomial long division. The dedicated [log■■] key allows direct entry of base 2 and argument 128 without manual fraction conversion.",
       "keystrokes": [
+        "MODE",
+        "1",
+        "3",
+        "ALPHA",
+        "X",
+        "^",
+        "4",
+        "-",
+        "2",
+        "ALPHA",
+        "X",
+        "x²",
+        "+",
+        "5",
+        "CALC",
+        "-",
+        "2",
+        "=",
         "log■■",
         "2",
         "►",
@@ -228,7 +259,8 @@
         "8",
         "="
       ],
-      "notes": "Uses the dedicated log base button. Or use ln(128)/ln(2) to directly get 7."
+      "notes": "💡 Keystroke Rules:\n1. For Remainder: Input 3X⁴ - 2X² + 5, press CALC, enter -2, press = to get R = 45.\n2. For Logarithm: Press [log■■], enter 2, press right arrow, enter 128, press = to get 7.",
+      "searchAdvisory": "Search 'Canon F-789SGA dedicated log base and CALC button shortcuts' for video breakdowns."
     }
   },
   "conceptChecks": [
@@ -236,36 +268,75 @@
       "id": "chk-0102-01",
       "question": "What is the numerical value of the constant known as the Modulus of Logarithms used to convert $\\ln x$ to $\\log_{10} x$?",
       "options": [
-        "0.4343",
-        "2.3026",
-        "0.6931",
-        "1.4142"
+        {
+          "text": "0.4343",
+          "isCorrect": true,
+          "distractorReason": "Correct: The modulus of logarithms is M = log₁₀(e) ≈ 0.4343 (multiplier for converting natural to common log)."
+        },
+        {
+          "text": "2.3026",
+          "distractorReason": "Trap: 2.3026 is 1/M = ln(10), the multiplier used to convert common log to natural log (ln x = 2.3026 log x)."
+        },
+        {
+          "text": "0.6931",
+          "distractorReason": "Trap: 0.6931 is ln(2), the half-life natural log constant."
+        },
+        {
+          "text": "1.4142",
+          "distractorReason": "Trap: 1.4142 is the square root of 2 (√2)."
+        }
       ],
-      "correctAnswer": 0,
+      "correctAnswer": "A",
       "explanation": "The modulus of logarithms is M = log₁₀(e) ≈ 0.4343. Its reciprocal is 1/M = ln(10) ≈ 2.3026."
     },
     {
       "id": "chk-0102-02",
       "question": "Who originally proposed the use of base 10 common logarithms in 1616?",
       "options": [
-        "Henry Briggs",
-        "John Napier",
-        "Étienne Bézout",
-        "René Descartes"
+        {
+          "text": "John Napier",
+          "distractorReason": "Trap: John Napier invented natural base-e logarithms in 1614 (Napierian logarithms)."
+        },
+        {
+          "text": "Henry Briggs",
+          "isCorrect": true,
+          "distractorReason": "Correct: Henry Briggs of Gresham College proposed base 10 logarithms in 1616 (hence Briggsian logarithms)."
+        },
+        {
+          "text": "Étienne Bézout",
+          "distractorReason": "Trap: Étienne Bézout formulated the polynomial Remainder and Factor theorems."
+        },
+        {
+          "text": "René Descartes",
+          "distractorReason": "Trap: René Descartes developed the Cartesian coordinate system and Rule of Signs."
+        }
       ],
-      "correctAnswer": 0,
+      "correctAnswer": "B",
       "explanation": "Henry Briggs suggested base 10 logarithms in 1616 (hence Briggsian logarithms), whereas John Napier invented natural base-e logarithms in 1614."
     },
     {
       "id": "chk-0102-03",
       "question": "If $(x - 3)$ divides $P(x) = x^3 - 2x^2 + kx - 18$ exactly with zero remainder, what is the value of $k$?",
       "options": [
-        "3",
-        "-3",
-        "9",
-        "-9"
+        {
+          "text": "-3",
+          "distractorReason": "Trap: Sign error in isolating k from 3k - 9 = 0."
+        },
+        {
+          "text": "9",
+          "distractorReason": "Trap: Forgetting to divide by the coefficient 3."
+        },
+        {
+          "text": "3",
+          "isCorrect": true,
+          "distractorReason": "Correct: By Factor Theorem, P(3) = 0: 3³ - 2(3²) + 3k - 18 = 0 ⇒ 27 - 18 + 3k - 18 = 0 ⇒ 3k - 9 = 0 ⇒ k = 3."
+        },
+        {
+          "text": "-9",
+          "distractorReason": "Trap: Combined sign and coefficient transposition error."
+        }
       ],
-      "correctAnswer": 0,
+      "correctAnswer": "C",
       "explanation": "By Factor Theorem, P(3) = 0: 3³ - 2(3²) + 3k - 18 = 0 ⇒ 27 - 18 + 3k - 18 = 0 ⇒ 3k - 9 = 0 ⇒ k = 3."
     }
   ]

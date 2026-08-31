@@ -10,47 +10,47 @@
   "toc": [
     {
       "id": "sec-prereq-bridges",
-      "title": "1. Introduction & Cross-Subject Connections",
+      "title": "Introduction & Cross-Subject Connections",
       "level": 2
     },
     {
       "id": "sec-theory",
-      "title": "2. Lesson Proper: Exact Equations, Integrating Factors, Bernoulli & Physical Applications",
+      "title": "Lesson Proper: Exact Equations, Integrating Factors, Bernoulli & Physical Applications",
       "level": 2
     },
     {
       "id": "sec-formulas",
-      "title": "3. Master Compilation of Formulas & Solution Protocols",
+      "title": "Master Compilation of Formulas & Solution Protocols",
       "level": 2
     },
     {
       "id": "sec-visualizer",
-      "title": "4. Interactive Visualizer: Newton's Cooling & Mixing Tank Simulator",
+      "title": "Interactive Visualizer: Newton's Cooling & Mixing Tank Simulator",
       "level": 2
     },
     {
       "id": "sec-terminology",
-      "title": "5. Key Terms and Definitions",
+      "title": "Key Terms and Definitions",
       "level": 2
     },
     {
       "id": "sec-dual-method",
-      "title": "6. Worked Board Exam Problems",
+      "title": "Worked Board Exam Problems",
       "level": 2
     },
     {
       "id": "sec-calculator",
-      "title": "7. Calculator Speed Techniques (Karce & Canon)",
+      "title": "Calculator Speed Techniques (Karce & Canon)",
       "level": 2
     },
     {
       "id": "sec-concept-checks",
-      "title": "8. In-Line Concept Checks",
+      "title": "In-Line Concept Checks",
       "level": 2
     },
     {
       "id": "sec-mastery-challenge",
-      "title": "9. Paired Mastery Challenge Exam",
+      "title": "Paired Mastery Challenge Exam",
       "level": 2
     }
   ],
@@ -178,11 +178,14 @@
   ],
   "calculatorGuides": {
     "karce": {
-      "techniqueTitle": "Fast Newton's Cooling Geometric Ratio",
-      "problemType": "Evaluating Ts + (T0 - Ts) * (ratio)^(t/t1)",
-      "sampleProblem": "Find T at t=20 for T0=100, Ts=20, T(10)=60.",
+      "techniqueTitle": "Fast Newton's Cooling & Radioactive Decay Evaluation",
+      "problemType": "Evaluating Temperature T(t) = Ts + (T0 - Ts)·(ratio)^(t/t1) and Decay Q(t) = Q0·(0.5)^n",
+      "sampleProblem": "Evaluate Newton's law of cooling temperature T(t) = Ts + (T0 - Ts)·(ratio)^(t/t1) at t=20 mins for initial temp T0=100°C, ambient temp Ts=20°C, and T(10)=60°C (ratio = 40/80 = 0.5), and evaluate radioactive decay Q(t) = Q0·(0.5)^(t/t_half) for Q0=500g after 3 half-lives.",
       "mode": "COMP Mode (MODE 1)",
+      "whyItWorks": "Newton's cooling law produces an exact geometric decay in temperature difference (T - Ts), giving T(20) = 20 + 80(0.5)² = 40°C in 1 second. Radioactive decay similarly halves every period: Q = 500(0.5)³ = 62.5g directly in COMP mode.",
       "keystrokes": [
+        "MODE",
+        "1",
         "2",
         "0",
         "+",
@@ -195,16 +198,7 @@
         "5",
         ")",
         "x²",
-        "="
-      ],
-      "notes": "Directly displays 40 in 1 second."
-    },
-    "canon": {
-      "techniqueTitle": "Radioactive Half-Life Evaluation",
-      "problemType": "Q0 * (0.5)^(t / t_half) on Canon F-789SGA",
-      "sampleProblem": "Find remaining mass for Q0=500g after 3 half-lives.",
-      "mode": "COMP Mode (MODE 1)",
-      "keystrokes": [
+        "=",
         "5",
         "0",
         "0",
@@ -214,10 +208,48 @@
         ".",
         "5",
         ")",
-        "³",
+        "x³",
         "="
       ],
-      "notes": "Directly displays 62.5 grams."
+      "notes": "💡 Keystroke Rules:\n1. Newton's Cooling: 20 + 80 × 0.5² = 40°C.\n2. Radioactive Decay: 500 × 0.5³ = 62.5 g.",
+      "searchAdvisory": "Search 'Karce KC-S991 Newtons law of cooling ratio shortcut and half life decay' for video tutorials."
+    },
+    "canon": {
+      "techniqueTitle": "Fast Newton's Cooling & Radioactive Decay Evaluation",
+      "problemType": "Evaluating Temperature T(t) = Ts + (T0 - Ts)·(ratio)^(t/t1) and Decay Q(t) = Q0·(0.5)^n",
+      "sampleProblem": "Evaluate Newton's law of cooling temperature T(t) = Ts + (T0 - Ts)·(ratio)^(t/t1) at t=20 mins for initial temp T0=100°C, ambient temp Ts=20°C, and T(10)=60°C (ratio = 40/80 = 0.5), and evaluate radioactive decay Q(t) = Q0·(0.5)^(t/t_half) for Q0=500g after 3 half-lives.",
+      "mode": "COMP Mode (MODE 1)",
+      "whyItWorks": "Newton's cooling law produces an exact geometric decay in temperature difference (T - Ts), giving T(20) = 20 + 80(0.5)² = 40°C in 1 second. Radioactive decay similarly halves every period: Q = 500(0.5)³ = 62.5g directly in COMP mode.",
+      "keystrokes": [
+        "MODE",
+        "1",
+        "2",
+        "0",
+        "+",
+        "8",
+        "0",
+        "×",
+        "(",
+        "0",
+        ".",
+        "5",
+        ")",
+        "x²",
+        "=",
+        "5",
+        "0",
+        "0",
+        "×",
+        "(",
+        "0",
+        ".",
+        "5",
+        ")",
+        "x³",
+        "="
+      ],
+      "notes": "💡 Keystroke Rules:\n1. Newton's Cooling: 20 + 80 × 0.5² = 40°C.\n2. Radioactive Decay: 500 × 0.5³ = 62.5 g.",
+      "searchAdvisory": "Search 'Canon F-789SGA Newtons cooling temperature decay and half life shortcuts' for video breakdowns."
     }
   },
   "conceptChecks": [
@@ -225,36 +257,75 @@
       "id": "chk-1802-01",
       "question": "What is the condition for the differential equation $M(x, y) dx + N(x, y) dy = 0$ to be an exact differential equation?",
       "options": [
-        "∂M/∂y = ∂N/∂x",
-        "∂M/∂x = ∂N/∂y",
-        "M(x, y) = N(x, y)",
-        "∂²M/∂x² = ∂²N/∂y²"
+        {
+          "text": "∂M/∂y = ∂N/∂x",
+          "isCorrect": true,
+          "distractorReason": "Correct: Clairaut's theorem on equality of mixed partial derivatives requires $\\frac{\\partial M}{\\partial y} = \\frac{\\partial N}{\\partial x}$ for $M\\,dx + N\\,dy$ to be the exact total differential $dF = 0$."
+        },
+        {
+          "text": "∂M/∂x = ∂N/∂y",
+          "distractorReason": "Trap: Equated direct partial derivatives instead of cross partial derivatives."
+        },
+        {
+          "text": "M(x, y) = N(x, y)",
+          "distractorReason": "Trap: Requiring coefficient equality is not a condition for exactness."
+        },
+        {
+          "text": "∂²M/∂x² = ∂²N/∂y²",
+          "distractorReason": "Trap: Higher-order second direct partial derivatives."
+        }
       ],
-      "correctAnswer": 0,
+      "correctAnswer": "A",
       "explanation": "Exactness requires that the cross partial derivatives match: ∂M/∂y = ∂N/∂x."
     },
     {
       "id": "chk-1802-02",
       "question": "What is the integrating factor (Euler's multiplier) for the linear ODE $\\frac{dy}{dx} + 3y = e^{2x}$?",
       "options": [
-        "e^(3x)",
-        "e^(-3x)",
-        "3x",
-        "e^(2x)"
+        {
+          "text": "e^(-3x)",
+          "distractorReason": "Trap: Included an erroneous negative sign in the exponent."
+        },
+        {
+          "text": "e^(3x)",
+          "isCorrect": true,
+          "distractorReason": "Correct: In standard form $y' + P(x)y = Q(x)$ with $P(x) = 3$, the Euler integrating factor is $I(x) = e^{\\int P(x)\\,dx} = e^{\\int 3\\,dx} = e^{3x}$."
+        },
+        {
+          "text": "3x",
+          "distractorReason": "Trap: Forgot to exponentiate $\\int P(x)\\,dx$."
+        },
+        {
+          "text": "e^(2x)",
+          "distractorReason": "Trap: Used the RHS function $Q(x) = e^{2x}$ instead of $P(x)$."
+        }
       ],
-      "correctAnswer": 0,
+      "correctAnswer": "B",
       "explanation": "Integrating factor = exp(∫ 3 dx) = e^(3x)."
     },
     {
       "id": "chk-1802-03",
       "question": "Which power substitution transforms Bernoulli's equation $\\frac{dy}{dx} + y P(x) = y^3 Q(x)$ into a linear differential equation?",
       "options": [
-        "z = y^(1 - 3) = y^(-2)",
-        "z = y³",
-        "z = y²",
-        "z = y^(-3)"
+        {
+          "text": "z = y³",
+          "distractorReason": "Trap: Setting $z = y^n$ does not linearize the differential term."
+        },
+        {
+          "text": "z = y²",
+          "distractorReason": "Trap: Incorrect power without inversion."
+        },
+        {
+          "text": "z = y^(1 - 3) = y^(-2)",
+          "isCorrect": true,
+          "distractorReason": "Correct: For any Bernoulli ODE $y' + P(x)y = Q(x)y^n$, the substitution $z = y^{1 - n}$ linearizes the equation. With $n = 3$, $z = y^{1 - 3} = y^{-2}$."
+        },
+        {
+          "text": "z = y^(-3)",
+          "distractorReason": "Trap: Setting $z = y^{-n}$ instead of $y^{1-n}$."
+        }
       ],
-      "correctAnswer": 0,
+      "correctAnswer": "C",
       "explanation": "For Bernoulli's equation with power n = 3, substitute z = y^(1 - n) = y^(-2)."
     }
   ]

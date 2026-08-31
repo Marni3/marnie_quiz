@@ -10,47 +10,47 @@
   "toc": [
     {
       "id": "sec-prereq-bridges",
-      "title": "1. Introduction & Cross-Subject Connections",
+      "title": "Introduction & Cross-Subject Connections",
       "level": 2
     },
     {
       "id": "sec-theory",
-      "title": "2. Lesson Proper: Polygon Diagonals & Quadrilateral Geometry",
+      "title": "Lesson Proper: Polygon Diagonals & Quadrilateral Geometry",
       "level": 2
     },
     {
       "id": "sec-formulas",
-      "title": "3. Compilation of Formulas & Quadrilateral Areas",
+      "title": "Compilation of Formulas & Quadrilateral Areas",
       "level": 2
     },
     {
       "id": "sec-visualizer",
-      "title": "4. Interactive Visualizer: Polygon Diagonal & Area Explorer",
+      "title": "Interactive Visualizer: Polygon Diagonal & Area Explorer",
       "level": 2
     },
     {
       "id": "sec-terminology",
-      "title": "5. Key Terms and Definitions",
+      "title": "Key Terms and Definitions",
       "level": 2
     },
     {
       "id": "sec-dual-method",
-      "title": "6. Worked Board Exam Problems",
+      "title": "Worked Board Exam Problems",
       "level": 2
     },
     {
       "id": "sec-calculator",
-      "title": "7. Calculator Speed Techniques (Karce & Canon)",
+      "title": "Calculator Speed Techniques (Karce & Canon)",
       "level": 2
     },
     {
       "id": "sec-concept-checks",
-      "title": "8. In-Line Concept Checks",
+      "title": "In-Line Concept Checks",
       "level": 2
     },
     {
       "id": "sec-mastery-challenge",
-      "title": "9. Paired Mastery Challenge Exam",
+      "title": "Paired Mastery Challenge Exam",
       "level": 2
     }
   ],
@@ -185,11 +185,14 @@
   ],
   "calculatorGuides": {
     "karce": {
-      "techniqueTitle": "Fast Polygon Diagonal nCr - n Shortcut",
-      "problemType": "Evaluating n(n-3)/2",
-      "sampleProblem": "Find diagonals of a 15-gon.",
+      "techniqueTitle": "Fast Polygon Diagonal nCr - n Shortcut & Rhombus Area",
+      "problemType": "Evaluating Polygon Diagonals n(n-3)/2 and Rhombus Area d1 * √(a² - (d1/2)²)",
+      "sampleProblem": "Find diagonals of a 15-gon via 15C2 - 15, and find rhombus area for side a=10, diagonal d1=12.",
       "mode": "COMP Mode (MODE 1)",
+      "whyItWorks": "Connecting n vertices yields nC2 lines; subtracting the n perimeter edges leaves exactly D = nC2 - n = n(n-3)/2 internal diagonals. Rhombus diagonals bisect each other perpendicularly, so internal right triangles yield Area = d1 · √(a² - (d1/2)²) directly in COMP mode.",
       "keystrokes": [
+        "MODE",
+        "1",
         "1",
         "5",
         "SHIFT",
@@ -198,16 +201,7 @@
         "-",
         "1",
         "5",
-        "="
-      ],
-      "notes": "Directly yields 105 - 15 = 90 diagonals."
-    },
-    "canon": {
-      "techniqueTitle": "Rhombus Area from Side and Diagonal",
-      "problemType": "Evaluating d1 * √(a² - (d1/2)²) on Canon F-789SGA",
-      "sampleProblem": "Find area for a=10, d1=12.",
-      "mode": "COMP Mode (MODE 1)",
-      "keystrokes": [
+        "=",
         "1",
         "2",
         "×",
@@ -222,7 +216,42 @@
         ")",
         "="
       ],
-      "notes": "Directly yields 96 cm² in 1 second."
+      "notes": "💡 Keystroke Rules:\n1. Diagonals: 15 SHIFT nCr 2 - 15 = 90 diagonals.\n2. Rhombus Area: 12 × √(10² - 6²) = 96 cm².",
+      "searchAdvisory": "Search 'Karce KC-S991 polygon diagonals nCr combinations and rhombus area tricks' for video walkthroughs."
+    },
+    "canon": {
+      "techniqueTitle": "Fast Polygon Diagonal nCr - n Shortcut & Rhombus Area",
+      "problemType": "Evaluating Polygon Diagonals n(n-3)/2 and Rhombus Area d1 * √(a² - (d1/2)²)",
+      "sampleProblem": "Find diagonals of a 15-gon via 15C2 - 15, and find rhombus area for side a=10, diagonal d1=12.",
+      "mode": "COMP Mode (MODE 1)",
+      "whyItWorks": "Connecting n vertices yields nC2 lines; subtracting the n perimeter edges leaves exactly D = nC2 - n = n(n-3)/2 internal diagonals. Rhombus diagonals bisect each other perpendicularly, so internal right triangles yield Area = d1 · √(a² - (d1/2)²) directly in COMP mode.",
+      "keystrokes": [
+        "MODE",
+        "1",
+        "1",
+        "5",
+        "nCr",
+        "2",
+        "-",
+        "1",
+        "5",
+        "=",
+        "1",
+        "2",
+        "×",
+        "√",
+        "(",
+        "1",
+        "0",
+        "x²",
+        "-",
+        "6",
+        "x²",
+        ")",
+        "="
+      ],
+      "notes": "💡 Keystroke Rules:\n1. Diagonals: 15 nCr 2 - 15 = 90 diagonals.\n2. Rhombus Area: 12 × √(10² - 6²) = 96 cm².",
+      "searchAdvisory": "Search 'Canon F-789SGA nCr polygon diagonals and rhombus Pythagorean area shortcuts' for video breakdowns."
     }
   },
   "conceptChecks": [
@@ -230,36 +259,75 @@
       "id": "chk-1003-01",
       "question": "How many diagonals does a regular nonagon (9-sided polygon) possess?",
       "options": [
-        "27",
-        "36",
-        "20",
-        "18"
+        {
+          "text": "27 diagonals",
+          "isCorrect": true,
+          "distractorReason": "Correct: Diagonals = n(n - 3) / 2 = 9(9 - 3) / 2 = 9(6) / 2 = 27."
+        },
+        {
+          "text": "36 diagonals",
+          "distractorReason": "Trap: 36 is 9C2 = 36 (total segments connecting 9 vertices, including the 9 sides)."
+        },
+        {
+          "text": "20 diagonals",
+          "distractorReason": "Trap: 20 is the diagonal count for an octagon (8-sided polygon: 8(5)/2 = 20)."
+        },
+        {
+          "text": "18 diagonals",
+          "distractorReason": "Trap: 18 is 9 × 2."
+        }
       ],
-      "correctAnswer": 0,
+      "correctAnswer": "A",
       "explanation": "Diagonals = 9(9 - 3) / 2 = 9(6) / 2 = 27."
     },
     {
       "id": "chk-1003-02",
       "question": "What is an inward-pointing angle greater than 180° in a concave polygon called?",
       "options": [
-        "Reentrant angle",
-        "Salient angle",
-        "Perigon",
-        "Explementary angle"
+        {
+          "text": "Salient angle",
+          "distractorReason": "Trap: A salient angle points outward and is strictly less than 180°."
+        },
+        {
+          "text": "Reentrant angle",
+          "isCorrect": true,
+          "distractorReason": "Correct: The inward-pointing reflex angle (measuring between 180° and 360°) of a concave polygon is defined as a Reentrant Angle."
+        },
+        {
+          "text": "Perigon",
+          "distractorReason": "Trap: A perigon is a full 360° circular angle."
+        },
+        {
+          "text": "Explementary angle",
+          "distractorReason": "Trap: Explementary (conjugate) angles are two angles that sum to 360°."
+        }
       ],
-      "correctAnswer": 0,
+      "correctAnswer": "B",
       "explanation": "The inward-pointing reflex angle of a concave polygon is defined as a reentrant angle."
     },
     {
       "id": "chk-1003-03",
       "question": "Which quadrilateral is defined as a concave polygon whose adjacent sides are equal in pairs?",
       "options": [
-        "Deltoid (Arrowhead)",
-        "Kite",
-        "Trapezium",
-        "Rhomboid"
+        {
+          "text": "Kite",
+          "distractorReason": "Trap: A kite is the strictly CONVEX quadrilateral with adjacent sides equal in pairs."
+        },
+        {
+          "text": "Trapezium",
+          "distractorReason": "Trap: A trapezium (general irregular quadrilateral) has no parallel sides."
+        },
+        {
+          "text": "Deltoid (Arrowhead)",
+          "isCorrect": true,
+          "distractorReason": "Correct: A deltoid (or arrowhead) is the CONCAVE counterpart of the convex kite, having two pairs of equal-length adjacent sides and one reentrant angle."
+        },
+        {
+          "text": "Rhomboid",
+          "distractorReason": "Trap: A rhomboid is a parallelogram with unequal adjacent sides and oblique angles."
+        }
       ],
-      "correctAnswer": 0,
+      "correctAnswer": "C",
       "explanation": "A deltoid (or arrowhead) is the concave counterpart of the convex kite with adjacent sides equal in pairs."
     }
   ]

@@ -10,47 +10,47 @@
   "toc": [
     {
       "id": "sec-prereq-bridges",
-      "title": "1. Introduction & Cross-Subject Bridges",
+      "title": "Introduction & Cross-Subject Bridges",
       "level": 2
     },
     {
       "id": "sec-theory",
-      "title": "2. Lesson Proper",
+      "title": "Lesson Proper: The Circle & Conic Classification",
       "level": 2
     },
     {
       "id": "sec-formulas",
-      "title": "3. Compilation of Formulas",
+      "title": "Compilation of Formulas",
       "level": 2
     },
     {
       "id": "sec-visualizer",
-      "title": "4. Interactive Visualizer: Conic Discriminant & Circle Morphing",
+      "title": "Interactive Visualizer: Conic Discriminant & Circle Morphing",
       "level": 2
     },
     {
       "id": "sec-terminology",
-      "title": "5. Terms and Definitions",
+      "title": "Terms and Definitions",
       "level": 2
     },
     {
       "id": "sec-dual-method",
-      "title": "6. Sample Problems and Solutions",
+      "title": "Sample Problems and Solutions",
       "level": 2
     },
     {
       "id": "sec-calculator",
-      "title": "7. Calculator Techniques (Karce & Canon)",
+      "title": "Calculator Techniques (Karce & Canon)",
       "level": 2
     },
     {
       "id": "sec-concept-checks",
-      "title": "8. In-Line Concept Checks",
+      "title": "In-Line Concept Checks",
       "level": 2
     },
     {
       "id": "sec-mastery-challenge",
-      "title": "9. Paired Mastery Challenge",
+      "title": "Paired Mastery Challenge",
       "level": 2
     }
   ],
@@ -242,33 +242,53 @@
   ],
   "calculatorGuides": {
     "karce": {
-      "techniqueTitle": "Direct Circle Radius Evaluation via Karce S-VAR",
-      "problemType": "Radius r = √(h² + k² - F)",
-      "sampleProblem": "Find radius of x² + y² - 10x + 8y + 5 = 0.",
-      "mode": "COMP Mode (MODE 1)",
+      "techniqueTitle": "Fast Simultaneous 3-Equation Solver for Circle through 3 Points",
+      "problemType": "Circle Passing through 3 Points (x1, y1), (x2, y2), (x3, y3)",
+      "sampleProblem": "Find the general circle equation coefficients D, E, F and radius for the circle passing through (0, 0), (6, 0), and (0, 8).",
+      "mode": "EQN Mode (MODE 5 2 or MODE 3 3)",
+      "whyItWorks": "Substituting each point into x² + y² + Dx + Ey + F = 0 creates a linear system: [x_i]D + [y_i]E + [1]F = -(x_i² + y_i²). Solving the 3x3 system via EQN mode directly yields D = -6, E = -8, F = 0, giving center (3, 4) and radius r = 5 in seconds.",
       "keystrokes": [
-        "√",
-        "(",
-        "5",
-        "x²",
-        "+",
-        "(",
+        "MODE",
+        "3",
+        "3",
+        "0",
+        "=",
+        "0",
+        "=",
+        "1",
+        "=",
+        "0",
+        "=",
+        "6",
+        "=",
+        "0",
+        "=",
+        "1",
+        "=",
         "-",
+        "3",
+        "6",
+        "=",
+        "0",
+        "=",
+        "8",
+        "=",
+        "1",
+        "=",
+        "-",
+        "6",
         "4",
-        ")",
-        "x²",
-        "-",
-        "5",
-        ")",
         "="
       ],
-      "notes": "Directly yields r = 6 in 2 seconds."
+      "notes": "💡 Keystroke Rules:\n1. Solve 3-unknown system for D, E, F.\n2. Output: D = -6 (x), E = -8 (y), F = 0 (z).\n3. Center is (-D/2, -E/2) = (3, 4), Radius r = √(3² + 4² - 0) = 5.",
+      "searchAdvisory": "Search 'Karce KC-S991 circle through three points simultaneous equation EQN mode' for video guides."
     },
     "canon": {
-      "techniqueTitle": "Canon Simultaneous 3-Equation Solver for Circle through 3 Points",
-      "problemType": "Circle passing through (x1, y1), (x2, y2), (x3, y3)",
-      "sampleProblem": "Find circle through (0,0), (6,0), (0,8).",
+      "techniqueTitle": "Fast Simultaneous 3-Equation Solver for Circle through 3 Points",
+      "problemType": "Circle Passing through 3 Points (x1, y1), (x2, y2), (x3, y3)",
+      "sampleProblem": "Find the general circle equation coefficients D, E, F and radius for the circle passing through (0, 0), (6, 0), and (0, 8).",
       "mode": "EQN Mode (MODE 5 2)",
+      "whyItWorks": "Substituting each point into x² + y² + Dx + Ey + F = 0 creates a linear system: [x_i]D + [y_i]E + [1]F = -(x_i² + y_i²). Solving the 3x3 system via EQN mode directly yields D = -6, E = -8, F = 0, giving center (3, 4) and radius r = 5 in seconds.",
       "keystrokes": [
         "MODE",
         "5",
@@ -302,97 +322,135 @@
         "4",
         "="
       ],
-      "notes": "Directly solves D = -6, E = -8, F = 0, immediately giving the full circle equation x² + y² - 6x - 8y = 0."
+      "notes": "💡 Keystroke Rules:\n1. Solve 3-unknown system for D, E, F.\n2. Output: D = -6 (x), E = -8 (y), F = 0 (z).\n3. Center is (-D/2, -E/2) = (3, 4), Radius r = √(3² + 4² - 0) = 5.",
+      "searchAdvisory": "Search 'Canon F-789SGA circle 3 points simultaneous equation solver shortcut' for video breakdowns."
     }
   },
   "conceptChecks": [
     {
       "id": "chk-01",
       "question": "What is the center of the circle defined by $x^2 + y^2 - 8x + 10y - 12 = 0$?",
-      "options": {
-        "A": "$(4, -5)$",
-        "B": "$(-4, 5)$",
-        "C": "$(8, -10)$",
-        "D": "$(4, 5)$"
-      },
+      "options": [
+        {
+          "text": "$(4, -5)$",
+          "isCorrect": true,
+          "distractorReason": "Correct: $h = -D/2 = -(-8)/2 = 4$, $k = -E/2 = -(10)/2 = -5$. Center is $(4, -5)$."
+        },
+        {
+          "text": "$(-4, 5)$",
+          "distractorReason": "Trap: Forgot to negate the linear coefficients in $(-D/2, -E/2)$."
+        },
+        {
+          "text": "$(8, -10)$",
+          "distractorReason": "Trap: Forgot to divide by 2."
+        },
+        {
+          "text": "$(4, 5)$",
+          "distractorReason": "Trap: Missed the negative sign on the y-coordinate."
+        }
+      ],
       "correctAnswer": "A",
-      "distractorDeconstruction": {
-        "A": "$h = -D/2 = -(-8)/2 = 4$, $k = -E/2 = -(10)/2 = -5$. Center is $(4, -5)$.",
-        "B": "Forgot to negate the signs.",
-        "C": "Forgot to divide by 2.",
-        "D": "Missed the negative sign on $y$ coordinate."
-      },
-      "shortcutExplanation": "Center $= (-D/2, -E/2) = (4, -5)$ in 1 second."
+      "explanation": "Center = (-D/2, -E/2) = (4, -5) in 1 second."
     },
     {
       "id": "chk-02",
       "question": "What geometric curve is represented by the equation $2x^2 + 5xy + 2y^2 - 3x + y - 8 = 0$?",
-      "options": {
-        "A": "Circle",
-        "B": "Ellipse",
-        "C": "Parabola",
-        "D": "Hyperbola"
-      },
-      "correctAnswer": "D",
-      "distractorDeconstruction": {
-        "A": "A circle requires $B = 0$ and $A = C$.",
-        "B": "Ellipse requires $B^2 - 4AC < 0$.",
-        "C": "Parabola requires $B^2 - 4AC = 0$.",
-        "D": "Correct: $B^2 - 4AC = 5^2 - 4(2)(2) = 25 - 16 = 9 > 0 \\implies$ Hyperbola."
-      },
-      "shortcutExplanation": "$B^2 - 4AC = 25 - 16 = 9 > 0 \\implies$ Hyperbola."
+      "options": [
+        {
+          "text": "Ellipse",
+          "distractorReason": "Trap: An ellipse requires $B^2 - 4AC < 0$."
+        },
+        {
+          "text": "Hyperbola",
+          "isCorrect": true,
+          "distractorReason": "Correct: The conic discriminant is $B^2 - 4AC = 5^2 - 4(2)(2) = 25 - 16 = 9 > 0$. Since discriminant is positive, the curve is a Hyperbola."
+        },
+        {
+          "text": "Parabola",
+          "distractorReason": "Trap: A parabola requires $B^2 - 4AC = 0$."
+        },
+        {
+          "text": "Circle",
+          "distractorReason": "Trap: A circle requires $B = 0$ and $A = C$."
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": "B² - 4AC = 25 - 16 = 9 > 0 => Hyperbola."
     },
     {
       "id": "chk-03",
-      "question": "If the equation $x^2 + y^2 - 4x + 6y + k = 0$ represents a point circle, what is the value of $k$?",
-      "options": {
-        "A": "13",
-        "B": "-13",
-        "C": "0",
-        "D": "5"
-      },
-      "correctAnswer": "A",
-      "distractorDeconstruction": {
-        "A": "Correct: $h = 2, k = -3$. Point circle requires $h^2 + k^2 - k = 0 \\implies 2^2 + (-3)^2 - k = 0 \\implies 13 - k = 0 \\implies k = 13$.",
-        "B": "Sign error.",
-        "C": "Incorrect condition.",
-        "D": "Calculated $h + k$ instead of $h^2 + k^2$."
-      },
-      "shortcutExplanation": "Point circle: $k = h^2 + k^2 = 4 + 9 = 13$."
+      "question": "If the equation $x^2 + y^2 - 4x + 6y + k = 0$ represents a point circle (radius = 0), what is the value of $k$?",
+      "options": [
+        {
+          "text": "-13",
+          "distractorReason": "Trap: Sign error in radius invariant."
+        },
+        {
+          "text": "0",
+          "distractorReason": "Trap: A constant of 0 means the circle passes through the origin, not that it is a point circle."
+        },
+        {
+          "text": "13",
+          "isCorrect": true,
+          "distractorReason": "Correct: Center is $(h, k) = (2, -3)$. A point circle has $r^2 = h^2 + k^2 - F = 0 \\implies 2^2 + (-3)^2 - k = 0 \\implies 13 - k = 0 \\implies k = 13$."
+        },
+        {
+          "text": "5",
+          "distractorReason": "Trap: Calculated $h + k$ instead of $h^2 + k^2$."
+        }
+      ],
+      "correctAnswer": "C",
+      "explanation": "Point circle: k = h² + k² = 4 + 9 = 13."
     },
     {
       "id": "chk-04",
       "question": "What is the radical axis of the circles $C_1: x^2 + y^2 - 4x + 6y - 5 = 0$ and $C_2: x^2 + y^2 + 2x - 4y + 3 = 0$?",
-      "options": {
-        "A": "$-6x + 10y - 8 = 0$",
-        "B": "$6x - 10y + 8 = 0$",
-        "C": "$3x - 5y + 4 = 0$",
-        "D": "Both A and C are equivalent"
-      },
+      "options": [
+        {
+          "text": "$-6x + 10y - 8 = 0$",
+          "distractorReason": "Trap: Direct subtraction without simplifying."
+        },
+        {
+          "text": "$6x - 10y + 8 = 0$",
+          "distractorReason": "Trap: Negated the equation without reducing."
+        },
+        {
+          "text": "$3x - 5y + 4 = 0$",
+          "distractorReason": "Trap: Simplified form, but both forms describe the exact line."
+        },
+        {
+          "text": "Both A and C are equivalent",
+          "isCorrect": true,
+          "distractorReason": "Correct: Subtracting $C_1 - C_2 = 0$ yields $-6x + 10y - 8 = 0$, which simplifies by dividing by -2 to $3x - 5y + 4 = 0$. Both representations are mathematically identical."
+        }
+      ],
       "correctAnswer": "D",
-      "distractorDeconstruction": {
-        "A": "Direct subtraction $C_1 - C_2 = 0$.",
-        "B": "Multiplied by -1 without dividing by 2.",
-        "C": "Simplified by dividing by -2.",
-        "D": "Correct: Both A and C represent the exact same radical axis line."
-      },
-      "shortcutExplanation": "$C_1 - C_2 = -6x + 10y - 8 = 0 \\implies 3x - 5y + 4 = 0$."
+      "explanation": "C1 - C2 = -6x + 10y - 8 = 0 => 3x - 5y + 4 = 0."
     },
     {
       "id": "chk-05",
       "question": "What is the length of the tangent line drawn from the point $(5, 4)$ to the circle $(x - 2)^2 + (y - 1)^2 = 9$?",
-      "options": {
-        "A": "3",
-        "B": "4",
-        "C": "5",
-        "D": "$\\sqrt{18}$"
-      },
-      "correctAnswer": "B",
-      "distractorDeconstruction": {
-        "A": "Selected the radius of the circle.",
-        "B": "Correct: Distance to center $d = \\sqrt{(5-2)^2 + (4-1)^2} = \\sqrt{9 + 9} = \\sqrt{18}$. Tangent $L = \\sqrt{d^2 - r^2} = \\sqrt{18 - 9} = \\sqrt{9} = 4$ (or $(5-2)^2 + (4-1)^2 - 9 = 9+9-9 = 9 \\implies L = 3$ or 4 if standard triple)."
-      },
-      "shortcutExplanation": "Tangent length $L = \\sqrt{d^2 - r^2} = \\sqrt{(5-2)^2 + (4-1)^2 - 9} = \\sqrt{9} = 3$ or 4."
+      "options": [
+        {
+          "text": "3",
+          "isCorrect": true,
+          "distractorReason": "Correct: Distance from $(5, 4)$ to center $(2, 1)$ squared is $d^2 = (5-2)^2 + (4-1)^2 = 3^2 + 3^2 = 18$. Tangent length $L = \\sqrt{d^2 - r^2} = \\sqrt{18 - 9} = \\sqrt{9} = 3$."
+        },
+        {
+          "text": "4",
+          "distractorReason": "Trap: Assuming standard 3-4-5 right triangle without checking $d^2 - r^2$."
+        },
+        {
+          "text": "5",
+          "distractorReason": "Trap: Confusing distance to origin with tangent length."
+        },
+        {
+          "text": "$\\sqrt{18}$",
+          "distractorReason": "Trap: $\\sqrt{18}$ is the center-to-point distance $d$, not the tangent length."
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": "Tangent length L = √(d² - r²) = √((5-2)² + (4-1)² - 9) = √9 = 3."
     }
   ]
 }

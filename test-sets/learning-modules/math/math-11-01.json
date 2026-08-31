@@ -10,47 +10,47 @@
   "toc": [
     {
       "id": "sec-prereq-bridges",
-      "title": "1. Introduction & Cross-Subject Connections",
+      "title": "Introduction & Cross-Subject Connections",
       "level": 2
     },
     {
       "id": "sec-theory",
-      "title": "2. Lesson Proper: The 4 Forms, Arithmetic, Powers, Roots & Logs",
+      "title": "Lesson Proper: The 4 Forms, Arithmetic, Powers, Roots & Logs",
       "level": 2
     },
     {
       "id": "sec-formulas",
-      "title": "3. Master Compilation of Complex Analysis Formulas",
+      "title": "Master Compilation of Complex Analysis Formulas",
       "level": 2
     },
     {
       "id": "sec-visualizer",
-      "title": "4. Interactive Visualizer: Argand Plane & nth Root Polygon Simulator",
+      "title": "Interactive Visualizer: Argand Plane & nth Root Polygon Simulator",
       "level": 2
     },
     {
       "id": "sec-terminology",
-      "title": "5. Key Terms and Definitions",
+      "title": "Key Terms and Definitions",
       "level": 2
     },
     {
       "id": "sec-dual-method",
-      "title": "6. Worked Board Exam Problems",
+      "title": "Worked Board Exam Problems",
       "level": 2
     },
     {
       "id": "sec-calculator",
-      "title": "7. Calculator Speed Techniques (Karce & Canon)",
+      "title": "Calculator Speed Techniques (Karce & Canon)",
       "level": 2
     },
     {
       "id": "sec-concept-checks",
-      "title": "8. In-Line Concept Checks",
+      "title": "In-Line Concept Checks",
       "level": 2
     },
     {
       "id": "sec-mastery-challenge",
-      "title": "9. Paired Mastery Challenge Exam",
+      "title": "Paired Mastery Challenge Exam",
       "level": 2
     }
   ],
@@ -178,27 +178,21 @@
   ],
   "calculatorGuides": {
     "karce": {
-      "techniqueTitle": "Fast CMPLX Mode Rectangular-to-Polar Conversion",
-      "problemType": "Converting 3 + 4i to r∠θ and evaluating powers",
-      "sampleProblem": "Convert 3 + 4i to polar.",
+      "techniqueTitle": "Fast Complex Mode Rectangular-to-Polar & Power Operations",
+      "problemType": "Converting Rectangular to Polar r∠θ and Evaluating Complex Powers (a + bi)^n",
+      "sampleProblem": "Convert complex number z = 3 + 4i into polar form r∠θ = 5∠53.1301°, and evaluate complex cube (3 + 4i)³ in CMPLX mode.",
       "mode": "CMPLX Mode (MODE 2)",
+      "whyItWorks": "In CMPLX mode, the calculator performs complex arithmetic natively: converting 3 + 4i yields 5∠53.1301°, and calculating (3 + 4i)³ evaluates to -117 + 44i in 1 step without manual binomial expansion or trig substitution.",
       "keystrokes": [
+        "MODE",
+        "2",
         "3",
         "+",
         "4",
         "i",
         "SHIFT",
         "r∠θ",
-        "="
-      ],
-      "notes": "Directly displays 5∠53.13° in 1 second."
-    },
-    "canon": {
-      "techniqueTitle": "Complex Polar Operations on Canon F-789SGA",
-      "problemType": "(5∠53.13010354)³ on Canon F-789SGA",
-      "sampleProblem": "Find (3 + 4i)³ in CMPLX mode.",
-      "mode": "CMPLX Mode (MODE 2)",
-      "keystrokes": [
+        "=",
         "(",
         "3",
         "+",
@@ -208,7 +202,36 @@
         "x³",
         "="
       ],
-      "notes": "Directly yields -117 + 44i."
+      "notes": "💡 Keystroke Rules:\n1. Polar Conversion: 3 + 4i ➔ r∠θ = 5∠53.1301°.\n2. Complex Power: (3 + 4i)³ = -117 + 44i.",
+      "searchAdvisory": "Search 'Karce KC-S991 CMPLX mode complex numbers polar conversion and powers' for video tutorials."
+    },
+    "canon": {
+      "techniqueTitle": "Fast Complex Mode Rectangular-to-Polar & Power Operations",
+      "problemType": "Converting Rectangular to Polar r∠θ and Evaluating Complex Powers (a + bi)^n",
+      "sampleProblem": "Convert complex number z = 3 + 4i into polar form r∠θ = 5∠53.1301°, and evaluate complex cube (3 + 4i)³ in CMPLX mode.",
+      "mode": "CMPLX Mode (MODE 2)",
+      "whyItWorks": "In CMPLX mode, the calculator performs complex arithmetic natively: converting 3 + 4i yields 5∠53.1301°, and calculating (3 + 4i)³ evaluates to -117 + 44i in 1 step without manual binomial expansion or trig substitution.",
+      "keystrokes": [
+        "MODE",
+        "2",
+        "3",
+        "+",
+        "4",
+        "i",
+        "SHIFT",
+        "r∠θ",
+        "=",
+        "(",
+        "3",
+        "+",
+        "4",
+        "i",
+        ")",
+        "x³",
+        "="
+      ],
+      "notes": "💡 Keystroke Rules:\n1. Polar Conversion: 3 + 4i ➔ r∠θ = 5∠53.1301°.\n2. Complex Power: (3 + 4i)³ = -117 + 44i.",
+      "searchAdvisory": "Search 'Canon F-789SGA complex numbers mode CMPLX polar phasor conversion and exponentiation' for video breakdowns."
     }
   },
   "conceptChecks": [
@@ -216,36 +239,75 @@
       "id": "chk-2001-01",
       "question": "What is the principal value of $\\ln(z)$ for $z = 1 + j$?",
       "options": [
-        "ln(√2) + j (π/4) ≈ 0.3466 + j 0.7854",
-        "ln(2) + j (π/2)",
-        "√2 e^(j π/4)",
-        "0.5 + j 0.5"
+        {
+          "text": "ln(√2) + j (π/4) ≈ 0.3466 + j 0.7854",
+          "isCorrect": true,
+          "distractorReason": "Correct: For any complex number $z = r e^{j\\theta}$, $\\ln(z) = \\ln(r) + j\\theta$. Here $r = \\sqrt{1^2 + 1^2} = \\sqrt{2}$ and $\\theta = \\pi/4$, giving $\\ln(1 + j) = \\ln\\sqrt{2} + j(\\pi/4) \\approx 0.34657 + j 0.7854$."
+        },
+        {
+          "text": "ln(2) + j (π/2)",
+          "distractorReason": "Trap: Used $r^2 = 2$ instead of $r = \\sqrt{2}$, and doubled the angle $\\theta$."
+        },
+        {
+          "text": "√2 e^(j π/4)",
+          "distractorReason": "Trap: Polar exponential form of $z$, not its natural logarithm."
+        },
+        {
+          "text": "0.5 + j 0.5",
+          "distractorReason": "Trap: Scaled real and imaginary parts."
+        }
       ],
-      "correctAnswer": 0,
+      "correctAnswer": "A",
       "explanation": "Since r = √2 and θ = π/4: ln(1 + j) = ln(√2) + j(π/4) ≈ 0.3466 + j 0.7854."
     },
     {
       "id": "chk-2001-02",
       "question": "According to Euler's formula, what is the trigonometric equivalent of $e^{j\\pi} + 1$?",
       "options": [
-        "0 (Euler's Identity)",
-        "2",
-        "-1",
-        "j"
+        {
+          "text": "2",
+          "distractorReason": "Trap: Assuming $e^{j\\pi} = 1$ rather than $-1$."
+        },
+        {
+          "text": "0 (Euler's Identity)",
+          "isCorrect": true,
+          "distractorReason": "Correct: By Euler's formula, $e^{j\\pi} = \\cos\\pi + j\\sin\\pi = -1 + 0 = -1$. Therefore, $e^{j\\pi} + 1 = 0$, known as Euler's Identity."
+        },
+        {
+          "text": "-1",
+          "distractorReason": "Trap: Confusing $e^{j\\pi}$ with $e^{j\\pi} + 1$."
+        },
+        {
+          "text": "j",
+          "distractorReason": "Trap: Confusing $e^{j\\pi/2}$ ($= j$) with $e^{j\\pi}$."
+        }
       ],
-      "correctAnswer": 0,
+      "correctAnswer": "B",
       "explanation": "e^(jπ) = cos(π) + j sin(π) = -1 + 0 = -1. Therefore, e^(jπ) + 1 = 0."
     },
     {
       "id": "chk-2001-03",
       "question": "How are the $n$ distinct $n$-th roots of a complex number arranged geometrically on the Argand plane?",
       "options": [
-        "Evenly spaced at angular intervals of 360°/n on a circle of radius r^(1/n)",
-        "Along a single straight radial line",
-        "On an ellipse with focal distance 2c",
-        "At random positions"
+        {
+          "text": "Along a single straight radial line",
+          "distractorReason": "Trap: Real numbers scale along a line, but complex roots distribute around a circle."
+        },
+        {
+          "text": "On an ellipse with focal distance 2c",
+          "distractorReason": "Trap: Non-circular conic locus."
+        },
+        {
+          "text": "Evenly spaced at angular intervals of 360°/n on a circle of radius r^(1/n)",
+          "isCorrect": true,
+          "distractorReason": "Correct: By De Moivre's theorem for roots, the $n$ roots of $z = r e^{j\\theta}$ have equal modulus $r^{1/n}$ and consecutive phase difference $2\\pi/n$ ($360^\\circ/n$), forming the vertices of a regular $n$-gon centered at the origin."
+        },
+        {
+          "text": "At random positions",
+          "distractorReason": "Trap: Complex roots are strictly symmetric and equiangular."
+        }
       ],
-      "correctAnswer": 0,
+      "correctAnswer": "C",
       "explanation": "The n roots form the vertices of a regular n-gon centered at the origin with radius r^(1/n)."
     }
   ]

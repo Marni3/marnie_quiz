@@ -10,47 +10,47 @@
   "toc": [
     {
       "id": "sec-prereq-bridges",
-      "title": "1. Introduction & Cross-Subject Connections",
+      "title": "Introduction & Cross-Subject Connections",
       "level": 2
     },
     {
       "id": "sec-theory",
-      "title": "2. Lesson Proper: The 16 Advanced Engineering Optimization Invariants",
+      "title": "Lesson Proper: The 16 Advanced Engineering Optimization Invariants",
       "level": 2
     },
     {
       "id": "sec-formulas",
-      "title": "3. Master Compilation of Engineering Maxima/Minima Shortcuts",
+      "title": "Master Compilation of Engineering Maxima/Minima Shortcuts",
       "level": 2
     },
     {
       "id": "sec-visualizer",
-      "title": "4. Interactive Visualizer: Hallway Pipe & Beam Stiffness Simulator",
+      "title": "Interactive Visualizer: Hallway Pipe & Beam Stiffness Simulator",
       "level": 2
     },
     {
       "id": "sec-terminology",
-      "title": "5. Key Terms and Definitions",
+      "title": "Key Terms and Definitions",
       "level": 2
     },
     {
       "id": "sec-dual-method",
-      "title": "6. Worked Board Exam Problems",
+      "title": "Worked Board Exam Problems",
       "level": 2
     },
     {
       "id": "sec-calculator",
-      "title": "7. Calculator Speed Techniques (Karce & Canon)",
+      "title": "Calculator Speed Techniques (Karce & Canon)",
       "level": 2
     },
     {
       "id": "sec-concept-checks",
-      "title": "8. In-Line Concept Checks",
+      "title": "In-Line Concept Checks",
       "level": 2
     },
     {
       "id": "sec-mastery-challenge",
-      "title": "9. Paired Mastery Challenge Exam",
+      "title": "Paired Mastery Challenge Exam",
       "level": 2
     }
   ],
@@ -186,11 +186,14 @@
   ],
   "calculatorGuides": {
     "karce": {
-      "techniqueTitle": "Fast Hallway Pipe Length (x^(2/3)) Evaluation",
-      "problemType": "Evaluating (a^(2/3) + b^(2/3))^(3/2)",
-      "sampleProblem": "Find L for a=8, b=27.",
+      "techniqueTitle": "Fast Hallway Pipe Length & Regiomontanus Geometric Mean Calculation",
+      "problemType": "Evaluating Hallway Turning Length (a^(2/3) + b^(2/3))^(3/2) and Eye Distance √(y1·y2)",
+      "sampleProblem": "Evaluate maximum hallway corner pipe length for a=8 m, b=27 m, and evaluate Regiomontanus optimal viewing distance for bottom height y1=1 m, top height y2=3 m.",
       "mode": "COMP Mode (MODE 1)",
+      "whyItWorks": "Astroid envelope minimization yields longest pipe length L = (a^(2/3) + b^(2/3))^(3/2) = (4 + 9)^1.5 = 13^1.5 ≈ 46.872 m in COMP mode. Regiomontanus' maximum view angle theorem proves optimal eye distance is the geometric mean x = √(y1 · y2) = √3 ≈ 1.732 m in 1 step.",
       "keystrokes": [
+        "MODE",
+        "1",
         "(",
         "8",
         "^",
@@ -213,16 +216,7 @@
         "1",
         ".",
         "5",
-        "="
-      ],
-      "notes": "Directly yields (4 + 9)^1.5 = 13^1.5 = 46.872 in 2 seconds."
-    },
-    "canon": {
-      "techniqueTitle": "Regiomontanus Eye Distance Shortcut",
-      "problemType": "√(y1 * y2) on Canon F-789SGA",
-      "sampleProblem": "Evaluate √(1 * 3).",
-      "mode": "COMP Mode (MODE 1)",
-      "keystrokes": [
+        "=",
         "√",
         "(",
         "1",
@@ -231,7 +225,51 @@
         ")",
         "="
       ],
-      "notes": "Directly displays 1.7320508."
+      "notes": "💡 Keystroke Rules:\n1. Hallway Pipe Length: (8^(2/3) + 27^(2/3))^1.5 = 13^1.5 = 46.872 m.\n2. Regiomontanus Viewing Distance: √(1 × 3) = 1.732 m.",
+      "searchAdvisory": "Search 'Karce KC-S991 hallway pipe length optimization and Regiomontanus angle' for video guides."
+    },
+    "canon": {
+      "techniqueTitle": "Fast Hallway Pipe Length & Regiomontanus Geometric Mean Calculation",
+      "problemType": "Evaluating Hallway Turning Length (a^(2/3) + b^(2/3))^(3/2) and Eye Distance √(y1·y2)",
+      "sampleProblem": "Evaluate maximum hallway corner pipe length for a=8 m, b=27 m, and evaluate Regiomontanus optimal viewing distance for bottom height y1=1 m, top height y2=3 m.",
+      "mode": "COMP Mode (MODE 1)",
+      "whyItWorks": "Astroid envelope minimization yields longest pipe length L = (a^(2/3) + b^(2/3))^(3/2) = (4 + 9)^1.5 = 13^1.5 ≈ 46.872 m in COMP mode. Regiomontanus' maximum view angle theorem proves optimal eye distance is the geometric mean x = √(y1 · y2) = √3 ≈ 1.732 m in 1 step.",
+      "keystrokes": [
+        "MODE",
+        "1",
+        "(",
+        "8",
+        "^",
+        "(",
+        "2",
+        "÷",
+        "3",
+        ")",
+        "+",
+        "2",
+        "7",
+        "^",
+        "(",
+        "2",
+        "÷",
+        "3",
+        ")",
+        ")",
+        "^",
+        "1",
+        ".",
+        "5",
+        "=",
+        "√",
+        "(",
+        "1",
+        "×",
+        "3",
+        ")",
+        "="
+      ],
+      "notes": "💡 Keystroke Rules:\n1. Hallway Pipe Length: (8^(2/3) + 27^(2/3))^1.5 = 13^1.5 = 46.872 m.\n2. Regiomontanus Viewing Distance: √(1 × 3) = 1.732 m.",
+      "searchAdvisory": "Search 'Canon F-789SGA hallway pipe corner turning and Regiomontanus view distance' for video breakdowns."
     }
   },
   "conceptChecks": [
@@ -239,36 +277,75 @@
       "id": "chk-1404-01",
       "question": "What is the ratio of depth $y$ to breadth $x$ for the STIFFEST rectangular beam that can be cut from a circular log ($S \\propto x y^3$)?",
       "options": [
-        "y = x √3 (Depth = √3 · Breadth)",
-        "y = x √2",
-        "y = 2x",
-        "y = x (Square)"
+        {
+          "text": "y = x √3 (Depth = √3 · Breadth)",
+          "isCorrect": true,
+          "distractorReason": "Correct: Beam stiffness is proportional to $I = \\frac{1}{12} x y^3$. Subject to $x^2 + y^2 = D^2$, substituting yields maximum stiffness when depth is $y = x\\sqrt{3}$ (giving $x = D/2$ and $y = D\\sqrt{3}/2$)."
+        },
+        {
+          "text": "y = x √2",
+          "distractorReason": "Trap: $y = x\\sqrt{2}$ is the condition for the STRONGEST beam ($M \\propto x y^2$), not the stiffest."
+        },
+        {
+          "text": "y = 2x",
+          "distractorReason": "Trap: Aspect ratio 2:1 applies to open rectangular water channels."
+        },
+        {
+          "text": "y = x (Square)",
+          "distractorReason": "Trap: A square beam maximizes cross-sectional area, not bending stiffness."
+        }
       ],
-      "correctAnswer": 0,
+      "correctAnswer": "A",
       "explanation": "Stiffness is maximized when depth is √3 times breadth (y = x√3), giving depth y = D(√3/2) and breadth x = D/2."
     },
     {
       "id": "chk-1404-02",
-      "question": "What is the ratio of the weight of the heaviest cylinder that can be inscribed in a sphere to the weight of the sphere itself?",
+      "question": "What is the ratio of the volume of the largest cylinder that can be inscribed in a sphere to the volume of the sphere itself?",
       "options": [
-        "1 / √3 ≈ 0.5774 (≈ 57.7%)",
-        "1 / 2 (50%)",
-        "2 / 3 (66.7%)",
-        "4 / 9 (44.4%)"
+        {
+          "text": "1 / 2 (50%)",
+          "distractorReason": "Trap: 1/2 is the ratio of an inscribed rectangle to a triangle."
+        },
+        {
+          "text": "1 / √3 ≈ 0.5774 (≈ 57.7%)",
+          "isCorrect": true,
+          "distractorReason": "Correct: $V_{\\text{cyl}} = \\frac{4}{3\\sqrt{3}} \\pi R^3$ while $V_{\\text{sphere}} = \\frac{4}{3} \\pi R^3$. The ratio is strictly $1/\\sqrt{3} \\approx 0.57735$ (57.74%)."
+        },
+        {
+          "text": "2 / 3 (66.7%)",
+          "distractorReason": "Trap: 2/3 is Archimedes' ratio of a sphere to its circumscribing cylinder."
+        },
+        {
+          "text": "4 / 9 (44.4%)",
+          "distractorReason": "Trap: (2/3)² = 4/9."
+        }
       ],
-      "correctAnswer": 0,
+      "correctAnswer": "B",
       "explanation": "V_cylinder / V_sphere = [4/(3√3) π R³] / [4/3 π R³] = 1/√3 ≈ 0.57735."
     },
     {
       "id": "chk-1404-03",
       "question": "What cross-sectional geometric shape provides the MOST EFFICIENT open trapezoidal irrigation channel (maximum flow capacity for minimum wetted perimeter)?",
       "options": [
-        "Half of a regular hexagon (Side slope angle θ = 120°)",
-        "Isosceles trapezoid with 45° side slope",
-        "Rectangular channel with aspect ratio 2:1",
-        "Semicircular channel with vertical walls"
+        {
+          "text": "Isosceles trapezoid with 45° side slope",
+          "distractorReason": "Trap: 45° is a common guess but yields higher hydraulic resistance."
+        },
+        {
+          "text": "Rectangular channel with aspect ratio 2:1",
+          "distractorReason": "Trap: The best rectangular channel has aspect ratio 2:1, but the best trapezoidal channel is hexagonal."
+        },
+        {
+          "text": "Half of a regular hexagon (Side slope angle θ = 120°)",
+          "isCorrect": true,
+          "distractorReason": "Correct: In open-channel hydraulics, the most hydraulically efficient trapezoidal cross section is half of a regular hexagon (bottom width = side length, side angle = 60° to horizontal / 120° interior angle)."
+        },
+        {
+          "text": "Semicircular channel with vertical walls",
+          "distractorReason": "Trap: Semicircular with vertical extensions is a non-trapezoidal geometry."
+        }
       ],
-      "correctAnswer": 0,
+      "correctAnswer": "C",
       "explanation": "The most efficient trapezoidal section is half of a regular hexagon, where side slopes are 60° to horizontal (120° interior)."
     }
   ]

@@ -10,47 +10,47 @@
   "toc": [
     {
       "id": "sec-prereq-bridges",
-      "title": "1. Introduction & Cross-Subject Connections",
+      "title": "Introduction & Cross-Subject Connections",
       "level": 2
     },
     {
       "id": "sec-theory",
-      "title": "2. Lesson Proper: Limits, Continuity & Discontinuity Types",
+      "title": "Lesson Proper: Limits, Continuity & Discontinuity Types",
       "level": 2
     },
     {
       "id": "sec-formulas",
-      "title": "3. Compilation of Formulas & Special Limits",
+      "title": "Compilation of Formulas & Special Limits",
       "level": 2
     },
     {
       "id": "sec-visualizer",
-      "title": "4. Interactive Visualizer: Limit & Continuity Interactive Analyzer",
+      "title": "Interactive Visualizer: Limit & Continuity Interactive Analyzer",
       "level": 2
     },
     {
       "id": "sec-terminology",
-      "title": "5. Key Terms and Definitions",
+      "title": "Key Terms and Definitions",
       "level": 2
     },
     {
       "id": "sec-dual-method",
-      "title": "6. Worked Board Exam Problems",
+      "title": "Worked Board Exam Problems",
       "level": 2
     },
     {
       "id": "sec-calculator",
-      "title": "7. Calculator Speed Techniques (Karce & Canon)",
+      "title": "Calculator Speed Techniques (Karce & Canon)",
       "level": 2
     },
     {
       "id": "sec-concept-checks",
-      "title": "8. In-Line Concept Checks",
+      "title": "In-Line Concept Checks",
       "level": 2
     },
     {
       "id": "sec-mastery-challenge",
-      "title": "9. Paired Mastery Challenge Exam",
+      "title": "Paired Mastery Challenge Exam",
       "level": 2
     }
   ],
@@ -177,11 +177,14 @@
   ],
   "calculatorGuides": {
     "karce": {
-      "techniqueTitle": "Fast Limit Evaluation via Small Delta Substitution",
-      "problemType": "Evaluating indeterminate limits lim(x -> 0)",
-      "sampleProblem": "Evaluate sin(5x)/sin(3x) as x -> 0 in RAD mode.",
-      "mode": "COMP Mode (MODE 1, Set RAD)",
+      "techniqueTitle": "Fast Limit Evaluation via Micro-Delta & Large n Substitution",
+      "problemType": "Evaluating Indeterminate Limits lim(x -> 0) and Exponential Limits lim(n -> ∞)",
+      "sampleProblem": "Evaluate indeterminate limit lim(x -> 0) sin(5x)/sin(3x) by substituting x = 0.0001 (Set RAD Mode), and evaluate exponential compound limit lim(n -> ∞) (1 + 3/n)^(2n) using n = 10^6.",
+      "mode": "COMP Mode (MODE 1, Set RAD Mode for Trig Limits)",
+      "whyItWorks": "By substituting a micro-delta value (e.g. x = 0.0001 in RAD mode), the calculator avoids division-by-zero singularities and evaluates numerical limits like sin(5x)/sin(3x) ≈ 1.666666667 (5/3) and (1 + 3/n)^(2n) ≈ e^6 ≈ 403.4288 in seconds.",
       "keystrokes": [
+        "MODE",
+        "1",
         "sin",
         "(",
         "5",
@@ -205,16 +208,7 @@
         "0",
         "1",
         ")",
-        "="
-      ],
-      "notes": "Directly yields 1.666666667 (5/3) in 2 seconds."
-    },
-    "canon": {
-      "techniqueTitle": "Exponential Compound Limit Shortcut",
-      "problemType": "(1 + k/n)^(mn) as n -> 10^6 on Canon F-789SGA",
-      "sampleProblem": "Evaluate (1 + 3/1000000)^2000000.",
-      "mode": "COMP Mode (MODE 1)",
-      "keystrokes": [
+        "=",
         "(",
         "1",
         "+",
@@ -238,7 +232,67 @@
         "0",
         "="
       ],
-      "notes": "Directly displays 403.4288 (e^6)."
+      "notes": "💡 Keystroke Rules:\n1. Trig Limit (RAD): sin(5×0.0001) ÷ sin(3×0.0001) = 1.666666667 = 5/3.\n2. Exponential Limit: (1 + 3÷10^6)^(2×10^6) = 403.4288 ≈ e^6.",
+      "searchAdvisory": "Search 'Karce KC-S991 limit numerical substitution delta trick RAD mode' for video tutorials."
+    },
+    "canon": {
+      "techniqueTitle": "Fast Limit Evaluation via Micro-Delta & Large n Substitution",
+      "problemType": "Evaluating Indeterminate Limits lim(x -> 0) and Exponential Limits lim(n -> ∞)",
+      "sampleProblem": "Evaluate indeterminate limit lim(x -> 0) sin(5x)/sin(3x) by substituting x = 0.0001 (Set RAD Mode), and evaluate exponential compound limit lim(n -> ∞) (1 + 3/n)^(2n) using n = 10^6.",
+      "mode": "COMP Mode (MODE 1, Set RAD Mode for Trig Limits)",
+      "whyItWorks": "By substituting a micro-delta value (e.g. x = 0.0001 in RAD mode), the calculator avoids division-by-zero singularities and evaluates numerical limits like sin(5x)/sin(3x) ≈ 1.666666667 (5/3) and (1 + 3/n)^(2n) ≈ e^6 ≈ 403.4288 in seconds.",
+      "keystrokes": [
+        "MODE",
+        "1",
+        "sin",
+        "(",
+        "5",
+        "×",
+        "0",
+        ".",
+        "0",
+        "0",
+        "0",
+        "1",
+        ")",
+        "÷",
+        "sin",
+        "(",
+        "3",
+        "×",
+        "0",
+        ".",
+        "0",
+        "0",
+        "0",
+        "1",
+        ")",
+        "=",
+        "(",
+        "1",
+        "+",
+        "3",
+        "÷",
+        "1",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        ")",
+        "^",
+        "2",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "="
+      ],
+      "notes": "💡 Keystroke Rules:\n1. Trig Limit (RAD): sin(5×0.0001) ÷ sin(3×0.0001) = 1.666666667 = 5/3.\n2. Exponential Limit: (1 + 3÷10^6)^(2×10^6) = 403.4288 ≈ e^6.",
+      "searchAdvisory": "Search 'Canon F-789SGA limit evaluation small delta and exponential limit shortcuts' for video breakdowns."
     }
   },
   "conceptChecks": [
@@ -246,36 +300,75 @@
       "id": "chk-1401-01",
       "question": "What are the three required conditions for a function $f(x)$ to be continuous at $x = a$?",
       "options": [
-        "f(a) exists, lim(x->a) f(x) exists, and lim(x->a) f(x) = f(a)",
-        "f'(a) exists and is positive",
-        "f(a) > 0 and f(x) is monotonic",
-        "lim(x->a^-) f(x) = 0 and lim(x->a^+) f(x) = 0"
+        {
+          "text": "f(a) exists, lim(x->a) f(x) exists, and lim(x->a) f(x) = f(a)",
+          "isCorrect": true,
+          "distractorReason": "Correct: The 3-part definition of continuity at a point requires: (1) f(a) is defined, (2) the two-sided limit exists, and (3) the limit equals the function value."
+        },
+        {
+          "text": "f'(a) exists and is strictly positive",
+          "distractorReason": "Trap: Differentiability is a strictly stronger condition than continuity and does not require a positive derivative."
+        },
+        {
+          "text": "f(a) > 0 and f(x) is monotonic",
+          "distractorReason": "Trap: Positivity and monotonicity are unrelated to the local definition of continuity."
+        },
+        {
+          "text": "lim(x->a^-) f(x) = 0 and lim(x->a^+) f(x) = 0",
+          "distractorReason": "Trap: Limits do not need to equal zero, they only need to exist and equal f(a)."
+        }
       ],
-      "correctAnswer": 0,
+      "correctAnswer": "A",
       "explanation": "Continuity requires that the function is defined, the two-sided limit exists, and the limit matches the function value."
     },
     {
       "id": "chk-1401-02",
       "question": "Evaluate the special limit: $\\lim_{x \\to 0} \\frac{1 - \\cos x}{x}$.",
       "options": [
-        "0",
-        "1",
-        "1/2",
-        "Undefined"
+        {
+          "text": "1",
+          "distractorReason": "Trap: 1 is the limit of sin(x)/x as x -> 0."
+        },
+        {
+          "text": "0",
+          "isCorrect": true,
+          "distractorReason": "Correct: By L'Hopital's rule or conjugate multiplication: lim(x->0) (1 - cos x)/x = lim(x->0) sin x / 1 = 0."
+        },
+        {
+          "text": "1/2",
+          "distractorReason": "Trap: 1/2 is the limit of (1 - cos x)/x² as x -> 0."
+        },
+        {
+          "text": "Undefined",
+          "distractorReason": "Trap: Confusing the 0/0 indeterminate form with an undefined limit."
+        }
       ],
-      "correctAnswer": 0,
+      "correctAnswer": "B",
       "explanation": "By fundamental calculus theorems: lim(x->0) (1 - cos x)/x = 0 (while (1 - cos x)/x² = 1/2)."
     },
     {
       "id": "chk-1401-03",
       "question": "In what year did Gottfried Wilhelm von Leibniz publish his foundational paper on differential calculus?",
       "options": [
-        "1684",
-        "1665",
-        "1704",
-        "1758"
+        {
+          "text": "1665",
+          "distractorReason": "Trap: 1665 is when Isaac Newton began developing his method of fluxions during the Great Plague of London."
+        },
+        {
+          "text": "1704",
+          "distractorReason": "Trap: 1704 is the publication year of Newton's Opticks."
+        },
+        {
+          "text": "1684",
+          "isCorrect": true,
+          "distractorReason": "Correct: Leibniz published Nova Methodus pro Maximis et Minimis in the journal Acta Eruditorum in 1684."
+        },
+        {
+          "text": "1758",
+          "distractorReason": "Trap: 1758 is during the era of Leonhard Euler."
+        }
       ],
-      "correctAnswer": 0,
+      "correctAnswer": "C",
       "explanation": "Leibniz published Nova Methodus pro Maximis et Minimis in 1684."
     }
   ]

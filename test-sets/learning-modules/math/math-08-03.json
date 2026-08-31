@@ -10,47 +10,47 @@
   "toc": [
     {
       "id": "sec-prereq-bridges",
-      "title": "1. Introduction & Cross-Subject Connections",
+      "title": "Introduction & Cross-Subject Connections",
       "level": 2
     },
     {
       "id": "sec-theory",
-      "title": "2. Lesson Proper: Optimization, Invariants & Related Time Rates",
+      "title": "Lesson Proper: Maxima & Minima Optimization & Related Rates",
       "level": 2
     },
     {
       "id": "sec-formulas",
-      "title": "3. Master Table of 13 Optimization Speed Shortcuts",
+      "title": "Master Table of 13 Optimization Speed Shortcuts",
       "level": 2
     },
     {
       "id": "sec-visualizer",
-      "title": "4. Interactive Visualizer: Geometric Maxima/Minima Simulator",
+      "title": "Interactive Visualizer: Geometric Maxima/Minima Simulator",
       "level": 2
     },
     {
       "id": "sec-terminology",
-      "title": "5. Key Terms and Definitions",
+      "title": "Key Terms and Definitions",
       "level": 2
     },
     {
       "id": "sec-dual-method",
-      "title": "6. Worked Board Exam Problems",
+      "title": "Worked Board Exam Problems",
       "level": 2
     },
     {
       "id": "sec-calculator",
-      "title": "7. Calculator Speed Techniques (Karce & Canon)",
+      "title": "Calculator Speed Techniques (Karce & Canon)",
       "level": 2
     },
     {
       "id": "sec-concept-checks",
-      "title": "8. In-Line Concept Checks",
+      "title": "In-Line Concept Checks",
       "level": 2
     },
     {
       "id": "sec-mastery-challenge",
-      "title": "9. Paired Mastery Challenge Exam",
+      "title": "Paired Mastery Challenge Exam",
       "level": 2
     }
   ],
@@ -170,11 +170,14 @@
   ],
   "calculatorGuides": {
     "karce": {
-      "techniqueTitle": "Fast Derivative Extrema Check",
-      "problemType": "Checking critical point f'(x) = 0 via d/dx",
-      "sampleProblem": "Verify derivative of x³ - 12x at x = 2.",
+      "techniqueTitle": "Fast Derivative Critical Point Check & Related Rate Velocity Solver",
+      "problemType": "Verifying Critical Points f'(x) = 0 and Solving Related Rates dy/dt = -(x/y)·vx",
+      "sampleProblem": "Verify critical extremum of f(x) = x³ - 12x at x = 2 (f'(2) = 0), and solve related rate ladder slide speed dy/dt = -(x/√(L² - x²))·vx for ladder length L=10, bottom distance x=6, vx=2.",
       "mode": "COMP Mode (MODE 1)",
+      "whyItWorks": "Numerical derivative d/dx evaluates critical point slope f'(x) = 0 directly. Differentiating x² + y² = L² yields dynamic related rate dy/dt = -(x/y)(dx/dt) = -(6/8)(2) = -1.5 m/s in 1 step in COMP mode.",
       "keystrokes": [
+        "MODE",
+        "1",
         "SHIFT",
         "d/dx",
         "ALPHA",
@@ -188,16 +191,7 @@
         ",",
         "2",
         ")",
-        "="
-      ],
-      "notes": "Directly displays 0 confirming critical extremum."
-    },
-    "canon": {
-      "techniqueTitle": "Related Rate Ratio Solver",
-      "problemType": "-(x / √(L² - x²)) * vx on Canon F-789SGA",
-      "sampleProblem": "Solve dy/dt for L=10, x=6, vx=2.",
-      "mode": "COMP Mode (MODE 1)",
-      "keystrokes": [
+        "=",
         "-",
         "6",
         "÷",
@@ -214,7 +208,50 @@
         "2",
         "="
       ],
-      "notes": "Directly yields -1.5 m/s."
+      "notes": "💡 Keystroke Rules:\n1. Extrema Check: d/dx(X³ - 12X, 2) = 0 (Confirms stationary extremum).\n2. Related Rates: -6 ÷ √(100 - 36) × 2 = -1.5 m/s.",
+      "searchAdvisory": "Search 'Karce KC-S991 critical point check d/dx and related rates ladder problem' for video tutorials."
+    },
+    "canon": {
+      "techniqueTitle": "Fast Derivative Critical Point Check & Related Rate Velocity Solver",
+      "problemType": "Verifying Critical Points f'(x) = 0 and Solving Related Rates dy/dt = -(x/y)·vx",
+      "sampleProblem": "Verify critical extremum of f(x) = x³ - 12x at x = 2 (f'(2) = 0), and solve related rate ladder slide speed dy/dt = -(x/√(L² - x²))·vx for ladder length L=10, bottom distance x=6, vx=2.",
+      "mode": "COMP Mode (MODE 1)",
+      "whyItWorks": "Numerical derivative d/dx evaluates critical point slope f'(x) = 0 directly. Differentiating x² + y² = L² yields dynamic related rate dy/dt = -(x/y)(dx/dt) = -(6/8)(2) = -1.5 m/s in 1 step in COMP mode.",
+      "keystrokes": [
+        "MODE",
+        "1",
+        "SHIFT",
+        "d/dx",
+        "ALPHA",
+        "X",
+        "x³",
+        "-",
+        "1",
+        "2",
+        "ALPHA",
+        "X",
+        ",",
+        "2",
+        ")",
+        "=",
+        "-",
+        "6",
+        "÷",
+        "√",
+        "(",
+        "1",
+        "0",
+        "0",
+        "-",
+        "3",
+        "6",
+        ")",
+        "×",
+        "2",
+        "="
+      ],
+      "notes": "💡 Keystroke Rules:\n1. Extrema Check: d/dx(X³ - 12X, 2) = 0 (Confirms stationary extremum).\n2. Related Rates: -6 ÷ √(100 - 36) × 2 = -1.5 m/s.",
+      "searchAdvisory": "Search 'Canon F-789SGA d/dx critical point verification and related rates shortcuts' for video breakdowns."
     }
   },
   "conceptChecks": [
@@ -222,36 +259,75 @@
       "id": "chk-1403-01",
       "question": "What is the ratio of the area of an ellipse to the area of the largest rectangle that can be inscribed inside it?",
       "options": [
-        "π / 2 ≈ 1.571",
-        "π / 4",
-        "2 / π",
-        "4 / π"
+        {
+          "text": "π / 2 ≈ 1.571",
+          "isCorrect": true,
+          "distractorReason": "Correct: Area of ellipse is πab, and maximum inscribed rectangle area is 2ab. The invariant ratio is πab / (2ab) = π/2 ≈ 1.5708."
+        },
+        {
+          "text": "π / 4",
+          "distractorReason": "Trap: π / 4 is the ratio of circle area to circumscribed square area."
+        },
+        {
+          "text": "2 / π",
+          "distractorReason": "Trap: Inverted ratio (rectangle to ellipse)."
+        },
+        {
+          "text": "4 / π",
+          "distractorReason": "Trap: Ratio of circumscribed square to circle."
+        }
       ],
-      "correctAnswer": 0,
+      "correctAnswer": "A",
       "explanation": "Area of ellipse is πab, and maximum inscribed rectangle area is 2ab. The ratio is πab / (2ab) = π/2."
     },
     {
       "id": "chk-1403-02",
       "question": "For a circular sector with a given fixed area $A$, what central angle $\\theta$ produces the minimum possible perimeter?",
       "options": [
-        "2 radians (≈ 114.59°)",
-        "1 radian (≈ 57.30°)",
-        "π/2 radians (90°)",
-        "π radians (180°)"
+        {
+          "text": "1 radian (≈ 57.30°)",
+          "distractorReason": "Trap: 1 radian sets arc length equal to radius, not the perimeter minimum."
+        },
+        {
+          "text": "2 radians (≈ 114.59°)",
+          "isCorrect": true,
+          "distractorReason": "Correct: Minimizing $P = 2r + 2A/r$ yields $dP/dr = 2 - 2A/r^2 = 0 \\implies r = \\sqrt{A}$, giving arc length $s = 2r$ and central angle $\\theta = s/r = 2\\text{ radians} \\approx 114.59^\\circ$."
+        },
+        {
+          "text": "π/2 radians (90°)",
+          "distractorReason": "Trap: Common quadrant angle guess."
+        },
+        {
+          "text": "π radians (180°)",
+          "distractorReason": "Trap: Semicircular angle."
+        }
       ],
-      "correctAnswer": 0,
+      "correctAnswer": "B",
       "explanation": "Minimizing P = 2r + 2A/r yields dP/dr = 2 - 2A/r² = 0 => r = √A, giving arc length s = 2r and central angle θ = s/r = 2 radians."
     },
     {
       "id": "chk-1403-03",
       "question": "What is the maximum area of a rectangle that can be inscribed in a triangle of base $b = 16\\text{ cm}$ and height $h = 10\\text{ cm}$?",
       "options": [
-        "40 cm² (Half the triangle area)",
-        "80 cm²",
-        "20 cm²",
-        "60 cm²"
+        {
+          "text": "80 cm²",
+          "distractorReason": "Trap: 80 cm² is the full area of the triangle itself ($A = \\frac{1}{2}bh = 80$)."
+        },
+        {
+          "text": "20 cm²",
+          "distractorReason": "Trap: One-fourth of triangle area."
+        },
+        {
+          "text": "40 cm² (Half the triangle area)",
+          "isCorrect": true,
+          "distractorReason": "Correct: By standard geometric optimization, the largest inscribed rectangle in any triangle has area $A_{\\max} = \\frac{1}{4}bh = \\frac{1}{4}(16)(10) = 40\\text{ cm}^2$, exactly half the triangle's area."
+        },
+        {
+          "text": "60 cm²",
+          "distractorReason": "Trap: Three-fourths of triangle area."
+        }
       ],
-      "correctAnswer": 0,
+      "correctAnswer": "C",
       "explanation": "A_max = (1/4) bh = (1/4)(16)(10) = 40 cm², which is exactly half of the triangle's area (80 cm²)."
     }
   ]

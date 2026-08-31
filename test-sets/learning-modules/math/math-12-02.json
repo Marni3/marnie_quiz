@@ -10,47 +10,47 @@
   "toc": [
     {
       "id": "sec-prereq-bridges",
-      "title": "1. Introduction & Cross-Subject Connections",
+      "title": "Introduction & Cross-Subject Connections",
       "level": 2
     },
     {
       "id": "sec-theory",
-      "title": "2. Lesson Proper: Symmetric, Skew-Symmetric & Matrix Arithmetic Operations",
+      "title": "Lesson Proper: Symmetric, Skew-Symmetric & Matrix Arithmetic Operations",
       "level": 2
     },
     {
       "id": "sec-formulas",
-      "title": "3. Master Compilation of Matrix Algebraic Laws",
+      "title": "Master Compilation of Matrix Algebraic Laws",
       "level": 2
     },
     {
       "id": "sec-visualizer",
-      "title": "4. Interactive Visualizer: Matrix Multiplication & Symmetry Inspector",
+      "title": "Interactive Visualizer: Matrix Multiplication & Symmetry Inspector",
       "level": 2
     },
     {
       "id": "sec-terminology",
-      "title": "5. Key Terms and Definitions",
+      "title": "Key Terms and Definitions",
       "level": 2
     },
     {
       "id": "sec-dual-method",
-      "title": "6. Worked Board Exam Problems",
+      "title": "Worked Board Exam Problems",
       "level": 2
     },
     {
       "id": "sec-calculator",
-      "title": "7. Calculator Speed Techniques (Karce & Canon)",
+      "title": "Calculator Speed Techniques (Karce & Canon)",
       "level": 2
     },
     {
       "id": "sec-concept-checks",
-      "title": "8. In-Line Concept Checks",
+      "title": "In-Line Concept Checks",
       "level": 2
     },
     {
       "id": "sec-mastery-challenge",
-      "title": "9. Paired Mastery Challenge Exam",
+      "title": "Paired Mastery Challenge Exam",
       "level": 2
     }
   ],
@@ -187,23 +187,37 @@
   "calculatorGuides": {
     "karce": {
       "techniqueTitle": "Fast Matrix Multiplication Verification",
-      "problemType": "Multiplying 2x2 matrices MatA * MatB",
-      "sampleProblem": "Multiply [[1,2],[3,4]] by [[2,0],[1,2]].",
-      "mode": "MATRIX Mode (MODE 6)",
+      "problemType": "Multiplying Matrices MatA × MatB in MATRIX Mode",
+      "sampleProblem": "Multiply 2x2 Matrix A = [[1, 2], [3, 4]] by Matrix B = [[2, 0], [1, 2]] in MATRIX mode to find the matrix product AB = [[4, 4], [10, 8]].",
+      "mode": "MATRIX Mode (MODE 6 or MODE 4)",
+      "whyItWorks": "Matrix multiplication AB computes the dot product of rows of A with columns of B: row 1 gives [1·2+2·1, 1·0+2·2] = [4, 4], and row 2 gives [3·2+4·1, 3·0+4·2] = [10, 8] evaluated directly in MATRIX mode.",
       "keystrokes": [
-        "MatA",
-        "×",
-        "MatB",
-        "="
-      ],
-      "notes": "Directly displays [[4, 4], [10, 8]]."
-    },
-    "canon": {
-      "techniqueTitle": "Direct Matrix Product (MatA * MatB)",
-      "problemType": "Evaluating (3x2) * (2x3) on Canon F-789SGA",
-      "sampleProblem": "Compute DC product.",
-      "mode": "MATRIX Mode (MODE 6)",
-      "keystrokes": [
+        "MODE",
+        "6",
+        "1",
+        "5",
+        "1",
+        "=",
+        "2",
+        "=",
+        "3",
+        "=",
+        "4",
+        "=",
+        "SHIFT",
+        "MATRIX",
+        "2",
+        "2",
+        "5",
+        "2",
+        "=",
+        "0",
+        "=",
+        "1",
+        "=",
+        "2",
+        "=",
+        "AC",
         "SHIFT",
         "MATRIX",
         "3",
@@ -213,7 +227,53 @@
         "4",
         "="
       ],
-      "notes": "Directly displays 3x3 result matrix."
+      "notes": "💡 Keystroke Rules:\n1. Define MatA (2x2) and MatB (2x2).\n2. MatA × MatB = [[4, 4], [10, 8]].",
+      "searchAdvisory": "Search 'Karce KC-S991 matrix multiplication MatA MatB operation' for video tutorials."
+    },
+    "canon": {
+      "techniqueTitle": "Fast Matrix Multiplication Verification",
+      "problemType": "Multiplying Matrices MatA × MatB in MATRIX Mode",
+      "sampleProblem": "Multiply 2x2 Matrix A = [[1, 2], [3, 4]] by Matrix B = [[2, 0], [1, 2]] in MATRIX mode to find the matrix product AB = [[4, 4], [10, 8]].",
+      "mode": "MATRIX Mode (MODE 6)",
+      "whyItWorks": "Matrix multiplication AB computes the dot product of rows of A with columns of B: row 1 gives [1·2+2·1, 1·0+2·2] = [4, 4], and row 2 gives [3·2+4·1, 3·0+4·2] = [10, 8] evaluated directly in MATRIX mode.",
+      "keystrokes": [
+        "MODE",
+        "6",
+        "1",
+        "5",
+        "1",
+        "=",
+        "2",
+        "=",
+        "3",
+        "=",
+        "4",
+        "=",
+        "SHIFT",
+        "MATRIX",
+        "2",
+        "2",
+        "5",
+        "2",
+        "=",
+        "0",
+        "=",
+        "1",
+        "=",
+        "2",
+        "=",
+        "AC",
+        "SHIFT",
+        "MATRIX",
+        "3",
+        "×",
+        "SHIFT",
+        "MATRIX",
+        "4",
+        "="
+      ],
+      "notes": "💡 Keystroke Rules:\n1. Define MatA (2x2) and MatB (2x2).\n2. MatA × MatB = [[4, 4], [10, 8]].",
+      "searchAdvisory": "Search 'Canon F-789SGA matrix multiplication MatA MatB dimensions' for video breakdowns."
     }
   },
   "conceptChecks": [
@@ -221,36 +281,75 @@
       "id": "chk-2102-01",
       "question": "What must the value of all main diagonal entries be in ANY skew-symmetric matrix ($A^T = -A$)?",
       "options": [
-        "All diagonal entries must be strictly ZERO (a_ii = 0)",
-        "All diagonal entries must be 1",
-        "All diagonal entries must be negative",
-        "Any real number is allowed"
+        {
+          "text": "All diagonal entries must be strictly ZERO (a_ii = 0)",
+          "isCorrect": true,
+          "distractorReason": "Correct: By the definition of skew-symmetry $A^T = -A$, every diagonal entry satisfies $a_{ii} = -a_{ii} \\implies 2a_{ii} = 0 \\implies a_{ii} = 0$. Therefore, all main diagonal entries must be strictly zero."
+        },
+        {
+          "text": "All diagonal entries must be 1",
+          "distractorReason": "Trap: Diagonal entries of 1 occur in identity matrices, which are symmetric ($I^T = I$), not skew-symmetric."
+        },
+        {
+          "text": "All diagonal entries must be negative",
+          "distractorReason": "Trap: If $a_{ii} < 0$, then $a_{ii} \\neq -a_{ii}$."
+        },
+        {
+          "text": "Any real number is allowed",
+          "distractorReason": "Trap: Arbitrary diagonal entries are permitted only for symmetric matrices ($A^T = A$)."
+        }
       ],
-      "correctAnswer": 0,
+      "correctAnswer": "A",
       "explanation": "Since a_ii = -a_ii, we have 2a_ii = 0 => a_ii = 0 for all diagonal elements."
     },
     {
       "id": "chk-2102-02",
       "question": "If matrix $A$ has dimension $4 \\times 3$ and matrix $B$ has dimension $3 \\times 5$, what is the dimension of the product matrix $A B$?",
       "options": [
-        "4 x 5",
-        "3 x 3",
-        "5 x 4",
-        "Multiplication is undefined"
+        {
+          "text": "3 x 3",
+          "distractorReason": "Trap: 3 is the inner matching dimension."
+        },
+        {
+          "text": "4 x 5",
+          "isCorrect": true,
+          "distractorReason": "Correct: Matrix multiplication $(m \\times p) \\times (p \\times n)$ is compatible because inner dimensions match ($p = 3$), producing an outer product matrix of dimension $m \\times n = 4 \\times 5$."
+        },
+        {
+          "text": "5 x 4",
+          "distractorReason": "Trap: $5 \\times 4$ would be the dimension of $(AB)^T$ or $B^T A^T$."
+        },
+        {
+          "text": "Multiplication is undefined",
+          "distractorReason": "Trap: Multiplication is fully defined because the number of columns in $A$ (3) equals the number of rows in $B$ (3)."
+        }
       ],
-      "correctAnswer": 0,
+      "correctAnswer": "B",
       "explanation": "The product of (4 x 3) and (3 x 5) is a (4 x 5) matrix."
     },
     {
       "id": "chk-2102-03",
       "question": "What is the transpose of the product of two matrices $(A B)^T$ equal to?",
       "options": [
-        "B^T A^T (Order of factors reverses)",
-        "A^T B^T",
-        "(A + B)^T",
-        "A B"
+        {
+          "text": "A^T B^T",
+          "distractorReason": "Trap: Direct transpose without reversing factor order violates dimension compatibility in non-commutative matrix algebra."
+        },
+        {
+          "text": "(A + B)^T",
+          "distractorReason": "Trap: Sum transpose formula."
+        },
+        {
+          "text": "B^T A^T (Order of factors reverses)",
+          "isCorrect": true,
+          "distractorReason": "Correct: By the fundamental reversal law of transposes, $(AB)^T = B^T A^T$. The order of matrix factors is reversed."
+        },
+        {
+          "text": "A B",
+          "distractorReason": "Trap: Transpose is not identity unless $AB$ is symmetric."
+        }
       ],
-      "correctAnswer": 0,
+      "correctAnswer": "C",
       "explanation": "The reversal law of transposes states that (AB)^T = B^T A^T."
     }
   ]

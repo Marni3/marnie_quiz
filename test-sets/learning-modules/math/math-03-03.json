@@ -10,47 +10,47 @@
   "toc": [
     {
       "id": "sec-prereq-bridges",
-      "title": "1. Introduction & Cross-Subject Connections",
+      "title": "Introduction & Cross-Subject Connections",
       "level": 2
     },
     {
       "id": "sec-theory",
-      "title": "2. Lesson Proper: Expectation, Cards & Dice Symmetries",
+      "title": "Lesson Proper: Expectation, Cards & Dice Symmetries",
       "level": 2
     },
     {
       "id": "sec-formulas",
-      "title": "3. Compilation of Formulas & Poker Frequency Table",
+      "title": "Compilation of Formulas & Poker Frequency Table",
       "level": 2
     },
     {
       "id": "sec-visualizer",
-      "title": "4. Interactive Visualizer: Two-Dice Sum PMF",
+      "title": "Interactive Visualizer: Two-Dice Sum PMF",
       "level": 2
     },
     {
       "id": "sec-terminology",
-      "title": "5. Key Terms and Definitions",
+      "title": "Key Terms and Definitions",
       "level": 2
     },
     {
       "id": "sec-dual-method",
-      "title": "6. Worked Board Exam Problems",
+      "title": "Worked Board Exam Problems",
       "level": 2
     },
     {
       "id": "sec-calculator",
-      "title": "7. Calculator Speed Techniques (Karce & Canon)",
+      "title": "Calculator Speed Techniques (Karce & Canon)",
       "level": 2
     },
     {
       "id": "sec-concept-checks",
-      "title": "8. In-Line Concept Checks",
+      "title": "In-Line Concept Checks",
       "level": 2
     },
     {
       "id": "sec-mastery-challenge",
-      "title": "9. Paired Mastery Challenge Exam",
+      "title": "Paired Mastery Challenge Exam",
       "level": 2
     }
   ],
@@ -169,11 +169,14 @@
   ],
   "calculatorGuides": {
     "karce": {
-      "techniqueTitle": "Fast Mathematical Expectation Sum",
-      "problemType": "Evaluating Σ x_i * P(x_i) in STAT Mode",
-      "sampleProblem": "Find E[X] for payouts 20000(0.001) + 10000(0.002) - 50.",
+      "techniqueTitle": "Mathematical Expectation Calculation & 52C5 Poker Combinations",
+      "problemType": "Evaluating Mathematical Expectation E[X] and 5-Card Poker Hands Combinations",
+      "sampleProblem": "Evaluate mathematical expectation E[X] = 20000(0.001) + 10000(0.002) - 50, and evaluate total poker hands 52C5.",
       "mode": "COMP Mode (MODE 1)",
+      "whyItWorks": "Mathematical expectation E[X] = Σ [x_i · P(x_i)] - Cost computes long-run payout in COMP mode. Total poker hands are evaluated directly via the combination key 52 nCr 5 = 2,598,960 in 1 second.",
       "keystrokes": [
+        "MODE",
+        "1",
         "2",
         "0",
         "0",
@@ -200,23 +203,61 @@
         "-",
         "5",
         "0",
+        "=",
+        "5",
+        "2",
+        "SHIFT",
+        "nCr",
+        "5",
         "="
       ],
-      "notes": "Directly yields expectation -10 in 1 second."
+      "notes": "💡 Keystroke Rules:\n1. Expectation: Input 20000(0.001) + 10000(0.002) - 50 = -10 (unfavorable expected loss of ₱10).\n2. Poker Combinations: 52 SHIFT nCr 5 = 2,598,960 total hands.",
+      "searchAdvisory": "Search 'Karce KC-S991 expected value calculation and poker combinatorics speed tricks' for video walkthroughs."
     },
     "canon": {
-      "techniqueTitle": "52C5 Poker Permutations Shortcut",
-      "problemType": "52C5 combination calculation",
-      "sampleProblem": "Evaluate 52C5 on Canon F-789SGA.",
+      "techniqueTitle": "Mathematical Expectation Calculation & 52C5 Poker Combinations",
+      "problemType": "Evaluating Mathematical Expectation E[X] and 5-Card Poker Hands Combinations",
+      "sampleProblem": "Evaluate mathematical expectation E[X] = 20000(0.001) + 10000(0.002) - 50, and evaluate total poker hands 52C5.",
       "mode": "COMP Mode (MODE 1)",
+      "whyItWorks": "Mathematical expectation E[X] = Σ [x_i · P(x_i)] - Cost computes long-run payout in COMP mode. Total poker hands are evaluated directly via the dedicated combination key 52 nCr 5 = 2,598,960 in 1 second.",
       "keystrokes": [
+        "MODE",
+        "1",
+        "2",
+        "0",
+        "0",
+        "0",
+        "0",
+        "×",
+        "0",
+        ".",
+        "0",
+        "0",
+        "1",
+        "+",
+        "1",
+        "0",
+        "0",
+        "0",
+        "0",
+        "×",
+        "0",
+        ".",
+        "0",
+        "0",
+        "2",
+        "-",
+        "5",
+        "0",
+        "=",
         "5",
         "2",
         "nCr",
         "5",
         "="
       ],
-      "notes": "Instantly displays 2,598,960."
+      "notes": "💡 Keystroke Rules:\n1. Expectation: Input 20000(0.001) + 10000(0.002) - 50 = -10 (unfavorable expected loss of ₱10).\n2. Poker Combinations: 52 nCr 5 = 2,598,960 total hands.",
+      "searchAdvisory": "Search 'Canon F-789SGA mathematical expectation and card combinatorics shortcuts' for video breakdowns."
     }
   },
   "conceptChecks": [
@@ -224,36 +265,75 @@
       "id": "chk-0603-01",
       "question": "What is the sum of the numbers on the four vertical lateral faces of a standard 6-sided die resting on a table?",
       "options": [
-        "14",
-        "21",
-        "7",
-        "12"
+        {
+          "text": "14",
+          "isCorrect": true,
+          "distractorReason": "Correct: Total sum of all 6 faces is 21. Since top and bottom opposite faces always sum to 7, the remaining 4 lateral faces sum to 21 - 7 = 14."
+        },
+        {
+          "text": "21",
+          "distractorReason": "Trap: 21 is the total sum of all six faces (1 + 2 + 3 + 4 + 5 + 6 = 21)."
+        },
+        {
+          "text": "7",
+          "distractorReason": "Trap: 7 is the sum of any single opposite face pair."
+        },
+        {
+          "text": "12",
+          "distractorReason": "Trap: Arithmetic subtraction error."
+        }
       ],
-      "correctAnswer": 0,
+      "correctAnswer": "A",
       "explanation": "Total sum of all 6 faces is 21. Since the top and bottom opposite faces always sum to 7, the remaining 4 lateral faces sum to 21 - 7 = 14."
     },
     {
       "id": "chk-0603-02",
       "question": "In a standard deck of cards, which historical leader is depicted as the King of Hearts?",
       "options": [
-        "Charlemagne",
-        "Alexander the Great",
-        "Julius Caesar",
-        "King David"
+        {
+          "text": "Alexander the Great",
+          "distractorReason": "Trap: Alexander the Great is depicted as the King of Clubs."
+        },
+        {
+          "text": "Charlemagne",
+          "isCorrect": true,
+          "distractorReason": "Correct: King of Hearts represents King Charlemagne (Charles the Great) of the Holy Roman Empire."
+        },
+        {
+          "text": "Julius Caesar",
+          "distractorReason": "Trap: Julius Caesar is depicted as the King of Diamonds."
+        },
+        {
+          "text": "King David",
+          "distractorReason": "Trap: King David is depicted as the King of Spades."
+        }
       ],
-      "correctAnswer": 0,
+      "correctAnswer": "B",
       "explanation": "King of Hearts represents Charlemagne; Clubs represents Alexander the Great; Diamonds represents Julius Caesar; Spades represents King David."
     },
     {
       "id": "chk-0603-03",
       "question": "If a game of chance has an expected value of $E[X] = 0$, what is the game termed?",
       "options": [
-        "A Fair Game",
-        "A Favorable Game",
-        "An Unfavorable Game",
-        "A Zero-Sum Game"
+        {
+          "text": "A Favorable Game",
+          "distractorReason": "Trap: A favorable game requires E[X] > 0 for the player."
+        },
+        {
+          "text": "An Unfavorable Game",
+          "distractorReason": "Trap: An unfavorable game has E[X] < 0 (typical casino house edge)."
+        },
+        {
+          "text": "A Fair Game",
+          "isCorrect": true,
+          "distractorReason": "Correct: When mathematical expectation is exactly zero, neither player nor house has an edge in the long run, defining a fair game."
+        },
+        {
+          "text": "A Zero-Sum Game",
+          "distractorReason": "Trap: Zero-sum refers to total payouts equaling total stakes among players, not necessarily equal zero expectation for an individual player."
+        }
       ],
-      "correctAnswer": 0,
+      "correctAnswer": "C",
       "explanation": "When mathematical expectation is exactly zero, neither the player nor the house has an advantage in the long run, defining a fair game."
     }
   ]

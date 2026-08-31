@@ -10,47 +10,47 @@
   "toc": [
     {
       "id": "sec-prereq-bridges",
-      "title": "1. Introduction & Cross-Subject Connections",
+      "title": "Introduction & Cross-Subject Connections",
       "level": 2
     },
     {
       "id": "sec-theory",
-      "title": "2. Lesson Proper: The 37 Fundamental Differentiation Rules",
+      "title": "Lesson Proper: The 37 Fundamental Differentiation Rules",
       "level": 2
     },
     {
       "id": "sec-formulas",
-      "title": "3. Master Compilation of All 37 Derivative Formulas",
+      "title": "Master Compilation of All 37 Derivative Formulas",
       "level": 2
     },
     {
       "id": "sec-visualizer",
-      "title": "4. Interactive Visualizer: Real-Time Derivative Function Plotter",
+      "title": "Interactive Visualizer: Real-Time Derivative Function Plotter",
       "level": 2
     },
     {
       "id": "sec-terminology",
-      "title": "5. Key Terms and Definitions",
+      "title": "Key Terms and Definitions",
       "level": 2
     },
     {
       "id": "sec-dual-method",
-      "title": "6. Worked Board Exam Problems",
+      "title": "Worked Board Exam Problems",
       "level": 2
     },
     {
       "id": "sec-calculator",
-      "title": "7. Calculator Speed Techniques (Karce & Canon)",
+      "title": "Calculator Speed Techniques (Karce & Canon)",
       "level": 2
     },
     {
       "id": "sec-concept-checks",
-      "title": "8. In-Line Concept Checks",
+      "title": "In-Line Concept Checks",
       "level": 2
     },
     {
       "id": "sec-mastery-challenge",
-      "title": "9. Paired Mastery Challenge Exam",
+      "title": "Paired Mastery Challenge Exam",
       "level": 2
     }
   ],
@@ -170,11 +170,14 @@
   ],
   "calculatorGuides": {
     "karce": {
-      "techniqueTitle": "Fast Numerical Derivative (d/dx Key)",
-      "problemType": "Evaluating numerical derivative d/dx at x = a",
-      "sampleProblem": "Find d/dx [arctan(3x²)] at x = 2.",
-      "mode": "COMP Mode (MODE 1, Set RAD)",
+      "techniqueTitle": "Fast Numerical Derivative Operator (d/dx Key)",
+      "problemType": "Evaluating Exact Numerical Derivatives d/dx [f(x)] at x = a",
+      "sampleProblem": "Evaluate the numerical derivative d/dx [arctan(3x²)] at x = 2 (Set RAD Mode), and evaluate d/dx [x³ · e^(2x)] at x = 1 using the d/dx key.",
+      "mode": "COMP Mode (MODE 1, Set RAD Mode for Trigonometric Functions)",
+      "whyItWorks": "The built-in numerical derivative operator d/dx evaluates central-difference approximations f'(x) ≈ (f(x+h) - f(x-h))/(2h) directly in 1 step: d/dx[arctan(3x²)]|_{x=2} = 12/145 ≈ 0.0827586 (RAD mode) and d/dx[x³ e^(2x)]|_{x=1} = 5e² ≈ 36.94528 in COMP mode.",
       "keystrokes": [
+        "MODE",
+        "1",
         "SHIFT",
         "d/dx",
         "tan⁻¹",
@@ -187,16 +190,7 @@
         ",",
         "2",
         ")",
-        "="
-      ],
-      "notes": "Directly evaluates 0.0827586 (12/145) in 1 second."
-    },
-    "canon": {
-      "techniqueTitle": "Direct Numerical Derivative Shortcut",
-      "problemType": "Evaluating d/dx [x³ * e^(2x)] at x = 1 on Canon F-789SGA",
-      "sampleProblem": "Find dy/dx at x = 1.",
-      "mode": "COMP Mode (MODE 1)",
-      "keystrokes": [
+        "=",
         "SHIFT",
         "d/dx",
         "ALPHA",
@@ -215,7 +209,51 @@
         ")",
         "="
       ],
-      "notes": "Directly yields 36.94528 (5 * e²)."
+      "notes": "💡 Keystroke Rules:\n1. Inverse Trig (RAD): d/dx(arctan(3X²), 2) = 0.0827586 = 12/145.\n2. Product Rule: d/dx(X³ × e^(2X), 1) = 36.94528 = 5e².",
+      "searchAdvisory": "Search 'Karce KC-S991 numerical derivative d/dx key inverse trig functions' for video guides."
+    },
+    "canon": {
+      "techniqueTitle": "Fast Numerical Derivative Operator (d/dx Key)",
+      "problemType": "Evaluating Exact Numerical Derivatives d/dx [f(x)] at x = a",
+      "sampleProblem": "Evaluate the numerical derivative d/dx [arctan(3x²)] at x = 2 (Set RAD Mode), and evaluate d/dx [x³ · e^(2x)] at x = 1 using the d/dx key.",
+      "mode": "COMP Mode (MODE 1, Set RAD Mode for Trigonometric Functions)",
+      "whyItWorks": "The built-in numerical derivative operator d/dx evaluates central-difference approximations f'(x) ≈ (f(x+h) - f(x-h))/(2h) directly in 1 step: d/dx[arctan(3x²)]|_{x=2} = 12/145 ≈ 0.0827586 (RAD mode) and d/dx[x³ e^(2x)]|_{x=1} = 5e² ≈ 36.94528 in COMP mode.",
+      "keystrokes": [
+        "MODE",
+        "1",
+        "SHIFT",
+        "d/dx",
+        "tan⁻¹",
+        "(",
+        "3",
+        "ALPHA",
+        "X",
+        "x²",
+        ")",
+        ",",
+        "2",
+        ")",
+        "=",
+        "SHIFT",
+        "d/dx",
+        "ALPHA",
+        "X",
+        "x³",
+        "×",
+        "SHIFT",
+        "e^",
+        "(",
+        "2",
+        "ALPHA",
+        "X",
+        ")",
+        ",",
+        "1",
+        ")",
+        "="
+      ],
+      "notes": "💡 Keystroke Rules:\n1. Inverse Trig (RAD): d/dx(arctan(3X²), 2) = 0.0827586 = 12/145.\n2. Product Rule: d/dx(X³ × e^(2X), 1) = 36.94528 = 5e².",
+      "searchAdvisory": "Search 'Canon F-789SGA d/dx key derivative shortcuts inverse hyperbolic and exponential' for video breakdowns."
     }
   },
   "conceptChecks": [
@@ -223,36 +261,75 @@
       "id": "chk-1402-01",
       "question": "What is the derivative of $f(x) = \\cosh(3x)$ with respect to $x$?",
       "options": [
-        "+3 sinh(3x)",
-        "-3 sinh(3x)",
-        "+3 cosh(3x)",
-        "-3 csch(3x)"
+        {
+          "text": "+3 sinh(3x)",
+          "isCorrect": true,
+          "distractorReason": "Correct: Unlike circular cosine where d/dx[cos u] = -sin u, hyperbolic cosine has a strictly POSITIVE derivative: d/dx[cosh(3x)] = +3 sinh(3x)."
+        },
+        {
+          "text": "-3 sinh(3x)",
+          "distractorReason": "Trap: Confusing circular trigonometry with hyperbolic trigonometry (no negative sign on d/dx[cosh u])."
+        },
+        {
+          "text": "+3 cosh(3x)",
+          "distractorReason": "Trap: Failing to change the hyperbolic function."
+        },
+        {
+          "text": "-3 csch(3x)",
+          "distractorReason": "Trap: Confusing reciprocal hyperbolic functions."
+        }
       ],
-      "correctAnswer": 0,
+      "correctAnswer": "A",
       "explanation": "Unlike trigonometric cos, the derivative of cosh is positive: d/dx[cosh(3x)] = +3 sinh(3x)."
     },
     {
       "id": "chk-1402-02",
       "question": "What is the derivative of $y = \\arctan(u)$ with respect to $x$?",
       "options": [
-        "u' / (1 + u²)",
-        "u' / (1 - u²)",
-        "u' / √(1 - u²)",
-        "-u' / (1 + u²)"
+        {
+          "text": "u' / (1 - u²)",
+          "distractorReason": "Trap: u' / (1 - u²) is the derivative of the inverse hyperbolic tangent artanh(u)."
+        },
+        {
+          "text": "u' / (1 + u²)",
+          "isCorrect": true,
+          "distractorReason": "Correct: By standard chain rule differentiation, d/dx[arctan(u)] = u' / (1 + u²)."
+        },
+        {
+          "text": "u' / √(1 - u²)",
+          "distractorReason": "Trap: u' / √(1 - u²) is the derivative of arcsin(u)."
+        },
+        {
+          "text": "-u' / (1 + u²)",
+          "distractorReason": "Trap: -u' / (1 + u²) is the derivative of arccot(u)."
+        }
       ],
-      "correctAnswer": 0,
+      "correctAnswer": "B",
       "explanation": "The standard derivative of arctan(u) is u' / (1 + u²)."
     },
     {
       "id": "chk-1402-03",
       "question": "What is the derivative of $y = \\log_{10}(x)$?",
       "options": [
-        "(log₁₀ e) / x ≈ 0.4343 / x",
-        "1 / x",
-        "ln(10) / x",
-        "1 / (x ln e)"
+        {
+          "text": "1 / x",
+          "distractorReason": "Trap: 1 / x is the derivative of the natural logarithm ln(x), not base-10 log(x)."
+        },
+        {
+          "text": "ln(10) / x",
+          "distractorReason": "Trap: Multiplying by ln(10) instead of dividing by ln(10)."
+        },
+        {
+          "text": "(log₁₀ e) / x ≈ 0.4343 / x",
+          "isCorrect": true,
+          "distractorReason": "Correct: d/dx[log₁₀(x)] = 1 / (x ln 10) = (log₁₀ e) / x ≈ 0.434294 / x."
+        },
+        {
+          "text": "1 / (x ln e)",
+          "distractorReason": "Trap: ln(e) = 1, reducing back to 1/x."
+        }
       ],
-      "correctAnswer": 0,
+      "correctAnswer": "C",
       "explanation": "d/dx[log₁₀(x)] = (log₁₀ e)/x = 1 / (x ln 10) ≈ 0.4343 / x."
     }
   ]

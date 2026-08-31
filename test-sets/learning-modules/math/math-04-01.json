@@ -10,47 +10,47 @@
   "toc": [
     {
       "id": "sec-prereq-bridges",
-      "title": "1. Introduction & Cross-Subject Connections",
+      "title": "Introduction & Cross-Subject Connections",
       "level": 2
     },
     {
       "id": "sec-theory",
-      "title": "2. Lesson Proper: Triangle Geometry & Oblique Laws",
+      "title": "Lesson Proper: Triangle Geometry & Oblique Laws",
       "level": 2
     },
     {
       "id": "sec-formulas",
-      "title": "3. Compilation of Formulas & Trigonometric Laws",
+      "title": "Compilation of Formulas & Trigonometric Laws",
       "level": 2
     },
     {
       "id": "sec-visualizer",
-      "title": "4. Interactive Visualizer: Oblique Triangle Solver",
+      "title": "Interactive Visualizer: Oblique Triangle Solver",
       "level": 2
     },
     {
       "id": "sec-terminology",
-      "title": "5. Key Terms and Definitions",
+      "title": "Key Terms and Definitions",
       "level": 2
     },
     {
       "id": "sec-dual-method",
-      "title": "6. Worked Board Exam Problems",
+      "title": "Worked Board Exam Problems",
       "level": 2
     },
     {
       "id": "sec-calculator",
-      "title": "7. Calculator Speed Techniques (Karce & Canon)",
+      "title": "Calculator Speed Techniques (Karce & Canon)",
       "level": 2
     },
     {
       "id": "sec-concept-checks",
-      "title": "8. In-Line Concept Checks",
+      "title": "In-Line Concept Checks",
       "level": 2
     },
     {
       "id": "sec-mastery-challenge",
-      "title": "9. Paired Mastery Challenge Exam",
+      "title": "Paired Mastery Challenge Exam",
       "level": 2
     }
   ],
@@ -185,11 +185,14 @@
   ],
   "calculatorGuides": {
     "karce": {
-      "techniqueTitle": "Law of Cosines Direct Square Root",
-      "problemType": "Solving c = √(a² + b² - 2ab cos C)",
-      "sampleProblem": "Solve c for a=10, b=15, C=60° in DEG mode.",
-      "mode": "COMP Mode (MODE 1, Ensure DEG)",
+      "techniqueTitle": "Law of Cosines Direct Root & Polar Vector Addition",
+      "problemType": "Evaluating Oblique Triangles and Side Magnitude via Polar Phasors",
+      "sampleProblem": "Solve for third side c given a = 10, b = 15, C = 60° via Law of Cosines, and verify via Polar conversion.",
+      "mode": "COMP Mode (MODE 1, Ensure DEG Mode)",
+      "whyItWorks": "The Law of Cosines c = √(a² + b² - 2ab cos C) directly computes oblique side lengths in DEG mode. Polar conversion Pol(x, y) treats adjacent sides as vector coordinates to extract resultant magnitude in 1 step.",
       "keystrokes": [
+        "MODE",
+        "1",
         "√",
         "(",
         "1",
@@ -212,16 +215,7 @@
         "6",
         "0",
         ")",
-        "="
-      ],
-      "notes": "Directly yields 13.22875656 in 2 seconds."
-    },
-    "canon": {
-      "techniqueTitle": "Polar Coordinate Conversion Shortcut",
-      "problemType": "Vector side addition for oblique triangles",
-      "sampleProblem": "Find resultant of 10∠0° and 15∠120° on Canon F-789SGA.",
-      "mode": "COMP Mode (MODE 1)",
-      "keystrokes": [
+        "=",
         "SHIFT",
         "Pol(",
         "1",
@@ -243,7 +237,64 @@
         ")",
         "="
       ],
-      "notes": "Directly yields r = 13.2287 in 1 step."
+      "notes": "💡 Keystroke Rules:\n1. Law of Cosines: Input √(10² + 15² - 2(10)(15)cos(60)) = 13.22875656.\n2. Polar Vector Shortcut: Pol(10 + 15cos(120), 15sin(120)) = 13.22875656.",
+      "searchAdvisory": "Search 'Karce KC-S991 law of cosines and polar coordinate vector shortcuts' for video guides."
+    },
+    "canon": {
+      "techniqueTitle": "Law of Cosines Direct Root & Polar Vector Addition",
+      "problemType": "Evaluating Oblique Triangles and Side Magnitude via Polar Phasors",
+      "sampleProblem": "Solve for third side c given a = 10, b = 15, C = 60° via Law of Cosines, and verify via Polar conversion.",
+      "mode": "COMP Mode (MODE 1, Ensure DEG Mode)",
+      "whyItWorks": "The Law of Cosines c = √(a² + b² - 2ab cos C) directly computes oblique side lengths in DEG mode. Polar conversion Pol(x, y) treats adjacent sides as vector coordinates to extract resultant magnitude in 1 step.",
+      "keystrokes": [
+        "MODE",
+        "1",
+        "√",
+        "(",
+        "1",
+        "0",
+        "x²",
+        "+",
+        "1",
+        "5",
+        "x²",
+        "-",
+        "2",
+        "×",
+        "1",
+        "0",
+        "×",
+        "1",
+        "5",
+        "×",
+        "cos",
+        "6",
+        "0",
+        ")",
+        "=",
+        "Pol",
+        "(",
+        "1",
+        "0",
+        "+",
+        "1",
+        "5",
+        "cos",
+        "1",
+        "2",
+        "0",
+        ",",
+        "1",
+        "5",
+        "sin",
+        "1",
+        "2",
+        "0",
+        ")",
+        "="
+      ],
+      "notes": "💡 Keystroke Rules:\n1. Law of Cosines: Input √(10² + 15² - 2(10)(15)cos(60)) = 13.22875656.\n2. Polar Vector Shortcut: Pol(10 + 15cos(120), 15sin(120)) = 13.22875656.",
+      "searchAdvisory": "Search 'Canon F-789SGA law of cosines and polar phasor coordinate conversion' for video breakdowns."
     }
   },
   "conceptChecks": [
@@ -251,36 +302,75 @@
       "id": "chk-0801-01",
       "question": "Which ancient Greek astronomer demonstrated the Law of Sines in his astronomical treatise Almagest around 150 A.D.?",
       "options": [
-        "Ptolemy of Alexandria",
-        "Pythagoras of Samos",
-        "Euclid of Alexandria",
-        "Archimedes of Syracuse"
+        {
+          "text": "Ptolemy of Alexandria",
+          "isCorrect": true,
+          "distractorReason": "Correct: Claudius Ptolemaeus (Ptolemy of Alexandria) proved the chord-based equivalent of the Law of Sines in his astronomical treatise Almagest around 150 A.D."
+        },
+        {
+          "text": "Pythagoras of Samos",
+          "distractorReason": "Trap: Pythagoras discovered the right-triangle theorem a² + b² = c² around 500 B.C."
+        },
+        {
+          "text": "Euclid of Alexandria",
+          "distractorReason": "Trap: Euclid authored the Elements, establishing axiomatic plane geometry."
+        },
+        {
+          "text": "Archimedes of Syracuse",
+          "distractorReason": "Trap: Archimedes developed buoyancy and exhaustion-based area computation."
+        }
       ],
-      "correctAnswer": 0,
+      "correctAnswer": "A",
       "explanation": "Claudius Ptolemaeus (Ptolemy of Alexandria) demonstrated the Law of Sines using chords of circles around 150 A.D."
     },
     {
       "id": "chk-0801-02",
       "question": "Which mathematician first described the Law of Tangents in 1583?",
       "options": [
-        "Thomas Fincke",
-        "François Viète",
-        "John Napier",
-        "Niccolò Tartaglia"
+        {
+          "text": "François Viète",
+          "distractorReason": "Trap: Viète popularized symbolic algebra and trigonometric identities, but Fincke published the Law of Tangents."
+        },
+        {
+          "text": "Thomas Fincke",
+          "isCorrect": true,
+          "distractorReason": "Correct: Danish mathematician Thomas Fincke (1561–1656) published the Law of Tangents in Geometria Rotundi in 1583."
+        },
+        {
+          "text": "John Napier",
+          "distractorReason": "Trap: Napier invented logarithms and Napier's Rules for spherical right triangles."
+        },
+        {
+          "text": "Niccolò Tartaglia",
+          "distractorReason": "Trap: Tartaglia solved cubic equations and projectile trajectory tables."
+        }
       ],
-      "correctAnswer": 0,
+      "correctAnswer": "B",
       "explanation": "Danish mathematician and physician Thomas Fincke (1561–1656) first published the Law of Tangents in his 1583 work Geometria Rotundi."
     },
     {
       "id": "chk-0801-03",
       "question": "What is the side ratio of an Isosceles Right Triangle ($45^\\circ - 45^\\circ - 90^\\circ$)?",
       "options": [
-        "1 : 1 : √2",
-        "1 : √3 : 2",
-        "3 : 4 : 5",
-        "1 : 2 : √5"
+        {
+          "text": "1 : √3 : 2",
+          "distractorReason": "Trap: 1 : √3 : 2 is the ratio of a 30° - 60° - 90° right triangle."
+        },
+        {
+          "text": "3 : 4 : 5",
+          "distractorReason": "Trap: 3 : 4 : 5 is the classical scalene Pythagorean triple right triangle."
+        },
+        {
+          "text": "1 : 1 : √2",
+          "isCorrect": true,
+          "distractorReason": "Correct: By Pythagorean theorem, with equal legs 1 and 1, the hypotenuse is √(1² + 1²) = √2, yielding 1 : 1 : √2."
+        },
+        {
+          "text": "1 : 2 : √5",
+          "distractorReason": "Trap: 1 : 2 : √5 has legs of 1 and 2, with non-equal acute angles."
+        }
       ],
-      "correctAnswer": 0,
+      "correctAnswer": "C",
       "explanation": "By the Pythagorean theorem: 1² + 1² = 2 ⇒ hypotenuse is √2, yielding 1 : 1 : √2."
     }
   ]

@@ -10,47 +10,47 @@
   "toc": [
     {
       "id": "sec-prereq-bridges",
-      "title": "1. Introduction & Cross-Subject Connections",
+      "title": "Introduction & Cross-Subject Connections",
       "level": 2
     },
     {
       "id": "sec-theory",
-      "title": "2. Lesson Proper: Set Operations & Relational Mapping",
+      "title": "Lesson Proper: Set Operations & Relational Mapping",
       "level": 2
     },
     {
       "id": "sec-formulas",
-      "title": "3. Compilation of Formulas & Set Laws",
+      "title": "Compilation of Formulas & Set Laws",
       "level": 2
     },
     {
       "id": "sec-visualizer",
-      "title": "4. Interactive Visualizer: Cartesian Product Grid",
+      "title": "Interactive Visualizer: Cartesian Product Grid",
       "level": 2
     },
     {
       "id": "sec-terminology",
-      "title": "5. Key Terms and Definitions",
+      "title": "Key Terms and Definitions",
       "level": 2
     },
     {
       "id": "sec-dual-method",
-      "title": "6. Worked Board Exam Problems",
+      "title": "Worked Board Exam Problems",
       "level": 2
     },
     {
       "id": "sec-calculator",
-      "title": "7. Calculator Speed Techniques (Karce & Canon)",
+      "title": "Calculator Speed Techniques (Karce & Canon)",
       "level": 2
     },
     {
       "id": "sec-concept-checks",
-      "title": "8. In-Line Concept Checks",
+      "title": "In-Line Concept Checks",
       "level": 2
     },
     {
       "id": "sec-mastery-challenge",
-      "title": "9. Paired Mastery Challenge Exam",
+      "title": "Paired Mastery Challenge Exam",
       "level": 2
     }
   ],
@@ -177,39 +177,46 @@
   ],
   "calculatorGuides": {
     "karce": {
-      "techniqueTitle": "Direct Cartesian Cardinality Product",
-      "problemType": "Finding size of Cartesian product and power relations",
-      "sampleProblem": "Find relations from A (|A|=4) to B (|B|=3).",
+      "techniqueTitle": "Cartesian Product Cardinality & Binary Relations Count",
+      "problemType": "Evaluating Size of Cartesian Product and Total Power Relations 2^(m*n)",
+      "sampleProblem": "Find total distinct binary relations from set A (|A|=4) to set B (|B|=3).",
       "mode": "COMP Mode (MODE 1)",
+      "whyItWorks": "The Cartesian product has cardinality |A × B| = |A| · |B|. Since every subset of A × B defines a unique binary relation, the total possible relations is given by the power set size 2^(|A|·|B|) = 2^(4·3) = 2^12 = 4096.",
       "keystrokes": [
-        "4",
-        "×",
-        "3",
-        "=",
-        "2",
-        "^",
+        "MODE",
         "1",
-        "2",
-        "="
-      ],
-      "notes": "Directly evaluates 2^12 = 4096 relations."
-    },
-    "canon": {
-      "techniqueTitle": "Binary Relations Power Shortcut",
-      "problemType": "2^(m*n) relation calculations",
-      "sampleProblem": "Evaluate 2^(3*3) on Canon F-789SGA.",
-      "mode": "COMP Mode (MODE 1)",
-      "keystrokes": [
         "2",
         "^",
         "(",
-        "3",
+        "4",
         "×",
         "3",
         ")",
         "="
       ],
-      "notes": "Directly yields 512 relations."
+      "notes": "💡 Keystroke Rules:\n1. Input 2^(4 × 3) directly in COMP mode.\n2. Press = to obtain 4,096 distinct binary relations in under 2 seconds.",
+      "searchAdvisory": "Search 'Karce KC-S991 binary relations Cartesian product power set calculations' for video examples."
+    },
+    "canon": {
+      "techniqueTitle": "Cartesian Product Cardinality & Binary Relations Count",
+      "problemType": "Evaluating Size of Cartesian Product and Total Power Relations 2^(m*n)",
+      "sampleProblem": "Find total distinct binary relations from set A (|A|=4) to set B (|B|=3).",
+      "mode": "COMP Mode (MODE 1)",
+      "whyItWorks": "The Cartesian product has cardinality |A × B| = |A| · |B|. Since every subset of A × B defines a unique binary relation, the total possible relations is given by the power set size 2^(|A|·|B|) = 2^(4·3) = 2^12 = 4096.",
+      "keystrokes": [
+        "MODE",
+        "1",
+        "2",
+        "^",
+        "(",
+        "4",
+        "×",
+        "3",
+        ")",
+        "="
+      ],
+      "notes": "💡 Keystroke Rules:\n1. Input 2^(4 × 3) directly in COMP mode.\n2. Press = to obtain 4,096 distinct binary relations in under 2 seconds.",
+      "searchAdvisory": "Search 'Canon F-789SGA Cartesian product and binary relation power formula' for video breakdowns."
     }
   },
   "conceptChecks": [
@@ -217,36 +224,75 @@
       "id": "chk-0402-01",
       "question": "If set $A$ has 3 elements and set $B$ has 4 elements, how many distinct binary relations can be defined from $A$ to $B$?",
       "options": [
-        "4,096",
-        "12",
-        "64",
-        "2,048"
+        {
+          "text": "4,096 relations",
+          "isCorrect": true,
+          "distractorReason": "Correct: |A × B| = 3 × 4 = 12 ordered pairs. Total subsets (relations) = 2^12 = 4,096."
+        },
+        {
+          "text": "12 relations",
+          "distractorReason": "Trap: 12 is the number of individual ordered pairs in the Cartesian product (3 × 4), not the number of subsets/relations."
+        },
+        {
+          "text": "64 relations",
+          "distractorReason": "Trap: 64 is 2^6 or 4^3."
+        },
+        {
+          "text": "2,048 relations",
+          "distractorReason": "Trap: 2,048 is 2^11 (off by one power of 2)."
+        }
       ],
-      "correctAnswer": 0,
+      "correctAnswer": "A",
       "explanation": "|A × B| = 3 × 4 = 12. Total possible subsets (relations) = 2^12 = 4,096."
     },
     {
       "id": "chk-0402-02",
       "question": "Which of the following sets of ordered pairs represents a valid mathematical function?",
       "options": [
-        "{(1, 2), (2, 3), (3, 4), (4, 5)}",
-        "{(1, 2), (1, 3), (2, 4), (3, 5)}",
-        "{(2, 5), (2, 7), (3, 8)}",
-        "{(4, 1), (4, 2), (4, 3)}"
+        {
+          "text": "{(1, 2), (1, 3), (2, 4), (3, 5)}",
+          "distractorReason": "Trap: Input x = 1 maps to two different outputs (2 and 3), violating single-valued mapping."
+        },
+        {
+          "text": "{(1, 2), (2, 3), (3, 4), (4, 5)}",
+          "isCorrect": true,
+          "distractorReason": "Correct: Every domain input (1, 2, 3, 4) maps to exactly one unique codomain element."
+        },
+        {
+          "text": "{(2, 5), (2, 7), (3, 8)}",
+          "distractorReason": "Trap: Input x = 2 maps to both 5 and 7."
+        },
+        {
+          "text": "{(4, 1), (4, 2), (4, 3)}",
+          "distractorReason": "Trap: Input x = 4 maps to three distinct outputs."
+        }
       ],
-      "correctAnswer": 0,
+      "correctAnswer": "B",
       "explanation": "In a function, every input element must map to exactly one output. In the first set, each domain value (1, 2, 3, 4) appears exactly once."
     },
     {
       "id": "chk-0402-03",
       "question": "Is the Cartesian product commutative ($A \\times B = B \\times A$)?",
       "options": [
-        "No, because ordered pairs (a, b) and (b, a) are fundamentally distinct",
-        "Yes, Cartesian multiplication is always commutative",
-        "Yes, only when both sets are finite",
-        "Yes, provided the sets are disjoint"
+        {
+          "text": "Yes, Cartesian multiplication of sets is always commutative",
+          "distractorReason": "Trap: Confusing numerical multiplication (ab = ba) with ordered pair Cartesian products."
+        },
+        {
+          "text": "Yes, provided the sets are finite and non-empty",
+          "distractorReason": "Trap: Finiteness does not make ordered pairs symmetric."
+        },
+        {
+          "text": "No, because ordered pairs (a, b) and (b, a) are fundamentally distinct unless A = B or one set is empty",
+          "isCorrect": true,
+          "distractorReason": "Correct: Ordered pairs depend strictly on coordinate position ((a, b) ≠ (b, a)), so A × B ≠ B × A in general."
+        },
+        {
+          "text": "Yes, provided the sets are mutually disjoint",
+          "distractorReason": "Trap: Disjoint sets produce completely distinct non-symmetric coordinate pairs."
+        }
       ],
-      "correctAnswer": 0,
+      "correctAnswer": "C",
       "explanation": "Ordered pairs depend on order ((a, b) ≠ (b, a)), so A × B ≠ B × A in general unless A = B or one set is empty."
     }
   ]

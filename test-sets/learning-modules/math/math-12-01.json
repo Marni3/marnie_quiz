@@ -10,47 +10,47 @@
   "toc": [
     {
       "id": "sec-prereq-bridges",
-      "title": "1. Introduction & Cross-Subject Connections",
+      "title": "Introduction & Cross-Subject Connections",
       "level": 2
     },
     {
       "id": "sec-theory",
-      "title": "2. Lesson Proper: Matrix Algebra Foundations, Taxonomy & Trace",
+      "title": "Lesson Proper: Matrix Algebra Foundations, Taxonomy & Trace",
       "level": 2
     },
     {
       "id": "sec-formulas",
-      "title": "3. Master Compilation of Matrix Properties & Invariants",
+      "title": "Master Compilation of Matrix Properties & Invariants",
       "level": 2
     },
     {
       "id": "sec-visualizer",
-      "title": "4. Interactive Visualizer: Matrix Structure & Trace Calculator",
+      "title": "Interactive Visualizer: Matrix Structure & Trace Calculator",
       "level": 2
     },
     {
       "id": "sec-terminology",
-      "title": "5. Key Terms and Definitions",
+      "title": "Key Terms and Definitions",
       "level": 2
     },
     {
       "id": "sec-dual-method",
-      "title": "6. Worked Board Exam Problems",
+      "title": "Worked Board Exam Problems",
       "level": 2
     },
     {
       "id": "sec-calculator",
-      "title": "7. Calculator Speed Techniques (Karce & Canon)",
+      "title": "Calculator Speed Techniques (Karce & Canon)",
       "level": 2
     },
     {
       "id": "sec-concept-checks",
-      "title": "8. In-Line Concept Checks",
+      "title": "In-Line Concept Checks",
       "level": 2
     },
     {
       "id": "sec-mastery-challenge",
-      "title": "9. Paired Mastery Challenge Exam",
+      "title": "Paired Mastery Challenge Exam",
       "level": 2
     }
   ],
@@ -185,28 +185,11 @@
   ],
   "calculatorGuides": {
     "karce": {
-      "techniqueTitle": "Fast Complex Reciprocal in CMPLX Mode",
-      "problemType": "Evaluating 1 / (3 + 4i)",
-      "sampleProblem": "Find reciprocal of 3 + 4i.",
-      "mode": "CMPLX Mode (MODE 2)",
-      "keystrokes": [
-        "1",
-        "÷",
-        "(",
-        "3",
-        "+",
-        "4",
-        "i",
-        ")",
-        "="
-      ],
-      "notes": "Directly yields 0.12 - 0.16i in 1 second."
-    },
-    "canon": {
-      "techniqueTitle": "Matrix Dimension & Trace Inspection",
-      "problemType": "Entering 3x3 Matrix on Canon F-789SGA",
-      "sampleProblem": "Enter MatA and compute trace.",
-      "mode": "MATRIX Mode (MODE 6)",
+      "techniqueTitle": "Fast Matrix Dimension, Storage & Trace Inspection",
+      "problemType": "Defining 3x3 Matrix and Evaluating Trace tr(A) = ∑ a_ii",
+      "sampleProblem": "Define 3x3 Matrix A = [[6, 5, 4], [2, 1, 4], [3, -2, -2]] in MATRIX mode and calculate its trace tr(A) = a11 + a22 + a33.",
+      "mode": "MATRIX Mode (MODE 6 or MODE 4)",
+      "whyItWorks": "Entering the 3x3 matrix into MatA allows instantaneous evaluation of matrix properties: trace equals the sum of main diagonal elements tr(A) = 6 + 1 + (-2) = 5 in 1 second.",
       "keystrokes": [
         "MODE",
         "6",
@@ -231,9 +214,59 @@
         "=",
         "-",
         "2",
+        "=",
+        "AC",
+        "6",
+        "+",
+        "1",
+        "-",
+        "2",
         "="
       ],
-      "notes": "Diagonal sum = 6 + 1 - 2 = 5."
+      "notes": "💡 Keystroke Rules:\n1. Input 3x3 MatA elements row by row.\n2. Trace: a11 + a22 + a33 = 6 + 1 - 2 = 5.",
+      "searchAdvisory": "Search 'Karce KC-S991 matrix mode data entry and trace calculation' for video tutorials."
+    },
+    "canon": {
+      "techniqueTitle": "Fast Matrix Dimension, Storage & Trace Inspection",
+      "problemType": "Defining 3x3 Matrix and Evaluating Trace tr(A) = ∑ a_ii",
+      "sampleProblem": "Define 3x3 Matrix A = [[6, 5, 4], [2, 1, 4], [3, -2, -2]] in MATRIX mode and calculate its trace tr(A) = a11 + a22 + a33.",
+      "mode": "MATRIX Mode (MODE 6)",
+      "whyItWorks": "Entering the 3x3 matrix into MatA allows instantaneous evaluation of matrix properties: trace equals the sum of main diagonal elements tr(A) = 6 + 1 + (-2) = 5 in 1 second.",
+      "keystrokes": [
+        "MODE",
+        "6",
+        "1",
+        "1",
+        "6",
+        "=",
+        "5",
+        "=",
+        "4",
+        "=",
+        "2",
+        "=",
+        "1",
+        "=",
+        "4",
+        "=",
+        "3",
+        "=",
+        "-",
+        "2",
+        "=",
+        "-",
+        "2",
+        "=",
+        "AC",
+        "6",
+        "+",
+        "1",
+        "-",
+        "2",
+        "="
+      ],
+      "notes": "💡 Keystroke Rules:\n1. Input 3x3 MatA elements row by row.\n2. Trace: a11 + a22 + a33 = 6 + 1 - 2 = 5.",
+      "searchAdvisory": "Search 'Canon F-789SGA matrix input 3x3 and main diagonal trace evaluation' for video breakdowns."
     }
   },
   "conceptChecks": [
@@ -241,36 +274,75 @@
       "id": "chk-2101-01",
       "question": "What English mathematician introduced the mathematical term \"matrix\" in the year 1850?",
       "options": [
-        "James Joseph Sylvester",
-        "Arthur Cayley",
-        "William Rowan Hamilton",
-        "Charles Babbage"
+        {
+          "text": "James Joseph Sylvester",
+          "isCorrect": true,
+          "distractorReason": "Correct: James Joseph Sylvester introduced the term 'matrix' in 1850 (from the Latin for 'womb'), describing an array of numbers from which determinants could be born."
+        },
+        {
+          "text": "Arthur Cayley",
+          "distractorReason": "Trap: Arthur Cayley developed the algebra of matrices (multiplication, inverses) in 1858, but Sylvester named the term in 1850."
+        },
+        {
+          "text": "William Rowan Hamilton",
+          "distractorReason": "Trap: Hamilton invented quaternions in 1843."
+        },
+        {
+          "text": "Charles Babbage",
+          "distractorReason": "Trap: Babbage designed the mechanical Analytical Engine."
+        }
       ],
-      "correctAnswer": 0,
+      "correctAnswer": "A",
       "explanation": "James Joseph Sylvester introduced the term 'matrix' in 1850."
     },
     {
       "id": "chk-2101-02",
       "question": "What is the trace of a square matrix $A$ defined as?",
       "options": [
-        "The sum of all elements along the main (principal) diagonal",
-        "The determinant of the matrix",
-        "The product of all diagonal elements",
-        "The sum of all entries in the matrix"
+        {
+          "text": "The determinant of the matrix",
+          "distractorReason": "Trap: Determinant det(A) is a multiplicative volume form, not the trace."
+        },
+        {
+          "text": "The sum of all elements along the main (principal) diagonal",
+          "isCorrect": true,
+          "distractorReason": "Correct: The trace of an $n \\times n$ square matrix is defined strictly as the sum of its main diagonal entries: $\\operatorname{tr}(A) = \\sum_{i=1}^n a_{ii}$."
+        },
+        {
+          "text": "The product of all diagonal elements",
+          "distractorReason": "Trap: The product of diagonal elements equals the determinant of a triangular matrix, not the trace."
+        },
+        {
+          "text": "The sum of all entries in the matrix",
+          "distractorReason": "Trap: The trace only sums entries on the main diagonal, not off-diagonal entries."
+        }
       ],
-      "correctAnswer": 0,
+      "correctAnswer": "B",
       "explanation": "The trace of a square matrix is the sum of its main diagonal entries: tr(A) = ∑ a_ii."
     },
     {
       "id": "chk-2101-03",
       "question": "What type of matrix is a diagonal matrix whose non-zero diagonal entries are all identical constants?",
       "options": [
-        "Scalar Matrix",
-        "Identity Matrix (only if entries are 1)",
-        "Zero Matrix",
-        "Orthogonal Matrix"
+        {
+          "text": "Identity Matrix",
+          "distractorReason": "Trap: An identity matrix is a special case of a scalar matrix where the constant is strictly equal to 1."
+        },
+        {
+          "text": "Zero Matrix",
+          "distractorReason": "Trap: A zero matrix contains only zeros everywhere."
+        },
+        {
+          "text": "Scalar Matrix",
+          "isCorrect": true,
+          "distractorReason": "Correct: A diagonal matrix whose main diagonal entries are all equal to a single constant $k$ (i.e. $A = k I$) is called a scalar matrix."
+        },
+        {
+          "text": "Orthogonal Matrix",
+          "distractorReason": "Trap: An orthogonal matrix satisfies $A^T A = I$, which requires unit column vectors."
+        }
       ],
-      "correctAnswer": 0,
+      "correctAnswer": "C",
       "explanation": "A diagonal matrix with equal diagonal values k is called a scalar matrix (k · I)."
     }
   ]

@@ -10,47 +10,47 @@
   "toc": [
     {
       "id": "sec-prereq-bridges",
-      "title": "1. Introduction & Cross-Subject Connections",
+      "title": "Introduction & Cross-Subject Connections",
       "level": 2
     },
     {
       "id": "sec-theory",
-      "title": "2. Lesson Proper: Determinants, Cofactors, Adjugates, and Inversion",
+      "title": "Lesson Proper: Determinants, Cofactors, Adjugates, and Inversion",
       "level": 2
     },
     {
       "id": "sec-formulas",
-      "title": "3. Master Compilation of Determinant & Inversion Formulas",
+      "title": "Master Compilation of Determinant & Inversion Formulas",
       "level": 2
     },
     {
       "id": "sec-visualizer",
-      "title": "4. Interactive Visualizer: 2x2 & 3x3 Determinant and Matrix Inverter",
+      "title": "Interactive Visualizer: 2x2 & 3x3 Determinant and Matrix Inverter",
       "level": 2
     },
     {
       "id": "sec-terminology",
-      "title": "5. Key Terms and Definitions",
+      "title": "Key Terms and Definitions",
       "level": 2
     },
     {
       "id": "sec-dual-method",
-      "title": "6. Worked Board Exam Problems",
+      "title": "Worked Board Exam Problems",
       "level": 2
     },
     {
       "id": "sec-calculator",
-      "title": "7. Calculator Speed Techniques (Karce & Canon)",
+      "title": "Calculator Speed Techniques (Karce & Canon)",
       "level": 2
     },
     {
       "id": "sec-concept-checks",
-      "title": "8. In-Line Concept Checks",
+      "title": "In-Line Concept Checks",
       "level": 2
     },
     {
       "id": "sec-mastery-challenge",
-      "title": "9. Paired Mastery Challenge Exam",
+      "title": "Paired Mastery Challenge Exam",
       "level": 2
     }
   ],
@@ -193,29 +193,78 @@
   ],
   "calculatorGuides": {
     "karce": {
-      "techniqueTitle": "Fast 2x2 & 3x3 Determinant Calculation",
-      "problemType": "Evaluating det(MatA) in Matrix Mode",
-      "sampleProblem": "Find det for [[3,2],[4,1]].",
-      "mode": "MATRIX Mode (MODE 6)",
+      "techniqueTitle": "Fast Matrix Determinant & Inversion Evaluation",
+      "problemType": "Evaluating Matrix Determinant det(MatA) and Inverse MatA⁻¹",
+      "sampleProblem": "Evaluate the determinant det(A) and inverse matrix A⁻¹ for 2x2 Matrix A = [[3, 2], [4, 1]] in MATRIX mode.",
+      "mode": "MATRIX Mode (MODE 6 or MODE 4)",
+      "whyItWorks": "In MATRIX mode, the calculator computes the determinant det(A) = (3)(1) - (2)(4) = -5 and uses the adjugate formula A⁻¹ = (1/det(A))·adj(A) to output [[-0.2, 0.4], [0.8, -0.6]] directly in 1 step.",
       "keystrokes": [
+        "MODE",
+        "6",
+        "1",
+        "5",
+        "3",
+        "=",
+        "2",
+        "=",
+        "4",
+        "=",
+        "1",
+        "=",
+        "AC",
         "SHIFT",
-        "det",
-        "MatA",
-        "="
-      ],
-      "notes": "Directly yields -5 in 1 second."
-    },
-    "canon": {
-      "techniqueTitle": "Direct Matrix Inversion (MatA⁻¹)",
-      "problemType": "Computing A⁻¹ on Canon F-789SGA",
-      "sampleProblem": "Find MatA⁻¹ for [[3,2],[4,1]].",
-      "mode": "MATRIX Mode (MODE 6)",
-      "keystrokes": [
-        "MatA",
+        "MATRIX",
+        "7",
+        "SHIFT",
+        "MATRIX",
+        "3",
+        ")",
+        "=",
+        "SHIFT",
+        "MATRIX",
+        "3",
         "x⁻¹",
         "="
       ],
-      "notes": "Directly displays [[-0.2, 0.4], [0.8, -0.6]]."
+      "notes": "💡 Keystroke Rules:\n1. Determinant: det(MatA) = -5.\n2. Inverse Matrix: MatA⁻¹ = [[-0.2, 0.4], [0.8, -0.6]].",
+      "searchAdvisory": "Search 'Karce KC-S991 matrix determinant det key and matrix inverse x-1' for video tutorials."
+    },
+    "canon": {
+      "techniqueTitle": "Fast Matrix Determinant & Inversion Evaluation",
+      "problemType": "Evaluating Matrix Determinant det(MatA) and Inverse MatA⁻¹",
+      "sampleProblem": "Evaluate the determinant det(A) and inverse matrix A⁻¹ for 2x2 Matrix A = [[3, 2], [4, 1]] in MATRIX mode.",
+      "mode": "MATRIX Mode (MODE 6)",
+      "whyItWorks": "In MATRIX mode, the calculator computes the determinant det(A) = (3)(1) - (2)(4) = -5 and uses the adjugate formula A⁻¹ = (1/det(A))·adj(A) to output [[-0.2, 0.4], [0.8, -0.6]] directly in 1 step.",
+      "keystrokes": [
+        "MODE",
+        "6",
+        "1",
+        "5",
+        "3",
+        "=",
+        "2",
+        "=",
+        "4",
+        "=",
+        "1",
+        "=",
+        "AC",
+        "SHIFT",
+        "MATRIX",
+        "7",
+        "SHIFT",
+        "MATRIX",
+        "3",
+        ")",
+        "=",
+        "SHIFT",
+        "MATRIX",
+        "3",
+        "x⁻¹",
+        "="
+      ],
+      "notes": "💡 Keystroke Rules:\n1. Determinant: det(MatA) = -5.\n2. Inverse Matrix: MatA⁻¹ = [[-0.2, 0.4], [0.8, -0.6]].",
+      "searchAdvisory": "Search 'Canon F-789SGA matrix mode determinant and matrix inversion operations' for video breakdowns."
     }
   },
   "conceptChecks": [
@@ -223,36 +272,75 @@
       "id": "chk-2103-01",
       "question": "If $A$ is a $4 \\times 4$ square matrix with $\\det(A) = 5$, what is $\\det(2A)$?",
       "options": [
-        "80 (since 2⁴ · 5 = 16 · 5)",
-        "10",
-        "40",
-        "160"
+        {
+          "text": "80 (since 2⁴ · 5 = 16 · 5)",
+          "isCorrect": true,
+          "distractorReason": "Correct: By the scaling law of determinants, factoring a scalar $k$ out of each of the $n$ rows gives $\\det(kA) = k^n \\det(A)$. For a $4 \\times 4$ matrix with $k = 2$: $\\det(2A) = 2^4 \\times 5 = 16 \\times 5 = 80$."
+        },
+        {
+          "text": "10",
+          "distractorReason": "Trap: Calculated $2 \\times 5 = 10$, forgetting the power $n = 4$ for matrix scaling."
+        },
+        {
+          "text": "40",
+          "distractorReason": "Trap: Multiplied by $2^3 = 8$ instead of $2^4 = 16$."
+        },
+        {
+          "text": "160",
+          "distractorReason": "Trap: Multiplied by $2^5 = 32$."
+        }
       ],
-      "correctAnswer": 0,
+      "correctAnswer": "A",
       "explanation": "By the scaling property det(kA) = k^n det(A), for n=4: det(2A) = 2^4 · 5 = 16 · 5 = 80."
     },
     {
       "id": "chk-2103-02",
       "question": "What is the Adjugate (Adjoint) matrix $\\text{adj}(A)$ of a square matrix $A$?",
       "options": [
-        "The transpose of the cofactor matrix: (cof(A))^T",
-        "The inverse matrix A⁻¹",
-        "The negative of the matrix: -A",
-        "The cofactor matrix without transposing"
+        {
+          "text": "The inverse matrix A⁻¹",
+          "distractorReason": "Trap: $A^{-1} = \\frac{1}{\\det(A)} \\text{adj}(A)$, not $\\text{adj}(A)$ alone."
+        },
+        {
+          "text": "The transpose of the cofactor matrix: (cof(A))^T",
+          "isCorrect": true,
+          "distractorReason": "Correct: By definition, the classical adjugate (or adjoint) of a square matrix $A$ is the transpose of its cofactor matrix: $\\operatorname{adj}(A) = [C_{ij}]^T$."
+        },
+        {
+          "text": "The negative of the matrix: -A",
+          "distractorReason": "Trap: Matrix negation is not the adjugate."
+        },
+        {
+          "text": "The cofactor matrix without transposing",
+          "distractorReason": "Trap: Forgot to take the matrix transpose."
+        }
       ],
-      "correctAnswer": 0,
+      "correctAnswer": "B",
       "explanation": "By definition, the adjugate is the transpose of the cofactor matrix: adj(A) = (cof(A))^T."
     },
     {
       "id": "chk-2103-03",
       "question": "If two rows of a $3 \\times 3$ matrix are identical, what is its determinant?",
       "options": [
-        "0 (Singular matrix)",
-        "1",
-        "-1",
-        "Cannot be determined"
+        {
+          "text": "1",
+          "distractorReason": "Trap: 1 is the determinant of an identity matrix."
+        },
+        {
+          "text": "-1",
+          "distractorReason": "Trap: Swapping two rows changes the sign, but identical rows force the determinant to zero."
+        },
+        {
+          "text": "0 (Singular matrix)",
+          "isCorrect": true,
+          "distractorReason": "Correct: By the row-equivalence property of determinants, subtracting one identical row from another produces a row of all zeros, proving $\\det(A) = 0$."
+        },
+        {
+          "text": "Cannot be determined",
+          "distractorReason": "Trap: The determinant is always identically 0 when any two rows or columns are linearly dependent."
+        }
       ],
-      "correctAnswer": 0,
+      "correctAnswer": "C",
       "explanation": "If any two rows or columns of a determinant are identical or proportional, the determinant is identically zero."
     }
   ]

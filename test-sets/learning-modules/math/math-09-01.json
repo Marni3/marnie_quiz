@@ -10,47 +10,47 @@
   "toc": [
     {
       "id": "sec-prereq-bridges",
-      "title": "1. Introduction & Cross-Subject Connections",
+      "title": "Introduction & Cross-Subject Connections",
       "level": 2
     },
     {
       "id": "sec-theory",
-      "title": "2. Lesson Proper: FTC & The 41 Standard Antiderivative Formulas",
+      "title": "Lesson Proper: FTC & The 41 Standard Antiderivative Formulas",
       "level": 2
     },
     {
       "id": "sec-formulas",
-      "title": "3. Master Compilation of All 41 Integral Formulas",
+      "title": "Master Compilation of All 41 Integral Formulas",
       "level": 2
     },
     {
       "id": "sec-visualizer",
-      "title": "4. Interactive Visualizer: Definite Integral Riemann Area Accumulator",
+      "title": "Interactive Visualizer: Definite Integral Riemann Area Accumulator",
       "level": 2
     },
     {
       "id": "sec-terminology",
-      "title": "5. Key Terms and Definitions",
+      "title": "Key Terms and Definitions",
       "level": 2
     },
     {
       "id": "sec-dual-method",
-      "title": "6. Worked Board Exam Problems",
+      "title": "Worked Board Exam Problems",
       "level": 2
     },
     {
       "id": "sec-calculator",
-      "title": "7. Calculator Speed Techniques (Karce & Canon)",
+      "title": "Calculator Speed Techniques (Karce & Canon)",
       "level": 2
     },
     {
       "id": "sec-concept-checks",
-      "title": "8. In-Line Concept Checks",
+      "title": "In-Line Concept Checks",
       "level": 2
     },
     {
       "id": "sec-mastery-challenge",
-      "title": "9. Paired Mastery Challenge Exam",
+      "title": "Paired Mastery Challenge Exam",
       "level": 2
     }
   ],
@@ -178,11 +178,14 @@
   ],
   "calculatorGuides": {
     "karce": {
-      "techniqueTitle": "Fast Numerical Definite Integral (∫dx Key)",
-      "problemType": "Evaluating definite integrals ∫[a,b] f(x) dx",
-      "sampleProblem": "Evaluate ∫(0 to π/4) sec²(x) dx in RAD mode.",
-      "mode": "COMP Mode (MODE 1, Set RAD)",
+      "techniqueTitle": "Fast Numerical Definite Integration (∫dx Key)",
+      "problemType": "Evaluating Definite Integrals ∫[a,b] f(x) dx",
+      "sampleProblem": "Evaluate definite integral ∫(0 to π/4) sec²(x) dx in RAD mode (∫ = 1), and evaluate exponential product integral ∫(0 to 2) x · e^(3x) dx using the ∫dx key.",
+      "mode": "COMP Mode (MODE 1, Set RAD Mode for Trigonometric Functions)",
+      "whyItWorks": "The calculator's Gauss-Kronrod numerical integration engine ∫dx calculates definite integrals directly: ∫_0^(π/4) sec² x dx = 1 (RAD mode) and ∫_0^2 x e^(3x) dx = (5e^6 + 1)/9 ≈ 224.2372 in COMP mode in 1 step.",
       "keystrokes": [
+        "MODE",
+        "1",
         "∫dx",
         "(",
         "1",
@@ -202,16 +205,7 @@
         "÷",
         "4",
         ")",
-        "="
-      ],
-      "notes": "Directly yields 1 in 1 second."
-    },
-    "canon": {
-      "techniqueTitle": "Definite Integral Tabular Verification",
-      "problemType": "Evaluating ∫[0, 2] (x * e^(3x)) dx on Canon F-789SGA",
-      "sampleProblem": "Evaluate ∫[0,2] x*e^(3x) dx.",
-      "mode": "COMP Mode (MODE 1)",
-      "keystrokes": [
+        "=",
         "∫dx",
         "ALPHA",
         "X",
@@ -230,7 +224,58 @@
         ")",
         "="
       ],
-      "notes": "Directly displays 224.2372 (e^6 * 5/9 + 1/9)."
+      "notes": "💡 Keystroke Rules:\n1. Trig Definite Integral (RAD): ∫(1/cos²(X), 0, π/4) = 1.\n2. Product Exponential: ∫(X × e^(3X), 0, 2) = 224.2372 = (5e^6 + 1)/9.",
+      "searchAdvisory": "Search 'Karce KC-S991 definite integration ∫dx key trig and exponential' for video tutorials."
+    },
+    "canon": {
+      "techniqueTitle": "Fast Numerical Definite Integration (∫dx Key)",
+      "problemType": "Evaluating Definite Integrals ∫[a,b] f(x) dx",
+      "sampleProblem": "Evaluate definite integral ∫(0 to π/4) sec²(x) dx in RAD mode (∫ = 1), and evaluate exponential product integral ∫(0 to 2) x · e^(3x) dx using the ∫dx key.",
+      "mode": "COMP Mode (MODE 1, Set RAD Mode for Trigonometric Functions)",
+      "whyItWorks": "The calculator's Gauss-Kronrod numerical integration engine ∫dx calculates definite integrals directly: ∫_0^(π/4) sec² x dx = 1 (RAD mode) and ∫_0^2 x e^(3x) dx = (5e^6 + 1)/9 ≈ 224.2372 in COMP mode in 1 step.",
+      "keystrokes": [
+        "MODE",
+        "1",
+        "∫dx",
+        "(",
+        "1",
+        "÷",
+        "cos",
+        "(",
+        "ALPHA",
+        "X",
+        ")",
+        "x²",
+        ")",
+        ",",
+        "0",
+        ",",
+        "SHIFT",
+        "π",
+        "÷",
+        "4",
+        ")",
+        "=",
+        "∫dx",
+        "ALPHA",
+        "X",
+        "×",
+        "SHIFT",
+        "e^",
+        "(",
+        "3",
+        "ALPHA",
+        "X",
+        ")",
+        ",",
+        "0",
+        ",",
+        "2",
+        ")",
+        "="
+      ],
+      "notes": "💡 Keystroke Rules:\n1. Trig Definite Integral (RAD): ∫(1/cos²(X), 0, π/4) = 1.\n2. Product Exponential: ∫(X × e^(3X), 0, 2) = 224.2372 = (5e^6 + 1)/9.",
+      "searchAdvisory": "Search 'Canon F-789SGA ∫dx key definite integration shortcuts trigonometric and exponential' for video breakdowns."
     }
   },
   "conceptChecks": [
@@ -238,36 +283,75 @@
       "id": "chk-1601-01",
       "question": "What is the indefinite integral of $\\ln(x)$ with respect to $x$?",
       "options": [
-        "x ln(x) - x + C",
-        "1 / x + C",
-        "ln²(x) / 2 + C",
-        "x ln(x) + x + C"
+        {
+          "text": "x ln(x) - x + C",
+          "isCorrect": true,
+          "distractorReason": "Correct: Integrating by parts with $u = \\ln x, dv = dx$: $\\int \\ln x\\,dx = x \\ln x - \\int x (1/x)\\,dx = x \\ln x - x + C$."
+        },
+        {
+          "text": "1 / x + C",
+          "distractorReason": "Trap: 1/x is the derivative of ln(x), not its integral."
+        },
+        {
+          "text": "ln²(x) / 2 + C",
+          "distractorReason": "Trap: ln²(x) / 2 is the integral of ln(x)/x, not ln(x)."
+        },
+        {
+          "text": "x ln(x) + x + C",
+          "distractorReason": "Trap: Sign error in integration by parts formula."
+        }
       ],
-      "correctAnswer": 0,
+      "correctAnswer": "A",
       "explanation": "Integrating by parts: ∫ ln x dx = x ln x - ∫ x (1/x) dx = x ln x - x + C."
     },
     {
       "id": "chk-1601-02",
       "question": "What is the integral $\\int \\sec(u) du$?",
       "options": [
-        "ln |sec u + tan u| + C",
-        "sec u tan u + C",
-        "ln |cos u| + C",
-        "tan² u / 2 + C"
+        {
+          "text": "sec u tan u + C",
+          "distractorReason": "Trap: sec u tan u is the derivative of sec u."
+        },
+        {
+          "text": "ln |sec u + tan u| + C",
+          "isCorrect": true,
+          "distractorReason": "Correct: Multiplying numerator and denominator by $(\\sec u + \\tan u)$ yields $\\int \\frac{\\sec^2 u + \\sec u \\tan u}{\\sec u + \\tan u}\\,du = \\ln|\\sec u + \\tan u| + C$."
+        },
+        {
+          "text": "ln |cos u| + C",
+          "distractorReason": "Trap: -ln |cos u| = ln |sec u| is the integral of tan u."
+        },
+        {
+          "text": "tan² u / 2 + C",
+          "distractorReason": "Trap: Integral of tan u sec² u."
+        }
       ],
-      "correctAnswer": 0,
+      "correctAnswer": "B",
       "explanation": "The standard integral of secant is ln|sec u + tan u| + C."
     },
     {
       "id": "chk-1601-03",
       "question": "Who introduced the elongated Latin 'S' symbol $\\int$ for integration?",
       "options": [
-        "Gottfried Wilhelm Leibniz",
-        "Sir Isaac Newton",
-        "Leonhard Euler",
-        "Bernhard Riemann"
+        {
+          "text": "Sir Isaac Newton",
+          "distractorReason": "Trap: Newton used a dot above variables (fluxions) or box notation for fluents."
+        },
+        {
+          "text": "Leonhard Euler",
+          "distractorReason": "Trap: Euler standardized notations like e, i, π, and Σ, but not ∫."
+        },
+        {
+          "text": "Gottfried Wilhelm Leibniz",
+          "isCorrect": true,
+          "distractorReason": "Correct: Gottfried Wilhelm Leibniz introduced the integral symbol ∫ in 1675 as an elongated 'S' representing the Latin word 'summa' (sum)."
+        },
+        {
+          "text": "Bernhard Riemann",
+          "distractorReason": "Trap: Riemann formalized definite integrals in the 19th century."
+        }
       ],
-      "correctAnswer": 0,
+      "correctAnswer": "C",
       "explanation": "Leibniz introduced the integral sign (elongated S for summa) in 1675."
     }
   ]
