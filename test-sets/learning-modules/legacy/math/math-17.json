@@ -2,21 +2,57 @@
   "id": "math-17",
   "code": "MATH 17",
   "domain": "MATH",
-  "topicCode": "MATH-17",
-  "topicTitle": "Integral Calculus",
+  "topicCode": "MATH-09",
+  "topicTitle": "Probability, Statistics & Discrete Mathematics",
   "subtopicTitle": "Plane Areas, Volumes of Revolution, Pappus' Theorems, Centroids & Work",
   "order": 17,
   "pairedQuizSetId": "math-17-mastery",
   "toc": [
-    { "id": "sec-prereq-bridges", "title": "1. Introduction & Cross-Subject Bridges", "level": 2 },
-    { "id": "sec-theory", "title": "2. Lesson Proper", "level": 2 },
-    { "id": "sec-formulas", "title": "3. Compilation of Formulas", "level": 2 },
-    { "id": "sec-visualizer", "title": "4. Interactive Visualizer: Solid of Revolution & Pappus Explorer", "level": 2 },
-    { "id": "sec-terminology", "title": "5. Terms and Definitions", "level": 2 },
-    { "id": "sec-dual-method", "title": "6. Sample Problems and Solutions", "level": 2 },
-    { "id": "sec-calculator", "title": "7. Calculator Techniques (Karce & Canon)", "level": 2 },
-    { "id": "sec-concept-checks", "title": "8. In-Line Concept Checks", "level": 2 },
-    { "id": "sec-mastery-challenge", "title": "9. Paired Mastery Challenge", "level": 2 }
+    {
+      "id": "sec-prereq-bridges",
+      "title": "1. Introduction & Cross-Subject Bridges",
+      "level": 2
+    },
+    {
+      "id": "sec-theory",
+      "title": "2. Lesson Proper",
+      "level": 2
+    },
+    {
+      "id": "sec-formulas",
+      "title": "3. Compilation of Formulas",
+      "level": 2
+    },
+    {
+      "id": "sec-visualizer",
+      "title": "4. Interactive Visualizer: Solid of Revolution & Pappus Explorer",
+      "level": 2
+    },
+    {
+      "id": "sec-terminology",
+      "title": "5. Terms and Definitions",
+      "level": 2
+    },
+    {
+      "id": "sec-dual-method",
+      "title": "6. Sample Problems and Solutions",
+      "level": 2
+    },
+    {
+      "id": "sec-calculator",
+      "title": "7. Calculator Techniques (Karce & Canon)",
+      "level": 2
+    },
+    {
+      "id": "sec-concept-checks",
+      "title": "8. In-Line Concept Checks",
+      "level": 2
+    },
+    {
+      "id": "sec-mastery-challenge",
+      "title": "9. Paired Mastery Challenge",
+      "level": 2
+    }
   ],
   "prerequisiteBridge": {
     "priorModuleId": "math-16",

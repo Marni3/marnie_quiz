@@ -1,5 +1,6 @@
 import fs from "fs";
 import path from "path";
+import { LEGACY_TO_TOS_MAP, resolveTosId } from "./tos-mapping";
 
 export interface VisualizerControl {
   id: string;
@@ -315,6 +316,7 @@ export async function getAllLearningModules(): Promise<LearningModuleSummary[]> 
 }
 
 const LEGACY_ID_ALIASES: Record<string, string> = {
+  ...LEGACY_TO_TOS_MAP,
   "math-04-01": "math-02-01",
   "math-04-02": "math-02-02",
   "math-04-03": "math-02-03",
@@ -361,7 +363,7 @@ export async function getLearningModuleById(id: string): Promise<LearningModule 
     const rootDir = getModulesDirectory();
     const jsonPaths = scanJsonFilesRecursively(rootDir);
     const normalizedInput = id.toLowerCase().replace(/[^a-z0-9_-]/g, "");
-    const targetFile = LEGACY_ID_ALIASES[normalizedInput] || normalizedInput;
+    const targetFile = LEGACY_ID_ALIASES[normalizedInput] || resolveTosId(normalizedInput) || normalizedInput;
 
     // 1. Direct check across scanned paths
     for (const filePath of jsonPaths) {

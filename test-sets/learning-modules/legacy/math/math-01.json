@@ -3,20 +3,56 @@
   "code": "MATH 01",
   "domain": "MATH",
   "topicCode": "MATH-01",
-  "topicTitle": "College Algebra",
+  "topicTitle": "College Algebra, Polynomials & Progressions",
   "subtopicTitle": "Number Systems, Field Properties, Roman Numerals & Cyclic Powers of i",
   "order": 1,
   "pairedQuizSetId": "math-01-mastery",
   "toc": [
-    { "id": "sec-prereq-bridges", "title": "1. Introduction & Cross-Subject Bridges", "level": 2 },
-    { "id": "sec-theory", "title": "2. Lesson Proper", "level": 2 },
-    { "id": "sec-formulas", "title": "3. Compilation of Formulas", "level": 2 },
-    { "id": "sec-visualizer", "title": "4. Interactive Visualizer: Number Classification & Prime Factor Tree", "level": 2 },
-    { "id": "sec-terminology", "title": "5. Terms and Definitions", "level": 2 },
-    { "id": "sec-dual-method", "title": "6. Sample Problems and Solutions", "level": 2 },
-    { "id": "sec-calculator", "title": "7. Calculator Techniques (Karce & Canon)", "level": 2 },
-    { "id": "sec-concept-checks", "title": "8. In-Line Concept Checks", "level": 2 },
-    { "id": "sec-mastery-challenge", "title": "9. Paired Mastery Challenge", "level": 2 }
+    {
+      "id": "sec-prereq-bridges",
+      "title": "1. Introduction & Cross-Subject Bridges",
+      "level": 2
+    },
+    {
+      "id": "sec-theory",
+      "title": "2. Lesson Proper",
+      "level": 2
+    },
+    {
+      "id": "sec-formulas",
+      "title": "3. Compilation of Formulas",
+      "level": 2
+    },
+    {
+      "id": "sec-visualizer",
+      "title": "4. Interactive Visualizer: Number Classification & Prime Factor Tree",
+      "level": 2
+    },
+    {
+      "id": "sec-terminology",
+      "title": "5. Terms and Definitions",
+      "level": 2
+    },
+    {
+      "id": "sec-dual-method",
+      "title": "6. Sample Problems and Solutions",
+      "level": 2
+    },
+    {
+      "id": "sec-calculator",
+      "title": "7. Calculator Techniques (Karce & Canon)",
+      "level": 2
+    },
+    {
+      "id": "sec-concept-checks",
+      "title": "8. In-Line Concept Checks",
+      "level": 2
+    },
+    {
+      "id": "sec-mastery-challenge",
+      "title": "9. Paired Mastery Challenge",
+      "level": 2
+    }
   ],
   "prerequisiteBridge": {
     "priorModuleId": null,

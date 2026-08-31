@@ -2,8 +2,8 @@
   "id": "geas-10-01",
   "code": "GEAS 10-01",
   "domain": "GEAS",
-  "topicCode": "GEAS-10",
-  "topicTitle": "ECE Laws, Ethics, Contracts & RA 9292",
+  "topicCode": "GEAS-08",
+  "topicTitle": "R.A. 9292 (ECE Law), Code of Ethics & Telecommunications Laws",
   "subtopicTitle": "R.A. 9292: Legislative Origins, The 8 Articles, 43 Sections & Statutory Definitions",
   "order": 1,
   "pairedQuizSetId": "geas-10-01-mastery",
@@ -74,45 +74,158 @@
     {
       "id": "tbl-legislative-facts",
       "title": "Legislative Foundations & Enactment Facts",
-      "headers": ["Statutory Feature", "Historical / Legal Fact", "Board Exam Keyword Trigger"],
+      "headers": [
+        "Statutory Feature",
+        "Historical / Legal Fact",
+        "Board Exam Keyword Trigger"
+      ],
       "rows": [
-        ["Official Title", "Electronics Engineering Law of 2004", "Republic Act No. 9292"],
-        ["Law Repealed", "Republic Act No. 5734 (1969)", "The ECE Act of the Philippines"],
-        ["Date of Approval", "April 17, 2004", "Signed by President Gloria Macapagal-Arroyo"],
-        ["Senate President Signatory", "Franklin M. Drilon", "Attested the Senate 12th Congress bill"],
-        ["Speaker of the House", "Jose De Venecia Jr.", "Speaker of the House of Representatives"],
-        ["Legislative Bill Lineage", "House Bill No. 5224 & Senate Bill No. 2683", "Bicameral Conference Report"],
-        ["Structural Organization", "8 Articles and 43 Sections", "Roman numeral articles / Arabic sections"],
-        ["Accredited Organization", "IECEP", "Sole Integrated and Accredited Professional Org (APO)"]
+        [
+          "Official Title",
+          "Electronics Engineering Law of 2004",
+          "Republic Act No. 9292"
+        ],
+        [
+          "Law Repealed",
+          "Republic Act No. 5734 (1969)",
+          "The ECE Act of the Philippines"
+        ],
+        [
+          "Date of Approval",
+          "April 17, 2004",
+          "Signed by President Gloria Macapagal-Arroyo"
+        ],
+        [
+          "Senate President Signatory",
+          "Franklin M. Drilon",
+          "Attested the Senate 12th Congress bill"
+        ],
+        [
+          "Speaker of the House",
+          "Jose De Venecia Jr.",
+          "Speaker of the House of Representatives"
+        ],
+        [
+          "Legislative Bill Lineage",
+          "House Bill No. 5224 & Senate Bill No. 2683",
+          "Bicameral Conference Report"
+        ],
+        [
+          "Structural Organization",
+          "8 Articles and 43 Sections",
+          "Roman numeral articles / Arabic sections"
+        ],
+        [
+          "Accredited Organization",
+          "IECEP",
+          "Sole Integrated and Accredited Professional Org (APO)"
+        ]
       ]
     },
     {
       "id": "tbl-articles-index",
       "title": "Master Index of the 8 Articles of RA 9292",
-      "headers": ["Article", "Official Title", "Section Span", "Core Subject Matter"],
+      "headers": [
+        "Article",
+        "Official Title",
+        "Section Span",
+        "Core Subject Matter"
+      ],
       "rows": [
-        ["Article I", "General Provisions", "Sections 1 – 5", "Short title, policy, 15 definitions, categories & scopes of practice"],
-        ["Article II", "Professional Regulatory Board", "Sections 6 – 12", "Board composition, powers, qualifications, 3-yr term, removal, records"],
-        ["Article III", "Examination, Registration & Licensure", "Sections 13 – 26", "Exam qualifications, scope, 70% ratings, PECE 7-yr registration, 2-yr reinstatement, roster"],
-        ["Article IV", "Practice of PECE, ECE, and ECT", "Sections 27 – 31", "Scope of practice, PECE official seal (48mm/32mm), Code of Ethics, CPE/CPD"],
-        ["Article V", "Sundry Provisions", "Sections 32 – 34", "IECEP as sole APO, foreign reciprocity, government positions"],
-        ["Article VI", "Penal Provision & Enforcement", "Sections 35 – 36", "₱100k to ₱1M fine, 6 mos to 6 yrs imprisonment, law enforcement aid"],
-        ["Article VII", "Transitory Provisions", "Sections 37 – 38", "Conversion of existing ECEs, vested rights protection"],
-        ["Article VIII", "Final Provisions", "Sections 39 – 43", "IRR, appropriations, separability, repealing clause, 15-day effectivity"]
+        [
+          "Article I",
+          "General Provisions",
+          "Sections 1 – 5",
+          "Short title, policy, 15 definitions, categories & scopes of practice"
+        ],
+        [
+          "Article II",
+          "Professional Regulatory Board",
+          "Sections 6 – 12",
+          "Board composition, powers, qualifications, 3-yr term, removal, records"
+        ],
+        [
+          "Article III",
+          "Examination, Registration & Licensure",
+          "Sections 13 – 26",
+          "Exam qualifications, scope, 70% ratings, PECE 7-yr registration, 2-yr reinstatement, roster"
+        ],
+        [
+          "Article IV",
+          "Practice of PECE, ECE, and ECT",
+          "Sections 27 – 31",
+          "Scope of practice, PECE official seal (48mm/32mm), Code of Ethics, CPE/CPD"
+        ],
+        [
+          "Article V",
+          "Sundry Provisions",
+          "Sections 32 – 34",
+          "IECEP as sole APO, foreign reciprocity, government positions"
+        ],
+        [
+          "Article VI",
+          "Penal Provision & Enforcement",
+          "Sections 35 – 36",
+          "₱100k to ₱1M fine, 6 mos to 6 yrs imprisonment, law enforcement aid"
+        ],
+        [
+          "Article VII",
+          "Transitory Provisions",
+          "Sections 37 – 38",
+          "Conversion of existing ECEs, vested rights protection"
+        ],
+        [
+          "Article VIII",
+          "Final Provisions",
+          "Sections 39 – 43",
+          "IRR, appropriations, separability, repealing clause, 15-day effectivity"
+        ]
       ]
     },
     {
       "id": "tbl-definitions-comparison",
       "title": "Comparison of Key Statutory Definitions (Section 3)",
-      "headers": ["Term", "Legal Trigger Phrase", "Distinguishing Boundary"],
+      "headers": [
+        "Term",
+        "Legal Trigger Phrase",
+        "Distinguishing Boundary"
+      ],
       "rows": [
-        ["Electronics (Sec. 3a)", "Vacuum, gases, plasma, semiconductors, any other media", "Covers all media of electron / charge carrier flow"],
-        ["Computer (Sec. 3e)", "Accepting data, executing programs, presenting results", "Covers both hardware devices and programmable digital processors"],
-        ["ICT (Sec. 3f)", "Acquisition, production, transformation, storage, transfer", "Vocal, textual, numerical, graphic, or cognitive forms"],
-        ["Communications (Sec. 3g)", "Sending and/or receiving between two or more points", "General point-to-point or point-to-multipoint process"],
-        ["Telecommunications (Sec. 3h)", "Transmission/reception of voice, data, image by wire/radio/optical", "Technical medium-based transmission of signals"],
-        ["Broadcasting (Sec. 3i)", "Transmission for reception of the general public", "Undertaking directed specifically to the public domain"],
-        ["Consulting Services (Sec. 3l)", "Advisory, review, design, evaluation, planning, supervision", "Highest grade professional evaluation services"]
+        [
+          "Electronics (Sec. 3a)",
+          "Vacuum, gases, plasma, semiconductors, any other media",
+          "Covers all media of electron / charge carrier flow"
+        ],
+        [
+          "Computer (Sec. 3e)",
+          "Accepting data, executing programs, presenting results",
+          "Covers both hardware devices and programmable digital processors"
+        ],
+        [
+          "ICT (Sec. 3f)",
+          "Acquisition, production, transformation, storage, transfer",
+          "Vocal, textual, numerical, graphic, or cognitive forms"
+        ],
+        [
+          "Communications (Sec. 3g)",
+          "Sending and/or receiving between two or more points",
+          "General point-to-point or point-to-multipoint process"
+        ],
+        [
+          "Telecommunications (Sec. 3h)",
+          "Transmission/reception of voice, data, image by wire/radio/optical",
+          "Technical medium-based transmission of signals"
+        ],
+        [
+          "Broadcasting (Sec. 3i)",
+          "Transmission for reception of the general public",
+          "Undertaking directed specifically to the public domain"
+        ],
+        [
+          "Consulting Services (Sec. 3l)",
+          "Advisory, review, design, evaluation, planning, supervision",
+          "Highest grade professional evaluation services"
+        ]
       ]
     }
   ],

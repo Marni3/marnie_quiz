@@ -279,18 +279,18 @@ In pure qualitative modules:
 
 ---
 
-### Template B: Qualitative & Statutory Module (e.g. `GEAS 10-01`)
+### Template B: Qualitative & Statutory Module (e.g. `GEAS 08-01`)
 
 ```json
 {
-  "id": "geas-10-01",
-  "code": "GEAS 10-01",
+  "id": "geas-08-01",
+  "code": "GEAS 08-01",
   "domain": "GEAS",
-  "topicCode": "GEAS-10",
+  "topicCode": "GEAS-08",
   "topicTitle": "ECE Laws, Ethics, Contracts & RA 9292",
   "subtopicTitle": "Republic Act No. 9292: The Electronics Engineering Law of 2004",
   "order": 1,
-  "pairedQuizSetId": "geas-10-01-mastery",
+  "pairedQuizSetId": "geas-08-01-mastery",
   "toc": [
     { "id": "sec-prereq-bridges", "title": "Prerequisite Bridges", "level": 2 },
     { "id": "sec-theory", "title": "Lesson Proper", "level": 2 },

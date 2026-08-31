@@ -2,21 +2,57 @@
   "id": "math-20",
   "code": "MATH 20",
   "domain": "MATH",
-  "topicCode": "MATH-20",
-  "topicTitle": "Advanced Engineering Mathematics",
+  "topicCode": "MATH-06",
+  "topicTitle": "Integral Calculus",
   "subtopicTitle": "Complex Numbers, Euler's Identity, Phasors & De Moivre's Theorem",
   "order": 20,
   "pairedQuizSetId": "math-20-mastery",
   "toc": [
-    { "id": "sec-prereq-bridges", "title": "1. Introduction & Cross-Subject Bridges", "level": 2 },
-    { "id": "sec-theory", "title": "2. Lesson Proper", "level": 2 },
-    { "id": "sec-formulas", "title": "3. Compilation of Formulas", "level": 2 },
-    { "id": "sec-visualizer", "title": "4. Interactive Visualizer: Argand Complex Plane & Root Polygon Sandbox", "level": 2 },
-    { "id": "sec-terminology", "title": "5. Terms and Definitions", "level": 2 },
-    { "id": "sec-dual-method", "title": "6. Sample Problems and Solutions", "level": 2 },
-    { "id": "sec-calculator", "title": "7. Calculator Techniques (Karce & Canon)", "level": 2 },
-    { "id": "sec-concept-checks", "title": "8. In-Line Concept Checks", "level": 2 },
-    { "id": "sec-mastery-challenge", "title": "9. Paired Mastery Challenge", "level": 2 }
+    {
+      "id": "sec-prereq-bridges",
+      "title": "1. Introduction & Cross-Subject Bridges",
+      "level": 2
+    },
+    {
+      "id": "sec-theory",
+      "title": "2. Lesson Proper",
+      "level": 2
+    },
+    {
+      "id": "sec-formulas",
+      "title": "3. Compilation of Formulas",
+      "level": 2
+    },
+    {
+      "id": "sec-visualizer",
+      "title": "4. Interactive Visualizer: Argand Complex Plane & Root Polygon Sandbox",
+      "level": 2
+    },
+    {
+      "id": "sec-terminology",
+      "title": "5. Terms and Definitions",
+      "level": 2
+    },
+    {
+      "id": "sec-dual-method",
+      "title": "6. Sample Problems and Solutions",
+      "level": 2
+    },
+    {
+      "id": "sec-calculator",
+      "title": "7. Calculator Techniques (Karce & Canon)",
+      "level": 2
+    },
+    {
+      "id": "sec-concept-checks",
+      "title": "8. In-Line Concept Checks",
+      "level": 2
+    },
+    {
+      "id": "sec-mastery-challenge",
+      "title": "9. Paired Mastery Challenge",
+      "level": 2
+    }
   ],
   "prerequisiteBridge": {
     "priorModuleId": "math-08",
