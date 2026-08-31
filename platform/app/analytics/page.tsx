@@ -27,6 +27,7 @@ import {
   BookOpen,
 } from "lucide-react";
 import { LaunchDrillButton } from "@/components/launch-drill-button";
+import { RetentionBoard } from "@/components/retention-board";
 import { SUBJECTS, pluralize, METRIC_DEFINITIONS, TOTAL_SYLLABUS_QUESTIONS, TOTAL_SYLLABUS_TOPICS } from "@/lib/constants";
 
 export default async function AnalyticsPage() {
@@ -220,6 +221,9 @@ export default async function AnalyticsPage() {
             </div>
           </div>
         </div>
+
+        {/* 3-Bucket Spaced Repetition Retention Pipeline (Due Today, Upcoming, Mastered) */}
+        <RetentionBoard topics={Object.values(srsOverview.topicMap)} />
 
         {/* 4 PRC Board Exam Subject Pillars with Real Syllabus Totals */}
         <div className="space-y-4">

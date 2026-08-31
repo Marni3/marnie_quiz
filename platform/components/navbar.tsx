@@ -140,7 +140,7 @@ export function Navbar({ breadcrumb }: { breadcrumb?: string }) {
           </Link>
         </nav>
 
-        {/* Right: Streak, Search, Tour, Feedback, Theme Toggle & User Profile */}
+        {/* Right: Streak, Compact Omni-Search, Settings & User Profile */}
         <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
           <StreakBadge />
 
@@ -149,41 +149,16 @@ export function Navbar({ breadcrumb }: { breadcrumb?: string }) {
             onClick={() => window.dispatchEvent(new CustomEvent("open-omni-search"))}
             aria-label="Search Topics, Modules & Notes (Press / or ⌘K)"
             title="Global Search (Press / or ⌘K)"
-            className="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-medium text-[var(--text2)] hover:text-[var(--accent)] hover:bg-[var(--surface2)] border border-[var(--border)] transition-colors cursor-pointer"
+            className="p-2 rounded-xl text-[var(--text2)] hover:text-[var(--accent)] hover:bg-[var(--surface2)] border border-[var(--border)] transition-colors cursor-pointer"
           >
-            <Search className="w-3.5 h-3.5" />
-            <span className="hidden lg:inline text-[10px] font-mono text-[var(--text3)]">⌘K</span>
+            <Search className="w-4 h-4" />
           </button>
-
-          <button
-            type="button"
-            onClick={() => window.dispatchEvent(new CustomEvent("open-onboarding-tour"))}
-            aria-label="Open Guided Tour"
-            title="Open Guided Tour"
-            className="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-medium text-[var(--text2)] hover:text-[var(--accent)] hover:bg-[var(--surface2)] border border-[var(--border)] transition-colors cursor-pointer"
-          >
-            <Compass className="w-3.5 h-3.5 text-[var(--accent)]" />
-            <span className="hidden md:inline">Tour</span>
-          </button>
-
-          <button
-            type="button"
-            onClick={() => setIsFeedbackOpen(true)}
-            aria-label="Report feedback or issue"
-            title="Report Feedback or Bug"
-            className="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-medium text-[var(--text2)] hover:text-amber-500 hover:bg-[var(--surface2)] border border-[var(--border)] transition-colors cursor-pointer"
-          >
-            <MessageSquarePlus className="w-3.5 h-3.5 text-amber-500" />
-            <span className="hidden md:inline">Feedback</span>
-          </button>
-
-          <ThemeToggle />
 
           <Link
             href="/settings"
-            aria-label="Settings & Data Management"
-            title="Settings & Data Management"
-            className="p-1.5 rounded-lg text-[var(--text2)] hover:text-[var(--accent)] hover:bg-[var(--surface2)] border border-[var(--border)] transition-colors cursor-pointer"
+            aria-label="Settings & Preferences"
+            title="Settings & Preferences"
+            className="p-2 rounded-xl text-[var(--text2)] hover:text-[var(--accent)] hover:bg-[var(--surface2)] border border-[var(--border)] transition-colors cursor-pointer"
           >
             <Settings className="w-4 h-4" />
           </Link>
@@ -226,11 +201,6 @@ export function Navbar({ breadcrumb }: { breadcrumb?: string }) {
           )}
         </div>
       </div>
-
-      <FeedbackModal
-        isOpen={isFeedbackOpen}
-        onClose={() => setIsFeedbackOpen(false)}
-      />
     </header>
   );
 }

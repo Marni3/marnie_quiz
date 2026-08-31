@@ -377,12 +377,12 @@ export function getCustomMasteryQuizForModule(moduleId: string): any | null {
 }
 
 /**
- * Clears and resets all local user progress (attempts, streaks, flashcards, notes, custom modules)
+ * Clears and resets all local user progress (FSRS intervals, attempts, streaks, recall, notes, custom modules)
  */
 export function resetAllProgressData(): boolean {
   if (typeof window === "undefined") return false;
   try {
-    const keysToRemove = [
+    const exactKeysToRemove = [
       STORAGE_KEYS.CHAT_SESSIONS,
       STORAGE_KEYS.ACTIVE_SESSION_ID,
       STORAGE_KEYS.PENDING_REVIEW_CONTEXT,
@@ -393,8 +393,22 @@ export function resetAllProgressData(): boolean {
       "marnie_study_streak_v1",
       "marnie_study_activities_v1",
       "marnie_fsrs_cards_v1",
+      "marnie_last_active_module",
+      "marnie_local_feedbacks",
+      "has_seen_onboarding_tour",
     ];
-    keysToRemove.forEach((key) => localStorage.removeItem(key));
+    exactKeysToRemove.forEach((key) => localStorage.removeItem(key));
+
+    // Dynamic prefix sweep for any written recall or attempt cache keys
+    const keysToPurge: string[] = [];
+    for (let i = 0; i < localStorage.length; i++) {
+      const key = localStorage.key(i);
+      if (key && (key.startsWith("mq_written_recall_") || key.startsWith("mq_attempt_") || key.startsWith("mq_custom_"))) {
+        keysToPurge.push(key);
+      }
+    }
+    keysToPurge.forEach((key) => localStorage.removeItem(key));
+
     return true;
   } catch (err) {
     console.error("Failed to reset progress data:", err);

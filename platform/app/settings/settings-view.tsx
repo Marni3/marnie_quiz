@@ -18,6 +18,9 @@ import {
   Key,
   Database,
   Flame,
+  Palette,
+  Compass,
+  MessageSquarePlus,
 } from "lucide-react";
 import {
   exportStudyVault,
@@ -30,6 +33,8 @@ import {
 } from "@/lib/tutor/storage";
 import { getStoredNotes } from "@/lib/notes";
 import { getRawStreakState } from "@/lib/streak";
+import { ThemeToggle } from "@/components/theme-toggle";
+import { FeedbackModal } from "@/components/feedback-modal";
 
 export function SettingsView() {
   const [stats, setStats] = useState({
@@ -42,6 +47,8 @@ export function SettingsView() {
   });
 
   const [isResetConfirmOpen, setIsResetConfirmOpen] = useState(false);
+  const [confirmInputText, setConfirmInputText] = useState("");
+  const [isFeedbackOpen, setIsFeedbackOpen] = useState(false);
   const [statusMessage, setStatusMessage] = useState<{ type: "success" | "error"; text: string } | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
@@ -240,6 +247,58 @@ export function SettingsView() {
         </div>
       </div>
 
+      {/* App Experience & Preferences (Theme, Tour, Feedback) */}
+      <div className="p-6 rounded-3xl bg-[var(--surface)] border border-[var(--border)] shadow-xs space-y-5">
+        <div className="flex items-center gap-3">
+          <div className="w-10 h-10 rounded-2xl bg-[var(--surface2)] text-[var(--accent)] flex items-center justify-center border border-[var(--border)]">
+            <Palette className="w-5 h-5" />
+          </div>
+          <div>
+            <h2 className="text-base sm:text-lg font-bold text-[var(--text)]">App Preferences & Interface</h2>
+            <p className="text-xs text-[var(--text2)]">
+              Customize appearance, launch the onboarding tour, or submit suggestions and bug reports.
+            </p>
+          </div>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-1">
+          {/* Theme Selector */}
+          <div className="p-3.5 rounded-2xl bg-[var(--surface2)] border border-[var(--border)] flex items-center justify-between">
+            <div className="space-y-0.5">
+              <div className="text-xs font-semibold text-[var(--text)]">Theme Mode</div>
+              <div className="text-[11px] text-[var(--text3)]">Dark or light aesthetic</div>
+            </div>
+            <ThemeToggle />
+          </div>
+
+          {/* Onboarding Tour */}
+          <button
+            type="button"
+            onClick={() => window.dispatchEvent(new CustomEvent("open-onboarding-tour"))}
+            className="p-3.5 rounded-2xl bg-[var(--surface2)] border border-[var(--border)] text-left hover:border-primary/40 transition-all flex items-center justify-between cursor-pointer group"
+          >
+            <div className="space-y-0.5">
+              <div className="text-xs font-semibold text-[var(--text)] group-hover:text-[var(--accent)] transition-colors">Guided Tour</div>
+              <div className="text-[11px] text-[var(--text3)]">Walkthrough all features</div>
+            </div>
+            <Compass className="w-4 h-4 text-[var(--accent)] shrink-0" />
+          </button>
+
+          {/* Send Feedback */}
+          <button
+            type="button"
+            onClick={() => setIsFeedbackOpen(true)}
+            className="p-3.5 rounded-2xl bg-[var(--surface2)] border border-[var(--border)] text-left hover:border-amber-500/40 transition-all flex items-center justify-between cursor-pointer group"
+          >
+            <div className="space-y-0.5">
+              <div className="text-xs font-semibold text-[var(--text)] group-hover:text-amber-500 transition-colors">Send Feedback</div>
+              <div className="text-[11px] text-[var(--text3)]">Report issues or ideas</div>
+            </div>
+            <MessageSquarePlus className="w-4 h-4 text-amber-500 shrink-0" />
+          </button>
+        </div>
+      </div>
+
       {/* AI Tutor & BYOK Quick Access */}
       <div className="p-6 rounded-3xl bg-[var(--surface)] border border-[var(--border)] shadow-xs space-y-4">
         <div className="flex items-center justify-between gap-4">
@@ -264,16 +323,16 @@ export function SettingsView() {
         </div>
       </div>
 
-      {/* Danger Zone: Reset All Progress */}
+      {/* Danger Zone: Reset All Progress with Type-to-Confirm Modal */}
       <div className="p-6 rounded-3xl bg-rose-500/5 border border-rose-500/25 space-y-4">
         <div className="flex items-center gap-3">
           <div className="w-10 h-10 rounded-2xl bg-rose-500/15 text-rose-500 flex items-center justify-center border border-rose-500/30">
             <AlertTriangle className="w-5 h-5" />
           </div>
           <div>
-            <h2 className="text-base sm:text-lg font-bold text-rose-600 dark:text-rose-400">Danger Zone: Reset Progress</h2>
+            <h2 className="text-base sm:text-lg font-bold text-rose-600 dark:text-rose-400">Danger Zone: Reset Progress & FSRS Engine</h2>
             <p className="text-xs text-[var(--text2)]">
-              Clear your study history, daily streaks, custom AI modules, saved quizzes, and notebook entries from this browser.
+              Wipe your FSRS memory intervals, question attempt history, daily streaks, custom modules, and notebook entries.
             </p>
           </div>
         </div>
@@ -281,32 +340,61 @@ export function SettingsView() {
         {!isResetConfirmOpen ? (
           <button
             type="button"
-            onClick={() => setIsResetConfirmOpen(true)}
+            onClick={() => {
+              setIsResetConfirmOpen(true);
+              setConfirmInputText("");
+            }}
             className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-rose-500 text-white text-xs font-bold shadow-xs hover:bg-rose-600 transition-all cursor-pointer"
           >
             <Trash2 className="w-4 h-4" />
             <span>Reset All Progress Data</span>
           </button>
         ) : (
-          <div className="p-4 rounded-2xl bg-[var(--surface)] border border-rose-500/40 space-y-3 animate-in fade-in">
-            <div className="text-xs font-bold text-rose-600 dark:text-rose-400">
-              ⚠️ Are you sure you want to reset everything?
+          <div className="p-5 rounded-2xl bg-[var(--surface)] border border-rose-500/40 space-y-4 animate-in fade-in">
+            <div className="space-y-1">
+              <div className="text-sm font-bold text-rose-600 dark:text-rose-400 flex items-center gap-2">
+                <AlertTriangle className="w-4 h-4" />
+                <span>Confirm Permanent Progress Reset</span>
+              </div>
+              <p className="text-xs text-[var(--text2)] leading-relaxed">
+                This action will permanently wipe your <strong>FSRS memory stability intervals</strong>, <strong>study streak</strong>, <strong>quiz attempts</strong>, and <strong>local notebook entries</strong>. This cannot be undone unless you have a backup.
+              </p>
             </div>
-            <p className="text-xs text-[var(--text2)] leading-relaxed">
-              This action will erase your streak, attempts, custom modules, and notebook entries stored on this device. (We recommend downloading a Study Vault backup first).
-            </p>
+
+            <div className="space-y-2">
+              <label htmlFor="confirm-reset-input" className="block text-xs font-mono text-[var(--text2)]">
+                Type <span className="font-bold text-rose-500 select-all">Reset my progress</span> below to confirm:
+              </label>
+              <input
+                id="confirm-reset-input"
+                type="text"
+                value={confirmInputText}
+                onChange={(e) => setConfirmInputText(e.target.value)}
+                placeholder="Reset my progress"
+                className="w-full px-3.5 py-2.5 rounded-xl bg-[var(--surface2)] border border-[var(--border)] text-xs text-[var(--text)] placeholder:text-[var(--text3)] focus:border-rose-500 focus:ring-1 focus:ring-rose-500 outline-none transition-all font-mono"
+              />
+            </div>
+
             <div className="flex items-center gap-2 pt-1">
               <button
                 type="button"
+                disabled={confirmInputText.trim() !== "Reset my progress"}
                 onClick={handleResetAllProgress}
-                className="px-4 py-2 rounded-xl bg-rose-600 text-white text-xs font-bold hover:bg-rose-700 transition-all cursor-pointer"
+                className={`px-4 py-2 rounded-xl text-xs font-bold transition-all cursor-pointer ${
+                  confirmInputText.trim() === "Reset my progress"
+                    ? "bg-rose-600 text-white hover:bg-rose-700 shadow-xs"
+                    : "bg-[var(--surface3)] text-[var(--text3)] cursor-not-allowed opacity-50"
+                }`}
               >
-                Yes, Reset Everything
+                Permanently Reset All Data
               </button>
               <button
                 type="button"
-                onClick={() => setIsResetConfirmOpen(false)}
-                className="px-3 py-2 rounded-xl bg-[var(--surface2)] border border-[var(--border)] text-xs text-[var(--text2)] hover:text-[var(--text)] transition-all cursor-pointer"
+                onClick={() => {
+                  setIsResetConfirmOpen(false);
+                  setConfirmInputText("");
+                }}
+                className="px-3.5 py-2 rounded-xl bg-[var(--surface2)] border border-[var(--border)] text-xs text-[var(--text2)] hover:text-[var(--text)] transition-all cursor-pointer"
               >
                 Cancel
               </button>
@@ -322,6 +410,11 @@ export function SettingsView() {
           Marnie Quiz is 100% free and client-side private. API keys and personal notes remain stored solely in your browser.
         </span>
       </div>
+
+      <FeedbackModal
+        isOpen={isFeedbackOpen}
+        onClose={() => setIsFeedbackOpen(false)}
+      />
     </div>
   );
 }
