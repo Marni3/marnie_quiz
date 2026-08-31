@@ -246,13 +246,32 @@ function renderMarkdownBlocks(markdown: string, fitMode: "scroll" | "fit" = "scr
       continue;
     }
 
-    // Regular paragraph
-    elements.push(
-      <p key={`p-${i}`} className="leading-relaxed text-sm sm:text-base text-[var(--text)]">
-        <InlineFormattedText content={trimmed} fitMode={fitMode} />
-      </p>
-    );
-    i++;
+    // Regular paragraph: accumulate consecutive non-empty text lines into a single paragraph block
+    const pLines: string[] = [];
+    while (
+      i < rawLines.length &&
+      rawLines[i].trim() &&
+      !rawLines[i].trim().startsWith("```") &&
+      !rawLines[i].trim().startsWith(">") &&
+      !/^(---|___|\*\*\*)$/.test(rawLines[i].trim()) &&
+      !(rawLines[i].trim().startsWith("|") && rawLines[i].trim().endsWith("|")) &&
+      !rawLines[i].trim().startsWith("#") &&
+      !(rawLines[i].trim().startsWith("- ") || rawLines[i].trim().startsWith("* ")) &&
+      !/^\d+\.\s+/.test(rawLines[i].trim()) &&
+      !(rawLines[i].trim().startsWith("$$") && rawLines[i].trim().endsWith("$$") && rawLines[i].trim().length >= 4)
+    ) {
+      pLines.push(rawLines[i].trim());
+      i++;
+    }
+
+    if (pLines.length > 0) {
+      const paragraphText = pLines.join(" ");
+      elements.push(
+        <p key={`p-${i}`} className="leading-relaxed text-sm sm:text-base text-[var(--text)]">
+          <InlineFormattedText content={paragraphText} fitMode={fitMode} />
+        </p>
+      );
+    }
   }
 
   return elements;
