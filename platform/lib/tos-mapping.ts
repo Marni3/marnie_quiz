@@ -1,336 +1,595 @@
 /**
  * Official PRC Board of Electronics Engineering (BEE) Table of Specifications (TOS)
- * Reference: R.A. 9292 & PRC BEE Board Licensure Examination Syllabi
+ * Reference: PRC Resolution / October 2022 Table of Specifications (EE2022-10 TOS.pdf)
+ * 
+ * Standardized Hierarchical Dot Notation:
+ * [DOMAIN].[COURSE].[SUBTOPIC]
+ * Example: MATH.1.1 (Differential Calculus - Limits), EST.4.1 (Transmission Lines)
  */
 
 export type PrcDomain = "MATH" | "GEAS" | "ELECS" | "EST";
 
-export interface TosCompetency {
-  code: string;           // e.g. "EST-01", "MATH-05"
+export interface TosTopic {
+  code: string;           // e.g. "MATH.1.1", "EST.4.1"
+  courseCode: string;     // e.g. "MATH.1", "EST.4"
   domain: PrcDomain;
-  title: string;
-  description: string;
-  weightPercentage: number;
+  courseTitle: string;    // e.g. "Differential Calculus"
+  subtopicTitle: string;  // e.g. "Functions, Continuity, and Limits"
+  itemCount?: number;
+  weightPercentage?: number;
 }
 
-export const PRC_TOS_COMPETENCIES: Record<string, TosCompetency> = {
+export interface TosCourse {
+  code: string;           // e.g. "MATH.1", "EST.4", "GEAS.10"
+  domain: PrcDomain;
+  title: string;
+  weightPercentage: number;
+  totalItems: number;
+  topics: Record<string, string>; // subtopic code -> title
+}
+
+export const PRC_TOS_COURSES: Record<string, TosCourse> = {
   // =========================================================================
-  // 1. MATHEMATICS (20% Board Exam Weight)
+  // 1. MATHEMATICS (20% Board Exam Weight - 100 Items Total)
   // =========================================================================
-  "MATH-01": {
-    code: "MATH-01",
+  "MATH.0": {
+    code: "MATH.0",
     domain: "MATH",
-    title: "College Algebra, Polynomials & Progressions",
-    description: "Algebraic operations, systems of linear/quadratic equations, exponents, logarithms, binomial theorem, sequences, and progressions.",
-    weightPercentage: 20,
+    title: "Foundational Pre-Calculus Mathematics",
+    weightPercentage: 0,
+    totalItems: 0,
+    topics: {
+      "MATH.0.1": "College Algebra, Polynomials & Progressions",
+      "MATH.0.2": "Plane & Spherical Trigonometry",
+      "MATH.0.3": "Plane & Solid Geometry",
+      "MATH.0.4": "Analytic Geometry & Conic Sections",
+    },
   },
-  "MATH-02": {
-    code: "MATH-02",
-    domain: "MATH",
-    title: "Plane & Spherical Trigonometry",
-    description: "Trigonometric functions, identities, equations, laws of sines/cosines, solution of oblique triangles, and spherical navigation triangles.",
-    weightPercentage: 20,
-  },
-  "MATH-03": {
-    code: "MATH-03",
-    domain: "MATH",
-    title: "Plane & Solid Geometry",
-    description: "Geometric properties of plane polygons, circles, areas, perimeter, polyhedra, cylinders, cones, spheres, prisms, and volume calculations.",
-    weightPercentage: 20,
-  },
-  "MATH-04": {
-    code: "MATH-04",
-    domain: "MATH",
-    title: "Analytic Geometry & Conic Sections",
-    description: "Cartesian coordinates, straight lines, circles, parabolas, ellipses, hyperbolas, polar coordinates, and 3D coordinate geometry.",
-    weightPercentage: 20,
-  },
-  "MATH-05": {
-    code: "MATH-05",
+  "MATH.1": {
+    code: "MATH.1",
     domain: "MATH",
     title: "Differential Calculus",
-    description: "Limits, continuity, differentiation techniques, curve sketching, related rates, maxima and minima optimization, and Taylor series.",
-    weightPercentage: 20,
+    weightPercentage: 3.0,
+    totalItems: 15,
+    topics: {
+      "MATH.1.1": "Functions, Continuity, and Limits",
+      "MATH.1.2": "Derivatives and Its Applications",
+      "MATH.1.3": "Higher-Order Derivatives",
+      "MATH.1.4": "Parametric Equations",
+      "MATH.1.5": "Partial Differentiation",
+    },
   },
-  "MATH-06": {
-    code: "MATH-06",
+  "MATH.2": {
+    code: "MATH.2",
     domain: "MATH",
     title: "Integral Calculus",
-    description: "Indefinite and definite integrals, integration techniques, plane areas, volumes of revolution, arc length, centroids, and moment of inertia.",
-    weightPercentage: 20,
+    weightPercentage: 3.0,
+    totalItems: 15,
+    topics: {
+      "MATH.2.1": "Integration Concepts & Formulas",
+      "MATH.2.2": "Integration Techniques",
+      "MATH.2.3": "Improper Integrals",
+      "MATH.2.4": "Applications of Integral (Areas, Volumes, Centroids)",
+      "MATH.2.5": "Multiple Integration and Its Applications",
+    },
   },
-  "MATH-07": {
-    code: "MATH-07",
+  "MATH.3": {
+    code: "MATH.3",
     domain: "MATH",
-    title: "Differential Equations",
-    description: "First-order differential equations (separable, exact, linear), higher-order linear DEs with constant coefficients, and physical growth/decay modeling.",
-    weightPercentage: 20,
+    title: "Differential Equation",
+    weightPercentage: 3.0,
+    totalItems: 15,
+    topics: {
+      "MATH.3.1": "First-Order, First-Degree ODE and Its Applications",
+      "MATH.3.2": "Higher-Order ODE and Its Applications",
+      "MATH.3.3": "Laplace Transforms, Inverses, and Its Applications",
+    },
   },
-  "MATH-08": {
-    code: "MATH-08",
+  "MATH.4": {
+    code: "MATH.4",
     domain: "MATH",
-    title: "Advanced Engineering Mathematics",
-    description: "Laplace transforms, inverse Laplace, Fourier series, matrices, determinants, eigenvalue problems, vector analysis, and complex variables.",
-    weightPercentage: 20,
+    title: "Advanced Engineering Mathematics for ECE",
+    weightPercentage: 3.0,
+    totalItems: 15,
+    topics: {
+      "MATH.4.1": "Complex Numbers and Its Applications",
+      "MATH.4.2": "Series and Transforms (Power Series, Bessel, Legendre, Fourier)",
+      "MATH.4.3": "Partial Differential Equations",
+      "MATH.4.4": "Simultaneous Linear and Non-Linear Equations",
+      "MATH.4.5": "Numerical Differentiation, Integration and Optimization",
+    },
   },
-  "MATH-09": {
-    code: "MATH-09",
+  "MATH.5": {
+    code: "MATH.5",
     domain: "MATH",
-    title: "Probability, Statistics & Discrete Mathematics",
-    description: "Combinatorics, permutations, probability distributions, statistical measures, hypothesis testing, logic, set theory, and discrete structures.",
-    weightPercentage: 20,
+    title: "Engineering Data Analysis",
+    weightPercentage: 3.0,
+    totalItems: 15,
+    topics: {
+      "MATH.5.1": "Obtaining Data",
+      "MATH.5.2": "Statistical Sampling, Distributions and Intervals",
+      "MATH.5.3": "Test of Hypothesis",
+      "MATH.5.4": "Regression and Correlation",
+      "MATH.5.5": "Design of Experiments",
+    },
+  },
+  "MATH.6": {
+    code: "MATH.6",
+    domain: "MATH",
+    title: "Electromagnetics (shared w/ ELEX)",
+    weightPercentage: 1.8,
+    totalItems: 9,
+    topics: {
+      "MATH.6.1": "Vector Analysis & Vector Identities",
+      "MATH.6.2": "Directional Derivative, Gradient, Divergence, Curl",
+      "MATH.6.3": "Integral Theorems (Green's Lemma, Divergence, Stokes')",
+    },
+  },
+  "MATH.7": {
+    code: "MATH.7",
+    domain: "MATH",
+    title: "Signals, Spectra & Signal Processing (shared w/ EST)",
+    weightPercentage: 1.6,
+    totalItems: 8,
+    topics: {
+      "MATH.7.1": "Z-Transforms",
+      "MATH.7.2": "Convolution",
+      "MATH.7.3": "Correlation",
+    },
+  },
+  "MATH.8": {
+    code: "MATH.8",
+    domain: "MATH",
+    title: "Feedback and Control Systems (shared w/ ELEX)",
+    weightPercentage: 1.6,
+    totalItems: 8,
+    topics: {
+      "MATH.8.1": "Pole and Zero Determination",
+      "MATH.8.2": "Transient Response",
+      "MATH.8.3": "Block Diagram and Signal Flow",
+    },
   },
 
   // =========================================================================
-  // 2. GENERAL ENGINEERING & APPLIED SCIENCES (20% Board Exam Weight)
+  // 2. GENERAL ENGINEERING & APPLIED SCIENCES (20% Weight - 100 Items Total)
   // =========================================================================
-  "GEAS-01": {
-    code: "GEAS-01",
+  "GEAS.1": {
+    code: "GEAS.1",
     domain: "GEAS",
-    title: "General Chemistry",
-    description: "Atomic structure, chemical bonding, stoichiometry, periodic table, gas laws, solutions, acids/bases, and electrochemistry.",
-    weightPercentage: 20,
+    title: "Chemistry for Engineers",
+    weightPercentage: 2.0,
+    totalItems: 10,
+    topics: {
+      "GEAS.1.1": "Energy",
+      "GEAS.1.2": "Chemistry of Engineering Materials",
+      "GEAS.1.3": "Chemistry of Nano-materials",
+      "GEAS.1.4": "Chemistry of the Environment & Special Topics",
+    },
   },
-  "GEAS-02": {
-    code: "GEAS-02",
+  "GEAS.2": {
+    code: "GEAS.2",
     domain: "GEAS",
-    title: "Engineering Mechanics - Statics",
-    description: "Force systems, moments, 2D/3D equilibrium of rigid bodies, trusses, frames, centroids, friction, and moment of inertia.",
-    weightPercentage: 20,
+    title: "Physics for Engineers",
+    weightPercentage: 3.0,
+    totalItems: 15,
+    topics: {
+      "GEAS.2.1": "Work, Energy & Power, Impulse & Momentum, Kinematics, Dynamics",
+      "GEAS.2.2": "Dynamics of Rotation, Elasticity, Oscillations/Waves",
+      "GEAS.2.3": "Fluids & Heat Transfer",
+      "GEAS.2.4": "Electrostatics, Electricity, Magnetism, Optics",
+    },
   },
-  "GEAS-03": {
-    code: "GEAS-03",
-    domain: "GEAS",
-    title: "Engineering Mechanics - Dynamics",
-    description: "Kinematics of particles and rigid bodies, kinetics (Newton's laws, work-energy, impulse-momentum), and rotational motion.",
-    weightPercentage: 20,
-  },
-  "GEAS-04": {
-    code: "GEAS-04",
-    domain: "GEAS",
-    title: "Strength of Materials",
-    description: "Stress and strain, axial deformation, torsion in shafts, bending and shear in beams, combined stresses, and column buckling.",
-    weightPercentage: 20,
-  },
-  "GEAS-05": {
-    code: "GEAS-05",
-    domain: "GEAS",
-    title: "Thermodynamics",
-    description: "Properties of pure substances, first and second laws of thermodynamics, ideal gas cycles (Carnot, Otto, Diesel, Rankine), and heat transfer.",
-    weightPercentage: 20,
-  },
-  "GEAS-06": {
-    code: "GEAS-06",
-    domain: "GEAS",
-    title: "Materials Science & Engineering",
-    description: "Crystal structures, mechanical properties of metals, polymers, ceramics, semiconductors, phase diagrams, and corrosion mechanisms.",
-    weightPercentage: 20,
-  },
-  "GEAS-07": {
-    code: "GEAS-07",
+  "GEAS.3": {
+    code: "GEAS.3",
     domain: "GEAS",
     title: "Engineering Economics",
-    description: "Time value of money, compound interest, annuities, present/future worth analysis, rate of return, depreciation, and replacement economy.",
-    weightPercentage: 20,
+    weightPercentage: 1.2,
+    totalItems: 6,
+    topics: {
+      "GEAS.3.1": "Engineering Economics Introduction Terms & Principles",
+      "GEAS.3.2": "Money-Time Relationship, Equivalence & Basic Economy Methods",
+      "GEAS.3.3": "Decisions Under Certainty, Risk & Admitting Uncertainty",
+    },
   },
-  "GEAS-08": {
-    code: "GEAS-08",
+  "GEAS.4": {
+    code: "GEAS.4",
     domain: "GEAS",
-    title: "R.A. 9292 (ECE Law), Code of Ethics & Telecommunications Laws",
-    description: "Republic Act No. 9292 provisions, Board of ECE regulatory powers, ECE professional practice scopes, Code of Ethics, and NTC/DICT policies.",
-    weightPercentage: 20,
+    title: "Engineering Management",
+    weightPercentage: 1.8,
+    totalItems: 9,
+    topics: {
+      "GEAS.4.1": "Evolution of Management Theory & Its Function",
+      "GEAS.4.2": "Planning, Leading, Organizing and Controlling",
+      "GEAS.4.3": "Managing Operations, Marketing & Finance",
+    },
+  },
+  "GEAS.5": {
+    code: "GEAS.5",
+    domain: "GEAS",
+    title: "Technopreneurship 101",
+    weightPercentage: 2.0,
+    totalItems: 10,
+    topics: {
+      "GEAS.5.1": "Technopreneurship, Value Proposition, Ethics & Globalization",
+      "GEAS.5.2": "Market Identification, Analysis & Competitive Advantage",
+      "GEAS.5.3": "Business Models, Intellectual Property, Execution & Funding",
+    },
+  },
+  "GEAS.6": {
+    code: "GEAS.6",
+    domain: "GEAS",
+    title: "Physics 2",
+    weightPercentage: 2.0,
+    totalItems: 10,
+    topics: {
+      "GEAS.6.1": "Thermodynamics & Condensed Matter",
+      "GEAS.6.2": "Electricity, Magnetism & EM Induction",
+      "GEAS.6.3": "Inductance, AC & Optics",
+    },
+  },
+  "GEAS.7": {
+    code: "GEAS.7",
+    domain: "GEAS",
+    title: "Materials Science and Engineering",
+    weightPercentage: 1.6,
+    totalItems: 8,
+    topics: {
+      "GEAS.7.1": "Fundamentals, Atomic Structure & Crystalline Materials",
+      "GEAS.7.2": "Imperfections, Diffusion & Mechanical Properties of Metals",
+      "GEAS.7.3": "Ceramics, Polymers, Composites, Electrical/Optical Properties",
+    },
+  },
+  "GEAS.8": {
+    code: "GEAS.8",
+    domain: "GEAS",
+    title: "Computer Programming",
+    weightPercentage: 2.0,
+    totalItems: 10,
+    topics: {
+      "GEAS.8.1": "Object-Oriented Programming & UML Analysis/Design",
+      "GEAS.8.2": "Programming Language Fundamentals",
+      "GEAS.8.3": "Exception Handling & Graphical User Interface Programming",
+    },
+  },
+  "GEAS.9": {
+    code: "GEAS.9",
+    domain: "GEAS",
+    title: "Environmental Science and Engineering",
+    weightPercentage: 2.0,
+    totalItems: 10,
+    topics: {
+      "GEAS.9.1": "Nature, Ecology, Natural Systems & Resources",
+      "GEAS.9.2": "Environmental Concerns, Crises & Impact Assessment (EIA)",
+      "GEAS.9.3": "Sustainable Development",
+    },
+  },
+  "GEAS.10": {
+    code: "GEAS.10",
+    domain: "GEAS",
+    title: "ECE Laws, Contracts, Ethics, Standards & Safety",
+    weightPercentage: 2.0,
+    totalItems: 10,
+    topics: {
+      "GEAS.10.1": "Fundamentals of Laws, Obligations and Contracts",
+      "GEAS.10.2": "Pledge of ECE, CSC Guidelines, Board Exam & PRC Regulation",
+      "GEAS.10.3": "Practicing the ECE Profession (RA 9292 Provisions)",
+      "GEAS.10.4": "Other ECE Related Statutes, Safety Standards & PEC Codes",
+    },
+  },
+  "GEAS.11": {
+    code: "GEAS.11",
+    domain: "GEAS",
+    title: "Computer-Aided Design (CAD)",
+    weightPercentage: 0.4,
+    totalItems: 2,
+    topics: {
+      "GEAS.11.1": "CAD Environment, Snapping, Construction Elements & Plotting",
+    },
   },
 
   // =========================================================================
-  // 3. ELECTRONICS ENGINEERING (30% Board Exam Weight)
+  // 3. ELECTRONICS ENGINEERING (30% Weight - 100 Items Total)
   // =========================================================================
-  "ELECS-01": {
-    code: "ELECS-01",
+  "ELECS.1": {
+    code: "ELECS.1",
     domain: "ELECS",
-    title: "Semiconductor Fundamentals & PN Junction Diodes",
-    description: "Intrinsic/extrinsic semiconductor physics, energy bands, diode models, rectifiers, clippers, clampers, and Zener voltage regulation.",
-    weightPercentage: 30,
+    title: "DC Electrical Circuits",
+    weightPercentage: 3.6,
+    totalItems: 12,
+    topics: {
+      "ELECS.1.1": "Resistive Networks",
+      "ELECS.1.2": "Mesh and Node Equations",
+      "ELECS.1.3": "Network Theorems",
+      "ELECS.1.4": "Transient Analysis",
+      "ELECS.1.5": "Solutions to DC Network Problems",
+    },
   },
-  "ELECS-02": {
-    code: "ELECS-02",
+  "ELECS.2": {
+    code: "ELECS.2",
     domain: "ELECS",
-    title: "BJT Transistors & Amplifiers",
-    description: "BJT DC operating point, stability factor, CE/CB/CC configurations, AC small-signal models (re, hybrid-pi), and multistage amplifiers.",
-    weightPercentage: 30,
+    title: "AC Electrical Circuits",
+    weightPercentage: 3.6,
+    totalItems: 12,
+    topics: {
+      "ELECS.2.1": "Solutions to AC Network Problems",
+      "ELECS.2.2": "Impedance and Admittance",
+      "ELECS.2.3": "Resonance",
+      "ELECS.2.4": "Power in AC Circuits",
+      "ELECS.2.5": "Two-Port Network Parameters & Transfer Function",
+    },
   },
-  "ELECS-03": {
-    code: "ELECS-03",
+  "ELECS.3": {
+    code: "ELECS.3",
     domain: "ELECS",
-    title: "Field Effect Transistors (JFETs & MOSFETs)",
-    description: "JFET characteristics, depletion/enhancement MOSFETs, DC biasing, AC small-signal models, and CMOS logic gates.",
-    weightPercentage: 30,
+    title: "Electromagnetics (shared w/ MATH)",
+    weightPercentage: 2.4,
+    totalItems: 8,
+    topics: {
+      "ELECS.3.1": "Steady Electric and Magnetic Fields",
+      "ELECS.3.2": "Dielectric and Magnetic Materials",
+      "ELECS.3.3": "Coupled and Magnetic Circuits",
+      "ELECS.3.4": "Time-Varying Fields and Maxwell's Equations",
+    },
   },
-  "ELECS-04": {
-    code: "ELECS-04",
+  "ELECS.4": {
+    code: "ELECS.4",
     domain: "ELECS",
-    title: "Operational Amplifiers & Analog ICs",
-    description: "Ideal/practical op-amp characteristics, inverting/non-inverting configurations, summing, differentiator, integrator, instrumentation amplifiers, and active filters.",
-    weightPercentage: 30,
+    title: "Electronic Devices and Circuits",
+    weightPercentage: 4.2,
+    totalItems: 14,
+    topics: {
+      "ELECS.4.1": "Diode Wave Shaping Circuits & Special Diodes",
+      "ELECS.4.2": "BJT and FET Small Signal Analysis",
+      "ELECS.4.3": "Diode Equivalent Circuits",
+      "ELECS.4.4": "Voltage Multipliers, Power Supply & Voltage Regulation",
+      "ELECS.4.5": "Bipolar Junction Transistors and FETs",
+    },
   },
-  "ELECS-05": {
-    code: "ELECS-05",
+  "ELECS.5": {
+    code: "ELECS.5",
     domain: "ELECS",
-    title: "Power Amplifiers & Frequency Response",
-    description: "Class A, B, AB, C, and D power amplifiers, efficiency, thermal resistance, heat sinks, low/high frequency response, and Bode plots.",
-    weightPercentage: 30,
+    title: "Electronic Circuit Analysis and Design",
+    weightPercentage: 4.2,
+    totalItems: 14,
+    topics: {
+      "ELECS.5.1": "BJT and FET Frequency Response",
+      "ELECS.5.2": "Cascade and Cascode Connections",
+      "ELECS.5.3": "Current Mirrors and Current Sources",
+      "ELECS.5.4": "Differential and Operational Amplifiers",
+      "ELECS.5.5": "Feedback Systems, Oscillators, and Filters",
+    },
   },
-  "ELECS-06": {
-    code: "ELECS-06",
+  "ELECS.6": {
+    code: "ELECS.6",
     domain: "ELECS",
-    title: "Feedback Circuits, Oscillators & Waveform Generators",
-    description: "Feedback topologies, Barkhausen criterion, RC phase-shift, Wien bridge, Colpitts, Hartley, crystal oscillators, 555 timer, and Schmitt triggers.",
-    weightPercentage: 30,
+    title: "Electronic Systems and Design (shared w/ EST)",
+    weightPercentage: 2.4,
+    totalItems: 8,
+    topics: {
+      "ELECS.6.1": "SCRs, UJT, PUT, TRIAC, DIAC & Thyristors",
+      "ELECS.6.2": "Optoelectronic Devices and Sensors",
+      "ELECS.6.3": "Transducers, Data Acquisition & Interfacing",
+      "ELECS.6.4": "PLCs, Building Management Systems & Security Controls",
+    },
   },
-  "ELECS-07": {
-    code: "ELECS-07",
+  "ELECS.7": {
+    code: "ELECS.7",
     domain: "ELECS",
-    title: "DC Power Supplies & Special Semiconductor Devices",
-    description: "Linear and switching voltage regulators, SCRs, TRIACs, DIACs, optocouplers, solar cells, LEDs, and photodetectors.",
-    weightPercentage: 30,
+    title: "Logic Circuits and Switching Theory",
+    weightPercentage: 3.6,
+    totalItems: 12,
+    topics: {
+      "ELECS.7.1": "Boolean Algebra and Logic Gates",
+      "ELECS.7.2": "Minimization of Combinational Logic Circuits",
+      "ELECS.7.3": "Sequential Logic Circuits",
+      "ELECS.7.4": "Algorithmic State Machines (ASM) & Asynchronous Logic",
+    },
   },
-  "ELECS-08": {
-    code: "ELECS-08",
+  "ELECS.8": {
+    code: "ELECS.8",
     domain: "ELECS",
-    title: "Digital Logic Circuits & Combinational Logic",
-    description: "Number systems, Boolean algebra, De Morgan's theorems, Karnaugh mapping, decoders, encoders, multiplexers, demultiplexers, and adders.",
-    weightPercentage: 30,
+    title: "Microprocessor & Microcontroller Systems and Design",
+    weightPercentage: 3.6,
+    totalItems: 12,
+    topics: {
+      "ELECS.8.1": "Microprocessor Units & Architecture",
+      "ELECS.8.2": "Memory Subsystems",
+      "ELECS.8.3": "I/O Subsystems & Bus Interfacing",
+      "ELECS.8.4": "Instruction Set Architecture & Assembly Programming",
+      "ELECS.8.5": "Microcontrollers",
+    },
   },
-  "ELECS-09": {
-    code: "ELECS-09",
+  "ELECS.9": {
+    code: "ELECS.9",
     domain: "ELECS",
-    title: "Sequential Logic, Memory & Microprocessors",
-    description: "Latches, flip-flops (SR, D, JK, T), shift registers, synchronous/asynchronous counters, RAM/ROM memory, and microprocessor architecture basics.",
-    weightPercentage: 30,
+    title: "Feedback and Control Systems (shared w/ MATH)",
+    weightPercentage: 2.4,
+    totalItems: 8,
+    topics: {
+      "ELECS.9.1": "Block Diagram Representation & Signal Flow Graphs",
+      "ELECS.9.2": "LTI Systems and Transient Analysis",
+      "ELECS.9.3": "System Modeling and Transfer Functions",
+      "ELECS.9.4": "Poles/Zeros, Root Locus & Stability Analysis",
+      "ELECS.9.5": "Steady-State Analysis and Frequency Response",
+    },
   },
 
   // =========================================================================
-  // 4. ELECTRONICS SYSTEMS & TECHNOLOGIES (30% Board Exam Weight)
+  // 4. ELECTRONICS SYSTEMS & TECHNOLOGIES (30% Weight - 100 Items Total)
   // =========================================================================
-  "EST-01": {
-    code: "EST-01",
+  "EST.1": {
+    code: "EST.1",
     domain: "EST",
-    title: "Transmission Lines & Waveguides",
-    description: "Transmission line parameters, characteristic impedance, reflection coefficient, SWR, quarter-wave transformers, stub matching, and Smith charts.",
-    weightPercentage: 30,
+    title: "Signals, Spectra, Signal Processing",
+    weightPercentage: 1.0,
+    totalItems: 10,
+    topics: {
+      "EST.1.1": "Classification and Characteristics of Signals",
+      "EST.1.2": "Sampling Theorem and Aliasing",
+      "EST.1.3": "Difference Equations for FIR and IIR Filters",
+      "EST.1.4": "Convolution, Correlation, Z-Transforms & Filtering",
+    },
   },
-  "EST-02": {
-    code: "EST-02",
+  "EST.2": {
+    code: "EST.2",
     domain: "EST",
-    title: "Antennas & Radiation Mechanisms",
-    description: "Isotropic radiator, dipole antennas, antenna gain, directivity, effective aperture, radiation resistance, beamwidth, arrays, and Yagi-Uda antennas.",
-    weightPercentage: 30,
+    title: "Principles of Communications",
+    weightPercentage: 7.5,
+    totalItems: 25,
+    topics: {
+      "EST.2.1": "Introduction to Communications Systems",
+      "EST.2.2": "Noise Calculations & Signal-to-Noise Ratio",
+      "EST.2.3": "Amplitude Modulation, SSB Techniques, Frequency Modulation",
+      "EST.2.4": "Radio Receivers & Superheterodyne Principles",
+      "EST.2.5": "Pulse Modulation, Digital Modulation & Broadband Systems",
+    },
   },
-  "EST-03": {
-    code: "EST-03",
+  "EST.3": {
+    code: "EST.3",
     domain: "EST",
-    title: "Radio Wave Propagation",
-    description: "Ground waves, sky waves, ionospheric layers, MUF, critical frequency, space waves, line-of-sight propagation, free-space path loss, and fading.",
-    weightPercentage: 30,
+    title: "Digital Communications",
+    weightPercentage: 4.5,
+    totalItems: 15,
+    topics: {
+      "EST.3.1": "Introduction to Digital Communications Systems",
+      "EST.3.2": "Digital Transmission, PAM, PWM, PPM, PCM",
+      "EST.3.3": "Digital Modulation (ASK, FSK, PSK, QAM)",
+      "EST.3.4": "Basics of Information Theory & Error Detection",
+      "EST.3.5": "Multiplexing & Multiple Access (FDM, TDM, WDM, CDMA)",
+    },
   },
-  "EST-04": {
-    code: "EST-04",
+  "EST.4": {
+    code: "EST.4",
     domain: "EST",
-    title: "Analog Modulation & Radio Systems",
-    description: "AM, DSB-SC, SSB, FM, PM, modulation index, bandwidth rules (Carson's rule), superheterodyne receivers, noise figure, and SNR.",
-    weightPercentage: 30,
+    title: "Transmission and Antenna Systems",
+    weightPercentage: 6.9,
+    totalItems: 23,
+    topics: {
+      "EST.4.1": "Transmission Lines, Losses, Parameters, Matching & Smith Charts",
+      "EST.4.2": "Radio Wave Propagation, Power Density & Field Strength",
+      "EST.4.3": "Antenna Systems & Radiation Mechanisms",
+      "EST.4.4": "Waveguides & Fiber Optics",
+    },
   },
-  "EST-05": {
-    code: "EST-05",
+  "EST.5": {
+    code: "EST.5",
     domain: "EST",
-    title: "Digital Modulation & Baseband Communications",
-    description: "Sampling theorem, Nyquist rate, PCM, companding, delta modulation, ASK, FSK, BPSK, QPSK, QAM, and bit error rate.",
-    weightPercentage: 30,
+    title: "Electronics 3: Electronic Systems and Design",
+    weightPercentage: 2.1,
+    totalItems: 7,
+    topics: {
+      "EST.5.1": "Optoelectronic Devices, Sensors & Transducers",
+      "EST.5.2": "Interfacing Techniques & Programmable Logic Controllers",
+      "EST.5.3": "Building Management Systems, HVAC, Security & SCADA Controls",
+    },
   },
-  "EST-06": {
-    code: "EST-06",
+  "EST.6": {
+    code: "EST.6",
     domain: "EST",
-    title: "Fiber Optic Communications",
-    description: "Snell's law, numerical aperture, single/multimode fibers, attenuation, dispersion, optical sources (LED/Laser), detectors (PIN/APD), and link budget.",
-    weightPercentage: 30,
-  },
-  "EST-07": {
-    code: "EST-07",
-    domain: "EST",
-    title: "Satellite Communications",
-    description: "Kepler's laws, orbital altitudes (LEO, MEO, GEO), look angles (azimuth/elevation), link budget ($G/T$, EIRP, $C/N$), and transponder multiplexing.",
-    weightPercentage: 30,
-  },
-  "EST-08": {
-    code: "EST-08",
-    domain: "EST",
-    title: "Microwave Systems & Radar",
-    description: "Microwave generators (magnetrons, klystrons, TWTs), radar equation, maximum unambiguous range, pulse vs Doppler radar, and navigation systems.",
-    weightPercentage: 30,
-  },
-  "EST-09": {
-    code: "EST-09",
-    domain: "EST",
-    title: "Acoustics & Audio/Broadcast Engineering",
-    description: "Sound pressure level (SPL), decibels, reverberation time (Sabine formula), microphones, loudspeakers, studio acoustics, and broadcast standards.",
-    weightPercentage: 30,
-  },
-  "EST-10": {
-    code: "EST-10",
-    domain: "EST",
-    title: "Data Communications & Computer Networks",
-    description: "OSI 7-layer model, TCP/IP protocol suite, error detection/correction (CRC, parity), flow control, Ethernet, IP addressing, subnetting, and switching/routing.",
-    weightPercentage: 30,
+    title: "Data Communications",
+    weightPercentage: 6.0,
+    totalItems: 20,
+    topics: {
+      "EST.6.1": "Data Communications, Topologies & Network Configurations",
+      "EST.6.2": "Transmission Modes, Synchronization & Network Hardware",
+      "EST.6.3": "Open Systems Interconnection (OSI) & TCP/IP Architecture",
+      "EST.6.4": "Protocols (Character/Bit-Oriented) & LAN/MAN/WAN Networks",
+    },
   },
 };
 
 /**
- * Bidirectional Legacy to TOS ID Alias Mapping
+ * Bidirectional Legacy to TOS Dot-Notation Alias Mapping
  * Ensures 100% backward compatibility for all existing URLs, bookmarks, and stored notes.
  */
 export const LEGACY_TO_TOS_MAP: Record<string, string> = {
-  // Legacy Math IDs
-  "math-01": "math-01",
-  "math-02": "math-09-01",     // Probability
-  "math-03": "math-09-02",     // Statistics
-  "math-04": "math-09-03",     // Discrete Math
-  "math-05": "math-02-01",     // Plane Trig
-  "math-06": "math-02-02",     // Spherical Trig
-  "math-07": "math-03-01",     // Plane Geometry
-  "math-08": "math-03-02",     // Solid Geometry
-  "math-09": "math-04",        // Analytic Geometry
-  "math-10": "math-05",        // Differential Calculus
-  "math-11": "math-06",        // Integral Calculus
-  "math-12": "math-07",        // Differential Equations
-  "math-13": "math-08",        // Advanced Engineering Math
-  "math-14": "math-08",
-  "math-16": "math-09",
-  "math-18": "math-10",
-  "math-20": "math-11",
-  "math-21": "math-12",
-  "math-22": "math-13",
-  "math-23": "math-13",
+  // Legacy Math IDs to Dot Notation
+  "math-01": "math.0.1",
+  "math-01-01": "math.0.1",
+  "math-01-02": "math.0.1",
+  "math-01-03": "math.0.1",
+  "math-01-04": "math.0.1",
+
+  "math-02": "math.5.2",       // Probability -> 5.0 Data Analysis
+  "math-02-01": "math.5.2",
+  "math-02-02": "math.5.2",
+  "math-02-03": "math.5.2",
+
+  "math-03": "math.5.2",       // Statistics
+  "math-03-01": "math.5.2",
+  "math-03-02": "math.5.2",
+  "math-03-03": "math.5.2",
+
+  "math-04": "math.0.1",       // Discrete Math
+  "math-04-01": "math.0.1",
+  "math-04-02": "math.0.1",
+  "math-04-03": "math.0.1",
+  "math-04-04": "math.0.1",
+
+  "math-05": "math.0.2",       // Trigonometry -> Foundations 0.2
+  "math-05-01": "math.0.2",
+  "math-05-02": "math.0.2",
+  "math-05-03": "math.0.2",
+  "math-05-04": "math.0.2",
+  "math-05-05": "math.0.2",
+
+  "math-06": "math.0.2",       // Spherical Trig
+  "math-06-01": "math.0.2",
+  "math-06-02": "math.0.2",
+  "math-06-03": "math.0.2",
+
+  "math-07": "math.0.3",       // Plane Geometry -> Foundations 0.3
+  "math-07-01": "math.0.3",
+  "math-07-02": "math.0.3",
+  "math-07-03": "math.0.3",
+  "math-07-04": "math.0.3",
+
+  "math-08": "math.0.3",       // Solid Geometry
+  "math-08-01": "math.0.3",
+  "math-08-02": "math.0.3",
+  "math-08-03": "math.0.3",
+  "math-08-04": "math.0.3",
+
+  "math-09": "math.0.4",       // Analytic Geometry -> Foundations 0.4
+  "math-09-01": "math.0.4",
+  "math-09-02": "math.0.4",
+  "math-09-03": "math.0.4",
+
+  "math-10": "math.1.1",       // Differential Calculus -> Course 1.0
+  "math-10-01": "math.1.1",
+  "math-10-02": "math.1.2",
+  "math-10-03": "math.1.2",
+
+  "math-11": "math.2.1",       // Integral Calculus -> Course 2.0
+  "math-11-01": "math.2.1",
+
+  "math-12": "math.3.1",       // Differential Equations -> Course 3.0
+  "math-12-01": "math.3.1",
+  "math-12-02": "math.3.2",
+  "math-12-03": "math.3.3",
+
+  "math-13": "math.4.1",       // Advanced Math -> Course 4.0
+  "math-13-01": "math.4.1",
+  "math-13-02": "math.4.2",
+  "math-13-03": "math.4.4",
 
   // Legacy GEAS IDs
-  "geas-10": "geas-08",        // RA 9292 ECE Law
-  "geas-10-01": "geas-08-01",
-  "geas-10-02": "geas-08-02",
-  "geas-10-03": "geas-08-03",
+  "geas-10": "geas.10.3",      // RA 9292 ECE Law -> Course 10.0
+  "geas-10-01": "geas.10.3",
+  "geas-10-02": "geas.10.3",
+  "geas-10-03": "geas.10.4",
+  "geas-08-01": "geas.10.3",
+  "geas-08-02": "geas.10.3",
+  "geas-08-03": "geas.10.4",
 
   // Legacy EST IDs
-  "est-01": "est-01",
-  "est-02": "est-02",
-  "est-03": "est-03",
-  "est-04": "est-04",
-  "est-05": "est-05",
-  "est-06": "est-06",
-  "est-07": "est-07",
-  "est-08": "est-08",
-  "est-09": "est-09",
-  "est-10": "est-10",
+  "est-01": "est.4.1",
+  "est-01-01": "est.4.1",
+  "est-01-02": "est.4.1",
 };
 
 /**
- * Resolves any legacy or alias ID to its canonical PRC TOS ID
+ * Resolves any legacy, slug, or dash-formatted ID to its canonical Dot Notation
  */
 export function resolveTosId(rawId: string): string {
   if (!rawId) return "";
@@ -339,20 +598,20 @@ export function resolveTosId(rawId: string): string {
 }
 
 /**
- * Retrieves the TOS Competency metadata for a given topic code (e.g. "EST-01", "MATH-05")
+ * Retrieves the TOS Course metadata for a given course or topic code (e.g. "MATH.1", "EST.4.1")
  */
-export function getTosCompetency(codeOrId: string): TosCompetency | undefined {
-  if (!codeOrId) return undefined;
-  const upper = codeOrId.toUpperCase().trim();
-  if (PRC_TOS_COMPETENCIES[upper]) {
-    return PRC_TOS_COMPETENCIES[upper];
+export function getTosCourse(code: string): TosCourse | undefined {
+  if (!code) return undefined;
+  const upper = code.toUpperCase().trim();
+  if (PRC_TOS_COURSES[upper]) {
+    return PRC_TOS_COURSES[upper];
   }
-  // Try resolving from ID prefix
-  const parts = upper.split("-");
+  // Try resolving from 2-part prefix (e.g. "EST.4.1" -> "EST.4")
+  const parts = upper.split(".");
   if (parts.length >= 2) {
-    const candidateCode = `${parts[0]}-${parts[1]}`;
-    if (PRC_TOS_COMPETENCIES[candidateCode]) {
-      return PRC_TOS_COMPETENCIES[candidateCode];
+    const candidate = `${parts[0]}.${parts[1]}`;
+    if (PRC_TOS_COURSES[candidate]) {
+      return PRC_TOS_COURSES[candidate];
     }
   }
   return undefined;
