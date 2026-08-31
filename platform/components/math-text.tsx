@@ -313,16 +313,34 @@ function renderMarkdownTable(key: string, lines: string[], fitMode: "scroll" | "
   );
 }
 
-// In-line formatter for Math ($...$, $$...$$), Bold (**...**), Code Spans (`...`), and Italics (*...*)
+// Helper to pre-normalize varied LLM math and symbol outputs
+function preNormalizeMathText(raw: string): string {
+  if (!raw) return "";
+
+  return raw
+    // 1. LaTeX bracket and parenthesis delimiters: \[ ... \] -> $$...$$, \( ... \) -> $...$
+    .replace(/\\\[\s*([\s\S]*?)\s*\\\]/g, "$$$$$1$$$$")
+    .replace(/\\\(\s*([\s\S]*?)\s*\\\)/g, "$$$1$")
+    .replace(/\(\s*\\+([A-Za-z0-9_\/\s\^]+)\s*\\+\)/g, "($$$1$)")
+    // 2. Trailing/leading slash variables like \Z_L\ or \Z_{in}\ -> $Z_L$, $Z_{in}$
+    .replace(/\\([A-Za-z0-9_'\^]+(?:\{[^\}]+\})?)\\/g, "$$$1$")
+    // 3. Parenthesized display math ($$...$$) -> ($ ... $)
+    .replace(/\(\s*\$\$([\s\S]*?)\$\$\s*\)/g, "($$$1$)")
+    .replace(/\[\s*\$\$([\s\S]*?)\$\$\s*\]/g, "[$$$1$]")
+    // 4. Calculator keystrokes \sqrt{} -> √ inside brackets or raw text
+    .replace(/\\sqrt\{\}/g, "√")
+    .replace(/\\times/g, "×")
+    .replace(/\\div/g, "÷")
+    .replace(/\\pm/g, "±");
+}
+
+// In-line formatter for Math ($...$, $$...$$), Bold (**...**), Code Spans (`...`), Keycaps ([...]), and Italics (*...*)
 function InlineFormattedText({ content, fitMode = "scroll" }: { content: string; fitMode?: "scroll" | "fit" }) {
   const parts = useMemo(() => {
-    // 1. Normalize ($$...$$) -> ($ ... $) so display math doesn't break parentheses onto new lines
-    const normalized = content
-      .replace(/\(\s*\$\$([\s\S]*?)\$\$\s*\)/g, "($$$1$)")
-      .replace(/\[\s*\$\$([\s\S]*?)\$\$\s*\]/g, "[$$$1$]");
+    const normalized = preNormalizeMathText(content);
 
-    // Tokenize on $$...$$, $...$ (single-line), **...**, and `...`
-    const regex = /(\$\$[\s\S]*?\$\$|\$[^\$\n\r]+?\$|\*\*[^\*]+?\*\*|`[^`\n\r]+?`)/g;
+    // Tokenize on $$...$$, $...$ (single-line), **...**, `...`, and [ KEY ]
+    const regex = /(\$\$[\s\S]*?\$\$|\$[^\$\n\r]+?\$|\*\*[^\*]+?\*\*|`[^`\n\r]+?`|\[\s*(?:√|[A-Z0-9_\+\-\*\/\=\s]{1,10})\s*\])/g;
     const tokens = normalized.split(regex);
 
     return tokens.map((token, i) => {
@@ -352,6 +370,13 @@ function InlineFormattedText({ content, fitMode = "scroll" }: { content: string;
           <code key={i} className="px-1.5 py-0.5 rounded-md bg-[var(--surface2)] border border-[var(--border)] font-mono text-xs text-[var(--accent)] font-semibold">
             {token.slice(1, -1)}
           </code>
+        );
+      } else if (token.startsWith("[") && token.endsWith("]") && token.length >= 2 && !token.includes("$")) {
+        const keyLabel = token.slice(1, -1).trim();
+        return (
+          <kbd key={i} className="inline-flex items-center justify-center px-1.5 py-0.5 mx-0.5 rounded-md bg-[var(--surface2)] border border-[var(--border)] font-mono text-xs font-bold text-[var(--accent)] shadow-2xs">
+            {keyLabel}
+          </kbd>
         );
       } else if (token.startsWith("**") && token.endsWith("**") && token.length >= 4) {
         return (
