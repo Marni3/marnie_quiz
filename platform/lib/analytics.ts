@@ -157,7 +157,7 @@ export async function getUserAnalyticsOverview(userId: string): Promise<UserAnal
     const overallAvgPaceSeconds = timeMeasurements > 0 ? Math.round(totalSeconds / timeMeasurements) : 45;
 
     // 4. Fetch module progress and all authored modules
-    const [allModules, userModules] = await Promise.all([
+    const [rawModules, userModules] = await Promise.all([
       getAllLearningModules().catch(() => []),
       db
         .select()
@@ -165,6 +165,8 @@ export async function getUserAnalyticsOverview(userId: string): Promise<UserAnal
         .where(eq(userModuleProgress.userId, userId))
         .catch(() => []),
     ]);
+
+    const allModules = rawModules.filter((m) => !m.isLegacy);
 
     const domainModuleCounts: Record<string, { total: number; completed: number }> = {
       MATH: { total: 0, completed: 0 },

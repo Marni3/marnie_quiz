@@ -184,7 +184,8 @@ export function ModuleReader({
 
   const handleAskAITutor = () => {
     if (!selectionPopover) return;
-    const promptText = "Could you explain this to me in a plain and easy to understand way then give me examples or practice to work with?";
+    const highlight = selectionPopover.text.trim();
+    const promptText = `Regarding "${highlight}": Could you explain this to me in a plain and easy to understand way then give me examples or practice to work with?`;
     
     setPendingTutorContext({
       type: "module_highlight",
@@ -192,7 +193,7 @@ export function ModuleReader({
       moduleCode: module.code,
       subtopicTitle: module.subtopicTitle,
       domain: module.domain,
-      highlightText: selectionPopover.text,
+      highlightText: highlight,
       prompt: promptText,
     });
 
@@ -200,7 +201,7 @@ export function ModuleReader({
       type: "module_highlight",
       code: module.code || "",
       title: module.subtopicTitle || "",
-      highlight: selectionPopover.text,
+      highlight: highlight,
       prompt: promptText,
     });
 
