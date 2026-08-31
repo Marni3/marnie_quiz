@@ -23,6 +23,7 @@ import {
   getActiveSessionId,
   setActiveSessionId,
   getAndClearPendingReviewContext,
+  getAndClearPendingTutorContext,
   getStoredModelsForProvider,
   setStoredModelsForProvider,
   StoredModelOption,
@@ -195,20 +196,101 @@ export function TutorView() {
       }
     };
 
-    // Check if there is a pending review exam context from a quiz/mastery completion or URL param
-    const pendingReview = getAndClearPendingReviewContext();
-    const modeParam = searchParams.get("mode");
+    // Check for pending tutor context (module highlights, quizzes, exam review) or URL search parameters
+    const pendingContext = getAndClearPendingTutorContext();
+    const promptParam = searchParams.get("prompt");
+    const highlightParam = searchParams.get("highlight");
+    const codeParam = searchParams.get("code");
+    const titleParam = searchParams.get("title");
+    const modeParam = searchParams.get("mode") as TutorFunctionMode | null;
     const attemptIdParam = searchParams.get("attemptId");
 
-    if (pendingReview || modeParam === "review_exam") {
-      if (pendingReview) {
-        setupReviewSession(pendingReview, activeProv, activeMod, key);
+    // Case A: Module Highlight / Text Ingestion
+    if (pendingContext?.type === "module_highlight" || highlightParam) {
+      const code = pendingContext?.moduleCode || codeParam || "";
+      const topicTitle = pendingContext?.subtopicTitle || titleParam || "Lesson Concept";
+      const highlight = pendingContext?.highlightText || highlightParam || "";
+      const userPrompt = pendingContext?.prompt || promptParam || "Could you explain this to me in a plain and easy to understand way then give me examples or practice to work with?";
+
+      const attachedCtx: ChatSession["attachedContext"] = {
+        type: "module_highlight",
+        id: code || "module_highlight",
+        title: `${code ? `[${code}] ` : ""}${topicTitle}`,
+        payload: {
+          code,
+          subtopicTitle: topicTitle,
+          highlight,
+          domain: pendingContext?.domain || "",
+        },
+      };
+
+      setAttachedContext(attachedCtx);
+      setFunctionMode("chat");
+      setInputPrompt(userPrompt);
+
+      const newSession: ChatSession = {
+        id: `session_${Date.now()}`,
+        title: `Ask AI: ${topicTitle}`,
+        createdAt: Date.now(),
+        updatedAt: Date.now(),
+        provider: activeProv,
+        model: activeMod,
+        messages: [],
+        attachedContext: attachedCtx,
+      };
+
+      setActiveSession(newSession);
+      setActiveSessionId(newSession.id);
+      saveStoredSession(newSession);
+
+      if (key && key.trim()) {
+        setTimeout(() => {
+          handleSendMessage(userPrompt, "chat", attachedCtx.payload, newSession);
+        }, 300);
+      }
+      return;
+    }
+
+    // Case B: General Prompt parameter from link/search
+    if (promptParam && !pendingContext) {
+      const userPrompt = promptParam;
+      const targetMode: TutorFunctionMode = modeParam || "chat";
+      setFunctionMode(targetMode);
+      setInputPrompt(userPrompt);
+
+      const newSession: ChatSession = {
+        id: `session_${Date.now()}`,
+        title: userPrompt.slice(0, 30) + "...",
+        createdAt: Date.now(),
+        updatedAt: Date.now(),
+        provider: activeProv,
+        model: activeMod,
+        messages: [],
+      };
+
+      setActiveSession(newSession);
+      setActiveSessionId(newSession.id);
+      saveStoredSession(newSession);
+
+      if (key && key.trim()) {
+        setTimeout(() => {
+          handleSendMessage(userPrompt, targetMode, null, newSession);
+        }, 300);
+      }
+      return;
+    }
+
+    // Case C: Exam Review
+    if (pendingContext?.type === "exam_review" || modeParam === "review_exam" || (pendingContext && !pendingContext.type)) {
+      const reviewPayload = pendingContext?.examData || pendingContext;
+      if (reviewPayload && reviewPayload.examTitle) {
+        setupReviewSession(reviewPayload, activeProv, activeMod, key);
       } else if (attemptIdParam) {
         fetch(`/api/attempts/${attemptIdParam}`)
           .then((res) => res.json())
           .then((data) => {
             if (data.success) {
-              const reviewPayload = {
+              const payload = {
                 attemptId: data.attempt.id,
                 examTitle: data.questionSet?.title || "Quiz Attempt",
                 subjectTag: data.questionSet?.subjectTag,
@@ -224,7 +306,7 @@ export function TutorView() {
                   explanation: q.explanation || "",
                 })),
               };
-              setupReviewSession(reviewPayload, activeProv, activeMod, key);
+              setupReviewSession(payload, activeProv, activeMod, key);
             }
           })
           .catch((err) => console.warn("Failed to fetch attempt for AI debrief:", err));
@@ -894,6 +976,31 @@ export function TutorView() {
                     <span>Low-Energy Study (5 Mins) — Keep Streak Alive!</span>
                   </button>
                 </div>
+              </div>
+            )}
+
+            {/* Attached Lesson Highlight / Exam Context Pill */}
+            {attachedContext && (
+              <div className="flex items-start justify-between gap-2 px-3 py-2 rounded-xl bg-purple-500/10 border border-purple-500/25 text-xs text-[var(--text)] font-sans animate-in fade-in">
+                <div className="space-y-1 min-w-0">
+                  <div className="flex items-center gap-1.5 font-bold text-purple-600 dark:text-purple-400 text-[11px] font-mono">
+                    <BookOpen className="w-3.5 h-3.5 shrink-0" />
+                    <span>{attachedContext.title || "Attached Lesson Context"}</span>
+                  </div>
+                  {attachedContext.payload?.highlight && (
+                    <p className="text-[11px] text-[var(--text2)] line-clamp-2 italic bg-[var(--surface)]/80 p-1.5 rounded-lg border border-purple-500/20">
+                      &ldquo;{attachedContext.payload.highlight}&rdquo;
+                    </p>
+                  )}
+                </div>
+                <button
+                  type="button"
+                  onClick={() => setAttachedContext(null)}
+                  className="p-1 text-[var(--text3)] hover:text-rose-500 transition-colors cursor-pointer shrink-0"
+                  title="Remove attached context"
+                >
+                  <X className="w-3.5 h-3.5" />
+                </button>
               </div>
             )}
 

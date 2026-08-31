@@ -57,7 +57,31 @@ export function getSystemPrompt(
     ? `\n\n${userProfileContext}\n`
     : "";
 
-  const basePrompt = `${BASE_SOCRATIC_PROMPT}${profileSection}`;
+  let contextSection = "";
+  if (contextPayload) {
+    if (contextPayload.type === "module_highlight" || contextPayload.highlight || contextPayload.highlightText) {
+      const code = contextPayload.code || contextPayload.moduleCode || "";
+      const title = contextPayload.subtopicTitle || contextPayload.title || "";
+      const highlight = contextPayload.highlight || contextPayload.highlightText || "";
+      contextSection = `\n\nATTACHED LESSON HIGHLIGHT CONTEXT:
+- Module Reference: ${code ? `[${code}] ` : ""}${title}
+- Highlighted Excerpt from Lesson:
+"""
+${highlight}
+"""
+INSTRUCTION: The student highlighted the excerpt above and is asking for clarification. Explain this specific concept clearly and plainly from first principles, then provide illustrative examples or a quick practice exercise to test their understanding.\n`;
+    } else if (contextPayload.type === "question" || contextPayload.promptText || contextPayload.questionData) {
+      const q = contextPayload.questionData || contextPayload;
+      contextSection = `\n\nATTACHED BOARD EXAM QUESTION CONTEXT:
+- Problem: ${q.promptText || ""}
+- Choices: A) ${q.choices?.a || q.choiceA || ""} | B) ${q.choices?.b || q.choiceB || ""} | C) ${q.choices?.c || q.choiceC || ""} | D) ${q.choices?.d || q.choiceD || ""}
+- Correct Answer: ${q.correctChoice || ""}
+- Given Explanation: ${q.explanation || ""}
+INSTRUCTION: Deconstruct this specific question, explain why the correct choice holds and why common distractor choices are traps, and provide calculator speed shortcuts.\n`;
+    }
+  }
+
+  const basePrompt = `${BASE_SOCRATIC_PROMPT}${profileSection}${contextSection}`;
 
   switch (mode) {
     case "chat":
@@ -65,7 +89,7 @@ export function getSystemPrompt(
 
 MODE: AI Tutor & Conceptual Mentor
 Your goal is to answer the student's questions conceptually, deconstruct board exam topics, show worked step-by-step solutions, and provide calculator speed tricks.
-Proactively use the student's FSRS memory state and past exam history if available to tailor your explanations to their exact weak areas.`;
+Proactively use the student's FSRS memory state, past exam history, and any attached lesson highlights to tailor your explanations to their exact level.`;
 
     case "custom_module":
       return `${basePrompt}

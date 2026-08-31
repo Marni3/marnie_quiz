@@ -12,6 +12,7 @@ import {
   getLastActiveModule,
   setLastActiveModule,
   LastActiveModuleInfo,
+  setPendingTutorContext,
 } from "@/lib/tutor/storage";
 import {
   BookOpen,
@@ -183,10 +184,27 @@ export function ModuleReader({
 
   const handleAskAITutor = () => {
     if (!selectionPopover) return;
-    const query = encodeURIComponent(
-      `Regarding ${module.subtopicTitle} (${module.code}): "${selectionPopover.text}" - Can you explain this principle and provide board exam shortcuts?`
-    );
-    window.open(`/tutor?prompt=${query}`, "_blank");
+    const promptText = "Could you explain this to me in a plain and easy to understand way then give me examples or practice to work with?";
+    
+    setPendingTutorContext({
+      type: "module_highlight",
+      title: `${module.code || "Module"}: ${module.subtopicTitle}`,
+      moduleCode: module.code,
+      subtopicTitle: module.subtopicTitle,
+      domain: module.domain,
+      highlightText: selectionPopover.text,
+      prompt: promptText,
+    });
+
+    const params = new URLSearchParams({
+      type: "module_highlight",
+      code: module.code || "",
+      title: module.subtopicTitle || "",
+      highlight: selectionPopover.text,
+      prompt: promptText,
+    });
+
+    window.open(`/tutor?${params.toString()}`, "_blank");
     setSelectionPopover(null);
   };
 

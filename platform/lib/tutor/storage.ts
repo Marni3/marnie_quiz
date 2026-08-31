@@ -169,19 +169,37 @@ export function setActiveSessionId(id: string | null): void {
 }
 
 // ==========================================
-// PENDING EXAM REVIEW CONTEXT
+// PENDING TUTOR CONTEXT (Modules, Highlights, Quizzes, Exam Reviews)
 // ==========================================
 
-export function setPendingReviewContext(payload: any): void {
+export interface TutorPendingContext {
+  type: "module_highlight" | "question" | "exam_review" | "chat";
+  title: string;
+  prompt?: string;
+  moduleCode?: string;
+  subtopicTitle?: string;
+  domain?: string;
+  highlightText?: string;
+  questionData?: {
+    promptText: string;
+    choices?: { a: string; b: string; c: string; d: string };
+    selectedChoice?: string;
+    correctChoice?: string;
+    explanation?: string;
+  };
+  examData?: any;
+}
+
+export function setPendingTutorContext(payload: TutorPendingContext): void {
   if (typeof window === "undefined") return;
   try {
     sessionStorage.setItem(STORAGE_KEYS.PENDING_REVIEW_CONTEXT, JSON.stringify(payload));
   } catch (err) {
-    console.error("Failed to set pending review context:", err);
+    console.error("Failed to set pending tutor context:", err);
   }
 }
 
-export function getAndClearPendingReviewContext(): any | null {
+export function getAndClearPendingTutorContext(): TutorPendingContext | null {
   if (typeof window === "undefined") return null;
   try {
     const raw = sessionStorage.getItem(STORAGE_KEYS.PENDING_REVIEW_CONTEXT);
@@ -191,6 +209,14 @@ export function getAndClearPendingReviewContext(): any | null {
   } catch {
     return null;
   }
+}
+
+export function setPendingReviewContext(payload: any): void {
+  setPendingTutorContext(payload);
+}
+
+export function getAndClearPendingReviewContext(): any | null {
+  return getAndClearPendingTutorContext();
 }
 
 // ==========================================

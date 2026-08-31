@@ -45,8 +45,8 @@ export interface ChatSession {
   model: string;
   messages: ChatMessage[];
   attachedContext?: {
-    type: "module" | "attempt" | "custom";
-    id: string;
+    type: "module" | "attempt" | "custom" | "module_highlight" | "question";
+    id?: string;
     title: string;
     payload?: any;
   };
