@@ -1176,10 +1176,31 @@ export function ModuleReader({
                         </div>
                       </div>
 
+                      {/* Why This Shortcut Works (Light Explanation) */}
+                      {guide.whyItWorks && (
+                        <div className="p-3.5 rounded-xl bg-amber-500/10 border border-amber-500/20 text-xs sm:text-sm text-amber-700 dark:text-amber-300 leading-relaxed space-y-1">
+                          <div className="font-mono font-bold uppercase text-[11px] flex items-center gap-1.5 text-amber-600 dark:text-amber-400">
+                            <Sparkles className="w-3.5 h-3.5" />
+                            <span>⚡ Why This Shortcut Works:</span>
+                          </div>
+                          <p>
+                            <MathText text={guide.whyItWorks} />
+                          </p>
+                        </div>
+                      )}
+
                       {cleanNotes && (
                         <p className="text-xs sm:text-sm text-[var(--text2)] pt-2 border-t border-[var(--border)] leading-relaxed">
                           <MathText text={cleanNotes} />
                         </p>
+                      )}
+
+                      {/* Search Advisory for Video Walkthroughs */}
+                      {guide.searchAdvisory && (
+                        <div className="text-[11px] font-mono text-[var(--text3)] flex items-center gap-1.5 pt-1">
+                          <ExternalLink className="w-3 h-3 text-[var(--accent)] shrink-0" />
+                          <span>Video walkthrough reference: <em>"{guide.searchAdvisory}"</em></span>
+                        </div>
                       )}
                     </div>
                   );

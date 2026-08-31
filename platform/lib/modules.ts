@@ -151,18 +151,22 @@ export interface LearningModule {
       problemType?: string;
       sampleProblem?: string;
       mode: string;
+      whyItWorks?: string;
       problemContext?: string;
       keystrokes: string[];
       notes: string;
+      searchAdvisory?: string;
     };
     canon?: {
       techniqueTitle?: string;
       problemType?: string;
       sampleProblem?: string;
       mode: string;
+      whyItWorks?: string;
       problemContext?: string;
       keystrokes: string[];
       notes: string;
+      searchAdvisory?: string;
     };
   };
   

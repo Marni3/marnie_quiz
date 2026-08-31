@@ -187,6 +187,7 @@
       "problemType": "Cyclic powers of i and complex powers on Karce KC-S991",
       "sampleProblem": "Evaluate i^79 + (1 + i)^4 in CMPLX mode.",
       "mode": "CMPLX Mode (MODE 2)",
+      "whyItWorks": "Because powers of the imaginary unit cycle every 4 iterations (i⁴ = 1), dividing the exponent by 4 directly maps the fractional remainder (.00=1, .25=i, .50=-1, .75=-i). Repeated squaring (x² x²) evaluates (1+i)⁴ = ((1+i)²)² in CMPLX mode without tedious binomial theorem expansions.",
       "keystrokes": [
         "MODE",
         "2",
@@ -206,13 +207,15 @@
         "x²",
         "="
       ],
-      "notes": "1. 79 ÷ 4 = 19.75. The fractional .75 (3/4) indicates remainder 3, so i^79 = i^3 = -i.\n2. For (1+i)^4, enter (1+i) then press x² twice to get -4.\n3. Net combined result: -4 - i."
+      "notes": "💡 Keystroke Rules:\n1. 79 ÷ 4 = 19.75. The fractional .75 (3/4) corresponds to remainder 3, giving i^79 = i³ = -i.\n2. For (1+i)⁴, enter (1+i) then press x² twice to get -4.\n3. Net combined result: -4 - i.",
+      "searchAdvisory": "Search 'Karce KC-S991 CMPLX Mode imaginary numbers speed shortcut' for full walkthroughs."
     },
     "canon": {
       "techniqueTitle": "High-Power i & Complex Polynomial Evaluation",
       "problemType": "Cyclic powers of i and complex powers on Canon F-789SGA",
       "sampleProblem": "Evaluate i^79 + (1 + i)^4 in CMPLX mode.",
       "mode": "CMPLX Mode (MODE 2)",
+      "whyItWorks": "Because powers of the imaginary unit cycle every 4 iterations (i⁴ = 1), dividing the exponent by 4 directly maps the fractional remainder (.00=1, .25=i, .50=-1, .75=-i). Repeated squaring (x² x²) evaluates (1+i)⁴ = ((1+i)²)² in CMPLX mode without tedious binomial theorem expansions.",
       "keystrokes": [
         "MODE",
         "2",
@@ -230,7 +233,8 @@
         "x²",
         "="
       ],
-      "notes": "1. 79 ÷ 4 = 19.75. The fractional .75 (3/4) indicates remainder 3, so i^79 = i^3 = -i.\n2. For (1+i)^4, enter (1+i) then press x² twice to get -4.\n3. Net combined result: -4 - i."
+      "notes": "💡 Keystroke Rules:\n1. 79 ÷ 4 = 19.75. The fractional .75 (3/4) corresponds to remainder 3, giving i^79 = i³ = -i.\n2. For (1+i)⁴, enter (1+i) then press x² twice to get -4.\n3. Net combined result: -4 - i.",
+      "searchAdvisory": "Search 'Canon F-789SGA Complex Mode cyclic powers and binomial powers' for video demonstrations."
     }
   },
   "conceptChecks": [
