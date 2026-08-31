@@ -7,6 +7,7 @@
     "dev": "npm --prefix platform run dev",
     "build": "npm --prefix platform run build",
     "start": "npm --prefix platform run start",
-    "manifest": "node scripts/generate-manifest.js"
+    "manifest": "node scripts/generate-manifest.js",
+    "audit": "node scripts/audit-modules.mjs"
   }
 }
