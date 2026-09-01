@@ -42,6 +42,7 @@ import {
   FileSpreadsheet,
   CheckSquare,
   ChevronDown,
+  ChevronRight,
   Paperclip,
   Trash2,
   CheckCircle2,
@@ -78,6 +79,8 @@ export function TutorView() {
   const [functionMode, setFunctionMode] = useState<TutorFunctionMode>("chat");
   const [isStreaming, setIsStreaming] = useState(false);
   const [streamingContent, setStreamingContent] = useState("");
+  const [streamElapsedSeconds, setStreamElapsedSeconds] = useState<number>(0);
+  const [isStreamPeekOpen, setIsStreamPeekOpen] = useState(false);
   const [attachedContext, setAttachedContext] = useState<any | null>(null);
   const [attachedFile, setAttachedFile] = useState<{
     name: string;
@@ -459,6 +462,13 @@ export function TutorView() {
     setInputPrompt("");
     setIsStreaming(true);
     setStreamingContent("");
+    setStreamElapsedSeconds(0);
+    setIsStreamPeekOpen(false);
+
+    const streamStartTime = Date.now();
+    const streamTimer = setInterval(() => {
+      setStreamElapsedSeconds((Date.now() - streamStartTime) / 1000);
+    }, 100);
 
     try {
       const res = await fetch("/api/tutor/stream", {
@@ -552,6 +562,7 @@ export function TutorView() {
       setActiveSession(finalSession);
       saveStoredSession(finalSession);
     } finally {
+      clearInterval(streamTimer);
       setIsStreaming(false);
       setStreamingContent("");
     }
@@ -873,23 +884,54 @@ export function TutorView() {
                   />
                 ))}
 
-                {/* Live Streaming Content Bubble */}
-                {isStreaming && streamingContent && (
-                  <ChatMessageItem
-                    message={{
-                      id: "streaming_active",
-                      role: "assistant",
-                      content: streamingContent,
-                      timestamp: Date.now(),
-                      functionMode,
-                    }}
-                  />
-                )}
+                {/* Live Generating Status Card with Elapsed Timer & Collapsible Peek (Deferred KaTeX Rendering) */}
+                {isStreaming && (
+                  <div className="bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-4 shadow-md space-y-3 max-w-2xl animate-in fade-in duration-200">
+                    <div className="flex items-center justify-between gap-3">
+                      <div className="flex items-center gap-2.5 text-xs sm:text-sm font-medium text-[var(--text)]">
+                        <Sparkles className="w-4 h-4 text-primary animate-pulse shrink-0" />
+                        <span>
+                          {functionMode === "review_exam"
+                            ? "Marnie AI is analyzing exam mistakes & deconstructing methods..."
+                            : functionMode === "custom_module"
+                            ? "Marnie AI is building interactive sprint module..."
+                            : "Marnie AI is generating response..."}
+                        </span>
+                      </div>
+                      <span className="font-mono text-xs font-semibold px-2.5 py-0.5 rounded-full bg-[var(--surface2)] text-[var(--accent)] border border-[var(--border)] shrink-0">
+                        {streamElapsedSeconds.toFixed(1)}s
+                      </span>
+                    </div>
 
-                {isStreaming && !streamingContent && (
-                  <div className="flex items-center gap-2 text-xs text-[var(--text2)] p-4 bg-[var(--surface2)] rounded-2xl w-fit animate-pulse border border-[var(--border)]">
-                    <RefreshCw className="w-3.5 h-3.5 animate-spin text-primary" />
-                    <span>Marnie AI is thinking and formulating explanation...</span>
+                    {streamingContent ? (
+                      <div className="border-t border-[var(--border)] pt-2">
+                        <button
+                          type="button"
+                          onClick={() => setIsStreamPeekOpen((prev) => !prev)}
+                          className="flex items-center gap-1.5 text-xs text-[var(--text3)] hover:text-[var(--text)] transition-colors py-1 cursor-pointer"
+                        >
+                          <ChevronRight
+                            className={`w-3.5 h-3.5 transition-transform duration-200 ${
+                              isStreamPeekOpen ? "rotate-90" : ""
+                            }`}
+                          />
+                          <span>{isStreamPeekOpen ? "Hide live stream" : "Peek live generation stream"}</span>
+                        </button>
+
+                        {isStreamPeekOpen && (
+                          <div className="mt-2 p-3 rounded-xl bg-[var(--surface2)] border border-[var(--border)] max-h-48 overflow-y-auto">
+                            <pre className="font-mono text-[11px] text-[var(--text2)] whitespace-pre-wrap break-words select-text leading-relaxed">
+                              {streamingContent}
+                            </pre>
+                          </div>
+                        )}
+                      </div>
+                    ) : (
+                      <div className="flex items-center gap-2 text-xs text-[var(--text3)] pt-1">
+                        <RefreshCw className="w-3 h-3 animate-spin text-primary shrink-0" />
+                        <span>Connecting to model and formulating answer...</span>
+                      </div>
+                    )}
                   </div>
                 )}
                 <div ref={messagesEndRef} />

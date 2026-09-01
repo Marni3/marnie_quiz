@@ -417,18 +417,18 @@ export function ChatMessageItem({ message, onTriggerAction }: ChatMessageProps) 
                 onClick={() =>
                   onTriggerAction(
                     "tricky_questions",
-                    "Please generate an isomorphic 10-question practice remix testing the exact concepts and distractor traps from my missed questions."
+                    "Please generate an isomorphic 5-to-10 question remedial practice drill testing the exact concepts, formulas, and distractor traps from my missed questions in this exam."
                   )
                 }
-                className="p-3 rounded-xl bg-[var(--surface)] border border-amber-500/30 hover:border-amber-500 hover:bg-amber-500/5 text-left flex items-start gap-2.5 transition-all group/btn"
+                className="p-3 rounded-xl bg-[var(--surface)] border border-amber-500/30 hover:border-amber-500 hover:bg-amber-500/5 text-left flex items-start gap-2.5 transition-all group/btn cursor-pointer"
               >
-                <RotateCcw className="w-4 h-4 text-amber-500 shrink-0 mt-0.5" />
+                <Zap className="w-4 h-4 text-amber-500 shrink-0 mt-0.5" />
                 <div>
                   <div className="text-xs font-bold text-[var(--text)] group-hover/btn:text-amber-500 transition-colors">
-                    ⚡ Practice Exam Remix
+                    ⚡ Launch 5–10Q Remedial Drill
                   </div>
                   <div className="text-[10px] text-[var(--text2)] leading-tight mt-0.5">
-                    Retest similar questions right now to verify mastery.
+                    Retest these exact concepts right now with an interactive micro-quiz.
                   </div>
                 </div>
               </button>

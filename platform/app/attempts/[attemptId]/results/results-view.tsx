@@ -91,6 +91,17 @@ export function ResultsView({
 
   const handleReviewWithAI = () => {
     try {
+      const missedQuestions = questions
+        .filter((q) => !q.isCorrect)
+        .slice(0, 10)
+        .map((q, idx) => ({
+          questionNumber: idx + 1,
+          promptText: q.promptText,
+          selectedChoice: q.selectedChoice || "Unanswered / Skipped",
+          correctChoice: q.correctChoice,
+          explanation: q.explanation || "",
+        }));
+
       sessionStorage.setItem(
         "marnie_tutor_pending_review_context",
         JSON.stringify({
@@ -100,14 +111,8 @@ export function ResultsView({
           score,
           total,
           percentage,
-          questions: questions.map((q) => ({
-            id: q.id,
-            promptText: q.promptText,
-            selectedChoice: q.selectedChoice,
-            correctChoice: q.correctChoice,
-            isCorrect: q.isCorrect,
-            explanation: q.explanation || "",
-          })),
+          totalMissed: questions.filter((q) => !q.isCorrect).length,
+          missedQuestions,
         })
       );
     } catch (err) {

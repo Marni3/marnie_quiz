@@ -57,37 +57,24 @@ export function calculateRetrievability(stabilityDays: number, lastStudiedAt: Da
 }
 
 /**
- * Updates or inserts a user's topic SRS record after completing an attempt.
+ * Updates or inserts a user's topic SRS record directly with given metadata.
  */
-export async function updateTopicSrsAfterAttempt({
+export async function updateTopicSrsDirectly({
   userId,
-  questionSetId,
+  topicCode,
+  topicName,
+  domain,
   scorePercent,
+  tier = "drill",
 }: {
   userId: string;
-  questionSetId: string;
+  topicCode: string;
+  topicName: string;
+  domain: string;
   scorePercent: number;
+  tier?: "drill" | "review" | "diagnostic" | "simulation";
 }) {
   try {
-    const [set] = await db
-      .select()
-      .from(questionSets)
-      .where(eq(questionSets.id, questionSetId))
-      .limit(1);
-
-    if (!set) return;
-
-    const topicCode = set.topicCode || "GEN-01";
-    const topicName = set.subjectTag || set.title.split("•")[0].trim();
-    const domain = set.title.startsWith("MATH")
-      ? "Mathematics"
-      : set.title.startsWith("ELEC")
-      ? "Electronics Engineering"
-      : set.title.startsWith("GEAS")
-      ? "General Engineering and Applied Sciences"
-      : "Electronics Systems and Technologies";
-
-    // Find existing SRS record
     const [existing] = await db
       .select()
       .from(userTopicSrs)
@@ -95,7 +82,7 @@ export async function updateTopicSrsAfterAttempt({
       .limit(1);
 
     const prevStability = existing?.stabilityDays || 3.0;
-    const newStability = calculateStability(prevStability, scorePercent, set.tier || "review");
+    const newStability = calculateStability(prevStability, scorePercent, tier);
     const now = new Date();
     const nextDue = new Date(now.getTime() + newStability * 24 * 60 * 60 * 1000);
     const totalAttempts = (existing?.totalAttempts || 0) + 1;
@@ -134,6 +121,50 @@ export async function updateTopicSrsAfterAttempt({
         lastScorePercent: scorePercent,
       });
     }
+  } catch (err) {
+    console.warn("SRS topic direct update failed (non-blocking):", err);
+  }
+}
+
+/**
+ * Updates or inserts a user's topic SRS record after completing an attempt.
+ */
+export async function updateTopicSrsAfterAttempt({
+  userId,
+  questionSetId,
+  scorePercent,
+}: {
+  userId: string;
+  questionSetId: string;
+  scorePercent: number;
+}) {
+  try {
+    const [set] = await db
+      .select()
+      .from(questionSets)
+      .where(eq(questionSets.id, questionSetId))
+      .limit(1);
+
+    if (!set) return;
+
+    const topicCode = set.topicCode || "GEN-01";
+    const topicName = set.subjectTag || set.title.split("•")[0].trim();
+    const domain = set.title.startsWith("MATH")
+      ? "Mathematics"
+      : set.title.startsWith("ELEC")
+      ? "Electronics Engineering"
+      : set.title.startsWith("GEAS")
+      ? "General Engineering and Applied Sciences"
+      : "Electronics Systems and Technologies";
+
+    await updateTopicSrsDirectly({
+      userId,
+      topicCode,
+      topicName,
+      domain,
+      scorePercent,
+      tier: (set.tier as any) || "review",
+    });
   } catch (err) {
     console.warn("SRS topic update failed (non-blocking):", err);
   }
@@ -547,6 +578,7 @@ export async function updateModuleProgress({
     updatedAt: now,
   };
 
+  let resultRecord: UserModuleProgress;
   try {
     if (existing) {
       const [updated] = await db
@@ -554,7 +586,7 @@ export async function updateModuleProgress({
         .set(recordData)
         .where(eq(userModuleProgress.id, existing.id))
         .returning();
-      return updated;
+      resultRecord = updated;
     } else {
       const [inserted] = await db
         .insert(userModuleProgress)
@@ -564,7 +596,7 @@ export async function updateModuleProgress({
           createdAt: now,
         })
         .returning();
-      return inserted;
+      resultRecord = inserted;
     }
   } catch (err) {
     // Fallback store update
@@ -576,8 +608,37 @@ export async function updateModuleProgress({
       createdAt: existing?.createdAt || now,
     };
     store.userModuleProgress.set(`${userId}_${moduleId}`, record);
-    return record;
+    resultRecord = record;
   }
+
+  // Synchronize to userTopicSrs so topic appears in Retention Board, BRI, and Refresher Drills
+  try {
+    const resolvedTopicCode = topicCode || existing?.topicCode || recordData.topicCode;
+    const resolvedDomain = domain || existing?.domain || recordData.domain;
+    if (masteryScorePercent !== undefined) {
+      await updateTopicSrsDirectly({
+        userId,
+        topicCode: resolvedTopicCode,
+        topicName: resolvedTopicCode,
+        domain: resolvedDomain,
+        scorePercent: masteryScorePercent,
+        tier: "drill",
+      });
+    } else if (conceptChecksAccuracy !== undefined && conceptChecksAccuracy > 0) {
+      await updateTopicSrsDirectly({
+        userId,
+        topicCode: resolvedTopicCode,
+        topicName: resolvedTopicCode,
+        domain: resolvedDomain,
+        scorePercent: Math.round(conceptChecksAccuracy * 100),
+        tier: "review",
+      });
+    }
+  } catch (srsSyncErr) {
+    console.warn("Topic SRS sync from module progress failed:", srsSyncErr);
+  }
+
+  return resultRecord;
 }
 
 /**

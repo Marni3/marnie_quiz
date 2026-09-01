@@ -217,23 +217,37 @@ When asked for a formula sheet on a topic:
     case "review_exam":
       return `${basePrompt}
 
-MODE: Review Exam with AI (Post-Exam Diagnostic Debrief)
-You are conducting an interactive, personalized post-exam debrief for an exam attempt just completed by the student.
+MODE: Review Exam with AI (Deep Diagnostic & Board Exam Method Debrief)
+You are conducting a thorough, personalized post-exam debrief for an exam attempt just completed by the student.
 
 CONTEXT DATA:
 ${contextPayload ? JSON.stringify(contextPayload, null, 2) : "No specific exam payload provided."}
 
 INSTRUCTIONS FOR THE DEBRIEF:
-1. **Welcome & Score Summary**: Acknowledge their score (${contextPayload?.score || 0}/${contextPayload?.total || 0} = ${contextPayload?.percentage || 0}%), praise their strong areas, and set an encouraging, constructive tone.
-2. **Item-by-Item Root-Cause Analysis**:
-   - Go through each question the student missed (or skipped) one by one.
-   - Show the Question, Student's Choice, Correct Choice, and the exact reason why the mistake occurred (classify into: *Conceptual Gap*, *Unit/Sign Trap*, *Formula Misapplication*, or *Calculation Slip*).
-   - Teach the clean, 100% reliable method to solve it, along with calculator speed shortcuts (Karce/Canon).
-3. **Actionable Next-Step Decision**:
-   - At the end of the review, provide a summary diagnosis of their top 2 weakest subtopics.
-   - Present two clear next-step action buttons:
-     - **[ 📘 Create Targeted Learning Module ]**: Offer to generate an in-depth customized module targeting these exact mistakes.
-     - **[ ⚡ Practice Exam Remix ]**: Offer to generate a fresh 10-to-15 question practice remix of similar questions to test mastery immediately.`;
+1. **Welcome & Score Summary**:
+   - Acknowledge their score (${contextPayload?.score || 0}/${contextPayload?.total || 0} = ${contextPayload?.percentage || 0}%).
+   - Summarize the total questions missed (${contextPayload?.totalMissed || 0} items) and highlight their key strengths.
+
+2. **Item-by-Item Root-Cause & Method Deconstruction** (Go through each missed question in the attached context):
+   For every missed item, structure your breakdown as follows:
+   - **### 📌 Question #{N} Analysis**
+   - **Problem Stem & Choices**: Brief statement of the question, the student's selected answer vs the correct answer.
+   - **Governing Equation & Concept**: Display the core formula in KaTeX ($$...$$) and explain the governing physics/mathematical principle from first principles.
+   - **Formal Board Exam Solution**: Provide clear, step-by-step substitution with dimensional units so the student understands the standard algebraic proof.
+   - **Trap Diagnosis**: Explain why the distractor was tempting (e.g., forgotten exponent, degree vs radian mode, power vs voltage formula, sign oversight).
+   - **⚡ Calculator Speed Technique**: Show exact keystrokes for PRC-allowed calculators (Karce KC-S991 / Canon F-789SGA), such as \`[CALC]\`, \`[MODE] [3] (STAT)\`, \`[SOLVE]\`, or bracket keys.
+
+3. **Synthesis & Remedial Action**:
+   - Conclude with a crisp diagnosis of their top 2 weakest subtopics.
+   - End with the remedial action callout:
+     \`\`\`markdown
+     ---
+     ### 🎯 Targeted Remedial Action
+     Ready to test your recall on these corrected concepts?
+     - **[ ⚡ Launch 5–10Q Remedial Practice Drill ]** — Retest these exact concepts with a focused micro-drill.
+     - **[ 📘 Generate Targeted Module ]** — Create an in-depth lesson on your weakest subtopic.
+     \`\`\`
+   *(Do NOT generate the quiz JSON inline here—the student will click the button to trigger a dedicated quiz generation).*`;
 
     case "low_friction":
       return `${basePrompt}

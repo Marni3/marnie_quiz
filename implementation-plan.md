@@ -680,4 +680,31 @@ The following architectural initiatives and product enhancements are formally lo
 - **GEAS Modules:** `geas-10-02.json` (Board of ECE, Powers & Scope), `geas-10-03.json` (Examination, Registration & Licensure), followed by Chemistry, Physics, and Thermodynamics modules.
 - **EST & ELECS Modules:** Transmission lines, Antennas, BJTs, Op-Amps, and Digital Logic per [`modules-authoring-plan.md`](file:///c:/Users/reyna/OneDrive/Documents/marnie_quiz/test-sets/Reference%20Documents/modules-authoring-plan.md).
 
+### 16.6. CI/CD Automation & Automated Quality Linting Pipelines
+- **1. GitHub Actions CI Automation (`.github/workflows/ci.yml`):**
+  - Triggers on every pull request and push to `main`.
+  - Executes `npm run audit` (Module & Mastery validation), `npm run lint` (ESLint), and `npm run build` (Turbopack + TypeScript type-checking).
+  - Guarantees that zero regressions, broken types, or un-audited test sets ever reach production.
+- **2. KaTeX Math Syntax & Delimiter Linter:**
+  - Automated regex and AST scanner across all markdown strings (`theoryHtmlMarkdown`, `formalSolutionMarkdown`, `shortcutSolutionMarkdown`, `distractorReason`).
+  - Flags unclosed `$` delimiters, multiline paragraph math captures, and malformed LaTeX commands before they cause client-side rendering crashes.
+- **3. Syllabus & TOS Mapping Integrity Validator:**
+  - Verifies that every `topicCode` and `domain` across `test-sets/learning-modules/` matches an active key in `platform/lib/tos-mapping.ts`.
+  - Prevents "orphan" modules and broken syllabus progress vectors.
+- **4. CSV Question Bank Schema Validator (`/test-sets/csv/`):**
+  - Verifies RFC4180 CSV compliance, mandatory headers (`question_text`, `choice_a`, `choice_b`, `choice_c`, `choice_d`, `correct_answer`, `explanation`, `archetype`, `domain`), and valid answer keys.
+
+---
+
+## 17. Study-First Milestone Guardrail (Platform Feature Freeze)
+
+> [!IMPORTANT]
+> **STUDY ANCHOR & PLATFORM WORK FREEZE:**
+> **Do NOT resume platform engineering, UI features, or infrastructure refactoring until completing and mastering at least:**
+> 1. 📐 **Analytic Geometry** (`MATH 07-01` to `MATH 07-04` — Lines, Conics, Polar Curves, and 3D Quadrics)
+> 2. ⚖️ **ECE Laws, Ethics & Contracts (R.A. No. 9292)** (`GEAS 10-01` to `GEAS 10-03` — Enactment facts, Board Powers, Scope of Practice, Penal Provisions)
+>
+> The platform is in a stable, verified state (100% CI pass rate). Prioritize pure review and active retrieval over code edits.
+
+
 

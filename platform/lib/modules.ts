@@ -50,6 +50,8 @@ export interface MasteryChallengeQuestion {
   explanation: string;
   imageUrl?: string;
   archetype?: string;
+  category?: string;
+  difficulty?: string;
 }
 
 export interface MasteryChallengeSet {

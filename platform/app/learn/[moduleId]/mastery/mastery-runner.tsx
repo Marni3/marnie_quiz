@@ -234,6 +234,30 @@ export function MasteryRunner({
                 type="button"
                 onClick={() => {
                   try {
+                    const missedQuestions = mastery.questions
+                      .map((q) => {
+                        const selected = answers[q.id] || null;
+                        return {
+                          id: q.id,
+                          promptText: q.promptText,
+                          selectedChoice: selected || "Unanswered / Skipped",
+                          correctChoice: q.correctChoice,
+                          isCorrect: selected === q.correctChoice,
+                          explanation: q.explanation || "",
+                          category: q.category,
+                        };
+                      })
+                      .filter((q) => !q.isCorrect)
+                      .slice(0, 10)
+                      .map((q, idx) => ({
+                        questionNumber: idx + 1,
+                        promptText: q.promptText,
+                        selectedChoice: q.selectedChoice,
+                        correctChoice: q.correctChoice,
+                        explanation: q.explanation,
+                        category: q.category,
+                      }));
+
                     sessionStorage.setItem(
                       "marnie_tutor_pending_review_context",
                       JSON.stringify({
@@ -243,17 +267,8 @@ export function MasteryRunner({
                         score: results.correctCount,
                         total: totalQuestions,
                         percentage: results.scorePercent,
-                        questions: mastery.questions.map((q) => {
-                          const selected = answers[q.id] || null;
-                          return {
-                            id: q.id,
-                            promptText: q.promptText,
-                            selectedChoice: selected,
-                            correctChoice: q.correctChoice,
-                            isCorrect: selected === q.correctChoice,
-                            explanation: q.explanation || "",
-                          };
-                        }),
+                        totalMissed: totalQuestions - results.correctCount,
+                        missedQuestions,
                       })
                     );
                   } catch (err) {
