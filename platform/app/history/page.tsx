@@ -80,8 +80,9 @@ export default async function HistoryPage() {
                   ? `/learn/${item.moduleId}/mastery`
                   : `/quizzes/${item.questionSetId}`;
                 const resultLink = item.isMastery
-                  ? `/learn/${item.moduleId}/mastery`
+                  ? `/learn/${item.moduleId}/mastery?view=results`
                   : `/attempts/${item.id}/results`;
+                const primaryLink = isCompleted ? resultLink : targetLink;
 
                 return (
                   <div
@@ -103,7 +104,7 @@ export default async function HistoryPage() {
                           )}
                         </div>
                         <Link
-                          href={targetLink}
+                          href={primaryLink}
                           className="font-bold text-sm text-[var(--text)] hover:text-primary transition-colors line-clamp-2"
                         >
                           {item.setTitle}
@@ -205,8 +206,9 @@ export default async function HistoryPage() {
                         ? `/learn/${item.moduleId}/mastery`
                         : `/quizzes/${item.questionSetId}`;
                       const resultLink = item.isMastery
-                        ? `/learn/${item.moduleId}/mastery`
+                        ? `/learn/${item.moduleId}/mastery?view=results`
                         : `/attempts/${item.id}/results`;
+                      const primaryLink = isCompleted ? resultLink : targetLink;
 
                       return (
                         <tr
@@ -215,7 +217,7 @@ export default async function HistoryPage() {
                         >
                           <td className="px-6 py-4 font-semibold text-[var(--text)]">
                             <Link
-                              href={targetLink}
+                              href={primaryLink}
                               className="hover:text-[var(--accent)] transition-colors inline-flex items-center gap-2"
                             >
                               <span>{item.setTitle}</span>

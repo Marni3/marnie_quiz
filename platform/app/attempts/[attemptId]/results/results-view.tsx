@@ -118,7 +118,7 @@ export function ResultsView({
     } catch (err) {
       console.error(err);
     }
-    router.push("/tutor?mode=review_exam");
+    router.push(`/tutor?mode=review_exam&attemptId=${attempt.id}`);
   };
 
   return (

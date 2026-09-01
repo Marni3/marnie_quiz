@@ -160,12 +160,14 @@ export function TutorView() {
       mod: string,
       apiKey?: string
     ) => {
-      setAttachedContext({
-        type: "attempt",
-        title: reviewPayload?.examTitle || "Recent Exam Attempt",
-        payload: reviewPayload,
-      });
-      setFunctionMode("review_exam");
+      const attachedCtx: ChatSession["attachedContext"] = reviewPayload
+        ? {
+            type: "attempt",
+            id: reviewPayload.attemptId || "attempt",
+            title: reviewPayload.examTitle || "Recent Exam",
+            payload: reviewPayload,
+          }
+        : undefined;
 
       const newSession: ChatSession = {
         id: `session_${Date.now()}`,
@@ -175,14 +177,11 @@ export function TutorView() {
         provider: prov,
         model: mod,
         messages: [],
-        attachedContext: {
-          type: "attempt",
-          id: reviewPayload?.attemptId || "attempt",
-          title: reviewPayload?.examTitle || "Recent Exam",
-          payload: reviewPayload,
-        },
+        attachedContext: attachedCtx,
       };
 
+      setAttachedContext(attachedCtx);
+      setFunctionMode("review_exam");
       setActiveSession(newSession);
       setActiveSessionId(newSession.id);
       saveStoredSession(newSession);
@@ -207,6 +206,7 @@ export function TutorView() {
     const titleParam = searchParams.get("title");
     const modeParam = searchParams.get("mode") as TutorFunctionMode | null;
     const attemptIdParam = searchParams.get("attemptId");
+    const moduleIdParam = searchParams.get("moduleId");
 
     // Case A: Module Highlight / Text Ingestion
     if (pendingContext?.type === "module_highlight" || highlightParam) {
@@ -284,15 +284,31 @@ export function TutorView() {
     }
 
     // Case C: Exam Review
-    if (pendingContext?.type === "exam_review" || modeParam === "review_exam" || (pendingContext && !pendingContext.type)) {
+    if (
+      pendingContext?.type === "exam_review" ||
+      modeParam === "review_exam" ||
+      (pendingContext && !pendingContext.type)
+    ) {
       const reviewPayload = pendingContext?.examData || pendingContext;
-      if (reviewPayload && reviewPayload.examTitle) {
+      if (reviewPayload && (reviewPayload.examTitle || reviewPayload.missedQuestions)) {
         setupReviewSession(reviewPayload, activeProv, activeMod, key);
       } else if (attemptIdParam) {
         fetch(`/api/attempts/${attemptIdParam}`)
           .then((res) => res.json())
           .then((data) => {
             if (data.success) {
+              const allQuestions = data.questions || [];
+              const missedQuestions = allQuestions
+                .filter((q: any) => !q.isCorrect)
+                .slice(0, 10)
+                .map((q: any, idx: number) => ({
+                  questionNumber: idx + 1,
+                  promptText: q.promptText,
+                  selectedChoice: q.selectedChoice || "Unanswered / Skipped",
+                  correctChoice: q.correctChoice,
+                  explanation: q.explanation || "",
+                }));
+
               const payload = {
                 attemptId: data.attempt.id,
                 examTitle: data.questionSet?.title || "Quiz Attempt",
@@ -300,19 +316,39 @@ export function TutorView() {
                 score: data.score,
                 total: data.total,
                 percentage: data.percentage,
-                questions: data.questions?.map((q: any) => ({
-                  id: q.id,
-                  promptText: q.promptText,
-                  selectedChoice: q.selectedChoice,
-                  correctChoice: q.correctChoice,
-                  isCorrect: q.isCorrect,
-                  explanation: q.explanation || "",
-                })),
+                totalMissed: allQuestions.filter((q: any) => !q.isCorrect).length,
+                missedQuestions,
               };
               setupReviewSession(payload, activeProv, activeMod, key);
+            } else {
+              setupReviewSession(null, activeProv, activeMod, key);
             }
           })
-          .catch((err) => console.warn("Failed to fetch attempt for AI debrief:", err));
+          .catch((err) => {
+            console.warn("Failed to fetch attempt for AI debrief:", err);
+            setupReviewSession(null, activeProv, activeMod, key);
+          });
+      } else if (moduleIdParam) {
+        fetch(`/api/modules/${moduleIdParam}/progress`)
+          .then((res) => res.json())
+          .then((data) => {
+            const prog = data.progress;
+            const scorePct = prog?.masteryScorePercent ?? 0;
+            const payload = {
+              attemptId: `mastery_${moduleIdParam}`,
+              examTitle: `${moduleIdParam.toUpperCase()} Mastery Challenge`,
+              subjectTag: prog?.domain || "Mastery",
+              score: prog?.masteryScorePercent ? Math.round((prog.masteryScorePercent / 100) * 20) : 0,
+              total: 20,
+              percentage: scorePct,
+              totalMissed: prog?.masteryScorePercent ? 20 - Math.round((prog.masteryScorePercent / 100) * 20) : 0,
+              missedQuestions: [],
+            };
+            setupReviewSession(payload, activeProv, activeMod, key);
+          })
+          .catch(() => {
+            setupReviewSession(null, activeProv, activeMod, key);
+          });
       } else {
         setupReviewSession(null, activeProv, activeMod, key);
       }

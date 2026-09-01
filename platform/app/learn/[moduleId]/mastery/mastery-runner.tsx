@@ -2,9 +2,10 @@
 
 import React, { useState, useEffect, useMemo } from "react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { LearningModule, MasteryChallengeSet } from "@/lib/modules";
 import { MathText } from "@/components/math-text";
+import { setPendingTutorContext } from "@/lib/tutor/storage";
 import {
   Award,
   Clock,
@@ -36,15 +37,35 @@ export function MasteryRunner({
   onCloseModal,
 }: MasteryRunnerProps) {
   const router = useRouter();
+  const searchParams = useSearchParams();
   const totalQuestions = mastery.questions.length;
   const initialTimeSeconds = (mastery.timeLimitMinutes || 30) * 60;
 
+  const isResultsViewParam = searchParams.get("view") === "results";
+
   // Quiz State
   const [currentIndex, setCurrentIndex] = useState<number>(0);
-  const [answers, setAnswers] = useState<Record<string, "A" | "B" | "C" | "D">>({});
+  const [answers, setAnswers] = useState<Record<string, "A" | "B" | "C" | "D">>(() => {
+    if (typeof window === "undefined") return {};
+    try {
+      const saved = localStorage.getItem(`marnie_mastery_answers_${module.id}`);
+      return saved ? JSON.parse(saved) : {};
+    } catch {
+      return {};
+    }
+  });
   const [flagged, setFlagged] = useState<Set<string>>(new Set());
   const [timeRemaining, setTimeRemaining] = useState<number>(initialTimeSeconds);
-  const [isSubmitted, setIsSubmitted] = useState<boolean>(false);
+  const [isSubmitted, setIsSubmitted] = useState<boolean>(() => {
+    if (typeof window === "undefined") return false;
+    try {
+      const savedSubmitted = localStorage.getItem(`marnie_mastery_submitted_${module.id}`);
+      if (isResultsViewParam) return true;
+      return savedSubmitted === "true";
+    } catch {
+      return false;
+    }
+  });
   const [showSubmitModal, setShowSubmitModal] = useState<boolean>(false);
   const [reviewFilter, setReviewFilter] = useState<"all" | "incorrect" | "correct" | "flagged">("all");
 
@@ -128,6 +149,11 @@ export function MasteryRunner({
     setIsSubmitted(true);
     setShowSubmitModal(false);
 
+    try {
+      localStorage.setItem(`marnie_mastery_answers_${module.id}`, JSON.stringify(answers));
+      localStorage.setItem(`marnie_mastery_submitted_${module.id}`, "true");
+    } catch {}
+
     let correctCount = 0;
     mastery.questions.forEach((q) => {
       if (answers[q.id] === q.correctChoice) correctCount++;
@@ -153,6 +179,10 @@ export function MasteryRunner({
 
   // Retake
   const handleRetake = () => {
+    try {
+      localStorage.removeItem(`marnie_mastery_answers_${module.id}`);
+      localStorage.removeItem(`marnie_mastery_submitted_${module.id}`);
+    } catch {}
     setAnswers({});
     setFlagged(new Set());
     setTimeRemaining(initialTimeSeconds);
@@ -274,7 +304,7 @@ export function MasteryRunner({
                   } catch (err) {
                     console.error(err);
                   }
-                  router.push("/tutor?mode=review_exam");
+                  router.push(`/tutor?mode=review_exam&moduleId=${module.id}`);
                 }}
                 className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-primary to-accent text-white text-sm font-bold shadow-md hover:opacity-95 transition-all cursor-pointer"
               >
