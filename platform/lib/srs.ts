@@ -5,6 +5,7 @@ import {
   questionSets,
   questions,
   questionSetItems,
+  answerRecords,
   attempts,
   users,
   UserTopicSrs,
@@ -126,17 +127,29 @@ export async function updateTopicSrsDirectly({
   }
 }
 
+function resolveDomain(subjectTag?: string | null, titleOrCode?: string): string {
+  const upper = `${subjectTag || ""} ${titleOrCode || ""}`.toUpperCase();
+  if (upper.includes("MATH")) return "Mathematics";
+  if (upper.includes("ELEC")) return "Electronics Engineering";
+  if (upper.includes("GEAS")) return "General Engineering and Applied Sciences";
+  if (upper.includes("EST")) return "Electronics Systems and Technologies";
+  return "General";
+}
+
 /**
  * Updates or inserts a user's topic SRS record after completing an attempt.
+ * For dynamic Refresher Drills, partitions results across all specific topics touched.
  */
 export async function updateTopicSrsAfterAttempt({
   userId,
   questionSetId,
   scorePercent,
+  attemptId,
 }: {
   userId: string;
   questionSetId: string;
   scorePercent: number;
+  attemptId?: string;
 }) {
   try {
     const [set] = await db
@@ -145,17 +158,86 @@ export async function updateTopicSrsAfterAttempt({
       .where(eq(questionSets.id, questionSetId))
       .limit(1);
 
-    if (!set) return;
+    if (!set) {
+      // Fallback check in store
+      const store = getMockStore();
+      const mockSet = store.questionSets.get(questionSetId);
+      if (!mockSet) return;
+      
+      const topicCode = mockSet.topicCode || "GEN-01";
+      const cleanTitle = mockSet.title.replace(/^[⚡\s]+/, "");
+      const topicName = mockSet.subjectTag || cleanTitle.split("•")[0].trim();
+      const domain = resolveDomain(mockSet.subjectTag, cleanTitle);
+
+      await updateTopicSrsDirectly({
+        userId,
+        topicCode,
+        topicName,
+        domain,
+        scorePercent,
+        tier: (mockSet.tier as any) || "review",
+      });
+      return;
+    }
+
+    // If it's a dynamic refresher drill and we have an attemptId, partition by topics touched!
+    if (set.tier === "drill" && attemptId) {
+      try {
+        const records = await db
+          .select({
+            isCorrect: answerRecords.isCorrect,
+            microCluster: questions.microCluster,
+          })
+          .from(answerRecords)
+          .innerJoin(questions, eq(answerRecords.questionId, questions.id))
+          .where(eq(answerRecords.attemptId, attemptId));
+
+        if (records.length > 0) {
+          const topicStats = new Map<string, { correct: number; total: number }>();
+
+          records.forEach((r) => {
+            let code: string | null = null;
+            if (r.microCluster) {
+              const match = r.microCluster.match(/^([A-Za-z]+-\d+)/);
+              if (match) code = match[1].toUpperCase();
+            }
+            if (!code && set.topicCode) {
+              code = set.topicCode;
+            }
+            if (!code && set.subjectTag) {
+              code = `${set.subjectTag.toUpperCase()}-01`;
+            }
+            if (!code) code = "GEN-01";
+
+            const current = topicStats.get(code) || { correct: 0, total: 0 };
+            current.total++;
+            if (r.isCorrect) current.correct++;
+            topicStats.set(code, current);
+          });
+
+          for (const [code, stat] of topicStats.entries()) {
+            const topicScorePct = Math.round((stat.correct / stat.total) * 100);
+            const domain = resolveDomain(set.subjectTag, code);
+            await updateTopicSrsDirectly({
+              userId,
+              topicCode: code,
+              topicName: code,
+              domain,
+              scorePercent: topicScorePct,
+              tier: "drill",
+            });
+          }
+          return;
+        }
+      } catch (err) {
+        console.warn("Partitioned drill SRS update failed, using monolithic topic fallback:", err);
+      }
+    }
 
     const topicCode = set.topicCode || "GEN-01";
-    const topicName = set.subjectTag || set.title.split("•")[0].trim();
-    const domain = set.title.startsWith("MATH")
-      ? "Mathematics"
-      : set.title.startsWith("ELEC")
-      ? "Electronics Engineering"
-      : set.title.startsWith("GEAS")
-      ? "General Engineering and Applied Sciences"
-      : "Electronics Systems and Technologies";
+    const cleanTitle = set.title.replace(/^[⚡\s]+/, "");
+    const topicName = set.subjectTag || cleanTitle.split("•")[0].trim();
+    const domain = resolveDomain(set.subjectTag, cleanTitle);
 
     await updateTopicSrsDirectly({
       userId,
@@ -522,6 +604,7 @@ export async function assembleDailyRefresherDrill(
     });
 
     finalQuestions.forEach((q, idx) => {
+      store.questions.set(q.id, q);
       const itemId = randomUUID();
       store.questionSetItems.set(itemId, {
         id: itemId,

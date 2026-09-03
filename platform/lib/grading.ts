@@ -41,7 +41,9 @@ export async function gradeAndSubmitAttempt(input: SubmitAttemptInput) {
       )
       .limit(1);
 
-    if (!attempt) throw new Error("Attempt not found or unauthorized");
+    if (!attempt) {
+      return gradeAndSubmitAttemptInStore(input, isGuest);
+    }
 
     // Fetch all questions in this set with real correct choices from DB
     const qRecords = await db
@@ -114,6 +116,7 @@ export async function gradeAndSubmitAttempt(input: SubmitAttemptInput) {
       userId: attempt.userId,
       questionSetId: attempt.questionSetId,
       scorePercent: scorePct,
+      attemptId: attempt.id,
     });
 
     // If this attempt is linked to a learning module (e.g. mastery challenge), dual-sync to userModuleProgress
@@ -145,59 +148,72 @@ export async function gradeAndSubmitAttempt(input: SubmitAttemptInput) {
     return updatedAttempt;
   } catch (err) {
     console.warn("DB grading failed, using fallback:", err);
-    const store = getMockStore();
-    const attempt = store.attempts.get(input.attemptId);
-    if (!attempt || (!isGuest && attempt.userId !== input.userId)) {
-      throw new Error("Attempt not found in store");
-    }
-
-    let correctCount = 0;
-    for (const ans of input.answers) {
-      const q = store.questions.get(ans.questionId);
-      if (!q) continue;
-
-      const isCorrect =
-        ans.selectedChoice !== null &&
-        ans.selectedChoice.toLowerCase() === q.correctChoice.toLowerCase();
-
-      if (isCorrect) correctCount++;
-
-      const rec: AnswerRecord = {
-        id: randomUUID(),
-        attemptId: attempt.id,
-        questionId: q.id,
-        selectedChoice: ans.selectedChoice,
-        isCorrect,
-        timeSpentSeconds: ans.timeSpentSeconds || null,
-      };
-      store.answerRecords.set(rec.id, rec);
-    }
-
-    attempt.score = correctCount;
-    attempt.completedAt = new Date();
-    attempt.durationSeconds = input.durationSeconds;
-    store.attempts.set(attempt.id, attempt);
-
-    // Fallback module progress dual-sync
-    const qs = store.questionSets.get(attempt.questionSetId);
-    if (qs && (qs.tier === "mastery" || qs.moduleId)) {
-      const modId = qs.moduleId || (qs.id.endsWith("-mastery") ? qs.id.replace("-mastery", "") : null);
-      if (modId) {
-        const fallbackScorePct = Math.round((correctCount / (attempt.totalQuestions || 1)) * 100);
-        saveModuleProgress({
-          userId: attempt.userId,
-          moduleId: modId,
-          topicCode: qs.topicCode || undefined,
-          domain: qs.subjectTag || undefined,
-          isCompleted: fallbackScorePct >= 70,
-          masteryScorePercent: fallbackScorePct,
-          confidence: fallbackScorePct >= 90 ? "mastered" : fallbackScorePct >= 70 ? "confident" : "moderate",
-        }).catch(() => {});
-      }
-    }
-
-    return attempt;
+    return gradeAndSubmitAttemptInStore(input, isGuest);
   }
+}
+
+function gradeAndSubmitAttemptInStore(input: SubmitAttemptInput, isGuest: boolean) {
+  const store = getMockStore();
+  const attempt = store.attempts.get(input.attemptId);
+  if (!attempt || (!isGuest && attempt.userId !== input.userId)) {
+    throw new Error("Attempt not found in store");
+  }
+
+  let correctCount = 0;
+  for (const ans of input.answers) {
+    const q = store.questions.get(ans.questionId);
+    if (!q) continue;
+
+    const isCorrect =
+      ans.selectedChoice !== null &&
+      ans.selectedChoice.toLowerCase() === q.correctChoice.toLowerCase();
+
+    if (isCorrect) correctCount++;
+
+    const rec: AnswerRecord = {
+      id: randomUUID(),
+      attemptId: attempt.id,
+      questionId: q.id,
+      selectedChoice: ans.selectedChoice,
+      isCorrect,
+      timeSpentSeconds: ans.timeSpentSeconds || null,
+    };
+    store.answerRecords.set(rec.id, rec);
+  }
+
+  attempt.score = correctCount;
+  attempt.completedAt = new Date();
+  attempt.durationSeconds = input.durationSeconds;
+  store.attempts.set(attempt.id, attempt);
+
+  const fallbackScorePct = Math.round((correctCount / (attempt.totalQuestions || 1)) * 100);
+
+  // SRS update
+  updateTopicSrsAfterAttempt({
+    userId: attempt.userId,
+    questionSetId: attempt.questionSetId,
+    scorePercent: fallbackScorePct,
+    attemptId: attempt.id,
+  }).catch(() => {});
+
+  // Fallback module progress dual-sync
+  const qs = store.questionSets.get(attempt.questionSetId);
+  if (qs && (qs.tier === "mastery" || qs.moduleId)) {
+    const modId = qs.moduleId || (qs.id.endsWith("-mastery") ? qs.id.replace("-mastery", "") : null);
+    if (modId) {
+      saveModuleProgress({
+        userId: attempt.userId,
+        moduleId: modId,
+        topicCode: qs.topicCode || undefined,
+        domain: qs.subjectTag || undefined,
+        isCompleted: fallbackScorePct >= 70,
+        masteryScorePercent: fallbackScorePct,
+        confidence: fallbackScorePct >= 90 ? "mastered" : fallbackScorePct >= 70 ? "confident" : "moderate",
+      }).catch(() => {});
+    }
+  }
+
+  return attempt;
 }
 
 export interface QuestionResultDetail {
@@ -236,7 +252,9 @@ export async function getAttemptResults(attemptId: string, userId: string) {
       )
       .limit(1);
 
-    if (!attemptRecord) return null;
+    if (!attemptRecord) {
+      return getAttemptResultsFromStore(attemptId, userId, isGuest);
+    }
 
     // Fetch answer records
     const answers = await db
@@ -292,55 +310,61 @@ export async function getAttemptResults(attemptId: string, userId: string) {
     };
   } catch (err) {
     console.warn("DB results fetch failed, reading fallback:", err);
-    const store = getMockStore();
-    const attempt = store.attempts.get(attemptId);
-    if (!attempt || (!isGuest && attempt.userId !== userId)) return null;
-
-    const set = store.questionSets.get(attempt.questionSetId);
-    if (!set) return null;
-
-    const answers = Array.from(store.answerRecords.values()).filter(
-      (a) => a.attemptId === attemptId
-    );
-    const ansMap = new Map(answers.map((a) => [a.questionId, a]));
-
-    const items = Array.from(store.questionSetItems.values())
-      .filter((i) => i.questionSetId === set.id)
-      .sort((a, b) => a.orderIndex - b.orderIndex);
-
-    const questionResults: QuestionResultDetail[] = items.map((i) => {
-      const q = store.questions.get(i.questionId)!;
-      const userAns = ansMap.get(q.id);
-      return {
-        id: q.id,
-        orderIndex: i.orderIndex,
-        promptText: q.promptText,
-        choiceA: q.choiceA,
-        choiceB: q.choiceB,
-        choiceC: q.choiceC,
-        choiceD: q.choiceD,
-        selectedChoice: userAns?.selectedChoice || null,
-        correctChoice: q.correctChoice,
-        isCorrect: userAns?.isCorrect || false,
-        explanation: q.explanation,
-        imageUrl: q.imageUrl,
-        interactiveHtml: q.interactiveHtml,
-        interactiveUrl: q.interactiveUrl,
-        timeSpentSeconds: userAns?.timeSpentSeconds || null,
-      };
-    });
-
-    const score = attempt.score ?? 0;
-    const total = attempt.totalQuestions || questionResults.length;
-    const percentage = total > 0 ? Math.round((score / total) * 100) : 0;
-
-    return {
-      attempt,
-      questionSet: set,
-      score,
-      total,
-      percentage,
-      questions: questionResults,
-    };
+    return getAttemptResultsFromStore(attemptId, userId, isGuest);
   }
+}
+
+function getAttemptResultsFromStore(attemptId: string, userId: string, isGuest: boolean) {
+  const store = getMockStore();
+  const attempt = store.attempts.get(attemptId);
+  if (!attempt || (!isGuest && attempt.userId !== userId)) return null;
+
+  const set = store.questionSets.get(attempt.questionSetId);
+  if (!set) return null;
+
+  const answers = Array.from(store.answerRecords.values()).filter(
+    (a) => a.attemptId === attemptId
+  );
+  const ansMap = new Map(answers.map((a) => [a.questionId, a]));
+
+  const items = Array.from(store.questionSetItems.values())
+    .filter((i) => i.questionSetId === set.id)
+    .sort((a, b) => a.orderIndex - b.orderIndex);
+
+  const questionResults: QuestionResultDetail[] = [];
+  for (const i of items) {
+    const q = store.questions.get(i.questionId);
+    if (!q) continue;
+    const userAns = ansMap.get(q.id);
+    questionResults.push({
+      id: q.id,
+      orderIndex: i.orderIndex,
+      promptText: q.promptText,
+      choiceA: q.choiceA,
+      choiceB: q.choiceB,
+      choiceC: q.choiceC,
+      choiceD: q.choiceD,
+      selectedChoice: userAns?.selectedChoice || null,
+      correctChoice: q.correctChoice,
+      isCorrect: userAns?.isCorrect || false,
+      explanation: q.explanation,
+      imageUrl: q.imageUrl,
+      interactiveHtml: q.interactiveHtml,
+      interactiveUrl: q.interactiveUrl,
+      timeSpentSeconds: userAns?.timeSpentSeconds || null,
+    });
+  }
+
+  const score = attempt.score ?? 0;
+  const total = attempt.totalQuestions || questionResults.length;
+  const percentage = total > 0 ? Math.round((score / total) * 100) : 0;
+
+  return {
+    attempt,
+    questionSet: set,
+    score,
+    total,
+    percentage,
+    questions: questionResults,
+  };
 }

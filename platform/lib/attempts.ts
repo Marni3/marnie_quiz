@@ -101,10 +101,10 @@ export interface SanitizedQuestionForTaking {
 }
 
 export async function getAttemptForTaking(attemptId: string, userId: string) {
-  try {
-    const GUEST_ID = "00000000-0000-0000-0000-000000000001";
-    const isGuest = userId === GUEST_ID;
+  const GUEST_ID = "00000000-0000-0000-0000-000000000001";
+  const isGuest = userId === GUEST_ID;
 
+  try {
     const [attempt] = await db
       .select({
         attempt: attempts,
@@ -119,7 +119,9 @@ export async function getAttemptForTaking(attemptId: string, userId: string) {
       )
       .limit(1);
 
-    if (!attempt) return null;
+    if (!attempt) {
+      return getAttemptForTakingFromStore(attemptId, userId, isGuest);
+    }
 
     // Fetch questions in order — SECURITY: correctChoice & explanation are omitted
     const items = await db
@@ -151,38 +153,44 @@ export async function getAttemptForTaking(attemptId: string, userId: string) {
     };
   } catch (err) {
     console.warn("DB attempt fetch failed, reading fallback:", err);
-    const store = getMockStore();
-    const attempt = store.attempts.get(attemptId);
-    if (!attempt || attempt.userId !== userId) return null;
-
-    const set = store.questionSets.get(attempt.questionSetId);
-    if (!set) return null;
-
-    const items = Array.from(store.questionSetItems.values())
-      .filter((i) => i.questionSetId === set.id)
-      .sort((a, b) => a.orderIndex - b.orderIndex);
-
-    const sanitizedQuestions: SanitizedQuestionForTaking[] = items.map((item) => {
-      const q = store.questions.get(item.questionId)!;
-      return {
-        id: q.id,
-        orderIndex: item.orderIndex,
-        promptText: q.promptText,
-        choiceA: q.choiceA,
-        choiceB: q.choiceB,
-        choiceC: q.choiceC,
-        choiceD: q.choiceD,
-        imageUrl: q.imageUrl,
-        subjectTag: set.subjectTag,
-      };
-    });
-
-    return {
-      attempt,
-      questionSet: set,
-      questions: sanitizedQuestions,
-    };
+    return getAttemptForTakingFromStore(attemptId, userId, isGuest);
   }
+}
+
+function getAttemptForTakingFromStore(attemptId: string, userId: string, isGuest: boolean) {
+  const store = getMockStore();
+  const attempt = store.attempts.get(attemptId);
+  if (!attempt || (!isGuest && attempt.userId !== userId)) return null;
+
+  const set = store.questionSets.get(attempt.questionSetId);
+  if (!set) return null;
+
+  const items = Array.from(store.questionSetItems.values())
+    .filter((i) => i.questionSetId === set.id)
+    .sort((a, b) => a.orderIndex - b.orderIndex);
+
+  const sanitizedQuestions: SanitizedQuestionForTaking[] = [];
+  for (const item of items) {
+    const q = store.questions.get(item.questionId);
+    if (!q) continue;
+    sanitizedQuestions.push({
+      id: q.id,
+      orderIndex: item.orderIndex,
+      promptText: q.promptText,
+      choiceA: q.choiceA,
+      choiceB: q.choiceB,
+      choiceC: q.choiceC,
+      choiceD: q.choiceD,
+      imageUrl: q.imageUrl,
+      subjectTag: set.subjectTag || null,
+    });
+  }
+
+  return {
+    attempt,
+    questionSet: set,
+    questions: sanitizedQuestions,
+  };
 }
 
 export async function getUserAttemptsHistory(userId: string): Promise<AttemptHistoryItem[]> {
