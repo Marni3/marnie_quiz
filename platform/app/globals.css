@@ -247,4 +247,18 @@ html {
   border: 1px solid var(--border) !important;
 }
 
+/* Mobile-First Standards: Prevent iOS Safari Auto-Zoom on Input Focus */
+@media (max-width: 640px) {
+  input:not([type="range"]):not([type="checkbox"]):not([type="radio"]),
+  textarea,
+  select {
+    font-size: 16px !important;
+  }
+}
+
+/* Safe Area Utilities */
+.pb-safe {
+  padding-bottom: calc(1rem + env(safe-area-inset-bottom, 0px));
+}
+
 

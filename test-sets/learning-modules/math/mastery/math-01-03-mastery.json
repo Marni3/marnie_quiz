@@ -18,7 +18,9 @@
       "correctChoice": "C",
       "explanation": "When $D = 0$, the $\\pm \\sqrt{0}$ term vanishes in the quadratic formula, yielding a single real repeated root $x = -B/(2A)$.",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m0103-q02",
@@ -31,7 +33,9 @@
       "correctChoice": "A",
       "explanation": "Substitute $x = 1$ and $y = 1$: $\\text{Sum} = [3(1) - 2(1)]^6 = (1)^6 = 1$.\n\n⚡ Speed Shortcut: $(3 - 2)^6 = 1^6 = 1$.",
       "category": "shortcuts",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "shortcut",
+      "isAnchor": false
     },
     {
       "id": "m0103-q03",
@@ -44,7 +48,9 @@
       "correctChoice": "C",
       "explanation": "By Vieta's relations, the product of the roots is $r_1 r_2 = C/A = -35/5 = -7$.",
       "category": "computational",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m0103-q04",
@@ -57,7 +63,9 @@
       "correctChoice": "B",
       "explanation": "For $(x + y)^n$, the sum of exponents is given by $n(n + 1)$. Here $n = 7 \\implies 7(8) = 56$.",
       "category": "shortcuts",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "shortcut",
+      "isAnchor": false
     },
     {
       "id": "m0103-q05",
@@ -70,7 +78,9 @@
       "correctChoice": "A",
       "explanation": "Using $T_r = {}_n C_{r-1} x^{n-r+1} y^{r-1}$ with $n=6, r=4$: $T_4 = {}_6 C_3 x^3 (2y)^3 = 20 \\times x^3 \\times 8y^3 = 160x^3 y^3$.",
       "category": "computational",
-      "difficulty": "medium"
+      "difficulty": "medium",
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m0103-q06",
@@ -83,7 +93,9 @@
       "correctChoice": "D",
       "explanation": "In Italy, the triangular array of binomial coefficients is known as Tartaglia's triangle, after Niccolò Tartaglia.",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m0103-q07",
@@ -96,7 +108,9 @@
       "correctChoice": "B",
       "explanation": "Sum of roots $= (3+\\sqrt{5}) + (3-\\sqrt{5}) = 6$. Product of roots $= (3)^2 - (\\sqrt{5})^2 = 9 - 5 = 4$. Equation: $x^2 - (\\text{Sum})x + (\\text{Product}) = x^2 - 6x + 4 = 0$.",
       "category": "computational",
-      "difficulty": "medium"
+      "difficulty": "medium",
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m0103-q08",
@@ -109,7 +123,9 @@
       "correctChoice": "A",
       "explanation": "General term: $T_{k+1} = {}_8 C_k x^{8-k} (x^{-1})^k = {}_8 C_k x^{8-2k}$. Set $8 - 2k = 0 \\implies k = 4$. Constant term is ${}_8 C_4 = \\frac{8 \\times 7 \\times 6 \\times 5}{4 \\times 3 \\times 2 \\times 1} = 70$.",
       "category": "applied",
-      "difficulty": "medium"
+      "difficulty": "medium",
+      "archetype": "applied",
+      "isAnchor": false
     },
     {
       "id": "m0103-q09",
@@ -122,7 +138,9 @@
       "correctChoice": "A",
       "explanation": "Set discriminant $D = B^2 - 4AC = 0 \\implies k^2 - 4(1)(9) = 0 \\implies k^2 = 36 \\implies k = \\pm 6$.",
       "category": "computational",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m0103-q10",
@@ -135,7 +153,9 @@
       "correctChoice": "D",
       "explanation": "Since $n = 8$, there are $9$ terms. The middle term is the 5th term ($r = 5$): $T_5 = {}_8 C_4 x^4 (-2y)^4 = 70 \\times x^4 \\times 16y^4 = 1120 x^4 y^4$.",
       "category": "computational",
-      "difficulty": "medium"
+      "difficulty": "medium",
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m0103-q11",
@@ -148,7 +168,9 @@
       "correctChoice": "D",
       "explanation": "Product of roots $r_1 r_2 = C/A = 12/2 = 6$. Since $r_1 = 3 \\implies r_2 = 6/3 = 2$. Sum of roots $= 3 + 2 = 5 = -b/2 \\implies b = -10$.",
       "category": "applied",
-      "difficulty": "medium"
+      "difficulty": "medium",
+      "archetype": "applied",
+      "isAnchor": false
     },
     {
       "id": "m0103-q12",
@@ -161,7 +183,9 @@
       "correctChoice": "B",
       "explanation": "When the first-degree term is absent ($B = 0$), the equation $Ax^2 + C = 0$ is termed a pure quadratic equation.",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m0103-q13",
@@ -174,7 +198,9 @@
       "correctChoice": "C",
       "explanation": "Term with $y^2$: ${}_5 C_2 (2x)^3 (-3y)^2 = 10 \\times 8x^3 \\times 9y^2 = 720 x^3 y^2$.",
       "category": "computational",
-      "difficulty": "medium"
+      "difficulty": "medium",
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m0103-q14",
@@ -187,7 +213,9 @@
       "correctChoice": "D",
       "explanation": "Sum of roots $= -B/A = -\\frac{2k-1}{k} = -3 \\implies 2k - 1 = 3k \\implies k = -1$.",
       "category": "applied",
-      "difficulty": "medium"
+      "difficulty": "medium",
+      "archetype": "applied",
+      "isAnchor": false
     },
     {
       "id": "m0103-q15",
@@ -200,7 +228,9 @@
       "correctChoice": "B",
       "explanation": "The number of terms in a multinomial expansion $(x_1 + x_2 + \\dots + x_k)^n$ is $\\frac{(n + k - 1)!}{n!(k - 1)!} = \\frac{(4 + 3 - 1)!}{4! 2!} = \\frac{6!}{4! 2!} = \\frac{30}{2} = 15$.",
       "category": "shortcuts",
-      "difficulty": "hard"
+      "difficulty": "hard",
+      "archetype": "shortcut",
+      "isAnchor": false
     },
     {
       "id": "m0103-q16",
@@ -213,7 +243,9 @@
       "correctChoice": "C",
       "explanation": "$(r_1 - r_2)^2 = (r_1 + r_2)^2 - 4r_1 r_2 = p^2 - 4q$. Since $r_1 - r_2 = 1$, $(1)^2 = p^2 - 4q \\implies p^2 - 4q = 1$.",
       "category": "applied",
-      "difficulty": "hard"
+      "difficulty": "hard",
+      "archetype": "applied",
+      "isAnchor": false
     },
     {
       "id": "m0103-q17",
@@ -226,7 +258,9 @@
       "correctChoice": "A",
       "explanation": "Formula: $\\text{Sum} = \\frac{(p + q) n (n + 1)}{2} = \\frac{(3 + 2) \\cdot 5(6)}{2} = \\frac{5 \\cdot 30}{2} = 75$.",
       "category": "shortcuts",
-      "difficulty": "medium"
+      "difficulty": "medium",
+      "archetype": "shortcut",
+      "isAnchor": false
     },
     {
       "id": "m0103-q18",
@@ -239,7 +273,9 @@
       "correctChoice": "A",
       "explanation": "$\\frac{1}{r_1} + \\frac{1}{r_2} = \\frac{r_1 + r_2}{r_1 r_2}$. Here $r_1 + r_2 = -(-4)/2 = 2$ and $r_1 r_2 = 1/2$. Thus $\\frac{2}{1/2} = 4$.",
       "category": "shortcuts",
-      "difficulty": "medium"
+      "difficulty": "medium",
+      "archetype": "shortcut",
+      "isAnchor": false
     },
     {
       "id": "m0103-q19",
@@ -252,7 +288,9 @@
       "correctChoice": "D",
       "explanation": "In Asia, Pascal's triangle is historically known as Yang Hui's triangle.",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m0103-q20",
@@ -265,7 +303,9 @@
       "correctChoice": "B",
       "explanation": "A perfect square requires $D = 0$: $B^2 - 4AC = (-12)^2 - 4(4)c = 0 \\implies 144 - 16c = 0 \\implies c = 9$.",
       "category": "computational",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m0103-q21",
@@ -278,7 +318,9 @@
       "correctChoice": "B",
       "explanation": "$T_2 = {}_4 C_1 x^3 (-3y)^1 = 4 x^3 (-3y) = -12x^3 y$.",
       "category": "computational",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m0103-q22",
@@ -291,7 +333,9 @@
       "correctChoice": "C",
       "explanation": "Since $D = 49 > 0$ and $49 = 7^2$ is a perfect square, $\\sqrt{D} = 7$ is an integer, resulting in real, unequal, and rational roots.",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     }
   ]
 }

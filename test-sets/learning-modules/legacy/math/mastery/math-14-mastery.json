@@ -15,7 +15,8 @@
       "choiceD": "Only for polynomial functions.",
       "correctChoice": "A",
       "explanation": "L'Hôpital's Rule is strictly applicable only to indeterminate quotients of the form $\\frac{0}{0}$ or $\\frac{\\pm\\infty}{\\pm\\infty}$. Applying it to determinate quotients (e.g. $1/0$ or $0/1$) yields incorrect results.",
-      "archetype": "conceptual"
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m14-02",
@@ -26,7 +27,8 @@
       "choiceD": "-cosh(u) · u'",
       "correctChoice": "A",
       "explanation": "Unlike standard trigonometric cosine which differentiates to $-\\sin u$, the hyperbolic cosine differentiates to positive $\\sinh u \\cdot u'$.",
-      "archetype": "conceptual"
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m14-03",
@@ -37,7 +39,8 @@
       "choiceD": "f(a) must be positive.",
       "correctChoice": "A",
       "explanation": "Continuity requires three strict conditions: (1) $f(a)$ exists, (2) $\\lim_{x \\to a} f(x)$ exists, and (3) the limit equals the exact function value $f(a)$.",
-      "archetype": "conceptual"
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m14-04",
@@ -48,7 +51,8 @@
       "choiceD": "Their signs alternate depending on the quadrant.",
       "correctChoice": "A",
       "explanation": "All trigonometric co-functions have negative derivatives: $\\frac{d}{dx}[\\cos u] = -\\sin u \\cdot u', \\frac{d}{dx}[\\cot u] = -\\csc^2 u \\cdot u', \\frac{d}{dx}[\\csc u] = -\\csc u\\cot u \\cdot u'$.",
-      "archetype": "conceptual"
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m14-05",
@@ -59,7 +63,8 @@
       "choiceD": "dy/dx = f(x) · g'(x) + g(x) · f'(x)",
       "correctChoice": "A",
       "explanation": "The chain rule states that the derivative of $f(g(x))$ equals the derivative of the outer function evaluated at the inner function, multiplied by the derivative of the inner function.",
-      "archetype": "conceptual"
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m14-06",
@@ -70,7 +75,8 @@
       "choiceD": "1",
       "correctChoice": "A",
       "explanation": "By definition of the natural exponential base: $\\lim_{x \\to \\infty} \\left(1 + \\frac{k}{x}\\right)^x = e^k$.",
-      "archetype": "conceptual"
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m14-07",
@@ -81,7 +87,8 @@
       "choiceD": "1/5",
       "correctChoice": "A",
       "explanation": "$\\lim_{x \\to 0} \\frac{\\sin 5x}{x} = 5 \\lim_{x \\to 0} \\frac{\\sin 5x}{5x} = 5(1) = 5$.",
-      "archetype": "numerical"
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m14-08",
@@ -92,7 +99,8 @@
       "choiceD": "Undetermined",
       "correctChoice": "A",
       "explanation": "Factor the numerator: $\\frac{(x - 2)(x + 2)}{x - 2} = x + 2$. At $x = 2$: $2 + 2 = 4$.",
-      "archetype": "numerical"
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m14-09",
@@ -103,7 +111,8 @@
       "choiceD": "-2 / √(1 - 4x²)",
       "correctChoice": "A",
       "explanation": "$\\frac{d}{dx}[\\arcsin u] = \\frac{u'}{\\sqrt{1 - u^2}} = \\frac{2}{\\sqrt{1 - (2x)^2}} = \\frac{2}{\\sqrt{1 - 4x^2}}$.",
-      "archetype": "numerical"
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m14-10",
@@ -114,7 +123,8 @@
       "choiceD": "csc x",
       "correctChoice": "A",
       "explanation": "$\\frac{d}{dx}[\\ln u] = \\frac{u'}{u} = \\frac{\\cos x}{\\sin x} = \\cot x$.",
-      "archetype": "numerical"
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m14-11",
@@ -125,7 +135,8 @@
       "choiceD": "2x³ e^(2x)",
       "correctChoice": "A",
       "explanation": "Product rule: $\\frac{d}{dx}[x^3 e^{2x}] = x^3(2e^{2x}) + e^{2x}(3x^2) = e^{2x}(2x^3 + 3x^2)$.",
-      "archetype": "numerical"
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m14-12",
@@ -136,7 +147,8 @@
       "choiceD": "3 / (1 + x²)",
       "correctChoice": "A",
       "explanation": "$\\frac{d}{dx}[\\arctan(x/3)] = \\frac{1/3}{1 + (x/3)^2} = \\frac{1/3}{1 + x^2/9} = \\frac{1/3}{(9 + x^2)/9} = \\frac{3}{9 + x^2}$.",
-      "archetype": "numerical"
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m14-13",
@@ -147,7 +159,8 @@
       "choiceD": "-9 cos(3x)",
       "correctChoice": "A",
       "explanation": "$y' = 3\\cos(3x) \\implies y'' = 3(-3\\sin 3x) = -9\\sin(3x)$.",
-      "archetype": "numerical"
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m14-14",
@@ -158,7 +171,8 @@
       "choiceD": "0 A",
       "correctChoice": "A",
       "explanation": "$i(t) = C \\frac{dv}{dt} = 0.5 \\times \\frac{d}{dt}[10\\sin(100t)] = 0.5(1000\\cos(100t)) = 500\\cos(100t)$. At $t = 0$: $i(0) = 500(1) = 500\\text{ A}$.",
-      "archetype": "applied"
+      "archetype": "applied",
+      "isAnchor": false
     },
     {
       "id": "m14-15",
@@ -169,7 +183,8 @@
       "choiceD": "t = 4 seconds",
       "correctChoice": "A",
       "explanation": "$v(t) = s'(t) = 3t^2 - 12t + 9$. $a(t) = v'(t) = 6t - 12$. Setting $a(t) = 0 \\implies 6t = 12 \\implies t = 2\\text{ seconds}$.",
-      "archetype": "applied"
+      "archetype": "applied",
+      "isAnchor": false
     },
     {
       "id": "m14-16",
@@ -180,7 +195,8 @@
       "choiceD": "5",
       "correctChoice": "A",
       "explanation": "$y' = 6x - 5$. At $x = 2$: $y'(2) = 6(2) - 5 = 12 - 5 = 7$.",
-      "archetype": "applied"
+      "archetype": "applied",
+      "isAnchor": false
     },
     {
       "id": "m14-17",
@@ -191,7 +207,8 @@
       "choiceD": "∞",
       "correctChoice": "A",
       "explanation": "Standard exponential form: $\\lim_{x \\to \\infty} (1 + 3/x)^x = e^3 \\approx 20.0855$.",
-      "archetype": "applied"
+      "archetype": "applied",
+      "isAnchor": false
     },
     {
       "id": "m14-18",
@@ -202,7 +219,8 @@
       "choiceD": "62.83 cm²/cm (20π)",
       "correctChoice": "A",
       "explanation": "$A = \\pi r^2 \\implies \\frac{dA}{dr} = 2\\pi r$. At $r = 5$: $\\frac{dA}{dr} = 2\\pi(5) = 10\\pi \\approx 31.4159\\text{ cm}^2/\\text{cm}$. (The rate of area growth equals the circumference).",
-      "archetype": "applied"
+      "archetype": "applied",
+      "isAnchor": false
     },
     {
       "id": "m14-19",
@@ -213,7 +231,8 @@
       "choiceD": "Multiplying the denominator by 2.",
       "correctChoice": "A",
       "explanation": "Because subtraction is not commutative, the numerator must strictly be $v u' - u v'$ ('Low d-High minus High d-Low'). Reversing the order produces an erroneous negative sign.",
-      "archetype": "trap"
+      "archetype": "trap",
+      "isAnchor": false
     },
     {
       "id": "m14-20",
@@ -224,7 +243,8 @@
       "choiceD": "Multiply by $\\pi$.",
       "correctChoice": "A",
       "explanation": "The Taylor approximation $1 - \\cos \\theta \\approx \\frac{\\theta^2}{2}$ simplifies $1 - \\cos 3x \\approx \\frac{9x^2}{2}$, immediately yielding $\\lim_{x \\to 0} \\frac{9x^2 / 2}{x^2} = \\frac{9}{2} = 4.5$ in 2 seconds.",
-      "archetype": "trap"
+      "archetype": "trap",
+      "isAnchor": false
     },
     {
       "id": "m14-21",
@@ -235,7 +255,8 @@
       "choiceD": "Use TABLE mode from 1 to 10.",
       "correctChoice": "A",
       "explanation": "The calculator's `d/dx(f(x), x=a)` evaluates the exact numerical slope at $x = a$. Evaluating the options at the same test point guarantees a 100% foolproof match in seconds.",
-      "archetype": "shortcut"
+      "archetype": "shortcut",
+      "isAnchor": false
     },
     {
       "id": "m14-22",
@@ -246,7 +267,8 @@
       "choiceD": "12",
       "correctChoice": "A",
       "explanation": "$\\frac{6^2}{2} = \\frac{36}{2} = 18$ in 2 seconds.",
-      "archetype": "shortcut"
+      "archetype": "shortcut",
+      "isAnchor": false
     }
   ]
 }

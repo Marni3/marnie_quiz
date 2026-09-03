@@ -6,6 +6,7 @@ import {
   questionSets,
   questionSetItems,
   userModuleProgress,
+  users,
   Attempt,
 } from "./db/schema";
 import { eq, and, desc, isNotNull } from "drizzle-orm";
@@ -309,4 +310,127 @@ export async function getUserAttemptsHistory(userId: string): Promise<AttemptHis
       (a, b) => new Date(b.startedAt).getTime() - new Date(a.startedAt).getTime()
     );
   }
+}
+
+export async function createMasteryAttempt(moduleId: string, userId: string): Promise<string> {
+  const { getMasteryChallenge, getLearningModuleById } = await import("./modules");
+  const mastery = await getMasteryChallenge(moduleId);
+  if (!mastery) throw new Error(`Mastery challenge not found for module ${moduleId}`);
+
+  const mod = await getLearningModuleById(moduleId);
+  const GUEST_ID = "00000000-0000-0000-0000-000000000001";
+  const isGuest = userId === GUEST_ID;
+  const targetSetId = `${moduleId}-mastery`;
+
+  // 1. Ensure question set and questions exist in DB or store
+  try {
+    const [existing] = await db
+      .select()
+      .from(questionSets)
+      .where(eq(questionSets.id, targetSetId))
+      .limit(1);
+
+    if (!existing) {
+      let ownerId = userId;
+      if (isGuest) {
+        const [guestUser] = await db.select().from(users).where(eq(users.id, GUEST_ID)).limit(1);
+        if (!guestUser) {
+          throw new Error("Guest user missing from DB; using mock store");
+        }
+      }
+
+      await db.insert(questionSets).values({
+        id: targetSetId,
+        uploadedByUserId: ownerId,
+        title: `${mastery.moduleCode || moduleId.toUpperCase()} Mastery Challenge (${mastery.title})`,
+        tier: "mastery",
+        moduleId: moduleId,
+        topicCode: mod?.topicCode || null,
+        subjectTag: mod?.domain || "MATH",
+        visibility: "shared",
+      });
+
+      for (let i = 0; i < mastery.questions.length; i++) {
+        const q = mastery.questions[i];
+        const qId = q.id || randomUUID();
+        await db.insert(questions).values({
+          id: qId,
+          sourceQuestionSetId: targetSetId,
+          promptText: q.promptText,
+          choiceA: q.choiceA,
+          choiceB: q.choiceB,
+          choiceC: q.choiceC,
+          choiceD: q.choiceD,
+          correctChoice: q.correctChoice.toLowerCase() as any,
+          explanation: q.explanation || null,
+          imageUrl: q.imageUrl || null,
+          microCluster: mod?.subtopicTitle || null,
+        }).onConflictDoNothing();
+
+        await db.insert(questionSetItems).values({
+          id: randomUUID(),
+          questionSetId: targetSetId,
+          questionId: qId,
+          orderIndex: i,
+        }).onConflictDoNothing();
+      }
+    }
+  } catch (dbErr) {
+    console.warn("DB mastery set creation failed, populating mock store:", dbErr);
+    const store = getMockStore();
+    if (!store.questionSets.has(targetSetId)) {
+      store.questionSets.set(targetSetId, {
+        id: targetSetId,
+        uploadedByUserId: userId,
+        folderId: null,
+        title: `${mastery.moduleCode || moduleId.toUpperCase()} Mastery Challenge (${mastery.title})`,
+        tier: "mastery",
+        moduleId: moduleId,
+        topicCode: mod?.topicCode || null,
+        subjectTag: mod?.domain || "MATH",
+        visibility: "shared",
+        rawCsv: null,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      });
+
+      mastery.questions.forEach((q, idx) => {
+        const qId = q.id || `q-mastery-${moduleId}-${idx}`;
+        store.questions.set(qId, {
+          id: qId,
+          sourceQuestionSetId: targetSetId,
+          promptText: q.promptText,
+          choiceA: q.choiceA,
+          choiceB: q.choiceB,
+          choiceC: q.choiceC,
+          choiceD: q.choiceD,
+          correctChoice: q.correctChoice.toLowerCase() as any,
+          explanation: q.explanation || null,
+          imageUrl: q.imageUrl || null,
+          interactiveHtml: null,
+          interactiveUrl: null,
+          microCluster: mod?.subtopicTitle || null,
+          archetype: (q as any).archetype || null,
+          isAnchor: false,
+        });
+
+        const itemId = `item-mastery-${moduleId}-${idx}`;
+        store.questionSetItems.set(itemId, {
+          id: itemId,
+          questionSetId: targetSetId,
+          questionId: qId,
+          orderIndex: idx,
+        });
+      });
+    }
+  }
+
+  // 2. Create standard attempt
+  const attempt = await createAttempt({
+    userId,
+    questionSetId: targetSetId,
+    mode: "untimed",
+  });
+
+  return attempt.id;
 }

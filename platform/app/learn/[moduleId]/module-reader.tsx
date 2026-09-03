@@ -1481,7 +1481,7 @@ export function ModuleReader({
                     </Link>
                   ) : (
                     <Link
-                      href={`/learn/${module.code ? module.code.toLowerCase() : ""}`}
+                      href={`/learn/${module.id}`}
                       className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-primary text-white text-xs sm:text-sm font-bold shadow-md hover:opacity-95 transition-all"
                     >
                       <BookOpen className="w-4 h-4" />
@@ -1546,12 +1546,12 @@ export function ModuleReader({
                     </Link>
                   )}
 
-                  {module.pairedQuizSetId && !(module as any).isCustom && !module.id.startsWith("custom") && (
+                  {!(module as any).isCustom && !module.id.startsWith("custom") && (
                     <Link
-                      href={`/quizzes/${module.pairedQuizSetId}`}
+                      href={`/quizzes?domain=${module.domain || "ALL"}&search=${encodeURIComponent(module.code || module.id)}`}
                       className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-[var(--surface)] border border-[var(--border)] text-[var(--text2)] hover:text-[var(--text)] text-sm font-medium transition-all"
                     >
-                      <span>Browse Syllabus Library Set</span>
+                      <span>Browse Syllabus Library Set ({module.code})</span>
                     </Link>
                   )}
                 </div>

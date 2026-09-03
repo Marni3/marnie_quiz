@@ -18,7 +18,9 @@
       "correctChoice": "B",
       "explanation": "Leonhard Euler proved in 1758 that for any simply connected convex polyhedron, $V - E + F = 2$.",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m1103-q02",
@@ -31,7 +33,9 @@
       "correctChoice": "B",
       "explanation": "A regular icosahedron has 20 triangular faces, 30 edges, and 12 vertices.",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m1103-q03",
@@ -44,7 +48,9 @@
       "correctChoice": "A",
       "explanation": "$V = \\frac{e^3\\sqrt{2}}{12} = \\frac{6^3\\sqrt{2}}{12} = \\frac{216\\sqrt{2}}{12} = 18\\sqrt{2} \\approx 25.4558\\text{ cm}^3$.\n\n⚡ Speed Shortcut: $\\frac{216}{12}\\sqrt{2} = 18\\sqrt{2}$.",
       "category": "computational",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m1103-q04",
@@ -57,7 +63,9 @@
       "correctChoice": "C",
       "explanation": "The Cube ($6F, 8V, 12E$) and Octahedron ($8F, 6V, 12E$) are duals of each other.",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m1103-q05",
@@ -70,7 +78,9 @@
       "correctChoice": "A",
       "explanation": "$F = 2 + E - V = 2 + 30 - 12 = 20$.\n\n⚡ Speed Shortcut: $32 - 12 = 20$.",
       "category": "computational",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m1103-q06",
@@ -83,7 +93,9 @@
       "correctChoice": "D",
       "explanation": "$A_s = e^2 \\sqrt{3} = 4^2 \\sqrt{3} = 16\\sqrt{3} \\approx 27.7128\\text{ cm}^2$.\n\n⚡ Speed Shortcut: $4^2 \\sqrt{3} = 16\\sqrt{3}$.",
       "category": "computational",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m1103-q07",
@@ -96,7 +108,9 @@
       "correctChoice": "B",
       "explanation": "A regular dodecahedron has 12 identical regular pentagonal faces.",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m1103-q08",
@@ -109,7 +123,9 @@
       "correctChoice": "A",
       "explanation": "$V = \\frac{e^3\\sqrt{2}}{3} = \\frac{27\\sqrt{2}}{3} = 9\\sqrt{2} \\approx 12.7279\\text{ cm}^3$.\n\n⚡ Speed Shortcut: $\\frac{27}{3}\\sqrt{2} = 9\\sqrt{2}$.",
       "category": "computational",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m1103-q09",
@@ -122,7 +138,9 @@
       "correctChoice": "D",
       "explanation": "A dodecahedron has 12 pentagons with 5 edges each: $E = \\frac{12 \\times 5}{2} = 30$.",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m1103-q10",
@@ -135,7 +153,9 @@
       "correctChoice": "D",
       "explanation": "A tetrahedron has 4 vertices and 4 faces, making it self-dual.",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m1103-q11",
@@ -148,7 +168,9 @@
       "correctChoice": "C",
       "explanation": "At each vertex of an octahedron, 4 equilateral triangles meet: $4 \\times 60^\\circ = 240^\\circ$.",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m1103-q12",
@@ -161,7 +183,9 @@
       "correctChoice": "B",
       "explanation": "$F = 12 + 20 = 32$. Edges $E = \\frac{12(5) + 20(6)}{2} = \\frac{60 + 120}{2} = 90$. Vertices $V = 2 + E - F = 2 + 90 - 32 = 60$.\n\n⚡ Speed Shortcut: $V = 60, E = 90$ (standard C60 fullerene / soccer ball).",
       "category": "applied",
-      "difficulty": "hard"
+      "difficulty": "hard",
+      "archetype": "applied",
+      "isAnchor": false
     },
     {
       "id": "m1103-q13",
@@ -174,7 +198,9 @@
       "correctChoice": "B",
       "explanation": "$V_{\\text{octa}} = \\frac{e^3\\sqrt{2}}{3}$ and $V_{\\text{tetra}} = \\frac{e^3\\sqrt{2}}{12}$, so $\\frac{V_{\\text{octa}}}{V_{\\text{tetra}}} = \\frac{1/3}{1/12} = 4$.",
       "category": "shortcuts",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "shortcut",
+      "isAnchor": false
     },
     {
       "id": "m1103-q14",
@@ -187,7 +213,9 @@
       "correctChoice": "D",
       "explanation": "$r = \\frac{e\\sqrt{6}}{6} = \\frac{6\\sqrt{6}}{6} = \\sqrt{6} \\approx 2.4495\\text{ cm}$.\n\n⚡ Speed Shortcut: $\\frac{6\\sqrt{6}}{6} = \\sqrt{6}$.",
       "category": "computational",
-      "difficulty": "medium"
+      "difficulty": "medium",
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m1103-q15",
@@ -200,7 +228,9 @@
       "correctChoice": "C",
       "explanation": "Plato (427–348 B.C.) described the five regular polyhedra in Timaeus, hence the name Platonic solids.",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m1103-q16",
@@ -213,7 +243,9 @@
       "correctChoice": "A",
       "explanation": "$A_s = 5 e^2 \\sqrt{3} = 5(2^2)\\sqrt{3} = 20\\sqrt{3} \\approx 34.641\\text{ cm}^2$.\n\n⚡ Speed Shortcut: $5 \\times 4 \\times \\sqrt{3} = 20\\sqrt{3}$.",
       "category": "computational",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m1103-q17",
@@ -226,7 +258,9 @@
       "correctChoice": "B",
       "explanation": "Euclid proved in Elements Book XIII that only 5 combinations of regular polygons have vertex angle sums $< 360^\\circ$ with $\\ge 3$ faces per vertex.",
       "category": "conceptual",
-      "difficulty": "medium"
+      "difficulty": "medium",
+      "archetype": "conceptual",
+      "isAnchor": false
     },
     {
       "id": "m1103-q18",
@@ -239,7 +273,9 @@
       "correctChoice": "A",
       "explanation": "$R = \\frac{e\\sqrt{2}}{2} = \\frac{4\\sqrt{2}}{2} = 2\\sqrt{2} \\approx 2.8284\\text{ cm}$.",
       "category": "computational",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m1103-q19",
@@ -252,7 +288,9 @@
       "correctChoice": "A",
       "explanation": "$\\frac{e^3\\sqrt{2}}{3} = 72\\sqrt{2} \\implies e^3 = 216 \\implies e = 6\\text{ cm}$.\n\n⚡ Speed Shortcut: $\\sqrt[3]{216} = 6\\text{ cm}$.",
       "category": "shortcuts",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "shortcut",
+      "isAnchor": false
     },
     {
       "id": "m1103-q20",
@@ -265,7 +303,9 @@
       "correctChoice": "C",
       "explanation": "A regular dodecahedron has 20 vertices, 30 edges, and 12 pentagonal faces.",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m1103-q21",
@@ -278,7 +318,9 @@
       "correctChoice": "C",
       "explanation": "The Dodecahedron ($12F, 20V$) and Icosahedron ($20F, 12V$) are dual polyhedra.",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m1103-q22",
@@ -291,7 +333,9 @@
       "correctChoice": "D",
       "explanation": "$20 \\times 4 = 80$ triangular faces (a 2-frequency geodesic sphere).",
       "category": "applied",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "applied",
+      "isAnchor": false
     }
   ]
 }

@@ -8,6 +8,7 @@ import {
   Sparkles,
   Brain,
   BookMarked,
+  Clock,
 } from "lucide-react";
 
 export function MobileNav() {
@@ -48,6 +49,13 @@ export function MobileNav() {
       href: "/analytics",
       icon: Brain,
       isActive: pathname === "/analytics",
+    },
+    {
+      id: "history",
+      label: "History",
+      href: "/history",
+      icon: Clock,
+      isActive: pathname === "/history" || pathname.startsWith("/history/"),
     },
     {
       id: "notes",

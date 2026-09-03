@@ -18,7 +18,9 @@
       "correctChoice": "A",
       "explanation": "Linear permutation of 6 distinct people is $6! = 6 \\times 5 \\times 4 \\times 3 \\times 2 \\times 1 = 720$.",
       "category": "computational",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "numerical",
+      "isAnchor": true
     },
     {
       "id": "m0601-q02",
@@ -31,7 +33,9 @@
       "correctChoice": "A",
       "explanation": "Circular permutation formula: $(n - 1)! = (6 - 1)! = 5! = 120$.\n\n⚡ Speed Shortcut: $(6-1)! = 120$.",
       "category": "shortcuts",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "shortcut",
+      "isAnchor": false
     },
     {
       "id": "m0601-q03",
@@ -44,7 +48,9 @@
       "correctChoice": "D",
       "explanation": "Gerolamo Cardano (1501–1576) was the first to systematically define classical probability as the ratio of favorable to total outcomes.",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m0601-q04",
@@ -57,7 +63,9 @@
       "correctChoice": "A",
       "explanation": "Word has 11 letters with repetitions $M=2, A=2, T=2$: $P = \\frac{11!}{2! 2! 2!} = \\frac{39,916,800}{8} = 4,989,600$.",
       "category": "computational",
-      "difficulty": "medium"
+      "difficulty": "medium",
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m0601-q05",
@@ -70,7 +78,9 @@
       "correctChoice": "B",
       "explanation": "$C$ precedes $B, A$ (2); $E$ precedes $D, B, A$ (3); $D$ precedes $B, A$ (2); $B$ precedes $A$ (1). Total $= 2 + 3 + 2 + 1 = 8$ inversions.",
       "category": "applied",
-      "difficulty": "medium"
+      "difficulty": "medium",
+      "archetype": "applied",
+      "isAnchor": false
     },
     {
       "id": "m0601-q06",
@@ -83,7 +93,9 @@
       "correctChoice": "D",
       "explanation": "Combinations ignore internal order ($r!$ permutations of selected items), so ${}_n C_r = \\frac{{}_n P_r}{r!}$.",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m0601-q07",
@@ -96,7 +108,9 @@
       "correctChoice": "A",
       "explanation": "A key ring can be flipped over in 3D (clockwise and counter-clockwise views are indistinguishable): $P = \\frac{(n - 1)!}{2} = \\frac{(5 - 1)!}{2} = \\frac{24}{2} = 12$.\n\n⚡ Speed Shortcut: $\\frac{4!}{2} = 12$.",
       "category": "shortcuts",
-      "difficulty": "medium"
+      "difficulty": "medium",
+      "archetype": "shortcut",
+      "isAnchor": false
     },
     {
       "id": "m0601-q08",
@@ -109,7 +123,9 @@
       "correctChoice": "D",
       "explanation": "By the fundamental principle of counting with replacement: $10 \\times 10 \\times 10 \\times 10 = 10^4 = 10,000$.",
       "category": "computational",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m0601-q09",
@@ -122,7 +138,9 @@
       "correctChoice": "A",
       "explanation": "The prime outcomes on a 6-sided die are $\\{2, 3, 5\\}$ ($3$ favorable outcomes out of $6$). $P = 3/6 = 1/2$.",
       "category": "computational",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m0601-q10",
@@ -135,7 +153,9 @@
       "correctChoice": "C",
       "explanation": "Order does not matter in a committee: ${}_{10} C_4 = \\frac{10 \\times 9 \\times 8 \\times 7}{4 \\times 3 \\times 2 \\times 1} = 210$.",
       "category": "computational",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m0601-q11",
@@ -148,7 +168,9 @@
       "correctChoice": "B",
       "explanation": "A permutation is even if the total count of inversions (pairs out of standard order) is an even number.",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m0601-q12",
@@ -161,7 +183,9 @@
       "correctChoice": "C",
       "explanation": "Total items $= 5 + 4 + 3 = 12$. Formula: $\\frac{12!}{5! 4! 3!} = \\frac{479,001,600}{120 \\times 24 \\times 6} = \\frac{479,001,600}{17,280} = 27,720$.",
       "category": "computational",
-      "difficulty": "medium"
+      "difficulty": "medium",
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m0601-q13",
@@ -174,7 +198,9 @@
       "correctChoice": "C",
       "explanation": "$P(E') = 1 - P(E) = 1 - 0.35 = 0.65$.",
       "category": "computational",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m0601-q14",
@@ -187,7 +213,9 @@
       "correctChoice": "B",
       "explanation": "A line connects any 2 vertices (${}_{10} C_2 = 45$). Subtracting the 10 exterior sides yields $45 - 10 = 35$ diagonals.\n\n⚡ Speed Shortcut: $\\frac{n(n - 3)}{2} = \\frac{10(7)}{2} = 35$.",
       "category": "shortcuts",
-      "difficulty": "medium"
+      "difficulty": "medium",
+      "archetype": "shortcut",
+      "isAnchor": false
     },
     {
       "id": "m0601-q15",
@@ -200,7 +228,9 @@
       "correctChoice": "D",
       "explanation": "Pattern BGBGBG: $3! \\times 3! = 6 \\times 6 = 36$. Pattern GBGBGB: $3! \\times 3! = 36$. Total $= 36 + 36 = 72$.",
       "category": "applied",
-      "difficulty": "medium"
+      "difficulty": "medium",
+      "archetype": "applied",
+      "isAnchor": false
     },
     {
       "id": "m0601-q16",
@@ -213,7 +243,9 @@
       "correctChoice": "B",
       "explanation": "By symmetry ${}_{100} C_{98} = {}_{100} C_2 = \\frac{100 \\times 99}{2} = 4,950$.\n\n⚡ Speed Shortcut: $\\frac{100 \\times 99}{2} = 4950$.",
       "category": "shortcuts",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "shortcut",
+      "isAnchor": false
     },
     {
       "id": "m0601-q17",
@@ -226,7 +258,9 @@
       "correctChoice": "C",
       "explanation": "Seat the 3 boys around the circle first: $(3 - 1)! = 2! = 2$ ways. The 3 girls fill the 3 alternate positions in $3! = 6$ ways. Total $= 2 \\times 6 = 12$.",
       "category": "applied",
-      "difficulty": "hard"
+      "difficulty": "hard",
+      "archetype": "applied",
+      "isAnchor": false
     },
     {
       "id": "m0601-q18",
@@ -239,7 +273,9 @@
       "correctChoice": "B",
       "explanation": "Outcomes summing to 7: $(1,6), (2,5), (3,4), (4,3), (5,2), (6,1)$ (6 outcomes out of 36). Probability $= 6/36 = 1/6$.",
       "category": "computational",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m0601-q19",
@@ -252,7 +288,9 @@
       "correctChoice": "D",
       "explanation": "Select all 4 aces (${}_4 C_4 = 1$) and any 1 of the remaining 48 non-ace cards (${}_{48} C_1 = 48$). Total $= 1 \\times 48 = 48$.",
       "category": "applied",
-      "difficulty": "medium"
+      "difficulty": "medium",
+      "archetype": "applied",
+      "isAnchor": false
     },
     {
       "id": "m0601-q20",
@@ -265,7 +303,9 @@
       "correctChoice": "B",
       "explanation": "Letters: 11 total with $E=3, N=3, G=2, I=2, R=1$. Formula: $\\frac{11!}{3! 3! 2! 2!} = \\frac{39,916,800}{6 \\times 6 \\times 2 \\times 2} = \\frac{39,916,800}{144} = 277,200$.",
       "category": "computational",
-      "difficulty": "medium"
+      "difficulty": "medium",
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m0601-q21",
@@ -278,7 +318,9 @@
       "correctChoice": "C",
       "explanation": "$P = \\frac{{}_5 C_2}{{}_8 C_2} = \\frac{10}{28} = \\frac{5}{14}$. Or $\\frac{5}{8} \\times \\frac{4}{7} = \\frac{20}{56} = \\frac{5}{14}$.",
       "category": "computational",
-      "difficulty": "medium"
+      "difficulty": "medium",
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m0601-q22",
@@ -291,7 +333,9 @@
       "correctChoice": "A",
       "explanation": "$n(n - 1) = 72 \\implies n^2 - n - 72 = 0 \\implies (n - 9)(n + 8) = 0 \\implies n = 9$.\n\n⚡ Speed Shortcut: $9 \\times 8 = 72 \\implies n = 9$.",
       "category": "shortcuts",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "shortcut",
+      "isAnchor": false
     }
   ]
 }

@@ -1,4 +1,4 @@
-import { updateTopicSrsAfterAttempt } from "./srs";
+import { updateTopicSrsAfterAttempt, saveModuleProgress } from "./srs";
 import { db } from "./db/client";
 import {
   attempts,
@@ -116,6 +116,32 @@ export async function gradeAndSubmitAttempt(input: SubmitAttemptInput) {
       scorePercent: scorePct,
     });
 
+    // If this attempt is linked to a learning module (e.g. mastery challenge), dual-sync to userModuleProgress
+    try {
+      const [qs] = await db
+        .select()
+        .from(questionSets)
+        .where(eq(questionSets.id, attempt.questionSetId))
+        .limit(1);
+
+      if (qs && (qs.tier === "mastery" || qs.moduleId)) {
+        const modId = qs.moduleId || (qs.id.endsWith("-mastery") ? qs.id.replace("-mastery", "") : null);
+        if (modId) {
+          await saveModuleProgress({
+            userId: attempt.userId,
+            moduleId: modId,
+            topicCode: qs.topicCode || undefined,
+            domain: qs.subjectTag || undefined,
+            isCompleted: scorePct >= 70,
+            masteryScorePercent: scorePct,
+            confidence: scorePct >= 90 ? "mastered" : scorePct >= 70 ? "confident" : "moderate",
+          });
+        }
+      }
+    } catch (modErr) {
+      console.warn("Module progress dual-sync error:", modErr);
+    }
+
     return updatedAttempt;
   } catch (err) {
     console.warn("DB grading failed, using fallback:", err);
@@ -151,6 +177,24 @@ export async function gradeAndSubmitAttempt(input: SubmitAttemptInput) {
     attempt.completedAt = new Date();
     attempt.durationSeconds = input.durationSeconds;
     store.attempts.set(attempt.id, attempt);
+
+    // Fallback module progress dual-sync
+    const qs = store.questionSets.get(attempt.questionSetId);
+    if (qs && (qs.tier === "mastery" || qs.moduleId)) {
+      const modId = qs.moduleId || (qs.id.endsWith("-mastery") ? qs.id.replace("-mastery", "") : null);
+      if (modId) {
+        const fallbackScorePct = Math.round((correctCount / (attempt.totalQuestions || 1)) * 100);
+        saveModuleProgress({
+          userId: attempt.userId,
+          moduleId: modId,
+          topicCode: qs.topicCode || undefined,
+          domain: qs.subjectTag || undefined,
+          isCompleted: fallbackScorePct >= 70,
+          masteryScorePercent: fallbackScorePct,
+          confidence: fallbackScorePct >= 90 ? "mastered" : fallbackScorePct >= 70 ? "confident" : "moderate",
+        }).catch(() => {});
+      }
+    }
 
     return attempt;
   }

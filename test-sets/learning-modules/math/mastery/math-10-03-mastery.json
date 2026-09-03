@@ -18,7 +18,9 @@
       "correctChoice": "A",
       "explanation": "$y = Cx \\implies y' = C = y/x$. Orthogonal slope: $\\frac{dy}{dx} = -\\frac{x}{y} \\implies x dx + y dy = 0 \\implies x^2 + y^2 = K$ (concentric circles).\n\n⚡ Speed Shortcut: Lines from origin $\\perp$ Concentric circles.",
       "category": "shortcuts",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "shortcut",
+      "isAnchor": true
     },
     {
       "id": "m1803-q02",
@@ -31,7 +33,9 @@
       "correctChoice": "D",
       "explanation": "$v_t = \\frac{mg}{k} = \\frac{5 \\times 9.8}{2.5} = 2 \\times 9.8 = 19.6\\text{ m/s}$.\n\n⚡ Speed Shortcut: $2 \\times 9.8 = 19.6\\text{ m/s}$.",
       "category": "computational",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m1803-q03",
@@ -44,7 +48,9 @@
       "correctChoice": "A",
       "explanation": "In polar coordinates, the tangent angle relation requires replacing $\\frac{dr}{d\\theta}$ with $-r^2 \\frac{d\\theta}{dr}$.",
       "category": "conceptual",
-      "difficulty": "medium"
+      "difficulty": "medium",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m1803-q04",
@@ -57,7 +63,9 @@
       "correctChoice": "D",
       "explanation": "$\\omega_n = \\sqrt{\\frac{k}{m}} = \\sqrt{\\frac{72}{2}} = \\sqrt{36} = 6\\text{ rad/s}$.\n\n⚡ Speed Shortcut: $\\sqrt{36} = 6\\text{ rad/s}$.",
       "category": "computational",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m1803-q05",
@@ -70,7 +78,9 @@
       "correctChoice": "A",
       "explanation": "$y = C/x \\implies y' = -C/x^2 = -y/x$. Orthogonal slope: $y' = x/y \\implies y dy = x dx \\implies x^2 - y^2 = K$.\n\n⚡ Speed Shortcut: $x^2 - y^2 = K$.",
       "category": "shortcuts",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "shortcut",
+      "isAnchor": false
     },
     {
       "id": "m1803-q06",
@@ -83,7 +93,9 @@
       "correctChoice": "B",
       "explanation": "Terminal velocity is the dynamic equilibrium speed where drag equals gravitational weight ($F_{\\text{drag}} = mg$).",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m1803-q07",
@@ -96,7 +108,9 @@
       "correctChoice": "B",
       "explanation": "Differentiating: $2x + 2y y' = 2C$. Substitute $2C = (x^2+y^2)/x \\implies y' = \\frac{y^2-x^2}{2xy}$. Orthogonal slope $y' = \\frac{2xy}{x^2-y^2} \\implies x^2 + y^2 = 2Ky$.\n\n⚡ Speed Shortcut: Circles tangent to y-axis $\\perp$ Circles tangent to x-axis.",
       "category": "applied",
-      "difficulty": "hard"
+      "difficulty": "hard",
+      "archetype": "applied",
+      "isAnchor": false
     },
     {
       "id": "m1803-q08",
@@ -109,7 +123,9 @@
       "correctChoice": "C",
       "explanation": "$\\omega_n = 2\\pi f = 10\\pi\\text{ rad/s}$. $k = m \\omega_n^2 = 0.5 (100\\pi^2) = 50\\pi^2 \\approx 493.48\\text{ N/m}$.\n\n⚡ Speed Shortcut: $0.5 \\times 100\\pi^2 = 50\\pi^2$.",
       "category": "computational",
-      "difficulty": "medium"
+      "difficulty": "medium",
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m1803-q09",
@@ -122,7 +138,9 @@
       "correctChoice": "B",
       "explanation": "Electric field lines are directed along $-\\nabla V$, which is perpendicular everywhere to equipotential contours $V = C$.",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m1803-q10",
@@ -135,7 +153,9 @@
       "correctChoice": "C",
       "explanation": "$2y y' = 4C = y^2/x \\implies y' = y/(2x)$. Orthogonal slope $y' = -2x/y \\implies y dy = -2x dx \\implies 2x dx + y dy = 0 \\implies 2x^2 + y^2 = K$.\n\n⚡ Speed Shortcut: $2x^2 + y^2 = K$.",
       "category": "computational",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m1803-q11",
@@ -148,7 +168,9 @@
       "correctChoice": "C",
       "explanation": "$v(t) = v_t (1 - e^{-(k/m)t})$. $0.9 = 1 - e^{-2t} \\implies e^{-2t} = 0.1 \\implies 2t = \\ln 10 \\approx 2.3026 \\implies t = 1.1513\\text{ s}$.\n\n⚡ Speed Shortcut: $\\frac{\\ln 10}{2} \\approx 1.15\\text{ s}$.",
       "category": "applied",
-      "difficulty": "medium"
+      "difficulty": "medium",
+      "archetype": "applied",
+      "isAnchor": false
     },
     {
       "id": "m1803-q12",
@@ -161,7 +183,9 @@
       "correctChoice": "D",
       "explanation": "By the Cauchy-Riemann equations of potential flow, equipotential lines $\\phi$ and streamlines $\\psi$ are mutually orthogonal.",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m1803-q13",
@@ -174,7 +198,9 @@
       "correctChoice": "D",
       "explanation": "$T = 2\\pi \\sqrt{\\frac{m}{k}} = 2\\pi \\sqrt{\\frac{4}{100}} = 2\\pi (0.2) = 0.4\\pi \\approx 1.2566\\text{ s}$.\n\n⚡ Speed Shortcut: $2\\pi \\times 0.2 = 0.4\\pi \\approx 1.26\\text{ s}$.",
       "category": "computational",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m1803-q14",
@@ -187,7 +213,9 @@
       "correctChoice": "A",
       "explanation": "$\\ln r = \\ln C + \\ln(1+\\cos\\theta) \\implies \\frac{r'}{r} = \\frac{-\\sin\\theta}{1+\\cos\\theta}$. Replace $r'$ with $-r^2/r' \\implies \\frac{dr}{r} = \\frac{1+\\cos\\theta}{\\sin\\theta}d\\theta \\implies r = K(1 - \\cos\\theta)$.",
       "category": "applied",
-      "difficulty": "hard"
+      "difficulty": "hard",
+      "archetype": "applied",
+      "isAnchor": false
     },
     {
       "id": "m1803-q15",
@@ -200,7 +228,9 @@
       "correctChoice": "B",
       "explanation": "By Newton's second law: $\\Sigma F = -kx = m a \\implies m x'' + kx = 0$.",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m1803-q16",
@@ -213,7 +243,9 @@
       "correctChoice": "B",
       "explanation": "$y' = C e^x = y$. Orthogonal slope: $y' = -1/y \\implies y dy = -dx \\implies \\frac{y^2}{2} = -x + C_1 \\implies y^2 = -2x + K$.\n\n⚡ Speed Shortcut: $y^2 = -2x + K$.",
       "category": "computational",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m1803-q17",
@@ -226,7 +258,9 @@
       "correctChoice": "C",
       "explanation": "Setting acceleration to zero: $mg - c v_t^2 = 0 \\implies v_t^2 = \\frac{mg}{c} \\implies v_t = \\sqrt{\\frac{mg}{c}}$.",
       "category": "shortcuts",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "shortcut",
+      "isAnchor": false
     },
     {
       "id": "m1803-q18",
@@ -239,7 +273,9 @@
       "correctChoice": "A",
       "explanation": "Concentric circles have radial lines through the origin as their orthogonal trajectories.",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m1803-q19",
@@ -252,7 +288,9 @@
       "correctChoice": "C",
       "explanation": "$\\omega_n = \\sqrt{200/0.5} = \\sqrt{400} = 20\\text{ rad/s}$. $f_n = \\frac{\\omega_n}{2\\pi} = \\frac{20}{2\\pi} = \\frac{10}{\\pi} \\approx 3.183\\text{ Hz}$.\n\n⚡ Speed Shortcut: $\\frac{20}{2\\pi} = \\frac{10}{\\pi} \\approx 3.18\\text{ Hz}$.",
       "category": "computational",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m1803-q20",
@@ -265,7 +303,9 @@
       "correctChoice": "D",
       "explanation": "$\\frac{d^2s}{dt^2} + 4s = 0$ is the defining equation of SHM with $\\omega = \\sqrt{4} = 2\\text{ rad/s}$.",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m1803-q21",
@@ -278,7 +318,9 @@
       "correctChoice": "A",
       "explanation": "$y' = 3Cx^2 = 3(y/x^3)x^2 = 3y/x$. Orthogonal slope: $y' = -x/(3y) \\implies 3y dy = -x dx \\implies x dx + 3y dy = 0 \\implies x^2 + 3y^2 = K$.\n\n⚡ Speed Shortcut: $x^2 + 3y^2 = K$.",
       "category": "computational",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m1803-q22",
@@ -291,7 +333,9 @@
       "correctChoice": "B",
       "explanation": "$\\tau = \\frac{m}{k} = \\frac{4}{8} = 0.5\\text{ seconds}$.",
       "category": "shortcuts",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "shortcut",
+      "isAnchor": false
     }
   ]
 }

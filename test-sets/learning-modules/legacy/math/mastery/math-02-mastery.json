@@ -15,7 +15,8 @@
       "choiceD": "$0$",
       "correctChoice": "A",
       "explanation": "The Remainder Theorem states that when $P(x)$ is divided by $(x - k)$, the remainder is directly equal to $R = P(k)$.",
-      "archetype": "conceptual"
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m02-02",
@@ -26,7 +27,8 @@
       "choiceD": "$\\ln x = 3.1416 \\log_{10} x$",
       "correctChoice": "A",
       "explanation": "Since $\\ln 10 \\approx 2.302585$, the conversion is $\\ln x = 2.3026 \\log_{10} x$, and conversely $\\log_{10} x = 0.4343 \\ln x$.",
-      "archetype": "conceptual"
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m02-03",
@@ -37,7 +39,8 @@
       "choiceD": "$(x + y)^3$",
       "correctChoice": "A",
       "explanation": "$x^3 + y^3 = (x + y)(x^2 - xy + y^2)$. The quadratic factor has a single cross-product $-xy$ (no factor of 2).",
-      "archetype": "conceptual"
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m02-04",
@@ -48,7 +51,8 @@
       "choiceD": "Leonhard Euler",
       "correctChoice": "A",
       "explanation": "Scottish mathematician John Napier published the first table of natural logarithms in 1614. Henry Briggs developed common base-10 logarithms in 1616.",
-      "archetype": "conceptual"
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m02-05",
@@ -59,7 +63,8 @@
       "choiceD": "$P(0) = k$",
       "correctChoice": "A",
       "explanation": "By the Factor Theorem, $(x - k)$ is an exact factor of $P(x)$ if and only if the remainder $R = P(k) = 0$.",
-      "archetype": "conceptual"
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m02-06",
@@ -70,7 +75,8 @@
       "choiceD": "Radicand",
       "correctChoice": "A",
       "explanation": "In $\\log_{10} x = c + m$, $c$ is the characteristic (integer exponent of 10) and $m$ is the mantissa (decimal part from the logarithm table).",
-      "archetype": "conceptual"
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m02-07",
@@ -81,7 +87,8 @@
       "choiceD": "6",
       "correctChoice": "A",
       "explanation": "Apply the Remainder Theorem: $R = P(2) = 3(2)^3 - 5(2)^2 + 7(2) - 4 = 3(8) - 5(4) + 14 - 4 = 24 - 20 + 14 - 4 = 14$.",
-      "archetype": "numerical"
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m02-08",
@@ -92,7 +99,8 @@
       "choiceD": "-7",
       "correctChoice": "A",
       "explanation": "For $(x + 3)$ to be an exact factor, $P(-3) = 0$: $2(-3)^3 + k(-3)^2 - 7(-3) + 6 = 0 \\implies 2(-27) + 9k + 21 + 6 = 0 \\implies -54 + 9k + 27 = 0 \\implies 9k = 27 \\implies k = 3$.",
-      "archetype": "numerical"
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m02-09",
@@ -103,7 +111,8 @@
       "choiceD": "1.25",
       "correctChoice": "A",
       "explanation": "Let $y = \\log_4(32) \\implies 4^y = 32 \\implies (2^2)^y = 2^5 \\implies 2^{2y} = 2^5 \\implies 2y = 5 \\implies y = 2.5$.",
-      "archetype": "numerical"
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m02-10",
@@ -114,7 +123,8 @@
       "choiceD": "x² + 4y² + 9z² - 2xy - 6yz + 3xz",
       "correctChoice": "A",
       "explanation": "$(x - 2y + 3z)^2 = x^2 + (-2y)^2 + (3z)^2 + 2(x)(-2y) + 2(-2y)(3z) + 2(x)(3z) = x^2 + 4y^2 + 9z^2 - 4xy - 12yz + 6xz$.",
-      "archetype": "standard"
+      "archetype": "standard",
+      "isAnchor": false
     },
     {
       "id": "m02-11",
@@ -125,7 +135,8 @@
       "choiceD": "10",
       "correctChoice": "A",
       "explanation": "$\\log(x(x - 3)) = 1 \\implies x(x - 3) = 10^1 = 10 \\implies x^2 - 3x - 10 = 0 \\implies (x - 5)(x + 2) = 0$. Since $\\log(-2)$ is undefined, $x = 5$ is the only valid solution.",
-      "archetype": "standard"
+      "archetype": "standard",
+      "isAnchor": false
     },
     {
       "id": "m02-12",
@@ -136,7 +147,8 @@
       "choiceD": "(3a - 4b)³",
       "correctChoice": "A",
       "explanation": "Difference of cubes: $(3a)^3 - (4b)^3 = (3a - 4b)((3a)^2 + (3a)(4b) + (4b)^2) = (3a - 4b)(9a^2 + 12ab + 16b^2)$.",
-      "archetype": "standard"
+      "archetype": "standard",
+      "isAnchor": false
     },
     {
       "id": "m02-13",
@@ -147,7 +159,8 @@
       "choiceD": "x² - 4",
       "correctChoice": "A",
       "explanation": "Factor the numerator: $x^3 - 8 = (x - 2)(x^2 + 2x + 4)$. Cancelling $(x - 2)$ yields $x^2 + 2x + 4$.",
-      "archetype": "standard"
+      "archetype": "standard",
+      "isAnchor": false
     },
     {
       "id": "m02-14",
@@ -158,7 +171,8 @@
       "choiceD": "1.5562",
       "correctChoice": "A",
       "explanation": "$18 = 2 \\times 3^2 \\implies \\log_b(18) = \\log_b(2) + 2\\log_b(3) = 0.3010 + 2(0.4771) = 0.3010 + 0.9542 = 1.2552$.",
-      "archetype": "numerical"
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m02-15",
@@ -169,7 +183,8 @@
       "choiceD": "12.50 dB",
       "correctChoice": "A",
       "explanation": "$G_{\\text{dB}} = 10\\log_{10}\\left(\\frac{P_{\\text{out}}}{P_{\\text{in}}}\\right) = 10\\log_{10}\\left(\\frac{200}{5}\\right) = 10\\log_{10}(40) = 10(1.60206) \\approx 16.02\\text{ dB}$.",
-      "archetype": "applied"
+      "archetype": "applied",
+      "isAnchor": false
     },
     {
       "id": "m02-16",
@@ -180,7 +195,8 @@
       "choiceD": "216",
       "correctChoice": "A",
       "explanation": "Identity: $a^3 + b^3 = (a + b)^3 - 3ab(a + b) = 6^3 - 3(8)(6) = 216 - 144 = 72$.",
-      "archetype": "applied"
+      "archetype": "applied",
+      "isAnchor": false
     },
     {
       "id": "m02-17",
@@ -191,7 +207,8 @@
       "choiceD": "-2",
       "correctChoice": "A",
       "explanation": "Substitute $x = -1$: $R = (-1)^{100} - 2(-1)^{50} + 3 = 1 - 2(1) + 3 = 2$.",
-      "archetype": "applied"
+      "archetype": "applied",
+      "isAnchor": false
     },
     {
       "id": "m02-18",
@@ -202,7 +219,8 @@
       "choiceD": "x = 4, y = 8",
       "correctChoice": "A",
       "explanation": "Adding equations: $2\\log_2(x) = 6 \\implies \\log_2(x) = 3 \\implies x = 2^3 = 8$. Subtracting gives $2\\log_2(y) = 4 \\implies \\log_2(y) = 2 \\implies y = 2^2 = 4$.",
-      "archetype": "applied"
+      "archetype": "applied",
+      "isAnchor": false
     },
     {
       "id": "m02-19",
@@ -213,7 +231,8 @@
       "choiceD": "Adding the arguments instead of multiplying.",
       "correctChoice": "A",
       "explanation": "Converting logarithmic equations to quadratic equations often yields extraneous negative roots that must be checked against domain constraints ($\text{argument} > 0$).",
-      "archetype": "trap"
+      "archetype": "trap",
+      "isAnchor": false
     },
     {
       "id": "m02-20",
@@ -224,7 +243,8 @@
       "choiceD": "Dividing by 3.",
       "correctChoice": "A",
       "explanation": "The trinomial factor in sum/difference of cubes is $(x^2 \\pm xy + y^2)$, which has NO factor of 2. Writing $2xy$ confuses it with a perfect square trinomial.",
-      "archetype": "trap"
+      "archetype": "trap",
+      "isAnchor": false
     },
     {
       "id": "m02-21",
@@ -235,7 +255,8 @@
       "choiceD": "x = 0",
       "correctChoice": "A",
       "explanation": "Factor out $3^x$: $3^x(3 + 1) = 36 \\implies 3^x(4) = 36 \\implies 3^x = 9 \\implies x = 2$. Testing $x = 2$: $3^3 + 3^2 = 27 + 9 = 36$.",
-      "archetype": "shortcut"
+      "archetype": "shortcut",
+      "isAnchor": false
     },
     {
       "id": "m02-22",
@@ -246,7 +267,8 @@
       "choiceD": "64",
       "correctChoice": "A",
       "explanation": "$R = P(2) = 2^5 - 32 = 32 - 32 = 0$ in 1 second, confirming $(x - 2)$ is an exact factor.",
-      "archetype": "shortcut"
+      "archetype": "shortcut",
+      "isAnchor": false
     }
   ]
 }

@@ -15,7 +15,8 @@
       "choiceD": "Permutations only apply to numbers.",
       "correctChoice": "A",
       "explanation": "Permutations involve ordered arrangements where position matters (${}_n P_r$), whereas combinations involve unordered groupings (${}_n C_r$).",
-      "archetype": "conceptual"
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m05-02",
@@ -26,7 +27,8 @@
       "choiceD": "Because the ring is a closed loop.",
       "correctChoice": "A",
       "explanation": "In 3D space, keyrings and necklaces can be flipped over, making clockwise and counter-clockwise arrangements physically indistinguishable, halving the total count.",
-      "archetype": "conceptual"
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m05-03",
@@ -37,7 +39,8 @@
       "choiceD": "${}_n P_r = \\frac{{}_n C_r}{r!}$",
       "correctChoice": "A",
       "explanation": "Every combination group of $r$ objects can be internally arranged in $r!$ distinct linear orders, giving ${}_n P_r = r! \\cdot {}_n C_r$.",
-      "archetype": "conceptual"
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m05-04",
@@ -48,7 +51,8 @@
       "choiceD": "Christiaan Huygens",
       "correctChoice": "A",
       "explanation": "Italian polymath Gerolamo Cardano (1501–1576) formulated foundational rules of probability and combinatorial games in 'Liber de Ludo Aleae'.",
-      "archetype": "conceptual"
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m05-05",
@@ -59,7 +63,8 @@
       "choiceD": "n!",
       "correctChoice": "A",
       "explanation": "The total number of subsets is $\\sum_{k=0}^n \\binom{n}{k} = 2^n$. Subtracting the 1 empty null set $\\emptyset$ gives $2^n - 1$ non-empty subsets.",
-      "archetype": "conceptual"
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m05-06",
@@ -70,7 +75,8 @@
       "choiceD": "A repeated element.",
       "correctChoice": "A",
       "explanation": "An inversion occurs whenever a larger element precedes a smaller element relative to natural ascending order.",
-      "archetype": "conceptual"
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m05-07",
@@ -81,7 +87,8 @@
       "choiceD": "40,320",
       "correctChoice": "A",
       "explanation": "${}_8 P_3 = \\frac{8!}{(8 - 3)!} = 8 \\times 7 \\times 6 = 336$.",
-      "archetype": "numerical"
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m05-08",
@@ -92,7 +99,8 @@
       "choiceD": "1,663,200",
       "correctChoice": "A",
       "explanation": "Total letters $n = 11$. Letter frequencies: E = 3, N = 3, G = 2, I = 2, R = 1. $P = \\frac{11!}{3! \\, 3! \\, 2! \\, 2! \\, 1!} = \\frac{39,916,800}{6 \\times 6 \\times 2 \\times 2} = \\frac{39,916,800}{144} = 277,200$.",
-      "archetype": "numerical"
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m05-09",
@@ -103,7 +111,8 @@
       "choiceD": "720",
       "correctChoice": "A",
       "explanation": "$P_{\\text{circ}} = (n - 1)! = (8 - 1)! = 7! = 5,040$.",
-      "archetype": "numerical"
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m05-10",
@@ -114,7 +123,8 @@
       "choiceD": "360",
       "correctChoice": "A",
       "explanation": "$P = \\frac{(n - 1)!}{2} = \\frac{(6 - 1)!}{2} = \\frac{5!}{2} = \\frac{120}{2} = 60$.",
-      "archetype": "numerical"
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m05-11",
@@ -125,7 +135,8 @@
       "choiceD": "210",
       "correctChoice": "A",
       "explanation": "Engineers: ${}_7 C_3 = \\frac{7 \\times 6 \\times 5}{3 \\times 2 \\times 1} = 35$. Technicians: ${}_5 C_2 = \\frac{5 \\times 4}{2 \\times 1} = 10$. Total $= 35 \\times 10 = 350$.",
-      "archetype": "numerical"
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m05-12",
@@ -136,7 +147,8 @@
       "choiceD": "225",
       "correctChoice": "A",
       "explanation": "Total handshakes $= {}_{15} C_2 = \\frac{15 \\times 14}{2} = 105$.",
-      "archetype": "numerical"
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m05-13",
@@ -147,7 +159,8 @@
       "choiceD": "20",
       "correctChoice": "A",
       "explanation": "Number of diagonals in an $n$-gon is $D = \\frac{n(n - 3)}{2} = \\frac{10(7)}{2} = 35$.",
-      "archetype": "numerical"
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m05-14",
@@ -158,7 +171,8 @@
       "choiceD": "3,024",
       "correctChoice": "A",
       "explanation": "1st digit: 9 choices (1–9). 2nd digit: 9 choices (0–9 except 1st). 3rd digit: 8 choices. 4th digit: 7 choices. Total $= 9 \\times 9 \\times 8 \\times 7 = 4,536$.",
-      "archetype": "standard"
+      "archetype": "standard",
+      "isAnchor": false
     },
     {
       "id": "m05-15",
@@ -169,7 +183,8 @@
       "choiceD": "28,800",
       "correctChoice": "A",
       "explanation": "Step 1: Seat the 5 boys in a circle in $(5 - 1)! = 4! = 24$ ways. Step 2: This creates 5 distinct spaces between them for the girls. Seat the 5 girls in $5! = 120$ ways. Total $= 24 \\times 120 = 2,880$.",
-      "archetype": "applied"
+      "archetype": "applied",
+      "isAnchor": false
     },
     {
       "id": "m05-16",
@@ -180,7 +195,8 @@
       "choiceD": "1,440",
       "correctChoice": "A",
       "explanation": "Treat vowels (I, A, E) as 1 block $+ 5$ consonants $= 6$ units. Arrange 6 units in $6! = 720$ ways. Arrange 3 vowels internally in $3! = 6$ ways. Total $= 720 \\times 6 = 4,320$.",
-      "archetype": "applied"
+      "archetype": "applied",
+      "isAnchor": false
     },
     {
       "id": "m05-17",
@@ -191,7 +207,8 @@
       "choiceD": "1,820",
       "correctChoice": "A",
       "explanation": "Total possible committees $= {}_{14} C_5 = 2,002$. Committees where both Santos and Reyes serve together: choose remaining 3 from 12 candidates $\\implies {}_{12} C_3 = 220$. Valid committees $= 2,002 - 220 = 1,782$.",
-      "archetype": "applied"
+      "archetype": "applied",
+      "isAnchor": false
     },
     {
       "id": "m05-18",
@@ -202,7 +219,8 @@
       "choiceD": "5,040",
       "correctChoice": "A",
       "explanation": "$n = 10$. Multi-set permutation $= \\frac{10!}{5! \\, 3! \\, 2!} = \\frac{3,628,800}{120 \\times 6 \\times 2} = \\frac{3,628,800}{1,440} = 2,520$.",
-      "archetype": "applied"
+      "archetype": "applied",
+      "isAnchor": false
     },
     {
       "id": "m05-19",
@@ -213,7 +231,8 @@
       "choiceD": "Adding the factorials.",
       "correctChoice": "A",
       "explanation": "Once the first group is seated circularly in $(n-1)!$ ways, the gaps between them become fixed, numbered positions, meaning the second group sits linearly in $n!$ ways.",
-      "archetype": "trap"
+      "archetype": "trap",
+      "isAnchor": false
     },
     {
       "id": "m05-20",
@@ -224,7 +243,8 @@
       "choiceD": "Adding the factorials in the denominator.",
       "correctChoice": "A",
       "explanation": "Every distinct repeating letter's factorial must be multiplied together in the denominator: $P = \\frac{n!}{p! \\, q! \\, r! \\dots}$.",
-      "archetype": "trap"
+      "archetype": "trap",
+      "isAnchor": false
     },
     {
       "id": "m05-21",
@@ -235,7 +255,8 @@
       "choiceD": "16",
       "correctChoice": "A",
       "explanation": "$D = \\frac{8(5)}{2} = 20$ in 2 seconds.",
-      "archetype": "shortcut"
+      "archetype": "shortcut",
+      "isAnchor": false
     },
     {
       "id": "m05-22",
@@ -246,7 +267,8 @@
       "choiceD": "200",
       "correctChoice": "A",
       "explanation": "Business cards are directional ($A \\to B$ and $B \\to A$), so use permutations: ${}_{20} P_2 = 20 \\times 19 = 380$ (twice the handshakes count 190).",
-      "archetype": "shortcut"
+      "archetype": "shortcut",
+      "isAnchor": false
     }
   ]
 }

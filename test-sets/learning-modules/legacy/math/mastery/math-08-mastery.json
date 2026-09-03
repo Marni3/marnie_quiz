@@ -15,7 +15,8 @@
       "choiceD": "1 revolution = 640 mils",
       "correctChoice": "A",
       "explanation": "In standard military artillery and NATO ballistics, a full circle of $360^\\circ$ is partitioned into exactly $6,400\\text{ mils}$ ($1\\text{ mil} = 0.05625^\\circ$).",
-      "archetype": "conceptual"
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m08-02",
@@ -26,7 +27,8 @@
       "choiceD": "sin θ and cos θ",
       "correctChoice": "A",
       "explanation": "Cosine and its reciprocal secant are even functions: $\\cos(-\\theta) = \\cos\\theta$ and $\\sec(-\\theta) = \\sec\\theta$. The other four functions are odd: $f(-\\theta) = -f(\\theta)$.",
-      "archetype": "conceptual"
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m08-03",
@@ -37,7 +39,8 @@
       "choiceD": "The perimeter of the triangle",
       "correctChoice": "A",
       "explanation": "The extended Law of Sines states that $\\frac{a}{\\sin A} = \\frac{b}{\\sin B} = \\frac{c}{\\sin C} = 2R$, where $R$ is the radius of the triangle's circumscribed circle.",
-      "archetype": "conceptual"
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m08-04",
@@ -48,7 +51,8 @@
       "choiceD": "a ≥ b",
       "correctChoice": "A",
       "explanation": "When the side opposite angle $A$ is strictly longer than the perpendicular altitude ($a > h = b\\sin A$) but shorter than the adjacent side ($a < b$), the side can swing inward or outward, creating two valid triangles.",
-      "archetype": "conceptual"
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m08-05",
@@ -59,7 +63,8 @@
       "choiceD": "(e^(ix) + e^(-ix)) / (2i)",
       "correctChoice": "A",
       "explanation": "From Euler's formula $e^{ix} = \\cos x + i\\sin x$ and $e^{-ix} = \\cos x - i\\sin x$, subtracting yields $\\sin x = \\frac{e^{ix} - e^{-ix}}{2i}$.",
-      "archetype": "conceptual"
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m08-06",
@@ -70,7 +75,8 @@
       "choiceD": "John Napier",
       "correctChoice": "A",
       "explanation": "French mathematician François Viète first presented the Law of Cosines in modern algebraic formulation.",
-      "archetype": "conceptual"
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m08-07",
@@ -81,7 +87,8 @@
       "choiceD": "120°",
       "correctChoice": "A",
       "explanation": "$1,600\\text{ mils} \\times \\left(\\frac{360^\\circ}{6,400\\text{ mils}}\\right) = \\frac{1,600}{6,400} \\times 360^\\circ = \\frac{1}{4} \\times 360^\\circ = 90^\\circ$.",
-      "archetype": "numerical"
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m08-08",
@@ -92,7 +99,8 @@
       "choiceD": "16/25",
       "correctChoice": "A",
       "explanation": "Double angle formula: $\\cos 2\\theta = 2\\cos^2\\theta - 1 = 2\\left(\\frac{4}{5}\\right)^2 - 1 = 2\\left(\\frac{16}{25}\\right) - 1 = \\frac{32}{25} - 1 = \\frac{7}{25}$.",
-      "archetype": "numerical"
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m08-09",
@@ -103,7 +111,8 @@
       "choiceD": "9.0 cm",
       "correctChoice": "A",
       "explanation": "Law of Cosines: $c^2 = a^2 + b^2 - 2ab\\cos C = 5^2 + 8^2 - 2(5)(8)\\cos 60^\\circ = 25 + 64 - 80(0.5) = 89 - 40 = 49 \\implies c = \\sqrt{49} = 7\\text{ cm}$.",
-      "archetype": "numerical"
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m08-10",
@@ -114,7 +123,8 @@
       "choiceD": "(√3 + 1) / 2",
       "correctChoice": "A",
       "explanation": "$\\sin(45^\\circ + 30^\\circ) = \\sin 45^\\circ\\cos 30^\\circ + \\cos 45^\\circ\\sin 30^\\circ = \\frac{\\sqrt{2}}{2}\\frac{\\sqrt{3}}{2} + \\frac{\\sqrt{2}}{2}\\frac{1}{2} = \\frac{\\sqrt{6} + \\sqrt{2}}{4}$.",
-      "archetype": "numerical"
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m08-11",
@@ -125,7 +135,8 @@
       "choiceD": "5.00 cm",
       "correctChoice": "A",
       "explanation": "$2R = \\frac{a}{\\sin A} = \\frac{10}{\\sin 45^\\circ} = \\frac{10}{1/\\sqrt{2}} = 10\\sqrt{2} \\implies R = 5\\sqrt{2} \\approx 7.071\\text{ cm}$.",
-      "archetype": "numerical"
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m08-12",
@@ -136,7 +147,8 @@
       "choiceD": "cos θ",
       "correctChoice": "A",
       "explanation": "$\\frac{1 - \\cos 2\\theta}{\\sin 2\\theta} = \\frac{2\\sin^2\\theta}{2\\sin\\theta\\cos\\theta} = \\frac{\\sin\\theta}{\\cos\\theta} = \\tan\\theta$.",
-      "archetype": "standard"
+      "archetype": "standard",
+      "isAnchor": false
     },
     {
       "id": "m08-13",
@@ -147,7 +159,8 @@
       "choiceD": "2/3",
       "correctChoice": "A",
       "explanation": "$\\tan(A + B) = \\frac{\\tan A + \\tan B}{1 - \\tan A\\tan B} = \\frac{1/2 + 1/3}{1 - (1/2)(1/3)} = \\frac{5/6}{1 - 1/6} = \\frac{5/6}{5/6} = 1$ (meaning $A + B = 45^\\circ$).",
-      "archetype": "numerical"
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m08-14",
@@ -158,7 +171,8 @@
       "choiceD": "57.74 meters",
       "correctChoice": "A",
       "explanation": "Let height be $h$. Distance from second point: $x = h/\\tan 60^\\circ = h/\\sqrt{3}$. From first point: $x + 100 = h/\\tan 30^\\circ = h\\sqrt{3}$. Subtracting: $h\\sqrt{3} - h/\\sqrt{3} = 100 \\implies h\\left(\\frac{2}{\\sqrt{3}}\\right) = 100 \\implies h = 50\\sqrt{3} \\approx 86.60\\text{ meters}$.",
-      "archetype": "applied"
+      "archetype": "applied",
+      "isAnchor": false
     },
     {
       "id": "m08-15",
@@ -169,7 +183,8 @@
       "choiceD": "Infinitely many triangles",
       "correctChoice": "A",
       "explanation": "Altitude $h = b\\sin A = 20\\sin 30^\\circ = 10\\text{ cm}$. Since $h < a < b$ ($10 < 15 < 20$), exactly 2 distinct triangles exist.",
-      "archetype": "applied"
+      "archetype": "applied",
+      "isAnchor": false
     },
     {
       "id": "m08-16",
@@ -180,7 +195,8 @@
       "choiceD": "60 N",
       "correctChoice": "A",
       "explanation": "$R = \\sqrt{F_1^2 + F_2^2} = \\sqrt{30^2 + 40^2} = \\sqrt{900 + 1600} = \\sqrt{2500} = 50\\text{ N}$ (standard 3-4-5 Egyptian triangle).",
-      "archetype": "applied"
+      "archetype": "applied",
+      "isAnchor": false
     },
     {
       "id": "m08-17",
@@ -191,7 +207,8 @@
       "choiceD": "0.85",
       "correctChoice": "A",
       "explanation": "$\\text{pf} = \\cos(36.87^\\circ) = 0.80$.",
-      "archetype": "applied"
+      "archetype": "applied",
+      "isAnchor": false
     },
     {
       "id": "m08-18",
@@ -202,7 +219,8 @@
       "choiceD": "5/14",
       "correctChoice": "A",
       "explanation": "Law of Cosines: $\\cos C = \\frac{a^2 + b^2 - c^2}{2ab} = \\frac{7^2 + 8^2 - 9^2}{2(7)(8)} = \\frac{49 + 64 - 81}{112} = \\frac{32}{112} = \\frac{2}{7} \\approx 0.2857$.",
-      "archetype": "applied"
+      "archetype": "applied",
+      "isAnchor": false
     },
     {
       "id": "m08-19",
@@ -213,7 +231,8 @@
       "choiceD": "Squaring the terms.",
       "correctChoice": "A",
       "explanation": "Cosine angle expansions flip signs: $\\cos(\\alpha - \\beta) = \\cos\\alpha\\cos\\beta + \\sin\\alpha\\sin\\beta$. Writing a minus sign is the most frequent trigonometric error.",
-      "archetype": "trap"
+      "archetype": "trap",
+      "isAnchor": false
     },
     {
       "id": "m08-20",
@@ -224,7 +243,8 @@
       "choiceD": "Using radians.",
       "correctChoice": "A",
       "explanation": "When $a < b\\sin A$, $\\sin B = \\frac{b\\sin A}{a} > 1$. Attempting $\\arcsin(>1)$ produces a Math ERROR on calculators because no real triangle can close.",
-      "archetype": "trap"
+      "archetype": "trap",
+      "isAnchor": false
     },
     {
       "id": "m08-21",
@@ -235,7 +255,8 @@
       "choiceD": "7.07 cm",
       "correctChoice": "A",
       "explanation": "Minimum altitude $h = b\\sin A = 10(0.5) = 5.0\\text{ cm}$ in 2 seconds.",
-      "archetype": "shortcut"
+      "archetype": "shortcut",
+      "isAnchor": false
     },
     {
       "id": "m08-22",
@@ -246,7 +267,8 @@
       "choiceD": "23",
       "correctChoice": "A",
       "explanation": "Standard 7-24-25 Pythagorean triple: $\\sqrt{7^2 + 24^2} = \\sqrt{49 + 576} = \\sqrt{625} = 25$ in 2 seconds.",
-      "archetype": "shortcut"
+      "archetype": "shortcut",
+      "isAnchor": false
     }
   ]
 }

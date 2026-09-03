@@ -14,7 +14,9 @@
       "choiceC": "The President of the Philippines",
       "choiceD": "The Secretary of the Department of Information and Communications Technology",
       "correctChoice": "C",
-      "explanation": "Section 6 mandates that the Chairman and two Members of the Board are appointed by the President of the Philippines."
+      "explanation": "Section 6 mandates that the Chairman and two Members of the Board are appointed by the President of the Philippines.",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "q-geas10-02-02",
@@ -24,7 +26,9 @@
       "choiceC": "Ten (10) nominees",
       "choiceD": "Five (5) nominees",
       "correctChoice": "D",
-      "explanation": "Section 6 states that the APO submits five (5) nominees per position to the Commission."
+      "explanation": "Section 6 states that the APO submits five (5) nominees per position to the Commission.",
+      "archetype": "numerical",
+      "isAnchor": true
     },
     {
       "id": "q-geas10-02-03",
@@ -34,7 +38,9 @@
       "choiceC": "Two (2) recommendees",
       "choiceD": "Four (4) recommendees",
       "correctChoice": "A",
-      "explanation": "Section 6 states that the Commission chooses and ranks three (3) recommendees per position for the President's selection."
+      "explanation": "Section 6 states that the Commission chooses and ranks three (3) recommendees per position for the President's selection.",
+      "archetype": "numerical",
+      "isAnchor": true
     },
     {
       "id": "q-geas10-02-04",
@@ -44,7 +50,9 @@
       "choiceC": "Ten (10) consecutive years",
       "choiceD": "Seven (7) consecutive years",
       "correctChoice": "B",
-      "explanation": "Section 8(a) requires a Board member to be a citizen and resident of the Philippines for at least five (5) consecutive years prior to appointment."
+      "explanation": "Section 8(a) requires a Board member to be a citizen and resident of the Philippines for at least five (5) consecutive years prior to appointment.",
+      "archetype": "numerical",
+      "isAnchor": true
     },
     {
       "id": "q-geas10-02-05",
@@ -54,7 +62,9 @@
       "choiceC": "Consulting Telecommunications Engineer (CTE)",
       "choiceD": "Professional Electronics Engineer (PECE)",
       "correctChoice": "D",
-      "explanation": "Section 8(c) specifies that a Board member must be a holder of a valid Certificate of Registration and Professional ID as a PECE."
+      "explanation": "Section 8(c) specifies that a Board member must be a holder of a valid Certificate of Registration and Professional ID as a PECE.",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "q-geas10-02-06",
@@ -64,7 +74,9 @@
       "choiceC": "At least five (5) years",
       "choiceD": "At least fifteen (15) years",
       "correctChoice": "A",
-      "explanation": "Section 8(e) requires at least ten (10) years of active professional practice prior to appointment."
+      "explanation": "Section 8(e) requires at least ten (10) years of active professional practice prior to appointment.",
+      "archetype": "numerical",
+      "isAnchor": true
     },
     {
       "id": "q-geas10-02-07",
@@ -74,7 +86,9 @@
       "choiceC": "Transfer their review classes to an online platform",
       "choiceD": "Disclose their ownership shares but continue lecturing",
       "correctChoice": "B",
-      "explanation": "Section 8(f) requires that a nominee must not be a faculty member or have pecuniary interest in any school or review center, and must resign prior to taking oath."
+      "explanation": "Section 8(f) requires that a nominee must not be a faculty member or have pecuniary interest in any school or review center, and must resign prior to taking oath.",
+      "archetype": "trap",
+      "isAnchor": false
     },
     {
       "id": "q-geas10-02-08",
@@ -84,7 +98,9 @@
       "choiceC": "Three (3) years",
       "choiceD": "Five (5) years",
       "correctChoice": "C",
-      "explanation": "Section 9 mandates a regular term of office of three (3) years."
+      "explanation": "Section 9 mandates a regular term of office of three (3) years.",
+      "archetype": "numerical",
+      "isAnchor": true
     },
     {
       "id": "q-geas10-02-09",
@@ -94,7 +110,9 @@
       "choiceC": "Nine (9) years",
       "choiceD": "Five (5) years",
       "correctChoice": "A",
-      "explanation": "Section 9 states that a member may be reappointed, provided that the total continuous tenure does not exceed six (6) years (i.e. two 3-year terms)."
+      "explanation": "Section 9 states that a member may be reappointed, provided that the total continuous tenure does not exceed six (6) years (i.e. two 3-year terms).",
+      "archetype": "numerical",
+      "isAnchor": true
     },
     {
       "id": "q-geas10-02-10",
@@ -104,7 +122,9 @@
       "choiceC": "Until the end of the calendar year",
       "choiceD": "For 6 years automatically",
       "correctChoice": "B",
-      "explanation": "Section 9 explicitly states: 'Any vacancy occurring within the term of a member shall be filled for the unexpired portion of the term only.'"
+      "explanation": "Section 9 explicitly states: 'Any vacancy occurring within the term of a member shall be filled for the unexpired portion of the term only.'",
+      "archetype": "standard",
+      "isAnchor": false
     },
     {
       "id": "q-geas10-02-11",
@@ -114,7 +134,9 @@
       "choiceC": "Within fifteen (15) days from receipt of the decision",
       "choiceD": "Within sixty (60) days from receipt",
       "correctChoice": "C",
-      "explanation": "Section 7 states that decisions and resolutions of the Board are appealable to the Commission within fifteen (15) days from receipt."
+      "explanation": "Section 7 states that decisions and resolutions of the Board are appealable to the Commission within fifteen (15) days from receipt.",
+      "archetype": "numerical",
+      "isAnchor": true
     },
     {
       "id": "q-geas10-02-12",
@@ -124,7 +146,9 @@
       "choiceC": "Writ of mandamus",
       "choiceD": "Subpoena ad testificandum",
       "correctChoice": "D",
-      "explanation": "Section 7 empowers the Board to issue *subpoena ad testificandum* to compel attendance of witnesses (and *subpoena duces tecum* for documents)."
+      "explanation": "Section 7 empowers the Board to issue *subpoena ad testificandum* to compel attendance of witnesses (and *subpoena duces tecum* for documents).",
+      "archetype": "trap",
+      "isAnchor": true
     },
     {
       "id": "q-geas10-02-13",
@@ -134,7 +158,9 @@
       "choiceC": "Writ of certiorari",
       "choiceD": "Writ of injunction",
       "correctChoice": "B",
-      "explanation": "*Subpoena duces tecum* commands the production of books, documents, and physical records."
+      "explanation": "*Subpoena duces tecum* commands the production of books, documents, and physical records.",
+      "archetype": "trap",
+      "isAnchor": true
     },
     {
       "id": "q-geas10-02-14",
@@ -144,7 +170,9 @@
       "choiceC": "The Professional Regulation Commission (PRC)",
       "choiceD": "The Department of Science and Technology (DOST)",
       "correctChoice": "C",
-      "explanation": "Section 12 provides that all records of the Board, including examination papers and minutes, shall be kept by the Commission."
+      "explanation": "Section 12 provides that all records of the Board, including examination papers and minutes, shall be kept by the Commission.",
+      "archetype": "conceptual",
+      "isAnchor": false
     },
     {
       "id": "q-geas10-02-15",
@@ -154,7 +182,9 @@
       "choiceC": "Chief Engineer, Broadcast Engineer, and Radio Technician",
       "choiceD": "Professional Electronics Engineer, Electronics Engineer, and Electronics Technician",
       "correctChoice": "D",
-      "explanation": "Section 4 establishes: (a) Professional Electronics Engineer (PECE), (b) Electronics Engineer (ECE), and (c) Electronics Technician (ECT)."
+      "explanation": "Section 4 establishes: (a) Professional Electronics Engineer (PECE), (b) Electronics Engineer (ECE), and (c) Electronics Technician (ECT).",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "q-geas10-02-16",
@@ -164,7 +194,9 @@
       "choiceC": "Teaching of undergraduate electronics engineering courses",
       "choiceD": "Testing and calibration of laboratory instruments",
       "correctChoice": "A",
-      "explanation": "Section 5(a) explicitly grants the sole authority to sign and seal plans, specs, schematics, and design documents exclusively to PECEs."
+      "explanation": "Section 5(a) explicitly grants the sole authority to sign and seal plans, specs, schematics, and design documents exclusively to PECEs.",
+      "archetype": "applied",
+      "isAnchor": true
     },
     {
       "id": "q-geas10-02-17",
@@ -174,7 +206,9 @@
       "choiceC": "No, consulting services in electronics engineering are restricted to licensed PECEs",
       "choiceD": "Yes, provided they pass a special foreign language examination",
       "correctChoice": "C",
-      "explanation": "Section 5(a) reserves independent consulting services exclusively to Professional Electronics Engineers (PECE)."
+      "explanation": "Section 5(a) reserves independent consulting services exclusively to Professional Electronics Engineers (PECE).",
+      "archetype": "trap",
+      "isAnchor": true
     },
     {
       "id": "q-geas10-02-18",
@@ -184,7 +218,9 @@
       "choiceC": "Electrical Safety Officer",
       "choiceD": "Electronics Technician (ECT)",
       "correctChoice": "D",
-      "explanation": "Section 5(b) defines ECT as performing non-engineering technical work such as installation, operation, maintenance, testing, and sales."
+      "explanation": "Section 5(b) defines ECT as performing non-engineering technical work such as installation, operation, maintenance, testing, and sales.",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "q-geas10-02-19",
@@ -194,7 +230,9 @@
       "choiceC": "Holder of a Bachelor of Science in Mechanical Engineering",
       "choiceD": "Completion of primary elementary school education only",
       "correctChoice": "A",
-      "explanation": "Section 14(b) requires a graduate of an Associate, technician, trade or vocational course in electronics, or completion of at least 3rd year equivalent of BSECE."
+      "explanation": "Section 14(b) requires a graduate of an Associate, technician, trade or vocational course in electronics, or completion of at least 3rd year equivalent of BSECE.",
+      "archetype": "standard",
+      "isAnchor": true
     },
     {
       "id": "q-geas10-02-20",
@@ -204,7 +242,9 @@
       "choiceC": "Graduate of a 2-year technical diploma in electronics",
       "choiceD": "Master of Science in Information Technology",
       "correctChoice": "B",
-      "explanation": "Section 14(a) specifies a graduate of BSECE/BSEcE from an institution recognized by the government (CHED)."
+      "explanation": "Section 14(a) specifies a graduate of BSECE/BSEcE from an institution recognized by the government (CHED).",
+      "archetype": "standard",
+      "isAnchor": true
     },
     {
       "id": "q-geas10-02-21",
@@ -214,7 +254,9 @@
       "choiceC": "At least five (5) years of retail equipment sales",
       "choiceD": "At least seven (7) years, including at least two (2) years of significant engineering work",
       "correctChoice": "D",
-      "explanation": "Section 18 requires at least seven (7) years of active practice, of which at least two (2) years must be in significant engineering work."
+      "explanation": "Section 18 requires at least seven (7) years of active practice, of which at least two (2) years must be in significant engineering work.",
+      "archetype": "numerical",
+      "isAnchor": true
     },
     {
       "id": "q-geas10-02-22",
@@ -224,7 +266,9 @@
       "choiceC": "One (1) certification from a barangay chairman",
       "choiceD": "Two (2) certifications from company HR officers",
       "correctChoice": "A",
-      "explanation": "Section 18 requires three (3) certifications signed by three (3) licensed PECEs stating that the submitted experience is factual."
+      "explanation": "Section 18 requires three (3) certifications signed by three (3) licensed PECEs stating that the submitted experience is factual.",
+      "archetype": "numerical",
+      "isAnchor": true
     },
     {
       "id": "q-geas10-02-23",
@@ -234,7 +278,9 @@
       "choiceC": "Complete a 100-kilometer bicycle endurance ride",
       "choiceD": "Publish three textbooks in an international IEEE journal",
       "correctChoice": "B",
-      "explanation": "Section 18 requires passing the en banc oral interview conducted by the Board."
+      "explanation": "Section 18 requires passing the en banc oral interview conducted by the Board.",
+      "archetype": "standard",
+      "isAnchor": false
     },
     {
       "id": "q-geas10-02-24",
@@ -244,7 +290,9 @@
       "choiceC": "The President of the Philippines, upon recommendation of the PRC",
       "choiceD": "The Senate Committee on Civil Service",
       "correctChoice": "C",
-      "explanation": "Section 11 states that the President of the Philippines, upon recommendation of the Commission, may suspend or remove any Board member."
+      "explanation": "Section 11 states that the President of the Philippines, upon recommendation of the Commission, may suspend or remove any Board member.",
+      "archetype": "conceptual",
+      "isAnchor": false
     },
     {
       "id": "q-geas10-02-25",
@@ -254,7 +302,9 @@
       "choiceC": "Required only for engineers residing in Metro Manila",
       "choiceD": "A mandatory prerequisite prior to entering the practice of PECE, ECE, or ECT",
       "correctChoice": "D",
-      "explanation": "Section 22 mandates that all successful examinees and registered professionals must take a professional oath before the Board or authorized officer prior to practice."
+      "explanation": "Section 22 mandates that all successful examinees and registered professionals must take a professional oath before the Board or authorized officer prior to practice.",
+      "archetype": "conceptual",
+      "isAnchor": true
     }
   ]
 }

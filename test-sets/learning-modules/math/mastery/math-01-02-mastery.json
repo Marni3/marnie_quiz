@@ -18,7 +18,9 @@
       "correctChoice": "B",
       "explanation": "Setting the linear divisor $ax - b = 0$ yields $x = b/a$. By Bézout's Remainder Theorem, the remainder is $R = P(b/a)$.",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m0102-q02",
@@ -31,7 +33,9 @@
       "correctChoice": "A",
       "explanation": "The modulus of logarithms is $M = \\log_{10} e \\approx 0.434294 \\approx 0.4343$. Its reciprocal is $\\ln 10 \\approx 2.3026$.",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m0102-q03",
@@ -44,7 +48,9 @@
       "correctChoice": "D",
       "explanation": "Evaluate $P(2) = 3(2^3) - 4(2^2) + 2(2) - 5 = 3(8) - 4(4) + 4 - 5 = 24 - 16 + 4 - 5 = 7$.\n\n⚡ Speed Shortcut: Use CALC with $X=2$ on calculator.",
       "category": "computational",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m0102-q04",
@@ -57,7 +63,9 @@
       "correctChoice": "C",
       "explanation": "Prime factorize: $8 = 2^3, 9 = 3^2, 12 = 2^2 \\cdot 3, 15 = 3 \\cdot 5$. $\\text{LCD} = 2^3 \\cdot 3^2 \\cdot 5 = 8 \\cdot 9 \\cdot 5 = 360$.",
       "category": "computational",
-      "difficulty": "medium"
+      "difficulty": "medium",
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m0102-q05",
@@ -70,7 +78,9 @@
       "correctChoice": "A",
       "explanation": "Prime factorize: $70 = 2 \\cdot 5 \\cdot 7$ and $112 = 2^4 \\cdot 7$. The common factors are $2^1$ and $7^1$. Thus $\\text{GCF} = 2 \\times 7 = 14$.",
       "category": "computational",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m0102-q06",
@@ -83,7 +93,9 @@
       "correctChoice": "B",
       "explanation": "Scottish mathematician John Napier invented logarithms in 1614 using base $e$, hence the term Napierian logarithms.",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m0102-q07",
@@ -96,7 +108,9 @@
       "correctChoice": "C",
       "explanation": "The sum of cubes factors into a linear sum $(x + y)$ and a quadratic trinomial with middle term $-xy$: $(x + y)(x^2 - xy + y^2)$.",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m0102-q08",
@@ -109,7 +123,9 @@
       "correctChoice": "D",
       "explanation": "$\\log_2 64 = 6$ (since $2^6 = 64$); $\\log_3 81 = 4$ (since $3^4 = 81$); $\\ln(e^5) = 5$. Total = $6 + 4 - 5 = 5$.",
       "category": "shortcuts",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "shortcut",
+      "isAnchor": false
     },
     {
       "id": "m0102-q09",
@@ -122,7 +138,9 @@
       "correctChoice": "B",
       "explanation": "By Factor Theorem, $P(-2) = 0$: $2(-8) + k(4) - 8(-2) + 16 = 0 \\implies -16 + 4k + 16 + 16 = 0 \\implies 4k = -16 \\implies k = -4$.",
       "category": "computational",
-      "difficulty": "medium"
+      "difficulty": "medium",
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m0102-q10",
@@ -135,7 +153,9 @@
       "correctChoice": "C",
       "explanation": "$15 = 3 \\cdot 5$ and $18 = 2 \\cdot 3^2$. $\\text{LCM} = 2^1 \\cdot 3^2 \\cdot 5 = 2 \\cdot 9 \\cdot 5 = 90$.",
       "category": "computational",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m0102-q11",
@@ -148,7 +168,9 @@
       "correctChoice": "D",
       "explanation": "Factoring the numerator via difference of cubes: $x^3 - 2^3 = (x - 2)(x^2 + 2x + 4)$. Dividing by $(x - 2)$ leaves $x^2 + 2x + 4$.",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m0102-q12",
@@ -161,7 +183,9 @@
       "correctChoice": "B",
       "explanation": "$\\log_{10} 5 = \\log_{10}(10/2) = \\log_{10} 10 - \\log_{10} 2 = 1 - 0.3010 = 0.6990$.\n\n⚡ Speed Shortcut: $\\log 5 = 1 - \\log 2 = 0.6990$.",
       "category": "shortcuts",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "shortcut",
+      "isAnchor": false
     },
     {
       "id": "m0102-q13",
@@ -174,7 +198,9 @@
       "correctChoice": "A",
       "explanation": "$(a + b + (-c))^2 = a^2 + b^2 + (-c)^2 + 2(a)(b) + 2(a)(-c) + 2(b)(-c) = a^2 + b^2 + c^2 + 2ab - 2ac - 2bc$.",
       "category": "conceptual",
-      "difficulty": "medium"
+      "difficulty": "medium",
+      "archetype": "conceptual",
+      "isAnchor": false
     },
     {
       "id": "m0102-q14",
@@ -187,7 +213,9 @@
       "correctChoice": "C",
       "explanation": "Combine: $\\log_3[(x + 2)(x - 4)] = 3 \\implies x^2 - 2x - 8 = 3^3 = 27 \\implies x^2 - 2x - 35 = 0 \\implies (x - 7)(x + 5) = 0$. Since $x > 4$ for log arguments to be positive, $x = 7$.",
       "category": "applied",
-      "difficulty": "hard"
+      "difficulty": "hard",
+      "archetype": "applied",
+      "isAnchor": false
     },
     {
       "id": "m0102-q15",
@@ -200,7 +228,9 @@
       "correctChoice": "C",
       "explanation": "Substitute $x = 1$: $R = (1)^{100} - 1 = 1 - 1 = 0$. Thus $(x - 1)$ is an exact factor.",
       "category": "shortcuts",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "shortcut",
+      "isAnchor": false
     },
     {
       "id": "m0102-q16",
@@ -213,7 +243,9 @@
       "correctChoice": "A",
       "explanation": "$27^{2/3} = (\\sqrt[3]{27})^2 = 3^2 = 9$. $16^{-3/4} = 1/(\\sqrt[4]{16})^3 = 1/2^3 = 1/8$. Sum = $9 + 1/8 = 73/8 = 9.125$.",
       "category": "computational",
-      "difficulty": "medium"
+      "difficulty": "medium",
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m0102-q17",
@@ -226,7 +258,9 @@
       "correctChoice": "D",
       "explanation": "For any two positive integers $a$ and $b$, the product of their greatest common factor and least common multiple is identically equal to the product of the numbers: $a \\cdot b = \\text{GCF}(a,b) \\times \\text{LCM}(a,b)$.",
       "category": "conceptual",
-      "difficulty": "medium"
+      "difficulty": "medium",
+      "archetype": "conceptual",
+      "isAnchor": false
     },
     {
       "id": "m0102-q18",
@@ -239,7 +273,9 @@
       "correctChoice": "A",
       "explanation": "By Remainder Theorem, $P(1) = 1 + a + b - 4 + 1 = 2 \\implies a + b - 2 = 2 \\implies a + b = 4$.",
       "category": "applied",
-      "difficulty": "hard"
+      "difficulty": "hard",
+      "archetype": "applied",
+      "isAnchor": false
     },
     {
       "id": "m0102-q19",
@@ -252,7 +288,9 @@
       "correctChoice": "B",
       "explanation": "By the Change of Base rule, $\\log_b x = \\frac{\\log_e x}{\\log_e b} = \\frac{\\ln x}{\\ln b}$.",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m0102-q19b",
@@ -265,7 +303,9 @@
       "correctChoice": "B",
       "explanation": "Substitute $x = 1/2$: $P(0.5) = 2(1/8) - 3(1/4) + 4(1/2) - 8 = 1/4 - 3/4 + 2 - 8 = -0.5 - 6 = -6.5$.",
       "category": "computational",
-      "difficulty": "medium"
+      "difficulty": "medium",
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m0102-q21",
@@ -278,7 +318,9 @@
       "correctChoice": "D",
       "explanation": "Nested fractional powers: $x^{1/2} \\cdot x^{1/4} \\cdot x^{1/8} = x^{1/2 + 1/4 + 1/8} = x^{7/8}$. Therefore, $\\log_a(x^{7/8}) = \\frac{7}{8}\\log_a x$.",
       "category": "shortcuts",
-      "difficulty": "medium"
+      "difficulty": "medium",
+      "archetype": "shortcut",
+      "isAnchor": false
     },
     {
       "id": "m0102-q22",
@@ -291,7 +333,9 @@
       "correctChoice": "A",
       "explanation": "Since $x - y = 4$, $(x - y)^3 = 4^3 = 64$. Note that $x^3 - y^3 = (x-y)^3 + 3xy(x-y) = 64 + 3(3)(4) = 100$, but $(x-y)^3$ is simply $4^3 = 64$.",
       "category": "conceptual",
-      "difficulty": "medium"
+      "difficulty": "medium",
+      "archetype": "conceptual",
+      "isAnchor": false
     }
   ]
 }

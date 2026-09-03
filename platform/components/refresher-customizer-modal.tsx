@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import {
   Zap,
@@ -14,6 +14,7 @@ import {
   Sliders,
   Play,
   RotateCcw,
+  AlertCircle,
 } from "lucide-react";
 
 interface RefresherCustomizerModalProps {
@@ -70,11 +71,24 @@ export function RefresherCustomizerModal({
   const [count, setCount] = useState<number>(20);
   const [mode, setMode] = useState<"untimed" | "timed_per_question" | "timed_whole_exam">("untimed");
   const [launching, setLaunching] = useState(false);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
+
+  // Mobile-First Standard: Lock body scroll while modal is active
+  useEffect(() => {
+    if (isOpen) {
+      const original = document.body.style.overflow;
+      document.body.style.overflow = "hidden";
+      return () => {
+        document.body.style.overflow = original;
+      };
+    }
+  }, [isOpen]);
 
   if (!isOpen) return null;
 
   const handleLaunch = async () => {
     setLaunching(true);
+    setErrorMessage(null);
     try {
       const res = await fetch("/api/srs/daily-drill", {
         method: "POST",
@@ -94,15 +108,16 @@ export function RefresherCustomizerModal({
       } else {
         throw new Error(data.error || "Failed to assemble refresher drill.");
       }
-    } catch (err) {
+    } catch (err: any) {
       console.error(err);
+      setErrorMessage(err?.message || "Failed to assemble drill. Please try again.");
       setLaunching(false);
     }
   };
 
   return (
     <div className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center p-3 sm:p-4 animate-in fade-in duration-150">
-      <div className="bg-[var(--surface)] border border-[var(--border)] rounded-2xl max-w-xl w-full shadow-2xl overflow-hidden flex flex-col max-h-[92vh]">
+      <div className="bg-[var(--surface)] border border-[var(--border)] rounded-2xl max-w-xl w-full shadow-2xl overflow-hidden flex flex-col max-h-[90dvh]">
         {/* Header */}
         <div className="flex items-center justify-between px-5 py-4 border-b border-[var(--border)] bg-[var(--surface2)]">
           <div className="flex items-center gap-2.5">
@@ -235,6 +250,12 @@ export function RefresherCustomizerModal({
         </div>
 
         {/* Footer */}
+        {errorMessage && (
+          <div className="mx-5 mb-2 p-2.5 rounded-xl bg-rose-500/10 border border-rose-500/30 text-rose-600 dark:text-rose-400 text-xs font-medium flex items-center gap-2 animate-in fade-in duration-150">
+            <AlertCircle className="w-4 h-4 shrink-0" />
+            <span>{errorMessage}</span>
+          </div>
+        )}
         <div className="px-5 py-3 border-t border-[var(--border)] bg-[var(--surface2)] flex items-center justify-end gap-2">
           <button
             type="button"

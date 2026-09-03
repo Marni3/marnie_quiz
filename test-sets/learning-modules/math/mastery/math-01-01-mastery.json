@@ -18,7 +18,9 @@
       "correctChoice": "C",
       "explanation": "Ordinal numbers state the relative rank or order of elements in a sequence (e.g., 1st, 2nd, 3rd), whereas cardinal numbers indicate quantity or count.",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m0101-q02",
@@ -31,7 +33,9 @@
       "correctChoice": "B",
       "explanation": "A vinculum (horizontal overbar) multiplies the base Roman numeral by 1,000 (e.g., $\\overline{\\text{X}} = 10 \\times 1,000 = 10,000$).",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m0101-q03",
@@ -44,7 +48,9 @@
       "correctChoice": "B",
       "explanation": "Brackets around a Roman numeral indicate multiplication by 100. Since $\\text{D} = 500$, $|\\text{D}| = 500 \\times 100 = 50,000$.",
       "category": "computational",
-      "difficulty": "medium"
+      "difficulty": "medium",
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m0101-q04",
@@ -57,7 +63,9 @@
       "correctChoice": "A",
       "explanation": "The doorframe notation (three-sided box over a numeral) multiplies the value by 1,000,000: $|\\overline{\\text{V}}| = 5 \\times 1,000,000 = 5,000,000$.",
       "category": "computational",
-      "difficulty": "medium"
+      "difficulty": "medium",
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m0101-q05",
@@ -70,7 +78,9 @@
       "correctChoice": "C",
       "explanation": "A repeating decimal is strictly rational because it can be expressed as a quotient of integers ($0.272727\\dots = 27/99 = 3/11$).",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m0101-q06",
@@ -83,7 +93,9 @@
       "correctChoice": "C",
       "explanation": "Divide the exponent by 4: $147 = 4(36) + 3$. Therefore, $i^{147} = i^3 = -i$.\n\n⚡ Speed Shortcut: $147 \\bmod 4 = 3 \\implies i^3 = -i$.",
       "category": "shortcuts",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "shortcut",
+      "isAnchor": false
     },
     {
       "id": "m0101-q07",
@@ -96,7 +108,9 @@
       "correctChoice": "D",
       "explanation": "Every block of 4 consecutive powers of $i$ sums to zero ($i + i^2 + i^3 + i^4 = i - 1 - i + 1 = 0$). Since 100 is an exact multiple of 4 ($25 \\times 4$), the entire sum is identically 0.",
       "category": "shortcuts",
-      "difficulty": "medium"
+      "difficulty": "medium",
+      "archetype": "shortcut",
+      "isAnchor": false
     },
     {
       "id": "m0101-q08",
@@ -109,7 +123,9 @@
       "correctChoice": "D",
       "explanation": "The multiplicative inverse property defines the existence of the reciprocal $1/a$ for every non-zero real number such that $a \\cdot (1/a) = 1$.",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m0101-q09",
@@ -122,7 +138,9 @@
       "correctChoice": "B",
       "explanation": "The cancellation property of addition states that if the same quantity is added to two quantities and their sums are equal, the original quantities are equal.",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m0101-q10",
@@ -135,7 +153,9 @@
       "correctChoice": "C",
       "explanation": "Break into terms: $\\overline{\\text{L}} = 50 \\times 1,000 = 50,000$; $|\\text{X}| = 10 \\times 100 = 1,000$; $\\text{IV} = 4$. Sum = $50,000 + 1,000 + 4 = 51,004$.",
       "category": "applied",
-      "difficulty": "medium"
+      "difficulty": "medium",
+      "archetype": "applied",
+      "isAnchor": false
     },
     {
       "id": "m0101-q11",
@@ -148,7 +168,9 @@
       "correctChoice": "D",
       "explanation": "The multiplicative identity is 1 because $a \\cdot 1 = a$ for any real number $a$. The additive identity is 0.",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m0101-q12",
@@ -161,7 +183,9 @@
       "correctChoice": "D",
       "explanation": "$i^{34} = i^2 = -1$; $i^{35} = i^3 = -i$; $i^{36} = i^0 = 1$. Sum = $-1 - i + 1 = -i$.",
       "category": "computational",
-      "difficulty": "medium"
+      "difficulty": "medium",
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m0101-q13",
@@ -174,7 +198,9 @@
       "correctChoice": "A",
       "explanation": "Let $x = 0.999\\dots \\implies 10x = 9.999\\dots \\implies 9x = 9 \\implies x = 1$. It is a standard rational equivalence.",
       "category": "conceptual",
-      "difficulty": "medium"
+      "difficulty": "medium",
+      "archetype": "conceptual",
+      "isAnchor": false
     },
     {
       "id": "m0101-q14",
@@ -187,7 +213,9 @@
       "correctChoice": "B",
       "explanation": "$|\\text{C}| = 100 \\times 100 = 10,000$; $\\overline{\\text{C}} = 100 \\times 1,000 = 100,000$; $|\\overline{\\text{C}}| = 100 \\times 1,000,000 = 100,000,000$. Total = $100,000,000 + 100,000 + 10,000 = 100,110,000$.",
       "category": "applied",
-      "difficulty": "hard"
+      "difficulty": "hard",
+      "archetype": "applied",
+      "isAnchor": false
     },
     {
       "id": "m0101-q15",
@@ -200,7 +228,9 @@
       "correctChoice": "C",
       "explanation": "A complex number is pure imaginary when its real part $a = 0$ and its imaginary coefficient $b \\neq 0$.",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m0101-q16",
@@ -213,7 +243,9 @@
       "correctChoice": "B",
       "explanation": "Sum the exponents: $1 + 2 + 3 + 4 = 10$. Then $i^{10} = i^2 = -1$.",
       "category": "computational",
-      "difficulty": "medium"
+      "difficulty": "medium",
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m0101-q17",
@@ -226,7 +258,9 @@
       "correctChoice": "A",
       "explanation": "Associativity refers to the grouping of elements under multiplication without changing the result.",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m0101-q18",
@@ -239,7 +273,9 @@
       "correctChoice": "B",
       "explanation": "$(1 + i)^2 = 1 + 2i + i^2 = 2i$. Then $((1 + i)^2)^4 = (2i)^4 = 2^4 \\cdot i^4 = 16(1) = 16$.\n\n⚡ Speed Shortcut: Modulus is $(\\sqrt{2})^8 = 16$; angle is $8 \\times 45^\\circ = 360^\\circ \\implies 16$.",
       "category": "shortcuts",
-      "difficulty": "medium"
+      "difficulty": "medium",
+      "archetype": "shortcut",
+      "isAnchor": false
     },
     {
       "id": "m0101-q19",
@@ -252,7 +288,9 @@
       "correctChoice": "A",
       "explanation": "Natural numbers are positive counting numbers $\\{1, 2, 3, \\dots\\}$. Zero is a whole number/integer but not a natural number.",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m0101-q20",
@@ -265,7 +303,9 @@
       "correctChoice": "A",
       "explanation": "$\\overline{\\text{M}} = 1,000 \\times 1,000 = 1,000,000$; $|\\text{M}| = 1,000 \\times 100 = 100,000$; $\\text{M} = 1,000$. Total = $1,000,000 + 100,000 + 1,000 = 1,101,000$.",
       "category": "applied",
-      "difficulty": "medium"
+      "difficulty": "medium",
+      "archetype": "applied",
+      "isAnchor": false
     },
     {
       "id": "m0101-q21",
@@ -278,7 +318,9 @@
       "correctChoice": "D",
       "explanation": "Subtract powers: $i^{201 - 102} = i^{99}$. $99 \\bmod 4 = 3 \\implies i^3 = -i$.",
       "category": "computational",
-      "difficulty": "medium"
+      "difficulty": "medium",
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m0101-q22",
@@ -291,7 +333,9 @@
       "correctChoice": "A",
       "explanation": "Since $x = \\pm \\sqrt{2}$, and $\\sqrt{2}$ cannot be expressed as a ratio of integers, it belongs to the set of irrational numbers.",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     }
   ]
 }

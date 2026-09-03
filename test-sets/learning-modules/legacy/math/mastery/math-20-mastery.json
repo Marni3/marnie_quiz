@@ -15,7 +15,8 @@
       "choiceD": "(r ∠ θ)ⁿ = r ∠ (nθ)",
       "correctChoice": "A",
       "explanation": "De Moivre's Theorem states that raising a complex number to power $n$ raises its modulus to power $n$ and multiplies its argument by $n$: $(r\\angle\\theta)^n = r^n\\angle(n\\theta)$.",
-      "archetype": "conceptual"
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m20-02",
@@ -26,7 +27,8 @@
       "choiceD": "Undefined",
       "correctChoice": "A",
       "explanation": "$j^j = (e^{j\\pi/2})^j = e^{j^2 \\pi/2} = e^{-\\pi/2} \\approx 0.207879576$, which has zero imaginary component and is purely real.",
-      "archetype": "conceptual"
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m20-03",
@@ -37,7 +39,8 @@
       "choiceD": "They form a logarithmic spiral.",
       "correctChoice": "A",
       "explanation": "Because each consecutive root is separated by angular spacing $\\Delta\\theta = 360^\\circ / n$ at constant radius $r^{1/n}$, they form a regular $n$-gon inscribed in a circle.",
-      "archetype": "conceptual"
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m20-04",
@@ -48,7 +51,8 @@
       "choiceD": "ln(z) = r + j θ",
       "correctChoice": "A",
       "explanation": "By properties of logarithms on exponentials: $\\ln(z) = \\ln(r e^{j\\theta}) = \\ln r + \\ln(e^{j\\theta}) = \\ln r + j\\theta$.",
-      "archetype": "conceptual"
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m20-05",
@@ -59,7 +63,8 @@
       "choiceD": "2jb",
       "correctChoice": "A",
       "explanation": "$z \\cdot z^* = (a + jb)(a - jb) = a^2 - j^2 b^2 = a^2 - (-1)b^2 = a^2 + b^2 = |z|^2$.",
-      "archetype": "conceptual"
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m20-06",
@@ -70,7 +75,8 @@
       "choiceD": "(r₁ - r₂) ∠ (θ₁ / θ₂)",
       "correctChoice": "A",
       "explanation": "Division in polar form divides the magnitudes and subtracts the phase angles: $\\frac{r_1\\angle\\theta_1}{r_2\\angle\\theta_2} = \\left(\\frac{r_1}{r_2}\\right)\\angle(\\theta_1 - \\theta_2)$.",
-      "archetype": "conceptual"
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m20-07",
@@ -81,7 +87,8 @@
       "choiceD": "-16",
       "correctChoice": "A",
       "explanation": "$1 + j = \\sqrt{2}\\angle 45^\\circ$. $(1 + j)^8 = (\\sqrt{2})^8 \\angle(8 \\times 45^\\circ) = 16\\angle 360^\\circ = 16(1 + j0) = 16$.",
-      "archetype": "numerical"
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m20-08",
@@ -92,7 +99,8 @@
       "choiceD": "8 - 8j",
       "correctChoice": "A",
       "explanation": "$(4\\angle 30^\\circ)(2\\angle 60^\\circ) = (4 \\times 2)\\angle(30^\\circ + 60^\\circ) = 8\\angle 90^\\circ = 8(0 + j1) = 8j$.",
-      "archetype": "numerical"
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m20-09",
@@ -103,7 +111,8 @@
       "choiceD": "5j",
       "correctChoice": "A",
       "explanation": "$\\frac{10\\angle 75^\\circ}{2\\angle 15^\\circ} = 5\\angle(75^\\circ - 15^\\circ) = 5\\angle 60^\\circ = 5(\\cos 60^\\circ + j\\sin 60^\\circ) = 5(0.5 + j\\frac{\\sqrt{3}}{2}) = 2.5 + 4.330j$.",
-      "archetype": "numerical"
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m20-10",
@@ -114,7 +123,8 @@
       "choiceD": "0.33 - 0.25j",
       "correctChoice": "A",
       "explanation": "$\\frac{1}{z} = \\frac{z^*}{|z|^2} = \\frac{3 - 4j}{3^2 + 4^2} = \\frac{3 - 4j}{25} = \\frac{3}{25} - \\frac{4}{25}j = 0.12 - 0.16j$.",
-      "archetype": "numerical"
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m20-11",
@@ -125,7 +135,8 @@
       "choiceD": "1 + j π/4",
       "correctChoice": "A",
       "explanation": "$1 + j = \\sqrt{2} e^{j\\pi/4}$. $\\ln(1 + j) = \\ln(\\sqrt{2}) + j\\frac{\\pi}{4} = \\frac{1}{2}\\ln 2 + j\\frac{\\pi}{4} \\approx 0.34657 + 0.78540j$.",
-      "archetype": "numerical"
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m20-12",
@@ -136,7 +147,8 @@
       "choiceD": "-j",
       "correctChoice": "A",
       "explanation": "Divide exponent by 4: $2026 = 4(506) + 2$. Therefore, $j^{2026} = (j^4)^{506} \\cdot j^2 = (1)^{506}(-1) = -1$.",
-      "archetype": "numerical"
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m20-13",
@@ -147,7 +159,8 @@
       "choiceD": "-1",
       "correctChoice": "A",
       "explanation": "$j = 1\\angle 90^\\circ \\implies \\sqrt{j} = 1\\angle(90^\\circ / 2) = 1\\angle 45^\\circ = \\frac{\\sqrt{2}}{2} + j\\frac{\\sqrt{2}}{2} \\approx 0.7071 + 0.7071j$.",
-      "archetype": "numerical"
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m20-14",
@@ -158,7 +171,8 @@
       "choiceD": "2.40 + 3.20j Ω",
       "correctChoice": "A",
       "explanation": "$Z_1 Z_2 = (4 + 3j)(6 - 8j) = 48 - 14j$. $Z_1 + Z_2 = 10 - 5j$. $Z_{\\text{eq}} = \\frac{48 - 14j}{10 - 5j} = \\frac{(48 - 14j)(10 + 5j)}{125} = \\frac{550 + 100j}{125} = 4.40 + 0.80j\\text{ }\\Omega$.",
-      "archetype": "applied"
+      "archetype": "applied",
+      "isAnchor": false
     },
     {
       "id": "m20-15",
@@ -169,7 +183,8 @@
       "choiceD": "0.200",
       "correctChoice": "A",
       "explanation": "$\\Gamma = \\frac{(100 + 50j) - 50}{(100 + 50j) + 50} = \\frac{50 + 50j}{150 + 50j} = \\frac{1 + j}{3 + j}$. $|\\Gamma| = \\frac{\\sqrt{1^2 + 1^2}}{\\sqrt{3^2 + 1^2}} = \\frac{\\sqrt{2}}{\\sqrt{10}} = \\frac{1}{\\sqrt{5}} \\approx 0.4472$.",
-      "archetype": "applied"
+      "archetype": "applied",
+      "isAnchor": false
     },
     {
       "id": "m20-16",
@@ -180,7 +195,8 @@
       "choiceD": "0.00 V",
       "correctChoice": "A",
       "explanation": "In phasor form: $V_1 = 10\\angle 0^\\circ, V_2 = 10\\angle(-90^\\circ) = -10j$. Resultant magnitude $= |10 - 10j| = \\sqrt{10^2 + 10^2} = 10\\sqrt{2} \\approx 14.142\\text{ V}$.",
-      "archetype": "applied"
+      "archetype": "applied",
+      "isAnchor": false
     },
     {
       "id": "m20-17",
@@ -191,7 +207,8 @@
       "choiceD": "z = 2 ∠ 0°",
       "correctChoice": "A",
       "explanation": "$z^4 = -16 = 16\\angle 180^\\circ \\implies z = 16^{1/4}\\angle\\left(\\frac{180^\\circ + 360^\\circ k}{4}\\right) = 2\\angle(45^\\circ + 90^\\circ k)$ for $k = 0, 1, 2, 3$.",
-      "archetype": "applied"
+      "archetype": "applied",
+      "isAnchor": false
     },
     {
       "id": "m20-18",
@@ -202,7 +219,8 @@
       "choiceD": "0",
       "correctChoice": "A",
       "explanation": "By Euler's definition: $\\sin(jz) = j\\sinh(z) \\implies \\sin(j) = j\\sinh(1) \\approx 1.17520j$.",
-      "archetype": "applied"
+      "archetype": "applied",
+      "isAnchor": false
     },
     {
       "id": "m20-19",
@@ -213,7 +231,8 @@
       "choiceD": "Using radians instead of degrees.",
       "correctChoice": "A",
       "explanation": "The standard $\\arctan(y/x)$ function has range $(-90^\\circ, 90^\\circ)$ (Quadrants I and IV). When $x < 0$, $180^\\circ$ must be added to reach Quadrants II and III.",
-      "archetype": "trap"
+      "archetype": "trap",
+      "isAnchor": false
     },
     {
       "id": "m20-20",
@@ -224,7 +243,8 @@
       "choiceD": "Use TABLE mode.",
       "correctChoice": "A",
       "explanation": "Modern board-approved scientific calculators have full complex arithmetic support in `MODE 2` (CMPLX), performing addition, multiplication, division, and conversions instantly.",
-      "archetype": "trap"
+      "archetype": "trap",
+      "isAnchor": false
     },
     {
       "id": "m20-21",
@@ -235,7 +255,8 @@
       "choiceD": "12",
       "correctChoice": "A",
       "explanation": "$1^{12}\\angle(12 \\times 30^\\circ) = 1\\angle 360^\\circ = 1$ in 2 seconds.",
-      "archetype": "shortcut"
+      "archetype": "shortcut",
+      "isAnchor": false
     },
     {
       "id": "m20-22",
@@ -246,7 +267,8 @@
       "choiceD": "24 - 7j",
       "correctChoice": "A",
       "explanation": "Conjugate negates only the imaginary part: $z^* = -7 - 24j$ in 1 second.",
-      "archetype": "shortcut"
+      "archetype": "shortcut",
+      "isAnchor": false
     }
   ]
 }

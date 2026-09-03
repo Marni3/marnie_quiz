@@ -30,6 +30,14 @@ export interface ChatMessage {
   timestamp: number;
   functionMode?: TutorFunctionMode;
   contextTag?: string;
+  diagnostics?: {
+    provider: string;
+    model: string;
+    latencySeconds?: number;
+    cutover?: boolean;
+    tokensPerSec?: number;
+    injectedContext?: any;
+  };
   actionPayload?: {
     type: "module_preview" | "exam_remix" | "formula_card";
     data: any;

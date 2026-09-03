@@ -1,7 +1,7 @@
 "use client";
 
-import { useState, useMemo } from "react";
-import { useRouter } from "next/navigation";
+import { useState, useMemo, useEffect } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { Navbar } from "@/components/navbar";
 import { MotivationBanner } from "@/components/motivation-banner";
@@ -112,6 +112,27 @@ export function LibraryView({
   const [launchingDrill, setLaunchingDrill] = useState(false);
   const [isRefresherModalOpen, setIsRefresherModalOpen] = useState(false);
   const [refresherModalDomain, setRefresherModalDomain] = useState("ALL");
+
+  const searchParams = useSearchParams();
+
+  // Synchronize incoming URL search parameters (Omni-Search, Retention Board, Deep Links)
+  useEffect(() => {
+    const domainParam = searchParams.get("domain") || searchParams.get("subject");
+    const searchParam = searchParams.get("search") || searchParams.get("q");
+    const topicParam = searchParams.get("topic");
+
+    if (domainParam) {
+      setSelectedSubject(domainParam.toUpperCase());
+    }
+    if (searchParam) {
+      setSearch(searchParam);
+      setAllCollapsed(false);
+    }
+    if (topicParam) {
+      setCollapsedTopics((prev) => ({ ...prev, [topicParam]: false }));
+      setAllCollapsed(false);
+    }
+  }, [searchParams]);
 
   const getQuizTier = (q: QuizListItem) => {
     if (q.tier) return q.tier.toLowerCase();

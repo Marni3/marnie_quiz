@@ -1,7 +1,7 @@
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 import { getLearningModuleById, getMasteryChallenge } from "@/lib/modules";
-import { Navbar } from "@/components/navbar";
-import { MasteryRunner } from "./mastery-runner";
+import { createMasteryAttempt } from "@/lib/attempts";
+import { auth } from "@/lib/auth";
 import type { Metadata } from "next";
 
 export async function generateMetadata({
@@ -37,10 +37,9 @@ export default async function MasteryChallengePage({
     notFound();
   }
 
-  return (
-    <>
-      <Navbar />
-      <MasteryRunner module={module} mastery={mastery} />
-    </>
-  );
+  const session = await auth();
+  const userId = session?.user?.id || "00000000-0000-0000-0000-000000000001";
+
+  const attemptId = await createMasteryAttempt(moduleId, userId);
+  redirect(`/attempts/${attemptId}`);
 }

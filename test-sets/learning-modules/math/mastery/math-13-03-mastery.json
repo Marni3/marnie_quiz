@@ -18,7 +18,9 @@
       "correctChoice": "B",
       "explanation": "Odd functions have zero DC average ($a_0 = 0$) and zero cosine components ($a_n = 0$), consisting entirely of sine harmonics ($b_n$).",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m2301-q02",
@@ -31,7 +33,9 @@
       "correctChoice": "D",
       "explanation": "$\\mathcal{Z}\\{u(n)\\} = \\sum_{n=0}^\\infty z^{-n} = \\frac{1}{1 - z^{-1}} = \\frac{z}{z - 1}$.\n\n⚡ Speed Shortcut: $\\frac{z}{z - 1}$.",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m2301-q03",
@@ -44,7 +48,9 @@
       "correctChoice": "C",
       "explanation": "Half-wave symmetry causes all even harmonic integrals to cancel over a full period, leaving strictly odd harmonics.",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m2301-q04",
@@ -57,7 +63,9 @@
       "correctChoice": "B",
       "explanation": "$\\mathcal{Z}\\{e^{-at}\\} = \\frac{z}{z - e^{-aT}}$. With $a = 2, T = 0.5 \\implies aT = 1 \\implies \\frac{z}{z - e^{-1}} = \\frac{z}{z - 0.36788}$.\n\n⚡ Speed Shortcut: $\\frac{z}{z - e^{-1}} \\approx \\frac{z}{z - 0.3679}$.",
       "category": "computational",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m2301-q05",
@@ -70,7 +78,9 @@
       "correctChoice": "C",
       "explanation": "By duality, if $\\mathcal{F}\\{f(t)\\} = F(\\omega)$, then evaluating $F$ in the time domain yields $2\\pi f(-\\omega)$ in the frequency domain.",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m2301-q06",
@@ -83,7 +93,9 @@
       "correctChoice": "C",
       "explanation": "The constant term $\\frac{a_0}{2} = \\frac{1}{2\\pi}\\int_{-\\pi}^\\pi f(x) dx$ represents the true mathematical DC average of the periodic signal.",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m2301-q07",
@@ -96,7 +108,9 @@
       "correctChoice": "A",
       "explanation": "Using multiplication by time $-zT \\frac{d}{dz}\\left(\\frac{z}{z-1}\\right) = T \\frac{z}{(z-1)^2}$.\n\n⚡ Speed Shortcut: $T \\frac{z}{(z - 1)^2}$.",
       "category": "shortcuts",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "shortcut",
+      "isAnchor": false
     },
     {
       "id": "m2301-q08",
@@ -109,7 +123,9 @@
       "correctChoice": "D",
       "explanation": "Multiplying by $e^{j\\omega_0 t}$ in the time domain translates the spectrum by $+\\omega_0$ in frequency: $\\mathcal{F}\\{f(t)e^{j\\omega_0 t}\\} = F(\\omega - \\omega_0)$.",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m2301-q09",
@@ -122,7 +138,9 @@
       "correctChoice": "C",
       "explanation": "For an even integrand, the integral over $[-\\pi, \\pi]$ is twice the integral over $[0, \\pi]$, giving $a_n = \\frac{2}{\\pi}\\int_0^\\pi f(x)\\cos(nx)dx$.",
       "category": "shortcuts",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "shortcut",
+      "isAnchor": false
     },
     {
       "id": "m2301-q10",
@@ -135,7 +153,9 @@
       "correctChoice": "B",
       "explanation": "A unit delay of $k$ samples corresponds to multiplication by $z^{-k}$ in the $z$-domain.",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m2301-q11",
@@ -148,7 +168,9 @@
       "correctChoice": "A",
       "explanation": "Time differentiation corresponds to multiplying the Fourier spectrum by $j\\omega$: $\\mathcal{F}\\{f'(t)\\} = j\\omega F(\\omega)$.",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m2301-q12",
@@ -161,7 +183,9 @@
       "correctChoice": "A",
       "explanation": "$\\sum_{n=0}^\\infty (a z^{-1})^n = \\frac{1}{1 - a z^{-1}} = \\frac{z}{z - a}$.\n\n⚡ Speed Shortcut: $\\frac{z}{z - a}$.",
       "category": "shortcuts",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "shortcut",
+      "isAnchor": false
     },
     {
       "id": "m2301-q13",
@@ -174,7 +198,9 @@
       "correctChoice": "C",
       "explanation": "Quarter-wave even symmetry combines even symmetry ($b_n = 0$) and half-wave symmetry (no even harmonics), leaving strictly odd cosine terms.",
       "category": "applied",
-      "difficulty": "medium"
+      "difficulty": "medium",
+      "archetype": "applied",
+      "isAnchor": false
     },
     {
       "id": "m2301-q14",
@@ -187,7 +213,9 @@
       "correctChoice": "D",
       "explanation": "By the scaling property $\\mathcal{F}\\{f(at)\\} = \\frac{1}{|a|}F(\\omega/a)$, for $a = 2$: $\\frac{1}{2}F(\\omega/2)$ (time compression = spectral expansion).",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m2301-q15",
@@ -200,7 +228,9 @@
       "correctChoice": "A",
       "explanation": "Discrete convolution in time maps to direct algebraic multiplication in the $z$-domain.",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m2301-q16",
@@ -213,7 +243,9 @@
       "correctChoice": "B",
       "explanation": "Since the positive and negative half-cycles have equal area and opposite signs ($f(-x) = -f(x)$), the average DC value is 0.\n\n⚡ Speed Shortcut: Zero DC average for balanced odd waves.",
       "category": "shortcuts",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "shortcut",
+      "isAnchor": false
     },
     {
       "id": "m2301-q17",
@@ -226,7 +258,9 @@
       "correctChoice": "B",
       "explanation": "In discrete systems, stability requires all poles to lie inside the unit circle ($|z| < 1$), which maps from the continuous left-half $s$-plane via $z = e^{sT}$.",
       "category": "applied",
-      "difficulty": "medium"
+      "difficulty": "medium",
+      "archetype": "applied",
+      "isAnchor": false
     },
     {
       "id": "m2301-q18",
@@ -239,7 +273,9 @@
       "correctChoice": "D",
       "explanation": "Time reversal corresponds to frequency reversal in the Fourier domain: $\\mathcal{F}\\{f(-t)\\} = F(-\\omega)$.",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m2301-q19",
@@ -252,7 +288,9 @@
       "correctChoice": "D",
       "explanation": "$\\omega_1 = \\frac{2\\pi}{T} = \\frac{2\\pi}{0.02\\text{ s}} = 100\\pi \\approx 314.159\\text{ rad/s}$.\n\n⚡ Speed Shortcut: $\\frac{2\\pi}{0.02} = 100\\pi \\approx 314.16\\text{ rad/s}$.",
       "category": "computational",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m2301-q20",
@@ -265,7 +303,9 @@
       "correctChoice": "B",
       "explanation": "Standard discrete sine transform: $\\mathcal{Z}\\{\\sin(\\omega_0 t)\\} = \\frac{z\\sin(\\omega_0 T)}{z^2 - 2z\\cos(\\omega_0 T) + 1}$.",
       "category": "shortcuts",
-      "difficulty": "medium"
+      "difficulty": "medium",
+      "archetype": "shortcut",
+      "isAnchor": false
     },
     {
       "id": "m2301-q21",
@@ -278,7 +318,9 @@
       "correctChoice": "A",
       "explanation": "Josiah Willard Gibbs analyzed this invariant in 1899: ringing overshoot near step discontinuities never drops below $\\approx 8.95\\%$ regardless of harmonic count.",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m2301-q22",
@@ -291,7 +333,9 @@
       "correctChoice": "A",
       "explanation": "$\\mathcal{Z}\\{\\delta(n)\\} = \\sum_{n=0}^\\infty \\delta(n) z^{-n} = \\delta(0) z^0 = 1$.\n\n⚡ Speed Shortcut: $\\mathcal{Z}\\{\\delta(n)\\} = 1$.",
       "category": "shortcuts",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "shortcut",
+      "isAnchor": false
     }
   ]
 }

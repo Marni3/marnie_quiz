@@ -15,7 +15,8 @@
       "choiceD": "A Vertical Asymptote.",
       "correctChoice": "A",
       "explanation": "By the Second Derivative Test, when the slope is zero ($f'(c) = 0$) and the second derivative is negative ($f''(c) < 0$), the curve bends downward like an inverted cup, establishing a local maximum.",
-      "archetype": "conceptual"
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m15-02",
@@ -26,7 +27,8 @@
       "choiceD": "A rectangle with side x = R / 2.",
       "correctChoice": "A",
       "explanation": "Maximizing $A = x y = x\\sqrt{4R^2 - x^2}$ yields $x = y = R\\sqrt{2}$ (a square) with maximum area $A_{\\max} = 2R^2$.",
-      "archetype": "conceptual"
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m15-03",
@@ -37,7 +39,8 @@
       "choiceD": "R = 1 / y'",
       "correctChoice": "A",
       "explanation": "The radius of curvature of the osculating circle is $R = \\frac{1}{K} = \\frac{[1 + (y')^2]^{3/2}}{|y''|}$.",
-      "archetype": "conceptual"
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m15-04",
@@ -48,7 +51,8 @@
       "choiceD": "1/4 (25%)",
       "correctChoice": "A",
       "explanation": "The largest inscribed rectangle in any triangle has dimensions $x = b/2, y = h/2$, yielding an area of $\\frac{bh}{4} = \\frac{1}{2} A_{\\text{triangle}}$.",
-      "archetype": "conceptual"
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m15-05",
@@ -59,7 +63,8 @@
       "choiceD": "L = (a + b)^(3/2)",
       "correctChoice": "A",
       "explanation": "By differentiating the envelope line $L(\\theta) = a\\csc\\theta + b\\sec\\theta$, the minimum clearing length is $L = (a^{2/3} + b^{2/3})^{3/2}$.",
-      "archetype": "conceptual"
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m15-06",
@@ -70,7 +75,8 @@
       "choiceD": "8 / 27 (29.63%)",
       "correctChoice": "A",
       "explanation": "The maximum inscribed cylinder has height $h = \\frac{2R}{\\sqrt{3}}$ and volume $V_{\\text{cyl}} = \\frac{4\\pi R^3}{3\\sqrt{3}} = \\frac{V_{\\text{sphere}}}{\\sqrt{3}} \\approx 57.74\\%$.",
-      "archetype": "conceptual"
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m15-07",
@@ -81,7 +87,8 @@
       "choiceD": "6 (at x = 1)",
       "correctChoice": "A",
       "explanation": "$y' = -4x + 8 = 0 \\implies x = 2$. $y(2) = -2(4) + 8(2) - 3 = -8 + 16 - 3 = 5$.",
-      "archetype": "numerical"
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m15-08",
@@ -92,7 +99,8 @@
       "choiceD": "3.00 ft/s",
       "correctChoice": "A",
       "explanation": "$x^2 + y^2 = 13^2 = 169$. When $x = 5$, $y = \\sqrt{169 - 25} = 12\\text{ ft}$. $\\frac{dy}{dt} = -\\frac{x}{y}\\frac{dx}{dt} = -\\frac{5}{12}(3) = -\\frac{15}{12} = -1.25\\text{ ft/s}$.",
-      "archetype": "numerical"
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m15-09",
@@ -103,7 +111,8 @@
       "choiceD": "15.24 ft",
       "correctChoice": "A",
       "explanation": "$L = (1^{2/3} + 8^{2/3})^{3/2} = (1 + 4)^{3/2} = 5^{3/2} = 5\\sqrt{5} \\approx 11.1803\\text{ ft}$.",
-      "archetype": "numerical"
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m15-10",
@@ -114,7 +123,8 @@
       "choiceD": "37.70 sq units (πab)",
       "correctChoice": "A",
       "explanation": "For ellipse with semi-axes $a = 4$ and $b = 3$, $A_{\\max} = 2ab = 2(4)(3) = 24\\text{ sq units}$.",
-      "archetype": "numerical"
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m15-11",
@@ -125,7 +135,8 @@
       "choiceD": "1,000 sq m",
       "correctChoice": "A",
       "explanation": "A rectangle of given perimeter maximizes area when it is a square: side $= 100/4 = 25\\text{ m}$. Area $= 25^2 = 625\\text{ m}^2$.",
-      "archetype": "numerical"
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m15-12",
@@ -136,7 +147,8 @@
       "choiceD": "5,026.55 cm³/s",
       "correctChoice": "A",
       "explanation": "$V = \\frac{4}{3}\\pi r^3 \\implies \\frac{dV}{dt} = 4\\pi r^2 \\frac{dr}{dt} = 4\\pi(10^2)(2) = 800\\pi \\approx 2513.27\\text{ cm}^3/\\text{s}$.",
-      "archetype": "numerical"
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m15-13",
@@ -147,7 +159,8 @@
       "choiceD": "10.00 units",
       "correctChoice": "A",
       "explanation": "At $x = 1$: $y' = 3(1^2) = 3$, $y'' = 6(1) = 6$. $R = \\frac{[1 + 3^2]^{3/2}}{6} = \\frac{10^{3/2}}{6} = \\frac{10\\sqrt{10}}{6} = \\frac{5\\sqrt{10}}{3} \\approx 5.2705\\text{ units}$.",
-      "archetype": "numerical"
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m15-14",
@@ -158,7 +171,8 @@
       "choiceD": "x = 0 and x = 3",
       "correctChoice": "A",
       "explanation": "$f'(x) = 6x^2 - 18x + 12 = 6(x^2 - 3x + 2) = 6(x - 1)(x - 2) = 0 \\implies x = 1, 2$. $f''(x) = 12x - 18$. $f''(1) = -6 < 0$ (Max); $f''(2) = +6 > 0$ (Min).",
-      "archetype": "standard"
+      "archetype": "standard",
+      "isAnchor": false
     },
     {
       "id": "m15-15",
@@ -169,7 +183,8 @@
       "choiceD": "x = 3.00 inches",
       "correctChoice": "A",
       "explanation": "$V(x) = x(16 - 2x)^2 = x(256 - 64x + 4x^2) = 4x^3 - 64x^2 + 256x$. $V'(x) = 12x^2 - 128x + 256 = 0 \\implies 3x^2 - 32x + 64 = 0 \\implies (3x - 8)(x - 8) = 0 \\implies x = 8/3 \\approx 2.67\\text{ inches}$.",
-      "archetype": "applied"
+      "archetype": "applied",
+      "isAnchor": false
     },
     {
       "id": "m15-16",
@@ -180,7 +195,8 @@
       "choiceD": "2.000 m/min",
       "correctChoice": "A",
       "explanation": "Radius $r = 4(h/8) = h/2$. Volume $V = \\frac{1}{3}\\pi r^2 h = \\frac{1}{3}\\pi (h/2)^2 h = \\frac{\\pi}{12} h^3$. $\\frac{dV}{dt} = \\frac{\\pi}{4} h^2 \\frac{dh}{dt}$. At $h = 4\\text{ m}$: $10 = \\frac{\\pi}{4}(16) \\frac{dh}{dt} = 4\\pi \\frac{dh}{dt} \\implies \\frac{dh}{dt} = \\frac{10}{4\\pi} = \\frac{5}{2\\pi} \\approx 0.7958\\text{ m/min}$.",
-      "archetype": "applied"
+      "archetype": "applied",
+      "isAnchor": false
     },
     {
       "id": "m15-17",
@@ -191,7 +207,8 @@
       "choiceD": "x = 6.00 meters",
       "correctChoice": "A",
       "explanation": "By the statue/picture viewing angle optimization theorem, the best view distance is the geometric mean of heights: $x = \\sqrt{y_1 y_2} = \\sqrt{2 \\times 8} = \\sqrt{16} = 4.0\\text{ meters}$.",
-      "archetype": "applied"
+      "archetype": "applied",
+      "isAnchor": false
     },
     {
       "id": "m15-18",
@@ -202,7 +219,8 @@
       "choiceD": "x = r / 2",
       "correctChoice": "A",
       "explanation": "$x^2 + y^2 = (2r)^2 = 4r^2 \\implies y^2 = 4r^2 - x^2$. Strength $S(x) = k x(4r^2 - x^2) = k(4r^2 x - x^3)$. $S'(x) = 4r^2 - 3x^2 = 0 \\implies x = \\frac{2r}{\\sqrt{3}}$.",
-      "archetype": "applied"
+      "archetype": "applied",
+      "isAnchor": false
     },
     {
       "id": "m15-19",
@@ -213,7 +231,8 @@
       "choiceD": "Squaring the velocity.",
       "correctChoice": "A",
       "explanation": "Because the ladder length $L$ is constant, $\\frac{d}{dt}[L^2] = 0$. Since height $y$ decreases, $\\frac{dy}{dt} = -\\frac{x}{y}\\frac{dx}{dt}$ is negative.",
-      "archetype": "trap"
+      "archetype": "trap",
+      "isAnchor": false
     },
     {
       "id": "m15-20",
@@ -224,7 +243,8 @@
       "choiceD": "The ceiling is infinite.",
       "correctChoice": "A",
       "explanation": "The formula $(a^{2/3} + b^{2/3})^{3/2}$ is derived strictly for perpendicular ($90^\\circ$) hallway intersections in the horizontal plane.",
-      "archetype": "trap"
+      "archetype": "trap",
+      "isAnchor": false
     },
     {
       "id": "m15-21",
@@ -235,7 +255,8 @@
       "choiceD": "18.50 ft",
       "correctChoice": "A",
       "explanation": "For $a = b = 8$: $L = 2\\sqrt{2} a = 2\\sqrt{2}(8) = 16\\sqrt{2} \\approx 22.627\\text{ ft}$ in 2 seconds.",
-      "archetype": "shortcut"
+      "archetype": "shortcut",
+      "isAnchor": false
     },
     {
       "id": "m15-22",
@@ -246,7 +267,8 @@
       "choiceD": "42 cm²",
       "correctChoice": "A",
       "explanation": "$A_{\\max} = \\frac{1}{2} A_{\\text{triangle}} = \\frac{1}{2}(0.5 \\times 14 \\times 8) = 28\\text{ cm}^2$ in 1 second.",
-      "archetype": "shortcut"
+      "archetype": "shortcut",
+      "isAnchor": false
     }
   ]
 }

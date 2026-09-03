@@ -18,7 +18,9 @@
       "correctChoice": "A",
       "explanation": "$\\int \\tan u du = \\int \\frac{\\sin u}{\\cos u} du = -\\ln|\\cos u| + C = \\ln|\\sec u| + C$.",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m1601-q02",
@@ -31,7 +33,9 @@
       "correctChoice": "C",
       "explanation": "Integration by parts: $\\frac{1}{2}x e^{2x} - \\frac{1}{4}e^{2x} + C = \\frac{e^{2x}}{4}(2x - 1) + C$.\n\n⚡ Speed Shortcut: $\\frac{e^{ax}}{a^2}(ax - 1) + C$.",
       "category": "computational",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m1601-q03",
@@ -44,7 +48,9 @@
       "correctChoice": "B",
       "explanation": "Leibniz created the symbol $\\int$ as an elongated 'S' for summa (sum of infinitesimals).",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m1601-q04",
@@ -57,7 +63,9 @@
       "correctChoice": "B",
       "explanation": "$[\\ln x]_1^e = \\ln(e) - \\ln(1) = 1 - 0 = 1$.\n\n⚡ Speed Shortcut: $\\ln e = 1$.",
       "category": "computational",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m1601-q05",
@@ -70,7 +78,9 @@
       "correctChoice": "C",
       "explanation": "Integrating by parts with $u = \\arctan x, dv = dx$: $x \\arctan x - \\int \\frac{x}{1+x^2}dx = x\\arctan x - \\frac{1}{2}\\ln(1+x^2) + C$.",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m1601-q06",
@@ -83,7 +93,9 @@
       "correctChoice": "D",
       "explanation": "$[-\\cos x]_0^{\\pi/2} = -\\cos(\\pi/2) - (-\\cos 0) = 0 - (-1) = 1$.\n\n⚡ Speed Shortcut: 1.",
       "category": "computational",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m1601-q07",
@@ -96,7 +108,9 @@
       "correctChoice": "A",
       "explanation": "$\\int \\csc u du = \\ln|\\csc u - \\cot u| + C = \\ln|\\tan(u/2)| + C$.",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m1601-q08",
@@ -109,7 +123,9 @@
       "correctChoice": "B",
       "explanation": "Let $u = \\ln x \\implies du = dx/x$. $\\int \\frac{du}{u} = \\ln|u| + C = \\ln|\\ln x| + C$.\n\n⚡ Speed Shortcut: $\\ln|\\ln x| + C$.",
       "category": "shortcuts",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "shortcut",
+      "isAnchor": false
     },
     {
       "id": "m1601-q09",
@@ -122,7 +138,9 @@
       "correctChoice": "A",
       "explanation": "$\\int \\sinh(2x) dx = \\frac{1}{2}\\cosh(2x) + C$.",
       "category": "computational",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m1601-q10",
@@ -135,7 +153,9 @@
       "correctChoice": "D",
       "explanation": "Since $\\frac{d}{dx}\\tanh x = \\text{sech}^2 x$, $\\int \\text{sech}^2 x dx = \\tanh x + C$.",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m1601-q11",
@@ -148,7 +168,9 @@
       "correctChoice": "B",
       "explanation": "$[x^3 - x^2 + 5x]_0^1 = (1 - 1 + 5) - 0 = 5$.\n\n⚡ Speed Shortcut: $1 - 1 + 5 = 5$.",
       "category": "computational",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m1601-q12",
@@ -161,7 +183,9 @@
       "correctChoice": "D",
       "explanation": "Using identity $\\sin^2 u = \\frac{1 - \\cos 2u}{2}$: $\\int \\frac{1 - \\cos 2u}{2} du = \\frac{1}{2}u - \\frac{1}{4}\\sin(2u) + C$.",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m1601-q13",
@@ -174,7 +198,9 @@
       "correctChoice": "C",
       "explanation": "$\\int \\frac{dx}{x^2 + a^2} = \\frac{1}{a}\\arctan(x/a) + C = \\frac{1}{3}\\arctan(x/3) + C$.\n\n⚡ Speed Shortcut: $\\frac{1}{3}\\arctan(x/3) + C$.",
       "category": "shortcuts",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "shortcut",
+      "isAnchor": false
     },
     {
       "id": "m1601-q14",
@@ -187,7 +213,9 @@
       "correctChoice": "D",
       "explanation": "Integrating by parts: $x \\arcsin x - \\int \\frac{x}{\\sqrt{1-x^2}}dx = x\\arcsin x + \\sqrt{1 - x^2} + C$.",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m1601-q15",
@@ -200,7 +228,9 @@
       "correctChoice": "B",
       "explanation": "$[\\frac{1}{2}e^{2x}]_0^{\\ln 2} = \\frac{1}{2}(e^{2\\ln 2} - e^0) = \\frac{1}{2}(4 - 1) = \\frac{3}{2} = 1.5$.\n\n⚡ Speed Shortcut: $\\frac{4 - 1}{2} = 1.5$.",
       "category": "computational",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m1601-q16",
@@ -213,7 +243,9 @@
       "correctChoice": "A",
       "explanation": "$\\int \\text{sech } u du = \\arctan(\\sinh u) + C = 2\\arctan(e^u) + C$.",
       "category": "conceptual",
-      "difficulty": "medium"
+      "difficulty": "medium",
+      "archetype": "conceptual",
+      "isAnchor": false
     },
     {
       "id": "m1601-q17",
@@ -226,7 +258,9 @@
       "correctChoice": "B",
       "explanation": "$\\int a^u du = \\frac{a^u}{\\ln a} + C$. For $a = 2$: $\\frac{2^x}{\\ln 2} + C$.",
       "category": "computational",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m1601-q18",
@@ -239,7 +273,9 @@
       "correctChoice": "D",
       "explanation": "$\\int \\tan^2 x dx = \\int (\\sec^2 x - 1) dx = \\tan x - x + C$.",
       "category": "shortcuts",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "shortcut",
+      "isAnchor": false
     },
     {
       "id": "m1601-q19",
@@ -252,7 +288,9 @@
       "correctChoice": "C",
       "explanation": "Let $u = 1 - x^2 \\implies du = -2x dx$. $[-\\frac{1}{3}(1 - x^2)^{3/2}]_0^1 = 0 - (-\\frac{1}{3}) = \\frac{1}{3}$.\n\n⚡ Speed Shortcut: $\\frac{1}{3}$.",
       "category": "computational",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m1601-q20",
@@ -265,7 +303,9 @@
       "correctChoice": "C",
       "explanation": "$\\int \\cot u du = \\ln|\\sin u| + C$.",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m1601-q21",
@@ -278,7 +318,9 @@
       "correctChoice": "A",
       "explanation": "$[\\ln|\\sec x|]_0^{\\pi/4} = \\ln(\\sqrt{2}) - \\ln(1) = \\frac{1}{2}\\ln 2 \\approx 0.34657$.\n\n⚡ Speed Shortcut: $\\ln\\sqrt{2} = 0.5\\ln 2$.",
       "category": "computational",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m1601-q22",
@@ -291,7 +333,9 @@
       "correctChoice": "A",
       "explanation": "Signs alternate: $+u^2 e^u - 2u e^u + 2e^u + C = e^u(u^2 - 2u + 2) + C$.",
       "category": "shortcuts",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "shortcut",
+      "isAnchor": false
     }
   ]
 }

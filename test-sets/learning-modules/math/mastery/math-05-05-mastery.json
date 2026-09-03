@@ -18,7 +18,9 @@
       "correctChoice": "C",
       "explanation": "A central angle is always twice the inscribed angle subtending the same arc: $2 \\times 38^\\circ = 76^\\circ$.",
       "category": "computational",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "numerical",
+      "isAnchor": true
     },
     {
       "id": "m1005-q02",
@@ -31,7 +33,9 @@
       "correctChoice": "A",
       "explanation": "Thales' Theorem states that an angle inscribed in a semicircle is always a right angle ($90^\\circ$).",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m1005-q03",
@@ -44,7 +48,9 @@
       "correctChoice": "B",
       "explanation": "By the Intersecting Chords Theorem: $ab = cd \\implies 6 \\times 8 = 4 \\times d \\implies 48 = 4d \\implies d = 12\\text{ cm}$.\n\n⚡ Speed Shortcut: $\\frac{48}{4} = 12\\text{ cm}$.",
       "category": "computational",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m1005-q04",
@@ -57,7 +63,9 @@
       "correctChoice": "B",
       "explanation": "$A = \\frac{\\pi x^2}{4} = \\frac{\\pi (20^2)}{4} = \\frac{400\\pi}{4} = 100\\pi \\approx 314.159\\text{ cm}^2$.\n\n⚡ Speed Shortcut: $\\pi \\times 10^2 = 100\\pi$.",
       "category": "shortcuts",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "shortcut",
+      "isAnchor": false
     },
     {
       "id": "m1005-q05",
@@ -70,7 +78,9 @@
       "correctChoice": "A",
       "explanation": "Secant-Secant Theorem: $a(a + b) = c(c + d) \\implies 3(3 + 9) = 4(4 + d) \\implies 3(12) = 16 + 4d \\implies 36 = 16 + 4d \\implies 4d = 20 \\implies d = 5$.\n\n⚡ Speed Shortcut: $\\frac{36 - 16}{4} = 5$.",
       "category": "computational",
-      "difficulty": "medium"
+      "difficulty": "medium",
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m1005-q06",
@@ -83,7 +93,9 @@
       "correctChoice": "B",
       "explanation": "$A = \\pi a b = \\pi(10)(6) = 60\\pi \\approx 188.4956\\text{ cm}^2$.\n\n⚡ Speed Shortcut: $60\\pi \\approx 188.50$.",
       "category": "computational",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m1005-q07",
@@ -96,7 +108,9 @@
       "correctChoice": "C",
       "explanation": "$t^2 = a(a + b) \\implies 12^2 = 8(a + b) \\implies 144 = 8(a + b) \\implies a + b = 18\\text{ cm}$.\n\n⚡ Speed Shortcut: $\\frac{144}{8} = 18\\text{ cm}$.",
       "category": "shortcuts",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "shortcut",
+      "isAnchor": false
     },
     {
       "id": "m1005-q08",
@@ -109,7 +123,9 @@
       "correctChoice": "A",
       "explanation": "An ellipse is defined as the locus where the sum of focal distances equals the major axis length $2a$.",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m1005-q09",
@@ -122,7 +138,9 @@
       "correctChoice": "C",
       "explanation": "$P \\approx 2\\pi \\sqrt{\\frac{a^2 + b^2}{2}} = 2\\pi \\sqrt{\\frac{25 + 9}{2}} = 2\\pi \\sqrt{17} \\approx 2(3.14159)(4.1231) \\approx 25.906$.",
       "category": "computational",
-      "difficulty": "medium"
+      "difficulty": "medium",
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m1005-q10",
@@ -135,7 +153,9 @@
       "correctChoice": "A",
       "explanation": "Inscribed angles that intercept the same arc or chord are always congruent (equal).",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m1005-q11",
@@ -148,7 +168,9 @@
       "correctChoice": "D",
       "explanation": "$A = \\pi(R^2 - r^2) = \\pi(13^2 - 5^2) = \\pi(169 - 25) = 144\\pi \\approx 452.389\\text{ cm}^2$.\n\n⚡ Speed Shortcut: $169 - 25 = 144 \\implies 144\\pi$.",
       "category": "computational",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m1005-q12",
@@ -161,7 +183,9 @@
       "correctChoice": "D",
       "explanation": "$t^2 = a(a + b) \\implies 100 = 5(5 + b) \\implies 20 = 5 + b \\implies b = 15$.\n\n⚡ Speed Shortcut: $\\frac{100}{5} - 5 = 15$.",
       "category": "shortcuts",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "shortcut",
+      "isAnchor": false
     },
     {
       "id": "m1005-q13",
@@ -174,7 +198,9 @@
       "correctChoice": "C",
       "explanation": "$c = \\sqrt{a^2 - b^2} = \\sqrt{13^2 - 12^2} = \\sqrt{169 - 144} = \\sqrt{25} = 5$.\n\n⚡ Speed Shortcut: 5-12-13 Pythagorean triple $\\implies c = 5$.",
       "category": "computational",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m1005-q14",
@@ -187,7 +213,9 @@
       "correctChoice": "D",
       "explanation": "By Thales' Theorem, the triangle is right-angled. Other leg $= \\sqrt{20^2 - 12^2} = 16\\text{ cm}$. Area $= \\frac{1}{2}(12)(16) = 96\\text{ cm}^2$.\n\n⚡ Speed Shortcut: $\\frac{1}{2} \\times 12 \\times 16 = 96\\text{ cm}^2$.",
       "category": "applied",
-      "difficulty": "medium"
+      "difficulty": "medium",
+      "archetype": "applied",
+      "isAnchor": false
     },
     {
       "id": "m1005-q15",
@@ -200,7 +228,9 @@
       "correctChoice": "A",
       "explanation": "$c = \\sqrt{10^2 - 8^2} = 6$. Eccentricity $e = \\frac{c}{a} = \\frac{6}{10} = 0.60$.\n\n⚡ Speed Shortcut: $\\frac{6}{10} = 0.60$.",
       "category": "computational",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m1005-q16",
@@ -213,7 +243,9 @@
       "correctChoice": "C",
       "explanation": "$AP \\cdot PB = CP \\cdot DP \\implies 2 \\times 18 = x^2 \\implies x^2 = 36 \\implies x = 6$. Total chord length $CD = 2x = 12$.\n\n⚡ Speed Shortcut: $2\\sqrt{36} = 12$.",
       "category": "shortcuts",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "shortcut",
+      "isAnchor": false
     },
     {
       "id": "m1005-q17",
@@ -226,7 +258,9 @@
       "correctChoice": "B",
       "explanation": "The entire circular area equals the sum of the minor sector and major sector: $A_{\\text{major}} = \\pi r^2 - A_{\\text{minor}}$.",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m1005-q18",
@@ -239,7 +273,9 @@
       "correctChoice": "B",
       "explanation": "$a = 5, b = 2$. Area $= \\pi a b = \\pi(5)(2) = 10\\pi \\approx 31.4159$.",
       "category": "computational",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m1005-q19",
@@ -252,7 +288,9 @@
       "correctChoice": "D",
       "explanation": "Area $= \\frac{\\pi x^2}{4} = 64\\pi \\implies x^2 = 256 \\implies x = 16\\text{ cm}$.\n\n⚡ Speed Shortcut: $2\\sqrt{64} = 16\\text{ cm}$.",
       "category": "shortcuts",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "shortcut",
+      "isAnchor": false
     },
     {
       "id": "m1005-q20",
@@ -265,7 +303,9 @@
       "correctChoice": "D",
       "explanation": "By intersecting chords theorem: $3 \\times 12 = 4 \\times y \\implies 36 = 4y \\implies y = 9$.\n\n⚡ Speed Shortcut: $\\frac{36}{4} = 9$.",
       "category": "computational",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m1005-q21",
@@ -278,7 +318,9 @@
       "correctChoice": "B",
       "explanation": "An annulus is the mathematical name for a ring-shaped plane figure bounded by concentric circles.",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m1005-q22",
@@ -291,7 +333,9 @@
       "correctChoice": "A",
       "explanation": "$\\theta = s / r = 5\\pi / 10 = \\pi / 2\\text{ rad} = 90^\\circ$.\n\n⚡ Speed Shortcut: $\\frac{5\\pi}{10} = \\frac{\\pi}{2} = 90^\\circ$.",
       "category": "computational",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "numerical",
+      "isAnchor": false
     }
   ]
 }

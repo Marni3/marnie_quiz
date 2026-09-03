@@ -18,7 +18,9 @@
       "correctChoice": "B",
       "explanation": "$\\text{tr}(A) = a_{11} + a_{22} + a_{33} = 5 + 4 + (-6) = 3$.\n\n⚡ Speed Shortcut: $5 + 4 - 6 = 3$.",
       "category": "computational",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "numerical",
+      "isAnchor": true
     },
     {
       "id": "m2101-q02",
@@ -31,7 +33,9 @@
       "correctChoice": "A",
       "explanation": "James Joseph Sylvester introduced the term 'matrix' in 1850.",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m2101-q03",
@@ -44,7 +48,9 @@
       "correctChoice": "C",
       "explanation": "$\\frac{1}{1 + j2} = \\frac{1 - j2}{1^2 + 2^2} = \\frac{1 - j2}{5} = 0.2 - j0.4$.\n\n⚡ Speed Shortcut: $\\frac{1 - j2}{5} = 0.2 - j0.4$.",
       "category": "computational",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m2101-q04",
@@ -57,7 +63,9 @@
       "correctChoice": "B",
       "explanation": "A lower triangular matrix has non-zero entries only on and below the main diagonal ($a_{ij} = 0$ for $i < j$).",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m2101-q05",
@@ -70,7 +78,9 @@
       "correctChoice": "A",
       "explanation": "A diagonal matrix with identical entries $k$ along its main diagonal is a scalar matrix ($7I$).",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m2101-q06",
@@ -83,7 +93,9 @@
       "correctChoice": "C",
       "explanation": "Equating real parts: $2x = 8 \\implies x = 4$. Equating imaginary parts: $3y = -12 \\implies y = -4$.\n\n⚡ Speed Shortcut: $x = 8/2 = 4, y = -12/3 = -4$.",
       "category": "computational",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m2101-q07",
@@ -96,7 +108,9 @@
       "correctChoice": "C",
       "explanation": "Dimensions are always given as $m \\times n$ (rows $\\times$ columns). A 5-row column vector is $5 \\times 1$.",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m2101-q08",
@@ -109,7 +123,9 @@
       "correctChoice": "B",
       "explanation": "$\\text{tr}(I_4) = 1 + 1 + 1 + 1 = 4$.\n\n⚡ Speed Shortcut: $\\text{tr}(I_n) = n = 4$.",
       "category": "shortcuts",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "shortcut",
+      "isAnchor": false
     },
     {
       "id": "m2101-q09",
@@ -122,7 +138,9 @@
       "correctChoice": "D",
       "explanation": "The leading entry of a row is the first non-zero entry from the left, which is 7.",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m2101-q10",
@@ -135,7 +153,9 @@
       "correctChoice": "D",
       "explanation": "$\\frac{1}{-j4} = \\frac{j}{-j^2 4} = \\frac{j}{4} = j 0.25$.\n\n⚡ Speed Shortcut: $\\frac{1}{-j} = j \\implies \\frac{j}{4} = j0.25$.",
       "category": "shortcuts",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "shortcut",
+      "isAnchor": false
     },
     {
       "id": "m2101-q11",
@@ -148,7 +168,9 @@
       "correctChoice": "B",
       "explanation": "An upper triangular matrix has non-zero entries on and above the main diagonal.",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m2101-q12",
@@ -161,7 +183,9 @@
       "correctChoice": "D",
       "explanation": "$\\text{tr}(B) = -3 + 5 + 2 = 4$.\n\n⚡ Speed Shortcut: $-3 + 5 + 2 = 4$.",
       "category": "computational",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m2101-q13",
@@ -174,7 +198,9 @@
       "correctChoice": "C",
       "explanation": "Matrix multiplication $(m \\times k)(k \\times n)$ results in an $m \\times n$ matrix, so $(3 \\times 4)(4 \\times 2) = 3 \\times 2$.",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m2101-q14",
@@ -187,7 +213,9 @@
       "correctChoice": "A",
       "explanation": "A diagonal matrix has non-zero entries exclusively along its main diagonal ($a_{ij} = 0$ for $i \\ne j$).",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m2101-q15",
@@ -200,7 +228,9 @@
       "correctChoice": "A",
       "explanation": "$\\frac{1}{4 - j3} = \\frac{4 + j3}{16 + 9} = \\frac{4 + j3}{25} = 0.16 + j0.12$.\n\n⚡ Speed Shortcut: $\\frac{4 + j3}{25} = 0.16 + j0.12$.",
       "category": "computational",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m2101-q16",
@@ -213,7 +243,9 @@
       "correctChoice": "C",
       "explanation": "A null matrix consists entirely of zero entries and can have any dimension $m \\times n$.",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m2101-q17",
@@ -226,7 +258,9 @@
       "correctChoice": "D",
       "explanation": "$\\text{tr}(A) = 2k + (k + 4) = 3k + 4 = 16 \\implies 3k = 12 \\implies k = 4$.\n\n⚡ Speed Shortcut: $3k = 12 \\implies k = 4$.",
       "category": "computational",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m2101-q18",
@@ -239,7 +273,9 @@
       "correctChoice": "A",
       "explanation": "The identity matrix $I$ acts as the multiplicative identity in matrix algebra ($A I = I A = A$).",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m2101-q19",
@@ -252,7 +288,9 @@
       "correctChoice": "B",
       "explanation": "A matrix containing a single row is called a row matrix or row vector.",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m2101-q20",
@@ -265,7 +303,9 @@
       "correctChoice": "D",
       "explanation": "$\\text{tr}(D) = 10 + (-4) + 2 + 7 = 15$.\n\n⚡ Speed Shortcut: $10 - 4 + 2 + 7 = 15$.",
       "category": "shortcuts",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "shortcut",
+      "isAnchor": false
     },
     {
       "id": "m2101-q21",
@@ -278,7 +318,9 @@
       "correctChoice": "B",
       "explanation": "$x + y = 10$ and $x - y = 4$. Adding: $2x = 14 \\implies x = 7$. Subtracting: $2y = 6 \\implies y = 3$.\n\n⚡ Speed Shortcut: $x = (10+4)/2 = 7, y = (10-4)/2 = 3$.",
       "category": "computational",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m2101-q22",
@@ -291,7 +333,9 @@
       "correctChoice": "A",
       "explanation": "A fundamental invariant of linear algebra is that $\\text{tr}(A) = \\sum \\lambda_i$ (while $\\det(A) = \\prod \\lambda_i$).",
       "category": "conceptual",
-      "difficulty": "medium"
+      "difficulty": "medium",
+      "archetype": "conceptual",
+      "isAnchor": false
     }
   ]
 }

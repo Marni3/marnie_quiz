@@ -154,6 +154,16 @@ export function Navbar({ breadcrumb }: { breadcrumb?: string }) {
             <Search className="w-4 h-4" />
           </button>
 
+          <button
+            type="button"
+            onClick={() => window.dispatchEvent(new CustomEvent("open-onboarding-tour"))}
+            aria-label="Platform Guided Tour"
+            title="Start Guided Tour"
+            className="p-2 rounded-xl text-[var(--text2)] hover:text-[var(--accent)] hover:bg-[var(--surface2)] border border-[var(--border)] transition-colors cursor-pointer"
+          >
+            <Compass className="w-4 h-4" />
+          </button>
+
           <Link
             href="/settings"
             aria-label="Settings & Preferences"

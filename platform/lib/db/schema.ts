@@ -45,9 +45,10 @@ export const questionSets = pgTable("question_sets", {
     onDelete: "set null",
   }),
   title: text("title").notNull(),
-  tier: text("tier").default("review"), // 'diagnostic' | 'review' | 'drill' | 'simulation' | 'conceptual_drill'
+  tier: text("tier").default("review"), // 'diagnostic' | 'review' | 'drill' | 'simulation' | 'conceptual_drill' | 'mastery'
   topicCode: text("topic_code"), // e.g. 'MATH-01', 'ELEC-03', 'EST-10'
   subjectTag: text("subject_tag"),
+  moduleId: text("module_id"), // e.g. 'math-07-01', 'geas-10-02'
   visibility: visibilityEnum("visibility").notNull().default("shared"),
   rawCsv: text("raw_csv"),
   createdAt: timestamp("created_at").defaultNow().notNull(),

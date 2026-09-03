@@ -15,7 +15,8 @@
       "choiceD": "The rate of cooling is inversely proportional to time.",
       "correctChoice": "A",
       "explanation": "Newton's empirical law of cooling states that $\\frac{dT}{dt} = -k(T - T_m)$, yielding the exponential solution $T(t) = T_m + (T_0 - T_m)e^{-kt}$.",
-      "archetype": "conceptual"
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m19-02",
@@ -26,7 +27,8 @@
       "choiceD": "t_{1/2} = 2 / k",
       "correctChoice": "A",
       "explanation": "Setting $Q(t) / Q_0 = 1/2 \\implies e^{-kt} = 1/2 \\implies -kt = -\\ln 2 \\implies t_{1/2} = \\frac{\\ln 2}{k} \\approx \\frac{0.69315}{k}$.",
-      "archetype": "conceptual"
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m19-03",
@@ -37,7 +39,8 @@
       "choiceD": "Replace y with -x.",
       "correctChoice": "A",
       "explanation": "Because orthogonal curves intersect at $90^\\circ$, their tangent slopes are negative reciprocals ($m_1 m_2 = -1$), requiring $\\frac{dy}{dx}$ to be replaced by $-\\frac{dx}{dy}$.",
-      "archetype": "conceptual"
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m19-04",
@@ -48,7 +51,8 @@
       "choiceD": "They have zero intersection.",
       "correctChoice": "A",
       "explanation": "Because the electric field vector is the negative gradient of electric potential ($\\vec{E} = -\\nabla V$), field flux lines are perpendicular everywhere to equipotential surfaces.",
-      "archetype": "conceptual"
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m19-05",
@@ -59,7 +63,8 @@
       "choiceD": "dQ/dt = Q(t) / V(t)",
       "correctChoice": "A",
       "explanation": "Solute mass balance states that the net rate of accumulation $\\frac{dQ}{dt}$ equals the mass inflow rate minus the mass outflow rate.",
-      "archetype": "conceptual"
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m19-06",
@@ -70,7 +75,8 @@
       "choiceD": "10.00 years",
       "correctChoice": "A",
       "explanation": "$t_{\\text{double}} = \\frac{\\ln 2}{r} = \\frac{0.69315}{0.05} = 13.863\\text{ years}$.",
-      "archetype": "conceptual"
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m19-07",
@@ -81,7 +87,8 @@
       "choiceD": "35.00°C",
       "correctChoice": "A",
       "explanation": "Initial excess $= 90 - 20 = 70^\\circ$. After 5 min, excess $= 60 - 20 = 40^\\circ$ (decay ratio $= 40/70 = 4/7$). After 10 min, excess $= 70 \\times (4/7)^2 = 70 \\times \\frac{16}{49} = \\frac{160}{7} \\approx 22.86^\\circ$. Temperature $= 20 + 22.86 = 42.86^\\circ\\text{C}$.",
-      "archetype": "numerical"
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m19-08",
@@ -92,7 +99,8 @@
       "choiceD": "15.00 years",
       "correctChoice": "A",
       "explanation": "$t_{1/2} = \\frac{\\ln 2}{0.05} = \\frac{0.69315}{0.05} = 13.863\\text{ years}$.",
-      "archetype": "numerical"
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m19-09",
@@ -103,7 +111,8 @@
       "choiceD": "Ellipses: x² + 2y² = K",
       "correctChoice": "A",
       "explanation": "$y = Cx \\implies y' = C = y/x$. Negative reciprocal slope: $\\frac{dy}{dx} = -\\frac{x}{y} \\implies y dy = -x dx \\implies x^2 + y^2 = K$ (concentric circles).",
-      "archetype": "numerical"
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m19-10",
@@ -114,7 +123,8 @@
       "choiceD": "x² y = K",
       "correctChoice": "A",
       "explanation": "$y = C/x \\implies y' = -C/x^2 = -y/x$. Orthogonal slope: $\\frac{dy}{dx} = \\frac{x}{y} \\implies y dy = x dx \\implies x^2 - y^2 = K$.",
-      "archetype": "numerical"
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m19-11",
@@ -125,7 +135,8 @@
       "choiceD": "22,920 years",
       "correctChoice": "A",
       "explanation": "Since $25\\% = (1/2)^2$, exactly 2 half-lives have elapsed: $\\text{Age} = 2 \\times 5,730 = 11,460\\text{ years}$.",
-      "archetype": "numerical"
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m19-12",
@@ -136,7 +147,8 @@
       "choiceD": "2.72 grams",
       "correctChoice": "A",
       "explanation": "$\\frac{dQ}{dt} = -\\frac{2}{100}Q = -0.02Q \\implies Q(t) = 20 e^{-0.02t}$. At $t = 50\\text{ min}$: $Q(50) = 20 e^{-1} = \\frac{20}{e} \\approx 7.3576\\text{ grams}$.",
-      "archetype": "numerical"
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m19-13",
@@ -147,7 +159,8 @@
       "choiceD": "₱14,120.50",
       "correctChoice": "A",
       "explanation": "$A = 10000 e^{0.06 \\times 5} = 10000 e^{0.30} \\approx 10000(1.3498588) = \\text{₱13,498.59}$.",
-      "archetype": "numerical"
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m19-14",
@@ -158,7 +171,8 @@
       "choiceD": "10:45 AM",
       "correctChoice": "A",
       "explanation": "In 1 hour (2 PM to 3 PM), temperature excess dropped from $30-20=10^\\circ$ to $28-20=8^\\circ$ ($k = -\\ln(8/10) = 0.22314\\text{ hr}^{-1}$). Initial excess at death $= 37 - 20 = 17^\\circ$. Time elapsed from death to 2 PM: $10 = 17 e^{-0.22314 t} \\implies t = \\frac{\\ln(17/10)}{0.22314} = \\frac{0.5306}{0.22314} \\approx 2.378\\text{ hours} \\approx 2\\text{ hr } 23\\text{ min}$. 2:00 PM minus 2 hr 24 min is approximately **11:36 AM**.",
-      "archetype": "applied"
+      "archetype": "applied",
+      "isAnchor": false
     },
     {
       "id": "m19-15",
@@ -169,7 +183,8 @@
       "choiceD": "37.50°C",
       "correctChoice": "A",
       "explanation": "After 1 time constant ($t = \\tau = 20$), $\\Delta T = 50(1 - e^{-1}) = 50(1 - 0.36788) = 50(0.63212) = 31.606^\\circ\\text{C}$ (the standard $63.2\\%$ transient response benchmark).",
-      "archetype": "applied"
+      "archetype": "applied",
+      "isAnchor": false
     },
     {
       "id": "m19-16",
@@ -180,7 +195,8 @@
       "choiceD": "0.0347 km⁻¹",
       "correctChoice": "A",
       "explanation": "$\\alpha = \\frac{\\ln 2}{10} = \\frac{0.69315}{10} = 0.069315\\text{ km}^{-1}$.",
-      "archetype": "applied"
+      "archetype": "applied",
+      "isAnchor": false
     },
     {
       "id": "m19-17",
@@ -191,7 +207,8 @@
       "choiceD": "x² - y² = K",
       "correctChoice": "A",
       "explanation": "$2y y' = 3C x^2$. Since $C = y^2/x^3$, $2y y' = 3(y^2/x^3)x^2 = \\frac{3y^2}{x} \\implies y' = \\frac{3y}{2x}$. Orthogonal slope: $\\frac{dy}{dx} = -\\frac{2x}{3y} \\implies 3y dy = -2x dx \\implies \\frac{3y^2}{2} = -x^2 + C_1 \\implies 2x^2 + 3y^2 = K$.",
-      "archetype": "applied"
+      "archetype": "applied",
+      "isAnchor": false
     },
     {
       "id": "m19-18",
@@ -202,7 +219,8 @@
       "choiceD": "1,000.00 years",
       "correctChoice": "A",
       "explanation": "$k = \\frac{\\ln 2}{100} \\approx 0.0069315$. Target: $e^{-kt} = 0.01 \\implies -kt = \\ln(0.01) = -4.60517 \\implies t = \\frac{4.60517}{0.0069315} \\approx 664.386\\text{ years}$.",
-      "archetype": "applied"
+      "archetype": "applied",
+      "isAnchor": false
     },
     {
       "id": "m19-19",
@@ -213,7 +231,8 @@
       "choiceD": "Dividing by time.",
       "correctChoice": "A",
       "explanation": "Heat transfer is driven strictly by temperature difference $(T - T_m)$. Applying exponential decay directly to $T$ (e.g. $T(t) = T_0 e^{-kt}$) wrongly assumes the ambient temperature is absolute zero.",
-      "archetype": "trap"
+      "archetype": "trap",
+      "isAnchor": false
     },
     {
       "id": "m19-20",
@@ -224,7 +243,8 @@
       "choiceD": "Multiply by x.",
       "correctChoice": "A",
       "explanation": "Failing to eliminate $C$ leaves the orthogonal slope dependent on the specific member constant of the original family rather than general coordinates $(x, y)$, producing invalid trajectories.",
-      "archetype": "trap"
+      "archetype": "trap",
+      "isAnchor": false
     },
     {
       "id": "m19-21",
@@ -235,7 +255,8 @@
       "choiceD": "30 minutes",
       "correctChoice": "A",
       "explanation": "Excess drops from $80^\\circ$ to $40^\\circ$ in $10\\text{ min}$ (halved). For $T = 40^\\circ$, excess is $40 - 20 = 20^\\circ$ (halved again), taking another $10\\text{ min} \\implies 10 + 10 = \\mathbf{20\\text{ minutes}}$ in 2 seconds.",
-      "archetype": "shortcut"
+      "archetype": "shortcut",
+      "isAnchor": false
     },
     {
       "id": "m19-22",
@@ -246,7 +267,8 @@
       "choiceD": "1/10 (10.0%)",
       "correctChoice": "A",
       "explanation": "$(1/2)^5 = \\frac{1}{32} = 3.125\\%$ in 1 second.",
-      "archetype": "shortcut"
+      "archetype": "shortcut",
+      "isAnchor": false
     }
   ]
 }

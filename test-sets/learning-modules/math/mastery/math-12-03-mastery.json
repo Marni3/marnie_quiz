@@ -18,7 +18,9 @@
       "correctChoice": "A",
       "explanation": "$\\det(A) = (7)(2) - (4)(3) = 14 - 12 = 2$.\n\n⚡ Speed Shortcut: $14 - 12 = 2$.",
       "category": "computational",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "numerical",
+      "isAnchor": true
     },
     {
       "id": "m2103-q02",
@@ -31,7 +33,9 @@
       "correctChoice": "C",
       "explanation": "$\\det(kA) = k^n \\det(A) = 2^3 \\times 5 = 8 \\times 5 = 40$.\n\n⚡ Speed Shortcut: $8 \\times 5 = 40$.",
       "category": "shortcuts",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "shortcut",
+      "isAnchor": false
     },
     {
       "id": "m2103-q03",
@@ -44,7 +48,9 @@
       "correctChoice": "B",
       "explanation": "By definition, $C_{ij} = (-1)^{i+j} M_{ij}$. For $i=2, j=3$, $(-1)^{2+3} = (-1)^5 = -1$, so $C_{23} = -M_{23}$.",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m2103-q04",
@@ -57,7 +63,9 @@
       "correctChoice": "D",
       "explanation": "$\\det(A) = (5)(1) - (2)(2) = 5 - 4 = 1$. Swapping diagonal entries and negating off-diagonals: $A^{-1} = \\frac{1}{1}\\begin{bmatrix} 1 & -2 \\\\ -2 & 5 \\end{bmatrix}$.\n\n⚡ Speed Shortcut: $[1, -2; -2, 5]$.",
       "category": "computational",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m2103-q05",
@@ -70,7 +78,9 @@
       "correctChoice": "A",
       "explanation": "A fundamental theorem of determinants states that interchanging any two rows or columns negates the determinant: $\\det(A') = -\\det(A)$.",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m2103-q06",
@@ -83,7 +93,9 @@
       "correctChoice": "B",
       "explanation": "By the multiplicative property of determinants: $\\det(AB) = \\det(A) \\det(B) = 8 \\times (-3) = -24$.\n\n⚡ Speed Shortcut: $8 \\times (-3) = -24$.",
       "category": "shortcuts",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "shortcut",
+      "isAnchor": false
     },
     {
       "id": "m2103-q07",
@@ -96,7 +108,9 @@
       "correctChoice": "C",
       "explanation": "The determinant of any triangular (or diagonal) matrix is simply the product of its main diagonal elements: $\\det(T) = 4 \\times 3 \\times (-5) = -60$.\n\n⚡ Speed Shortcut: $4 \\times 3 \\times (-5) = -60$.",
       "category": "shortcuts",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "shortcut",
+      "isAnchor": false
     },
     {
       "id": "m2103-q08",
@@ -109,7 +123,9 @@
       "correctChoice": "B",
       "explanation": "A matrix is singular (has no inverse) if and only if its determinant is zero ($\\det(A) = 0$).",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m2103-q09",
@@ -122,7 +138,9 @@
       "correctChoice": "A",
       "explanation": "Expanding along Row 1: $1(1 \\cdot 6 - 4 \\cdot 2) - 2(2 \\cdot 6 - 4 \\cdot 4) + 0 = 1(6 - 8) - 2(12 - 16) = 1(-2) - 2(-4) = -2 + 8 = 6$.\n\n⚡ Speed Shortcut: $-2 + 8 = 6$.",
       "category": "computational",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m2103-q10",
@@ -135,7 +153,9 @@
       "correctChoice": "C",
       "explanation": "$\\det(A^{-1}) = \\frac{1}{\\det(A)} = \\frac{1}{-4} = -0.25$.\n\n⚡ Speed Shortcut: $-1/4 = -0.25$.",
       "category": "shortcuts",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "shortcut",
+      "isAnchor": false
     },
     {
       "id": "m2103-q11",
@@ -148,7 +168,9 @@
       "correctChoice": "B",
       "explanation": "For singularity: $\\det(M) = 0 \\implies 3x - (6)(2) = 0 \\implies 3x = 12 \\implies x = 4$.\n\n⚡ Speed Shortcut: $x = 12/3 = 4$.",
       "category": "computational",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m2103-q12",
@@ -161,7 +183,9 @@
       "correctChoice": "A",
       "explanation": "Transposition does not alter the value of the determinant: $\\det(A^T) = \\det(A)$.",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m2103-q13",
@@ -174,7 +198,9 @@
       "correctChoice": "D",
       "explanation": "Minor $M_{32} = \\det\\begin{bmatrix} 1 & 0 \\\\ 2 & 4 \\end{bmatrix} = 1(4) - 0(2) = 4$. Cofactor $C_{32} = (-1)^{3+2} M_{32} = -4$.\n\n⚡ Speed Shortcut: $(-1)^5 (4) = -4$.",
       "category": "computational",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m2103-q14",
@@ -187,7 +213,9 @@
       "correctChoice": "D",
       "explanation": "By the fundamental theorem of adjugates: $A \\cdot \\text{adj}(A) = \\text{adj}(A) \\cdot A = \\det(A) I_n$.",
       "category": "conceptual",
-      "difficulty": "medium"
+      "difficulty": "medium",
+      "archetype": "conceptual",
+      "isAnchor": false
     },
     {
       "id": "m2103-q15",
@@ -200,7 +228,9 @@
       "correctChoice": "A",
       "explanation": "Column 2 - Column 1 = $[3, 3, 3]^T$, and Column 3 - Column 2 = $[3, 3, 3]^T$. Since the columns are linearly dependent, the determinant is 0.\n\n⚡ Speed Shortcut: AP rows/columns $\\implies \\det = 0$.",
       "category": "shortcuts",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "shortcut",
+      "isAnchor": false
     },
     {
       "id": "m2103-q16",
@@ -213,7 +243,9 @@
       "correctChoice": "B",
       "explanation": "The inverse of any diagonal matrix is obtained by replacing each diagonal entry $d_{ii}$ with its reciprocal $1/d_{ii}$: $[1/2, 1/5, -1/4] = [0.5, 0.2, -0.25]$.\n\n⚡ Speed Shortcut: Diagonal reciprocals $\\implies [0.5, 0.2, -0.25]$.",
       "category": "shortcuts",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "shortcut",
+      "isAnchor": false
     },
     {
       "id": "m2103-q17",
@@ -226,7 +258,9 @@
       "correctChoice": "D",
       "explanation": "$\\det(A) = 4 - 6 = -2$. $\\det(B) = 6 - 0 = 6$. $\\det(AB) = \\det(A)\\det(B) = (-2)(6) = -12$.\n\n⚡ Speed Shortcut: $(-2) \\times 6 = -12$.",
       "category": "computational",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m2103-q18",
@@ -239,7 +273,9 @@
       "correctChoice": "C",
       "explanation": "Gabriel Cramer's rule (1750) provides an explicit determinant ratio solution for non-singular linear systems.",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m2103-q19",
@@ -252,7 +288,9 @@
       "correctChoice": "A",
       "explanation": "$\\det(K) = (\\cos\\theta)(\\cos\\theta) - (-\\sin\\theta)(\\sin\\theta) = \\cos^2\\theta + \\sin^2\\theta = 1$.\n\n⚡ Speed Shortcut: $\\cos^2\\theta + \\sin^2\\theta = 1$.",
       "category": "shortcuts",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "shortcut",
+      "isAnchor": false
     },
     {
       "id": "m2103-q20",
@@ -265,7 +303,9 @@
       "correctChoice": "C",
       "explanation": "For any $n \\times n$ matrix, $\\det(\\text{adj}(A)) = (\\det(A))^{n-1}$. For $n = 3$: $4^{3-1} = 4^2 = 16$.\n\n⚡ Speed Shortcut: $4^2 = 16$.",
       "category": "shortcuts",
-      "difficulty": "medium"
+      "difficulty": "medium",
+      "archetype": "shortcut",
+      "isAnchor": false
     },
     {
       "id": "m2103-q21",
@@ -278,7 +318,9 @@
       "correctChoice": "D",
       "explanation": "Lower triangular matrix determinant is the product of main diagonal entries: $5 \\times 2 \\times 6 = 60$.\n\n⚡ Speed Shortcut: $5 \\times 2 \\times 6 = 60$.",
       "category": "shortcuts",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "shortcut",
+      "isAnchor": false
     },
     {
       "id": "m2103-q22",
@@ -291,7 +333,9 @@
       "correctChoice": "B",
       "explanation": "$(A^{-1})^{-1} = A$. $\\det(A^{-1}) = (2)(3) - (5)(1) = 6 - 5 = 1$. Inverting: $A = \\frac{1}{1}\\begin{bmatrix} 3 & -5 \\\\ -1 & 2 \\end{bmatrix}$.\n\n⚡ Speed Shortcut: $[3, -5; -1, 2]$.",
       "category": "computational",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "numerical",
+      "isAnchor": false
     }
   ]
 }

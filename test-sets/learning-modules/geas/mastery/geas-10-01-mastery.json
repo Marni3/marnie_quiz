@@ -14,7 +14,9 @@
       "choiceC": "Philippine Telecommunications Regulatory Act of 2004",
       "choiceD": "Professional Electronics Practice Code of the Philippines",
       "correctChoice": "B",
-      "explanation": "Section 1 states: 'This Act shall be known as the Electronics Engineering Law of 2004.' Notice that 'Communications' was dropped from the official short title."
+      "explanation": "Section 1 states: 'This Act shall be known as the Electronics Engineering Law of 2004.' Notice that 'Communications' was dropped from the official short title.",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "q-geas10-01-02",
@@ -24,7 +26,9 @@
       "choiceC": "April 17, 2004",
       "choiceD": "May 25, 2004",
       "correctChoice": "C",
-      "explanation": "R.A. No. 9292 was approved on April 17, 2004. (June 21, 1969 was the approval date of the repealed R.A. 5734)."
+      "explanation": "R.A. No. 9292 was approved on April 17, 2004. (June 21, 1969 was the approval date of the repealed R.A. 5734).",
+      "archetype": "numerical",
+      "isAnchor": true
     },
     {
       "id": "q-geas10-01-03",
@@ -34,7 +38,9 @@
       "choiceC": "Republic Act No. 6541",
       "choiceD": "Republic Act No. 5734",
       "correctChoice": "D",
-      "explanation": "R.A. 5734 (The Electronics and Communications Engineering Act of the Philippines, enacted June 21, 1969) was repealed by Section 42 of R.A. 9292."
+      "explanation": "R.A. 5734 (The Electronics and Communications Engineering Act of the Philippines, enacted June 21, 1969) was repealed by Section 42 of R.A. 9292.",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "q-geas10-01-04",
@@ -44,7 +50,9 @@
       "choiceC": "House Bill No. 1096 and Senate Bill No. 3846",
       "choiceD": "House Bill No. 7925 and Senate Bill No. 8484",
       "correctChoice": "A",
-      "explanation": "R.A. 9292 originated from House Bill No. 5224 and Senate Bill No. 2683."
+      "explanation": "R.A. 9292 originated from House Bill No. 5224 and Senate Bill No. 2683.",
+      "archetype": "standard",
+      "isAnchor": false
     },
     {
       "id": "q-geas10-01-05",
@@ -54,7 +62,9 @@
       "choiceC": "Franklin M. Drilon",
       "choiceD": "Juan Ponce Enrile",
       "correctChoice": "C",
-      "explanation": "Franklin M. Drilon was the Senate President, while Jose De Venecia Jr. was the Speaker of the House."
+      "explanation": "Franklin M. Drilon was the Senate President, while Jose De Venecia Jr. was the Speaker of the House.",
+      "archetype": "standard",
+      "isAnchor": false
     },
     {
       "id": "q-geas10-01-06",
@@ -64,7 +74,9 @@
       "choiceC": "6 Articles and 36 Sections",
       "choiceD": "8 Articles and 43 Sections",
       "correctChoice": "D",
-      "explanation": "Republic Act No. 9292 contains 8 Articles and 43 Sections."
+      "explanation": "Republic Act No. 9292 contains 8 Articles and 43 Sections.",
+      "archetype": "numerical",
+      "isAnchor": true
     },
     {
       "id": "q-geas10-01-07",
@@ -74,7 +86,9 @@
       "choiceC": "Article II",
       "choiceD": "Article IV",
       "correctChoice": "A",
-      "explanation": "Article III (Sections 13 to 26) is dedicated to Examination, Registration and Licensure."
+      "explanation": "Article III (Sections 13 to 26) is dedicated to Examination, Registration and Licensure.",
+      "archetype": "conceptual",
+      "isAnchor": false
     },
     {
       "id": "q-geas10-01-08",
@@ -84,7 +98,9 @@
       "choiceC": "Article III",
       "choiceD": "Article V",
       "correctChoice": "B",
-      "explanation": "Article II (Sections 6 to 12) governs the Professional Regulatory Board of Electronics Engineering."
+      "explanation": "Article II (Sections 6 to 12) governs the Professional Regulatory Board of Electronics Engineering.",
+      "archetype": "conceptual",
+      "isAnchor": false
     },
     {
       "id": "q-geas10-01-09",
@@ -94,7 +110,9 @@
       "choiceC": "Biological neurons and synapses only",
       "choiceD": "Vacuum, gaseous media, plasma, semiconductors, or any other media",
       "correctChoice": "D",
-      "explanation": "Section 3(a) defines Electronics as dealing with electron flow in vacuum, in gaseous media, in plasma, in semiconductors, or in any other media."
+      "explanation": "Section 3(a) defines Electronics as dealing with electron flow in vacuum, in gaseous media, in plasma, in semiconductors, or in any other media.",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "q-geas10-01-10",
@@ -104,7 +122,9 @@
       "choiceC": "Any network server hosting website protocols over TCP/IP",
       "choiceD": "A cellular handset operating over 3G/4G telecommunications spectrum",
       "correctChoice": "A",
-      "explanation": "Section 3(e) defines a Computer as any of a variety of electronic devices capable of accepting data, programs/instructions, executing them to process data, and presenting results."
+      "explanation": "Section 3(e) defines a Computer as any of a variety of electronic devices capable of accepting data, programs/instructions, executing them to process data, and presenting results.",
+      "archetype": "conceptual",
+      "isAnchor": false
     },
     {
       "id": "q-geas10-01-11",
@@ -114,7 +134,9 @@
       "choiceC": "Broadcasting of analog frequency modulated audio signals only",
       "choiceD": "Installation of fiber optic underwater cable lines only",
       "correctChoice": "B",
-      "explanation": "Section 3(f) states that ICT is the acquisition, production, transformation, storage and transfer/transmission of data and info by electronic and other modern means."
+      "explanation": "Section 3(f) states that ICT is the acquisition, production, transformation, storage and transfer/transmission of data and info by electronic and other modern means.",
+      "archetype": "conceptual",
+      "isAnchor": false
     },
     {
       "id": "q-geas10-01-12",
@@ -124,7 +146,9 @@
       "choiceC": "Intended for the reception of the general public",
       "choiceD": "Requires two-way full duplex encryption",
       "correctChoice": "C",
-      "explanation": "Section 3(i) defines Broadcasting as an undertaking transmitting audio, video, text, or images 'for reception of the general public'."
+      "explanation": "Section 3(i) defines Broadcasting as an undertaking transmitting audio, video, text, or images 'for reception of the general public'.",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "q-geas10-01-13",
@@ -134,7 +158,9 @@
       "choiceC": "Academic university lecture halls only",
       "choiceD": "Government legislative session halls only",
       "correctChoice": "A",
-      "explanation": "Section 3(j) defines Industrial Plant as manufacturing establishments and businesses where electronic machineries/equipment are installed, used, sold, operated, etc."
+      "explanation": "Section 3(j) defines Industrial Plant as manufacturing establishments and businesses where electronic machineries/equipment are installed, used, sold, operated, etc.",
+      "archetype": "applied",
+      "isAnchor": false
     },
     {
       "id": "q-geas10-01-14",
@@ -144,7 +170,9 @@
       "choiceC": "Retail counter sales of electronics components",
       "choiceD": "Clerical filing of board exam records",
       "correctChoice": "B",
-      "explanation": "Section 3(l) defines Consulting Services as services involving technical expertise and professional capability for advisory, review, design, evaluation, planning, or supervision."
+      "explanation": "Section 3(l) defines Consulting Services as services involving technical expertise and professional capability for advisory, review, design, evaluation, planning, or supervision.",
+      "archetype": "applied",
+      "isAnchor": false
     },
     {
       "id": "q-geas10-01-15",
@@ -154,7 +182,9 @@
       "choiceC": "Section 35",
       "choiceD": "Section 43",
       "correctChoice": "C",
-      "explanation": "Section 35 under Article VI prescribes the fines (₱100k to ₱1M) and imprisonment terms (6 months to 6 years)."
+      "explanation": "Section 35 under Article VI prescribes the fines (₱100k to ₱1M) and imprisonment terms (6 months to 6 years).",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "q-geas10-01-16",
@@ -164,7 +194,9 @@
       "choiceC": "Section 12",
       "choiceD": "Section 4",
       "correctChoice": "D",
-      "explanation": "Section 4 (under Article I) establishes the 3 categories of practice: PECE, ECE, and ECT."
+      "explanation": "Section 4 (under Article I) establishes the 3 categories of practice: PECE, ECE, and ECT.",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "q-geas10-01-17",
@@ -174,7 +206,9 @@
       "choiceC": "Article IV",
       "choiceD": "Article VII",
       "correctChoice": "B",
-      "explanation": "Article V (Sections 32 to 34) contains the Sundry Provisions."
+      "explanation": "Article V (Sections 32 to 34) contains the Sundry Provisions.",
+      "archetype": "conceptual",
+      "isAnchor": false
     },
     {
       "id": "q-geas10-01-18",
@@ -184,7 +218,9 @@
       "choiceC": "Separability Clause",
       "choiceD": "Appropriations Clause",
       "correctChoice": "C",
-      "explanation": "Section 41 is the Separability Clause (if any section is declared unconstitutional, the remainder stays valid). Section 42 is Repealing, Section 43 is Effectivity."
+      "explanation": "Section 41 is the Separability Clause (if any section is declared unconstitutional, the remainder stays valid). Section 42 is Repealing, Section 43 is Effectivity.",
+      "archetype": "trap",
+      "isAnchor": false
     },
     {
       "id": "q-geas10-01-19",
@@ -194,7 +230,9 @@
       "choiceC": "1 year after publication by IECEP",
       "choiceD": "15 days following its full publication in the Official Gazette or two newspapers of general circulation",
       "correctChoice": "D",
-      "explanation": "Section 43 states effectivity takes place 15 days following full publication in the Official Gazette or at least two newspapers of general circulation."
+      "explanation": "Section 43 states effectivity takes place 15 days following full publication in the Official Gazette or at least two newspapers of general circulation.",
+      "archetype": "numerical",
+      "isAnchor": true
     },
     {
       "id": "q-geas10-01-20",
@@ -204,7 +242,9 @@
       "choiceC": "Sundry Provisions",
       "choiceD": "Final Provisions",
       "correctChoice": "A",
-      "explanation": "Article VII comprises Sections 37 and 38 and is titled 'Transitory Provisions'."
+      "explanation": "Article VII comprises Sections 37 and 38 and is titled 'Transitory Provisions'.",
+      "archetype": "conceptual",
+      "isAnchor": false
     },
     {
       "id": "q-geas10-01-21",
@@ -214,7 +254,9 @@
       "choiceC": "They were automatically converted into Electronics Engineers (ECEs)",
       "choiceD": "Their licenses were cancelled until they completed a Master's degree",
       "correctChoice": "C",
-      "explanation": "Section 38 explicitly protects vested rights: all existing ECEs under RA 5734 automatically became registered Electronics Engineers under RA 9292."
+      "explanation": "Section 38 explicitly protects vested rights: all existing ECEs under RA 5734 automatically became registered Electronics Engineers under RA 9292.",
+      "archetype": "applied",
+      "isAnchor": true
     },
     {
       "id": "q-geas10-01-22",
@@ -224,7 +266,9 @@
       "choiceC": "Section 40",
       "choiceD": "Section 30",
       "correctChoice": "D",
-      "explanation": "Section 30 (Article IV) states that the Board shall adopt a Code of Ethics and Code of Technical Standards of Practice promulgated by the Accredited Professional Organization."
+      "explanation": "Section 30 (Article IV) states that the Board shall adopt a Code of Ethics and Code of Technical Standards of Practice promulgated by the Accredited Professional Organization.",
+      "archetype": "conceptual",
+      "isAnchor": false
     },
     {
       "id": "q-geas10-01-23",
@@ -234,7 +278,9 @@
       "choiceC": "Farming lands and open irrigation canals",
       "choiceD": "Public recreational parks and plazas",
       "correctChoice": "A",
-      "explanation": "Section 3(k) defines Commercial Establishment as buildings used for business or profit where electronic equipment/circuits are installed, operated, or sold."
+      "explanation": "Section 3(k) defines Commercial Establishment as buildings used for business or profit where electronic equipment/circuits are installed, operated, or sold.",
+      "archetype": "applied",
+      "isAnchor": false
     },
     {
       "id": "q-geas10-01-24",
@@ -244,7 +290,9 @@
       "choiceC": "Franklin Drilon",
       "choiceD": "Jose De Venecia Jr.",
       "correctChoice": "B",
-      "explanation": "Roberto P. Nazareno was Secretary General of the House, while Oscar G. Yabes was Secretary of the Senate."
+      "explanation": "Roberto P. Nazareno was Secretary General of the House, while Oscar G. Yabes was Secretary of the Senate.",
+      "archetype": "standard",
+      "isAnchor": false
     },
     {
       "id": "q-geas10-01-25",
@@ -254,7 +302,9 @@
       "choiceC": "Mechanical semaphore flags on naval ships only",
       "choiceD": "The process of sending and/or receiving information, data, message, etc. between two or more points by any media",
       "correctChoice": "D",
-      "explanation": "Section 3(g) defines Communications as the process of sending and/or receiving information, data, message, etc. between two or more points by any media."
+      "explanation": "Section 3(g) defines Communications as the process of sending and/or receiving information, data, message, etc. between two or more points by any media.",
+      "archetype": "conceptual",
+      "isAnchor": false
     }
   ]
 }

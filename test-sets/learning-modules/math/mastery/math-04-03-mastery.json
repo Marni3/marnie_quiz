@@ -18,7 +18,9 @@
       "correctChoice": "D",
       "explanation": "The incenter is the point of concurrency of the interior angle bisectors, equidistant from all three sides.",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m0803-q02",
@@ -31,7 +33,9 @@
       "correctChoice": "A",
       "explanation": "$s = (13+14+15)/2 = 21$. $A = \\sqrt{21(21-13)(21-14)(21-15)} = \\sqrt{21(8)(7)(6)} = \\sqrt{7056} = 84\\text{ cm}^2$.\n\n⚡ Speed Shortcut: $\\sqrt{21 \\times 8 \\times 7 \\times 6} = 84\\text{ cm}^2$.",
       "category": "computational",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m0803-q03",
@@ -44,7 +48,9 @@
       "correctChoice": "B",
       "explanation": "$s = 21, A = 84\\text{ cm}^2$. Inradius $r = \\frac{A}{s} = \\frac{84}{21} = 4\\text{ cm}$.\n\n⚡ Speed Shortcut: $r = \\frac{84}{21} = 4\\text{ cm}$.",
       "category": "computational",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m0803-q04",
@@ -57,7 +63,9 @@
       "correctChoice": "B",
       "explanation": "$R = \\frac{abc}{4A} = \\frac{13 \\times 14 \\times 15}{4(84)} = \\frac{2730}{336} = \\frac{65}{8} = 8.125\\text{ cm}$.",
       "category": "computational",
-      "difficulty": "medium"
+      "difficulty": "medium",
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m0803-q05",
@@ -70,7 +78,9 @@
       "correctChoice": "C",
       "explanation": "The centroid is situated at two-thirds of the distance along any median measured from the vertex to the midpoint of the opposite side.",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m0803-q06",
@@ -83,7 +93,9 @@
       "correctChoice": "A",
       "explanation": "$R = \\frac{a\\sqrt{3}}{3} = \\frac{6\\sqrt{3}}{3} = 2\\sqrt{3}\\text{ cm} \\approx 3.464\\text{ cm}$.\n\n⚡ Speed Shortcut: $\\frac{6}{\\sqrt{3}} = 2\\sqrt{3}$.",
       "category": "shortcuts",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "shortcut",
+      "isAnchor": false
     },
     {
       "id": "m0803-q07",
@@ -96,7 +108,9 @@
       "correctChoice": "B",
       "explanation": "Hypotenuse $c = \\sqrt{9^2 + 12^2} = 15$. In any right triangle, the median to the hypotenuse is exactly half the hypotenuse: $m_c = c/2 = 15/2 = 7.5$.",
       "category": "computational",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m0803-q08",
@@ -109,7 +123,9 @@
       "correctChoice": "D",
       "explanation": "The orthocenter ($H$) is the common meeting point of the three altitudes of a triangle.",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m0803-q09",
@@ -122,7 +138,9 @@
       "correctChoice": "C",
       "explanation": "For a right triangle: $r = \\frac{a + b - c}{2} = \\frac{5 + 12 - 13}{2} = \\frac{4}{2} = 2$.\n\n⚡ Speed Shortcut: $\\frac{5+12-13}{2} = 2$.",
       "category": "shortcuts",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "shortcut",
+      "isAnchor": false
     },
     {
       "id": "m0803-q10",
@@ -135,7 +153,9 @@
       "correctChoice": "A",
       "explanation": "$|14 - 8| < x < 14 + 8 \\implies 6 < x < 22$.",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m0803-q11",
@@ -148,7 +168,9 @@
       "correctChoice": "C",
       "explanation": "Area $A = 84\\text{ cm}^2$. Altitude $h_c = \\frac{2A}{c} = \\frac{2(84)}{14} = \\frac{168}{14} = 12\\text{ cm}$.",
       "category": "computational",
-      "difficulty": "medium"
+      "difficulty": "medium",
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m0803-q12",
@@ -161,7 +183,9 @@
       "correctChoice": "C",
       "explanation": "Heron of Alexandria lived in the 1st Century A.D. (c. 10–70 A.D.) in Roman Egypt.",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m0803-q13",
@@ -174,7 +198,9 @@
       "correctChoice": "A",
       "explanation": "$r = \\frac{a\\sqrt{3}}{6} = \\frac{12\\sqrt{3}}{6} = 2\\sqrt{3}\\text{ cm} \\approx 3.464\\text{ cm}$.",
       "category": "computational",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m0803-q14",
@@ -187,7 +213,9 @@
       "correctChoice": "B",
       "explanation": "$s = 32 / 2 = 16\\text{ cm}$. $r = A/s = 48 / 16 = 3\\text{ cm}$.\n\n⚡ Speed Shortcut: $r = \\frac{48}{16} = 3\\text{ cm}$.",
       "category": "shortcuts",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "shortcut",
+      "isAnchor": false
     },
     {
       "id": "m0803-q15",
@@ -200,7 +228,9 @@
       "correctChoice": "B",
       "explanation": "Since $C = 90^\\circ$, $t_c = \\frac{2ab \\cos(C/2)}{a + b} = \\frac{2(6)(8)\\cos 45^\\circ}{6 + 8} = \\frac{96 (\\sqrt{2}/2)}{14} = \\frac{48\\sqrt{2}}{14} = \\frac{24\\sqrt{2}}{7} \\approx 4.8486$.",
       "category": "applied",
-      "difficulty": "hard"
+      "difficulty": "hard",
+      "archetype": "applied",
+      "isAnchor": false
     },
     {
       "id": "m0803-q16",
@@ -213,7 +243,9 @@
       "correctChoice": "A",
       "explanation": "The circumcenter is the intersection of perpendicular bisectors and is equidistant from the vertices, with that distance equal to $R$.",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m0803-q17",
@@ -226,7 +258,9 @@
       "correctChoice": "D",
       "explanation": "$R = \\frac{abc}{4A} = \\frac{480}{4(24)} = \\frac{480}{96} = 5$.\n\n⚡ Speed Shortcut: $\\frac{480}{96} = 5$.",
       "category": "shortcuts",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "shortcut",
+      "isAnchor": false
     },
     {
       "id": "m0803-q18",
@@ -239,7 +273,9 @@
       "correctChoice": "A",
       "explanation": "In an obtuse triangle, both the orthocenter and circumcenter lie outside the perimeter of the triangle.",
       "category": "conceptual",
-      "difficulty": "medium"
+      "difficulty": "medium",
+      "archetype": "conceptual",
+      "isAnchor": false
     },
     {
       "id": "m0803-q19",
@@ -252,7 +288,9 @@
       "correctChoice": "D",
       "explanation": "$m_a = \\frac{1}{2}\\sqrt{2b^2 + 2c^2 - a^2} = \\frac{1}{2}\\sqrt{2(49) + 2(81) - 36} = \\frac{1}{2}\\sqrt{98 + 162 - 36} = \\frac{1}{2}\\sqrt{224} = 2\\sqrt{14} \\approx 7.4833$.",
       "category": "computational",
-      "difficulty": "medium"
+      "difficulty": "medium",
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m0803-q20",
@@ -265,7 +303,9 @@
       "correctChoice": "C",
       "explanation": "In an equilateral triangle, $R = \\frac{a\\sqrt{3}}{3}$ and $r = \\frac{a\\sqrt{3}}{6}$, so $R / r = 2 / 1 = 2$.",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m0803-q21",
@@ -278,7 +318,9 @@
       "correctChoice": "D",
       "explanation": "Side $a = 18 / 3 = 6\\text{ cm}$. Area $A = \\frac{a^2\\sqrt{3}}{4} = \\frac{36\\sqrt{3}}{4} = 9\\sqrt{3}\\text{ cm}^2$.\n\n⚡ Speed Shortcut: $\\frac{6^2\\sqrt{3}}{4} = 9\\sqrt{3}$.",
       "category": "computational",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m0803-q22",
@@ -291,7 +333,9 @@
       "correctChoice": "B",
       "explanation": "By the median area theorem: $A_{\\text{triangle}} = \\frac{4}{3} A_{\\text{medians}}$. The medians $9, 12, 15$ form a right triangle of area $\\frac{1}{2}(9)(12) = 54$. Thus $A = \\frac{4}{3}(54) = 72$.\n\n⚡ Speed Shortcut: $\\frac{4}{3} \\times 54 = 72$.",
       "category": "shortcuts",
-      "difficulty": "hard"
+      "difficulty": "hard",
+      "archetype": "shortcut",
+      "isAnchor": false
     }
   ]
 }

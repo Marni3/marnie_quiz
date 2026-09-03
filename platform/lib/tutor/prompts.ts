@@ -1,33 +1,30 @@
 import { TutorFunctionMode } from "./types";
 
 export const DEFAULT_MODELS: Record<string, string> = {
-  gemini: "gemini-3.7-flash",
+  gemini: "gemini-2.0-flash",
   openai: "gpt-4o",
   anthropic: "claude-3-5-sonnet-20241022",
   deepseek: "deepseek-chat",
-  openrouter: "google/gemini-3.7-flash",
-  groq: "qwen/qwen3.8-27b",
+  openrouter: "google/gemini-2.0-flash",
+  groq: "llama-3.3-70b-versatile",
 };
 
 export const MODEL_CATALOG = [
-  { id: "gemini-3.7-flash", name: "Gemini 3.7 Flash (Latest & Most Capable)", provider: "gemini" as const, isRecommended: true },
-  { id: "gemini-3.6-flash", name: "Gemini 3.6 Flash (Fast Multimodal)", provider: "gemini" as const },
-  { id: "gemini-3.5-flash", name: "Gemini 3.5 Flash (Baseline)", provider: "gemini" as const },
+  { id: "gemini-2.0-flash", name: "Gemini 2.0 Flash (Fast Multimodal Flagship)", provider: "gemini" as const, isRecommended: true },
+  { id: "gemini-2.0-flash-lite", name: "Gemini 2.0 Flash-Lite (High Throughput)", provider: "gemini" as const },
+  { id: "gemini-1.5-flash", name: "Gemini 1.5 Flash (1M Token Context)", provider: "gemini" as const },
+  { id: "gemini-1.5-pro", name: "Gemini 1.5 Pro (Deep Complex Reasoning)", provider: "gemini" as const },
   { id: "gpt-4o", name: "GPT-4o (Omni High Precision)", provider: "openai" as const, isRecommended: true },
   { id: "gpt-4o-mini", name: "GPT-4o Mini (Fast & Low Cost)", provider: "openai" as const },
   { id: "claude-3-5-sonnet-20241022", name: "Claude 3.5 Sonnet (Pedagogical Master)", provider: "anthropic" as const, isRecommended: true },
   { id: "claude-3-5-haiku-20241022", name: "Claude 3.5 Haiku (Ultra Fast)", provider: "anthropic" as const },
   { id: "deepseek-chat", name: "DeepSeek V3 (High Value / Low Cost)", provider: "deepseek" as const },
   { id: "deepseek-reasoner", name: "DeepSeek R1 (Math & Code Reasoning)", provider: "deepseek" as const },
-  { id: "google/gemini-3.7-flash", name: "Gemini 3.7 Flash (via OpenRouter)", provider: "openrouter" as const },
+  { id: "google/gemini-2.0-flash", name: "Gemini 2.0 Flash (via OpenRouter)", provider: "openrouter" as const },
   { id: "anthropic/claude-3.5-sonnet", name: "Claude 3.5 Sonnet (via OpenRouter)", provider: "openrouter" as const },
-  { id: "qwen/qwen3.8-27b", name: "Qwen 3.8 27B (Multimodal Vision & Reasoning)", provider: "groq" as const, isRecommended: true },
-  { id: "openai/gpt-oss-120b", name: "GPT OSS 120B (Deep Reasoning & JSON)", provider: "groq" as const, isRecommended: true },
-  { id: "openai/gpt-oss-20b", name: "GPT OSS 20B (Ultra Fast)", provider: "groq" as const },
-  { id: "qwen/qwen3.6-27b", name: "Qwen 3.6 27B (Vision)", provider: "groq" as const },
-  { id: "groq/compound", name: "Groq Compound (131k Context)", provider: "groq" as const },
-  { id: "groq/compound-mini", name: "Groq Compound Mini", provider: "groq" as const },
-  { id: "llama-3.3-70b-versatile", name: "Llama 3.3 70B (Legacy)", provider: "groq" as const },
+  { id: "llama-3.3-70b-versatile", name: "Llama 3.3 70B (300+ Tokens/Sec)", provider: "groq" as const, isRecommended: true },
+  { id: "qwen-2.5-32b", name: "Qwen 2.5 32B (Math & Reasoning)", provider: "groq" as const },
+  { id: "llama-3.1-8b-instant", name: "Llama 3.1 8B Instant (Ultra Fast)", provider: "groq" as const },
 ];
 
 export const BASE_SOCRATIC_PROMPT = `You are "Marnie AI", a world-class PRC Electronics Engineering (ECE) Board Examination Master Tutor and Senior Full-Stack Engineering Mentor.

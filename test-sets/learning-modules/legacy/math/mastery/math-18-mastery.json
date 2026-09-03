@@ -15,7 +15,8 @@
       "choiceD": "The degree of the independent variable x.",
       "correctChoice": "A",
       "explanation": "The order is the highest derivative, while the degree is the power to which the highest derivative is raised after rationalizing any radicals or fractional exponents on derivatives.",
-      "archetype": "conceptual"
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m18-02",
@@ -26,7 +27,8 @@
       "choiceD": "dM/dx + dN/dy = 0",
       "correctChoice": "A",
       "explanation": "By Clairaut's theorem, exactness requires that the partial derivative of $M$ with respect to $y$ equals the partial derivative of $N$ with respect to $x$: $\\frac{\\partial M}{\\partial y} = \\frac{\\partial N}{\\partial x}$.",
-      "archetype": "conceptual"
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m18-03",
@@ -37,7 +39,8 @@
       "choiceD": "I.F. = e^(-∫ P(x) dx)",
       "correctChoice": "A",
       "explanation": "Multiplying by $\\text{I.F.} = e^{\\int P(x) dx}$ converts the left-hand side into the exact derivative of a product: $\\frac{d}{dx}[y \\cdot e^{\\int P(x) dx}]$.",
-      "archetype": "conceptual"
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m18-04",
@@ -48,7 +51,8 @@
       "choiceD": "u = 1 / y^n",
       "correctChoice": "A",
       "explanation": "Dividing by $y^n$ and substituting $u = y^{1 - n}$ transforms Bernoulli's equation into the linear ODE $\\frac{du}{dx} + (1 - n)P(x)u = (1 - n)Q(x)$.",
-      "archetype": "conceptual"
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m18-05",
@@ -59,7 +63,8 @@
       "choiceD": "y = e^(vx)",
       "correctChoice": "A",
       "explanation": "Because $M$ and $N$ have identical degree in $x$ and $y$, substituting $y = vx$ factors out $x^n$, reducing the equation to a separable ODE in $v$ and $x$.",
-      "archetype": "conceptual"
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m18-06",
@@ -70,7 +75,8 @@
       "choiceD": "A particular solution is always zero.",
       "correctChoice": "A",
       "explanation": "A general solution contains arbitrary integration constants ($C$), whereas a particular solution evaluates $C$ using given boundary values ($y(x_0) = y_0$).",
-      "archetype": "conceptual"
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m18-07",
@@ -81,7 +87,8 @@
       "choiceD": "Order 1, Degree 3",
       "correctChoice": "A",
       "explanation": "Squaring both sides to eliminate the radical: $\\left(\\frac{d^2y}{dx^2}\\right)^4 = 1 + \\left(\\frac{dy}{dx}\\right)^3$. The highest derivative is $\\frac{d^2y}{dx^2}$ (Order 2), raised to power 4 (Degree 4).",
-      "archetype": "numerical"
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m18-08",
@@ -92,7 +99,8 @@
       "choiceD": "e^x",
       "correctChoice": "A",
       "explanation": "$\\text{I.F.} = e^{\\int (1/x) dx} = e^{\\ln x} = x$.",
-      "archetype": "numerical"
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m18-09",
@@ -103,7 +111,8 @@
       "choiceD": "y² = 2x + C",
       "correctChoice": "A",
       "explanation": "Separating variables: $y dy = x dx \\implies \\int y dy = \\int x dx \\implies \\frac{y^2}{2} = \\frac{x^2}{2} + C_1 \\implies y^2 - x^2 = C$.",
-      "archetype": "numerical"
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m18-10",
@@ -114,7 +123,8 @@
       "choiceD": "y = 2x + C",
       "correctChoice": "A",
       "explanation": "$\\text{I.F.} = e^{2x}$. $y e^{2x} = \\int 4 e^{2x} dx = 2 e^{2x} + C \\implies y = 2 + C e^{-2x}$.",
-      "archetype": "numerical"
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m18-11",
@@ -125,7 +135,8 @@
       "choiceD": "x² - xy + y² = C",
       "correctChoice": "A",
       "explanation": "Exact test: $\\partial M/\\partial y = 1, \\partial N/\\partial x = 1$. $\\int (2x + y) \\partial x = x^2 + xy + g(y)$. $\\frac{\\partial}{\\partial y}[x^2 + xy + g(y)] = x + g'(y) = x + 2y \\implies g(y) = y^2$. Solution: $x^2 + xy + y^2 = C$.",
-      "archetype": "numerical"
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m18-12",
@@ -136,7 +147,8 @@
       "choiceD": "y = 6x + 5",
       "correctChoice": "A",
       "explanation": "$y = \\int 3x^2 dx = x^3 + C$. At $x = 0, y = 5 \\implies 5 = 0 + C \\implies C = 5$. Thus, $y = x^3 + 5$.",
-      "archetype": "numerical"
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m18-13",
@@ -147,7 +159,8 @@
       "choiceD": "u = 1 / y",
       "correctChoice": "A",
       "explanation": "Here $n = 4$, so $u = y^{1 - n} = y^{1 - 4} = y^{-3}$.",
-      "archetype": "numerical"
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m18-14",
@@ -158,7 +171,8 @@
       "choiceD": "v(t) = V₀ t / (RC)",
       "correctChoice": "A",
       "explanation": "Standard 1st-order linear charging transient: $\\text{I.F.} = e^{t/RC} \\implies v(t) e^{t/RC} = \\int \\frac{V_0}{RC}e^{t/RC}dt = V_0 e^{t/RC} + C$. At $t=0, v=0 \\implies C = -V_0 \\implies v(t) = V_0(1 - e^{-t/RC})$.",
-      "archetype": "applied"
+      "archetype": "applied",
+      "isAnchor": false
     },
     {
       "id": "m18-15",
@@ -169,7 +183,8 @@
       "choiceD": "I_ss = E · R",
       "correctChoice": "A",
       "explanation": "As $t \\to \\infty$, steady-state is reached so $\\frac{di}{dt} = 0$, reducing the ODE to $R i = E \\implies I_{\\text{ss}} = \\frac{E}{R}$.",
-      "archetype": "applied"
+      "archetype": "applied",
+      "isAnchor": false
     },
     {
       "id": "m18-16",
@@ -180,7 +195,8 @@
       "choiceD": "x² cos y = C",
       "correctChoice": "A",
       "explanation": "Notice this is the direct differential of a product: $d(x\\cos y) = \\cos y dx - x\\sin y dy = 0 \\implies x\\cos y = C$.",
-      "archetype": "applied"
+      "archetype": "applied",
+      "isAnchor": false
     },
     {
       "id": "m18-17",
@@ -191,7 +207,8 @@
       "choiceD": "v_t = mg k",
       "correctChoice": "A",
       "explanation": "At terminal velocity, acceleration ceases ($\\frac{dv}{dt} = 0$), so $mg - kv_t = 0 \\implies v_t = \\frac{mg}{k}$.",
-      "archetype": "applied"
+      "archetype": "applied",
+      "isAnchor": false
     },
     {
       "id": "m18-18",
@@ -202,7 +219,8 @@
       "choiceD": "e^x",
       "correctChoice": "A",
       "explanation": "$M = x^2 + y, N = -x$. $\\frac{\\partial M}{\\partial y} = 1, \\frac{\\partial N}{\\partial x} = -1$. $\\frac{1}{N}(\\partial M/\\partial y - \\partial N/\\partial x) = \\frac{1}{-x}(1 - (-1)) = -\\frac{2}{x}$. $\\text{I.F.} = e^{\\int (-2/x) dx} = e^{-2\\ln x} = x^{-2} = \\frac{1}{x^2}$.",
-      "archetype": "applied"
+      "archetype": "applied",
+      "isAnchor": false
     },
     {
       "id": "m18-19",
@@ -213,7 +231,8 @@
       "choiceD": "Setting the right-hand side to zero.",
       "correctChoice": "A",
       "explanation": "The standard linear form strictly requires the leading coefficient of $\\frac{dy}{dx}$ to be 1. Identifying $P(x) = 3$ instead of $P(x) = 3/x$ is a major trap.",
-      "archetype": "trap"
+      "archetype": "trap",
+      "isAnchor": false
     },
     {
       "id": "m18-20",
@@ -224,7 +243,8 @@
       "choiceD": "Differentiate again to eliminate radicals.",
       "correctChoice": "A",
       "explanation": "The degree of a differential equation is strictly defined only after the equation has been made rational and integral with respect to all derivatives.",
-      "archetype": "trap"
+      "archetype": "trap",
+      "isAnchor": false
     },
     {
       "id": "m18-21",
@@ -235,7 +255,8 @@
       "choiceD": "x³",
       "correctChoice": "A",
       "explanation": "$\\text{I.F.} = e^{\\int (-4/x) dx} = e^{-4\\ln x} = x^{-4} = \\frac{1}{x^4}$ in 2 seconds.",
-      "archetype": "shortcut"
+      "archetype": "shortcut",
+      "isAnchor": false
     },
     {
       "id": "m18-22",
@@ -246,7 +267,8 @@
       "choiceD": "50",
       "correctChoice": "A",
       "explanation": "As $t \\to \\infty$, $e^{-5t} \\to 0$, so $y(\\infty) = 10(1 - 0) = 10$ in 1 second.",
-      "archetype": "shortcut"
+      "archetype": "shortcut",
+      "isAnchor": false
     }
   ]
 }

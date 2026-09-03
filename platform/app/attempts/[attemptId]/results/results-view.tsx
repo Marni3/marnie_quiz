@@ -14,6 +14,7 @@ import {
   ExternalLink,
   Code,
   Sparkles,
+  GraduationCap,
 } from "lucide-react";
 import { QuestionResultDetail } from "@/lib/grading";
 
@@ -38,6 +39,7 @@ interface ResultsViewProps {
     id: string;
     title: string;
     subjectTag: string | null;
+    moduleId?: string | null;
   };
   questions: QuestionResultDetail[];
   score: number;
@@ -200,6 +202,16 @@ export function ResultsView({
               <RotateCcw className="w-4 h-4" />
               <span>{retaking ? "Starting..." : "Retake This Quiz"}</span>
             </button>
+
+            {questionSet.moduleId && (
+              <Link
+                href={`/learn/${questionSet.moduleId}`}
+                className="inline-flex items-center gap-2 px-6 py-2.5 rounded-xl bg-emerald-500/15 border border-emerald-500/30 text-emerald-600 dark:text-emerald-400 font-bold text-xs hover:bg-emerald-500/25 transition-all cursor-pointer shadow-xs"
+              >
+                <GraduationCap className="w-4 h-4" />
+                <span>Return to Module</span>
+              </Link>
+            )}
 
             <Link
               href="/quizzes"

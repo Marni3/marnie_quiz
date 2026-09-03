@@ -18,7 +18,9 @@
       "correctChoice": "C",
       "explanation": "On any standard die, opposite faces are paired to always sum to 7 ($1+6 = 2+5 = 3+4 = 7$).",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m0603-q02",
@@ -31,7 +33,9 @@
       "correctChoice": "A",
       "explanation": "Rolling a pair of 1s is traditionally termed \"snake eyes\", occurring with probability $1/36$.",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m0603-q03",
@@ -44,7 +48,9 @@
       "correctChoice": "C",
       "explanation": "Expected gross winnings $= \\text{P}8,000 \\times \\frac{1}{500} = \\text{P}16$. Net expectation $= \\text{P}16 - \\text{P}20 = -\\text{P}4$.\n\n⚡ Speed Shortcut: $\\frac{8000}{500} - 20 = 16 - 20 = -4$.",
       "category": "computational",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m0603-q04",
@@ -57,7 +63,9 @@
       "correctChoice": "A",
       "explanation": "King of Diamonds depicts Julius Caesar; Hearts depicts Charlemagne; Clubs depicts Alexander the Great; Spades depicts King David.",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m0603-q05",
@@ -70,7 +78,9 @@
       "correctChoice": "D",
       "explanation": "There are exactly 4 suits, and each suit has only 1 combination of A-K-Q-J-10. Hence, there are exactly 4 Royal Flushes out of 2,598,960 total hands.",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m0603-q06",
@@ -83,7 +93,9 @@
       "correctChoice": "C",
       "explanation": "A sum of 7 can be formed in 6 ways: $(1,6), (2,5), (3,4), (4,3), (5,2), (6,1)$, giving the peak probability of $6/36 = 1/6$.",
       "category": "computational",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m0603-q07",
@@ -96,7 +108,9 @@
       "correctChoice": "B",
       "explanation": "Full House combinations $= {}_{13} C_1 \\times {}_4 C_3 \\times {}_{12} C_1 \\times {}_4 C_2 = 13 \\times 4 \\times 12 \\times 6 = 3,744$.\n\n⚡ Speed Shortcut: $13 \\times 4 \\times 12 \\times 6 = 3744$.",
       "category": "shortcuts",
-      "difficulty": "medium"
+      "difficulty": "medium",
+      "archetype": "shortcut",
+      "isAnchor": false
     },
     {
       "id": "m0603-q08",
@@ -109,7 +123,9 @@
       "correctChoice": "B",
       "explanation": "$E[X] = (+120)\\left(\\frac{1}{6}\\right) + (-30)\\left(\\frac{5}{6}\\right) = 20 - 25 = -\\text{P}5$.",
       "category": "computational",
-      "difficulty": "medium"
+      "difficulty": "medium",
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m0603-q09",
@@ -122,7 +138,9 @@
       "correctChoice": "D",
       "explanation": "Historical records show that dice were first used and developed by the Chinese for gambling and games of chance.",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m0603-q10",
@@ -135,7 +153,9 @@
       "correctChoice": "A",
       "explanation": "${}_{52} C_5 = \\frac{52 \\times 51 \\times 50 \\times 49 \\times 48}{120} = 2,598,960$.",
       "category": "computational",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m0603-q11",
@@ -148,7 +168,9 @@
       "correctChoice": "D",
       "explanation": "In standard playing card symbolism: 52 cards = 52 weeks, 4 suits = 4 seasons, and 12 face cards = 12 months in a year.",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m0603-q12",
@@ -161,7 +183,9 @@
       "correctChoice": "A",
       "explanation": "Expected frequency $= \\frac{2,598,960}{4} = 649,740$ hands per Royal Flush.",
       "category": "conceptual",
-      "difficulty": "medium"
+      "difficulty": "medium",
+      "archetype": "conceptual",
+      "isAnchor": false
     },
     {
       "id": "m0603-q13",
@@ -174,7 +198,9 @@
       "correctChoice": "B",
       "explanation": "There are 18 even sum outcomes and 18 odd sum outcomes out of 36. Probability $= 18/36 = 1/2$.",
       "category": "computational",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m0603-q14",
@@ -187,7 +213,9 @@
       "correctChoice": "C",
       "explanation": "Four of a kind: ${}_{13} C_1 \\times {}_4 C_4 \\times {}_{48} C_1 = 13 \\times 1 \\times 48 = 624$.\n\n⚡ Speed Shortcut: $13 \\times 48 = 624$.",
       "category": "shortcuts",
-      "difficulty": "medium"
+      "difficulty": "medium",
+      "archetype": "shortcut",
+      "isAnchor": false
     },
     {
       "id": "m0603-q15",
@@ -200,7 +228,9 @@
       "correctChoice": "D",
       "explanation": "$E[X] = 35\\left(\\frac{1}{37}\\right) - 1\\left(\\frac{36}{37}\\right) = -\\frac{1}{37} \\approx -0.0270 \\implies 2.70\\%$ house edge.",
       "category": "applied",
-      "difficulty": "medium"
+      "difficulty": "medium",
+      "archetype": "applied",
+      "isAnchor": false
     },
     {
       "id": "m0603-q16",
@@ -213,7 +243,9 @@
       "correctChoice": "B",
       "explanation": "Opposite faces sum to 7. Since the top face is 5, the bottom face is $7 - 5 = 2$.",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m0603-q17",
@@ -226,7 +258,9 @@
       "correctChoice": "C",
       "explanation": "There are 10 straights per suit $\\times 4$ suits $= 40$ total straight flushes. Subtracting the 4 Royal Flushes leaves $40 - 4 = 36$ straight flushes.",
       "category": "computational",
-      "difficulty": "medium"
+      "difficulty": "medium",
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m0603-q18",
@@ -239,7 +273,9 @@
       "correctChoice": "B",
       "explanation": "King of Spades is attributed to King David of biblical Israel.",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m0603-q19",
@@ -252,7 +288,9 @@
       "correctChoice": "A",
       "explanation": "Sum 2: $(1,1)$ ($1/36$). Sum 12: $(6,6)$ ($1/36$). $P(2 \\text{ or } 12) = 1/36 + 1/36 = 2/36 = 1/18$.",
       "category": "computational",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m0603-q20",
@@ -265,7 +303,9 @@
       "correctChoice": "A",
       "explanation": "$E[X] = \\text{Premium} - \\text{Expected Claim} = 2,500 - (200,000 \\times 0.01) = 2,500 - 2,000 = \\text{P}500$.\n\n⚡ Speed Shortcut: $2500 - 200000(0.01) = 500$.",
       "category": "applied",
-      "difficulty": "medium"
+      "difficulty": "medium",
+      "archetype": "applied",
+      "isAnchor": false
     },
     {
       "id": "m0603-q21",
@@ -278,7 +318,9 @@
       "correctChoice": "B",
       "explanation": "High card / no pair occurs in $1,302,540$ hands out of $2,598,960$, which represents $\\approx 50.1177\\% \\approx 50.12\\%$.",
       "category": "conceptual",
-      "difficulty": "medium"
+      "difficulty": "medium",
+      "archetype": "conceptual",
+      "isAnchor": false
     },
     {
       "id": "m0603-q22",
@@ -291,7 +333,9 @@
       "correctChoice": "D",
       "explanation": "Sums > 9 are 10 (3 ways), 11 (2 ways), 12 (1 way). Total favorable $= 3 + 2 + 1 = 6$ ways. $P = 6/36 = 1/6$.",
       "category": "computational",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "numerical",
+      "isAnchor": false
     }
   ]
 }

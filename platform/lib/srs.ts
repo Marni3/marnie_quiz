@@ -11,7 +11,7 @@ import {
   UserModuleProgress,
   Question,
 } from "./db/schema";
-import { eq, and, sql, desc, or, lte } from "drizzle-orm";
+import { eq, and, sql, desc, or, lte, inArray } from "drizzle-orm";
 import { randomUUID } from "crypto";
 import { createAttempt } from "./attempts";
 import { getMockStore } from "./store";
@@ -387,42 +387,66 @@ export async function assembleDailyRefresherDrill(
     dueTopicCodes = dueTopicCodes.filter((code) => code.startsWith(domainPrefix));
   }
 
-  // Question distribution ratios based on total count
-  const anchorCount = Math.max(1, Math.round(count * 0.35));
-  const conceptualCount = Math.max(1, Math.round(count * 0.40));
-  const numericalCount = Math.max(1, count - anchorCount - conceptualCount);
+  let pool: Question[] = [];
 
-  // 1. Fetch Anchor questions
-  const anchorQuestions = await db
-    .select()
-    .from(questions)
-    .where(eq(questions.isAnchor, true))
-    .limit(anchorCount * 2);
+  try {
+    // 1. Fetch targeted questions matching due/weak topic codes via microCluster or questionSet topicCode
+    if (dueTopicCodes.length > 0) {
+      const topicConditions = dueTopicCodes.map((tc) => sql`${questions.microCluster} LIKE ${tc + "%"}`);
+      const targeted = await db
+        .select()
+        .from(questions)
+        .where(or(...topicConditions))
+        .limit(count * 2);
+      pool.push(...targeted);
+    }
 
-  // 2. Fetch Conceptual Archetype questions
-  const conceptualQuestions = await db
-    .select()
-    .from(questions)
-    .where(sql`${questions.archetype} IS NOT NULL AND ${questions.archetype} != 'standard'`)
-    .limit(conceptualCount * 2);
+    // 2. If pool still needs questions and domain is specified, fetch domain questions
+    if (pool.length < count && domain) {
+      const domainPrefix = domain.toUpperCase().trim();
+      const domainQuestions = await db
+        .select()
+        .from(questions)
+        .where(sql`${questions.microCluster} LIKE ${domainPrefix + "%"}`)
+        .limit(count * 2);
+      pool.push(...domainQuestions);
+    }
 
-  // 3. Fetch Numerical Problem Solving questions
-  const numericalQuestions = await db
-    .select()
-    .from(questions)
-    .where(or(eq(questions.archetype, "standard"), sql`${questions.archetype} IS NULL`))
-    .limit(numericalCount * 2);
+    // 3. If still needed, backfill with general questions
+    if (pool.length < count) {
+      const general = await db
+        .select()
+        .from(questions)
+        .limit(count * 2);
+      pool.push(...general);
+    }
+  } catch (dbErr) {
+    console.warn("DB question query failed for drill, falling back to mock store:", dbErr);
+  }
 
-  // Assemble question pool
-  const pool = [...anchorQuestions, ...conceptualQuestions, ...numericalQuestions];
-
-  // If pool has fewer than requested count, backfill
+  // Fallback to Mock Store if DB query returned insufficient questions
   if (pool.length < count) {
-    const extra = await db
-      .select()
-      .from(questions)
-      .limit(count - pool.length);
-    pool.push(...extra);
+    const store = getMockStore();
+    const allStoreQuestions = Array.from(store.questions.values());
+
+    if (dueTopicCodes.length > 0) {
+      const mockTargeted = allStoreQuestions.filter(
+        (q) => q.microCluster && dueTopicCodes.some((tc) => q.microCluster?.startsWith(tc))
+      );
+      pool.push(...mockTargeted);
+    }
+
+    if (pool.length < count && domain) {
+      const domainPrefix = domain.toUpperCase().trim();
+      const mockDomain = allStoreQuestions.filter((q) =>
+        q.microCluster?.toUpperCase().startsWith(domainPrefix)
+      );
+      pool.push(...mockDomain);
+    }
+
+    if (pool.length < count) {
+      pool.push(...allStoreQuestions);
+    }
   }
 
   // Deduplicate by question ID and trim to requested count
@@ -440,24 +464,71 @@ export async function assembleDailyRefresherDrill(
 
   // Create ephemeral Question Set for the drill
   const setId = randomUUID();
-  await db
-    .insert(questionSets)
-    .values({
+  let setSavedInDb = false;
+
+  try {
+    let canSaveInDb = true;
+    if (userId === GUEST_ID) {
+      const [existingUser] = await db
+        .select()
+        .from(users)
+        .where(eq(users.id, GUEST_ID))
+        .limit(1);
+      if (!existingUser) {
+        canSaveInDb = false;
+      }
+    }
+
+    if (canSaveInDb) {
+      await db.insert(questionSets).values({
+        id: setId,
+        uploadedByUserId: userId,
+        title,
+        tier: "drill",
+        subjectTag: domain ? domain.toUpperCase() : "Spaced Repetition",
+        visibility: "shared",
+      });
+
+      for (let i = 0; i < finalQuestions.length; i++) {
+        await db.insert(questionSetItems).values({
+          id: randomUUID(),
+          questionSetId: setId,
+          questionId: finalQuestions[i].id,
+          orderIndex: i,
+        });
+      }
+      setSavedInDb = true;
+    }
+  } catch (dbErr) {
+    console.warn("DB question set insert failed for drill, persisting to mock store:", dbErr);
+  }
+
+  // Ensure set exists in mock store if DB save was skipped or failed
+  if (!setSavedInDb) {
+    const store = getMockStore();
+    store.questionSets.set(setId, {
       id: setId,
       uploadedByUserId: userId,
       title,
+      folderId: null,
       tier: "drill",
       subjectTag: domain ? domain.toUpperCase() : "Spaced Repetition",
+      topicCode: null,
+      moduleId: null,
       visibility: "shared",
+      rawCsv: null,
+      createdAt: new Date(),
+      updatedAt: new Date(),
     });
 
-  // Link questions to set
-  for (let i = 0; i < finalQuestions.length; i++) {
-    await db.insert(questionSetItems).values({
-      id: randomUUID(),
-      questionSetId: setId,
-      questionId: finalQuestions[i].id,
-      orderIndex: i,
+    finalQuestions.forEach((q, idx) => {
+      const itemId = randomUUID();
+      store.questionSetItems.set(itemId, {
+        id: itemId,
+        questionSetId: setId,
+        questionId: q.id,
+        orderIndex: idx,
+      });
     });
   }
 
@@ -640,6 +711,8 @@ export async function updateModuleProgress({
 
   return resultRecord;
 }
+
+export const saveModuleProgress = updateModuleProgress;
 
 /**
  * Returns all modules due for review under the Spaced Repetition System.

@@ -11,9 +11,8 @@ export default async function ModuleViewerPage({
   params: Promise<{ questionId: string }>;
 }) {
   const session = await auth();
-  if (!session?.user) {
-    notFound();
-  }
+  // Allow guest and unauthenticated access to interactive visualizers safely inside sandboxed iframe
+  const userId = session?.user?.id || "guest";
 
   const { questionId } = await params;
 

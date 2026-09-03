@@ -34,7 +34,7 @@ export default function RootLayout({
       data-theme="dark"
       className={`${inter.variable} ${jetbrainsMono.variable} ${playfairDisplay.variable} h-full`}
     >
-      <body className="min-h-full flex flex-col antialiased selection:bg-[var(--accent)] selection:text-white">
+      <body className="min-h-[100dvh] flex flex-col antialiased selection:bg-[var(--accent)] selection:text-white pb-20 md:pb-0">
         <Providers>{children}</Providers>
       </body>
     </html>

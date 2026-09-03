@@ -15,7 +15,8 @@
       "choiceD": "Orthocenter (H)",
       "correctChoice": "A",
       "explanation": "The Centroid $G$ is the intersection of the three medians, located at $2/3$ the distance from each vertex to the midpoint of the opposite side.",
-      "archetype": "conceptual"
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m09-02",
@@ -26,7 +27,8 @@
       "choiceD": "Outside the triangle.",
       "correctChoice": "A",
       "explanation": "By Thales' theorem, the circumcenter of a right triangle is the midpoint of the hypotenuse, and the circumradius is $R = c/2$.",
-      "archetype": "conceptual"
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m09-03",
@@ -37,7 +39,8 @@
       "choiceD": "r = √(A / s)",
       "correctChoice": "A",
       "explanation": "Because the triangle can be partitioned into three sub-triangles with common altitude $r$, $A = \\frac{1}{2}ar + \\frac{1}{2}br + \\frac{1}{2}cr = r s \\implies r = \\frac{A}{s}$.",
-      "archetype": "conceptual"
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m09-04",
@@ -48,7 +51,8 @@
       "choiceD": "Only when all sides are equal.",
       "correctChoice": "A",
       "explanation": "Brahmagupta's formula applies exclusively to cyclic quadrilaterals ($A + C = 180^\\circ$). For general non-cyclic quadrilaterals, Bretschneider's formula with the $-abcd\\cos^2\\theta$ subtraction must be used.",
-      "archetype": "conceptual"
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m09-05",
@@ -59,7 +63,8 @@
       "choiceD": "d₁ / d₂ = (ab) / (cd)",
       "correctChoice": "A",
       "explanation": "Ptolemy's Theorem states that in any cyclic quadrilateral, the product of the diagonals equals the sum of the products of opposite sides: $d_1 d_2 = ac + bd$.",
-      "archetype": "conceptual"
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m09-06",
@@ -70,7 +75,8 @@
       "choiceD": "R : r = 4 : 1",
       "correctChoice": "A",
       "explanation": "For an equilateral triangle: $R = \\frac{a\\sqrt{3}}{3}$ and $r = \\frac{a\\sqrt{3}}{6}$. Therefore, $R / r = 2 \\implies R : r = 2 : 1$.",
-      "archetype": "conceptual"
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m09-07",
@@ -81,7 +87,8 @@
       "choiceD": "40 cm²",
       "correctChoice": "A",
       "explanation": "$s = \\frac{9 + 10 + 17}{2} = \\frac{36}{2} = 18\\text{ cm}$. $A = \\sqrt{18(18 - 9)(18 - 10)(18 - 17)} = \\sqrt{18 \\times 9 \\times 8 \\times 1} = \\sqrt{1296} = 36\\text{ cm}^2$.",
-      "archetype": "numerical"
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m09-08",
@@ -92,7 +99,8 @@
       "choiceD": "2.4 cm",
       "correctChoice": "A",
       "explanation": "Shortcut for right triangles: $r = \\frac{a + b - c}{2} = \\frac{6 + 8 - 10}{2} = \\frac{4}{2} = 2.0\\text{ cm}$. Or via $r = A/s = 24/12 = 2.0\\text{ cm}$.",
-      "archetype": "numerical"
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m09-09",
@@ -103,7 +111,8 @@
       "choiceD": "4.0 cm",
       "correctChoice": "A",
       "explanation": "For any right triangle, $R = c/2 = 13/2 = 6.5\\text{ cm}$.",
-      "archetype": "numerical"
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m09-10",
@@ -114,7 +123,8 @@
       "choiceD": "24.00 cm²",
       "correctChoice": "A",
       "explanation": "$A = \\frac{a^2\\sqrt{3}}{4} = \\frac{8^2\\sqrt{3}}{4} = \\frac{64\\sqrt{3}}{4} = 16\\sqrt{3} \\approx 27.713\\text{ cm}^2$.",
-      "archetype": "numerical"
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m09-11",
@@ -125,7 +135,8 @@
       "choiceD": "9.80",
       "correctChoice": "A",
       "explanation": "$s = \\frac{2 + 3 + 4 + 5}{2} = 7$. $A = \\sqrt{(7 - 2)(7 - 3)(7 - 4)(7 - 5)} = \\sqrt{5 \\times 4 \\times 3 \\times 2} = \\sqrt{120} \\approx 10.954$.",
-      "archetype": "numerical"
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m09-12",
@@ -136,7 +147,8 @@
       "choiceD": "56",
       "correctChoice": "A",
       "explanation": "Ptolemy's Theorem: $d_1 d_2 = ac + bd = (3)(7) + (4)(5) = 21 + 20 = 41$.",
-      "archetype": "numerical"
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m09-13",
@@ -147,7 +159,8 @@
       "choiceD": "4.0 cm",
       "correctChoice": "A",
       "explanation": "$r_a = \\frac{A}{s - a} = \\frac{84}{21 - 13} = \\frac{84}{8} = 10.5\\text{ cm}$.",
-      "archetype": "numerical"
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m09-14",
@@ -158,7 +171,8 @@
       "choiceD": "15 cm²",
       "correctChoice": "A",
       "explanation": "$A = ab\\sin\\theta = (6)(10)\\sin 30^\\circ = 60(0.5) = 30\\text{ cm}^2$.",
-      "archetype": "standard"
+      "archetype": "standard",
+      "isAnchor": false
     },
     {
       "id": "m09-15",
@@ -169,7 +183,8 @@
       "choiceD": "10.500 km",
       "correctChoice": "A",
       "explanation": "Equidistant from all 3 vertices $\\implies$ Circumradius $R$. $s = 21, A = \\sqrt{21(8)(7)(6)} = 84\\text{ km}^2$. $R = \\frac{abc}{4A} = \\frac{13 \\times 14 \\times 15}{4(84)} = \\frac{2730}{336} = 8.125\\text{ km}$.",
-      "archetype": "applied"
+      "archetype": "applied",
+      "isAnchor": false
     },
     {
       "id": "m09-16",
@@ -180,7 +195,8 @@
       "choiceD": "25.0 meters",
       "correctChoice": "A",
       "explanation": "Isosceles triangle: base $= 120\\text{ m}$, legs $= 100\\text{ m}$. Altitude $h = \\sqrt{100^2 - 60^2} = \\sqrt{6400} = 80\\text{ m}$. Area $A = \\frac{1}{2}(120)(80) = 4800\\text{ m}^2$. Semi-perimeter $s = \\frac{100 + 100 + 120}{2} = 160\\text{ m}$. Inradius $r = A/s = 4800/160 = 30\\text{ meters}$.",
-      "archetype": "applied"
+      "archetype": "applied",
+      "isAnchor": false
     },
     {
       "id": "m09-17",
@@ -191,7 +207,8 @@
       "choiceD": "32 cm",
       "correctChoice": "A",
       "explanation": "Diagonals of a rhombus are perpendicular bisectors, forming 4 right triangles with legs $8\\text{ cm}$ and $6\\text{ cm}$. Side $a = \\sqrt{8^2 + 6^2} = 10\\text{ cm}$. Perimeter $= 4a = 4(10) = 40\\text{ cm}$.",
-      "archetype": "applied"
+      "archetype": "applied",
+      "isAnchor": false
     },
     {
       "id": "m09-18",
@@ -202,7 +219,8 @@
       "choiceD": "8.50",
       "correctChoice": "A",
       "explanation": "$\\theta = (A + C)/2 = 60^\\circ$. $s = 7$. $A = \\sqrt{(5)(4)(3)(2) - (2)(3)(4)(5)\\cos^2 60^\\circ} = \\sqrt{120 - 120(0.5)^2} = \\sqrt{120 - 30} = \\sqrt{90} = 3\\sqrt{10} \\approx 9.4868 = 9.49$.",
-      "archetype": "applied"
+      "archetype": "applied",
+      "isAnchor": false
     },
     {
       "id": "m09-19",
@@ -213,7 +231,8 @@
       "choiceD": "Adding the diagonals.",
       "correctChoice": "A",
       "explanation": "Brahmagupta's formula produces the theoretical maximum area for a given set of four sides, which occurs only when the quadrilateral is cyclic. For non-cyclic shapes, the actual area is strictly smaller.",
-      "archetype": "trap"
+      "archetype": "trap",
+      "isAnchor": false
     },
     {
       "id": "m09-20",
@@ -224,7 +243,8 @@
       "choiceD": "At the obtuse vertex.",
       "correctChoice": "A",
       "explanation": "For acute triangles, the circumcenter is inside; for right triangles, it is on the hypotenuse; for obtuse triangles, it lies strictly outside the triangle.",
-      "archetype": "trap"
+      "archetype": "trap",
+      "isAnchor": false
     },
     {
       "id": "m09-21",
@@ -235,7 +255,8 @@
       "choiceD": "6.0 cm",
       "correctChoice": "A",
       "explanation": "$r = \\frac{9 + 12 - 15}{2} = \\frac{6}{2} = 3.0\\text{ cm}$ in 2 seconds.",
-      "archetype": "shortcut"
+      "archetype": "shortcut",
+      "isAnchor": false
     },
     {
       "id": "m09-22",
@@ -246,7 +267,8 @@
       "choiceD": "20 cm",
       "correctChoice": "A",
       "explanation": "$R = 2r = 2(5) = 10\\text{ cm}$ in 1 second.",
-      "archetype": "shortcut"
+      "archetype": "shortcut",
+      "isAnchor": false
     }
   ]
 }

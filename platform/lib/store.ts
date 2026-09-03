@@ -67,6 +67,7 @@ export function getMockStore(): MockStore {
             tier: "review",
             topicCode: null,
             subjectTag: s.subjectTag || s.subjectCategory || "General",
+            moduleId: null,
             visibility: "shared",
             rawCsv: null,
             createdAt: new Date(),

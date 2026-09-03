@@ -18,7 +18,9 @@
       "correctChoice": "B",
       "explanation": "$V = \\pi \\int_0^2 (3x)^2 dx = 9\\pi \\int_0^2 x^2 dx = 9\\pi [x^3/3]_0^2 = 9\\pi(8/3) = 24\\pi \\approx 75.398$.\n\n⚡ Speed Shortcut: Cone volume $\\frac{1}{3}\\pi r^2 h = \\frac{1}{3}\\pi(6^2)(2) = 24\\pi$.",
       "category": "computational",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "numerical",
+      "isAnchor": true
     },
     {
       "id": "m1603-q02",
@@ -31,7 +33,9 @@
       "correctChoice": "A",
       "explanation": "$W = \\frac{1}{2} k x^2 = \\frac{1}{2}(500)(0.2^2) = 250(0.04) = 10\\text{ J}$.\n\n⚡ Speed Shortcut: $250 \\times 0.04 = 10\\text{ J}$.",
       "category": "computational",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m1603-q03",
@@ -44,7 +48,9 @@
       "correctChoice": "D",
       "explanation": "Cylindrical shell method about y-axis has radius $x$ and height $y$: $V = 2\\pi \\int x y dx$.",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m1603-q04",
@@ -57,7 +63,9 @@
       "correctChoice": "D",
       "explanation": "$W = \\frac{1}{2} w L^2 = \\frac{1}{2}(2)(50^2) = 2,500\\text{ ft-lb}$.\n\n⚡ Speed Shortcut: $50^2 = 2,500\\text{ ft-lb}$.",
       "category": "shortcuts",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "shortcut",
+      "isAnchor": false
     },
     {
       "id": "m1603-q05",
@@ -70,7 +78,9 @@
       "correctChoice": "A",
       "explanation": "$V = 2\\pi \\int_0^4 x^{3/2} dx = 2\\pi [\\frac{2}{5} x^{5/2}]_0^4 = \\frac{4\\pi}{5}(32) = \\frac{128\\pi}{5} \\approx 80.4248$.\n\n⚡ Speed Shortcut: $\\frac{4\\pi}{5}(32) = 25.6\\pi$.",
       "category": "computational",
-      "difficulty": "medium"
+      "difficulty": "medium",
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m1603-q06",
@@ -83,7 +93,9 @@
       "correctChoice": "B",
       "explanation": "Robert Hooke formulated in 1678 that within elastic limits, restorative force $F = kx$.",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m1603-q07",
@@ -96,7 +108,9 @@
       "correctChoice": "A",
       "explanation": "$I_y = \\int_0^b x^2 (h dx) = h [x^3/3]_0^b = \\frac{1}{3} h b^3$.\n\n⚡ Speed Shortcut: Base on axis $\\implies \\frac{1}{3}hb^3$.",
       "category": "computational",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m1603-q08",
@@ -109,7 +123,9 @@
       "correctChoice": "D",
       "explanation": "$k = 25/0.1 = 250\\text{ N/m}$. $W = \\frac{1}{2}(250)(0.3^2 - 0.1^2) = 125(0.09 - 0.01) = 125(0.08) = 10\\text{ J}$.\n\n⚡ Speed Shortcut: $125 \\times 0.08 = 10\\text{ J}$.",
       "category": "applied",
-      "difficulty": "medium"
+      "difficulty": "medium",
+      "archetype": "applied",
+      "isAnchor": false
     },
     {
       "id": "m1603-q09",
@@ -122,7 +138,9 @@
       "correctChoice": "C",
       "explanation": "$V = \\pi \\int_0^1 (x^2 - x^4) dx = \\pi [x^3/3 - x^5/5]_0^1 = \\pi(1/3 - 1/5) = \\pi(2/15) = \\frac{2\\pi}{15} \\approx 0.41888$.\n\n⚡ Speed Shortcut: $\\pi(1/3 - 1/5) = \\frac{2\\pi}{15}$.",
       "category": "computational",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m1603-q10",
@@ -135,7 +153,9 @@
       "correctChoice": "D",
       "explanation": "By the Perpendicular Axis Theorem, $J = I_z = \\int (x^2 + y^2) dA = I_y + I_x$.",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m1603-q11",
@@ -148,7 +168,9 @@
       "correctChoice": "C",
       "explanation": "$[\\int_0^2 x dx] \\cdot [\\int_0^3 y dy] = [x^2/2]_0^2 \\cdot [y^2/2]_0^3 = (2) \\cdot (4.5) = 9$.\n\n⚡ Speed Shortcut: $2 \\times 4.5 = 9$.",
       "category": "computational",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m1603-q12",
@@ -161,7 +183,9 @@
       "correctChoice": "A",
       "explanation": "$W = \\frac{1}{2} w L^2 + M L = \\frac{1}{2}(30)(100^2) + 500(100) = 150,000 + 50,000 = 200,000\\text{ J} = 200\\text{ kJ}$.\n\n⚡ Speed Shortcut: $150\\text{ kJ} + 50\\text{ kJ} = 200\\text{ kJ}$.",
       "category": "applied",
-      "difficulty": "medium"
+      "difficulty": "medium",
+      "archetype": "applied",
+      "isAnchor": false
     },
     {
       "id": "m1603-q13",
@@ -174,7 +198,9 @@
       "correctChoice": "C",
       "explanation": "Robert Hooke (1635–1703) discovered the law of elasticity ($F = kx$) in 1660.",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m1603-q14",
@@ -187,7 +213,9 @@
       "correctChoice": "B",
       "explanation": "$V = \\pi \\int_{-R}^R (R^2 - x^2) dx = 2\\pi [R^2 x - x^3/3]_0^R = 2\\pi (R^3 - R^3/3) = \\frac{4}{3}\\pi R^3$.",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m1603-q15",
@@ -200,7 +228,9 @@
       "correctChoice": "A",
       "explanation": "Inner integral: $[xy + y^2/2]_0^x = x^2 + x^2/2 = \\frac{3}{2}x^2$. Outer integral: $\\int_0^1 \\frac{3}{2}x^2 dx = [\\frac{x^3}{2}]_0^1 = \\frac{1}{2} = 0.5$.\n\n⚡ Speed Shortcut: $\\frac{1}{2}$.",
       "category": "computational",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m1603-q16",
@@ -213,7 +243,9 @@
       "correctChoice": "D",
       "explanation": "Polar moment $J = \\frac{\\pi R^4}{2}$. By symmetry $I_x = I_y = J/2 = \\frac{\\pi R^4}{4}$.",
       "category": "shortcuts",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "shortcut",
+      "isAnchor": false
     },
     {
       "id": "m1603-q17",
@@ -226,7 +258,9 @@
       "correctChoice": "C",
       "explanation": "$W = \\text{Total Weight} \\times \\bar{d} = (\\pi R^2 H w) \\times (H/2) = (\\pi \\cdot 4 \\cdot 5 \\cdot 9800) \\times 2.5 = 196,000\\pi \\times 2.5 = 490,000\\pi\\text{ J} \\approx 1.539\\text{ MJ}$.\n\n⚡ Speed Shortcut: $\\text{Weight} \\times \\frac{H}{2} = 196,000\\pi \\times 2.5 = 490,000\\pi\\text{ J}$.",
       "category": "applied",
-      "difficulty": "medium"
+      "difficulty": "medium",
+      "archetype": "applied",
+      "isAnchor": false
     },
     {
       "id": "m1603-q18",
@@ -239,7 +273,9 @@
       "correctChoice": "B",
       "explanation": "Cylindrical shells avoid solving for the inverse function $x = g(y)$, integrating directly along the parallel strip.",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m1603-q19",
@@ -252,7 +288,9 @@
       "correctChoice": "A",
       "explanation": "$\\int_0^1 dz \\int_0^2 dy \\int_0^3 dx = 1 \\times 2 \\times 3 = 6$.\n\n⚡ Speed Shortcut: $1 \\times 2 \\times 3 = 6$.",
       "category": "shortcuts",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "shortcut",
+      "isAnchor": false
     },
     {
       "id": "m1603-q20",
@@ -265,7 +303,9 @@
       "correctChoice": "B",
       "explanation": "For a rectangle with centroid at the center, $\\bar{I}_x = \\frac{1}{12} b h^3$.",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m1603-q21",
@@ -278,7 +318,9 @@
       "correctChoice": "B",
       "explanation": "Using shells: $V = 2\\pi \\int_0^2 x(4 - x^2) dx = 2\\pi [2x^2 - x^4/4]_0^2 = 2\\pi (8 - 4) = 8\\pi \\approx 25.1327$.\n\n⚡ Speed Shortcut: $2\\pi(4) = 8\\pi$.",
       "category": "computational",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m1603-q22",
@@ -291,7 +333,9 @@
       "correctChoice": "C",
       "explanation": "$PE = \\frac{1}{2} k x^2 = \\frac{1}{2}(200)(0.1^2) = 100(0.01) = 1.0\\text{ J}$.\n\n⚡ Speed Shortcut: $100 \\times 0.01 = 1.0\\text{ J}$.",
       "category": "shortcuts",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "shortcut",
+      "isAnchor": false
     }
   ]
 }

@@ -15,7 +15,8 @@
       "choiceD": "Centroid ($G$)",
       "correctChoice": "D",
       "explanation": "The Centroid ($G$) is defined as the common intersection point (concurrency) of the three medians of a triangle, representing its physical center of mass.",
-      "archetype": "conceptual"
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m1202-02",
@@ -26,7 +27,8 @@
       "choiceD": "$3 : 2$",
       "correctChoice": "A",
       "explanation": "In every Euclidean triangle, the centroid $G$ divides each median in a strict $2 : 1$ ratio, where the distance from the vertex to $G$ is exactly twice the distance from $G$ to the opposite midpoint.",
-      "archetype": "conceptual"
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m1202-03",
@@ -37,7 +39,8 @@
       "choiceD": "It connects the three vertices to the incenter.",
       "correctChoice": "B",
       "explanation": "The Euler Line theorem proves that the Orthocenter ($H$), Centroid ($G$), and Circumcenter ($O$) are strictly collinear in any non-equilateral triangle, and $G$ divides segment $HO$ such that $HG : GO = 2 : 1$.",
-      "archetype": "conceptual"
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m1202-04",
@@ -48,7 +51,8 @@
       "choiceD": "The points form an equilateral triangle.",
       "correctChoice": "B",
       "explanation": "When three points enclose zero area ($A = 0$), they have no 2D span and lie entirely along a single straight line, proving collinearity.",
-      "archetype": "conceptual"
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m1202-05",
@@ -59,7 +63,8 @@
       "choiceD": "Orthocenter ($H$)",
       "correctChoice": "A",
       "explanation": "The Incenter ($I$) is the concurrency of the three interior angle bisectors, making it equidistant from all three sides ($r = \\text{inradius}$) and the center of the incircle.",
-      "archetype": "conceptual"
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m1202-06",
@@ -70,7 +75,8 @@
       "choiceD": "The orthocenter is undefined.",
       "correctChoice": "C",
       "explanation": "Due to perfect 3-fold symmetry in an equilateral triangle, the medians, angle bisectors, altitudes, and perpendicular bisectors are identical lines, causing $G, I, O,$ and $H$ to merge into a single point.",
-      "archetype": "conceptual"
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m1202-07",
@@ -81,7 +87,8 @@
       "choiceD": "$(-1, 5)$",
       "correctChoice": "C",
       "explanation": "$x_m = \\frac{-6 + 4}{2} = -1$, and $y_m = \\frac{8 + (-2)}{2} = 3$. The midpoint is $(-1, 3)$.",
-      "archetype": "numerical"
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m1202-08",
@@ -92,7 +99,8 @@
       "choiceD": "$(6, -3)$",
       "correctChoice": "B",
       "explanation": "$x = \\frac{x_1 r_2 + x_2 r_1}{r_1 + r_2} = \\frac{2(2) + 8(1)}{1 + 2} = \\frac{12}{3} = 4$. $y = \\frac{3(2) + (-6)(1)}{1 + 2} = \\frac{0}{3} = 0$. Thus, $P = (4, 0)$.",
-      "archetype": "numerical"
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m1202-09",
@@ -103,7 +111,8 @@
       "choiceD": "$(5, 3)$",
       "correctChoice": "D",
       "explanation": "$\\bar{x} = \\frac{1 + 5 + 9}{3} = \\frac{15}{3} = 5$. $\\bar{y} = \\frac{4 - 2 + 7}{3} = \\frac{9}{3} = 3$. The centroid is $G(5, 3)$.",
-      "archetype": "numerical"
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m1202-10",
@@ -114,7 +123,8 @@
       "choiceD": "24 sq units",
       "correctChoice": "C",
       "explanation": "Using Shoelace formula: $\\Sigma R = (2)(4) + (6)(7) + (2)(1) = 8 + 42 + 2 = 52$. $\\Sigma L = (1)(6) + (4)(2) + (7)(2) = 6 + 8 + 14 = 28$. Area $= \\frac{1}{2}|52 - 28| = \\frac{1}{2}(24) = 12\\text{ sq units}$.",
-      "archetype": "numerical"
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m1202-11",
@@ -125,7 +135,8 @@
       "choiceD": "36 sq units",
       "correctChoice": "B",
       "explanation": "Shoelace algorithm: $\\Sigma R = (1)(2) + (5)(6) + (4)(4) + (-1)(1) = 2 + 30 + 16 - 1 = 47$. $\\Sigma L = (1)(5) + (2)(4) + (6)(-1) + (4)(1) = 5 + 8 - 6 + 4 = 11$. Area $= \\frac{1}{2}|47 - 11| = \\frac{36}{2} = 18\\text{ sq units}$.",
-      "archetype": "numerical"
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m1202-12",
@@ -136,7 +147,8 @@
       "choiceD": "$(8, 17)$",
       "correctChoice": "B",
       "explanation": "For external division with ratio $2 : 1$, $B$ is the midpoint of $AP$. Thus: $x_B = \\frac{x_A + x_P}{2} \\implies 4 = \\frac{1 + x_P}{2} \\implies x_P = 7$. $y_B = \\frac{y_A + y_P}{2} \\implies 9 = \\frac{3 + y_P}{2} \\implies y_P = 15$. Point is $(7, 15)$.",
-      "archetype": "numerical"
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m1202-13",
@@ -147,7 +159,8 @@
       "choiceD": "$(1.33, 1.33)$",
       "correctChoice": "A",
       "explanation": "Sides are $a = 3, b = 4, c = 5$. Inradius for right triangle $r = \\frac{a + b - c}{2} = \\frac{3 + 4 - 5}{2} = 1$. Since legs lie along the positive axes, the incenter is $I(r, r) = (1, 1)$.",
-      "archetype": "numerical"
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m1202-14",
@@ -158,7 +171,8 @@
       "choiceD": "$(6, 8)$",
       "correctChoice": "C",
       "explanation": "For any right triangle, the circumcenter lies precisely at the midpoint of the hypotenuse: $M = \\left(\\frac{6 + 0}{2}, \\frac{0 + 8}{2}\\right) = (3, 4)$.",
-      "archetype": "standard"
+      "archetype": "standard",
+      "isAnchor": false
     },
     {
       "id": "m1202-15",
@@ -169,7 +183,8 @@
       "choiceD": "$(2, 0)$",
       "correctChoice": "D",
       "explanation": "$\\bar{x} = \\frac{3 + 7 + x_3}{3} = 4 \\implies 10 + x_3 = 12 \\implies x_3 = 2$. $\\bar{y} = \\frac{1 + 5 + y_3}{3} = 2 \\implies 6 + y_3 = 6 \\implies y_3 = 0$. Third vertex is $C(2, 0)$.",
-      "archetype": "applied"
+      "archetype": "applied",
+      "isAnchor": false
     },
     {
       "id": "m1202-16",
@@ -180,7 +195,8 @@
       "choiceD": "4 units",
       "correctChoice": "D",
       "explanation": "By Euler's Line theorem, $HG = 2 \\cdot GO$. Therefore, $GO = \\frac{HG}{2} = \\frac{8}{2} = 4\\text{ units}$.",
-      "archetype": "applied"
+      "archetype": "applied",
+      "isAnchor": false
     },
     {
       "id": "m1202-17",
@@ -191,7 +207,8 @@
       "choiceD": "$(7, 2)$",
       "correctChoice": "C",
       "explanation": "In a parallelogram, diagonals bisect each other, so $A + C = B + D$. $x_D = x_A + x_C - x_B = 1 + 9 - 4 = 6$. $y_D = y_A + y_C - y_B = 2 + 6 - 6 = 2$. Fourth vertex is $D(6, 2)$.",
-      "archetype": "applied"
+      "archetype": "applied",
+      "isAnchor": false
     },
     {
       "id": "m1202-18",
@@ -202,7 +219,8 @@
       "choiceD": "30.0 sq units",
       "correctChoice": "B",
       "explanation": "Shoelace algorithm: $\\Sigma R = (0)(0) + (4)(3) + (6)(6) + (3)(4) + (0)(0) = 60$. $\\Sigma L = (0)(4) + (0)(6) + (3)(3) + (6)(0) + (4)(0) = 9$. Area $= \\frac{1}{2}|60 - 9| = \\frac{51}{2} = 25.5\\text{ sq units}$.",
-      "archetype": "applied"
+      "archetype": "applied",
+      "isAnchor": false
     },
     {
       "id": "m1202-19",
@@ -213,7 +231,8 @@
       "choiceD": "$1 : 1$",
       "correctChoice": "A",
       "explanation": "At the $y$-axis, $x = 0$. $x = \\frac{x_1 r_2 + x_2 r_1}{r_1 + r_2} = \\frac{-3 r_2 + 6 r_1}{r_1 + r_2} = 0 \\implies 6 r_1 = 3 r_2 \\implies \\frac{r_1}{r_2} = \\frac{3}{6} = \\frac{1}{2}$. The ratio is $1 : 2$.",
-      "archetype": "applied"
+      "archetype": "applied",
+      "isAnchor": false
     },
     {
       "id": "m1202-20",
@@ -224,7 +243,8 @@
       "choiceD": "Failing to repeat the initial starting vertex at the bottom of the coordinate matrix.",
       "correctChoice": "D",
       "explanation": "The most common trap in the Shoelace formula is stopping at the $n$-th vertex and forgetting to repeat the first vertex $(x_1, y_1)$ at the bottom, omitting the closing diagonal product $(x_n y_1 - y_n x_1)$.",
-      "archetype": "trap"
+      "archetype": "trap",
+      "isAnchor": false
     },
     {
       "id": "m1202-21",
@@ -235,7 +255,8 @@
       "choiceD": "$(7, 0)$",
       "correctChoice": "A",
       "explanation": "$\\Delta x = 11 - 2 = 9 \\implies x = 2 + \\frac{1}{3}(9) = 5$. $\\Delta y = 4 - (-5) = 9 \\implies y = -5 + \\frac{1}{3}(9) = -2$. Point is $(5, -2)$.",
-      "archetype": "shortcut"
+      "archetype": "shortcut",
+      "isAnchor": false
     },
     {
       "id": "m1202-22",
@@ -246,7 +267,8 @@
       "choiceD": "Outside the triangle.",
       "correctChoice": "A",
       "explanation": "In any right triangle, the two perpendicular legs serve as two of the altitudes, causing all three altitudes to intersect exactly at the right-angled vertex $(0, 0)$ in 0 seconds of calculation.",
-      "archetype": "shortcut"
+      "archetype": "shortcut",
+      "isAnchor": false
     }
   ],
   "id": "math-07-02-mastery",

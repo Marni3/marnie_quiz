@@ -18,7 +18,9 @@
       "correctChoice": "C",
       "explanation": "$(r_1\\angle\\theta_1)(r_2\\angle\\theta_2) = (4 \\times 3)\\angle(30^\\circ + 45^\\circ) = 12\\angle 75^\\circ$.\n\n⚡ Speed Shortcut: $4 \\times 3 = 12, 30 + 45 = 75^\\circ$.",
       "category": "computational",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "numerical",
+      "isAnchor": true
     },
     {
       "id": "m2001-q02",
@@ -31,7 +33,9 @@
       "correctChoice": "C",
       "explanation": "$j = 1 e^{j\\pi/2} \\implies \\ln(j) = \\ln(1) + j\\frac{\\pi}{2} = 0 + j\\frac{\\pi}{2} = j\\frac{\\pi}{2} \\approx j 1.5708$.\n\n⚡ Speed Shortcut: $j\\frac{\\pi}{2} \\approx j 1.571$.",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m2001-q03",
@@ -44,7 +48,9 @@
       "correctChoice": "A",
       "explanation": "$1 + j = \\sqrt{2}\\angle 45^\\circ$. $(1+j)^8 = (\\sqrt{2})^8 \\angle (8 \\times 45^\\circ) = 16\\angle 360^\\circ = 16(\\cos 360^\\circ + j\\sin 360^\\circ) = 16$.\n\n⚡ Speed Shortcut: $(\\sqrt{2})^8 = 16$.",
       "category": "shortcuts",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "shortcut",
+      "isAnchor": false
     },
     {
       "id": "m2001-q04",
@@ -57,7 +63,9 @@
       "correctChoice": "B",
       "explanation": "Euler derived $\\sin\\theta = \\frac{e^{j\\theta} - e^{-j\\theta}}{2j}$ and $\\cos\\theta = \\frac{e^{j\\theta} + e^{-j\\theta}}{2}$.",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m2001-q05",
@@ -70,7 +78,9 @@
       "correctChoice": "B",
       "explanation": "$\\frac{10\\angle 60^\\circ}{2\\angle 20^\\circ} = \\frac{10}{2}\\angle(60^\\circ - 20^\\circ) = 5\\angle 40^\\circ$.\n\n⚡ Speed Shortcut: $10/2 = 5, 60 - 20 = 40^\\circ$.",
       "category": "computational",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m2001-q06",
@@ -83,7 +93,9 @@
       "correctChoice": "A",
       "explanation": "$r = \\sqrt{(-4)^2 + 3^2} = 5$. Since $x < 0, y > 0$ (Quadrant II): $\\theta = 180^\\circ - \\arctan(3/4) = 180^\\circ - 36.87^\\circ = 143.13^\\circ$.\n\n⚡ Speed Shortcut: Q2 $\\implies 180 - 36.87 = 143.13^\\circ$.",
       "category": "computational",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m2001-q07",
@@ -96,7 +108,9 @@
       "correctChoice": "D",
       "explanation": "$j = e^{j\\pi/2} \\implies j^j = (e^{j\\pi/2})^j = e^{j^2 \\pi/2} = e^{-\\pi/2} \\approx 0.207879576$.\n\n⚡ Speed Shortcut: $j^j = e^{-\\pi/2} \\approx 0.2079$.",
       "category": "shortcuts",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "shortcut",
+      "isAnchor": false
     },
     {
       "id": "m2001-q08",
@@ -109,7 +123,9 @@
       "correctChoice": "B",
       "explanation": "Roots have magnitude $\\sqrt[3]{8} = 2$, with principal root at $90^\\circ/3 = 30^\\circ$ and subsequent roots at $30^\\circ + 120^\\circ = 150^\\circ$ and $270^\\circ$ (separated by $360^\\circ/3 = 120^\\circ$).",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m2001-q09",
@@ -122,7 +138,9 @@
       "correctChoice": "D",
       "explanation": "$-5 = 5 e^{j\\pi} \\implies \\ln(-5) = \\ln(5) + j\\pi \\approx 1.60944 + j 3.14159$.\n\n⚡ Speed Shortcut: $\\ln 5 + j\\pi$.",
       "category": "shortcuts",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "shortcut",
+      "isAnchor": false
     },
     {
       "id": "m2001-q10",
@@ -135,7 +153,9 @@
       "correctChoice": "C",
       "explanation": "$j = 1\\angle 90^\\circ \\implies \\sqrt{j} = 1\\angle 45^\\circ = \\cos 45^\\circ + j\\sin 45^\\circ = \\frac{1}{\\sqrt{2}} + j\\frac{1}{\\sqrt{2}}$.\n\n⚡ Speed Shortcut: $\\frac{1+j}{\\sqrt{2}} \\approx 0.7071 + j0.7071$.",
       "category": "shortcuts",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "shortcut",
+      "isAnchor": false
     },
     {
       "id": "m2001-q11",
@@ -148,7 +168,9 @@
       "correctChoice": "A",
       "explanation": "In engineering and electronics, $j$ is universally used for $\\sqrt{-1}$ to avoid conflicting with current $i(t)$.",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m2001-q12",
@@ -161,7 +183,9 @@
       "correctChoice": "B",
       "explanation": "Real: $2 + 4 - (-1) = 7$. Imaginary: $3 - 5 - 2 = -4$. Result: $7 - j4$.\n\n⚡ Speed Shortcut: $(2+4+1) + j(3-5-2) = 7 - j4$.",
       "category": "computational",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m2001-q13",
@@ -174,7 +198,9 @@
       "correctChoice": "D",
       "explanation": "The complex conjugate negates only the imaginary part: $(a + jb)^* = a - jb \\implies -3 - j7$.",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m2001-q14",
@@ -187,7 +213,9 @@
       "correctChoice": "C",
       "explanation": "$(2\\angle 30^\\circ)^4 = 2^4 \\angle (4 \\times 30^\\circ) = 16\\angle 120^\\circ = 16(\\cos 120^\\circ + j\\sin 120^\\circ) = 16(-1/2 + j\\sqrt{3}/2) = -8 + j8\\sqrt{3}$.\n\n⚡ Speed Shortcut: $16\\angle 120^\\circ = -8 + j13.86$.",
       "category": "computational",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m2001-q15",
@@ -200,7 +228,9 @@
       "correctChoice": "B",
       "explanation": "The standard logarithmic representation is $\\text{arcsinh}(z) = \\ln(z + \\sqrt{z^2 + 1})$.",
       "category": "conceptual",
-      "difficulty": "medium"
+      "difficulty": "medium",
+      "archetype": "conceptual",
+      "isAnchor": false
     },
     {
       "id": "m2001-q16",
@@ -213,7 +243,9 @@
       "correctChoice": "C",
       "explanation": "$z \\cdot z^* = a^2 + b^2 = 3^2 + 4^2 = 9 + 16 = 25$.\n\n⚡ Speed Shortcut: $|z|^2 = 5^2 = 25$.",
       "category": "shortcuts",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "shortcut",
+      "isAnchor": false
     },
     {
       "id": "m2001-q17",
@@ -226,7 +258,9 @@
       "correctChoice": "A",
       "explanation": "$103 = 4(25) + 3 \\implies j^{103} = (j^4)^{25} \\cdot j^3 = 1^{25} \\cdot (-j) = -j$.\n\n⚡ Speed Shortcut: Remainder of $103 \\div 4$ is $3 \\implies j^3 = -j$.",
       "category": "shortcuts",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "shortcut",
+      "isAnchor": false
     },
     {
       "id": "m2001-q18",
@@ -239,7 +273,9 @@
       "correctChoice": "D",
       "explanation": "$6 e^{j 30^\\circ} = 6(\\cos 30^\\circ + j\\sin 30^\\circ) = 6(\\frac{\\sqrt{3}}{2} + j\\frac{1}{2}) = 3\\sqrt{3} + j3 \\approx 5.196 + j3$.\n\n⚡ Speed Shortcut: $3\\sqrt{3} + j3$.",
       "category": "computational",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m2001-q19",
@@ -252,7 +288,9 @@
       "correctChoice": "A",
       "explanation": "$\\cos(jz) = \\cosh(z)$. For $z = 1$, $\\cos(j) = \\cosh(1) = \\frac{e + e^{-1}}{2} \\approx 1.54308$.\n\n⚡ Speed Shortcut: $\\cosh(1) \\approx 1.543$.",
       "category": "shortcuts",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "shortcut",
+      "isAnchor": false
     },
     {
       "id": "m2001-q20",
@@ -265,7 +303,9 @@
       "correctChoice": "A",
       "explanation": "Euler's identity $e^{j\\pi} + 1 = 0$ connects the five fundamental mathematical constants.",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m2001-q21",
@@ -278,7 +318,9 @@
       "correctChoice": "B",
       "explanation": "$r = \\sqrt{1 + 1} = \\sqrt{2}, \\theta = -\\pi/4$. $\\ln(1 - j) = \\ln\\sqrt{2} - j\\frac{\\pi}{4} = \\frac{1}{2}\\ln 2 - j\\frac{\\pi}{4} \\approx 0.34657 - j0.78540$.\n\n⚡ Speed Shortcut: $0.5\\ln 2 - j\\frac{\\pi}{4}$.",
       "category": "computational",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m2001-q22",
@@ -291,7 +333,9 @@
       "correctChoice": "D",
       "explanation": "$1 - j\\sqrt{3} = 2\\angle -60^\\circ$. $(2\\angle -60^\\circ)^6 = 2^6 \\angle (-360^\\circ) = 64\\angle 0^\\circ = 64$.\n\n⚡ Speed Shortcut: $2^6 = 64$.",
       "category": "shortcuts",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "shortcut",
+      "isAnchor": false
     }
   ]
 }

@@ -15,7 +15,8 @@
       "choiceD": "$e = 1$",
       "correctChoice": "D",
       "explanation": "By definition, a parabola is the conic section where every point is strictly equidistant from the focus and the directrix, establishing an eccentricity of exactly $e = 1$.",
-      "archetype": "conceptual"
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m1301-02",
@@ -26,7 +27,8 @@
       "choiceD": "$A + C = 0$",
       "correctChoice": "B",
       "explanation": "The conic discriminant $\\Delta = B^2 - 4AC = 0$ identifies a parabolic curve (or two parallel degenerate lines).",
-      "archetype": "conceptual"
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m1301-03",
@@ -37,7 +39,8 @@
       "choiceD": "A pair of intersecting straight lines",
       "correctChoice": "A",
       "explanation": "Since radius is $r = \\sqrt{h^2 + k^2 - F}$, when $h^2 + k^2 - F = 0$, $r = 0$, which collapses the circle into a single coordinate point $(h, k)$.",
-      "archetype": "conceptual"
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m1301-04",
@@ -48,7 +51,8 @@
       "choiceD": "They are coincident.",
       "correctChoice": "C",
       "explanation": "The radical axis (the locus of points with equal tangent lengths to both circles) is always perpendicular to the line segment connecting the centers of the two circles.",
-      "archetype": "conceptual"
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m1301-05",
@@ -59,7 +63,8 @@
       "choiceD": "$4p$",
       "correctChoice": "D",
       "explanation": "The latus rectum is the chord passing through the focus perpendicular to the axis of symmetry, having a fixed length of $|4p|$ (spanning $2p$ on either side of the focus).",
-      "archetype": "conceptual"
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m1301-06",
@@ -70,7 +75,8 @@
       "choiceD": "$A > 0$ and $C < 0$",
       "correctChoice": "A",
       "explanation": "When $B = 0$, identical non-zero coefficients for $x^2$ and $y^2$ ($A = C$) ensure equal curvature in both principal axes, forming a circle.",
-      "archetype": "conceptual"
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m1301-07",
@@ -81,7 +87,8 @@
       "choiceD": "Center $(-8, 6)$, $r = 11$",
       "correctChoice": "C",
       "explanation": "$h = -(-8)/2 = 4$, $k = -6/2 = -3$. Radius $r = \\sqrt{4^2 + (-3)^2 - (-11)} = \\sqrt{16 + 9 + 11} = \\sqrt{36} = 6$.",
-      "archetype": "numerical"
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m1301-08",
@@ -92,7 +99,8 @@
       "choiceD": "9",
       "correctChoice": "C",
       "explanation": "$L = \\sqrt{7^2 + 6^2 - 4(7) - 6(6) - 12} = \\sqrt{49 + 36 - 28 - 36 - 12} = \\sqrt{9} = 3$.",
-      "archetype": "numerical"
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m1301-09",
@@ -103,7 +111,8 @@
       "choiceD": "2x - 3y + 4 = 0",
       "correctChoice": "D",
       "explanation": "Subtract $C_2$ from $C_1$: $(-6 - 2)x + (4 - (-8))y + (-12 - 4) = 0 \\implies -8x + 12y - 16 = 0 \\implies 2x - 3y + 4 = 0$.",
-      "archetype": "standard"
+      "archetype": "standard",
+      "isAnchor": false
     },
     {
       "id": "m1301-10",
@@ -114,7 +123,8 @@
       "choiceD": "Vertex $(3, -2)$, Focus $(6, -2)$",
       "correctChoice": "B",
       "explanation": "Vertex is $(h, k) = (-2, 3)$. $4p = 12 \\implies p = 3$. Since $(y-k)^2$ is squared with $p > 0$, the parabola opens rightwards: Focus $F = (h + p, k) = (-2 + 3, 3) = (1, 3)$.",
-      "archetype": "standard"
+      "archetype": "standard",
+      "isAnchor": false
     },
     {
       "id": "m1301-11",
@@ -125,7 +135,8 @@
       "choiceD": "x = -1",
       "correctChoice": "A",
       "explanation": "Vertex is $(1, -4)$. $4p = -8 \\implies p = -2$ (opens downwards). Directrix is horizontal: $y = k - p = -4 - (-2) = -2$.",
-      "archetype": "standard"
+      "archetype": "standard",
+      "isAnchor": false
     },
     {
       "id": "m1301-12",
@@ -136,7 +147,8 @@
       "choiceD": "Circle",
       "correctChoice": "A",
       "explanation": "$A = 3, B = -8, C = 3$. Conic discriminant $\\Delta = B^2 - 4AC = (-8)^2 - 4(3)(3) = 64 - 36 = 28 > 0$. Since $\\Delta > 0$, the curve is a Hyperbola.",
-      "archetype": "numerical"
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m1301-13",
@@ -147,7 +159,8 @@
       "choiceD": "(x - 5)^2 + (y + 4)^2 = 9",
       "correctChoice": "B",
       "explanation": "If a circle is tangent to the $x$-axis, its radius is the absolute value of the center's $y$-coordinate: $r = |-4| = 4$. Equation is $(x - 5)^2 + (y + 4)^2 = 4^2 = 16$.",
-      "archetype": "standard"
+      "archetype": "standard",
+      "isAnchor": false
     },
     {
       "id": "m1301-14",
@@ -158,7 +171,8 @@
       "choiceD": "x^2 = -20y",
       "correctChoice": "D",
       "explanation": "Vertical axis of symmetry opening downwards with $p = -5$. Standard form: $x^2 = 4py = 4(-5)y = -20y$.",
-      "archetype": "standard"
+      "archetype": "standard",
+      "isAnchor": false
     },
     {
       "id": "m1301-15",
@@ -169,7 +183,8 @@
       "choiceD": "4.5 m",
       "correctChoice": "C",
       "explanation": "Place vertex at $(0, 9)$. Equation is $x^2 = -4p(y - 9)$. At base $(12, 0)$: $12^2 = -4p(0 - 9) \\implies 144 = 36p \\implies 4p = 16$. Thus $x^2 = -16(y - 9)$. At $x = 8$: $8^2 = -16(y - 9) \\implies 64 = -16(y - 9) \\implies -4 = y - 9 \\implies y = 5.0\\text{ m}$.",
-      "archetype": "applied"
+      "archetype": "applied",
+      "isAnchor": false
     },
     {
       "id": "m1301-16",
@@ -180,7 +195,8 @@
       "choiceD": "x^2 + y^2 - 6x - 8y + 24 = 0",
       "correctChoice": "C",
       "explanation": "Since the points form a right triangle at the origin, the hypotenuse from $(6, 0)$ to $(0, 8)$ is the diameter. Center $C(3, 4)$, $r^2 = 3^2 + 4^2 = 25$. Expanded: $(x - 3)^2 + (y - 4)^2 = 25 \\implies x^2 + y^2 - 6x - 8y = 0$.",
-      "archetype": "applied"
+      "archetype": "applied",
+      "isAnchor": false
     },
     {
       "id": "m1301-17",
@@ -191,7 +207,8 @@
       "choiceD": "3x + 4y + 25 = 0",
       "correctChoice": "B",
       "explanation": "For a circle centered at the origin, the tangent at $(x_1, y_1)$ is $x_1 x + y_1 y = r^2 \\implies 3x + 4y = 25 \\implies 3x + 4y - 25 = 0$.",
-      "archetype": "applied"
+      "archetype": "applied",
+      "isAnchor": false
     },
     {
       "id": "m1301-18",
@@ -202,7 +219,8 @@
       "choiceD": "26",
       "correctChoice": "D",
       "explanation": "Normalize by dividing by 2: $x^2 + y^2 - 4x + 6y + \\frac{k}{2} = 0$. Center $h = 2, k = -3$. For a point circle, $h^2 + k^2 - F = 0 \\implies 2^2 + (-3)^2 - \\frac{k}{2} = 0 \\implies 4 + 9 = \\frac{k}{2} \\implies \\frac{k}{2} = 13 \\implies k = 26$.",
-      "archetype": "applied"
+      "archetype": "applied",
+      "isAnchor": false
     },
     {
       "id": "m1301-19",
@@ -213,7 +231,8 @@
       "choiceD": "(3, 4)",
       "correctChoice": "B",
       "explanation": "$y^2 - 4y + 4 = 8x - 28 + 4 \\implies (y - 2)^2 = 8(x - 3)$. Vertex is $(3, 2)$. $4p = 8 \\implies p = 2$. Focus is $(h + p, k) = (3 + 2, 2) = (5, 2)$.",
-      "archetype": "applied"
+      "archetype": "applied",
+      "isAnchor": false
     },
     {
       "id": "m1301-20",
@@ -224,7 +243,8 @@
       "choiceD": "Multiplying $D$ by $E$.",
       "correctChoice": "B",
       "explanation": "The most frequent error is omitting the negative sign ($h = -D/2, k = -E/2$), resulting in transposed center coordinates.",
-      "archetype": "trap"
+      "archetype": "trap",
+      "isAnchor": false
     },
     {
       "id": "m1301-21",
@@ -235,7 +255,8 @@
       "choiceD": "(-18, 24)",
       "correctChoice": "A",
       "explanation": "Divide linear coefficients by $2 \\times 3 = 6$ and negate: $h = -18/6 = -3, k = -(-24)/6 = +4$. Center is $(-3, 4)$ in 2 seconds.",
-      "archetype": "shortcut"
+      "archetype": "shortcut",
+      "isAnchor": false
     },
     {
       "id": "m1301-22",
@@ -246,7 +267,8 @@
       "choiceD": "All parabolas open along the $y$-axis.",
       "correctChoice": "A",
       "explanation": "The variable that is linear (to the 1st power) defines the axis of symmetry. If $y^2$ is squared, $x$ is linear, so it opens horizontally along the $x$-direction.",
-      "archetype": "shortcut"
+      "archetype": "shortcut",
+      "isAnchor": false
     }
   ],
   "id": "math-07-03-mastery",

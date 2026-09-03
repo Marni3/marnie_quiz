@@ -15,7 +15,8 @@
       "choiceD": "$d > 0$",
       "correctChoice": "A",
       "explanation": "An infinite geometric series converges if and only if the absolute value of the common ratio is strictly less than 1 ($|r| < 1$), yielding sum $S_\\infty = \\frac{a_1}{1 - r}$.",
-      "archetype": "conceptual"
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m04-02",
@@ -26,7 +27,8 @@
       "choiceD": "AM = GM = HM always",
       "correctChoice": "A",
       "explanation": "For any two distinct positive real numbers, the classical means strictly obey the inequality $\\text{AM} > \\text{GM} > \\text{HM}$ (they are equal only if $a = b$).",
-      "archetype": "conceptual"
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m04-03",
@@ -37,7 +39,8 @@
       "choiceD": "AM + HM = 2GM",
       "correctChoice": "A",
       "explanation": "By definition: $\\text{AM} = \\frac{a + b}{2}$, $\\text{GM} = \\sqrt{ab}$, $\\text{HM} = \\frac{2ab}{a + b}$. Multiplying yields $(\\text{AM})(\\text{HM}) = \\frac{a + b}{2} \\cdot \\frac{2ab}{a + b} = ab = (\\text{GM})^2$.",
-      "archetype": "conceptual"
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m04-04",
@@ -48,7 +51,8 @@
       "choiceD": "Quadratic Mean",
       "correctChoice": "A",
       "explanation": "Since total time is distance divided by speed ($t = d/v_1 + d/v_2$), the overall average speed $V_{\\text{avg}} = \\frac{2d}{t}$ equals the Harmonic Mean of the speeds.",
-      "archetype": "conceptual"
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m04-05",
@@ -59,7 +63,8 @@
       "choiceD": "n(2n - 1)",
       "correctChoice": "A",
       "explanation": "Triangular numbers represent the sum of the first $n$ natural integers: $T_n = 1 + 2 + \\dots + n = \\frac{n(n + 1)}{2}$.",
-      "archetype": "conceptual"
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m04-06",
@@ -70,7 +75,8 @@
       "choiceD": "Polygonal Sequence",
       "correctChoice": "A",
       "explanation": "A Harmonic Progression is defined as a sequence of numbers whose reciprocals form an arithmetic progression.",
-      "archetype": "conceptual"
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m04-07",
@@ -81,7 +87,8 @@
       "choiceD": "80",
       "correctChoice": "A",
       "explanation": "$a_1 = 3, d = 4$. $a_{20} = a_1 + (n - 1)d = 3 + (19)(4) = 3 + 76 = 79$.",
-      "archetype": "numerical"
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m04-08",
@@ -92,7 +99,8 @@
       "choiceD": "2,450",
       "correctChoice": "A",
       "explanation": "$S_{50} = \\frac{n}{2}(a_1 + a_n) = \\frac{50}{2}(2 + 100) = 25(102) = 2,550$.",
-      "archetype": "numerical"
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m04-09",
@@ -103,7 +111,8 @@
       "choiceD": "9",
       "correctChoice": "A",
       "explanation": "$\\frac{a_5}{a_2} = \\frac{a_1 r^4}{a_1 r} = r^3 = \\frac{162}{6} = 27 \\implies r = \\sqrt[3]{27} = 3$.",
-      "archetype": "numerical"
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m04-10",
@@ -114,7 +123,8 @@
       "choiceD": "48",
       "correctChoice": "A",
       "explanation": "$a_1 = 12, r = 1/2$. $S_\\infty = \\frac{a_1}{1 - r} = \\frac{12}{1 - 0.5} = \\frac{12}{0.5} = 24$.",
-      "archetype": "numerical"
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m04-11",
@@ -125,7 +135,8 @@
       "choiceD": "13.8",
       "correctChoice": "A",
       "explanation": "$\\text{HM} = \\frac{2ab}{a + b} = \\frac{2(12)(18)}{12 + 18} = \\frac{432}{30} = 14.4$.",
-      "archetype": "numerical"
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m04-12",
@@ -136,7 +147,8 @@
       "choiceD": "1/15",
       "correctChoice": "A",
       "explanation": "Corresponding AP: $2, 5, 8, \\dots$ ($a_1 = 2, d = 3$). $A_6 = 2 + (5)(3) = 17$. Thus, 6th term of HP is $1/17$.",
-      "archetype": "numerical"
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m04-13",
@@ -147,7 +159,8 @@
       "choiceD": "144",
       "correctChoice": "A",
       "explanation": "$T_{12} = \\frac{12(13)}{2} = 6 \\times 13 = 78$.",
-      "archetype": "numerical"
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m04-14",
@@ -158,7 +171,8 @@
       "choiceD": "60",
       "correctChoice": "A",
       "explanation": "$a_1 = 2, a_5 = 162 \\implies r^4 = 162/2 = 81 \\implies r = 3$. The three means are $a_2 = 6, a_3 = 18, a_4 = 54$. Sum $= 6 + 18 + 54 = 78$.",
-      "archetype": "standard"
+      "archetype": "standard",
+      "isAnchor": false
     },
     {
       "id": "m04-15",
@@ -169,7 +183,8 @@
       "choiceD": "80 meters",
       "correctChoice": "A",
       "explanation": "Using shortcut $D = H\\left(\\frac{1 + r}{1 - r}\\right) = 20\\left(\\frac{1 + 0.75}{1 - 0.75}\\right) = 20\\left(\\frac{1.75}{0.25}\\right) = 20(7) = 140\\text{ meters}$.",
-      "archetype": "applied"
+      "archetype": "applied",
+      "isAnchor": false
     },
     {
       "id": "m04-16",
@@ -180,7 +195,8 @@
       "choiceD": "70 km/h",
       "correctChoice": "A",
       "explanation": "Harmonic Mean: $\\text{HM} = \\frac{2(60)(90)}{60 + 90} = \\frac{10,800}{150} = 72\\text{ km/h}$.",
-      "archetype": "applied"
+      "archetype": "applied",
+      "isAnchor": false
     },
     {
       "id": "m04-17",
@@ -191,7 +207,8 @@
       "choiceD": "₱3,500,000",
       "correctChoice": "A",
       "explanation": "$a_1 = 300,000, d = 25,000, n = 10$. $S_{10} = \\frac{10}{2}[2(300,000) + (9)(25,000)] = 5[600,000 + 225,000] = 5(825,000) = \\text{₱4,125,000}$.",
-      "archetype": "applied"
+      "archetype": "applied",
+      "isAnchor": false
     },
     {
       "id": "m04-18",
@@ -202,7 +219,8 @@
       "choiceD": "50 and 18",
       "correctChoice": "A",
       "explanation": "$a + b = 2(34) = 68$, $ab = 16^2 = 256$. Quadratic equation: $x^2 - 68x + 256 = 0 \\implies (x - 64)(x - 4) = 0$. The numbers are $64$ and $4$.",
-      "archetype": "applied"
+      "archetype": "applied",
+      "isAnchor": false
     },
     {
       "id": "m04-19",
@@ -213,7 +231,8 @@
       "choiceD": "Taking the square root of the speeds.",
       "correctChoice": "A",
       "explanation": "Because more time is spent traveling at the slower speed, the simple arithmetic mean overestimates average speed. The Harmonic Mean must strictly be used.",
-      "archetype": "trap"
+      "archetype": "trap",
+      "isAnchor": false
     },
     {
       "id": "m04-20",
@@ -224,7 +243,8 @@
       "choiceD": "Using logarithms.",
       "correctChoice": "A",
       "explanation": "The formula $S_\\infty = \\frac{a_1}{1 - r}$ is valid ONLY when $|r| < 1$. For $|r| \\ge 1$, the series diverges to infinity.",
-      "archetype": "trap"
+      "archetype": "trap",
+      "isAnchor": false
     },
     {
       "id": "m04-21",
@@ -235,7 +255,8 @@
       "choiceD": "15 meters",
       "correctChoice": "A",
       "explanation": "$D = 15 \\left(\\frac{1 + 0.5}{1 - 0.5}\\right) = 15 \\left(\\frac{1.5}{0.5}\\right) = 15(3) = 45\\text{ meters}$.",
-      "archetype": "shortcut"
+      "archetype": "shortcut",
+      "isAnchor": false
     },
     {
       "id": "m04-22",
@@ -246,7 +267,8 @@
       "choiceD": "45",
       "correctChoice": "A",
       "explanation": "$\\text{GM} = \\sqrt{(\\text{AM})(\\text{HM})} = \\sqrt{50 \\times 32} = \\sqrt{1600} = 40$ in 2 seconds.",
-      "archetype": "shortcut"
+      "archetype": "shortcut",
+      "isAnchor": false
     }
   ]
 }

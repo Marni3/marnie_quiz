@@ -18,7 +18,9 @@
       "correctChoice": "C",
       "explanation": "The total number of subsets is $2^n$. Since a proper subset cannot be equal to the original set itself, exactly 1 subset ($S$) is subtracted: $2^n - 1$.",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m0401-q02",
@@ -31,7 +33,9 @@
       "correctChoice": "D",
       "explanation": "By definition in set theory, the empty set contains no elements, so the condition $x \\in \\emptyset \\implies x \\in A$ is vacuously true for every set $A$.",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m0401-q03",
@@ -44,7 +48,9 @@
       "correctChoice": "A",
       "explanation": "Cardinality $n = 4$. Proper subsets $= 2^4 - 1 = 16 - 1 = 15$.\n\n⚡ Speed Shortcut: $2^4 - 1 = 15$.",
       "category": "computational",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m0401-q04",
@@ -57,7 +63,9 @@
       "correctChoice": "C",
       "explanation": "Apply the Principle of Inclusion-Exclusion:\n$$|P \\cup C| = |P| + |C| - |P \\cap C| = 60 + 50 - 20 = 90$$\n$$\\text{Neither} = |U| - |P \\cup C| = 100 - 90 = 10$$",
       "category": "applied",
-      "difficulty": "medium"
+      "difficulty": "medium",
+      "archetype": "applied",
+      "isAnchor": false
     },
     {
       "id": "m0401-q05",
@@ -70,7 +78,9 @@
       "correctChoice": "A",
       "explanation": "Disjoint sets have no common elements, which means their intersection contains zero elements ($A \\cap B = \\emptyset$).",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m0401-q06",
@@ -83,7 +93,9 @@
       "correctChoice": "C",
       "explanation": "English logician John Venn introduced overlapping circle diagrams to illustrate set relations around 1880.",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m0401-q07",
@@ -96,7 +108,9 @@
       "correctChoice": "B",
       "explanation": "A proper subset requires $B$ to contain at least one element not in $A$. Since $A$ and $B$ are identical, $A \\subset B$ is false.",
       "category": "conceptual",
-      "difficulty": "medium"
+      "difficulty": "medium",
+      "archetype": "conceptual",
+      "isAnchor": false
     },
     {
       "id": "m0401-q08",
@@ -109,7 +123,9 @@
       "correctChoice": "B",
       "explanation": "The natural numbers less than 6 are $\\{1, 2, 3, 4, 5\\}$ ($n = 5$). The power set cardinality is $|\\mathcal{P}(S)| = 2^5 = 32$.",
       "category": "computational",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m0401-q09",
@@ -122,7 +138,9 @@
       "correctChoice": "D",
       "explanation": "De Morgan's first law states that the complement of a union is the intersection of the individual complements: $(A \\cup B)' = A' \\cap B'$.",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m0401-q10",
@@ -135,7 +153,9 @@
       "correctChoice": "B",
       "explanation": "ECE only $= |\\text{ECE}| - |\\text{ECE} \\cap \\text{ECT}| = 45 - 15 = 30$.\n\n⚡ Speed Shortcut: $45 - 15 = 30$.",
       "category": "applied",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "applied",
+      "isAnchor": false
     },
     {
       "id": "m0401-q11",
@@ -148,7 +168,9 @@
       "correctChoice": "C",
       "explanation": "Total subsets $= 2^7 = 128$. Non-empty proper subsets $= 2^n - 2 = 128 - 2 = 126$ (excluding $\\emptyset$ and the set itself).",
       "category": "computational",
-      "difficulty": "medium"
+      "difficulty": "medium",
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m0401-q12",
@@ -161,7 +183,9 @@
       "correctChoice": "B",
       "explanation": "The symbol $\\in$ represents element membership in a set (e.g., $x \\in A$).",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m0401-q13",
@@ -174,7 +198,9 @@
       "correctChoice": "D",
       "explanation": "$|A \\cap B| = |A| + |B| - |A \\cup B| = 14 + 20 - 28 = 34 - 28 = 6$.",
       "category": "computational",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m0401-q14",
@@ -187,7 +213,9 @@
       "correctChoice": "A",
       "explanation": "The interval of real numbers $[0, 1]$ contains uncountably infinitely many real numbers, whereas the integers from 0 to 1000 are finite.",
       "category": "conceptual",
-      "difficulty": "medium"
+      "difficulty": "medium",
+      "archetype": "conceptual",
+      "isAnchor": false
     },
     {
       "id": "m0401-q15",
@@ -200,7 +228,9 @@
       "correctChoice": "D",
       "explanation": "When $A$ is entirely contained within $B$, the elements common to both sets is simply $A$ ($A \\cap B = A$), and their union is $B$ ($A \\cup B = B$).",
       "category": "conceptual",
-      "difficulty": "medium"
+      "difficulty": "medium",
+      "archetype": "conceptual",
+      "isAnchor": false
     },
     {
       "id": "m0401-q16",
@@ -213,7 +243,9 @@
       "correctChoice": "D",
       "explanation": "$$|A \\cup B \\cup C| = (20 + 20 + 20) - (5 + 5 + 5) + 2 = 60 - 15 + 2 = 47$$",
       "category": "applied",
-      "difficulty": "hard"
+      "difficulty": "hard",
+      "archetype": "applied",
+      "isAnchor": false
     },
     {
       "id": "m0401-q17",
@@ -226,7 +258,9 @@
       "correctChoice": "B",
       "explanation": "The empty set contains no elements, so its cardinality is 0 ($|\\emptyset| = 0$).",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m0401-q18",
@@ -239,7 +273,9 @@
       "correctChoice": "C",
       "explanation": "The set difference $A \\setminus B$ (or $A - B$) consists of all elements that are in $A$ but excluded from $B$.",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m0401-q19",
@@ -252,7 +288,9 @@
       "correctChoice": "A",
       "explanation": "The integers satisfying $x^2 = 9$ are $x = 3$ and $x = -3$, yielding a cardinality of 2 ($\\{-3, 3\\}$).",
       "category": "computational",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m0401-q20",
@@ -265,7 +303,9 @@
       "correctChoice": "A",
       "explanation": "Since $A$ and $B$ are disjoint, $|A \\cup B| = 35 + 25 = 60$. Thus $|(A \\cup B)'| = 60 - 60 = 0$.",
       "category": "applied",
-      "difficulty": "medium"
+      "difficulty": "medium",
+      "archetype": "applied",
+      "isAnchor": false
     },
     {
       "id": "m0401-q21",
@@ -278,7 +318,9 @@
       "correctChoice": "B",
       "explanation": "Since $|\\emptyset| = 0$, the power set $\\mathcal{P}(\\emptyset) = \\{\\emptyset\\}$ has cardinality $2^0 = 1$.",
       "category": "shortcuts",
-      "difficulty": "medium"
+      "difficulty": "medium",
+      "archetype": "shortcut",
+      "isAnchor": false
     },
     {
       "id": "m0401-q22",
@@ -291,7 +333,9 @@
       "correctChoice": "A",
       "explanation": "Discrete mathematics is defined as the study of mathematical structures that are discrete rather than continuous.",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     }
   ]
 }

@@ -18,7 +18,9 @@
       "correctChoice": "D",
       "explanation": "Highest derivative is $\\frac{d^2y}{dx^2}$ (Order 2), and its power is 3 (Degree 3).",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m1801-q02",
@@ -31,7 +33,9 @@
       "correctChoice": "B",
       "explanation": "$y^2 dy = x^2 dx \\implies \\int y^2 dy = \\int x^2 dx \\implies \\frac{y^3}{3} = \\frac{x^3}{3} + C_1 \\implies y^3 - x^3 = C$.\n\n⚡ Speed Shortcut: $y^3 - x^3 = C$.",
       "category": "computational",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m1801-q03",
@@ -44,7 +48,9 @@
       "correctChoice": "C",
       "explanation": "ODEs involve a single independent variable; PDEs involve multiple independent variables.",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m1801-q04",
@@ -57,7 +63,9 @@
       "correctChoice": "A",
       "explanation": "$y = x^2 + C$. At $x = 1, y = 5$: $5 = 1^2 + C \\implies C = 4$. So $y = x^2 + 4$.\n\n⚡ Speed Shortcut: $5 - 1 = 4 \\implies y = x^2 + 4$.",
       "category": "computational",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m1801-q05",
@@ -70,7 +78,9 @@
       "correctChoice": "B",
       "explanation": "Setting $y = vx$ transforms all terms into degree-homogeneous powers of $x$, reducing the equation to separable form in $v$ and $x$.",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m1801-q06",
@@ -83,7 +93,9 @@
       "correctChoice": "C",
       "explanation": "$\\frac{dy}{y} + \\frac{dx}{x} = 0 \\implies \\ln|y| + \\ln|x| = \\ln|C| \\implies \\ln|xy| = \\ln|C| \\implies xy = C$.\n\n⚡ Speed Shortcut: Exact differential $d(xy) = 0 \\implies xy = C$.",
       "category": "shortcuts",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "shortcut",
+      "isAnchor": false
     },
     {
       "id": "m1801-q07",
@@ -96,7 +108,9 @@
       "correctChoice": "A",
       "explanation": "A particular solution contains no arbitrary constants and satisfies specific initial or boundary values.",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m1801-q08",
@@ -109,7 +123,9 @@
       "correctChoice": "A",
       "explanation": "$\\frac{dy}{y} = k dx \\implies \\ln|y| = kx + C_1 \\implies y = C e^{kx}$.\n\n⚡ Speed Shortcut: $y = C e^{kx}$.",
       "category": "shortcuts",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "shortcut",
+      "isAnchor": false
     },
     {
       "id": "m1801-q09",
@@ -122,7 +138,9 @@
       "correctChoice": "C",
       "explanation": "Squaring both sides to clear the radical: $1 + (y')^2 = (y'')^2$. Highest derivative is $y''$ (Order 2) and its power is 2 (Degree 2).",
       "category": "computational",
-      "difficulty": "medium"
+      "difficulty": "medium",
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m1801-q10",
@@ -135,7 +153,9 @@
       "correctChoice": "D",
       "explanation": "$x dy + y dx = x dx \\implies d(xy) = x dx \\implies xy = \\frac{x^2}{2} + C \\implies y = \\frac{x}{2} + \\frac{C}{x}$.\n\n⚡ Speed Shortcut: $d(xy) = x dx \\implies y = \\frac{x}{2} + \\frac{C}{x}$.",
       "category": "computational",
-      "difficulty": "medium"
+      "difficulty": "medium",
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m1801-q11",
@@ -148,7 +168,9 @@
       "correctChoice": "C",
       "explanation": "The order of an ODE dictates the exact number of independent arbitrary constants in its general solution.",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m1801-q12",
@@ -161,7 +183,9 @@
       "correctChoice": "B",
       "explanation": "$\\frac{dy}{y} = \\frac{dx}{x} \\implies \\ln|y| = \\ln|x| + \\ln C \\implies y = Cx$. At $(2, 6)$: $6 = C(2) \\implies C = 3$. So $y = 3x$.\n\n⚡ Speed Shortcut: $y = \\frac{6}{2}x = 3x$.",
       "category": "computational",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m1801-q13",
@@ -174,7 +198,9 @@
       "correctChoice": "B",
       "explanation": "Both $M(x, y) = x^3 + y^3$ and $N(x, y) = -xy^2$ have terms of total degree 3 ($3$ and $1 + 2 = 3$).",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m1801-q14",
@@ -187,7 +213,9 @@
       "correctChoice": "A",
       "explanation": "$\\frac{dy}{\\csc y} = \\frac{dx}{\\sec x} \\implies \\sin y \\, dy = \\cos x \\, dx \\implies -\\cos y = \\sin x + C_1 \\implies \\sin x + \\cos y = C$.\n\n⚡ Speed Shortcut: $\\int \\cos x dx - \\int \\sin y dy = C \\implies \\sin x + \\cos y = C$.",
       "category": "computational",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m1801-q15",
@@ -200,7 +228,9 @@
       "correctChoice": "B",
       "explanation": "Singular solutions are tangency envelopes of the family of integral curves that cannot be obtained from the general solution.",
       "category": "conceptual",
-      "difficulty": "medium"
+      "difficulty": "medium",
+      "archetype": "conceptual",
+      "isAnchor": false
     },
     {
       "id": "m1801-q16",
@@ -213,7 +243,9 @@
       "correctChoice": "A",
       "explanation": "Product rule differential: $d(y e^x) = 0 \\implies y e^x = C$.\n\n⚡ Speed Shortcut: $y e^x = C$.",
       "category": "shortcuts",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "shortcut",
+      "isAnchor": false
     },
     {
       "id": "m1801-q17",
@@ -226,7 +258,9 @@
       "correctChoice": "C",
       "explanation": "Equation contains partial derivatives with respect to two independent variables ($x$ and $t$), making it a PDE (wave equation).",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m1801-q18",
@@ -239,7 +273,9 @@
       "correctChoice": "D",
       "explanation": "$y dy = -x dx \\implies x dx + y dy = 0 \\implies \\frac{x^2}{2} + \\frac{y^2}{2} = C_1 \\implies x^2 + y^2 = C$. At $(0, 4)$: $0 + 16 = C \\implies x^2 + y^2 = 16$.\n\n⚡ Speed Shortcut: Circle $x^2 + y^2 = 4^2 = 16$.",
       "category": "computational",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m1801-q19",
@@ -252,7 +288,9 @@
       "correctChoice": "D",
       "explanation": "By definition, a function satisfying $f(tx, ty) = t^n f(x, y)$ is homogeneous of degree $n$.",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m1801-q20",
@@ -265,7 +303,9 @@
       "correctChoice": "A",
       "explanation": "$dy = \\frac{dx}{1 + x^2} \\implies y = \\arctan(x) + C$.\n\n⚡ Speed Shortcut: $y = \\arctan(x) + C$.",
       "category": "shortcuts",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "shortcut",
+      "isAnchor": false
     },
     {
       "id": "m1801-q21",
@@ -278,7 +318,9 @@
       "correctChoice": "D",
       "explanation": "$\\frac{dy}{dx} = \\frac{e^x}{e^y} \\implies e^y dy = e^x dx \\implies e^y = e^x + C$.\n\n⚡ Speed Shortcut: $e^y = e^x + C$.",
       "category": "computational",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m1801-q22",
@@ -291,7 +333,9 @@
       "correctChoice": "B",
       "explanation": "The highest derivative is $y'''$ (Order 3), which appears to the 1st power (Degree 1).",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     }
   ]
 }

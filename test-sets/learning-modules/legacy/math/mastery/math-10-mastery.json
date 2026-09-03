@@ -15,7 +15,8 @@
       "choiceD": "180°",
       "correctChoice": "A",
       "explanation": "Traversing the perimeter of any convex polygon represents a complete single rotation of $360^\\circ$, regardless of the number of sides $n$.",
-      "archetype": "conceptual"
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m10-02",
@@ -26,7 +27,8 @@
       "choiceD": "The total perimeter divided by the number of sides.",
       "correctChoice": "A",
       "explanation": "The apothem is the line segment from the center perpendicular to any side, serving as the inradius of the inscribed circle.",
-      "archetype": "conceptual"
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m10-03",
@@ -37,7 +39,8 @@
       "choiceD": "n² - 3n",
       "correctChoice": "A",
       "explanation": "From each of the $n$ vertices, lines can be drawn to $n - 3$ non-adjacent vertices. Dividing by 2 for bidirectional segments yields $D = \\frac{n(n - 3)}{2}$.",
-      "archetype": "conceptual"
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m10-04",
@@ -48,7 +51,8 @@
       "choiceD": "PT = (PA + PB) / 2",
       "correctChoice": "A",
       "explanation": "By the Tangent-Secant Theorem, the square of the tangent segment equals the product of the external secant segment $PA$ and the entire secant segment $PB$: $PT^2 = PA \\cdot PB$.",
-      "archetype": "conceptual"
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m10-05",
@@ -59,7 +63,8 @@
       "choiceD": "Mils",
       "correctChoice": "A",
       "explanation": "Arc length $L = r\\theta$ and sector area $A = \\frac{1}{2}r^2\\theta$ strictly require the central angle $\\theta$ to be expressed in dimensionless radians.",
-      "archetype": "conceptual"
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m10-06",
@@ -70,7 +75,8 @@
       "choiceD": "PA / PB = PC / PD",
       "correctChoice": "A",
       "explanation": "By the Intersecting Chords Theorem (Power of a Point): $PA \\cdot PB = PC \\cdot PD$.",
-      "archetype": "conceptual"
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m10-07",
@@ -81,7 +87,8 @@
       "choiceD": "144°",
       "correctChoice": "A",
       "explanation": "$\\theta_{\\text{int}} = \\frac{(8 - 2) \\times 180^\\circ}{8} = \\frac{6 \\times 180^\\circ}{8} = \\frac{1080^\\circ}{8} = 135^\\circ$.",
-      "archetype": "numerical"
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m10-08",
@@ -92,7 +99,8 @@
       "choiceD": "72",
       "correctChoice": "A",
       "explanation": "$D = \\frac{12(12 - 3)}{2} = \\frac{12(9)}{2} = 6 \\times 9 = 54\\text{ diagonals}$.",
-      "archetype": "numerical"
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m10-09",
@@ -103,7 +111,8 @@
       "choiceD": "12 sides (Dodecagon)",
       "correctChoice": "A",
       "explanation": "Exterior angle $= 180^\\circ - 140^\\circ = 40^\\circ$. Number of sides $n = \\frac{360^\\circ}{40^\\circ} = 9\\text{ sides}$.",
-      "archetype": "numerical"
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m10-10",
@@ -114,7 +123,8 @@
       "choiceD": "84.85 cm²",
       "correctChoice": "A",
       "explanation": "A regular hexagon consists of 6 equilateral triangles: $A = 6 \\times \\left(\\frac{x^2\\sqrt{3}}{4}\\right) = 6 \\times \\left(\\frac{36\\sqrt{3}}{4}\\right) = 54\\sqrt{3} \\approx 93.53\\text{ cm}^2$.",
-      "archetype": "numerical"
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m10-11",
@@ -125,7 +135,8 @@
       "choiceD": "10.00 cm",
       "correctChoice": "A",
       "explanation": "$\\theta = 45^\\circ \\times \\frac{\\pi}{180^\\circ} = \\frac{\\pi}{4}\\text{ rad}$. $L = r\\theta = 10 \\times \\frac{\\pi}{4} = 2.5\\pi \\approx 7.854\\text{ cm}$.",
-      "archetype": "numerical"
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m10-12",
@@ -136,7 +147,8 @@
       "choiceD": "7 cm",
       "correctChoice": "A",
       "explanation": "Intersecting Chords: $PA \\cdot PB = PC \\cdot PD \\implies 3 \\times 8 = 4 \\times PD \\implies 24 = 4 \\cdot PD \\implies PD = 6\\text{ cm}$.",
-      "archetype": "numerical"
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m10-13",
@@ -147,7 +159,8 @@
       "choiceD": "25 cm",
       "correctChoice": "A",
       "explanation": "Tangent-Secant Theorem: $PT^2 = PA \\cdot PB \\implies 10^2 = 5 \\cdot PB \\implies PB = 20\\text{ cm}$. Internal chord $AB = PB - PA = 20 - 5 = 15\\text{ cm}$.",
-      "archetype": "numerical"
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m10-14",
@@ -158,7 +171,8 @@
       "choiceD": "32.00 cm²",
       "correctChoice": "A",
       "explanation": "$A = \\frac{1}{2}r^2\\theta = \\frac{1}{2}(64)\\left(\\frac{\\pi}{2}\\right) = 16\\pi \\approx 50.265\\text{ cm}^2$.",
-      "archetype": "standard"
+      "archetype": "standard",
+      "isAnchor": false
     },
     {
       "id": "m10-15",
@@ -169,7 +183,8 @@
       "choiceD": "4.50 cm",
       "correctChoice": "A",
       "explanation": "Let octagon side be $x$ and corner leg be $y$. Then $x = y\\sqrt{2} \\implies y = x/\\sqrt{2}$. Square side $= x + 2y = x + x\\sqrt{2} = x(1 + \\sqrt{2}) = 10 \\implies x = \\frac{10}{1 + \\sqrt{2}} = 10(\\sqrt{2} - 1) \\approx 4.142\\text{ cm}$.",
-      "archetype": "applied"
+      "archetype": "applied",
+      "isAnchor": false
     },
     {
       "id": "m10-16",
@@ -180,7 +195,8 @@
       "choiceD": "600.00 sq. nmi",
       "correctChoice": "A",
       "explanation": "$\\theta = 120^\\circ = \\frac{2\\pi}{3}\\text{ rad}$. $A = \\frac{1}{2}r^2\\theta = \\frac{1}{2}(30^2)\\left(\\frac{2\\pi}{3}\\right) = \\frac{1}{2}(900)\\left(\\frac{2\\pi}{3}\\right) = 300\\pi \\approx 942.478\\text{ sq. nmi}$.",
-      "archetype": "applied"
+      "archetype": "applied",
+      "isAnchor": false
     },
     {
       "id": "m10-17",
@@ -191,7 +207,8 @@
       "choiceD": "35.24 cm²",
       "correctChoice": "A",
       "explanation": "$A_{\\text{segment}} = A_{\\text{sector}} - A_{\\text{triangle}} = \\frac{1}{2}(10^2)\\left(\\frac{\\pi}{2}\\right) - \\frac{1}{2}(10)(10) = 25\\pi - 50 \\approx 78.5398 - 50 = 28.5398\\text{ cm}^2$.",
-      "archetype": "applied"
+      "archetype": "applied",
+      "isAnchor": false
     },
     {
       "id": "m10-18",
@@ -202,7 +219,8 @@
       "choiceD": "9 sides",
       "correctChoice": "A",
       "explanation": "$\\frac{n(n - 3)}{2} = 35 \\implies n^2 - 3n - 70 = 0 \\implies (n - 10)(n + 7) = 0 \\implies n = 10\\text{ sides}$.",
-      "archetype": "applied"
+      "archetype": "applied",
+      "isAnchor": false
     },
     {
       "id": "m10-19",
@@ -213,7 +231,8 @@
       "choiceD": "Adding the segments.",
       "correctChoice": "A",
       "explanation": "The theorem strictly requires the product of the **external segment** ($PA$) and the **entire secant segment** ($PB = PA + AB$). Multiplying $PA \\cdot AB$ is the most common error.",
-      "archetype": "trap"
+      "archetype": "trap",
+      "isAnchor": false
     },
     {
       "id": "m10-20",
@@ -224,7 +243,8 @@
       "choiceD": "Forgetting the minus sign.",
       "correctChoice": "A",
       "explanation": "In $\\frac{1}{2}r^2(\\theta - \\sin\\theta)$, the linear term $\\theta$ must strictly be in radians, requiring the calculator to be set in RAD mode so that both $\\theta$ and $\\sin\\theta$ use identical radian units.",
-      "archetype": "trap"
+      "archetype": "trap",
+      "isAnchor": false
     },
     {
       "id": "m10-21",
@@ -235,7 +255,8 @@
       "choiceD": "7",
       "correctChoice": "A",
       "explanation": "$D = \\frac{7(4)}{2} = 14$ in 2 seconds.",
-      "archetype": "shortcut"
+      "archetype": "shortcut",
+      "isAnchor": false
     },
     {
       "id": "m10-22",
@@ -246,7 +267,8 @@
       "choiceD": "45°",
       "correctChoice": "A",
       "explanation": "$\\theta_{\\text{ext}} = \\frac{360^\\circ}{6} = 60^\\circ$ in 1 second.",
-      "archetype": "shortcut"
+      "archetype": "shortcut",
+      "isAnchor": false
     }
   ]
 }

@@ -15,7 +15,8 @@
       "choiceD": "5.0° per minute",
       "correctChoice": "A",
       "explanation": "The minute hand moves at $360^\\circ / 60 = 6^\\circ/\\text{min}$ while the hour hand moves at $360^\\circ / 720 = 0.5^\\circ/\\text{min}$. The relative angular velocity is $6^\\circ - 0.5^\\circ = 5.5^\\circ/\\text{min} = \\frac{11}{2}^\\circ/\\text{min}$.",
-      "archetype": "conceptual"
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m07-02",
@@ -26,7 +27,8 @@
       "choiceD": "A / x",
       "correctChoice": "A",
       "explanation": "For any non-factorable quadratic denominator factor $(x^2 + c)$, the numerator must be a complete linear polynomial $(Ax + B)$.",
-      "archetype": "conceptual"
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m07-03",
@@ -37,7 +39,8 @@
       "choiceD": "T = √(t₁ · t₂)",
       "correctChoice": "A",
       "explanation": "Summing the reciprocal rates $\\frac{1}{T} = \\frac{1}{t_1} + \\frac{1}{t_2} = \\frac{t_1 + t_2}{t_1 t_2} \\implies T = \\frac{t_1 t_2}{t_1 + t_2}$.",
-      "archetype": "conceptual"
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m07-04",
@@ -48,7 +51,8 @@
       "choiceD": "Cartesian Matrix",
       "correctChoice": "A",
       "explanation": "Named after ancient Greek mathematician Diophantus of Alexandria, Diophantine equations require integer solutions.",
-      "archetype": "conceptual"
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m07-05",
@@ -59,7 +63,8 @@
       "choiceD": "v_b / v_c",
       "correctChoice": "A",
       "explanation": "Moving upstream directly opposes water flow, subtracting the river current velocity from the boat's still-water speed ($v_{\\text{up}} = v_b - v_c$).",
-      "archetype": "conceptual"
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m07-06",
@@ -70,7 +75,8 @@
       "choiceD": "0",
       "correctChoice": "A",
       "explanation": "The Heaviside cover-up method covers the factor $(x - a)$ and evaluates the remaining expression at the root $x = a$, yielding residue $A = \\frac{P(a)}{Q(a)}$.",
-      "archetype": "conceptual"
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m07-07",
@@ -81,7 +87,8 @@
       "choiceD": "4.5 hours",
       "correctChoice": "A",
       "explanation": "$T = \\frac{t_1 t_2}{t_1 + t_2} = \\frac{6 \\times 12}{6 + 12} = \\frac{72}{18} = 4\\text{ hours}$.",
-      "archetype": "numerical"
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m07-08",
@@ -92,7 +99,8 @@
       "choiceD": "8 hours",
       "correctChoice": "A",
       "explanation": "Net filling rate: $\\frac{1}{T} = \\frac{1}{4} - \\frac{1}{6} = \\frac{3 - 2}{12} = \\frac{1}{12} \\implies T = 12\\text{ hours}$.",
-      "archetype": "numerical"
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m07-09",
@@ -103,7 +111,8 @@
       "choiceD": "4:21 and 5/11 min",
       "correctChoice": "A",
       "explanation": "$M = \\frac{60}{11} H = \\frac{60 \\times 4}{11} = \\frac{240}{11} = 21\\frac{9}{11}\\text{ minutes}$. Thus, the time is 4:21 and 9/11 min.",
-      "archetype": "numerical"
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m07-10",
@@ -114,7 +123,8 @@
       "choiceD": "2:28 and 2/11 min",
       "correctChoice": "A",
       "explanation": "$M = \\frac{2}{11}(30^\\circ H + 90^\\circ) = \\frac{2}{11}(60^\\circ + 90^\\circ) = \\frac{2}{11}(150^\\circ) = \\frac{300}{11} = 27\\frac{3}{11}\\text{ minutes}$.",
-      "archetype": "numerical"
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m07-11",
@@ -125,7 +135,8 @@
       "choiceD": "30 liters",
       "correctChoice": "A",
       "explanation": "Mass balance: $(0.60)(50) = (0.30)(50 + x) \\implies 30 = 15 + 0.30x \\implies 0.30x = 15 \\implies x = 50\\text{ liters}$.",
-      "archetype": "numerical"
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m07-12",
@@ -136,7 +147,8 @@
       "choiceD": "A = 4, B = -1",
       "correctChoice": "A",
       "explanation": "Heaviside method: $A = \\left[ \\frac{3x + 1}{x + 3} \\right]_{x = 1} = \\frac{4}{4} = 1$. $B = \\left[ \\frac{3x + 1}{x - 1} \\right]_{x = -3} = \\frac{-8}{-4} = 2$.",
-      "archetype": "numerical"
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m07-13",
@@ -147,7 +159,8 @@
       "choiceD": "48 years old",
       "correctChoice": "A",
       "explanation": "Let son's age $= s$, father's age $= 3s$. In 12 years: $3s + 12 = 2(s + 12) \\implies 3s + 12 = 2s + 24 \\implies s = 12$. Father's age $= 3(12) = 36\\text{ years old}$.",
-      "archetype": "numerical"
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m07-14",
@@ -158,7 +171,8 @@
       "choiceD": "12 km/h",
       "correctChoice": "A",
       "explanation": "$v_{\\text{down}} = 36/2 = 18\\text{ km/h} = v_b + v_c$. $v_{\\text{up}} = 36/3 = 12\\text{ km/h} = v_b - v_c$. Subtracting equations: $2v_c = 18 - 12 = 6 \\implies v_c = 3\\text{ km/h}$.",
-      "archetype": "standard"
+      "archetype": "standard",
+      "isAnchor": false
     },
     {
       "id": "m07-15",
@@ -169,7 +183,8 @@
       "choiceD": "25 dimes",
       "correctChoice": "A",
       "explanation": "$n + d = 60 \\implies n = 60 - d$. Money: $0.05(60 - d) + 0.10d = 4.50 \\implies 3.00 + 0.05d = 4.50 \\implies 0.05d = 1.50 \\implies d = 30\\text{ dimes}$.",
-      "archetype": "applied"
+      "archetype": "applied",
+      "isAnchor": false
     },
     {
       "id": "m07-16",
@@ -180,7 +195,8 @@
       "choiceD": "56",
       "correctChoice": "A",
       "explanation": "Original number: $10t + u$. $t + u = 11$. Reversed: $10u + t = (10t + u) + 45 \\implies 9u - 9t = 45 \\implies u - t = 5$. Adding equations: $2u = 16 \\implies u = 8, t = 3$. Original number $= 38$.",
-      "archetype": "applied"
+      "archetype": "applied",
+      "isAnchor": false
     },
     {
       "id": "m07-17",
@@ -191,7 +207,8 @@
       "choiceD": "1.2 hours",
       "correctChoice": "A",
       "explanation": "Relative closing speed $= 120 + 180 = 300\\text{ km/h}$. Time $= \\frac{450}{300} = 1.5\\text{ hours}$ (1 hour 30 min).",
-      "archetype": "applied"
+      "archetype": "applied",
+      "isAnchor": false
     },
     {
       "id": "m07-18",
@@ -202,7 +219,8 @@
       "choiceD": "3.50 hours",
       "correctChoice": "A",
       "explanation": "$\\frac{1}{T} = \\frac{1}{6} + \\frac{1}{8} + \\frac{1}{12} = \\frac{4 + 3 + 2}{24} = \\frac{9}{24} = \\frac{3}{8} \\implies T = \\frac{8}{3} = 2\\frac{2}{3}\\text{ hours} = 2\\text{ hours } 40\\text{ min}$.",
-      "archetype": "applied"
+      "archetype": "applied",
+      "isAnchor": false
     },
     {
       "id": "m07-19",
@@ -213,7 +231,8 @@
       "choiceD": "Subtracting 30 degrees.",
       "correctChoice": "A",
       "explanation": "At hour $H$, the hour hand is already ahead by $30^\\circ H$. Because the hour hand continues creeping forward as the minute hand chases it, the minute hand must cover the extra distance at the relative rate of $\\frac{11}{2}^\\circ/\\text{min}$, requiring the factor of $\\frac{60}{11}$.",
-      "archetype": "trap"
+      "archetype": "trap",
+      "isAnchor": false
     },
     {
       "id": "m07-20",
@@ -224,7 +243,8 @@
       "choiceD": "Multiply the fill and drain rates.",
       "correctChoice": "A",
       "explanation": "Drains and opposing workers reduce the net rate of progress, so their individual rates must be subtracted from the total working rate.",
-      "archetype": "trap"
+      "archetype": "trap",
+      "isAnchor": false
     },
     {
       "id": "m07-21",
@@ -235,7 +255,8 @@
       "choiceD": "6:33 and 3/11 min",
       "correctChoice": "A",
       "explanation": "$M = \\frac{60 \\times 6}{11} = \\frac{360}{11} = 32\\frac{8}{11}\\text{ min}$ in 2 seconds.",
-      "archetype": "shortcut"
+      "archetype": "shortcut",
+      "isAnchor": false
     },
     {
       "id": "m07-22",
@@ -246,7 +267,8 @@
       "choiceD": "15 days",
       "correctChoice": "A",
       "explanation": "$T = \\frac{20 \\times 30}{20 + 30} = \\frac{600}{50} = 12\\text{ days}$ in 2 seconds.",
-      "archetype": "shortcut"
+      "archetype": "shortcut",
+      "isAnchor": false
     }
   ]
 }

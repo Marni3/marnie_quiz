@@ -18,7 +18,9 @@
       "correctChoice": "D",
       "explanation": "$\\text{Diagonals} = \\frac{n(n - 3)}{2} = \\frac{10(7)}{2} = 35$.\n\n⚡ Speed Shortcut: $\\frac{10 \\times 7}{2} = 35$.",
       "category": "computational",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "numerical",
+      "isAnchor": true
     },
     {
       "id": "m1003-q02",
@@ -31,7 +33,9 @@
       "correctChoice": "D",
       "explanation": "An interior angle greater than $180^\\circ$ in a concave polygon is called a reentrant angle (outward-pointing angles are salient).",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m1003-q03",
@@ -44,7 +48,9 @@
       "correctChoice": "B",
       "explanation": "$A = \\frac{1}{2} d_1 d_2 = \\frac{1}{2}(14)(20) = 140\\text{ cm}^2$.\n\n⚡ Speed Shortcut: $7 \\times 20 = 140\\text{ cm}^2$.",
       "category": "computational",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m1003-q04",
@@ -57,7 +63,9 @@
       "correctChoice": "B",
       "explanation": "A deltoid is the concave version of a kite, having two pairs of equal adjacent sides and a reentrant angle.",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m1003-q05",
@@ -70,7 +78,9 @@
       "correctChoice": "A",
       "explanation": "$A = \\frac{b + B}{2} h = \\frac{18 + 26}{2}(10) = 22(10) = 220\\text{ m}^2$.\n\n⚡ Speed Shortcut: $22 \\times 10 = 220\\text{ m}^2$.",
       "category": "computational",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m1003-q06",
@@ -83,7 +93,9 @@
       "correctChoice": "D",
       "explanation": "$\\frac{n(n - 3)}{2} = 54 \\implies n(n - 3) = 108 \\implies n^2 - 3n - 108 = 0 \\implies (n - 12)(n + 9) = 0 \\implies n = 12$.\n\n⚡ Speed Shortcut: $12 \\times 9 = 108 \\implies n = 12$.",
       "category": "shortcuts",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "shortcut",
+      "isAnchor": false
     },
     {
       "id": "m1003-q07",
@@ -96,7 +108,9 @@
       "correctChoice": "D",
       "explanation": "$A = ab \\sin \\theta = (8)(12)\\sin 30^\\circ = 96(0.5) = 48\\text{ cm}^2$.\n\n⚡ Speed Shortcut: $96 \\times 0.5 = 48\\text{ cm}^2$.",
       "category": "computational",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m1003-q08",
@@ -109,7 +123,9 @@
       "correctChoice": "C",
       "explanation": "A rhomboid is a parallelogram with unequal adjacent sides and oblique angles.",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m1003-q09",
@@ -122,7 +138,9 @@
       "correctChoice": "C",
       "explanation": "From any vertex, diagonals cannot be drawn to itself or its two immediate neighbors, leaving $n - 3$ diagonals.",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m1003-q10",
@@ -135,7 +153,9 @@
       "correctChoice": "B",
       "explanation": "$A = \\frac{1}{2} d_1 d_2 \\implies 120 = \\frac{1}{2}(15)d_2 \\implies 15 d_2 = 240 \\implies d_2 = 16\\text{ cm}$.\n\n⚡ Speed Shortcut: $\\frac{240}{15} = 16\\text{ cm}$.",
       "category": "computational",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m1003-q11",
@@ -148,7 +168,9 @@
       "correctChoice": "C",
       "explanation": "$A = a^2 \\sin \\theta = 6^2 \\sin 60^\\circ = 36\\left(\\frac{\\sqrt{3}}{2}\\right) = 18\\sqrt{3}\\text{ cm}^2 \\approx 31.177\\text{ cm}^2$.\n\n⚡ Speed Shortcut: $36 \\times \\frac{\\sqrt{3}}{2} = 18\\sqrt{3}$.",
       "category": "computational",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m1003-q12",
@@ -161,7 +183,9 @@
       "correctChoice": "B",
       "explanation": "$\\frac{n(n - 3)}{2} = 2n \\implies n - 3 = 4 \\implies n = 7$.\n\n⚡ Speed Shortcut: $n - 3 = 4 \\implies n = 7$.",
       "category": "shortcuts",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "shortcut",
+      "isAnchor": false
     },
     {
       "id": "m1003-q13",
@@ -174,7 +198,9 @@
       "correctChoice": "C",
       "explanation": "The median connecting midpoints of legs is the arithmetic mean of bases: $m = \\frac{14 + 22}{2} = 18\\text{ cm}$.",
       "category": "computational",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m1003-q14",
@@ -187,7 +213,9 @@
       "correctChoice": "A",
       "explanation": "The diagonals of a rhombus are unequal (unless it is a square). They are, however, perpendicular bisectors of each other.",
       "category": "conceptual",
-      "difficulty": "medium"
+      "difficulty": "medium",
+      "archetype": "conceptual",
+      "isAnchor": false
     },
     {
       "id": "m1003-q15",
@@ -200,7 +228,9 @@
       "correctChoice": "A",
       "explanation": "$A = \\frac{1}{2} d^2 = \\frac{1}{2}(10^2) = 50\\text{ cm}^2$.\n\n⚡ Speed Shortcut: $\\frac{100}{2} = 50\\text{ cm}^2$.",
       "category": "shortcuts",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "shortcut",
+      "isAnchor": false
     },
     {
       "id": "m1003-q16",
@@ -213,7 +243,9 @@
       "correctChoice": "B",
       "explanation": "$\\text{Diagonals} = \\frac{6(3)}{2} = 9$.\n\n⚡ Speed Shortcut: $3 \\times 3 = 9$.",
       "category": "computational",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m1003-q17",
@@ -226,7 +258,9 @@
       "correctChoice": "B",
       "explanation": "Parallelogram Law: $d_1^2 + d_2^2 = 2(a^2 + b^2) \\implies 19^2 + d_2^2 = 2(10^2 + 15^2) \\implies 361 + d_2^2 = 2(100 + 225) = 650 \\implies d_2^2 = 650 - 361 = 289 \\implies d_2 = 17$.\n\n⚡ Speed Shortcut: $\\sqrt{2(100+225) - 361} = \\sqrt{289} = 17$.",
       "category": "applied",
-      "difficulty": "hard"
+      "difficulty": "hard",
+      "archetype": "applied",
+      "isAnchor": false
     },
     {
       "id": "m1003-q18",
@@ -239,7 +273,9 @@
       "correctChoice": "A",
       "explanation": "$\\frac{3x + 5x}{2}(8) = 160 \\implies 4x(8) = 160 \\implies 32x = 160 \\implies x = 5$. Shorter base $= 3(5) = 15\\text{ cm}$.",
       "category": "computational",
-      "difficulty": "medium"
+      "difficulty": "medium",
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m1003-q19",
@@ -252,7 +288,9 @@
       "correctChoice": "C",
       "explanation": "Outward-pointing angles measuring less than $180^\\circ$ are termed salient angles.",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m1003-q20",
@@ -265,7 +303,9 @@
       "correctChoice": "A",
       "explanation": "Half diagonal $= 4\\text{ cm}$. Other half diagonal $= \\sqrt{5^2 - 4^2} = 3\\text{ cm} \\implies d_2 = 6\\text{ cm}$. Area $= \\frac{1}{2}(8)(6) = 24\\text{ cm}^2$.\n\n⚡ Speed Shortcut: $4 \\times 3 \\times 2 = 24\\text{ cm}^2$.",
       "category": "shortcuts",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "shortcut",
+      "isAnchor": false
     },
     {
       "id": "m1003-q21",
@@ -278,7 +318,9 @@
       "correctChoice": "A",
       "explanation": "Number of triangles $= n - 2 = 8 - 2 = 6$.",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m1003-q22",
@@ -291,7 +333,9 @@
       "correctChoice": "D",
       "explanation": "Base offset on each side $= \\frac{22 - 10}{2} = 6\\text{ cm}$. Height $h = \\sqrt{10^2 - 6^2} = 8\\text{ cm}$. Area $= \\frac{10 + 22}{2}(8) = 16 \\times 8 = 128\\text{ cm}^2$.\n\n⚡ Speed Shortcut: $16 \\times 8 = 128\\text{ cm}^2$.",
       "category": "applied",
-      "difficulty": "medium"
+      "difficulty": "medium",
+      "archetype": "applied",
+      "isAnchor": false
     }
   ]
 }

@@ -15,7 +15,8 @@
       "choiceD": "The waveform has no sine terms.",
       "correctChoice": "A",
       "explanation": "Integrating over half a period with $f(t - T/2) = -f(t)$ causes all even harmonics ($n = 2, 4, 6, \\dots$) to cancel to zero, leaving only odd harmonics ($n = 1, 3, 5, \\dots$).",
-      "archetype": "conceptual"
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m23-02",
@@ -26,7 +27,8 @@
       "choiceD": "1 / (jω)",
       "correctChoice": "A",
       "explanation": "By definition: $\\mathcal{F}\\{\\delta(t)\\} = \\int_{-\\infty}^\\infty \\delta(t) e^{-j\\omega t} dt = e^{-j\\omega(0)} = 1$. The ideal impulse contains all frequencies equally.",
-      "archetype": "conceptual"
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m23-03",
@@ -37,7 +39,8 @@
       "choiceD": "Energy depends on the phase angle.",
       "correctChoice": "A",
       "explanation": "Parseval's relation expresses energy conservation: $\\int_{-\\infty}^\\infty |f(t)|^2 dt = \\frac{1}{2\\pi}\\int_{-\\infty}^\\infty |F(\\omega)|^2 d\\omega$.",
-      "archetype": "conceptual"
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m23-04",
@@ -48,7 +51,8 @@
       "choiceD": "1 / z",
       "correctChoice": "A",
       "explanation": "$\\mathcal{Z}\\{u[n]\\} = \\sum_{n=0}^\\infty (1) z^{-n} = \\frac{1}{1 - z^{-1}} = \\frac{z}{z - 1}$ with Region of Convergence $|z| > 1$.",
-      "archetype": "conceptual"
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m23-05",
@@ -59,7 +63,8 @@
       "choiceD": "Only the constant DC term a₀.",
       "correctChoice": "A",
       "explanation": "Because odd functions multiplied by even cosine functions remain odd, their symmetric integrals vanish ($a_n = 0$). Only sine harmonics ($b_n$) exist.",
-      "archetype": "conceptual"
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m23-06",
@@ -70,7 +75,8 @@
       "choiceD": "T e^(-jωT)",
       "correctChoice": "A",
       "explanation": "Integrating $\\int_{-T/2}^{T/2} e^{-j\\omega t} dt = \\frac{e^{-j\\omega T/2} - e^{j\\omega T/2}}{-j\\omega} = \\frac{2\\sin(\\omega T/2)}{\\omega} = T \\text{sinc}\\left(\\frac{\\omega T}{2}\\right)$.",
-      "archetype": "conceptual"
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m23-07",
@@ -81,7 +87,8 @@
       "choiceD": "1 / (j 4ω)",
       "correctChoice": "A",
       "explanation": "By the time-shifting property: $\\mathcal{F}\\{\\delta(t - t_0)\\} = e^{-j\\omega t_0} \\implies \\mathcal{F}\\{\\delta(t - 4)\\} = e^{-j 4\\omega}$.",
-      "archetype": "numerical"
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m23-08",
@@ -92,7 +99,8 @@
       "choiceD": "1 / (jω)",
       "correctChoice": "A",
       "explanation": "$\\mathcal{F}\\{e^{-at} u(t)\\} = \\int_0^\\infty e^{-at} e^{-j\\omega t} dt = \\int_0^\\infty e^{-(a + j\\omega)t} dt = \\frac{1}{a + j\\omega} = \\frac{1}{3 + j\\omega}$.",
-      "archetype": "numerical"
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m23-09",
@@ -103,7 +111,8 @@
       "choiceD": "157.08 rad/s",
       "correctChoice": "A",
       "explanation": "$\\omega_0 = \\frac{2\\pi}{T_0} = \\frac{2\\pi}{0.02} = 100\\pi \\approx 314.159\\text{ rad/s}$.",
-      "archetype": "numerical"
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m23-10",
@@ -114,7 +123,8 @@
       "choiceD": "3 / (z - 1)",
       "correctChoice": "A",
       "explanation": "$\\mathcal{Z}\\{a^n u[n]\\} = \\frac{z}{z - a} = \\frac{z}{z - 1/3} = \\frac{3z}{3z - 1}$ with ROC $|z| > 1/3$.",
-      "archetype": "numerical"
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m23-11",
@@ -125,7 +135,8 @@
       "choiceD": "1 / (z - 2)",
       "correctChoice": "A",
       "explanation": "By the discrete shifting property: $\\mathcal{Z}\\{\\delta[n - k]\\} = z^{-k} \\implies \\mathcal{Z}\\{\\delta[n - 2]\\} = z^{-2} = \\frac{1}{z^2}$.",
-      "archetype": "numerical"
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m23-12",
@@ -136,7 +147,8 @@
       "choiceD": "-2",
       "correctChoice": "A",
       "explanation": "$x[0] = \\lim_{z \\to \\infty} \\frac{2z + 1}{z - 0.5} = \\frac{2}{1} = 2$.",
-      "archetype": "numerical"
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m23-13",
@@ -147,7 +159,8 @@
       "choiceD": "1 / (5 + jω)",
       "correctChoice": "A",
       "explanation": "By the frequency shifting property on $\\mathcal{F}\\{1\\} = 2\\pi\\delta(\\omega)$: $\\mathcal{F}\\{e^{j\\omega_0 t}\\} = 2\\pi\\delta(\\omega - \\omega_0) = 2\\pi\\delta(\\omega - 5)$.",
-      "archetype": "numerical"
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m23-14",
@@ -158,7 +171,8 @@
       "choiceD": "H(z) = (z - 0.5) / z",
       "correctChoice": "A",
       "explanation": "Taking Z-transforms: $Y(z) = X(z) + 0.5 z^{-1} Y(z) \\implies Y(z)(1 - 0.5 z^{-1}) = X(z) \\implies H(z) = \\frac{1}{1 - 0.5 z^{-1}} = \\frac{z}{z - 0.5}$.",
-      "archetype": "applied"
+      "archetype": "applied",
+      "isAnchor": false
     },
     {
       "id": "m23-15",
@@ -169,7 +183,8 @@
       "choiceD": "2 kHz",
       "correctChoice": "A",
       "explanation": "The Nyquist minimum sampling rate is $f_s \\ge 2 f_{\\max} = 2(4\\text{ kHz}) = 8\\text{ kHz}$.",
-      "archetype": "applied"
+      "archetype": "applied",
+      "isAnchor": false
     },
     {
       "id": "m23-16",
@@ -180,7 +195,8 @@
       "choiceD": "1/5 (20.00%)",
       "correctChoice": "A",
       "explanation": "The fundamental amplitude is $b_1 = \\frac{4V_m}{\\pi}$ and the 3rd harmonic is $b_3 = \\frac{4V_m}{3\\pi} = \\frac{b_1}{3}$, so it is exactly one-third ($33.33\\%$) of the fundamental.",
-      "archetype": "applied"
+      "archetype": "applied",
+      "isAnchor": false
     },
     {
       "id": "m23-17",
@@ -191,7 +207,8 @@
       "choiceD": "x[n] = n² u[n]",
       "correctChoice": "A",
       "explanation": "From the standard Z-transform pair table: $\\mathcal{Z}^{-1}\\left\\{\\frac{z}{z - a}\\right\\} = a^n u[n] \\implies \\mathcal{Z}^{-1}\\left\\{\\frac{z}{z - 2}\\right\\} = 2^n u[n]$.",
-      "archetype": "applied"
+      "archetype": "applied",
+      "isAnchor": false
     },
     {
       "id": "m23-18",
@@ -202,7 +219,8 @@
       "choiceD": "V_m / 2",
       "correctChoice": "A",
       "explanation": "The DC average of a full-wave rectified sine wave is $V_{dc} = \\frac{1}{\\pi}\\int_0^\\pi V_m\\sin\\theta d\\theta = \\frac{2 V_m}{\\pi} \\approx 0.6366 V_m$.",
-      "archetype": "applied"
+      "archetype": "applied",
+      "isAnchor": false
     },
     {
       "id": "m23-19",
@@ -213,7 +231,8 @@
       "choiceD": "Taking the derivative.",
       "correctChoice": "A",
       "explanation": "In continuous Fourier transforms, a positive delay $t - t_0$ introduces $e^{-j\\omega t_0}$ (a negative phase lag $- \\omega t_0$).",
-      "archetype": "trap"
+      "archetype": "trap",
+      "isAnchor": false
     },
     {
       "id": "m23-20",
@@ -224,7 +243,8 @@
       "choiceD": "Setting a = 0.",
       "correctChoice": "A",
       "explanation": "In continuous Laplace transforms, $\\mathcal{L}\\{e^{at}\\} = \\frac{1}{s - a}$ (constant numerator 1), whereas in discrete Z-transforms, $\\mathcal{Z}\\{a^n u[n]\\} = \\frac{z}{z - a}$ (numerator is variable $z$).",
-      "archetype": "trap"
+      "archetype": "trap",
+      "isAnchor": false
     },
     {
       "id": "m23-21",
@@ -235,7 +255,8 @@
       "choiceD": "V_m / 16",
       "correctChoice": "A",
       "explanation": "Half-wave symmetry guarantees all even harmonics ($n = 2, 4, 6, \\dots$) are strictly zero in 1 second.",
-      "archetype": "shortcut"
+      "archetype": "shortcut",
+      "isAnchor": false
     },
     {
       "id": "m23-22",
@@ -246,7 +267,8 @@
       "choiceD": "z / (z + 5)",
       "correctChoice": "A",
       "explanation": "$\\mathcal{Z}\\{a^n u[n]\\} = \\frac{z}{z - a} = \\frac{z}{z - 5}$ in 1 second.",
-      "archetype": "shortcut"
+      "archetype": "shortcut",
+      "isAnchor": false
     }
   ]
 }

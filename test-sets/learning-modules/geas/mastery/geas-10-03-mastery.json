@@ -14,7 +14,9 @@
       "choiceC": "A score of at least 80% in Math and at least 60% in other subjects",
       "choiceD": "A general weighted average of at least 70%, with no rating below 70% in any subject",
       "correctChoice": "D",
-      "explanation": "Section 16 requires a general weighted average of at least 70%, with no rating below 70% in any subject."
+      "explanation": "Section 16 requires a general weighted average of at least 70%, with no rating below 70% in any subject.",
+      "archetype": "numerical",
+      "isAnchor": true
     },
     {
       "id": "q-geas10-03-02",
@@ -24,7 +26,9 @@
       "choiceC": "If the examinee has a GPA of 1.0 in college",
       "choiceD": "If the examinee is a first-time taker regardless of score",
       "correctChoice": "A",
-      "explanation": "Section 16 provides that if the average is $\\ge 70\\%$, but any subject is $< 70\\%$, a removal exam is allowed provided no subject is $< 60\\%$."
+      "explanation": "Section 16 provides that if the average is $\\ge 70\\%$, but any subject is $< 70\\%$, a removal exam is allowed provided no subject is $< 60\\%$.",
+      "archetype": "trap",
+      "isAnchor": true
     },
     {
       "id": "q-geas10-03-03",
@@ -34,7 +38,9 @@
       "choiceC": "Within five (5) years from the date of the examination",
       "choiceD": "Within thirty (30) days from the release of results",
       "correctChoice": "B",
-      "explanation": "Section 16 states that the removal examination must be taken within two (2) years from the date of the examination."
+      "explanation": "Section 16 states that the removal examination must be taken within two (2) years from the date of the examination.",
+      "archetype": "numerical",
+      "isAnchor": true
     },
     {
       "id": "q-geas10-03-04",
@@ -44,7 +50,9 @@
       "choiceC": "Within fifteen (15) days after the last day of the examination",
       "choiceD": "Within sixty (60) days after the examination",
       "correctChoice": "C",
-      "explanation": "Section 17 states: 'The Board and the Commission shall correct and release the results of the examination within fifteen (15) days after the last day of the examination.'"
+      "explanation": "Section 17 states: 'The Board and the Commission shall correct and release the results of the examination within fifteen (15) days after the last day of the examination.'",
+      "archetype": "numerical",
+      "isAnchor": true
     },
     {
       "id": "q-geas10-03-05",
@@ -54,7 +62,9 @@
       "choiceC": "50 mm outer diameter and 35 mm inner diameter",
       "choiceD": "45 mm outer diameter and 30 mm inner diameter",
       "correctChoice": "A",
-      "explanation": "Section 29 specifies that the PECE seal consists of two concentric circles with the outer measuring 48 mm in diameter and the inner measuring 32 mm in diameter."
+      "explanation": "Section 29 specifies that the PECE seal consists of two concentric circles with the outer measuring 48 mm in diameter and the inner measuring 32 mm in diameter.",
+      "archetype": "numerical",
+      "isAnchor": true
     },
     {
       "id": "q-geas10-03-06",
@@ -64,7 +74,9 @@
       "choiceC": "52 mm outer diameter and 30 mm inner diameter",
       "choiceD": "40 mm outer diameter and 20 mm inner diameter",
       "correctChoice": "B",
-      "explanation": "Section 29 specifies that the Board seal has an outside circle of 48 mm and an inner circle of 28 mm in diameter."
+      "explanation": "Section 29 specifies that the Board seal has an outside circle of 48 mm and an inner circle of 28 mm in diameter.",
+      "archetype": "numerical",
+      "isAnchor": true
     },
     {
       "id": "q-geas10-03-07",
@@ -74,7 +86,9 @@
       "choiceC": "PROFESSIONAL ELECTRONICS ENGINEER",
       "choiceD": "INSTITUTE OF ELECTRONICS ENGINEERS",
       "correctChoice": "C",
-      "explanation": "Section 29 specifies that the upper portion of the annular space of the PECE seal bears 'PROFESSIONAL ELECTRONICS ENGINEER', and the lower portion bears 'PHILIPPINES'."
+      "explanation": "Section 29 specifies that the upper portion of the annular space of the PECE seal bears 'PROFESSIONAL ELECTRONICS ENGINEER', and the lower portion bears 'PHILIPPINES'.",
+      "archetype": "conceptual",
+      "isAnchor": false
     },
     {
       "id": "q-geas10-03-08",
@@ -84,7 +98,9 @@
       "choiceC": "The Philippine national flag and eagle",
       "choiceD": "An atom with a nucleus and electrons",
       "correctChoice": "D",
-      "explanation": "Section 29 states that the inner circle features the appearance of an atom with a nucleus and electrons on the upper portion."
+      "explanation": "Section 29 states that the inner circle features the appearance of an atom with a nucleus and electrons on the upper portion.",
+      "archetype": "conceptual",
+      "isAnchor": false
     },
     {
       "id": "q-geas10-03-09",
@@ -94,7 +110,9 @@
       "choiceC": "Not less than ₱500,000 nor more than ₱5,000,000",
       "choiceD": "Not less than ₱1,000 nor more than ₱10,000",
       "correctChoice": "B",
-      "explanation": "Section 35 sets the fine at not less than ₱100,000 nor more than ₱1,000,000."
+      "explanation": "Section 35 sets the fine at not less than ₱100,000 nor more than ₱1,000,000.",
+      "archetype": "numerical",
+      "isAnchor": true
     },
     {
       "id": "q-geas10-03-10",
@@ -104,7 +122,9 @@
       "choiceC": "Not less than six (6) months nor more than six (6) years",
       "choiceD": "Life imprisonment without parole",
       "correctChoice": "C",
-      "explanation": "Section 35 sets the imprisonment term at not less than six (6) months nor more than six (6) years."
+      "explanation": "Section 35 sets the imprisonment term at not less than six (6) months nor more than six (6) years.",
+      "archetype": "numerical",
+      "isAnchor": true
     },
     {
       "id": "q-geas10-03-11",
@@ -114,7 +134,9 @@
       "choiceC": "Revoked licenses can never be reinstated under any circumstance",
       "choiceD": "After the expiration of two (2) years from the date of revocation",
       "correctChoice": "D",
-      "explanation": "Section 24 states that the Board may reinstate a revoked Certificate of Registration and ID after the expiration of two (2) years."
+      "explanation": "Section 24 states that the Board may reinstate a revoked Certificate of Registration and ID after the expiration of two (2) years.",
+      "archetype": "numerical",
+      "isAnchor": true
     },
     {
       "id": "q-geas10-03-12",
@@ -124,7 +146,9 @@
       "choiceC": "At least three (3) Filipino professionals",
       "choiceD": "At least five (5) Filipino professionals",
       "correctChoice": "A",
-      "explanation": "Section 26 mandates that at least two (2) Filipino professionals shall be employed as understudies for every foreign professional hired."
+      "explanation": "Section 26 mandates that at least two (2) Filipino professionals shall be employed as understudies for every foreign professional hired.",
+      "archetype": "numerical",
+      "isAnchor": true
     },
     {
       "id": "q-geas10-03-13",
@@ -134,7 +158,9 @@
       "choiceC": "Six (6) months, renewable every 6 months",
       "choiceD": "Thirty (30) days only",
       "correctChoice": "C",
-      "explanation": "Section 26 specifies that the Special Temporary Permit is valid for six (6) months and can be renewed every 6 months."
+      "explanation": "Section 26 specifies that the Special Temporary Permit is valid for six (6) months and can be renewed every 6 months.",
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "q-geas10-03-14",
@@ -144,7 +170,9 @@
       "choiceC": "Yes, if they have resided in the Philippines for 3 months",
       "choiceD": "No, foreign professionals are strictly prohibited from engaging in private practice",
       "correctChoice": "D",
-      "explanation": "Section 26 expressly states that the foreigner shall not engage in private practice on their own account."
+      "explanation": "Section 26 expressly states that the foreigner shall not engage in private practice on their own account.",
+      "archetype": "trap",
+      "isAnchor": true
     },
     {
       "id": "q-geas10-03-15",
@@ -154,7 +182,9 @@
       "choiceC": "Diplomatic Immunity",
       "choiceD": "Territorial Sovereignty",
       "correctChoice": "A",
-      "explanation": "Section 33 is titled 'Foreign Reciprocity'."
+      "explanation": "Section 33 is titled 'Foreign Reciprocity'.",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "q-geas10-03-16",
@@ -164,7 +194,9 @@
       "choiceC": "Institute of Integrated Electrical Engineers (IIEE)",
       "choiceD": "Philippine Society of Mechanical Engineers (PSME)",
       "correctChoice": "B",
-      "explanation": "Section 32 recognizes IECEP as the sole integrated and accredited professional organization (APO) for PECEs, ECEs, and ECTs."
+      "explanation": "Section 32 recognizes IECEP as the sole integrated and accredited professional organization (APO) for PECEs, ECEs, and ECTs.",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "q-geas10-03-17",
@@ -174,7 +206,9 @@
       "choiceC": "Community Tree Planting Projects",
       "choiceD": "Continuing Professional Education (CPE) / Continuing Professional Development (CPD)",
       "correctChoice": "D",
-      "explanation": "Section 31 governs Continuing Professional Education (CPE) and/or Development Programs."
+      "explanation": "Section 31 governs Continuing Professional Education (CPE) and/or Development Programs.",
+      "archetype": "conceptual",
+      "isAnchor": false
     },
     {
       "id": "q-geas10-03-18",
@@ -184,7 +218,9 @@
       "choiceC": "They are charged a administrative late fee of ₱50",
       "choiceD": "Their seal is confiscated with no further penalties",
       "correctChoice": "A",
-      "explanation": "Section 35 explicitly lists using an official seal with a revoked/suspended license as a penal offense subject to ₱100K–₱1M fine and/or 6 mos–6 yrs imprisonment."
+      "explanation": "Section 35 explicitly lists using an official seal with a revoked/suspended license as a penal offense subject to ₱100K–₱1M fine and/or 6 mos–6 yrs imprisonment.",
+      "archetype": "applied",
+      "isAnchor": true
     },
     {
       "id": "q-geas10-03-19",
@@ -194,7 +230,9 @@
       "choiceC": "Solid emerald green background with gold stars",
       "choiceD": "Plain white background with grey shading",
       "correctChoice": "B",
-      "explanation": "Section 29 specifies that the Board seal inner circle is filled with navy blue background, atom with white, and nucleus and electrons in red."
+      "explanation": "Section 29 specifies that the Board seal inner circle is filled with navy blue background, atom with white, and nucleus and electrons in red.",
+      "archetype": "standard",
+      "isAnchor": false
     },
     {
       "id": "q-geas10-03-20",
@@ -204,7 +242,9 @@
       "choiceC": "Filled with orange with boundaries in navy blue",
       "choiceD": "Filled with gold with boundaries in black",
       "correctChoice": "C",
-      "explanation": "Section 29 specifies that the outer and inner rings of the Board seal are filled with orange with boundaries in navy blue."
+      "explanation": "Section 29 specifies that the outer and inner rings of the Board seal are filled with orange with boundaries in navy blue.",
+      "archetype": "standard",
+      "isAnchor": false
     },
     {
       "id": "q-geas10-03-21",
@@ -214,7 +254,9 @@
       "choiceC": "Only elected municipal mayors and councilors",
       "choiceD": "Only Supreme Court associate justices",
       "correctChoice": "A",
-      "explanation": "Section 34 states that all government positions with functions falling within the scope of practice of PECE, ECE, or ECT must be filled by licensed professionals."
+      "explanation": "Section 34 states that all government positions with functions falling within the scope of practice of PECE, ECE, or ECT must be filled by licensed professionals.",
+      "archetype": "applied",
+      "isAnchor": false
     },
     {
       "id": "q-geas10-03-22",
@@ -224,7 +266,9 @@
       "choiceC": "The National Museum and Cultural Center",
       "choiceD": "The Philippine Postal Corporation only",
       "correctChoice": "B",
-      "explanation": "Section 36 requires law enforcement agencies of the national, provincial, and city governments to assist in enforcing the Act."
+      "explanation": "Section 36 requires law enforcement agencies of the national, provincial, and city governments to assist in enforcing the Act.",
+      "archetype": "applied",
+      "isAnchor": false
     },
     {
       "id": "q-geas10-03-23",
@@ -234,7 +278,9 @@
       "choiceC": "Failed (GWA is below 70%, so the examinee must retake all subjects)",
       "choiceD": "Exempted from taking GEAS",
       "correctChoice": "C",
-      "explanation": "Because the GWA (69.75%) is below 70%, the examinee fails the examination and cannot qualify for a removal exam."
+      "explanation": "Because the GWA (69.75%) is below 70%, the examinee fails the examination and cannot qualify for a removal exam.",
+      "archetype": "applied",
+      "isAnchor": true
     },
     {
       "id": "q-geas10-03-24",
@@ -244,7 +290,9 @@
       "choiceC": "Receipt of payment for review center tuition",
       "choiceD": "Valid Certificate of Registration and Professional Identification Card issued by the Board and PRC",
       "correctChoice": "D",
-      "explanation": "Section 19 states that a Certificate of Registration and Professional Identification Card issued by the Board and PRC is conclusive evidence of authority to practice."
+      "explanation": "Section 19 states that a Certificate of Registration and Professional Identification Card issued by the Board and PRC is conclusive evidence of authority to practice.",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "q-geas10-03-25",
@@ -254,7 +302,9 @@
       "choiceC": "The Supreme Court of the Philippines",
       "choiceD": "The Senate Committee on Education",
       "correctChoice": "B",
-      "explanation": "Section 39 states that the Board, subject to the approval of the Commission, shall promulgate the Implementing Rules and Regulations."
+      "explanation": "Section 39 states that the Board, subject to the approval of the Commission, shall promulgate the Implementing Rules and Regulations.",
+      "archetype": "conceptual",
+      "isAnchor": false
     }
   ]
 }

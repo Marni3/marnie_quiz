@@ -18,7 +18,9 @@
       "correctChoice": "A",
       "explanation": "The contrapositive negates and swaps the order of hypothesis and conclusion: $\\neg q \\to \\neg p$. It is logically equivalent to $p \\to q$.",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m0403-q02",
@@ -31,7 +33,9 @@
       "correctChoice": "C",
       "explanation": "The implication $p \\to q$ is false if and only if a true antecedent leads to a false consequent ($T \\to F$).",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m0403-q03",
@@ -44,7 +48,9 @@
       "correctChoice": "D",
       "explanation": "$g(2) = 2^2 + 2 = 6$. Then $f(g(2)) = f(6) = 3(6) - 5 = 18 - 5 = 13$.\n\n⚡ Speed Shortcut: $f(6) = 18 - 5 = 13$.",
       "category": "computational",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m0403-q04",
@@ -57,7 +63,9 @@
       "correctChoice": "A",
       "explanation": "A partial order relation (POSET) is reflexive, antisymmetric, and transitive (e.g., standard inequality $\\le$ or subset inclusion $\\subseteq$).",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m0403-q05",
@@ -70,7 +78,9 @@
       "correctChoice": "D",
       "explanation": "Set $y = \\frac{2x + 1}{x - 3} \\implies y(x - 3) = 2x + 1 \\implies xy - 3y = 2x + 1 \\implies x(y - 2) = 3y + 1 \\implies x = \\frac{3y + 1}{y - 2}$. Thus $f^{-1}(x) = \\frac{3x + 1}{x - 2}$.",
       "category": "computational",
-      "difficulty": "medium"
+      "difficulty": "medium",
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m0403-q06",
@@ -83,7 +93,9 @@
       "correctChoice": "B",
       "explanation": "$T \\vee F = T$, and $F \\to T = T$ (vacuous truth). Then $T \\wedge T = T$.",
       "category": "shortcuts",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "shortcut",
+      "isAnchor": false
     },
     {
       "id": "m0403-q07",
@@ -96,7 +108,9 @@
       "correctChoice": "B",
       "explanation": "Antisymmetry states that two distinct elements cannot be mutually related to each other in both directions.",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m0403-q08",
@@ -109,7 +123,9 @@
       "correctChoice": "C",
       "explanation": "Exclusive-OR ($p \\oplus q$) is True if and only if the propositions have opposite truth values. When both are True, $T \\oplus T = F$.",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m0403-q09",
@@ -122,7 +138,9 @@
       "correctChoice": "D",
       "explanation": "$f(x) = x^3$ is strictly increasing (one-to-one) and its range is $(-\\infty, \\infty)$ (onto), making it bijective and strictly invertible.",
       "category": "conceptual",
-      "difficulty": "medium"
+      "difficulty": "medium",
+      "archetype": "conceptual",
+      "isAnchor": false
     },
     {
       "id": "m0403-q10",
@@ -135,7 +153,9 @@
       "correctChoice": "B",
       "explanation": "The converse of $p \\to q$ simply swaps hypothesis and conclusion to $q \\to p$: \"If the ground is wet, then it rains.\"",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m0403-q11",
@@ -148,7 +168,9 @@
       "correctChoice": "C",
       "explanation": "$R$ is reflexive (contains $(1,1), (2,2), (3,3)$), symmetric ($(1,2)$ and $(2,1)$), and transitive. Hence, it is an equivalence relation.",
       "category": "computational",
-      "difficulty": "medium"
+      "difficulty": "medium",
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m0403-q12",
@@ -161,7 +183,9 @@
       "correctChoice": "B",
       "explanation": "The inverse of $p \\to q$ negates both propositions without swapping their order: $\\neg p \\to \\neg q$.",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m0403-q13",
@@ -174,7 +198,9 @@
       "correctChoice": "A",
       "explanation": "Let $u = g(x) = x - 3 \\implies x = u + 3$. Then $f(u) = 2(u + 3) + 7 = 2u + 6 + 7 = 2u + 13 \\implies f(x) = 2x + 13$.",
       "category": "applied",
-      "difficulty": "medium"
+      "difficulty": "medium",
+      "archetype": "applied",
+      "isAnchor": false
     },
     {
       "id": "m0403-q14",
@@ -187,7 +213,9 @@
       "correctChoice": "A",
       "explanation": "A statement that is universally true under all truth assignments (such as $p \\vee \\neg p$) is a tautology.",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m0403-q15",
@@ -200,7 +228,9 @@
       "correctChoice": "D",
       "explanation": "A statement that is universally false under all truth assignments (such as $p \\wedge \\neg p$) is a contradiction.",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m0403-q16",
@@ -213,7 +243,9 @@
       "correctChoice": "A",
       "explanation": "Modulo congruence is reflexive ($a - a = 0 = 0 \\times 5$), symmetric ($a - b = 5k \\implies b - a = -5k$), and transitive ($a - c = (a-b)+(b-c) = 5(k+m)$). Hence it is an equivalence relation.",
       "category": "applied",
-      "difficulty": "medium"
+      "difficulty": "medium",
+      "archetype": "applied",
+      "isAnchor": false
     },
     {
       "id": "m0403-q17",
@@ -226,7 +258,9 @@
       "correctChoice": "C",
       "explanation": "The biconditional ($p \\leftrightarrow q$) is true when both propositions agree in truth value ($T \\leftrightarrow T$ is $T$, and $F \\leftrightarrow F$ is $T$).",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m0403-q18",
@@ -239,7 +273,9 @@
       "correctChoice": "C",
       "explanation": "An inverse function requires bijectivity. $f(x) = x^2$ on all real numbers is not one-to-one because two different inputs produce the same output.",
       "category": "conceptual",
-      "difficulty": "medium"
+      "difficulty": "medium",
+      "archetype": "conceptual",
+      "isAnchor": false
     },
     {
       "id": "m0403-q19",
@@ -252,7 +288,9 @@
       "correctChoice": "B",
       "explanation": "Apply De Morgan's Law: $\\neg(\\neg p \\vee q) = \\neg(\\neg p) \\wedge \\neg q = p \\wedge \\neg q$. (This is also the negation of $p \\to q$).",
       "category": "shortcuts",
-      "difficulty": "medium"
+      "difficulty": "medium",
+      "archetype": "shortcut",
+      "isAnchor": false
     },
     {
       "id": "m0403-q20",
@@ -265,7 +303,9 @@
       "correctChoice": "D",
       "explanation": "The Law of Trichotomy states that for any two real numbers, exactly one relation is true: $a < b$, $a = b$, or $a > b$.",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m0403-q21",
@@ -278,7 +318,9 @@
       "correctChoice": "A",
       "explanation": "Set $4x - 7 = 17 \\implies 4x = 24 \\implies x = 6$.\n\n⚡ Speed Shortcut: $(17 + 7)/4 = 24/4 = 6$.",
       "category": "computational",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m0403-q22",
@@ -291,7 +333,9 @@
       "correctChoice": "B",
       "explanation": "The contrapositive of $\\neg p \\to q$ is $\\neg q \\to \\neg(\\neg p) \\equiv \\neg q \\to p$.",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     }
   ]
 }

@@ -18,7 +18,9 @@
       "correctChoice": "B",
       "explanation": "For any two positive numbers, the geometric mean is the geometric mean of their arithmetic and harmonic means: $(GM)^2 = AM \\times HM$, with the inequality $AM \\ge GM \\ge HM$.",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m0104-q02",
@@ -31,7 +33,9 @@
       "correctChoice": "C",
       "explanation": "$a_1 = 24, r = 1/2$. Since $|r| < 1$, $S_\\infty = \\frac{a_1}{1 - r} = \\frac{24}{1 - 0.5} = 48$.\n\n⚡ Speed Shortcut: $24 / 0.5 = 48$.",
       "category": "computational",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m0104-q03",
@@ -44,7 +48,9 @@
       "correctChoice": "A",
       "explanation": "Listing terms: $F_1=1, F_2=1, F_3=2, F_4=3, F_5=5, F_6=8, F_7=13, F_8=21, F_9=34, F_{10}=55$.",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m0104-q04",
@@ -57,7 +63,9 @@
       "correctChoice": "A",
       "explanation": "Triangular number formula: $T_n = \\frac{n(n + 1)}{2} \\implies T_6 = \\frac{6(7)}{2} = 21$.",
       "category": "computational",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m0104-q05",
@@ -70,7 +78,9 @@
       "correctChoice": "D",
       "explanation": "$HM = \\frac{2ab}{a + b} = \\frac{2(3)(6)}{3 + 6} = \\frac{36}{9} = 4$.",
       "category": "computational",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m0104-q06",
@@ -83,7 +93,9 @@
       "correctChoice": "C",
       "explanation": "Oblong or pronic numbers have the algebraic form $n(n + 1)$ and can be arranged in rectangular dot grids ($2, 6, 12, 20, 30\\dots$).",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m0104-q07",
@@ -96,7 +108,9 @@
       "correctChoice": "A",
       "explanation": "$a_9 - a_4 = 5d \\implies 35 - 15 = 20 \\implies d = 4$. Then $a_1 = a_4 - 3d = 15 - 3(4) = 15 - 12 = 3$.",
       "category": "computational",
-      "difficulty": "medium"
+      "difficulty": "medium",
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m0104-q08",
@@ -109,7 +123,9 @@
       "correctChoice": "B",
       "explanation": "$Te_n = \\frac{n(n + 1)(n + 2)}{6} \\implies Te_4 = \\frac{4(5)(6)}{6} = 20$.",
       "category": "computational",
-      "difficulty": "medium"
+      "difficulty": "medium",
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m0104-q09",
@@ -122,7 +138,9 @@
       "correctChoice": "B",
       "explanation": "The sum of the first $n$ odd integers is identically $n^2$. There are $50$ odd integers from $1$ to $99$ ($2n - 1 = 99 \\implies n = 50$). Thus $\\text{Sum} = 50^2 = 2500$.\n\n⚡ Speed Shortcut: $n^2 = 50^2 = 2500$.",
       "category": "shortcuts",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "shortcut",
+      "isAnchor": false
     },
     {
       "id": "m0104-q10",
@@ -135,7 +153,9 @@
       "correctChoice": "C",
       "explanation": "This is the Lucas sequence, starting with 1 and 3 with recurrence $L_n = L_{n-1} + L_{n-2}$, named after French mathematician Édouard Lucas.",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m0104-q11",
@@ -148,7 +168,9 @@
       "correctChoice": "B",
       "explanation": "Convert to AP: $A_1 = 3, A_2 = 7 \\implies d = 4$. The 7th AP term is $A_7 = 3 + (7-1)(4) = 3 + 24 = 27$. Inverting yields the HP term: $1/27$.",
       "category": "applied",
-      "difficulty": "medium"
+      "difficulty": "medium",
+      "archetype": "applied",
+      "isAnchor": false
     },
     {
       "id": "m0104-q12",
@@ -161,7 +183,9 @@
       "correctChoice": "A",
       "explanation": "The ratio of successive Fibonacci numbers converges to the Golden Ratio $\\phi = \\frac{1 + \\sqrt{5}}{2} \\approx 1.6180339887\\dots$",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m0104-q13",
@@ -174,7 +198,9 @@
       "correctChoice": "B",
       "explanation": "$SP_n = \\frac{n(n + 1)(2n + 1)}{6} \\implies SP_4 = \\frac{4(5)(9)}{6} = \\frac{180}{6} = 30$.\n\n⚡ Speed Shortcut: $1^2 + 2^2 + 3^2 + 4^2 = 1 + 4 + 9 + 16 = 30$.",
       "category": "computational",
-      "difficulty": "medium"
+      "difficulty": "medium",
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m0104-q14",
@@ -187,7 +213,9 @@
       "correctChoice": "D",
       "explanation": "$a_{10} = S_{10} - S_9 = [3(100) + 20] - [3(81) + 18] = 320 - 261 = 59$.\n\n⚡ Speed Shortcut: $a_n = S'_n - A = 6n - 3 + 2 = 6n - 1 \\implies a_{10} = 6(10) - 1 = 59$.",
       "category": "shortcuts",
-      "difficulty": "medium"
+      "difficulty": "medium",
+      "archetype": "shortcut",
+      "isAnchor": false
     },
     {
       "id": "m0104-q15",
@@ -200,7 +228,9 @@
       "correctChoice": "C",
       "explanation": "Total distance $= H + 2 \\sum_{k=1}^\\infty H(2/3)^k = H + 2 \\left(\\frac{H(2/3)}{1 - 2/3}\\right) = H + 2 \\left(\\frac{12(2/3)}{1/3}\\right) = 12 + 2(24) = 60\\text{ m}$.\n\n⚡ Speed Shortcut: $D = H \\left(\\frac{1 + r}{1 - r}\\right) = 12 \\left(\\frac{1 + 2/3}{1 - 2/3}\\right) = 12 \\left(\\frac{5/3}{1/3}\\right) = 12 \\times 5 = 60\\text{ m}$.",
       "category": "applied",
-      "difficulty": "hard"
+      "difficulty": "hard",
+      "archetype": "applied",
+      "isAnchor": false
     },
     {
       "id": "m0104-q16",
@@ -213,7 +243,9 @@
       "correctChoice": "B",
       "explanation": "Gnomons are L-shaped right-angled figurate numbers formed by $2n - 1$ dots ($1, 3, 5, 7, 9\\dots$).",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m0104-q17",
@@ -226,7 +258,9 @@
       "correctChoice": "A",
       "explanation": "Let terms be $a/r, a, ar$. Product $= a^3 = 216 \\implies a = 6$. Sum: $6/r + 6 + 6r = 26 \\implies 6/r + 6r = 20 \\implies 3/r + 3r = 10 \\implies 3r^2 - 10r + 3 = 0 \\implies r = 3$ or $1/3$. Terms: $2, 6, 18$.",
       "category": "applied",
-      "difficulty": "medium"
+      "difficulty": "medium",
+      "archetype": "applied",
+      "isAnchor": false
     },
     {
       "id": "m0104-q18",
@@ -239,7 +273,9 @@
       "correctChoice": "D",
       "explanation": "The closed formula for pentagonal numbers is $P_n = \\frac{n(3n - 1)}{2}$, giving $1, 5, 12, 22, 35, 51\\dots$",
       "category": "conceptual",
-      "difficulty": "medium"
+      "difficulty": "medium",
+      "archetype": "conceptual",
+      "isAnchor": false
     },
     {
       "id": "m0104-q19",
@@ -252,7 +288,9 @@
       "correctChoice": "D",
       "explanation": "In an AP, $y = \\frac{x + z}{2} \\implies 2y = x + z \\implies x - 2y + z = 0$.",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m0104-q20",
@@ -265,7 +303,9 @@
       "correctChoice": "C",
       "explanation": "Formula: $4D_n = \\frac{n(n + 1)(n + 2)(n + 3)}{24} \\implies 4D_5 = \\frac{5(6)(7)(8)}{24} = \\frac{1680}{24} = 70$.",
       "category": "computational",
-      "difficulty": "hard"
+      "difficulty": "hard",
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m0104-q21",
@@ -278,7 +318,9 @@
       "correctChoice": "D",
       "explanation": "$a_1 = 0.18, r = 0.01 \\implies S_\\infty = \\frac{0.18}{1 - 0.01} = \\frac{0.18}{0.99} = \\frac{18}{99} = \\frac{2}{11}$.",
       "category": "computational",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m0104-q22",
@@ -291,7 +333,9 @@
       "correctChoice": "A",
       "explanation": "$a + b = 2(AM) = 100$, and $ab = GM^2 = 1600$. Quadratic: $x^2 - 100x + 1600 = 0 \\implies (x - 80)(x - 20) = 0$. The numbers are $80$ and $20$.",
       "category": "applied",
-      "difficulty": "medium"
+      "difficulty": "medium",
+      "archetype": "applied",
+      "isAnchor": false
     }
   ]
 }

@@ -22,6 +22,7 @@ import {
   BookMarked,
   CheckCircle2,
   Zap,
+  Search,
 } from "lucide-react";
 
 import { safeParseLlmJson } from "@/lib/tutor/json-parser";
@@ -96,6 +97,7 @@ export function ChatMessageItem({ message, onTriggerAction }: ChatMessageProps) 
   const [savedToNotebook, setSavedToNotebook] = useState(false);
   const [previewModule, setPreviewModule] = useState<any | null>(null);
   const [previewQuiz, setPreviewQuiz] = useState<any | null>(null);
+  const [isContextOpen, setIsContextOpen] = useState(false);
   const isUser = message.role === "user";
 
   const [showRawJson, setShowRawJson] = useState(false);
@@ -495,6 +497,67 @@ export function ChatMessageItem({ message, onTriggerAction }: ChatMessageProps) 
             <span className="text-[10px]">{copied ? "Copied" : "Copy"}</span>
           </button>
         </div>
+
+        {/* Dynamic Diagnostics Status Pill */}
+        {message.diagnostics && !isUser && (
+          <div className="flex flex-wrap items-center justify-between gap-2 pt-2 border-t border-[var(--border)]/40 text-[10px] text-[var(--text3)]">
+            <div className="flex items-center gap-1.5 flex-wrap">
+              <span
+                className={`inline-flex items-center gap-1 px-2 py-0.5 rounded-md font-mono font-medium ${
+                  message.diagnostics.cutover
+                    ? "bg-amber-500/15 text-amber-600 dark:text-amber-400 border border-amber-500/30"
+                    : "bg-[var(--surface2)] text-[var(--text2)] border border-[var(--border)]"
+                }`}
+              >
+                <Zap className="w-3 h-3 fill-current text-[var(--accent)]" />
+                <span>{message.diagnostics.provider.toUpperCase()}</span>
+                <span>·</span>
+                <span>{message.diagnostics.model}</span>
+                {message.diagnostics.latencySeconds ? (
+                  <>
+                    <span>·</span>
+                    <span>{message.diagnostics.latencySeconds}s</span>
+                  </>
+                ) : null}
+                {message.diagnostics.tokensPerSec ? (
+                  <>
+                    <span>·</span>
+                    <span>{message.diagnostics.tokensPerSec} t/s</span>
+                  </>
+                ) : null}
+              </span>
+
+              {message.diagnostics.cutover && (
+                <span className="text-amber-600 dark:text-amber-400 font-semibold">
+                  (Auto-cutover to Groq 300 t/s)
+                </span>
+              )}
+            </div>
+
+            {message.diagnostics.injectedContext && (
+              <button
+                type="button"
+                onClick={() => setIsContextOpen((prev) => !prev)}
+                className="inline-flex items-center gap-1 hover:text-[var(--text)] transition-colors cursor-pointer"
+              >
+                <Search className="w-3 h-3" />
+                <span>{isContextOpen ? "Hide Context" : "View What AI Saw"}</span>
+              </button>
+            )}
+          </div>
+        )}
+
+        {/* Collapsible Injected Context Drawer */}
+        {isContextOpen && message.diagnostics?.injectedContext && (
+          <div className="mt-2 p-3 rounded-xl bg-[var(--surface2)]/80 border border-[var(--border)] text-[11px] font-mono overflow-x-auto space-y-1.5 animate-in fade-in duration-150">
+            <div className="text-[10px] font-bold text-[var(--text2)] uppercase tracking-wider">
+              Injected Scorecard & Syllabus Payload
+            </div>
+            <pre className="text-[10px] text-[var(--text2)] whitespace-pre-wrap max-h-48 overflow-y-auto">
+              {JSON.stringify(message.diagnostics.injectedContext, null, 2)}
+            </pre>
+          </div>
+        )}
       </div>
 
       {/* Interactive Custom Module Modal */}

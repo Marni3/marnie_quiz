@@ -18,7 +18,9 @@
       "correctChoice": "B",
       "explanation": "$\\text{i.f.} = e^{\\int (3/x) dx} = e^{3\\ln x} = e^{\\ln(x^3)} = x^3$.\n\n⚡ Speed Shortcut: $x^3$.",
       "category": "computational",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "numerical",
+      "isAnchor": true
     },
     {
       "id": "m1802-q02",
@@ -31,7 +33,9 @@
       "correctChoice": "C",
       "explanation": "$\\frac{\\partial M}{\\partial y} = \\frac{\\partial}{\\partial y}(2x + y) = 1$, and $\\frac{\\partial N}{\\partial x} = \\frac{\\partial}{\\partial x}(x + 2y) = 1$. Since $1 = 1$, it is exact.",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m1802-q03",
@@ -44,7 +48,9 @@
       "correctChoice": "B",
       "explanation": "Excess temp: $T_0 - T_s = 90 - 20 = 70^\\circ$. After 5 mins: $55 - 20 = 35^\\circ$ (halved!). After 10 mins: $35/2 = 17.5^\\circ$. Actual $T = 20 + 17.5 = 37.5^\\circ\\text{C}$.\n\n⚡ Speed Shortcut: $20 + 17.5 = 37.5^\\circ\\text{C}$.",
       "category": "shortcuts",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "shortcut",
+      "isAnchor": false
     },
     {
       "id": "m1802-q04",
@@ -57,7 +63,9 @@
       "correctChoice": "B",
       "explanation": "Bernoulli substitution is $z = y^{1-n}$. For $n = 4$, $z = y^{1-4} = y^{-3}$.",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m1802-q05",
@@ -70,7 +78,9 @@
       "correctChoice": "A",
       "explanation": "$F(x, y) = \\int (2xy + 3) \\partial x = x^2 y + 3x + k(y)$. Differentiating w.r.t $y$: $x^2 + k'(y) = x^2 - 1 \\implies k'(y) = -1 \\implies k(y) = -y$. General solution: $x^2 y + 3x - y = C$.\n\n⚡ Speed Shortcut: $x^2 y + 3x - y = C$.",
       "category": "computational",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m1802-q06",
@@ -83,7 +93,9 @@
       "correctChoice": "C",
       "explanation": "Number of half-lives $= 420 / 140 = 3$. Remaining mass $= 100 \\times (1/2)^3 = 100 / 8 = 12.5\\text{ mg}$.\n\n⚡ Speed Shortcut: $100 / 8 = 12.5\\text{ mg}$.",
       "category": "shortcuts",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "shortcut",
+      "isAnchor": false
     },
     {
       "id": "m1802-q07",
@@ -96,7 +108,9 @@
       "correctChoice": "D",
       "explanation": "$\\text{i.f.} = e^{\\int 1 dx} = e^x$. $y e^x = \\int e^{-x} e^x dx + C = \\int 1 dx + C = x + C \\implies y = e^{-x}(x + C)$.\n\n⚡ Speed Shortcut: $y = e^{-x}(x + C)$.",
       "category": "computational",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m1802-q08",
@@ -109,7 +123,9 @@
       "correctChoice": "A",
       "explanation": "At equilibrium: $Q_{\\text{max}} = \\text{Concentration}_{\\text{in}} \\times \\text{Volume} = 2\\text{ kg/L} \\times 100\\text{ L} = 200\\text{ kg}$.\n\n⚡ Speed Shortcut: $2 \\times 100 = 200\\text{ kg}$.",
       "category": "applied",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "applied",
+      "isAnchor": false
     },
     {
       "id": "m1802-q09",
@@ -122,7 +138,9 @@
       "correctChoice": "C",
       "explanation": "Jakob Bernoulli formulated the equation in 1695, and his brother Johann solved it using substitution.",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m1802-q10",
@@ -135,7 +153,9 @@
       "correctChoice": "D",
       "explanation": "$\\text{i.f.} = e^{-2x}$. $y e^{-2x} = \\int 4e^{-2x} dx + C = -2e^{-2x} + C \\implies y = -2 + C e^{2x}$. At $(0, 3)$: $3 = -2 + C \\implies C = 5$. So $y = 5e^{2x} - 2$.\n\n⚡ Speed Shortcut: $y = 5e^{2x} - 2$.",
       "category": "computational",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m1802-q11",
@@ -148,7 +168,9 @@
       "correctChoice": "B",
       "explanation": "$1/2 = e^{-kt} \\implies \\ln(1/2) = -kt \\implies t_{1/2} = \\frac{\\ln 2}{k}$.",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m1802-q12",
@@ -161,7 +183,9 @@
       "correctChoice": "A",
       "explanation": "$t = \\frac{\\ln 2}{r} = \\frac{0.693147}{0.06} \\approx 11.552\\text{ years}$.\n\n⚡ Speed Shortcut: $\\frac{69.3}{6} = 11.55\\text{ years}$ (Rule of 69.3).",
       "category": "shortcuts",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "shortcut",
+      "isAnchor": false
     },
     {
       "id": "m1802-q13",
@@ -174,7 +198,9 @@
       "correctChoice": "A",
       "explanation": "$F = \\int (3x^2 + 2y) \\partial x = x^3 + 2xy + k(y)$. $\\frac{\\partial F}{\\partial y} = 2x + k'(y) = 2x + 4y \\implies k(y) = 2y^2$. Result: $x^3 + 2xy + 2y^2 = C$.\n\n⚡ Speed Shortcut: $x^3 + 2xy + 2y^2 = C$.",
       "category": "computational",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m1802-q14",
@@ -187,7 +213,9 @@
       "correctChoice": "D",
       "explanation": "Malthusian exponential growth states that rate of growth is proportional to current population: $dP/dt = kP$.",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m1802-q15",
@@ -200,7 +228,9 @@
       "correctChoice": "B",
       "explanation": "$\\text{i.f.} = e^{\\int \\tan x dx} = e^{\\ln|\\sec x|} = \\sec x$.\n\n⚡ Speed Shortcut: $\\sec x$.",
       "category": "shortcuts",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "shortcut",
+      "isAnchor": false
     },
     {
       "id": "m1802-q16",
@@ -213,7 +243,9 @@
       "correctChoice": "D",
       "explanation": "Initial excess: $18 - (-2) = 20^\\circ$. After 1 min: $8 - (-2) = 10^\\circ$ (halved!). After 2 mins: $10/2 = 5^\\circ$. Actual reading $= -2 + 5 = 3^\\circ\\text{C}$.\n\n⚡ Speed Shortcut: $-2 + 5 = 3^\\circ\\text{C}$.",
       "category": "applied",
-      "difficulty": "medium"
+      "difficulty": "medium",
+      "archetype": "applied",
+      "isAnchor": false
     },
     {
       "id": "m1802-q17",
@@ -226,7 +258,9 @@
       "correctChoice": "C",
       "explanation": "Let $z = y^{-1} \\implies \\frac{dz}{dx} - \\frac{1}{x} z = -1$. $\\text{i.f.} = 1/x$. $z(1/x) = \\int (-1/x) dx + C = -\\ln|x| + C \\implies z = x(C - \\ln|x|) \\implies \\frac{1}{y} = x(C - \\ln|x|)$.",
       "category": "computational",
-      "difficulty": "medium"
+      "difficulty": "medium",
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m1802-q18",
@@ -239,7 +273,9 @@
       "correctChoice": "A",
       "explanation": "Euler introduced the integrating factor multiplier to solve non-exact differential equations.",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m1802-q19",
@@ -252,7 +288,9 @@
       "correctChoice": "C",
       "explanation": "$\\frac{dQ}{dt} = -\\frac{2}{50} Q = -\\frac{1}{25} Q \\implies Q(t) = 10 e^{-t/25}$. At $t = 25\\text{ min}$: $Q(25) = 10 e^{-1} \\approx 3.6788\\text{ lbs}$.\n\n⚡ Speed Shortcut: $10 e^{-1} \\approx 3.68\\text{ lbs}$.",
       "category": "applied",
-      "difficulty": "medium"
+      "difficulty": "medium",
+      "archetype": "applied",
+      "isAnchor": false
     },
     {
       "id": "m1802-q20",
@@ -265,7 +303,9 @@
       "correctChoice": "D",
       "explanation": "$\\text{i.f.} = e^{x^2}$. $y e^{x^2} = \\int 2x e^{x^2} dx + C = e^{x^2} + C \\implies y = 1 + C e^{-x^2}$.\n\n⚡ Speed Shortcut: $y = 1 + C e^{-x^2}$.",
       "category": "computational",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m1802-q21",
@@ -278,7 +318,9 @@
       "correctChoice": "B",
       "explanation": "$\\frac{\\partial M}{\\partial y} = kx$, and $\\frac{\\partial N}{\\partial x} = 4x$. For exactness: $kx = 4x \\implies k = 4$.\n\n⚡ Speed Shortcut: $k = 4$.",
       "category": "shortcuts",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "shortcut",
+      "isAnchor": false
     },
     {
       "id": "m1802-q22",
@@ -291,7 +333,9 @@
       "correctChoice": "A",
       "explanation": "$\\text{i.f.} = x$. $yx = \\int 2x dx + C = x^2 + C \\implies y = x + \\frac{C}{x}$.\n\n⚡ Speed Shortcut: $y = x + \\frac{C}{x}$.",
       "category": "computational",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "numerical",
+      "isAnchor": false
     }
   ]
 }

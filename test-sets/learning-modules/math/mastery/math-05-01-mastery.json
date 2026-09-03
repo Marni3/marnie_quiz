@@ -18,7 +18,9 @@
       "correctChoice": "C",
       "explanation": "A complete 360-degree rotation is geometrically called a perigon or full angle.",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m1001-q02",
@@ -31,7 +33,9 @@
       "correctChoice": "B",
       "explanation": "Let angle be $\\theta$. Supplement is $180^\\circ - \\theta$. Equation: $\\theta = 2(180^\\circ - \\theta) - 30^\\circ \\implies \\theta = 360^\\circ - 2\\theta - 30^\\circ \\implies 3\\theta = 330^\\circ \\implies \\theta = 110^\\circ$.\n\n⚡ Speed Shortcut: $\\frac{360 - 30}{3} = 110^\\circ$.",
       "category": "computational",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m1001-q03",
@@ -44,7 +48,9 @@
       "correctChoice": "D",
       "explanation": "Euclid's Postulate 4 states that all right angles are mutually equal.",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m1001-q04",
@@ -57,7 +63,9 @@
       "correctChoice": "A",
       "explanation": "Since $180^\\circ < 215^\\circ < 360^\\circ$, it is classified as a reflex angle.",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m1001-q05",
@@ -70,7 +78,9 @@
       "correctChoice": "B",
       "explanation": "Euclid (c. 330–275 B.C.) wrote the Elements, which served as the world's primary textbook for geometry for over 2,000 years.",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m1001-q06",
@@ -83,7 +93,9 @@
       "correctChoice": "C",
       "explanation": "Angles that add up to $360^\\circ$ are defined as explementary or conjugate angles.",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m1001-q07",
@@ -96,7 +108,9 @@
       "correctChoice": "C",
       "explanation": "Projective geometry investigates geometric properties that are invariant under perspective transformations and central projections.",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m1001-q08",
@@ -109,7 +123,9 @@
       "correctChoice": "A",
       "explanation": "Angle $= 180^\\circ - 142^\\circ 30' = 37^\\circ 30'$. Its complement is $90^\\circ - 37^\\circ 30' = 52^\\circ 30'$.\n\n⚡ Speed Shortcut: $142^\\circ 30' - 90^\\circ = 52^\\circ 30'$.",
       "category": "shortcuts",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "shortcut",
+      "isAnchor": false
     },
     {
       "id": "m1001-q09",
@@ -122,7 +138,9 @@
       "correctChoice": "D",
       "explanation": "The word angle comes from the Latin angulus, literally meaning a sharp bend or corner.",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m1001-q10",
@@ -135,7 +153,9 @@
       "correctChoice": "A",
       "explanation": "Let parts be $7x$ and $2x$. $7x + 2x = 90^\\circ \\implies 9x = 90^\\circ \\implies x = 10^\\circ$. Angle $= 7(10^\\circ) = 70^\\circ$.\n\n⚡ Speed Shortcut: $\\frac{7}{9} \\times 90 = 70^\\circ$.",
       "category": "computational",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m1001-q11",
@@ -148,7 +168,9 @@
       "correctChoice": "C",
       "explanation": "Hyperbolic geometry (developed by Nikolai Lobachevsky and János Bolyai) assumes infinitely many parallel lines can be drawn through a given external point.",
       "category": "conceptual",
-      "difficulty": "medium"
+      "difficulty": "medium",
+      "archetype": "conceptual",
+      "isAnchor": false
     },
     {
       "id": "m1001-q12",
@@ -161,7 +183,9 @@
       "correctChoice": "D",
       "explanation": "Minute hand at 40 min is at $40 \\times 6^\\circ = 240^\\circ$. Hour hand at 3:40 is at $3(30^\\circ) + 40(0.5^\\circ) = 90^\\circ + 20^\\circ = 110^\\circ$. Angle $= 240^\\circ - 110^\\circ = 130^\\circ$.\n\n⚡ Speed Shortcut: $|30H - 5.5M| = |30(3) - 5.5(40)| = |90 - 220| = 130^\\circ$.",
       "category": "applied",
-      "difficulty": "medium"
+      "difficulty": "medium",
+      "archetype": "applied",
+      "isAnchor": false
     },
     {
       "id": "m1001-q13",
@@ -174,7 +198,9 @@
       "correctChoice": "A",
       "explanation": "A geometric point has no length, width, or height, making it strictly 0-dimensional.",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m1001-q14",
@@ -187,7 +213,9 @@
       "correctChoice": "B",
       "explanation": "$\\theta + \\frac{\\theta}{4} = 360^\\circ \\implies \\frac{5\\theta}{4} = 360^\\circ \\implies \\theta = \\frac{4}{5}(360^\\circ) = 288^\\circ$.\n\n⚡ Speed Shortcut: $\\frac{4}{5} \\times 360 = 288^\\circ$.",
       "category": "computational",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m1001-q15",
@@ -200,7 +228,9 @@
       "correctChoice": "D",
       "explanation": "René Descartes published La Géométrie in 1637, introducing the Cartesian coordinate plane linking geometry with algebra.",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m1001-q16",
@@ -213,7 +243,9 @@
       "correctChoice": "A",
       "explanation": "An angle of exactly $180^\\circ$ forms a straight line and is termed a straight angle.",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m1001-q17",
@@ -226,7 +258,9 @@
       "correctChoice": "B",
       "explanation": "$5x + 7x = 180^\\circ \\implies 12x = 180^\\circ \\implies x = 15^\\circ$. Larger angle $= 7(15^\\circ) = 105^\\circ$.\n\n⚡ Speed Shortcut: $\\frac{7}{12} \\times 180 = 105^\\circ$.",
       "category": "computational",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m1001-q18",
@@ -239,7 +273,9 @@
       "correctChoice": "A",
       "explanation": "Archimedes (c. 287–212 B.C.) made groundbreaking discoveries in solid geometry, including proving that the volume of a sphere is $2/3$ that of its circumscribing cylinder.",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m1001-q19",
@@ -252,7 +288,9 @@
       "correctChoice": "C",
       "explanation": "At 6:00, the minute hand points to 12 and the hour hand points to 6, directly opposite each other at $180^\\circ$.",
       "category": "shortcuts",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "shortcut",
+      "isAnchor": false
     },
     {
       "id": "m1001-q20",
@@ -265,7 +303,9 @@
       "correctChoice": "B",
       "explanation": "Euclid's 5th Postulate was scrutinized for millennia until the 19th century when non-Euclidean geometries were formalized.",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m1001-q21",
@@ -278,7 +318,9 @@
       "correctChoice": "D",
       "explanation": "$180^\\circ - \\theta = 4(90^\\circ - \\theta) \\implies 180^\\circ - \\theta = 360^\\circ - 4\\theta \\implies 3\\theta = 180^\\circ \\implies \\theta = 60^\\circ$.\n\n⚡ Speed Shortcut: $\\frac{360 - 180}{3} = 60^\\circ$.",
       "category": "shortcuts",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "shortcut",
+      "isAnchor": false
     },
     {
       "id": "m1001-q22",
@@ -291,7 +333,9 @@
       "correctChoice": "B",
       "explanation": "Differential geometry uses differential and integral calculus to study curves, tangent spaces, and Riemannian manifolds.",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     }
   ]
 }

@@ -27,6 +27,7 @@ import {
   getStoredModelsForProvider,
   setStoredModelsForProvider,
   StoredModelOption,
+  getAllStoredApiKeys,
 } from "@/lib/tutor/storage";
 import { MODEL_CATALOG, DEFAULT_MODELS } from "@/lib/tutor/prompts";
 import { safeParseLlmJson } from "@/lib/tutor/json-parser";
@@ -66,7 +67,7 @@ export function TutorView() {
 
   // Active configuration
   const [provider, setProvider] = useState<AIProvider>("gemini");
-  const [model, setModel] = useState<string>("gemini-3.7-flash");
+  const [model, setModel] = useState<string>("gemini-2.0-flash");
   const [hasKey, setHasKey] = useState(false);
   const [availableModels, setAvailableModels] = useState<StoredModelOption[]>([]);
 
@@ -507,6 +508,7 @@ export function TutorView() {
     }, 100);
 
     try {
+      const availableKeys = getAllStoredApiKeys();
       const res = await fetch("/api/tutor/stream", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -517,6 +519,7 @@ export function TutorView() {
           messages: updatedMessages.map((m) => ({ role: m.role, content: m.content })),
           functionMode: currentMode,
           contextPayload: finalContext,
+          availableKeys,
         }),
       });
 
@@ -524,6 +527,11 @@ export function TutorView() {
         const err = await res.json().catch(() => ({ error: `Status ${res.status}` }));
         throw new Error(err.error || "Streaming request failed.");
       }
+
+      const activeProvider = res.headers.get("X-Marnie-Provider") || provider;
+      const activeModel = res.headers.get("X-Marnie-Model") || model;
+      const wasCutover = res.headers.get("X-Marnie-Cutover") === "true";
+      const latencyMs = Number(res.headers.get("X-Marnie-Latency-Ms")) || (Date.now() - streamStartTime);
 
       const reader = res.body?.getReader();
       if (!reader) throw new Error("No response body.");
@@ -539,12 +547,24 @@ export function TutorView() {
         setStreamingContent(accumulated);
       }
 
+      const totalDurationSec = (Date.now() - streamStartTime) / 1000;
+      const estimatedTokens = Math.round(accumulated.length / 4);
+      const tokensPerSec = totalDurationSec > 0 ? Math.round(estimatedTokens / totalDurationSec) : 0;
+
       const assistantMsg: ChatMessage = {
         id: `msg_${Date.now()}_assistant`,
         role: "assistant",
         content: accumulated,
         timestamp: Date.now(),
         functionMode: currentMode,
+        diagnostics: {
+          provider: activeProvider,
+          model: activeModel,
+          latencySeconds: Math.round((latencyMs / 1000) * 10) / 10,
+          cutover: wasCutover,
+          tokensPerSec,
+          injectedContext: finalContext,
+        },
       };
 
       const finalSession: ChatSession = {
@@ -927,11 +947,17 @@ export function TutorView() {
                       <div className="flex items-center gap-2.5 text-xs sm:text-sm font-medium text-[var(--text)]">
                         <Sparkles className="w-4 h-4 text-primary animate-pulse shrink-0" />
                         <span>
-                          {functionMode === "review_exam"
-                            ? "Marnie AI is analyzing exam mistakes & deconstructing methods..."
-                            : functionMode === "custom_module"
-                            ? "Marnie AI is building interactive sprint module..."
-                            : "Marnie AI is generating response..."}
+                          {streamElapsedSeconds > 3.5 && provider === "gemini" && getAllStoredApiKeys().groq ? (
+                            <span className="text-amber-500 font-bold inline-flex items-center gap-1">
+                              <Zap className="w-3.5 h-3.5 fill-current" /> High latency detected · Auto-routing via Groq (300 t/s)...
+                            </span>
+                          ) : functionMode === "review_exam" ? (
+                            "Marnie AI is analyzing exam mistakes & deconstructing methods..."
+                          ) : functionMode === "custom_module" ? (
+                            "Marnie AI is building interactive sprint module..."
+                          ) : (
+                            `Marnie AI is generating via ${provider.toUpperCase()} (${model})...`
+                          )}
                         </span>
                       </div>
                       <span className="font-mono text-xs font-semibold px-2.5 py-0.5 rounded-full bg-[var(--surface2)] text-[var(--accent)] border border-[var(--border)] shrink-0">

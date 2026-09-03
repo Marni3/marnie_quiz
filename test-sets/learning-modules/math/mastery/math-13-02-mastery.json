@@ -18,7 +18,9 @@
       "correctChoice": "A",
       "explanation": "$\\mathcal{L}\\{\\sin kt\\} = \\frac{k}{s^2 + k^2}$. For $k = 6$: $\\mathcal{L}\\{\\sin 6t\\} = \\frac{6}{s^2 + 36}$.\n\n⚡ Speed Shortcut: $\\frac{6}{s^2 + 36}$.",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m2202-q02",
@@ -31,7 +33,9 @@
       "correctChoice": "D",
       "explanation": "$\\mathcal{L}\\{\\cos kt\\} = \\frac{s}{s^2 + k^2} = \\frac{s}{s^2 + 16}$.\n\n⚡ Speed Shortcut: $\\frac{s}{s^2 + 16}$.",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m2202-q03",
@@ -44,7 +48,9 @@
       "correctChoice": "B",
       "explanation": "Hyperbolic sine has minus in denominator: $\\mathcal{L}\\{\\sinh kt\\} = \\frac{k}{s^2 - k^2} = \\frac{3}{s^2 - 9}$.\n\n⚡ Speed Shortcut: $\\frac{3}{s^2 - 9}$.",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m2202-q04",
@@ -57,7 +63,9 @@
       "correctChoice": "C",
       "explanation": "$\\mathcal{L}\\{\\sin 4t\\} = \\frac{4}{s^2 + 16}$. Shifting $s \\to s + 3$: $\\frac{4}{(s + 3)^2 + 16} = \\frac{4}{s^2 + 6s + 25}$.\n\n⚡ Speed Shortcut: $\\frac{4}{(s + 3)^2 + 16}$.",
       "category": "computational",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m2202-q05",
@@ -70,7 +78,9 @@
       "correctChoice": "B",
       "explanation": "By the sifting integral: $\\mathcal{F}\\{\\delta(t)\\} = \\int_{-\\infty}^\\infty \\delta(t) e^{-j\\omega t} dt = e^0 = 1$.",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m2202-q06",
@@ -83,7 +93,9 @@
       "correctChoice": "B",
       "explanation": "$\\mathcal{L}\\{t \\sin kt\\} = \\frac{2ks}{(s^2 + k^2)^2}$. For $k = 2$: $\\frac{2(2)s}{(s^2 + 4)^2} = \\frac{4s}{(s^2 + 4)^2}$.\n\n⚡ Speed Shortcut: $\\frac{2(2)s}{(s^2+4)^2} = \\frac{4s}{(s^2+4)^2}$.",
       "category": "shortcuts",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "shortcut",
+      "isAnchor": false
     },
     {
       "id": "m2202-q07",
@@ -96,7 +108,9 @@
       "correctChoice": "C",
       "explanation": "By integration by parts: $\\mathcal{L}\\{f'(t)\\} = s F(s) - f(0)$.",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m2202-q08",
@@ -109,7 +123,9 @@
       "correctChoice": "A",
       "explanation": "A pure DC signal concentrated at zero frequency corresponds to $\\mathcal{F}\\{1\\} = 2\\pi \\delta(\\omega)$.",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m2202-q09",
@@ -122,7 +138,9 @@
       "correctChoice": "B",
       "explanation": "$\\mathcal{L}\\{\\cos 3t\\} = \\frac{s}{s^2 + 9}$. Shifting $s \\to s - 4$: $\\frac{s - 4}{(s - 4)^2 + 9} = \\frac{s - 4}{s^2 - 8s + 25}$.\n\n⚡ Speed Shortcut: $\\frac{s - 4}{(s - 4)^2 + 9}$.",
       "category": "computational",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m2202-q10",
@@ -135,7 +153,9 @@
       "correctChoice": "A",
       "explanation": "Convolution in the time domain is equivalent to point-by-point algebraic multiplication in the $s$-domain.",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m2202-q11",
@@ -148,7 +168,9 @@
       "correctChoice": "C",
       "explanation": "$\\mathcal{L}\\{t \\cos kt\\} = \\frac{s^2 - k^2}{(s^2 + k^2)^2}$. For $k = 3$: $\\frac{s^2 - 9}{(s^2 + 9)^2}$.\n\n⚡ Speed Shortcut: $\\frac{s^2 - 9}{(s^2 + 9)^2}$.",
       "category": "shortcuts",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "shortcut",
+      "isAnchor": false
     },
     {
       "id": "m2202-q12",
@@ -161,7 +183,9 @@
       "correctChoice": "B",
       "explanation": "The spectrum of $e^{j\\omega_0 t}$ is a single spectral line at $\\omega = \\omega_0$: $2\\pi \\delta(\\omega - \\omega_0)$.",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m2202-q13",
@@ -174,7 +198,9 @@
       "correctChoice": "D",
       "explanation": "$3\\left(\\frac{s}{s^2 - 4}\\right) - 4\\left(\\frac{2}{s^2 - 4}\\right) = \\frac{3s - 8}{s^2 - 4}$.\n\n⚡ Speed Shortcut: $\\frac{3s - 8}{s^2 - 4}$.",
       "category": "computational",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m2202-q14",
@@ -187,7 +213,9 @@
       "correctChoice": "A",
       "explanation": "Integrating from $-\\infty$ to $\\infty$: $\\int_{-\\infty}^0 e^{at}e^{-j\\omega t}dt + \\int_0^\\infty e^{-at}e^{-j\\omega t}dt = \\frac{1}{a - j\\omega} + \\frac{1}{a + j\\omega} = \\frac{2a}{a^2 + \\omega^2}$.\n\n⚡ Speed Shortcut: $\\frac{2a}{a^2 + \\omega^2}$.",
       "category": "shortcuts",
-      "difficulty": "medium"
+      "difficulty": "medium",
+      "archetype": "shortcut",
+      "isAnchor": false
     },
     {
       "id": "m2202-q15",
@@ -200,7 +228,9 @@
       "correctChoice": "C",
       "explanation": "Integration in time corresponds to division by $s$ in the Laplace frequency domain: $\\mathcal{L}\\{\\int_0^t f(\\tau)d\\tau\\} = \\frac{F(s)}{s}$.",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m2202-q16",
@@ -213,7 +243,9 @@
       "correctChoice": "D",
       "explanation": "With $k = 3, \\theta = 30^\\circ$: $\\frac{s\\sin(30^\\circ) + 3\\cos(30^\\circ)}{s^2 + 9} = \\frac{0.5s + 3(\\sqrt{3}/2)}{s^2 + 9} = \\frac{s + 3\\sqrt{3}}{2(s^2 + 9)}$.\n\n⚡ Speed Shortcut: $\\frac{s + 3\\sqrt{3}}{2(s^2 + 9)}$.",
       "category": "computational",
-      "difficulty": "medium"
+      "difficulty": "medium",
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m2202-q17",
@@ -226,7 +258,9 @@
       "correctChoice": "C",
       "explanation": "Using Euler's formula $\\cos(\\omega_0 t) = \\frac{1}{2}(e^{j\\omega_0 t} + e^{-j\\omega_0 t})$, its Fourier transform is $\\pi [\\delta(\\omega - \\omega_0) + \\delta(\\omega + \\omega_0)]$.",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m2202-q18",
@@ -239,7 +273,9 @@
       "correctChoice": "A",
       "explanation": "$\\mathcal{L}\\{\\sinh 2t\\} = \\frac{2}{s^2 - 4}$. Shifting $s \\to s + 1$: $\\frac{2}{(s + 1)^2 - 4} = \\frac{2}{s^2 + 2s - 3}$.\n\n⚡ Speed Shortcut: $\\frac{2}{(s + 1)^2 - 4}$.",
       "category": "computational",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m2202-q19",
@@ -252,7 +288,9 @@
       "correctChoice": "D",
       "explanation": "Delaying a signal in the time domain by $a$ units corresponds to multiplying its Laplace transform by $e^{-as}$.",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m2202-q20",
@@ -265,7 +303,9 @@
       "correctChoice": "B",
       "explanation": "Recognizing the damped cosine standard form $\\frac{s + a}{(s + a)^2 + k^2}$ with $a = 3, k = 7$: $\\mathcal{L}^{-1}\\{F(s)\\} = e^{-3t}\\cos(7t)$.\n\n⚡ Speed Shortcut: $e^{-3t}\\cos(7t)$.",
       "category": "shortcuts",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "shortcut",
+      "isAnchor": false
     },
     {
       "id": "m2202-q21",
@@ -278,7 +318,9 @@
       "correctChoice": "A",
       "explanation": "By the time-shifting property: $\\mathcal{F}\\{\\delta(t - t_0)\\} = e^{-j\\omega t_0} \\mathcal{F}\\{\\delta(t)\\} = e^{-j\\omega t_0}$.",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m2202-q22",
@@ -291,7 +333,9 @@
       "correctChoice": "D",
       "explanation": "$\\frac{10}{s^2 + 25} = 2\\left(\\frac{5}{s^2 + 5^2}\\right) = 2\\sin(5t)$.\n\n⚡ Speed Shortcut: $2\\sin(5t)$.",
       "category": "shortcuts",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "shortcut",
+      "isAnchor": false
     }
   ]
 }

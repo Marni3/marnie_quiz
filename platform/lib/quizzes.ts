@@ -84,6 +84,7 @@ export async function createQuestionSetFromCsv(input: CreateQuizInput): Promise<
       tier: "review",
       topicCode: null,
       subjectTag: input.subjectTag || null,
+      moduleId: null,
       visibility,
       rawCsv: input.rawCsv || null,
       createdAt: new Date(),

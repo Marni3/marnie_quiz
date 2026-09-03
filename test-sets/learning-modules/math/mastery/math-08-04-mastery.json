@@ -18,7 +18,9 @@
       "correctChoice": "C",
       "explanation": "$L = (a^{2/3} + b^{2/3})^{3/2} = (8^{2/3} + 27^{2/3})^{3/2} = (4 + 9)^{3/2} = 13^{3/2} = 13\\sqrt{13} \\approx 46.872\\text{ m}$.\n\n⚡ Speed Shortcut: $(4 + 9)^{1.5} = 13\\sqrt{13} \\approx 46.87\\text{ m}$.",
       "category": "computational",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "numerical",
+      "isAnchor": true
     },
     {
       "id": "m1404-q02",
@@ -31,7 +33,9 @@
       "correctChoice": "D",
       "explanation": "Stiffness maximization yields $y = x\\sqrt{3}$. (For strongest beam $S \\propto xy^2$, the ratio is $y = x\\sqrt{2}$).",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m1404-q03",
@@ -44,7 +48,9 @@
       "correctChoice": "C",
       "explanation": "By Regiomontanus' Theorem: $x = \\sqrt{y_1 y_2} = \\sqrt{2 \\times 4} = \\sqrt{8} = 2\\sqrt{2} \\approx 2.8284\\text{ m}$.\n\n⚡ Speed Shortcut: $\\sqrt{8} \\approx 2.83\\text{ m}$.",
       "category": "computational",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m1404-q04",
@@ -57,7 +63,9 @@
       "correctChoice": "A",
       "explanation": "For an open cylindrical container, minimizing surface area $A = \\pi r^2 + 2\\pi rh$ yields $r = h = \\sqrt[3]{V/\\pi}$. (For a closed tank, $h = 2r$).",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m1404-q05",
@@ -70,7 +78,9 @@
       "correctChoice": "D",
       "explanation": "$x = \\frac{d h_1}{h_1 + h_2} = \\frac{30(6)}{6 + 12} = \\frac{180}{18} = 10\\text{ m}$.\n\n⚡ Speed Shortcut: $\\frac{6}{18} \\times 30 = 10\\text{ m}$.",
       "category": "shortcuts",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "shortcut",
+      "isAnchor": false
     },
     {
       "id": "m1404-q06",
@@ -83,7 +93,9 @@
       "correctChoice": "D",
       "explanation": "Inscribed cylinder volume is $V_c = \\frac{4\\pi R^3}{3\\sqrt{3}}$. Ratio $= \\frac{V_c}{V_s} = \\frac{1}{\\sqrt{3}} \\approx 0.57735$.",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m1404-q07",
@@ -96,7 +108,9 @@
       "correctChoice": "B",
       "explanation": "$x = D/2 = 10\\text{ cm}, \\quad y = x\\sqrt{3} = 10\\sqrt{3} \\approx 17.3205\\text{ cm}$.\n\n⚡ Speed Shortcut: $x = 10, y = 10\\sqrt{3}$.",
       "category": "computational",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m1404-q08",
@@ -109,7 +123,9 @@
       "correctChoice": "A",
       "explanation": "The regular half-hexagon maximizes hydraulic radius while minimizing wetted perimeter friction.",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m1404-q09",
@@ -122,7 +138,9 @@
       "correctChoice": "C",
       "explanation": "$x = \\sqrt[3]{2V} = \\sqrt[3]{64} = 4\\text{ cm}$. Height $y = x/2 = 4/2 = 2\\text{ cm}$.\n\n⚡ Speed Shortcut: $x = \\sqrt[3]{64} = 4, y = 2$.",
       "category": "shortcuts",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "shortcut",
+      "isAnchor": false
     },
     {
       "id": "m1404-q10",
@@ -135,7 +153,9 @@
       "correctChoice": "A",
       "explanation": "Height $h = s/\\sqrt{3}$ and radius $r = s\\sqrt{2/3}$, so $\\tan\\theta = r/h = \\sqrt{2} \\implies \\theta = \\arctan(\\sqrt{2}) \\approx 54.74^\\circ$.",
       "category": "conceptual",
-      "difficulty": "medium"
+      "difficulty": "medium",
+      "archetype": "conceptual",
+      "isAnchor": false
     },
     {
       "id": "m1404-q11",
@@ -148,7 +168,9 @@
       "correctChoice": "A",
       "explanation": "$x = 2b/\\sqrt{3} = 2(9)/\\sqrt{3} = 6\\sqrt{3} \\approx 10.39\\text{ cm}$. $y = 2a\\sqrt{2/3} = 30\\sqrt{2/3} = 10\\sqrt{6} \\approx 24.49\\text{ cm}$.",
       "category": "computational",
-      "difficulty": "medium"
+      "difficulty": "medium",
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m1404-q12",
@@ -161,7 +183,9 @@
       "correctChoice": "D",
       "explanation": "Cone has base radius $R$ and height $R$, so $V_c = \\frac{1}{3}\\pi R^2(R) = \\frac{1}{3}\\pi R^3 = \\frac{1}{2} V_{\\text{hemisphere}}$.",
       "category": "shortcuts",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "shortcut",
+      "isAnchor": false
     },
     {
       "id": "m1404-q13",
@@ -174,7 +198,9 @@
       "correctChoice": "B",
       "explanation": "For closed can: $h = 2r$. $V = 2\\pi r^3 = 54\\pi \\implies r^3 = 27 \\implies r = 3\\text{ cm}, h = 6\\text{ cm}$.\n\n⚡ Speed Shortcut: $r = \\sqrt[3]{27} = 3, h = 6$.",
       "category": "computational",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m1404-q14",
@@ -187,7 +213,9 @@
       "correctChoice": "B",
       "explanation": "$h = \\frac{2R}{\\sqrt{3}} = \\frac{2(6)}{\\sqrt{3}} = 4\\sqrt{3} \\approx 6.9282\\text{ cm}$.\n\n⚡ Speed Shortcut: $\\frac{12}{\\sqrt{3}} = 4\\sqrt{3}$.",
       "category": "shortcuts",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "shortcut",
+      "isAnchor": false
     },
     {
       "id": "m1404-q15",
@@ -200,7 +228,9 @@
       "correctChoice": "A",
       "explanation": "$L = (a^{2/3} + b^{2/3})^{3/2} = (1^{2/3} + 8^{2/3})^{3/2} = (1 + 4)^{3/2} = 5^{3/2} = 5\\sqrt{5} \\approx 11.18\\text{ m}$.",
       "category": "applied",
-      "difficulty": "medium"
+      "difficulty": "medium",
+      "archetype": "applied",
+      "isAnchor": false
     },
     {
       "id": "m1404-q16",
@@ -213,7 +243,9 @@
       "correctChoice": "B",
       "explanation": "$y_1 = 1.5, y_2 = 1.5 + 1.5 = 3.0$. $x = \\sqrt{1.5 \\times 3.0} = \\sqrt{4.5} \\approx 2.1213\\text{ m}$.\n\n⚡ Speed Shortcut: $\\sqrt{4.5} \\approx 2.12\\text{ m}$.",
       "category": "computational",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m1404-q17",
@@ -226,7 +258,9 @@
       "correctChoice": "B",
       "explanation": "Minimizing lateral area for a cone with fixed volume yields $h = r\\sqrt{2}$ (or $r = h/\\sqrt{2}$).",
       "category": "conceptual",
-      "difficulty": "medium"
+      "difficulty": "medium",
+      "archetype": "conceptual",
+      "isAnchor": false
     },
     {
       "id": "m1404-q18",
@@ -239,7 +273,9 @@
       "correctChoice": "D",
       "explanation": "By 3D isoperimetric theorem, a cube maximizes volume for any fixed surface area.",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m1404-q19",
@@ -252,7 +288,9 @@
       "correctChoice": "C",
       "explanation": "When $a = b = w$, $L = (w^{2/3} + w^{2/3})^{3/2} = (2 w^{2/3})^{3/2} = 2\\sqrt{2} w = 2\\sqrt{2}(4) = 8\\sqrt{2} \\approx 11.3137\\text{ m}$.\n\n⚡ Speed Shortcut: $2\\sqrt{2} \\times 4 = 8\\sqrt{2} \\approx 11.31\\text{ m}$.",
       "category": "shortcuts",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "shortcut",
+      "isAnchor": false
     },
     {
       "id": "m1404-q20",
@@ -265,7 +303,9 @@
       "correctChoice": "A",
       "explanation": "By Fermat's principle of reflection, the optimal stake location creates equal angles of elevation from the ground.",
       "category": "conceptual",
-      "difficulty": "medium"
+      "difficulty": "medium",
+      "archetype": "conceptual",
+      "isAnchor": false
     },
     {
       "id": "m1404-q21",
@@ -278,7 +318,9 @@
       "correctChoice": "C",
       "explanation": "$r = \\sqrt[3]{V/\\pi} = \\sqrt[3]{1000\\pi/\\pi} = \\sqrt[3]{1000} = 10\\text{ m}$.\n\n⚡ Speed Shortcut: $\\sqrt[3]{1000} = 10\\text{ m}$.",
       "category": "computational",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m1404-q22",
@@ -291,7 +333,9 @@
       "correctChoice": "B",
       "explanation": "The maximum inscribed cylinder has height $y = h/3$ and radius $x = 2R/3$.",
       "category": "shortcuts",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "shortcut",
+      "isAnchor": false
     }
   ]
 }

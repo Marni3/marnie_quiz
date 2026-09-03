@@ -18,7 +18,9 @@
       "correctChoice": "C",
       "explanation": "Ptolemy's theorem states that the product of the diagonals equals the sum of the products of the opposite sides ($ac + bd = d_1 d_2$).",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m0804-q02",
@@ -31,7 +33,9 @@
       "correctChoice": "D",
       "explanation": "$A = \\frac{1}{2} d_1 d_2 \\sin \\theta = \\frac{1}{2}(12)(15)\\sin 30^\\circ = 90(0.5) = 45\\text{ cm}^2$.\n\n⚡ Speed Shortcut: $0.5 \\times 12 \\times 15 \\times 0.5 = 45\\text{ cm}^2$.",
       "category": "computational",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m0804-q03",
@@ -44,7 +48,9 @@
       "correctChoice": "B",
       "explanation": "Semiperimeter $s = (1 + 2 + 3 + 4)/2 = 5$. By Brahmagupta's formula: $A = \\sqrt{(5-1)(5-2)(5-3)(5-4)} = \\sqrt{4 \\times 3 \\times 2 \\times 1} = \\sqrt{24} = 2\\sqrt{6} \\approx 4.899$.",
       "category": "computational",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m0804-q04",
@@ -57,7 +63,9 @@
       "correctChoice": "A",
       "explanation": "Using the harmonic exradius identity: $\\frac{1}{r} = \\frac{1}{r_a} + \\frac{1}{r_b} + \\frac{1}{r_c} = \\frac{1}{6} + \\frac{1}{8} + \\frac{1}{12} = \\frac{4 + 3 + 2}{24} = \\frac{9}{24} = \\frac{3}{8} \\implies r = \\frac{8}{3} \\approx 2.67$.\n\n⚡ Speed Shortcut: $(1/6 + 1/8 + 1/12)^{-1} = 24/9 = 8/3$.",
       "category": "shortcuts",
-      "difficulty": "medium"
+      "difficulty": "medium",
+      "archetype": "shortcut",
+      "isAnchor": false
     },
     {
       "id": "m0804-q05",
@@ -70,7 +78,9 @@
       "correctChoice": "B",
       "explanation": "By Ptolemy's Theorem: $d_1 d_2 = ac + bd = (2)(5) + (6)(3) = 10 + 18 = 28$.\n\n⚡ Speed Shortcut: $2(5) + 6(3) = 28$.",
       "category": "computational",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m0804-q06",
@@ -83,7 +93,9 @@
       "correctChoice": "B",
       "explanation": "Brahmagupta (598–668 A.D.) discovered and proved the cyclic quadrilateral area theorem in Brahmasphutasiddhanta.",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m0804-q07",
@@ -96,7 +108,9 @@
       "correctChoice": "A",
       "explanation": "A cyclic (inscribed) quadrilateral is one whose vertices all lie on a common circumscribed circle.",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m0804-q08",
@@ -109,7 +123,9 @@
       "correctChoice": "B",
       "explanation": "$A = r_a(s - a) = 5(20 - 8) = 5(12) = 60\\text{ cm}^2$.\n\n⚡ Speed Shortcut: $5 \\times 12 = 60\\text{ cm}^2$.",
       "category": "computational",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m0804-q09",
@@ -122,7 +138,9 @@
       "correctChoice": "B",
       "explanation": "Opposite angles of a cyclic quadrilateral are always supplementary, summing to $180^\\circ$.",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m0804-q10",
@@ -135,7 +153,9 @@
       "correctChoice": "C",
       "explanation": "Bretschneider's formula calculates the area of any general convex quadrilateral given its four sides and two opposite angles.",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m0804-q11",
@@ -148,7 +168,9 @@
       "correctChoice": "D",
       "explanation": "$s = 50$. $A = \\sqrt{40 \\times 30 \\times 20 \\times 10} = \\sqrt{240000} \\approx 489.90$.\n\n⚡ Speed Shortcut: $\\sqrt{240000} \\approx 489.90$.",
       "category": "computational",
-      "difficulty": "medium"
+      "difficulty": "medium",
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m0804-q12",
@@ -161,7 +183,9 @@
       "correctChoice": "A",
       "explanation": "Since $\\sin 90^\\circ = 1$, the area is $A = \\frac{1}{2} d_1 d_2 \\sin 90^\\circ = \\frac{1}{2} d_1 d_2$ (as in a rhombus or kite).",
       "category": "shortcuts",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "shortcut",
+      "isAnchor": false
     },
     {
       "id": "m0804-q13",
@@ -174,7 +198,9 @@
       "correctChoice": "A",
       "explanation": "$s = 9, A = \\frac{6^2\\sqrt{3}}{4} = 9\\sqrt{3}$. Exradius $r_a = \\frac{A}{s - a} = \\frac{9\\sqrt{3}}{9 - 6} = \\frac{9\\sqrt{3}}{3} = 3\\sqrt{3}$.",
       "category": "applied",
-      "difficulty": "medium"
+      "difficulty": "medium",
+      "archetype": "applied",
+      "isAnchor": false
     },
     {
       "id": "m0804-q14",
@@ -187,7 +213,9 @@
       "correctChoice": "C",
       "explanation": "A kite has perpendicular diagonals: $A = \\frac{1}{2}(16)(24) = 192\\text{ cm}^2$.\n\n⚡ Speed Shortcut: $8 \\times 24 = 192\\text{ cm}^2$.",
       "category": "computational",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m0804-q15",
@@ -200,7 +228,9 @@
       "correctChoice": "D",
       "explanation": "In a rectangle, opposite sides are equal ($c = 6, d = 8$) and diagonals are equal ($d_1 = d_2 = d$). By Ptolemy: $ac + bd = d^2 \\implies 6(6) + 8(8) = d^2 \\implies 36 + 64 = 100 \\implies d = 10$.",
       "category": "applied",
-      "difficulty": "medium"
+      "difficulty": "medium",
+      "archetype": "applied",
+      "isAnchor": false
     },
     {
       "id": "m0804-q16",
@@ -213,7 +243,9 @@
       "correctChoice": "D",
       "explanation": "Semiperimeter is half the perimeter: $s = \\frac{a + b + c + d}{2}$.",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m0804-q17",
@@ -226,7 +258,9 @@
       "correctChoice": "A",
       "explanation": "$\\theta = \\frac{A + C}{2} = \\frac{120^\\circ}{2} = 60^\\circ$. $\\cos 60^\\circ = 0.5 \\implies \\cos^2 60^\\circ = (0.5)^2 = 0.25$.",
       "category": "computational",
-      "difficulty": "medium"
+      "difficulty": "medium",
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m0804-q18",
@@ -239,7 +273,9 @@
       "correctChoice": "A",
       "explanation": "Every triangle has exactly 3 excircles, each tangent to one side and the extensions of the other two sides.",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m0804-q19",
@@ -252,7 +288,9 @@
       "correctChoice": "D",
       "explanation": "$A = \\frac{1}{2} d_1 d_2 = \\frac{1}{2}(10)(18) = 90\\text{ cm}^2$.\n\n⚡ Speed Shortcut: $5 \\times 18 = 90\\text{ cm}^2$.",
       "category": "computational",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m0804-q20",
@@ -265,7 +303,9 @@
       "correctChoice": "B",
       "explanation": "$s = (7+15+20+24)/2 = 66/2 = 33$. $A = \\sqrt{(33-7)(33-15)(33-20)(33-24)} = \\sqrt{26 \\times 18 \\times 13 \\times 9} = \\sqrt{54756} = 234$.\n\n⚡ Speed Shortcut: $\\sqrt{26 \\times 18 \\times 13 \\times 9} = 234$.",
       "category": "shortcuts",
-      "difficulty": "medium"
+      "difficulty": "medium",
+      "archetype": "shortcut",
+      "isAnchor": false
     },
     {
       "id": "m0804-q21",
@@ -278,7 +318,9 @@
       "correctChoice": "C",
       "explanation": "Claudius Ptolemaeus (Ptolemy of Alexandria) used his diagonal theorem to generate trigonometric chord tables.",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m0804-q22",
@@ -291,7 +333,9 @@
       "correctChoice": "C",
       "explanation": "The classic geometric invariant linking all four radii to triangle area is $A = \\sqrt{r \\cdot r_a \\cdot r_b \\cdot r_c}$.",
       "category": "shortcuts",
-      "difficulty": "hard"
+      "difficulty": "hard",
+      "archetype": "shortcut",
+      "isAnchor": false
     }
   ]
 }

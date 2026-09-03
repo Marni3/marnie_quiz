@@ -15,7 +15,8 @@
       "choiceD": "The roots are undefined.",
       "correctChoice": "A",
       "explanation": "When the discriminant $\\Delta = 0$, the radical vanishes in the quadratic formula, yielding two identical real roots $x = -B/(2A)$.",
-      "archetype": "conceptual"
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m03-02",
@@ -26,7 +27,8 @@
       "choiceD": "B / A",
       "correctChoice": "A",
       "explanation": "Vieta's relations establish that the product of the roots is $r_1 \\cdot r_2 = C/A$, and the sum of the roots is $r_1 + r_2 = -B/A$.",
-      "archetype": "conceptual"
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m03-03",
@@ -37,7 +39,8 @@
       "choiceD": "30",
       "correctChoice": "A",
       "explanation": "The number of terms in any binomial expansion $(x + y)^n$ is always $n + 1$. For $n = 15$, there are $15 + 1 = 16$ terms.",
-      "archetype": "conceptual"
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m03-04",
@@ -48,7 +51,8 @@
       "choiceD": "Euler's Triangle",
       "correctChoice": "A",
       "explanation": "In Italy, Pascal's triangle is known as Tartaglia's triangle (after Niccolò Tartaglia), while in China it is referred to as Yang Hui's triangle.",
-      "archetype": "conceptual"
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m03-05",
@@ -59,7 +63,8 @@
       "choiceD": "\\frac{n(n + 1)}{2}",
       "correctChoice": "A",
       "explanation": "The total sum of powers across all variables in $(Ax^p + By^q)^n$ is $\\text{Sum} = \\frac{(p + q)n(n + 1)}{2}$.",
-      "archetype": "conceptual"
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m03-06",
@@ -70,7 +75,8 @@
       "choiceD": "Linearized Quadratic",
       "correctChoice": "A",
       "explanation": "A quadratic equation without a first-degree linear term ($B = 0$) is termed a pure quadratic equation.",
-      "archetype": "conceptual"
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m03-07",
@@ -81,7 +87,8 @@
       "choiceD": "Sum = 15, Product = 8",
       "correctChoice": "A",
       "explanation": "Sum $= -B/A = -(-15)/3 = 5$. Product $= C/A = 8/3$.",
-      "archetype": "numerical"
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m03-08",
@@ -92,7 +99,8 @@
       "choiceD": "±144",
       "correctChoice": "A",
       "explanation": "For equal roots, $\\Delta = B^2 - 4AC = 0 \\implies (-k)^2 - 4(9)(16) = 0 \\implies k^2 = 576 \\implies k = \\pm 24$.",
-      "archetype": "numerical"
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m03-09",
@@ -103,7 +111,8 @@
       "choiceD": "x² - 6x + 5 = 0",
       "correctChoice": "A",
       "explanation": "Sum $= (3 + 2i) + (3 - 2i) = 6$. Product $= (3 + 2i)(3 - 2i) = 9 - 4i^2 = 9 + 4 = 13$. Equation: $x^2 - (\\text{sum})x + (\\text{product}) = x^2 - 6x + 13 = 0$.",
-      "archetype": "numerical"
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m03-10",
@@ -114,7 +123,8 @@
       "choiceD": "70 x⁴ y³",
       "correctChoice": "A",
       "explanation": "$T_4 = \\binom{7}{3} x^{7-3} (2y)^3 = 35 \\cdot x^4 \\cdot (8y^3) = 280 x^4 y^3$.",
-      "archetype": "standard"
+      "archetype": "standard",
+      "isAnchor": false
     },
     {
       "id": "m03-11",
@@ -125,7 +135,8 @@
       "choiceD": "625",
       "correctChoice": "A",
       "explanation": "Substitute $x = 1$ and $y = 1$: $(2(1) - 3(1))^4 = (2 - 3)^4 = (-1)^4 = 1$.",
-      "archetype": "numerical"
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m03-12",
@@ -136,7 +147,8 @@
       "choiceD": "150",
       "correctChoice": "A",
       "explanation": "$\\text{Sum} = \\frac{(p + q)n(n + 1)}{2} = \\frac{(2 + 3)(5)(6)}{2} = \\frac{5 \\times 30}{2} = 75$.",
-      "archetype": "numerical"
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m03-13",
@@ -147,7 +159,8 @@
       "choiceD": "1",
       "correctChoice": "A",
       "explanation": "General term: $T_{k+1} = \\binom{6}{k} (x^2)^{6-k} (x^{-1})^k = \\binom{6}{k} x^{12 - 3k}$. For independent term, $12 - 3k = 0 \\implies k = 4$. Term $= \\binom{6}{4} = 15$.",
-      "archetype": "standard"
+      "archetype": "standard",
+      "isAnchor": false
     },
     {
       "id": "m03-14",
@@ -158,7 +171,8 @@
       "choiceD": "2/3",
       "correctChoice": "A",
       "explanation": "$\\frac{1}{r_1} + \\frac{1}{r_2} = \\frac{r_1 + r_2}{r_1 r_2} = \\frac{-B/A}{C/A} = -\\frac{B}{C} = -\\frac{-8}{3} = \\frac{8}{3}$.",
-      "archetype": "numerical"
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m03-15",
@@ -169,7 +183,8 @@
       "choiceD": "31",
       "correctChoice": "A",
       "explanation": "$r_1 + r_2 = 5, r_1 r_2 = 3$. $r_1^2 + r_2^2 = (r_1 + r_2)^2 - 2r_1 r_2 = 5^2 - 2(3) = 25 - 6 = 19$.",
-      "archetype": "applied"
+      "archetype": "applied",
+      "isAnchor": false
     },
     {
       "id": "m03-16",
@@ -180,7 +195,8 @@
       "choiceD": "5 seconds",
       "correctChoice": "A",
       "explanation": "$5t^2 - 40t = 0 \\implies 5t(t - 8) = 0 \\implies t = 8\\text{ seconds}$.",
-      "archetype": "applied"
+      "archetype": "applied",
+      "isAnchor": false
     },
     {
       "id": "m03-17",
@@ -191,7 +207,8 @@
       "choiceD": "140 x⁴ y⁴",
       "correctChoice": "A",
       "explanation": "Since $n = 8$ has 9 terms, the middle term is $T_5$ ($k = 4$): $T_5 = \\binom{8}{4} (2x)^4 \\left(-\\frac{y}{2}\\right)^4 = 70 \\cdot (16x^4) \\cdot \\left(\\frac{y^4}{16}\\right) = 70 x^4 y^4$.",
-      "archetype": "applied"
+      "archetype": "applied",
+      "isAnchor": false
     },
     {
       "id": "m03-18",
@@ -202,7 +219,8 @@
       "choiceD": "Undamped (sustained)",
       "correctChoice": "A",
       "explanation": "$\\Delta = 6^2 - 4(1)(25) = 36 - 100 = -64 < 0$. Negative discriminant yields complex roots $s = \\frac{-6 \\pm 8i}{2} = -3 \\pm 4i$, indicating an underdamped oscillatory response.",
-      "archetype": "applied"
+      "archetype": "applied",
+      "isAnchor": false
     },
     {
       "id": "m03-19",
@@ -213,7 +231,8 @@
       "choiceD": "None of the above.",
       "correctChoice": "C",
       "explanation": "Both forgetting the $(-1)^{r-1}$ sign multiplier and using $\\binom{n}{r}$ instead of $\\binom{n}{r-1}$ are the two most common algebraic pitfalls.",
-      "archetype": "trap"
+      "archetype": "trap",
+      "isAnchor": false
     },
     {
       "id": "m03-20",
@@ -224,7 +243,8 @@
       "choiceD": "Subtract the constant 4.",
       "correctChoice": "A",
       "explanation": "Substituting $x = 1, y = 1$ yields $(2(1) - 3(1) + 4)^3 = (3)^3 = 27$.",
-      "archetype": "trap"
+      "archetype": "trap",
+      "isAnchor": false
     },
     {
       "id": "m03-21",
@@ -235,7 +255,8 @@
       "choiceD": "28",
       "correctChoice": "A",
       "explanation": "Sum $= -B/A = -28/7 = -4$ in 2 seconds.",
-      "archetype": "shortcut"
+      "archetype": "shortcut",
+      "isAnchor": false
     },
     {
       "id": "m03-22",
@@ -246,7 +267,8 @@
       "choiceD": "x = 0, 5",
       "correctChoice": "A",
       "explanation": "$(x - 5)^2 = 0 \\implies x = 5$ with multiplicity 2.",
-      "archetype": "shortcut"
+      "archetype": "shortcut",
+      "isAnchor": false
     }
   ]
 }

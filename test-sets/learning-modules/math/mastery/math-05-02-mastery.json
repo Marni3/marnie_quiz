@@ -18,7 +18,9 @@
       "correctChoice": "B",
       "explanation": "Since one full revolution is $400\\text{ gons}$, a right angle ($1/4$ circle) is $\\frac{400}{4} = 100\\text{ gons}$.",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m1002-q02",
@@ -31,7 +33,9 @@
       "correctChoice": "B",
       "explanation": "$1600 \\times \\frac{360^\\circ}{6400} = 1600 \\times \\frac{90^\\circ}{1600} = 90^\\circ$.\n\n⚡ Speed Shortcut: $\\frac{1600}{6400} = \\frac{1}{4} \\text{ rev} = 90^\\circ$.",
       "category": "computational",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m1002-q03",
@@ -44,7 +48,9 @@
       "correctChoice": "D",
       "explanation": "$\\theta = \\frac{(8 - 2)180^\\circ}{8} = \\frac{6 \\times 180^\\circ}{8} = 135^\\circ$.\n\n⚡ Speed Shortcut: $180^\\circ - \\frac{360^\\circ}{8} = 180^\\circ - 45^\\circ = 135^\\circ$.",
       "category": "shortcuts",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "shortcut",
+      "isAnchor": false
     },
     {
       "id": "m1002-q04",
@@ -57,7 +63,9 @@
       "correctChoice": "B",
       "explanation": "A polygon with 100 sides is named a hectagon (from Greek *hekaton*, meaning hundred).",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m1002-q05",
@@ -70,7 +78,9 @@
       "correctChoice": "B",
       "explanation": "Adjacent angles along a straight intersecting line are supplementary: $180^\\circ - 68^\\circ = 112^\\circ$.",
       "category": "computational",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m1002-q06",
@@ -83,7 +93,9 @@
       "correctChoice": "D",
       "explanation": "$S = (n - 2) \\times 180^\\circ = (6 - 2) \\times 180^\\circ = 4 \\times 180^\\circ = 720^\\circ$.\n\n⚡ Speed Shortcut: $4 \\times 180 = 720^\\circ$.",
       "category": "computational",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m1002-q07",
@@ -96,7 +108,9 @@
       "correctChoice": "C",
       "explanation": "The Babylonians established the 360-degree circle based on base-60 sexagesimal arithmetic and astronomical calendars.",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m1002-q08",
@@ -109,7 +123,9 @@
       "correctChoice": "C",
       "explanation": "An 11-sided polygon is termed an undecagon (Latin) or hendecagon (Greek).",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m1002-q09",
@@ -122,7 +138,9 @@
       "correctChoice": "A",
       "explanation": "$\\text{Gons} = 270^\\circ \\times \\frac{400}{360^\\circ} = 270 \\times \\frac{10}{9} = 300\\text{ gons}$.\n\n⚡ Speed Shortcut: $\\frac{3}{4} \\times 400 = 300\\text{ gons}$.",
       "category": "computational",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m1002-q10",
@@ -135,7 +153,9 @@
       "correctChoice": "B",
       "explanation": "Exterior angle $= 180^\\circ - 150^\\circ = 30^\\circ$. Number of sides $n = \\frac{360^\\circ}{30^\\circ} = 12$.\n\n⚡ Speed Shortcut: $\\frac{360}{180 - 150} = \\frac{360}{30} = 12$.",
       "category": "shortcuts",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "shortcut",
+      "isAnchor": false
     },
     {
       "id": "m1002-q11",
@@ -148,7 +168,9 @@
       "correctChoice": "A",
       "explanation": "For any convex polygon of any number of sides $n$, traversing the perimeter turns a complete $360^\\circ$ full revolution.",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m1002-q12",
@@ -161,7 +183,9 @@
       "correctChoice": "A",
       "explanation": "$\\text{Radians} = 2\\pi \\times \\frac{4800}{6400} = 2\\pi \\times \\frac{3}{4} = \\frac{3\\pi}{2}\\text{ rad} \\approx 4.7124\\text{ rad}$.",
       "category": "computational",
-      "difficulty": "medium"
+      "difficulty": "medium",
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m1002-q13",
@@ -174,7 +198,9 @@
       "correctChoice": "D",
       "explanation": "A $10^6$-sided polygon is named a megagon (a myriagon has 10,000 sides; a googolgon has $10^{100}$ sides).",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m1002-q14",
@@ -187,7 +213,9 @@
       "correctChoice": "A",
       "explanation": "$\\theta = \\frac{(7 - 2)180^\\circ}{7} = \\frac{900^\\circ}{7} \\approx 128.5714^\\circ$.\n\n⚡ Speed Shortcut: $\\frac{900}{7} \\approx 128.57^\\circ$.",
       "category": "computational",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m1002-q15",
@@ -200,7 +228,9 @@
       "correctChoice": "B",
       "explanation": "In the French centesimal system, $1\\text{ gon} = 100\\text{ centesimal minutes} = 10,000\\text{ centesimal seconds}$.",
       "category": "conceptual",
-      "difficulty": "medium"
+      "difficulty": "medium",
+      "archetype": "conceptual",
+      "isAnchor": false
     },
     {
       "id": "m1002-q16",
@@ -213,7 +243,9 @@
       "correctChoice": "C",
       "explanation": "Interior + Exterior $= 180^\\circ \\implies 5x + x = 180^\\circ \\implies 6x = 180^\\circ \\implies x = 30^\\circ$. Number of sides $n = 360 / 30 = 12$.\n\n⚡ Speed Shortcut: $n = 2 \\times (5 + 1) = 12$.",
       "category": "shortcuts",
-      "difficulty": "medium"
+      "difficulty": "medium",
+      "archetype": "shortcut",
+      "isAnchor": false
     },
     {
       "id": "m1002-q17",
@@ -226,7 +258,9 @@
       "correctChoice": "A",
       "explanation": "A rectangle is equiangular (all $90^\\circ$) but not regular unless its sides are also equal (a square).",
       "category": "conceptual",
-      "difficulty": "medium"
+      "difficulty": "medium",
+      "archetype": "conceptual",
+      "isAnchor": false
     },
     {
       "id": "m1002-q18",
@@ -239,7 +273,9 @@
       "correctChoice": "C",
       "explanation": "$\\text{Mils} = 50 \\times \\frac{6400}{400} = 50 \\times 16 = 800\\text{ mils}$.\n\n⚡ Speed Shortcut: $50 \\times 16 = 800\\text{ mils}$.",
       "category": "computational",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m1002-q19",
@@ -252,7 +288,9 @@
       "correctChoice": "D",
       "explanation": "Exterior angle $= 360^\\circ / 100 = 3.6^\\circ$. Interior angle $= 180^\\circ - 3.6^\\circ = 176.4^\\circ$.\n\n⚡ Speed Shortcut: $180 - 3.6 = 176.4^\\circ$.",
       "category": "shortcuts",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "shortcut",
+      "isAnchor": false
     },
     {
       "id": "m1002-q20",
@@ -265,7 +303,9 @@
       "correctChoice": "D",
       "explanation": "Triangulating a convex $n$-gon from a single vertex divides the polygon into exactly $n - 2$ triangles, giving total angle sum $(n - 2)180^\\circ$.",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m1002-q21",
@@ -278,7 +318,9 @@
       "correctChoice": "C",
       "explanation": "$3200 \\times \\frac{400}{6400} = 3200 \\times \\frac{1}{16} = 200\\text{ gons}$ (half a circle / straight angle).",
       "category": "computational",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m1002-q22",
@@ -291,7 +333,9 @@
       "correctChoice": "A",
       "explanation": "Polygon is derived from Greek poly (many) and gonia (angles).",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     }
   ]
 }

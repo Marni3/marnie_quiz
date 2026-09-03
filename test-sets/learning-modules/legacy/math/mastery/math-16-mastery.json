@@ -15,7 +15,8 @@
       "choiceD": "For all integer powers m and n.",
       "correctChoice": "A",
       "explanation": "Wallis' formula uses $\\alpha = \\frac{\\pi}{2}$ strictly when both powers $m$ and $n$ are even integers. If either exponent is odd, $\\alpha = 1$.",
-      "archetype": "conceptual"
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m16-02",
@@ -26,7 +27,8 @@
       "choiceD": "a · f(a)",
       "correctChoice": "A",
       "explanation": "For any odd function integrated over a symmetric interval $[-a, a]$, the negative area on the left cancels the positive area on the right, producing an exact value of 0.",
-      "archetype": "conceptual"
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m16-03",
@@ -37,7 +39,8 @@
       "choiceD": "u = a cosh θ",
       "correctChoice": "A",
       "explanation": "Substituting $u = a\\sin\\theta$ transforms $\\sqrt{a^2 - a^2\\sin^2\\theta} = \\sqrt{a^2\\cos^2\\theta} = a\\cos\\theta$ using the Pythagorean identity $1 - \\sin^2\\theta = \\cos^2\\theta$.",
-      "archetype": "conceptual"
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m16-04",
@@ -48,7 +51,8 @@
       "choiceD": "Highest power first",
       "correctChoice": "A",
       "explanation": "The LIATE rule provides the established standard hierarchy for choosing $u$ so that its derivative $du$ simplifies the remaining integral $\\int v du$.",
-      "archetype": "conceptual"
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m16-05",
@@ -59,7 +63,8 @@
       "choiceD": "It produces a negative exponent.",
       "correctChoice": "A",
       "explanation": "Setting $n = -1$ produces $\\frac{u^0}{0}$, which is undefined. The antiderivative of $u^{-1} = 1/u$ is uniquely defined by the natural logarithm $\\ln|u| + C$.",
-      "archetype": "conceptual"
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m16-06",
@@ -70,7 +75,8 @@
       "choiceD": "The integral equals the product of the bounds.",
       "correctChoice": "A",
       "explanation": "The Fundamental Theorem of Calculus links differentiation and integration, establishing that definite accumulation equals the net change of the antiderivative $F(b) - F(a)$.",
-      "archetype": "conceptual"
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m16-07",
@@ -81,7 +87,8 @@
       "choiceD": "1 / 4",
       "correctChoice": "A",
       "explanation": "$m = 4$ (even), $n = 0$ (even) $\\implies \\alpha = \\frac{\\pi}{2}$. Value $= \\frac{3 \\times 1}{4 \\times 2} \\times \\frac{\\pi}{2} = \\frac{3}{8} \\times \\frac{\\pi}{2} = \\frac{3\\pi}{16}$.",
-      "archetype": "numerical"
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m16-08",
@@ -92,7 +99,8 @@
       "choiceD": "1/15",
       "correctChoice": "A",
       "explanation": "$m = 3$ (odd), $n = 2$ (even) $\\implies \\alpha = 1$. Value $= \\frac{(2)(1)}{(5)(3)(1)} \\times 1 = \\frac{2}{15}$.",
-      "archetype": "numerical"
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m16-09",
@@ -103,7 +111,8 @@
       "choiceD": "x² sin x / 2 + C",
       "correctChoice": "A",
       "explanation": "Parts: $u = x, dv = \\cos x dx \\implies du = dx, v = \\sin x$. $\\int x\\cos x dx = x\\sin x - \\int \\sin x dx = x\\sin x - (-\\cos x) + C = x\\sin x + \\cos x + C$.",
-      "archetype": "numerical"
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m16-10",
@@ -114,7 +123,8 @@
       "choiceD": "1/e",
       "correctChoice": "A",
       "explanation": "Let $u = \\ln x \\implies du = \\frac{1}{x} dx$. Bounds: $x = 1 \\implies u = 0; x = e \\implies u = 1$. $\\int_0^1 u du = \\left[\\frac{u^2}{2}\\right]_0^1 = \\frac{1}{2}$.",
-      "archetype": "numerical"
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m16-11",
@@ -125,7 +135,8 @@
       "choiceD": "ln(x² + 9) + C",
       "correctChoice": "A",
       "explanation": "Standard inverse tangent integral: $\\int \\frac{du}{u^2 + a^2} = \\frac{1}{a}\\arctan\\left(\\frac{u}{a}\\right) + C = \\frac{1}{3}\\arctan\\left(\\frac{x}{3}\\right) + C$.",
-      "archetype": "numerical"
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m16-12",
@@ -136,7 +147,8 @@
       "choiceD": "ln|x + √(16 - x²)| + C",
       "correctChoice": "A",
       "explanation": "Standard inverse sine integral: $\\int \\frac{du}{\\sqrt{a^2 - u^2}} = \\arcsin\\left(\\frac{u}{a}\\right) + C = \\arcsin\\left(\\frac{x}{4}\\right) + C$.",
-      "archetype": "numerical"
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m16-13",
@@ -147,7 +159,8 @@
       "choiceD": "24",
       "correctChoice": "A",
       "explanation": "$[x^3 - x^2 + x]_0^3 = (3^3 - 3^2 + 3) - 0 = (27 - 9 + 3) = 21$.",
-      "archetype": "numerical"
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m16-14",
@@ -158,7 +171,8 @@
       "choiceD": "64",
       "correctChoice": "A",
       "explanation": "Because $f(-x) = (-x)^5 e^{(-x)^2} = -x^5 e^{x^2} = -f(x)$, the integrand is strictly an odd function over symmetric limits $[-2, 2]$, so the integral is 0.",
-      "archetype": "standard"
+      "archetype": "standard",
+      "isAnchor": false
     },
     {
       "id": "m16-15",
@@ -169,7 +183,8 @@
       "choiceD": "125 Coulombs",
       "correctChoice": "A",
       "explanation": "$Q = \\int_0^{10} (2t + 5) dt = [t^2 + 5t]_0^{10} = 10^2 + 5(10) = 100 + 50 = 150\\text{ Coulombs}$.",
-      "archetype": "applied"
+      "archetype": "applied",
+      "isAnchor": false
     },
     {
       "id": "m16-16",
@@ -180,7 +195,8 @@
       "choiceD": "40 Joules",
       "correctChoice": "A",
       "explanation": "$W = \\int_{0.1}^{0.3} 500x dx = \\left[250x^2\\right]_{0.1}^{0.3} = 250(0.09 - 0.01) = 250(0.08) = 20\\text{ Joules}$.",
-      "archetype": "applied"
+      "archetype": "applied",
+      "isAnchor": false
     },
     {
       "id": "m16-17",
@@ -191,7 +207,8 @@
       "choiceD": "12.5 Joules",
       "correctChoice": "A",
       "explanation": "$W = \\frac{1}{2} L I^2 = \\frac{1}{2}(2)(5^2) = 25\\text{ Joules}$.",
-      "archetype": "applied"
+      "archetype": "applied",
+      "isAnchor": false
     },
     {
       "id": "m16-18",
@@ -202,7 +219,8 @@
       "choiceD": "π/4",
       "correctChoice": "A",
       "explanation": "Let $u = 1 - x^2 \\implies du = -2x dx \\implies x dx = -du/2$. At $x=0, u=1; x=1, u=0$. $\\int_1^0 -\\frac{1}{2}\\sqrt{u} du = \\frac{1}{2}\\int_0^1 u^{1/2} du = \\frac{1}{2}\\left[\\frac{2}{3}u^{3/2}\\right]_0^1 = \\frac{1}{3}$.",
-      "archetype": "applied"
+      "archetype": "applied",
+      "isAnchor": false
     },
     {
       "id": "m16-19",
@@ -213,7 +231,8 @@
       "choiceD": "Forgetting the factorial.",
       "correctChoice": "A",
       "explanation": "The factor $\\alpha = \\pi/2$ is applied ONLY when both $m$ and $n$ are even. If either power is odd, $\\alpha = 1$. Applying $\\pi/2$ when one power is odd is the most frequent board error.",
-      "archetype": "trap"
+      "archetype": "trap",
+      "isAnchor": false
     },
     {
       "id": "m16-20",
@@ -224,7 +243,8 @@
       "choiceD": "Squaring the argument.",
       "correctChoice": "A",
       "explanation": "$\\int \\frac{dx}{x^2 + a^2} = \\frac{1}{a}\\arctan(x/a) + C$, while $\\int \\frac{dx}{\\sqrt{a^2 - x^2}} = \\arcsin(x/a) + C$ (no $1/a$ in front).",
-      "archetype": "trap"
+      "archetype": "trap",
+      "isAnchor": false
     },
     {
       "id": "m16-21",
@@ -235,7 +255,8 @@
       "choiceD": "Use TABLE mode.",
       "correctChoice": "A",
       "explanation": "The calculator's `[∫dx]` key computes exact numerical integration directly, immediately matching the correct multiple-choice value.",
-      "archetype": "shortcut"
+      "archetype": "shortcut",
+      "isAnchor": false
     },
     {
       "id": "m16-22",
@@ -246,7 +267,8 @@
       "choiceD": "Undefined",
       "correctChoice": "A",
       "explanation": "Because $f(-x) = \\frac{(-x)^7}{(-x)^4 + 1} = -\\frac{x^7}{x^4 + 1} = -f(x)$, the integrand is odd, so the symmetric integral is 0 in 1 second.",
-      "archetype": "shortcut"
+      "archetype": "shortcut",
+      "isAnchor": false
     }
   ]
 }

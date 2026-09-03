@@ -33,58 +33,58 @@ interface OmniItem {
 
 const STATIC_TOPICS: Array<{ code: string; title: string; domain: string; href: string }> = [
   // MATH
-  { code: "MATH 01", title: "College Algebra (Polynomials, Exponents, Radicals)", domain: "MATH", href: "/quizzes?domain=MATH" },
-  { code: "MATH 02", title: "Probability & Counting Techniques", domain: "MATH", href: "/quizzes?domain=MATH" },
-  { code: "MATH 03", title: "Statistics (Central Tendency, Regression)", domain: "MATH", href: "/quizzes?domain=MATH" },
-  { code: "MATH 04", title: "Discrete Mathematics (Sets, Graph Theory)", domain: "MATH", href: "/quizzes?domain=MATH" },
-  { code: "MATH 05", title: "Plane & Spherical Trigonometry", domain: "MATH", href: "/quizzes?domain=MATH" },
-  { code: "MATH 06", title: "Plane Geometry (Polygons, Circles, Power of a Point)", domain: "MATH", href: "/quizzes?domain=MATH" },
-  { code: "MATH 07", title: "Solid Geometry (Prisms, Pyramids, Cones)", domain: "MATH", href: "/quizzes?domain=MATH" },
-  { code: "MATH 08", title: "Solid Mensuration (Prismoidal Formula)", domain: "MATH", href: "/quizzes?domain=MATH" },
-  { code: "MATH 09", title: "Analytic Geometry (Lines, Conics, Polar Curves)", domain: "MATH", href: "/quizzes?domain=MATH" },
-  { code: "MATH 10", title: "Differential Calculus (Limits, Derivatives, Rates)", domain: "MATH", href: "/quizzes?domain=MATH" },
-  { code: "MATH 11", title: "Integral Calculus (Areas, Volumes, Pappus)", domain: "MATH", href: "/quizzes?domain=MATH" },
-  { code: "MATH 12", title: "Differential Equations (Separable, Exact, Linear, Laplace)", domain: "MATH", href: "/quizzes?domain=MATH" },
-  { code: "MATH 13", title: "Advanced Engineering Mathematics (Vectors, Matrices, Fourier)", domain: "MATH", href: "/quizzes?domain=MATH" },
+  { code: "MATH 01", title: "College Algebra (Polynomials, Exponents, Radicals)", domain: "MATH", href: "/quizzes?domain=MATH&topic=MATH-01&search=College%20Algebra" },
+  { code: "MATH 02", title: "Probability & Counting Techniques", domain: "MATH", href: "/quizzes?domain=MATH&topic=MATH-02&search=Probability" },
+  { code: "MATH 03", title: "Statistics (Central Tendency, Regression)", domain: "MATH", href: "/quizzes?domain=MATH&topic=MATH-03&search=Statistics" },
+  { code: "MATH 04", title: "Discrete Mathematics (Sets, Graph Theory)", domain: "MATH", href: "/quizzes?domain=MATH&topic=MATH-04&search=Discrete" },
+  { code: "MATH 05", title: "Plane & Spherical Trigonometry", domain: "MATH", href: "/quizzes?domain=MATH&topic=MATH-05&search=Trigonometry" },
+  { code: "MATH 06", title: "Plane Geometry (Polygons, Circles, Power of a Point)", domain: "MATH", href: "/quizzes?domain=MATH&topic=MATH-06&search=Plane%20Geometry" },
+  { code: "MATH 07", title: "Solid Geometry (Prisms, Pyramids, Cones)", domain: "MATH", href: "/quizzes?domain=MATH&topic=MATH-07&search=Solid%20Geometry" },
+  { code: "MATH 08", title: "Solid Mensuration (Prismoidal Formula)", domain: "MATH", href: "/quizzes?domain=MATH&topic=MATH-08&search=Solid%20Mensuration" },
+  { code: "MATH 09", title: "Analytic Geometry (Lines, Conics, Polar Curves)", domain: "MATH", href: "/quizzes?domain=MATH&topic=MATH-09&search=Analytic%20Geometry" },
+  { code: "MATH 10", title: "Differential Calculus (Limits, Derivatives, Rates)", domain: "MATH", href: "/quizzes?domain=MATH&topic=MATH-10&search=Differential%20Calculus" },
+  { code: "MATH 11", title: "Integral Calculus (Areas, Volumes, Pappus)", domain: "MATH", href: "/quizzes?domain=MATH&topic=MATH-11&search=Integral%20Calculus" },
+  { code: "MATH 12", title: "Differential Equations (Separable, Exact, Linear, Laplace)", domain: "MATH", href: "/quizzes?domain=MATH&topic=MATH-12&search=Differential%20Equations" },
+  { code: "MATH 13", title: "Advanced Engineering Mathematics (Vectors, Matrices, Fourier)", domain: "MATH", href: "/quizzes?domain=MATH&topic=MATH-13&search=Advanced%20Engineering" },
   // ELECS
-  { code: "ELEC 01", title: "Electricity & Magnetism", domain: "ELECS", href: "/quizzes?domain=ELECS" },
-  { code: "ELEC 02", title: "Electrical Elements & Circuits", domain: "ELECS", href: "/quizzes?domain=ELECS" },
-  { code: "ELEC 03", title: "DC Circuits & Network Theorems", domain: "ELECS", href: "/quizzes?domain=ELECS" },
-  { code: "ELEC 04", title: "AC Circuits, Phasors & Power", domain: "ELECS", href: "/quizzes?domain=ELECS" },
-  { code: "ELEC 05", title: "Transients & Resonant Circuits", domain: "ELECS", href: "/quizzes?domain=ELECS" },
-  { code: "ELEC 06", title: "Semiconductor Physics & Diodes", domain: "ELECS", href: "/quizzes?domain=ELECS" },
-  { code: "ELEC 07", title: "Bipolar Junction Transistors (BJT)", domain: "ELECS", href: "/quizzes?domain=ELECS" },
-  { code: "ELEC 08", title: "Field Effect Transistors (FET & MOSFET)", domain: "ELECS", href: "/quizzes?domain=ELECS" },
-  { code: "ELEC 09", title: "Operational Amplifiers (Op-Amps)", domain: "ELECS", href: "/quizzes?domain=ELECS" },
-  { code: "ELEC 10", title: "Industrial Electronics & Thyristors", domain: "ELECS", href: "/quizzes?domain=ELECS" },
-  { code: "ELEC 11", title: "Power Supplies & Voltage Regulators", domain: "ELECS", href: "/quizzes?domain=ELECS" },
-  { code: "ELEC 12", title: "Microelectronics & IC Fabrication", domain: "ELECS", href: "/quizzes?domain=ELECS" },
-  { code: "ELEC 13", title: "Electronic Test & Measurement Instruments", domain: "ELECS", href: "/quizzes?domain=ELECS" },
-  { code: "ELEC 14", title: "Feedback Amplifiers & Oscillators", domain: "ELECS", href: "/quizzes?domain=ELECS" },
-  { code: "ELEC 15", title: "Digital Electronics & Logic Circuits", domain: "ELECS", href: "/quizzes?domain=ELECS" },
+  { code: "ELEC 01", title: "Electricity & Magnetism", domain: "ELECS", href: "/quizzes?domain=ELECS&topic=ELEC-01&search=Electricity" },
+  { code: "ELEC 02", title: "Electrical Elements & Circuits", domain: "ELECS", href: "/quizzes?domain=ELECS&topic=ELEC-02&search=Electrical%20Elements" },
+  { code: "ELEC 03", title: "DC Circuits & Network Theorems", domain: "ELECS", href: "/quizzes?domain=ELECS&topic=ELEC-03&search=DC%20Circuits" },
+  { code: "ELEC 04", title: "AC Circuits, Phasors & Power", domain: "ELECS", href: "/quizzes?domain=ELECS&topic=ELEC-04&search=AC%20Circuits" },
+  { code: "ELEC 05", title: "Transients & Resonant Circuits", domain: "ELECS", href: "/quizzes?domain=ELECS&topic=ELEC-05&search=Transients" },
+  { code: "ELEC 06", title: "Semiconductor Physics & Diodes", domain: "ELECS", href: "/quizzes?domain=ELECS&topic=ELEC-06&search=Semiconductor" },
+  { code: "ELEC 07", title: "Bipolar Junction Transistors (BJT)", domain: "ELECS", href: "/quizzes?domain=ELECS&topic=ELEC-07&search=BJT" },
+  { code: "ELEC 08", title: "Field Effect Transistors (FET & MOSFET)", domain: "ELECS", href: "/quizzes?domain=ELECS&topic=ELEC-08&search=MOSFET" },
+  { code: "ELEC 09", title: "Operational Amplifiers (Op-Amps)", domain: "ELECS", href: "/quizzes?domain=ELECS&topic=ELEC-09&search=Op-Amps" },
+  { code: "ELEC 10", title: "Industrial Electronics & Thyristors", domain: "ELECS", href: "/quizzes?domain=ELECS&topic=ELEC-10&search=Industrial%20Electronics" },
+  { code: "ELEC 11", title: "Power Supplies & Voltage Regulators", domain: "ELECS", href: "/quizzes?domain=ELECS&topic=ELEC-11&search=Power%20Supplies" },
+  { code: "ELEC 12", title: "Microelectronics & IC Fabrication", domain: "ELECS", href: "/quizzes?domain=ELECS&topic=ELEC-12&search=Microelectronics" },
+  { code: "ELEC 13", title: "Electronic Test & Measurement Instruments", domain: "ELECS", href: "/quizzes?domain=ELECS&topic=ELEC-13&search=Test%20Measurement" },
+  { code: "ELEC 14", title: "Feedback Amplifiers & Oscillators", domain: "ELECS", href: "/quizzes?domain=ELECS&topic=ELEC-14&search=Oscillators" },
+  { code: "ELEC 15", title: "Digital Electronics & Logic Circuits", domain: "ELECS", href: "/quizzes?domain=ELECS&topic=ELEC-15&search=Digital%20Electronics" },
   // GEAS
-  { code: "GEAS 01", title: "Chemistry for Engineers", domain: "GEAS", href: "/quizzes?domain=GEAS" },
-  { code: "GEAS 02", title: "Physics 1 (Mechanics, Waves, Sound)", domain: "GEAS", href: "/quizzes?domain=GEAS" },
-  { code: "GEAS 03", title: "Physics 2 (EM, Optics, Modern Physics)", domain: "GEAS", href: "/quizzes?domain=GEAS" },
-  { code: "GEAS 04", title: "Mechanics & Strength of Materials", domain: "GEAS", href: "/quizzes?domain=GEAS" },
-  { code: "GEAS 05", title: "Thermodynamics & Heat Transfer", domain: "GEAS", href: "/quizzes?domain=GEAS" },
-  { code: "GEAS 06", title: "Engineering Economics", domain: "GEAS", href: "/quizzes?domain=GEAS" },
+  { code: "GEAS 01", title: "Chemistry for Engineers", domain: "GEAS", href: "/quizzes?domain=GEAS&topic=GEAS-01&search=Chemistry" },
+  { code: "GEAS 02", title: "Physics 1 (Mechanics, Waves, Sound)", domain: "GEAS", href: "/quizzes?domain=GEAS&topic=GEAS-02&search=Physics" },
+  { code: "GEAS 03", title: "Physics 2 (EM, Optics, Modern Physics)", domain: "GEAS", href: "/quizzes?domain=GEAS&topic=GEAS-03&search=Optics" },
+  { code: "GEAS 04", title: "Mechanics & Strength of Materials", domain: "GEAS", href: "/quizzes?domain=GEAS&topic=GEAS-04&search=Strength%20of%20Materials" },
+  { code: "GEAS 05", title: "Thermodynamics & Heat Transfer", domain: "GEAS", href: "/quizzes?domain=GEAS&topic=GEAS-05&search=Thermodynamics" },
+  { code: "GEAS 06", title: "Engineering Economics", domain: "GEAS", href: "/quizzes?domain=GEAS&topic=GEAS-06&search=Engineering%20Economics" },
   { code: "GEAS 10", title: "ECE Laws, Ethics & Contracts (RA 9292)", domain: "GEAS", href: "/learn/geas-10-01" },
-  { code: "GEAS 11", title: "Material Science & Engineering", domain: "GEAS", href: "/quizzes?domain=GEAS" },
-  { code: "GEAS 12", title: "Computer Programming & IT", domain: "GEAS", href: "/quizzes?domain=GEAS" },
-  { code: "GEAS 13", title: "Environmental Science & Engineering", domain: "GEAS", href: "/quizzes?domain=GEAS" },
-  { code: "GEAS 14", title: "Technopreneurship 101", domain: "GEAS", href: "/quizzes?domain=GEAS" },
+  { code: "GEAS 11", title: "Material Science & Engineering", domain: "GEAS", href: "/quizzes?domain=GEAS&topic=GEAS-11&search=Material%20Science" },
+  { code: "GEAS 12", title: "Computer Programming & IT", domain: "GEAS", href: "/quizzes?domain=GEAS&topic=GEAS-12&search=Programming" },
+  { code: "GEAS 13", title: "Environmental Science & Engineering", domain: "GEAS", href: "/quizzes?domain=GEAS&topic=GEAS-13&search=Environmental" },
+  { code: "GEAS 14", title: "Technopreneurship 101", domain: "GEAS", href: "/quizzes?domain=GEAS&topic=GEAS-14&search=Technopreneurship" },
   // EST
-  { code: "EST 01", title: "Fundamentals of Comms & Noise", domain: "EST", href: "/quizzes?domain=EST" },
-  { code: "EST 02", title: "Radiowave Propagation", domain: "EST", href: "/quizzes?domain=EST" },
-  { code: "EST 03", title: "Analog Modulation (AM, FM, PM)", domain: "EST", href: "/quizzes?domain=EST" },
-  { code: "EST 04", title: "Transmission Lines & Smith Charts", domain: "EST", href: "/quizzes?domain=EST" },
-  { code: "EST 05", title: "Antennas & Radiation Systems", domain: "EST", href: "/quizzes?domain=EST" },
-  { code: "EST 06", title: "Microwave Communications & Radar", domain: "EST", href: "/quizzes?domain=EST" },
-  { code: "EST 07", title: "Optical Fiber Communications", domain: "EST", href: "/quizzes?domain=EST" },
-  { code: "EST 08", title: "Telephony & Switching Systems", domain: "EST", href: "/quizzes?domain=EST" },
-  { code: "EST 09", title: "Digital Communications (PCM, PSK, QAM)", domain: "EST", href: "/quizzes?domain=EST" },
-  { code: "EST 10", title: "Data Communications & Networks (OSI Model)", domain: "EST", href: "/quizzes?domain=EST" },
+  { code: "EST 01", title: "Fundamentals of Comms & Noise", domain: "EST", href: "/quizzes?domain=EST&topic=EST-01&search=Fundamentals%20of%20Comms" },
+  { code: "EST 02", title: "Radiowave Propagation", domain: "EST", href: "/quizzes?domain=EST&topic=EST-02&search=Radiowave" },
+  { code: "EST 03", title: "Analog Modulation (AM, FM, PM)", domain: "EST", href: "/quizzes?domain=EST&topic=EST-03&search=Modulation" },
+  { code: "EST 04", title: "Transmission Lines & Smith Charts", domain: "EST", href: "/quizzes?domain=EST&topic=EST-04&search=Transmission%20Lines" },
+  { code: "EST 05", title: "Antennas & Radiation Systems", domain: "EST", href: "/quizzes?domain=EST&topic=EST-05&search=Antennas" },
+  { code: "EST 06", title: "Microwave Communications & Radar", domain: "EST", href: "/quizzes?domain=EST&topic=EST-06&search=Microwave" },
+  { code: "EST 07", title: "Optical Fiber Communications", domain: "EST", href: "/quizzes?domain=EST&topic=EST-07&search=Optical%20Fiber" },
+  { code: "EST 08", title: "Telephony & Switching Systems", domain: "EST", href: "/quizzes?domain=EST&topic=EST-08&search=Telephony" },
+  { code: "EST 09", title: "Digital Communications (PCM, PSK, QAM)", domain: "EST", href: "/quizzes?domain=EST&topic=EST-09&search=Digital%20Communications" },
+  { code: "EST 10", title: "Data Communications & Networks (OSI Model)", domain: "EST", href: "/quizzes?domain=EST&topic=EST-10&search=Data%20Communications" },
 ];
 
 const STATIC_ACTIONS: OmniItem[] = [
@@ -98,35 +98,43 @@ const STATIC_ACTIONS: OmniItem[] = [
   },
   {
     id: "act-notes",
-    title: "Personal Study Notebook & Vault",
-    subtitle: "View saved formula cards, text highlights, and mnemonics",
+    title: "Personal Study Notes Vault",
+    subtitle: "Saved explanations, formula flashcards, and concept derivations",
     category: "action",
     href: "/notes",
     icon: BookMarked,
   },
   {
-    id: "act-retention",
-    title: "Retention Radar & Memory Stability",
-    subtitle: "Review FSRS retrievability, daily recovery drills, and BRI",
+    id: "act-library",
+    title: "Syllabus Question Sets Library",
+    subtitle: "Browse all 190 ECE Board Exam practice questionnaires",
     category: "action",
-    href: "/analytics",
-    icon: Brain,
+    href: "/quizzes",
+    icon: Layers,
   },
   {
     id: "act-learn",
-    title: "Interactive Learning Modules Library",
-    subtitle: "Explore interactive board exam lessons and derivations",
+    title: "Interactive Learning Modules",
+    subtitle: "Visualizers, formula breakdowns, and mastery challenges",
     category: "action",
     href: "/learn",
     icon: GraduationCap,
   },
   {
-    id: "act-library",
-    title: "Syllabus Question Library",
-    subtitle: "Browse 190 sets and 5,435 board exam review questions",
+    id: "act-retention",
+    title: "FSRS Memory Retention Board",
+    subtitle: "View memory stability, retrievability, and upcoming spaced review intervals",
     category: "action",
-    href: "/quizzes",
-    icon: BookOpen,
+    href: "/analytics",
+    icon: Brain,
+  },
+  {
+    id: "act-history",
+    title: "Exam Attempts & Drill History",
+    subtitle: "Review past scores, time per question, and diagnostic reports",
+    category: "action",
+    href: "/history",
+    icon: Clock,
   },
 ];
 
@@ -136,11 +144,12 @@ export function OmniSearch() {
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [userNotes, setUserNotes] = useState<UserNote[]>([]);
   const [customModules, setCustomModules] = useState<any[]>([]);
+  const [officialModules, setOfficialModules] = useState<any[]>([]);
   const router = useRouter();
   const inputRef = useRef<HTMLInputElement>(null);
   const resultsContainerRef = useRef<HTMLDivElement>(null);
 
-  // Load local user notes and custom modules when modal opens
+  // Load local user notes, custom modules, and official modules when modal opens
   useEffect(() => {
     if (isOpen) {
       setUserNotes(getStoredNotes());
@@ -148,6 +157,17 @@ export function OmniSearch() {
         const raw = localStorage.getItem("marnie_tutor_custom_modules");
         if (raw) setCustomModules(JSON.parse(raw));
       } catch {}
+
+      // Dynamically fetch official modules catalog
+      fetch("/api/modules")
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.success && Array.isArray(data.modules)) {
+            setOfficialModules(data.modules);
+          }
+        })
+        .catch((err) => console.warn("Failed to load modules catalog for omni-search:", err));
+
       setTimeout(() => inputRef.current?.focus(), 50);
     } else {
       setQuery("");
@@ -155,52 +175,40 @@ export function OmniSearch() {
     }
   }, [isOpen]);
 
-  // Global Keyboard Listener: Cmd+K / Ctrl+K and '/' shortcut
+  // Global Keyboard Listener
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      // Toggle on Cmd+K or Ctrl+K
       if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === "k") {
         e.preventDefault();
         setIsOpen((prev) => !prev);
         return;
       }
-
-      // Toggle on '/' when not in an editable element
       if (e.key === "/" && !isOpen) {
         const target = e.target as HTMLElement;
-        const isInput =
-          target.tagName === "INPUT" ||
-          target.tagName === "TEXTAREA" ||
-          target.isContentEditable;
+        const isInput = target.tagName === "INPUT" || target.tagName === "TEXTAREA" || target.isContentEditable;
         if (!isInput) {
           e.preventDefault();
           setIsOpen(true);
         }
       }
-
-      // Close on Escape
       if (e.key === "Escape" && isOpen) {
         e.preventDefault();
         setIsOpen(false);
       }
     };
-
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [isOpen]);
 
-  // Listen for custom trigger event
   useEffect(() => {
     const handleTrigger = () => setIsOpen(true);
     window.addEventListener("open-omni-search", handleTrigger);
     return () => window.removeEventListener("open-omni-search", handleTrigger);
   }, []);
 
-  // Compute all searchable items
   const allItems = useMemo<OmniItem[]>(() => {
     const items: OmniItem[] = [...STATIC_ACTIONS];
 
-    // Add Topics
     STATIC_TOPICS.forEach((t) => {
       items.push({
         id: `top-${t.code}`,
@@ -213,18 +221,31 @@ export function OmniSearch() {
       });
     });
 
-    // Add GEAS 10 Official Modules
-    items.push({
-      id: "mod-geas-10-01",
-      title: "GEAS 10-01: RA 9292 Origins, 8 Articles & Terms",
-      subtitle: "Official ECE Law Interactive Module",
-      category: "module",
-      domain: "GEAS",
-      href: "/learn/geas-10-01",
-      icon: GraduationCap,
-    });
+    // Add Official Learning Modules
+    if (officialModules.length > 0) {
+      officialModules.forEach((m) => {
+        items.push({
+          id: `mod-${m.id}`,
+          title: `${m.code}: ${m.subtopicTitle}`,
+          subtitle: `${m.domain} • ${m.topicTitle}`,
+          category: "module",
+          domain: m.domain,
+          href: `/learn/${m.id}`,
+          icon: GraduationCap,
+        });
+      });
+    } else {
+      items.push({
+        id: "mod-geas-10-01",
+        title: "GEAS 10-01: RA 9292 Origins, 8 Articles & Terms",
+        subtitle: "Official ECE Law Interactive Module",
+        category: "module",
+        domain: "GEAS",
+        href: "/learn/geas-10-01",
+        icon: GraduationCap,
+      });
+    }
 
-    // Add Custom AI Modules
     customModules.forEach((m) => {
       items.push({
         id: `cmod-${m.id}`,
@@ -237,7 +258,6 @@ export function OmniSearch() {
       });
     });
 
-    // Add User Notes
     userNotes.forEach((n) => {
       items.push({
         id: `note-${n.id}`,
@@ -245,19 +265,16 @@ export function OmniSearch() {
         subtitle: `${n.domain || "General"} Note • ${n.content.slice(0, 60)}...`,
         category: "note",
         domain: n.domain || "NOTE",
-        href: `/notes`,
+        href: `/notes#note-${n.id}`,
         icon: BookMarked,
       });
     });
 
     return items;
-  }, [customModules, userNotes]);
+  }, [officialModules, customModules, userNotes]);
 
-  // Filter items based on query
   const filteredItems = useMemo(() => {
-    if (!query.trim()) {
-      return STATIC_ACTIONS;
-    }
+    if (!query.trim()) return STATIC_ACTIONS;
     const q = query.toLowerCase();
     return allItems
       .filter((item) => {

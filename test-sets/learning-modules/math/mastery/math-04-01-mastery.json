@@ -18,7 +18,9 @@
       "correctChoice": "A",
       "explanation": "The Pythagorean theorem ($a^2 + b^2 = c^2$), formulated by Pythagoras around 500 B.C., holds the Guinness record and mathematical distinction as the most proved theorem in history.",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m0801-q02",
@@ -31,7 +33,9 @@
       "correctChoice": "C",
       "explanation": "For an Egyptian 3-4-5 right triangle, opposite $= 3$, adjacent $= 4$, hypotenuse $= 5$. $\\sin A = 3/5, \\cos A = 4/5 \\implies 3/5 + 4/5 = 7/5$.\n\n⚡ Speed Shortcut: $\\frac{3+4}{5} = \\frac{7}{5} = 1.4$.",
       "category": "computational",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m0801-q03",
@@ -44,7 +48,9 @@
       "correctChoice": "A",
       "explanation": "Claudius Ptolemaeus (Ptolemy) demonstrated the chord-based version of the Law of Sines in Alexandria circa 150 A.D.",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m0801-q04",
@@ -57,7 +63,9 @@
       "correctChoice": "C",
       "explanation": "$\\cos A = \\frac{b^2 + c^2 - a^2}{2bc} = \\frac{8^2 + 9^2 - 7^2}{2(8)(9)} = \\frac{64 + 81 - 49}{144} = \\frac{96}{144} = \\frac{2}{3}$.\n\n⚡ Speed Shortcut: $\\frac{64+81-49}{144} = \\frac{96}{144} = \\frac{2}{3}$.",
       "category": "computational",
-      "difficulty": "medium"
+      "difficulty": "medium",
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m0801-q05",
@@ -70,7 +78,9 @@
       "correctChoice": "C",
       "explanation": "Thomas Fincke (1561–1656) introduced the terms tangent and secant and first published the Law of Tangents in Geometria Rotundi (1583).",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m0801-q06",
@@ -83,7 +93,9 @@
       "correctChoice": "D",
       "explanation": "In a $30^\\circ-60^\\circ-90^\\circ$ triangle, $\\sin 30^\\circ = 1/2$ and $\\cos 30^\\circ = \\sqrt{3}/2$, yielding side lengths $1, \\sqrt{3}, 2$.",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m0801-q07",
@@ -96,7 +108,9 @@
       "correctChoice": "B",
       "explanation": "By Law of Sines: $b = \\frac{a \\sin B}{\\sin A} = \\frac{12 \\sin 60^\\circ}{\\sin 45^\\circ} = \\frac{12 (\\sqrt{3}/2)}{\\sqrt{2}/2} = \\frac{12\\sqrt{3}}{\\sqrt{2}} = 6\\sqrt{6} \\approx 14.70$.",
       "category": "computational",
-      "difficulty": "medium"
+      "difficulty": "medium",
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m0801-q08",
@@ -109,7 +123,9 @@
       "correctChoice": "B",
       "explanation": "$5^2 + 12^2 = 25 + 144 = 169 = 13^2$. By the converse of the Pythagorean theorem, it is a right triangle.",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m0801-q09",
@@ -122,7 +138,9 @@
       "correctChoice": "C",
       "explanation": "$a^2 + b^2 = 36 + 49 = 85$. Since $c^2 = 100 > 85$, $\\cos C = \\frac{85 - 100}{2(6)(7)} < 0$, which proves that angle $C$ is obtuse ($> 90^\\circ$).",
       "category": "shortcuts",
-      "difficulty": "medium"
+      "difficulty": "medium",
+      "archetype": "shortcut",
+      "isAnchor": false
     },
     {
       "id": "m0801-q10",
@@ -135,7 +153,9 @@
       "correctChoice": "A",
       "explanation": "Law of Cosines directly solves SAS and SSS configurations without requiring an initial known opposite angle-side pair.",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m0801-q11",
@@ -148,7 +168,9 @@
       "correctChoice": "B",
       "explanation": "$\\tan A = \\frac{a}{b} = \\frac{5}{5\\sqrt{3}} = \\frac{1}{\\sqrt{3}} \\implies A = \\arctan(1/\\sqrt{3}) = 30^\\circ$.\n\n⚡ Speed Shortcut: $\\arctan(1/\\sqrt{3}) = 30^\\circ$.",
       "category": "computational",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m0801-q12",
@@ -161,7 +183,9 @@
       "correctChoice": "B",
       "explanation": "By the extended Law of Sines: $2R = \\frac{a}{\\sin A} = \\frac{14}{\\sin 30^\\circ} = \\frac{14}{0.5} = 28 \\implies R = 14$.",
       "category": "applied",
-      "difficulty": "medium"
+      "difficulty": "medium",
+      "archetype": "applied",
+      "isAnchor": false
     },
     {
       "id": "m0801-q13",
@@ -174,7 +198,9 @@
       "correctChoice": "D",
       "explanation": "$\\tan 30^\\circ = \\frac{50}{d} \\implies d = \\frac{50}{\\tan 30^\\circ} = 50\\sqrt{3} \\approx 86.60\\text{ m}$.",
       "category": "applied",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "applied",
+      "isAnchor": false
     },
     {
       "id": "m0801-q14",
@@ -187,7 +213,9 @@
       "correctChoice": "B",
       "explanation": "The Law of Tangents is: $\\frac{a - b}{a + b} = \\frac{\\tan \\frac{1}{2}(A - B)}{\\tan \\frac{1}{2}(A + B)}$.",
       "category": "conceptual",
-      "difficulty": "medium"
+      "difficulty": "medium",
+      "archetype": "conceptual",
+      "isAnchor": false
     },
     {
       "id": "m0801-q15",
@@ -200,7 +228,9 @@
       "correctChoice": "A",
       "explanation": "$a^2 = 4^2 + 6^2 - 2(4)(6)\\cos 120^\\circ = 16 + 36 - 48(-0.5) = 52 + 24 = 76 \\implies a = \\sqrt{76} = 2\\sqrt{19} \\approx 8.718$.\n\n⚡ Speed Shortcut: $\\sqrt{52 + 24} = \\sqrt{76} \\approx 8.72$.",
       "category": "computational",
-      "difficulty": "medium"
+      "difficulty": "medium",
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m0801-q16",
@@ -213,7 +243,9 @@
       "correctChoice": "A",
       "explanation": "The Egyptian triangle is the historical $3-4-5$ integer right triangle used in ancient surveying and masonry.",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m0801-q17",
@@ -226,7 +258,9 @@
       "correctChoice": "C",
       "explanation": "In a $45^\\circ$ right triangle, the opposite and adjacent legs are identical: $\\text{Shadow} = 15\\text{ m}$.",
       "category": "shortcuts",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "shortcut",
+      "isAnchor": false
     },
     {
       "id": "m0801-q18",
@@ -239,7 +273,9 @@
       "correctChoice": "D",
       "explanation": "Trigonometry is fundamentally divided into 2D Plane Trigonometry and 3D Spherical Trigonometry.",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     },
     {
       "id": "m0801-q19",
@@ -252,7 +288,9 @@
       "correctChoice": "A",
       "explanation": "$2R = 10 \\implies R = 5$. Area of circumcircle $= \\pi R^2 = \\pi (5^2) = 25\\pi$.\n\n⚡ Speed Shortcut: $\\pi (10/2)^2 = 25\\pi$.",
       "category": "applied",
-      "difficulty": "medium"
+      "difficulty": "medium",
+      "archetype": "applied",
+      "isAnchor": false
     },
     {
       "id": "m0801-q20",
@@ -265,7 +303,9 @@
       "correctChoice": "D",
       "explanation": "$\\sec \\theta = \\text{hyp}/\\text{adj} = 13/12 \\implies \\text{opp} = \\sqrt{13^2 - 12^2} = 5$. Thus $\\csc \\theta = \\text{hyp}/\\text{opp} = 13/5$.",
       "category": "computational",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "numerical",
+      "isAnchor": false
     },
     {
       "id": "m0801-q21",
@@ -278,7 +318,9 @@
       "correctChoice": "D",
       "explanation": "$\\text{Area} = \\frac{1}{2}ab \\sin C = \\frac{1}{2}(40)(60)\\sin 30^\\circ = 1200(0.5) = 600\\text{ m}^2$.\n\n⚡ Speed Shortcut: $0.5 \\times 40 \\times 60 \\times 0.5 = 600\\text{ m}^2$.",
       "category": "applied",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "applied",
+      "isAnchor": false
     },
     {
       "id": "m0801-q22",
@@ -291,7 +333,9 @@
       "correctChoice": "B",
       "explanation": "The word trigonometry comes from the Greek trigonon (triangle) and metria (measurements).",
       "category": "conceptual",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "archetype": "conceptual",
+      "isAnchor": true
     }
   ]
 }
